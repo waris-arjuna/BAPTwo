@@ -15,13 +15,19 @@ class MenuHelper
                 'name' => 'Dashboard',
                 'path' => '/',
             ],
+            [
+                'icon' => 'report',
+                'name' => 'Laporan Kejadian',
+                'path' => '/laporan-kejadian',
+            ]
         ];
     }
 
+
     /**
-     * Menu yang berkaitan dengan perkara.
+     * Menu yang berkaitan dengan monitoring.
      */
-    public static function getPerkaraItems(): array
+    public static function getMonitoringItems(): array
     {
         return [
             [
@@ -29,33 +35,47 @@ class MenuHelper
                 'name' => 'Progress Perkara',
                 'path' => '/progress-perkara',
             ],
-            [
-                'icon' => 'spdp',
-                'name' => 'SPDP',
-                'path' => '/spdp',
-            ],
-            [
-                'icon' => 'stage-1',
-                'name' => 'Tahap 1',
-                'path' => '/tahap-1',
-            ],
-            [
-                'icon' => 'p21',
-                'name' => 'P-21',
-                'path' => '/p-21',
-            ],
-            [
-                'icon' => 'stage-2',
-                'name' => 'Tahap 2',
-                'path' => '/tahap-2',
-            ],
-            [
-                'icon' => 'court',
-                'name' => 'Putusan Perkara',
-                'path' => '/putusan-perkara',
-            ],
         ];
     }
+
+    /**
+     * Menu yang berkaitan dengan perkara.
+     */
+        public static function getPerkaraItems(): array
+        {
+            return [
+                [
+                    'icon' => 'sprindik',
+                    'name' => 'Sprindik',
+                    'path' => '/sprindik',
+                ],
+                [
+                    'icon' => 'spdp',
+                    'name' => 'SPDP',
+                    'path' => '/spdp',
+                ],
+                [
+                    'icon' => 'stage-1',
+                    'name' => 'Tahap 1',
+                    'path' => '/tahap-1',
+                ],
+                [
+                    'icon' => 'p21',
+                    'name' => 'P21',
+                    'path' => '/p21',
+                ],
+                [
+                    'icon' => 'stage-2',
+                    'name' => 'Tahap 2',
+                    'path' => '/tahap-2',
+                ],
+                [
+                    'icon' => 'court',
+                    'name' => 'Putusan Perkara',
+                    'path' => '/putusan-perkara',
+                ],
+            ];
+        }
 
     /**
      * Menu sistem dan administrasi.
@@ -85,6 +105,10 @@ class MenuHelper
             [
                 'title' => 'Menu Utama',
                 'items' => self::getMainNavItems(),
+            ],
+            [
+                'title' => 'Monitoring',
+                'items' => self::getMonitoringItems(),
             ],
             [
                 'title' => 'Perkara',
@@ -141,7 +165,29 @@ class MenuHelper
                     />
                 </svg>
             ',
-
+            'report' => '
+                <svg
+                    class="fill-current"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        d="M6 2.5C4.89543 2.5 4 3.39543 4 4.5V19.5C4 20.6046 4.89543 21.5 6 21.5H18C19.1046 21.5 20 20.6046 20 19.5V8.5L14 2.5H6ZM13 3.9L18.6 9.5H14C13.4477 9.5 13 9.05228 13 8.5V3.9ZM7 12H17V13.5H7V12ZM7 15H17V16.5H7V15ZM7 9H11V10.5H7V9Z"
+                        fill="currentColor"
+                    />
+                </svg>
+            ',
+            'sprindik' => '
+                <svg class="fill-current" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 2.5C4.895 2.5 4 3.395 4 4.5V19.5C4 20.605 4.895 21.5 6 21.5H18C19.105 21.5 20 20.605 20 19.5V8.5L14 2.5H6ZM13 3.9L18.6 9.5H14C13.448 9.5 13 9.052 13 8.5V3.9ZM7 12H17V13.5H7V12ZM7 15H15V16.5H7V15ZM7 9H11V10.5H7V9Z"
+                        fill="currentColor"/>
+                </svg>
+            ',
+            
             /*
             |--------------------------------------------------------------------------
             | Progress Perkara
