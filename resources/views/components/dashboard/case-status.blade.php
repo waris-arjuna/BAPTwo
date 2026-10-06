@@ -1,136 +1,147 @@
-<div
-    class="rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs dark:border-gray-800 dark:bg-white/[0.03]"
->
-    {{-- Header --}}
-    <div class="mb-6">
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-            Perkara Tahun Berjalan
-        </h3>
+@php
+    $totalPerkara = 2;
+    $selesai = 0;
+    $dalamProses = 2;
+    $belumDimulai = 0;
+
+    $selesaiPercent = $totalPerkara > 0 ? round(($selesai / $totalPerkara) * 100) : 0;
+    $dalamProsesPercent = $totalPerkara > 0 ? round(($dalamProses / $totalPerkara) * 100) : 0;
+    $belumDimulaiPercent = $totalPerkara > 0 ? round(($belumDimulai / $totalPerkara) * 100) : 0;
+
+    $circumference = 2 * pi() * 48;
+
+    $dalamProsesLength = ($dalamProsesPercent / 100) * $circumference;
+@endphp
+
+<div class="h-full rounded-2xl border border-gray-200 bg-white shadow-theme-xs dark:border-gray-800 dark:bg-white/[0.03]">
+
+    <div class="border-b border-gray-200 px-5 py-5 sm:px-6 dark:border-gray-800">
+
+        <h2 class="text-lg font-semibold text-gray-800 dark:text-white/90">
+            Perkara Tahun Berjalan 2026
+        </h2>
 
         <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-            Tahun Berjalan 2026
+            Ringkasan monitoring perkara.
         </p>
+
     </div>
 
-    {{-- Chart + Legend --}}
-    <div class="flex flex-col items-center gap-8 sm:flex-row sm:justify-center">
+    <div class="p-5 sm:p-6">
 
-        {{-- Donut Chart --}}
-        <div class="relative flex h-52 w-52 shrink-0 items-center justify-center">
-            <div
-                class="absolute inset-0 rounded-full"
-                style="background: conic-gradient(
-                    #22c55e 0% 0%,
-                    #3b82f6 0% 100%,
-                    #e5e7eb 100% 100%
-                );"
-            ></div>
+        {{-- Donut --}}
+        <div class="flex justify-center">
 
-            {{-- Inner Circle --}}
-            <div
-                class="absolute flex h-36 w-36 flex-col items-center justify-center rounded-full bg-white dark:bg-gray-900"
-            >
-                <span class="text-3xl font-bold text-gray-900 dark:text-white">
-                    2
-                </span>
+            <div class="relative h-52 w-52">
 
-                <span class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                    Total Perkara
-                </span>
+                <svg
+                    class="h-full w-full -rotate-90"
+                    viewBox="0 0 120 120"
+                >
+                    {{-- Background --}}
+                    <circle
+                        cx="60"
+                        cy="60"
+                        r="48"
+                        fill="none"
+                        class="stroke-gray-100 dark:stroke-gray-800"
+                        stroke-width="14"
+                    />
+
+                    {{-- Dalam Proses --}}
+                    @if ($dalamProsesPercent > 0)
+                        <circle
+                            cx="60"
+                            cy="60"
+                            r="48"
+                            fill="none"
+                            class="stroke-brand-500"
+                            stroke-width="14"
+                            stroke-linecap="round"
+                            stroke-dasharray="{{ $dalamProsesLength }} {{ $circumference }}"
+                        />
+                    @endif
+                </svg>
+
+                <div class="absolute inset-0 flex flex-col items-center justify-center">
+
+                    <p class="text-3xl font-semibold text-gray-800 dark:text-white/90">
+                        {{ $totalPerkara }}
+                    </p>
+
+                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                        Total Perkara
+                    </p>
+
+                </div>
+
             </div>
+
         </div>
 
         {{-- Legend --}}
-        <div class="w-full max-w-xs space-y-4">
+        <div class="mt-6 space-y-4">
 
-            {{-- Selesai --}}
             <div class="flex items-center justify-between">
+
                 <div class="flex items-center gap-3">
-                    <span class="h-3 w-3 rounded-full bg-green-500"></span>
+                    <span class="h-2.5 w-2.5 rounded-full bg-success-500"></span>
 
                     <span class="text-sm text-gray-600 dark:text-gray-400">
                         Selesai
                     </span>
                 </div>
 
-                <div class="text-right">
-                    <p class="text-sm font-semibold text-gray-900 dark:text-white">
-                        0 Perkara
-                    </p>
+                <span class="text-sm font-medium text-gray-800 dark:text-white/90">
+                    {{ $selesai }} ({{ $selesaiPercent }}%)
+                </span>
 
-                    <p class="text-xs text-gray-500 dark:text-gray-400">
-                        0%
-                    </p>
-                </div>
             </div>
 
-            {{-- Dalam Proses --}}
             <div class="flex items-center justify-between">
+
                 <div class="flex items-center gap-3">
-                    <span class="h-3 w-3 rounded-full bg-blue-500"></span>
+                    <span class="h-2.5 w-2.5 rounded-full bg-brand-500"></span>
 
                     <span class="text-sm text-gray-600 dark:text-gray-400">
                         Dalam Proses
                     </span>
                 </div>
 
-                <div class="text-right">
-                    <p class="text-sm font-semibold text-gray-900 dark:text-white">
-                        2 Perkara
-                    </p>
+                <span class="text-sm font-medium text-gray-800 dark:text-white/90">
+                    {{ $dalamProses }} ({{ $dalamProsesPercent }}%)
+                </span>
 
-                    <p class="text-xs text-gray-500 dark:text-gray-400">
-                        100%
-                    </p>
-                </div>
             </div>
 
-            {{-- Belum Dimulai --}}
             <div class="flex items-center justify-between">
+
                 <div class="flex items-center gap-3">
-                    <span class="h-3 w-3 rounded-full bg-gray-300 dark:bg-gray-600"></span>
+                    <span class="h-2.5 w-2.5 rounded-full bg-gray-300 dark:bg-gray-600"></span>
 
                     <span class="text-sm text-gray-600 dark:text-gray-400">
                         Belum Dimulai
                     </span>
                 </div>
 
-                <div class="text-right">
-                    <p class="text-sm font-semibold text-gray-900 dark:text-white">
-                        0 Perkara
-                    </p>
+                <span class="text-sm font-medium text-gray-800 dark:text-white/90">
+                    {{ $belumDimulai }} ({{ $belumDimulaiPercent }}%)
+                </span>
 
-                    <p class="text-xs text-gray-500 dark:text-gray-400">
-                        0%
-                    </p>
-                </div>
             </div>
 
         </div>
+
+        <div class="mt-6 border-t border-gray-200 pt-4 dark:border-gray-800">
+
+            <p class="text-xs leading-5 text-gray-400 dark:text-gray-500">
+                Perhitungan persentase berdasarkan total perkara pada Tahun Berjalan.
+                "Dalam Proses" dan "Belum Dimulai" merupakan kategori visual monitoring dashboard,
+                bukan status resmi perkara.
+            </p>
+
+        </div>
+
     </div>
 
-    {{-- Information --}}
-    <div
-        class="mt-6 flex items-start gap-3 rounded-lg bg-gray-50 px-4 py-3 dark:bg-white/[0.03]"
-    >
-        <svg
-            class="mt-0.5 h-5 w-5 shrink-0 text-gray-400"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.8"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-        >
-            <circle cx="12" cy="12" r="9" />
-            <path d="M12 10v6" />
-            <path d="M12 7.25h.01" />
-        </svg>
-
-        <p class="text-sm leading-5 text-gray-500 dark:text-gray-400">
-            Perhitungan persentase berdasarkan total 2 perkara
-            pada Tahun Berjalan 2026.
-        </p>
-    </div>
 </div>

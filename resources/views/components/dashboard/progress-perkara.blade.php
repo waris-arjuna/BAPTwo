@@ -1,361 +1,412 @@
-<div
-    class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-theme-xs dark:border-gray-800 dark:bg-white/[0.03]"
->
+@php
+    $perkaraList = [
+        [
+            'nomor' => 'BPOM.BJB-001/IV/2026/PPNS',
+            'tersangka' => 'Andi Saputra',
+            'pasal' => 'Pasal 196 UU 36/2009',
+            'tahap' => 'TAHAP I',
+            'progress' => 55,
+            'status' => 'Dalam Proses',
+            'spdp' => '15-09-2026',
+            'tahap1' => '22-09-2026',
+            'p21' => null,
+            'tahap2' => null,
+            'estimasi' => '15-10-2026',
+        ],
+        [
+            'nomor' => 'BPOM.BJB-002/IV/2026/PPNS',
+            'tersangka' => 'Budi Hartono',
+            'pasal' => 'Pasal 197 UU 36/2009',
+            'tahap' => 'P-21',
+            'progress' => 85,
+            'status' => 'Dalam Proses',
+            'spdp' => '20-09-2026',
+            'tahap1' => '27-09-2026',
+            'p21' => '02-10-2026',
+            'tahap2' => null,
+            'estimasi' => '20-10-2026',
+        ],
+    ];
+@endphp
+
+<div class="rounded-2xl border border-gray-200 bg-white shadow-theme-xs dark:border-gray-800 dark:bg-white/[0.03]">
+
     {{-- Header --}}
-    <div
-        class="flex flex-col gap-4 border-b border-gray-200 px-5 py-5 sm:flex-row sm:items-center sm:justify-between dark:border-gray-800"
-    >
+    <div class="flex flex-col gap-4 border-b border-gray-200 px-5 py-5 sm:px-6 lg:flex-row lg:items-center lg:justify-between dark:border-gray-800">
+
         <div>
-            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+            <h2 class="text-lg font-semibold text-gray-800 dark:text-white/90">
                 Progress Perkara
-            </h3>
+            </h2>
 
             <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                Monitoring progress tahapan perkara
+                Monitoring perkembangan perkara tahun berjalan.
             </p>
         </div>
 
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-2">
             <select
-                class="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-700 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300"
+                class="h-10 rounded-lg border border-gray-300 bg-white px-3 text-sm text-gray-700 outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300"
             >
                 <option>Semua Perkara</option>
-                <option>Perkara Aktif</option>
-                <option>Perkara Berjalan</option>
-                <option>Case Closed</option>
+                <option>Dalam Proses</option>
+                <option>Selesai</option>
+                <option>Tidak Selesai</option>
             </select>
 
             <button
                 type="button"
-                class="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 text-gray-500 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-white/[0.03]"
-                title="Filter"
+                class="inline-flex h-10 items-center justify-center rounded-lg border border-gray-300 px-3 text-sm font-medium text-gray-700 transition hover:bg-gray-50 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-white/[0.03]"
             >
-                <svg
-                    class="h-5 w-5"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                >
-                    <path d="M4 6h16" />
-                    <path d="M7 12h10" />
-                    <path d="M10 18h4" />
-                </svg>
+                Filter
             </button>
         </div>
+
     </div>
 
     {{-- Table --}}
     <div class="overflow-x-auto">
-        <table class="min-w-[1200px] w-full">
+        <table class="w-full min-w-[1350px]">
+
             <thead>
                 <tr class="border-b border-gray-200 bg-gray-50 dark:border-gray-800 dark:bg-white/[0.02]">
-                    <th class="px-5 py-4 text-left text-xs font-semibold uppercase text-gray-500 dark:text-gray-400">
+
+                    <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
                         No.
                     </th>
 
-                    <th class="px-5 py-4 text-left text-xs font-semibold uppercase text-gray-500 dark:text-gray-400">
+                    <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
                         Nomor Perkara
                     </th>
 
-                    <th class="px-5 py-4 text-left text-xs font-semibold uppercase text-gray-500 dark:text-gray-400">
+                    <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
                         Tersangka
                     </th>
 
-                    <th class="px-5 py-4 text-left text-xs font-semibold uppercase text-gray-500 dark:text-gray-400">
+                    <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
                         Pasal
                     </th>
 
-                    <th class="px-5 py-4 text-left text-xs font-semibold uppercase text-gray-500 dark:text-gray-400">
+                    <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
                         Tahap Saat Ini
                     </th>
 
-                    <th class="px-5 py-4 text-left text-xs font-semibold uppercase text-gray-500 dark:text-gray-400">
+                    <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
                         Progress Tahapan
                     </th>
 
-                    <th class="px-5 py-4 text-center text-xs font-semibold uppercase text-gray-500 dark:text-gray-400">
+                    <th class="px-5 py-3 text-center text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
                         Progress
                     </th>
 
-                    <th class="px-5 py-4 text-left text-xs font-semibold uppercase text-gray-500 dark:text-gray-400">
+                    <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
                         Estimasi Selesai
                     </th>
 
-                    <th class="px-5 py-4 text-left text-xs font-semibold uppercase text-gray-500 dark:text-gray-400">
+                    <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
                         Status
                     </th>
 
-                    <th class="px-5 py-4"></th>
+                    <th class="px-5 py-3 text-center text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                        Aksi
+                    </th>
+
                 </tr>
             </thead>
 
             <tbody class="divide-y divide-gray-200 dark:divide-gray-800">
 
-                {{-- Perkara 1 --}}
-                <tr class="hover:bg-gray-50 dark:hover:bg-white/[0.02]">
-                    <td class="px-5 py-5 text-sm text-gray-600 dark:text-gray-400">
-                        1
-                    </td>
+                @foreach ($perkaraList as $index => $perkara)
 
-                    <td class="px-5 py-5">
-                        <p class="text-sm font-medium text-gray-900 dark:text-white">
-                            BPOM.BJB-001/IV/2026/PPNS
-                        </p>
+                    <tr class="transition hover:bg-gray-50 dark:hover:bg-white/[0.02]">
 
-                        <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                            Dilaporkan: 02 Jan 2026
-                        </p>
-                    </td>
+                        {{-- No --}}
+                        <td class="px-5 py-5 text-sm text-gray-600 dark:text-gray-400">
+                            {{ $index + 1 }}
+                        </td>
 
-                    <td class="px-5 py-5">
-                        <p class="text-sm text-gray-900 dark:text-white">
-                            Andi Saputra
-                        </p>
+                        {{-- Nomor --}}
+                        <td class="px-5 py-5">
+                            <a
+                                href="#"
+                                class="text-sm font-medium text-gray-800 transition hover:text-brand-500 dark:text-white/90"
+                            >
+                                {{ $perkara['nomor'] }}
+                            </a>
+                        </td>
 
-                        <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                            1 orang
-                        </p>
-                    </td>
+                        {{-- Tersangka --}}
+                        <td class="px-5 py-5 text-sm text-gray-700 dark:text-gray-300">
+                            {{ $perkara['tersangka'] }}
+                        </td>
 
-                    <td class="px-5 py-5 text-sm text-gray-600 dark:text-gray-400">
-                        Pasal 196 UU 36/2009
-                        <br>
-                        (Pangan)
-                    </td>
+                        {{-- Pasal --}}
+                        <td class="px-5 py-5">
+                            <p class="max-w-[180px] text-sm leading-5 text-gray-700 dark:text-gray-300">
+                                {{ $perkara['pasal'] }}
+                            </p>
+                        </td>
 
-                    <td class="px-5 py-5">
-                        <span
-                            class="inline-flex rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-600 dark:bg-blue-500/10 dark:text-blue-400"
-                        >
-                            Tahap I
-                        </span>
-                    </td>
+                        {{-- Tahap --}}
+                        <td class="px-5 py-5">
+                            <span class="inline-flex rounded-full bg-brand-50 px-3 py-1 text-xs font-medium text-brand-700 dark:bg-brand-500/10 dark:text-brand-400">
+                                {{ $perkara['tahap'] }}
+                            </span>
+                        </td>
 
-                    <td class="px-5 py-5">
-                        <div class="min-w-[250px]">
-                            <div class="flex items-center gap-0">
+                        {{-- Timeline --}}
+                        <td class="px-5 py-5">
+                            <div class="w-[360px]">
 
-                                {{-- SPDP --}}
-                                <div class="flex flex-1 items-center">
-                                    <div class="flex flex-col items-center">
-                                        <span class="h-3 w-3 rounded-full bg-green-500"></span>
+                                <div class="flex items-center">
+
+                                    {{-- SPDP --}}
+                                    <div class="flex min-w-0 flex-1 items-center">
+
+                                        <div class="relative flex shrink-0 items-center justify-center">
+                                            <span class="flex h-6 w-6 items-center justify-center rounded-full bg-success-500 text-[10px] font-semibold text-white">
+                                                ✓
+                                            </span>
+                                        </div>
+
+                                        <div class="h-0.5 flex-1 bg-success-500"></div>
                                     </div>
 
-                                    <div class="h-0.5 flex-1 bg-green-500"></div>
-                                </div>
+                                    {{-- Tahap I --}}
+                                    <div class="flex min-w-0 flex-1 items-center">
 
-                                {{-- Tahap I --}}
-                                <div class="flex flex-1 items-center">
-                                    <div class="flex flex-col items-center">
-                                        <span class="h-3 w-3 rounded-full bg-blue-600"></span>
+                                        <div class="relative flex shrink-0 items-center justify-center">
+
+                                            @if ($perkara['progress'] >= 55)
+                                                <span class="flex h-6 w-6 items-center justify-center rounded-full bg-success-500 text-[10px] font-semibold text-white">
+                                                    ✓
+                                                </span>
+                                            @else
+                                                <span class="h-6 w-6 rounded-full border-2 border-gray-300 bg-white dark:border-gray-700 dark:bg-gray-900"></span>
+                                            @endif
+
+                                        </div>
+
+                                        <div class="h-0.5 flex-1 {{ $perkara['progress'] >= 55 ? 'bg-success-500' : 'bg-gray-200 dark:bg-gray-700' }}"></div>
                                     </div>
 
-                                    <div class="h-0.5 flex-1 bg-gray-200 dark:bg-gray-700"></div>
+                                    {{-- P21 --}}
+                                    <div class="flex min-w-0 flex-1 items-center">
+
+                                        <div class="relative flex shrink-0 items-center justify-center">
+
+                                            @if ($perkara['progress'] >= 85)
+                                                <span class="flex h-6 w-6 items-center justify-center rounded-full bg-success-500 text-[10px] font-semibold text-white">
+                                                    ✓
+                                                </span>
+                                            @elseif ($perkara['progress'] >= 55)
+                                                <span class="h-6 w-6 rounded-full border-2 border-brand-500 bg-brand-50 dark:bg-brand-500/10"></span>
+                                            @else
+                                                <span class="h-6 w-6 rounded-full border-2 border-gray-300 bg-white dark:border-gray-700 dark:bg-gray-900"></span>
+                                            @endif
+
+                                        </div>
+
+                                        <div class="h-0.5 flex-1 {{ $perkara['progress'] >= 85 ? 'bg-success-500' : 'bg-gray-200 dark:bg-gray-700' }}"></div>
+                                    </div>
+
+                                    {{-- Tahap II --}}
+                                    <div class="flex shrink-0 items-center">
+
+                                        @if ($perkara['progress'] >= 100)
+                                            <span class="flex h-6 w-6 items-center justify-center rounded-full bg-success-500 text-[10px] font-semibold text-white">
+                                                ✓
+                                            </span>
+                                        @elseif ($perkara['progress'] >= 85)
+                                            <span class="h-6 w-6 rounded-full border-2 border-brand-500 bg-brand-50 dark:bg-brand-500/10"></span>
+                                        @else
+                                            <span class="h-6 w-6 rounded-full border-2 border-gray-300 bg-white dark:border-gray-700 dark:bg-gray-900"></span>
+                                        @endif
+
+                                    </div>
+
                                 </div>
 
-                                {{-- P-21 --}}
-                                <div class="flex flex-1 items-center">
+                                {{-- Stage labels --}}
+                                <div class="mt-2 grid grid-cols-4 text-[10px] text-gray-400 dark:text-gray-500">
+
                                     <div>
-                                        <span class="block h-3 w-3 rounded-full border-2 border-gray-300 bg-white dark:border-gray-600 dark:bg-gray-900"></span>
+                                        <p class="font-medium text-gray-600 dark:text-gray-400">
+                                            SPDP
+                                        </p>
+
+                                        <p>{{ $perkara['spdp'] }}</p>
                                     </div>
 
-                                    <div class="h-0.5 flex-1 bg-gray-200 dark:bg-gray-700"></div>
+                                    <div class="text-center">
+                                        <p class="font-medium text-gray-600 dark:text-gray-400">
+                                            TAHAP I
+                                        </p>
+
+                                        <p>{{ $perkara['tahap1'] }}</p>
+                                    </div>
+
+                                    <div class="text-center">
+                                        <p class="font-medium text-gray-600 dark:text-gray-400">
+                                            P-21
+                                        </p>
+
+                                        <p>{{ $perkara['p21'] ?? '-' }}</p>
+                                    </div>
+
+                                    <div class="text-right">
+                                        <p class="font-medium text-gray-600 dark:text-gray-400">
+                                            TAHAP II
+                                        </p>
+
+                                        <p>{{ $perkara['tahap2'] ?? '-' }}</p>
+                                    </div>
+
                                 </div>
 
-                                {{-- Tahap II --}}
-                                <div>
-                                    <span class="block h-3 w-3 rounded-full border-2 border-gray-300 bg-white dark:border-gray-600 dark:bg-gray-900"></span>
-                                </div>
                             </div>
+                        </td>
 
-                            <div class="mt-2 grid grid-cols-4 text-[10px] text-gray-500 dark:text-gray-400">
-                                <div>
-                                    <p class="font-medium">SPDP</p>
-                                    <p>15% · 02 Jan</p>
-                                </div>
+                        {{-- Progress % --}}
+                        <td class="px-5 py-5 text-center">
+                            <span class="text-sm font-semibold text-gray-800 dark:text-white/90">
+                                {{ $perkara['progress'] }}%
+                            </span>
+                        </td>
 
-                                <div>
-                                    <p class="font-medium">Tahap I</p>
-                                    <p>55% · 20 Feb</p>
-                                </div>
+                        {{-- Estimasi --}}
+                        <td class="px-5 py-5">
+                            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">
+                                {{ $perkara['estimasi'] }}
+                            </p>
 
-                                <div>
-                                    <p class="font-medium">P-21</p>
-                                    <p>-</p>
-                                </div>
+                            <p class="mt-1 text-xs text-gray-400 dark:text-gray-500">
+                                1 bulan kalender dari SPDP
+                            </p>
+                        </td>
 
-                                <div>
-                                    <p class="font-medium">Tahap II</p>
-                                    <p>-</p>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
+                        {{-- Status --}}
+                        <td class="px-5 py-5">
+                            @if ($perkara['status'] === 'Dalam Proses')
 
-                    <td class="px-5 py-5 text-center">
-                        <span class="text-lg font-semibold text-blue-600 dark:text-blue-400">
-                            55%
-                        </span>
-                    </td>
+                                <span class="inline-flex rounded-full bg-warning-50 px-3 py-1 text-xs font-medium text-warning-700 dark:bg-warning-500/10 dark:text-warning-400">
+                                    Dalam Proses
+                                </span>
 
-                    <td class="px-5 py-5 text-sm text-gray-600 dark:text-gray-400">
-                        10 Jul 2026
-                    </td>
+                            @elseif ($perkara['status'] === 'Selesai')
 
-                    <td class="px-5 py-5">
-                        <span
-                            class="inline-flex rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-600 dark:bg-blue-500/10 dark:text-blue-400"
-                        >
-                            Dalam Proses
-                        </span>
-                    </td>
+                                <span class="inline-flex rounded-full bg-success-50 px-3 py-1 text-xs font-medium text-success-700 dark:bg-success-500/10 dark:text-success-400">
+                                    Selesai
+                                </span>
 
-                    <td class="px-5 py-5 text-right">
-                        <button
-                            type="button"
-                            class="text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-                        >
-                            <svg
-                                class="h-5 w-5"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
+                            @else
+
+                                <span class="inline-flex rounded-full bg-error-50 px-3 py-1 text-xs font-medium text-error-700 dark:bg-error-500/10 dark:text-error-400">
+                                    Tidak Selesai
+                                </span>
+
+                            @endif
+                        </td>
+
+                        {{-- Action --}}
+                        <td class="px-5 py-5">
+                            <div
+                                x-data="{ open: false }"
+                                class="relative flex justify-center"
                             >
-                                <circle cx="5" cy="12" r="1.5" />
-                                <circle cx="12" cy="12" r="1.5" />
-                                <circle cx="19" cy="12" r="1.5" />
-                            </svg>
-                        </button>
-                    </td>
-                </tr>
 
-                {{-- Perkara 2 --}}
-                <tr class="hover:bg-gray-50 dark:hover:bg-white/[0.02]">
-                    <td class="px-5 py-5 text-sm text-gray-600 dark:text-gray-400">
-                        2
-                    </td>
+                                <button
+                                    type="button"
+                                    @click="open = !open"
+                                    class="inline-flex items-center gap-1 rounded-lg border border-gray-300 px-3 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-50 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-white/[0.03]"
+                                >
+                                    Aksi
 
-                    <td class="px-5 py-5">
-                        <p class="text-sm font-medium text-gray-900 dark:text-white">
-                            BPOM.BJB-002/IV/2026/PPNS
-                        </p>
+                                    <svg
+                                        class="h-4 w-4"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="m6 9 6 6 6-6"
+                                        />
+                                    </svg>
+                                </button>
 
-                        <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                            Dilaporkan: 10 Feb 2026
-                        </p>
-                    </td>
+                                <div
+                                    x-show="open"
+                                    x-cloak
+                                    @click.outside="open = false"
+                                    class="absolute right-0 top-11 z-20 w-40 rounded-lg border border-gray-200 bg-white p-1 shadow-lg dark:border-gray-800 dark:bg-gray-900"
+                                >
+                                    <a
+                                        href="#"
+                                        class="block rounded-md px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/[0.03]"
+                                    >
+                                        Lihat Detail
+                                    </a>
 
-                    <td class="px-5 py-5">
-                        <p class="text-sm text-gray-900 dark:text-white">
-                            Budi Hartono
-                        </p>
-
-                        <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                            1 orang
-                        </p>
-                    </td>
-
-                    <td class="px-5 py-5 text-sm text-gray-600 dark:text-gray-400">
-                        Pasal 197 UU 36/2009
-                        <br>
-                        (Obat)
-                    </td>
-
-                    <td class="px-5 py-5">
-                        <span
-                            class="inline-flex rounded-full bg-green-50 px-3 py-1 text-xs font-medium text-green-600 dark:bg-green-500/10 dark:text-green-400"
-                        >
-                            P-21
-                        </span>
-                    </td>
-
-                    <td class="px-5 py-5">
-                        <div class="min-w-[250px]">
-                            <div class="flex items-center">
-
-                                {{-- SPDP --}}
-                                <div class="flex flex-1 items-center">
-                                    <span class="h-3 w-3 rounded-full bg-green-500"></span>
-                                    <div class="h-0.5 flex-1 bg-green-500"></div>
+                                    <a
+                                        href="#"
+                                        class="block rounded-md px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/[0.03]"
+                                    >
+                                        Lihat Perkara
+                                    </a>
                                 </div>
 
-                                {{-- Tahap I --}}
-                                <div class="flex flex-1 items-center">
-                                    <span class="h-3 w-3 rounded-full bg-green-500"></span>
-                                    <div class="h-0.5 flex-1 bg-green-500"></div>
-                                </div>
-
-                                {{-- P-21 --}}
-                                <div class="flex flex-1 items-center">
-                                    <span class="h-3 w-3 rounded-full bg-blue-600"></span>
-                                    <div class="h-0.5 flex-1 bg-gray-200 dark:bg-gray-700"></div>
-                                </div>
-
-                                {{-- Tahap II --}}
-                                <span class="h-3 w-3 rounded-full border-2 border-gray-300 bg-white dark:border-gray-600 dark:bg-gray-900"></span>
                             </div>
+                        </td>
 
-                            <div class="mt-2 grid grid-cols-4 text-[10px] text-gray-500 dark:text-gray-400">
-                                <div>
-                                    <p class="font-medium">SPDP</p>
-                                    <p>15% · 10 Feb</p>
-                                </div>
+                    </tr>
 
-                                <div>
-                                    <p class="font-medium">Tahap I</p>
-                                    <p>55% · 12 Mar</p>
-                                </div>
-
-                                <div>
-                                    <p class="font-medium">P-21</p>
-                                    <p>85% · 20 Apr</p>
-                                </div>
-
-                                <div>
-                                    <p class="font-medium">Tahap II</p>
-                                    <p>-</p>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-
-                    <td class="px-5 py-5 text-center">
-                        <span class="text-lg font-semibold text-blue-600 dark:text-blue-400">
-                            85%
-                        </span>
-                    </td>
-
-                    <td class="px-5 py-5 text-sm text-gray-600 dark:text-gray-400">
-                        05 Jun 2026
-                    </td>
-
-                    <td class="px-5 py-5">
-                        <span
-                            class="inline-flex rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-600 dark:bg-blue-500/10 dark:text-blue-400"
-                        >
-                            Dalam Proses
-                        </span>
-                    </td>
-
-                    <td class="px-5 py-5 text-right">
-                        <button
-                            type="button"
-                            class="text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-                        >
-                            <svg
-                                class="h-5 w-5"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                            >
-                                <circle cx="5" cy="12" r="1.5" />
-                                <circle cx="12" cy="12" r="1.5" />
-                                <circle cx="19" cy="12" r="1.5" />
-                            </svg>
-                        </button>
-                    </td>
-                </tr>
+                @endforeach
 
             </tbody>
         </table>
     </div>
+
+    {{-- Footer --}}
+    <div class="flex flex-col gap-3 border-t border-gray-200 px-5 py-4 sm:flex-row sm:items-center sm:justify-between dark:border-gray-800">
+
+        <p class="text-sm text-gray-500 dark:text-gray-400">
+            Menampilkan
+            <span class="font-medium text-gray-700 dark:text-gray-300">1–2</span>
+            dari
+            <span class="font-medium text-gray-700 dark:text-gray-300">2</span>
+            perkara
+        </p>
+
+        <div class="flex items-center gap-1">
+
+            <button
+                type="button"
+                disabled
+                class="rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-400 dark:border-gray-800"
+            >
+                Sebelumnya
+            </button>
+
+            <button
+                type="button"
+                class="rounded-lg bg-brand-500 px-3 py-2 text-sm font-medium text-white"
+            >
+                1
+            </button>
+
+            <button
+                type="button"
+                disabled
+                class="rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-400 dark:border-gray-800"
+            >
+                Berikutnya
+            </button>
+
+        </div>
+
+    </div>
+
 </div>
