@@ -1,530 +1,210 @@
-# TailAdmin Laravel - Tailwind CSS Free Laravel Dashboard
+# BAPTwo
 
-**TailAdmin Laravel** is a modern, production-ready admin dashboard template powered by **Laravel 12**, **Tailwind CSS v4**, **Alpine.js**, and a clean, modular architecture. TailAdmin is one of the most popular Tailwind CSS dashboard now also available for Larvael. It’s designed for building fast, scalable admin panels, CRM dashboards, SaaS backends, and any data-driven application where clarity and performance matter.
-![TailAdmin - Next.js Dashboard Preview](./tailadmin-laravel.png)
+Aplikasi web internal **BPOM Kalimantan Selatan** untuk mencatat, memonitor, dan melacak penanganan perkara: dari informasi awal pra-SPDP sampai Keputusan Pengadilan.
 
+Setiap Berkas Perkara menyimpan tersangka, pasal, TKP, PPNS, tahapan, dokumen, histori, status, dan progress.
 
-## Quick Links
+Dibangun di atas template **TailAdmin Free Laravel** (Laravel 12, Tailwind CSS v4, Alpine.js, Vite).
 
-* [✨ Get TailAdmin Laravel](https://tailadmin.com/laravel)
-* [📄 Documentation](https://tailadmin.com/docs)
-* [⬇️ Download](https://tailadmin.com/download)
-* [🌐 Live Demo](https://laravel-demo.tailadmin.com)
+## Dokumen Proyek
 
-Here’s a tighter, more search-friendly version that highlights value and avoids fluff while keeping your structure intact.
+| File | Isi |
+|---|---|
+| [`PRD.md`](PRD.md) | Kebutuhan produk & aturan bisnis (sumber kebenaran domain) |
+| [`ARCHITECTURE.md`](ARCHITECTURE.md) | Arsitektur teknis |
+| [`TASKS.md`](TASKS.md) | Daftar pekerjaan aktif |
+| [`DECISIONS.md`](DECISIONS.md) | Log keputusan teknis |
+| [`AGENTS.md`](AGENTS.md) | Aturan untuk AI agent & konvensi kode |
 
-## ✨ Key Features
+## Kebutuhan
 
-* 🚀 **Laravel 12 Core** - Built on the latest Laravel release with improved routing, security, and Blade templating
-* 🎨 **Tailwind CSS v4** - Utility-first styling for rapid, consistent UI development
-* ⚡ **Alpine.js Interactivity** - Lightweight reactivity without a heavy JavaScript framework
-* 📦 **Vite Build System** - Fast dev server, instant HMR, and optimized production builds
-* 📱 **Fully Responsive Layouts** - Smooth, mobile-first design that adapts across all screen sizes
-* 🌙 **Built-in Dark Mode** - Ready-to-use modern dark theme for better usability and aesthetics
-* 📊 **Advanced UI Components** - Charts, data tables, forms, calendars, modals, and reusable blocks for complex dashboards
-* 🎯 **Production-Ready Dashboard UI** - Clean, modern interface crafted for real apps, not placeholder demos
+- [Laragon](https://laragon.org/) (Windows) dengan:
+  - PHP **8.2+**
+  - MySQL **8**
+  - Composer
+  - Node.js **18+** dan npm
+- Git
 
-### Other Versions
-
-- [Next.js Version](https://github.com/TailAdmin/free-nextjs-admin-dashboard)
-- [React.js Version](https://github.com/TailAdmin/free-react-tailwind-admin-dashboard)
-- [Vue.js Version](https://github.com/TailAdmin/vue-tailwind-admin-dashboard)
-- [Angular Version](https://github.com/TailAdmin/free-angular-tailwind-dashboard)
-- [Laravel Version](https://github.com/TailAdmin/tailadmin-laravel)
-
-## 📋 Requirements
-To set up TailAdmin Laravel, make sure your environment includes:
-
-* **PHP 8.2+**
-* **Composer** (PHP dependency manager)
-* **Node.js 18+** and **npm** (for compiling frontend assets)
-* **Database** - Works with SQLite (default), MySQL, or PostgreSQL
-
-### Tailwind CSS Laravel Dashboard
-
-TailAdmin delivers a refined Tailwind CSS Laravel Dashboard experience, combining Laravel’s robust backend with Tailwind’s flexible utility classes. The result is a clean, fast, and customizable dashboard that helps developers build modern admin interfaces without the usual front-end complexity. It’s ideal for teams looking for a Tailwind-powered Laravel starter that stays lightweight and easy to scale.
-
-### Laravel Admin Dashboard
-
-If you’re searching for a dependable Laravel Admin Dashboard template that’s easy to set up and ready for production, TailAdmin fits the job. It offers a polished UI, reusable components, optimized performance, and all the essentials needed to launch dashboards, CRM systems, and internal tools quickly. It gives developers a solid foundation, so projects move faster with fewer decisions to worry about.
-
-### Check Your Environment
-
-Verify your installations:
+Cek versi dari terminal Laragon:
 
 ```bash
 php -v
 composer -V
 node -v
 npm -v
+mysql --version
 ```
 
-## 🐳 Docker & Laravel Sail Setup (Official)
+## Setup Lokal (Laragon + MySQL)
 
-TailAdmin Laravel includes pre-configured, official support for **Docker** powered by **Laravel Sail** (PHP 8.4, MySQL 8.0, Redis, and Mailpit).
-
-### Prerequisites
-Make sure [Docker Desktop](https://www.docker.com/products/docker-desktop/) is installed and running on your machine.
-
-### Quick Start with Docker & Sail
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/TailAdmin/tailadmin-laravel.git
-   cd tailadmin-laravel
-   ```
-
-2. **Configure environment:**
-   ```bash
-   cp .env.example .env
-   ```
-   In your `.env` file, ensure container networking is set:
-   ```env
-   DB_HOST=mysql
-   DB_USERNAME=sail
-   DB_PASSWORD=password
-   REDIS_HOST=redis
-   ```
-
-3. **Install Composer dependencies (if PHP is not installed locally):**
-   ```bash
-   docker run --rm \
-       -u "$(id -u):$(id -g)" \
-       -v "$(pwd):/var/www/html" \
-       -w /var/www/html \
-       laravelsail/php84-composer:latest \
-       composer install --ignore-platform-reqs
-   ```
-   *(Or simply run `composer install` if you have PHP and Composer locally).*
-
-4. **Start Docker containers:**
-   ```bash
-   ./vendor/bin/sail up -d
-   ```
-
-5. **Generate application key & run migrations:**
-   ```bash
-   ./vendor/bin/sail artisan key:generate
-   ./vendor/bin/sail artisan migrate
-   ```
-
-6. **Install frontend dependencies & start Vite dev server:**
-   ```bash
-   ./vendor/bin/sail npm install
-   ./vendor/bin/sail npm run dev
-   ```
-
-7. **Access the application:**
-   - **TailAdmin Dashboard:** [http://localhost](http://localhost) (or [http://localhost:8000](http://localhost:8000) if `APP_PORT=8000`)
-   - **Vite Dev Server:** [http://localhost:5173](http://localhost:5173) (auto-proxied with HMR)
-   - **Mailpit Web UI:** [http://localhost:8025](http://localhost:8025)
-
-### Convenient Sail Shell Alias
-To avoid typing `./vendor/bin/sail` repeatedly, add an alias to your shell profile (`~/.zshrc` or `~/.bashrc`):
-```bash
-alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
-```
-Now you can run:
-```bash
-sail up -d
-sail artisan migrate
-sail npm run dev
-sail down
-```
-
-### Container Networking & Vite Architecture
-- **Vite Dev Server (Port 5173)**: Pre-configured in `vite.config.js` with `server.host: "0.0.0.0"` and `server.hmr.host: "localhost"`. This ensures the host browser can access assets directly without `ERR_EMPTY_RESPONSE` connection errors.
-- **Volume File Watcher**: File polling (`usePolling: true`) is enabled in `vite.config.js` to guarantee instant hot reload when editing code on macOS, Windows, or Linux host filesystems.
-- **Container Database Host**: Inside the Docker bridge network, services communicate via container names. Set `DB_HOST=mysql` and `REDIS_HOST=redis` inside Docker.
-- **Tailwind CSS v4**: Seamlessly compiled inside containers via `@tailwindcss/vite` without legacy v3 config conflicts.
-
----
-
-## 🚀 Quick Start Installation (Local / Native)
-
-### Step 1: Clone the Repository
+### 1. Clone ke folder `www` Laragon
 
 ```bash
-git clone https://github.com/TailAdmin/tailadmin-laravel.git
-cd tailadmin-laravel
+cd C:\laragon\www
+git clone https://github.com/waris-arjuna/BAPTwo.git baptwo
+cd baptwo
 ```
 
-### Step 2: Install PHP Dependencies
+### 2. Install dependency
 
 ```bash
 composer install
-```
-
-This command will install all Laravel dependencies defined in `composer.json`.
-
-### Step 3: Install Node.js Dependencies
-
-```bash
 npm install
 ```
 
-Or if you prefer yarn or pnpm:
-
-```bash
-# Using yarn
-yarn install
-
-# Using pnpm
-pnpm install
-```
-
-### Step 4: Environment Configuration
-
-Copy the example environment file:
-
-```bash
-cp .env.example .env
-```
-
-**For Windows users:**
+### 3. Buat file `.env`
 
 ```bash
 copy .env.example .env
-```
-
-**Or create it programmatically:**
-
-```bash
-php -r "file_exists('.env') || copy('.env.example', '.env');"
-```
-
-### Step 5: Generate Application Key
-
-```bash
 php artisan key:generate
 ```
 
-This creates a unique encryption key for your application.
-
-### Step 6: Configure Database
-
-#### Option A: Using MySQL/PostgreSQL
-
-Update your `.env` file with your database credentials:
+Edit `.env`, sesuaikan nilai berikut:
 
 ```env
+APP_NAME=BAPTwo
+APP_URL=http://baptwo.test
+
+APP_LOCALE=id
+APP_FALLBACK_LOCALE=id
+APP_FAKER_LOCALE=id_ID
+
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=tailadmin_db
-DB_USERNAME=your_username
-DB_PASSWORD=your_password
+DB_DATABASE=baptwo
+DB_USERNAME=root
+DB_PASSWORD=
 ```
 
-Create the database:
+> Default MySQL Laragon: user `root`, password kosong.
+
+### 4. Buat database
+
+Lewat HeidiSQL (menu Laragon **Database**) buat database `baptwo`, atau dari terminal:
 
 ```bash
-# MySQL
-mysql -u root -p -e "CREATE DATABASE tailadmin_db;"
-
-# PostgreSQL
-createdb tailadmin_db
+mysql -u root -e "CREATE DATABASE baptwo CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 ```
 
-Run migrations:
+### 5. Migrasi & seed
 
 ```bash
-php artisan migrate
-```
-
-### Step 7: (Optional) Seed the Database
-
-If you want sample data:
-
-```bash
-php artisan db:seed
-```
-
-### Step 8: Storage Link
-
-Create a symbolic link for file storage:
-
-```bash
+php artisan migrate --seed
 php artisan storage:link
 ```
 
-## 🏃 Running the Application
+### 6. Jalankan
 
-### Development Mode (Recommended)
+Laragon otomatis membuat virtual host `http://baptwo.test` setelah **Start All** (atau **Menu › Apache/Nginx › Reload**).
 
-The easiest way to start development is using the built-in script:
+Untuk aset frontend dengan hot reload:
+
+```bash
+npm run dev
+```
+
+Atau jalankan semua proses sekaligus tanpa virtual host Laragon:
 
 ```bash
 composer run dev
 ```
 
-This single command starts:
-- ✅ Laravel development server (http://localhost:8000)
-- ✅ Vite dev server for hot module reloading
-- ✅ Queue worker for background jobs
-- ✅ Log monitoring
+Perintah ini menjalankan 4 proses: `php artisan serve` (http://localhost:8000), `php artisan queue:listen`, `php artisan pail` (log), dan `npm run dev` (Vite).
 
-**Access your application at:** [http://localhost:8000](http://localhost:8000)
+## Akun Seed per Role
 
-### Manual Development Setup
+> **Belum tersedia.** Seeder akun role dikerjakan di `TASKS.md` T-011 (keputusan D-005). Saat ini seeder hanya membuat `test@example.com`.
 
-If you prefer to run services individually in separate terminal windows:
+Rencana akun dev (password `password`, hanya untuk environment `local`/`testing`):
 
-**Terminal 1 - Laravel Server:**
-```bash
-php artisan serve
-```
+| Role | Email | Hak akses ringkas |
+|---|---|---|
+| Administrator | `admin@baptwo.test` | Kelola user & permission, lihat semua, tambah berkas, edit draft, soft delete |
+| Pimpinan | `pimpinan@baptwo.test` | Lihat & cari semua perkara. Tidak bisa tambah/edit/hapus |
+| Penyidik | `penyidik@baptwo.test` | Lihat semua, tambah berkas, edit draft, soft delete |
 
-**Terminal 2 - Frontend Assets:**
-```bash
-npm run dev
-```
+Tidak ada role yang bisa hard delete atau mengedit tahap yang sudah difinalkan.
 
-### Building for Production
-
-#### Build Frontend Assets
+Reset database + seed ulang (**menghapus semua data lokal**):
 
 ```bash
-npm run build
-```
-
-#### Optimize Laravel
-
-```bash
-# Clear and cache configuration
-php artisan config:cache
-
-# Cache routes
-php artisan route:cache
-
-# Cache views
-php artisan view:cache
-
-# Optimize autoloader
-composer install --optimize-autoloader --no-dev
-```
-
-#### Production Environment
-
-Update your `.env` for production:
-
-```env
-APP_ENV=production
-APP_DEBUG=false
-APP_URL=https://yourdomain.com
-```
-
-
-## 🧪 Testing
-
-Run the test suite using Pest:
-
-```bash
-composer run test
-```
-
-Or manually:
-
-```bash
-php artisan test
-```
-
-Run with coverage:
-
-```bash
-php artisan test --coverage
-```
-
-Run specific tests:
-
-```bash
-php artisan test --filter=ExampleTest
-```
-
-## 📜 Available Commands
-
-### Composer Scripts
-
-```bash
-# Start development environment
-composer run dev
-
-# Run tests
-composer run test
-
-# Code formatting (if configured)
-composer run format
-
-# Static analysis (if configured)
-composer run analyze
-```
-
-### NPM Scripts
-
-```bash
-# Start Vite dev server
-npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
-
-# Lint JavaScript/TypeScript
-npm run lint
-
-# Format code
-npm run format
-```
-
-### Artisan Commands
-
-```bash
-# Start development server
-php artisan serve
-
-# Run migrations
-php artisan migrate
-
-# Rollback migrations
-php artisan migrate:rollback
-
-# Fresh migrations with seeding
 php artisan migrate:fresh --seed
+```
 
-# Generate application key
-php artisan key:generate
+## Testing
 
-# Clear all caches
-php artisan optimize:clear
+Test memakai [Pest PHP](https://pestphp.com/):
 
-# Cache everything for production
+```bash
+composer test
+```
+
+`composer test` membersihkan cache config lalu menjalankan `php artisan test`.
+
+Jalankan test tertentu:
+
+```bash
+php artisan test --filter=NamaTest
+```
+
+## Lint (Laravel Pint)
+
+Cek gaya kode tanpa mengubah file:
+
+```bash
+php vendor/bin/pint --test
+```
+
+Perbaiki otomatis:
+
+```bash
+php vendor/bin/pint
+```
+
+Task dianggap selesai hanya jika `composer test` dan `php vendor/bin/pint --test` lulus.
+
+## Scheduler
+
+Status **Tidak Selesai** di-set otomatis pada 00:00 tanggal 1 Januari oleh Laravel Scheduler. Di lokal, jalankan manual:
+
+```bash
+php artisan schedule:work
+```
+
+Di server produksi, daftarkan `php artisan schedule:run` setiap menit (cron / Windows Task Scheduler).
+
+## Build Produksi
+
+```bash
+npm run build
+composer install --optimize-autoloader --no-dev
 php artisan optimize
-
-# Create symbolic link for storage
-php artisan storage:link
-
-# Start queue worker
-php artisan queue:work
-
-# List all routes
-php artisan route:list
-
-# Create a new controller
-php artisan make:controller YourController
-
-# Create a new model
-php artisan make:model YourModel -m
-
-# Create a new migration
-php artisan make:migration create_your_table
 ```
 
-## 📁 Project Structure
+Set `.env` produksi: `APP_ENV=production`, `APP_DEBUG=false`, `APP_URL` sesuai domain.
+
+## Struktur Folder Utama
 
 ```
-tailadmin-laravel/
-├── app/                    # Application logic
-│   ├── Http/              # Controllers, Middleware, Requests
-│   ├── Models/            # Eloquent models
-│   └── Providers/         # Service providers
-├── bootstrap/             # Framework bootstrap files
-├── config/                # Configuration files
-├── database/              # Migrations, seeders, factories
-│   ├── migrations/
-│   ├── seeders/
-│   └── factories/
-├── public/                # Public assets (entry point)
-│   ├── build/            # Compiled assets (generated)
-│   └── index.php         # Application entry point
-├── resources/             # Views and raw assets
-│   ├── css/              # Stylesheets (Tailwind)
-│   ├── js/               # JavaScript files (Alpine.js)
-│   └── views/            # Blade templates
-├── routes/                # Route definitions
-│   ├── web.php           # Web routes
-│   ├── api.php           # API routes
-│   └── console.php       # Console routes
-├── storage/               # Logs, cache, uploads
-│   ├── app/
-│   ├── framework/
-│   └── logs/
-├── tests/                 # Pest test files
-│   ├── Feature/
-│   └── Unit/
-├── docker-compose.yml     # Docker & Laravel Sail configuration
-├── .env.example           # Example environment file
-├── artisan                # Artisan CLI
-├── composer.json          # PHP dependencies
-├── package.json           # Node dependencies
-├── vite.config.js         # Vite configuration with container networking
-└── resources/css/app.css  # Tailwind CSS v4 configuration (@theme)
+app/            Controller, Model, Policy, Service domain
+database/       Migration, seeder, factory
+lang/id.json    Terjemahan label UI (bahasa Indonesia)
+resources/      Blade view, CSS (Tailwind v4 @theme), JS (Alpine.js)
+routes/         web.php, console.php (scheduler)
+tests/          Test Pest
 ```
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
-### Common Issues
+| Masalah | Solusi |
+|---|---|
+| `Class not found` | `composer dump-autoload` |
+| Perubahan config/route tidak terbaca | `php artisan optimize:clear` |
+| Gagal koneksi database | Pastikan MySQL Laragon jalan, database `baptwo` ada, kredensial `.env` benar |
+| `baptwo.test` tidak terbuka | Laragon › Menu › Apache/Nginx › Reload; pastikan folder di `C:\laragon\www\baptwo` |
+| Aset CSS/JS tidak muncul | Jalankan `npm run dev` atau `npm run build` |
 
-#### "Class not found" errors
-```bash
-composer dump-autoload
-```
+## Lisensi
 
-#### Permission errors on storage/bootstrap/cache
-```bash
-chmod -R 775 storage bootstrap/cache
-```
-
-#### NPM build errors
-```bash
-rm -rf node_modules package-lock.json
-npm install
-```
-
-#### Clear all caches
-```bash
-php artisan optimize:clear
-```
-
-#### Database connection errors
-- Check `.env` database credentials
-- Ensure database server is running
-- Verify database exists
-
-## 🔄 Update Log
-
-### [1.1.2] - 2026-09-02
-
-- **Dependency updates**: FullCalendar upgraded to v7 and ApexCharts / Swiper bumped to latest versions.
-- **RTL layout support**: Added right-to-left (RTL) direction support with automatic layout flipping and toggle.
-- **Language / RTL switcher**: Added switcher in user dropdown with persistent direction state in `localStorage`.
-- **Keyboard & dropdown improvements**: Enhanced dropdown behavior and click-outside handling.
-- **Tailwind CSS v4 optimizations**: Applied CSS logical properties across sidebar, tables, header, and components.
-
-
-### [2026-05-23]
-
-- Added **AI Settings** page to configure models, keys, and token limits.
-- Added **Maps** page with MapLibre GL, Leaflet, and iframe styles.
-- Added **Vector Maps** page powered by AmCharts 5 geodata (World & USA).
-- Added **Radar Charts** page with 3 unique formats.
-- Added **Radial Progress Charts** page featuring 4 custom layout templates.
-- Introduced new **Bar Charts Five & Six** and **Pie Charts Four & Five**.
-
-### [April 28, 2026]
-- Added **AI Dashboard** with token usage and revenue tracking.
-- Added **Sales Dashboard** with retention and multi-channel analytics.
-- Added **Finance Dashboard** with cashflow and balance management.
-- Introduced **6 New Layout variations** for improved UI flexibility.
-- Integrated **Advanced Data Visualization** with 7+ new chart types.
-
-### [2026-03-15]
-- Fixed PHP 8.5 deprecation warning
-
-### [2025-12-29]
-- Added Date Picker in Statistics Chart
-
-## License
-
-Refer to our [LICENSE](https://tailadmin.com/license) page for more information.
+Aplikasi internal BPOM Kalimantan Selatan. Template UI: [TailAdmin License](https://tailadmin.com/license).
