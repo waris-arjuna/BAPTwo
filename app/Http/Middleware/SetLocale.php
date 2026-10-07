@@ -2,7 +2,6 @@
 
 namespace App\Http\Middleware;
 
-use App\Http\Controllers\LocaleController;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -15,13 +14,7 @@ class SetLocale
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $locale = session("locale", $request->cookie("locale", config("app.locale", "en")));
-
-        if (!array_key_exists($locale, LocaleController::SUPPORTED_LOCALES)) {
-            $locale = config("app.locale", "en");
-        }
-
-        App::setLocale($locale);
+        App::setLocale('id');
 
         return $next($request);
     }

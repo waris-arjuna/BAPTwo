@@ -1,0 +1,17 @@
+<?php
+
+it('locks locale to id and dir to ltr', function () {
+    $response = $this->get('/');
+
+    $response->assertOk();
+    $response->assertSee('dir="ltr"', false);
+    $response->assertDontSee('Language', false);
+});
+
+it('locks locale switch route to id and ltr', function () {
+    $response = $this->get('/locale/en');
+
+    $response->assertRedirect();
+    $response->assertSessionHas('locale', 'id');
+    $response->assertSessionHas('dir', 'ltr');
+});

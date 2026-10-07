@@ -58,6 +58,7 @@
         ],
         "test": [
             "@php artisan config:clear --ansi",
+            "@php artisan route:clear --ansi",
             "@php artisan test"
         ]
     },

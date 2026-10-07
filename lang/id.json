@@ -3,6 +3,7 @@
     "Profile": "Profil",
     "Settings": "Pengaturan",
     "Sign In": "Masuk",
+    "Sign Up": "Daftar",
     "Sign Out": "Keluar",
     "Email": "Email",
     "Password": "Kata Sandi",
@@ -74,5 +75,20 @@
     "Role": "Peran",
     "Investigator": "Penyidik",
     "Leadership": "Pimpinan",
-    "Administrator": "Administrator"
+    "Administrator": "Administrator",
+
+    "Back to dashboard": "Kembali ke dasbor",
+    "Back to login": "Kembali ke masuk",
+    "Enter your email and password to sign in!": "Masukkan email dan kata sandi untuk masuk!",
+    "Enter your password": "Masukkan kata sandi Anda",
+    "Keep me logged in": "Biarkan saya tetap masuk",
+    "Verification": "Verifikasi",
+    "Don't have an account?": "Belum punya akun?",
+    "Contact IT Admin": "Hubungi Admin IT",
+    "Pendaftaran akun BAPTwo tidak tersedia untuk umum.": "Pendaftaran akun BAPTwo tidak tersedia untuk umum.",
+    "Untuk mendapatkan akun, silakan hubungi Admin Tim IT BPOM Kalimantan Selatan.": "Untuk mendapatkan akun, silakan hubungi Admin Tim IT BPOM Kalimantan Selatan.",
+    "Internal extension": "Ekstensi internal",
+    "BPOM Kalimantan Selatan — Sistem Monitoring & Tracking Perkara": "BPOM Kalimantan Selatan — Sistem Monitoring & Tracking Perkara",
+    "Muat ulang captcha": "Muat ulang captcha",
+    "Jawaban verifikasi captcha salah atau telah kedaluwarsa.": "Jawaban verifikasi captcha salah atau telah kedaluwarsa."
 }

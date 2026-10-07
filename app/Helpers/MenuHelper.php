@@ -19,10 +19,9 @@ class MenuHelper
                 'icon' => 'report',
                 'name' => 'Laporan Kejadian',
                 'path' => '/laporan-kejadian',
-            ]
+            ],
         ];
     }
-
 
     /**
      * Menu yang berkaitan dengan monitoring.
@@ -41,41 +40,41 @@ class MenuHelper
     /**
      * Menu yang berkaitan dengan perkara.
      */
-        public static function getPerkaraItems(): array
-        {
-            return [
-                [
-                    'icon' => 'sprindik',
-                    'name' => 'Sprindik',
-                    'path' => '/sprindik',
-                ],
-                [
-                    'icon' => 'spdp',
-                    'name' => 'SPDP',
-                    'path' => '/spdp',
-                ],
-                [
-                    'icon' => 'stage-1',
-                    'name' => 'Tahap 1',
-                    'path' => '/tahap-1',
-                ],
-                [
-                    'icon' => 'p21',
-                    'name' => 'P21',
-                    'path' => '/p21',
-                ],
-                [
-                    'icon' => 'stage-2',
-                    'name' => 'Tahap 2',
-                    'path' => '/tahap-2',
-                ],
-                [
-                    'icon' => 'court',
-                    'name' => 'Putusan Perkara',
-                    'path' => '/putusan-perkara',
-                ],
-            ];
-        }
+    public static function getPerkaraItems(): array
+    {
+        return [
+            [
+                'icon' => 'sprindik',
+                'name' => 'Sprindik',
+                'path' => '/sprindik',
+            ],
+            [
+                'icon' => 'spdp',
+                'name' => 'SPDP',
+                'path' => '/spdp',
+            ],
+            [
+                'icon' => 'stage-1',
+                'name' => 'Tahap 1',
+                'path' => '/tahap-1',
+            ],
+            [
+                'icon' => 'p21',
+                'name' => 'P21',
+                'path' => '/p21',
+            ],
+            [
+                'icon' => 'stage-2',
+                'name' => 'Tahap 2',
+                'path' => '/tahap-2',
+            ],
+            [
+                'icon' => 'court',
+                'name' => 'Putusan Perkara',
+                'path' => '/putusan-perkara',
+            ],
+        ];
+    }
 
     /**
      * Menu sistem dan administrasi.
@@ -187,7 +186,7 @@ class MenuHelper
                         fill="currentColor"/>
                 </svg>
             ',
-            
+
             /*
             |--------------------------------------------------------------------------
             | Progress Perkara
@@ -258,7 +257,7 @@ class MenuHelper
                     />
                 </svg>
             ',
-            
+
             /*
             |--------------------------------------------------------------------------
             | Tahap 1
