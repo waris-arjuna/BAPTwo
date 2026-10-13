@@ -145,8 +145,8 @@ test('simpan dan lanjut mewajibkan nomor dan tanggal surat serta mengunci tahapa
 test('tahapan yang sudah difinalkan terkunci permanen dan ditolak saat diedit bahkan oleh administrator', function () {
     $tahapFinal = TahapanPerkara::create([
         'berkas_perkara_id' => $this->berkas->id,
-        'jenis_tahap' => JenisTahap::SPDP,
-        'nomor_surat' => 'SPDP/001/X/2026',
+        'jenis_tahap' => JenisTahap::P21,
+        'nomor_surat' => 'P21/001/X/2026',
         'tanggal_surat' => '2026-10-05',
         'status' => 'final',
         'finalized_at' => now(),

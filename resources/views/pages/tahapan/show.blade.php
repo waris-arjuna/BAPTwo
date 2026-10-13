@@ -1,5 +1,9 @@
 @php
     $title = 'Detail Tahapan: ' . $tahap->jenis_tahap->label();
+    $p16 = $subTahapan[\App\Enums\JenisTahap::P16->value] ?? null;
+    $p17p = $subTahapan[\App\Enums\JenisTahap::P17P->value] ?? null;
+    $p18p = $subTahapan[\App\Enums\JenisTahap::P18P->value] ?? null;
+    $p19 = $subTahapan[\App\Enums\JenisTahap::P19->value] ?? null;
 @endphp
 
 @extends('layouts.app')
@@ -43,14 +47,28 @@
                             Tahap Selesai / Terkunci Permanen
                         </span>
 
+                        @can('edit-draft')
+                            @if (in_array($tahap->jenis_tahap, [\App\Enums\JenisTahap::SPDP, \App\Enums\JenisTahap::TAHAP_1], true))
+                                <a
+                                    href="{{ route('berkas-perkara.tahapan.edit', [$berkas, $tahap]) }}"
+                                    class="inline-flex h-10 items-center justify-center gap-2 rounded-lg border border-brand-200 bg-brand-50 px-4 text-sm font-medium text-brand-700 transition hover:bg-brand-100 dark:border-brand-500/30 dark:bg-brand-500/10 dark:text-brand-300 dark:hover:bg-brand-500/20"
+                                >
+                                    <i class="fi fi-rr-edit text-sm"></i>
+                                    <span>{{ $tahap->jenis_tahap === \App\Enums\JenisTahap::SPDP ? 'Kelola P-16 & P-17' : 'Kelola P-18 & P-19' }}</span>
+                                </a>
+                            @endif
+                        @endcan
+
                         @can('create-cases')
-                            <a
-                                href="{{ route('berkas-perkara.tahapan.create', $berkas) }}"
-                                class="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-brand-600 px-4 text-sm font-medium text-white transition hover:bg-brand-700"
-                            >
-                                <i class="fi fi-rr-arrow-right text-sm"></i>
-                                <span>Input Tahap Selanjutnya</span>
-                            </a>
+                            @if ($tahap->jenis_tahap !== \App\Enums\JenisTahap::KEPUTUSAN_PENGADILAN)
+                                <a
+                                    href="{{ route('berkas-perkara.tahapan.create', $berkas) }}"
+                                    class="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-brand-600 px-4 text-sm font-medium text-white transition hover:bg-brand-700"
+                                >
+                                    <i class="fi fi-rr-arrow-right text-sm"></i>
+                                    <span>Input Tahap Selanjutnya</span>
+                                </a>
+                            @endif
                         @endcan
                     @else
                         @can('edit-draft')
@@ -68,7 +86,7 @@
         </div>
 
         <div class="space-y-6">
-            {{-- Card Referensi Tahapan Sebelumnya (PRD F-14 s.d. F-19) --}}
+            {{-- Card Referensi Tahapan Sebelumnya --}}
             @if (!empty($references))
                 <div class="rounded-2xl border border-gray-200 bg-gray-50/70 p-4 dark:border-gray-800 dark:bg-white/[0.02] sm:p-5">
                     <div class="mb-3 flex items-center justify-between">
@@ -102,13 +120,13 @@
                 </div>
             @endif
 
-            {{-- Card Detail Informasi Tahapan (Mode Read-Only Terkunci) --}}
+            {{-- Card Detail Informasi Tahapan Utama --}}
             <div class="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] sm:p-6">
                 <div class="mb-5 flex flex-wrap items-center justify-between gap-3 border-b border-gray-200 pb-4 dark:border-gray-800">
                     <div class="flex items-center gap-2">
-                        <i class="fi fi-rr-document-signed text-xl text-brand-500"></i>
+                        <i class="fi fi-rr-document-signed text-xl text-brand-600"></i>
                         <h2 class="text-lg font-semibold text-gray-800 dark:text-white/90">
-                            Data Administrasi Tahapan: {{ $tahap->jenis_tahap->label() }}
+                            Data Dokumen Utama: {{ $tahap->jenis_tahap->label() }}
                         </h2>
                     </div>
 
@@ -191,6 +209,268 @@
                     </div>
                 @endif
             </div>
+
+            {{-- SUB-TAHAP TERKAIT UNTUK SPDP: P-16 & P-17 --}}
+            @if ($tahap->jenis_tahap === \App\Enums\JenisTahap::SPDP)
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <i class="fi fi-rr-folder-tree text-lg text-brand-600"></i>
+                            <h2 class="text-base font-semibold text-gray-800 dark:text-white/90">
+                                Sub-Tahapan Kejaksaan Terkait (P-16 &amp; P-17)
+                            </h2>
+                        </div>
+                        @can('edit-draft')
+                            <a
+                                href="{{ route('berkas-perkara.tahapan.edit', [$berkas, $tahap]) }}"
+                                class="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-600 hover:underline dark:text-brand-400"
+                            >
+                                <i class="fi fi-rr-edit text-xs"></i>
+                                <span>Kelola P-16 &amp; P-17</span>
+                            </a>
+                        @endcan
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+                        {{-- Kartu P-16 --}}
+                        <div class="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03]">
+                            <div class="mb-4 flex items-center justify-between border-b border-gray-100 pb-3 dark:border-gray-800">
+                                <div class="flex items-center gap-2">
+                                    <i class="fi fi-rr-user-police text-base text-brand-600"></i>
+                                    <h3 class="font-semibold text-gray-800 text-sm dark:text-white/90">P-16: Penunjukan JPU</h3>
+                                </div>
+                                @if ($p16)
+                                    <span class="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-0.5 text-xs font-semibold text-blue-700 dark:bg-blue-500/10 dark:text-blue-400">
+                                        <i class="fi fi-rr-check text-xs"></i>
+                                        Tercatat
+                                    </span>
+                                @else
+                                    <span class="text-xs italic text-gray-400">Belum Ada</span>
+                                @endif
+                            </div>
+
+                            @if ($p16)
+                                <div class="space-y-3 text-sm">
+                                    <div>
+                                        <span class="text-xs text-gray-400">Nomor Surat:</span>
+                                        <p class="font-mono font-medium text-gray-800 dark:text-white/90">{{ $p16->nomor_surat ?: '-' }}</p>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs text-gray-400">Tanggal Surat:</span>
+                                        <p class="text-gray-800 dark:text-white/90">{{ $p16->tanggal_surat?->format('d-m-Y') ?? '-' }}</p>
+                                    </div>
+                                    @if ($p16->dokumen->isNotEmpty())
+                                        <div>
+                                            <span class="text-xs text-gray-400">Dokumen:</span>
+                                            <div class="mt-1 flex items-center gap-2">
+                                                <a href="{{ route('dokumen.preview', $p16->dokumen->first()) }}" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-medium text-brand-600 hover:underline dark:text-brand-400">
+                                                    <i class="fi fi-rr-document text-xs"></i>
+                                                    <span>{{ $p16->dokumen->first()->nama_file_asli }}</span>
+                                                </a>
+                                                <a href="{{ route('dokumen.download', $p16->dokumen->first()) }}" class="text-xs text-gray-400 hover:text-gray-600">
+                                                    <i class="fi fi-rr-download text-xs"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    @if ($p16->catatan)
+                                        <div>
+                                            <span class="text-xs text-gray-400">Catatan JPU:</span>
+                                            <p class="text-xs text-gray-600 dark:text-gray-300">{{ $p16->catatan }}</p>
+                                        </div>
+                                    @endif
+                                </div>
+                            @else
+                                <p class="text-xs text-gray-400">Surat Perintah Penunjukan JPU (P-16) belum dicatat untuk berkas ini.</p>
+                            @endif
+                        </div>
+
+                        {{-- Kartu P-17 --}}
+                        <div class="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03]">
+                            <div class="mb-4 flex items-center justify-between border-b border-gray-100 pb-3 dark:border-gray-800">
+                                <div class="flex items-center gap-2">
+                                    <i class="fi fi-rr-time-forward text-base text-amber-600"></i>
+                                    <h3 class="font-semibold text-gray-800 text-sm dark:text-white/90">P-17: Permintaan Perkembangan</h3>
+                                </div>
+                                @if ($p17p)
+                                    <span class="inline-flex items-center gap-1 rounded-full bg-amber-50 px-2 py-0.5 text-xs font-semibold text-amber-700 dark:bg-amber-500/10 dark:text-amber-400">
+                                        <i class="fi fi-rr-check text-xs"></i>
+                                        Tercatat
+                                    </span>
+                                @else
+                                    <span class="text-xs italic text-gray-400">Belum Ada</span>
+                                @endif
+                            </div>
+
+                            @if ($p17p)
+                                <div class="space-y-3 text-sm">
+                                    <div>
+                                        <span class="text-xs text-gray-400">Nomor Surat:</span>
+                                        <p class="font-mono font-medium text-gray-800 dark:text-white/90">{{ $p17p->nomor_surat ?: '-' }}</p>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs text-gray-400">Tanggal Surat:</span>
+                                        <p class="text-gray-800 dark:text-white/90">{{ $p17p->tanggal_surat?->format('d-m-Y') ?? '-' }}</p>
+                                    </div>
+                                    @if ($p17p->dokumen->isNotEmpty())
+                                        <div>
+                                            <span class="text-xs text-gray-400">Dokumen:</span>
+                                            <div class="mt-1 flex items-center gap-2">
+                                                <a href="{{ route('dokumen.preview', $p17p->dokumen->first()) }}" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-medium text-brand-600 hover:underline dark:text-brand-400">
+                                                    <i class="fi fi-rr-document text-xs"></i>
+                                                    <span>{{ $p17p->dokumen->first()->nama_file_asli }}</span>
+                                                </a>
+                                                <a href="{{ route('dokumen.download', $p17p->dokumen->first()) }}" class="text-xs text-gray-400 hover:text-gray-600">
+                                                    <i class="fi fi-rr-download text-xs"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    @if ($p17p->catatan)
+                                        <div>
+                                            <span class="text-xs text-gray-400">Catatan:</span>
+                                            <p class="text-xs text-gray-600 dark:text-gray-300">{{ $p17p->catatan }}</p>
+                                        </div>
+                                    @endif
+                                </div>
+                            @else
+                                <p class="text-xs text-gray-400">Surat Permintaan Perkembangan Penyidikan (P-17) belum dicatat untuk berkas ini.</p>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            @endif
+
+            {{-- SUB-TAHAP TERKAIT UNTUK TAHAP 1: P-18 & P-19 --}}
+            @if ($tahap->jenis_tahap === \App\Enums\JenisTahap::TAHAP_1)
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <i class="fi fi-rr-folder-tree text-lg text-amber-600"></i>
+                            <h2 class="text-base font-semibold text-gray-800 dark:text-white/90">
+                                Sub-Tahapan Kejaksaan Terkait (P-18 &amp; P-19)
+                            </h2>
+                        </div>
+                        @can('edit-draft')
+                            <a
+                                href="{{ route('berkas-perkara.tahapan.edit', [$berkas, $tahap]) }}"
+                                class="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-600 hover:underline dark:text-brand-400"
+                            >
+                                <i class="fi fi-rr-edit text-xs"></i>
+                                <span>Kelola P-18 &amp; P-19</span>
+                            </a>
+                        @endcan
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+                        {{-- Kartu P-18 --}}
+                        <div class="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03]">
+                            <div class="mb-4 flex items-center justify-between border-b border-gray-100 pb-3 dark:border-gray-800">
+                                <div class="flex items-center gap-2">
+                                    <i class="fi fi-rr-document-signed text-base text-amber-600"></i>
+                                    <h3 class="font-semibold text-gray-800 text-sm dark:text-white/90">P-18: Berkas Belum Lengkap</h3>
+                                </div>
+                                @if ($p18p)
+                                    <span class="inline-flex items-center gap-1 rounded-full bg-amber-50 px-2 py-0.5 text-xs font-semibold text-amber-700 dark:bg-amber-500/10 dark:text-amber-400">
+                                        <i class="fi fi-rr-check text-xs"></i>
+                                        Tercatat
+                                    </span>
+                                @else
+                                    <span class="text-xs italic text-gray-400">Belum Ada</span>
+                                @endif
+                            </div>
+
+                            @if ($p18p)
+                                <div class="space-y-3 text-sm">
+                                    <div>
+                                        <span class="text-xs text-gray-400">Nomor Surat:</span>
+                                        <p class="font-mono font-medium text-gray-800 dark:text-white/90">{{ $p18p->nomor_surat ?: '-' }}</p>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs text-gray-400">Tanggal Surat:</span>
+                                        <p class="text-gray-800 dark:text-white/90">{{ $p18p->tanggal_surat?->format('d-m-Y') ?? '-' }}</p>
+                                    </div>
+                                    @if ($p18p->dokumen->isNotEmpty())
+                                        <div>
+                                            <span class="text-xs text-gray-400">Dokumen:</span>
+                                            <div class="mt-1 flex items-center gap-2">
+                                                <a href="{{ route('dokumen.preview', $p18p->dokumen->first()) }}" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-medium text-brand-600 hover:underline dark:text-brand-400">
+                                                    <i class="fi fi-rr-document text-xs"></i>
+                                                    <span>{{ $p18p->dokumen->first()->nama_file_asli }}</span>
+                                                </a>
+                                                <a href="{{ route('dokumen.download', $p18p->dokumen->first()) }}" class="text-xs text-gray-400 hover:text-gray-600">
+                                                    <i class="fi fi-rr-download text-xs"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    @if ($p18p->catatan)
+                                        <div>
+                                            <span class="text-xs text-gray-400">Catatan:</span>
+                                            <p class="text-xs text-gray-600 dark:text-gray-300">{{ $p18p->catatan }}</p>
+                                        </div>
+                                    @endif
+                                </div>
+                            @else
+                                <p class="text-xs text-gray-400">Surat Hasil Penyidikan Belum Lengkap (P-18) belum dicatat untuk berkas ini.</p>
+                            @endif
+                        </div>
+
+                        {{-- Kartu P-19 --}}
+                        <div class="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03]">
+                            <div class="mb-4 flex items-center justify-between border-b border-gray-100 pb-3 dark:border-gray-800">
+                                <div class="flex items-center gap-2">
+                                    <i class="fi fi-rr-undo text-base text-orange-600"></i>
+                                    <h3 class="font-semibold text-gray-800 text-sm dark:text-white/90">P-19: Pengembalian Berkas</h3>
+                                </div>
+                                @if ($p19)
+                                    <span class="inline-flex items-center gap-1 rounded-full bg-orange-50 px-2 py-0.5 text-xs font-semibold text-orange-700 dark:bg-orange-500/10 dark:text-orange-400">
+                                        <i class="fi fi-rr-check text-xs"></i>
+                                        Tercatat
+                                    </span>
+                                @else
+                                    <span class="text-xs italic text-gray-400">Belum Ada</span>
+                                @endif
+                            </div>
+
+                            @if ($p19)
+                                <div class="space-y-3 text-sm">
+                                    <div>
+                                        <span class="text-xs text-gray-400">Nomor Surat:</span>
+                                        <p class="font-mono font-medium text-gray-800 dark:text-white/90">{{ $p19->nomor_surat ?: '-' }}</p>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs text-gray-400">Tanggal Surat:</span>
+                                        <p class="text-gray-800 dark:text-white/90">{{ $p19->tanggal_surat?->format('d-m-Y') ?? '-' }}</p>
+                                    </div>
+                                    @if ($p19->dokumen->isNotEmpty())
+                                        <div>
+                                            <span class="text-xs text-gray-400">Dokumen:</span>
+                                            <div class="mt-1 flex items-center gap-2">
+                                                <a href="{{ route('dokumen.preview', $p19->dokumen->first()) }}" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-medium text-brand-600 hover:underline dark:text-brand-400">
+                                                    <i class="fi fi-rr-document text-xs"></i>
+                                                    <span>{{ $p19->dokumen->first()->nama_file_asli }}</span>
+                                                </a>
+                                                <a href="{{ route('dokumen.download', $p19->dokumen->first()) }}" class="text-xs text-gray-400 hover:text-gray-600">
+                                                    <i class="fi fi-rr-download text-xs"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    @if ($p19->catatan)
+                                        <div>
+                                            <span class="text-xs text-gray-400">Catatan Petunjuk:</span>
+                                            <p class="text-xs text-gray-600 dark:text-gray-300">{{ $p19->catatan }}</p>
+                                        </div>
+                                    @endif
+                                </div>
+                            @else
+                                <p class="text-xs text-gray-400">Surat Pengembalian Berkas Perkara (P-19) belum dicatat untuk berkas ini.</p>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 @endsection

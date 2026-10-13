@@ -46,9 +46,21 @@ class TahapanPerkaraController extends Controller
 
         $references = $this->tahapanService->getPreviousStagesReference($berkas);
 
+        $subTahapan = TahapanPerkara::where('berkas_perkara_id', $berkas->id)
+            ->whereIn('jenis_tahap', [
+                JenisTahap::P16->value,
+                JenisTahap::P17P->value,
+                JenisTahap::P18P->value,
+                JenisTahap::P19->value,
+            ])
+            ->with('dokumen')
+            ->get()
+            ->keyBy(fn ($t) => $t->jenis_tahap->value);
+
         return view('pages.tahapan.form', [
             'berkas' => $berkas->load(['perkara', 'tersangka']),
             'tahap' => null,
+            'subTahapan' => $subTahapan,
             'selectedJenis' => $selectedJenis,
             'availableStages' => $availableStages,
             'references' => $references,
@@ -91,11 +103,23 @@ class TahapanPerkaraController extends Controller
         $tahapan->load(['dokumen', 'finalizedBy', 'createdBy', 'updatedBy']);
         $references = $this->tahapanService->getPreviousStagesReference($berkas);
 
+        $subTahapan = TahapanPerkara::where('berkas_perkara_id', $berkas->id)
+            ->whereIn('jenis_tahap', [
+                JenisTahap::P16->value,
+                JenisTahap::P17P->value,
+                JenisTahap::P18P->value,
+                JenisTahap::P19->value,
+            ])
+            ->with(['dokumen', 'createdBy', 'finalizedBy'])
+            ->get()
+            ->keyBy(fn ($t) => $t->jenis_tahap->value);
+
         return view('pages.tahapan.show', [
             'berkas' => $berkas->load(['perkara', 'tersangka']),
             'tahap' => $tahapan,
             'references' => $references,
             'isLocked' => $tahapan->isFinal(),
+            'subTahapan' => $subTahapan,
         ]);
     }
 
@@ -104,7 +128,9 @@ class TahapanPerkaraController extends Controller
      */
     public function edit(BerkasPerkara $berkas, TahapanPerkara $tahapan): View|RedirectResponse
     {
-        if ($tahapan->isFinal()) {
+        $isSubStageEligible = in_array($tahapan->jenis_tahap, [JenisTahap::SPDP, JenisTahap::TAHAP_1], true);
+
+        if ($tahapan->isFinal() && ! $isSubStageEligible) {
             return redirect()
                 ->route('berkas-perkara.tahapan.show', [$berkas, $tahapan])
                 ->with('warning', 'Tahapan ini telah difinalkan dan terkunci permanen, tidak dapat diedit.');
@@ -114,14 +140,26 @@ class TahapanPerkaraController extends Controller
 
         $references = $this->tahapanService->getPreviousStagesReference($berkas);
 
+        $subTahapan = TahapanPerkara::where('berkas_perkara_id', $berkas->id)
+            ->whereIn('jenis_tahap', [
+                JenisTahap::P16->value,
+                JenisTahap::P17P->value,
+                JenisTahap::P18P->value,
+                JenisTahap::P19->value,
+            ])
+            ->with('dokumen')
+            ->get()
+            ->keyBy(fn ($t) => $t->jenis_tahap->value);
+
         return view('pages.tahapan.form', [
             'berkas' => $berkas->load(['perkara', 'tersangka']),
             'tahap' => $tahapan->load('dokumen'),
+            'subTahapan' => $subTahapan,
             'selectedJenis' => $tahapan->jenis_tahap,
             'availableStages' => [$tahapan->jenis_tahap],
             'references' => $references,
             'mode' => 'edit',
-            'isLocked' => false,
+            'isLocked' => $tahapan->isFinal(),
         ]);
     }
 
@@ -130,7 +168,9 @@ class TahapanPerkaraController extends Controller
      */
     public function update(UpdateTahapanRequest $request, BerkasPerkara $berkas, TahapanPerkara $tahapan): RedirectResponse
     {
-        if ($tahapan->isFinal()) {
+        $isSubStageEligible = in_array($tahapan->jenis_tahap, [JenisTahap::SPDP, JenisTahap::TAHAP_1], true);
+
+        if ($tahapan->isFinal() && ! $isSubStageEligible) {
             abort(403, 'Tahapan telah difinalkan dan terkunci permanen.');
         }
 

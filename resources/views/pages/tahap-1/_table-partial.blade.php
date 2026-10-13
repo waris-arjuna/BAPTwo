@@ -2,28 +2,32 @@
     <table class="w-full min-w-[1050px]">
         <thead>
             <tr class="border-b border-gray-200 bg-gray-50 dark:border-gray-800 dark:bg-white/[0.02]">
-                <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                <th class="w-12 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
                     No
                 </th>
 
                 <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                    Nomor Tahap 1
+                    Berkas Perkara &amp; Tersangka
                 </th>
 
                 <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                    Tanggal
+                    Tahapan
                 </th>
 
                 <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                    SPDP
+                    Nomor Surat
                 </th>
 
                 <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                    Dokumen BAP
+                    Tanggal Surat
                 </th>
 
                 <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                    Status Proses
+                    Dokumen
+                </th>
+
+                <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                    Status
                 </th>
 
                 <th class="px-5 py-3 text-center text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
@@ -33,148 +37,164 @@
         </thead>
 
         <tbody class="divide-y divide-gray-200 dark:divide-gray-800">
-            @forelse ($tahap1 as $index => $item)
-
+            @forelse ($tahap1 as $item)
                 @php
-                    $statusClass = match ($item['status']) {
-                        'Tahap 1 Berjalan' =>
-                            'bg-warning-50 text-warning-700 dark:bg-warning-500/10 dark:text-warning-400',
-
-                        'Menunggu P-21' =>
-                            'bg-brand-50 text-brand-700 dark:bg-brand-500/10 dark:text-brand-400',
-
-                        'P-21' =>
-                            'bg-success-50 text-success-700 dark:bg-success-500/10 dark:text-success-400',
-
-                        default =>
-                            'bg-gray-100 text-gray-700 dark:bg-gray-500/10 dark:text-gray-400',
+                    $stageBadge = match ($item->jenis_tahap->value) {
+                        'tahap_1' => [
+                            'bg' => 'bg-brand-50 text-brand-700 dark:bg-brand-500/10 dark:text-brand-400 border border-brand-200/50 dark:border-brand-500/20',
+                            'label' => 'Tahap 1',
+                            'icon' => 'fi fi-rr-document-signed',
+                        ],
+                        'p18p' => [
+                            'bg' => 'bg-amber-50 text-amber-700 dark:bg-amber-500/10 dark:text-amber-400 border border-amber-200/50 dark:border-amber-500/20',
+                            'label' => 'P-18 (Opsional)',
+                            'icon' => 'fi fi-rr-exclamation',
+                        ],
+                        'p19' => [
+                            'bg' => 'bg-orange-50 text-orange-700 dark:bg-orange-500/10 dark:text-orange-400 border border-orange-200/50 dark:border-orange-500/20',
+                            'label' => 'P-19 (Opsional)',
+                            'icon' => 'fi fi-rr-undo',
+                        ],
+                        default => [
+                            'bg' => 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-400 border border-gray-200 dark:border-gray-700',
+                            'label' => $item->jenis_tahap->label(),
+                            'icon' => 'fi fi-rr-document',
+                        ],
                     };
                 @endphp
 
                 <tr class="transition hover:bg-gray-50 dark:hover:bg-white/[0.02]">
-
-                    <td class="px-5 py-4 text-sm text-gray-600 dark:text-gray-400">
-                        {{ $index + 1 }}
+                    <td class="w-12 px-5 py-4 text-sm text-gray-600 dark:text-gray-400">
+                        {{ $loop->iteration + ($tahap1->currentPage() - 1) * $tahap1->perPage() }}
                     </td>
 
                     <td class="px-5 py-4">
-                        <a
-                            href="{{ url('/tahap-1/' . $item['id']) }}"
-                            class="text-sm font-medium text-gray-800 transition hover:text-brand-500 dark:text-white/90"
-                        >
-                            {{ $item['nomor'] }}
-                        </a>
-                    </td>
-
-                    <td class="px-5 py-4 text-sm text-gray-600 dark:text-gray-400">
-                        {{ $item['tanggal'] }}
-                    </td>
-
-                    <td class="px-5 py-4">
-                        <a
-                            href="{{ url('/spdp/1') }}"
-                            class="text-sm text-gray-700 transition hover:text-brand-500 dark:text-gray-300"
-                        >
-                            {{ $item['spdp'] }}
-                        </a>
-                    </td>
-
-                    <td class="px-5 py-4">
-                        <div class="flex items-start gap-2">
-
-                            <i class="fi fi-rr-document mt-0.5 shrink-0 text-base text-red-500"></i>
-
-                            <div class="min-w-0">
-                                {{-- BAP utama --}}
-                                <p class="truncate text-sm text-gray-700 dark:text-gray-300">
-                                    {{ $item['dokumen'] }}
-                                </p>
-
-                                {{-- Dokumen pendukung --}}
-                                @if ($item['p16'] || $item['p17'])
-                                    <div class="mt-1 space-y-0.5">
-
-                                        @if ($item['p16'])
-                                            <p class="text-xs text-gray-400 dark:text-gray-500">
-                                                P-16: {{ $item['p16'] }}
-                                            </p>
-                                        @endif
-
-                                        @if ($item['p17'])
-                                            <p class="text-xs text-gray-400 dark:text-gray-500">
-                                                P-17P: {{ $item['p17'] }}
-                                            </p>
-                                        @endif
-
-                                    </div>
-                                @endif
+                        <div class="space-y-0.5">
+                            <a
+                                href="{{ route('perkara.show', $item->berkasPerkara->perkara_id) }}"
+                                class="text-sm font-semibold text-gray-800 transition hover:text-brand-500 dark:text-white/90"
+                            >
+                                {{ $item->berkasPerkara?->nomor_berkas ?: '-' }}
+                            </a>
+                            <div class="flex items-center gap-1.5 text-xs text-gray-600 dark:text-gray-300">
+                                <i class="fi fi-rr-user text-[11px] text-gray-400"></i>
+                                <span>Tersangka: <strong>{{ $item->berkasPerkara?->tersangka?->nama ?: '-' }}</strong></span>
                             </div>
-
+                            <div class="text-[11px] font-mono text-gray-400 dark:text-gray-500">
+                                Sprindik: {{ $item->berkasPerkara?->perkara?->nomor_surat_perintah ?: ($item->berkasPerkara?->perkara?->nomor_laporan_kejadian ?: '-') }}
+                            </div>
                         </div>
                     </td>
 
                     <td class="px-5 py-4">
-                        <span class="inline-flex rounded-full px-3 py-1 text-xs font-medium {{ $statusClass }}">
-                            {{ $item['status'] }}
+                        <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium {{ $stageBadge['bg'] }}">
+                            <i class="{{ $stageBadge['icon'] }} text-[11px]"></i>
+                            <span>{{ $stageBadge['label'] }}</span>
                         </span>
                     </td>
 
                     <td class="px-5 py-4">
-                        <div
-                            x-data="{ open: false }"
-                            class="relative flex justify-center"
-                        >
-                            <button
-                                type="button"
-                                @click="open = !open"
-                                class="inline-flex items-center gap-1 rounded-lg border border-gray-300 px-3 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-50 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-white/[0.03]"
-                            >
-                                Aksi
-
-                                <i class="fi fi-rr-angle-small-down text-base"></i>
-                            </button>
-
-                            <div
-                                x-show="open"
-                                x-cloak
-                                @click.outside="open = false"
-                                class="absolute right-0 top-11 z-20 w-44 rounded-lg border border-gray-200 bg-white p-1 shadow-lg dark:border-gray-800 dark:bg-gray-900"
-                            >
-                                <a
-                                    href="{{ url('/tahap-1/' . $item['id']) }}"
-                                    class="block rounded-md px-3 py-2 text-sm text-gray-700 transition hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/[0.03]"
-                                >
-                                    Lihat
-                                </a>
-
-                                @can('edit-draft')
-                                    <a
-                                        href="#"
-                                        class="block rounded-md px-3 py-2 text-sm text-gray-700 transition hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/[0.03]"
-                                    >
-                                        Edit
-                                    </a>
-                                @endcan
-
-                                @if ($item['status'] !== 'P-21')
-                                    @can('create-cases')
-                                        <a
-                                            href="#"
-                                            class="block rounded-md px-3 py-2 text-sm text-gray-700 transition hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/[0.03]"
-                                        >
-                                            Lanjut P-21
-                                        </a>
-                                    @endcan
-                                @endif
-                            </div>
-                        </div>
+                        <span class="font-mono text-xs font-medium text-gray-800 dark:text-white/90">
+                            {{ $item->nomor_surat ?: '(Draft Belum Bernomor)' }}
+                        </span>
                     </td>
 
+                    <td class="px-5 py-4 text-sm text-gray-600 dark:text-gray-400">
+                        {{ $item->tanggal_surat ? $item->tanggal_surat->format('d/m/Y') : '-' }}
+                    </td>
+
+                    <td class="px-5 py-4">
+                        @if ($item->dokumen->isNotEmpty())
+                            @php $doc = $item->dokumen->first(); @endphp
+                            <div class="flex items-center gap-1.5">
+                                <a
+                                    href="{{ route('dokumen.preview', $doc) }}"
+                                    target="_blank"
+                                    class="inline-flex max-w-[140px] items-center gap-1 truncate text-xs font-medium text-brand-600 hover:underline dark:text-brand-400"
+                                    title="{{ $doc->nama_file_asli }}"
+                                >
+                                    <i class="fi fi-rr-document text-red-500"></i>
+                                    <span class="truncate">{{ $doc->nama_file_asli }}</span>
+                                </a>
+                                <a
+                                    href="{{ route('dokumen.download', $doc) }}"
+                                    class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                                    title="Unduh PDF"
+                                >
+                                    <i class="fi fi-rr-download text-xs"></i>
+                                </a>
+                            </div>
+                        @else
+                            <span class="text-xs italic text-gray-400">-</span>
+                        @endif
+                    </td>
+
+                    <td class="px-5 py-4">
+                        @if ($item->isFinal())
+                            <span class="inline-flex items-center gap-1 rounded-full bg-success-50 px-2.5 py-1 text-xs font-semibold text-success-700 dark:bg-success-500/10 dark:text-success-400">
+                                <i class="fi fi-rr-lock text-[10px]"></i>
+                                Final (Terkunci)
+                            </span>
+                        @else
+                            <span class="inline-flex items-center gap-1 rounded-full bg-yellow-50 px-2.5 py-1 text-xs font-semibold text-yellow-800 dark:bg-yellow-500/10 dark:text-yellow-400">
+                                <i class="fi fi-rr-edit text-[10px]"></i>
+                                Draft
+                            </span>
+                        @endif
+                    </td>
+
+                    <td class="px-5 py-4 text-center">
+                        <div class="flex items-center justify-center gap-2">
+                            <a
+                                href="{{ route('berkas-perkara.tahapan.show', [$item->berkas_perkara_id, $item->id]) }}"
+                                class="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-gray-200 text-gray-600 transition hover:bg-gray-100 hover:text-gray-900 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
+                                title="Lihat Detail Tahapan"
+                            >
+                                <i class="fi fi-rr-eye text-sm"></i>
+                            </a>
+
+                            @can('edit-draft')
+                                @if (! $item->isFinal())
+                                    <a
+                                        href="{{ route('berkas-perkara.tahapan.edit', [$item->berkas_perkara_id, $item->id]) }}"
+                                        class="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-yellow-200 bg-yellow-50 text-yellow-800 transition hover:bg-yellow-100 dark:border-yellow-500/20 dark:bg-yellow-500/10 dark:text-yellow-400"
+                                        title="Edit Draft"
+                                    >
+                                        <i class="fi fi-rr-edit text-sm"></i>
+                                    </a>
+                                @elseif ($item->jenis_tahap->value === 'tahap_1')
+                                    <a
+                                        href="{{ route('berkas-perkara.tahapan.edit', [$item->berkas_perkara_id, $item->id]) }}"
+                                        class="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-brand-200 bg-brand-50 text-brand-700 transition hover:bg-brand-100 dark:border-brand-500/20 dark:bg-brand-500/10 dark:text-brand-400"
+                                        title="Kelola P-18 &amp; P-19"
+                                    >
+                                        <i class="fi fi-rr-folder-tree text-sm"></i>
+                                    </a>
+                                @endif
+                            @endcan
+
+                            @can('create-cases')
+                                @if ($item->isFinal() && $item->jenis_tahap->value === 'tahap_1')
+                                    <a
+                                        href="{{ route('berkas-perkara.tahapan.create', [$item->berkas_perkara_id, 'jenis' => 'p21']) }}"
+                                        class="inline-flex h-8 items-center gap-1 rounded-lg bg-brand-500 px-2.5 text-xs font-medium text-white transition hover:bg-brand-600"
+                                        title="Lanjut ke P-21"
+                                    >
+                                        <span>Lanjut P-21</span>
+                                        <i class="fi fi-rr-arrow-right text-[10px]"></i>
+                                    </a>
+                                @endif
+                            @endcan
+                        </div>
+                    </td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="7" class="px-5 py-8 text-center text-sm text-gray-500 dark:text-gray-400">
-                        {{ __('No data available.') }}
+                    <td colspan="8" class="px-5 py-8 text-center text-sm text-gray-500 dark:text-gray-400">
+                        <div class="flex flex-col items-center justify-center gap-2">
+                            <i class="fi fi-rr-folder-open text-2xl text-gray-400"></i>
+                            <span>Tidak ada data Tahap 1 yang sesuai kriteria filter.</span>
+                        </div>
                     </td>
                 </tr>
             @endforelse
@@ -182,39 +202,8 @@
     </table>
 </div>
 
-{{-- Pagination --}}
-<div class="flex flex-col gap-3 border-t border-gray-200 px-5 py-4 sm:flex-row sm:items-center sm:justify-between dark:border-gray-800">
-
-    <p class="text-sm text-gray-500 dark:text-gray-400">
-        Menampilkan
-        <span class="font-medium text-gray-700 dark:text-gray-300">1–{{ count($tahap1) }}</span>
-        dari
-        <span class="font-medium text-gray-700 dark:text-gray-300">{{ count($tahap1) }}</span>
-        data Tahap 1
-    </p>
-
-    <div class="flex items-center gap-1">
-        <button
-            type="button"
-            disabled
-            class="rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-400 dark:border-gray-800"
-        >
-            Sebelumnya
-        </button>
-
-        <button
-            type="button"
-            class="rounded-lg bg-brand-500 px-3 py-2 text-sm font-medium text-white"
-        >
-            1
-        </button>
-
-        <button
-            type="button"
-            disabled
-            class="rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-400 dark:border-gray-800"
-        >
-            Berikutnya
-        </button>
+@if ($tahap1->hasPages())
+    <div class="border-t border-gray-200 px-5 py-4 dark:border-gray-800">
+        {{ $tahap1->links() }}
     </div>
-</div>
+@endif

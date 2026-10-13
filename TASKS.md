@@ -83,8 +83,9 @@ _(kosong)_
 
 ## Tahapan & Progress
 
-- [ ] T-032 — Progress berbobot & status proses otomatis (F-29, F-30)
-- [ ] T-033 — Trigger Selesai dari TAHAP II (F-22)
+- [x] T-031D — Integrasi Sub-Tahap (P-16/P-17 ke SPDP & P-18/P-19 ke Tahap 1) dan Migrasi Halaman Tahapan Lanjutan ke Data Riil (`/tahap-1`, `/p21`, `/tahap-2`, `/putusan-perkara`) (D-024)
+- [x] T-032 — Progress berbobot & status proses otomatis (F-29, F-30)
+- [x] T-033 — Trigger Selesai dari TAHAP II (F-22)
 - [ ] T-034 — Scheduler Tidak Selesai 1 Januari 00:00 (F-23)
 - [ ] T-035 — SLA 1 bulan kalender + batas tahun (PRD bagian SLA)
 
@@ -140,6 +141,6 @@ _(kosong)_
 - [x] T-031A — 2026-10-14 Halaman SPDP Riil + Sub-Tahap Opsional (P-16, P-17P) + Flatpickr Datepicker + Modal Berkas Siap SPDP (F-10, F-11, F-39, D-018)
 - [x] T-031B — 2026-10-14 Validasi Simpan Draft Mewajibkan Nomor/Identitas Utama & Melarang Draft Kosong (D-022)
 - [x] T-031C — 2026-10-14 Standardisasi Notifikasi Flash Message: Timer Auto-Dismiss 10 Detik + Tombol Tutup (x) (D-023)
-
-
-
+- [x] T-031D — 2026-10-14 Integrasi Sub-Tahap (P-16/P-17 ke SPDP & P-18/P-19 ke Tahap 1) dan Migrasi Halaman Tahapan Lanjutan ke Data Riil (D-024)
+- [x] T-032 — 2026-10-14 Progress berbobot & status proses otomatis (F-29, F-30)
+- [x] T-033 — 2026-10-14 Trigger Selesai dari TAHAP II (F-22)

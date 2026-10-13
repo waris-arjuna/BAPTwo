@@ -7,11 +7,15 @@ use App\Http\Controllers\LaporanKejadianController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\MasterDataController;
 use App\Http\Controllers\MathCaptchaController;
+use App\Http\Controllers\P21Controller;
 use App\Http\Controllers\PerkaraBerkasController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgressPerkaraController;
+use App\Http\Controllers\PutusanPerkaraController;
 use App\Http\Controllers\SpdpController;
 use App\Http\Controllers\SprindikController;
+use App\Http\Controllers\Tahap1Controller;
+use App\Http\Controllers\Tahap2Controller;
 use App\Http\Controllers\TahapanPerkaraController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WilayahController;
@@ -129,60 +133,23 @@ Route::middleware('auth')->group(function () {
     Route::get('/spdp/tambah', [SpdpController::class, 'create'])->middleware('can:create-cases')->name('spdp.create');
     Route::get('/spdp/{id}', [SpdpController::class, 'show'])->name('spdp.show');
 
-    // TAHAP 1
-    Route::get('/tahap-1', function (Request $request, MockStageService $mockService) {
-        if ($request->header('X-Filter-Partial')) {
-            $tahap1 = $mockService->getTahap1($request);
+    // TAHAP 1 (Data Riil & Sub-Tahap Opsional P-18, P-19)
+    Route::get('/tahap-1', [Tahap1Controller::class, 'index'])->name('tahap-1.index');
+    Route::get('/tahap-1/tambah', [Tahap1Controller::class, 'create'])->middleware('can:create-cases')->name('tahap-1.create');
+    Route::get('/tahap-1/{id}', [Tahap1Controller::class, 'show'])->name('tahap-1.show');
 
-            return view('pages.tahap-1._table-partial', compact('tahap1'));
-        }
+    // P-21 (Data Riil)
+    Route::get('/p21', [P21Controller::class, 'index'])->name('p21.index');
+    Route::get('/p21/tambah', [P21Controller::class, 'create'])->middleware('can:create-cases')->name('p21.create');
+    Route::get('/p21/{id}', [P21Controller::class, 'show'])->name('p21.show');
 
-        return view('pages.tahap-1.index');
-    })->name('tahap-1.index');
+    // TAHAP 2 (Data Riil, Pelimpahan & Finalisasi Status Selesai)
+    Route::get('/tahap-2', [Tahap2Controller::class, 'index'])->name('tahap-2.index');
+    Route::get('/tahap-2/tambah', [Tahap2Controller::class, 'create'])->middleware('can:create-cases')->name('tahap-2.create');
+    Route::get('/tahap-2/{id}', [Tahap2Controller::class, 'show'])->name('tahap-2.show');
 
-    Route::get('/tahap-1/tambah', function () {
-        return view('pages.tahap-1.create');
-    })->middleware('can:create-cases')->name('tahap-1.create');
-
-    Route::get('/tahap-1/{id}', function ($id) {
-        return view('pages.tahap-1.show', [
-            'id' => $id,
-        ]);
-    })->name('tahap-1.show');
-
-    // P-21
-    Route::get('/p21', function (Request $request, MockStageService $mockService) {
-        if ($request->header('X-Filter-Partial')) {
-            $p21s = $mockService->getP21($request);
-
-            return view('pages.p21._table-partial', compact('p21s'));
-        }
-
-        return view('pages.p21.index');
-    })->name('p21.index');
-
-    Route::get('/p21/tambah', function () {
-        return view('pages.p21.create');
-    })->middleware('can:create-cases')->name('p21.create');
-
-    Route::get('/p21/{id}', function ($id) {
-        return view('pages.p21.show', [
-            'id' => $id,
-        ]);
-    })->name('p21.show');
-
-    // TAHAP 2
-    Route::get('/tahap-2', function () {
-        return view('pages.tahap-2.index');
-    })->name('tahap-2.index');
-
-    Route::get('/tahap-2/tambah', function () {
-        return view('pages.tahap-2.create');
-    })->middleware('can:create-cases')->name('tahap-2.create');
-
-    Route::get('/tahap-2/{id}', function ($id) {
-        return view('pages.tahap-2.show', [
-            'id' => $id,
-        ]);
-    })->name('tahap-2.show');
+    // PUTUSAN PERKARA (Keputusan Pengadilan)
+    Route::get('/putusan-perkara', [PutusanPerkaraController::class, 'index'])->name('putusan-perkara.index');
+    Route::get('/putusan-perkara/tambah', [PutusanPerkaraController::class, 'create'])->middleware('can:create-cases')->name('putusan-perkara.create');
+    Route::get('/putusan-perkara/{id}', [PutusanPerkaraController::class, 'show'])->name('putusan-perkara.show');
 });

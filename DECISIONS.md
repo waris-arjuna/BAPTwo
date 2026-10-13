@@ -327,6 +327,33 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
      - Mengklik tombol `(x)` membatalkan timer dan menutup notifikasi seketika dengan animasi transisi yang mulus.
   4. **Pembaruan Komponen UI Primitive (`<x-ui.alert>`)**:
      - Komponen `<x-ui.alert>` dimutakhirkan dengan dukungan properti `dismissible` (default `true`), `autoDismiss` (default `false`), `timeout` (default `10000`), token warna Tailwind tema standar (`success`, `error`, `warning`, `brand`), serta icon Flaticon.
-- Konsekuensi: Seluruh pesan notifikasi di aplikasi BAPTwo tampil seragam, interaktif, elegan, dan otomatis hilang setelah 10 detik tanpa mengotori ruang pandang pengguna.
+## D-024 — Integrasi Sub-Tahap (P-16/P-17 ke SPDP & P-18/P-19 ke Tahap 1) dan Migrasi Halaman Tahapan Lanjutan ke Data Riil
+
+- Tanggal: 2026-10-14
+- Status: Disepakati & Diimplementasikan
+- Konteks: Agar pengguna tidak dibebani oleh form terpisah yang terlalu banyak, seluruh field sub-tahap penunjukan/permintaan Kejaksaan diintegrasikan langsung ke formulir tahap utamanya masing-masing: P-16 dan P-17 ditempatkan pada formulir SPDP, sedangkan P-18 dan P-19 ditempatkan pada formulir Tahap 1. Selain itu, seluruh halaman tahapan lanjutan di sidebar (`/tahap-1`, `/p21`, `/tahap-2`, `/putusan-perkara`) dimigrasikan dari template mock menjadi controller dan view berbasis data riil database Eloquent.
+- Keputusan:
+  1. **Integrasi Form Sub-Tahap**:
+     - **SPDP (`/berkas-perkara/{berkas}/tahapan/tambah?jenis=spdp` & edit)**: Memiliki data utama SPDP serta 2 section opsional tersemat: P-16 (Penunjukan JPU) dan P-17 (Permintaan Perkembangan).
+     - **Tahap 1 (`/berkas-perkara/{berkas}/tahapan/tambah?jenis=tahap_1` & edit)**: Memiliki data utama Tahap I serta 2 section opsional tersemat: P-18 (Berkas Belum Lengkap) dan P-19 (Pengembalian Berkas).
+     - Form edit SPDP dan Tahap 1 diizinkan diakses bahkan setelah tahap utama difinalkan untuk melengkapi sub-tahap susulan dari Kejaksaan, dengan data nomor dan tanggal surat utama tetap terkunci permanen (read-only).
+  2. **Skema Penyimpanan Ternormalisasi & Audit Trail**:
+     - Field sub-tahap disimpan sebagai record `TahapanPerkara` terpisah dengan `jenis_tahap = 'p16'`, `'p17p'`, `'p18p'`, `'p19'`. Dokumen PDF disimpan terpusat di tabel `dokumen`.
+     - Setiap penyimpanan/pembaruan sub-tahap dicatat secara otomatis ke dalam `audit_log`.
+  3. **Migrasi Halaman Sidebar ke Data Riil**:
+     - `Tahap1Controller` (`/tahap-1`): Menampilkan data riil `tahapan_perkara`, pill tabs (Semua, Tahap 1, P-18, P-19), live filter AJAX, modal pemilihan berkas siap Tahap 1, dan shortcut "Lanjut P-21".
+     - `P21Controller` (`/p21`): Menampilkan data riil P-21, live filter AJAX, modal pemilihan berkas siap P-21, dan shortcut "Lanjut Tahap 2".
+     - `Tahap2Controller` (`/tahap-2`): Menampilkan data riil Tahap 2, pelimpahan berkas, trigger otomatis status formal `selesai` (progress 100%), dan visual indicator DPO.
+     - `PutusanPerkaraController` (`/putusan-perkara`): Menampilkan data riil Keputusan Pengadilan untuk berkas perkara yang telah menyelesaikan Tahap II.
+  4. **Penegakan DPO Gate pada Tahap 2**:
+     - Jika tersangka berstatus DPO (`is_dpo === true`), tombol "Simpan & Lanjut" dinonaktifkan di UI, dan di server `TahapanService@saveStage` melempar `DomainException`. Pengguna hanya diizinkan menyimpan draft hingga status DPO dicabut.
+  5. **Standardisasi Komponen UI**:
+     - Semua tombol dan icon wajib Flaticon (D-010).
+     - Seluruh input PDF menggunakan `<x-form.pdf-upload>` dengan tombol silang `(x)` (D-019).
+     - Seluruh filter tanggal menggunakan Flatpickr datepicker dengan lokalisasi `id` (D-012).
+     - Format penomoran dilengkapi catatan `Note: ...` di bawah input (D-021).
+     - Penomoran `No` seragam (`{{ $loop->iteration }}`) pada tabel (D-013).
+- Konsekuensi: Pengguna dapat mengisi tahapan Kejaksaan dengan sangat ringkas dalam satu formulir, integritas data dan status formal 100% terjaga, dan seluruh alur penanganan perkara dari SPDP hingga Putusan Pengadilan berfungsi penuh dengan data riil database.
+
 
 

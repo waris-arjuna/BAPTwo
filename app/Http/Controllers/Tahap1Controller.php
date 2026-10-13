@@ -1,0 +1,69 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\BerkasPerkara;
+use App\Models\TahapanPerkara;
+use App\Services\TahapanService;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\View\View;
+
+class Tahap1Controller extends Controller
+{
+    public function __construct(
+        protected TahapanService $tahapanService
+    ) {}
+
+    /**
+     * Menampilkan daftar tahapan Tahap 1 (termasuk sub-tahap opsional P-18P dan P-19).
+     */
+    public function index(Request $request): View
+    {
+        $tahap1 = $this->tahapanService->getTahap1List($request);
+        $tabCounts = $this->tahapanService->getTahap1TabCounts();
+
+        if ($request->header('X-Filter-Partial')) {
+            return view('pages.tahap-1._table-partial', compact('tahap1', 'tabCounts'));
+        }
+
+        $availableBerkas = $this->tahapanService->getAvailableBerkasForTahap1();
+
+        return view('pages.tahap-1.index', compact('tahap1', 'tabCounts', 'availableBerkas'));
+    }
+
+    /**
+     * Tampilkan form tambah Tahap 1 atau redirect jika berkas_id telah ditentukan.
+     */
+    public function create(Request $request): View|RedirectResponse
+    {
+        Gate::authorize('create-cases');
+
+        if ($berkasId = $request->integer('berkas_id')) {
+            $berkas = BerkasPerkara::findOrFail($berkasId);
+
+            return redirect()->route('berkas-perkara.tahapan.create', [
+                'berkas' => $berkas,
+                'jenis' => 'tahap_1',
+            ]);
+        }
+
+        $availableBerkas = $this->tahapanService->getAvailableBerkasForTahap1();
+
+        return view('pages.tahap-1.create', compact('availableBerkas'));
+    }
+
+    /**
+     * Menampilkan detail Tahap 1.
+     */
+    public function show(mixed $id): View
+    {
+        $tahap = TahapanPerkara::with('berkasPerkara')->find($id);
+
+        return view('pages.tahap-1.show', [
+            'id' => $id,
+            'tahap' => $tahap,
+        ]);
+    }
+}

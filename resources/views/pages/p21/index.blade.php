@@ -1,64 +1,54 @@
-@php
-    $p21s ??= app(\App\Services\MockStageService::class)->getP21(
-        request('search'),
-        request('status'),
-        request('tanggal_dari', request('tanggal'))
-    );
-@endphp
-
 @extends('layouts.app')
 
 @section('content')
-    <div class="space-y-6">
-
+    <div
+        x-data="{
+            modalOpen: {{ request('open_modal') ? 'true' : 'false' }}
+        }"
+        class="space-y-6"
+    >
         {{-- Header --}}
         <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
                 <div class="mb-2 flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-                    <a
-                        href="{{ url('/') }}"
-                        class="transition hover:text-brand-500"
-                    >
+                    <a href="{{ url('/') }}" class="transition hover:text-brand-500">
                         Home
                     </a>
-
                     <span>/</span>
-
                     <span class="text-gray-700 dark:text-gray-300">
                         P-21 / P-21a
                     </span>
                 </div>
 
                 <h1 class="text-2xl font-semibold text-gray-800 dark:text-white/90">
-                    P-21 / P-21a
+                    P-21 / P-21a (Hasil Penyidikan Lengkap)
                 </h1>
 
                 <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                    Kelola data P-21/P-21a pada proses penyidikan.
+                    Kelola surat pemberitahuan bahwa hasil penyidikan perkara telah lengkap dari Kejaksaan (Bobot progress 85%).
                 </p>
             </div>
 
             @can('create-cases')
-                <a
-                    href="{{ url('/p21/tambah') }}"
+                <button
+                    type="button"
+                    @click="modalOpen = true"
                     class="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-500 px-4 py-2.5 text-sm font-medium text-white shadow-theme-xs transition hover:bg-brand-600"
                 >
                     <i class="fi fi-rr-plus-small text-lg"></i>
-
-                    Tambah P-21 / P-21a
-                </a>
+                    <span>Tambah P-21 / P-21a</span>
+                </button>
             @endcan
         </div>
 
-        {{-- Table --}}
+        {{-- Table Container --}}
         <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
-
             {{-- Toolbar --}}
             <x-common.table-filter
-                searchPlaceholder="Cari nomor P-21, perkara, atau tersangka..."
+                searchPlaceholder="Cari nomor P-21, nomor berkas, tersangka, sprindik..."
                 :statusOptions="[
-                    'P-21 / P-21a Tersedia' => 'P-21 / P-21a Tersedia',
-                    'Siap Tahap 2' => 'Siap Tahap 2',
+                    'final' => 'Final (Terkunci)',
+                    'draft' => 'Draft',
                 ]"
             />
 
@@ -66,7 +56,89 @@
             <div id="table-body-partial">
                 @include('pages.p21._table-partial')
             </div>
+        </div>
 
+        {{-- Modal Pemilihan Berkas Perkara Siap P-21 --}}
+        <div
+            x-show="modalOpen"
+            x-cloak
+            class="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-gray-900/50 p-4 backdrop-blur-sm"
+            @keydown.escape.window="modalOpen = false"
+        >
+            <div
+                @click.outside="modalOpen = false"
+                class="relative w-full max-w-2xl rounded-2xl border border-gray-200 bg-white p-6 shadow-xl dark:border-gray-800 dark:bg-gray-900"
+            >
+                <div class="mb-5 flex items-center justify-between border-b border-gray-100 pb-4 dark:border-gray-800">
+                    <div class="flex items-center gap-3">
+                        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600 dark:bg-brand-500/10 dark:text-brand-400">
+                            <i class="fi fi-rr-diploma text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-semibold text-gray-800 dark:text-white/90">
+                                Pilih Berkas Perkara untuk P-21
+                            </h3>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">
+                                Berkas yang telah menyelesaikan Tahap 1 dan siap dicatatkan surat P-21 dari Kejaksaan.
+                            </p>
+                        </div>
+                    </div>
+                    <button
+                        type="button"
+                        @click="modalOpen = false"
+                        class="rounded-lg p-1.5 text-gray-400 hover:bg-gray-100 hover:text-gray-700 dark:hover:bg-gray-800 dark:hover:text-gray-200"
+                    >
+                        <i class="fi fi-rr-cross-small text-lg"></i>
+                    </button>
+                </div>
+
+                @if ($availableBerkas->isEmpty())
+                    <div class="rounded-xl border border-dashed border-gray-200 p-8 text-center dark:border-gray-800">
+                        <i class="fi fi-rr-info text-2xl text-gray-400"></i>
+                        <p class="mt-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+                            Tidak ada Berkas Perkara yang siap dicatatkan P-21.
+                        </p>
+                        <p class="mt-1 text-xs text-gray-400">
+                            Pastikan berkas telah difinalkan pada Tahap 1 dan belum memiliki tahapan P-21.
+                        </p>
+                    </div>
+                @else
+                    <div class="max-h-80 space-y-2 overflow-y-auto pr-1">
+                        @foreach ($availableBerkas as $b)
+                            <div class="flex items-center justify-between gap-3 rounded-xl border border-gray-200 p-3.5 transition hover:border-brand-300 hover:bg-brand-50/20 dark:border-gray-800 dark:hover:border-brand-500/30 dark:hover:bg-brand-500/5">
+                                <div class="min-w-0">
+                                    <p class="font-mono text-sm font-semibold text-gray-800 dark:text-white/90">
+                                        {{ $b->nomor_berkas ?: '(Draft Belum Bernomor)' }}
+                                    </p>
+                                    <p class="text-xs text-gray-600 dark:text-gray-300">
+                                        Tersangka: <strong>{{ $b->tersangka?->nama ?: '-' }}</strong>
+                                    </p>
+                                    <p class="text-[11px] font-mono text-gray-400">
+                                        Surat Perintah: {{ $b->perkara?->nomor_surat_perintah ?: '-' }}
+                                    </p>
+                                </div>
+                                <a
+                                    href="{{ route('berkas-perkara.tahapan.create', ['berkas' => $b, 'jenis' => 'p21']) }}"
+                                    class="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-brand-500 px-3 py-1.5 text-xs font-medium text-white transition hover:bg-brand-600"
+                                >
+                                    <span>Pilih Berkas</span>
+                                    <i class="fi fi-rr-arrow-right text-[10px]"></i>
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+
+                <div class="mt-6 flex justify-end">
+                    <button
+                        type="button"
+                        @click="modalOpen = false"
+                        class="rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-800"
+                    >
+                        Tutup
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
