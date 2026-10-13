@@ -185,7 +185,7 @@
                     </p>
                     <button type="button" @click="showSuccessModal = false"
                         class="w-full rounded-lg bg-success-600 px-4 py-2.5 text-theme-sm font-medium text-white transition hover:bg-success-700">
-                        {{ __('Lanjutkan ke Dasbor') }}
+                        {{ __('Lanjutkan ke Dashboard') }}
                     </button>
                 </div>
             </div>

@@ -108,7 +108,7 @@
                 </td>
 
                 @if ($canManage)
-                    <td class="px-4 py-3 text-end">
+                    <td class="px-4 py-3 text-center">
                         <div class="inline-flex items-center gap-2">
                             @if ($row->trashed())
                                 <form method="POST" action="{{ route('master-data.restore', ['type' => $type, 'id' => $row->id]) }}">

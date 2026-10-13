@@ -79,7 +79,6 @@ _(kosong)_
 
 ## Tahapan & Progress
 
-- [ ] T-030 — Enum tahapan + aturan urutan, maksimal 1x, opsional (F-10–F-13)
 - [ ] T-031 — Tiga aksi Batal/Draft/Simpan & Lanjut + penguncian permanen di DB & UI + Card Referensi tahapan sebelumnya + visual indicator Completed/Locked (F-14–F-19)
 - [ ] T-032 — Progress berbobot & status proses otomatis (F-29, F-30)
 - [ ] T-033 — Trigger Selesai dari TAHAP II (F-22)
@@ -131,4 +130,6 @@ _(kosong)_
 - [x] T-025 — 2026-10-13
 - [x] T-026 — 2026-10-13
 - [x] T-027 — 2026-10-13 Sistem Wilayah Hibrida: penanganan SSL cURL API `api.kodewilayah.web.id` dan fallback JSON lokal lengkap 38 Provinsi & 514 Kabupaten/Kota (D-015, F-37)
+- [x] T-030 — 2026-10-14 Enum tahapan + aturan urutan, maksimal 1x, opsional (F-10–F-13)
+
 

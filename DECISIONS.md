@@ -176,4 +176,23 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
   3. **Mekanisme Hibrida**: Jika koneksi API eksternal berhasil, data ditarik secara live dan di-cache selama 30 hari. Jika API eksternal gagal atau server beroperasi tanpa internet, service otomatis beralih membaca berkas JSON lokal sehingga seluruh 38 provinsi di Indonesia dijamin selalu memiliki daftar Kabupaten/Kota yang valid dan nyata.
 - Konsekuensi: Form TKP Perkara dan Form Profil Pengguna dapat memilih alamat di seluruh 38 provinsi di Indonesia secara mulus tanpa kegagalan dropdown berjenjang, baik saat online maupun offline.
 
+## D-016 — Skema Tabel `tahapan_perkara`, Enum `JenisTahap`, dan Validasi Urutan Progres Perkara
+
+- Tanggal: 2026-10-14
+- Status: Disepakati & Diimplementasikan
+- Konteks: Mengimplementasikan PRD F-10 s.d. F-13 terkait pencatatan tahapan progress pada Berkas Perkara. Dibutuhkan struktur tabel database singular, enum jenis tahapan, pembatasan maksimal 1 kali per jenis tahapan per berkas perkara, fleksibilitas melewati tahapan opsional (P-16, P-17P, P-18P, P-19), serta penguncian permanen pada level domain service.
+- Keputusan:
+  1. **Tabel Singular `tahapan_perkara`**:
+     - Kolom: `id`, `berkas_perkara_id` (FK `berkas_perkara`), `jenis_tahap`, `nomor_surat`, `tanggal_surat`, `catatan`, `status` (`draft`/`final`), `finalized_at`, `finalized_by` (FK `user`), `created_by`, `updated_by`, timestamps, `deleted_at`.
+     - Index gabungan: `['berkas_perkara_id', 'jenis_tahap']`.
+  2. **Enum `App\Enums\JenisTahap`**:
+     - Nilai: `spdp` (15%), `p16` (0%), `p17p` (0%), `tahap_1` (55%), `p18p` (0%), `p19` (0%), `p21` (85%), `tahap_2` (100%), `keputusan_pengadilan` (100%).
+     - Flag opsional: `P-16`, `P-17P`, `P-18P`, `P-19` bersifat opsional dan dapat dilewati.
+  3. **Domain Service `App\Services\TahapanService`**:
+     - Seluruh validasi urutan (`getNextAvailableStages`, `canProceedTo`, `validateStageOrder`) diletakkan di Service, bukan di controller atau Blade.
+     - Satu jenis tahapan hanya boleh dicatat maksimal 1 kali per Berkas Perkara.
+     - Tahapan yang telah berstatus `final` terkunci permanen (`assertStageNotLocked`) dan melempar `DomainException` jika dicoba untuk diedit atau dimundurkan (termasuk oleh role Administrator).
+- Konsekuensi: Integritas data tahapan dan aturan urutan tervalidasi secara kuat di lapisan model dan domain service.
+
+
 

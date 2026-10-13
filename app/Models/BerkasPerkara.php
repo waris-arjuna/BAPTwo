@@ -91,6 +91,45 @@ class BerkasPerkara extends Model
     }
 
     /**
+     * @return HasMany<TahapanPerkara, $this>
+     */
+    public function tahapan(): HasMany
+    {
+        return $this->hasMany(TahapanPerkara::class, 'berkas_perkara_id');
+    }
+
+    /**
+     * Tahapan progress terakhir yang telah difinalkan
+     */
+    public function latestFinalTahap(): ?TahapanPerkara
+    {
+        return $this->tahapan()
+            ->where('status', 'final')
+            ->orderBy('id', 'desc')
+            ->first();
+    }
+
+    /**
+     * Tahapan yang sedang berstatus draft (jika ada)
+     */
+    public function currentDraftTahap(): ?TahapanPerkara
+    {
+        return $this->tahapan()
+            ->where('status', 'draft')
+            ->first();
+    }
+
+    /**
+     * Memeriksa apakah jenis tahapan sudah pernah dicatat pada berkas ini
+     */
+    public function hasTahap(\App\Enums\JenisTahap|string $jenis): bool
+    {
+        $value = $jenis instanceof \App\Enums\JenisTahap ? $jenis->value : $jenis;
+
+        return $this->tahapan()->where('jenis_tahap', $value)->exists();
+    }
+
+    /**
      * Label tampilan status formal (PRD F-20, F-21: null = "Dalam Proses")
      */
     public function getStatusFormalLabelAttribute(): string
