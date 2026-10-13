@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DataPerkaraController;
 use App\Http\Controllers\DokumenController;
 use App\Http\Controllers\LaporanKejadianController;
 use App\Http\Controllers\LocaleController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\MasterDataController;
 use App\Http\Controllers\MathCaptchaController;
 use App\Http\Controllers\PerkaraBerkasController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProgressPerkaraController;
 use App\Http\Controllers\SprindikController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WilayahController;
@@ -101,6 +103,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/sprindik/{perkara}', [SprindikController::class, 'destroy'])->middleware('can:soft-delete')->name('sprindik.destroy');
 
     // Data Perkara & Berkas Perkara Pra-SPDP (TKP, PPNS, Tersangka, Berkas, Pasal Berlapis)
+    Route::get('/data-perkara', [DataPerkaraController::class, 'index'])->name('data-perkara.index');
+    Route::get('/progress-perkara', [ProgressPerkaraController::class, 'index'])->name('progress-perkara.index');
     Route::get('/perkara/{perkara}', [PerkaraBerkasController::class, 'show'])->name('perkara.show');
     Route::get('/perkara/{perkara}/buat', [PerkaraBerkasController::class, 'edit'])->middleware('can:edit-draft')->name('perkara.edit');
     Route::put('/perkara/{perkara}/buat', [PerkaraBerkasController::class, 'update'])->middleware('can:edit-draft')->name('perkara.update');

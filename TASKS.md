@@ -72,9 +72,10 @@ _(kosong)_
   - AC: Satu berkas perkara dapat memiliki pasal berlapis (1..N pasal dari master data `pasal`); tabel pivot `berkas_pasal`; multi-select/checkbox pasal di UI form berkas perkara; test lulus.
 - [x] T-023 — TKP + PPNS utama/anggota (F-07, F-08)
   - AC: Informasi TKP (klasifikasi retailer/distributor, legalitas legal/ilegal, modus online/offline, alamat berjenjang terintegrasi proxy wilayah API Kode Wilayah) tersimpan di tabel `tkp` & `alamat`; Tim Penyidik PPNS (1 PPNS Utama + 0..N PPNS Anggota) tersimpan di pivot `perkara_ppns` dengan peran; test lulus.
-- [x] T-024 — Alamat hierarkis via API Kode Wilayah (`api.kodewilayah.web.id` + `WilayahService`) (F-36, F-37)
 - [x] T-025 — Nomor Berkas manual tanpa validasi pola (F-33)
   - AC: Input `nomor_berkas` diinput manual oleh user tanpa pembatasan regex/format tertentu (bebas karakter format); tersimpan di `berkas_perkara.nomor_berkas`; test lulus.
+- [x] T-026 — Menu Navigasi Data Perkara di Sidebar (Daftar Perkara & Progress Perkara) + Pop-up Tambah Perkara (F-01, F-39, F-40, D-014)
+  - AC: Menu dropdown "Data Perkara" di Sidebar grup Perkara dengan sub-menu "Daftar Perkara" (`/data-perkara`) dan "Progress Perkara" (`/progress-perkara`); modal pop-up pemilihan Sprindik final; live filter AJAX `<x-common.table-filter>`; 4 feature tests baru lulus; Pint lulus.
 
 ## Tahapan & Progress
 
@@ -128,3 +129,4 @@ _(kosong)_
 - [x] T-023 — 2026-10-13
 - [x] T-024 — 2026-10-12
 - [x] T-025 — 2026-10-13
+- [x] T-026 — 2026-10-13

@@ -24,25 +24,25 @@ class MenuHelper
     }
 
     /**
-     * Menu yang berkaitan dengan monitoring.
-     */
-    public static function getMonitoringItems(): array
-    {
-        return [
-            [
-                'icon' => 'progress',
-                'name' => 'Progress Perkara',
-                'path' => '/progress-perkara',
-            ],
-        ];
-    }
-
-    /**
      * Menu yang berkaitan dengan perkara.
      */
     public static function getPerkaraItems(): array
     {
         return [
+            [
+                'icon' => 'data-perkara',
+                'name' => 'Data Perkara',
+                'subItems' => [
+                    [
+                        'name' => 'Daftar Perkara',
+                        'path' => '/data-perkara',
+                    ],
+                    [
+                        'name' => 'Progress Perkara',
+                        'path' => '/progress-perkara',
+                    ],
+                ],
+            ],
             [
                 'icon' => 'sprindik',
                 'name' => 'Sprindik',
@@ -136,10 +136,6 @@ class MenuHelper
                 'items' => self::getMainNavItems(),
             ],
             [
-                'title' => 'Monitoring',
-                'items' => self::getMonitoringItems(),
-            ],
-            [
                 'title' => 'Perkara',
                 'items' => self::getPerkaraItems(),
             ],
@@ -173,6 +169,7 @@ class MenuHelper
         $icons = [
             'dashboard' => '<i class="fi fi-rr-apps text-lg leading-none" aria-hidden="true"></i>',
             'report' => '<i class="fi fi-rr-document-signed text-lg leading-none" aria-hidden="true"></i>',
+            'data-perkara' => '<i class="fi fi-rr-folders text-lg leading-none" aria-hidden="true"></i>',
             'sprindik' => '<i class="fi fi-rr-file-edit text-lg leading-none" aria-hidden="true"></i>',
             'progress' => '<i class="fi fi-rr-chart-histogram text-lg leading-none" aria-hidden="true"></i>',
             'spdp' => '<i class="fi fi-rr-paper-plane text-lg leading-none" aria-hidden="true"></i>',

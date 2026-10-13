@@ -761,4 +761,145 @@ class PerkaraService
             Perkara::create($item);
         }
     }
+
+    /**
+     * Ambil daftar Perkara untuk halaman Data Perkara
+     */
+    public function getDataPerkaraList(Request $request, int $perPage = 10): LengthAwarePaginator
+    {
+        $this->ensureBaselinePerkara();
+
+        $search = $request->string('search')->trim()->toString();
+        $status = $request->string('status')->trim()->toString();
+        $tanggalDari = $request->string('tanggal_dari', $request->string('tanggal')->toString())->trim()->toString();
+        $tanggalSampai = $request->string('tanggal_sampai')->trim()->toString();
+
+        return Perkara::query()
+            ->whereNotNull('tahap_perkara_status')
+            ->with([
+                'dokumenSprindik',
+                'dokumenLaporan',
+                'tkp.alamat',
+                'ppnsUtama',
+                'tersangkas.berkasPerkara.pasals',
+                'creator',
+            ])
+            ->when($search !== '', function (Builder $query) use ($search) {
+                $query->where(function (Builder $q) use ($search) {
+                    $q->where('nomor_surat_perintah', 'like', "%{$search}%")
+                        ->orWhere('nomor_laporan_kejadian', 'like', "%{$search}%")
+                        ->orWhere('deskripsi', 'like', "%{$search}%")
+                        ->orWhereHas('tkp', function (Builder $tkpQ) use ($search) {
+                            $tkpQ->where('klasifikasi', 'like', "%{$search}%")
+                                ->orWhere('legalitas', 'like', "%{$search}%")
+                                ->orWhere('modus', 'like', "%{$search}%")
+                                ->orWhereHas('alamat', function (Builder $almQ) use ($search) {
+                                    $almQ->where('kabupaten_nama', 'like', "%{$search}%")
+                                        ->orWhere('kecamatan_nama', 'like', "%{$search}%")
+                                        ->orWhere('desa_nama', 'like', "%{$search}%")
+                                        ->orWhere('alamat_detail', 'like', "%{$search}%");
+                                });
+                        })
+                        ->orWhereHas('ppnsUtama', function (Builder $userQ) use ($search) {
+                            $userQ->where('nama', 'like', "%{$search}%");
+                        })
+                        ->orWhereHas('tersangkas', function (Builder $tskQ) use ($search) {
+                            $tskQ->where('nama', 'like', "%{$search}%")
+                                ->orWhere('alias', 'like', "%{$search}%")
+                                ->orWhere('nik', 'like', "%{$search}%")
+                                ->orWhereHas('berkasPerkara', function (Builder $bpQ) use ($search) {
+                                    $bpQ->where('nomor_berkas', 'like', "%{$search}%");
+                                });
+                        });
+                });
+            })
+            ->when($status !== '', function (Builder $query) use ($status) {
+                if ($status === 'Draft' || $status === 'Draft Perkara') {
+                    $query->where('tahap_perkara_status', 'draft');
+                } elseif ($status === 'Perkara Terbentuk') {
+                    $query->where('tahap_perkara_status', 'final');
+                }
+            })
+            ->when($tanggalDari !== '', function (Builder $query) use ($tanggalDari) {
+                $query->whereDate('tanggal_surat_perintah', '>=', $tanggalDari);
+            })
+            ->when($tanggalSampai !== '', function (Builder $query) use ($tanggalSampai) {
+                $query->whereDate('tanggal_surat_perintah', '<=', $tanggalSampai);
+            })
+            ->orderByDesc('id')
+            ->paginate($perPage)
+            ->withQueryString();
+    }
+
+    /**
+     * Ambil Sprindik final yang siap/belum dibuatkan Perkara
+     *
+     * @return Collection<int, Perkara>
+     */
+    public function getAvailableForPerkara(): Collection
+    {
+        return Perkara::query()
+            ->with(['dokumenSprindik', 'dokumenLaporan'])
+            ->where('tahap_sprindik_status', 'final')
+            ->whereNull('tahap_perkara_status')
+            ->orderByDesc('tanggal_surat_perintah')
+            ->get();
+    }
+
+    /**
+     * Ambil daftar Berkas Perkara untuk monitoring Progress Perkara
+     */
+    public function getProgressPerkaraList(Request $request, int $perPage = 10): LengthAwarePaginator
+    {
+        $search = $request->string('search')->trim()->toString();
+        $status = $request->string('status')->trim()->toString();
+        $tanggalDari = $request->string('tanggal_dari', $request->string('tanggal')->toString())->trim()->toString();
+        $tanggalSampai = $request->string('tanggal_sampai')->trim()->toString();
+
+        return BerkasPerkara::query()
+            ->with([
+                'perkara.dokumenSprindik',
+                'perkara.ppnsUtama',
+                'tersangka',
+                'pasals',
+            ])
+            ->when($search !== '', function (Builder $query) use ($search) {
+                $query->where(function (Builder $q) use ($search) {
+                    $q->where('nomor_berkas', 'like', "%{$search}%")
+                        ->orWhere('status_proses', 'like', "%{$search}%")
+                        ->orWhereHas('tersangka', function (Builder $tskQ) use ($search) {
+                            $tskQ->where('nama', 'like', "%{$search}%")
+                                ->orWhere('alias', 'like', "%{$search}%");
+                        })
+                        ->orWhereHas('perkara', function (Builder $perkQ) use ($search) {
+                            $perkQ->where('nomor_surat_perintah', 'like', "%{$search}%");
+                        })
+                        ->orWhereHas('pasals', function (Builder $pasQ) use ($search) {
+                            $pasQ->where('nama_pasal', 'like', "%{$search}%")
+                                ->orWhere('pasal', 'like', "%{$search}%");
+                        });
+                });
+            })
+            ->when($status !== '', function (Builder $query) use ($status) {
+                if ($status === 'Dalam Proses') {
+                    $query->whereNull('status_formal');
+                } elseif ($status === 'Selesai') {
+                    $query->where('status_formal', 'Selesai');
+                } elseif ($status === 'Tidak Selesai') {
+                    $query->where('status_formal', 'Tidak Selesai');
+                } elseif ($status === 'DPO') {
+                    $query->where('is_dpo', true);
+                }
+            })
+            ->when($tanggalDari !== '', function (Builder $query) use ($tanggalDari) {
+                $query->whereDate('tanggal_spdp', '>=', $tanggalDari);
+            })
+            ->when($tanggalSampai !== '', function (Builder $query) use ($tanggalSampai) {
+                $query->whereDate('tanggal_spdp', '<=', $tanggalSampai);
+            })
+            ->orderBy('progress_persen')
+            ->orderBy('created_at')
+            ->paginate($perPage)
+            ->withQueryString();
+    }
 }
