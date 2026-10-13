@@ -235,6 +235,24 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
      - Untuk SPDP yang sudah difinalkan, Penyidik diberikan tombol shortcut **Mulai Tahap 1** untuk langsung melanjutkan ke tahapan berikutnya.
 - Konsekuensi: Menu SPDP dan tahapan pembuka penyidikan beroperasi 100% menggunakan data database riil, UX lebih cepat dan intuitif, serta tahapan opsional terakomodasi secara bersih dan rapi.
 
+## D-019 — Komponen Input File PDF Reusable (<x-form.pdf-upload>) dengan Tombol Pembatalan (x)
+
+- Tanggal: 2026-10-14
+- Status: Disepakati & Diimplementasikan
+- Konteks: Pengguna membutuhkan tombol pembatalan/penghapusan file terpilih saat memilih dokumen PDF (`file-d00.pdf (x)`) untuk mengantisipasi kesalahan pemilihan file sebelum form disubmit.
+- Keputusan:
+  1. **Komponen Reusable `<x-form.pdf-upload>`**:
+     - Membungkus input file PDF dalam satu komponen terpadu dengan Alpine.js.
+     - Menyediakan tombol pembatalan `(x)` (`fi fi-rr-cross-small`) sejajar dengan nama dan ukuran file baru yang terpilih.
+     - Mengklik `(x)` mengeksekusi `$refs.fileInput.value = ''` dan mereset status, sehingga input file kembali kosong.
+  2. **Penanganan Mode Edit**:
+     - Jika dokumen sudah pernah tersimpan di database, membatalkan file baru dengan `(x)` secara otomatis memulihkan visual dokumen lama yang tersimpan di server, menjaga dokumen lama tetap aman saat form di-submit tanpa perubahan.
+  3. **Validasi Klien Terpadu**:
+     - Membatasi input hanya menerima file berformat PDF (`accept="application/pdf,.pdf"`) dan ukuran maksimal 20 MB (`maxSizeMb="20"`).
+  4. **Penerapan Luas**:
+     - Diterapkan secara seragam di seluruh formulir: Laporan Kejadian (`create`/`edit`), Sprindik (`create`/`edit`), Tahapan Perkara (`form`), dan SPDP (`create`).
+- Konsekuensi: UI konsisten, bebas duplikasi kode Alpine.js, dan kesalahan pemilihan file dapat dibatalkan secara instan tanpa perlu me-reload halaman.
+
 
 
 

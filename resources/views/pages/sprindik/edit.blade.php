@@ -118,27 +118,13 @@
 
                     {{-- Dokumen Sprindik --}}
                     <div class="md:col-span-2">
-                        <label for="dokumen_sprindik" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                            Dokumen Sprindik (PDF)
-                        </label>
-                        <label
-                            for="dokumen_sprindik"
-                            class="flex h-11 cursor-pointer items-center justify-between gap-3 rounded-lg border border-dashed border-gray-300 bg-white px-3 text-sm text-gray-600 transition hover:border-brand-400 dark:border-gray-700 dark:bg-gray-900/40 dark:text-gray-300"
-                        >
-                            <span class="truncate" x-text="fileName || '{{ $perkara->dokumenSprindik ? $perkara->dokumenSprindik->nama_file_asli : 'Pilih File PDF Sprindik' }}'"></span>
-                            <span class="shrink-0 rounded-md border border-gray-200 px-2 py-1 text-xs font-medium text-gray-500 dark:border-gray-700 dark:text-gray-400">
-                                Browse
-                            </span>
-                        </label>
-                        <input
-                            id="dokumen_sprindik"
+                        <x-form.pdf-upload
                             name="dokumen_sprindik"
-                            type="file"
-                            accept="application/pdf,.pdf"
-                            class="sr-only"
-                            @change="fileName = $event.target.files[0]?.name || ''"
-                        >
-                        <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">Biarkan kosong jika tidak ingin mengubah dokumen (PDF Maksimal 20 MB).</p>
+                            label="Dokumen Sprindik (PDF)"
+                            :existingFile="$perkara->dokumenSprindik?->nama_file_asli"
+                            :existingUrl="$perkara->dokumenSprindik ? route('dokumen.preview', $perkara->dokumenSprindik) : null"
+                            helperText="Biarkan kosong jika tidak ingin mengubah dokumen (PDF Maksimal 20 MB)."
+                        />
                     </div>
 
                     {{-- Deskripsi --}}

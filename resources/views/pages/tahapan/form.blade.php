@@ -180,25 +180,13 @@
 
                     {{-- Upload Dokumen PDF --}}
                     <div>
-                        <label for="dokumen" class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                            Unggah Dokumen PDF Pendukung <span class="text-xs text-gray-400">(Maks 20 MB)</span>
-                        </label>
-                        <input
-                            type="file"
-                            id="dokumen"
+                        <x-form.pdf-upload
                             name="dokumen"
-                            accept="application/pdf"
-                            class="block w-full text-sm text-gray-500 file:mr-4 file:rounded-lg file:border-0 file:bg-brand-50 file:px-4 file:py-2.5 file:text-sm file:font-semibold file:text-brand-700 hover:file:bg-brand-100 dark:file:bg-brand-500/10 dark:file:text-brand-400"
-                        >
-                        @if ($tahap?->dokumen?->first())
-                            <div class="mt-2 flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
-                                <i class="fi fi-rr-document text-brand-500"></i>
-                                <span>Dokumen saat ini:</span>
-                                <a href="{{ route('dokumen.preview', $tahap->dokumen->first()) }}" target="_blank" class="font-medium text-brand-600 hover:underline dark:text-brand-400">
-                                    {{ $tahap->dokumen->first()->nama_file_asli }}
-                                </a>
-                            </div>
-                        @endif
+                            label="Unggah Dokumen PDF Pendukung"
+                            :existingFile="$tahap?->dokumen?->first()?->nama_file_asli"
+                            :existingUrl="$tahap?->dokumen?->first() ? route('dokumen.preview', $tahap->dokumen->first()) : null"
+                            helperText="Format file: PDF murni (Maksimal 20 MB)."
+                        />
                     </div>
 
                     {{-- Catatan / Keterangan (PRD F-34) --}}

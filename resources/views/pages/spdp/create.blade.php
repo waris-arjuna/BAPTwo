@@ -114,55 +114,10 @@
 
                     {{-- Dokumen --}}
                     <div>
-                        <label
-                            for="dokumen"
-                            class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
-                        >
-                            Dokumen SPDP
-                        </label>
-
-                        <div
-                            x-data="{ fileName: '' }"
-                            class="space-y-3"
-                        >
-                            <label
-                                for="dokumen"
-                                class="flex cursor-pointer items-center justify-center rounded-lg border border-dashed border-gray-300 px-4 py-6 transition hover:border-brand-500 dark:border-gray-700"
-                            >
-                                <div class="text-center">
-
-                                    <i class="fi fi-rr-upload mx-auto text-2xl text-gray-400"></i>
-
-                                    <p class="mt-2 text-sm font-medium text-gray-700 dark:text-gray-300">
-                                        Pilih File
-                                    </p>
-
-                                    <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                                        Format file yang diperbolehkan: PDF.
-                                    </p>
-                                </div>
-
-                                <input
-                                    type="file"
-                                    id="dokumen"
-                                    name="dokumen"
-                                    accept=".pdf,application/pdf"
-                                    class="hidden"
-                                    @change="fileName = $event.target.files[0]?.name ?? ''"
-                                >
-                            </label>
-
-                            <template x-if="fileName">
-                                <div class="flex items-center gap-3 rounded-lg border border-gray-200 px-4 py-3 dark:border-gray-800">
-                                    <i class="fi fi-rr-document text-base text-red-500"></i>
-
-                                    <span
-                                        class="text-sm text-gray-700 dark:text-gray-300"
-                                        x-text="fileName"
-                                    ></span>
-                                </div>
-                            </template>
-                        </div>
+                        <x-form.pdf-upload
+                            name="dokumen"
+                            label="Dokumen SPDP"
+                        />
                     </div>
                 </div>
 

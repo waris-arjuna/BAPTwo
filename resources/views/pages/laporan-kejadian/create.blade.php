@@ -82,27 +82,10 @@
                     </div>
 
                     <div>
-                        <label for="dokumen_laporan" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                            Dokumen Laporan (PDF)
-                        </label>
-                        <label
-                            for="dokumen_laporan"
-                            class="flex h-11 cursor-pointer items-center justify-between gap-3 rounded-lg border border-dashed border-gray-300 bg-white px-3 text-sm text-gray-600 transition hover:border-brand-400 dark:border-gray-700 dark:bg-gray-900/40 dark:text-gray-300"
-                        >
-                            <span class="truncate" x-text="fileName || 'Pilih File PDF'"></span>
-                            <span class="shrink-0 rounded-md border border-gray-200 px-2 py-1 text-xs font-medium text-gray-500 dark:border-gray-700 dark:text-gray-400">
-                                Browse
-                            </span>
-                        </label>
-                        <input
-                            id="dokumen_laporan"
+                        <x-form.pdf-upload
                             name="dokumen_laporan"
-                            type="file"
-                            accept="application/pdf,.pdf"
-                            class="sr-only"
-                            @change="fileName = $event.target.files[0]?.name || ''"
-                        >
-                        <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">Format file yang diperbolehkan: PDF murni (Maksimal 20 MB).</p>
+                            label="Dokumen Laporan (PDF)"
+                        />
                     </div>
 
                     <div class="md:col-span-2">
