@@ -34,7 +34,7 @@ class UpdateTahapanRequest extends FormRequest
         return [
             'action_type' => ['nullable', 'in:draft,lanjut'],
             'nomor_surat' => [
-                $isDraft ? 'nullable' : 'required',
+                'required',
                 'string',
                 'max:150',
             ],
@@ -53,7 +53,7 @@ class UpdateTahapanRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'nomor_surat.required' => 'Nomor surat / dokumen wajib diisi untuk melanjutkan tahapan.',
+            'nomor_surat.required' => 'Nomor surat / dokumen wajib diisi.',
             'nomor_surat.max' => 'Nomor surat tidak boleh lebih dari 150 karakter.',
             'tanggal_surat.required' => 'Tanggal surat / dokumen wajib diisi untuk melanjutkan tahapan.',
             'tanggal_surat.date' => 'Format tanggal surat tidak valid.',

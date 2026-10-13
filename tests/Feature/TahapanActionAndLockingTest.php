@@ -56,10 +56,18 @@ beforeEach(function () {
 });
 
 test('penyidik dapat menyimpan data tahapan sebagai draft tanpa menaikkan progress atau mengunci tahap', function () {
+    // 1. Gagal jika nomor surat kosong saat simpan draft
+    $this->actingAs($this->penyidik)->post(route('berkas-perkara.tahapan.store', $this->berkas), [
+        'action_type' => 'draft',
+        'jenis_tahap' => JenisTahap::SPDP->value,
+        'nomor_surat' => '',
+    ])->assertSessionHasErrors(['nomor_surat']);
+
+    // 2. Berhasil saat nomor surat terisi meskipun tanggal surat kosong saat draft
     $response = $this->actingAs($this->penyidik)->post(route('berkas-perkara.tahapan.store', $this->berkas), [
         'action_type' => 'draft',
         'jenis_tahap' => JenisTahap::SPDP->value,
-        'nomor_surat' => '', // kosong diperbolehkan saat draft
+        'nomor_surat' => 'SPDP/DRAFT-001/X/2026',
         'tanggal_surat' => '',
         'catatan' => 'Draft awal SPDP belum ada nomor resmi',
     ]);

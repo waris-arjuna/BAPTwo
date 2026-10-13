@@ -35,7 +35,7 @@ class UpdateLaporanKejadianRequest extends FormRequest
         return [
             'action_type' => ['nullable', 'in:draft,lanjut'],
             'nomor_laporan' => [
-                $isDraft ? 'nullable' : 'required',
+                'required',
                 'string',
                 'max:100',
                 Rule::unique('perkara', 'nomor_laporan_kejadian')->ignore($perkaraId),
@@ -55,7 +55,7 @@ class UpdateLaporanKejadianRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'nomor_laporan.required' => 'Nomor laporan kejadian wajib diisi untuk melanjutkan tahap.',
+            'nomor_laporan.required' => 'Nomor laporan kejadian wajib diisi.',
             'nomor_laporan.unique' => 'Nomor laporan kejadian sudah digunakan.',
             'tanggal_laporan.required' => 'Tanggal laporan kejadian wajib diisi untuk melanjutkan tahap.',
             'tanggal_laporan.date' => 'Format tanggal laporan kejadian tidak valid.',

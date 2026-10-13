@@ -290,3 +290,22 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
        - **Nomor Sprindik**: `Note: Format penomoran: SP/[No]/[Bulan Romawi]/[Tahun] (contoh: SP/001/IX/2026).`
        - **Nomor Surat Tahapan / SPDP**: `Note: Format nomor surat resmi (contoh: B-01/X/2026/PPNS-BPOM).`
 - Konsekuensi: Tampilan UI menjadi bersih dan profesional, serta pengguna mendapatkan panduan penomoran yang jelas di setiap formulir input nomor.
+
+## D-022 — Validasi Simpan Draft Mewajibkan Identitas/Nomor Utama & Melarang Draft Kosong
+
+- Tanggal: 2026-10-14
+- Status: Disepakati & Diimplementasikan
+- Konteks: Pengguna menghendaki bahwa formulir tidak boleh disimpan atau dijadikan draft jika data kosong sama sekali. Formulir draft harus tetap memiliki identitas/nomor utama agar tidak menghasilkan record kosong (ghost rows) di database.
+- Keputusan:
+  1. **Field Identitas/Nomor Utama Wajib untuk Draft**:
+     - **Laporan Kejadian**: `nomor_laporan` wajib terisi (`required`). Tanggal laporan, dokumen, dan deskripsi boleh menyusul (`nullable` saat draft).
+     - **Sprindik**: `nomor_sprindik` wajib terisi (`required`). Tanggal sprindik, dokumen, dan deskripsi boleh menyusul (`nullable` saat draft).
+     - **Data Perkara Pra-SPDP**: Minimal 1 Tersangka dengan `nama` dan `nomor_berkas` wajib terisi (`required`). TKP, PPNS Utama/Anggota, dan Pasal boleh menyusul (`nullable` saat draft).
+     - **Tahapan Perkara (SPDP s.d. Tahap II)**: `nomor_surat` wajib terisi (`required`). Tanggal surat, dokumen, dan catatan boleh menyusul (`nullable` saat draft).
+  2. **Pencegahan Record Kosong**:
+     - Menekan tombol "Simpan Draft" dengan kolom nomor/identitas utama kosong akan ditolak oleh validasi server dengan pesan error yang jelas dan tidak disimpan ke database.
+  3. **Pembeda Draft vs Simpan & Lanjut**:
+     - **Draft**: Mewajibkan nomor/identitas utama; field pelengkap lainnya boleh menyusul; tahap TIDAK naik dan TIDAK terkunci.
+     - **Simpan & Lanjut**: Mewajibkan seluruh field wajib (nomor, tanggal, kelengkapan berkas, dsb.) lengkap 100%; setelah berhasil tahap naik dan terkunci permanen.
+- Konsekuensi: Integritas database terjaga, bebas dari ghost records/data kosong, sementara fleksibilitas pengerjaan draft bertahap tetap terpenuhi.
+

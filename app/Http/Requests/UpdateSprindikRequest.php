@@ -35,7 +35,7 @@ class UpdateSprindikRequest extends FormRequest
         return [
             'action_type' => ['nullable', 'in:draft,lanjut'],
             'nomor_sprindik' => [
-                $isDraft ? 'nullable' : 'required',
+                'required',
                 'string',
                 'max:100',
                 Rule::unique('perkara', 'nomor_surat_perintah')->ignore($perkaraId),
@@ -55,7 +55,7 @@ class UpdateSprindikRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'nomor_sprindik.required' => 'Nomor sprindik wajib diisi untuk melanjutkan tahap.',
+            'nomor_sprindik.required' => 'Nomor sprindik wajib diisi.',
             'nomor_sprindik.unique' => 'Nomor sprindik sudah digunakan.',
             'tanggal_sprindik.required' => 'Tanggal sprindik wajib diisi untuk melanjutkan tahap.',
             'tanggal_sprindik.date' => 'Format tanggal sprindik tidak valid.',

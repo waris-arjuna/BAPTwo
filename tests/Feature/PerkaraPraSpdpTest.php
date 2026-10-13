@@ -135,12 +135,18 @@ it('allows Penyidik to attach Sprindik to existing Laporan Kejadian and updates 
 it('allows Penyidik to save incomplete Laporan Kejadian as Draft and edit it later', function () {
     $penyidik = User::factory()->penyidik()->create();
 
-    // Save as draft without nomor_laporan
+    // 1. Gagal jika nomor_laporan kosong saat draft
+    $this->actingAs($penyidik)->post(route('laporan-kejadian.store'), [
+        'action_type' => 'draft',
+        'nomor_laporan' => '',
+    ])->assertSessionHasErrors(['nomor_laporan']);
+
+    // 2. Berhasil jika nomor_laporan terisi meskipun tanggal dan dokumen kosong saat draft
     $response = $this->actingAs($penyidik)->post(route('laporan-kejadian.store'), [
         'action_type' => 'draft',
-        'nomor_laporan' => null,
+        'nomor_laporan' => 'LK/DRAFT-001/X/2026',
         'tanggal_laporan' => null,
-        'deskripsi' => 'Draft kronologi awal belum ada nomor surat.',
+        'deskripsi' => 'Draft kronologi awal belum ada tanggal surat.',
     ]);
 
     $response->assertRedirect();
@@ -229,7 +235,16 @@ it('allows Penyidik to save Sprindik as Draft and later finalize it', function (
         'laporan_locked_at' => now(),
     ]);
 
-    // Save Sprindik as draft
+    // Gagal jika nomor_sprindik kosong saat draft
+    $this->actingAs($penyidik)
+        ->post(route('sprindik.store'), [
+            'action_type' => 'draft',
+            'perkara_id' => $perkara->id,
+            'nomor_sprindik' => '',
+        ])
+        ->assertSessionHasErrors(['nomor_sprindik']);
+
+    // Save Sprindik as draft saat nomor_sprindik terisi
     $this->actingAs($penyidik)
         ->post(route('sprindik.store'), [
             'action_type' => 'draft',
@@ -534,7 +549,7 @@ it('prevents creating Perkara & Berkas Perkara if Sprindik is still Draft', func
         ->assertForbidden();
 });
 
-it('allows Penyidik to save Perkara and Berkas Perkara draft with empty or partial inputs', function () {
+it('validates that Perkara draft requires main identifier and allows incomplete secondary inputs', function () {
     $penyidik = User::factory()->penyidik()->create();
     $perkara = Perkara::create([
         'nomor_laporan_kejadian' => 'LK/DRAFT-EMPTY/X/2026',
@@ -545,7 +560,21 @@ it('allows Penyidik to save Perkara and Berkas Perkara draft with empty or parti
         'tahap_sprindik_status' => 'final',
     ]);
 
-    // Submit draft with empty inputs
+    // 1. Gagal jika tidak ada tersangka saat draft
+    $this->actingAs($penyidik)->put(route('perkara.update', $perkara), [
+        'action_type' => 'draft',
+        'tersangka' => [],
+    ])->assertSessionHasErrors(['tersangka']);
+
+    // 2. Gagal jika tersangka ada tetapi nama atau nomor berkas kosong saat draft
+    $this->actingAs($penyidik)->put(route('perkara.update', $perkara), [
+        'action_type' => 'draft',
+        'tersangka' => [
+            ['id' => null, 'nama' => '', 'nomor_berkas' => ''],
+        ],
+    ])->assertSessionHasErrors(['tersangka.0.nama', 'tersangka.0.nomor_berkas']);
+
+    // 3. Berhasil saat tersangka dan nomor berkas terisi, meskipun TKP, PPNS, dan Pasal kosong saat draft
     $response = $this->actingAs($penyidik)->put(route('perkara.update', $perkara), [
         'action_type' => 'draft',
         'tkp_klasifikasi' => null,
@@ -553,14 +582,22 @@ it('allows Penyidik to save Perkara and Berkas Perkara draft with empty or parti
         'tkp_modus' => null,
         'ppns_utama_id' => null,
         'ppns_anggota_ids' => [],
-        'tersangka' => [],
+        'tersangka' => [
+            [
+                'id' => null,
+                'nama' => 'Tersangka Draft Awal',
+                'nomor_berkas' => 'BP/DRAFT-01/X/2026',
+            ],
+        ],
     ]);
 
     $response->assertRedirect(route('perkara.show', $perkara));
 
     $perkara->refresh();
     expect($perkara->tahap_perkara_status)->toBe('draft')
-        ->and($perkara->isPerkaraLocked())->toBeFalse();
+        ->and($perkara->isPerkaraLocked())->toBeFalse()
+        ->and($perkara->tersangkas()->count())->toBe(1)
+        ->and($perkara->berkasPerkaras()->count())->toBe(1);
 
     // Verify draft can still be edited
     $this->actingAs($penyidik)

@@ -29,7 +29,7 @@ class StoreTahapanRequest extends FormRequest
             'action_type' => ['nullable', 'in:draft,lanjut'],
             'jenis_tahap' => ['required', Rule::enum(JenisTahap::class)],
             'nomor_surat' => [
-                $isDraft ? 'nullable' : 'required',
+                'required',
                 'string',
                 'max:150',
             ],
@@ -49,7 +49,7 @@ class StoreTahapanRequest extends FormRequest
     {
         return [
             'jenis_tahap.required' => 'Jenis tahapan wajib ditentukan.',
-            'nomor_surat.required' => 'Nomor surat / dokumen wajib diisi untuk melanjutkan tahapan.',
+            'nomor_surat.required' => 'Nomor surat / dokumen wajib diisi.',
             'nomor_surat.max' => 'Nomor surat tidak boleh lebih dari 150 karakter.',
             'tanggal_surat.required' => 'Tanggal surat / dokumen wajib diisi untuk melanjutkan tahapan.',
             'tanggal_surat.date' => 'Format tanggal surat tidak valid.',

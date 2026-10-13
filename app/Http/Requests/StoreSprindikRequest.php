@@ -27,7 +27,7 @@ class StoreSprindikRequest extends FormRequest
             'action_type' => ['nullable', 'in:draft,lanjut'],
             'perkara_id' => ['required', 'exists:perkara,id'],
             'nomor_sprindik' => [
-                $isDraft ? 'nullable' : 'required',
+                'required',
                 'string',
                 'max:100',
                 'unique:perkara,nomor_surat_perintah',
@@ -49,7 +49,7 @@ class StoreSprindikRequest extends FormRequest
         return [
             'perkara_id.required' => 'Laporan kejadian wajib dipilih.',
             'perkara_id.exists' => 'Laporan kejadian yang dipilih tidak ditemukan.',
-            'nomor_sprindik.required' => 'Nomor sprindik wajib diisi untuk melanjutkan tahap.',
+            'nomor_sprindik.required' => 'Nomor sprindik wajib diisi.',
             'nomor_sprindik.unique' => 'Nomor sprindik sudah digunakan.',
             'tanggal_sprindik.required' => 'Tanggal sprindik wajib diisi untuk melanjutkan tahap.',
             'tanggal_sprindik.date' => 'Format tanggal sprindik tidak valid.',

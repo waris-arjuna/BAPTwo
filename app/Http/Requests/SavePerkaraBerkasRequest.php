@@ -53,9 +53,9 @@ class SavePerkaraBerkasRequest extends FormRequest
             'ppns_anggota_ids.*' => ['integer', 'exists:user,id'],
 
             // Tersangka, Berkas Perkara & Pasal Berlapis (F-02, F-03, F-04, F-33)
-            'tersangka' => [$isFinal ? 'required' : 'nullable', 'array', $isFinal ? 'min:1' : 'min:0'],
+            'tersangka' => ['required', 'array', 'min:1'],
             'tersangka.*.id' => ['nullable', 'integer'],
-            'tersangka.*.nama' => [$isFinal ? 'required' : 'nullable', 'string', 'max:150'],
+            'tersangka.*.nama' => ['required', 'string', 'max:150'],
             'tersangka.*.alias' => ['nullable', 'string', 'max:150'],
             'tersangka.*.bin_binti' => ['nullable', 'string', 'max:150'],
             'tersangka.*.nik' => ['nullable', 'string', 'max:20'],
@@ -66,7 +66,7 @@ class SavePerkaraBerkasRequest extends FormRequest
             'tersangka.*.pekerjaan' => ['nullable', 'string', 'max:100'],
             'tersangka.*.kewarganegaraan' => ['nullable', 'string', 'max:50'],
             // Nomor Berkas Perkara diinput manual TANPA validasi pola regex (PRD F-33, T-025)
-            'tersangka.*.nomor_berkas' => [$isFinal ? 'required' : 'nullable', 'string', 'max:150'],
+            'tersangka.*.nomor_berkas' => ['required', 'string', 'max:150'],
             // Pasal Berlapis per Berkas Perkara (PRD F-04, T-022)
             'tersangka.*.pasal_ids' => [$isFinal ? 'required' : 'nullable', 'array', $isFinal ? 'min:1' : 'min:0'],
             'tersangka.*.pasal_ids.*' => ['integer', 'exists:pasal,id'],
@@ -90,7 +90,7 @@ class SavePerkaraBerkasRequest extends FormRequest
             'ppns_utama_id.required' => 'PPNS Utama wajib dipilih.',
             'tersangka.required' => 'Minimal harus terdapat 1 (satu) Tersangka pada perkara ini.',
             'tersangka.min' => 'Minimal harus terdapat 1 (satu) Tersangka pada perkara ini.',
-            'tersangka.*.nama.required' => 'Nama tersangka wajib diisi untuk finalisasi berkas.',
+            'tersangka.*.nama.required' => 'Nama tersangka wajib diisi.',
             'tersangka.*.jenis_kelamin.required' => 'Jenis kelamin tersangka wajib dipilih.',
             'tersangka.*.nomor_berkas.required' => 'Nomor Berkas Perkara wajib diisi untuk setiap tersangka.',
             'tersangka.*.pasal_ids.required' => 'Minimal pilih 1 (satu) Pasal yang disangkakan pada berkas perkara.',
