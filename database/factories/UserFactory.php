@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\UserRole;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -24,10 +25,19 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
+            'role' => UserRole::PENYIDIK,
+            'nama' => fake()->name(),
+            'nip' => fake()->unique()->numerify('19################'),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
+            'tempat_lahir' => 'Banjarmasin',
+            'tanggal_lahir' => '1990-05-15',
+            'jenis_kelamin' => 'laki-laki',
+            'status_pernikahan' => 'kawin',
+            'no_telp' => '081251234567',
+            'status' => 'pns',
+            'is_active' => true,
             'remember_token' => Str::random(10),
         ];
     }
@@ -39,6 +49,27 @@ class UserFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
+        ]);
+    }
+
+    public function administrator(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'role' => UserRole::ADMINISTRATOR,
+        ]);
+    }
+
+    public function pimpinan(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'role' => UserRole::PIMPINAN,
+        ]);
+    }
+
+    public function penyidik(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'role' => UserRole::PENYIDIK,
         ]);
     }
 }

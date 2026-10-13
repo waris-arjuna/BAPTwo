@@ -1,7 +1,11 @@
 <?php
 
-test('the application returns a successful response', function () {
-    $response = $this->get('/');
+use App\Models\User;
 
-    $response->assertStatus(200);
+test('the application redirects guests to signin and allows authenticated users', function () {
+    $this->get('/')->assertRedirect('/signin');
+
+    $user = User::factory()->make();
+
+    $this->actingAs($user)->get('/')->assertStatus(200);
 });

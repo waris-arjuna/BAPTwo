@@ -1,7 +1,11 @@
 <?php
 
+use App\Models\User;
+
 it('locks locale to id and dir to ltr', function () {
-    $response = $this->get('/');
+    $user = User::factory()->make();
+
+    $response = $this->actingAs($user)->get('/');
 
     $response->assertOk();
     $response->assertSee('dir="ltr"', false);

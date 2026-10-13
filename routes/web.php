@@ -1,125 +1,151 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\MathCaptchaController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\WilayahController;
 use Illuminate\Support\Facades\Route;
 
 // Locale Switch Route
 Route::get('/locale/{locale}', [LocaleController::class, 'switch'])->name('locale.switch');
 
-// dashboard pages
-Route::get('/', function () {
-    return view('pages.dashboard.ecommerce', ['title' => 'Dashboard BAPTwo']);
-})->name('dashboard');
+// Captcha
+Route::get('/captcha/refresh', [MathCaptchaController::class, 'refresh'])->name('captcha.refresh');
 
-// profile pages
-Route::get('/profile', function () {
-    return view('pages.profile', ['title' => 'Profile']);
-})->name('profile');
-
-// error pages
+// Error pages
 Route::get('/error-404', function () {
     return view('pages.errors.error-404', ['title' => 'Error 404']);
 })->name('error-404');
 
-// authentication pages
-Route::get('/signin', function () {
-    return view('pages.auth.signin', ['title' => __('Sign In')]);
-})->name('signin');
+// Guest authentication pages
+Route::middleware('guest')->group(function () {
+    Route::get('/signin', [AuthController::class, 'showSignin'])->name('signin');
+    Route::post('/signin', [AuthController::class, 'login'])->name('signin.attempt');
 
-Route::get('/signup', function () {
-    return view('pages.auth.signup', ['title' => __('Sign Up')]);
-})->name('signup');
+    Route::get('/signup', function () {
+        return view('pages.auth.signup', ['title' => __('Sign Up')]);
+    })->name('signup');
+});
 
-// Captcha
-Route::get('/captcha/refresh', [MathCaptchaController::class, 'refresh'])->name('captcha.refresh');
+// Authenticated application pages
+Route::middleware('auth')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Laporan Kejadian
-Route::get('/laporan-kejadian', function () {
-    return view('pages.laporan-kejadian.index');
-})->name('laporan-kejadian.index');
+    // Dashboard
+    Route::get('/', function () {
+        return view('pages.dashboard.ecommerce', ['title' => 'Dashboard BAPTwo']);
+    })->name('dashboard');
 
-Route::get('/laporan-kejadian/tambah', function () {
-    return view('pages.laporan-kejadian.create');
-})->name('laporan-kejadian.create');
+    // Profile
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+    Route::post('/profile/photo', [ProfileController::class, 'updatePhoto'])->name('profile.photo.update');
+    Route::put('/profile/account', [ProfileController::class, 'updateAccount'])->name('profile.account.update');
+    Route::put('/profile/personal', [ProfileController::class, 'updatePersonal'])->name('profile.personal.update');
 
-Route::get('/laporan-kejadian/{id}', function ($id) {
-    return view('pages.laporan-kejadian.show', [
-        'id' => $id,
-    ]);
-})->name('laporan-kejadian.show');
+    // Wilayah Proxy (api.kodewilayah.web.id)
+    Route::get('/wilayah/provinsi', [WilayahController::class, 'provinsi'])->name('wilayah.provinsi');
+    Route::get('/wilayah/kabupaten/{provinsiKode}', [WilayahController::class, 'kabupaten'])->name('wilayah.kabupaten');
+    Route::get('/wilayah/kecamatan/{kabupatenKode}', [WilayahController::class, 'kecamatan'])->name('wilayah.kecamatan');
+    Route::get('/wilayah/desa/{kecamatanKode}', [WilayahController::class, 'desa'])->name('wilayah.desa');
 
-// Sprindik
-Route::get('/sprindik', function () {
-    return view('pages.sprindik.index');
-})->name('sprindik.index');
+    // Manajemen Pengguna (Administrator only — UC-05)
+    Route::middleware('can:manage-users')->group(function () {
+        Route::get('/pengaturan', [UserController::class, 'index'])->name('users.index');
+        Route::post('/pengaturan', [UserController::class, 'store'])->name('users.store');
+        Route::put('/pengaturan/{user}', [UserController::class, 'update'])->name('users.update');
+        Route::delete('/pengaturan/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+        Route::post('/pengaturan/{id}/restore', [UserController::class, 'restore'])->name('users.restore');
+    });
 
-Route::get('/sprindik/tambah', function () {
-    return view('pages.sprindik.create');
-})->name('sprindik.create');
+    // Laporan Kejadian
+    Route::get('/laporan-kejadian', function () {
+        return view('pages.laporan-kejadian.index');
+    })->name('laporan-kejadian.index');
 
-Route::get('/sprindik/{id}', function ($id) {
-    return view('pages.sprindik.show', [
-        'id' => $id,
-    ]);
-})->name('sprindik.show');
+    Route::get('/laporan-kejadian/tambah', function () {
+        return view('pages.laporan-kejadian.create');
+    })->middleware('can:create-cases')->name('laporan-kejadian.create');
 
-// SPDP
-Route::get('/spdp', function () {
-    return view('pages.spdp.index');
-})->name('spdp.index');
+    Route::get('/laporan-kejadian/{id}', function ($id) {
+        return view('pages.laporan-kejadian.show', [
+            'id' => $id,
+        ]);
+    })->name('laporan-kejadian.show');
 
-Route::get('/spdp/tambah', function () {
-    return view('pages.spdp.create');
-})->name('spdp.create');
+    // Sprindik
+    Route::get('/sprindik', function () {
+        return view('pages.sprindik.index');
+    })->name('sprindik.index');
 
-Route::get('/spdp/{id}', function ($id) {
-    return view('pages.spdp.show', [
-        'id' => $id,
-    ]);
-})->name('spdp.show');
+    Route::get('/sprindik/tambah', function () {
+        return view('pages.sprindik.create');
+    })->middleware('can:create-cases')->name('sprindik.create');
 
-// TAHAP 1
-Route::get('/tahap-1', function () {
-    return view('pages.tahap-1.index');
-})->name('tahap-1.index');
+    Route::get('/sprindik/{id}', function ($id) {
+        return view('pages.sprindik.show', [
+            'id' => $id,
+        ]);
+    })->name('sprindik.show');
 
-Route::get('/tahap-1/tambah', function () {
-    return view('pages.tahap-1.create');
-})->name('tahap-1.create');
+    // SPDP
+    Route::get('/spdp', function () {
+        return view('pages.spdp.index');
+    })->name('spdp.index');
 
-Route::get('/tahap-1/{id}', function ($id) {
-    return view('pages.tahap-1.show', [
-        'id' => $id,
-    ]);
-})->name('tahap-1.show');
+    Route::get('/spdp/tambah', function () {
+        return view('pages.spdp.create');
+    })->middleware('can:create-cases')->name('spdp.create');
 
-// P-21
-Route::get('/p21', function () {
-    return view('pages.p21.index');
-})->name('p21.index');
+    Route::get('/spdp/{id}', function ($id) {
+        return view('pages.spdp.show', [
+            'id' => $id,
+        ]);
+    })->name('spdp.show');
 
-Route::get('/p21/tambah', function () {
-    return view('pages.p21.create');
-})->name('p21.create');
+    // TAHAP 1
+    Route::get('/tahap-1', function () {
+        return view('pages.tahap-1.index');
+    })->name('tahap-1.index');
 
-Route::get('/p21/{id}', function ($id) {
-    return view('pages.p21.show', [
-        'id' => $id,
-    ]);
-})->name('p21.show');
+    Route::get('/tahap-1/tambah', function () {
+        return view('pages.tahap-1.create');
+    })->middleware('can:create-cases')->name('tahap-1.create');
 
-// TAHAP 2
-Route::get('/tahap-2', function () {
-    return view('pages.tahap-2.index');
-})->name('tahap-2.index');
+    Route::get('/tahap-1/{id}', function ($id) {
+        return view('pages.tahap-1.show', [
+            'id' => $id,
+        ]);
+    })->name('tahap-1.show');
 
-Route::get('/tahap-2/tambah', function () {
-    return view('pages.tahap-2.create');
-})->name('tahap-2.create');
+    // P-21
+    Route::get('/p21', function () {
+        return view('pages.p21.index');
+    })->name('p21.index');
 
-Route::get('/tahap-2/{id}', function ($id) {
-    return view('pages.tahap-2.show', [
-        'id' => $id,
-    ]);
-})->name('tahap-2.show');
+    Route::get('/p21/tambah', function () {
+        return view('pages.p21.create');
+    })->middleware('can:create-cases')->name('p21.create');
+
+    Route::get('/p21/{id}', function ($id) {
+        return view('pages.p21.show', [
+            'id' => $id,
+        ]);
+    })->name('p21.show');
+
+    // TAHAP 2
+    Route::get('/tahap-2', function () {
+        return view('pages.tahap-2.index');
+    })->name('tahap-2.index');
+
+    Route::get('/tahap-2/tambah', function () {
+        return view('pages.tahap-2.create');
+    })->middleware('can:create-cases')->name('tahap-2.create');
+
+    Route::get('/tahap-2/{id}', function ($id) {
+        return view('pages.tahap-2.show', [
+            'id' => $id,
+        ]);
+    })->name('tahap-2.show');
+});

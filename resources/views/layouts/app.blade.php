@@ -160,6 +160,34 @@
             </div>
         </div>
 
+        @if (session('login_success'))
+            <div x-data="{ showSuccessModal: true }" x-init="setTimeout(() => showSuccessModal = false, 4000)" x-show="showSuccessModal" x-cloak
+                @keydown.escape.window="showSuccessModal = false"
+                class="fixed inset-0 z-99999 flex items-center justify-center p-4 bg-gray-900/50 backdrop-blur-xs">
+                <div @click.outside="showSuccessModal = false"
+                    x-transition:enter="transition ease-out duration-200"
+                    x-transition:enter-start="opacity-0 scale-95"
+                    x-transition:enter-end="opacity-100 scale-100"
+                    class="w-full max-w-md rounded-2xl border border-success-200 bg-white p-6 text-center shadow-theme-xl dark:border-success-500/30 dark:bg-gray-900">
+                    <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-success-50 text-success-600 dark:bg-success-500/15 dark:text-success-400">
+                        <svg class="h-6 w-6 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </div>
+                    <h3 class="mb-2 text-lg font-semibold text-gray-800 dark:text-white/90">
+                        {{ __('Berhasil Masuk') }}
+                    </h3>
+                    <p class="mb-5 text-theme-sm text-gray-600 dark:text-gray-300">
+                        {{ session('login_success') }}
+                    </p>
+                    <button type="button" @click="showSuccessModal = false"
+                        class="w-full rounded-lg bg-success-600 px-4 py-2.5 text-theme-sm font-medium text-white transition hover:bg-success-700">
+                        {{ __('Lanjutkan ke Dasbor') }}
+                    </button>
+                </div>
+            </div>
+        @endif
+
     </div>
 
 </body>

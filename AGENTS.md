@@ -244,10 +244,12 @@ Selain konvensi TailAdmin, ikuti aturan berikut:
 - **Controller** hanya: terima request → panggil Service → kembalikan response/view.
 - **Form Request** untuk semua validasi input user.
 - **Policy** untuk setiap model yang punya akses berbasis role (Perkara, BerkasPerkara, Dokumen, User).
+- **Nama Tabel Singular (D-008, D-009)**: Semua 18 tabel menggunakan singular `snake_case` Bahasa Indonesia tanpa akhiran `'s'` (`user`, `alamat`, `perkara`, `berkas_perkara`, `tahapan_perkara`, `dokumen`, `audit_log`, dst.). Setiap Model Eloquent WAJIB mendefinisikan `protected $table = '...'`.
 - **Migration** harus menyertakan kolom: `created_by`, `updated_by`, `deleted_at` (soft delete) untuk semua tabel domain.
-- **Event / Observer** untuk menulis audit trail setiap kali: status berubah, tahap difinalkan, dokumen diunggah, DPO diaktifkan/dinonaktifkan.
+- **Dokumen Wajib PDF (D-007)**: Hanya menerima file PDF (`['required', 'file', 'mimes:pdf', 'max:20480']`), disimpan terpusat di tabel `dokumen` pada storage privat.
+- **Event / Observer** untuk menulis ke tabel `audit_log` (`user_id` nullable untuk scheduler, `berkas_perkara_id` terindeks) setiap kali: status berubah, tahap difinalkan, dokumen diunggah, DPO diaktifkan/dinonaktifkan.
 - **Nomor Berkas Perkara** = input manual, **tanpa** validasi pola (PRD F-33).
-- **Alamat** = struktur hierarkis (provinsi → kab/kota → kecamatan → desa) dari API Kode Wilayah (PRD F-36, F-37).
+- **Alamat (`api.kodewilayah.web.id`, D-009)** = tabel `alamat` terpusat dengan kolom `*_kode` (`VARCHAR(15)`) + snapshot `*_nama` (`VARCHAR(100)`) via proxy `WilayahService` (cache 30 hari).
 
 ---
 

@@ -100,7 +100,7 @@ class MenuHelper
      */
     public static function getMenuGroups(): array
     {
-        return [
+        $groups = [
             [
                 'title' => 'Menu Utama',
                 'items' => self::getMainNavItems(),
@@ -113,11 +113,16 @@ class MenuHelper
                 'title' => 'Perkara',
                 'items' => self::getPerkaraItems(),
             ],
-            [
+        ];
+
+        if (auth()->user()?->isAdmin()) {
+            $groups[] = [
                 'title' => 'Sistem',
                 'items' => self::getSystemItems(),
-            ],
-        ];
+            ];
+        }
+
+        return $groups;
     }
 
     /**
