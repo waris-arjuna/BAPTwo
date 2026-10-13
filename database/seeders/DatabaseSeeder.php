@@ -157,5 +157,59 @@ class DatabaseSeeder extends Seeder
                 ]
             );
         }
+
+        $penyidikUser = User::where('email', 'penyidik@baptwo.test')->first();
+
+        $samplePerkara = [
+            [
+                'nomor_laporan_kejadian' => 'LK/001/IX/2026',
+                'tanggal_laporan_kejadian' => '2026-09-02',
+                'nomor_surat_perintah' => 'SP/001/IX/2026',
+                'tanggal_surat_perintah' => '2026-09-03',
+                'deskripsi' => 'Dugaan peredaran sediaan farmasi tanpa izin edar.',
+            ],
+            [
+                'nomor_laporan_kejadian' => 'LK/002/IX/2026',
+                'tanggal_laporan_kejadian' => '2026-09-04',
+                'nomor_surat_perintah' => 'SP/002/IX/2026',
+                'tanggal_surat_perintah' => '2026-09-05',
+                'deskripsi' => 'Dugaan peredaran kosmetik mengandung bahan berbahaya.',
+            ],
+            [
+                'nomor_laporan_kejadian' => 'LK/003/IX/2026',
+                'tanggal_laporan_kejadian' => '2026-09-05',
+                'nomor_surat_perintah' => null,
+                'tanggal_surat_perintah' => null,
+                'deskripsi' => 'Dugaan pangan olahan tanpa izin edar skala rumahan.',
+            ],
+            [
+                'nomor_laporan_kejadian' => 'LK/004/IX/2026',
+                'tanggal_laporan_kejadian' => '2026-09-08',
+                'nomor_surat_perintah' => 'SP/003/IX/2026',
+                'tanggal_surat_perintah' => '2026-09-08',
+                'deskripsi' => 'Dugaan obat tradisional ilegal mengandung BKO.',
+            ],
+            [
+                'nomor_laporan_kejadian' => 'LK/005/IX/2026',
+                'tanggal_laporan_kejadian' => '2026-09-10',
+                'nomor_surat_perintah' => null,
+                'tanggal_surat_perintah' => null,
+                'deskripsi' => 'Dugaan suplemen kesehatan palsu secara daring.',
+            ],
+        ];
+
+        foreach ($samplePerkara as $perkaraData) {
+            \App\Models\Perkara::updateOrCreate(
+                ['nomor_laporan_kejadian' => $perkaraData['nomor_laporan_kejadian']],
+                [
+                    'tanggal_laporan_kejadian' => $perkaraData['tanggal_laporan_kejadian'],
+                    'nomor_surat_perintah' => $perkaraData['nomor_surat_perintah'],
+                    'tanggal_surat_perintah' => $perkaraData['tanggal_surat_perintah'],
+                    'deskripsi' => $perkaraData['deskripsi'],
+                    'created_by' => $penyidikUser?->id,
+                    'updated_by' => $penyidikUser?->id,
+                ]
+            );
+        }
     }
 }

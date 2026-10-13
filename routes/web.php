@@ -1,10 +1,13 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DokumenController;
+use App\Http\Controllers\LaporanKejadianController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\MasterDataController;
 use App\Http\Controllers\MathCaptchaController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SprindikController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WilayahController;
 use App\Services\MockStageService;
@@ -79,46 +82,26 @@ Route::middleware('auth')->group(function () {
     });
 
     // Laporan Kejadian
-    Route::get('/laporan-kejadian', function (Request $request, MockStageService $mockService) {
-        if ($request->header('X-Filter-Partial')) {
-            $laporanKejadian = $mockService->getLaporanKejadian($request);
-
-            return view('pages.laporan-kejadian._table-partial', compact('laporanKejadian'));
-        }
-
-        return view('pages.laporan-kejadian.index');
-    })->name('laporan-kejadian.index');
-
-    Route::get('/laporan-kejadian/tambah', function () {
-        return view('pages.laporan-kejadian.create');
-    })->middleware('can:create-cases')->name('laporan-kejadian.create');
-
-    Route::get('/laporan-kejadian/{id}', function ($id) {
-        return view('pages.laporan-kejadian.show', [
-            'id' => $id,
-        ]);
-    })->name('laporan-kejadian.show');
+    Route::get('/laporan-kejadian', [LaporanKejadianController::class, 'index'])->name('laporan-kejadian.index');
+    Route::get('/laporan-kejadian/tambah', [LaporanKejadianController::class, 'create'])->middleware('can:create-cases')->name('laporan-kejadian.create');
+    Route::post('/laporan-kejadian', [LaporanKejadianController::class, 'store'])->middleware('can:create-cases')->name('laporan-kejadian.store');
+    Route::get('/laporan-kejadian/{perkara}', [LaporanKejadianController::class, 'show'])->name('laporan-kejadian.show');
+    Route::get('/laporan-kejadian/{perkara}/edit', [LaporanKejadianController::class, 'edit'])->middleware('can:edit-draft')->name('laporan-kejadian.edit');
+    Route::put('/laporan-kejadian/{perkara}', [LaporanKejadianController::class, 'update'])->middleware('can:edit-draft')->name('laporan-kejadian.update');
+    Route::delete('/laporan-kejadian/{perkara}', [LaporanKejadianController::class, 'destroy'])->middleware('can:soft-delete')->name('laporan-kejadian.destroy');
 
     // Sprindik
-    Route::get('/sprindik', function (Request $request, MockStageService $mockService) {
-        if ($request->header('X-Filter-Partial')) {
-            $sprindiks = $mockService->getSprindik($request);
+    Route::get('/sprindik', [SprindikController::class, 'index'])->name('sprindik.index');
+    Route::get('/sprindik/tambah', [SprindikController::class, 'create'])->middleware('can:create-cases')->name('sprindik.create');
+    Route::post('/sprindik', [SprindikController::class, 'store'])->middleware('can:create-cases')->name('sprindik.store');
+    Route::get('/sprindik/{perkara}', [SprindikController::class, 'show'])->name('sprindik.show');
+    Route::get('/sprindik/{perkara}/edit', [SprindikController::class, 'edit'])->middleware('can:edit-draft')->name('sprindik.edit');
+    Route::put('/sprindik/{perkara}', [SprindikController::class, 'update'])->middleware('can:edit-draft')->name('sprindik.update');
+    Route::delete('/sprindik/{perkara}', [SprindikController::class, 'destroy'])->middleware('can:soft-delete')->name('sprindik.destroy');
 
-            return view('pages.sprindik._table-partial', compact('sprindiks'));
-        }
-
-        return view('pages.sprindik.index');
-    })->name('sprindik.index');
-
-    Route::get('/sprindik/tambah', function () {
-        return view('pages.sprindik.create');
-    })->middleware('can:create-cases')->name('sprindik.create');
-
-    Route::get('/sprindik/{id}', function ($id) {
-        return view('pages.sprindik.show', [
-            'id' => $id,
-        ]);
-    })->name('sprindik.show');
+    // Dokumen (Download & Preview Privat)
+    Route::get('/dokumen/{dokumen}/download', [DokumenController::class, 'download'])->name('dokumen.download');
+    Route::get('/dokumen/{dokumen}/preview', [DokumenController::class, 'preview'])->name('dokumen.preview');
 
     // SPDP
     Route::get('/spdp', function (Request $request, MockStageService $mockService) {

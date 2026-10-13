@@ -42,7 +42,7 @@ _(kosong)_
   - AC: Live filter via Alpine `tableFilter()` component di seluruh 8 tabel (Laporan Kejadian, Sprindik, SPDP, Tahap 1, P-21, Dashboard Progress Perkara, Master Data, Pengaturan); header request `X-Filter-Partial: 1` mengembalikan partial HTML tabel; URL tersinkronisasi via `history.pushState` dan navigasi tombol back/forward browser tetap bekerja; fallback normal GET tanpa JS; test & pint lulus.
 - [x] T-019 — Filter tanggal menggunakan Datepicker Flatpickr (ref: F-39, D-011)
   - AC: `<x-common.table-filter>` menggunakan `<x-form.date-picker>` berbasis Flatpickr dengan lokalisasi Bahasa Indonesia (`id`), icon kalender Flaticon, event bubbling `change` terintegrasi langsung dengan live filter tanpa reload, styling light & dark mode rapi, dan reset otomatis Flatpickr instance; test & pint lulus.
-- [x] T-020 — Penomoran seragam kolom "No" pada Master Data & Manajemen Pengguna (ref: D-013)
+- [x] T-020A — Penomoran seragam kolom "No" pada Master Data & Manajemen Pengguna (ref: D-013)
   - AC: Kolom nomor urut `No` (`{{ $loop->iteration }}`) ditambahkan ke tabel Master Data dan Manajemen Pengguna; colspan baris kosong disesuaikan; tampilan konsisten dengan seluruh tabel perkara di BAPTwo; test & pint lulus.
 
 ## Auth & RBAC (F-38)
@@ -64,7 +64,8 @@ _(kosong)_
 
 ## Data Perkara (pra-SPDP)
 
-- [ ] T-020 — Perkara + Laporan Kejadian + Surat Perintah Penyidikan (F-01, F-05, F-06)
+- [x] T-020 — Perkara + Laporan Kejadian + Surat Perintah Penyidikan (F-01, F-05, F-06, D-007, D-008)
+  - AC: Migrasi tabel singular `perkara`, `dokumen`, `audit_log`; Model Eloquent (`Perkara`, `Dokumen`, `AuditLog`); `PerkaraService` + `AuditTrailService`; `LaporanKejadianController` & `SprindikController` dengan CRUD pra-SPDP terhubung database; upload dan download/preview privat file PDF (mimes:pdf, max 20MB); validasi unik nomor; soft delete; RBAC (Penyidik/Admin vs Pimpinan read-only); 10 feature tests baru lulus; Pint lulus.
 - [ ] T-021 — Tersangka; 1 Tersangka = 1 Berkas Perkara (F-02, F-03)
 - [ ] T-022 — Pasal berlapis per Berkas (F-04)
 - [ ] T-023 — TKP + PPNS utama/anggota (F-07, F-08)
@@ -114,4 +115,8 @@ _(kosong)_
 - [x] T-015 — 2026-10-12
 - [x] T-016 — 2026-10-13
 - [x] T-017 — 2026-10-13
+- [x] T-018 — 2026-10-13
+- [x] T-019 — 2026-10-13
+- [x] T-020A — 2026-10-13
+- [x] T-020 — 2026-10-13
 - [x] T-024 — 2026-10-12

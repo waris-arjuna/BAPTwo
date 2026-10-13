@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Dokumen;
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\StreamedResponse;
+
+class DokumenController extends Controller
+{
+    /**
+     * Download dokumen legal PDF privat
+     */
+    public function download(Dokumen $dokumen): StreamedResponse
+    {
+        if (! Storage::disk('local')->exists($dokumen->file_path)) {
+            abort(404, 'Dokumen tidak ditemukan.');
+        }
+
+        return Storage::disk('local')->download($dokumen->file_path, $dokumen->nama_file_asli);
+    }
+
+    /**
+     * Preview dokumen PDF langsung di browser
+     */
+    public function preview(Dokumen $dokumen): mixed
+    {
+        if (! Storage::disk('local')->exists($dokumen->file_path)) {
+            abort(404, 'Dokumen tidak ditemukan.');
+        }
+
+        return Storage::disk('local')->response($dokumen->file_path, $dokumen->nama_file_asli, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="'.$dokumen->nama_file_asli.'"',
+        ]);
+    }
+}

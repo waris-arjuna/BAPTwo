@@ -1,15 +1,22 @@
-@php
-    $laporanKejadian ??= app(\App\Services\MockStageService::class)->getLaporanKejadian(
-        request('search'),
-        request('status'),
-        request('tanggal_dari', request('tanggal'))
-    );
-@endphp
-
 @extends('layouts.app')
 
 @section('content')
     <div class="space-y-6">
+
+        {{-- Flash Messages --}}
+        @if (session('success'))
+            <div class="flex items-center gap-3 rounded-xl border border-green-200 bg-green-50 p-4 text-sm text-green-700 dark:border-green-500/20 dark:bg-green-500/10 dark:text-green-300">
+                <i class="fi fi-rr-check text-base"></i>
+                <span>{{ session('success') }}</span>
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="flex items-center gap-3 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-500/20 dark:bg-red-500/10 dark:text-red-300">
+                <i class="fi fi-rr-cross text-base"></i>
+                <span>{{ session('error') }}</span>
+            </div>
+        @endif
 
         {{-- Header --}}
         <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -40,7 +47,7 @@
 
             @can('create-cases')
                 <a
-                    href="{{ url('/laporan-kejadian/tambah') }}"
+                    href="{{ route('laporan-kejadian.create') }}"
                     class="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-500 px-4 py-2.5 text-sm font-medium text-white shadow-theme-xs transition hover:bg-brand-600"
                 >
                     <i class="fi fi-rr-plus-small text-lg"></i>
@@ -59,7 +66,6 @@
                 :statusOptions="[
                     'Belum Dilanjutkan' => 'Belum Dilanjutkan',
                     'Sprindik Tersedia' => 'Sprindik Tersedia',
-                    'Perkara Terbentuk' => 'Perkara Terbentuk',
                 ]"
             />
 

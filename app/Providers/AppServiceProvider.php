@@ -24,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Gate::policy(User::class, UserPolicy::class);
+        Gate::policy(\App\Models\Perkara::class, \App\Policies\PerkaraPolicy::class);
 
         // UC-05: Hanya Administrator yang dapat mengelola pengguna
         Gate::define('manage-users', fn (User $user): bool => $user->isAdmin());
