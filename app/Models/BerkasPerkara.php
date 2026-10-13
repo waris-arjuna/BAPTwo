@@ -130,6 +130,25 @@ class BerkasPerkara extends Model
     }
 
     /**
+     * @return HasMany<Dpo, $this>
+     */
+    public function dpos(): HasMany
+    {
+        return $this->hasMany(Dpo::class, 'berkas_perkara_id');
+    }
+
+    /**
+     * Mengambil penetapan DPO yang sedang aktif (jika ada)
+     */
+    public function activeDpo(): ?Dpo
+    {
+        return $this->dpos()
+            ->where('status', 'aktif')
+            ->latest('id')
+            ->first();
+    }
+
+    /**
      * Label tampilan status formal (PRD F-20, F-21: null = "Dalam Proses")
      */
     public function getStatusFormalLabelAttribute(): string

@@ -39,6 +39,9 @@ class AppServiceProvider extends ServiceProvider
         // PRD Hak Akses: Penyidik & Administrator dapat menambah perkara/berkas; Pimpinan tidak
         Gate::define('create-cases', fn (User $user): bool => $user->isPenyidik() || $user->isAdmin());
 
+        // PRD F-24 s.d. F-27 & Hak Akses: Toggle DPO (Penyidik & Administrator bisa, Pimpinan tidak)
+        Gate::define('toggle-dpo', fn (User $user): bool => $user->isPenyidik() || $user->isAdmin());
+
         // Master Data: Penyidik & Administrator dapat tambah/edit/soft-delete; Pimpinan hanya lihat
         Gate::define('manage-master-data', fn (User $user): bool => $user->isPenyidik() || $user->isAdmin());
 

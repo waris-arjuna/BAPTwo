@@ -91,10 +91,10 @@ _(kosong)_
 
 ## DPO, SP3, Dokumen, Audit
 
-- [ ] T-040 — DPO aktif/nonaktif + gate Tahap II di server & UI (F-24–F-27, F-35)
+- [x] T-040 — DPO aktif/nonaktif + gate Tahap II di server & UI (F-24–F-27, F-35, D-025)
 - [ ] T-041 — Upload SP3 setelah Tidak Selesai (F-28)
 - [ ] T-042 — Dokumen terpusat per Berkas & tahap (F-32)
-- [ ] T-043 — Audit trail / case history (F-31)
+- [x] T-043 — Audit trail / case history (F-31, D-025)
 - [ ] T-044 — Soft delete + halaman Sampah untuk pemulihan (F-44)
 
 ## Monitoring & Laporan
@@ -144,3 +144,5 @@ _(kosong)_
 - [x] T-031D — 2026-10-14 Integrasi Sub-Tahap (P-16/P-17 ke SPDP & P-18/P-19 ke Tahap 1) dan Migrasi Halaman Tahapan Lanjutan ke Data Riil (D-024)
 - [x] T-032 — 2026-10-14 Progress berbobot & status proses otomatis (F-29, F-30)
 - [x] T-033 — 2026-10-14 Trigger Selesai dari TAHAP II (F-22)
+- [x] T-040 — 2026-10-14 DPO aktif/nonaktif + gate Tahap II di server & UI (F-24–F-27, F-35, D-025)
+- [x] T-043 — 2026-10-14 Audit trail / case history kronologis dengan timeline modern di Detail Perkara (F-31, D-025)

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DataPerkaraController;
 use App\Http\Controllers\DokumenController;
+use App\Http\Controllers\DpoController;
 use App\Http\Controllers\LaporanKejadianController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\MasterDataController;
@@ -126,6 +127,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/tahapan/{tahapan}', [TahapanPerkaraController::class, 'show'])->name('tahapan.show');
         Route::get('/tahapan/{tahapan}/edit', [TahapanPerkaraController::class, 'edit'])->middleware('can:edit-draft')->name('tahapan.edit');
         Route::put('/tahapan/{tahapan}', [TahapanPerkaraController::class, 'update'])->middleware('can:edit-draft')->name('tahapan.update');
+
+        // DPO (Aktivasi & Pencabutan - PRD F-24 s.d. F-27)
+        Route::post('/dpo', [DpoController::class, 'store'])->middleware('can:toggle-dpo')->name('dpo.store');
+        Route::post('/dpo/cabut', [DpoController::class, 'destroy'])->middleware('can:toggle-dpo')->name('dpo.destroy');
     });
 
     // SPDP (Data Riil & Sub-Tahap Opsional P-16, P-17P)

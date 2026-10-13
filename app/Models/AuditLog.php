@@ -63,4 +63,12 @@ class AuditLog extends Model
     {
         return $this->belongsTo(Perkara::class, 'perkara_id');
     }
+
+    /**
+     * @return BelongsTo<BerkasPerkara, $this>
+     */
+    public function berkasPerkara(): BelongsTo
+    {
+        return $this->belongsTo(BerkasPerkara::class, 'berkas_perkara_id');
+    }
 }

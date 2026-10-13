@@ -355,5 +355,29 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
      - Penomoran `No` seragam (`{{ $loop->iteration }}`) pada tabel (D-013).
 - Konsekuensi: Pengguna dapat mengisi tahapan Kejaksaan dengan sangat ringkas dalam satu formulir, integritas data dan status formal 100% terjaga, dan seluruh alur penanganan perkara dari SPDP hingga Putusan Pengadilan berfungsi penuh dengan data riil database.
 
+## D-025 — Manajemen Penetapan & Pencabutan DPO serta Riwayat Penanganan Perkara (Case History Timeline)
+
+- Tanggal: 2026-10-14
+- Status: Disepakati & Diimplementasikan
+- Konteks: Merujuk PRD F-24 s.d. F-27, F-31, dan F-35 (Tasks T-040 & T-043), pengguna membutuhkan mekanisme manajemen DPO (Daftar Pencarian Orang) yang terpadu pada Detail Perkara (`/perkara/{id}`): Penyidik dan Administrator dapat menetapkan status DPO pada tersangka kapan saja dan mencabutnya ketika tersangka ditemukan kembali. Saat DPO aktif, sistem harus menampilkan indikator visual merah mencolok, card data DPO, dan memblokir pelimpahan Tahap II di UI maupun server. Selain itu, seluruh aktivitas penanganan perkara (tahap, DPO, dokumen) harus terekam di `audit_log` dan ditampilkan sebagai Riwayat Penanganan Perkara (Case History / Timeline) yang elegan dan informatif.
+- Keputusan:
+  1. **Skema Tabel Singular `dpo` & Relasi Eloquent**:
+     - Tabel singular `dpo` memiliki kolom `berkas_perkara_id`, `nomor_surat` (`VARCHAR(150)`), `tanggal_penetapan` (`DATE`), `tanggal_pencabutan` (`DATE`), `status` (`ENUM('aktif', 'nonaktif')`), `keterangan` (`TEXT`), `alasan_pencabutan` (`TEXT`), `dokumen_id` (FK `dokumen`), `created_by`, `updated_by`, `timestamps`, dan `softDeletes`.
+     - Model `Dpo` terhubung dengan `BerkasPerkara` (`belongsTo`), `Dokumen` (`belongsTo`), serta `User` (`creator`/`updater`).
+     - Kolom `berkas_perkara.is_dpo` disinkronkan secara otomatis: bernilai `true` saat DPO aktif dan `false` saat DPO dicabut.
+  2. **Service & Controller Terisolasi (`DpoService` & `DpoController`)**:
+     - `DpoService::activateDpo`: Memvalidasi bahwa berkas belum DPO dan belum berstatus formal final, mengunggah dokumen PDF pendukung jika ada, membuat entri `dpo`, mengeset `berkas_perkara.is_dpo = true`, dan mencatat entri `audit_log` (`aksi: aktifkan_dpo`).
+     - `DpoService::revokeDpo`: Memvalidasi bahwa berkas sedang DPO, mengupdate entri DPO aktif menjadi status `nonaktif` dengan tanggal dan alasan pencabutan, mengeset `berkas_perkara.is_dpo = false`, dan mencatat entri `audit_log` (`aksi: nonaktifkan_dpo`).
+     - Route terproteksi dengan Gate `toggle-dpo` (`isPenyidik() || isAdmin()`), Pimpinan dibatasi hanya dapat melihat (403 Forbidden untuk aksi perubahan).
+  3. **Antarmuka Pengguna di Detail Perkara (`resources/views/pages/perkara/show.blade.php`)**:
+     - **Visual Indicator & Card Peringatan**: Menampilkan badge merah `DPO Aktif` (`fi fi-rr-shield-exclamation`) pada header berkas perkara dan card peringatan DPO aktif berlatar merah dengan rincian nomor surat, tanggal penetapan, link preview dokumen, keterangan, dan pesan peringatan bahwa pelimpahan ke Tahap II dinonaktifkan.
+     - **Riwayat Pencabutan**: Jika DPO pernah dicabut, ditampilkan catatan informatif tanggal dan alasan pencabutan.
+     - **Modal Interaktif Alpine.js**: Modal "Tetapkan Status DPO" dan "Cabut Status DPO" dengan Flaticon UIcons (D-010), Flatpickr datepicker (D-012), `<x-form.pdf-upload>` dengan tombol silang `(x)` (D-019), dan catatan format `Note: ...` di bawah nomor surat (D-021).
+  4. **Riwayat Penanganan Perkara (Case History / Timeline Audit Trail)**:
+     - Menggantikan tampilan mentah audit log lama dengan komponen timeline modern yang terhubung garis vertikal.
+     - Icon dan badge warna khas per jenis aktivitas (`aktifkan_dpo` = merah, `nonaktifkan_dpo` = hijau, `finalisasi_*` = brand/indigo, `simpan_draft_*` = kuning, `simpan_sub_tahap` = biru).
+     - Label berbahasa Indonesia yang ramah pengguna, nama tersangka terkait, tanggal dan waktu lengkap (`WITA`), pelaksana (nama + role), alamat IP, serta rincian data baru (nomor surat, tanggal, alasan pencabutan, keterangan).
+- Konsekuensi: Penegakan aturan bisnis DPO dan transparansi jejak rekam perkara (audit trail) 100% terpenuhi sesuai PRD F-24 s.d. F-27 dan F-31, dengan pengujian feature test yang lulus sempurna.
+
 
 

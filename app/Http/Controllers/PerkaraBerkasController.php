@@ -78,9 +78,11 @@ class PerkaraBerkasController extends Controller
             'ppnsAnggota',
             'tersangkas.berkasPerkara.pasals',
             'tersangkas.berkasPerkara.tahapan.dokumen',
+            'tersangkas.berkasPerkara.dpos.dokumen',
+            'tersangkas.berkasPerkara.dpos.creator',
             'creator',
             'perkaraFinalizer',
-            'auditLogs.user',
+            'auditLogs' => fn ($query) => $query->with(['user', 'berkasPerkara.tersangka'])->orderBy('id', 'desc'),
         ]);
 
         return view('pages.perkara.show', compact('perkara'));
