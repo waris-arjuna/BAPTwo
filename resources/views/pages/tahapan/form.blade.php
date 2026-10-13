@@ -160,9 +160,12 @@
                                 id="nomor_surat"
                                 name="nomor_surat"
                                 value="{{ old('nomor_surat', $tahap?->nomor_surat) }}"
-                                placeholder="Contoh: B-{{ rand(100, 999) }}/BPOM/{{ date('Y') }}"
+                                placeholder="Contoh: B-01/X/2026/PPNS-BPOM"
                                 class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 placeholder-gray-400 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
                             >
+                            <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
+                                <strong class="font-medium text-gray-700 dark:text-gray-300">Note:</strong> Format nomor surat resmi (contoh: B-01/X/2026/PPNS-BPOM).
+                            </p>
                         </div>
 
                         <div>

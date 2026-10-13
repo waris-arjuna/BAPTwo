@@ -136,6 +136,9 @@
                             placeholder="Contoh: SP/001/IX/2026"
                             class="h-11 w-full rounded-lg border border-gray-300 bg-white px-3 text-sm text-gray-800 outline-none transition placeholder:text-gray-400 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900/40 dark:text-white/90"
                         >
+                        <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
+                            <strong class="font-medium text-gray-700 dark:text-gray-300">Note:</strong> Format penomoran: SP/[No]/[Bulan Romawi]/[Tahun] (contoh: SP/001/IX/2026).
+                        </p>
                     </div>
 
                     {{-- Tanggal Sprindik --}}

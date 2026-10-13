@@ -272,3 +272,21 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
   4. **Kompatibilitas Penuh Backend**:
      - Setiap ID anggota terpilih dirender sebagai `<input type="hidden" name="ppns_anggota_ids[]" :value="id">` via `<template x-for>`, sehingga data dikirimkan 100% kompatibel dengan Form Request `SavePerkaraBerkasRequest` dan relasi pivot database `perkara_ppns` tanpa perubahan backend.
 - Konsekuensi: Pengalaman pengguna lebih ringkas dan modern, bebas duplikasi pilihan penyidik, dan data anggota tersimpan secara konsisten.
+
+## D-021 — Larangan Istilah Internal di UI & Standardisasi Catatan Format Penomoran Dokumen
+
+- Tanggal: 2026-10-14
+- Status: Disepakati & Diimplementasikan
+- Konteks: Teks antarmuka pengguna pada formulir perkara sebelumnya memuat istilah teknis dan nama file developer (seperti "PRD F-33" dan "Aturan domain BAPTwo") yang mengganggu kenyamanan pengguna akhir. Selain itu, pengguna membutuhkan catatan petunjuk format penomoran yang seragam dan elegan di bawah seluruh kolom input nomor dokumen perkara.
+- Keputusan:
+  1. **Larangan Istilah Developer di UI**:
+     - Seluruh nama dokumen atau kode referensi developer (PRD, SRS, F-xx, D-xx, T-xx, "aturan domain", dsb.) dilarang keras muncul di teks antarmuka yang dilihat pengguna akhir. Seluruh UI teks diubah menjadi petunjuk operasional yang ramah dan relevan bagi pengguna akhir.
+  2. **Standardisasi Catatan Format Penomoran Dokumen**:
+     - Kolom input tetap mempertahankan placeholder contoh penomoran.
+     - Di bawah kolom input, ditambahkan catatan seragam berformat `<strong class="font-medium text-gray-700 dark:text-gray-300">Note:</strong> [keterangan format]`.
+     - Template catatan:
+       - **Nomor Berkas Perkara**: `Note: Format penomoran berkas: BP/[No]/[Bulan Romawi]/[Tahun]/PPNS-BPOM (atau sesuaikan dengan nomor pada dokumen fisik berkas perkara).`
+       - **Nomor Laporan Kejadian**: `Note: Format penomoran: LK/[No]/[Bulan Romawi]/[Tahun] (contoh: LK/001/IX/2026).`
+       - **Nomor Sprindik**: `Note: Format penomoran: SP/[No]/[Bulan Romawi]/[Tahun] (contoh: SP/001/IX/2026).`
+       - **Nomor Surat Tahapan / SPDP**: `Note: Format nomor surat resmi (contoh: B-01/X/2026/PPNS-BPOM).`
+- Konsekuensi: Tampilan UI menjadi bersih dan profesional, serta pengguna mendapatkan panduan penomoran yang jelas di setiap formulir input nomor.

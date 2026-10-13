@@ -90,9 +90,12 @@
                             type="text"
                             id="nomor"
                             name="nomor"
-                            placeholder="Masukkan nomor SPDP"
+                            placeholder="Contoh: B-01/X/2026/PPNS-BPOM"
                             class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 outline-none transition placeholder:text-gray-400 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/10 dark:border-gray-700 dark:text-white/90 dark:placeholder:text-gray-500"
                         >
+                        <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
+                            <strong class="font-medium text-gray-700 dark:text-gray-300">Note:</strong> Format penomoran SPDP resmi (contoh: B-01/X/2026/PPNS-BPOM).
+                        </p>
                     </div>
 
                     {{-- Tanggal --}}

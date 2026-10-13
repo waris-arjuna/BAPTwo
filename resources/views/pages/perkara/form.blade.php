@@ -617,7 +617,7 @@
                             </h2>
                         </div>
                         <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                            Aturan domain BAPTwo: <strong>1 Tersangka = 1 Berkas Perkara Terpisah</strong> dengan Nomor Berkas manual dan Pasal Berlapis masing-masing.
+                            Setiap <strong>1 Tersangka membentuk 1 Berkas Perkara terpisah</strong> dengan Nomor Berkas dan Pasal masing-masing.
                         </p>
                     </div>
 
@@ -658,20 +658,20 @@
                         <div class="space-y-5 p-4 sm:p-6">
                             <input type="hidden" :name="`tersangka[${index}][id]`" :value="item.id || ''">
 
-                            {{-- Nomor Berkas Perkara Manual (PRD F-33) --}}
+                            {{-- Nomor Berkas Perkara Manual --}}
                             <div class="rounded-xl border border-brand-100 bg-brand-50/40 p-4 dark:border-brand-500/20 dark:bg-brand-500/5">
                                 <label class="mb-1.5 block text-sm font-medium text-gray-800 dark:text-white/90">
-                                    Nomor Berkas Perkara (Input Manual Bebas Format) <span class="text-red-500">*</span>
+                                    Nomor Berkas Perkara <span class="text-red-500">*</span>
                                 </label>
                                 <input
                                     type="text"
                                     :name="`tersangka[${index}][nomor_berkas]`"
                                     x-model="item.nomor_berkas"
-                                    placeholder="Contoh: BP/01/X/2026/PPNS-BPOM atau penomoran bebas sesuai dokumen"
+                                    placeholder="Contoh: BP/01/X/2026/PPNS-BPOM"
                                     class="h-11 w-full rounded-lg border border-gray-300 bg-white px-4 text-sm text-gray-800 placeholder:text-gray-400 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
                                 >
-                                <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                                    Sesuai aturan PRD F-33, nomor berkas perkara diinput secara manual tanpa pembatasan pola format.
+                                <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
+                                    <strong class="font-medium text-gray-700 dark:text-gray-300">Note:</strong> Format penomoran berkas: BP/[No]/[Bulan Romawi]/[Tahun]/PPNS-BPOM (atau sesuaikan dengan nomor pada dokumen fisik berkas perkara).
                                 </p>
                             </div>
 

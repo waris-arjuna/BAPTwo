@@ -74,6 +74,8 @@ _(kosong)_
   - AC: Informasi TKP (klasifikasi retailer/distributor, legalitas legal/ilegal, modus online/offline, alamat berjenjang terintegrasi proxy wilayah API Kode Wilayah) tersimpan di tabel `tkp` & `alamat`; Tim Penyidik PPNS (1 PPNS Utama + 0..N PPNS Anggota) tersimpan di pivot `perkara_ppns` dengan peran; test lulus.
 - [x] T-023A — Pemilihan Tim Penyidik PPNS Anggota via combo box dinamis + kartu detail terpilih (F-08, D-020)
   - AC: Dropdown combo box untuk penambahan PPNS Anggota berulang kali; kartu kecil detail penyidik terpilih (Nama, NIP) dengan tombol pembatalan `(x)`; eksklusi otomatis dari combo box untuk PPNS Utama dan anggota yang sudah terpilih; hidden input kompatibel 100% backend; test & pint lulus.
+- [x] T-023B — Pembersihan Istilah Internal di UI & Standardisasi Catatan Format Penomoran Dokumen (D-021)
+  - AC: Seluruh istilah developer (PRD, PRD F-33, Aturan domain) dihapus dari UI; catatan Note format penomoran ditambahkan di bawah kolom input Nomor Berkas, Nomor Laporan Kejadian, Nomor Sprindik, Nomor Surat Tahapan, dan Nomor SPDP; test & pint lulus.
 - [x] T-025 — Nomor Berkas manual tanpa validasi pola (F-33)
   - AC: Input `nomor_berkas` diinput manual oleh user tanpa pembatasan regex/format tertentu (bebas karakter format); tersimpan di `berkas_perkara.nomor_berkas`; test lulus.
 - [x] T-026 — Menu Navigasi Data Perkara di Sidebar (Daftar Perkara & Progress Perkara) + Pop-up Tambah Perkara (F-01, F-39, F-40, D-014)
@@ -128,6 +130,7 @@ _(kosong)_
 - [x] T-022 — 2026-10-13
 - [x] T-023 — 2026-10-13
 - [x] T-023A — 2026-10-14 Pemilihan Tim Penyidik PPNS Anggota via combo box dinamis + kartu detail terpilih (D-020)
+- [x] T-023B — 2026-10-14 Pembersihan Istilah Internal di UI & Standardisasi Catatan Format Penomoran Dokumen (D-021)
 - [x] T-024 — 2026-10-12
 - [x] T-025 — 2026-10-13
 - [x] T-026 — 2026-10-13

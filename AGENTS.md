@@ -275,6 +275,7 @@ Selain konvensi TailAdmin, ikuti aturan berikut:
 - ❌ Menambah fitur di luar scope v1.0 (lihat PRD bagian 8 & bagian 7 di file ini).
 - ❌ Mengubah bobot progress tanpa persetujuan.
 - ❌ Menaruh validasi tahapan / DPO gate **hanya di UI**. Harus ada di server.
+- ❌ Menampilkan nama file internal, dokumen aturan, atau referensi developer (seperti PRD, PRD F-xx, D-xx, T-xx, dll.) di teks antarmuka (UI) yang dilihat pengguna akhir. Seluruh teks bantuan, label, dan catatan di UI wajib bersih dan berfokus hanya pada petunjuk operasional pengguna.
 - ❌ Install package Composer/NPM baru tanpa bertanya (aturan TailAdmin tetap berlaku).
 
 ---
