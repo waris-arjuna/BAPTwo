@@ -130,7 +130,7 @@
                             @endcan
 
                             @can('create-cases')
-                                @if ($item->isFinal())
+                                @if ($item->isFinal() && ! $item->berkasPerkara?->hasTahap(\App\Enums\JenisTahap::TAHAP_2))
                                     <a
                                         href="{{ route('berkas-perkara.tahapan.create', [$item->berkas_perkara_id, 'jenis' => 'tahap_2']) }}"
                                         class="inline-flex h-8 items-center gap-1 rounded-lg bg-brand-500 px-2.5 text-xs font-medium text-white transition hover:bg-brand-600"

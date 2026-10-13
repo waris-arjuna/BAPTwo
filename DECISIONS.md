@@ -379,5 +379,36 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
      - Label berbahasa Indonesia yang ramah pengguna, nama tersangka terkait, tanggal dan waktu lengkap (`WITA`), pelaksana (nama + role), alamat IP, serta rincian data baru (nomor surat, tanggal, alasan pencabutan, keterangan).
 - Konsekuensi: Penegakan aturan bisnis DPO dan transparansi jejak rekam perkara (audit trail) 100% terpenuhi sesuai PRD F-24 s.d. F-27 dan F-31, dengan pengujian feature test yang lulus sempurna.
 
+## D-026 — Larangan Pemilihan Ulang Data Antar-Tahap (Relasi 1-ke-1 Konsumsi Data & Validasi Ketat Server-Side)
+
+- Tanggal: 2026-10-14
+- Status: Disepakati & Diimplementasikan
+- Konteks: Berdasarkan permintaan pengguna, data dari tahap sebelumnya yang telah digunakan pada suatu tahap berikutnya tidak boleh muncul atau dipilih kembali pada tahap yang sama. Khususnya:
+  1. Relasi 1 Laporan Kejadian ke 1 Sprindik: Laporan kejadian yang sudah terhubung ke suatu Sprindik tidak boleh muncul atau dipilih kembali di form Sprindik lain.
+  2. Relasi 1 Berkas Perkara ke setiap jenis tahapan: Berkas perkara yang telah memiliki tahapan tertentu (SPDP, Tahap 1, P-21, Tahap 2, atau Putusan Perkara) tidak boleh muncul kembali pada modal pemilihan berkas di tahap yang sama.
+  3. Pengguna menginginkan aturan ini ditegakkan di seluruh lapisan sistem (UI, Controller, Form Request, dan Domain Service) agar tidak dapat dibypass melalui manipulasi URL parameter (`?perkara_id=` atau `?berkas_id=`).
+- Keputusan:
+  1. **Eksklusi Data Terpakai di Query Service**:
+     - `PerkaraService::getAvailableForSprindik()`: Hanya mengembalikan perkara yang belum memiliki `nomor_surat_perintah` dan `tahap_sprindik_status`.
+     - `PerkaraService::getAvailableForPerkara()`: Menambahkan `whereDoesntHave('tersangkas')` agar perkara yang tersangkanya sudah dibuat tidak muncul kembali di modal.
+     - `TahapanService::getAvailableBerkasForSpdp()`, `getAvailableBerkasForTahap1()`, `getAvailableBerkasForP21()`, `getAvailableBerkasForTahap2()`, dan `getAvailableBerkasForPutusan()`: Mengecualikan seluruh Berkas Perkara yang sudah memiliki tahapan terkait (baik status draft maupun final) menggunakan `whereDoesntHave('tahapan', fn($q) => $q->where('jenis_tahap', ...))`.
+  2. **Validasi Server-Side pada Form Request**:
+     - `StoreSprindikRequest`: Validasi `Rule::exists('perkara', 'id')` memverifikasi bahwa perkara yang dipilih belum memiliki Sprindik. Jika sudah ada, validasi gagal dengan pesan yang ramah pengguna.
+     - `StoreTahapanRequest`: Menambahkan closure validation pada `jenis_tahap` yang mengecek `$berkas->hasTahap($enum)` dan memastikan `$enum` ada dalam daftar `$tahapanService->getNextAvailableStages($berkas)`.
+  3. **Proteksi Controller terhadap Parameter Query String**:
+     - `SprindikController::create`: Jika `?perkara_id=X` diberikan tetapi perkara sudah terhubung ke Sprindik lain, langsung me-redirect kembali ke halaman form dengan flash pesan error.
+     - `SpdpController::create`, `Tahap1Controller::create`, `P21Controller::create`, `Tahap2Controller::create`, `PutusanPerkaraController::create`: Jika `?berkas_id=X` diberikan tetapi berkas sudah memiliki tahap tersebut atau belum memenuhi urutan prasyarat (`canProceedTo`), controller me-redirect ke halaman indeks dengan flash error.
+     - `TahapanPerkaraController::create`: Memvalidasi `?jenis=X`; jika tidak termasuk dalam `availableStages`, me-redirect ke halaman detail perkara dengan pesan error.
+  4. **Proteksi Domain Service**:
+     - `PerkaraService::attachSprindik`: Melempar `DomainException` jika perkara sudah memiliki Sprindik.
+     - `TahapanService::validateStageOrder`: Melempar `DomainException` jika berkas sudah memiliki tahapan tersebut atau melompati urutan.
+  5. **Penyembunyian Tombol Aksi di Antarmuka Pengguna**:
+     - Tombol "Mulai Tahap 1" di tabel SPDP (`_table-partial.blade.php`) disembunyikan jika berkas sudah memiliki Tahap 1.
+     - Tombol "Lanjut P-21" di tabel Tahap 1 disembunyikan jika berkas sudah memiliki P-21.
+     - Tombol "Lanjut Tahap 2" di tabel P-21 disembunyikan jika berkas sudah memiliki Tahap 2.
+     - Tombol "Catat Putusan" di tabel Tahap 2 disembunyikan jika berkas sudah memiliki Keputusan Pengadilan.
+     - Tombol "Input Tahapan" di detail perkara (`perkara/show.blade.php`) disembunyikan jika seluruh tahapan progress berkas perkara telah selesai.
+- Konsekuensi: Integritas data terjamin 100%, duplikasi tahapan atau sprindik tidak dapat terjadi baik sengaja maupun tidak sengaja, dan antarmuka pengguna hanya menyajikan opsi yang valid dan relevan.
+
 
 

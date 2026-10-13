@@ -27,7 +27,28 @@ class StoreTahapanRequest extends FormRequest
 
         return [
             'action_type' => ['nullable', 'in:draft,lanjut'],
-            'jenis_tahap' => ['required', Rule::enum(JenisTahap::class)],
+            'jenis_tahap' => [
+                'required',
+                Rule::enum(JenisTahap::class),
+                function ($attribute, $value, $fail) {
+                    $berkas = $this->route('berkas');
+                    if (is_numeric($berkas)) {
+                        $berkas = \App\Models\BerkasPerkara::find($berkas);
+                    }
+                    if ($berkas instanceof \App\Models\BerkasPerkara) {
+                        $enum = $value instanceof JenisTahap ? $value : JenisTahap::tryFrom((string) $value);
+                        if ($enum && $berkas->hasTahap($enum)) {
+                            $fail("Tahapan {$enum->label()} sudah pernah dicatat pada Berkas Perkara ini. Data dari tahap sebelumnya yang sudah dipakai tidak dapat dipilih lagi.");
+
+                            return;
+                        }
+                        $available = app(\App\Services\TahapanService::class)->getNextAvailableStages($berkas);
+                        if ($enum && ! in_array($enum, $available, true)) {
+                            $fail("Tahapan {$enum->label()} tidak valid untuk urutan Berkas Perkara saat ini.");
+                        }
+                    }
+                },
+            ],
             'nomor_surat' => [
                 'required',
                 'string',

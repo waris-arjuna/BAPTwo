@@ -42,7 +42,14 @@ class TahapanPerkaraController extends Controller
                 ->with('warning', 'Seluruh tahapan progress pada Berkas Perkara ini telah selesai.');
         }
 
-        $selectedJenis = JenisTahap::tryFrom((string) $request->query('jenis')) ?? $availableStages[0];
+        $requestedJenis = JenisTahap::tryFrom((string) $request->query('jenis'));
+        if ($requestedJenis !== null && ! in_array($requestedJenis, $availableStages, true)) {
+            return redirect()
+                ->route('perkara.show', $berkas->perkara_id)
+                ->with('error', "Tahapan {$requestedJenis->label()} tidak dapat dipilih karena sudah pernah dicatat atau belum memenuhi urutan tahapan berkas perkara ini.");
+        }
+
+        $selectedJenis = $requestedJenis ?? $availableStages[0];
 
         $references = $this->tahapanService->getPreviousStagesReference($berkas);
 
@@ -79,12 +86,18 @@ class TahapanPerkaraController extends Controller
         $validated = $request->validated();
         $isDraft = ($validated['action_type'] ?? 'lanjut') === 'draft';
 
-        $tahap = $this->tahapanService->saveStage(
-            $berkas,
-            $validated,
-            $request->file('dokumen'),
-            $request->user()
-        );
+        try {
+            $tahap = $this->tahapanService->saveStage(
+                $berkas,
+                $validated,
+                $request->file('dokumen'),
+                $request->user()
+            );
+        } catch (\DomainException $e) {
+            return redirect()
+                ->route('perkara.show', $berkas->perkara_id)
+                ->with('error', $e->getMessage());
+        }
 
         $message = $isDraft
             ? "Draft tahapan {$tahap->jenis_tahap->label()} berhasil disimpan. Anda masih dapat mengedit data ini."

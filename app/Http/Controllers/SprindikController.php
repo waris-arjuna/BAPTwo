@@ -34,12 +34,18 @@ class SprindikController extends Controller
     /**
      * Tampilkan form tambah sprindik
      */
-    public function create(Request $request): View
+    public function create(Request $request): View|RedirectResponse
     {
         Gate::authorize('create-cases');
 
         $availableLaporan = $this->perkaraService->getAvailableForSprindik();
         $selectedPerkaraId = $request->integer('perkara_id') ?: null;
+
+        if ($selectedPerkaraId && ! $availableLaporan->contains('id', $selectedPerkaraId)) {
+            return redirect()
+                ->route('sprindik.create')
+                ->with('error', 'Laporan kejadian yang dipilih sudah terhubung ke Sprindik lain atau tidak valid.');
+        }
 
         return view('pages.sprindik.create', compact('availableLaporan', 'selectedPerkaraId'));
     }
@@ -57,12 +63,18 @@ class SprindikController extends Controller
         /** @var Perkara $perkara */
         $perkara = Perkara::findOrFail($validated['perkara_id']);
 
-        $this->perkaraService->attachSprindik(
-            $perkara,
-            $validated,
-            $request->file('dokumen_sprindik'),
-            $request->user()
-        );
+        try {
+            $this->perkaraService->attachSprindik(
+                $perkara,
+                $validated,
+                $request->file('dokumen_sprindik'),
+                $request->user()
+            );
+        } catch (\DomainException $e) {
+            return redirect()
+                ->route('sprindik.create')
+                ->with('error', $e->getMessage());
+        }
 
         $message = $isDraft
             ? 'Draft Sprindik berhasil disimpan. Anda masih dapat mengedit data ini.'

@@ -169,8 +169,14 @@ class PerkaraService
     {
         return Perkara::query()
             ->with('dokumenLaporan')
-            ->where('tahap_laporan_status', 'final')
-            ->whereNull('nomor_surat_perintah')
+            ->where(function ($q) {
+                $q->where('tahap_laporan_status', 'final')
+                    ->orWhereNull('tahap_laporan_status');
+            })
+            ->where(function ($q) {
+                $q->whereNull('nomor_surat_perintah')
+                    ->orWhere('nomor_surat_perintah', '');
+            })
             ->whereNull('tahap_sprindik_status')
             ->orderByDesc('tanggal_laporan_kejadian')
             ->get();
@@ -271,6 +277,10 @@ class PerkaraService
     public function attachSprindik(Perkara $perkara, array $data, ?UploadedFile $file, User $user): Perkara
     {
         return DB::transaction(function () use ($perkara, $data, $file, $user) {
+            if (! empty($perkara->nomor_surat_perintah) || ! empty($perkara->tahap_sprindik_status)) {
+                throw new \DomainException('Laporan kejadian ini sudah terhubung ke Sprindik lain. Satu Laporan kejadian hanya boleh digunakan untuk satu Sprindik.');
+            }
+
             $oldData = $perkara->toArray();
             $isFinal = ($data['action_type'] ?? 'lanjut') === 'lanjut';
 
@@ -842,6 +852,7 @@ class PerkaraService
             ->with(['dokumenSprindik', 'dokumenLaporan'])
             ->where('tahap_sprindik_status', 'final')
             ->whereNull('tahap_perkara_status')
+            ->whereDoesntHave('tersangkas')
             ->orderByDesc('tanggal_surat_perintah')
             ->get();
     }

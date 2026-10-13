@@ -42,6 +42,16 @@ class P21Controller extends Controller
         if ($berkasId = $request->integer('berkas_id')) {
             $berkas = BerkasPerkara::findOrFail($berkasId);
 
+            if ($berkas->hasTahap(\App\Enums\JenisTahap::P21)) {
+                return redirect()->route('p21.index')
+                    ->with('error', 'Berkas perkara ini sudah memiliki tahapan P-21 dan tidak dapat dipilih lagi.');
+            }
+
+            if (! $this->tahapanService->canProceedTo($berkas, \App\Enums\JenisTahap::P21)) {
+                return redirect()->route('p21.index')
+                    ->with('error', 'Berkas perkara ini belum memenuhi syarat untuk memulai P-21 (Tahap 1 belum final).');
+            }
+
             return redirect()->route('berkas-perkara.tahapan.create', [
                 'berkas' => $berkas,
                 'jenis' => 'p21',

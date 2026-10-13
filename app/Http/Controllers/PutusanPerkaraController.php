@@ -42,6 +42,16 @@ class PutusanPerkaraController extends Controller
         if ($berkasId = $request->integer('berkas_id')) {
             $berkas = BerkasPerkara::findOrFail($berkasId);
 
+            if ($berkas->hasTahap(\App\Enums\JenisTahap::KEPUTUSAN_PENGADILAN)) {
+                return redirect()->route('putusan-perkara.index')
+                    ->with('error', 'Berkas perkara ini sudah memiliki tahapan Keputusan Pengadilan dan tidak dapat dipilih lagi.');
+            }
+
+            if (! $this->tahapanService->canProceedTo($berkas, \App\Enums\JenisTahap::KEPUTUSAN_PENGADILAN)) {
+                return redirect()->route('putusan-perkara.index')
+                    ->with('error', 'Berkas perkara ini belum memenuhi syarat untuk mencatat Keputusan Pengadilan (Tahap 2 belum final).');
+            }
+
             return redirect()->route('berkas-perkara.tahapan.create', [
                 'berkas' => $berkas,
                 'jenis' => 'keputusan_pengadilan',

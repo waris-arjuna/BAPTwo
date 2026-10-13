@@ -439,7 +439,7 @@
                                                     <span>Lanjut Draft: {{ $berkas->currentDraftTahap()->jenis_tahap->label() }}</span>
                                                 </a>
                                             @endcan
-                                        @elseif ($isLocked)
+                                        @elseif ($isLocked && app(\App\Services\TahapanService::class)->getNextAvailableStages($berkas) !== [])
                                             @can('create-cases')
                                                 <a
                                                     href="{{ route('berkas-perkara.tahapan.create', $berkas) }}"

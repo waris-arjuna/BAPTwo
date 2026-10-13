@@ -142,6 +142,7 @@ _(kosong)_
 - [x] T-031B — 2026-10-14 Validasi Simpan Draft Mewajibkan Nomor/Identitas Utama & Melarang Draft Kosong (D-022)
 - [x] T-031C — 2026-10-14 Standardisasi Notifikasi Flash Message: Timer Auto-Dismiss 10 Detik + Tombol Tutup (x) (D-023)
 - [x] T-031D — 2026-10-14 Integrasi Sub-Tahap (P-16/P-17 ke SPDP & P-18/P-19 ke Tahap 1) dan Migrasi Halaman Tahapan Lanjutan ke Data Riil (D-024)
+- [x] T-031E — 2026-10-14 Larangan Pemilihan Ulang Data Antar-Tahap (Relasi 1-ke-1 Konsumsi Data & Validasi Ketat Server-Side) (D-026)
 - [x] T-032 — 2026-10-14 Progress berbobot & status proses otomatis (F-29, F-30)
 - [x] T-033 — 2026-10-14 Trigger Selesai dari TAHAP II (F-22)
 - [x] T-040 — 2026-10-14 DPO aktif/nonaktif + gate Tahap II di server & UI (F-24–F-27, F-35, D-025)

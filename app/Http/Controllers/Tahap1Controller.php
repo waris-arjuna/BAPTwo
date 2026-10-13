@@ -43,6 +43,16 @@ class Tahap1Controller extends Controller
         if ($berkasId = $request->integer('berkas_id')) {
             $berkas = BerkasPerkara::findOrFail($berkasId);
 
+            if ($berkas->hasTahap(\App\Enums\JenisTahap::TAHAP_1)) {
+                return redirect()->route('tahap-1.index')
+                    ->with('error', 'Berkas perkara ini sudah memiliki tahapan Tahap 1 dan tidak dapat dipilih lagi.');
+            }
+
+            if (! $this->tahapanService->canProceedTo($berkas, \App\Enums\JenisTahap::TAHAP_1)) {
+                return redirect()->route('tahap-1.index')
+                    ->with('error', 'Berkas perkara ini belum memenuhi syarat untuk memulai Tahap 1 (SPDP belum final).');
+            }
+
             return redirect()->route('berkas-perkara.tahapan.create', [
                 'berkas' => $berkas,
                 'jenis' => 'tahap_1',

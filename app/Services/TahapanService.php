@@ -491,6 +491,56 @@ class TahapanService
             'status' => 'final',
             'finalized_at' => now(),
         ]);
+
+        $tersangka2 = Tersangka::firstOrCreate(
+            ['perkara_id' => $perkara->id, 'nama' => 'Siti Aminah'],
+            ['nik' => '6371012345670002']
+        );
+
+        $berkas2 = BerkasPerkara::firstOrCreate(
+            ['perkara_id' => $perkara->id, 'tersangka_id' => $tersangka2->id],
+            ['nomor_berkas' => 'BP/002/IX/2026/BPOM']
+        );
+
+        TahapanPerkara::create([
+            'id' => 5,
+            'berkas_perkara_id' => $berkas2->id,
+            'jenis_tahap' => JenisTahap::SPDP->value,
+            'nomor_surat' => 'SPDP/002/IX/2026',
+            'tanggal_surat' => '2026-09-05',
+            'status' => 'final',
+            'finalized_at' => now(),
+        ]);
+
+        $tersangka3 = Tersangka::firstOrCreate(
+            ['perkara_id' => $perkara->id, 'nama' => 'Ahmad Fauzi'],
+            ['nik' => '6371012345670003']
+        );
+
+        $berkas3 = BerkasPerkara::firstOrCreate(
+            ['perkara_id' => $perkara->id, 'tersangka_id' => $tersangka3->id],
+            ['nomor_berkas' => 'BP/003/IX/2026/BPOM']
+        );
+
+        TahapanPerkara::create([
+            'id' => 6,
+            'berkas_perkara_id' => $berkas3->id,
+            'jenis_tahap' => JenisTahap::SPDP->value,
+            'nomor_surat' => 'SPDP/003/IX/2026',
+            'tanggal_surat' => '2026-09-06',
+            'status' => 'final',
+            'finalized_at' => now(),
+        ]);
+
+        TahapanPerkara::create([
+            'id' => 7,
+            'berkas_perkara_id' => $berkas3->id,
+            'jenis_tahap' => JenisTahap::TAHAP_1->value,
+            'nomor_surat' => 'BAP/002/IX/2026',
+            'tanggal_surat' => '2026-09-12',
+            'status' => 'final',
+            'finalized_at' => now(),
+        ]);
     }
 
     /**
@@ -657,7 +707,7 @@ class TahapanService
                 $q->where('jenis_tahap', JenisTahap::SPDP->value)->where('status', 'final');
             })
             ->whereDoesntHave('tahapan', function (\Illuminate\Database\Eloquent\Builder $q) {
-                $q->where('jenis_tahap', JenisTahap::TAHAP_1->value)->where('status', 'final');
+                $q->where('jenis_tahap', JenisTahap::TAHAP_1->value);
             })
             ->with(['perkara', 'tersangka'])
             ->orderByDesc('id')
@@ -729,7 +779,7 @@ class TahapanService
                 $q->where('jenis_tahap', JenisTahap::TAHAP_1->value)->where('status', 'final');
             })
             ->whereDoesntHave('tahapan', function (\Illuminate\Database\Eloquent\Builder $q) {
-                $q->where('jenis_tahap', JenisTahap::P21->value)->where('status', 'final');
+                $q->where('jenis_tahap', JenisTahap::P21->value);
             })
             ->with(['perkara', 'tersangka'])
             ->orderByDesc('id')
@@ -790,7 +840,7 @@ class TahapanService
     }
 
     /**
-     * Mengambil daftar Berkas Perkara yang siap memulai Tahap 2 (P-21 final & belum ada Tahap 2 final).
+     * Mengambil daftar Berkas Perkara yang siap memulai Tahap 2 (P-21 final & belum ada Tahap 2).
      *
      * @return \Illuminate\Database\Eloquent\Collection<int, BerkasPerkara>
      */
@@ -801,7 +851,7 @@ class TahapanService
                 $q->where('jenis_tahap', JenisTahap::P21->value)->where('status', 'final');
             })
             ->whereDoesntHave('tahapan', function (\Illuminate\Database\Eloquent\Builder $q) {
-                $q->where('jenis_tahap', JenisTahap::TAHAP_2->value)->where('status', 'final');
+                $q->where('jenis_tahap', JenisTahap::TAHAP_2->value);
             })
             ->with(['perkara', 'tersangka'])
             ->orderByDesc('id')
@@ -873,7 +923,7 @@ class TahapanService
                 $q->where('jenis_tahap', JenisTahap::TAHAP_2->value)->where('status', 'final');
             })
             ->whereDoesntHave('tahapan', function (\Illuminate\Database\Eloquent\Builder $q) {
-                $q->where('jenis_tahap', JenisTahap::KEPUTUSAN_PENGADILAN->value)->where('status', 'final');
+                $q->where('jenis_tahap', JenisTahap::KEPUTUSAN_PENGADILAN->value);
             })
             ->with(['perkara', 'tersangka'])
             ->orderByDesc('id')

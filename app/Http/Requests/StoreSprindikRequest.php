@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreSprindikRequest extends FormRequest
 {
@@ -25,7 +26,19 @@ class StoreSprindikRequest extends FormRequest
 
         return [
             'action_type' => ['nullable', 'in:draft,lanjut'],
-            'perkara_id' => ['required', 'exists:perkara,id'],
+            'perkara_id' => [
+                'required',
+                Rule::exists('perkara', 'id')->where(function ($query) {
+                    $query->where(function ($q) {
+                        $q->whereNull('nomor_surat_perintah')
+                            ->orWhere('nomor_surat_perintah', '');
+                    })
+                        ->where(function ($q) {
+                            $q->whereNull('tahap_sprindik_status')
+                                ->orWhere('tahap_sprindik_status', '');
+                        });
+                }),
+            ],
             'nomor_sprindik' => [
                 'required',
                 'string',
@@ -48,7 +61,7 @@ class StoreSprindikRequest extends FormRequest
     {
         return [
             'perkara_id.required' => 'Laporan kejadian wajib dipilih.',
-            'perkara_id.exists' => 'Laporan kejadian yang dipilih tidak ditemukan.',
+            'perkara_id.exists' => 'Laporan kejadian yang dipilih sudah terhubung ke Sprindik lain atau tidak valid.',
             'nomor_sprindik.required' => 'Nomor sprindik wajib diisi.',
             'nomor_sprindik.unique' => 'Nomor sprindik sudah digunakan.',
             'tanggal_sprindik.required' => 'Tanggal sprindik wajib diisi untuk melanjutkan tahap.',
