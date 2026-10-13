@@ -533,3 +533,37 @@ it('prevents creating Perkara & Berkas Perkara if Sprindik is still Draft', func
         ->get(route('perkara.edit', $perkara))
         ->assertForbidden();
 });
+
+it('allows Penyidik to save Perkara and Berkas Perkara draft with empty or partial inputs', function () {
+    $penyidik = User::factory()->penyidik()->create();
+    $perkara = Perkara::create([
+        'nomor_laporan_kejadian' => 'LK/DRAFT-EMPTY/X/2026',
+        'tanggal_laporan_kejadian' => '2026-10-10',
+        'tahap_laporan_status' => 'final',
+        'nomor_surat_perintah' => 'SP/DRAFT-EMPTY/X/2026',
+        'tanggal_surat_perintah' => '2026-10-11',
+        'tahap_sprindik_status' => 'final',
+    ]);
+
+    // Submit draft with empty inputs
+    $response = $this->actingAs($penyidik)->put(route('perkara.update', $perkara), [
+        'action_type' => 'draft',
+        'tkp_klasifikasi' => null,
+        'tkp_legalitas' => null,
+        'tkp_modus' => null,
+        'ppns_utama_id' => null,
+        'ppns_anggota_ids' => [],
+        'tersangka' => [],
+    ]);
+
+    $response->assertRedirect(route('perkara.show', $perkara));
+
+    $perkara->refresh();
+    expect($perkara->tahap_perkara_status)->toBe('draft')
+        ->and($perkara->isPerkaraLocked())->toBeFalse();
+
+    // Verify draft can still be edited
+    $this->actingAs($penyidik)
+        ->get(route('perkara.edit', $perkara))
+        ->assertOk();
+});

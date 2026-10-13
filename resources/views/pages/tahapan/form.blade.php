@@ -222,6 +222,7 @@
                         type="submit"
                         name="action_type"
                         value="draft"
+                        formnovalidate
                         class="inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-yellow-300 bg-yellow-50 px-5 text-sm font-medium text-yellow-800 transition hover:bg-yellow-100 dark:border-yellow-500/30 dark:bg-yellow-500/10 dark:text-yellow-300 dark:hover:bg-yellow-500/20"
                     >
                         <i class="fi fi-rr-disk text-base"></i>
