@@ -4,6 +4,7 @@ namespace App\Services;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class WilayahService
 {
@@ -59,15 +60,28 @@ class WilayahService
         });
     }
 
+    public function clearCache(): void
+    {
+        Cache::forget('wilayah.provinsi');
+    }
+
     /**
      * @return list<array{code: string, name: string}>
      */
     private function fetchFromApi(string $endpoint): array
     {
         try {
-            $response = Http::timeout(5)->acceptJson()->get(self::BASE_URL.$endpoint);
+            $response = Http::timeout(8)
+                ->acceptJson()
+                ->withoutVerifying()
+                ->get(self::BASE_URL.$endpoint);
 
             if (! $response->successful()) {
+                Log::warning('WilayahService API call unsuccessful', [
+                    'endpoint' => $endpoint,
+                    'status' => $response->status(),
+                ]);
+
                 return [];
             }
 
@@ -80,7 +94,12 @@ class WilayahService
                 'code' => (string) ($item['code'] ?? ''),
                 'name' => (string) ($item['name'] ?? ''),
             ], $items));
-        } catch (\Throwable) {
+        } catch (\Throwable $e) {
+            Log::warning('WilayahService API connection error, falling back to local data', [
+                'endpoint' => $endpoint,
+                'error' => $e->getMessage(),
+            ]);
+
             return [];
         }
     }
@@ -90,6 +109,18 @@ class WilayahService
      */
     private function fallbackProvinsi(): array
     {
+        $path = resource_path('data/wilayah/provinces.json');
+        if (file_exists($path)) {
+            $content = file_get_contents($path);
+            $decoded = json_decode((string) $content, true);
+            if (is_array($decoded) && $decoded !== []) {
+                return array_values(array_map(fn (array $item): array => [
+                    'code' => (string) ($item['code'] ?? ''),
+                    'name' => (string) ($item['name'] ?? ''),
+                ], $decoded));
+            }
+        }
+
         return [
             ['code' => '63', 'name' => 'Kalimantan Selatan'],
             ['code' => '62', 'name' => 'Kalimantan Tengah'],
@@ -105,6 +136,25 @@ class WilayahService
      */
     private function fallbackKabupaten(string $provinsiKode): array
     {
+        $path = resource_path('data/wilayah/regencies.json');
+        if (file_exists($path)) {
+            $content = file_get_contents($path);
+            $decoded = json_decode((string) $content, true);
+            if (is_array($decoded)) {
+                $filtered = array_values(array_filter(
+                    $decoded,
+                    fn (array $item): bool => (string) ($item['province_code'] ?? '') === (string) $provinsiKode
+                ));
+
+                if ($filtered !== []) {
+                    return array_values(array_map(fn (array $item): array => [
+                        'code' => (string) ($item['code'] ?? ''),
+                        'name' => (string) ($item['name'] ?? ''),
+                    ], $filtered));
+                }
+            }
+        }
+
         if ($provinsiKode === '63') {
             return [
                 ['code' => '6371', 'name' => 'Kota Banjarmasin'],

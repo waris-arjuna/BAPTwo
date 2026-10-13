@@ -130,3 +130,5 @@ _(kosong)_
 - [x] T-024 — 2026-10-12
 - [x] T-025 — 2026-10-13
 - [x] T-026 — 2026-10-13
+- [x] T-027 — 2026-10-13 Sistem Wilayah Hibrida: penanganan SSL cURL API `api.kodewilayah.web.id` dan fallback JSON lokal lengkap 38 Provinsi & 514 Kabupaten/Kota (D-015, F-37)
+
