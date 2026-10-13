@@ -75,6 +75,7 @@
                     </a>
                 </div>
                 <div class="mx-auto w-full max-w-lg">
+                    <x-common.flash-alert />
                     <!-- Card Hover Wrapper -->
                     <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-theme-xs transition-all duration-300 hover:-translate-y-1 hover:border-brand-500/30 hover:shadow-theme-xl sm:p-8 dark:border-gray-800 dark:bg-gray-900/90 dark:hover:border-brand-500/30 dark:hover:shadow-theme-xl">
                         <!-- Logo BAPTwo -->

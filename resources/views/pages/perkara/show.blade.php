@@ -8,14 +8,6 @@
 
 @section('content')
     <div class="mx-auto max-w-screen-xl px-4 pb-8 pt-6 lg:px-6">
-        {{-- Flash Messages --}}
-        @if (session('success'))
-            <div class="mb-6 flex items-center gap-3 rounded-xl border border-green-200 bg-green-50 p-4 text-sm text-green-700 dark:border-green-500/20 dark:bg-green-500/10 dark:text-green-300">
-                <i class="fi fi-rr-check text-base"></i>
-                <span>{{ session('success') }}</span>
-            </div>
-        @endif
-
         {{-- Header --}}
         <div class="mb-6">
             <div class="mb-2 flex flex-wrap items-center gap-2 text-sm text-gray-500 dark:text-gray-400">

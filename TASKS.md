@@ -139,6 +139,7 @@ _(kosong)_
 - [x] T-031 — 2026-10-14 Tiga aksi Batal/Draft/Simpan & Lanjut + penguncian permanen di DB & UI + Card Referensi tahapan sebelumnya + visual indicator Completed/Locked (F-14–F-19)
 - [x] T-031A — 2026-10-14 Halaman SPDP Riil + Sub-Tahap Opsional (P-16, P-17P) + Flatpickr Datepicker + Modal Berkas Siap SPDP (F-10, F-11, F-39, D-018)
 - [x] T-031B — 2026-10-14 Validasi Simpan Draft Mewajibkan Nomor/Identitas Utama & Melarang Draft Kosong (D-022)
+- [x] T-031C — 2026-10-14 Standardisasi Notifikasi Flash Message: Timer Auto-Dismiss 10 Detik + Tombol Tutup (x) (D-023)
 
 
 

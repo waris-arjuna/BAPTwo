@@ -161,19 +161,25 @@
             @include('layouts.app-header')
             <!-- app header end -->
             <div class="p-4 mx-auto max-w-(--breakpoint-2xl) md:p-6">
+                <x-common.flash-alert />
                 @yield('content')
             </div>
         </div>
 
         @if (session('login_success'))
-            <div x-data="{ showSuccessModal: true }" x-init="setTimeout(() => showSuccessModal = false, 4000)" x-show="showSuccessModal" x-cloak
+            <div x-data="{ showSuccessModal: true }" x-init="setTimeout(() => showSuccessModal = false, 10000)" x-show="showSuccessModal" x-cloak
                 @keydown.escape.window="showSuccessModal = false"
                 class="fixed inset-0 z-99999 flex items-center justify-center p-4 bg-gray-900/50 backdrop-blur-xs">
                 <div @click.outside="showSuccessModal = false"
                     x-transition:enter="transition ease-out duration-200"
                     x-transition:enter-start="opacity-0 scale-95"
                     x-transition:enter-end="opacity-100 scale-100"
-                    class="w-full max-w-md rounded-2xl border border-success-200 bg-white p-6 text-center shadow-theme-xl dark:border-success-500/30 dark:bg-gray-900">
+                    class="relative w-full max-w-md rounded-2xl border border-success-200 bg-white p-6 text-center shadow-theme-xl dark:border-success-500/30 dark:bg-gray-900">
+                    <button type="button" @click="showSuccessModal = false"
+                        class="absolute right-4 top-4 inline-flex h-8 w-8 items-center justify-center rounded-lg text-gray-400 transition hover:bg-gray-100 hover:text-gray-600 dark:hover:bg-gray-800 dark:hover:text-gray-300"
+                        aria-label="Tutup modal">
+                        <i class="fi fi-rr-cross-small text-lg"></i>
+                    </button>
                     <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-success-50 text-success-600 dark:bg-success-500/15 dark:text-success-400">
                         <i class="fi fi-rr-check text-xl"></i>
                     </div>

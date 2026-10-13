@@ -39,23 +39,6 @@
     })" @keydown.escape.window="closeModals()">
         <x-common.page-breadcrumb :pageTitle="__('Profil Saya')" />
 
-        {{-- Notifikasi Sukses --}}
-        @if (session('profile_success'))
-            <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 5000)" x-show="show" x-cloak
-                class="mb-6 flex items-center justify-between gap-4 rounded-xl border border-success-200 bg-success-50 px-4 py-3 text-theme-sm text-success-700 shadow-theme-xs dark:border-success-500/30 dark:bg-success-500/10 dark:text-success-400"
-                role="alert">
-                <div class="flex items-center gap-3">
-                    <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-success-100 text-success-600 dark:bg-success-500/20 dark:text-success-400">
-                        <i class="fi fi-rr-check text-sm" aria-hidden="true"></i>
-                    </span>
-                    <span class="font-medium">{{ session('profile_success') }}</span>
-                </div>
-                <button type="button" @click="show = false" class="text-success-600 hover:text-success-800 dark:text-success-400">
-                    <i class="fi fi-rr-cross-small text-lg" aria-hidden="true"></i>
-                </button>
-            </div>
-        @endif
-
         {{-- Notifikasi Error Validasi Server --}}
         @if ($errors->any())
             <div x-data="{ show: true }" x-show="show" x-cloak

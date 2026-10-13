@@ -8,14 +8,6 @@
 
 @section('content')
     <div class="mx-auto max-w-screen-xl px-4 pb-8 pt-6 lg:px-6">
-        {{-- Flash Alerts --}}
-        @if (session('warning'))
-            <div class="mb-6 flex items-center gap-3 rounded-xl border border-yellow-200 bg-yellow-50 p-4 text-sm text-yellow-800 dark:border-yellow-500/20 dark:bg-yellow-500/10 dark:text-yellow-300">
-                <i class="fi fi-rr-info text-base"></i>
-                <span>{{ session('warning') }}</span>
-            </div>
-        @endif
-
         @if ($errors->any())
             <div class="mb-6 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-500/20 dark:bg-red-500/10 dark:text-red-300">
                 <div class="flex items-center gap-2 font-medium">

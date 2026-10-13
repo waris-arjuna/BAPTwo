@@ -2,14 +2,6 @@
 
 @section('content')
     <div class="space-y-6">
-        {{-- Flash Messages --}}
-        @if (session('success'))
-            <div class="flex items-center gap-3 rounded-xl border border-green-200 bg-green-50 p-4 text-sm text-green-700 dark:border-green-500/20 dark:bg-green-500/10 dark:text-green-300">
-                <i class="fi fi-rr-check text-base"></i>
-                <span>{{ session('success') }}</span>
-            </div>
-        @endif
-
         {{-- Header --}}
         <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>

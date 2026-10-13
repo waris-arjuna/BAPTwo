@@ -3,12 +3,6 @@
 @section('content')
     <x-common.page-breadcrumb :pageTitle="__($meta['title'])" />
 
-    @if (session('success'))
-        <div class="mb-4 rounded-xl border border-success-500/30 bg-success-500/10 px-4 py-3 text-theme-sm text-success-700 dark:text-success-400">
-            {{ session('success') }}
-        </div>
-    @endif
-
     @if ($errors->any())
         <div class="mb-4 rounded-xl border border-error-500/30 bg-error-500/10 px-4 py-3 text-theme-sm text-error-600 dark:text-error-400">
             <ul class="list-disc ps-5">

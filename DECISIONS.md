@@ -309,3 +309,24 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
      - **Simpan & Lanjut**: Mewajibkan seluruh field wajib (nomor, tanggal, kelengkapan berkas, dsb.) lengkap 100%; setelah berhasil tahap naik dan terkunci permanen.
 - Konsekuensi: Integritas database terjaga, bebas dari ghost records/data kosong, sementara fleksibilitas pengerjaan draft bertahap tetap terpenuhi.
 
+## D-023 — Standardisasi Notifikasi Flash Message dengan Timer Auto-Dismiss 10 Detik dan Tombol Tutup (x)
+
+- Tanggal: 2026-10-14
+- Status: Disepakati & Diimplementasikan
+- Konteks: Notifikasi flash message hasil operasi sistem (berhasil/sukses, gagal/error, peringatan/warning, status/info) sebelumnya masih menggunakan markup ad-hoc per view, tidak memiliki tombol tutup instan `(x)`, dan tidak hilang secara otomatis sehingga menetap di layar tanpa batas waktu. Pengguna menginginkan setiap notifikasi berhasil/gagal dilengkapi tombol `(x)` untuk menutup langsung atau otomatis hilang setelah 10 detik.
+- Keputusan:
+  1. **Komponen Flash Alert Terpusat (`<x-common.flash-alert>`)**:
+     - Diletakkan di master layout `resources/views/layouts/app.blade.php` tepat di atas main content (`@yield('content')`), serta di `signin.blade.php`.
+     - Secara otomatis membaca dan merender seluruh session flash message: `success`, `profile_success`, `error`, `warning`, `status`, dan `info`.
+     - Menghapus seluruh blok duplikat `@if (session(...))` ad-hoc di 13 view individual untuk menjaga arsitektur DRY.
+  2. **Timer Auto-Dismiss 10 Detik & Jeda Saat Hover**:
+     - Notifikasi otomatis hilang (fade out & slide up transition) setelah 10 detik (`10000ms`) via Alpine.js `setTimeout(() => this.show = false, 10000)`.
+     - Dilengkapi event listener `@mouseenter="clearTimer()"` dan `@mouseleave="startTimer()"` agar timer terjeda saat pengguna mengarahkan mouse ke notifikasi untuk membaca pesan lebih teliti atau mengklik tombol tutup.
+  3. **Tombol Tutup Instan `(x)` (Flaticon Wajib D-010)**:
+     - Setiap notifikasi dilengkapi tombol dismiss `(x)` menggunakan Flaticon UIcons `<i class="fi fi-rr-cross-small text-lg"></i>` dengan aria-label `Tutup notifikasi`.
+     - Mengklik tombol `(x)` membatalkan timer dan menutup notifikasi seketika dengan animasi transisi yang mulus.
+  4. **Pembaruan Komponen UI Primitive (`<x-ui.alert>`)**:
+     - Komponen `<x-ui.alert>` dimutakhirkan dengan dukungan properti `dismissible` (default `true`), `autoDismiss` (default `false`), `timeout` (default `10000`), token warna Tailwind tema standar (`success`, `error`, `warning`, `brand`), serta icon Flaticon.
+- Konsekuensi: Seluruh pesan notifikasi di aplikasi BAPTwo tampil seragam, interaktif, elegan, dan otomatis hilang setelah 10 detik tanpa mengotori ruang pandang pengguna.
+
+

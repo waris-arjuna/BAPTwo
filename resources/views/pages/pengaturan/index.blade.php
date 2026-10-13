@@ -58,12 +58,6 @@
     >
         <x-common.page-breadcrumb :pageTitle="__('Manajemen Pengguna')" />
 
-        @if (session('success'))
-            <div class="rounded-xl border border-success-200 bg-success-50 px-4 py-3 text-theme-sm font-medium text-success-700 dark:border-success-500/30 dark:bg-success-500/10 dark:text-success-400">
-                {{ session('success') }}
-            </div>
-        @endif
-
         @if ($errors->any())
             <div class="rounded-xl border border-error-200 bg-error-50 px-4 py-3 text-theme-sm text-error-700 dark:border-error-500/30 dark:bg-error-500/10 dark:text-error-400">
                 <ul class="list-disc ps-5 space-y-1">
