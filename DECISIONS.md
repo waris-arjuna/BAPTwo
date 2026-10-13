@@ -253,6 +253,22 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
      - Diterapkan secara seragam di seluruh formulir: Laporan Kejadian (`create`/`edit`), Sprindik (`create`/`edit`), Tahapan Perkara (`form`), dan SPDP (`create`).
 - Konsekuensi: UI konsisten, bebas duplikasi kode Alpine.js, dan kesalahan pemilihan file dapat dibatalkan secara instan tanpa perlu me-reload halaman.
 
+## D-020 — Pemilihan PPNS Anggota via Combo Box Dinamis & Kartu Detail Terpilih
 
-
-
+- Tanggal: 2026-10-14
+- Status: Disepakati & Diimplementasikan
+- Konteks: Pada formulir pembentukan Data Perkara Pra-SPDP (`/perkara/{id}/buat`), daftar Penyidik PPNS Anggota sebelumnya menggunakan grid checkbox yang memanjang ke bawah. Pengguna menginginkan pemilihan berbasis combo box (dropdown select) yang dapat memilih berulang kali, disertai kartu kecil detail penyidik terpilih (Nama, NIP, pangkat) dan tombol hapus `(x)` untuk membatalkan anggota.
+- Keputusan:
+  1. **Combo Box Dinamis & Penambahan Otomatis**:
+     - Checkbox digantikan dengan `<select>` dropdown (combo box).
+     - Saat penyidik dipilih dari dropdown, Alpine.js otomatis menambahkan ID ke `selectedAnggotaIds` dan mereset nilai combo box kembali ke placeholder ("+ Pilih dan tambah anggota penyidik...").
+  2. **Eksklusi Otomatis PPNS Terpilih & PPNS Utama**:
+     - Penyidik yang telah dipilih sebagai PPNS Utama maupun yang sudah masuk ke dalam daftar Anggota otomatis dihilangkan dari opsi combo box (`getAvailableAnggota()`) untuk mencegah duplikasi peran.
+     - Jika PPNS Utama diganti ke salah satu penyidik yang sedang menjadi anggota, Alpine.js otomatis mengeluarkan orang tersebut dari daftar anggota.
+  3. **Kartu Kecil Detail Anggota Terpilih**:
+     - Anggota yang terpilih dirender dalam grid responsif (1–3 kolom) berisi icon profil (`fi fi-rr-user`), Nama Lengkap, NIP, serta tombol hapus `(x)` (`fi fi-rr-cross-small`).
+     - Mengklik `(x)` menghapus anggota dari array `selectedAnggotaIds` dan mengembalikan penyidik tersebut ke dalam daftar opsi combo box.
+     - Saat belum ada anggota yang dipilih, ditampilkan empty-state dashed yang informatif.
+  4. **Kompatibilitas Penuh Backend**:
+     - Setiap ID anggota terpilih dirender sebagai `<input type="hidden" name="ppns_anggota_ids[]" :value="id">` via `<template x-for>`, sehingga data dikirimkan 100% kompatibel dengan Form Request `SavePerkaraBerkasRequest` dan relasi pivot database `perkara_ppns` tanpa perubahan backend.
+- Konsekuensi: Pengalaman pengguna lebih ringkas dan modern, bebas duplikasi pilihan penyidik, dan data anggota tersimpan secara konsisten.

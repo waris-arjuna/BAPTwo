@@ -7,6 +7,12 @@
     $existingAnggotaIds = collect(old('ppns_anggota_ids', $perkara->ppnsAnggota->pluck('id')->all()))
         ->map(fn ($id) => (int) $id)
         ->all();
+    $ppnsJsonList = $ppnsUsers->map(fn ($u) => [
+        'id' => (int) $u->id,
+        'nama' => $u->nama,
+        'nip' => $u->nip ?: '-',
+        'pangkat' => $u->pangkat ?? '-',
+    ])->values()->all();
 
     $initialTersangka = old('tersangka');
     if (! is_array($initialTersangka) || empty($initialTersangka)) {
@@ -424,7 +430,46 @@
             </div>
 
             {{-- 2. Card Tim Penyidik PPNS (Utama & Anggota) --}}
-            <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
+            <div
+                x-data="{
+                    ppnsList: @js($ppnsJsonList),
+                    selectedUtamaId: @js((int) $existingUtamaId ?: null),
+                    selectedAnggotaIds: @js($existingAnggotaIds),
+                    addAnggota(id) {
+                        if (!id) return;
+                        const numId = parseInt(id, 10);
+                        if (!this.selectedAnggotaIds.includes(numId)) {
+                            this.selectedAnggotaIds.push(numId);
+                        }
+                        if (this.$refs.anggotaSelect) {
+                            this.$refs.anggotaSelect.value = '';
+                        }
+                        this.$nextTick(() => {
+                            if (this.$refs.anggotaSelect) {
+                                this.$refs.anggotaSelect.value = '';
+                            }
+                        });
+                    },
+                    removeAnggota(id) {
+                        this.selectedAnggotaIds = this.selectedAnggotaIds.filter(i => i !== id);
+                    },
+                    onUtamaChange(val) {
+                        this.selectedUtamaId = val ? parseInt(val, 10) : null;
+                        if (this.selectedUtamaId && this.selectedAnggotaIds.includes(this.selectedUtamaId)) {
+                            this.removeAnggota(this.selectedUtamaId);
+                        }
+                    },
+                    getAvailableAnggota() {
+                        return this.ppnsList.filter(u => u.id !== this.selectedUtamaId && !this.selectedAnggotaIds.includes(u.id));
+                    },
+                    getSelectedAnggotaDetails() {
+                        return this.selectedAnggotaIds
+                            .map(id => this.ppnsList.find(u => u.id === id))
+                            .filter(Boolean);
+                    }
+                }"
+                class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
+            >
                 <div class="border-b border-gray-200 px-4 py-4 dark:border-gray-800 sm:px-6">
                     <div class="flex items-center gap-2">
                         <i class="fi fi-rr-users-alt text-base text-brand-500"></i>
@@ -434,6 +479,12 @@
                 </div>
 
                 <div class="grid grid-cols-1 gap-5 px-4 py-5 sm:px-6">
+                    {{-- Hidden inputs untuk pengiriman array ppns_anggota_ids[] --}}
+                    <template x-for="id in selectedAnggotaIds" :key="'hidden-ppns-' + id">
+                        <input type="hidden" name="ppns_anggota_ids[]" :value="id">
+                    </template>
+
+                    {{-- PPNS Utama --}}
                     <div>
                         <label for="ppns_utama_id" class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
                             Penyidik PPNS Utama <span class="text-red-500">*</span>
@@ -441,6 +492,7 @@
                         <select
                             id="ppns_utama_id"
                             name="ppns_utama_id"
+                            @change="onUtamaChange($event.target.value)"
                             class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
                         >
                             <option value="">-- Pilih PPNS Utama --</option>
@@ -455,26 +507,73 @@
                         @enderror
                     </div>
 
+                    {{-- PPNS Anggota Combo Box & List --}}
                     <div>
-                        <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                            Penyidik PPNS Anggota (Opsional, dapat memilih lebih dari satu)
-                        </label>
-                        <div class="grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
-                            @foreach ($ppnsUsers as $ppns)
-                                <label class="flex cursor-pointer items-center gap-3 rounded-xl border border-gray-200 p-3 text-sm transition hover:bg-gray-50 dark:border-gray-800 dark:hover:bg-white/[0.02]">
-                                    <input
-                                        type="checkbox"
-                                        name="ppns_anggota_ids[]"
-                                        value="{{ $ppns->id }}"
-                                        @checked(in_array($ppns->id, $existingAnggotaIds, true))
-                                        class="h-4 w-4 rounded border-gray-300 text-brand-600 focus:ring-brand-500 dark:border-gray-700"
-                                    >
-                                    <div class="min-w-0">
-                                        <p class="truncate font-medium text-gray-800 dark:text-white/90">{{ $ppns->nama }}</p>
-                                        <p class="truncate text-xs text-gray-500 dark:text-gray-400">{{ $ppns->pangkat ?? $ppns->role }}</p>
+                        <div class="mb-2 flex items-center justify-between">
+                            <label for="ppns_anggota_select" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Penyidik PPNS Anggota (Opsional)
+                            </label>
+                            <span class="text-xs text-gray-500 dark:text-gray-400" x-text="selectedAnggotaIds.length + ' anggota terpilih'"></span>
+                        </div>
+
+                        {{-- Combo Box Dropdown --}}
+                        <div class="relative">
+                            <select
+                                id="ppns_anggota_select"
+                                x-ref="anggotaSelect"
+                                @change="addAnggota($event.target.value)"
+                                :disabled="getAvailableAnggota().length === 0"
+                                class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-400 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:disabled:bg-gray-800/50 dark:disabled:text-gray-500"
+                            >
+                                <option value="" x-text="getAvailableAnggota().length === 0 ? 'Semua PPNS sudah terpilih' : '+ Pilih dan tambah anggota penyidik...'"></option>
+                                <template x-for="ppns in getAvailableAnggota()" :key="ppns.id">
+                                    <option :value="ppns.id" x-text="ppns.nama + (ppns.nip && ppns.nip !== '-' ? ' (NIP: ' + ppns.nip + ')' : '') + (ppns.pangkat && ppns.pangkat !== '-' ? ' — ' + ppns.pangkat : '')"></option>
+                                </template>
+                            </select>
+                        </div>
+                        <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">Pilih penyidik dari daftar combo box untuk menambahkannya ke tim anggota. Anda dapat memilih lebih dari satu penyidik.</p>
+
+                        @error('ppns_anggota_ids')
+                            <p class="mt-1.5 text-xs text-error-600 dark:text-error-400">{{ $message }}</p>
+                        @enderror
+
+                        {{-- Kartu Detail Penyidik Terpilih --}}
+                        <div class="mt-4">
+                            <div x-show="selectedAnggotaIds.length > 0" class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                                <template x-for="ppns in getSelectedAnggotaDetails()" :key="ppns.id">
+                                    <div class="relative flex items-center justify-between gap-3 rounded-xl border border-brand-200 bg-brand-50/40 p-3.5 transition dark:border-brand-500/20 dark:bg-brand-500/5">
+                                        <div class="flex items-center gap-3 min-w-0">
+                                            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-brand-600 dark:bg-brand-500/10 dark:text-brand-400">
+                                                <i class="fi fi-rr-user text-base"></i>
+                                            </div>
+                                            <div class="min-w-0">
+                                                <p class="truncate text-sm font-semibold text-gray-800 dark:text-white/90" x-text="ppns.nama"></p>
+                                                <p class="truncate text-xs text-gray-500 dark:text-gray-400" x-text="'NIP: ' + ppns.nip"></p>
+                                            </div>
+                                        </div>
+                                        <button
+                                            type="button"
+                                            @click="removeAnggota(ppns.id)"
+                                            class="shrink-0 flex h-7 w-7 items-center justify-center rounded-lg text-gray-400 hover:bg-error-50 hover:text-error-600 transition dark:hover:bg-error-500/10 dark:hover:text-error-400"
+                                            title="Hapus dari anggota"
+                                        >
+                                            <i class="fi fi-rr-cross-small text-base"></i>
+                                        </button>
                                     </div>
-                                </label>
-                            @endforeach
+                                </template>
+                            </div>
+
+                            {{-- State Kosong / Belum Ada Anggota --}}
+                            <div
+                                x-show="selectedAnggotaIds.length === 0"
+                                class="flex flex-col items-center justify-center rounded-xl border border-dashed border-gray-200 py-6 text-center dark:border-gray-800"
+                            >
+                                <div class="flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-gray-400 dark:bg-gray-800 dark:text-gray-500">
+                                    <i class="fi fi-rr-users text-sm"></i>
+                                </div>
+                                <p class="mt-2 text-xs font-medium text-gray-500 dark:text-gray-400">Belum ada PPNS Anggota yang dipilih</p>
+                                <p class="text-[11px] text-gray-400 dark:text-gray-500">Pilih dari combo box di atas untuk menambahkan anggota tim penyidik.</p>
+                            </div>
                         </div>
                     </div>
                 </div>

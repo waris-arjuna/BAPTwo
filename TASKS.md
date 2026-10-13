@@ -72,6 +72,8 @@ _(kosong)_
   - AC: Satu berkas perkara dapat memiliki pasal berlapis (1..N pasal dari master data `pasal`); tabel pivot `berkas_pasal`; multi-select/checkbox pasal di UI form berkas perkara; test lulus.
 - [x] T-023 — TKP + PPNS utama/anggota (F-07, F-08)
   - AC: Informasi TKP (klasifikasi retailer/distributor, legalitas legal/ilegal, modus online/offline, alamat berjenjang terintegrasi proxy wilayah API Kode Wilayah) tersimpan di tabel `tkp` & `alamat`; Tim Penyidik PPNS (1 PPNS Utama + 0..N PPNS Anggota) tersimpan di pivot `perkara_ppns` dengan peran; test lulus.
+- [x] T-023A — Pemilihan Tim Penyidik PPNS Anggota via combo box dinamis + kartu detail terpilih (F-08, D-020)
+  - AC: Dropdown combo box untuk penambahan PPNS Anggota berulang kali; kartu kecil detail penyidik terpilih (Nama, NIP) dengan tombol pembatalan `(x)`; eksklusi otomatis dari combo box untuk PPNS Utama dan anggota yang sudah terpilih; hidden input kompatibel 100% backend; test & pint lulus.
 - [x] T-025 — Nomor Berkas manual tanpa validasi pola (F-33)
   - AC: Input `nomor_berkas` diinput manual oleh user tanpa pembatasan regex/format tertentu (bebas karakter format); tersimpan di `berkas_perkara.nomor_berkas`; test lulus.
 - [x] T-026 — Menu Navigasi Data Perkara di Sidebar (Daftar Perkara & Progress Perkara) + Pop-up Tambah Perkara (F-01, F-39, F-40, D-014)
@@ -125,6 +127,7 @@ _(kosong)_
 - [x] T-021 — 2026-10-13
 - [x] T-022 — 2026-10-13
 - [x] T-023 — 2026-10-13
+- [x] T-023A — 2026-10-14 Pemilihan Tim Penyidik PPNS Anggota via combo box dinamis + kartu detail terpilih (D-020)
 - [x] T-024 — 2026-10-12
 - [x] T-025 — 2026-10-13
 - [x] T-026 — 2026-10-13
