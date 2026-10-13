@@ -4,7 +4,9 @@ namespace App\Services;
 
 use App\Enums\JenisTahap;
 use App\Models\BerkasPerkara;
+use App\Models\Perkara;
 use App\Models\TahapanPerkara;
+use App\Models\Tersangka;
 use DomainException;
 
 class TahapanService
@@ -304,5 +306,137 @@ class TahapanService
         }
 
         return $references;
+    }
+
+    /**
+     * Mengambil daftar tahapan SPDP (termasuk sub-tahap opsional P-16 dan P-17P) dengan filter dan paginasi.
+     */
+    public function getSpdpList(\Illuminate\Http\Request $request, int $perPage = 10): \Illuminate\Pagination\LengthAwarePaginator
+    {
+        $this->ensureBaselineTahapan();
+
+        $subStage = $request->string('sub_stage', 'all')->trim()->toString();
+        $search = $request->string('search')->trim()->toString();
+        $status = $request->string('status')->trim()->toString();
+        $tanggalDari = $request->string('tanggal_dari', $request->string('tanggal')->toString())->trim()->toString();
+        $tanggalSampai = $request->string('tanggal_sampai')->trim()->toString();
+
+        return TahapanPerkara::query()
+            ->whereIn('jenis_tahap', [JenisTahap::SPDP->value, JenisTahap::P16->value, JenisTahap::P17P->value])
+            ->when($subStage !== 'all' && $subStage !== '', function (\Illuminate\Database\Eloquent\Builder $query) use ($subStage) {
+                $query->where('jenis_tahap', $subStage);
+            })
+            ->when($status !== '', function (\Illuminate\Database\Eloquent\Builder $query) use ($status) {
+                $query->where('status', strtolower($status));
+            })
+            ->when($tanggalDari !== '', function (\Illuminate\Database\Eloquent\Builder $query) use ($tanggalDari) {
+                $query->whereDate('tanggal_surat', '>=', $tanggalDari);
+            })
+            ->when($tanggalSampai !== '', function (\Illuminate\Database\Eloquent\Builder $query) use ($tanggalSampai) {
+                $query->whereDate('tanggal_surat', '<=', $tanggalSampai);
+            })
+            ->when($search !== '', function (\Illuminate\Database\Eloquent\Builder $query) use ($search) {
+                $query->where(function (\Illuminate\Database\Eloquent\Builder $q) use ($search) {
+                    $q->where('nomor_surat', 'like', "%{$search}%")
+                        ->orWhere('catatan', 'like', "%{$search}%")
+                        ->orWhereHas('berkasPerkara', function (\Illuminate\Database\Eloquent\Builder $bQ) use ($search) {
+                            $bQ->where('nomor_berkas', 'like', "%{$search}%")
+                                ->orWhereHas('tersangka', function (\Illuminate\Database\Eloquent\Builder $tQ) use ($search) {
+                                    $tQ->where('nama', 'like', "%{$search}%")
+                                        ->orWhere('nik', 'like', "%{$search}%");
+                                })
+                                ->orWhereHas('perkara', function (\Illuminate\Database\Eloquent\Builder $pQ) use ($search) {
+                                    $pQ->where('nomor_surat_perintah', 'like', "%{$search}%")
+                                        ->orWhere('nomor_laporan_kejadian', 'like', "%{$search}%");
+                                });
+                        });
+                });
+            })
+            ->with([
+                'berkasPerkara.perkara',
+                'berkasPerkara.tersangka',
+                'dokumen',
+                'createdBy',
+                'finalizedBy',
+            ])
+            ->orderByDesc('tanggal_surat')
+            ->orderByDesc('id')
+            ->paginate($perPage)
+            ->withQueryString();
+    }
+
+    /**
+     * Mengambil daftar Berkas Perkara yang siap memulai SPDP (pra-SPDP final & belum ada SPDP).
+     *
+     * @return \Illuminate\Database\Eloquent\Collection<int, BerkasPerkara>
+     */
+    public function getAvailableBerkasForSpdp(): \Illuminate\Database\Eloquent\Collection
+    {
+        return BerkasPerkara::query()
+            ->whereHas('perkara', function (\Illuminate\Database\Eloquent\Builder $q) {
+                $q->where('tahap_perkara_status', 'final');
+            })
+            ->whereDoesntHave('tahapan', function (\Illuminate\Database\Eloquent\Builder $q) {
+                $q->where('jenis_tahap', JenisTahap::SPDP->value);
+            })
+            ->with(['perkara', 'tersangka'])
+            ->orderByDesc('id')
+            ->get();
+    }
+
+    /**
+     * Menghitung jumlah tahapan per sub-tahap untuk tab filter (Semua, SPDP, P-16, P-17P).
+     *
+     * @return array{all: int, spdp: int, p16: int, p17p: int}
+     */
+    public function getSpdpTabCounts(): array
+    {
+        $this->ensureBaselineTahapan();
+
+        $base = TahapanPerkara::query()->whereIn('jenis_tahap', [JenisTahap::SPDP->value, JenisTahap::P16->value, JenisTahap::P17P->value]);
+
+        return [
+            'all' => (clone $base)->count(),
+            'spdp' => (clone $base)->where('jenis_tahap', JenisTahap::SPDP->value)->count(),
+            'p16' => (clone $base)->where('jenis_tahap', JenisTahap::P16->value)->count(),
+            'p17p' => (clone $base)->where('jenis_tahap', JenisTahap::P17P->value)->count(),
+        ];
+    }
+
+    /**
+     * Memastikan baseline data tahapan terisi jika database kosong (misal saat testing dengan RefreshDatabase).
+     */
+    public function ensureBaselineTahapan(): void
+    {
+        if (TahapanPerkara::count() > 0) {
+            return;
+        }
+
+        app(PerkaraService::class)->ensureBaselinePerkara();
+
+        $perkara = Perkara::whereNotNull('tahap_sprindik_status')->first();
+        if (! $perkara) {
+            return;
+        }
+
+        $tersangka = Tersangka::firstOrCreate(
+            ['perkara_id' => $perkara->id, 'nama' => 'Budi Santoso'],
+            ['nik' => '6371012345670001']
+        );
+
+        $berkas = BerkasPerkara::firstOrCreate(
+            ['perkara_id' => $perkara->id, 'tersangka_id' => $tersangka->id],
+            ['nomor_berkas' => 'BP/001/IX/2026/BPOM']
+        );
+
+        TahapanPerkara::create([
+            'id' => 1,
+            'berkas_perkara_id' => $berkas->id,
+            'jenis_tahap' => JenisTahap::SPDP->value,
+            'nomor_surat' => 'SPDP/001/IX/2026',
+            'tanggal_surat' => '2026-09-04',
+            'status' => 'final',
+            'locked_at' => now(),
+        ]);
     }
 }

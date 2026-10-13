@@ -169,13 +169,12 @@
                             <label for="tanggal_surat" class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
                                 Tanggal Surat / Dokumen <span class="text-xs text-gray-400">(Wajib untuk Simpan &amp; Lanjut)</span>
                             </label>
-                            <input
-                                type="date"
+                            <x-form.date-picker
                                 id="tanggal_surat"
                                 name="tanggal_surat"
-                                value="{{ old('tanggal_surat', $tahap?->tanggal_surat?->format('Y-m-d')) }}"
-                                class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
-                            >
+                                placeholder="Pilih Tanggal Surat"
+                                defaultDate="{{ old('tanggal_surat', $tahap?->tanggal_surat?->format('Y-m-d')) }}"
+                            />
                         </div>
                     </div>
 

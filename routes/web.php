@@ -10,6 +10,7 @@ use App\Http\Controllers\MathCaptchaController;
 use App\Http\Controllers\PerkaraBerkasController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgressPerkaraController;
+use App\Http\Controllers\SpdpController;
 use App\Http\Controllers\SprindikController;
 use App\Http\Controllers\TahapanPerkaraController;
 use App\Http\Controllers\UserController;
@@ -123,26 +124,10 @@ Route::middleware('auth')->group(function () {
         Route::put('/tahapan/{tahapan}', [TahapanPerkaraController::class, 'update'])->middleware('can:edit-draft')->name('tahapan.update');
     });
 
-    // SPDP
-    Route::get('/spdp', function (Request $request, MockStageService $mockService) {
-        if ($request->header('X-Filter-Partial')) {
-            $spdps = $mockService->getSpdp($request);
-
-            return view('pages.spdp._table-partial', compact('spdps'));
-        }
-
-        return view('pages.spdp.index');
-    })->name('spdp.index');
-
-    Route::get('/spdp/tambah', function () {
-        return view('pages.spdp.create');
-    })->middleware('can:create-cases')->name('spdp.create');
-
-    Route::get('/spdp/{id}', function ($id) {
-        return view('pages.spdp.show', [
-            'id' => $id,
-        ]);
-    })->name('spdp.show');
+    // SPDP (Data Riil & Sub-Tahap Opsional P-16, P-17P)
+    Route::get('/spdp', [SpdpController::class, 'index'])->name('spdp.index');
+    Route::get('/spdp/tambah', [SpdpController::class, 'create'])->middleware('can:create-cases')->name('spdp.create');
+    Route::get('/spdp/{id}', [SpdpController::class, 'show'])->name('spdp.show');
 
     // TAHAP 1
     Route::get('/tahap-1', function (Request $request, MockStageService $mockService) {

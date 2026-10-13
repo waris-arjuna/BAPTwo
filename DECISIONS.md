@@ -213,7 +213,27 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
   4. **Pusat Dokumen & Jejak Audit**:
      - Dokumen tahapan disimpan di tabel `dokumen` dengan relasi `tahapan_perkara_id` dan `berkas_perkara_id`.
      - Setiap aksi simpan draft dan finalisasi tahap dicatat ke tabel `audit_log` via `AuditTrailService`.
-- Konsekuensi: Alur kerja tahapan perkara mematuhi 100% aturan bisnis PRD F-14 s.d. F-19 secara aman, konsisten, dan transparan.
+## D-018 — Halaman SPDP Riil, Tab Sub-Tahap Opsional (P-16 & P-17P), Datepicker Flatpickr, dan Modal Seleksi Berkas
+
+- Tanggal: 2026-10-14
+- Status: Disepakati & Diimplementasikan
+- Konteks: Menu SPDP di sidebar sebelumnya masih menggunakan mock data dari `MockStageService`. Diperlukan integrasi data riil dari tabel `tahapan_perkara`, akomodasi tahapan opsional (`P-16` dan `P-17P`) tanpa memadati sidebar utama, standardisasi filter tanggal dan input tanggal menggunakan Flatpickr datepicker, serta flow tambah SPDP berbasis modal seleksi berkas.
+- Keputusan:
+  1. **Menu SPDP Riil & Tab Sub-Tahap Opsional**:
+     - Route `/spdp` ditangani oleh `SpdpController` yang mengambil data riil dari `tahapan_perkara` berelasi dengan `berkas_perkara`, `perkara`, dan `tersangka`.
+     - Sidebar tetap ringkas dengan tahapan utama. Halaman `/spdp` menyediakan tab filter sub-tahap: **Semua**, **SPDP**, **P-16 (Opsional)**, dan **P-17P (Opsional)** lengkap dengan pill counter dinamis.
+     - Pergantian tab terintegrasi secara mulus dengan live filter AJAX (`X-Filter-Partial: 1`) dan `history.pushState`.
+  2. **Standardisasi Datepicker Flatpickr (D-013)**:
+     - Filter tanggal pada tabel `/spdp` menggunakan komponen `<x-form.date-picker>` dengan lokalisasi Bahasa Indonesia (`id`), icon Flaticon `fi-rr-calendar`, auto-dispatch `change`, dan reset Flatpickr otomatis.
+     - Input `tanggal_surat` pada formulir tahapan (`resources/views/pages/tahapan/form.blade.php`) menggunakan `<x-form.date-picker>` menggantikan native HTML5 `<input type="date">`.
+  3. **Tombol "+ Tambah SPDP" Berbasis Modal Seleksi Berkas**:
+     - Mengklik tombol "+ Tambah SPDP" membuka modal Alpine.js yang menampilkan daftar Berkas Perkara yang siap memulai SPDP (`tahap_perkara_status = 'final'` dan belum memiliki SPDP).
+     - Memilih berkas langsung mengarahkan ke form input SPDP (`route('berkas-perkara.tahapan.create', [$berkas, 'jenis' => 'spdp'])`).
+  4. **Tabel & Aksi Seragam (D-013)**:
+     - Kolom tabel seragam: `No`, `Berkas Perkara & Tersangka`, `Tahapan`, `Nomor Surat`, `Tanggal Surat`, `Dokumen`, `Status`, `Aksi`.
+     - Penomoran urut pagination: `{{ $loop->iteration + ($spdps->currentPage() - 1) * $spdps->perPage() }}`.
+     - Untuk SPDP yang sudah difinalkan, Penyidik diberikan tombol shortcut **Mulai Tahap 1** untuk langsung melanjutkan ke tahapan berikutnya.
+- Konsekuensi: Menu SPDP dan tahapan pembuka penyidikan beroperasi 100% menggunakan data database riil, UX lebih cepat dan intuitif, serta tahapan opsional terakomodasi secara bersih dan rapi.
 
 
 
