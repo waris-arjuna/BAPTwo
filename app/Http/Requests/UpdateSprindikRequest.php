@@ -13,7 +13,11 @@ class UpdateSprindikRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return $this->user()?->can('edit-draft') ?? false;
+        /** @var Perkara|null $perkara */
+        $perkara = $this->route('perkara');
+        $isLocked = $perkara instanceof Perkara ? $perkara->isSprindikLocked() : false;
+
+        return $this->user()?->can('edit-draft', $isLocked) ?? false;
     }
 
     /**
@@ -26,15 +30,20 @@ class UpdateSprindikRequest extends FormRequest
         /** @var Perkara|string|int|null $perkara */
         $perkara = $this->route('perkara');
         $perkaraId = $perkara instanceof Perkara ? $perkara->id : $perkara;
+        $isDraft = $this->input('action_type') === 'draft';
 
         return [
+            'action_type' => ['nullable', 'in:draft,lanjut'],
             'nomor_sprindik' => [
-                'required',
+                $isDraft ? 'nullable' : 'required',
                 'string',
                 'max:100',
                 Rule::unique('perkara', 'nomor_surat_perintah')->ignore($perkaraId),
             ],
-            'tanggal_sprindik' => ['required', 'date'],
+            'tanggal_sprindik' => [
+                $isDraft ? 'nullable' : 'required',
+                'date',
+            ],
             'dokumen_sprindik' => ['nullable', 'file', 'mimes:pdf', 'max:20480'],
             'deskripsi' => ['nullable', 'string'],
         ];
@@ -46,9 +55,9 @@ class UpdateSprindikRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'nomor_sprindik.required' => 'Nomor sprindik wajib diisi.',
+            'nomor_sprindik.required' => 'Nomor sprindik wajib diisi untuk melanjutkan tahap.',
             'nomor_sprindik.unique' => 'Nomor sprindik sudah digunakan.',
-            'tanggal_sprindik.required' => 'Tanggal sprindik wajib diisi.',
+            'tanggal_sprindik.required' => 'Tanggal sprindik wajib diisi untuk melanjutkan tahap.',
             'tanggal_sprindik.date' => 'Format tanggal sprindik tidak valid.',
             'dokumen_sprindik.mimes' => 'Dokumen sprindik harus berformat PDF.',
             'dokumen_sprindik.max' => 'Ukuran dokumen sprindik maksimal 20 MB.',

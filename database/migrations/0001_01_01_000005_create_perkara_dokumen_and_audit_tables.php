@@ -11,13 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // 1. Tabel perkara (Informasi Pra-SPDP Lean - ref: D-008)
+        // 1. Tabel perkara (Informasi Pra-SPDP Lean + Draft & Locking - ref: D-008, F-14..F-19)
         Schema::create('perkara', function (Blueprint $table) {
             $table->id();
-            $table->string('nomor_laporan_kejadian', 100)->unique();
-            $table->date('tanggal_laporan_kejadian');
+            $table->string('nomor_laporan_kejadian', 100)->nullable()->unique();
+            $table->date('tanggal_laporan_kejadian')->nullable();
+            $table->enum('tahap_laporan_status', ['draft', 'final'])->default('draft')->index();
+            $table->timestamp('laporan_locked_at')->nullable();
+            $table->foreignId('laporan_finalized_by')->nullable()->constrained('user')->nullOnDelete();
+
             $table->string('nomor_surat_perintah', 100)->nullable()->unique();
             $table->date('tanggal_surat_perintah')->nullable();
+            $table->enum('tahap_sprindik_status', ['draft', 'final'])->nullable()->index();
+            $table->timestamp('sprindik_locked_at')->nullable();
+            $table->foreignId('sprindik_finalized_by')->nullable()->constrained('user')->nullOnDelete();
+
             $table->unsignedBigInteger('tkp_id')->nullable()->index();
             $table->text('deskripsi')->nullable();
             $table->foreignId('created_by')->nullable()->constrained('user')->nullOnDelete();

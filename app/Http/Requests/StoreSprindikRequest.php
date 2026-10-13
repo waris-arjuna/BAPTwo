@@ -21,10 +21,21 @@ class StoreSprindikRequest extends FormRequest
      */
     public function rules(): array
     {
+        $isDraft = $this->input('action_type') === 'draft';
+
         return [
+            'action_type' => ['nullable', 'in:draft,lanjut'],
             'perkara_id' => ['required', 'exists:perkara,id'],
-            'nomor_sprindik' => ['required', 'string', 'max:100', 'unique:perkara,nomor_surat_perintah'],
-            'tanggal_sprindik' => ['required', 'date'],
+            'nomor_sprindik' => [
+                $isDraft ? 'nullable' : 'required',
+                'string',
+                'max:100',
+                'unique:perkara,nomor_surat_perintah',
+            ],
+            'tanggal_sprindik' => [
+                $isDraft ? 'nullable' : 'required',
+                'date',
+            ],
             'dokumen_sprindik' => ['nullable', 'file', 'mimes:pdf', 'max:20480'],
             'deskripsi' => ['nullable', 'string'],
         ];
@@ -38,9 +49,9 @@ class StoreSprindikRequest extends FormRequest
         return [
             'perkara_id.required' => 'Laporan kejadian wajib dipilih.',
             'perkara_id.exists' => 'Laporan kejadian yang dipilih tidak ditemukan.',
-            'nomor_sprindik.required' => 'Nomor sprindik wajib diisi.',
+            'nomor_sprindik.required' => 'Nomor sprindik wajib diisi untuk melanjutkan tahap.',
             'nomor_sprindik.unique' => 'Nomor sprindik sudah digunakan.',
-            'tanggal_sprindik.required' => 'Tanggal sprindik wajib diisi.',
+            'tanggal_sprindik.required' => 'Tanggal sprindik wajib diisi untuk melanjutkan tahap.',
             'tanggal_sprindik.date' => 'Format tanggal sprindik tidak valid.',
             'dokumen_sprindik.mimes' => 'Dokumen sprindik harus berformat PDF.',
             'dokumen_sprindik.max' => 'Ukuran dokumen sprindik maksimal 20 MB.',

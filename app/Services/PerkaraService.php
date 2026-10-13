@@ -2,8 +2,12 @@
 
 namespace App\Services;
 
+use App\Models\Alamat;
+use App\Models\BerkasPerkara;
 use App\Models\Dokumen;
 use App\Models\Perkara;
+use App\Models\Tersangka;
+use App\Models\Tkp;
 use App\Models\User;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
@@ -11,12 +15,12 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 
 class PerkaraService
 {
     public function __construct(
-        protected AuditTrailService $auditTrail
+        protected AuditTrailService $auditTrail,
+        protected WilayahService $wilayahService
     ) {}
 
     /**
@@ -43,19 +47,37 @@ class PerkaraService
                         });
 
                     $lowerSearch = strtolower($search);
+                    if (str_contains('draft', $lowerSearch)) {
+                        $q->orWhere('tahap_laporan_status', 'draft');
+                    }
                     if (str_contains('belum dilanjutkan', $lowerSearch)) {
-                        $q->orWhereNull('nomor_surat_perintah');
+                        $q->orWhere(function (Builder $sub) {
+                            $sub->where('tahap_laporan_status', 'final')
+                                ->whereNull('nomor_surat_perintah');
+                        });
                     }
                     if (str_contains('sprindik tersedia', $lowerSearch)) {
                         $q->orWhereNotNull('nomor_surat_perintah');
                     }
+                    if (str_contains('perkara terbentuk', $lowerSearch)) {
+                        $q->orWhere('tahap_perkara_status', 'final');
+                    }
                 });
             })
             ->when($status !== '', function (Builder $query) use ($status) {
-                if ($status === 'Belum Dilanjutkan') {
-                    $query->whereNull('nomor_surat_perintah');
+                if ($status === 'Draft') {
+                    $query->where('tahap_laporan_status', 'draft');
+                } elseif ($status === 'Belum Dilanjutkan') {
+                    $query->where('tahap_laporan_status', 'final')
+                        ->whereNull('nomor_surat_perintah');
                 } elseif ($status === 'Sprindik Tersedia') {
-                    $query->whereNotNull('nomor_surat_perintah');
+                    $query->whereNotNull('nomor_surat_perintah')
+                        ->where(function (Builder $q) {
+                            $q->whereNull('tahap_perkara_status')
+                                ->orWhere('tahap_perkara_status', '!=', 'final');
+                        });
+                } elseif ($status === 'Perkara Terbentuk') {
+                    $query->where('tahap_perkara_status', 'final');
                 }
             })
             ->when($tanggalDari !== '', function (Builder $query) use ($tanggalDari) {
@@ -83,8 +105,11 @@ class PerkaraService
         $tanggalSampai = $request->string('tanggal_sampai')->trim()->toString();
 
         return Perkara::query()
-            ->whereNotNull('nomor_surat_perintah')
-            ->with(['dokumenSprindik', 'dokumenLaporan', 'creator'])
+            ->where(function (Builder $q) {
+                $q->whereNotNull('nomor_surat_perintah')
+                    ->orWhereNotNull('tahap_sprindik_status');
+            })
+            ->with(['dokumenSprindik', 'dokumenLaporan', 'creator', 'berkasPerkaras'])
             ->when($search !== '', function (Builder $query) use ($search) {
                 $query->where(function (Builder $q) use ($search) {
                     $q->where('nomor_surat_perintah', 'like', "%{$search}%")
@@ -96,14 +121,31 @@ class PerkaraService
                         });
 
                     $lowerSearch = strtolower($search);
+                    if (str_contains('draft', $lowerSearch)) {
+                        $q->orWhere('tahap_sprindik_status', 'draft')
+                            ->orWhere('tahap_perkara_status', 'draft');
+                    }
                     if (str_contains('belum menjadi perkara', $lowerSearch)) {
-                        $q->orWhereNotNull('nomor_surat_perintah');
+                        $q->orWhere(function (Builder $sub) {
+                            $sub->where('tahap_sprindik_status', 'final')
+                                ->whereNull('tahap_perkara_status');
+                        });
+                    }
+                    if (str_contains('perkara terbentuk', $lowerSearch)) {
+                        $q->orWhere('tahap_perkara_status', 'final');
                     }
                 });
             })
             ->when($status !== '', function (Builder $query) use ($status) {
-                if ($status === 'Belum Menjadi Perkara') {
-                    $query->whereNotNull('nomor_surat_perintah');
+                if ($status === 'Draft') {
+                    $query->where('tahap_sprindik_status', 'draft');
+                } elseif ($status === 'Draft Perkara') {
+                    $query->where('tahap_perkara_status', 'draft');
+                } elseif ($status === 'Belum Menjadi Perkara') {
+                    $query->where('tahap_sprindik_status', 'final')
+                        ->whereNull('tahap_perkara_status');
+                } elseif ($status === 'Perkara Terbentuk') {
+                    $query->where('tahap_perkara_status', 'final');
                 }
             })
             ->when($tanggalDari !== '', function (Builder $query) use ($tanggalDari) {
@@ -119,29 +161,37 @@ class PerkaraService
     }
 
     /**
-     * Laporan Kejadian yang belum memiliki Sprindik untuk dropdown tambah Sprindik
+     * Laporan Kejadian yang sudah final dan belum memiliki Sprindik untuk dropdown tambah Sprindik
      *
      * @return Collection<int, Perkara>
      */
     public function getAvailableForSprindik(): Collection
     {
         return Perkara::query()
+            ->with('dokumenLaporan')
+            ->where('tahap_laporan_status', 'final')
             ->whereNull('nomor_surat_perintah')
+            ->whereNull('tahap_sprindik_status')
             ->orderByDesc('tanggal_laporan_kejadian')
             ->get();
     }
 
     /**
-     * Buat Laporan Kejadian baru
+     * Buat Laporan Kejadian baru (mendukung Draft maupun Simpan & Lanjut)
      *
-     * @param  array{nomor_laporan: string, tanggal_laporan: string, deskripsi?: ?string}  $data
+     * @param  array{action_type?: string, nomor_laporan?: ?string, tanggal_laporan?: ?string, deskripsi?: ?string}  $data
      */
     public function createLaporanKejadian(array $data, ?UploadedFile $file, User $user): Perkara
     {
         return DB::transaction(function () use ($data, $file, $user) {
+            $isFinal = ($data['action_type'] ?? 'lanjut') === 'lanjut';
+
             $perkara = Perkara::create([
-                'nomor_laporan_kejadian' => $data['nomor_laporan'],
-                'tanggal_laporan_kejadian' => $data['tanggal_laporan'],
+                'nomor_laporan_kejadian' => $data['nomor_laporan'] ?? null,
+                'tanggal_laporan_kejadian' => $data['tanggal_laporan'] ?? null,
+                'tahap_laporan_status' => $isFinal ? 'final' : 'draft',
+                'laporan_locked_at' => $isFinal ? now() : null,
+                'laporan_finalized_by' => $isFinal ? $user->id : null,
                 'deskripsi' => $data['deskripsi'] ?? null,
                 'created_by' => $user->id,
                 'updated_by' => $user->id,
@@ -166,21 +216,34 @@ class PerkaraService
     }
 
     /**
-     * Update Laporan Kejadian
+     * Update Laporan Kejadian (hanya saat masih Draft; terkunci mutlak jika sudah Final)
      *
-     * @param  array{nomor_laporan: string, tanggal_laporan: string, deskripsi?: ?string}  $data
+     * @param  array{action_type?: string, nomor_laporan?: ?string, tanggal_laporan?: ?string, deskripsi?: ?string}  $data
      */
     public function updateLaporanKejadian(Perkara $perkara, array $data, ?UploadedFile $file, User $user): Perkara
     {
+        if ($perkara->isLaporanLocked()) {
+            abort(403, 'Tahap Laporan Kejadian sudah difinalkan dan terkunci secara permanen.');
+        }
+
         return DB::transaction(function () use ($perkara, $data, $file, $user) {
             $oldData = $perkara->toArray();
+            $isFinal = ($data['action_type'] ?? 'draft') === 'lanjut';
 
-            $perkara->update([
-                'nomor_laporan_kejadian' => $data['nomor_laporan'],
-                'tanggal_laporan_kejadian' => $data['tanggal_laporan'],
+            $updatePayload = [
+                'nomor_laporan_kejadian' => $data['nomor_laporan'] ?? $perkara->nomor_laporan_kejadian,
+                'tanggal_laporan_kejadian' => $data['tanggal_laporan'] ?? $perkara->tanggal_laporan_kejadian,
                 'deskripsi' => $data['deskripsi'] ?? null,
                 'updated_by' => $user->id,
-            ]);
+            ];
+
+            if ($isFinal) {
+                $updatePayload['tahap_laporan_status'] = 'final';
+                $updatePayload['laporan_locked_at'] = now();
+                $updatePayload['laporan_finalized_by'] = $user->id;
+            }
+
+            $perkara->update($updatePayload);
 
             if ($file instanceof UploadedFile) {
                 $this->storeDokumen($perkara, $file, 'lapkej', $user);
@@ -201,18 +264,29 @@ class PerkaraService
     }
 
     /**
-     * Kaitkan / Buat Sprindik pada Perkara
+     * Kaitkan / Buat Sprindik pada Perkara (mendukung Draft maupun Simpan & Lanjut)
      *
-     * @param  array{nomor_sprindik: string, tanggal_sprindik: string, deskripsi?: ?string}  $data
+     * @param  array{action_type?: string, nomor_sprindik?: ?string, tanggal_sprindik?: ?string, deskripsi?: ?string}  $data
      */
     public function attachSprindik(Perkara $perkara, array $data, ?UploadedFile $file, User $user): Perkara
     {
         return DB::transaction(function () use ($perkara, $data, $file, $user) {
             $oldData = $perkara->toArray();
+            $isFinal = ($data['action_type'] ?? 'lanjut') === 'lanjut';
+
+            // Jika laporan kejadian belum terkunci saat sprindik dibuat, otomatis kunci laporan kejadian
+            $laporanLockedAt = $perkara->laporan_locked_at ?? now();
+            $laporanFinalizedBy = $perkara->laporan_finalized_by ?? $user->id;
 
             $perkara->update([
-                'nomor_surat_perintah' => $data['nomor_sprindik'],
-                'tanggal_surat_perintah' => $data['tanggal_sprindik'],
+                'tahap_laporan_status' => 'final',
+                'laporan_locked_at' => $laporanLockedAt,
+                'laporan_finalized_by' => $laporanFinalizedBy,
+                'nomor_surat_perintah' => $data['nomor_sprindik'] ?? null,
+                'tanggal_surat_perintah' => $data['tanggal_sprindik'] ?? null,
+                'tahap_sprindik_status' => $isFinal ? 'final' : 'draft',
+                'sprindik_locked_at' => $isFinal ? now() : null,
+                'sprindik_finalized_by' => $isFinal ? $user->id : null,
                 'deskripsi' => $data['deskripsi'] ?? $perkara->deskripsi,
                 'updated_by' => $user->id,
             ]);
@@ -236,21 +310,34 @@ class PerkaraService
     }
 
     /**
-     * Update Sprindik pada Perkara
+     * Update Sprindik pada Perkara (hanya saat masih Draft; terkunci mutlak jika sudah Final)
      *
-     * @param  array{nomor_sprindik: string, tanggal_sprindik: string, deskripsi?: ?string}  $data
+     * @param  array{action_type?: string, nomor_sprindik?: ?string, tanggal_sprindik?: ?string, deskripsi?: ?string}  $data
      */
     public function updateSprindik(Perkara $perkara, array $data, ?UploadedFile $file, User $user): Perkara
     {
+        if ($perkara->isSprindikLocked()) {
+            abort(403, 'Tahap Sprindik sudah difinalkan dan terkunci secara permanen.');
+        }
+
         return DB::transaction(function () use ($perkara, $data, $file, $user) {
             $oldData = $perkara->toArray();
+            $isFinal = ($data['action_type'] ?? 'draft') === 'lanjut';
 
-            $perkara->update([
-                'nomor_surat_perintah' => $data['nomor_sprindik'],
-                'tanggal_surat_perintah' => $data['tanggal_sprindik'],
+            $updatePayload = [
+                'nomor_surat_perintah' => $data['nomor_sprindik'] ?? $perkara->nomor_surat_perintah,
+                'tanggal_surat_perintah' => $data['tanggal_sprindik'] ?? $perkara->tanggal_surat_perintah,
                 'deskripsi' => $data['deskripsi'] ?? $perkara->deskripsi,
                 'updated_by' => $user->id,
-            ]);
+            ];
+
+            if ($isFinal) {
+                $updatePayload['tahap_sprindik_status'] = 'final';
+                $updatePayload['sprindik_locked_at'] = now();
+                $updatePayload['sprindik_finalized_by'] = $user->id;
+            }
+
+            $perkara->update($updatePayload);
 
             if ($file instanceof UploadedFile) {
                 $this->storeDokumen($perkara, $file, 'sprindik', $user);
@@ -302,8 +389,12 @@ class PerkaraService
             $oldData = $perkara->toArray();
 
             $perkara->update([
+                'tahap_laporan_status' => 'final',
                 'nomor_surat_perintah' => null,
                 'tanggal_surat_perintah' => null,
+                'tahap_sprindik_status' => null,
+                'sprindik_locked_at' => null,
+                'sprindik_finalized_by' => null,
                 'updated_by' => $user->id,
             ]);
 
@@ -320,6 +411,261 @@ class PerkaraService
                 userId: $user->id
             );
         });
+    }
+
+    /**
+     * Simpan / Finalkan Data Pembentukan Perkara & Berkas Perkara Pra-SPDP:
+     * TKP (F-07), Tim PPNS Utama & Anggota (F-08), Tersangka (F-03),
+     * 1 Tersangka = 1 Berkas Perkara (F-02), Nomor Berkas Manual (F-33), dan Pasal Berlapis (F-04).
+     *
+     * @param  array<string, mixed>  $data
+     */
+    public function savePerkaraBerkas(Perkara $perkara, array $data, User $user): Perkara
+    {
+        if ($perkara->isPerkaraLocked()) {
+            abort(403, 'Data pembentukan perkara dan berkas pra-SPDP sudah difinalkan dan terkunci secara permanen.');
+        }
+
+        return DB::transaction(function () use ($perkara, $data, $user) {
+            $oldData = $perkara->load(['tkp.alamat', 'ppnsUsers', 'tersangkas.berkasPerkara.pasals'])->toArray();
+            $isFinal = ($data['action_type'] ?? 'lanjut') === 'lanjut';
+
+            // 1. Simpan / Update Alamat & TKP (F-07, F-36, F-37)
+            $tkpId = $perkara->tkp_id;
+            $hasTkpInput = ! empty($data['tkp_provinsi_kode'])
+                || ! empty($data['tkp_alamat_detail'])
+                || ! empty($data['tkp_klasifikasi'])
+                || ! empty($data['tkp_legalitas'])
+                || ! empty($data['tkp_modus']);
+
+            if ($hasTkpInput || $tkpId !== null) {
+                $alamatPayload = $this->resolveTkpAlamatPayload($data, $perkara->tkp?->alamat);
+
+                if ($perkara->tkp && $perkara->tkp->alamat) {
+                    $perkara->tkp->alamat->update($alamatPayload);
+                    $alamatId = $perkara->tkp->alamat_id;
+                } else {
+                    $alamat = Alamat::create($alamatPayload);
+                    $alamatId = $alamat->id;
+                }
+
+                $tkpPayload = [
+                    'alamat_id' => $alamatId,
+                    'klasifikasi' => $data['tkp_klasifikasi'] ?? $perkara->tkp?->klasifikasi,
+                    'legalitas' => $data['tkp_legalitas'] ?? $perkara->tkp?->legalitas,
+                    'modus' => $data['tkp_modus'] ?? $perkara->tkp?->modus,
+                    'updated_by' => $user->id,
+                ];
+
+                if ($perkara->tkp) {
+                    $perkara->tkp->update($tkpPayload);
+                    $tkpId = $perkara->tkp->id;
+                } else {
+                    $tkpPayload['created_by'] = $user->id;
+                    $tkp = Tkp::create($tkpPayload);
+                    $tkpId = $tkp->id;
+                }
+            }
+
+            // 2. Sinkronisasi Tim PPNS Utama & Anggota (F-08)
+            $ppnsSync = [];
+            $utamaId = ! empty($data['ppns_utama_id']) ? (int) $data['ppns_utama_id'] : null;
+            if ($utamaId !== null) {
+                $ppnsSync[$utamaId] = ['peran' => 'utama'];
+            }
+
+            $anggotaIds = is_array($data['ppns_anggota_ids'] ?? null) ? $data['ppns_anggota_ids'] : [];
+            foreach ($anggotaIds as $anggotaId) {
+                $id = (int) $anggotaId;
+                if ($id > 0 && $id !== $utamaId) {
+                    $ppnsSync[$id] = ['peran' => 'anggota'];
+                }
+            }
+
+            if ($ppnsSync !== [] || array_key_exists('ppns_utama_id', $data)) {
+                $perkara->ppnsUsers()->sync($ppnsSync);
+            }
+
+            // 3. Simpan Tersangka -> 1 Berkas Perkara per Tersangka -> Pasal Berlapis (F-02, F-03, F-04, F-33)
+            if (is_array($data['tersangka'] ?? null)) {
+                $keptTersangkaIds = [];
+
+                foreach ($data['tersangka'] as $tskData) {
+                    $existingId = ! empty($tskData['id']) ? (int) $tskData['id'] : null;
+                    $tersangka = null;
+
+                    if ($existingId !== null) {
+                        $tersangka = Tersangka::where('perkara_id', $perkara->id)->find($existingId);
+                    }
+
+                    $tskPayload = [
+                        'perkara_id' => $perkara->id,
+                        'nama' => $tskData['nama'] ?? null,
+                        'alias' => $tskData['alias'] ?? null,
+                        'bin_binti' => $tskData['bin_binti'] ?? null,
+                        'nik' => $tskData['nik'] ?? null,
+                        'tempat_lahir' => $tskData['tempat_lahir'] ?? null,
+                        'tanggal_lahir' => ($tskData['tanggal_lahir'] ?? null) ?: null,
+                        'jenis_kelamin' => ($tskData['jenis_kelamin'] ?? null) ?: null,
+                        'agama' => ($tskData['agama'] ?? null) ?: null,
+                        'pekerjaan' => $tskData['pekerjaan'] ?? null,
+                        'kewarganegaraan' => $tskData['kewarganegaraan'] ?? 'WNI',
+                        'updated_by' => $user->id,
+                    ];
+
+                    if ($tersangka instanceof Tersangka) {
+                        $tersangka->update($tskPayload);
+                    } else {
+                        $tskPayload['created_by'] = $user->id;
+                        $tersangka = Tersangka::create($tskPayload);
+                    }
+
+                    $keptTersangkaIds[] = $tersangka->id;
+
+                    // 1 Tersangka = 1 Berkas Perkara (UNIQUE tersangka_id, Nomor Berkas manual tanpa pola - F-02, F-33)
+                    $berkas = BerkasPerkara::withTrashed()
+                        ->where('tersangka_id', $tersangka->id)
+                        ->first();
+
+                    if ($berkas instanceof BerkasPerkara) {
+                        if ($berkas->trashed()) {
+                            $berkas->restore();
+                        }
+                        $berkas->update([
+                            'perkara_id' => $perkara->id,
+                            'nomor_berkas' => $tskData['nomor_berkas'] ?? $berkas->nomor_berkas,
+                            'updated_by' => $user->id,
+                        ]);
+                    } else {
+                        $berkas = BerkasPerkara::create([
+                            'perkara_id' => $perkara->id,
+                            'tersangka_id' => $tersangka->id,
+                            'nomor_berkas' => $tskData['nomor_berkas'] ?? null,
+                            'status_formal' => null,
+                            'status_proses' => 'Baru',
+                            'progress_persen' => 0,
+                            'is_dpo' => false,
+                            'created_by' => $user->id,
+                            'updated_by' => $user->id,
+                        ]);
+                    }
+
+                    // Sinkronisasi Pasal Berlapis per Berkas Perkara (F-04)
+                    $pasalIds = array_values(array_filter(
+                        array_map('intval', is_array($tskData['pasal_ids'] ?? null) ? $tskData['pasal_ids'] : []),
+                        fn (int $id): bool => $id > 0
+                    ));
+                    $berkas->pasals()->sync($pasalIds);
+                }
+
+                // Soft delete tersangka & berkas yang dihapus dari daftar saat masih draft
+                $removedTersangkas = Tersangka::where('perkara_id', $perkara->id)
+                    ->whereNotIn('id', $keptTersangkaIds)
+                    ->get();
+
+                foreach ($removedTersangkas as $removed) {
+                    $removed->berkasPerkara?->delete();
+                    $removed->delete();
+                }
+            }
+
+            // 4. Update status tahapan perkara
+            $perkara->update([
+                'tkp_id' => $tkpId,
+                'tahap_laporan_status' => 'final',
+                'laporan_locked_at' => $perkara->laporan_locked_at ?? now(),
+                'laporan_finalized_by' => $perkara->laporan_finalized_by ?? $user->id,
+                'tahap_sprindik_status' => 'final',
+                'sprindik_locked_at' => $perkara->sprindik_locked_at ?? now(),
+                'sprindik_finalized_by' => $perkara->sprindik_finalized_by ?? $user->id,
+                'tahap_perkara_status' => $isFinal ? 'final' : 'draft',
+                'perkara_locked_at' => $isFinal ? now() : null,
+                'perkara_finalized_by' => $isFinal ? $user->id : null,
+                'updated_by' => $user->id,
+            ]);
+
+            $freshPerkara = $perkara->fresh(['tkp.alamat', 'ppnsUsers', 'tersangkas.berkasPerkara.pasals']);
+
+            $this->auditTrail->log(
+                aksi: $isFinal ? 'finalize_perkara_berkas' : 'save_draft_perkara_berkas',
+                tabel: 'perkara',
+                recordId: $perkara->id,
+                dataLama: $oldData,
+                dataBaru: $freshPerkara?->toArray(),
+                perkaraId: $perkara->id,
+                userId: $user->id
+            );
+
+            return $freshPerkara ?? $perkara;
+        });
+    }
+
+    /**
+     * Resolve nama wilayah dari WilayahService apabila hanya kode wilayah yang dikirim
+     *
+     * @param  array<string, mixed>  $data
+     * @return array<string, ?string>
+     */
+    protected function resolveTkpAlamatPayload(array $data, ?Alamat $existing = null): array
+    {
+        $provKode = (string) ($data['tkp_provinsi_kode'] ?? $existing?->provinsi_kode ?? '');
+        $kabKode = (string) ($data['tkp_kabupaten_kode'] ?? $existing?->kabupaten_kode ?? '');
+        $kecKode = (string) ($data['tkp_kecamatan_kode'] ?? $existing?->kecamatan_kode ?? '');
+        $desaKode = (string) ($data['tkp_desa_kode'] ?? $existing?->desa_kode ?? '');
+
+        $provNama = (string) ($data['tkp_provinsi_nama'] ?? '');
+        if ($provNama === '' && $provKode !== '') {
+            foreach ($this->wilayahService->getProvinsi() as $item) {
+                if ($item['code'] === $provKode) {
+                    $provNama = $item['name'];
+                    break;
+                }
+            }
+        }
+
+        $kabNama = (string) ($data['tkp_kabupaten_nama'] ?? '');
+        if ($kabNama === '' && $provKode !== '' && $kabKode !== '') {
+            foreach ($this->wilayahService->getKabupaten($provKode) as $item) {
+                if ($item['code'] === $kabKode) {
+                    $kabNama = $item['name'];
+                    break;
+                }
+            }
+        }
+
+        $kecNama = (string) ($data['tkp_kecamatan_nama'] ?? '');
+        if ($kecNama === '' && $kabKode !== '' && $kecKode !== '') {
+            foreach ($this->wilayahService->getKecamatan($kabKode) as $item) {
+                if ($item['code'] === $kecKode) {
+                    $kecNama = $item['name'];
+                    break;
+                }
+            }
+        }
+
+        $desaNama = (string) ($data['tkp_desa_nama'] ?? '');
+        if ($desaNama === '' && $kecKode !== '' && $desaKode !== '') {
+            foreach ($this->wilayahService->getDesa($kecKode) as $item) {
+                if ($item['code'] === $desaKode) {
+                    $desaNama = $item['name'];
+                    break;
+                }
+            }
+        }
+
+        return [
+            'provinsi_kode' => $provKode ?: null,
+            'provinsi_nama' => $provNama ?: ($existing?->provinsi_nama ?? null),
+            'kabupaten_kode' => $kabKode ?: null,
+            'kabupaten_nama' => $kabNama ?: ($existing?->kabupaten_nama ?? null),
+            'kecamatan_kode' => $kecKode ?: null,
+            'kecamatan_nama' => $kecNama ?: ($existing?->kecamatan_nama ?? null),
+            'desa_kode' => $desaKode ?: null,
+            'desa_nama' => $desaNama ?: ($existing?->desa_nama ?? null),
+            'rt' => $data['tkp_rt'] ?? $existing?->rt,
+            'rw' => $data['tkp_rw'] ?? $existing?->rw,
+            'alamat_detail' => $data['tkp_alamat_detail'] ?? $existing?->alamat_detail,
+        ];
     }
 
     /**
@@ -355,40 +701,58 @@ class PerkaraService
                 'id' => 1,
                 'nomor_laporan_kejadian' => 'LK/001/IX/2026',
                 'tanggal_laporan_kejadian' => '2026-09-02',
+                'tahap_laporan_status' => 'final',
+                'laporan_locked_at' => now(),
                 'nomor_surat_perintah' => null,
                 'tanggal_surat_perintah' => null,
+                'tahap_sprindik_status' => null,
                 'deskripsi' => 'Dugaan peredaran sediaan farmasi tanpa izin edar.',
             ],
             [
                 'id' => 2,
                 'nomor_laporan_kejadian' => 'LK/002/IX/2026',
                 'tanggal_laporan_kejadian' => '2026-09-04',
+                'tahap_laporan_status' => 'final',
+                'laporan_locked_at' => now(),
                 'nomor_surat_perintah' => 'SP/001/IX/2026',
                 'tanggal_surat_perintah' => '2026-09-05',
+                'tahap_sprindik_status' => 'final',
+                'sprindik_locked_at' => now(),
                 'deskripsi' => 'Dugaan peredaran kosmetik mengandung bahan berbahaya.',
             ],
             [
                 'id' => 3,
                 'nomor_laporan_kejadian' => 'LK/003/IX/2026',
                 'tanggal_laporan_kejadian' => '2026-09-05',
+                'tahap_laporan_status' => 'final',
+                'laporan_locked_at' => now(),
                 'nomor_surat_perintah' => 'SP/002/IX/2026',
                 'tanggal_surat_perintah' => '2026-09-06',
+                'tahap_sprindik_status' => 'final',
+                'sprindik_locked_at' => now(),
                 'deskripsi' => 'Dugaan pangan olahan tanpa izin edar skala rumahan.',
             ],
             [
                 'id' => 4,
                 'nomor_laporan_kejadian' => 'LK/004/IX/2026',
                 'tanggal_laporan_kejadian' => '2026-09-08',
+                'tahap_laporan_status' => 'final',
+                'laporan_locked_at' => now(),
                 'nomor_surat_perintah' => null,
                 'tanggal_surat_perintah' => null,
+                'tahap_sprindik_status' => null,
                 'deskripsi' => 'Dugaan obat tradisional ilegal mengandung BKO.',
             ],
             [
                 'id' => 5,
                 'nomor_laporan_kejadian' => 'LK/005/IX/2026',
                 'tanggal_laporan_kejadian' => '2026-09-10',
+                'tahap_laporan_status' => 'final',
+                'laporan_locked_at' => now(),
                 'nomor_surat_perintah' => 'SP/003/IX/2026',
                 'tanggal_surat_perintah' => '2026-09-11',
+                'tahap_sprindik_status' => 'final',
+                'sprindik_locked_at' => now(),
                 'deskripsi' => 'Dugaan suplemen kesehatan palsu secara daring.',
             ],
         ];

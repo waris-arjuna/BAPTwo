@@ -1,7 +1,7 @@
 <table class="min-w-full">
     <thead>
         <tr class="border-b border-gray-200 bg-gray-50 dark:border-gray-800 dark:bg-white/[0.02]">
-            <th class="w-12 px-4 py-3 text-start text-theme-xs font-medium text-gray-500 dark:text-gray-400">{{ __('No') }}</th>
+            <th class="w-12 px-4 py-3 text-start text-theme-xs font-medium text-gray-500 dark:text-gray-400">{{ __('No.') }}</th>
             @if ($type === 'jabatan')
                 <th class="px-4 py-3 text-start text-theme-xs font-medium text-gray-500 dark:text-gray-400">{{ __('Nama Jabatan') }}</th>
             @elseif ($type === 'bidang')
@@ -25,7 +25,7 @@
             @endif
             <th class="px-4 py-3 text-start text-theme-xs font-medium text-gray-500 dark:text-gray-400">{{ __('Status') }}</th>
             @if ($canManage)
-                <th class="px-4 py-3 text-end text-theme-xs font-medium text-gray-500 dark:text-gray-400">{{ __('Actions') }}</th>
+                <th class="px-4 py-3 text-center text-theme-xs font-medium text-gray-500 dark:text-gray-400">{{ __('Actions') }}</th>
             @endif
         </tr>
     </thead>

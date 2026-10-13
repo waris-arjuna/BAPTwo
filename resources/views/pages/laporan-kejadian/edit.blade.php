@@ -19,8 +19,14 @@
                 <span class="text-gray-700 dark:text-gray-300">Edit</span>
             </div>
 
-            <h1 class="text-2xl font-semibold text-gray-800 dark:text-white/90">Edit Laporan Kejadian</h1>
-            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Perbarui data laporan kejadian.</p>
+            <div class="flex flex-wrap items-center gap-3">
+                <h1 class="text-2xl font-semibold text-gray-800 dark:text-white/90">Edit Draft Laporan Kejadian</h1>
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700 dark:bg-blue-500/10 dark:text-blue-400">
+                    <i class="fi fi-rr-edit text-xs"></i>
+                    Status: Draft
+                </span>
+            </div>
+            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Perbarui draft laporan kejadian atau finalkan untuk lanjut ke tahap Sprindik.</p>
         </div>
 
         @if ($errors->any())
@@ -110,18 +116,36 @@
                 </div>
             </div>
 
-            <div class="flex flex-col-reverse gap-3 border-t border-gray-200 px-4 py-4 dark:border-gray-800 sm:flex-row sm:justify-end sm:px-6">
+            <div class="flex flex-col-reverse gap-3 border-t border-gray-200 px-4 py-4 dark:border-gray-800 sm:flex-row sm:items-center sm:justify-end sm:px-6">
+                {{-- 1. Tombol Batal --}}
                 <a
                     href="{{ route('laporan-kejadian.show', $perkara) }}"
                     class="inline-flex h-10 items-center justify-center rounded-lg border border-gray-300 bg-white px-4 text-sm font-medium text-gray-700 transition hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900/40 dark:text-gray-300 dark:hover:bg-white/[0.04]"
                 >
                     Batal
                 </a>
+
+                {{-- 2. Tombol Simpan Draft --}}
                 <button
                     type="submit"
-                    class="inline-flex h-10 items-center justify-center rounded-lg bg-brand-600 px-4 text-sm font-medium text-white transition hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-500/30"
+                    name="action_type"
+                    value="draft"
+                    formnovalidate
+                    class="inline-flex h-10 items-center justify-center gap-2 rounded-lg border border-brand-300 bg-brand-50 px-4 text-sm font-medium text-brand-700 transition hover:bg-brand-100 dark:border-brand-500/30 dark:bg-brand-500/10 dark:text-brand-300 dark:hover:bg-brand-500/20"
                 >
-                    Perbarui Laporan
+                    <i class="fi fi-rr-disk text-sm"></i>
+                    <span>Simpan Draft</span>
+                </button>
+
+                {{-- 3. Tombol Simpan & Lanjut Tahap Berikutnya --}}
+                <button
+                    type="submit"
+                    name="action_type"
+                    value="lanjut"
+                    class="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-brand-600 px-4 text-sm font-medium text-white transition hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-500/30"
+                >
+                    <i class="fi fi-rr-check-circle text-sm"></i>
+                    <span>Simpan &amp; Lanjut Tahap Berikutnya</span>
                 </button>
             </div>
         </form>

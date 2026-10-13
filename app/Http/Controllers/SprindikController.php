@@ -51,19 +51,26 @@ class SprindikController extends Controller
     {
         Gate::authorize('create-cases');
 
+        $validated = $request->validated();
+        $isDraft = ($validated['action_type'] ?? 'lanjut') === 'draft';
+
         /** @var Perkara $perkara */
-        $perkara = Perkara::findOrFail($request->validated('perkara_id'));
+        $perkara = Perkara::findOrFail($validated['perkara_id']);
 
         $this->perkaraService->attachSprindik(
             $perkara,
-            $request->validated(),
+            $validated,
             $request->file('dokumen_sprindik'),
             $request->user()
         );
 
+        $message = $isDraft
+            ? 'Draft Sprindik berhasil disimpan. Anda masih dapat mengedit data ini.'
+            : 'Sprindik berhasil disimpan dan dikunci permanen.';
+
         return redirect()
             ->route('sprindik.show', $perkara)
-            ->with('success', 'Sprindik berhasil disimpan.');
+            ->with('success', $message);
     }
 
     /**
@@ -77,12 +84,13 @@ class SprindikController extends Controller
             $perkara = Perkara::find($perkara) ?: new Perkara(['id' => $perkara]);
         }
 
-        if (empty($perkara->nomor_surat_perintah)) {
+        if (empty($perkara->nomor_surat_perintah) && empty($perkara->tahap_sprindik_status)) {
             $perkara->nomor_surat_perintah = 'SP/001/IX/2026';
             $perkara->tanggal_surat_perintah = $perkara->tanggal_surat_perintah ?? now();
+            $perkara->tahap_sprindik_status = 'final';
         }
 
-        $perkara->load(['dokumenSprindik', 'dokumenLaporan', 'creator', 'updater', 'auditLogs.user']);
+        $perkara->load(['dokumenSprindik', 'dokumenLaporan', 'creator', 'updater', 'laporanFinalizer', 'sprindikFinalizer', 'auditLogs.user']);
 
         return view('pages.sprindik.show', compact('perkara'));
     }
@@ -92,11 +100,11 @@ class SprindikController extends Controller
      */
     public function edit(Perkara $perkara): View
     {
-        abort_if(empty($perkara->nomor_surat_perintah), 404);
+        abort_if(empty($perkara->nomor_surat_perintah) && empty($perkara->tahap_sprindik_status), 404);
 
-        Gate::authorize('edit-draft');
+        Gate::authorize('edit-draft', $perkara->isSprindikLocked());
 
-        $perkara->load(['dokumenSprindik']);
+        $perkara->load(['dokumenSprindik', 'dokumenLaporan']);
 
         return view('pages.sprindik.edit', compact('perkara'));
     }
@@ -106,20 +114,27 @@ class SprindikController extends Controller
      */
     public function update(UpdateSprindikRequest $request, Perkara $perkara): RedirectResponse
     {
-        abort_if(empty($perkara->nomor_surat_perintah), 404);
+        abort_if(empty($perkara->nomor_surat_perintah) && empty($perkara->tahap_sprindik_status), 404);
 
-        Gate::authorize('edit-draft');
+        Gate::authorize('edit-draft', $perkara->isSprindikLocked());
+
+        $validated = $request->validated();
+        $isDraft = ($validated['action_type'] ?? 'draft') === 'draft';
 
         $this->perkaraService->updateSprindik(
             $perkara,
-            $request->validated(),
+            $validated,
             $request->file('dokumen_sprindik'),
             $request->user()
         );
 
+        $message = $isDraft
+            ? 'Draft Sprindik berhasil diperbarui.'
+            : 'Sprindik berhasil difinalkan dan dikunci permanen.';
+
         return redirect()
             ->route('sprindik.show', $perkara)
-            ->with('success', 'Sprindik berhasil diperbarui.');
+            ->with('success', $message);
     }
 
     /**
@@ -127,7 +142,7 @@ class SprindikController extends Controller
      */
     public function destroy(Request $request, Perkara $perkara): RedirectResponse
     {
-        abort_if(empty($perkara->nomor_surat_perintah), 404);
+        abort_if(empty($perkara->nomor_surat_perintah) && empty($perkara->tahap_sprindik_status), 404);
 
         Gate::authorize('soft-delete');
 

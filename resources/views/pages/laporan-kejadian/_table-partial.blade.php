@@ -33,8 +33,10 @@
                 @php
                     $status = $laporan->status_laporan;
                     $statusClass = match ($status) {
+                        'Draft' => 'bg-blue-50 text-blue-700 dark:bg-blue-500/10 dark:text-blue-400',
                         'Belum Dilanjutkan' => 'bg-gray-100 text-gray-700 dark:bg-gray-500/10 dark:text-gray-400',
                         'Sprindik Tersedia' => 'bg-warning-50 text-warning-700 dark:bg-warning-500/10 dark:text-warning-400',
+                        'Perkara Terbentuk' => 'bg-success-50 text-success-700 dark:bg-success-500/10 dark:text-success-400',
                         default => 'bg-gray-100 text-gray-700 dark:bg-gray-500/10 dark:text-gray-400',
                     };
                 @endphp
@@ -45,12 +47,17 @@
                     </td>
 
                     <td class="px-5 py-4">
-                        <a
-                            href="{{ route('laporan-kejadian.show', $laporan) }}"
-                            class="text-sm font-medium text-gray-800 hover:text-brand-500 dark:text-white/90"
-                        >
-                            {{ $laporan->nomor_laporan_kejadian }}
-                        </a>
+                        <div class="flex items-center gap-2">
+                            <a
+                                href="{{ route('laporan-kejadian.show', $laporan) }}"
+                                class="text-sm font-medium text-gray-800 hover:text-brand-500 dark:text-white/90"
+                            >
+                                {{ $laporan->nomor_laporan_kejadian ?: '(Draft Belum Bernomor)' }}
+                            </a>
+                            @if ($laporan->isLaporanLocked())
+                                <i class="fi fi-rr-lock text-xs text-gray-400 dark:text-gray-500" title="Tahap Final & Terkunci"></i>
+                            @endif
+                        </div>
                     </td>
 
                     <td class="px-5 py-4 text-sm text-gray-600 dark:text-gray-400">
@@ -74,7 +81,12 @@
                     </td>
 
                     <td class="px-5 py-4">
-                        <span class="inline-flex rounded-full px-3 py-1 text-xs font-medium {{ $statusClass }}">
+                        <span class="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium {{ $statusClass }}">
+                            @if ($laporan->isLaporanLocked())
+                                <i class="fi fi-rr-lock text-[10px]"></i>
+                            @else
+                                <i class="fi fi-rr-edit text-[10px]"></i>
+                            @endif
                             {{ $status }}
                         </span>
                     </td>
@@ -106,31 +118,33 @@
                                     Lihat
                                 </a>
 
-                                @can('edit-draft')
+                                @can('edit-draft', $laporan->isLaporanLocked())
                                     <a
                                         href="{{ route('laporan-kejadian.edit', $laporan) }}"
                                         class="block rounded-md px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/[0.03]"
                                     >
-                                        Edit
+                                        Edit Draft
                                     </a>
                                 @endcan
 
-                                @if (empty($laporan->nomor_surat_perintah))
-                                    @can('create-cases')
+                                @if ($laporan->isLaporanLocked())
+                                    @if (empty($laporan->nomor_surat_perintah) && empty($laporan->tahap_sprindik_status))
+                                        @can('create-cases')
+                                            <a
+                                                href="{{ route('sprindik.create', ['perkara_id' => $laporan->id]) }}"
+                                                class="block rounded-md px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/[0.03]"
+                                            >
+                                                Input Sprindik
+                                            </a>
+                                        @endcan
+                                    @else
                                         <a
-                                            href="{{ route('sprindik.create', ['perkara_id' => $laporan->id]) }}"
+                                            href="{{ route('sprindik.show', $laporan) }}"
                                             class="block rounded-md px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/[0.03]"
                                         >
-                                            Input Sprindik
+                                            Lihat Sprindik
                                         </a>
-                                    @endcan
-                                @else
-                                    <a
-                                        href="{{ route('sprindik.show', $laporan) }}"
-                                        class="block rounded-md px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/[0.03]"
-                                    >
-                                        Lihat Sprindik
-                                    </a>
+                                    @endif
                                 @endif
 
                                 @can('soft-delete')

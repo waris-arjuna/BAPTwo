@@ -37,7 +37,9 @@
                 @php
                     $status = $sprindik->status_sprindik;
                     $statusClass = match ($status) {
+                        'Draft', 'Draft Perkara' => 'bg-blue-50 text-blue-700 dark:bg-blue-500/10 dark:text-blue-400',
                         'Belum Menjadi Perkara' => 'bg-gray-100 text-gray-700 dark:bg-gray-500/10 dark:text-gray-400',
+                        'Perkara Terbentuk' => 'bg-success-50 text-success-700 dark:bg-success-500/10 dark:text-success-400',
                         default => 'bg-gray-100 text-gray-700 dark:bg-gray-500/10 dark:text-gray-400',
                     };
                 @endphp
@@ -48,12 +50,17 @@
                     </td>
 
                     <td class="px-5 py-4">
-                        <a
-                            href="{{ route('sprindik.show', $sprindik) }}"
-                            class="text-sm font-medium text-gray-800 transition hover:text-brand-500 dark:text-white/90"
-                        >
-                            {{ $sprindik->nomor_surat_perintah }}
-                        </a>
+                        <div class="flex items-center gap-2">
+                            <a
+                                href="{{ route('sprindik.show', $sprindik) }}"
+                                class="text-sm font-medium text-gray-800 transition hover:text-brand-500 dark:text-white/90"
+                            >
+                                {{ $sprindik->nomor_surat_perintah ?: '(Draft Belum Bernomor)' }}
+                            </a>
+                            @if ($sprindik->isSprindikLocked())
+                                <i class="fi fi-rr-lock text-xs text-gray-400 dark:text-gray-500" title="Tahap Final & Terkunci"></i>
+                            @endif
+                        </div>
                     </td>
 
                     <td class="px-5 py-4 text-sm text-gray-600 dark:text-gray-400">
@@ -86,7 +93,12 @@
                     </td>
 
                     <td class="px-5 py-4">
-                        <span class="inline-flex rounded-full px-3 py-1 text-xs font-medium {{ $statusClass }}">
+                        <span class="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium {{ $statusClass }}">
+                            @if ($sprindik->isSprindikLocked())
+                                <i class="fi fi-rr-lock text-[10px]"></i>
+                            @else
+                                <i class="fi fi-rr-edit text-[10px]"></i>
+                            @endif
                             {{ $status }}
                         </span>
                     </td>
@@ -118,21 +130,32 @@
                                     Lihat
                                 </a>
 
-                                @can('create-cases')
-                                    <a
-                                        href="#"
-                                        class="block rounded-md px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/[0.03]"
-                                    >
-                                        Buat Perkara
-                                    </a>
-                                @endcan
+                                @if ($sprindik->isSprindikLocked())
+                                    @if ($sprindik->isPerkaraLocked() || $sprindik->tahap_perkara_status === 'draft')
+                                        <a
+                                            href="{{ route('perkara.show', $sprindik) }}"
+                                            class="block rounded-md px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/[0.03]"
+                                        >
+                                            Lihat Perkara
+                                        </a>
+                                    @endif
 
-                                @can('edit-draft')
+                                    @can('edit-draft', $sprindik->isPerkaraLocked())
+                                        <a
+                                            href="{{ route('perkara.edit', $sprindik) }}"
+                                            class="block rounded-md px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/[0.03]"
+                                        >
+                                            {{ $sprindik->tahap_perkara_status === 'draft' ? 'Edit Draft Perkara' : 'Buat Perkara' }}
+                                        </a>
+                                    @endcan
+                                @endif
+
+                                @can('edit-draft', $sprindik->isSprindikLocked())
                                     <a
                                         href="{{ route('sprindik.edit', $sprindik) }}"
                                         class="block rounded-md px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/[0.03]"
                                     >
-                                        Edit
+                                        Edit Draft
                                     </a>
                                 @endcan
 

@@ -30,20 +30,28 @@
                     <h1 class="text-2xl font-semibold text-gray-800 dark:text-white/90">Laporan Kejadian</h1>
                     <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Detail data dan progres lanjutan laporan kejadian.</p>
                 </div>
-                <div class="flex items-center gap-2">
+                <div class="flex flex-wrap items-center gap-2">
                     <a
                         href="{{ route('laporan-kejadian.index') }}"
                         class="inline-flex h-10 items-center justify-center rounded-lg border border-gray-300 bg-white px-4 text-sm font-medium text-gray-700 transition hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900/40 dark:text-gray-300 dark:hover:bg-white/[0.04]"
                     >
                         Kembali
                     </a>
-                    @can('edit-draft')
+
+                    @if ($perkara->isLaporanLocked())
+                        <span class="inline-flex h-10 items-center gap-1.5 rounded-lg border border-gray-200 bg-gray-50 px-3.5 text-xs font-medium text-gray-600 dark:border-gray-800 dark:bg-white/[0.03] dark:text-gray-400">
+                            <i class="fi fi-rr-lock text-sm"></i>
+                            <span>Tahap Terkunci Permanen</span>
+                        </span>
+                    @endif
+
+                    @can('edit-draft', $perkara->isLaporanLocked())
                         <a
                             href="{{ route('laporan-kejadian.edit', $perkara) }}"
                             class="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-brand-600 px-4 text-sm font-medium text-white transition hover:bg-brand-700"
                         >
                             <i class="fi fi-rr-edit text-base"></i>
-                            Edit Laporan
+                            Edit Draft
                         </a>
                     @endcan
                 </div>
@@ -59,11 +67,17 @@
                             <h2 class="text-base font-semibold text-gray-800 dark:text-white/90">Informasi Laporan</h2>
                             <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Data dasar laporan kejadian pra-SPDP.</p>
                         </div>
-                        <span class="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium
-                            @if ($status === 'Belum Dilanjutkan') bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300
+                        <span class="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium
+                            @if ($status === 'Draft') bg-blue-50 text-blue-700 dark:bg-blue-500/10 dark:text-blue-400
+                            @elseif ($status === 'Belum Dilanjutkan') bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300
                             @elseif ($status === 'Sprindik Tersedia') bg-warning-50 text-warning-700 dark:bg-warning-500/10 dark:text-warning-300
                             @else bg-green-50 text-green-700 dark:bg-green-500/10 dark:text-green-300 @endif
                         ">
+                            @if ($perkara->isLaporanLocked())
+                                <i class="fi fi-rr-lock text-[10px]"></i>
+                            @else
+                                <i class="fi fi-rr-edit text-[10px]"></i>
+                            @endif
                             {{ $status }}
                         </span>
                     </div>
@@ -72,12 +86,34 @@
                 <div class="divide-y divide-gray-100 dark:divide-gray-800/70">
                     <div class="grid grid-cols-1 gap-1 px-4 py-4 sm:grid-cols-[200px_1fr] sm:px-6 sm:gap-6">
                         <dt class="text-sm text-gray-500 dark:text-gray-400">Nomor Laporan</dt>
-                        <dd class="text-sm font-medium text-gray-800 dark:text-white/90">{{ $perkara->nomor_laporan_kejadian }}</dd>
+                        <dd class="text-sm font-medium text-gray-800 dark:text-white/90">{{ $perkara->nomor_laporan_kejadian ?: '(Draft Belum Bernomor)' }}</dd>
                     </div>
 
                     <div class="grid grid-cols-1 gap-1 px-4 py-4 sm:grid-cols-[200px_1fr] sm:px-6 sm:gap-6">
                         <dt class="text-sm text-gray-500 dark:text-gray-400">Tanggal Laporan</dt>
                         <dd class="text-sm text-gray-800 dark:text-gray-300">{{ $perkara->tanggal_laporan_kejadian?->format('d-m-Y') ?? '-' }}</dd>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-1 px-4 py-4 sm:grid-cols-[200px_1fr] sm:px-6 sm:gap-6">
+                        <dt class="text-sm text-gray-500 dark:text-gray-400">Status Penguncian Tahap</dt>
+                        <dd class="text-sm text-gray-800 dark:text-gray-300">
+                            @if ($perkara->isLaporanLocked())
+                                <span class="inline-flex items-center gap-1.5 font-medium text-success-700 dark:text-success-400">
+                                    <i class="fi fi-rr-lock text-xs"></i>
+                                    Final &amp; Terkunci Permanen
+                                </span>
+                                @if ($perkara->laporan_locked_at)
+                                    <span class="ms-2 text-xs text-gray-500 dark:text-gray-400">
+                                        (Dikunci pada {{ $perkara->laporan_locked_at->format('d-m-Y H:i') }}{{ $perkara->laporanFinalizer ? ' oleh ' . $perkara->laporanFinalizer->nama : '' }})
+                                    </span>
+                                @endif
+                            @else
+                                <span class="inline-flex items-center gap-1.5 font-medium text-blue-700 dark:text-blue-400">
+                                    <i class="fi fi-rr-edit text-xs"></i>
+                                    Draft (Masih Dapat Diedit)
+                                </span>
+                            @endif
+                        </dd>
                     </div>
 
                     <div class="grid grid-cols-1 gap-1 px-4 py-4 sm:grid-cols-[200px_1fr] sm:px-6 sm:gap-6">
@@ -129,11 +165,26 @@
                 </div>
 
                 <div class="p-4 sm:p-6">
-                    @if ($perkara->nomor_surat_perintah)
+                    @if (! $perkara->isLaporanLocked())
+                        <div class="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+                            <p class="text-sm text-gray-500 dark:text-gray-400">
+                                Laporan Kejadian ini masih berstatus <strong>Draft</strong>. Silakan lengkapi dan pilih <strong>Simpan &amp; Lanjut Tahap Berikutnya</strong> untuk membuka tahap Sprindik.
+                            </p>
+                            @can('edit-draft', $perkara->isLaporanLocked())
+                                <a
+                                    href="{{ route('laporan-kejadian.edit', $perkara) }}"
+                                    class="inline-flex h-9 shrink-0 items-center justify-center gap-2 rounded-lg bg-brand-600 px-4 text-sm font-medium text-white transition hover:bg-brand-700"
+                                >
+                                    <i class="fi fi-rr-edit text-sm"></i>
+                                    Lengkapi &amp; Finalkan
+                                </a>
+                            @endcan
+                        </div>
+                    @elseif ($perkara->nomor_surat_perintah || $perkara->tahap_sprindik_status)
                         <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                             <div>
-                                <p class="text-sm font-medium text-gray-800 dark:text-white/90">Nomor Sprindik: {{ $perkara->nomor_surat_perintah }}</p>
-                                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Tanggal: {{ $perkara->tanggal_surat_perintah?->format('d-m-Y') }}</p>
+                                <p class="text-sm font-medium text-gray-800 dark:text-white/90">Nomor Sprindik: {{ $perkara->nomor_surat_perintah ?: '(Draft Belum Bernomor)' }}</p>
+                                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Tanggal: {{ $perkara->tanggal_surat_perintah?->format('d-m-Y') ?? '-' }}</p>
                             </div>
                             <a
                                 href="{{ route('sprindik.show', $perkara) }}"
@@ -145,7 +196,7 @@
                         </div>
                     @else
                         <div class="flex flex-col items-center justify-between gap-4 sm:flex-row">
-                            <p class="text-sm text-gray-500 dark:text-gray-400">Laporan kejadian ini belum diterbitkan Surat Perintah Penyidikan.</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Laporan kejadian ini telah difinalkan dan siap diterbitkan Surat Perintah Penyidikan.</p>
                             @can('create-cases')
                                 <a
                                     href="{{ route('sprindik.create', ['perkara_id' => $perkara->id]) }}"

@@ -48,15 +48,22 @@ class LaporanKejadianController extends Controller
     {
         Gate::authorize('create-cases');
 
+        $validated = $request->validated();
+        $isDraft = ($validated['action_type'] ?? 'lanjut') === 'draft';
+
         $perkara = $this->perkaraService->createLaporanKejadian(
-            $request->validated(),
+            $validated,
             $request->file('dokumen_laporan'),
             $request->user()
         );
 
+        $message = $isDraft
+            ? 'Draft Laporan Kejadian berhasil disimpan. Anda masih dapat mengedit data ini.'
+            : 'Laporan Kejadian berhasil disimpan dan dikunci. Silakan lanjutkan ke tahap Sprindik.';
+
         return redirect()
             ->route('laporan-kejadian.show', $perkara)
-            ->with('success', 'Laporan kejadian berhasil disimpan.');
+            ->with('success', $message);
     }
 
     /**
@@ -70,7 +77,7 @@ class LaporanKejadianController extends Controller
             $perkara = Perkara::findOrFail($perkara);
         }
 
-        $perkara->load(['dokumenLaporan', 'dokumenSprindik', 'creator', 'updater', 'auditLogs.user']);
+        $perkara->load(['dokumenLaporan', 'dokumenSprindik', 'creator', 'updater', 'laporanFinalizer', 'auditLogs.user']);
 
         return view('pages.laporan-kejadian.show', compact('perkara'));
     }
@@ -80,7 +87,7 @@ class LaporanKejadianController extends Controller
      */
     public function edit(Perkara $perkara): View
     {
-        Gate::authorize('edit-draft');
+        Gate::authorize('edit-draft', $perkara->isLaporanLocked());
 
         $perkara->load(['dokumenLaporan']);
 
@@ -92,18 +99,25 @@ class LaporanKejadianController extends Controller
      */
     public function update(UpdateLaporanKejadianRequest $request, Perkara $perkara): RedirectResponse
     {
-        Gate::authorize('edit-draft');
+        Gate::authorize('edit-draft', $perkara->isLaporanLocked());
+
+        $validated = $request->validated();
+        $isDraft = ($validated['action_type'] ?? 'draft') === 'draft';
 
         $this->perkaraService->updateLaporanKejadian(
             $perkara,
-            $request->validated(),
+            $validated,
             $request->file('dokumen_laporan'),
             $request->user()
         );
 
+        $message = $isDraft
+            ? 'Draft Laporan Kejadian berhasil diperbarui.'
+            : 'Laporan Kejadian berhasil difinalkan dan dikunci permanen.';
+
         return redirect()
             ->route('laporan-kejadian.show', $perkara)
-            ->with('success', 'Laporan kejadian berhasil diperbarui.');
+            ->with('success', $message);
     }
 
     /**

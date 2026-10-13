@@ -64,8 +64,10 @@
             <x-common.table-filter
                 searchPlaceholder="Cari nomor laporan..."
                 :statusOptions="[
+                    'Draft' => 'Draft',
                     'Belum Dilanjutkan' => 'Belum Dilanjutkan',
                     'Sprindik Tersedia' => 'Sprindik Tersedia',
+                    'Perkara Terbentuk' => 'Perkara Terbentuk',
                 ]"
             />
 

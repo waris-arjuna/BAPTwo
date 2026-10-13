@@ -64,7 +64,10 @@
             <x-common.table-filter
                 searchPlaceholder="Cari nomor Sprindik..."
                 :statusOptions="[
+                    'Draft' => 'Draft',
                     'Belum Menjadi Perkara' => 'Belum Menjadi Perkara',
+                    'Draft Perkara' => 'Draft Perkara',
+                    'Perkara Terbentuk' => 'Perkara Terbentuk',
                 ]"
             />
 

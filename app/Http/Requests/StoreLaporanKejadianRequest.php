@@ -21,9 +21,20 @@ class StoreLaporanKejadianRequest extends FormRequest
      */
     public function rules(): array
     {
+        $isDraft = $this->input('action_type') === 'draft';
+
         return [
-            'nomor_laporan' => ['required', 'string', 'max:100', 'unique:perkara,nomor_laporan_kejadian'],
-            'tanggal_laporan' => ['required', 'date'],
+            'action_type' => ['nullable', 'in:draft,lanjut'],
+            'nomor_laporan' => [
+                $isDraft ? 'nullable' : 'required',
+                'string',
+                'max:100',
+                'unique:perkara,nomor_laporan_kejadian',
+            ],
+            'tanggal_laporan' => [
+                $isDraft ? 'nullable' : 'required',
+                'date',
+            ],
             'dokumen_laporan' => ['nullable', 'file', 'mimes:pdf', 'max:20480'],
             'deskripsi' => ['nullable', 'string'],
         ];
@@ -35,9 +46,9 @@ class StoreLaporanKejadianRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'nomor_laporan.required' => 'Nomor laporan kejadian wajib diisi.',
+            'nomor_laporan.required' => 'Nomor laporan kejadian wajib diisi untuk melanjutkan tahap.',
             'nomor_laporan.unique' => 'Nomor laporan kejadian sudah digunakan.',
-            'tanggal_laporan.required' => 'Tanggal laporan kejadian wajib diisi.',
+            'tanggal_laporan.required' => 'Tanggal laporan kejadian wajib diisi untuk melanjutkan tahap.',
             'tanggal_laporan.date' => 'Format tanggal laporan kejadian tidak valid.',
             'dokumen_laporan.mimes' => 'Dokumen laporan harus berformat PDF.',
             'dokumen_laporan.max' => 'Ukuran dokumen laporan maksimal 20 MB.',

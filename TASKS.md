@@ -64,13 +64,17 @@ _(kosong)_
 
 ## Data Perkara (pra-SPDP)
 
-- [x] T-020 — Perkara + Laporan Kejadian + Surat Perintah Penyidikan (F-01, F-05, F-06, D-007, D-008)
-  - AC: Migrasi tabel singular `perkara`, `dokumen`, `audit_log`; Model Eloquent (`Perkara`, `Dokumen`, `AuditLog`); `PerkaraService` + `AuditTrailService`; `LaporanKejadianController` & `SprindikController` dengan CRUD pra-SPDP terhubung database; upload dan download/preview privat file PDF (mimes:pdf, max 20MB); validasi unik nomor; soft delete; RBAC (Penyidik/Admin vs Pimpinan read-only); 10 feature tests baru lulus; Pint lulus.
-- [ ] T-021 — Tersangka; 1 Tersangka = 1 Berkas Perkara (F-02, F-03)
-- [ ] T-022 — Pasal berlapis per Berkas (F-04)
-- [ ] T-023 — TKP + PPNS utama/anggota (F-07, F-08)
+- [x] T-020 — Perkara + Laporan Kejadian + Surat Perintah Penyidikan + Sistem 3 Tombol (Draft vs Simpan & Lanjut) (F-01, F-05, F-06, F-14–F-19, D-007, D-008)
+  - AC: Migrasi tabel singular `perkara` (dengan `tahap_laporan_status`, `laporan_locked_at`, `laporan_finalized_by`, `tahap_sprindik_status`, `sprindik_locked_at`, `sprindik_finalized_by`), `dokumen`, `audit_log`; Model Eloquent (`Perkara`, `Dokumen`, `AuditLog`); `PerkaraService` + `AuditTrailService`; `LaporanKejadianController` & `SprindikController` dengan 3 tombol aksi (`Batal`, `Simpan Draft`, `Simpan & Lanjut Tahap Berikutnya`), penguncian permanen tahap yang sudah difinalkan (termasuk untuk Admin), visual indicator `Draft` vs `Final & Terkunci`, dan Card Referensi Tahapan Sebelumnya pada Sprindik; 12 feature tests baru lulus; Pint lulus.
+- [x] T-021 — Tersangka; 1 Tersangka = 1 Berkas Perkara (F-02, F-03)
+  - AC: 1 Tersangka menghasilkan tepat 1 Berkas Perkara terpisah; tabel singular `tersangka` dan `berkas_perkara` dengan foreign key unik `tersangka_id`; pembuatan dinamis via Alpine.js di UI; relasi Eloquent lengkap; test lulus.
+- [x] T-022 — Pasal berlapis per Berkas (F-04)
+  - AC: Satu berkas perkara dapat memiliki pasal berlapis (1..N pasal dari master data `pasal`); tabel pivot `berkas_pasal`; multi-select/checkbox pasal di UI form berkas perkara; test lulus.
+- [x] T-023 — TKP + PPNS utama/anggota (F-07, F-08)
+  - AC: Informasi TKP (klasifikasi retailer/distributor, legalitas legal/ilegal, modus online/offline, alamat berjenjang terintegrasi proxy wilayah API Kode Wilayah) tersimpan di tabel `tkp` & `alamat`; Tim Penyidik PPNS (1 PPNS Utama + 0..N PPNS Anggota) tersimpan di pivot `perkara_ppns` dengan peran; test lulus.
 - [x] T-024 — Alamat hierarkis via API Kode Wilayah (`api.kodewilayah.web.id` + `WilayahService`) (F-36, F-37)
-- [ ] T-025 — Nomor Berkas manual tanpa validasi pola (F-33)
+- [x] T-025 — Nomor Berkas manual tanpa validasi pola (F-33)
+  - AC: Input `nomor_berkas` diinput manual oleh user tanpa pembatasan regex/format tertentu (bebas karakter format); tersimpan di `berkas_perkara.nomor_berkas`; test lulus.
 
 ## Tahapan & Progress
 
@@ -119,4 +123,8 @@ _(kosong)_
 - [x] T-019 — 2026-10-13
 - [x] T-020A — 2026-10-13
 - [x] T-020 — 2026-10-13
+- [x] T-021 — 2026-10-13
+- [x] T-022 — 2026-10-13
+- [x] T-023 — 2026-10-13
 - [x] T-024 — 2026-10-12
+- [x] T-025 — 2026-10-13
