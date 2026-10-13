@@ -38,12 +38,7 @@
                         <span x-text="options.find(o => o.id === id).name"></span>
                         <button type="button" @click.stop="toggleOption(id)"
                             class="ml-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
-                            <svg class="fill-current" role="button" width="14" height="14" viewBox="0 0 14 14"
-                                fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M3.40717 4.46881C3.11428 4.17591 3.11428 3.70104 3.40717 3.40815C3.70006 3.11525 4.17494 3.11525 4.46783 3.40815L6.99943 5.93975L9.53095 3.40822C9.82385 3.11533 10.2987 3.11533 10.5916 3.40822C10.8845 3.70112 10.8845 4.17599 10.5916 4.46888L8.06009 7.00041L10.5916 9.53193C10.8845 9.82482 10.8845 10.2997 10.5916 10.5926C10.2987 10.8855 9.82385 10.8855 9.53095 10.5926L6.99943 8.06107L4.46783 10.5927C4.17494 10.8856 3.70006 10.8856 3.40717 10.5927C3.11428 10.2998 3.11428 9.8249 3.40717 9.53201L5.93877 7.00041L3.40717 4.46881Z"
-                                    fill="" />
-                            </svg>
+                            <i class="fi fi-rr-cross-small text-sm"></i>
                         </button>
                     </div>
                 </template>
@@ -56,10 +51,8 @@
 
             <!-- Dropdown Arrow -->
             <div class="flex items-start pt-1.5">
-                <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform dark:text-gray-400"
-                    :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
+                <i class="fi fi-rr-angle-small-down text-base shrink-0 text-gray-500 transition-transform dark:text-gray-400"
+                    :class="open ? 'rotate-180' : ''"></i>
             </div>
         </div>
 

@@ -5,8 +5,11 @@ namespace Database\Seeders;
 use App\Enums\UserRole;
 use App\Models\Alamat;
 use App\Models\Bidang;
+use App\Models\InstansiHukum;
 use App\Models\Jabatan;
+use App\Models\JaksaPenuntut;
 use App\Models\Panggol;
+use App\Models\Pasal;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -32,6 +35,41 @@ class DatabaseSeeder extends Seeder
         $panggolPembina = Panggol::firstOrCreate(['pangkat' => 'Pembina', 'golongan' => 'IV/a']);
         $panggolPenata = Panggol::firstOrCreate(['pangkat' => 'Penata Tk. I', 'golongan' => 'III/d']);
         $panggolPenataMuda = Panggol::firstOrCreate(['pangkat' => 'Penata Muda Tk. I', 'golongan' => 'III/b']);
+
+        Pasal::firstOrCreate(
+            ['nama_pasal' => 'UU Kesehatan', 'pasal' => 'Pasal 435 jo. Pasal 138 ayat (2) dan ayat (3)'],
+            [
+                'nomor' => '17',
+                'tahun' => '2023',
+                'isi' => 'Setiap Orang yang memproduksi atau mengedarkan Sediaan Farmasi dan/atau Alat Kesehatan yang tidak memenuhi standar dan/atau persyaratan keamanan, khasiat/kemanfaatan, dan mutu.',
+                'status' => 'aktif',
+            ]
+        );
+
+        Pasal::firstOrCreate(
+            ['nama_pasal' => 'UU Pangan', 'pasal' => 'Pasal 142 jo. Pasal 91 ayat (1)'],
+            [
+                'nomor' => '18',
+                'tahun' => '2012',
+                'isi' => 'Pelaku Usaha Pangan yang dengan sengaja tidak memiliki izin edar terhadap setiap Pangan Olahan yang dibuat di dalam negeri atau yang diimpor untuk diperdagangkan dalam kemasan eceran.',
+                'status' => 'aktif',
+            ]
+        );
+
+        $kejatiKalsel = InstansiHukum::firstOrCreate(
+            ['jenis' => 'kejaksaan', 'nama' => 'Kejaksaan Tinggi Kalimantan Selatan'],
+            ['wilayah' => 'Kalimantan Selatan']
+        );
+
+        InstansiHukum::firstOrCreate(
+            ['jenis' => 'pengadilan', 'nama' => 'Pengadilan Negeri Banjarmasin'],
+            ['wilayah' => 'Kota Banjarmasin']
+        );
+
+        JaksaPenuntut::firstOrCreate(
+            ['instansi_hukum_id' => $kejatiKalsel->id, 'nama_jaksa' => 'Ahmad Fauzi, S.H., M.H.'],
+            ['nip' => '198405122009121002', 'pangkat' => 'Jaksa Madya (IV/a)']
+        );
 
         $alamatDefault = Alamat::firstOrCreate(
             [

@@ -38,6 +38,9 @@ class AppServiceProvider extends ServiceProvider
         // PRD Hak Akses: Penyidik & Administrator dapat menambah perkara/berkas; Pimpinan tidak
         Gate::define('create-cases', fn (User $user): bool => $user->isPenyidik() || $user->isAdmin());
 
+        // Master Data: Penyidik & Administrator dapat tambah/edit/soft-delete; Pimpinan hanya lihat
+        Gate::define('manage-master-data', fn (User $user): bool => $user->isPenyidik() || $user->isAdmin());
+
         // PRD F-18 & Hak Akses: Edit hanya saat masih Draft; jika sudah lanjut ($isFinalized = true) terkunci mutlak termasuk untuk Administrator
         Gate::define('edit-draft', function (User $user, bool $isFinalized = false): bool {
             if ($isFinalized) {

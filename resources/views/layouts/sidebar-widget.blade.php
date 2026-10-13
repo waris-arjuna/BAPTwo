@@ -38,10 +38,7 @@
                     @click="isOpen = false"
                     class="flex items-center gap-3 rounded-xl px-3 py-2 text-theme-sm font-medium text-gray-700 transition hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/[0.06]"
                 >
-                    <svg class="h-4 w-4 shrink-0 text-gray-500 dark:text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 15.25a3.25 3.25 0 1 0 0-6.5 3.25 3.25 0 0 0 0 6.5Z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.4 15.1 18.25 16.25l-.35 1.85-1.8.75-1.6-.75-1.35.95-.35 1.95h-1.6l-.35-1.95-1.35-.95-1.6.75-1.8-.75-.35-1.85L4.6 15.1 3 14.75v-1.6l1.6-.35 1.15-1.15-.35-1.65.7-1.9 1.8-.7 1.6.45 1.35-.9L11.2 5h1.6l.35 1.95 1.35.9 1.6-.45 1.8.7.7 1.9-.35 1.65 1.15 1.15 1.6.35v1.6l-1.6.35Z" />
-                    </svg>
+                    <i class="fi fi-rr-settings text-sm shrink-0 text-gray-500 dark:text-gray-400" aria-hidden="true"></i>
                     <span>{{ __('Settings') }}</span>
                 </a>
             </li>
@@ -53,9 +50,7 @@
                     @click="isOpen = false"
                     class="flex items-center gap-3 rounded-xl px-3 py-2 text-theme-sm font-medium text-gray-700 transition hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/[0.06]"
                 >
-                    <svg class="h-4 w-4 shrink-0 text-gray-500 dark:text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6.75a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.5 19.5a7.5 7.5 0 0 1 15 0" />
-                    </svg>
+                    <i class="fi fi-rr-user text-sm shrink-0 text-gray-500 dark:text-gray-400" aria-hidden="true"></i>
                     <span>{{ __('Profile') }}</span>
                 </a>
             </li>
@@ -69,9 +64,7 @@
                 @click="isOpen = false"
                 class="flex w-full items-center gap-3 rounded-xl bg-gray-50 px-3 py-2 text-theme-sm font-medium text-gray-700 transition hover:bg-error-50 hover:text-error-600 dark:bg-white/[0.04] dark:text-gray-200 dark:hover:bg-error-500/15 dark:hover:text-error-400"
             >
-                <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3-3H9m12 0-3-3m3 3-3 3" />
-                </svg>
+                <i class="fi fi-rr-sign-out-alt text-sm shrink-0" aria-hidden="true"></i>
                 <span>{{ __('Sign Out') }}</span>
             </button>
         </form>
@@ -119,19 +112,11 @@
                 </div>
 
                 {{-- Arrow --}}
-                <svg
+                <i
                     :class="isOpen ? 'rotate-180 text-brand-500' : 'text-gray-400'"
-                    class="h-4 w-4 shrink-0 transition-transform duration-200"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
+                    class="fi fi-rr-angle-small-down text-base shrink-0 transition-transform duration-200"
                     aria-hidden="true"
-                >
-                    <path
-                        fill-rule="evenodd"
-                        d="M5.293 7.293a1 1 0 0 1 1.414 0L10 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4a1 1 0 0 1 0-1.414z"
-                        clip-rule="evenodd"
-                    />
-                </svg>
+                ></i>
             </div>
         </button>
     </div>

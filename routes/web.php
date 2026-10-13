@@ -2,10 +2,13 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\MasterDataController;
 use App\Http\Controllers\MathCaptchaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WilayahController;
+use App\Services\MockStageService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 // Locale Switch Route
@@ -34,7 +37,13 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
     // Dashboard
-    Route::get('/', function () {
+    Route::get('/', function (Request $request, MockStageService $mockService) {
+        if ($request->header('X-Filter-Partial')) {
+            $perkaraList = $mockService->getProgressPerkara($request);
+
+            return view('components.dashboard._progress-partial', compact('perkaraList'));
+        }
+
         return view('pages.dashboard.ecommerce', ['title' => 'Dashboard BAPTwo']);
     })->name('dashboard');
 
@@ -50,6 +59,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/wilayah/kecamatan/{kabupatenKode}', [WilayahController::class, 'kecamatan'])->name('wilayah.kecamatan');
     Route::get('/wilayah/desa/{kecamatanKode}', [WilayahController::class, 'desa'])->name('wilayah.desa');
 
+    // Master Data (6 Submenus: Semua role bisa lihat; Penyidik & Admin bisa tambah/ubah/soft-delete)
+    Route::get('/master-data', [MasterDataController::class, 'redirectDefault'])->name('master-data.redirect');
+    Route::get('/master-data/{type}', [MasterDataController::class, 'index'])->name('master-data.index');
+    Route::middleware('can:manage-master-data')->group(function () {
+        Route::post('/master-data/{type}', [MasterDataController::class, 'store'])->name('master-data.store');
+        Route::put('/master-data/{type}/{id}', [MasterDataController::class, 'update'])->name('master-data.update');
+        Route::delete('/master-data/{type}/{id}', [MasterDataController::class, 'destroy'])->name('master-data.destroy');
+        Route::post('/master-data/{type}/{id}/restore', [MasterDataController::class, 'restore'])->name('master-data.restore');
+    });
+
     // Manajemen Pengguna (Administrator only — UC-05)
     Route::middleware('can:manage-users')->group(function () {
         Route::get('/pengaturan', [UserController::class, 'index'])->name('users.index');
@@ -60,7 +79,13 @@ Route::middleware('auth')->group(function () {
     });
 
     // Laporan Kejadian
-    Route::get('/laporan-kejadian', function () {
+    Route::get('/laporan-kejadian', function (Request $request, MockStageService $mockService) {
+        if ($request->header('X-Filter-Partial')) {
+            $laporanKejadian = $mockService->getLaporanKejadian($request);
+
+            return view('pages.laporan-kejadian._table-partial', compact('laporanKejadian'));
+        }
+
         return view('pages.laporan-kejadian.index');
     })->name('laporan-kejadian.index');
 
@@ -75,7 +100,13 @@ Route::middleware('auth')->group(function () {
     })->name('laporan-kejadian.show');
 
     // Sprindik
-    Route::get('/sprindik', function () {
+    Route::get('/sprindik', function (Request $request, MockStageService $mockService) {
+        if ($request->header('X-Filter-Partial')) {
+            $sprindiks = $mockService->getSprindik($request);
+
+            return view('pages.sprindik._table-partial', compact('sprindiks'));
+        }
+
         return view('pages.sprindik.index');
     })->name('sprindik.index');
 
@@ -90,7 +121,13 @@ Route::middleware('auth')->group(function () {
     })->name('sprindik.show');
 
     // SPDP
-    Route::get('/spdp', function () {
+    Route::get('/spdp', function (Request $request, MockStageService $mockService) {
+        if ($request->header('X-Filter-Partial')) {
+            $spdps = $mockService->getSpdp($request);
+
+            return view('pages.spdp._table-partial', compact('spdps'));
+        }
+
         return view('pages.spdp.index');
     })->name('spdp.index');
 
@@ -105,7 +142,13 @@ Route::middleware('auth')->group(function () {
     })->name('spdp.show');
 
     // TAHAP 1
-    Route::get('/tahap-1', function () {
+    Route::get('/tahap-1', function (Request $request, MockStageService $mockService) {
+        if ($request->header('X-Filter-Partial')) {
+            $tahap1 = $mockService->getTahap1($request);
+
+            return view('pages.tahap-1._table-partial', compact('tahap1'));
+        }
+
         return view('pages.tahap-1.index');
     })->name('tahap-1.index');
 
@@ -120,7 +163,13 @@ Route::middleware('auth')->group(function () {
     })->name('tahap-1.show');
 
     // P-21
-    Route::get('/p21', function () {
+    Route::get('/p21', function (Request $request, MockStageService $mockService) {
+        if ($request->header('X-Filter-Partial')) {
+            $p21s = $mockService->getP21($request);
+
+            return view('pages.p21._table-partial', compact('p21s'));
+        }
+
         return view('pages.p21.index');
     })->name('p21.index');
 

@@ -36,13 +36,9 @@
         <div class="mb-6">
             <div class="mb-2 flex flex-wrap items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
                 <a href="{{ url('/') }}" class="transition hover:text-brand-600 dark:hover:text-brand-400">Home</a>
-                <svg class="h-4 w-4 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 0 1 .02-1.06L10.94 10 7.23 6.29a.75.75 0 1 1 1.06-1.06l4.24 4.24a.75.75 0 0 1 0 1.06l-4.24 4.24a.75.75 0 1 1 0 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0Z" clip-rule="evenodd" />
-                </svg>
+                <i class="fi fi-rr-angle-small-right text-sm text-gray-400"></i>
                 <a href="{{ url('/laporan-kejadian') }}" class="transition hover:text-brand-600 dark:hover:text-brand-400">Laporan Kejadian</a>
-                <svg class="h-4 w-4 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 0 1 .02-1.06L10.94 10 7.23 6.29a.75.75 0 1 1 1.06-1.06l4.24-4.24a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1 0 1.06Z" clip-rule="evenodd" />
-                </svg>
+                <i class="fi fi-rr-angle-small-right text-sm text-gray-400"></i>
                 <span class="text-gray-700 dark:text-gray-300">Detail</span>
             </div>
 
@@ -91,10 +87,7 @@
                     <dt class="text-sm text-gray-500 dark:text-gray-400">Dokumen</dt>
                     <dd class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                         <span class="inline-flex min-w-0 items-center gap-2 text-sm text-gray-800 dark:text-gray-300">
-                            <svg class="h-4 w-4 shrink-0 text-gray-400" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                <path d="M7 3.5h7.2L19 8.3v12.2H7v-17Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
-                                <path d="M14 3.5v5h5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
-                            </svg>
+                            <i class="fi fi-rr-document shrink-0 text-sm text-gray-400"></i>
                             <span class="truncate">{{ $laporan['document'] }}</span>
                         </span>
                         <button
@@ -138,9 +131,7 @@
                                 @else border-gray-300 bg-white text-gray-400 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-500 @endif
                             ">
                                 @if ($step['number'] < $laporan['step'])
-                                    <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                        <path fill-rule="evenodd" d="M16.704 5.29a1 1 0 0 1 .006 1.414l-7.01 7.07a1 1 0 0 1-1.423.002L3.29 8.53A1 1 0 0 1 4.71 7.12l4.276 4.3 6.304-6.36a1 1 0 0 1 1.414-.006Z" clip-rule="evenodd" />
-                                    </svg>
+                                    <i class="fi fi-rr-check text-xs"></i>
                                 @else
                                     {{ $step['number'] }}
                                 @endif
@@ -170,9 +161,13 @@
                     <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                         <div>
                             <p class="text-sm font-semibold text-gray-800 dark:text-white/90">Laporan siap dilanjutkan</p>
-                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Input Sprindik untuk melanjutkan proses dari laporan kejadian ini.</p>
+                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Menunggu penerbitan Sprindik untuk melanjutkan proses dari laporan kejadian ini.</p>
                         </div>
-                        <a href="#" class="inline-flex h-10 w-full items-center justify-center rounded-lg bg-brand-600 px-4 text-sm font-medium text-white transition hover:bg-brand-700 sm:w-auto">+ Input Sprindik</a>
+                        @can('create-cases')
+                            <a href="#" class="inline-flex h-10 w-full items-center justify-center gap-1.5 rounded-lg bg-brand-600 px-4 text-sm font-medium text-white transition hover:bg-brand-700 sm:w-auto">
+                                <i class="fi fi-rr-plus-small text-base"></i> Input Sprindik
+                            </a>
+                        @endcan
                     </div>
                 @elseif ($laporan['status'] === 'Sprindik Tersedia')
                     <div id="perkara" class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -182,7 +177,9 @@
                         </div>
                         <div class="flex flex-col gap-2 sm:flex-row">
                             <button type="button" class="inline-flex h-10 items-center justify-center rounded-lg border border-gray-300 bg-white px-4 text-sm font-medium text-gray-700 transition hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900/40 dark:text-gray-300 dark:hover:bg-white/[0.04]">Lihat Sprindik</button>
-                            <a href="#" class="inline-flex h-10 items-center justify-center rounded-lg bg-brand-600 px-4 text-sm font-medium text-white transition hover:bg-brand-700">Buat Perkara</a>
+                            @can('create-cases')
+                                <a href="#" class="inline-flex h-10 items-center justify-center rounded-lg bg-brand-600 px-4 text-sm font-medium text-white transition hover:bg-brand-700">Buat Perkara</a>
+                            @endcan
                         </div>
                     </div>
                 @else

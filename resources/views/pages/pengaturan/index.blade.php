@@ -13,6 +13,9 @@
                 email: '',
                 role: 'penyidik',
                 status: 'pns',
+                jabatan_id: '',
+                bidang_id: '',
+                panggol_id: '',
                 is_active: true,
                 password: '',
             },
@@ -25,6 +28,9 @@
                     email: '',
                     role: 'penyidik',
                     status: 'pns',
+                    jabatan_id: '',
+                    bidang_id: '',
+                    panggol_id: '',
                     is_active: true,
                     password: '',
                 };
@@ -39,6 +45,9 @@
                     email: user.email,
                     role: user.role,
                     status: user.status,
+                    jabatan_id: user.jabatan_id ? String(user.jabatan_id) : '',
+                    bidang_id: user.bidang_id ? String(user.bidang_id) : '',
+                    panggol_id: user.panggol_id ? String(user.panggol_id) : '',
                     is_active: Boolean(user.is_active),
                     password: '',
                 };
@@ -65,146 +74,56 @@
             </div>
         @endif
 
-        <x-common.component-card :title="__('Daftar Pengguna Sistem')" :desc="__('Kelola akun Penyidik, Pimpinan, dan Administrator BAPTwo (Soft Delete aktif).')">
-            {{-- Filter & Tombol Tambah --}}
-            <div class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <form method="GET" action="{{ route('users.index') }}" class="flex flex-1 flex-col gap-3 sm:flex-row sm:items-center">
-                    <input
-                        type="text"
-                        name="search"
-                        value="{{ $search }}"
-                        placeholder="{{ __('Cari nama, NIP, atau email...') }}"
-                        class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:border-brand-300 focus:ring-3 focus:ring-brand-500/10 focus:outline-hidden sm:max-w-xs dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
-                    />
-                    <select
-                        name="role"
-                        class="h-11 rounded-lg border border-gray-300 bg-transparent px-3.5 py-2.5 text-sm text-gray-800 focus:border-brand-300 focus:ring-3 focus:ring-brand-500/10 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
-                    >
-                        <option value="">{{ __('Semua Peran') }}</option>
-                        @foreach ($roles as $roleOption)
-                            <option value="{{ $roleOption->value }}" @selected($selectedRole === $roleOption->value)>
-                                {{ $roleOption->label() }}
-                            </option>
-                        @endforeach
-                    </select>
-                    <button
-                        type="submit"
-                        class="inline-flex h-11 items-center justify-center rounded-lg border border-gray-300 bg-white px-4 text-sm font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-white/5"
-                    >
-                        {{ __('Filter') }}
-                    </button>
-                </form>
-
-                <button
-                    type="button"
-                    @click="openCreateModal()"
-                    class="bg-brand-500 hover:bg-brand-600 inline-flex h-11 items-center justify-center gap-2 rounded-lg px-4 text-sm font-medium text-white shadow-theme-xs transition"
-                >
-                    <span>+ {{ __('Tambah Pengguna') }}</span>
-                </button>
+        {{-- Header & Tombol Tambah --}}
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+                <h2 class="text-xl font-semibold text-gray-800 dark:text-white/90">
+                    {{ __('Daftar Pengguna Sistem') }}
+                </h2>
+                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                    {{ __('Kelola akun Penyidik, Pimpinan, dan Administrator BAPTwo (Soft Delete aktif).') }}
+                </p>
             </div>
+
+            <button
+                type="button"
+                @click="openCreateModal()"
+                class="bg-brand-500 hover:bg-brand-600 inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium text-white shadow-theme-xs transition"
+            >
+                <i class="fi fi-rr-plus-small text-lg"></i>
+                <span>{{ __('Tambah Pengguna') }}</span>
+            </button>
+        </div>
+
+        <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
+            {{-- Toolbar Filter --}}
+            <x-common.table-filter
+                searchPlaceholder="Cari nama, NIP, atau email..."
+                :statusOptions="[
+                    'aktif' => 'Aktif',
+                    'nonaktif' => 'Nonaktif / Terhapus',
+                ]"
+                :showDate="false"
+                :hasActiveFilter="$search !== '' || $selectedRole !== '' || ($selectedStatus ?? '') !== ''"
+            >
+                <select
+                    name="role"
+                    class="h-11 rounded-lg border border-gray-300 bg-white px-3 text-sm text-gray-700 outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300"
+                >
+                    <option value="">{{ __('Semua Peran') }}</option>
+                    @foreach ($roles as $roleOption)
+                        <option value="{{ $roleOption->value }}" @selected($selectedRole === $roleOption->value)>
+                            {{ $roleOption->label() }}
+                        </option>
+                    @endforeach
+                </select>
+            </x-common.table-filter>
 
             {{-- Tabel Pengguna --}}
-            <div class="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-800">
-                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-800">
-                    <thead class="bg-gray-50 dark:bg-gray-900/50">
-                        <tr>
-                            <th class="px-4 py-3 text-start text-theme-xs font-medium text-gray-500 uppercase dark:text-gray-400">{{ __('Nama & NIP') }}</th>
-                            <th class="px-4 py-3 text-start text-theme-xs font-medium text-gray-500 uppercase dark:text-gray-400">{{ __('Email') }}</th>
-                            <th class="px-4 py-3 text-start text-theme-xs font-medium text-gray-500 uppercase dark:text-gray-400">{{ __('Role') }}</th>
-                            <th class="px-4 py-3 text-start text-theme-xs font-medium text-gray-500 uppercase dark:text-gray-400">{{ __('Kepegawaian') }}</th>
-                            <th class="px-4 py-3 text-start text-theme-xs font-medium text-gray-500 uppercase dark:text-gray-400">{{ __('Status Akun') }}</th>
-                            <th class="px-4 py-3 text-end text-theme-xs font-medium text-gray-500 uppercase dark:text-gray-400">{{ __('Actions') }}</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-200 bg-white dark:divide-gray-800 dark:bg-gray-900">
-                        @forelse ($users as $item)
-                            <tr class="hover:bg-gray-50/60 dark:hover:bg-white/[0.02]">
-                                <td class="px-4 py-3.5">
-                                    <div class="font-medium text-theme-sm text-gray-800 dark:text-white/90">{{ $item->nama }}</div>
-                                    <div class="text-theme-xs text-gray-500 dark:text-gray-400">{{ $item->nip ?? '-' }}</div>
-                                </td>
-                                <td class="px-4 py-3.5 text-theme-sm text-gray-600 dark:text-gray-300">
-                                    {{ $item->email }}
-                                </td>
-                                <td class="px-4 py-3.5">
-                                    <span class="rounded-full bg-brand-50 px-2.5 py-0.5 text-theme-xs font-medium text-brand-600 dark:bg-brand-500/10 dark:text-brand-400">
-                                        {{ $item->role->label() }}
-                                    </span>
-                                </td>
-                                <td class="px-4 py-3.5 text-theme-sm uppercase text-gray-600 dark:text-gray-300">
-                                    {{ $item->status }}
-                                </td>
-                                <td class="px-4 py-3.5">
-                                    @if ($item->trashed())
-                                        <span class="rounded-full bg-error-50 px-2.5 py-0.5 text-theme-xs font-medium text-error-600 dark:bg-error-500/10 dark:text-error-400">
-                                            {{ __('Terhapus (Soft Delete)') }}
-                                        </span>
-                                    @elseif ($item->is_active)
-                                        <span class="rounded-full bg-success-50 px-2.5 py-0.5 text-theme-xs font-medium text-success-600 dark:bg-success-500/10 dark:text-success-400">
-                                            {{ __('Aktif') }}
-                                        </span>
-                                    @else
-                                        <span class="rounded-full bg-warning-50 px-2.5 py-0.5 text-theme-xs font-medium text-warning-600 dark:bg-warning-500/10 dark:text-warning-400">
-                                            {{ __('Nonaktif') }}
-                                        </span>
-                                    @endif
-                                </td>
-                                <td class="px-4 py-3.5 text-end">
-                                    <div class="inline-flex items-center gap-2">
-                                        @if ($item->trashed())
-                                            <form method="POST" action="{{ route('users.restore', $item->id) }}">
-                                                @csrf
-                                                <button
-                                                    type="submit"
-                                                    class="rounded-lg border border-success-300 px-3 py-1.5 text-theme-xs font-medium text-success-600 hover:bg-success-50 dark:border-success-500/30 dark:text-success-400 dark:hover:bg-success-500/10"
-                                                >
-                                                    {{ __('Restore') }}
-                                                </button>
-                                            </form>
-                                        @else
-                                            <button
-                                                type="button"
-                                                @click="openEditModal(@js([
-                                                    'nama' => $item->nama,
-                                                    'nip' => $item->nip,
-                                                    'email' => $item->email,
-                                                    'role' => $item->role->value,
-                                                    'status' => $item->status,
-                                                    'is_active' => $item->is_active,
-                                                ]), '{{ route('users.update', $item) }}')"
-                                                class="rounded-lg border border-gray-300 px-3 py-1.5 text-theme-xs font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-white/5"
-                                            >
-                                                {{ __('Edit') }}
-                                            </button>
-
-                                            @if (auth()->id() !== $item->id)
-                                                <form method="POST" action="{{ route('users.destroy', $item) }}">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button
-                                                        type="submit"
-                                                        class="rounded-lg border border-error-300 px-3 py-1.5 text-theme-xs font-medium text-error-600 hover:bg-error-50 dark:border-error-500/30 dark:text-error-400 dark:hover:bg-error-500/10"
-                                                    >
-                                                        {{ __('Delete') }}
-                                                    </button>
-                                                </form>
-                                            @endif
-                                        @endif
-                                    </div>
-                                </td>
-                            </tr>
-                        @empty
-                            <tr>
-                                <td colspan="6" class="px-4 py-8 text-center text-theme-sm text-gray-500 dark:text-gray-400">
-                                    {{ __('No data available.') }}
-                                </td>
-                            </tr>
-                        @endforelse
-                    </tbody>
-                </table>
+            <div id="table-body-partial" class="overflow-x-auto">
+                @include('pages.pengaturan._table-partial')
             </div>
-        </x-common.component-card>
+        </div>
 
         {{-- Modal Tambah / Edit Pengguna --}}
         <div
@@ -218,7 +137,9 @@
             >
                 <div class="mb-4 flex items-center justify-between">
                     <h3 class="text-title-xs font-semibold text-gray-800 dark:text-white/90" x-text="isEdit ? '{{ __('Ubah Pengguna') }}' : '{{ __('Tambah Pengguna') }}'"></h3>
-                    <button type="button" @click="isModalOpen = false" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">✕</button>
+                    <button type="button" @click="isModalOpen = false" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">
+                        <i class="fi fi-rr-cross-small text-lg"></i>
+                    </button>
                 </div>
 
                 <form :action="formAction" method="POST" class="space-y-4">
@@ -229,13 +150,21 @@
 
                     <div>
                         <label class="mb-1 block text-theme-xs font-medium text-gray-700 dark:text-gray-300">{{ __('Nama Lengkap') }} *</label>
-                        <input type="text" name="nama" x-model="form.nama" required class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-3.5 text-sm text-gray-800 dark:border-gray-700 dark:text-white/90" />
+                        <input type="text" name="nama" x-model="form.nama" required maxlength="150"
+                            @input="form.nama = $event.target.value.replace(/[^a-zA-Z\s.,'\-]/g, '')"
+                            placeholder="Contoh: Budi Santoso, S.Farm., Apt."
+                            class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-3.5 text-sm text-gray-800 dark:border-gray-700 dark:text-white/90" />
+                        <p class="mt-1 text-theme-xs text-gray-400">{{ __('Hanya huruf, spasi, dan tanda baca gelar.') }}</p>
                     </div>
 
                     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                         <div>
                             <label class="mb-1 block text-theme-xs font-medium text-gray-700 dark:text-gray-300">{{ __('NIP') }}</label>
-                            <input type="text" name="nip" x-model="form.nip" class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-3.5 text-sm text-gray-800 dark:border-gray-700 dark:text-white/90" />
+                            <input type="text" name="nip" x-model="form.nip" inputmode="numeric" maxlength="30"
+                                @input="form.nip = $event.target.value.replace(/[^0-9]/g, '')"
+                                placeholder="Hanya angka"
+                                class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-3.5 text-sm text-gray-800 dark:border-gray-700 dark:text-white/90" />
+                            <p class="mt-1 text-theme-xs text-gray-400">{{ __('Hanya angka.') }}</p>
                         </div>
                         <div>
                             <label class="mb-1 block text-theme-xs font-medium text-gray-700 dark:text-gray-300">{{ __('Email') }} *</label>
@@ -258,6 +187,36 @@
                                 <option value="pns">PNS</option>
                                 <option value="pppk">PPPK</option>
                                 <option value="lainnya">{{ __('Lainnya') }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                        <div>
+                            <label class="mb-1 block text-theme-xs font-medium text-gray-700 dark:text-gray-300">{{ __('Jabatan') }}</label>
+                            <select name="jabatan_id" x-model="form.jabatan_id" class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-3 text-sm text-gray-800 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90">
+                                <option value="">- {{ __('Pilih Jabatan') }} -</option>
+                                @foreach ($jabatanList as $jabatan)
+                                    <option value="{{ $jabatan->id }}">{{ $jabatan->nama_jabatan }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div>
+                            <label class="mb-1 block text-theme-xs font-medium text-gray-700 dark:text-gray-300">{{ __('Bidang') }}</label>
+                            <select name="bidang_id" x-model="form.bidang_id" class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-3 text-sm text-gray-800 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90">
+                                <option value="">- {{ __('Pilih Bidang') }} -</option>
+                                @foreach ($bidangList as $bidang)
+                                    <option value="{{ $bidang->id }}">{{ $bidang->nama_bidang }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div>
+                            <label class="mb-1 block text-theme-xs font-medium text-gray-700 dark:text-gray-300">{{ __('Pangkat & Golongan') }}</label>
+                            <select name="panggol_id" x-model="form.panggol_id" class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-3 text-sm text-gray-800 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90">
+                                <option value="">- {{ __('Pilih Pangkat/Gol.') }} -</option>
+                                @foreach ($panggolList as $panggol)
+                                    <option value="{{ $panggol->id }}">{{ $panggol->label() }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>

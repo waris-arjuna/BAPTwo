@@ -25,3 +25,10 @@ Thumbs.db
 
 tailadmin-laravel-main/
 /.acl-recovery/
+/.agents
+/test
+
+architecture.md 
+decision.md 
+tasks.md
+agents.md 

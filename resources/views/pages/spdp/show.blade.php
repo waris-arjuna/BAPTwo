@@ -119,7 +119,7 @@
 
                     <div class="mt-1 flex items-center gap-2">
                         <span class="flex h-5 w-5 items-center justify-center rounded-full bg-success-50 text-xs font-medium text-success-600 dark:bg-success-500/10 dark:text-success-400">
-                            ✓
+                            <i class="fi fi-rr-check text-[10px]"></i>
                         </span>
 
                         <span class="text-sm font-medium text-success-600 dark:text-success-400">
@@ -137,26 +137,7 @@
                     <div class="mt-2 flex flex-col gap-3 sm:flex-row sm:items-center">
 
                         <div class="flex items-center gap-2">
-                            <svg
-                                class="h-5 w-5 text-red-500"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2-2V8z"
-                                />
-
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M14 2v6h6"
-                                />
-                            </svg>
+                            <i class="fi fi-rr-document text-base text-red-500"></i>
 
                             <span class="text-sm text-gray-700 dark:text-gray-300">
                                 {{ $p21['dokumen'] }}
@@ -195,19 +176,7 @@
                 <div class="flex flex-col gap-3 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
 
                     <div class="flex items-center gap-3">
-                        <svg
-                            class="h-5 w-5 text-red-500"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2-2h12a2 2 0 0 0 2-2V8z"
-                            />
-                        </svg>
+                        <i class="fi fi-rr-document text-base text-red-500"></i>
 
                         <div>
                             <p class="text-sm font-medium text-gray-800 dark:text-white/90">
@@ -245,19 +214,7 @@
                 <div class="flex flex-col gap-3 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
 
                     <div class="flex items-center gap-3">
-                        <svg
-                            class="h-5 w-5 text-gray-400"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2-2V8z"
-                            />
-                        </svg>
+                        <i class="fi fi-rr-document text-base text-gray-400"></i>
 
                         <div>
                             <p class="text-sm font-medium text-gray-800 dark:text-white/90">
@@ -295,7 +252,7 @@
                     {{-- SPDP --}}
                     <div class="flex items-start gap-3">
                         <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-success-50 text-success-600 dark:bg-success-500/10 dark:text-success-400">
-                            ✓
+                            <i class="fi fi-rr-check text-xs"></i>
                         </div>
 
                         <div>
@@ -337,7 +294,7 @@
                     {{-- Tahap 1 --}}
                     <div class="flex items-start gap-3">
                         <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-success-50 text-success-600 dark:bg-success-500/10 dark:text-success-400">
-                            ✓
+                            <i class="fi fi-rr-check text-xs"></i>
                         </div>
 
                         <div>
@@ -379,7 +336,7 @@
                     {{-- P21 --}}
                     <div class="flex items-start gap-3">
                         <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-success-50 text-success-600 dark:bg-success-500/10 dark:text-success-400">
-                            ✓
+                            <i class="fi fi-rr-check text-xs"></i>
                         </div>
 
                         <div>
@@ -444,12 +401,14 @@
                             </p>
                         </div>
 
-                        <a
-                            href="{{ url('/tahap-2/tambah') }}"
-                            class="inline-flex items-center justify-center rounded-lg bg-brand-500 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-brand-600"
-                        >
-                            Lanjut Tahap 2
-                        </a>
+                        @can('create-cases')
+                            <a
+                                href="{{ url('/tahap-2/tambah') }}"
+                                class="inline-flex items-center justify-center rounded-lg bg-brand-500 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-brand-600"
+                            >
+                                Lanjut Tahap 2
+                            </a>
+                        @endcan
 
                     </div>
                 </div>

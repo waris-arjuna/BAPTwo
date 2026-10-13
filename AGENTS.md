@@ -61,9 +61,9 @@ routes/
   - Form component: `resources/views/components/form/<component-name>.blade.php`.
   - Shared wrapper: `resources/views/components/common/<component-name>.blade.php`.
   - Always use `@props([...])` to declare default values and expected component properties.
-- **Icons**:
-  - Drop reusable SVGs in `resources/views/components/svg/<icon-name>.blade.php` and invoke via `<x-svg.icon-name />`.
-  - For inline SVG icons in components, always use `fill-current` / `stroke-current` and size with `w-*` / `h-*` tokens.
+- **Icons (WAJIB Flaticon — ref: D-010)**:
+  - **SEMUA** icon di BAPTwo wajib menggunakan icon dari **Flaticon** (`https://www.flaticon.com/` / Flaticon UIcons) menggunakan elemen `<i class="fi fi-rr-... ..."></i>` (atau `fi-sr-*` / `fi-br-*`).
+  - Dilarang menggunakan inline `<svg>` manual untuk icon navigasi, tombol, modal, alert, atau halaman UI (pengecualian hanya untuk gambar soal captcha dinamis `MathCaptchaService`).
 - **Layout Structure**:
   - Dashboard pages: Wrapped in `@extends('layouts.app')` with `<x-common.page-breadcrumb>` at the top and content sections inside `<x-common.component-card>`.
   - Full-width / Auth pages: Wrapped in `@extends('layouts.fullscreen-layout')`.
@@ -110,6 +110,14 @@ routes/
   - Use `x-cloak` alongside `[x-cloak] { display: none !important; }` to prevent flash of unstyled content during Alpine initialization.
 - **Modals & Drawers**:
   - Implement using Alpine `x-data="{ isOpen: false }"` with `@keydown.escape.window="isOpen = false"`, overlay backdrop, and focus management.
+- **Filter Toolbar & Live Filter (D-011, D-012, D-013)**:
+  - Semua halaman list wajib memakai `<x-common.table-filter>`; jangan buat toolbar filter ad-hoc per halaman.
+  - Filter berjalan server-side via GET + query string; controller trim param lalu `->when()`, `paginate()` + `withQueryString()`.
+  - Live filter AJAX: form terikat `tableFilter('table-body-partial')` dengan header `X-Filter-Partial: 1`, swap fragment `#table-body-partial`, sinkronisasi `history.pushState`, dan popstate listener. Tombol Filter tetap sebagai fallback tanpa JS.
+  - Filter tanggal memakai komponen `<x-form.date-picker>` Flatpickr dengan lokalisasi Bahasa Indonesia (`id`), icon Flaticon `fi-rr-calendar`, auto-dispatch `change`, dan reset otomatis instance `el._flatpickr.clear()`.
+  - Kolom pencarian via `@input.debounce.500ms`, mencakup kolom utama dan status secara cerdas.
+- **Tabel Daftar & Penomoran Seragam (D-013)**:
+  - Seluruh tabel daftar (Stage Perkara, Dashboard, Master Data, Manajemen Pengguna) wajib menyertakan kolom nomor urut **`No`** (`{{ $loop->iteration }}`) pada kolom pertama (`<th class="w-12 ...">No</th>`).
 - **Charts & Dataviz**:
   - Initialize ApexCharts instances in client-side scripts inside `resources/js/components/` or Alpine `x-init` hooks.
   - Synchronize chart theme colors dynamically on the `'theme-changed'` custom window event.
@@ -250,12 +258,14 @@ Selain konvensi TailAdmin, ikuti aturan berikut:
 - **Event / Observer** untuk menulis ke tabel `audit_log` (`user_id` nullable untuk scheduler, `berkas_perkara_id` terindeks) setiap kali: status berubah, tahap difinalkan, dokumen diunggah, DPO diaktifkan/dinonaktifkan.
 - **Nomor Berkas Perkara** = input manual, **tanpa** validasi pola (PRD F-33).
 - **Alamat (`api.kodewilayah.web.id`, D-009)** = tabel `alamat` terpusat dengan kolom `*_kode` (`VARCHAR(15)`) + snapshot `*_nama` (`VARCHAR(100)`) via proxy `WilayahService` (cache 30 hari).
+- **Icon UI Wajib Flaticon (D-010)** = seluruh icon pada sidebar, header, tombol, form, card, dan modal wajib menggunakan icon dari `https://www.flaticon.com/` (Flaticon UIcons `<i class="fi fi-rr-..."></i>`).
 
 ---
 
 ## 6. Yang TIDAK Boleh Dilakukan Agent (khusus BAPTwo)
 
 - ❌ Mengedit `PRD.md` tanpa izin eksplisit.
+- ❌ Menggunakan icon selain dari `https://www.flaticon.com/` (jangan membuat inline `<svg>` icon sendiri).
 - ❌ Menambah hard delete (route, tombol, query). Semua hapus = soft delete.
 - ❌ Mengizinkan edit / mundur tahap yang sudah difinalkan — termasuk oleh Administrator.
 - ❌ Menjadikan `Dalam Proses` sebagai status formal.

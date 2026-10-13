@@ -135,19 +135,7 @@
                         >
                             <div class="text-center">
 
-                                <svg
-                                    class="mx-auto h-8 w-8 text-gray-400"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="1.8"
-                                        d="M12 16V4m0 0L8 8m4-4 4 4M5 20h14"
-                                    />
-                                </svg>
+                                <i class="fi fi-rr-upload mx-auto text-2xl text-gray-400"></i>
 
                                 <p class="mt-2 text-sm font-medium text-gray-700 dark:text-gray-300">
                                     Pilih File
@@ -170,19 +158,7 @@
 
                         <template x-if="fileName">
                             <div class="flex items-center gap-3 rounded-lg border border-gray-200 px-4 py-3 dark:border-gray-800">
-                                <svg
-                                    class="h-5 w-5 text-red-500"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-                                    />
-                                </svg>
+                                <i class="fi fi-rr-document text-base text-red-500"></i>
 
                                 <span
                                     class="text-sm text-gray-700 dark:text-gray-300"

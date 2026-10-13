@@ -5,17 +5,26 @@ import ApexCharts from 'apexcharts';
 
 // flatpickr
 import flatpickr from 'flatpickr';
+import { Indonesian } from 'flatpickr/dist/l10n/id.js';
 import 'flatpickr/dist/flatpickr.min.css';
+
+flatpickr.localize(Indonesian);
+
 // FullCalendar
 import { Calendar } from 'fullcalendar';
 
 
+
+import tableFilter from './components/table-filter';
 
 window.Alpine = Alpine;
 window.createPopper = createPopper;
 window.ApexCharts = ApexCharts;
 window.flatpickr = flatpickr;
 window.FullCalendar = Calendar;
+window.tableFilter = tableFilter;
+
+Alpine.data('tableFilter', tableFilter);
 
 Alpine.start();
 

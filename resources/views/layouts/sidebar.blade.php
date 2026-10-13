@@ -92,20 +92,7 @@
                                 <template
                                     x-if="!$store.sidebar.isExpanded && !$store.sidebar.isHovered && !$store.sidebar.isMobileOpen"
                                 >
-                                    <svg
-                                        width="24"
-                                        height="24"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path
-                                            fill-rule="evenodd"
-                                            clip-rule="evenodd"
-                                            d="M4.25 12C4.25 11.5858 4.58579 11.25 5 11.25H19C19.4142 11.25 19.75 11.5858 19.75 12C19.75 12.4142 19.4142 12.75 19 12.75H5C4.58579 12.75 4.25 12.4142 4.25 12Z"
-                                            fill="currentColor"
-                                        />
-                                    </svg>
+                                    <i class="fi fi-rr-menu-dots text-base" aria-hidden="true"></i>
                                 </template>
                             </h2>
 
@@ -148,22 +135,15 @@
                                                 </span>
 
                                                 <!-- Dropdown Chevron -->
-                                                <svg
+                                                <i
                                                     x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen"
-                                                    class="ltr:ml-auto rtl:mr-auto h-5 w-5 transition-transform duration-200"
+                                                    class="fi fi-rr-angle-small-down ltr:ml-auto rtl:mr-auto text-base transition-transform duration-200"
                                                     :class="{
                                                         'rotate-180 text-brand-500': isSubmenuOpen({{ $groupIndex }}, {{ $itemIndex }}),
                                                         'text-gray-500 dark:text-gray-400': !isSubmenuOpen({{ $groupIndex }}, {{ $itemIndex }})
                                                     }"
-                                                    viewBox="0 0 20 20"
-                                                    fill="currentColor"
-                                                >
-                                                    <path
-                                                        fill-rule="evenodd"
-                                                        d="M5.293 7.293a1 1 0 0 1 1.414 0L10 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4a1 1 0 0 1 0-1.414z"
-                                                        clip-rule="evenodd"
-                                                    />
-                                                </svg>
+                                                    aria-hidden="true"
+                                                ></i>
                                             </button>
 
                                             <!-- Submenu -->

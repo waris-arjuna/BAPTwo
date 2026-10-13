@@ -8,6 +8,11 @@
 
     <title>{{ $title ?? 'Dashboard BAP TWO' }} | BAP TWO</title>
 
+    <!-- Flaticon UIcons (https://www.flaticon.com/) -->
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-rounded/css/uicons-bold-rounded.css">
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -170,9 +175,7 @@
                     x-transition:enter-end="opacity-100 scale-100"
                     class="w-full max-w-md rounded-2xl border border-success-200 bg-white p-6 text-center shadow-theme-xl dark:border-success-500/30 dark:bg-gray-900">
                     <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-success-50 text-success-600 dark:bg-success-500/15 dark:text-success-400">
-                        <svg class="h-6 w-6 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
+                        <i class="fi fi-rr-check text-xl"></i>
                     </div>
                     <h3 class="mb-2 text-lg font-semibold text-gray-800 dark:text-white/90">
                         {{ __('Berhasil Masuk') }}

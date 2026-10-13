@@ -36,6 +36,14 @@ _(kosong)_
   - AC: folder diabaikan oleh Pint via `pint.json` exclude; `php vendor/bin/pint --test` lulus.
 - [x] T-008 — Rapikan 8 file template yang gagal Pint: `app/Helpers/MenuHelper.php`, `DashboardController`, `LocaleController`, `SidebarController`, `SetLocale`, `ecommerce/MonthlyTarget`, `ui/Modal`, `routes/web.php`
   - AC: `php vendor/bin/pint --test` lulus.
+- [x] T-017 — Standar toolbar filter & live filter pada `<x-common.table-filter>` (ref: F-39, D-011)
+  - AC: teks tombol "Filter" (key `Filter` di `lang/id.json`); select & input tanggal auto-submit via `@change` terdelegasi (termasuk select dari `$slot`); kolom pencarian auto-submit `@input.debounce.500ms`; tombol Filter tetap sebagai fallback tanpa JS; Blade compile & test lulus.
+- [x] T-018 — Filter tabel AJAX tanpa reload halaman (ref: F-39, D-011)
+  - AC: Live filter via Alpine `tableFilter()` component di seluruh 8 tabel (Laporan Kejadian, Sprindik, SPDP, Tahap 1, P-21, Dashboard Progress Perkara, Master Data, Pengaturan); header request `X-Filter-Partial: 1` mengembalikan partial HTML tabel; URL tersinkronisasi via `history.pushState` dan navigasi tombol back/forward browser tetap bekerja; fallback normal GET tanpa JS; test & pint lulus.
+- [x] T-019 — Filter tanggal menggunakan Datepicker Flatpickr (ref: F-39, D-011)
+  - AC: `<x-common.table-filter>` menggunakan `<x-form.date-picker>` berbasis Flatpickr dengan lokalisasi Bahasa Indonesia (`id`), icon kalender Flaticon, event bubbling `change` terintegrasi langsung dengan live filter tanpa reload, styling light & dark mode rapi, dan reset otomatis Flatpickr instance; test & pint lulus.
+- [x] T-020 — Penomoran seragam kolom "No" pada Master Data & Manajemen Pengguna (ref: D-013)
+  - AC: Kolom nomor urut `No` (`{{ $loop->iteration }}`) ditambahkan ke tabel Master Data dan Manajemen Pengguna; colspan baris kosong disesuaikan; tampilan konsisten dengan seluruh tabel perkara di BAPTwo; test & pint lulus.
 
 ## Auth & RBAC (F-38)
 
@@ -51,6 +59,8 @@ _(kosong)_
   - AC: `UserController` + `UserService` + `StoreUserRequest` / `UpdateUserRequest` di `/pengaturan` (lihat, cari/filter, tambah, ubah, soft delete, restore, cegah hapus diri sendiri, tanpa hard delete).
 - [x] T-015 — Halaman Profil Pengguna (`/profile`) & Proxy Wilayah (ref: F-36, F-37, F-38)
   - AC: (1) Card Foto User + tombol ganti foto profil; (2) Card Informasi Akun + popup "Update Email / Password" dengan syarat min 8 karakter, huruf besar/kecil + angka, simbol, serta input password lama, password baru, & konfirmasi; (3) Card Data Diri (Nama, Alamat, Tempat/Tanggal Lahir, Jenis Kelamin, Status Pernikahan, No.Telp/WA) di mana hanya No.Telp/WA & Alamat yang bisa diedit; (4) Card Informasi Kepegawaian read-only (NIP, Jabatan, Bidang, Pangkat/Golongan format `Pembina (IV/a)`, Hak Akses); validasi & feedback notification lengkap.
+- [x] T-016 — Modul Master Data (6 Submenu) & Integrasi ke Manajemen Pengguna (ref: F-38, D-009)
+  - AC: Submenu sidebar Master Data (`Jabatan`, `Bidang`, `Pangkat & Golongan`, `Pasal / UU`, `Instansi Hukum`, `Jaksa Penuntut`); semua role bisa lihat/cari; `Administrator` & `Penyidik` bisa tambah/ubah/soft-delete/pulihkan via modal pop-up; dropdown Jabatan, Bidang, & Pangkat/Golongan terhubung ke modal Tambah/Ubah Pengguna di `/pengaturan`; test & pint lulus.
 
 ## Data Perkara (pra-SPDP)
 
@@ -102,4 +112,6 @@ _(kosong)_
 - [x] T-013 — 2026-10-12
 - [x] T-014 — 2026-10-07
 - [x] T-015 — 2026-10-12
+- [x] T-016 — 2026-10-13
+- [x] T-017 — 2026-10-13
 - [x] T-024 — 2026-10-12

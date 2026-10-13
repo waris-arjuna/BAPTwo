@@ -46,16 +46,12 @@
                 role="alert">
                 <div class="flex items-center gap-3">
                     <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-success-100 text-success-600 dark:bg-success-500/20 dark:text-success-400">
-                        <svg class="h-5 w-5 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
+                        <i class="fi fi-rr-check text-sm" aria-hidden="true"></i>
                     </span>
                     <span class="font-medium">{{ session('profile_success') }}</span>
                 </div>
                 <button type="button" @click="show = false" class="text-success-600 hover:text-success-800 dark:text-success-400">
-                    <svg class="h-5 w-5 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
+                    <i class="fi fi-rr-cross-small text-lg" aria-hidden="true"></i>
                 </button>
             </div>
         @endif
@@ -68,9 +64,7 @@
                 <div class="flex items-start justify-between gap-4">
                     <div class="flex items-start gap-3">
                         <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-error-100 text-error-600 dark:bg-error-500/20 dark:text-error-400">
-                            <svg class="h-4 w-4 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
+                            <i class="fi fi-rr-exclamation text-xs" aria-hidden="true"></i>
                         </span>
                         <div>
                             <p class="font-semibold">{{ __('Terdapat kesalahan pada input Anda:') }}</p>
@@ -82,9 +76,7 @@
                         </div>
                     </div>
                     <button type="button" @click="show = false" class="text-error-600 hover:text-error-800 dark:text-error-400">
-                        <svg class="h-5 w-5 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
+                        <i class="fi fi-rr-cross-small text-lg" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
@@ -96,9 +88,7 @@
             role="alert">
             <span class="font-medium" x-text="clientError"></span>
             <button type="button" @click="clientError = ''" class="text-error-600 hover:text-error-800 dark:text-error-400">
-                <svg class="h-5 w-5 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
+                <i class="fi fi-rr-cross-small text-lg" aria-hidden="true"></i>
             </button>
         </div>
 
@@ -131,11 +121,7 @@
                             @change="handlePhotoChange($event)" />
                         <button type="button" @click="$refs.photoInput.click()"
                             class="shadow-theme-xs inline-flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-theme-sm font-medium text-gray-700 transition hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-white/[0.05]">
-                            <svg class="h-4 w-4 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg>
+                            <i class="fi fi-rr-camera text-sm" aria-hidden="true"></i>
                             {{ __('Ganti Foto Profil') }}
                         </button>
                     </form>
@@ -150,10 +136,7 @@
                     </h4>
                     <button type="button" @click="openPersonalEditModal()"
                         class="shadow-theme-xs inline-flex shrink-0 items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-theme-sm font-medium text-gray-700 transition hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-white/[0.05]">
-                        <svg class="h-4 w-4 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                        </svg>
+                        <i class="fi fi-rr-edit text-sm" aria-hidden="true"></i>
                         {{ __('Edit No. Telp & Alamat') }}
                     </button>
                 </div>
@@ -228,10 +211,7 @@
                     </h4>
                     <button type="button" @click="isAccountModalOpen = true"
                         class="shadow-theme-xs inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-brand-500 px-4 py-2.5 text-theme-sm font-medium text-white transition hover:bg-brand-600">
-                        <svg class="h-4 w-4 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                        </svg>
+                        <i class="fi fi-rr-pencil text-sm" aria-hidden="true"></i>
                         {{ __('Update Email / Password') }}
                     </button>
                 </div>
@@ -263,10 +243,7 @@
                         {{ __('Informasi Kepegawaian') }}
                     </h4>
                     <span class="inline-flex shrink-0 items-center gap-1.5 self-start rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-theme-xs font-medium text-gray-600 sm:self-auto dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
-                        <svg class="h-3.5 w-3.5 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                        </svg>
+                        <i class="fi fi-rr-lock text-xs" aria-hidden="true"></i>
                         {{ __('Hanya Baca') }}
                     </span>
                 </div>
@@ -318,9 +295,7 @@
             <div class="relative z-10 w-full max-w-xl rounded-2xl border border-gray-200 bg-white p-6 shadow-theme-xl lg:p-8 dark:border-gray-800 dark:bg-gray-900">
                 <button type="button" @click="isAccountModalOpen = false"
                     class="absolute top-5 end-5 flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700">
-                    <svg class="h-5 w-5 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
+                    <i class="fi fi-rr-cross-small text-lg" aria-hidden="true"></i>
                 </button>
 
                 <div class="mb-5 pe-10">
@@ -422,9 +397,7 @@
             <div class="custom-scrollbar relative z-10 max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-gray-200 bg-white p-6 shadow-theme-xl lg:p-8 dark:border-gray-800 dark:bg-gray-900">
                 <button type="button" @click="isPersonalModalOpen = false"
                     class="absolute top-5 end-5 flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700">
-                    <svg class="h-5 w-5 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
+                    <i class="fi fi-rr-cross-small text-lg" aria-hidden="true"></i>
                 </button>
 
                 <div class="mb-5 pe-10">
@@ -490,10 +463,12 @@
                             <label for="no_telp" class="mb-1.5 block text-theme-sm font-medium text-gray-700 dark:text-gray-300">
                                 {{ __('No. Telp / WA') }} <span class="text-error-500">*</span>
                             </label>
-                            <input type="text" id="no_telp" name="no_telp"
+                            <input type="text" id="no_telp" name="no_telp" inputmode="numeric" maxlength="20"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                                 value="{{ old('no_telp', $currentUser?->no_telp) }}" required
                                 placeholder="0812xxxxxxxx"
                                 class="shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-theme-sm text-gray-800 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90" />
+                            <p class="mt-1 text-theme-xs text-gray-400">{{ __('Hanya angka (8–20 digit).') }}</p>
                             @error('no_telp')
                                 <p class="mt-1 text-theme-xs text-error-600 dark:text-error-400">{{ $message }}</p>
                             @enderror
@@ -581,9 +556,11 @@
                                 <label for="rt" class="mb-1.5 block text-theme-sm font-medium text-gray-700 dark:text-gray-300">
                                     {{ __('RT') }}
                                 </label>
-                                <input type="text" id="rt" name="rt" maxlength="5"
+                                <input type="text" id="rt" name="rt" inputmode="numeric" maxlength="5"
+                                    oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                                     value="{{ old('rt', $alamat?->rt) }}" placeholder="001"
                                     class="shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-theme-sm text-gray-800 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90" />
+                                <p class="mt-1 text-theme-xs text-gray-400">{{ __('Hanya angka.') }}</p>
                                 @error('rt')
                                     <p class="mt-1 text-theme-xs text-error-600 dark:text-error-400">{{ $message }}</p>
                                 @enderror
@@ -593,9 +570,11 @@
                                 <label for="rw" class="mb-1.5 block text-theme-sm font-medium text-gray-700 dark:text-gray-300">
                                     {{ __('RW') }}
                                 </label>
-                                <input type="text" id="rw" name="rw" maxlength="5"
+                                <input type="text" id="rw" name="rw" inputmode="numeric" maxlength="5"
+                                    oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                                     value="{{ old('rw', $alamat?->rw) }}" placeholder="002"
                                     class="shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-theme-sm text-gray-800 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90" />
+                                <p class="mt-1 text-theme-xs text-gray-400">{{ __('Hanya angka.') }}</p>
                                 @error('rw')
                                     <p class="mt-1 text-theme-xs text-error-600 dark:text-error-400">{{ $message }}</p>
                                 @enderror

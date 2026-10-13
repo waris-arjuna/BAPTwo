@@ -10,9 +10,7 @@
                         <div class="flex w-full flex-1 flex-col">
                             <div class="mx-auto w-full max-w-md pt-10">
                                 <a href="/signin" class="inline-flex items-center gap-2 text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
-                                    <svg class="stroke-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                        <path d="M12.7083 5L7.5 10.2083L12.7083 15.4167" stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
+                                    <i class="fi fi-rr-angle-small-left text-base" aria-hidden="true"></i>
                                     {{ __('Back to login') }}
                                 </a>
                             </div>
@@ -32,15 +30,11 @@
                                         </p>
                                         <ul class="mt-4 space-y-2 text-sm text-gray-600 dark:text-gray-400">
                                             <li class="flex items-center gap-2">
-                                                <svg class="fill-current text-brand-500" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M2.5 5.5A2 2 0 0 1 4.5 3.5h11a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2v-9Zm2 .4 5.5 4 5.5-4v-.4h-11v.4Zm11 1.7-5.3 3.85a.75.75 0 0 1-.9 0L4.5 7.6V14.5h11V7.6Z" />
-                                                </svg>
+                                                <i class="fi fi-rr-envelope text-sm text-brand-500" aria-hidden="true"></i>
                                                 <span>{{ __('Email') }}: admin-it@baptwo.go.id</span>
                                             </li>
                                             <li class="flex items-center gap-2">
-                                                <svg class="fill-current text-brand-500" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M6.5 2.5A2.5 2.5 0 0 0 4 5v10a2.5 2.5 0 0 0 5 0V5a2.5 2.5 0 0 0-2.5-2.5ZM5.5 5a1 1 0 0 1 2 0v10a1 1 0 1 1-2 0V5Zm6.5-.5A2.5 2.5 0 0 0 9.5 7v6a2.5 2.5 0 0 0 5 0V7A2.5 2.5 0 0 0 12 4.5ZM11 7a1 1 0 1 1 2 0v6a1 1 0 1 1-2 0V7Z" />
-                                                </svg>
+                                                <i class="fi fi-rr-headset text-sm text-brand-500" aria-hidden="true"></i>
                                                 <span>{{ __('Internal extension') }}: IT Support</span>
                                             </li>
                                         </ul>

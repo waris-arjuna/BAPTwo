@@ -68,105 +68,19 @@
                 <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl {{ $stat['iconClass'] }}">
 
                     @if ($stat['icon'] === 'document')
-                        <svg
-                            class="h-5 w-5"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="1.8"
-                                d="M6 3.75A1.75 1.75 0 0 1 7.75 2h6.69c.46 0 .9.18 1.23.51l3.82 3.82c.33.33.51.77.51 1.23v12.69A1.75 1.75 0 0 1 18.25 22h-10.5A1.75 1.75 0 0 1 6 20.25V3.75Z"
-                            />
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="1.8"
-                                d="M14 2.5V8h5.5M9 12h6M9 16h6"
-                            />
-                        </svg>
+                        <i class="fi fi-rr-document text-lg"></i>
 
                     @elseif ($stat['icon'] === 'play-circle')
-                        <svg
-                            class="h-5 w-5"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="1.8"
-                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"
-                            />
-                        </svg>
+                        <i class="fi fi-rr-play text-lg"></i>
 
                     @elseif ($stat['icon'] === 'verification')
-                        <svg
-                            class="h-5 w-5"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="1.8"
-                                d="M12 14.75a4.25 4.25 0 1 0 0-8.5 4.25 4.25 0 0 0 0 8.5Z"
-                            />
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="1.8"
-                                d="M4.75 21a7.25 7.25 0 0 1 14.5 0M16.5 10.5l1.75 1.75L21 9.5"
-                            />
-                        </svg>
+                        <i class="fi fi-rr-user-check text-lg"></i>
 
                     @elseif ($stat['icon'] === 'check')
-                        <svg
-                            class="h-5 w-5"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <circle
-                                cx="12"
-                                cy="12"
-                                r="8.5"
-                                stroke-width="1.8"
-                            />
-
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="1.8"
-                                d="m8.5 12 2.25 2.25L15.5 9.5"
-                            />
-                        </svg>
+                        <i class="fi fi-rr-check-circle text-lg"></i>
 
                     @else
-                        <svg
-                            class="h-5 w-5"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="1.8"
-                                d="M12 7v5l3 2"
-                            />
-
-                            <circle
-                                cx="12"
-                                cy="12"
-                                r="8.5"
-                                stroke-width="1.8"
-                            />
-                        </svg>
+                        <i class="fi fi-rr-clock text-lg"></i>
                     @endif
 
                 </div>

@@ -13,13 +13,9 @@
         <div class="mb-6">
             <div class="mb-2 flex flex-wrap items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
                 <a href="{{ url('/') }}" class="transition hover:text-brand-600 dark:hover:text-brand-400">Home</a>
-                <svg class="h-4 w-4 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 0 1 .02-1.06L10.94 10 7.23 6.29a.75.75 0 1 1 1.06-1.06l4.24 4.24a.75.75 0 0 1 0 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0Z" clip-rule="evenodd" />
-                </svg>
+                <i class="fi fi-rr-angle-small-right text-sm text-gray-400"></i>
                 <a href="{{ url('/laporan-kejadian') }}" class="transition hover:text-brand-600 dark:hover:text-brand-400">Laporan Kejadian</a>
-                <svg class="h-4 w-4 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 0 1 .02-1.06L10.94 10 7.23 6.29a.75.75 0 1 1 1.06-1.06l4.24 4.24a.75.75 0 0 1-1.06 0Z" clip-rule="evenodd" />
-                </svg>
+                <i class="fi fi-rr-angle-small-right text-sm text-gray-400"></i>
                 <span class="text-gray-700 dark:text-gray-300">Tambah</span>
             </div>
 

@@ -20,9 +20,7 @@
                 >
                     <div class="flex items-start gap-4">
                         <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-error-50 text-error-600 dark:bg-error-500/15 dark:text-error-400">
-                            <svg class="h-6 w-6 stroke-current" fill="none" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                            </svg>
+                            <i class="fi fi-rr-triangle-warning text-xl" aria-hidden="true"></i>
                         </div>
                         <div class="flex-1">
                             <h3 class="text-title-xs font-semibold text-gray-900 dark:text-white">
@@ -72,9 +70,7 @@
             <div class="flex w-full flex-1 flex-col justify-center px-4 py-8 sm:px-6 lg:w-1/2">
                 <div class="mx-auto mb-4 w-full max-w-lg">
                     <a href="/" class="inline-flex items-center gap-2 text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
-                        <svg class="stroke-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M12.7083 5L7.5 10.2083L12.7083 15.4167" stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
+                        <i class="fi fi-rr-angle-small-left text-base" aria-hidden="true"></i>
                         {{ __('Back to dashboard') }}
                     </a>
                 </div>
@@ -126,12 +122,8 @@
                                             <input :type="showPassword ? 'text' : 'password'" id="password" name="password" required autocomplete="current-password" placeholder="{{ __('Enter your password') }}"
                                                 class="dark:bg-dark-900 shadow-theme-xs h-11 w-full rounded-lg border bg-transparent py-2.5 pr-11 pl-4 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 {{ $errors->has('password') ? 'border-error-500 focus:border-error-500 focus:ring-error-500/10' : 'border-gray-300 focus:border-brand-300 focus:ring-brand-500/10 dark:border-gray-700 dark:focus:border-brand-800' }}" />
                                             <span @click="showPassword = !showPassword" class="absolute top-1/2 right-4 z-30 -translate-y-1/2 cursor-pointer text-gray-500 dark:text-gray-400">
-                                                <svg x-show="!showPassword" class="fill-current" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill-rule="evenodd" clip-rule="evenodd" fill="#98A2B3" d="M10 13.86c-2.77 0-5.13-1.72-6.08-4.16.95-2.44 3.31-4.16 6.08-4.16 2.77 0 5.13 1.72 6.08 4.16-.95 2.44-3.31 4.16-6.08 4.16Zm0-9.82c-3.52 0-6.51 2.27-7.58 5.42-.05.16-.05.33 0 .49C3.49 13.1 6.48 15.36 10 15.36s6.51-2.27 7.58-5.42c.05-.16.05-.33 0-.49C16.51 6.31 13.52 4.04 10 4.04Zm-.01 3.8c-1.03 0-1.86.83-1.86 1.86s.83 1.86 1.86 1.86h.01c1.03 0-1.86-.83 1.86-1.86s-.83-1.86-1.86-1.86h-.01Z" />
-                                                </svg>
-                                                <svg x-show="showPassword" class="fill-current" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill-rule="evenodd" clip-rule="evenodd" fill="#98A2B3" d="M4.64 3.58a.75.75 0 0 0-1.06 1.06l1.28 1.28C3.75 6.84 2.89 8.06 2.42 9.46c-.05.16-.05.33 0 .49 1.08 3.15 4.06 5.41 7.58 5.41 1.25 0 2.44-.29 3.5-.8l1.86 1.86a.75.75 0 1 0 1.06-1.06L4.64 3.58Zm7.72 9.84-1.91-1.91a1.86 1.86 0 0 1-2.51-2.51L5.92 6.98c-.88.71-1.58 1.65-1.99 2.72.95 2.44 3.31 4.16 6.07 4.16.83 0 1.63-.15 2.36-.42Z" />
-                                                </svg>
+                                                <i x-show="!showPassword" class="fi fi-rr-eye text-base" aria-hidden="true"></i>
+                                                <i x-show="showPassword" class="fi fi-rr-eye-crossed text-base" aria-hidden="true"></i>
                                             </span>
                                         </div>
                                         @error('password')
@@ -149,9 +141,7 @@
                                                     <div :class="checkboxToggle ? 'border-brand-500 bg-brand-500' : 'bg-transparent border-gray-300 dark:border-gray-700'"
                                                         class="me-3 flex h-5 w-5 items-center justify-center rounded-md border-[1.25px]">
                                                         <span :class="checkboxToggle ? '' : 'opacity-0'">
-                                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                <path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="1.94437" stroke-linecap="round" stroke-linejoin="round" />
-                                                            </svg>
+                                                            <i class="fi fi-rr-check text-[10px] text-white" aria-hidden="true"></i>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -183,12 +173,8 @@
             <div class="fixed right-6 bottom-6 z-50">
                 <button class="bg-brand-500 hover:bg-brand-600 inline-flex size-14 items-center justify-center rounded-full text-white transition-colors"
                     @click.prevent="$store.theme.toggle()">
-                    <svg class="hidden fill-current dark:block" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" fill="white" d="M10 1.54c.41 0 .75.34.75.75v1.25a.75.75 0 0 1-1.5 0V2.29a.75.75 0 0 1 .75-.75Zm0 5.25A3.21 3.21 0 0 0 6.79 10 3.21 3.21 0 0 0 10 13.21 3.21 3.21 0 0 0 13.21 10 3.21 3.21 0 0 0 10 6.79ZM5.29 10A4.71 4.71 0 0 1 10 5.29 4.71 4.71 0 0 1 14.71 10 4.71 4.71 0 0 1 10 14.71 4.71 4.71 0 0 1 5.29 10Z" />
-                    </svg>
-                    <svg class="fill-current dark:hidden" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill="currentColor" d="M17.45 11.97l.72.19c.09-.32-.05-.66-.33-.83a.75.75 0 0 0-.9.13l.51.51ZM8.03 2.55l.55.51a.75.75 0 0 0-.04-1.08.74.74 0 0 0-.79-.16l.28.73ZM12.92 13a6.96 6.96 0 0 1-2.92-1.04A6.96 6.96 0 0 1 7 10C5.34 7.26 6.31 4.06 9 3.27a8.42 8.42 0 0 0-6.8 4.36A7.96 7.96 0 0 0 10 18.46c3.93 0 7.22-2.67 8.18-6.3a6.92 6.92 0 0 1-3.26 1.4c-.66.1-1.34.1-2 .04Z" />
-                    </svg>
+                    <i class="fi fi-rr-sun hidden text-lg dark:inline-flex" aria-hidden="true"></i>
+                    <i class="fi fi-rr-moon text-lg dark:hidden" aria-hidden="true"></i>
                 </button>
             </div>
         </div>

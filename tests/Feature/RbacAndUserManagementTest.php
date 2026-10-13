@@ -49,9 +49,102 @@ it('blocks Pimpinan from accessing create routes while allowing Penyidik and Adm
     $pimpinan = User::factory()->pimpinan()->make();
     $admin = User::factory()->administrator()->make();
 
-    $this->actingAs($pimpinan)->get('/laporan-kejadian/tambah')->assertForbidden();
-    $this->actingAs($penyidik)->get('/laporan-kejadian/tambah')->assertOk();
-    $this->actingAs($admin)->get('/laporan-kejadian/tambah')->assertOk();
+    foreach (['/laporan-kejadian/tambah', '/sprindik/tambah', '/spdp/tambah', '/tahap-1/tambah', '/p21/tambah'] as $createRoute) {
+        $this->actingAs($pimpinan)->get($createRoute)->assertForbidden();
+        $this->actingAs($penyidik)->get($createRoute)->assertOk();
+        $this->actingAs($admin)->get($createRoute)->assertOk();
+    }
+
+    $this->actingAs($pimpinan)->get('/tahap-2/tambah')->assertForbidden();
+});
+
+it('hides Tambah, Edit, and stage advancement buttons from Pimpinan across index and detail views', function () {
+    $penyidik = User::factory()->penyidik()->make();
+    $pimpinan = User::factory()->pimpinan()->make();
+
+    // Laporan Kejadian Index & Show
+    $this->actingAs($pimpinan)->get('/laporan-kejadian')
+        ->assertOk()
+        ->assertDontSee('Tambah Laporan Kejadian')
+        ->assertDontSee('Input Sprindik')
+        ->assertDontSee('Buat Perkara');
+    $this->actingAs($penyidik)->get('/laporan-kejadian')
+        ->assertOk()
+        ->assertSee('Tambah Laporan Kejadian')
+        ->assertSee('Input Sprindik');
+
+    $this->actingAs($pimpinan)->get('/laporan-kejadian/1')
+        ->assertOk()
+        ->assertDontSee('Input Sprindik');
+    $this->actingAs($penyidik)->get('/laporan-kejadian/1')
+        ->assertOk()
+        ->assertSee('Input Sprindik');
+
+    // Sprindik Index & Show
+    $this->actingAs($pimpinan)->get('/sprindik')
+        ->assertOk()
+        ->assertDontSee('Tambah Sprindik')
+        ->assertDontSee('Buat Perkara');
+    $this->actingAs($penyidik)->get('/sprindik')
+        ->assertOk()
+        ->assertSee('Tambah Sprindik')
+        ->assertSee('Buat Perkara');
+
+    $this->actingAs($pimpinan)->get('/sprindik/1')
+        ->assertOk()
+        ->assertDontSee('Buat Perkara');
+    $this->actingAs($penyidik)->get('/sprindik/1')
+        ->assertOk()
+        ->assertSee('Buat Perkara');
+
+    // SPDP Index & Show
+    $this->actingAs($pimpinan)->get('/spdp')
+        ->assertOk()
+        ->assertDontSee('Tambah SPDP')
+        ->assertDontSee('Mulai Tahap 1');
+    $this->actingAs($penyidik)->get('/spdp')
+        ->assertOk()
+        ->assertSee('Tambah SPDP')
+        ->assertSee('Mulai Tahap 1');
+
+    $this->actingAs($pimpinan)->get('/spdp/1')
+        ->assertOk()
+        ->assertDontSee('Lanjut Tahap 2');
+    $this->actingAs($penyidik)->get('/spdp/1')
+        ->assertOk()
+        ->assertSee('Lanjut Tahap 2');
+
+    // Tahap 1 Index & Show
+    $this->actingAs($pimpinan)->get('/tahap-1')
+        ->assertOk()
+        ->assertDontSee('Tambah Tahap 1')
+        ->assertDontSee('Lanjut P-21');
+    $this->actingAs($penyidik)->get('/tahap-1')
+        ->assertOk()
+        ->assertSee('Tambah Tahap 1')
+        ->assertSee('Lanjut P-21');
+
+    $this->actingAs($pimpinan)->get('/tahap-1/1')
+        ->assertOk()
+        ->assertDontSee('Lanjut P-21');
+    $this->actingAs($penyidik)->get('/tahap-1/1')
+        ->assertOk()
+        ->assertSee('Lanjut P-21');
+
+    // P-21 Index & Show
+    $this->actingAs($pimpinan)->get('/p21')
+        ->assertOk()
+        ->assertDontSee('Tambah P-21 / P-21a');
+    $this->actingAs($penyidik)->get('/p21')
+        ->assertOk()
+        ->assertSee('Tambah P-21 / P-21a');
+
+    $this->actingAs($pimpinan)->get('/p21/1')
+        ->assertOk()
+        ->assertDontSee('Lanjut Tahap 2');
+    $this->actingAs($penyidik)->get('/p21/1')
+        ->assertOk()
+        ->assertSee('Lanjut Tahap 2');
 });
 
 it('restricts user management routes to Administrator only', function () {

@@ -106,19 +106,7 @@
                 <div class="mt-2 flex flex-col gap-3 sm:flex-row sm:items-center">
 
                     <div class="flex items-center gap-2">
-                        <svg
-                            class="h-5 w-5 text-red-500"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-                            />
-                        </svg>
+                        <i class="fi fi-rr-document text-base text-red-500"></i>
 
                         <span class="text-sm text-gray-700 dark:text-gray-300">
                             {{ $sprindik['dokumen'] }}
@@ -156,7 +144,7 @@
                     <div class="flex items-center gap-3">
 
                         <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-success-50 text-success-600 dark:bg-success-500/10 dark:text-success-400">
-                            ✓
+                            <i class="fi fi-rr-check text-xs"></i>
                         </div>
 
                         <div>
@@ -176,7 +164,7 @@
                     <div class="flex items-center gap-3">
 
                         <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-success-50 text-success-600 dark:bg-success-500/10 dark:text-success-400">
-                            ✓
+                            <i class="fi fi-rr-check text-xs"></i>
                         </div>
 
                         <div>
@@ -250,26 +238,16 @@
                         </p>
                     </div>
 
-                    <a
-                        href="#"
-                        class="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-500 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-brand-600"
-                    >
-                        <svg
-                            class="h-5 w-5"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
+                    @can('create-cases')
+                        <a
+                            href="#"
+                            class="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-500 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-brand-600"
                         >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M12 4v16m8-8H4"
-                            />
-                        </svg>
+                            <i class="fi fi-rr-plus-small text-lg"></i>
 
-                        Buat Perkara
-                    </a>
+                            Buat Perkara
+                        </a>
+                    @endcan
 
                 </div>
             </div>

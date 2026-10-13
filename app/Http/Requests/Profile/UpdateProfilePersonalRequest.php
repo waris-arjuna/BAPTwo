@@ -17,14 +17,14 @@ class UpdateProfilePersonalRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'no_telp' => ['required', 'string', 'min:8', 'max:25', 'regex:/^[0-9+\-\s()]+$/'],
-            'provinsi_kode' => ['required', 'string', 'max:15'],
+            'no_telp' => ['required', 'string', 'min:8', 'max:20', 'regex:/^[0-9]+$/'],
+            'provinsi_kode' => ['required', 'string', 'max:15', 'regex:/^[0-9.]+$/'],
             'provinsi_nama' => ['required', 'string', 'max:100'],
-            'kabupaten_kode' => ['required', 'string', 'max:15'],
+            'kabupaten_kode' => ['required', 'string', 'max:15', 'regex:/^[0-9.]+$/'],
             'kabupaten_nama' => ['required', 'string', 'max:100'],
-            'kecamatan_kode' => ['required', 'string', 'max:15'],
+            'kecamatan_kode' => ['required', 'string', 'max:15', 'regex:/^[0-9.]+$/'],
             'kecamatan_nama' => ['required', 'string', 'max:100'],
-            'desa_kode' => ['required', 'string', 'max:15'],
+            'desa_kode' => ['required', 'string', 'max:15', 'regex:/^[0-9.]+$/'],
             'desa_nama' => ['required', 'string', 'max:100'],
             'rt' => ['nullable', 'string', 'max:5', 'regex:/^[0-9]+$/'],
             'rw' => ['nullable', 'string', 'max:5', 'regex:/^[0-9]+$/'],
@@ -39,9 +39,9 @@ class UpdateProfilePersonalRequest extends FormRequest
     {
         return [
             'no_telp.required' => __('Nomor Telepon / WhatsApp wajib diisi.'),
-            'no_telp.min' => __('Nomor Telepon / WhatsApp minimal 8 karakter.'),
-            'no_telp.max' => __('Nomor Telepon / WhatsApp maksimal 25 karakter.'),
-            'no_telp.regex' => __('Format Nomor Telepon / WhatsApp hanya boleh berisi angka, spasi, atau tanda + - ( ).'),
+            'no_telp.min' => __('Nomor Telepon / WhatsApp minimal 8 digit angka.'),
+            'no_telp.max' => __('Nomor Telepon / WhatsApp maksimal 20 digit angka.'),
+            'no_telp.regex' => __('Nomor Telepon / WhatsApp hanya boleh berisi angka.'),
             'provinsi_kode.required' => __('Provinsi wajib dipilih.'),
             'provinsi_nama.required' => __('Nama provinsi wajib diisi.'),
             'kabupaten_kode.required' => __('Kabupaten / Kota wajib dipilih.'),

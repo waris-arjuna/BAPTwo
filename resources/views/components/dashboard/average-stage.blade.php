@@ -35,26 +35,7 @@
             </div>
 
             <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-50 text-teal-600 dark:bg-teal-500/10 dark:text-teal-400">
-                <svg
-                    class="h-5 w-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="1.8"
-                        d="M12 7v5l3 2"
-                    />
-
-                    <circle
-                        cx="12"
-                        cy="12"
-                        r="8.5"
-                        stroke-width="1.8"
-                    />
-                </svg>
+                <i class="fi fi-rr-clock text-lg"></i>
             </div>
         </div>
 
@@ -69,19 +50,7 @@
                 <div class="flex items-center gap-3">
 
                     <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-gray-50 text-gray-500 dark:bg-white/[0.03] dark:text-gray-400">
-                        <svg
-                            class="h-4.5 w-4.5"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="1.8"
-                                d="M5 19V8m7 11V5m7 14v-8"
-                            />
-                        </svg>
+                        <i class="fi fi-rr-chart-histogram text-base"></i>
                     </div>
 
                     <div>
