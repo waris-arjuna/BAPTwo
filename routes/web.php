@@ -11,6 +11,7 @@ use App\Http\Controllers\PerkaraBerkasController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgressPerkaraController;
 use App\Http\Controllers\SprindikController;
+use App\Http\Controllers\TahapanPerkaraController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WilayahController;
 use App\Services\MockStageService;
@@ -112,6 +113,15 @@ Route::middleware('auth')->group(function () {
     // Dokumen (Download & Preview Privat)
     Route::get('/dokumen/{dokumen}/download', [DokumenController::class, 'download'])->name('dokumen.download');
     Route::get('/dokumen/{dokumen}/preview', [DokumenController::class, 'preview'])->name('dokumen.preview');
+
+    // Tahapan Progress Berkas Perkara (PRD F-10 s.d. F-19)
+    Route::prefix('berkas-perkara/{berkas}')->name('berkas-perkara.')->group(function () {
+        Route::get('/tahapan/tambah', [TahapanPerkaraController::class, 'create'])->middleware('can:create-cases')->name('tahapan.create');
+        Route::post('/tahapan', [TahapanPerkaraController::class, 'store'])->middleware('can:create-cases')->name('tahapan.store');
+        Route::get('/tahapan/{tahapan}', [TahapanPerkaraController::class, 'show'])->name('tahapan.show');
+        Route::get('/tahapan/{tahapan}/edit', [TahapanPerkaraController::class, 'edit'])->middleware('can:edit-draft')->name('tahapan.edit');
+        Route::put('/tahapan/{tahapan}', [TahapanPerkaraController::class, 'update'])->middleware('can:edit-draft')->name('tahapan.update');
+    });
 
     // SPDP
     Route::get('/spdp', function (Request $request, MockStageService $mockService) {

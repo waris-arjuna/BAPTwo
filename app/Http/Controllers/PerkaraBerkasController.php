@@ -77,6 +77,7 @@ class PerkaraBerkasController extends Controller
             'ppnsUtama',
             'ppnsAnggota',
             'tersangkas.berkasPerkara.pasals',
+            'tersangkas.berkasPerkara.tahapan.dokumen',
             'creator',
             'perkaraFinalizer',
             'auditLogs.user',

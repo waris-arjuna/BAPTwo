@@ -194,5 +194,27 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
      - Tahapan yang telah berstatus `final` terkunci permanen (`assertStageNotLocked`) dan melempar `DomainException` jika dicoba untuk diedit atau dimundurkan (termasuk oleh role Administrator).
 - Konsekuensi: Integritas data tahapan dan aturan urutan tervalidasi secara kuat di lapisan model dan domain service.
 
+## D-017 — Mekanisme Tiga Tombol Tahapan, Card Referensi, dan Penguncian Permanen (Zero Override)
+
+- Tanggal: 2026-10-14
+- Status: Disepakati & Diimplementasikan
+- Konteks: Mengimplementasikan PRD F-14 s.d. F-19 mengenai penanganan setiap tahapan perkara. Pengguna membutuhkan fleksibilitas menyimpan draft sementara data belum lengkap, membatalkan input, serta memfinalkan tahap ketika data lengkap sekaligus mengunci tahap tersebut tanpa celah pembatalan/edit.
+- Keputusan:
+  1. **Tiga Tombol Seragam di Setiap Tahapan**:
+     - **Batal**: Link kembali ke halaman berkas perkara tanpa menyimpan perubahan.
+     - **Draft** (`action_type = draft`): Menyimpan data apa adanya (nomor/tanggal surat boleh kosong), status tetap `draft`, tidak menaikkan progress berkas, dan dapat diedit kembali oleh Penyidik.
+     - **Simpan & Lanjut Tahap Berikutnya** (`action_type = lanjut`): Memvalidasi field wajib lengkap (nomor surat, tanggal surat, dokumen PDF valid jika diunggah). Mengubah status menjadi `final`, mengunci tahap permanen (`finalized_at`, `finalized_by`), serta otomatis menaikkan progress berbobot dan status proses pada `berkas_perkara`.
+  2. **Penguncian Permanen (Zero Override)**:
+     - Tahapan yang telah berstatus `final` terkunci mutlak di server (`assertStageNotLocked` melempar `DomainException` dan Form Request melempar HTTP 403 Forbidden).
+     - Role Administrator pun tidak dapat meng-override atau mengedit tahap yang telah dikunci.
+     - Di UI, tahap final hanya menampilkan mode **Lihat Saja (Read-Only)** dengan indikator visual gembok hijau `Terkunci Permanen`.
+  3. **Card Referensi Tahapan Sebelumnya**:
+     - Ditampilkan di bagian atas formulir tahapan aktif untuk memberikan konteks histori dokumen dan nomor surat tahapan sebelumnya (Laporan Kejadian, Sprindik, dan tahapan progress yang telah final).
+  4. **Pusat Dokumen & Jejak Audit**:
+     - Dokumen tahapan disimpan di tabel `dokumen` dengan relasi `tahapan_perkara_id` dan `berkas_perkara_id`.
+     - Setiap aksi simpan draft dan finalisasi tahap dicatat ke tabel `audit_log` via `AuditTrailService`.
+- Konsekuensi: Alur kerja tahapan perkara mematuhi 100% aturan bisnis PRD F-14 s.d. F-19 secara aman, konsisten, dan transparan.
+
+
 
 

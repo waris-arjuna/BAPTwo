@@ -139,7 +139,170 @@ class TahapanService
     public function assertStageNotLocked(TahapanPerkara $tahap): void
     {
         if ($tahap->isFinal()) {
-            throw new DomainException("Tahapan {$tahap->jenis_tahap->label()} telah difinalkan dan terkunci permanen. Administrator pun tidak dapat mengedit atau memundurkan tahap yang telah dikunci.");
+            throw new \DomainException("Tahapan {$tahap->jenis_tahap->label()} telah difinalkan dan terkunci permanen. Administrator pun tidak dapat mengedit atau memundurkan tahap yang telah dikunci.");
         }
+    }
+
+    /**
+     * Menyimpan tahapan perkara (mendukung aksi Draft dan Simpan & Lanjut - PRD F-14 s.d. F-19).
+     *
+     * @param  array<string, mixed>  $data
+     */
+    public function saveStage(
+        BerkasPerkara $berkas,
+        array $data,
+        ?\Illuminate\Http\UploadedFile $file,
+        \App\Models\User $user,
+        ?TahapanPerkara $existingTahap = null
+    ): TahapanPerkara {
+        return \Illuminate\Support\Facades\DB::transaction(function () use ($berkas, $data, $file, $user, $existingTahap): TahapanPerkara {
+            $isDraft = ($data['action_type'] ?? 'lanjut') === 'draft';
+            $jenisTahap = $existingTahap !== null
+                ? $existingTahap->jenis_tahap
+                : ($data['jenis_tahap'] instanceof JenisTahap ? $data['jenis_tahap'] : JenisTahap::from((string) $data['jenis_tahap']));
+
+            if ($existingTahap !== null) {
+                $this->assertStageNotLocked($existingTahap);
+            } else {
+                $this->validateStageOrder($berkas, $jenisTahap);
+            }
+
+            $tahapData = [
+                'berkas_perkara_id' => $berkas->id,
+                'jenis_tahap' => $jenisTahap,
+                'nomor_surat' => $data['nomor_surat'] ?? null,
+                'tanggal_surat' => ! empty($data['tanggal_surat']) ? $data['tanggal_surat'] : null,
+                'catatan' => $data['catatan'] ?? null,
+                'status' => $isDraft ? 'draft' : 'final',
+                'finalized_at' => $isDraft ? null : now(),
+                'finalized_by' => $isDraft ? null : $user->id,
+                'updated_by' => $user->id,
+            ];
+
+            if ($existingTahap !== null) {
+                $existingTahap->update($tahapData);
+                $tahap = $existingTahap;
+            } else {
+                $tahapData['created_by'] = $user->id;
+                $tahap = TahapanPerkara::create($tahapData);
+            }
+
+            // Simpan dokumen jika diunggah
+            if ($file !== null) {
+                $path = $file->store('dokumen/tahapan', 'local');
+                \App\Models\Dokumen::create([
+                    'perkara_id' => $berkas->perkara_id,
+                    'berkas_perkara_id' => $berkas->id,
+                    'tahapan_perkara_id' => $tahap->id,
+                    'kategori' => 'tahapan',
+                    'nama_dokumen' => "Dokumen {$jenisTahap->label()} - {$tahap->nomor_surat}",
+                    'nama_file_asli' => $file->getClientOriginalName(),
+                    'file_path' => $path,
+                    'file_size' => $file->getSize() ?: 0,
+                    'created_by' => $user->id,
+                    'updated_by' => $user->id,
+                ]);
+            }
+
+            // Jika Simpan & Lanjut: update progres berkas perkara & tanggal SPDP jika SPDP
+            if (! $isDraft) {
+                $berkas->refresh();
+                $updateBerkas = [
+                    'progress_persen' => $this->calculateProgress($berkas),
+                    'status_proses' => $this->determineStatusProses($berkas),
+                ];
+
+                if ($jenisTahap === JenisTahap::SPDP && ! empty($tahap->tanggal_surat)) {
+                    $tanggalSpdp = \Carbon\Carbon::parse($tahap->tanggal_surat);
+                    $updateBerkas['tanggal_spdp'] = $tanggalSpdp->toDateString();
+                    $updateBerkas['sla_deadline'] = $tanggalSpdp->copy()->addMonth()->toDateString();
+                }
+
+                // PRD F-22: Simpan & Lanjut dari TAHAP II otomatis memicu status formal Selesai
+                if ($jenisTahap === JenisTahap::TAHAP_2) {
+                    $updateBerkas['status_formal'] = 'selesai';
+                }
+
+                $berkas->update($updateBerkas);
+
+                // Audit log finalisasi
+                app(AuditTrailService::class)->log(
+                    aksi: 'finalisasi_tahap',
+                    tabel: 'tahapan_perkara',
+                    recordId: $tahap->id,
+                    dataLama: null,
+                    dataBaru: $tahap->toArray(),
+                    perkaraId: $berkas->perkara_id,
+                    berkasPerkaraId: $berkas->id,
+                    userId: $user->id
+                );
+            } else {
+                // Audit log draft
+                app(AuditTrailService::class)->log(
+                    aksi: 'simpan_draft_tahap',
+                    tabel: 'tahapan_perkara',
+                    recordId: $tahap->id,
+                    dataLama: null,
+                    dataBaru: $tahap->toArray(),
+                    perkaraId: $berkas->perkara_id,
+                    berkasPerkaraId: $berkas->id,
+                    userId: $user->id
+                );
+            }
+
+            return $tahap;
+        });
+    }
+
+    /**
+     * Mendapatkan daftar ringkasan referensi tahapan sebelumnya yang telah final untuk ditampilkan pada Card Referensi.
+     *
+     * @return array<int, array{nama: string, nomor: string, tanggal: string, status: string, dokumen: string|null}>
+     */
+    public function getPreviousStagesReference(BerkasPerkara $berkas): array
+    {
+        $references = [];
+        $perkara = $berkas->perkara;
+
+        if ($perkara !== null) {
+            if ($perkara->tahap_laporan_status === 'final') {
+                $references[] = [
+                    'nama' => 'Laporan Kejadian',
+                    'nomor' => (string) ($perkara->nomor_laporan_kejadian ?? '-'),
+                    'tanggal' => $perkara->tanggal_laporan_kejadian?->format('d-m-Y') ?? '-',
+                    'status' => 'Final / Terkunci',
+                    'dokumen' => $perkara->dokumenLaporan?->nama_file_asli,
+                ];
+            }
+
+            if ($perkara->tahap_sprindik_status === 'final') {
+                $references[] = [
+                    'nama' => 'Surat Perintah Penyidikan (Sprindik)',
+                    'nomor' => (string) ($perkara->nomor_surat_perintah ?? '-'),
+                    'tanggal' => $perkara->tanggal_surat_perintah?->format('d-m-Y') ?? '-',
+                    'status' => 'Final / Terkunci',
+                    'dokumen' => $perkara->dokumenSprindik?->nama_file_asli,
+                ];
+            }
+        }
+
+        // Tahapan progress pada berkas perkara yang sudah final
+        $finalTahapan = $berkas->tahapan()
+            ->where('status', 'final')
+            ->with('dokumen')
+            ->orderBy('id', 'asc')
+            ->get();
+
+        foreach ($finalTahapan as $t) {
+            $references[] = [
+                'nama' => $t->jenis_tahap->label(),
+                'nomor' => (string) ($t->nomor_surat ?? '-'),
+                'tanggal' => $t->tanggal_surat?->format('d-m-Y') ?? '-',
+                'status' => 'Final / Terkunci',
+                'dokumen' => $t->dokumen->first()?->nama_file_asli,
+            ];
+        }
+
+        return $references;
     }
 }

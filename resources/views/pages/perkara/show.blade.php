@@ -292,6 +292,30 @@
                                     <span class="inline-flex items-center gap-1.5 rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700 dark:bg-white/[0.05] dark:text-gray-300">
                                         Status Proses: {{ $berkas?->status_proses ?? 'Baru' }} ({{ $berkas?->progress_persen ?? 0 }}%)
                                     </span>
+
+                                    @if ($berkas)
+                                        @if ($berkas->currentDraftTahap())
+                                            @can('edit-draft')
+                                                <a
+                                                    href="{{ route('berkas-perkara.tahapan.edit', [$berkas, $berkas->currentDraftTahap()]) }}"
+                                                    class="inline-flex items-center gap-1.5 rounded-full border border-yellow-300 bg-yellow-50 px-3 py-1 text-xs font-medium text-yellow-800 transition hover:bg-yellow-100 dark:border-yellow-500/30 dark:bg-yellow-500/10 dark:text-yellow-300"
+                                                >
+                                                    <i class="fi fi-rr-edit text-xs"></i>
+                                                    <span>Lanjut Draft: {{ $berkas->currentDraftTahap()->jenis_tahap->label() }}</span>
+                                                </a>
+                                            @endcan
+                                        @elseif ($isLocked)
+                                            @can('create-cases')
+                                                <a
+                                                    href="{{ route('berkas-perkara.tahapan.create', $berkas) }}"
+                                                    class="inline-flex items-center gap-1.5 rounded-full bg-brand-600 px-3 py-1 text-xs font-medium text-white transition hover:bg-brand-700"
+                                                >
+                                                    <i class="fi fi-rr-plus text-xs"></i>
+                                                    <span>Input Tahapan</span>
+                                                </a>
+                                            @endcan
+                                        @endif
+                                    @endif
                                 </div>
                             </div>
 
@@ -338,6 +362,26 @@
                                         </span>
                                     @empty
                                         <span class="text-xs italic text-gray-400">Belum ada pasal yang dipilih.</span>
+                                    @endforelse
+                                </div>
+                            </div>
+
+                            {{-- Riwayat Tahapan Progress (PRD F-10 s.d. F-19) --}}
+                            <div class="mt-4 border-t border-gray-100 pt-3 dark:border-gray-800">
+                                <p class="mb-2 text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                                    Riwayat Tahapan Progress ({{ $berkas?->tahapan->count() ?? 0 }} Tahap)
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    @forelse ($berkas?->tahapan ?? [] as $tahap)
+                                        <a
+                                            href="{{ route('berkas-perkara.tahapan.show', [$berkas, $tahap]) }}"
+                                            class="inline-flex items-center gap-1.5 rounded-lg border {{ $tahap->isFinal() ? 'border-success-200 bg-success-50 text-success-700 dark:border-success-500/30 dark:bg-success-500/10 dark:text-success-300' : 'border-yellow-200 bg-yellow-50 text-yellow-800 dark:border-yellow-500/30 dark:bg-yellow-500/10 dark:text-yellow-300' }} px-3 py-1.5 text-xs font-medium hover:underline"
+                                        >
+                                            <i class="fi {{ $tahap->isFinal() ? 'fi-rr-lock' : 'fi-rr-edit' }} text-xs"></i>
+                                            <span>{{ $tahap->jenis_tahap->label() }} ({{ $tahap->status === 'final' ? 'Final' : 'Draft' }})</span>
+                                        </a>
+                                    @empty
+                                        <span class="text-xs italic text-gray-400">Belum ada tahapan progress yang dicatat.</span>
                                     @endforelse
                                 </div>
                             </div>
