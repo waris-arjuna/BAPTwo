@@ -14,6 +14,7 @@ use App\Http\Controllers\PerkaraBerkasController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgressPerkaraController;
 use App\Http\Controllers\PutusanPerkaraController;
+use App\Http\Controllers\Sp3Controller;
 use App\Http\Controllers\SpdpController;
 use App\Http\Controllers\SprindikController;
 use App\Http\Controllers\Tahap1Controller;
@@ -122,6 +123,9 @@ Route::middleware('auth')->group(function () {
         // DPO (Aktivasi & Pencabutan - PRD F-24 s.d. F-27)
         Route::post('/dpo', [DpoController::class, 'store'])->middleware('can:toggle-dpo')->name('dpo.store');
         Route::post('/dpo/cabut', [DpoController::class, 'destroy'])->middleware('can:toggle-dpo')->name('dpo.destroy');
+
+        // SP3 (Penghentian Penyidikan Administratif - PRD F-28, D-030)
+        Route::post('/sp3', [Sp3Controller::class, 'store'])->middleware('can:create-cases')->name('sp3.store');
     });
 
     // SPDP (Data Riil & Sub-Tahap Opsional P-16, P-17P)

@@ -70,6 +70,12 @@
             'badge' => 'bg-yellow-50 text-yellow-800 border-yellow-200 dark:bg-yellow-900/20 dark:text-yellow-300 dark:border-yellow-800',
             'icon_bg' => 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-400',
         ],
+        'terbitkan_sp3' => [
+            'label' => 'Penerbitan SP3 (Penghentian Penyidikan)',
+            'icon' => 'fi-rr-ban',
+            'badge' => 'bg-red-50 text-red-700 border-red-200 dark:bg-red-900/20 dark:text-red-300 dark:border-red-800',
+            'icon_bg' => 'bg-red-100 text-red-600 dark:bg-red-900/40 dark:text-red-400',
+        ],
     ];
 @endphp
 
@@ -113,9 +119,27 @@
                 this.revokeBerkasId = null;
                 this.revokeTersangkaNama = '';
                 this.revokeActionUrl = '';
+            },
+
+            // Modal Penerbitan SP3
+            isSp3ModalOpen: false,
+            sp3BerkasId: null,
+            sp3TersangkaNama: '',
+            sp3ActionUrl: '',
+            openSp3Modal(berkasId, tersangkaNama) {
+                this.sp3BerkasId = berkasId;
+                this.sp3TersangkaNama = tersangkaNama;
+                this.sp3ActionUrl = '{{ url('/berkas-perkara') }}/' + berkasId + '/sp3';
+                this.isSp3ModalOpen = true;
+            },
+            closeSp3Modal() {
+                this.isSp3ModalOpen = false;
+                this.sp3BerkasId = null;
+                this.sp3TersangkaNama = '';
+                this.sp3ActionUrl = '';
             }
         }"
-        @keydown.escape.window="closeDpoModal(); closeRevokeModal();"
+        @keydown.escape.window="closeDpoModal(); closeRevokeModal(); closeSp3Modal();"
     >
         {{-- Header --}}
         <div class="mb-6">
@@ -401,6 +425,25 @@
                                         </span>
                                     @endif
 
+                                    {{-- Visual Indicator Status SP3 --}}
+                                    @if ($berkas?->hasSp3() || $berkas?->isTidakSelesai())
+                                        <span class="inline-flex items-center gap-1.5 rounded-full bg-red-100 px-3 py-1 text-xs font-semibold text-red-700 dark:bg-red-500/20 dark:text-red-300">
+                                            <i class="fi fi-rr-ban text-xs"></i>
+                                            <span>SP3 Terbit (Tidak Selesai)</span>
+                                        </span>
+                                        @if ($berkas->sp3?->dokumen)
+                                            <a
+                                                href="{{ route('dokumen.preview', $berkas->sp3->dokumen) }}"
+                                                target="_blank"
+                                                class="inline-flex items-center gap-1.5 rounded-full border border-gray-300 bg-white px-3 py-1 text-xs font-medium text-gray-700 transition hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300"
+                                                title="Lihat Dokumen Legal SP3"
+                                            >
+                                                <i class="fi fi-rr-document text-xs"></i>
+                                                <span>Lihat SP3</span>
+                                            </a>
+                                        @endif
+                                    @endif
+
                                     <span class="inline-flex items-center gap-1.5 rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700 dark:bg-white/[0.05] dark:text-gray-300">
                                         Status Proses: {{ $berkas?->status_proses ?? 'Baru' }} ({{ $berkas?->progress_persen ?? 0 }}%)
                                     </span>
@@ -425,6 +468,21 @@
                                                 >
                                                     <i class="fi fi-rr-shield-exclamation text-xs text-red-500"></i>
                                                     <span>Tetapkan DPO</span>
+                                                </button>
+                                            @endif
+                                        @endcan
+
+                                        {{-- Tombol Terbitkan SP3 (Penyidik & Administrator) --}}
+                                        @can('create-cases')
+                                            @if (! $berkas->hasSp3() && $berkas->status_formal !== 'selesai' && ! $berkas->isTidakSelesai())
+                                                <button
+                                                    type="button"
+                                                    @click="openSp3Modal({{ $berkas->id }}, '{{ addslashes($tersangka->nama) }}')"
+                                                    class="inline-flex items-center gap-1.5 rounded-full border border-gray-300 bg-white px-3 py-1 text-xs font-medium text-gray-700 transition hover:border-red-300 hover:bg-red-50 hover:text-red-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:border-red-500/40 dark:hover:bg-red-500/10 dark:hover:text-red-300"
+                                                    title="Terbitkan Surat Perintah Penghentian Penyidikan (SP3)"
+                                                >
+                                                    <i class="fi fi-rr-document-signed text-xs text-red-500"></i>
+                                                    <span>Terbitkan SP3</span>
                                                 </button>
                                             @endif
                                         @endcan
@@ -923,6 +981,139 @@
                         >
                             <i class="fi fi-rr-check text-xs"></i>
                             <span>Simpan &amp; Cabut Status DPO</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        {{-- Modal Penerbitan SP3 --}}
+        <div
+            x-show="isSp3ModalOpen"
+            x-cloak
+            class="fixed inset-0 z-99999 flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-xs"
+            x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="transition ease-in duration-150"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0"
+        >
+            <div
+                @click.outside="closeSp3Modal()"
+                class="relative w-full max-w-lg rounded-2xl border border-gray-200 bg-white p-6 shadow-theme-xl dark:border-gray-800 dark:bg-gray-900"
+                x-transition:enter="transition ease-out duration-200"
+                x-transition:enter-start="opacity-0 scale-95"
+                x-transition:enter-end="opacity-100 scale-100"
+                x-transition:leave="transition ease-in duration-150"
+                x-transition:leave-start="opacity-100 scale-100"
+                x-transition:leave-end="opacity-0 scale-95"
+            >
+                <div class="mb-4 flex items-center justify-between border-b border-gray-100 pb-3 dark:border-gray-800">
+                    <div class="flex items-center gap-2 text-red-600 dark:text-red-400">
+                        <i class="fi fi-rr-ban text-xl"></i>
+                        <h3 class="text-base font-semibold text-gray-800 dark:text-white/90">
+                            Terbitkan SP3 (Penghentian Penyidikan)
+                        </h3>
+                    </div>
+                    <button
+                        type="button"
+                        @click="closeSp3Modal()"
+                        class="rounded-lg p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600 dark:hover:bg-gray-800 dark:hover:text-gray-300"
+                    >
+                        <i class="fi fi-rr-cross-small text-lg"></i>
+                    </button>
+                </div>
+
+                <div class="mb-4 rounded-lg border border-red-200 bg-red-50/70 p-3 text-xs text-red-800 dark:border-red-900/40 dark:bg-red-950/20 dark:text-red-300">
+                    <p class="mb-1 font-semibold">Perhatian Penting:</p>
+                    Tersangka: <strong x-text="sp3TersangkaNama"></strong>. Penerbitan Surat Perintah Penghentian Penyidikan (SP3) akan menetapkan status berkas perkara menjadi <strong>Tidak Selesai</strong> secara formal dan mengunci tahapan penyidikan perkara untuk tersangka ini.
+                </div>
+
+                <form :action="sp3ActionUrl" method="POST" enctype="multipart/form-data" class="space-y-4">
+                    @csrf
+
+                    <div>
+                        <label for="sp3_nomor_surat" class="mb-1.5 block text-xs font-medium text-gray-700 dark:text-gray-300">
+                            Nomor Surat SP3 <span class="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="sp3_nomor_surat"
+                            name="nomor_surat"
+                            required
+                            placeholder="Contoh: SPPP/01/BPOM/BJM/2026"
+                            class="h-10 w-full rounded-lg border border-gray-300 bg-white px-3.5 text-sm text-gray-800 shadow-theme-xs outline-none transition placeholder:text-gray-400 focus:border-red-500 focus:ring-2 focus:ring-red-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-gray-500"
+                        />
+                        <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Format nomor surat penghentian penyidikan yang diterbitkan.</p>
+                    </div>
+
+                    <div>
+                        <x-form.date-picker
+                            id="sp3_tanggal_sp3"
+                            name="tanggal_sp3"
+                            label="Tanggal Penetapan SP3"
+                            placeholder="Pilih tanggal penetapan..."
+                            defaultDate="{{ date('Y-m-d') }}"
+                        />
+                    </div>
+
+                    <div>
+                        <label for="sp3_alasan" class="mb-1.5 block text-xs font-medium text-gray-700 dark:text-gray-300">
+                            Alasan Penghentian Penyidikan <span class="text-red-500">*</span>
+                        </label>
+                        <select
+                            id="sp3_alasan"
+                            name="alasan"
+                            required
+                            class="h-10 w-full rounded-lg border border-gray-300 bg-white px-3 text-sm text-gray-800 shadow-theme-xs outline-none transition focus:border-red-500 focus:ring-2 focus:ring-red-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
+                        >
+                            <option value="">Pilih Alasan Penghentian...</option>
+                            <option value="Tidak diperoleh bukti yang cukup">Tidak diperoleh bukti yang cukup (Pasal 109 ayat 2 KUHAP)</option>
+                            <option value="Peristiwa bukan merupakan tindak pidana">Peristiwa bukan merupakan tindak pidana (Pasal 109 ayat 2 KUHAP)</option>
+                            <option value="Dihentikan demi hukum (nebis in idem / daluwarsa / tersangka meninggal dunia)">Dihentikan demi hukum (nebis in idem / daluwarsa / tersangka meninggal dunia)</option>
+                            <option value="Penyelesaian melalui Keadilan Restoratif (Restorative Justice)">Penyelesaian melalui Keadilan Restoratif (Restorative Justice)</option>
+                            <option value="Alasan lainnya">Alasan lainnya</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <x-form.pdf-upload
+                            id="sp3_dokumen"
+                            name="dokumen"
+                            label="Dokumen Fisik SP3 (PDF)"
+                            required="true"
+                            helperText="Wajib format PDF murni (Maksimal 20 MB)."
+                        />
+                    </div>
+
+                    <div>
+                        <label for="sp3_keterangan" class="mb-1.5 block text-xs font-medium text-gray-700 dark:text-gray-300">
+                            Keterangan / Pertimbangan Hukum
+                        </label>
+                        <textarea
+                            id="sp3_keterangan"
+                            name="keterangan"
+                            rows="3"
+                            placeholder="Tuliskan pertimbangan hukum atau kronologi penghentian (opsional)..."
+                            class="w-full rounded-lg border border-gray-300 bg-white p-3 text-sm text-gray-800 shadow-theme-xs outline-none transition placeholder:text-gray-400 focus:border-red-500 focus:ring-2 focus:ring-red-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-gray-500"
+                        ></textarea>
+                    </div>
+
+                    <div class="mt-6 flex items-center justify-end gap-2 border-t border-gray-100 pt-4 dark:border-gray-800">
+                        <button
+                            type="button"
+                            @click="closeSp3Modal()"
+                            class="inline-flex h-9 items-center justify-center rounded-lg border border-gray-300 bg-white px-4 text-xs font-medium text-gray-700 transition hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+                        >
+                            Batal
+                        </button>
+                        <button
+                            type="submit"
+                            class="inline-flex h-9 items-center justify-center gap-1.5 rounded-lg bg-red-600 px-4 text-xs font-medium text-white transition hover:bg-red-700"
+                        >
+                            <i class="fi fi-rr-check text-xs"></i>
+                            <span>Simpan &amp; Terbitkan SP3</span>
                         </button>
                     </div>
                 </form>

@@ -146,5 +146,7 @@ _(kosong)_
 - [x] T-032 — 2026-10-14 Progress berbobot & status proses otomatis (F-29, F-30)
 - [x] T-033 — 2026-10-14 Trigger Selesai dari TAHAP II (F-22)
 - [x] T-040 — 2026-10-14 DPO aktif/nonaktif + gate Tahap II di server & UI (F-24–F-27, F-35, D-025)
+- [x] T-041 — 2026-10-14 Penerbitan SP3 (Surat Perintah Penghentian Penyidikan) Manual pada Berkas Perkara + Modal Upload PDF + Penguncian Status Tidak Selesai + Audit Trail (F-28, D-030)
+- [x] T-042 — 2026-10-14 Seeding 10 Data Dummy Beragam untuk Seluruh Alur & Tahapan Kasus BAPTwo di 10 Wilayah Kalsel (F-32)
 - [x] T-043 — 2026-10-14 Audit trail / case history kronologis dengan timeline modern di Detail Perkara (F-31, D-025)
 - [x] T-051 — 2026-10-14 Dashboard monitoring riil: Tabel 5 berkas prioritas + Donut Chart + 5 Card Statistik + Tombol "Lihat Semua" + Modal Quick-View read-only (F-40, F-42, F-43, D-027)

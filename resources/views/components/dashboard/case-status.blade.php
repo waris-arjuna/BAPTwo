@@ -64,9 +64,11 @@
                             stroke-width="14"
                             stroke-linecap="round"
                             stroke-dasharray="{{ $dalamProsesLength }} {{ $circumference }}"
+                            stroke-dashoffset="0"
                         />
+                    @endif
                     {{-- Selesai --}}
-                    @elseif ($selesaiPercent > 0)
+                    @if ($selesaiPercent > 0)
                         <circle
                             cx="60"
                             cy="60"
@@ -76,6 +78,7 @@
                             stroke-width="14"
                             stroke-linecap="round"
                             stroke-dasharray="{{ $selesaiLength }} {{ $circumference }}"
+                            stroke-dashoffset="-{{ $dalamProsesLength }}"
                         />
                     @endif
                 </svg>

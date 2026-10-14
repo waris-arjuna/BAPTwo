@@ -494,3 +494,35 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
   5. **Pengujian Komprehensif**:
      - Dibuat `tests/Feature/SearchableSelectTest.php` untuk memvalidasi rendering dengan props array, slot `<option>`, binding nilai default/old, status disabled/clearable, serta integrasi pada halaman form.
 - Konsekuensi: Seluruh input select/combobox di BAPTwo kini memiliki fitur pencarian interaktif yang responsif, modern, dan sangat nyaman digunakan untuk data berjumlah besar, dengan 100% keselarasan desain dan tanpa menambah dependensi pihak ketiga.
+
+## D-030 — Tombol & Penerbitan SP3 Manual pada Berkas Perkara, Penguncian Status Tidak Selesai, dan Penyimpanan Dokumen PDF Legal
+
+- Tanggal: 2026-10-14
+- Status: Disepakati & Diimplementasikan
+- Konteks: Pengguna menghendaki fitur tombol **SP3 (Surat Perintah Penghentian Penyidikan)** yang dapat diakses langsung pada kartu Berkas Perkara mirip dengan tombol DPO, guna mengakomodasi penghentian penyidikan perkara atas alasan hukum yang sah (tidak cukup bukti, bukan tindak pidana, demi hukum, atau restorative justice).
+- Keputusan:
+  1. **Tombol "Terbitkan SP3" pada Kartu Berkas Perkara**:
+     - Disematkan pada kartu Berkas Perkara di halaman detail perkara (`resources/views/pages/perkara/show.blade.php`), berdampingan dengan tombol DPO.
+     - Hanya dapat diakses oleh role yang memiliki otorisasi (`Penyidik` dan `Administrator` via permission `create-cases`); role `Pimpinan` dibatasi read-only.
+     - Tombol otomatis tersembunyi jika berkas perkara sudah pernah diterbitkan SP3, atau jika status formal perkara telah selesai / tidak selesai.
+  2. **Modal Interaktif Penerbitan SP3**:
+     - Menggunakan Alpine.js (`isSp3ModalOpen`) dengan backdrop blur dan transisi halus.
+     - Input field lengkap:
+       - `nomor_surat` (text, required): Nomor surat SP3 resmi.
+       - `tanggal_sp3` (date picker Flatpickr, default hari ini).
+       - `alasan` (select dropdown berstandar Pasal 109 ayat 2 KUHAP & Restorative Justice).
+       - `dokumen` (PDF upload murni maks 20 MB via `<x-form.pdf-upload>`, required per aturan D-007).
+       - `keterangan` (textarea, opsional).
+  3. **Penetapan Status Formal & Penguncian Tahapan**:
+     - Penerbitan SP3 diproses oleh `App\Services\Sp3Service`:
+       - Menyimpan dokumen fisik PDF ke disk lokal privat dan mencatatnya ke tabel `dokumen` dengan kategori `'sp3'`.
+       - Menyimpan entitas ke tabel `sp3`.
+       - Otomatis mengubah `berkas_perkara.status_formal = 'tidak_selesai'`.
+       - Menulis jejak audit ke tabel `audit_log` dengan aksi `'terbitkan_sp3'`.
+     - `App\Services\TahapanService::getNextAvailableStages()` dikonfigurasi untuk memblokir penambahan tahapan lanjutan pada berkas yang berstatus `tidak_selesai`.
+  4. **Badge Status Visual & Tombol Lihat Dokumen**:
+     - Pada Berkas Perkara yang telah diterbitkan SP3, ditampilkan badge merah `SP3 Terbit (Tidak Selesai)` (`fi-rr-ban`) dan tombol shortcut `Lihat SP3` (`fi-rr-document`) yang langsung membuka dokumen PDF resmi di tab baru (`route('dokumen.preview')`).
+  5. **Pengujian Komprehensif**:
+     - Dibuat `tests/Feature/Sp3Test.php` yang memvalidasi alur sukses penerbitan SP3 oleh Penyidik & Admin, proteksi hak akses Pimpinan (403), validasi format file PDF, pencegahan SP3 ganda, dan penguncian tahapan lanjutan.
+- Konsekuensi: Penyidik dan Administrator memiliki mekanisme resmi yang jelas, terdokumentasi, dan akuntabel untuk menghentikan penyidikan perkara dengan berkas PDF sah dan jejak audit lengkap.
+

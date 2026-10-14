@@ -19,6 +19,10 @@ class TahapanService
      */
     public function getNextAvailableStages(BerkasPerkara $berkas): array
     {
+        if ($berkas->status_formal === 'tidak_selesai') {
+            return [];
+        }
+
         $latest = $berkas->latestFinalTahap();
 
         if ($latest === null) {

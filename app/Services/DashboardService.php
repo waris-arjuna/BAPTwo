@@ -224,6 +224,12 @@ class DashboardService
                 } elseif (strtolower($status) === 'tidak selesai') {
                     $q->where('status_formal', 'tidak_selesai');
                 }
+            }, function ($q) {
+                // default (tidak ada filter status dipilih): sembunyikan yang sudah selesai
+                $q->where(function ($sub) {
+                    $sub->whereNull('status_formal')
+                        ->orWhere('status_formal', '!=', 'selesai');
+                });
             })
             ->when($tanggalDari !== '', function ($q) use ($tanggalDari) {
                 $q->whereDate('tanggal_spdp', '>=', $tanggalDari);

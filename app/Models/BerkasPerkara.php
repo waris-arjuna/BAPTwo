@@ -149,6 +149,30 @@ class BerkasPerkara extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne<Sp3, $this>
+     */
+    public function sp3(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Sp3::class, 'berkas_perkara_id')->latestOfMany();
+    }
+
+    /**
+     * Memeriksa apakah berkas perkara telah memiliki dokumen/catatan SP3
+     */
+    public function hasSp3(): bool
+    {
+        return $this->sp3()->exists();
+    }
+
+    /**
+     * Memeriksa apakah berkas berstatus formal Tidak Selesai
+     */
+    public function isTidakSelesai(): bool
+    {
+        return $this->status_formal === 'tidak_selesai';
+    }
+
+    /**
      * Label tampilan status formal (PRD F-20, F-21: null = "Dalam Proses")
      */
     public function getStatusFormalLabelAttribute(): string
