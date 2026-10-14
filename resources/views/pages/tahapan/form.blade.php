@@ -159,24 +159,24 @@
                         @if ($mode === 'create')
                             @if (count($availableStages) > 1)
                                 <div>
-                                    <label for="jenis_tahap" class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                        Pilih Tahapan yang Ingin Dicatat <span class="text-red-500">*</span>
-                                    </label>
-                                    <select
+                                    <x-form.searchable-select
                                         id="jenis_tahap"
                                         name="jenis_tahap"
-                                        class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
-                                        onchange="window.location.href = '{{ route('berkas-perkara.tahapan.create', $berkas) }}?jenis=' + this.value"
+                                        label="Pilih Tahapan yang Ingin Dicatat"
+                                        placeholder="-- Pilih Tahapan --"
+                                        search-placeholder="Ketik nama tahapan..."
+                                        :value="$selectedJenis->value"
+                                        :clearable="false"
+                                        hint="Tahapan bertanda (Opsional) dapat dicatat jika ada atau langsung dilewati ke tahap wajib berikutnya."
+                                        @change="window.location.href = '{{ route('berkas-perkara.tahapan.create', $berkas) }}?jenis=' + $event.target.value"
+                                        required
                                     >
                                         @foreach ($availableStages as $stg)
                                             <option value="{{ $stg->value }}" {{ $selectedJenis === $stg ? 'selected' : '' }}>
                                                 {{ $stg->label() }} {{ $stg->isOptional() ? '(Opsional)' : '(Wajib)' }}
                                             </option>
                                         @endforeach
-                                    </select>
-                                    <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                                        Tahapan bertanda (Opsional) dapat dicatat jika ada atau langsung dilewati ke tahap wajib berikutnya.
-                                    </p>
+                                    </x-form.searchable-select>
                                 </div>
                             @else
                                 <input type="hidden" name="jenis_tahap" value="{{ $selectedJenis->value }}">

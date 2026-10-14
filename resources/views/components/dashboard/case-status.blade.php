@@ -1,16 +1,21 @@
-@php
-    $totalPerkara = 2;
-    $selesai = 0;
-    $dalamProses = 2;
-    $belumDimulai = 0;
+@props(['data' => null])
 
-    $selesaiPercent = $totalPerkara > 0 ? round(($selesai / $totalPerkara) * 100) : 0;
-    $dalamProsesPercent = $totalPerkara > 0 ? round(($dalamProses / $totalPerkara) * 100) : 0;
-    $belumDimulaiPercent = $totalPerkara > 0 ? round(($belumDimulai / $totalPerkara) * 100) : 0;
+@php
+    $data ??= app(\App\Services\DashboardService::class)->getCaseStatusData();
+
+    $totalPerkara = $data['totalPerkara'] ?? 0;
+    $selesai = $data['selesai'] ?? 0;
+    $dalamProses = $data['dalamProses'] ?? 0;
+    $tidakSelesai = $data['tidakSelesai'] ?? 0;
+
+    $selesaiPercent = $data['selesaiPercent'] ?? 0;
+    $dalamProsesPercent = $data['dalamProsesPercent'] ?? 0;
+    $tidakSelesaiPercent = $data['tidakSelesaiPercent'] ?? 0;
 
     $circumference = 2 * pi() * 48;
 
     $dalamProsesLength = ($dalamProsesPercent / 100) * $circumference;
+    $selesaiLength = ($selesaiPercent / 100) * $circumference;
 @endphp
 
 <div class="h-full rounded-2xl border border-gray-200 bg-white shadow-theme-xs dark:border-gray-800 dark:bg-white/[0.03]">
@@ -59,6 +64,18 @@
                             stroke-width="14"
                             stroke-linecap="round"
                             stroke-dasharray="{{ $dalamProsesLength }} {{ $circumference }}"
+                        />
+                    {{-- Selesai --}}
+                    @elseif ($selesaiPercent > 0)
+                        <circle
+                            cx="60"
+                            cy="60"
+                            r="48"
+                            fill="none"
+                            class=" stroke-emerald-500"
+                            stroke-width="14"
+                            stroke-linecap="round"
+                            stroke-dasharray="{{ $selesaiLength }} {{ $circumference }}"
                         />
                     @endif
                 </svg>
@@ -117,15 +134,15 @@
             <div class="flex items-center justify-between">
 
                 <div class="flex items-center gap-3">
-                    <span class="h-2.5 w-2.5 rounded-full bg-gray-300 dark:bg-gray-600"></span>
+                    <span class="h-2.5 w-2.5 rounded-full bg-error-500"></span>
 
                     <span class="text-sm text-gray-600 dark:text-gray-400">
-                        Belum Dimulai
+                        Tidak Selesai
                     </span>
                 </div>
 
                 <span class="text-sm font-medium text-gray-800 dark:text-white/90">
-                    {{ $belumDimulai }} ({{ $belumDimulaiPercent }}%)
+                    {{ $tidakSelesai }} ({{ $tidakSelesaiPercent }}%)
                 </span>
 
             </div>

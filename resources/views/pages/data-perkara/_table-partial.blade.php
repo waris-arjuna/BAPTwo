@@ -145,58 +145,45 @@
                     </td>
 
                     <td class="px-5 py-4">
-                        <div
-                            x-data="{ open: false, confirmDelete: false }"
-                            class="relative flex justify-center"
-                        >
-                            <button
-                                type="button"
-                                @click="open = !open"
-                                class="inline-flex items-center gap-1 rounded-lg border border-gray-300 px-3 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-50 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-white/[0.03]"
-                            >
-                                Aksi
-                                <i class="fi fi-rr-angle-small-down text-base"></i>
-                            </button>
-
-                            <div
-                                x-show="open"
-                                @click.outside="open = false"
-                                x-cloak
-                                class="absolute right-0 top-11 z-20 w-44 rounded-lg border border-gray-200 bg-white p-1 shadow-lg dark:border-gray-800 dark:bg-gray-900"
-                            >
+                        <div x-data="{ confirmDelete: false }" class="flex justify-center">
+                            <x-common.table-dropdown>
                                 <a
                                     href="{{ route('perkara.show', $perkara) }}"
-                                    class="block rounded-md px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/[0.03]"
+                                    class="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm text-gray-700 transition hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/[0.05]"
                                 >
-                                    Lihat Detail
+                                    <i class="fi fi-rr-eye text-xs text-brand-600"></i>
+                                    <span>Lihat Detail</span>
                                 </a>
 
                                 @can('edit-draft', $isLocked)
                                     <a
                                         href="{{ route('perkara.edit', $perkara) }}"
-                                        class="block rounded-md px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/[0.03]"
+                                        class="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm text-gray-700 transition hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/[0.05]"
                                     >
-                                        Edit Draft
+                                        <i class="fi fi-rr-edit text-xs text-amber-500"></i>
+                                        <span>Edit Draft</span>
                                     </a>
                                 @endcan
 
                                 <a
                                     href="{{ route('sprindik.show', $perkara) }}"
-                                    class="block rounded-md px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/[0.03]"
+                                    class="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm text-gray-700 transition hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/[0.05]"
                                 >
-                                    Lihat Sprindik
+                                    <i class="fi fi-rr-document-signed text-xs text-gray-500"></i>
+                                    <span>Lihat Sprindik</span>
                                 </a>
 
                                 @can('soft-delete')
                                     <button
                                         type="button"
-                                        @click="open = false; confirmDelete = true"
-                                        class="block w-full rounded-md px-3 py-2 text-left text-sm text-error-600 hover:bg-error-50 dark:text-error-400 dark:hover:bg-error-500/10"
+                                        @click="confirmDelete = true"
+                                        class="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm text-error-600 transition hover:bg-error-50 dark:text-error-400 dark:hover:bg-error-500/10"
                                     >
-                                        Hapus
+                                        <i class="fi fi-rr-trash text-xs"></i>
+                                        <span>Hapus</span>
                                     </button>
                                 @endcan
-                            </div>
+                            </x-common.table-dropdown>
 
                             {{-- Modal Konfirmasi Hapus --}}
                             @can('soft-delete')

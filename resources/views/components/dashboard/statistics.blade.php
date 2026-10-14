@@ -1,41 +1,7 @@
+@props(['statistics' => null])
+
 @php
-    $statistics = [
-        [
-            'title' => 'Perkara Aktif',
-            'value' => '2',
-            'description' => 'Perkara pada tahun berjalan',
-            'icon' => 'document',
-            'iconClass' => 'bg-blue-50 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400',
-        ],
-        [
-            'title' => 'Perkara Berjalan',
-            'value' => '2',
-            'description' => 'Sedang dalam proses penyidikan',
-            'icon' => 'play-circle',
-            'iconClass' => 'bg-success-50 text-success-600 dark:bg-success-500/10 dark:text-success-400',
-        ],
-        [
-            'title' => 'Menunggu Verifikasi Penyidik',
-            'value' => '0',
-            'description' => 'Menunggu tindakan penyidik',
-            'icon' => 'verification',
-            'iconClass' => 'bg-warning-50 text-warning-600 dark:bg-warning-500/10 dark:text-warning-400',
-        ],
-        [
-            'title' => 'Selesai',
-            'value' => '0',
-            'description' => 'Perkara selesai',
-            'icon' => 'check',
-            'iconClass' => 'bg-purple-50 text-purple-600 dark:bg-purple-500/10 dark:text-purple-400',
-        ],
-        [
-            'title' => 'Rata-rata Waktu Penyelesaian',
-            'value' => '-',
-            'description' => 'Dari SPDP s.d. Tahap II',
-            'icon' => 'time',
-            'iconClass' => 'bg-teal-50 text-teal-600 dark:bg-teal-500/10 dark:text-teal-400',
-        ],
-    ];
+    $statistics ??= app(\App\Services\DashboardService::class)->getStatistics();
 @endphp
 
 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-5">

@@ -1,0 +1,194 @@
+<mxfile host="app.diagrams.net" modified="2026-10-14T06:30:00.000Z" agent="BAPTwo Antigravity" version="24.7.17" type="device">
+  <diagram id="baptwo-usecase-diag" name="Use Case Diagram - BAPTwo">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" background="#F8FAFC" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- SYSTEM BOUNDARY -->
+        <mxCell id="sys_boundary" value="SISTEM INFORMASI MANAJEMEN PENANGANAN PERKARA (BAPTwo)&#xa;Balai Besar POM di Banjarmasin" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0284C7;strokeWidth=2.5;dashed=1;verticalAlign=top;fontStyle=1;fontSize=15;fontFamily=Helvetica;fontColor=#0369A1;spacingTop=15;" vertex="1" parent="1">
+          <mxGeometry x="280" y="40" width="1080" height="1060" as="geometry" />
+        </mxCell>
+
+        <!-- ACTORS -->
+        <!-- Actor: Penyidik PPNS -->
+        <mxCell id="actor_penyidik" value="Penyidik (PPNS)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#E0F2FE;strokeColor=#0284C7;strokeWidth=2;fontFamily=Helvetica;fontStyle=1;fontSize=13;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="80" y="380" width="60" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Actor: Administrator -->
+        <mxCell id="actor_admin" value="Administrator" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=2;fontFamily=Helvetica;fontStyle=1;fontSize=13;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="80" y="780" width="60" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Actor: Pimpinan -->
+        <mxCell id="actor_pimpinan" value="Pimpinan / Kasi / Kabag" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#DCFCE7;strokeColor=#16A34A;strokeWidth=2;fontFamily=Helvetica;fontStyle=1;fontSize=13;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="1460" y="240" width="60" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Actor: Scheduler System -->
+        <mxCell id="actor_scheduler" value="Laravel Scheduler&#xa;(Engine Otomatis)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#F3E8FF;strokeColor=#9333EA;strokeWidth=2;fontFamily=Helvetica;fontStyle=1;fontSize=13;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="1460" y="760" width="60" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- INHERITANCE: Admin inherits Penyidik -->
+        <mxCell id="edge_admin_inherits_penyidik" value="Mewarisi Hak Akses" style="endArrow=block;endSize=12;dashed=1;html=1;rounded=0;strokeColor=#D97706;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#B45309;" edge="1" parent="1" source="actor_admin" target="actor_penyidik">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- USE CASES: AUTENTIKASI -->
+        <mxCell id="uc_login" value="Login Sistem &amp;&#xa;Verifikasi Math Captcha" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;fontFamily=Helvetica;fontStyle=1;fontSize=12;fontColor=#1E3A8A;" vertex="1" parent="1">
+          <mxGeometry x="340" y="80" width="180" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- USE CASES: PRA-SPDP -->
+        <mxCell id="uc_lk" value="Kelola Laporan Kejadian (LK)&#xa;(Input, Draft, Upload PDF, Final)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;fontFamily=Helvetica;fontSize=12;fontColor=#1E3A8A;" vertex="1" parent="1">
+          <mxGeometry x="340" y="180" width="200" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc_sprindik" value="Kelola Surat Perintah Penyidikan&#xa;(Sprindik 1-ke-1 LK, Final)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;fontFamily=Helvetica;fontSize=12;fontColor=#1E3A8A;" vertex="1" parent="1">
+          <mxGeometry x="340" y="270" width="205" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc_bentuk_perkara" value="Bentuk Perkara &amp; Berkas&#xa;(TKP, PPNS Tim, 1 Tersangka=1 Berkas,&#xa;Pasal Berlapis)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;fontFamily=Helvetica;fontSize=12;fontColor=#1E3A8A;" vertex="1" parent="1">
+          <mxGeometry x="330" y="365" width="220" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- USE CASES: PROGRESS PERKARA -->
+        <mxCell id="uc_spdp" value="Catat Tahap SPDP (15%)&#xa;&amp; Sub-Tahap P-16, P-17P" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#10B981;strokeWidth=1.5;fontFamily=Helvetica;fontSize=12;fontColor=#065F46;" vertex="1" parent="1">
+          <mxGeometry x="630" y="160" width="190" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc_tahap1" value="Catat Tahap I (55%)&#xa;&amp; Sub-Tahap P-18, P-19" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#10B981;strokeWidth=1.5;fontFamily=Helvetica;fontSize=12;fontColor=#065F46;" vertex="1" parent="1">
+          <mxGeometry x="630" y="250" width="190" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc_p21" value="Catat Tahap P-21 / P21a&#xa;(85% Progress)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#10B981;strokeWidth=1.5;fontFamily=Helvetica;fontSize=12;fontColor=#065F46;" vertex="1" parent="1">
+          <mxGeometry x="630" y="340" width="190" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc_tahap2" value="Catat Tahap II (100%)&#xa;(Pelimpahan Tersangka &amp; BB)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;strokeWidth=2;fontFamily=Helvetica;fontStyle=1;fontSize=12;fontColor=#92400E;" vertex="1" parent="1">
+          <mxGeometry x="630" y="430" width="190" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc_putusan" value="Catat Keputusan Pengadilan&#xa;(Vonis &amp; Eksekusi)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#10B981;strokeWidth=1.5;fontFamily=Helvetica;fontSize=12;fontColor=#065F46;" vertex="1" parent="1">
+          <mxGeometry x="630" y="520" width="190" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- SPECIAL BUSINESS RULES USE CASES -->
+        <mxCell id="uc_dpo" value="Kelola Status DPO Tersangka&#xa;(Penetapan / Pencabutan)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#EF4444;strokeWidth=2;fontFamily=Helvetica;fontStyle=1;fontSize=12;fontColor=#991B1B;" vertex="1" parent="1">
+          <mxGeometry x="340" y="470" width="200" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc_gate_dpo" value="Validasi Gate DPO&#xa;(Blokir Tahap 2 saat DPO Aktif)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#DC2626;strokeWidth=1.5;dashed=1;fontFamily=Helvetica;fontSize=11;fontColor=#991B1B;" vertex="1" parent="1">
+          <mxGeometry x="900" y="430" width="180" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc_kunci_tahap" value="Penguncian Permanen Tahap&#xa;&amp; Trigger Status Selesai" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=1.5;dashed=1;fontFamily=Helvetica;fontSize=11;fontColor=#92400E;" vertex="1" parent="1">
+          <mxGeometry x="900" y="520" width="180" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc_upload_pdf" value="Validasi &amp; Preview Dokumen&#xa;(Wajib PDF &lt;= 20MB)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#64748B;strokeWidth=1.5;dashed=1;fontFamily=Helvetica;fontSize=11;fontColor=#334155;" vertex="1" parent="1">
+          <mxGeometry x="900" y="250" width="180" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc_sp3" value="Upload Dokumen SP3&#xa;(Khusus Status Tidak Selesai)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;fontFamily=Helvetica;fontSize=12;fontColor=#1E3A8A;" vertex="1" parent="1">
+          <mxGeometry x="340" y="560" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- MONITORING & PIMPINAN USE CASES -->
+        <mxCell id="uc_dashboard" value="Pantau Dashboard Monitoring&#xa;(5 Kartu Metrik, Donut Chart,&#xa;Rata-rata Hari &amp; 5 Prioritas)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#16A34A;strokeWidth=1.5;fontFamily=Helvetica;fontSize=12;fontColor=#14532D;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="110" width="200" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc_quickview" value="Quick-View Detail Perkara&#xa;(Modal Read-Only Tanpa Aksi)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#16A34A;strokeWidth=1.5;dashed=1;fontFamily=Helvetica;fontSize=11;fontColor=#14532D;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="210" width="180" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc_cari" value="Pencarian Lintas Berkas Perkara&#xa;(No Berkas, LK, NIK, Status, Tgl)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#16A34A;strokeWidth=1.5;fontFamily=Helvetica;fontSize=12;fontColor=#14532D;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="290" width="200" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc_seluruh_perkara" value="Monitoring Seluruh Perkara &amp;&#xa;Progress Horizontal Per Berkas" style="ellipse;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#16A34A;strokeWidth=1.5;fontFamily=Helvetica;fontSize=12;fontColor=#14532D;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="380" width="200" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc_audit_trail" value="Lihat Riwayat Kronologis&#xa;(Case History / Audit Trail Timeline)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#16A34A;strokeWidth=1.5;fontFamily=Helvetica;fontSize=12;fontColor=#14532D;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="470" width="200" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- ADMIN USE CASES -->
+        <mxCell id="uc_users" value="Manajemen Pengguna (User Management)&#xa;(Kelola Akun, Role, NIP, Jabatan, Panggol)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=1.5;fontFamily=Helvetica;fontSize=12;fontColor=#92400E;" vertex="1" parent="1">
+          <mxGeometry x="340" y="740" width="240" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc_master" value="Kelola Master Data Operasional&#xa;(Pasal, Instansi, Jaksa, Jabatan, Bidang)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=1.5;fontFamily=Helvetica;fontSize=12;fontColor=#92400E;" vertex="1" parent="1">
+          <mxGeometry x="340" y="830" width="240" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc_softdelete" value="Soft Delete &amp; Restore Data&#xa;(Perlindungan Mutlak dari Hard Delete)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#EF4444;strokeWidth=1.5;fontFamily=Helvetica;fontSize=12;fontColor=#991B1B;" vertex="1" parent="1">
+          <mxGeometry x="340" y="920" width="240" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- SCHEDULER USE CASES -->
+        <mxCell id="uc_close_year" value="Evaluasi Batas Tahun Mutlak&#xa;(1 Jan 00:00 -> Set Status 'Tidak Selesai')" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F3E8FF;strokeColor=#9333EA;strokeWidth=2;fontFamily=Helvetica;fontStyle=1;fontSize=12;fontColor=#581C87;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="740" width="220" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc_sla_mon" value="Kalkulasi SLA 1 Bulan Kalender&#xa;(Dari Tanggal SPDP s.d. Selesai)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F3E8FF;strokeColor=#9333EA;strokeWidth=1.5;fontFamily=Helvetica;fontSize=12;fontColor=#581C87;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="840" width="220" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc_auto_audit" value="Pencatatan Jejak Audit Otomatis&#xa;(IP, Role, Timestamp WITA, Metadata)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F3E8FF;strokeColor=#9333EA;strokeWidth=1.5;dashed=1;fontFamily=Helvetica;fontSize=11;fontColor=#581C87;" vertex="1" parent="1">
+          <mxGeometry x="840" y="840" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- ASSOCIATIONS: PENYIDIK -->
+        <mxCell id="e_p_login" style="endArrow=none;html=1;strokeColor=#0284C7;strokeWidth=1.5;" edge="1" parent="1" source="actor_penyidik" target="uc_login" />
+        <mxCell id="e_p_lk" style="endArrow=none;html=1;strokeColor=#0284C7;strokeWidth=1.5;" edge="1" parent="1" source="actor_penyidik" target="uc_lk" />
+        <mxCell id="e_p_sprindik" style="endArrow=none;html=1;strokeColor=#0284C7;strokeWidth=1.5;" edge="1" parent="1" source="actor_penyidik" target="uc_sprindik" />
+        <mxCell id="e_p_bentuk" style="endArrow=none;html=1;strokeColor=#0284C7;strokeWidth=1.5;" edge="1" parent="1" source="actor_penyidik" target="uc_bentuk_perkara" />
+        <mxCell id="e_p_spdp" style="endArrow=none;html=1;strokeColor=#0284C7;strokeWidth=1.5;" edge="1" parent="1" source="actor_penyidik" target="uc_spdp" />
+        <mxCell id="e_p_t1" style="endArrow=none;html=1;strokeColor=#0284C7;strokeWidth=1.5;" edge="1" parent="1" source="actor_penyidik" target="uc_tahap1" />
+        <mxCell id="e_p_p21" style="endArrow=none;html=1;strokeColor=#0284C7;strokeWidth=1.5;" edge="1" parent="1" source="actor_penyidik" target="uc_p21" />
+        <mxCell id="e_p_t2" style="endArrow=none;html=1;strokeColor=#0284C7;strokeWidth=1.5;" edge="1" parent="1" source="actor_penyidik" target="uc_tahap2" />
+        <mxCell id="e_p_putusan" style="endArrow=none;html=1;strokeColor=#0284C7;strokeWidth=1.5;" edge="1" parent="1" source="actor_penyidik" target="uc_putusan" />
+        <mxCell id="e_p_dpo" style="endArrow=none;html=1;strokeColor=#0284C7;strokeWidth=1.5;" edge="1" parent="1" source="actor_penyidik" target="uc_dpo" />
+        <mxCell id="e_p_sp3" style="endArrow=none;html=1;strokeColor=#0284C7;strokeWidth=1.5;" edge="1" parent="1" source="actor_penyidik" target="uc_sp3" />
+
+        <!-- ASSOCIATIONS: PIMPINAN -->
+        <mxCell id="e_pim_login" style="endArrow=none;html=1;strokeColor=#16A34A;strokeWidth=1.5;" edge="1" parent="1" source="actor_pimpinan" target="uc_login" />
+        <mxCell id="e_pim_dash" style="endArrow=none;html=1;strokeColor=#16A34A;strokeWidth=1.5;" edge="1" parent="1" source="actor_pimpinan" target="uc_dashboard" />
+        <mxCell id="e_pim_cari" style="endArrow=none;html=1;strokeColor=#16A34A;strokeWidth=1.5;" edge="1" parent="1" source="actor_pimpinan" target="uc_cari" />
+        <mxCell id="e_pim_seluruh" style="endArrow=none;html=1;strokeColor=#16A34A;strokeWidth=1.5;" edge="1" parent="1" source="actor_pimpinan" target="uc_seluruh_perkara" />
+        <mxCell id="e_pim_audit" style="endArrow=none;html=1;strokeColor=#16A34A;strokeWidth=1.5;" edge="1" parent="1" source="actor_pimpinan" target="uc_audit_trail" />
+
+        <!-- ASSOCIATIONS: ADMIN -->
+        <mxCell id="e_adm_users" style="endArrow=none;html=1;strokeColor=#D97706;strokeWidth=1.5;" edge="1" parent="1" source="actor_admin" target="uc_users" />
+        <mxCell id="e_adm_master" style="endArrow=none;html=1;strokeColor=#D97706;strokeWidth=1.5;" edge="1" parent="1" source="actor_admin" target="uc_master" />
+        <mxCell id="e_adm_softdelete" style="endArrow=none;html=1;strokeColor=#D97706;strokeWidth=1.5;" edge="1" parent="1" source="actor_admin" target="uc_softdelete" />
+
+        <!-- ASSOCIATIONS: SCHEDULER -->
+        <mxCell id="e_sch_close" style="endArrow=none;html=1;strokeColor=#9333EA;strokeWidth=1.5;" edge="1" parent="1" source="actor_scheduler" target="uc_close_year" />
+        <mxCell id="e_sch_sla" style="endArrow=none;html=1;strokeColor=#9333EA;strokeWidth=1.5;" edge="1" parent="1" source="actor_scheduler" target="uc_sla_mon" />
+
+        <!-- INCLUDES & EXTENDS -->
+        <!-- Quick View extend Dashboard -->
+        <mxCell id="inc_qv" value="&lt;&lt;extend&gt;&gt;" style="endArrow=open;endSize=8;dashed=1;html=1;strokeColor=#16A34A;fontSize=10;" edge="1" parent="1" source="uc_quickview" target="uc_dashboard" />
+
+        <!-- Tahap II includes Gate DPO -->
+        <mxCell id="inc_t2_gate" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;endSize=8;dashed=1;html=1;strokeColor=#DC2626;fontSize=10;fontColor=#991B1B;" edge="1" parent="1" source="uc_tahap2" target="uc_gate_dpo" />
+
+        <!-- Tahap II includes Kunci & Selesai -->
+        <mxCell id="inc_t2_kunci" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;endSize=8;dashed=1;html=1;strokeColor=#D97706;fontSize=10;fontColor=#92400E;" edge="1" parent="1" source="uc_tahap2" target="uc_kunci_tahap" />
+
+        <!-- Tahapan includes PDF Validation -->
+        <mxCell id="inc_t1_pdf" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;endSize=8;dashed=1;html=1;strokeColor=#64748B;fontSize=10;" edge="1" parent="1" source="uc_tahap1" target="uc_upload_pdf" />
+        <mxCell id="inc_spdp_pdf" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;endSize=8;dashed=1;html=1;strokeColor=#64748B;fontSize=10;" edge="1" parent="1" source="uc_spdp" target="uc_upload_pdf" />
+
+        <!-- Close Year includes Auto Audit -->
+        <mxCell id="inc_sch_audit" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;endSize=8;dashed=1;html=1;strokeColor=#9333EA;fontSize=10;fontColor=#581C87;" edge="1" parent="1" source="uc_close_year" target="uc_auto_audit" />
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,11 +1,14 @@
 <?php
 
+use App\Models\BerkasPerkara;
 use App\Models\Bidang;
 use App\Models\InstansiHukum;
 use App\Models\Jabatan;
 use App\Models\JaksaPenuntut;
 use App\Models\Panggol;
 use App\Models\Pasal;
+use App\Models\Perkara;
+use App\Models\Tersangka;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -262,6 +265,26 @@ it('applies consistent search, status, and date filters across stage tables, Mas
         ->assertOk()
         ->assertSee('Admin Utama')
         ->assertDontSee('<!DOCTYPE html>');
+
+    $perkaraSample = Perkara::create([
+        'nomor_laporan_kejadian' => 'LK/099/IX/2026',
+        'tanggal_laporan_kejadian' => '2026-09-01',
+        'uraian_kejadian' => 'Uraian LK',
+        'status' => 'draft',
+    ]);
+    $tersangkaSample = Tersangka::create([
+        'perkara_id' => $perkaraSample->id,
+        'nama' => 'Andi Saputra',
+        'nik' => '1234567890123456',
+    ]);
+    $berkasSample = BerkasPerkara::create([
+        'perkara_id' => $perkaraSample->id,
+        'tersangka_id' => $tersangkaSample->id,
+        'nomor_berkas' => 'BP/099/2026',
+        'status_proses' => 'SPDP',
+        'status_formal' => null,
+        'progress_persen' => 15,
+    ]);
 
     $this->actingAs($admin)
         ->get('/?search=Andi', ['X-Filter-Partial' => '1'])

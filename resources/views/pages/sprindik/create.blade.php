@@ -93,33 +93,27 @@
             @csrf
 
             <div class="space-y-6 p-4 sm:p-6">
-                {{-- Pilih Laporan Kejadian --}}
-                <div>
-                    <label for="perkara_id" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                        Laporan Kejadian (Sudah Final) <span class="text-error-500">*</span>
-                    </label>
-
-                    <select
-                        id="perkara_id"
-                        name="perkara_id"
-                        required
-                        class="h-11 w-full rounded-lg border border-gray-300 bg-white px-3 text-sm text-gray-800 outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900/40 dark:text-white/90"
-                    >
-                        <option value="">-- Pilih Laporan Kejadian --</option>
-                        @foreach ($availableLaporan as $lk)
-                            <option
-                                value="{{ $lk->id }}"
-                                {{ old('perkara_id', $selectedPerkaraId) == $lk->id ? 'selected' : '' }}
-                            >
-                                {{ $lk->nomor_laporan_kejadian }} — {{ $lk->tanggal_laporan_kejadian?->format('d-m-Y') }}
-                            </option>
-                        @endforeach
-                    </select>
-
-                    <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
-                        Hanya Laporan Kejadian yang telah difinalkan dan belum memiliki Sprindik yang ditampilkan.
-                    </p>
-                </div>
+                {{-- Pilih Laporan Kejadian (Searchable Select) --}}
+                <x-form.searchable-select
+                    name="perkara_id"
+                    id="perkara_id"
+                    label="Laporan Kejadian (Sudah Final)"
+                    placeholder="-- Pilih Laporan Kejadian --"
+                    search-placeholder="Ketik nomor LK atau tanggal untuk mencari..."
+                    :value="old('perkara_id', $selectedPerkaraId)"
+                    hint="Hanya Laporan Kejadian yang telah difinalkan dan belum memiliki Sprindik yang ditampilkan."
+                    required
+                >
+                    <option value="">-- Pilih Laporan Kejadian --</option>
+                    @foreach ($availableLaporan as $lk)
+                        <option
+                            value="{{ $lk->id }}"
+                            {{ old('perkara_id', $selectedPerkaraId) == $lk->id ? 'selected' : '' }}
+                        >
+                            {{ $lk->nomor_laporan_kejadian }} — {{ $lk->tanggal_laporan_kejadian?->format('d-m-Y') }}
+                        </option>
+                    @endforeach
+                </x-form.searchable-select>
 
                 <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
                     {{-- Nomor Sprindik --}}

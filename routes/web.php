@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataPerkaraController;
 use App\Http\Controllers\DokumenController;
 use App\Http\Controllers\DpoController;
@@ -20,8 +21,6 @@ use App\Http\Controllers\Tahap2Controller;
 use App\Http\Controllers\TahapanPerkaraController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WilayahController;
-use App\Services\MockStageService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 // Locale Switch Route
@@ -50,15 +49,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
     // Dashboard
-    Route::get('/', function (Request $request, MockStageService $mockService) {
-        if ($request->header('X-Filter-Partial')) {
-            $perkaraList = $mockService->getProgressPerkara($request);
-
-            return view('components.dashboard._progress-partial', compact('perkaraList'));
-        }
-
-        return view('pages.dashboard.ecommerce', ['title' => 'Dashboard BAPTwo']);
-    })->name('dashboard');
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     // Profile
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile');

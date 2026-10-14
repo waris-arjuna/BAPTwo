@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-10-13T22:33:04+00:00" agent="BAPTwo Antigravity" version="24.7.17" type="device">
+  <diagram id="baptwo-sequence-diag" name="Sequence Diagram - BAPTwo">
+    <mxGraphModel dx="2200" dy="1600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2100" pageHeight="1850" background="#F8FAFC" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- TITLE BANNER -->
+        <mxCell id="title_banner" value="UML SEQUENCE DIAGRAM — ALUR PENCATATAN PROGRESS TAHAPAN PERKARA, VALIDASI, DPO GATE, &amp; AUDIT TRAIL&#xa;Sistem Informasi Manajemen Penanganan Perkara (BAPTwo) — BBPOM di Banjarmasin" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#0F172A;strokeColor=#1E293B;strokeWidth=2;fontFamily=Helvetica;fontStyle=1;fontSize=16;fontColor=#FFFFFF;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="50" y="30" width="1980" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- =================================================== -->
+        <!-- LIFELINES (PARTICIPANTS) -->
+        <!-- =================================================== -->
+
+        <!-- 1. Penyidik (Actor) -->
+        <mxCell id="ll_penyidik_head" value="Penyidik (PPNS)&#xa;&lt;b&gt;:Actor&lt;/b&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#E0F2FE;strokeColor=#0284C7;strokeWidth=2;fontFamily=Helvetica;fontSize=11;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="90" y="125" width="40" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_penyidik_line" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#94A3B8;strokeWidth=1.5;dashed=1;endArrow=none;" edge="1" parent="1" source="ll_penyidik_head">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="110" y="1720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 2. View / Browser UI -->
+        <mxCell id="ll_view_head" value="&lt;b&gt;TahapanView&lt;/b&gt;&#xa;(Blade + Alpine.js)" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#1E3A8A;" vertex="1" parent="1">
+          <mxGeometry x="240" y="140" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_view_line" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#94A3B8;strokeWidth=1.5;dashed=1;endArrow=none;" edge="1" parent="1" source="ll_view_head">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="315" y="1720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 3. Controller -->
+        <mxCell id="ll_ctrl_head" value="&lt;b&gt;TahapanPerkaraController&lt;/b&gt;&#xa;[HTTP Controller]" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#2563EB;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#1E3A8A;" vertex="1" parent="1">
+          <mxGeometry x="460" y="140" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_ctrl_line" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#94A3B8;strokeWidth=1.5;dashed=1;endArrow=none;" edge="1" parent="1" source="ll_ctrl_head">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="1720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 4. Form Request Validator -->
+        <mxCell id="ll_req_head" value="&lt;b&gt;StoreTahapanRequest&lt;/b&gt;&#xa;[Form Request Validation]" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#92400E;" vertex="1" parent="1">
+          <mxGeometry x="710" y="140" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_req_line" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#94A3B8;strokeWidth=1.5;dashed=1;endArrow=none;" edge="1" parent="1" source="ll_req_head">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="795" y="1720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 5. Business Service -->
+        <mxCell id="ll_svc_head" value="&lt;b&gt;TahapanService&lt;/b&gt;&#xa;[Domain Service / Engine]" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#16A34A;strokeWidth=2;fontFamily=Helvetica;fontSize=11;fontColor=#14532D;" vertex="1" parent="1">
+          <mxGeometry x="950" y="140" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_svc_line" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#94A3B8;strokeWidth=1.5;dashed=1;endArrow=none;" edge="1" parent="1" source="ll_svc_head">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1040" y="1720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 6. DPO Gate Service -->
+        <mxCell id="ll_dpo_head" value="&lt;b&gt;DpoService&lt;/b&gt;&#xa;[DPO Gatekeeper]" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#DC2626;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#991B1B;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="140" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_dpo_line" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#94A3B8;strokeWidth=1.5;dashed=1;endArrow=none;" edge="1" parent="1" source="ll_dpo_head">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1270" y="1720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 7. Document Storage -->
+        <mxCell id="ll_doc_head" value="&lt;b&gt;DokumenService&lt;/b&gt;&#xa;[Storage Privat PDF]" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#64748B;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#334155;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="140" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_doc_line" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#94A3B8;strokeWidth=1.5;dashed=1;endArrow=none;" edge="1" parent="1" source="ll_doc_head">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1475" y="1720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 8. Database / Eloquent Models -->
+        <mxCell id="ll_db_head" value="&lt;b&gt;Database / Eloquent&lt;/b&gt;&#xa;(Tahapan, Berkas, Dokumen)" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#334155;strokeWidth=2;fontFamily=Helvetica;fontSize=11;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="1610" y="140" width="190" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_db_line" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#94A3B8;strokeWidth=1.5;dashed=1;endArrow=none;" edge="1" parent="1" source="ll_db_head">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1705" y="1720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 9. Audit Trail Service -->
+        <mxCell id="ll_audit_head" value="&lt;b&gt;AuditTrailService&lt;/b&gt;&#xa;[Immutable Logger]" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E8FF;strokeColor=#9333EA;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#6B21A8;" vertex="1" parent="1">
+          <mxGeometry x="1860" y="140" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_audit_line" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#94A3B8;strokeWidth=1.5;dashed=1;endArrow=none;" edge="1" parent="1" source="ll_audit_head">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1940" y="1720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+
+        <!-- =================================================== -->
+        <!-- SCENARIO 1: MEMBUKA FORM TAHAPAN & VALIDASI URUTAN -->
+        <!-- =================================================== -->
+        <mxCell id="box_scen1" value="BAGIAN 1: PEMBUKAAN FORM TAHAPAN &amp; VALIDASI URUTAN PROSES (PRD F-10 s.d. F-13)" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#F0F9FF;strokeColor=#0284C7;strokeWidth=1.5;fontFamily=Helvetica;fontStyle=1;fontSize=11;fontColor=#0369A1;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="60" y="215" width="1940" height="28" as="geometry" />
+        </mxCell>
+
+        <!-- 1.1 Penyidik klik tambah / lanjut tahap -->
+        <mxCell id="m_open_form" value="1: Akses Form Tahapan Perkara (berkas_id, stage)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#0284C7;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#0369A1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="110" y="260" as="sourcePoint" />
+            <mxPoint x="315" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 1.2 View -> Controller GET -->
+        <mxCell id="m_get_create" value="2: GET /perkara/{perkara}/berkas/{berkas}/tahapan/{stage}" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#0284C7;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#0369A1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="315" y="285" as="sourcePoint" />
+            <mxPoint x="550" y="285" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 1.3 Controller -> TahapanService getNextAvailableStages -->
+        <mxCell id="m_svc_get_stages" value="3: getNextAvailableStages(berkas)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#0284C7;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#0369A1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="310" as="sourcePoint" />
+            <mxPoint x="1040" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 1.4 TahapanService -> Database: cek riwayat tahapan -->
+        <mxCell id="m_db_query_stages" value="4: query tahapan(status=final)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#334155;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;fontColor=#334155;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1040" y="335" as="sourcePoint" />
+            <mxPoint x="1705" y="335" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 1.5 Database -> TahapanService: return tahapan -->
+        <mxCell id="m_db_return_stages" value="5: return list final tahapan" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;rounded=0;strokeColor=#334155;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;fontColor=#334155;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1705" y="360" as="sourcePoint" />
+            <mxPoint x="1040" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 1.6 TahapanService return available stages -->
+        <mxCell id="m_svc_return_stages" value="6: return candidate stages (validasi urut &amp; maks 1x)" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;rounded=0;strokeColor=#0284C7;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#0369A1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1040" y="385" as="sourcePoint" />
+            <mxPoint x="550" y="385" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 1.7 Controller render View -->
+        <mxCell id="m_ctrl_render" value="7: view(&apos;pages.tahapan.form&apos;, data, berkas, stages)" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;rounded=0;strokeColor=#0284C7;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#0369A1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="410" as="sourcePoint" />
+            <mxPoint x="315" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 1.8 View render to User -->
+        <mxCell id="m_view_user" value="8: Render form input, status DPO, &amp; tombol [Batal], [Draft], [Simpan &amp; Lanjut]" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;rounded=0;strokeColor=#0284C7;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#0369A1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="315" y="435" as="sourcePoint" />
+            <mxPoint x="110" y="435" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+
+        <!-- =================================================== -->
+        <!-- SCENARIO 2: SKENARIO SIMPAN DRAFT -->
+        <!-- =================================================== -->
+        <mxCell id="box_scen2" value="BAGIAN 2: AKSI SIMPAN DRAFT (PRD F-14 s.d. F-19 — BISA DIEDIT KEMBALI, TIDAK MENAIKKAN TAHAP)" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=1.5;fontFamily=Helvetica;fontStyle=1;fontSize=11;fontColor=#92400E;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="60" y="470" width="1940" height="28" as="geometry" />
+        </mxCell>
+
+        <!-- 2.1 User klik Draft -->
+        <mxCell id="m_click_draft" value="9: Klik Tombol [Simpan Draft] (nomor_surat, tanggal_surat, file PDF opsional)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#D97706;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#92400E;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="110" y="515" as="sourcePoint" />
+            <mxPoint x="315" y="515" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 2.2 View POST Draft -->
+        <mxCell id="m_post_draft" value="10: POST /tahapan {action_type: &apos;draft&apos;, ...}" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#D97706;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#92400E;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="315" y="540" as="sourcePoint" />
+            <mxPoint x="550" y="540" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 2.3 Controller call Request Validation -->
+        <mxCell id="m_val_draft" value="11: validate(StoreTahapanRequest)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#D97706;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#92400E;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="565" as="sourcePoint" />
+            <mxPoint x="795" y="565" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 2.4 Request validated -->
+        <mxCell id="m_val_draft_ret" value="12: return validated data (aturan draft lebih longgar)" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;rounded=0;strokeColor=#D97706;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;fontColor=#92400E;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="795" y="590" as="sourcePoint" />
+            <mxPoint x="550" y="590" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 2.5 Controller -> TahapanService saveStage -->
+        <mxCell id="m_svc_save_draft" value="13: saveStage(berkas, data, file, user) [action_type=&apos;draft&apos;]" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#16A34A;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#15803D;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="615" as="sourcePoint" />
+            <mxPoint x="1040" y="615" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 2.6 TahapanService save draft to DB -->
+        <mxCell id="m_db_insert_draft" value="14: insert / update tahapan_perkara(status=&apos;draft&apos;, finalized_at=null)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#334155;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;fontColor=#334155;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1040" y="640" as="sourcePoint" />
+            <mxPoint x="1705" y="640" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 2.7 TahapanService log draft in AuditTrail -->
+        <mxCell id="m_svc_audit_draft" value="15: log(&apos;simpan_draft_tahap&apos;, tahapan_perkara, record_id, user_id)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#9333EA;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;fontColor=#7E22CE;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1040" y="665" as="sourcePoint" />
+            <mxPoint x="1940" y="665" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 2.8 AuditTrail save to DB -->
+        <mxCell id="m_db_audit_draft" value="16: INSERT INTO audit_log" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#334155;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;fontColor=#334155;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1940" y="690" as="sourcePoint" />
+            <mxPoint x="1705" y="690" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 2.9 Return success draft -->
+        <mxCell id="m_ret_draft_ctrl" value="17: return TahapanPerkara (draft)" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;rounded=0;strokeColor=#16A34A;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#15803D;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1040" y="715" as="sourcePoint" />
+            <mxPoint x="550" y="715" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="m_ret_draft_user" value="18: Redirect + Flash: &quot;Draft Berhasil Disimpan. Tahap belum difinalkan.&quot;" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;rounded=0;strokeColor=#D97706;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#92400E;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="740" as="sourcePoint" />
+            <mxPoint x="110" y="740" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+
+        <!-- =================================================== -->
+        <!-- SCENARIO 3: DPO GATE BLOCKED (TAHAP II GATED) -->
+        <!-- =================================================== -->
+        <mxCell id="box_scen3" value="BAGIAN 3: ATURAN KRUSIAL DPO GATE (PRD F-24 s.d. F-27 — TAHAP II DIBLOKIR JIKA DPO AKTIF)" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#DC2626;strokeWidth=1.5;fontFamily=Helvetica;fontStyle=1;fontSize=11;fontColor=#991B1B;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="60" y="775" width="1940" height="28" as="geometry" />
+        </mxCell>
+
+        <!-- 3.1 User klik Simpan & Lanjut ke Tahap 2 saat DPO Aktif -->
+        <mxCell id="m_click_tahap2_dpo" value="19: Klik [Simpan &amp; Lanjut ke Tahap II] (Tersangka berstatus DPO Aktif)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#DC2626;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#991B1B;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="110" y="820" as="sourcePoint" />
+            <mxPoint x="315" y="820" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 3.2 View POST -->
+        <mxCell id="m_post_tahap2_dpo" value="20: POST /tahapan {jenis_tahap: &apos;tahap_2&apos;, action_type: &apos;lanjut&apos;}" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#DC2626;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#991B1B;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="315" y="845" as="sourcePoint" />
+            <mxPoint x="550" y="845" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 3.3 Controller call TahapanService -->
+        <mxCell id="m_ctrl_save_dpo" value="21: saveStage(berkas, data, file, user)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#DC2626;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#991B1B;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="870" as="sourcePoint" />
+            <mxPoint x="1040" y="870" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 3.4 TahapanService check DPO -->
+        <mxCell id="m_svc_check_dpo" value="22: check berkas-&gt;is_dpo &amp; target_stage == TAHAP_2" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#DC2626;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#991B1B;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1040" y="895" as="sourcePoint" />
+            <mxPoint x="1270" y="895" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 3.5 DpoService returns is_dpo = true -->
+        <mxCell id="m_dpo_ret_true" value="23: return is_dpo = TRUE (DPO Aktif)" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;rounded=0;strokeColor=#DC2626;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;fontColor=#991B1B;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1270" y="920" as="sourcePoint" />
+            <mxPoint x="1040" y="920" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 3.6 TahapanService throws DomainException -->
+        <mxCell id="m_svc_throw_dpo" value="24: throw DomainException(&quot;Tidak dapat melanjutkan ke Tahap II karena Tersangka DPO&quot;)" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;rounded=0;strokeColor=#DC2626;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;fontColor=#991B1B;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1040" y="945" as="sourcePoint" />
+            <mxPoint x="550" y="945" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 3.7 Controller return error flash -->
+        <mxCell id="m_ctrl_dpo_error" value="25: Redirect Back + Flash Error: &quot;Aksi Ditolak: Tersangka berstatus DPO Aktif.&quot;" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;rounded=0;strokeColor=#DC2626;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#991B1B;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="970" as="sourcePoint" />
+            <mxPoint x="110" y="970" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+
+        <!-- =================================================== -->
+        <!-- SCENARIO 4: SIMPAN & LANJUT FINAL, KUNCI & SELESAI -->
+        <!-- =================================================== -->
+        <mxCell id="box_scen4" value="BAGIAN 4: SIMPAN &amp; LANJUT FINAL (DPO NONAKTIF) — UPLOAD PDF, KUNCI TAHAP PERMANEN, &amp; SELESAI (100%)" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#16A34A;strokeWidth=1.5;fontFamily=Helvetica;fontStyle=1;fontSize=11;fontColor=#14532D;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1005" width="1940" height="28" as="geometry" />
+        </mxCell>
+
+        <!-- 4.1 User klik Simpan & Lanjut normal -->
+        <mxCell id="m_click_lanjut_ok" value="26: Klik [Simpan &amp; Lanjut] + Upload Dokumen PDF Wajib (Mimes: PDF, Max: 20MB)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#16A34A;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#15803D;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="110" y="1050" as="sourcePoint" />
+            <mxPoint x="315" y="1050" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 4.2 View POST Lanjut -->
+        <mxCell id="m_post_lanjut_ok" value="27: POST /tahapan multipart/form-data {action_type: &apos;lanjut&apos;, file: &apos;...pdf&apos;}" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#16A34A;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#15803D;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="315" y="1075" as="sourcePoint" />
+            <mxPoint x="550" y="1075" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 4.3 Validation check -->
+        <mxCell id="m_req_val_ok" value="28: validate(): [nomor_surat, tanggal_surat, file: required|mimes:pdf|max:20480]" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#D97706;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;fontColor=#92400E;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="1100" as="sourcePoint" />
+            <mxPoint x="795" y="1100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 4.4 Validation passed -->
+        <mxCell id="m_req_ret_ok" value="29: Validated Input &amp; Valid File" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;rounded=0;strokeColor=#D97706;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;fontColor=#92400E;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="795" y="1125" as="sourcePoint" />
+            <mxPoint x="550" y="1125" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 4.5 Controller call TahapanService -->
+        <mxCell id="m_ctrl_save_final" value="30: saveStage(berkas, data, file, user)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#16A34A;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#15803D;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="1150" as="sourcePoint" />
+            <mxPoint x="1040" y="1150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 4.6 TahapanService: DB Transaction Begin -->
+        <mxCell id="m_tx_begin" value="31: DB::transaction() BEGIN" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#047857;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;fontColor=#047857;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1040" y="1175" as="sourcePoint" />
+            <mxPoint x="1705" y="1175" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 4.7 Upload file via DokumenService -->
+        <mxCell id="m_upload_file" value="32: store(&apos;dokumen/tahapan&apos;, &apos;local&apos;) (Storage Privat)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#475569;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;fontColor=#334155;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1040" y="1200" as="sourcePoint" />
+            <mxPoint x="1475" y="1200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 4.8 Dokumen insert record -->
+        <mxCell id="m_db_doc_insert" value="33: INSERT INTO dokumen (kategori, file_path, file_size)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#334155;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;fontColor=#334155;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1475" y="1225" as="sourcePoint" />
+            <mxPoint x="1705" y="1225" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 4.9 Finalize TahapanPerkara -->
+        <mxCell id="m_db_tahap_final" value="34: UPDATE tahapan_perkara SET status=&apos;final&apos;, finalized_at=NOW(), finalized_by=user_id" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#334155;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;fontColor=#334155;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1040" y="1250" as="sourcePoint" />
+            <mxPoint x="1705" y="1250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 4.10 Calculate progress & determine status proses -->
+        <mxCell id="m_calc_progress" value="35: calculateProgress() -&gt; Update Bobot % (SPDP=15%, Tahap1=55%, P21=85%, Tahap2=100%)" style="html=1;verticalAlign=bottom;endArrow=classic;rounded=0;strokeColor=#047857;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;fontColor=#047857;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1040" y="1275" as="sourcePoint" />
+            <mxPoint x="1040" y="1300" as="targetPoint">
+              <Array as="points">
+                <mxPoint x="1080" y="1275" />
+                <mxPoint x="1080" y="1300" />
+              </Array>
+            </mxPoint>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 4.11 Update berkas_perkara (status_formal Selesai jika Tahap II) -->
+        <mxCell id="m_db_update_berkas" value="36: UPDATE berkas_perkara: progress_persen, status_proses, status_formal=&apos;selesai&apos; (jika Tahap II)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#16A34A;strokeWidth=2;fontFamily=Helvetica;fontSize=10;fontColor=#15803D;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1040" y="1325" as="sourcePoint" />
+            <mxPoint x="1705" y="1325" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 4.12 AuditTrail logging finalisasi -->
+        <mxCell id="m_audit_final" value="37: log(&apos;finalisasi_tahap&apos;, tahapan_perkara, dataLama, dataBaru, userId, ip)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#9333EA;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;fontColor=#7E22CE;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1040" y="1350" as="sourcePoint" />
+            <mxPoint x="1940" y="1350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 4.13 AuditLog DB insert -->
+        <mxCell id="m_db_audit_final" value="38: INSERT INTO audit_log" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#334155;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;fontColor=#334155;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1940" y="1375" as="sourcePoint" />
+            <mxPoint x="1705" y="1375" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 4.14 Commit DB Transaction -->
+        <mxCell id="m_tx_commit" value="39: DB::transaction() COMMIT" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#047857;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;fontColor=#047857;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1040" y="1400" as="sourcePoint" />
+            <mxPoint x="1705" y="1400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 4.15 Response to Controller -->
+        <mxCell id="m_ret_final_ctrl" value="40: return TahapanPerkara (Finalized &amp; Locked)" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;rounded=0;strokeColor=#16A34A;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#15803D;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1040" y="1425" as="sourcePoint" />
+            <mxPoint x="550" y="1425" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 4.16 Response to User -->
+        <mxCell id="m_ret_final_user" value="41: Redirect + Flash: &quot;Tahap Berhasil Difinalkan. Status Berkas Diperbarui.&quot;" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;rounded=0;strokeColor=#16A34A;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#15803D;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="1450" as="sourcePoint" />
+            <mxPoint x="110" y="1450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+
+        <!-- =================================================== -->
+        <!-- SCENARIO 5: PENGUNCIAN TAHAP PERMANEN & SCHEDULER -->
+        <!-- =================================================== -->
+        <mxCell id="box_scen5" value="BAGIAN 5: INTEGRITAS DATA: PENGUNCIAN PERMANEN (ANTI-OVERRIDE) &amp; SCHEDULER EVALUASI BATAS TAHUN" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E8FF;strokeColor=#9333EA;strokeWidth=1.5;fontFamily=Helvetica;fontStyle=1;fontSize=11;fontColor=#6B21A8;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1485" width="1940" height="28" as="geometry" />
+        </mxCell>
+
+        <!-- 5.1 Admin coba edit tahap final -->
+        <mxCell id="m_admin_edit_locked" value="42: Administrator / Penyidik mencoba Edit Tahap yang sudah Final" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#9333EA;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#6B21A8;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="110" y="1530" as="sourcePoint" />
+            <mxPoint x="550" y="1530" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 5.2 Controller call assertStageNotLocked -->
+        <mxCell id="m_ctrl_assert_locked" value="43: assertStageNotLocked(tahap)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#9333EA;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#6B21A8;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="1555" as="sourcePoint" />
+            <mxPoint x="1040" y="1555" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 5.3 Assertion throws DomainException -->
+        <mxCell id="m_assert_throw" value="44: throw DomainException(&quot;Tahap telah difinalkan dan terkunci permanen. Admin pun tidak dapat mengedit.&quot;)" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;rounded=0;strokeColor=#DC2626;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;fontColor=#991B1B;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1040" y="1580" as="sourcePoint" />
+            <mxPoint x="550" y="1580" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 5.4 Controller abort/redirect back -->
+        <mxCell id="m_ctrl_abort" value="45: Abort 403 / Redirect Back: &quot;Penguncian Tahap Permanen. Perubahan Ditolak.&quot;" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;rounded=0;strokeColor=#DC2626;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#991B1B;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="1605" as="sourcePoint" />
+            <mxPoint x="110" y="1605" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 5.5 Scheduler trigger 1 Jan 00:00 -->
+        <mxCell id="m_sched_exec" value="46: [Setiap 1 Jan 00:00:00] Laravel Scheduler Memindai Berkas Melewati Batas Tahun Kalender" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#7C3AED;strokeWidth=2;fontFamily=Helvetica;fontStyle=1;fontSize=11;fontColor=#581C87;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1705" y="1640" as="sourcePoint" />
+            <mxPoint x="1940" y="1640" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 5.6 Scheduler updates DB to Tidak Selesai -->
+        <mxCell id="m_sched_update_db" value="47: UPDATE berkas_perkara SET status_formal=&apos;tidak_selesai&apos; &amp; INSERT INTO audit_log (actor: System Scheduler)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#DC2626;strokeWidth=2;fontFamily=Helvetica;fontSize=10;fontColor=#991B1B;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1940" y="1670" as="sourcePoint" />
+            <mxPoint x="1705" y="1670" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

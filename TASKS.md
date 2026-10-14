@@ -100,7 +100,7 @@ _(kosong)_
 ## Monitoring & Laporan
 
 - [ ] T-050 — Pencarian Perkara (`/pencarian-perkara`) & Seluruh Perkara (`/seluruh-perkara` + card statistik) + struktur menu Role Pimpinan/Umum (F-38, F-39)
-- [ ] T-051 — Dashboard monitoring: Tabel Progress Perkara auto-filter (progress terendah & tanggal perkara tertua, maks 5 baris), tombol "Lihat Semua" (`/progress-perkara`), & interaksi double-click ID Perkara untuk modal detail lengkap tanpa kolom aksi (F-40, F-42, F-43)
+- [x] T-051 — Dashboard monitoring: Tabel Progress Perkara auto-filter (progress terendah & tanggal perkara tertua, maks 5 baris), tombol "Lihat Semua" (`/progress-perkara`), & interaksi double-click ID Perkara untuk modal detail lengkap tanpa kolom aksi (F-40, F-42, F-43)
 - [ ] T-052 — Dashboard Potensi Terlimpah (F-41, Should)
 - [ ] T-053 — Export Excel & CSV (F-45)
   - Catatan: butuh persetujuan install Laravel Excel.
@@ -147,3 +147,4 @@ _(kosong)_
 - [x] T-033 — 2026-10-14 Trigger Selesai dari TAHAP II (F-22)
 - [x] T-040 — 2026-10-14 DPO aktif/nonaktif + gate Tahap II di server & UI (F-24–F-27, F-35, D-025)
 - [x] T-043 — 2026-10-14 Audit trail / case history kronologis dengan timeline modern di Detail Perkara (F-31, D-025)
+- [x] T-051 — 2026-10-14 Dashboard monitoring riil: Tabel 5 berkas prioritas + Donut Chart + 5 Card Statistik + Tombol "Lihat Semua" + Modal Quick-View read-only (F-40, F-42, F-43, D-027)

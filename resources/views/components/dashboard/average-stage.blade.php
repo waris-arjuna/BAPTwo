@@ -1,22 +1,7 @@
+@props(['stageAverages' => null])
+
 @php
-    $stageAverages = [
-        [
-            'name' => 'SPDP',
-            'value' => '3',
-        ],
-        [
-            'name' => 'TAHAP I',
-            'value' => '29',
-        ],
-        [
-            'name' => 'P-21',
-            'value' => '55',
-        ],
-        [
-            'name' => 'TAHAP II',
-            'value' => '-',
-        ],
-    ];
+    $stageAverages ??= app(\App\Services\DashboardService::class)->getStageAverageDays();
 @endphp
 
 <div class="h-full rounded-2xl border border-gray-200 bg-white shadow-theme-xs dark:border-gray-800 dark:bg-white/[0.03]">

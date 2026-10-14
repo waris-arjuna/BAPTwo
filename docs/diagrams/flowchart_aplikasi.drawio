@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-10-13T22:31:21+00:00" agent="BAPTwo Antigravity" version="24.7.17" type="device">
+  <diagram id="baptwo-flowchart-diag" name="Flowchart Aplikasi - BAPTwo">
+    <mxGraphModel dx="2400" dy="1600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2250" pageHeight="1450" background="#F8FAFC" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- HEADER BANNER -->
+        <mxCell id="header_card" value="FLOWCHART ALUR PENANGANAN PERKARA — SISTEM BAPTwo&#xa;Balai Besar Pengawas Obat dan Makanan (BBPOM) di Banjarmasin" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#0F172A;strokeColor=#1E293B;strokeWidth=2;fontFamily=Helvetica;fontStyle=1;fontSize=18;fontColor=#FFFFFF;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="50" y="30" width="2130" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- LEGEND / KETERANGAN -->
+        <mxCell id="legend_box" value="&lt;b&gt;LEGENDA:&lt;/b&gt;   &#xa;[Mulai / Selesai] : Kapsul Hijau/Merah  |  [Proses Operasional] : Persegi Biru  |  [Pengambilan Keputusan] : Belah Ketupat Oranye  |  [Aturan DPO Gate] : Merah/Amber  |  [Scheduler Otomatis] : Ungu  |  [Penguncian Tahap] : Otomatis &amp; Permanen" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#94A3B8;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#334155;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="50" y="115" width="2130" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- ========================================== -->
+        <!-- FASE 1: PRA-SPDP -->
+        <!-- ========================================== -->
+        <mxCell id="phase1_container" value="FASE 1: PRA-SPDP (Bobot Progress: 0%)" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#F0F9FF;strokeColor=#0284C7;strokeWidth=2;dashed=1;verticalAlign=top;fontStyle=1;fontSize=13;fontFamily=Helvetica;fontColor=#0369A1;spacingTop=12;" vertex="1" parent="1">
+          <mxGeometry x="50" y="165" width="480" height="920" as="geometry" />
+        </mxCell>
+
+        <!-- Start Node -->
+        <mxCell id="node_start" value="MULAI&#xa;(Login &amp; Math Captcha)" style="shape=capsule;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#16A34A;strokeWidth=2;fontFamily=Helvetica;fontStyle=1;fontSize=12;fontColor=#166534;" vertex="1" parent="1">
+          <mxGeometry x="190" y="210" width="200" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Input LK -->
+        <mxCell id="node_input_lk" value="Input Laporan Kejadian (LK)&#xa;&amp; Wajib Upload Dokumen PDF LK" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#3B82F6;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="175" y="290" width="230" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Decision Simpan LK -->
+        <mxCell id="node_dec_lk" value="Aksi Simpan LK?" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=1.5;fontFamily=Helvetica;fontStyle=1;fontSize=11;fontColor=#92400E;" vertex="1" parent="1">
+          <mxGeometry x="210" y="380" width="160" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- Draft LK Process -->
+        <mxCell id="node_draft_lk" value="Status: Draft LK&#xa;(Bisa diedit/soft-delete)" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#64748B;strokeWidth=1;fontFamily=Helvetica;fontSize=10;fontColor=#475569;" vertex="1" parent="1">
+          <mxGeometry x="65" y="387.5" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Final LK Process -->
+        <mxCell id="node_final_lk" value="Finalkan Laporan Kejadian&#xa;(Status: Final, LK Terkunci,&#xa;Siap digunakan di Sprindik)" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#2563EB;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#1E3A8A;" vertex="1" parent="1">
+          <mxGeometry x="175" y="480" width="230" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Input Sprindik -->
+        <mxCell id="node_input_sprindik" value="Input Surat Perintah Penyidikan&#xa;(Sprindik) &amp; Upload PDF Sprindik" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#3B82F6;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="175" y="575" width="230" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Decision 1 LK = 1 Sprindik -->
+        <mxCell id="node_dec_sprindik_lk" value="Pilih LK: Apakah LK&#xa;sudah terpakai di&#xa;Sprindik lain?" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#DC2626;strokeWidth=1.5;fontFamily=Helvetica;fontStyle=1;fontSize=10;fontColor=#991B1B;" vertex="1" parent="1">
+          <mxGeometry x="195" y="660" width="190" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Error LK terpakai -->
+        <mxCell id="node_err_lk_used" value="Ditolak Sistem!&#xa;Relasi 1 LK = 1 Sprindik&#xa;(LK tidak muncul di pilihan)" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF2F2;strokeColor=#EF4444;strokeWidth=1;fontFamily=Helvetica;fontSize=10;fontColor=#B91C1C;" vertex="1" parent="1">
+          <mxGeometry x="65" y="675" width="115" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Pembentukan Data Perkara -->
+        <mxCell id="node_bentuk_perkara" value="Bentuk Data Perkara Baru&#xa;(Pilih Sprindik Final, Input TKP via&#xa;Wilayah API, Tentukan Tim PPNS)" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#2563EB;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#1E3A8A;" vertex="1" parent="1">
+          <mxGeometry x="170" y="775" width="240" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- Pembentukan Berkas Perkara -->
+        <mxCell id="node_bentuk_berkas" value="Daftarkan Tersangka &amp; Bentuk Berkas&#xa;&lt;b&gt;ATURAN: 1 Tersangka = 1 Berkas Perkara&lt;/b&gt;&#xa;Input Pasal Berlapis per Berkas Perkara" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#1D4ED8;strokeWidth=2;fontFamily=Helvetica;fontSize=11;fontColor=#1E40AF;" vertex="1" parent="1">
+          <mxGeometry x="160" y="875" width="260" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Berkas Perkara Terbentuk -->
+        <mxCell id="node_berkas_ready" value="Berkas Perkara Aktif Terbentuk&#xa;(Status: &quot;Baru&quot; | Progress: 0%)" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#10B981;strokeWidth=2;fontFamily=Helvetica;fontStyle=1;fontSize=11;fontColor=#065F46;" vertex="1" parent="1">
+          <mxGeometry x="175" y="980" width="230" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- ========================================== -->
+        <!-- FASE 2: PROGRESS UTAMA -->
+        <!-- ========================================== -->
+        <mxCell id="phase2_container" value="FASE 2: PROGRESS UTAMA BERKAS PERKARA (SPDP s.d. P-21)" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#F0FDF4;strokeColor=#10B981;strokeWidth=2;dashed=1;verticalAlign=top;fontStyle=1;fontSize=13;fontFamily=Helvetica;fontColor=#047857;spacingTop=12;" vertex="1" parent="1">
+          <mxGeometry x="570" y="165" width="510" height="920" as="geometry" />
+        </mxCell>
+
+        <!-- Input SPDP -->
+        <mxCell id="node_input_spdp" value="Input Tahap SPDP (Surat Pemberitahuan&#xa;Dimulainya Penyidikan) + Upload PDF SPDP" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#10B981;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="690" y="210" width="270" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Decision Aksi SPDP -->
+        <mxCell id="node_dec_spdp" value="Aksi SPDP?" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=1.5;fontFamily=Helvetica;fontStyle=1;fontSize=11;fontColor=#92400E;" vertex="1" parent="1">
+          <mxGeometry x="750" y="295" width="150" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="node_draft_spdp" value="Simpan Draft SPDP&#xa;(Bisa diedit kembali)" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#64748B;strokeWidth=1;fontFamily=Helvetica;fontSize=10;fontColor=#475569;" vertex="1" parent="1">
+          <mxGeometry x="585" y="300" width="135" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Final SPDP Process -->
+        <mxCell id="node_final_spdp" value="&lt;b&gt;Simpan &amp; Lanjut SPDP (Final)&lt;/b&gt;&#xa;• Progress Berbobot: &lt;b&gt;15%&lt;/b&gt;&#xa;• Status Proses: &lt;b&gt;&quot;SPDP&quot;&lt;/b&gt;&#xa;• SLA Dihitung: 1 Bulan Kalender&#xa;• SPDP Terkunci Permanen | Audit Log" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#16A34A;strokeWidth=2;fontFamily=Helvetica;fontSize=11;fontColor=#14532D;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="695" y="385" width="260" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Sub-Tahap P-16 / P-17P -->
+        <mxCell id="node_sub_spdp" value="Catat Sub-Tahap Opsional (SPDP):&#xa;• P-16 (Penunjukan Jaksa Penuntut Umum)&#xa;• P-17P (Permintaan Perkembangan Penyidikan)&#xa;&lt;i&gt;(Opsional &amp; tidak mengubah persentase 15%)&lt;/i&gt;" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#94A3B8;strokeWidth=1;strokeType=dash;fontFamily=Helvetica;fontSize=10;fontColor=#334155;" vertex="1" parent="1">
+          <mxGeometry x="695" y="495" width="260" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- Input Tahap 1 -->
+        <mxCell id="node_input_tahap1" value="Input TAHAP I (Pelimpahan Berkas Perkara)&#xa;&amp; Wajib Upload PDF Berkas Tahap I" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#10B981;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="695" y="590" width="260" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Final Tahap 1 -->
+        <mxCell id="node_final_tahap1" value="&lt;b&gt;Simpan &amp; Lanjut TAHAP I (Final)&lt;/b&gt;&#xa;• Progress Berbobot: &lt;b&gt;55%&lt;/b&gt;&#xa;• Status Proses: &lt;b&gt;&quot;TAHAP I&quot;&lt;/b&gt;&#xa;• Tahap I Terkunci Permanen | Audit Log" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#16A34A;strokeWidth=2;fontFamily=Helvetica;fontSize=11;fontColor=#14532D;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="695" y="675" width="260" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- Sub-Tahap P-18P / P-19 -->
+        <mxCell id="node_sub_tahap1" value="Catat Sub-Tahap Opsional (Tahap I):&#xa;• P-18P (Hasil Penyelidikan Belum Lengkap)&#xa;• P-19 (Pengembalian Berkas utk Dilengkapi)&#xa;&lt;i&gt;(Opsional &amp; tidak mengubah persentase 55%)&lt;/i&gt;" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#94A3B8;strokeWidth=1;strokeType=dash;fontFamily=Helvetica;fontSize=10;fontColor=#334155;" vertex="1" parent="1">
+          <mxGeometry x="695" y="780" width="260" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- Input P-21 -->
+        <mxCell id="node_input_p21" value="Input Tahap P-21 / P-21a (Pemberitahuan&#xa;Berkas Perkara Sudah Lengkap) + Upload PDF" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#10B981;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="695" y="875" width="260" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Final P-21 -->
+        <mxCell id="node_final_p21" value="&lt;b&gt;Simpan &amp; Lanjut P-21/P-21a (Final)&lt;/b&gt;&#xa;• Progress Berbobot: &lt;b&gt;85%&lt;/b&gt;&#xa;• Status Proses: &lt;b&gt;&quot;P-21/P21a&quot;&lt;/b&gt;&#xa;• P-21 Terkunci Permanen | Audit Log" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#16A34A;strokeWidth=2;fontFamily=Helvetica;fontSize=11;fontColor=#14532D;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="695" y="960" width="260" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- ========================================== -->
+        <!-- FASE 3: DPO GATE & PENYELESAIAN -->
+        <!-- ========================================== -->
+        <mxCell id="phase3_container" value="FASE 3: DPO GATE &amp; PENYELESAIAN (100% SELESAI)" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#F59E0B;strokeWidth=2;dashed=1;verticalAlign=top;fontStyle=1;fontSize=13;fontFamily=Helvetica;fontColor=#B45309;spacingTop=12;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="165" width="510" height="920" as="geometry" />
+        </mxCell>
+
+        <!-- DPO Toggle Note -->
+        <mxCell id="node_dpo_toggle_note" value="&lt;b&gt;FITUR TOGGLE DPO (Daftar Pencarian Orang)&lt;/b&gt;&#xa;• Dapat diaktifkan/dinonaktifkan kapan saja&#xa;• Wajib upload Surat Penetapan DPO PDF&#xa;• Tidak mengubah progress &amp; &lt;b&gt;TIDAK MENJEDA SLA&lt;/b&gt;" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;fontColor=#78350F;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1235" y="210" width="280" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- Decision DPO Gate -->
+        <mxCell id="node_dec_dpo_gate" value="Apakah Tersangka&#xa;berstatus DPO Aktif?" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#DC2626;strokeWidth=2;fontFamily=Helvetica;fontStyle=1;fontSize=11;fontColor=#991B1B;" vertex="1" parent="1">
+          <mxGeometry x="1275" y="305" width="200" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- DPO Gate Blocked -->
+        <mxCell id="node_dpo_blocked" value="&lt;b&gt;DPO GATE AKTIF (BLOKIR)&lt;/b&gt;&#xa;Aksi &quot;Simpan &amp; Lanjut Tahap II&quot;&#xa;&lt;b&gt;DIBLOKIR&lt;/b&gt; di UI dan Server!&#xa;&lt;i&gt;Berkas menunggu tersangka ditangkap /&#xa;status DPO dicabut manual via toggle.&lt;/i&gt;" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF2F2;strokeColor=#EF4444;strokeWidth=2;fontFamily=Helvetica;fontSize=10;fontColor=#7F1D1D;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1135" y="415" width="220" height="85" as="geometry" />
+        </mxCell>
+
+        <!-- Non-DPO Allowed -->
+        <mxCell id="node_dpo_passed" value="DPO Nonaktif / Tersangka Hadir:&#xa;Lanjut ke Tahap II Diizinkan" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#10B981;strokeWidth=1.5;fontFamily=Helvetica;fontStyle=1;fontSize=11;fontColor=#065F46;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="430" width="220" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Input Tahap 2 -->
+        <mxCell id="node_input_tahap2" value="Input TAHAP II (Pelimpahan Tersangka&#xa;&amp; Barang Bukti ke Kejaksaan)&#xa;+ Wajib Upload BA Pelimpahan PDF" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#F59E0B;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="1245" y="525" width="260" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- Final Tahap 2 -->
+        <mxCell id="node_final_tahap2" value="&lt;b&gt;Simpan &amp; Lanjut TAHAP II (Final)&lt;/b&gt;&#xa;• Progress Berbobot: &lt;b&gt;100%&lt;/b&gt;&#xa;• Status Proses: &lt;b&gt;&quot;TAHAP II&quot;&lt;/b&gt;&#xa;• &lt;b&gt;Pemicu Otomatis Status Formal: &quot;SELESAI&quot;&lt;/b&gt;&#xa;• Tahap II Terkunci Permanen | Audit Log" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#16A34A;strokeWidth=2.5;fontFamily=Helvetica;fontSize=11;fontColor=#14532D;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="1235" y="625" width="280" height="85" as="geometry" />
+        </mxCell>
+
+        <!-- Keputusan Pengadilan -->
+        <mxCell id="node_input_vonis" value="Catat Keputusan Pengadilan (Pasca Tahap II):&#xa;• Amar Putusan / Vonis Hakim&#xa;• Wajib Upload Salinan Putusan PDF&#xa;• Status Proses: &quot;Keputusan Pengadilan&quot;&#xa;&lt;i&gt;(Progress tetap 100%, tidak melebihi 100%)&lt;/i&gt;" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;fontColor=#1E3A8A;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1235" y="745" width="280" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- End Node Selesai -->
+        <mxCell id="node_end_selesai" value="BERKAS PERKARA SELESAI&#xa;(Status Formal: &quot;Selesai&quot; | 100%)" style="shape=capsule;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#16A34A;strokeWidth=2.5;fontFamily=Helvetica;fontStyle=1;fontSize=12;fontColor=#166534;" vertex="1" parent="1">
+          <mxGeometry x="1255" y="865" width="240" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- ========================================== -->
+        <!-- FASE 4: SCHEDULER & TIDAK SELESAI -->
+        <!-- ========================================== -->
+        <mxCell id="phase4_container" value="FASE 4: EVALUASI BATAS TAHUN &amp; SP3 (TIDAK SELESAI)" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#FAF5FF;strokeColor=#8B5CF6;strokeWidth=2;dashed=1;verticalAlign=top;fontStyle=1;fontSize=13;fontFamily=Helvetica;fontColor=#6D28D9;spacingTop=12;" vertex="1" parent="1">
+          <mxGeometry x="1670" y="165" width="510" height="920" as="geometry" />
+        </mxCell>
+
+        <!-- Scheduler Trigger -->
+        <mxCell id="node_sched_trigger" value="&lt;b&gt;LARAVEL SCHEDULER&lt;/b&gt;&#xa;Dieksekusi Otomatis Setiap:&#xa;&lt;b&gt;1 Januari, Pukul 00:00:00 WITA&lt;/b&gt;" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E8FF;strokeColor=#9333EA;strokeWidth=2;fontFamily=Helvetica;fontSize=11;fontColor=#581C87;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1805" y="210" width="240" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- Decision Selesai sebelum 31 Des -->
+        <mxCell id="node_dec_annual_limit" value="Apakah Berkas Perkara&#xa;sudah berstatus &quot;Selesai&quot;&#xa;sebelum 31 Des 23:59?" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#F3E8FF;strokeColor=#7C3AED;strokeWidth=2;fontFamily=Helvetica;fontStyle=1;fontSize=11;fontColor=#581C87;" vertex="1" parent="1">
+          <mxGeometry x="1810" y="315" width="230" height="85" as="geometry" />
+        </mxCell>
+
+        <!-- Retain Selesai -->
+        <mxCell id="node_retain_selesai" value="Berkas Sudah Selesai:&#xa;Tidak Ada Perubahan Status" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#10B981;strokeWidth=1;fontFamily=Helvetica;fontSize=10;fontColor=#065F46;" vertex="1" parent="1">
+          <mxGeometry x="1690" y="440" width="160" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Trigger Tidak Selesai -->
+        <mxCell id="node_trigger_tidak_selesai" value="&lt;b&gt;BATAS TAHUN MUTLAK BERLAKU&lt;/b&gt;&#xa;• Berkas &lt;b&gt;TIDAK DAPAT DIKERJAKAN LAGI&lt;/b&gt;&#xa;  di tahun kalender baru.&#xa;• Sistem otomatis mengubah Status Formal:&#xa;  &lt;b&gt;&quot;TIDAK SELESAI&quot;&lt;/b&gt;&#xa;• Catat Audit Log (Aktor: System Scheduler)" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#DC2626;strokeWidth=2;fontFamily=Helvetica;fontSize=11;fontColor=#7F1D1D;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="1790" y="525" width="270" height="95" as="geometry" />
+        </mxCell>
+
+        <!-- Upload SP3 -->
+        <mxCell id="node_upload_sp3" value="Penerbitan &amp; Upload Dokumen SP3:&#xa;• Dokumen Surat Perintah Penghentian Penyidikan&#xa;• Diunggah &lt;b&gt;SETELAH&lt;/b&gt; status Tidak Selesai&#xa;• Dokumen administratif, bukan pemicu status&#xa;• Masuk Audit Trail" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#DC2626;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;fontColor=#991B1B;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1790" y="660" width="270" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- End Node Tidak Selesai -->
+        <mxCell id="node_end_tidak_selesai" value="BERKAS PERKARA TIDAK SELESAI&#xa;(Status Formal: &quot;Tidak Selesai&quot;)" style="shape=capsule;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#DC2626;strokeWidth=2.5;fontFamily=Helvetica;fontStyle=1;fontSize=12;fontColor=#991B1B;" vertex="1" parent="1">
+          <mxGeometry x="1800" y="780" width="250" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- ========================================== -->
+        <!-- BOTTOM: FITUR MONITORING & KEAMANAN -->
+        <!-- ========================================== -->
+        <mxCell id="bottom_card" value="FITUR TRANSVERSAL: MONITORING REAL-TIME, AUDIT LOG &amp; HAK AKSES SISTEM" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#0F172A;strokeColor=#1E293B;strokeWidth=1.5;fontFamily=Helvetica;fontStyle=1;fontSize=12;fontColor=#FFFFFF;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1110" width="2130" height="150" as="geometry" />
+        </mxCell>
+
+        <mxCell id="card_mon1" value="&lt;b&gt;1. Dashboard &amp; Warning SLA&lt;/b&gt;&#xa;• SLA = 1 bulan kalender dari SPDP&#xa;• Batas tahun kalender mutlak menang&#xa;• Indikator visual kartu SLA Warning&#xa;• Widget Berkas DPO &amp; Trend Bulanan" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#1E293B;strokeColor=#334155;fontFamily=Helvetica;fontSize=10;fontColor=#E2E8F0;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1145" width="480" height="95" as="geometry" />
+        </mxCell>
+
+        <mxCell id="card_mon2" value="&lt;b&gt;2. Pencarian Cerdas &amp; Quick-View&lt;/b&gt;&#xa;• Live filter AJAX tanpa reload halaman&#xa;• Kolom pencarian mencakup: No Berkas, Tersangka, No Sprindik, No SPDP, &amp; Status&#xa;• Quick-View Modal: detail berkas, riwayat tahapan, &amp; dokumen PDF terlampir" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#1E293B;strokeColor=#334155;fontFamily=Helvetica;fontSize=10;fontColor=#E2E8F0;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="590" y="1145" width="500" height="95" as="geometry" />
+        </mxCell>
+
+        <mxCell id="card_mon3" value="&lt;b&gt;3. Audit Trail Terpusat (Audit Log)&lt;/b&gt;&#xa;• Pencatatan otomatis setiap aksi penting&#xa;• Finalisasi tahap, draft, upload dokumen, aktivasi/deaktivasi DPO dicatat detail&#xa;• Menyimpan User, IP, Timestamp, Data Lama &amp; Data Baru (Immutable / Tidak Bisa Diedit)" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#1E293B;strokeColor=#334155;fontFamily=Helvetica;fontSize=10;fontColor=#E2E8F0;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="1145" width="510" height="95" as="geometry" />
+        </mxCell>
+
+        <mxCell id="card_mon4" value="&lt;b&gt;4. Keamanan &amp; Integritas Data&lt;/b&gt;&#xa;• &lt;b&gt;TIDAK ADA HARD DELETE&lt;/b&gt; (Semua Soft Delete)&#xa;• &lt;b&gt;PENGUNCIAN TAHAP PERMANEN&lt;/b&gt;: Administrator pun TIDAK DAPAT mengedit/memundurkan tahap final&#xa;• RBAC: Penyidik (Input/Draft), Pimpinan (Read-Only), Admin (User &amp; Master)" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#1E293B;strokeColor=#334155;fontFamily=Helvetica;fontSize=10;fontColor=#E2E8F0;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="1660" y="1145" width="490" height="95" as="geometry" />
+        </mxCell>
+
+
+        <!-- ========================================== -->
+        <!-- EDGES / CONNECTOR FLOWS -->
+        <!-- ========================================== -->
+
+        <!-- Start to Input LK -->
+        <mxCell id="e_start_lk" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#0284C7;strokeWidth=2;" edge="1" parent="1" source="node_start" target="node_input_lk">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Input LK to Dec LK -->
+        <mxCell id="e_lk_dec" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#0284C7;strokeWidth=2;" edge="1" parent="1" source="node_input_lk" target="node_dec_lk">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Dec LK to Draft LK -->
+        <mxCell id="e_lk_draft" value="Draft" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#64748B;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" edge="1" parent="1" source="node_dec_lk" target="node_draft_lk">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Dec LK to Final LK -->
+        <mxCell id="e_lk_final" value="Finalkan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#0284C7;strokeWidth=2;fontFamily=Helvetica;fontStyle=1;fontSize=10;fontColor=#0369A1;" edge="1" parent="1" source="node_dec_lk" target="node_final_lk">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Final LK to Input Sprindik -->
+        <mxCell id="e_final_lk_sprindik" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#0284C7;strokeWidth=2;" edge="1" parent="1" source="node_final_lk" target="node_input_sprindik">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Input Sprindik to Dec 1 LK = 1 Sprindik -->
+        <mxCell id="e_sprindik_dec" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#0284C7;strokeWidth=2;" edge="1" parent="1" source="node_input_sprindik" target="node_dec_sprindik_lk">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Dec Sprindik: Sudah dipakai (Ya) -->
+        <mxCell id="e_sprindik_err" value="Ya (Sudah dipakai)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#DC2626;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;fontColor=#B91C1C;" edge="1" parent="1" source="node_dec_sprindik_lk" target="node_err_lk_used">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Dec Sprindik: Belum dipakai (Tidak) -> Bentuk Perkara -->
+        <mxCell id="e_sprindik_ok" value="Belum (Valid 1-ke-1)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#0284C7;strokeWidth=2;fontFamily=Helvetica;fontStyle=1;fontSize=10;fontColor=#0369A1;" edge="1" parent="1" source="node_dec_sprindik_lk" target="node_bentuk_perkara">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Bentuk Perkara to Bentuk Berkas -->
+        <mxCell id="e_perkara_berkas" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#0284C7;strokeWidth=2;" edge="1" parent="1" source="node_bentuk_perkara" target="node_bentuk_berkas">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Bentuk Berkas to Berkas Ready -->
+        <mxCell id="e_berkas_ready" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#0284C7;strokeWidth=2;" edge="1" parent="1" source="node_bentuk_berkas" target="node_berkas_ready">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Transition: Berkas Ready to Input SPDP (Phase 1 to Phase 2) -->
+        <mxCell id="e_trans_p1_p2" value="Mulai Progress Tahapan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#10B981;strokeWidth=2.5;fontFamily=Helvetica;fontStyle=1;fontSize=11;fontColor=#047857;" edge="1" parent="1" source="node_berkas_ready" target="node_input_spdp">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="540" y="1007" />
+              <mxPoint x="540" y="237" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Input SPDP to Dec SPDP -->
+        <mxCell id="e_spdp_dec" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#10B981;strokeWidth=2;" edge="1" parent="1" source="node_input_spdp" target="node_dec_spdp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Dec SPDP to Draft -->
+        <mxCell id="e_spdp_draft" value="Draft" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#64748B;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;" edge="1" parent="1" source="node_dec_spdp" target="node_draft_spdp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Dec SPDP to Final -->
+        <mxCell id="e_spdp_final" value="Simpan &amp; Lanjut" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#10B981;strokeWidth=2;fontFamily=Helvetica;fontStyle=1;fontSize=10;fontColor=#047857;" edge="1" parent="1" source="node_dec_spdp" target="node_final_spdp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Final SPDP to Sub SPDP -->
+        <mxCell id="e_spdp_sub" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#94A3B8;strokeWidth=1;dashed=1;" edge="1" parent="1" source="node_final_spdp" target="node_sub_spdp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Sub SPDP to Input Tahap 1 -->
+        <mxCell id="e_sub_tahap1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#10B981;strokeWidth=2;" edge="1" parent="1" source="node_sub_spdp" target="node_input_tahap1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Input Tahap 1 to Final Tahap 1 -->
+        <mxCell id="e_tahap1_final" value="Simpan &amp; Lanjut" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#10B981;strokeWidth=2;fontFamily=Helvetica;fontStyle=1;fontSize=10;fontColor=#047857;" edge="1" parent="1" source="node_input_tahap1" target="node_final_tahap1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Final Tahap 1 to Sub Tahap 1 -->
+        <mxCell id="e_tahap1_sub" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#94A3B8;strokeWidth=1;dashed=1;" edge="1" parent="1" source="node_final_tahap1" target="node_sub_tahap1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Sub Tahap 1 to Input P-21 -->
+        <mxCell id="e_sub_p21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#10B981;strokeWidth=2;" edge="1" parent="1" source="node_sub_tahap1" target="node_input_p21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Input P-21 to Final P-21 -->
+        <mxCell id="e_p21_final" value="Simpan &amp; Lanjut" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#10B981;strokeWidth=2;fontFamily=Helvetica;fontStyle=1;fontSize=10;fontColor=#047857;" edge="1" parent="1" source="node_input_p21" target="node_final_p21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Transition: Final P-21 to DPO Gate (Phase 2 to Phase 3) -->
+        <mxCell id="e_trans_p2_p3" value="Menuju Tahap II (Cek DPO)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#F59E0B;strokeWidth=2.5;fontFamily=Helvetica;fontStyle=1;fontSize=11;fontColor=#B45309;" edge="1" parent="1" source="node_final_p21" target="node_dec_dpo_gate">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1100" y="997" />
+              <mxPoint x="1100" y="342" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- DPO Gate: Ya (Aktif) -->
+        <mxCell id="e_dpo_yes" value="YA (DPO Aktif)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#DC2626;strokeWidth=2;fontFamily=Helvetica;fontStyle=1;fontSize=10;fontColor=#B91C1C;" edge="1" parent="1" source="node_dec_dpo_gate" target="node_dpo_blocked">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- DPO Gate: Tidak (Nonaktif) -->
+        <mxCell id="e_dpo_no" value="TIDAK (Nonaktif)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#16A34A;strokeWidth=2;fontFamily=Helvetica;fontStyle=1;fontSize=10;fontColor=#15803D;" edge="1" parent="1" source="node_dec_dpo_gate" target="node_dpo_passed">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- DPO Passed to Input Tahap 2 -->
+        <mxCell id="e_dpo_passed_tahap2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#F59E0B;strokeWidth=2;" edge="1" parent="1" source="node_dpo_passed" target="node_input_tahap2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Input Tahap 2 to Final Tahap 2 -->
+        <mxCell id="e_tahap2_final" value="Simpan &amp; Lanjut" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#16A34A;strokeWidth=2.5;fontFamily=Helvetica;fontStyle=1;fontSize=10;fontColor=#15803D;" edge="1" parent="1" source="node_input_tahap2" target="node_final_tahap2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Final Tahap 2 to Keputusan Pengadilan -->
+        <mxCell id="e_tahap2_vonis" value="Opsional Pasca Tahap II" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#3B82F6;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;fontColor=#1D4ED8;" edge="1" parent="1" source="node_final_tahap2" target="node_input_vonis">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Keputusan Pengadilan to End Selesai -->
+        <mxCell id="e_vonis_end" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#16A34A;strokeWidth=2;" edge="1" parent="1" source="node_input_vonis" target="node_end_selesai">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Direct Final Tahap 2 to End Selesai (if without vonis yet) -->
+        <mxCell id="e_tahap2_direct_end" value="Otomatis Selesai" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#16A34A;strokeWidth=1.5;dashed=1;fontFamily=Helvetica;fontSize=10;fontColor=#15803D;" edge="1" parent="1" source="node_final_tahap2" target="node_end_selesai">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1210" y="667" />
+              <mxPoint x="1210" y="892" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ========================================== -->
+        <!-- EDGES: PHASE 4 SCHEDULER & TIDAK SELESAI -->
+        <!-- ========================================== -->
+
+        <!-- Scheduler Trigger to Dec Annual Limit -->
+        <mxCell id="e_sched_dec" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7C3AED;strokeWidth=2;" edge="1" parent="1" source="node_sched_trigger" target="node_dec_annual_limit">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Dec Annual Limit: Selesai (Ya) -->
+        <mxCell id="e_annual_yes" value="Sudah Selesai" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#10B981;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;fontColor=#047857;" edge="1" parent="1" source="node_dec_annual_limit" target="node_retain_selesai">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Dec Annual Limit: Belum Selesai (Tidak) -> Trigger Tidak Selesai -->
+        <mxCell id="e_annual_no" value="Belum Selesai (Melewati Batas Tahun)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#DC2626;strokeWidth=2;fontFamily=Helvetica;fontStyle=1;fontSize=10;fontColor=#B91C1C;" edge="1" parent="1" source="node_dec_annual_limit" target="node_trigger_tidak_selesai">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Trigger Tidak Selesai to Upload SP3 -->
+        <mxCell id="e_tidak_selesai_sp3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#DC2626;strokeWidth=2;" edge="1" parent="1" source="node_trigger_tidak_selesai" target="node_upload_sp3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Upload SP3 to End Tidak Selesai -->
+        <mxCell id="e_sp3_end" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#DC2626;strokeWidth=2;" edge="1" parent="1" source="node_upload_sp3" target="node_end_tidak_selesai">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

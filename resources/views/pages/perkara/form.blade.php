@@ -277,74 +277,78 @@
 
                 <div class="grid grid-cols-1 gap-5 px-4 py-5 sm:grid-cols-2 sm:px-6">
                     <div>
-                        <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                            Provinsi <span class="text-red-500">*</span>
-                        </label>
-                        <select
+                        <x-form.searchable-select
                             name="tkp_provinsi_kode"
+                            id="tkp_provinsi_kode"
+                            label="Provinsi"
+                            placeholder="-- Pilih Provinsi --"
+                            search-placeholder="Ketik nama provinsi..."
                             x-model="provinsiKode"
                             @change="loadKabupaten(true)"
-                            class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
+                            required
                         >
                             <option value="">-- Pilih Provinsi --</option>
                             <template x-for="item in provinsiList" :key="item.code || item.kode">
                                 <option :value="item.code || item.kode" :selected="(item.code || item.kode) === provinsiKode" x-text="item.name || item.nama"></option>
                             </template>
-                        </select>
+                        </x-form.searchable-select>
                         <input type="hidden" name="tkp_provinsi_nama" :value="provinsiNama">
                     </div>
 
                     <div>
-                        <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                            Kabupaten / Kota <span class="text-red-500">*</span>
-                        </label>
-                        <select
+                        <x-form.searchable-select
                             name="tkp_kabupaten_kode"
+                            id="tkp_kabupaten_kode"
+                            label="Kabupaten / Kota"
+                            placeholder="-- Pilih Kabupaten/Kota --"
+                            search-placeholder="Ketik nama kabupaten/kota..."
                             x-model="kabupatenKode"
                             @change="loadKecamatan(true)"
-                            class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
+                            required
                         >
                             <option value="">-- Pilih Kabupaten/Kota --</option>
                             <template x-for="item in kabupatenList" :key="item.code || item.kode">
                                 <option :value="item.code || item.kode" :selected="(item.code || item.kode) === kabupatenKode" x-text="item.name || item.nama"></option>
                             </template>
-                        </select>
+                        </x-form.searchable-select>
                         <input type="hidden" name="tkp_kabupaten_nama" :value="kabupatenNama">
                     </div>
 
                     <div>
-                        <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                            Kecamatan <span class="text-red-500">*</span>
-                        </label>
-                        <select
+                        <x-form.searchable-select
                             name="tkp_kecamatan_kode"
+                            id="tkp_kecamatan_kode"
+                            label="Kecamatan"
+                            placeholder="-- Pilih Kecamatan --"
+                            search-placeholder="Ketik nama kecamatan..."
                             x-model="kecamatanKode"
                             @change="loadDesa(true)"
-                            class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
+                            required
                         >
                             <option value="">-- Pilih Kecamatan --</option>
                             <template x-for="item in kecamatanList" :key="item.code || item.kode">
                                 <option :value="item.code || item.kode" :selected="(item.code || item.kode) === kecamatanKode" x-text="item.name || item.nama"></option>
                             </template>
-                        </select>
+                        </x-form.searchable-select>
                         <input type="hidden" name="tkp_kecamatan_nama" :value="kecamatanNama">
                     </div>
 
                     <div>
-                        <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                            Desa / Kelurahan <span class="text-red-500">*</span>
-                        </label>
-                        <select
+                        <x-form.searchable-select
                             name="tkp_desa_kode"
+                            id="tkp_desa_kode"
+                            label="Desa / Kelurahan"
+                            placeholder="-- Pilih Desa/Kelurahan --"
+                            search-placeholder="Ketik nama desa/kelurahan..."
                             x-model="desaKode"
                             @change="onDesaChange()"
-                            class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
+                            required
                         >
                             <option value="">-- Pilih Desa/Kelurahan --</option>
                             <template x-for="item in desaList" :key="item.code || item.kode">
                                 <option :value="item.code || item.kode" :selected="(item.code || item.kode) === desaKode" x-text="item.name || item.nama"></option>
                             </template>
-                        </select>
+                        </x-form.searchable-select>
                         <input type="hidden" name="tkp_desa_nama" :value="desaNama">
                     </div>
 
@@ -352,7 +356,7 @@
                         <div>
                             <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">RT</label>
                             <input
-                                type="text"
+                                type="number"
                                 name="tkp_rt"
                                 maxlength="5"
                                 value="{{ old('tkp_rt', $tkpAlamat?->rt ?? '') }}"
@@ -363,7 +367,7 @@
                         <div>
                             <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">RW</label>
                             <input
-                                type="text"
+                                type="number"
                                 name="tkp_rw"
                                 maxlength="5"
                                 value="{{ old('tkp_rw', $tkpAlamat?->rw ?? '') }}"
@@ -441,12 +445,11 @@
                         if (!this.selectedAnggotaIds.includes(numId)) {
                             this.selectedAnggotaIds.push(numId);
                         }
-                        if (this.$refs.anggotaSelect) {
-                            this.$refs.anggotaSelect.value = '';
-                        }
                         this.$nextTick(() => {
-                            if (this.$refs.anggotaSelect) {
-                                this.$refs.anggotaSelect.value = '';
+                            const el = document.getElementById('ppns_anggota_select');
+                            if (el) {
+                                el.value = '';
+                                el.dispatchEvent(new Event('change', { bubbles: true }));
                             }
                         });
                     },
@@ -484,16 +487,17 @@
                         <input type="hidden" name="ppns_anggota_ids[]" :value="id">
                     </template>
 
-                    {{-- PPNS Utama --}}
+                    {{-- PPNS Utama (Searchable Select) --}}
                     <div>
-                        <label for="ppns_utama_id" class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                            Penyidik PPNS Utama <span class="text-red-500">*</span>
-                        </label>
-                        <select
+                        <x-form.searchable-select
                             id="ppns_utama_id"
                             name="ppns_utama_id"
+                            label="Penyidik PPNS Utama"
+                            placeholder="-- Pilih PPNS Utama --"
+                            search-placeholder="Ketik nama atau NIP penyidik..."
+                            :value="old('ppns_utama_id', $existingUtamaId)"
                             @change="onUtamaChange($event.target.value)"
-                            class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
+                            required
                         >
                             <option value="">-- Pilih PPNS Utama --</option>
                             @foreach ($ppnsUsers as $ppns)
@@ -501,7 +505,7 @@
                                     {{ $ppns->nama }} ({{ $ppns->nip ?: $ppns->role }}) — {{ $ppns->pangkat ?? '-' }}
                                 </option>
                             @endforeach
-                        </select>
+                        </x-form.searchable-select>
                         @error('ppns_utama_id')
                             <p class="mt-1.5 text-xs text-error-600 dark:text-error-400">{{ $message }}</p>
                         @enderror
@@ -516,20 +520,21 @@
                             <span class="text-xs text-gray-500 dark:text-gray-400" x-text="selectedAnggotaIds.length + ' anggota terpilih'"></span>
                         </div>
 
-                        {{-- Combo Box Dropdown --}}
+                        {{-- Combo Box Dropdown (Searchable Select) --}}
                         <div class="relative">
-                            <select
+                            <x-form.searchable-select
                                 id="ppns_anggota_select"
-                                x-ref="anggotaSelect"
+                                name="ppns_anggota_select"
+                                placeholder="+ Pilih dan tambah anggota penyidik..."
+                                search-placeholder="Ketik nama atau NIP penyidik..."
+                                :clearable="false"
                                 @change="addAnggota($event.target.value)"
-                                :disabled="getAvailableAnggota().length === 0"
-                                class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-400 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:disabled:bg-gray-800/50 dark:disabled:text-gray-500"
                             >
                                 <option value="" x-text="getAvailableAnggota().length === 0 ? 'Semua PPNS sudah terpilih' : '+ Pilih dan tambah anggota penyidik...'"></option>
                                 <template x-for="ppns in getAvailableAnggota()" :key="ppns.id">
                                     <option :value="ppns.id" x-text="ppns.nama + (ppns.nip && ppns.nip !== '-' ? ' (NIP: ' + ppns.nip + ')' : '') + (ppns.pangkat && ppns.pangkat !== '-' ? ' — ' + ppns.pangkat : '')"></option>
                                 </template>
-                            </select>
+                            </x-form.searchable-select>
                         </div>
                         <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">Pilih penyidik dari daftar combo box untuk menambahkannya ke tim anggota. Anda dapat memilih lebih dari satu penyidik.</p>
 
@@ -721,7 +726,7 @@
                                         NIK (16 Digit)
                                     </label>
                                     <input
-                                        type="text"
+                                        type="number"
                                         maxlength="16"
                                         :name="`tersangka[${index}][nik]`"
                                         x-model="item.nik"

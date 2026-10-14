@@ -17,7 +17,7 @@ class DpoService
     ) {}
 
     /**
-     * Mengaktifkan status DPO pada Berkas Perkara (PRD F-24 s.d. F-27)
+     * Mengaktifkan status DPO pada Berkas Perkara
      *
      * @param  array<string, mixed>  $data
      *

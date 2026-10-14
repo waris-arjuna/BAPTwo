@@ -11,10 +11,11 @@ class TableDropdown extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
-    {
-        //
-    }
+    public function __construct(
+        public string $label = 'Aksi',
+        public string $width = 'w-48',
+        public string $align = 'right',
+    ) {}
 
     /**
      * Get the view / contents that represent the component.

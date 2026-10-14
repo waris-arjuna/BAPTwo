@@ -460,18 +460,22 @@
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                             {{-- Provinsi --}}
                             <div>
-                                <label for="provinsi_kode" class="mb-1.5 block text-theme-sm font-medium text-gray-700 dark:text-gray-300">
-                                    {{ __('Provinsi') }} <span class="text-error-500">*</span>
-                                </label>
                                 <input type="hidden" name="provinsi_nama" :value="wilayah.provinsi_nama" />
-                                <select id="provinsi_kode" name="provinsi_kode" x-model="wilayah.provinsi_kode"
-                                    @change="onProvinsiChange()" required
-                                    class="shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 h-11 w-full rounded-lg border border-gray-300 bg-white px-3.5 py-2.5 text-theme-sm text-gray-800 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90">
+                                <x-form.searchable-select
+                                    id="provinsi_kode"
+                                    name="provinsi_kode"
+                                    :label="__('Provinsi')"
+                                    placeholder="{{ __('-- Pilih Provinsi --') }}"
+                                    search-placeholder="Cari provinsi..."
+                                    x-model="wilayah.provinsi_kode"
+                                    @change="onProvinsiChange()"
+                                    required
+                                >
                                     <option value="">{{ __('-- Pilih Provinsi --') }}</option>
                                     <template x-for="item in listProvinsi" :key="item.code">
                                         <option :value="item.code" x-text="item.name" :selected="item.code === wilayah.provinsi_kode"></option>
                                     </template>
-                                </select>
+                                </x-form.searchable-select>
                                 @error('provinsi_kode')
                                     <p class="mt-1 text-theme-xs text-error-600 dark:text-error-400">{{ $message }}</p>
                                 @enderror
@@ -479,18 +483,23 @@
 
                             {{-- Kabupaten / Kota --}}
                             <div>
-                                <label for="kabupaten_kode" class="mb-1.5 block text-theme-sm font-medium text-gray-700 dark:text-gray-300">
-                                    {{ __('Kabupaten / Kota') }} <span class="text-error-500">*</span>
-                                </label>
                                 <input type="hidden" name="kabupaten_nama" :value="wilayah.kabupaten_nama" />
-                                <select id="kabupaten_kode" name="kabupaten_kode" x-model="wilayah.kabupaten_kode"
-                                    @change="onKabupatenChange()" :disabled="!wilayah.provinsi_kode" required
-                                    class="shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 h-11 w-full rounded-lg border border-gray-300 bg-white px-3.5 py-2.5 text-theme-sm text-gray-800 focus:ring-3 focus:outline-hidden disabled:opacity-50 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90">
+                                <x-form.searchable-select
+                                    id="kabupaten_kode"
+                                    name="kabupaten_kode"
+                                    :label="__('Kabupaten / Kota')"
+                                    placeholder="{{ __('-- Pilih Kabupaten/Kota --') }}"
+                                    search-placeholder="Cari kabupaten/kota..."
+                                    x-model="wilayah.kabupaten_kode"
+                                    @change="onKabupatenChange()"
+                                    x-bind:disabled="!wilayah.provinsi_kode"
+                                    required
+                                >
                                     <option value="">{{ __('-- Pilih Kabupaten/Kota --') }}</option>
                                     <template x-for="item in listKabupaten" :key="item.code">
                                         <option :value="item.code" x-text="item.name" :selected="item.code === wilayah.kabupaten_kode"></option>
                                     </template>
-                                </select>
+                                </x-form.searchable-select>
                                 @error('kabupaten_kode')
                                     <p class="mt-1 text-theme-xs text-error-600 dark:text-error-400">{{ $message }}</p>
                                 @enderror
@@ -498,18 +507,23 @@
 
                             {{-- Kecamatan --}}
                             <div>
-                                <label for="kecamatan_kode" class="mb-1.5 block text-theme-sm font-medium text-gray-700 dark:text-gray-300">
-                                    {{ __('Kecamatan') }} <span class="text-error-500">*</span>
-                                </label>
                                 <input type="hidden" name="kecamatan_nama" :value="wilayah.kecamatan_nama" />
-                                <select id="kecamatan_kode" name="kecamatan_kode" x-model="wilayah.kecamatan_kode"
-                                    @change="onKecamatanChange()" :disabled="!wilayah.kabupaten_kode" required
-                                    class="shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 h-11 w-full rounded-lg border border-gray-300 bg-white px-3.5 py-2.5 text-theme-sm text-gray-800 focus:ring-3 focus:outline-hidden disabled:opacity-50 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90">
+                                <x-form.searchable-select
+                                    id="kecamatan_kode"
+                                    name="kecamatan_kode"
+                                    :label="__('Kecamatan')"
+                                    placeholder="{{ __('-- Pilih Kecamatan --') }}"
+                                    search-placeholder="Cari kecamatan..."
+                                    x-model="wilayah.kecamatan_kode"
+                                    @change="onKecamatanChange()"
+                                    x-bind:disabled="!wilayah.kabupaten_kode"
+                                    required
+                                >
                                     <option value="">{{ __('-- Pilih Kecamatan --') }}</option>
                                     <template x-for="item in listKecamatan" :key="item.code">
                                         <option :value="item.code" x-text="item.name" :selected="item.code === wilayah.kecamatan_kode"></option>
                                     </template>
-                                </select>
+                                </x-form.searchable-select>
                                 @error('kecamatan_kode')
                                     <p class="mt-1 text-theme-xs text-error-600 dark:text-error-400">{{ $message }}</p>
                                 @enderror
@@ -517,18 +531,23 @@
 
                             {{-- Desa / Kelurahan --}}
                             <div>
-                                <label for="desa_kode" class="mb-1.5 block text-theme-sm font-medium text-gray-700 dark:text-gray-300">
-                                    {{ __('Desa / Kelurahan') }} <span class="text-error-500">*</span>
-                                </label>
                                 <input type="hidden" name="desa_nama" :value="wilayah.desa_nama" />
-                                <select id="desa_kode" name="desa_kode" x-model="wilayah.desa_kode"
-                                    @change="onDesaChange()" :disabled="!wilayah.kecamatan_kode" required
-                                    class="shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 h-11 w-full rounded-lg border border-gray-300 bg-white px-3.5 py-2.5 text-theme-sm text-gray-800 focus:ring-3 focus:outline-hidden disabled:opacity-50 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90">
+                                <x-form.searchable-select
+                                    id="desa_kode"
+                                    name="desa_kode"
+                                    :label="__('Desa / Kelurahan')"
+                                    placeholder="{{ __('-- Pilih Desa/Kelurahan --') }}"
+                                    search-placeholder="Cari desa/kelurahan..."
+                                    x-model="wilayah.desa_kode"
+                                    @change="onDesaChange()"
+                                    x-bind:disabled="!wilayah.kecamatan_kode"
+                                    required
+                                >
                                     <option value="">{{ __('-- Pilih Desa/Kelurahan --') }}</option>
                                     <template x-for="item in listDesa" :key="item.code">
                                         <option :value="item.code" x-text="item.name" :selected="item.code === wilayah.desa_kode"></option>
                                     </template>
-                                </select>
+                                </x-form.searchable-select>
                                 @error('desa_kode')
                                     <p class="mt-1 text-theme-xs text-error-600 dark:text-error-400">{{ $message }}</p>
                                 @enderror

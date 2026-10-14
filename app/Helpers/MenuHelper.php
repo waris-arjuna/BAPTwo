@@ -30,6 +30,11 @@ class MenuHelper
     {
         return [
             [
+                'icon' => 'sprindik',
+                'name' => 'Sprindik',
+                'path' => '/sprindik',
+            ],
+            [
                 'icon' => 'data-perkara',
                 'name' => 'Data Perkara',
                 'subItems' => [
@@ -42,11 +47,6 @@ class MenuHelper
                         'path' => '/progress-perkara',
                     ],
                 ],
-            ],
-            [
-                'icon' => 'sprindik',
-                'name' => 'Sprindik',
-                'path' => '/sprindik',
             ],
             [
                 'icon' => 'spdp',

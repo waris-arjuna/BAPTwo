@@ -187,31 +187,49 @@
 
                     <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
                         <div>
-                            <label class="mb-1 block text-theme-xs font-medium text-gray-700 dark:text-gray-300">{{ __('Jabatan') }}</label>
-                            <select name="jabatan_id" x-model="form.jabatan_id" class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-3 text-sm text-gray-800 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90">
+                            <x-form.searchable-select
+                                name="jabatan_id"
+                                id="user_jabatan_id"
+                                :label="__('Jabatan')"
+                                placeholder="- {{ __('Pilih Jabatan') }} -"
+                                search-placeholder="Cari jabatan..."
+                                x-model="form.jabatan_id"
+                            >
                                 <option value="">- {{ __('Pilih Jabatan') }} -</option>
                                 @foreach ($jabatanList as $jabatan)
                                     <option value="{{ $jabatan->id }}">{{ $jabatan->nama_jabatan }}</option>
                                 @endforeach
-                            </select>
+                            </x-form.searchable-select>
                         </div>
                         <div>
-                            <label class="mb-1 block text-theme-xs font-medium text-gray-700 dark:text-gray-300">{{ __('Bidang') }}</label>
-                            <select name="bidang_id" x-model="form.bidang_id" class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-3 text-sm text-gray-800 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90">
+                            <x-form.searchable-select
+                                name="bidang_id"
+                                id="user_bidang_id"
+                                :label="__('Bidang')"
+                                placeholder="- {{ __('Pilih Bidang') }} -"
+                                search-placeholder="Cari bidang..."
+                                x-model="form.bidang_id"
+                            >
                                 <option value="">- {{ __('Pilih Bidang') }} -</option>
                                 @foreach ($bidangList as $bidang)
                                     <option value="{{ $bidang->id }}">{{ $bidang->nama_bidang }}</option>
                                 @endforeach
-                            </select>
+                            </x-form.searchable-select>
                         </div>
                         <div>
-                            <label class="mb-1 block text-theme-xs font-medium text-gray-700 dark:text-gray-300">{{ __('Pangkat & Golongan') }}</label>
-                            <select name="panggol_id" x-model="form.panggol_id" class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-3 text-sm text-gray-800 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90">
+                            <x-form.searchable-select
+                                name="panggol_id"
+                                id="user_panggol_id"
+                                :label="__('Pangkat & Golongan')"
+                                placeholder="- {{ __('Pilih Pangkat/Gol.') }} -"
+                                search-placeholder="Cari pangkat/golongan..."
+                                x-model="form.panggol_id"
+                            >
                                 <option value="">- {{ __('Pilih Pangkat/Gol.') }} -</option>
                                 @foreach ($panggolList as $panggol)
                                     <option value="{{ $panggol->id }}">{{ $panggol->label() }}</option>
                                 @endforeach
-                            </select>
+                            </x-form.searchable-select>
                         </div>
                     </div>
 

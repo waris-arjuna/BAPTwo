@@ -260,13 +260,20 @@
                             </div>
                         @elseif ($type === 'jaksa-penuntut')
                             <div>
-                                <label class="mb-1 block text-theme-xs font-medium text-gray-700 dark:text-gray-300">{{ __('Asal Kejaksaan') }} *</label>
-                                <select name="instansi_hukum_id" x-model="form.instansi_hukum_id" required class="h-10 w-full rounded-lg border border-gray-300 bg-transparent px-3 text-theme-sm text-gray-800 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90">
+                                <x-form.searchable-select
+                                    name="instansi_hukum_id"
+                                    id="instansi_hukum_id"
+                                    :label="__('Asal Kejaksaan')"
+                                    placeholder="{{ __('Pilih Kejaksaan') }}"
+                                    search-placeholder="Cari nama kejaksaan..."
+                                    x-model="form.instansi_hukum_id"
+                                    required
+                                >
                                     <option value="">{{ __('Pilih Kejaksaan') }}</option>
                                     @foreach ($kejaksaanList as $kejaksaan)
                                         <option value="{{ $kejaksaan->id }}">{{ $kejaksaan->nama }}</option>
                                     @endforeach
-                                </select>
+                                </x-form.searchable-select>
                             </div>
                             <div>
                                 <label class="mb-1 block text-theme-xs font-medium text-gray-700 dark:text-gray-300">{{ __('Nama Lengkap Jaksa') }} *</label>

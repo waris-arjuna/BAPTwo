@@ -148,12 +148,25 @@
 
                     <td class="px-5 py-4 text-center">
                         @if ($perkara)
-                            <a
-                                href="{{ route('perkara.show', $perkara) }}"
-                                class="inline-flex h-8 items-center justify-center rounded-lg border border-gray-300 bg-white px-3 text-xs font-medium text-gray-700 transition hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
-                            >
-                                Lihat Detail
-                            </a>
+                            <x-common.table-dropdown>
+                                <a
+                                    href="{{ route('perkara.show', $perkara) }}"
+                                    class="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm text-gray-700 transition hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/[0.05]"
+                                >
+                                    <i class="fi fi-rr-eye text-xs text-brand-600"></i>
+                                    <span>Lihat Detail Perkara</span>
+                                </a>
+
+                                @if ($berkas->tahapan->isNotEmpty())
+                                    <a
+                                        href="{{ route('berkas-perkara.tahapan.show', [$berkas->id, $berkas->tahapan->sortByDesc('created_at')->first()->id]) }}"
+                                        class="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm text-gray-700 transition hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/[0.05]"
+                                    >
+                                        <i class="fi fi-rr-document-signed text-xs text-gray-500"></i>
+                                        <span>Tahapan Terakhir</span>
+                                    </a>
+                                @endif
+                            </x-common.table-dropdown>
                         @else
                             <span class="text-xs text-gray-400">-</span>
                         @endif

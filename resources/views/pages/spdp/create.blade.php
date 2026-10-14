@@ -46,36 +46,19 @@
                 <div class="space-y-6 p-5 sm:p-6">
 
                     {{-- Sprindik --}}
-                    <div>
-                        <label
-                            for="sprindik"
-                            class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
-                        >
-                            Sprindik <span class="text-error-500">*</span>
-                        </label>
-
-                        <select
-                            id="sprindik"
-                            name="sprindik"
-                            class="h-11 w-full rounded-lg border border-gray-300 bg-white px-4 text-sm text-gray-700 outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300"
-                        >
-                            <option value="">
-                                Pilih Sprindik
-                            </option>
-
-                            <option value="1">
-                                SP/001/IX/2026 — 03-09-2026
-                            </option>
-
-                            <option value="3">
-                                SP/003/IX/2026 — 08-09-2026
-                            </option>
-                        </select>
-
-                        <p class="mt-2 text-xs text-gray-500 dark:text-gray-400">
-                            Pilih Sprindik yang tersedia untuk dibuatkan SPDP.
-                        </p>
-                    </div>
+                    <x-form.searchable-select
+                        name="sprindik"
+                        id="sprindik"
+                        label="Sprindik"
+                        placeholder="Pilih Sprindik"
+                        search-placeholder="Ketik nomor sprindik atau tanggal..."
+                        hint="Pilih Sprindik yang tersedia untuk dibuatkan SPDP."
+                        required
+                    >
+                        <option value="">Pilih Sprindik</option>
+                        <option value="1">SP/001/IX/2026 — 03-09-2026</option>
+                        <option value="3">SP/003/IX/2026 — 08-09-2026</option>
+                    </x-form.searchable-select>
 
                     {{-- Nomor SPDP --}}
                     <div>

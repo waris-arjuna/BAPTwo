@@ -410,5 +410,87 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
      - Tombol "Input Tahapan" di detail perkara (`perkara/show.blade.php`) disembunyikan jika seluruh tahapan progress berkas perkara telah selesai.
 - Konsekuensi: Integritas data terjamin 100%, duplikasi tahapan atau sprindik tidak dapat terjadi baik sengaja maupun tidak sengaja, dan antarmuka pengguna hanya menyajikan opsi yang valid dan relevan.
 
+## D-027 — Dashboard Monitoring Riil & Quick-View Detail Perkara (Tanpa Kolom Aksi)
 
+- Tanggal: 2026-10-14
+- Status: Disepakati & Diimplementasikan
+- Konteks: Halaman Beranda (`/`) sebelumnya menggunakan data tiruan (`MockStageService`). Sesuai PRD F-40, F-42, F-43, dan task T-051, dashboard monitoring utama wajib beralih ke data riil database tanpa mengubah tata letak, gaya visual, atau hierarki komponen TailAdmin yang sudah disepakati. Selain itu, baris tabel progress pada dashboard harus dapat di-double-click (serta melalui menu opsi) untuk memunculkan modal pratinjau cepat (quick-view) detail lengkap tanpa tombol aksi pengeditan/penghapusan.
+- Keputusan:
+  1. **DashboardService (`app/Services/DashboardService.php`)**:
+     - `getStatistics(?int $tahun)`: Menghitung 5 metrik card riil dari tabel `perkara` dan `berkas_perkara` (Total Perkara, Berkas Berjalan, Menunggu Verifikasi/Tahap Awal, Selesai, dan Rata-rata Hari Selesai).
+     - `getCaseStatusData(?int $tahun)`: Menghitung total dan persentase status formal (`Selesai`, `Dalam Proses`, `Tidak Selesai`) untuk Donut Chart.
+     - `getStageAverageDays(?int $tahun)`: Menghitung rata-rata hari penyelesaian antar-tahap (SPDP -> Tahap 1, Tahap 1 -> P-21, P-21 -> Tahap 2).
+     - `getPriorityProgressPerkara(Request $request, int $limit = 5)`: Mengambil maksimal 5 berkas perkara prioritas teratas dengan urutan `progress_persen ASC` dan tanggal SPDP / perkara tertua (`tanggal ASC`), mendukung filter pencarian dan status, serta AJAX live-filter (`X-Filter-Partial: 1`).
+  2. **DashboardController & Routes**:
+     - Mengubah route `/` dari closure mock menjadi `Route::get('/', [DashboardController::class, 'index'])->name('dashboard')`.
+     - Mendukung query parameter `?tahun=YYYY` dengan filter dropdown tahun yang reaktif.
+  3. **Preservasi Tampilan Visual 100%**:
+     - Array data yang dihasilkan `DashboardService` mempertahankan struktur keys template (`nomor`, `tersangka`, `pasal`, `tahap`, `progress`, `status`, `spdp`, `tahap1`, `p21`, `tahap2`, `estimasi`) sehingga 5 Card Statistik, Donut Chart SVG, Rata-rata Hari per Tahap, dan Timeline Progress SVG di tabel tetap tampil presisi tanpa perubahan layout.
+  4. **Interaksi Quick-View & Tombol "Lihat Semua"**:
+     - Header card tabel progress menyertakan tombol "Lihat Semua" (`fi fi-rr-arrow-right`) menuju `/progress-perkara`.
+     - Setiap baris tabel mendukung double-click (`@dblclick="openQuickView(perkara)"`) dan opsi menu dropdown "Ringkasan Cepat" (`fi fi-rr-eye`).
+     - Modal Quick-View menampilkan rincian berkas (Nomor Berkas, NIK, Sprindik, PPNS Utama & Anggota, Pasal Berlapis, persentase progress bar, dan tabel riwayat tahapan tercatat) dalam mode read-only (tanpa tombol aksi edit/hapus), dengan tombol "Tutup" dan "Buka Detail Penuh".
+- Konsekuensi: Dashboard monitoring terhubung penuh dengan data riil database, operasional pemantauan berkas perkara menjadi sangat efisien dan informatif, serta integritas tampilan dashboard TailAdmin tetap terjaga 100%.
 
+## D-028 — Komponen Dropdown Aksi Tabel Global dengan Portal Teleport ke Body & Auto-Flip
+
+- Tanggal: 2026-10-14
+- Status: Disepakati & Diimplementasikan
+- Konteks: Pada seluruh tabel di aplikasi (Data Perkara, Laporan Kejadian, Sprindik, Progress Perkara, Dashboard Monitoring), tombol "Aksi" pada baris terbawah sebelumnya memicu dropdown menu yang terpotong oleh pembungkus overflow tabel (`overflow-x-auto` / `overflow-hidden`), yang memunculkan scrollbar vertikal yang tidak diinginkan. Perbaikan harus dilakukan secara global melalui satu komponen reusable, tanpa mengubah tinggi kontainer atau padding bawah tabel.
+- Keputusan:
+  1. **Komponen Reusable `<x-common.table-dropdown>` (`resources/views/components/common/table-dropdown.blade.php`)**:
+     - **Portal ke Body**: Menu dropdown dirender menggunakan `<template x-teleport="body">` sehingga node DOM menu berada langsung di bawah `<body>`. Hal ini membebaskannya 100% dari batasan `overflow` atau `stacking context` kontainer tabel.
+     - **Posisi Fixed Mengambang**: Posisi dihitung secara dinamis dari `getBoundingClientRect()` tombol trigger `$refs.button` dengan koordinat `fixed`, sehingga posisi selalu presisi dan tidak bergeser saat scrolling.
+     - **Auto-Flip Vertikal**: Jika ruang vertikal di bawah tombol tidak mencukupi (`spaceBelow < menuHeight + 12px`) dan ruang di atas lebih besar, dropdown secara otomatis terbuka ke atas (`openUp = true`).
+     - **Penutupan Otomatis (Auto-Close)**:
+       - Klik di luar area dropdown (`@click.outside` dengan pengecualian elemen tombol trigger).
+       - Klik pada item aksi di dalam menu.
+       - Scrolling halaman atau kontainer tabel (`window.addEventListener('scroll', ..., true)` pada fase *capture* yang menangkap scroll di elemen `div.overflow-x-auto`).
+       - Penekanan tombol `Esc` (`@keydown.escape.window`).
+       - Perubahan ukuran jendela browser (`resize`).
+       - Pembersihan listener otomatis saat komponen di-*unmount* via `this.$cleanup(...)`.
+     - **Preservasi Visual & Desain**:
+       - Tampilan visual tombol "Aksi", border, sudut membulat, bayangan (`shadow-theme-lg`), mode gelap (`dark:`), dan icon panah berotasi (`fi fi-rr-angle-small-down`) 100% identik dengan gaya TailAdmin.
+  2. **Migrasi Seluruh Tabel**:
+     - Mengganti seluruh dropdown ad-hoc di:
+       - `resources/views/pages/laporan-kejadian/_table-partial.blade.php`
+       - `resources/views/pages/sprindik/_table-partial.blade.php`
+       - `resources/views/pages/data-perkara/_table-partial.blade.php`
+       - `resources/views/components/dashboard/_progress-partial.blade.php`
+       - `resources/views/pages/progress-perkara/_table-partial.blade.php`
+     - Mendukung aksi modal konfirmasi hapus (soft delete) melalui preserve scope Alpine.
+  3. **Pengujian**:
+     - Dibuat `tests/Feature/TableDropdownTest.php` untuk memvalidasi rendering komponen, keberadaan direktif `x-teleport="body"`, auto-flip calculation, scroll listener, serta rendering dropdown di seluruh halaman tabel terkait.
+- Konsekuensi: Dropdown pada baris tabel mana pun (termasuk baris terakhir) tampil utuh, tidak pernah terpotong, dan tidak pernah memicu scrollbar vertikal pada kontainer tabel.
+
+## D-029 — Komponen Searchable Select Reusable (Select2-Like) Berbasis Alpine.js & Tailwind CSS v4
+
+- Tanggal: 2026-10-14
+- Status: Disepakati & Diimplementasikan
+- Konteks: Pengguna menghendaki fitur pencarian (search) pada input yang menggunakan combobox atau select seperti layaknya Select2 pada Bootstrap untuk mempermudah pemilihan data pada daftar opsi yang panjang (seperti Laporan Kejadian, Penyidik PPNS, Wilayah Provinsi/Kabupaten/Kecamatan/Desa, Tahapan Perkara, Jabatan, Bidang, Pangkat/Golongan, dan Instansi Kejaksaan).
+- Keputusan:
+  1. **Komponen Reusable `<x-form.searchable-select>` (`resources/views/components/form/searchable-select.blade.php`)**:
+     - **Arsitektur Native 100%**: Dibangun murni menggunakan **Alpine.js v3** dan **Tailwind CSS v4** bawaan tanpa menambah library/dependensi eksternal (menjaga performa tetap optimal dan bundle JS tetap ringan).
+     - **Desain & Dark Mode Seragam**: Menggunakan kelas Tailwind yang identik dengan input TailAdmin (`h-11`, `rounded-lg`, `border-gray-300`, `dark:bg-gray-900`, `dark:border-gray-700`, `focus:border-brand-500`) serta icon Flaticon UIcons (`fi fi-rr-search`, `fi fi-rr-angle-small-down`, `fi fi-rr-cross-small`, `fi fi-rr-check`).
+  2. **Fitur Pengalaman Pengguna (UX) ala Select2**:
+     - **Live Search**: Kolom input pencarian tersemat di bagian atas dropdown yang langsung fokus otomatis saat dropdown dibuka (`$nextTick(() => $refs.searchInput.focus())`).
+     - **Navigasi Keyboard**: Mendukung navigasi panah atas (`ArrowUp`), panah bawah (`ArrowDown`), Enter untuk memilih, dan `Escape` untuk menutup dropdown.
+     - **Tombol Reset / Clearable**: Tombol silang `(x)` untuk mengosongkan nilai terpilih secara instan tanpa membuka dropdown.
+     - **Auto-Flip Vertikal**: Panel dropdown otomatis mendeteksi batas bawah layar; jika ruang di bawah kurang dari 260px, dropdown terbuka ke atas.
+     - **Indikator Item Aktif**: Item yang terpilih diberi aksen warna brand (`bg-brand-50 text-brand-700`) beserta icon centang `fi fi-rr-check`.
+     - **Status Kosong**: Menampilkan pesan `"Data tidak ditemukan"` jika query pencarian tidak menghasilkan opsi yang cocok.
+  3. **Bridge Sinkronisasi Dua Arah (`x-modelable`) & Kompatibilitas Form**:
+     - Mempertahankan elemen `<select>` native di balik layar (`class="sr-only"`) sehingga pengiriman form standar Laravel (`POST`/`PUT`), validasi Form Request, nilai lama (`old(...)`), dan atribut `required` bekerja tanpa perlu memodifikasi controller backend.
+     - Dilengkapi `MutationObserver` untuk mendeteksi penambahan opsi dinamis dari template Alpine `<template x-for>` atau asynchronous fetch (seperti pada cascading wilayah Provinsi -> Kabupaten -> Kecamatan -> Desa).
+     - Menggunakan `x-modelable="selectedValue"` untuk mendukung *two-way binding* penuh dengan Alpine `x-model` pada komponen induk.
+  4. **Penerapan Menyeluruh di Seluruh Aplikasi**:
+     - **Form Pembuatan Sprindik** (`resources/views/pages/sprindik/create.blade.php`): Pilihan Laporan Kejadian yang sudah final (`perkara_id`).
+     - **Form Pembuatan SPDP** (`resources/views/pages/spdp/create.blade.php`): Pilihan Sprindik yang tersedia.
+     - **Form Data Perkara** (`resources/views/pages/perkara/form.blade.php`): Pilihan PPNS Utama, PPNS Anggota, serta Wilayah TKP (Provinsi, Kabupaten, Kecamatan, Desa).
+     - **Form Tahapan Perkara** (`resources/views/pages/tahapan/form.blade.php`): Pilihan Jenis Tahap lanjutan.
+     - **Form Profil Pengguna** (`resources/views/pages/profile.blade.php`): Wilayah Tempat Tinggal (Provinsi, Kabupaten, Kecamatan, Desa).
+     - **Form Pengaturan Pengguna** (`resources/views/pages/pengaturan/index.blade.php`): Pilihan Jabatan, Bidang, dan Pangkat/Golongan.
+     - **Form Master Data** (`resources/views/pages/master-data/index.blade.php`): Pilihan Asal Kejaksaan pada Jaksa Penuntut.
+  5. **Pengujian Komprehensif**:
+     - Dibuat `tests/Feature/SearchableSelectTest.php` untuk memvalidasi rendering dengan props array, slot `<option>`, binding nilai default/old, status disabled/clearable, serta integrasi pada halaman form.
+- Konsekuensi: Seluruh input select/combobox di BAPTwo kini memiliki fitur pencarian interaktif yang responsif, modern, dan sangat nyaman digunakan untuk data berjumlah besar, dengan 100% keselarasan desain dan tanpa menambah dependensi pihak ketiga.
