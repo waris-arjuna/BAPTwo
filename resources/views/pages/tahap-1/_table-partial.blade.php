@@ -174,7 +174,7 @@
                             @endcan
 
                             @can('create-cases')
-                                @if ($item->isFinal() && $item->jenis_tahap->value === 'tahap_1' && ! $item->berkasPerkara?->hasTahap(\App\Enums\JenisTahap::P21))
+                                @if ($item->isFinal() && $item->jenis_tahap->value === 'tahap_1' && ! $item->berkasPerkara?->hasTahap(\App\Enums\JenisTahap::P21) && ! $item->berkasPerkara?->hasSp3() && $item->berkasPerkara?->status_formal !== 'tidak_selesai')
                                     <a
                                         href="{{ route('berkas-perkara.tahapan.create', [$item->berkas_perkara_id, 'jenis' => 'p21']) }}"
                                         class="inline-flex h-8 items-center gap-1 rounded-lg bg-brand-500 px-2.5 text-xs font-medium text-white transition hover:bg-brand-600"

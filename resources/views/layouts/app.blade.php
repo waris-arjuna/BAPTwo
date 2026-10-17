@@ -120,20 +120,9 @@
         });
     </script>
 
-    <!-- Apply RTL and dark mode immediately to prevent flash -->
+    <!-- Apply dark mode immediately to prevent flash -->
     <script>
         (function() {
-            const savedDir = localStorage.getItem('dir');
-            const savedLocale = localStorage.getItem('locale');
-            if (savedDir) {
-                document.documentElement.setAttribute('dir', savedDir);
-            } else if (savedLocale === 'ar') {
-                document.documentElement.setAttribute('dir', 'rtl');
-            }
-            if (savedLocale) {
-                document.documentElement.setAttribute('lang', savedLocale);
-            }
-
             const savedTheme = localStorage.getItem('theme');
             const isDark = savedTheme === 'dark';
             if (isDark) {
@@ -197,8 +186,32 @@
             </div>
         @endif
 
+        {{-- Global Error Modal (Poin 19) --}}
+        <x-common.error-modal />
+
     </div>
 
+    {{-- Session Inactivity Watcher (Poin 16: 30 menit tanpa interaksi) --}}
+    <script>
+        (function() {
+            const INACTIVITY_TIMEOUT_MS = 30 * 60 * 1000; // 30 menit
+            let inactivityTimer;
+
+            function resetTimer() {
+                clearTimeout(inactivityTimer);
+                inactivityTimer = setTimeout(function() {
+                    window.location.href = "{{ route('signin') }}?session_expired=1";
+                }, INACTIVITY_TIMEOUT_MS);
+            }
+
+            const events = ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart', 'click'];
+            events.forEach(function(evt) {
+                document.addEventListener(evt, resetTimer, true);
+            });
+
+            resetTimer();
+        })();
+    </script>
 </body>
 
 @stack('scripts')

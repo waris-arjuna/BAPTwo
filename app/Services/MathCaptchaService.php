@@ -8,7 +8,7 @@ class MathCaptchaService
 
     public const SESSION_TIME_KEY = 'math_captcha_time';
 
-    public const TTL_SECONDS = 300; // 5 menit
+    public const TTL_SECONDS = 30; // 30 detik
 
     public const WIDTH = 240;
 

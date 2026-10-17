@@ -1,5 +1,5 @@
 <div class="overflow-x-auto">
-    <table class="w-full min-w-[1100px]">
+    <table class="w-full min-w-[1250px]">
         <thead>
             <tr class="border-b border-gray-200 bg-gray-50 dark:border-gray-800 dark:bg-white/[0.02]">
                 <th class="w-12 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
@@ -24,6 +24,10 @@
 
                 <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
                     Tersangka &amp; Berkas
+                </th>
+
+                <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                    Tahap Saat Ini (% progress)
                 </th>
 
                 <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
@@ -130,6 +134,31 @@
                         @endif
                     </td>
 
+                    {{-- Tahap Saat Ini (% progress) (Poin 20) --}}
+                    @php
+                        $berkasUtama = $perkara->berkasPerkaras->first() ?? $perkara->tersangkas->first()?->berkasPerkara;
+                        $hasSp3 = $berkasUtama?->hasSp3() || $berkasUtama?->status_formal === 'tidak_selesai';
+                        $tahapLabel = $berkasUtama?->status_proses ?: ($isLocked ? 'Pra-SPDP' : 'Draft Perkara');
+                        $progressPersen = $berkasUtama?->progress_persen ?? 0;
+                    @endphp
+                    <td class="px-5 py-4">
+                        @if ($hasSp3)
+                            <div class="flex flex-col gap-1">
+                                <span class="text-sm font-semibold text-error-600 dark:text-error-400">
+                                    SP3 ({{ $progressPersen }}%)
+                                </span>
+                                <span class="inline-flex w-fit items-center gap-1 rounded-full bg-error-50 px-2 py-0.5 text-[10px] font-medium text-error-700 dark:bg-error-500/10 dark:text-error-400">
+                                    <i class="fi fi-rr-cross-circle text-[9px]"></i>
+                                    Tidak Selesai
+                                </span>
+                            </div>
+                        @else
+                            <span class="text-sm font-medium text-gray-800 dark:text-white/90">
+                                {{ $tahapLabel }} ({{ $progressPersen }}%)
+                            </span>
+                        @endif
+                    </td>
+
                     <td class="px-5 py-4">
                         @if ($isLocked)
                             <span class="inline-flex items-center gap-1.5 rounded-full bg-success-50 px-3 py-1 text-xs font-medium text-success-700 dark:bg-success-500/10 dark:text-success-400">
@@ -172,75 +201,13 @@
                                     <i class="fi fi-rr-document-signed text-xs text-gray-500"></i>
                                     <span>Lihat Sprindik</span>
                                 </a>
-
-                                @can('soft-delete')
-                                    <button
-                                        type="button"
-                                        @click="confirmDelete = true"
-                                        class="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm text-error-600 transition hover:bg-error-50 dark:text-error-400 dark:hover:bg-error-500/10"
-                                    >
-                                        <i class="fi fi-rr-trash text-xs"></i>
-                                        <span>Hapus</span>
-                                    </button>
-                                @endcan
                             </x-common.table-dropdown>
-
-                            {{-- Modal Konfirmasi Hapus --}}
-                            @can('soft-delete')
-                                <template x-teleport="body">
-                                    <div
-                                        x-show="confirmDelete"
-                                        x-cloak
-                                        class="fixed inset-0 z-99999 flex items-center justify-center overflow-y-auto bg-gray-900/50 p-4 backdrop-blur-sm"
-                                        @keydown.escape.window="confirmDelete = false"
-                                    >
-                                        <div
-                                            @click.outside="confirmDelete = false"
-                                            class="w-full max-w-md rounded-2xl border border-gray-200 bg-white p-6 shadow-xl dark:border-gray-800 dark:bg-gray-900"
-                                        >
-                                            <div class="mb-4 flex items-center gap-3">
-                                                <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-error-50 text-error-500 dark:bg-error-500/10">
-                                                    <i class="fi fi-rr-trash text-lg"></i>
-                                                </div>
-                                                <div>
-                                                    <h3 class="text-base font-semibold text-gray-800 dark:text-white/90">Hapus Perkara</h3>
-                                                    <p class="text-xs text-gray-500 dark:text-gray-400">Tindakan ini menggunakan soft delete.</p>
-                                                </div>
-                                            </div>
-
-                                            <p class="mb-6 text-sm text-gray-600 dark:text-gray-300">
-                                                Yakin ingin menghapus data perkara dari Sprindik <strong>{{ $perkara->nomor_surat_perintah }}</strong>?
-                                            </p>
-
-                                            <div class="flex justify-end gap-3">
-                                                <button
-                                                    type="button"
-                                                    @click="confirmDelete = false"
-                                                    class="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300"
-                                                >
-                                                    Batal
-                                                </button>
-                                                <form action="{{ route('laporan-kejadian.destroy', $perkara) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button
-                                                        type="submit"
-                                                        class="rounded-lg bg-error-600 px-4 py-2 text-sm font-medium text-white hover:bg-error-700"
-                                                    >
-                                                        Ya, Hapus
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </template>
-                            @endcan
                         </div>
                     </td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="8" class="px-5 py-8 text-center text-sm text-gray-500 dark:text-gray-400">
+                    <td colspan="9" class="px-5 py-8 text-center text-sm text-gray-500 dark:text-gray-400">
                         {{ __('No data available.') }}
                     </td>
                 </tr>

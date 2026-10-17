@@ -14,35 +14,61 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
-it('allows all authenticated roles to view all 6 master data submenus', function () {
+it('enforces RBAC for Master Data according to Poin 7', function () {
     $penyidik = User::factory()->penyidik()->create();
     $pimpinan = User::factory()->pimpinan()->create();
     $admin = User::factory()->administrator()->create();
 
-    $types = ['jabatan', 'bidang', 'panggol', 'pasal', 'instansi-hukum', 'jaksa-penuntut'];
+    $allTypes = ['jabatan', 'bidang', 'panggol', 'pasal', 'instansi-hukum', 'jaksa-penuntut'];
 
-    foreach ([$penyidik, $pimpinan, $admin] as $user) {
-        foreach ($types as $type) {
-            $this->actingAs($user)
-                ->get(route('master-data.index', ['type' => $type]))
-                ->assertOk();
-        }
+    // 1. Pemimpin: diblokir total dari semua tipe (403)
+    foreach ($allTypes as $type) {
+        $this->actingAs($pimpinan)
+            ->get(route('master-data.index', ['type' => $type]))
+            ->assertForbidden();
+    }
+
+    // 2. Penyidik: hanya dapat melihat pasal & instansi-hukum; 4 tipe lain diblokir (403)
+    foreach (['pasal', 'instansi-hukum'] as $type) {
+        $this->actingAs($penyidik)
+            ->get(route('master-data.index', ['type' => $type]))
+            ->assertOk();
+    }
+    foreach (['jabatan', 'bidang', 'panggol', 'jaksa-penuntut'] as $type) {
+        $this->actingAs($penyidik)
+            ->get(route('master-data.index', ['type' => $type]))
+            ->assertForbidden();
+    }
+
+    // 3. Administrator: dapat melihat seluruh 6 tipe
+    foreach ($allTypes as $type) {
+        $this->actingAs($admin)
+            ->get(route('master-data.index', ['type' => $type]))
+            ->assertOk();
     }
 });
 
-it('allows Penyidik and Administrator to create, update, soft delete, and restore Master Data while blocking Pimpinan', function () {
+it('allows Penyidik to manage Pasal and Instansi Hukum while Admin can manage all and Pimpinan is blocked', function () {
     $penyidik = User::factory()->penyidik()->create();
     $pimpinan = User::factory()->pimpinan()->create();
+    $admin = User::factory()->administrator()->create();
 
-    // Pimpinan diblokir (403) saat mencoba tambah Master Data
+    // Pimpinan diblokir (403) saat mencoba tambah Master Data apa pun
     $this->actingAs($pimpinan)
-        ->post(route('master-data.store', ['type' => 'jabatan']), [
-            'nama_jabatan' => 'Jabatan Ilegal',
+        ->post(route('master-data.store', ['type' => 'pasal']), [
+            'nama_pasal' => 'UU Ilegal',
         ])
         ->assertForbidden();
 
-    // Penyidik dapat menambah Jabatan, Pasal, Instansi Hukum, dan Jaksa Penuntut
+    // Penyidik diblokir saat mencoba kelola Jabatan (karena hanya Admin yang mengelola)
     $this->actingAs($penyidik)
+        ->post(route('master-data.store', ['type' => 'jabatan']), [
+            'nama_jabatan' => 'Penyidik Madya',
+        ])
+        ->assertForbidden();
+
+    // Admin dapat menambah, update, soft delete, dan restore Jabatan
+    $this->actingAs($admin)
         ->post(route('master-data.store', ['type' => 'jabatan']), [
             'nama_jabatan' => 'Penyidik Madya',
         ])
@@ -51,8 +77,8 @@ it('allows Penyidik and Administrator to create, update, soft delete, and restor
     $jabatan = Jabatan::where('nama_jabatan', 'Penyidik Madya')->first();
     expect($jabatan)->not->toBeNull();
 
-    // Update Jabatan
-    $this->actingAs($penyidik)
+    // Update Jabatan oleh Admin
+    $this->actingAs($admin)
         ->put(route('master-data.update', ['type' => 'jabatan', 'id' => $jabatan->id]), [
             'nama_jabatan' => 'Penyidik Ahli Madya',
         ])
@@ -60,22 +86,22 @@ it('allows Penyidik and Administrator to create, update, soft delete, and restor
 
     expect($jabatan->fresh()->nama_jabatan)->toBe('Penyidik Ahli Madya');
 
-    // Soft Delete Jabatan
-    $this->actingAs($penyidik)
+    // Soft Delete Jabatan oleh Admin
+    $this->actingAs($admin)
         ->delete(route('master-data.destroy', ['type' => 'jabatan', 'id' => $jabatan->id]))
         ->assertRedirect(route('master-data.index', ['type' => 'jabatan']));
 
     expect(Jabatan::find($jabatan->id))->toBeNull()
         ->and(Jabatan::onlyTrashed()->find($jabatan->id))->not->toBeNull();
 
-    // Restore Jabatan
-    $this->actingAs($penyidik)
+    // Restore Jabatan oleh Admin
+    $this->actingAs($admin)
         ->post(route('master-data.restore', ['type' => 'jabatan', 'id' => $jabatan->id]))
         ->assertRedirect(route('master-data.index', ['type' => 'jabatan']));
 
     expect(Jabatan::find($jabatan->id))->not->toBeNull();
 
-    // Tambah Pasal, Instansi Hukum, dan Jaksa Penuntut
+    // Penyidik dapat menambah, mengedit, dan menghapus Pasal dan Instansi Hukum
     $this->actingAs($penyidik)
         ->post(route('master-data.store', ['type' => 'pasal']), [
             'nama_pasal' => 'UU Kesehatan',
@@ -100,7 +126,16 @@ it('allows Penyidik and Administrator to create, update, soft delete, and restor
     $kejari = InstansiHukum::first();
     expect($kejari)->not->toBeNull();
 
+    // Penyidik diblokir mengelola Jaksa Penuntut (Poin 7)
     $this->actingAs($penyidik)
+        ->post(route('master-data.store', ['type' => 'jaksa-penuntut']), [
+            'instansi_hukum_id' => $kejari->id,
+            'nama_jaksa' => 'Hendra Wijaya, S.H.',
+        ])
+        ->assertForbidden();
+
+    // Admin dapat mengelola Jaksa Penuntut
+    $this->actingAs($admin)
         ->post(route('master-data.store', ['type' => 'jaksa-penuntut']), [
             'instansi_hukum_id' => $kejari->id,
             'nama_jaksa' => 'Hendra Wijaya, S.H.',
@@ -198,6 +233,7 @@ it('rejects invalid input character types across Master Data and User Management
 });
 
 it('applies consistent search, status, and date filters across stage tables, Master Data, and User Management', function () {
+    $this->seedBaselineCasesAndStages();
     $admin = User::factory()->administrator()->create(['nama' => 'Admin Utama']);
     $activeUser = User::factory()->penyidik()->create(['nama' => 'Penyidik Aktif', 'is_active' => true]);
     $inactiveUser = User::factory()->penyidik()->create(['nama' => 'Penyidik Pasif', 'is_active' => false]);

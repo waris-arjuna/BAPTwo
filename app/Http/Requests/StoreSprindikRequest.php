@@ -49,7 +49,7 @@ class StoreSprindikRequest extends FormRequest
                 $isDraft ? 'nullable' : 'required',
                 'date',
             ],
-            'dokumen_sprindik' => ['nullable', 'file', 'mimes:pdf', 'max:20480'],
+            'dokumen_sprindik' => ['nullable', 'file', 'mimes:pdf', 'max:5120'],
             'deskripsi' => ['nullable', 'string'],
         ];
     }
@@ -67,7 +67,7 @@ class StoreSprindikRequest extends FormRequest
             'tanggal_sprindik.required' => 'Tanggal sprindik wajib diisi untuk melanjutkan tahap.',
             'tanggal_sprindik.date' => 'Format tanggal sprindik tidak valid.',
             'dokumen_sprindik.mimes' => 'Dokumen sprindik harus berformat PDF.',
-            'dokumen_sprindik.max' => 'Ukuran dokumen sprindik maksimal 20 MB.',
+            'dokumen_sprindik.max' => 'Ukuran dokumen sprindik maksimal 5 MB.',
         ];
     }
 }

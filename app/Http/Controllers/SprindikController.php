@@ -90,8 +90,6 @@ class SprindikController extends Controller
      */
     public function show(mixed $perkara): View
     {
-        $this->perkaraService->ensureBaselinePerkara();
-
         if (! $perkara instanceof Perkara) {
             $perkara = Perkara::find($perkara) ?: new Perkara(['id' => $perkara]);
         }
@@ -147,21 +145,5 @@ class SprindikController extends Controller
         return redirect()
             ->route('sprindik.show', $perkara)
             ->with('success', $message);
-    }
-
-    /**
-     * Hapus / Reset sprindik dari perkara
-     */
-    public function destroy(Request $request, Perkara $perkara): RedirectResponse
-    {
-        abort_if(empty($perkara->nomor_surat_perintah) && empty($perkara->tahap_sprindik_status), 404);
-
-        Gate::authorize('soft-delete');
-
-        $this->perkaraService->removeSprindik($perkara, $request->user());
-
-        return redirect()
-            ->route('sprindik.index')
-            ->with('success', 'Sprindik berhasil dihapus.');
     }
 }

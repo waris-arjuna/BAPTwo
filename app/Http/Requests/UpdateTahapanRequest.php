@@ -52,31 +52,31 @@ class UpdateTahapanRequest extends FormRequest
                 'date',
             ],
             'catatan' => ['nullable', 'string', 'max:2000'],
-            'dokumen' => ['nullable', 'file', 'mimes:pdf', 'max:20480'],
+            'dokumen' => ['nullable', 'file', 'mimes:pdf', 'max:5120'],
 
             // Sub-tahap opsional P-16 (Penunjukan JPU pada SPDP)
             'p16_nomor_surat' => ['nullable', 'string', 'max:150'],
             'p16_tanggal_surat' => ['nullable', 'date'],
             'p16_catatan' => ['nullable', 'string', 'max:2000'],
-            'p16_dokumen' => ['nullable', 'file', 'mimes:pdf', 'max:20480'],
+            'p16_dokumen' => ['nullable', 'file', 'mimes:pdf', 'max:5120'],
 
             // Sub-tahap opsional P-17P (Permintaan Perkembangan pada SPDP)
             'p17p_nomor_surat' => ['nullable', 'string', 'max:150'],
             'p17p_tanggal_surat' => ['nullable', 'date'],
             'p17p_catatan' => ['nullable', 'string', 'max:2000'],
-            'p17p_dokumen' => ['nullable', 'file', 'mimes:pdf', 'max:20480'],
+            'p17p_dokumen' => ['nullable', 'file', 'mimes:pdf', 'max:5120'],
 
             // Sub-tahap opsional P-18P (Hasil Penyidikan Belum Lengkap pada Tahap 1)
             'p18p_nomor_surat' => ['nullable', 'string', 'max:150'],
             'p18p_tanggal_surat' => ['nullable', 'date'],
             'p18p_catatan' => ['nullable', 'string', 'max:2000'],
-            'p18p_dokumen' => ['nullable', 'file', 'mimes:pdf', 'max:20480'],
+            'p18p_dokumen' => ['nullable', 'file', 'mimes:pdf', 'max:5120'],
 
             // Sub-tahap opsional P-19 (Pengembalian Berkas pada Tahap 1)
             'p19_nomor_surat' => ['nullable', 'string', 'max:150'],
             'p19_tanggal_surat' => ['nullable', 'date'],
             'p19_catatan' => ['nullable', 'string', 'max:2000'],
-            'p19_dokumen' => ['nullable', 'file', 'mimes:pdf', 'max:20480'],
+            'p19_dokumen' => ['nullable', 'file', 'mimes:pdf', 'max:5120'],
         ];
     }
 
@@ -91,15 +91,15 @@ class UpdateTahapanRequest extends FormRequest
             'tanggal_surat.required' => 'Tanggal surat / dokumen wajib diisi untuk melanjutkan tahapan.',
             'tanggal_surat.date' => 'Format tanggal surat tidak valid.',
             'dokumen.mimes' => 'Dokumen tahapan harus berupa file PDF.',
-            'dokumen.max' => 'Ukuran dokumen tahapan maksimal 20 MB.',
+            'dokumen.max' => 'Ukuran dokumen tahapan maksimal 5 MB.',
             'p16_dokumen.mimes' => 'Dokumen P-16 harus berupa file PDF.',
-            'p16_dokumen.max' => 'Ukuran dokumen P-16 maksimal 20 MB.',
+            'p16_dokumen.max' => 'Ukuran dokumen P-16 maksimal 5 MB.',
             'p17p_dokumen.mimes' => 'Dokumen P-17 harus berupa file PDF.',
-            'p17p_dokumen.max' => 'Ukuran dokumen P-17 maksimal 20 MB.',
+            'p17p_dokumen.max' => 'Ukuran dokumen P-17 maksimal 5 MB.',
             'p18p_dokumen.mimes' => 'Dokumen P-18 harus berupa file PDF.',
-            'p18p_dokumen.max' => 'Ukuran dokumen P-18 maksimal 20 MB.',
+            'p18p_dokumen.max' => 'Ukuran dokumen P-18 maksimal 5 MB.',
             'p19_dokumen.mimes' => 'Dokumen P-19 harus berupa file PDF.',
-            'p19_dokumen.max' => 'Ukuran dokumen P-19 maksimal 20 MB.',
+            'p19_dokumen.max' => 'Ukuran dokumen P-19 maksimal 5 MB.',
         ];
     }
 }

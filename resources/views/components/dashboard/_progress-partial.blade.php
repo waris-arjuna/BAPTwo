@@ -23,7 +23,7 @@
                     </th>
 
                     <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                        Nomor Perkara
+                        Nomor Berkas / LK
                     </th>
 
                     <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">

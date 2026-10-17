@@ -43,7 +43,7 @@ beforeEach(function () {
     ]);
 });
 
-test('penyidik dapat menerbitkan SP3 dengan nomor surat, tanggal, alasan, dan file PDF valid', function () {
+test('penyidik dapat menerbitkan SP3 dengan nomor surat, tanggal, keterangan, dan file PDF valid', function () {
     Storage::fake('local');
     $pdf = UploadedFile::fake()->create('surat_sp3_resmi.pdf', 800, 'application/pdf');
 
@@ -51,7 +51,6 @@ test('penyidik dapat menerbitkan SP3 dengan nomor surat, tanggal, alasan, dan fi
         ->post(route('berkas-perkara.sp3.store', $this->berkas), [
             'nomor_surat' => 'SPPP/01/BPOM/BJM/2026',
             'tanggal_sp3' => '2026-10-14',
-            'alasan' => 'Tidak diperoleh bukti yang cukup',
             'keterangan' => 'Berdasarkan hasil gelar perkara, alat bukti tidak mencukupi unsur pasal.',
             'dokumen' => $pdf,
         ]);
@@ -67,7 +66,7 @@ test('penyidik dapat menerbitkan SP3 dengan nomor surat, tanggal, alasan, dan fi
     $this->assertDatabaseHas('sp3', [
         'berkas_perkara_id' => $this->berkas->id,
         'nomor_surat' => 'SPPP/01/BPOM/BJM/2026',
-        'alasan' => 'Tidak diperoleh bukti yang cukup',
+        'keterangan' => 'Berdasarkan hasil gelar perkara, alat bukti tidak mencukupi unsur pasal.',
         'created_by' => $this->penyidik->id,
     ]);
 
@@ -94,7 +93,7 @@ test('administrator dapat menerbitkan SP3', function () {
         ->post(route('berkas-perkara.sp3.store', $this->berkas), [
             'nomor_surat' => 'SPPP/ADMIN/01/2026',
             'tanggal_sp3' => '2026-10-14',
-            'alasan' => 'Peristiwa bukan merupakan tindak pidana',
+            'keterangan' => 'Peristiwa bukan merupakan tindak pidana berdasarkan gelar perkara.',
             'dokumen' => $pdf,
         ]);
 
@@ -111,7 +110,7 @@ test('pimpinan dilarang menerbitkan SP3 (403 Forbidden)', function () {
         ->post(route('berkas-perkara.sp3.store', $this->berkas), [
             'nomor_surat' => 'SPPP/02/2026',
             'tanggal_sp3' => '2026-10-14',
-            'alasan' => 'Tidak cukup bukti',
+            'keterangan' => 'Tidak cukup bukti',
             'dokumen' => $pdf,
         ]);
 
@@ -126,11 +125,11 @@ test('validasi input SP3 menolak data kosong dan file non-PDF', function () {
         ->post(route('berkas-perkara.sp3.store', $this->berkas), [
             'nomor_surat' => '',
             'tanggal_sp3' => '',
-            'alasan' => '',
+            'keterangan' => '',
             'dokumen' => $txt,
         ]);
 
-    $response->assertSessionHasErrors(['nomor_surat', 'tanggal_sp3', 'alasan', 'dokumen']);
+    $response->assertSessionHasErrors(['nomor_surat', 'tanggal_sp3', 'keterangan', 'dokumen']);
 });
 
 test('berkas perkara yang telah SP3 dikunci dari penambahan tahapan lanjutan', function () {
@@ -141,7 +140,7 @@ test('berkas perkara yang telah SP3 dikunci dari penambahan tahapan lanjutan', f
         ->post(route('berkas-perkara.sp3.store', $this->berkas), [
             'nomor_surat' => 'SPPP/LOCK/01/2026',
             'tanggal_sp3' => '2026-10-14',
-            'alasan' => 'Dihentikan demi hukum',
+            'keterangan' => 'Dihentikan demi hukum nebis in idem.',
             'dokumen' => $pdf,
         ]);
 
@@ -161,7 +160,7 @@ test('tidak dapat menerbitkan SP3 ganda pada berkas yang sudah diterbitkan SP3',
         ->post(route('berkas-perkara.sp3.store', $this->berkas), [
             'nomor_surat' => 'SPPP/01/2026',
             'tanggal_sp3' => '2026-10-14',
-            'alasan' => 'Tidak cukup bukti',
+            'keterangan' => 'Tidak cukup bukti',
             'dokumen' => $pdf1,
         ]);
 
@@ -169,9 +168,45 @@ test('tidak dapat menerbitkan SP3 ganda pada berkas yang sudah diterbitkan SP3',
         ->post(route('berkas-perkara.sp3.store', $this->berkas), [
             'nomor_surat' => 'SPPP/02/2026',
             'tanggal_sp3' => '2026-10-14',
-            'alasan' => 'Tidak cukup bukti',
+            'keterangan' => 'Tidak cukup bukti',
             'dokumen' => $pdf2,
         ]);
 
     $response->assertSessionHas('error');
+});
+
+test('validasi input SP3 menolak file PDF lebih dari 5 MB (Poin 18)', function () {
+    Storage::fake('local');
+    $largePdf = UploadedFile::fake()->create('sp3_besar.pdf', 6000, 'application/pdf');
+
+    $response = $this->actingAs($this->penyidik)
+        ->post(route('berkas-perkara.sp3.store', $this->berkas), [
+            'nomor_surat' => 'SPPP/LARGE/2026',
+            'tanggal_sp3' => '2026-10-14',
+            'keterangan' => 'Alasan SP3 dengan file besar',
+            'dokumen' => $largePdf,
+        ]);
+
+    $response->assertSessionHasErrors(['dokumen']);
+});
+
+test('perkara berstatus SP3 langsung berstatus proses SP3 dan formal Tidak Selesai (Poin 15 & 22)', function () {
+    Storage::fake('local');
+    $pdf = UploadedFile::fake()->create('surat_sp3.pdf', 500, 'application/pdf');
+
+    $this->actingAs($this->penyidik)
+        ->post(route('berkas-perkara.sp3.store', $this->berkas), [
+            'nomor_surat' => 'SPPP/FINAL/2026',
+            'tanggal_sp3' => '2026-10-14',
+            'keterangan' => 'Alasan SP3 final',
+            'dokumen' => $pdf,
+        ]);
+
+    $this->berkas->refresh();
+    expect($this->berkas->status_proses)->toBe('SP3')
+        ->and($this->berkas->status_formal)->toBe('tidak_selesai');
+
+    $tahapanService = app(TahapanService::class);
+    expect($tahapanService->canProceedTo($this->berkas, \App\Enums\JenisTahap::SPDP))->toBeFalse()
+        ->and($tahapanService->canProceedTo($this->berkas, \App\Enums\JenisTahap::TAHAP_1))->toBeFalse();
 });

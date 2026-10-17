@@ -29,21 +29,58 @@ class AppServiceProvider extends ServiceProvider
         // UC-05: Hanya Administrator yang dapat mengelola pengguna
         Gate::define('manage-users', fn (User $user): bool => $user->isAdmin());
 
-        // PRD Hak Akses: Semua role dapat melihat perkara
+        // PRD Hak Akses: Semua role dapat melihat perkara (termasuk Umum)
         Gate::define('view-cases', fn (User $user): bool => in_array(
             $user->role,
-            [UserRole::PENYIDIK, UserRole::PIMPINAN, UserRole::ADMINISTRATOR],
+            [UserRole::PENYIDIK, UserRole::PIMPINAN, UserRole::ADMINISTRATOR, UserRole::UMUM],
             true
         ));
 
         // PRD Hak Akses: Penyidik & Administrator dapat menambah perkara/berkas; Pimpinan tidak
         Gate::define('create-cases', fn (User $user): bool => $user->isPenyidik() || $user->isAdmin());
 
+        // Poin 10: Hak Akses Ekspor Excel (Hanya Admin dan Penyidik; Pemimpin dan Umum tidak)
+        Gate::define('export-excel', fn (User $user): bool => $user->isPenyidik() || $user->isAdmin());
+
         // PRD F-24 s.d. F-27 & Hak Akses: Toggle DPO (Penyidik & Administrator bisa, Pimpinan tidak)
         Gate::define('toggle-dpo', fn (User $user): bool => $user->isPenyidik() || $user->isAdmin());
 
-        // Master Data: Penyidik & Administrator dapat tambah/edit/soft-delete; Pimpinan hanya lihat
-        Gate::define('manage-master-data', fn (User $user): bool => $user->isPenyidik() || $user->isAdmin());
+        // Poin 7: Master Data RBAC
+        // Pemimpin & Umum: diblokir total
+        // Penyidik: hanya Pasal dan Instansi Hukum
+        // Administrator: seluruh master data
+        Gate::define('view-master-data', function (User $user, ?string $type = null): bool {
+            if ($user->isAdmin()) {
+                return true;
+            }
+
+            if ($user->isPenyidik()) {
+                return $type === null || in_array($type, ['pasal', 'instansi-hukum'], true);
+            }
+
+            return false;
+        });
+
+        Gate::define('manage-master-data', function (User $user, ?string $type = null): bool {
+            if ($user->isAdmin()) {
+                return true;
+            }
+
+            if ($user->isPenyidik()) {
+                return $type === null || in_array($type, ['pasal', 'instansi-hukum'], true);
+            }
+
+            return false;
+        });
+
+        // Poin 20: Halaman Progres Perkara hanya untuk Pemimpin dan Umum. Untuk Penyidik diblokir.
+        Gate::define('view-progress-perkara', function (User $user): bool {
+            if ($user->isPenyidik()) {
+                return false;
+            }
+
+            return $user->isPimpinan() || $user->isUmum() || $user->isAdmin();
+        });
 
         // PRD F-18 & Hak Akses: Edit hanya saat masih Draft; jika sudah lanjut ($isFinalized = true) terkunci mutlak termasuk untuk Administrator
         Gate::define('edit-draft', function (User $user, bool $isFinalized = false): bool {

@@ -643,4 +643,75 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
      - Memvalidasi akses multi-role, eksklusi berkas yang sudah selesai, filter kategori urgensi (siap tahap 2, DPO, mendekati batas, kritis), respons AJAX partial, dan keberadaan submenu di MenuHelper.
 - Konsekuensi: Penyidik dan Pimpinan memiliki instrumen kendali mutu penanganan perkara menjelang penutupan tahun yang terukur, akuntabel, dan transparan.
 
+## D-035 — Implementasi Revisi Aplikasi Manajemen Perkara (22 Poin)
+
+- Tanggal: 2026-10-17
+- Status: Disepakati & Diimplementasikan (Seluruh 22 Poin Selesai Penuh)
+- Konteks: Berdasarkan instruksi pemilik aplikasi untuk menyederhanakan entitas perkara, memperketat validasi dua lapis (UI dan server), merestrukturisasi RBAC, mengoptimalkan tata letak dasbor/tabel, menangani error secara terpadu, dan mengekspor rekap perkara 44 kolom ke Excel.
+- Keputusan:
+  1. **Kelompok A (Login & Sesi)**:
+     - Poin 1: Menghapus tombol "Kembali ke dashboard" pada form login (`signin.blade.php`).
+     - Poin 16: Captcha login kedaluwarsa setelah 30 detik (`MathCaptchaService`) dengan visual alert auto-refresh. Session idle timeout diatur ke 30 menit tanpa interaksi dengan countdown dan auto-redirect ke login. Fitur "Remember me" beserta persistent token dihapus total.
+  2. **Kelompok B (Role & Hak Akses)**:
+     - Poin 7: Master Data dihapus total untuk Pemimpin/Umum (menu hidden, controller 403). Untuk Penyidik, Master Data dibatasi hanya Pasal dan Instansi Hukum. Seluruh Master Data lengkap dikelola oleh Admin.
+     - Poin 20: Menu dan akses halaman Progres Perkara diblokir untuk Penyidik (hanya untuk Pemimpin & Umum).
+  3. **Kelompok C (Form Perkara)**:
+     - Poin 3: Legalitas dan Modus Operandi pada TKP diubah menjadi radio button (2 pilihan).
+     - Poin 4: Provinsi Kalimantan Selatan (kode 63) bersifat read-only dan otomatis memuat kabupaten/kota Kalsel secara berjenjang.
+     - Poin 8: Pemilihan Pasal pada form Perkara menggunakan komponen yang seragam dengan PPNS Anggota (searchable select dengan tag cards yang dapat dihapus).
+     - Poin 9: Jaksa Penuntut diinput ketik manual (teks bebas).
+     - Poin 17: NIK tersangka divalidasi tepat 16 digit angka di UI (`pattern="[0-9]{16}"`, input sanitizer) dan server (`digits:16`).
+  4. **Kelompok D (Tahapan, Dokumen, SP3 & Skema)**:
+     - Poin 2 & 18: Seluruh tahapan wajib diisi dan mewajibkan upload dokumen PDF (maksimal 5 MB) pada saat finalisasi / simpan & lanjut. Pengecualian opsional: P-16, P-17P, P-18P, P-19.
+     - Poin 5: Menghapus kolom `alasan` pada SP3, disatukan menjadi satu field teks `keterangan` (konsisten dengan DPO).
+     - Poin 11 & 13: Perkara dan Berkas Perkara digabung menjadi 1 entitas; identitas penomoran berkas mengikuti nomor Laporan Kejadian (LK).
+     - Poin 14: Penguncian LK dan Sprindik yang sudah dipakai agar tidak dapat dipilih ulang pada berkas lain.
+     - Poin 15 & 22: SP3 bersifat terminal. Penerbitan SP3 langsung mengubah `status_proses` menjadi 'SP3' dan `status_formal` menjadi 'tidak_selesai', serta mengunci penambahan atau pelanjutan tahapan berikutnya.
+     - Poin 21: Tombol menuju tahap berikutnya disembunyikan apabila perkara telah selesai atau berstatus SP3 / tidak selesai.
+     - Penghapusan fitur Delete Perkara: Tidak ada fitur, tombol, atau endpoint hapus Perkara / LK / Sprindik.
+  5. **Kelompok E (Dashboard & Tabel)**:
+     - Poin 6: Tabel daftar berkas diletakkan di posisi paling bawah pada layout dasbor monitoring.
+     - Poin 12: Seluruh tabel daftar mendukung horizontal scroll (`overflow-x-auto` dengan lebar minimum) agar kolom terakhir terlihat penuh.
+     - Poin 20: Menambahkan kolom "Tahap Saat Ini (% progress)" dengan bobot progress tetap (0%, 15%, 55%, 85%, 100%) dan status "Tidak Selesai" untuk SP3.
+  6. **Kelompok G (Error Handling)**:
+     - Poin 19: Global error modal `<x-common.error-modal />` menangani error validasi 422, sesi kedaluwarsa 419, akses ditolak 403, tidak ditemukan 404, server error 500, request timeout, dan offline network tanpa silent failure.
+  7. **Kelompok F (Poin 10 - Export Excel)**:
+     - Mengimplementasikan ekspor rekap perkara 44 kolom ke berkas `.xlsx` (`App\Exports\PerkaraRekapExport` & `PerkaraExportController`) sesuai format resmi:
+       - 1 baris = 1 perkara, diurutkan menurut tanggal LK.
+       - Header 4 baris: Baris 1 merge horizontal/vertikal baris 1-3 untuk kolom mandiri, Baris 2 sub-grup proses penyidikan, Baris 3 detail kolom, Baris 4 penomoran kolom 1-44.
+       - Tipe sel tanggal Excel asli dengan format `dd-mmm-yy` (contoh `11-Mar-26`), nilai kosong `-`, multi-value dipisah baris baru (`\n`) dengan wrap text aktif.
+       - Border tipis pada seluruh sel data, header tebal rata tengah, dan freeze pane di bawah baris 4 (sel A5).
+       - Modal interaktif `<x-common.export-excel-modal />` dengan 3 tab (Per Tahun, Per Bulan, dan Rentang Tanggal ala pemesanan tiket pesawat) di halaman `Daftar Perkara` dan `Seluruh Perkara`.
+       - Hak akses ketat dibatasi hanya untuk Administrator dan Penyidik (Pemimpin dan Umum diblokir via Gate `export-excel`).
+- Konsekuensi: Seluruh 22 poin revisi telah terimplementasi secara lengkap, terintegrasi, dan terverifikasi dengan 100% test pass rate (153 tests).
+
+## D-036 — Pembersihan & Perampingan Repositori (Ponytail Audit Paket A, B, C, D)
+
+- Tanggal: 2026-10-18
+- Status: Disepakati & Diimplementasikan Penuh
+- Konteks: Audit repositori menyeluruh (`/ponytail-audit`) mengidentifikasi dead code, berkas demo bawaan template TailAdmin, package npm yang tidak terpakai, runtime query overhead (auto-seeding), dan media mockup berukuran besar. Pembersihan disepakati dalam 4 paket bertahap.
+- Keputusan:
+  1. **Paket A (Zero-Risk & Instant Win)**:
+     - Menghapus file orphan `config/excel.php` (381 baris dead config).
+     - Menghapus prototype service `app/Services/MockStageService.php` (313 baris).
+     - Menghapus demo controller `app/Http/Controllers/SidebarController.php` (190 baris).
+     - Membersihkan commented code pada `Modal.php`.
+     - Menyederhanakan query `whereNull('status_formal')` di `DashboardService.php`.
+     - Menghapus orphan view 0-byte `spdp/edit.blade.php` dan `tahap-1/edit.blade.php`.
+     - Menghapus demo console command `inspire` dari `routes/console.php`.
+  2. **Paket B (Demo Views & Component Classes)**:
+     - Menghapus 52 berkas komponen demo template: 5 tabel demo (`basic-tables-*`), 12 komponen form demo (`form-elements/*`), 6 widget eCommerce demo, dan 3 kartu profil demo beserta PHP class-nya.
+  3. **Paket C (Frontend Bundle & NPM Dependencies)**:
+     - Memangkas 8 npm package yang tidak digunakan: `@floating-ui/dom`, `@popperjs/core`, `apexcharts`, `fullcalendar`, `jsvectormap`, `prismjs`, `swiper`, `temporal-polyfill`.
+     - Menghapus skrip demo chart, calendar, dan map di `resources/js/components/`.
+     - Merampingkan `resources/js/app.js` ke 21 baris (ukuran JS bundle turun 89% dari 1.27 MB menjadi 134 kB; waktu build dari 4.8s menjadi 1.22s).
+     - Merampingkan `resources/css/app.css` dari 1.326 baris menjadi 715 baris (menghapus duplikasi font/CDN Flaticon dan CSS library pihak ketiga).
+  4. **Paket D (Refactoring Backend & Scaffolding Cleanup)**:
+     - Menghapus runtime auto-seeding overhead (`ensureBaselinePerkara` dan `ensureBaselineTahapan`) dari `PerkaraService`, `TahapanService`, `DashboardService`, dan controller show methods. Memindahkan fixture pengujian ke `tests/TestCase.php` (`seedBaselineCasesAndStages`).
+     - Menghapus legacy RTL & Locale switcher: `LocaleController.php`, `SetLocale.php`, registrasi middleware di `bootstrap/app.php`, route `/locale/{locale}` di `routes/web.php`, serta inline script RTL di `app.blade.php` dan `fullscreen-layout.blade.php`. Mengunci aplikasi pada locale `id` dan `dir="ltr"`.
+     - Menghapus 15 class PHP component zero-logic di `app/View/Components/` (`common/*`, `form/DatePicker`, `header/*`, `ui/*`, serta view `youtube-embed.blade.php`), mempertahankan `TableDropdown.php`.
+     - Memangkas >8 MB media mockup demo: menghapus folder `product/`, `task/`, `video-thumb/`, `support/`, `ai/`, `cards/`, `carousel/`, `grid-image/`, `chat/`, `logistics/`, `country/`, dan avatar mockup `user-01` s.d. `user-37` (hanya mempertahankan `owner.png`).
+- Konsekuensi: Repositori BAPTwo menjadi sangat bersih, ringan, cepat, dan bebas dari sisa template TailAdmin, dengan 100% test lulus (155 tests, 1.614 assertions), lint Pint 100% pass, dan build Vite ultra-cepat (1.22s).
+
+
 

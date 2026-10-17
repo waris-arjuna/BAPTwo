@@ -157,7 +157,7 @@
                                 @endcan
                             @endif
 
-                            @if ($spdp->isFinal() && $spdp->jenis_tahap === \App\Enums\JenisTahap::SPDP && ! $spdp->berkasPerkara?->hasTahap(\App\Enums\JenisTahap::TAHAP_1))
+                            @if ($spdp->isFinal() && $spdp->jenis_tahap === \App\Enums\JenisTahap::SPDP && ! $spdp->berkasPerkara?->hasTahap(\App\Enums\JenisTahap::TAHAP_1) && ! $spdp->berkasPerkara?->hasSp3() && $spdp->berkasPerkara?->status_formal !== 'tidak_selesai')
                                 @can('create-cases')
                                     <a
                                         href="{{ route('berkas-perkara.tahapan.create', [$spdp->berkas_perkara_id, 'jenis' => 'tahap_1']) }}"

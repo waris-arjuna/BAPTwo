@@ -59,6 +59,7 @@ it('blocks Pimpinan from accessing create routes while allowing Penyidik and Adm
 });
 
 it('hides Tambah, Edit, and stage advancement buttons from Pimpinan across index and detail views', function () {
+    $this->seedBaselineCasesAndStages();
     $penyidik = User::factory()->penyidik()->make();
     $pimpinan = User::factory()->pimpinan()->make();
 

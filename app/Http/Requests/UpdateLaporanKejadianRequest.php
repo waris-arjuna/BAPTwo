@@ -44,7 +44,7 @@ class UpdateLaporanKejadianRequest extends FormRequest
                 $isDraft ? 'nullable' : 'required',
                 'date',
             ],
-            'dokumen_laporan' => ['nullable', 'file', 'mimes:pdf', 'max:20480'],
+            'dokumen_laporan' => ['nullable', 'file', 'mimes:pdf', 'max:5120'],
             'deskripsi' => ['nullable', 'string'],
         ];
     }
@@ -60,7 +60,7 @@ class UpdateLaporanKejadianRequest extends FormRequest
             'tanggal_laporan.required' => 'Tanggal laporan kejadian wajib diisi untuk melanjutkan tahap.',
             'tanggal_laporan.date' => 'Format tanggal laporan kejadian tidak valid.',
             'dokumen_laporan.mimes' => 'Dokumen laporan harus berformat PDF.',
-            'dokumen_laporan.max' => 'Ukuran dokumen laporan maksimal 20 MB.',
+            'dokumen_laporan.max' => 'Ukuran dokumen laporan maksimal 5 MB.',
         ];
     }
 }

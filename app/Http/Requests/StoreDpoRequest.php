@@ -25,7 +25,7 @@ class StoreDpoRequest extends FormRequest
             'nomor_surat' => ['required', 'string', 'max:150'],
             'tanggal_penetapan' => ['required', 'date'],
             'keterangan' => ['nullable', 'string', 'max:1000'],
-            'dokumen' => ['nullable', 'file', 'mimes:pdf', 'max:20480'],
+            'dokumen' => ['nullable', 'file', 'mimes:pdf', 'max:5120'],
         ];
     }
 
@@ -40,7 +40,7 @@ class StoreDpoRequest extends FormRequest
             'tanggal_penetapan.required' => 'Tanggal penetapan DPO wajib diisi.',
             'tanggal_penetapan.date' => 'Format tanggal penetapan DPO tidak valid.',
             'dokumen.mimes' => 'File dokumen pendukung DPO wajib berformat PDF.',
-            'dokumen.max' => 'Ukuran file dokumen pendukung DPO maksimal 20 MB.',
+            'dokumen.max' => 'Ukuran file dokumen pendukung DPO maksimal 5 MB.',
         ];
     }
 }

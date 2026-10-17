@@ -6,7 +6,6 @@ use App\Enums\JenisTahap;
 use App\Models\BerkasPerkara;
 use App\Models\Perkara;
 use App\Models\TahapanPerkara;
-use App\Models\Tersangka;
 use DomainException;
 
 class TahapanService
@@ -19,7 +18,7 @@ class TahapanService
      */
     public function getNextAvailableStages(BerkasPerkara $berkas): array
     {
-        if ($berkas->status_formal === 'tidak_selesai') {
+        if ($berkas->status_formal === 'tidak_selesai' || $berkas->hasSp3()) {
             return [];
         }
 
@@ -87,6 +86,14 @@ class TahapanService
      */
     public function validateStageOrder(BerkasPerkara $berkas, JenisTahap $targetTahap): void
     {
+        if ($berkas->hasSp3()) {
+            throw new DomainException('Perkara yang telah diterbitkan SP3 tidak dapat dilanjutkan ke tahap apa pun.');
+        }
+
+        if ($berkas->status_formal === 'tidak_selesai') {
+            throw new DomainException('Berkas perkara dengan status Tidak Selesai tidak dapat dilanjutkan ke tahapan berikutnya.');
+        }
+
         if ($berkas->hasTahap($targetTahap)) {
             throw new DomainException("Tahapan {$targetTahap->label()} sudah pernah dicatat pada Berkas Perkara ini. Satu jenis tahapan maksimal 1 kali.");
         }
@@ -166,6 +173,14 @@ class TahapanService
             $jenisTahap = $existingTahap !== null
                 ? $existingTahap->jenis_tahap
                 : ($data['jenis_tahap'] instanceof JenisTahap ? $data['jenis_tahap'] : JenisTahap::from((string) $data['jenis_tahap']));
+
+            if ($berkas->hasSp3()) {
+                throw new \DomainException('Perkara yang telah diterbitkan SP3 tidak dapat diedit atau dilanjutkan ke tahap apa pun.');
+            }
+
+            if ($berkas->status_formal === 'tidak_selesai') {
+                throw new \DomainException('Berkas perkara dengan status Tidak Selesai tidak dapat diedit atau dilanjutkan ke tahap apa pun.');
+            }
 
             if ($existingTahap !== null) {
                 if ($existingTahap->isFinal()) {
@@ -346,8 +361,6 @@ class TahapanService
      */
     public function getSpdpList(\Illuminate\Http\Request $request, int $perPage = 10): \Illuminate\Pagination\LengthAwarePaginator
     {
-        $this->ensureBaselineTahapan();
-
         $subStage = $request->string('sub_stage', 'all')->trim()->toString();
         $search = $request->string('search')->trim()->toString();
         $status = $request->string('status')->trim()->toString();
@@ -412,6 +425,8 @@ class TahapanService
             ->whereDoesntHave('tahapan', function (\Illuminate\Database\Eloquent\Builder $q) {
                 $q->where('jenis_tahap', JenisTahap::SPDP->value);
             })
+            ->whereDoesntHave('sp3')
+            ->where(fn (\Illuminate\Database\Eloquent\Builder $q) => $q->whereNull('status_formal')->orWhere('status_formal', '!=', 'tidak_selesai'))
             ->with(['perkara', 'tersangka'])
             ->orderByDesc('id')
             ->get();
@@ -424,8 +439,6 @@ class TahapanService
      */
     public function getSpdpTabCounts(): array
     {
-        $this->ensureBaselineTahapan();
-
         $base = TahapanPerkara::query()->whereIn('jenis_tahap', [JenisTahap::SPDP->value, JenisTahap::P16->value, JenisTahap::P17P->value]);
 
         return [
@@ -434,123 +447,6 @@ class TahapanService
             'p16' => (clone $base)->where('jenis_tahap', JenisTahap::P16->value)->count(),
             'p17p' => (clone $base)->where('jenis_tahap', JenisTahap::P17P->value)->count(),
         ];
-    }
-
-    /**
-     * Memastikan baseline data tahapan terisi jika database kosong (misal saat testing dengan RefreshDatabase).
-     */
-    public function ensureBaselineTahapan(): void
-    {
-        if (TahapanPerkara::count() > 0) {
-            return;
-        }
-
-        app(PerkaraService::class)->ensureBaselinePerkara();
-
-        $perkara = Perkara::whereNotNull('tahap_sprindik_status')->first();
-        if (! $perkara) {
-            return;
-        }
-
-        $tersangka = Tersangka::firstOrCreate(
-            ['perkara_id' => $perkara->id, 'nama' => 'Budi Santoso'],
-            ['nik' => '6371012345670001']
-        );
-
-        $berkas = BerkasPerkara::firstOrCreate(
-            ['perkara_id' => $perkara->id, 'tersangka_id' => $tersangka->id],
-            ['nomor_berkas' => 'BP/001/IX/2026/BPOM']
-        );
-
-        TahapanPerkara::create([
-            'id' => 1,
-            'berkas_perkara_id' => $berkas->id,
-            'jenis_tahap' => JenisTahap::SPDP->value,
-            'nomor_surat' => 'SPDP/001/IX/2026',
-            'tanggal_surat' => '2026-09-04',
-            'status' => 'final',
-            'finalized_at' => now(),
-        ]);
-
-        TahapanPerkara::create([
-            'id' => 2,
-            'berkas_perkara_id' => $berkas->id,
-            'jenis_tahap' => JenisTahap::TAHAP_1->value,
-            'nomor_surat' => 'BAP/001/IX/2026',
-            'tanggal_surat' => '2026-09-10',
-            'status' => 'final',
-            'finalized_at' => now(),
-        ]);
-
-        TahapanPerkara::create([
-            'id' => 3,
-            'berkas_perkara_id' => $berkas->id,
-            'jenis_tahap' => JenisTahap::P21->value,
-            'nomor_surat' => 'P-21/001/IX/2026',
-            'tanggal_surat' => '2026-09-20',
-            'status' => 'final',
-            'finalized_at' => now(),
-        ]);
-
-        TahapanPerkara::create([
-            'id' => 4,
-            'berkas_perkara_id' => $berkas->id,
-            'jenis_tahap' => JenisTahap::TAHAP_2->value,
-            'nomor_surat' => 'BA-T2/001/IX/2026',
-            'tanggal_surat' => '2026-09-25',
-            'status' => 'final',
-            'finalized_at' => now(),
-        ]);
-
-        $tersangka2 = Tersangka::firstOrCreate(
-            ['perkara_id' => $perkara->id, 'nama' => 'Siti Aminah'],
-            ['nik' => '6371012345670002']
-        );
-
-        $berkas2 = BerkasPerkara::firstOrCreate(
-            ['perkara_id' => $perkara->id, 'tersangka_id' => $tersangka2->id],
-            ['nomor_berkas' => 'BP/002/IX/2026/BPOM']
-        );
-
-        TahapanPerkara::create([
-            'id' => 5,
-            'berkas_perkara_id' => $berkas2->id,
-            'jenis_tahap' => JenisTahap::SPDP->value,
-            'nomor_surat' => 'SPDP/002/IX/2026',
-            'tanggal_surat' => '2026-09-05',
-            'status' => 'final',
-            'finalized_at' => now(),
-        ]);
-
-        $tersangka3 = Tersangka::firstOrCreate(
-            ['perkara_id' => $perkara->id, 'nama' => 'Ahmad Fauzi'],
-            ['nik' => '6371012345670003']
-        );
-
-        $berkas3 = BerkasPerkara::firstOrCreate(
-            ['perkara_id' => $perkara->id, 'tersangka_id' => $tersangka3->id],
-            ['nomor_berkas' => 'BP/003/IX/2026/BPOM']
-        );
-
-        TahapanPerkara::create([
-            'id' => 6,
-            'berkas_perkara_id' => $berkas3->id,
-            'jenis_tahap' => JenisTahap::SPDP->value,
-            'nomor_surat' => 'SPDP/003/IX/2026',
-            'tanggal_surat' => '2026-09-06',
-            'status' => 'final',
-            'finalized_at' => now(),
-        ]);
-
-        TahapanPerkara::create([
-            'id' => 7,
-            'berkas_perkara_id' => $berkas3->id,
-            'jenis_tahap' => JenisTahap::TAHAP_1->value,
-            'nomor_surat' => 'BAP/002/IX/2026',
-            'tanggal_surat' => '2026-09-12',
-            'status' => 'final',
-            'finalized_at' => now(),
-        ]);
     }
 
     /**
@@ -634,8 +530,6 @@ class TahapanService
      */
     public function getTahap1List(\Illuminate\Http\Request $request, int $perPage = 10): \Illuminate\Pagination\LengthAwarePaginator
     {
-        $this->ensureBaselineTahapan();
-
         $subStage = $request->string('sub_stage', 'all')->trim()->toString();
         $search = $request->string('search')->trim()->toString();
         $status = $request->string('status')->trim()->toString();
@@ -693,8 +587,6 @@ class TahapanService
      */
     public function getTahap1TabCounts(): array
     {
-        $this->ensureBaselineTahapan();
-
         $base = TahapanPerkara::query()->whereIn('jenis_tahap', [JenisTahap::TAHAP_1->value, JenisTahap::P18P->value, JenisTahap::P19->value]);
 
         return [
@@ -719,6 +611,8 @@ class TahapanService
             ->whereDoesntHave('tahapan', function (\Illuminate\Database\Eloquent\Builder $q) {
                 $q->where('jenis_tahap', JenisTahap::TAHAP_1->value);
             })
+            ->whereDoesntHave('sp3')
+            ->where(fn (\Illuminate\Database\Eloquent\Builder $q) => $q->whereNull('status_formal')->orWhere('status_formal', '!=', 'tidak_selesai'))
             ->with(['perkara', 'tersangka'])
             ->orderByDesc('id')
             ->get();
@@ -729,8 +623,6 @@ class TahapanService
      */
     public function getP21List(\Illuminate\Http\Request $request, int $perPage = 10): \Illuminate\Pagination\LengthAwarePaginator
     {
-        $this->ensureBaselineTahapan();
-
         $search = $request->string('search')->trim()->toString();
         $status = $request->string('status')->trim()->toString();
         $tanggalDari = $request->string('tanggal_dari', $request->string('tanggal')->toString())->trim()->toString();
@@ -791,6 +683,8 @@ class TahapanService
             ->whereDoesntHave('tahapan', function (\Illuminate\Database\Eloquent\Builder $q) {
                 $q->where('jenis_tahap', JenisTahap::P21->value);
             })
+            ->whereDoesntHave('sp3')
+            ->where(fn (\Illuminate\Database\Eloquent\Builder $q) => $q->whereNull('status_formal')->orWhere('status_formal', '!=', 'tidak_selesai'))
             ->with(['perkara', 'tersangka'])
             ->orderByDesc('id')
             ->get();
@@ -801,8 +695,6 @@ class TahapanService
      */
     public function getTahap2List(\Illuminate\Http\Request $request, int $perPage = 10): \Illuminate\Pagination\LengthAwarePaginator
     {
-        $this->ensureBaselineTahapan();
-
         $search = $request->string('search')->trim()->toString();
         $status = $request->string('status')->trim()->toString();
         $tanggalDari = $request->string('tanggal_dari', $request->string('tanggal')->toString())->trim()->toString();
@@ -863,6 +755,9 @@ class TahapanService
             ->whereDoesntHave('tahapan', function (\Illuminate\Database\Eloquent\Builder $q) {
                 $q->where('jenis_tahap', JenisTahap::TAHAP_2->value);
             })
+            ->whereDoesntHave('sp3')
+            ->where(fn (\Illuminate\Database\Eloquent\Builder $q) => $q->whereNull('status_formal')->orWhere('status_formal', '!=', 'tidak_selesai'))
+            ->where('is_dpo', false)
             ->with(['perkara', 'tersangka'])
             ->orderByDesc('id')
             ->get();
@@ -873,8 +768,6 @@ class TahapanService
      */
     public function getPutusanPerkaraList(\Illuminate\Http\Request $request, int $perPage = 10): \Illuminate\Pagination\LengthAwarePaginator
     {
-        $this->ensureBaselineTahapan();
-
         $search = $request->string('search')->trim()->toString();
         $status = $request->string('status')->trim()->toString();
         $tanggalDari = $request->string('tanggal_dari', $request->string('tanggal')->toString())->trim()->toString();
@@ -935,6 +828,8 @@ class TahapanService
             ->whereDoesntHave('tahapan', function (\Illuminate\Database\Eloquent\Builder $q) {
                 $q->where('jenis_tahap', JenisTahap::KEPUTUSAN_PENGADILAN->value);
             })
+            ->whereDoesntHave('sp3')
+            ->where(fn (\Illuminate\Database\Eloquent\Builder $q) => $q->whereNull('status_formal')->orWhere('status_formal', '!=', 'tidak_selesai'))
             ->with(['perkara', 'tersangka'])
             ->orderByDesc('id')
             ->get();

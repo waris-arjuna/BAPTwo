@@ -144,6 +144,7 @@ test('penyimpan Tahap 1 sekaligus menyimpan sub-tahap P-18 dan P-19 dalam satu f
         'jenis_tahap' => 'tahap_1',
         'nomor_surat' => 'BAP/01/X/2026',
         'tanggal_surat' => '2026-10-12',
+        'dokumen' => UploadedFile::fake()->create('tahap1.pdf', 300, 'application/pdf'),
         'action_type' => 'lanjut',
 
         // Sub-tahap P-18
@@ -223,6 +224,7 @@ test('finalisasi Tahap 2 memicu status formal Selesai dan progress 100 persen', 
         'jenis_tahap' => 'tahap_2',
         'nomor_surat' => 'BA-PELIMPAHAN/01/X/2026',
         'tanggal_surat' => '2026-10-25',
+        'dokumen' => UploadedFile::fake()->create('tahap2.pdf', 300, 'application/pdf'),
         'action_type' => 'lanjut',
     ]);
 

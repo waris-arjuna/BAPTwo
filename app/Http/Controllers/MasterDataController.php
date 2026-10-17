@@ -18,12 +18,16 @@ class MasterDataController extends Controller
 
     public function redirectDefault(): RedirectResponse
     {
-        return redirect()->route('master-data.index', ['type' => 'jabatan']);
+        Gate::authorize('view-master-data');
+
+        $defaultType = auth()->user()?->isPenyidik() ? 'pasal' : 'jabatan';
+
+        return redirect()->route('master-data.index', ['type' => $defaultType]);
     }
 
     public function index(Request $request, string $type): View
     {
-        Gate::authorize('view-cases');
+        Gate::authorize('view-master-data', $type);
 
         $meta = $this->masterDataService->getMeta($type);
         $search = $request->string('search')->trim()->toString();
@@ -34,11 +38,16 @@ class MasterDataController extends Controller
             ? InstansiHukum::where('jenis', 'kejaksaan')->orderBy('nama')->get()
             : collect();
 
+        // Poin 7: Jika Penyidik, hanya tampilkan tab Pasal & Instansi Hukum
+        $visibleTypes = auth()->user()?->isPenyidik()
+            ? array_intersect_key(MasterDataService::TYPES, array_flip(['pasal', 'instansi-hukum']))
+            : MasterDataService::TYPES;
+
         if ($request->header('X-Filter-Partial')) {
             return view('pages.master-data._table-partial', [
                 'type' => $type,
                 'records' => $records,
-                'canManage' => Gate::allows('manage-master-data'),
+                'canManage' => Gate::allows('manage-master-data', $type),
             ]);
         }
 
@@ -46,17 +55,19 @@ class MasterDataController extends Controller
             'title' => __($meta['title']),
             'type' => $type,
             'meta' => $meta,
-            'allTypes' => MasterDataService::TYPES,
+            'allTypes' => $visibleTypes,
             'records' => $records,
             'search' => $search,
             'status' => $status,
             'kejaksaanList' => $kejaksaanList,
-            'canManage' => Gate::allows('manage-master-data'),
+            'canManage' => Gate::allows('manage-master-data', $type),
         ]);
     }
 
     public function store(SaveMasterDataRequest $request, string $type): RedirectResponse
     {
+        Gate::authorize('manage-master-data', $type);
+
         $meta = $this->masterDataService->getMeta($type);
         $this->masterDataService->create($type, $request->validated(), $request->user()?->id);
 
@@ -67,6 +78,8 @@ class MasterDataController extends Controller
 
     public function update(SaveMasterDataRequest $request, string $type, int $id): RedirectResponse
     {
+        Gate::authorize('manage-master-data', $type);
+
         $meta = $this->masterDataService->getMeta($type);
         $this->masterDataService->update($type, $id, $request->validated(), $request->user()?->id);
 
@@ -77,7 +90,7 @@ class MasterDataController extends Controller
 
     public function destroy(Request $request, string $type, int $id): RedirectResponse
     {
-        Gate::authorize('manage-master-data');
+        Gate::authorize('manage-master-data', $type);
 
         $meta = $this->masterDataService->getMeta($type);
         $this->masterDataService->softDelete($type, $id);
@@ -89,7 +102,7 @@ class MasterDataController extends Controller
 
     public function restore(Request $request, string $type, int $id): RedirectResponse
     {
-        Gate::authorize('manage-master-data');
+        Gate::authorize('manage-master-data', $type);
 
         $meta = $this->masterDataService->getMeta($type);
         $this->masterDataService->restore($type, $id);

@@ -145,69 +145,7 @@
                                         <span>Edit Draft</span>
                                     </a>
                                 @endcan
-
-                                @can('soft-delete')
-                                    <button
-                                        type="button"
-                                        @click="confirmDelete = true"
-                                        class="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm text-error-600 transition hover:bg-error-50 dark:text-error-400 dark:hover:bg-error-500/10"
-                                    >
-                                        <i class="fi fi-rr-trash text-xs"></i>
-                                        <span>Hapus Sprindik</span>
-                                    </button>
-                                @endcan
                             </x-common.table-dropdown>
-
-                            {{-- Modal Konfirmasi Hapus --}}
-                            @can('soft-delete')
-                                <template x-teleport="body">
-                                    <div
-                                        x-show="confirmDelete"
-                                        x-cloak
-                                        class="fixed inset-0 z-99999 flex items-center justify-center overflow-y-auto bg-gray-900/50 p-4 backdrop-blur-sm"
-                                        @keydown.escape.window="confirmDelete = false"
-                                    >
-                                        <div
-                                            @click.outside="confirmDelete = false"
-                                            class="w-full max-w-md rounded-2xl border border-gray-200 bg-white p-6 shadow-xl dark:border-gray-800 dark:bg-gray-900"
-                                        >
-                                            <div class="mb-4 flex items-center gap-3">
-                                                <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-error-50 text-error-500 dark:bg-error-500/10">
-                                                    <i class="fi fi-rr-trash text-lg"></i>
-                                                </div>
-                                                <div>
-                                                    <h3 class="text-base font-semibold text-gray-800 dark:text-white/90">Hapus Sprindik</h3>
-                                                    <p class="text-xs text-gray-500 dark:text-gray-400">Data nomor sprindik dan dokumen sprindik akan direset.</p>
-                                                </div>
-                                            </div>
-
-                                            <p class="mb-6 text-sm text-gray-600 dark:text-gray-300">
-                                                Yakin ingin menghapus sprindik <strong>{{ $sprindik->nomor_surat_perintah }}</strong> dari perkara ini?
-                                            </p>
-
-                                            <div class="flex justify-end gap-3">
-                                                <button
-                                                    type="button"
-                                                    @click="confirmDelete = false"
-                                                    class="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300"
-                                                >
-                                                    Batal
-                                                </button>
-                                                <form action="{{ route('sprindik.destroy', $sprindik) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button
-                                                        type="submit"
-                                                        class="rounded-lg bg-error-600 px-4 py-2 text-sm font-medium text-white hover:bg-error-700"
-                                                    >
-                                                        Ya, Hapus
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </template>
-                            @endcan
                         </div>
                     </td>
                 </tr>

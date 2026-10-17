@@ -138,7 +138,7 @@
                             @endcan
 
                             @can('create-cases')
-                                @if ($item->isFinal() && ! $item->berkasPerkara?->hasTahap(\App\Enums\JenisTahap::KEPUTUSAN_PENGADILAN))
+                                @if ($item->isFinal() && ! $item->berkasPerkara?->hasTahap(\App\Enums\JenisTahap::KEPUTUSAN_PENGADILAN) && ! $item->berkasPerkara?->hasSp3() && $item->berkasPerkara?->status_formal !== 'tidak_selesai')
                                     <a
                                         href="{{ route('berkas-perkara.tahapan.create', [$item->berkas_perkara_id, 'jenis' => 'keputusan_pengadilan']) }}"
                                         class="inline-flex h-8 items-center gap-1 rounded-lg bg-brand-500 px-2.5 text-xs font-medium text-white transition hover:bg-brand-600"

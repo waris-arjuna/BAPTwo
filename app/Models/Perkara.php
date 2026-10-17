@@ -108,6 +108,14 @@ class Perkara extends Model
     }
 
     /**
+     * @return HasMany<BerkasPerkara, $this>
+     */
+    public function berkasPerkara(): HasMany
+    {
+        return $this->berkasPerkaras();
+    }
+
+    /**
      * @return HasMany<Dokumen, $this>
      */
     public function dokumen(): HasMany

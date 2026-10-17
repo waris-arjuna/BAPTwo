@@ -155,4 +155,12 @@ _(kosong)_
 - [x] T-044 — 2026-10-17 Halaman Sampah (Trash) & Pemulihan Data Soft Delete Tanpa Hard Delete (PRD F-44, D-032)
 - [x] T-050 — 2026-10-17 Halaman Seluruh Perkara (dengan 5 Card Statistik), Hub Pencarian Cepat Multi-Kriteria, dan Pembaruan Struktur Navigasi Menu untuk Role Pimpinan & Umum (PRD F-38, F-39, D-033)
 - [x] T-052 — 2026-10-17 Dashboard Monitoring Potensi Terlimpah & Peringatan Dini Batas Waktu Akhir Tahun (PRD F-41, D-034)
+- [x] T-060 — 2026-10-17 Paket Revisi Manajemen Perkara 22 Poin Lengkap (Kelompok A, B, C, D, E, F, G; Seluruh Poin 1–22 Selesai Penuh) (ref: D-035)
+  - [x] Kelompok A (Poin 1, 16): Hapus tombol kembali ke dashboard, Captcha TTL 30 detik + visual alert, Inaktivitas sesi 30 menit auto-redirect, Hapus Remember Me.
+  - [x] Kelompok B (Poin 7, 20): RBAC Master Data (Pemimpin diblokir, Penyidik hanya Pasal & Instansi Hukum, Admin penuh); Blokir menu & akses Progress Perkara bagi Penyidik.
+  - [x] Kelompok C (Poin 3, 4, 8, 9, 17): Radio button Legalitas & Modus Operandi; Provinsi Kalsel read-only; Pasal combobox identik PPNS Anggota; Jaksa input bebas; NIK tepat 16 digit.
+  - [x] Kelompok D (Poin 2, 5, 11, 13, 14, 15, 18, 21, 22): Dokumen PDF wajib & max 5 MB; Penggabungan 1 Perkara = 1 Berkas Perkara dengan nomor LK; Hapus hapus perkara; Penguncian satu kali pakai LK & Sprindik; SP3 terminal teks manual & status Tidak Selesai; Tombol tahap berikutnya disembunyikan jika tuntas/SP3.
+  - [x] Kelompok E (Poin 6, 12, 20): Tabel dashboard di paling bawah; Horizontal scroll penuh tabel; Kolom "Tahap Saat Ini (% progress)".
+  - [x] Kelompok G (Poin 19): Modal & alert penanganan error terpadu tanpa silent fail (422, 419, 403, 404, 500, timeout, offline).
+  - [x] Kelompok F (Poin 10): Ekspor Rekap Perkara 44 Kolom (.xlsx) terurut tanggal LK, 4 baris header, sel tanggal Excel dd-mmm-yy, nilai kosong -, wrap text multi-value, border, freeze pane A5, modal 3 tab (Tahun, Bulan, Rentang Tanggal tiket pesawat), hak akses khusus Admin & Penyidik.
 

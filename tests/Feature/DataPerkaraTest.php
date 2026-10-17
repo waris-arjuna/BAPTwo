@@ -10,21 +10,28 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
-it('renders Data Perkara dropdown menu with Daftar Perkara and Progress Perkara in MenuHelper', function () {
+it('renders Data Perkara dropdown menu with role-based visibility according to Poin 20', function () {
+    $pimpinan = User::factory()->pimpinan()->create();
+    $penyidik = User::factory()->penyidik()->create();
+
+    // Untuk Pimpinan & Admin: terdapat Progress Perkara
+    $this->actingAs($pimpinan);
     $menuGroups = MenuHelper::getMenuGroups();
-
     $perkaraGroup = collect($menuGroups)->firstWhere('title', 'Perkara');
-    expect($perkaraGroup)->not->toBeNull();
-
     $dataPerkaraItem = collect($perkaraGroup['items'])->firstWhere('name', 'Data Perkara');
-    expect($dataPerkaraItem)->not->toBeNull()
-        ->and($dataPerkaraItem['subItems'])->toHaveCount(3)
+    expect($dataPerkaraItem['subItems'])->toHaveCount(3)
         ->and($dataPerkaraItem['subItems'][0]['name'])->toBe('Daftar Perkara')
-        ->and($dataPerkaraItem['subItems'][0]['path'])->toBe('/data-perkara')
         ->and($dataPerkaraItem['subItems'][1]['name'])->toBe('Progress Perkara')
-        ->and($dataPerkaraItem['subItems'][1]['path'])->toBe('/progress-perkara')
-        ->and($dataPerkaraItem['subItems'][2]['name'])->toBe('Potensi Terlimpah')
-        ->and($dataPerkaraItem['subItems'][2]['path'])->toBe('/potensi-terlimpah');
+        ->and($dataPerkaraItem['subItems'][2]['name'])->toBe('Potensi Terlimpah');
+
+    // Untuk Penyidik: Progress Perkara disembunyikan (Poin 20)
+    $this->actingAs($penyidik);
+    $menuGroupsPenyidik = MenuHelper::getMenuGroups();
+    $perkaraGroupPenyidik = collect($menuGroupsPenyidik)->firstWhere('title', 'Perkara');
+    $dataPerkaraItemPenyidik = collect($perkaraGroupPenyidik['items'])->firstWhere('name', 'Data Perkara');
+    expect($dataPerkaraItemPenyidik['subItems'])->toHaveCount(2)
+        ->and($dataPerkaraItemPenyidik['subItems'][0]['name'])->toBe('Daftar Perkara')
+        ->and($dataPerkaraItemPenyidik['subItems'][1]['name'])->toBe('Potensi Terlimpah');
 });
 
 it('allows authenticated users to view Daftar Perkara and shows Tambah Perkara modal only for authorized roles', function () {
@@ -130,6 +137,7 @@ it('supports AJAX live filtering on Daftar Perkara table', function () {
 
 it('allows authenticated users to view Progress Perkara and filter by status', function () {
     $penyidik = User::factory()->penyidik()->create();
+    $pimpinan = User::factory()->pimpinan()->create();
 
     $perkara = Perkara::create([
         'nomor_laporan_kejadian' => 'LK/PROG-01/X/2026',
@@ -165,8 +173,13 @@ it('allows authenticated users to view Progress Perkara and filter by status', f
     ]);
     $berkas->pasals()->attach($pasal->id);
 
-    // Full page view
+    // Penyidik diblokir (403 Forbidden) sesuai Poin 20
     $this->actingAs($penyidik)
+        ->get(route('progress-perkara.index'))
+        ->assertForbidden();
+
+    // Pemimpin diizinkan (200 OK) sesuai Poin 20
+    $this->actingAs($pimpinan)
         ->get(route('progress-perkara.index'))
         ->assertOk()
         ->assertSee('Progress Perkara')
@@ -175,8 +188,8 @@ it('allows authenticated users to view Progress Perkara and filter by status', f
         ->assertSee('55%')
         ->assertSee('Dalam Proses');
 
-    // Partial AJAX filter view
-    $response = $this->actingAs($penyidik)
+    // Partial AJAX filter view oleh Pemimpin
+    $response = $this->actingAs($pimpinan)
         ->withHeader('X-Filter-Partial', '1')
         ->get(route('progress-perkara.index', ['status' => 'Dalam Proses']));
 

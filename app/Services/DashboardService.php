@@ -21,8 +21,6 @@ class DashboardService
      */
     public function getStatistics(?int $tahun = null): array
     {
-        $this->tahapanService->ensureBaselineTahapan();
-
         $tahun = $tahun ?: (int) date('Y');
 
         // Total Perkara tahun berjalan
@@ -40,10 +38,7 @@ class DashboardService
 
         // Berkas Berjalan (belum berstatus formal selesai maupun tidak selesai)
         $berkasBerjalan = BerkasPerkara::query()
-            ->where(function ($q) {
-                $q->whereNull('status_formal')
-                    ->orWhere('status_formal', 'dalam_proses');
-            })
+            ->whereNull('status_formal')
             ->count();
 
         // Menunggu Verifikasi / Tindakan Penyidik (memiliki draft aktif atau baru SPDP)
@@ -117,8 +112,6 @@ class DashboardService
      */
     public function getCaseStatusData(?int $tahun = null): array
     {
-        $this->tahapanService->ensureBaselineTahapan();
-
         $total = BerkasPerkara::count();
 
         $selesai = BerkasPerkara::where('status_formal', 'selesai')->count();
@@ -150,8 +143,6 @@ class DashboardService
      */
     public function getStageAverageDays(?int $tahun = null): array
     {
-        $this->tahapanService->ensureBaselineTahapan();
-
         return [
             [
                 'name' => 'SPDP',
@@ -179,8 +170,6 @@ class DashboardService
      */
     public function getPriorityProgressPerkara(Request $request, int $limit = 5): array
     {
-        $this->tahapanService->ensureBaselineTahapan();
-
         $search = $request->string('search')->trim()->toString();
         $status = $request->string('status')->trim()->toString();
         $tanggalDari = $request->string('tanggal_dari', $request->string('tanggal')->toString())->trim()->toString();

@@ -182,13 +182,19 @@
                         </span>
 
                         @can('create-cases')
-                            <a
-                                href="{{ route('spdp.create') }}"
-                                class="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-brand-500 px-4 text-sm font-medium text-white transition hover:bg-brand-600"
-                            >
-                                <i class="fi fi-rr-arrow-right text-sm"></i>
-                                <span>Lanjut ke Tahap SPDP</span>
-                            </a>
+                            @php
+                                $firstBerkas = $perkara->berkasPerkara?->first() ?? $perkara->tersangkas?->first()?->berkasPerkara;
+                                $hideSpdpBtn = $firstBerkas && ($firstBerkas->hasTahap(\App\Enums\JenisTahap::SPDP) || $firstBerkas->hasSp3() || $firstBerkas->status_formal === 'tidak_selesai');
+                            @endphp
+                            @if (! $hideSpdpBtn)
+                                <a
+                                    href="{{ route('spdp.create') }}"
+                                    class="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-brand-500 px-4 text-sm font-medium text-white transition hover:bg-brand-600"
+                                >
+                                    <i class="fi fi-rr-arrow-right text-sm"></i>
+                                    <span>Lanjut ke Tahap SPDP</span>
+                                </a>
+                            @endif
                         @endcan
                     @endif
 
@@ -1109,43 +1115,25 @@
                     </div>
 
                     <div>
-                        <label for="sp3_alasan" class="mb-1.5 block text-xs font-medium text-gray-700 dark:text-gray-300">
-                            Alasan Penghentian Penyidikan <span class="text-red-500">*</span>
-                        </label>
-                        <select
-                            id="sp3_alasan"
-                            name="alasan"
-                            required
-                            class="h-10 w-full rounded-lg border border-gray-300 bg-white px-3 text-sm text-gray-800 shadow-theme-xs outline-none transition focus:border-red-500 focus:ring-2 focus:ring-red-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
-                        >
-                            <option value="">Pilih Alasan Penghentian...</option>
-                            <option value="Tidak diperoleh bukti yang cukup">Tidak diperoleh bukti yang cukup (Pasal 109 ayat 2 KUHAP)</option>
-                            <option value="Peristiwa bukan merupakan tindak pidana">Peristiwa bukan merupakan tindak pidana (Pasal 109 ayat 2 KUHAP)</option>
-                            <option value="Dihentikan demi hukum (nebis in idem / daluwarsa / tersangka meninggal dunia)">Dihentikan demi hukum (nebis in idem / daluwarsa / tersangka meninggal dunia)</option>
-                            <option value="Penyelesaian melalui Keadilan Restoratif (Restorative Justice)">Penyelesaian melalui Keadilan Restoratif (Restorative Justice)</option>
-                            <option value="Alasan lainnya">Alasan lainnya</option>
-                        </select>
-                    </div>
-
-                    <div>
                         <x-form.pdf-upload
                             id="sp3_dokumen"
                             name="dokumen"
                             label="Dokumen Fisik SP3 (PDF)"
                             required="true"
-                            helperText="Wajib format PDF murni (Maksimal 20 MB)."
+                            helperText="Wajib format PDF murni (Maksimal 5 MB)."
                         />
                     </div>
 
                     <div>
                         <label for="sp3_keterangan" class="mb-1.5 block text-xs font-medium text-gray-700 dark:text-gray-300">
-                            Keterangan / Pertimbangan Hukum
+                            Alasan &amp; Catatan Penghentian Penyidikan <span class="text-red-500">*</span>
                         </label>
                         <textarea
                             id="sp3_keterangan"
                             name="keterangan"
-                            rows="3"
-                            placeholder="Tuliskan pertimbangan hukum atau kronologi penghentian (opsional)..."
+                            required
+                            rows="4"
+                            placeholder="Tuliskan alasan penghentian penyidikan beserta pertimbangan hukum / catatan kronologis..."
                             class="w-full rounded-lg border border-gray-300 bg-white p-3 text-sm text-gray-800 shadow-theme-xs outline-none transition placeholder:text-gray-400 focus:border-red-500 focus:ring-2 focus:ring-red-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-gray-500"
                         ></textarea>
                     </div>

@@ -6,14 +6,29 @@
 
 @section('content')
     <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
-        {{-- Breadcrumb --}}
-        <x-common.page-breadcrumb
-            pageTitle="Seluruh Perkara"
-            :breadcrumbs="[
-                ['title' => 'Menu Utama', 'url' => route('dashboard')],
-                ['title' => 'Seluruh Perkara', 'url' => ''],
-            ]"
-        />
+        {{-- Header & Breadcrumb --}}
+        <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <x-common.page-breadcrumb
+                pageTitle="Seluruh Perkara"
+                :breadcrumbs="[
+                    ['title' => 'Menu Utama', 'url' => route('dashboard')],
+                    ['title' => 'Seluruh Perkara', 'url' => ''],
+                ]"
+            />
+
+            @can('export-excel')
+                <div>
+                    <button
+                        type="button"
+                        @click="$dispatch('open-export-modal')"
+                        class="inline-flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-theme-xs transition hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
+                    >
+                        <i class="fi fi-rr-file-excel text-base text-success-600 dark:text-success-400"></i>
+                        <span>Ekspor Excel</span>
+                    </button>
+                </div>
+            @endcan
+        </div>
 
         {{-- 5 Kartu Statistik Ringkasan Perkara (PRD F-38, F-40) --}}
         <div class="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5 md:gap-5">
@@ -104,4 +119,7 @@
             </div>
         </div>
     </div>
+
+    {{-- Modal Ekspor Excel --}}
+    <x-common.export-excel-modal />
 @endsection

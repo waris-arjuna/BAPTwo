@@ -14,46 +14,31 @@
         'pangkat' => $u->pangkat ?? '-',
     ])->values()->all();
 
-    $initialTersangka = old('tersangka');
-    if (! is_array($initialTersangka) || empty($initialTersangka)) {
-        if ($perkara->tersangkas->isNotEmpty()) {
-            $initialTersangka = $perkara->tersangkas->map(function ($tersangka) {
-                return [
-                    'id' => $tersangka->id,
-                    'nomor_berkas' => $tersangka->berkasPerkara?->nomor_berkas ?? '',
-                    'nama' => $tersangka->nama ?? '',
-                    'alias' => $tersangka->alias ?? '',
-                    'bin_binti' => $tersangka->bin_binti ?? '',
-                    'nik' => $tersangka->nik ?? '',
-                    'tempat_lahir' => $tersangka->tempat_lahir ?? '',
-                    'tanggal_lahir' => $tersangka->tanggal_lahir?->format('Y-m-d') ?? '',
-                    'jenis_kelamin' => $tersangka->jenis_kelamin ?? '',
-                    'agama' => $tersangka->agama ?? '',
-                    'pekerjaan' => $tersangka->pekerjaan ?? '',
-                    'kewarganegaraan' => $tersangka->kewarganegaraan ?? 'WNI',
-                    'pasal_ids' => $tersangka->berkasPerkara?->pasals->pluck('id')->map(fn ($id) => (int) $id)->all() ?? [],
-                ];
-            })->values()->all();
-        } else {
-            $initialTersangka = [
-                [
-                    'id' => null,
-                    'nomor_berkas' => '',
-                    'nama' => '',
-                    'alias' => '',
-                    'bin_binti' => '',
-                    'nik' => '',
-                    'tempat_lahir' => '',
-                    'tanggal_lahir' => '',
-                    'jenis_kelamin' => '',
-                    'agama' => '',
-                    'pekerjaan' => '',
-                    'kewarganegaraan' => 'WNI',
-                    'pasal_ids' => [],
-                ],
-            ];
-        }
-    }
+    $pasalJsonList = $pasalList->map(fn ($p) => [
+        'id' => (int) $p->id,
+        'label' => $p->label(),
+        'isi' => $p->isi ?? '',
+    ])->values()->all();
+
+    $firstTersangka = $perkara->tersangkas->first();
+    $firstBerkas = $firstTersangka?->berkasPerkara ?? $perkara->berkasPerkaras->first();
+
+    $oldTersangka = old('tersangka.0', []);
+    $tersangkaId = old('tersangka_id', $oldTersangka['id'] ?? $firstTersangka?->id);
+    $tersangkaNama = old('tersangka_nama', $oldTersangka['nama'] ?? ($firstTersangka?->nama ?? ''));
+    $tersangkaAlias = old('tersangka_alias', $oldTersangka['alias'] ?? ($firstTersangka?->alias ?? ''));
+    $tersangkaBinBinti = old('tersangka_bin_binti', $oldTersangka['bin_binti'] ?? ($firstTersangka?->bin_binti ?? ''));
+    $tersangkaNik = old('tersangka_nik', $oldTersangka['nik'] ?? ($firstTersangka?->nik ?? ''));
+    $tersangkaTempatLahir = old('tersangka_tempat_lahir', $oldTersangka['tempat_lahir'] ?? ($firstTersangka?->tempat_lahir ?? ''));
+    $tersangkaTanggalLahir = old('tersangka_tanggal_lahir', $oldTersangka['tanggal_lahir'] ?? ($firstTersangka?->tanggal_lahir?->format('Y-m-d') ?? ''));
+    $tersangkaJenisKelamin = old('tersangka_jenis_kelamin', $oldTersangka['jenis_kelamin'] ?? ($firstTersangka?->jenis_kelamin ?? ''));
+    $tersangkaAgama = old('tersangka_agama', $oldTersangka['agama'] ?? ($firstTersangka?->agama ?? ''));
+    $tersangkaPekerjaan = old('tersangka_pekerjaan', $oldTersangka['pekerjaan'] ?? ($firstTersangka?->pekerjaan ?? ''));
+    $tersangkaKewarganegaraan = old('tersangka_kewarganegaraan', $oldTersangka['kewarganegaraan'] ?? ($firstTersangka?->kewarganegaraan ?? 'WNI'));
+
+    $existingPasalIds = collect(old('pasal_ids', $oldTersangka['pasal_ids'] ?? ($firstBerkas?->pasals->pluck('id')->all() ?? [])))
+        ->map(fn ($id) => (int) $id)
+        ->all();
 @endphp
 
 @extends('layouts.app')
@@ -84,7 +69,7 @@
                         @endif
                     </div>
                     <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                        Lengkapi data TKP, Tim Penyidik PPNS, Tersangka (1 Tersangka = 1 Berkas Perkara), Nomor Berkas Manual, dan Pasal Berlapis.
+                        Lengkapi data Tempat Kejadian Perkara (TKP), Tim Penyidik PPNS, Identitas Tersangka, dan Pasal Berlapis yang Disangkakan.
                     </p>
                 </div>
                 <a
@@ -175,12 +160,11 @@
             {{-- 1. Card Informasi TKP (Tempat Kejadian Perkara) --}}
             <div
                 x-data="{
-                    provinsiList: [],
                     kabupatenList: [],
                     kecamatanList: [],
                     desaList: [],
-                    provinsiKode: @js(old('tkp_provinsi_kode', $tkpAlamat?->provinsi_kode ?? '')),
-                    provinsiNama: @js(old('tkp_provinsi_nama', $tkpAlamat?->provinsi_nama ?? '')),
+                    provinsiKode: '63',
+                    provinsiNama: 'Kalimantan Selatan',
                     kabupatenKode: @js(old('tkp_kabupaten_kode', $tkpAlamat?->kabupaten_kode ?? '')),
                     kabupatenNama: @js(old('tkp_kabupaten_nama', $tkpAlamat?->kabupaten_nama ?? '')),
                     kecamatanKode: @js(old('tkp_kecamatan_kode', $tkpAlamat?->kecamatan_kode ?? '')),
@@ -188,17 +172,9 @@
                     desaKode: @js(old('tkp_desa_kode', $tkpAlamat?->desa_kode ?? '')),
                     desaNama: @js(old('tkp_desa_nama', $tkpAlamat?->desa_nama ?? '')),
                     async init() {
-                        await this.loadProvinsi();
-                        if (this.provinsiKode) await this.loadKabupaten(false);
+                        await this.loadKabupaten(false);
                         if (this.kabupatenKode) await this.loadKecamatan(false);
                         if (this.kecamatanKode) await this.loadDesa(false);
-                    },
-                    async loadProvinsi() {
-                        try {
-                            const res = await fetch('{{ route('wilayah.provinsi') }}');
-                            const json = await res.json();
-                            this.provinsiList = json.data || [];
-                        } catch (e) {}
                     },
                     async loadKabupaten(reset = true) {
                         if (reset) {
@@ -211,16 +187,12 @@
                             this.kecamatanList = [];
                             this.desaList = [];
                         }
-                        const found = this.provinsiList.find(p => p.code === this.provinsiKode || p.kode === this.provinsiKode);
-                        if (found) this.provinsiNama = found.name || found.nama;
-                        if (!this.provinsiKode) {
-                            this.kabupatenList = [];
-                            return;
-                        }
                         try {
                             const res = await fetch(`/wilayah/kabupaten/${this.provinsiKode}`);
                             const json = await res.json();
                             this.kabupatenList = json.data || [];
+                            const found = this.kabupatenList.find(k => (k.code || k.kode) === this.kabupatenKode);
+                            if (found) this.kabupatenNama = found.name || found.nama;
                         } catch (e) {}
                     },
                     async loadKecamatan(reset = true) {
@@ -231,7 +203,7 @@
                             this.desaNama = '';
                             this.desaList = [];
                         }
-                        const found = this.kabupatenList.find(k => k.code === this.kabupatenKode || k.kode === this.kabupatenKode);
+                        const found = this.kabupatenList.find(k => (k.code || k.kode) === this.kabupatenKode);
                         if (found) this.kabupatenNama = found.name || found.nama;
                         if (!this.kabupatenKode) {
                             this.kecamatanList = [];
@@ -241,6 +213,8 @@
                             const res = await fetch(`/wilayah/kecamatan/${this.kabupatenKode}`);
                             const json = await res.json();
                             this.kecamatanList = json.data || [];
+                            const foundKec = this.kecamatanList.find(k => (k.code || k.kode) === this.kecamatanKode);
+                            if (foundKec) this.kecamatanNama = foundKec.name || foundKec.nama;
                         } catch (e) {}
                     },
                     async loadDesa(reset = true) {
@@ -248,7 +222,7 @@
                             this.desaKode = '';
                             this.desaNama = '';
                         }
-                        const found = this.kecamatanList.find(k => k.code === this.kecamatanKode || k.kode === this.kecamatanKode);
+                        const found = this.kecamatanList.find(k => (k.code || k.kode) === this.kecamatanKode);
                         if (found) this.kecamatanNama = found.name || found.nama;
                         if (!this.kecamatanKode) {
                             this.desaList = [];
@@ -258,10 +232,12 @@
                             const res = await fetch(`/wilayah/desa/${this.kecamatanKode}`);
                             const json = await res.json();
                             this.desaList = json.data || [];
+                            const foundDesa = this.desaList.find(d => (d.code || d.kode) === this.desaKode);
+                            if (foundDesa) this.desaNama = foundDesa.name || foundDesa.nama;
                         } catch (e) {}
                     },
                     onDesaChange() {
-                        const found = this.desaList.find(d => d.code === this.desaKode || d.kode === this.desaKode);
+                        const found = this.desaList.find(d => (d.code || d.kode) === this.desaKode);
                         if (found) this.desaNama = found.name || found.nama;
                     }
                 }"
@@ -272,29 +248,29 @@
                         <i class="fi fi-rr-marker text-base text-brand-500"></i>
                         <h2 class="text-base font-semibold text-gray-800 dark:text-white/90">1. Informasi TKP (Tempat Kejadian Perkara)</h2>
                     </div>
-                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Lokasi kejadian, klasifikasi sarana, legalitas, dan modus pelanggaran.</p>
+                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Lokasi kejadian, klasifikasi sarana, legalitas, dan modus operandi.</p>
                 </div>
 
                 <div class="grid grid-cols-1 gap-5 px-4 py-5 sm:grid-cols-2 sm:px-6">
+                    {{-- Provinsi: Read-only Kalimantan Selatan (Poin 4) --}}
                     <div>
-                        <x-form.searchable-select
-                            name="tkp_provinsi_kode"
-                            id="tkp_provinsi_kode"
-                            label="Provinsi"
-                            placeholder="-- Pilih Provinsi --"
-                            search-placeholder="Ketik nama provinsi..."
-                            x-model="provinsiKode"
-                            @change="loadKabupaten(true)"
-                            required
-                        >
-                            <option value="">-- Pilih Provinsi --</option>
-                            <template x-for="item in provinsiList" :key="item.code || item.kode">
-                                <option :value="item.code || item.kode" :selected="(item.code || item.kode) === provinsiKode" x-text="item.name || item.nama"></option>
-                            </template>
-                        </x-form.searchable-select>
-                        <input type="hidden" name="tkp_provinsi_nama" :value="provinsiNama">
+                        <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                            Provinsi <span class="text-red-500">*</span>
+                        </label>
+                        <div class="relative">
+                            <input
+                                type="text"
+                                value="Kalimantan Selatan"
+                                readonly
+                                class="h-11 w-full cursor-not-allowed rounded-lg border border-gray-300 bg-gray-100 px-4 text-sm font-medium text-gray-700 select-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300"
+                            >
+                            <input type="hidden" name="tkp_provinsi_kode" value="63">
+                            <input type="hidden" name="tkp_provinsi_nama" value="Kalimantan Selatan">
+                        </div>
+                        <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Wilayah hukum BPOM di Banjarmasin (Provinsi Kalimantan Selatan).</p>
                     </div>
 
+                    {{-- Kabupaten / Kota --}}
                     <div>
                         <x-form.searchable-select
                             name="tkp_kabupaten_kode"
@@ -314,6 +290,7 @@
                         <input type="hidden" name="tkp_kabupaten_nama" :value="kabupatenNama">
                     </div>
 
+                    {{-- Kecamatan --}}
                     <div>
                         <x-form.searchable-select
                             name="tkp_kecamatan_kode"
@@ -333,6 +310,7 @@
                         <input type="hidden" name="tkp_kecamatan_nama" :value="kecamatanNama">
                     </div>
 
+                    {{-- Desa / Kelurahan --}}
                     <div>
                         <x-form.searchable-select
                             name="tkp_desa_kode"
@@ -352,11 +330,12 @@
                         <input type="hidden" name="tkp_desa_nama" :value="desaNama">
                     </div>
 
+                    {{-- RT / RW --}}
                     <div class="grid grid-cols-2 gap-4 sm:col-span-2 sm:max-w-xs">
                         <div>
                             <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">RT</label>
                             <input
-                                type="number"
+                                type="text"
                                 name="tkp_rt"
                                 maxlength="5"
                                 value="{{ old('tkp_rt', $tkpAlamat?->rt ?? '') }}"
@@ -367,7 +346,7 @@
                         <div>
                             <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">RW</label>
                             <input
-                                type="number"
+                                type="text"
                                 name="tkp_rw"
                                 maxlength="5"
                                 value="{{ old('tkp_rw', $tkpAlamat?->rw ?? '') }}"
@@ -377,6 +356,7 @@
                         </div>
                     </div>
 
+                    {{-- Detail Alamat --}}
                     <div class="sm:col-span-2">
                         <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
                             Detail Alamat TKP <span class="text-red-500">*</span>
@@ -389,6 +369,7 @@
                         >{{ old('tkp_alamat_detail', $tkpAlamat?->alamat_detail ?? '') }}</textarea>
                     </div>
 
+                    {{-- Klasifikasi Sarana --}}
                     <div>
                         <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
                             Klasifikasi Sarana / TKP <span class="text-red-500">*</span>
@@ -403,32 +384,62 @@
                         </select>
                     </div>
 
+                    {{-- Legalitas Sarana: Radio Buttons (Poin 3) --}}
                     <div>
                         <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
                             Legalitas Sarana <span class="text-red-500">*</span>
                         </label>
-                        <select
-                            name="tkp_legalitas"
-                            class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
-                        >
-                            <option value="">-- Pilih Legalitas --</option>
-                            <option value="legal" @selected(old('tkp_legalitas', $perkara->tkp?->legalitas) === 'legal')>Legal</option>
-                            <option value="ilegal" @selected(old('tkp_legalitas', $perkara->tkp?->legalitas) === 'ilegal')>Ilegal</option>
-                        </select>
+                        <div class="flex h-11 items-center gap-6 rounded-lg border border-gray-300 bg-transparent px-4 dark:border-gray-700">
+                            <label class="inline-flex cursor-pointer items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
+                                <input
+                                    type="radio"
+                                    name="tkp_legalitas"
+                                    value="legal"
+                                    @checked(old('tkp_legalitas', $perkara->tkp?->legalitas) === 'legal')
+                                    class="h-4 w-4 border-gray-300 text-brand-600 focus:ring-brand-500 dark:border-gray-700"
+                                >
+                                <span>Legal</span>
+                            </label>
+                            <label class="inline-flex cursor-pointer items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
+                                <input
+                                    type="radio"
+                                    name="tkp_legalitas"
+                                    value="ilegal"
+                                    @checked(old('tkp_legalitas', $perkara->tkp?->legalitas) === 'ilegal')
+                                    class="h-4 w-4 border-gray-300 text-brand-600 focus:ring-brand-500 dark:border-gray-700"
+                                >
+                                <span>Ilegal</span>
+                            </label>
+                        </div>
                     </div>
 
+                    {{-- Modus Operandi: Radio Buttons (Poin 3) --}}
                     <div class="sm:col-span-2">
                         <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
                             Modus Operandi <span class="text-red-500">*</span>
                         </label>
-                        <select
-                            name="tkp_modus"
-                            class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
-                        >
-                            <option value="">-- Pilih Modus Operandi --</option>
-                            <option value="online" @selected(old('tkp_modus', $perkara->tkp?->modus) === 'online')>Online</option>
-                            <option value="offline" @selected(old('tkp_modus', $perkara->tkp?->modus) === 'offline')>Offline</option>
-                        </select>
+                        <div class="flex h-11 max-w-md items-center gap-6 rounded-lg border border-gray-300 bg-transparent px-4 dark:border-gray-700">
+                            <label class="inline-flex cursor-pointer items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
+                                <input
+                                    type="radio"
+                                    name="tkp_modus"
+                                    value="online"
+                                    @checked(old('tkp_modus', $perkara->tkp?->modus) === 'online')
+                                    class="h-4 w-4 border-gray-300 text-brand-600 focus:ring-brand-500 dark:border-gray-700"
+                                >
+                                <span>Online</span>
+                            </label>
+                            <label class="inline-flex cursor-pointer items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
+                                <input
+                                    type="radio"
+                                    name="tkp_modus"
+                                    value="offline"
+                                    @checked(old('tkp_modus', $perkara->tkp?->modus) === 'offline')
+                                    class="h-4 w-4 border-gray-300 text-brand-600 focus:ring-brand-500 dark:border-gray-700"
+                                >
+                                <span>Offline</span>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -584,274 +595,311 @@
                 </div>
             </div>
 
-            {{-- 3. Card Tersangka & Pembentukan Berkas Perkara (1 Tersangka = 1 Berkas Perkara + Pasal Berlapis) --}}
-            <div
-                x-data="{
-                    tersangkas: @js($initialTersangka),
-                    addTersangka() {
-                        this.tersangkas.push({
-                            id: null,
-                            nomor_berkas: '',
-                            nama: '',
-                            alias: '',
-                            bin_binti: '',
-                            nik: '',
-                            tempat_lahir: '',
-                            tanggal_lahir: '',
-                            jenis_kelamin: '',
-                            agama: '',
-                            pekerjaan: '',
-                            kewarganegaraan: 'WNI',
-                            pasal_ids: [],
-                        });
-                    },
-                    removeTersangka(idx) {
-                        if (this.tersangkas.length > 1) {
-                            this.tersangkas.splice(idx, 1);
-                        }
-                    }
-                }"
-                class="space-y-4"
-            >
-                <div class="flex flex-col gap-3 rounded-2xl border border-gray-200 bg-white p-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 dark:border-gray-800 dark:bg-white/[0.03]">
-                    <div>
-                        <div class="flex items-center gap-2">
-                            <i class="fi fi-rr-user text-base text-brand-500"></i>
-                            <h2 class="text-base font-semibold text-gray-800 dark:text-white/90">
-                                3. Data Tersangka &amp; Berkas Perkara (<span x-text="tersangkas.length"></span> Berkas)
-                            </h2>
-                        </div>
-                        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                            Setiap <strong>1 Tersangka membentuk 1 Berkas Perkara terpisah</strong> dengan Nomor Berkas dan Pasal masing-masing.
-                        </p>
+            {{-- 3. Card Data Tersangka & Berkas Perkara (1 Perkara = 1 Berkas Perkara = 1 Tersangka — Poin 11 & 13) --}}
+            <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
+                <div class="border-b border-gray-200 px-4 py-4 dark:border-gray-800 sm:px-6">
+                    <div class="flex items-center gap-2">
+                        <i class="fi fi-rr-user text-base text-brand-500"></i>
+                        <h2 class="text-base font-semibold text-gray-800 dark:text-white/90">3. Data Identitas Tersangka</h2>
                     </div>
-
-                    <button
-                        type="button"
-                        @click="addTersangka()"
-                        class="inline-flex h-10 shrink-0 items-center justify-center gap-2 rounded-lg bg-brand-500 px-4 text-sm font-medium text-white transition hover:bg-brand-600"
-                    >
-                        <i class="fi fi-rr-plus-small text-base"></i>
-                        <span>Tambah Tersangka (Berkas Baru)</span>
-                    </button>
+                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                        Satu Perkara menangani satu Tersangka dan membentuk satu Berkas Perkara dengan nomor berkas otomatis mengikuti Nomor Laporan Kejadian (<span class="font-semibold text-gray-700 dark:text-gray-300">{{ $perkara->nomor_laporan_kejadian }}</span>).
+                    </p>
                 </div>
 
-                <template x-for="(item, index) in tersangkas" :key="index">
-                    <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
-                        <div class="flex items-center justify-between border-b border-gray-200 px-4 py-4 dark:border-gray-800 sm:px-6">
-                            <div class="flex items-center gap-2.5">
-                                <span class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-brand-50 text-xs font-semibold text-brand-600 dark:bg-brand-500/15 dark:text-brand-400" x-text="index + 1"></span>
-                                <div>
-                                    <h3 class="text-sm font-semibold text-gray-800 dark:text-white/90">
-                                        Tersangka #<span x-text="index + 1"></span> — Berkas Perkara #<span x-text="index + 1"></span>
-                                    </h3>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400">Data identitas tersangka, nomor berkas manual, dan pasal berlapis.</p>
-                                </div>
-                            </div>
+                <div class="space-y-5 p-4 sm:p-6">
+                    <input type="hidden" name="tersangka_id" value="{{ $tersangkaId }}">
+                    <input type="hidden" name="nomor_berkas" value="{{ $perkara->nomor_laporan_kejadian }}">
 
-                            <button
-                                type="button"
-                                x-show="tersangkas.length > 1"
-                                @click="removeTersangka(index)"
-                                class="inline-flex items-center gap-1.5 rounded-lg border border-error-200 bg-error-50 px-3 py-1.5 text-xs font-medium text-error-600 transition hover:bg-error-100 dark:border-error-500/20 dark:bg-error-500/10 dark:text-error-400"
+                    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                        {{-- Nama Lengkap --}}
+                        <div>
+                            <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Nama Lengkap Tersangka <span class="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                name="tersangka_nama"
+                                value="{{ $tersangkaNama }}"
+                                placeholder="Nama lengkap tersangka"
+                                class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:text-white/90"
+                                required
                             >
-                                <i class="fi fi-rr-trash text-xs"></i>
-                                <span>Hapus Tersangka</span>
-                            </button>
                         </div>
 
-                        <div class="space-y-5 p-4 sm:p-6">
-                            <input type="hidden" :name="`tersangka[${index}][id]`" :value="item.id || ''">
+                        {{-- Alias --}}
+                        <div>
+                            <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Alias / Panggilan
+                            </label>
+                            <input
+                                type="text"
+                                name="tersangka_alias"
+                                value="{{ $tersangkaAlias }}"
+                                placeholder="Contoh: Alias Budi"
+                                class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:text-white/90"
+                            >
+                        </div>
 
-                            {{-- Nomor Berkas Perkara Manual --}}
-                            <div class="rounded-xl border border-brand-100 bg-brand-50/40 p-4 dark:border-brand-500/20 dark:bg-brand-500/5">
-                                <label class="mb-1.5 block text-sm font-medium text-gray-800 dark:text-white/90">
-                                    Nomor Berkas Perkara <span class="text-red-500">*</span>
-                                </label>
-                                <input
-                                    type="text"
-                                    :name="`tersangka[${index}][nomor_berkas]`"
-                                    x-model="item.nomor_berkas"
-                                    placeholder="Contoh: BP/01/X/2026/PPNS-BPOM"
-                                    class="h-11 w-full rounded-lg border border-gray-300 bg-white px-4 text-sm text-gray-800 placeholder:text-gray-400 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
-                                >
-                                <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
-                                    <strong class="font-medium text-gray-700 dark:text-gray-300">Note:</strong> Format penomoran berkas: BP/[No]/[Bulan Romawi]/[Tahun]/PPNS-BPOM (atau sesuaikan dengan nomor pada dokumen fisik berkas perkara).
-                                </p>
-                            </div>
+                        {{-- Bin / Binti --}}
+                        <div>
+                            <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Bin / Binti
+                            </label>
+                            <input
+                                type="text"
+                                name="tersangka_bin_binti"
+                                value="{{ $tersangkaBinBinti }}"
+                                placeholder="Nama orang tua (Bin/Binti)"
+                                class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:text-white/90"
+                            >
+                        </div>
 
-                            {{-- Identitas Tersangka --}}
-                            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                                <div>
-                                    <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                        Nama Lengkap Tersangka <span class="text-red-500">*</span>
-                                    </label>
-                                    <input
-                                        type="text"
-                                        :name="`tersangka[${index}][nama]`"
-                                        x-model="item.nama"
-                                        placeholder="Nama lengkap tersangka"
-                                        class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:text-white/90"
-                                    >
-                                </div>
+                        {{-- NIK 16 Digit (Poin 17) --}}
+                        <div>
+                            <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                NIK (Tepat 16 Digit Angka) <span class="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                name="tersangka_nik"
+                                id="tersangka_nik"
+                                value="{{ $tersangkaNik }}"
+                                maxlength="16"
+                                inputmode="numeric"
+                                pattern="[0-9]{16}"
+                                placeholder="Contoh: 6371011234560001"
+                                oninput="this.value = this.value.replace(/\D/g, '').slice(0, 16)"
+                                class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:text-white/90"
+                                required
+                            >
+                            <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Harus tepat 16 digit angka sesuai KTP.</p>
+                        </div>
 
-                                <div>
-                                    <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                        Alias / Panggilan
-                                    </label>
-                                    <input
-                                        type="text"
-                                        :name="`tersangka[${index}][alias]`"
-                                        x-model="item.alias"
-                                        placeholder="Contoh: Alias Budi"
-                                        class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:text-white/90"
-                                    >
-                                </div>
+                        {{-- Jenis Kelamin --}}
+                        <div>
+                            <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Jenis Kelamin <span class="text-red-500">*</span>
+                            </label>
+                            <select
+                                name="tersangka_jenis_kelamin"
+                                class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
+                                required
+                            >
+                                <option value="">-- Pilih Jenis Kelamin --</option>
+                                <option value="laki-laki" @selected($tersangkaJenisKelamin === 'laki-laki')>Laki-laki</option>
+                                <option value="perempuan" @selected($tersangkaJenisKelamin === 'perempuan')>Perempuan</option>
+                            </select>
+                        </div>
 
-                                <div>
-                                    <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                        Bin / Binti
-                                    </label>
-                                    <input
-                                        type="text"
-                                        :name="`tersangka[${index}][bin_binti]`"
-                                        x-model="item.bin_binti"
-                                        placeholder="Nama orang tua (Bin/Binti)"
-                                        class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:text-white/90"
-                                    >
-                                </div>
+                        {{-- Tempat Lahir --}}
+                        <div>
+                            <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Tempat Lahir <span class="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                name="tersangka_tempat_lahir"
+                                value="{{ $tersangkaTempatLahir }}"
+                                placeholder="Contoh: Banjarmasin"
+                                class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:text-white/90"
+                                required
+                            >
+                        </div>
 
-                                <div>
-                                    <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                        NIK (16 Digit)
-                                    </label>
-                                    <input
-                                        type="number"
-                                        maxlength="16"
-                                        :name="`tersangka[${index}][nik]`"
-                                        x-model="item.nik"
-                                        placeholder="6371xxxxxxxxxxxx"
-                                        class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:text-white/90"
-                                    >
-                                </div>
+                        {{-- Tanggal Lahir --}}
+                        <div>
+                            <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Tanggal Lahir <span class="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="date"
+                                name="tersangka_tanggal_lahir"
+                                value="{{ $tersangkaTanggalLahir }}"
+                                class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
+                                required
+                            >
+                        </div>
 
-                                <div>
-                                    <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                        Jenis Kelamin <span class="text-red-500">*</span>
-                                    </label>
-                                    <select
-                                        :name="`tersangka[${index}][jenis_kelamin]`"
-                                        x-model="item.jenis_kelamin"
-                                        class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
-                                    >
-                                        <option value="">-- Pilih Jenis Kelamin --</option>
-                                        <option value="laki-laki">Laki-laki</option>
-                                        <option value="perempuan">Perempuan</option>
-                                    </select>
-                                </div>
+                        {{-- Agama --}}
+                        <div>
+                            <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Agama <span class="text-red-500">*</span>
+                            </label>
+                            <select
+                                name="tersangka_agama"
+                                class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
+                                required
+                            >
+                                <option value="">-- Pilih Agama --</option>
+                                <option value="islam" @selected($tersangkaAgama === 'islam')>Islam</option>
+                                <option value="kristen" @selected($tersangkaAgama === 'kristen')>Kristen</option>
+                                <option value="katolik" @selected($tersangkaAgama === 'katolik')>Katolik</option>
+                                <option value="hindu" @selected($tersangkaAgama === 'hindu')>Hindu</option>
+                                <option value="buddha" @selected($tersangkaAgama === 'buddha')>Buddha</option>
+                                <option value="konghucu" @selected($tersangkaAgama === 'konghucu')>Konghucu</option>
+                                <option value="lainnya" @selected($tersangkaAgama === 'lainnya')>Lainnya</option>
+                            </select>
+                        </div>
 
-                                <div>
-                                    <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                        Tempat Lahir
-                                    </label>
-                                    <input
-                                        type="text"
-                                        :name="`tersangka[${index}][tempat_lahir]`"
-                                        x-model="item.tempat_lahir"
-                                        placeholder="Contoh: Banjarmasin"
-                                        class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:text-white/90"
-                                    >
-                                </div>
+                        {{-- Pekerjaan --}}
+                        <div>
+                            <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Pekerjaan <span class="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                name="tersangka_pekerjaan"
+                                value="{{ $tersangkaPekerjaan }}"
+                                placeholder="Contoh: Wiraswasta"
+                                class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:text-white/90"
+                                required
+                            >
+                        </div>
 
-                                <div>
-                                    <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                        Tanggal Lahir
-                                    </label>
-                                    <input
-                                        type="date"
-                                        :name="`tersangka[${index}][tanggal_lahir]`"
-                                        x-model="item.tanggal_lahir"
-                                        class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
-                                    >
-                                </div>
+                        {{-- Kewarganegaraan --}}
+                        <div>
+                            <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Kewarganegaraan <span class="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                name="tersangka_kewarganegaraan"
+                                value="{{ $tersangkaKewarganegaraan }}"
+                                placeholder="Contoh: WNI"
+                                class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:text-white/90"
+                                required
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                                <div>
-                                    <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                        Agama
-                                    </label>
-                                    <select
-                                        :name="`tersangka[${index}][agama]`"
-                                        x-model="item.agama"
-                                        class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
-                                    >
-                                        <option value="">-- Pilih Agama --</option>
-                                        <option value="islam">Islam</option>
-                                        <option value="kristen">Kristen</option>
-                                        <option value="katolik">Katolik</option>
-                                        <option value="hindu">Hindu</option>
-                                        <option value="buddha">Buddha</option>
-                                        <option value="konghucu">Konghucu</option>
-                                        <option value="lainnya">Lainnya</option>
-                                    </select>
-                                </div>
+            {{-- 4. Card Pemilihan Pasal Berlapis (Komponen Persis PPNS Anggota — Poin 8) --}}
+            <div
+                x-data="{
+                    pasalList: @js($pasalJsonList),
+                    selectedPasalIds: @js($existingPasalIds),
+                    addPasal(id) {
+                        if (!id) return;
+                        const numId = parseInt(id, 10);
+                        if (!this.selectedPasalIds.includes(numId)) {
+                            this.selectedPasalIds.push(numId);
+                        }
+                        this.$nextTick(() => {
+                            const el = document.getElementById('pasal_select');
+                            if (el) {
+                                el.value = '';
+                                el.dispatchEvent(new Event('change', { bubbles: true }));
+                            }
+                        });
+                    },
+                    removePasal(id) {
+                        this.selectedPasalIds = this.selectedPasalIds.filter(i => i !== id);
+                    },
+                    getAvailablePasal() {
+                        return this.pasalList.filter(p => !this.selectedPasalIds.includes(p.id));
+                    },
+                    getSelectedPasalDetails() {
+                        return this.selectedPasalIds
+                            .map(id => this.pasalList.find(p => p.id === id))
+                            .filter(Boolean);
+                    }
+                }"
+                class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
+            >
+                <div class="border-b border-gray-200 px-4 py-4 dark:border-gray-800 sm:px-6">
+                    <div class="flex items-center gap-2">
+                        <i class="fi fi-rr-book-alt text-base text-brand-500"></i>
+                        <h2 class="text-base font-semibold text-gray-800 dark:text-white/90">4. Pasal Berlapis yang Disangkakan</h2>
+                    </div>
+                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Pilih satu atau lebih pasal pelanggaran yang disangkakan pada berkas perkara ini.</p>
+                </div>
 
-                                <div>
-                                    <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                        Pekerjaan
-                                    </label>
-                                    <input
-                                        type="text"
-                                        :name="`tersangka[${index}][pekerjaan]`"
-                                        x-model="item.pekerjaan"
-                                        placeholder="Contoh: Wiraswasta"
-                                        class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:text-white/90"
-                                    >
-                                </div>
-                            </div>
+                <div class="p-4 sm:p-6 space-y-4">
+                    {{-- Hidden inputs untuk pengiriman array pasal_ids[] --}}
+                    <template x-for="id in selectedPasalIds" :key="'hidden-pasal-' + id">
+                        <input type="hidden" name="pasal_ids[]" :value="id">
+                    </template>
 
-                            {{-- Pasal Berlapis per Berkas Perkara (PRD F-04 / T-022) --}}
-                            <div>
-                                <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                    Pasal Berlapis yang Disangkakan pada Berkas Ini <span class="text-red-500">*</span>
-                                </label>
-                                <div class="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
-                                    @foreach ($pasalList as $pasal)
-                                        <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-gray-200 p-3 text-sm transition hover:bg-gray-50 dark:border-gray-800 dark:hover:bg-white/[0.02]">
-                                            <input
-                                                type="checkbox"
-                                                :name="`tersangka[${index}][pasal_ids][]`"
-                                                value="{{ $pasal->id }}"
-                                                :checked="(item.pasal_ids || []).includes({{ $pasal->id }})"
-                                                @change="
-                                                    if ($event.target.checked) {
-                                                        if (!item.pasal_ids.includes({{ $pasal->id }})) item.pasal_ids.push({{ $pasal->id }});
-                                                    } else {
-                                                        item.pasal_ids = item.pasal_ids.filter(id => id !== {{ $pasal->id }});
-                                                    }
-                                                "
-                                                class="mt-0.5 h-4 w-4 rounded border-gray-300 text-brand-600 focus:ring-brand-500 dark:border-gray-700"
-                                            >
-                                            <div class="min-w-0">
-                                                <p class="font-medium text-gray-800 dark:text-white/90">{{ $pasal->label() }}</p>
-                                                @if ($pasal->isi)
-                                                    <p class="line-clamp-2 text-xs text-gray-500 dark:text-gray-400">{{ $pasal->isi }}</p>
-                                                @endif
+                    <div>
+                        <div class="mb-2 flex items-center justify-between">
+                            <label for="pasal_select" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Pilih Pasal <span class="text-red-500">*</span>
+                            </label>
+                            <span class="text-xs text-gray-500 dark:text-gray-400" x-text="selectedPasalIds.length + ' pasal dipilih'"></span>
+                        </div>
+
+                        {{-- Combo Box Dropdown (Searchable Select ala PPNS) --}}
+                        <div class="relative">
+                            <x-form.searchable-select
+                                id="pasal_select"
+                                name="pasal_select"
+                                placeholder="+ Pilih dan tambah pasal yang disangkakan..."
+                                search-placeholder="Ketik pasal atau isi undang-undang..."
+                                :clearable="false"
+                                @change="addPasal($event.target.value)"
+                            >
+                                <option value="" x-text="getAvailablePasal().length === 0 ? 'Semua pasal sudah terpilih' : '+ Pilih dan tambah pasal yang disangkakan...'"></option>
+                                <template x-for="pasal in getAvailablePasal()" :key="pasal.id">
+                                    <option :value="pasal.id" x-text="pasal.label"></option>
+                                </template>
+                            </x-form.searchable-select>
+                        </div>
+                        <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">Pilih pasal dari daftar combo box untuk menambahkannya ke berkas perkara. Anda dapat memilih lebih dari satu pasal.</p>
+
+                        @error('pasal_ids')
+                            <p class="mt-1.5 text-xs text-error-600 dark:text-error-400">{{ $message }}</p>
+                        @enderror
+
+                        {{-- Kartu Detail Pasal Terpilih --}}
+                        <div class="mt-4">
+                            <div x-show="selectedPasalIds.length > 0" class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                                <template x-for="pasal in getSelectedPasalDetails()" :key="pasal.id">
+                                    <div class="relative flex items-center justify-between gap-3 rounded-xl border border-brand-200 bg-brand-50/40 p-3.5 transition dark:border-brand-500/20 dark:bg-brand-500/5">
+                                        <div class="flex items-start gap-3 min-w-0">
+                                            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-brand-600 dark:bg-brand-500/10 dark:text-brand-400">
+                                                <i class="fi fi-rr-book-alt text-base"></i>
                                             </div>
-                                        </label>
-                                    @endforeach
+                                            <div class="min-w-0">
+                                                <p class="truncate text-sm font-semibold text-gray-800 dark:text-white/90" x-text="pasal.label"></p>
+                                                <p class="line-clamp-2 text-xs text-gray-500 dark:text-gray-400" x-text="pasal.isi || '-'"></p>
+                                            </div>
+                                        </div>
+                                        <button
+                                            type="button"
+                                            @click="removePasal(pasal.id)"
+                                            class="shrink-0 flex h-7 w-7 items-center justify-center rounded-lg text-gray-400 hover:bg-error-50 hover:text-error-600 transition dark:hover:bg-error-500/10 dark:hover:text-error-400"
+                                            title="Hapus pasal"
+                                        >
+                                            <i class="fi fi-rr-cross-small text-base"></i>
+                                        </button>
+                                    </div>
+                                </template>
+                            </div>
+
+                            {{-- State Kosong / Belum Ada Pasal --}}
+                            <div
+                                x-show="selectedPasalIds.length === 0"
+                                class="flex flex-col items-center justify-center rounded-xl border border-dashed border-gray-200 py-6 text-center dark:border-gray-800"
+                            >
+                                <div class="flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-gray-400 dark:bg-gray-800 dark:text-gray-500">
+                                    <i class="fi fi-rr-book-alt text-sm"></i>
                                 </div>
+                                <p class="mt-2 text-xs font-medium text-gray-500 dark:text-gray-400">Belum ada Pasal yang dipilih</p>
+                                <p class="text-[11px] text-gray-400 dark:text-gray-500">Pilih dari combo box di atas untuk menambahkan pasal yang disangkakan.</p>
                             </div>
                         </div>
                     </div>
-                </template>
+                </div>
             </div>
 
-            {{-- Footer 3 Tombol Wajib: Batal, Simpan Draft, Simpan & Lanjut Tahap Berikutnya --}}
+            {{-- Footer 3 Tombol: Batal, Simpan Draft, Simpan & Lanjut Tahap Berikutnya --}}
             <div class="rounded-2xl border border-gray-200 bg-white px-4 py-4 dark:border-gray-800 dark:bg-white/[0.03] sm:px-6">
                 <div class="flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
                     <p class="text-xs text-gray-500 dark:text-gray-400">
                         <i class="fi fi-rr-info me-1 text-brand-500"></i>
-                        Gunakan <strong>Simpan Draft</strong> untuk menyimpan sementara (masih dapat diedit), atau <strong>Simpan &amp; Lanjut Tahap Berikutnya</strong> untuk memfinalkan Berkas Perkara dan mengunci tahap ini.
+                        Gunakan <strong>Simpan Draft</strong> untuk menyimpan sementara, atau <strong>Simpan &amp; Lanjut Tahap Berikutnya</strong> untuk memfinalkan dan mengunci berkas perkara.
                     </p>
 
                     <div class="flex flex-wrap items-center justify-end gap-2.5">

@@ -33,16 +33,28 @@
                 </p>
             </div>
 
-            @can('create-cases')
-                <div>
+            <div class="flex items-center gap-3">
+                @can('export-excel')
                     <button
                         type="button"
-                        @click="openTambahModal = true"
-                        class="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-500 px-4 py-2.5 text-sm font-medium text-white shadow-theme-xs transition hover:bg-brand-600"
+                        @click="$dispatch('open-export-modal')"
+                        class="inline-flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 shadow-theme-xs transition hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
                     >
-                        <i class="fi fi-rr-plus-small text-lg"></i>
-                        <span>Tambah Perkara</span>
+                        <i class="fi fi-rr-file-excel text-base text-success-600 dark:text-success-400"></i>
+                        <span>Ekspor Excel</span>
                     </button>
+                @endcan
+
+                @can('create-cases')
+                    <div>
+                        <button
+                            type="button"
+                            @click="openTambahModal = true"
+                            class="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-500 px-4 py-2.5 text-sm font-medium text-white shadow-theme-xs transition hover:bg-brand-600"
+                        >
+                            <i class="fi fi-rr-plus-small text-lg"></i>
+                            <span>Tambah Perkara</span>
+                        </button>
 
                     {{-- Modal Pemilihan Sprindik Final --}}
                     <template x-teleport="body">
@@ -142,6 +154,7 @@
                     </template>
                 </div>
             @endcan
+            </div>
         </div>
 
         {{-- Table Area --}}
@@ -161,4 +174,7 @@
             </div>
         </div>
     </div>
+
+    {{-- Modal Ekspor Excel --}}
+    <x-common.export-excel-modal />
 @endsection

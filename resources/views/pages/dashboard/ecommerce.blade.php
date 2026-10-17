@@ -42,10 +42,7 @@
         {{-- Statistics --}}
         <x-dashboard.statistics :statistics="$statistics ?? null" />
 
-        {{-- Progress Perkara --}}
-        <x-dashboard.progress-perkara :perkaraList="$perkaraList ?? null" />
-
-        {{-- Bottom Statistics --}}
+        {{-- Visual Statistics (Grafik & Status) --}}
         <div class="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-6">
 
             <div class="lg:col-span-7">
@@ -57,6 +54,9 @@
             </div>
 
         </div>
+
+        {{-- Progress Perkara Table (Paling Bawah - Poin 6) --}}
+        <x-dashboard.progress-perkara :perkaraList="$perkaraList ?? null" />
 
     </div>
 @endsection

@@ -92,17 +92,6 @@
             }
         })();
     </script>
-    <!-- Apply RTL mode immediately to prevent flash -->
-    <script>
-        (function() {
-            const savedDir = localStorage.getItem("dir");
-            if (savedDir === "rtl") {
-                document.documentElement.setAttribute("dir", "rtl");
-            } else {
-                document.documentElement.setAttribute("dir", "ltr");
-            }
-        })();
-    </script>
 </head>
 
 <body x-init="$store.sidebar.isExpanded = window.innerWidth >= 1280;
@@ -118,6 +107,7 @@ const checkMobile = () => {
 window.addEventListener('resize', checkMobile);">
 
     @yield('content')
+    <x-common.error-modal />
 
 </body>
 

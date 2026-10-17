@@ -16,6 +16,7 @@ use App\Models\JaksaPenuntut;
 use App\Models\Panggol;
 use App\Models\Pasal;
 use App\Models\Perkara;
+use App\Models\Sp3;
 use App\Models\TahapanPerkara;
 use App\Models\Tersangka;
 use App\Models\Tkp;
@@ -817,6 +818,325 @@ class DummyDataSeeder extends Seeder
                 'keterangan' => 'Tersangka melarikan diri saat pemanggilan resmi pelaksanaan Tahap II sebanyak 3 kali berturut-turut. Diterbitkan DPO koordinasi Polda Kalsel.',
             ]
         );
+
+        // =========================================================================
+        // KASUS 11: Penghentian Penyidikan (SP3) — Status Formal Tidak Selesai (Poin 5, 15, 22)
+        // =========================================================================
+        $this->createCase(
+            actor: $actor,
+            noLk: 'LK/011/II/2026/BPOM',
+            tglLk: '2026-02-10',
+            uraian: 'Penyelidikan dugaan peredaran sediaan farmasi tanpa izin edar berupa obat tradisional stamina yang dicurigai mengandung bahan kimia obat sildenafil di Kotabaru.',
+            noSp: 'SP.Sidik/011/II/2026/BPOM',
+            tglSp: '2026-02-12',
+            statusPerkara: 'final',
+            tkpData: [
+                'prov' => ['63', 'Kalimantan Selatan'],
+                'kab' => ['6302', 'Kabupaten Kotabaru'],
+                'kec' => ['630209', 'Pulau Laut Utara'],
+                'kel' => ['6302091001', 'Kotabaru Hulu'],
+                'detail' => 'Toko Herbal Sehat Alami, Jl. Veteran No. 45',
+                'klasifikasi' => 'distributor',
+                'legalitas' => 'ilegal',
+                'modus' => 'offline',
+            ],
+            ppnsUtama: $users['penyidik_2'],
+            ppnsAnggota: [$users['penyidik_3']],
+            tersangkaData: [
+                'nik' => '6302091505800003',
+                'nama' => 'Suriansyah bin Imron',
+                'alias' => 'Haji Isur',
+                'bin' => 'Imron',
+                'tempat_lahir' => 'Kotabaru',
+                'tanggal_lahir' => '1980-05-15',
+                'jenis_kelamin' => 'laki-laki',
+                'agama' => 'islam',
+                'pekerjaan' => 'Pedagang Jamu',
+                'pasals' => [$master['pasal_kesehatan_1']],
+            ],
+            tahapanChain: [
+                [
+                    'jenis' => JenisTahap::SPDP,
+                    'nomor' => 'B-011/SPDP/II/2026/BPOM',
+                    'tanggal' => '2026-02-15',
+                    'catatan' => 'Pemberitahuan dimulainya penyidikan tindak pidana sediaan farmasi ilegal.',
+                ],
+            ],
+            dpoData: null,
+            sp3Data: [
+                'nomor_surat' => 'S.Tap/SP3/001/III/2026/BPOM',
+                'tanggal' => '2026-03-20',
+                'keterangan' => 'Penghentian penyidikan karena setelah uji laboratorium forensik, kandungan BKO tidak memenuhi batas pembuktian materil dan saksi ahli menyatakan bukan tindak pidana.',
+            ]
+        );
+
+        // =========================================================================
+        // KASUS 12: DPO Dicabut (Nonaktif) & Lanjut Tahap P-21 (Variasi 3 PPNS Anggota & 3 Pasal)
+        // =========================================================================
+        $this->createCase(
+            actor: $actor,
+            noLk: 'LK/012/II/2026/BPOM',
+            tglLk: '2026-02-18',
+            uraian: 'Peredaran pangan olahan tanpa izin edar jenis suplemen diet impor ilegal berlabel palsu pada gudang e-commerce di Banjarbaru.',
+            noSp: 'SP.Sidik/012/II/2026/BPOM',
+            tglSp: '2026-02-20',
+            statusPerkara: 'final',
+            tkpData: [
+                'prov' => ['63', 'Kalimantan Selatan'],
+                'kab' => ['6372', 'Kota Banjarbaru'],
+                'kec' => ['637202', 'Banjarbaru Utara'],
+                'kel' => ['6372021003', 'Mentaos'],
+                'detail' => 'Gudang Paket Borneo Express, Jl. P. Suriansyah No. 18',
+                'klasifikasi' => 'distributor',
+                'legalitas' => 'ilegal',
+                'modus' => 'online',
+            ],
+            ppnsUtama: $users['penyidik_1'],
+            ppnsAnggota: [$users['penyidik_2'], $users['penyidik_3'], $users['penyidik_4']],
+            tersangkaData: [
+                'nik' => '6372022808850002',
+                'nama' => 'Rudi Hermanto, S.E.',
+                'alias' => 'Koh Rudi',
+                'bin' => 'Hermanto',
+                'tempat_lahir' => 'Banjarbaru',
+                'tanggal_lahir' => '1985-08-28',
+                'jenis_kelamin' => 'laki-laki',
+                'agama' => 'kristen',
+                'pekerjaan' => 'Pemilik Toko Online',
+                'pasals' => [$master['pasal_pangan'], $master['pasal_kesehatan_1'], $master['pasal_kesehatan_2']],
+            ],
+            tahapanChain: [
+                [
+                    'jenis' => JenisTahap::SPDP,
+                    'nomor' => 'B-012/SPDP/II/2026/BPOM',
+                    'tanggal' => '2026-02-22',
+                    'catatan' => 'Pemberitahuan SPDP ke Kejari Banjarbaru.',
+                ],
+                [
+                    'jenis' => JenisTahap::P16,
+                    'nomor' => 'B-412/O.3.14/Eku.1/02/2026',
+                    'tanggal' => '2026-02-25',
+                    'catatan' => 'Kejaksaan Negeri Banjarbaru. Jaksa Penuntut Umum: Firman Hidayat, S.H., M.H.',
+                ],
+                [
+                    'jenis' => JenisTahap::TAHAP_1,
+                    'nomor' => 'B-012/Tahap-I/III/2026/BPOM',
+                    'tanggal' => '2026-03-05',
+                    'catatan' => 'Penyerahan berkas perkara tahap 1 ke Jaksa Peneliti.',
+                ],
+                [
+                    'jenis' => JenisTahap::P21,
+                    'nomor' => 'B-620/O.3.14/Eku.1/03/2026',
+                    'tanggal' => '2026-03-25',
+                    'catatan' => 'Berkas perkara dinyatakan lengkap (P-21) oleh Kejari Banjarbaru setelah tersangka diamankan kembali.',
+                ],
+            ],
+            dpoData: [
+                'nomor_surat' => 'DPO/002/III/2026/BPOM',
+                'tanggal' => '2026-03-08',
+                'tanggal_cabut' => '2026-03-22',
+                'status' => 'nonaktif',
+                'keterangan' => 'Tersangka sempat melarikan diri ke luar kota saat pemanggilan Tahap 1, namun berhasil diamankan tim intelijen dan DPO dicabut.',
+            ]
+        );
+
+        // =========================================================================
+        // KASUS 13: Jalur Cepat Tahap II Selesai Tanpa Sub-Tahap Opsional (Progress 100%)
+        // =========================================================================
+        $this->createCase(
+            actor: $actor,
+            noLk: 'LK/013/II/2026/BPOM',
+            tglLk: '2026-02-24',
+            uraian: 'Penyelundupan kosmetik pemutih tanpa izin edar dan racikan berbahaya merkuri pada klinik kecantikan di Kabupaten Banjar.',
+            noSp: 'SP.Sidik/013/II/2026/BPOM',
+            tglSp: '2026-02-26',
+            statusPerkara: 'final',
+            tkpData: [
+                'prov' => ['63', 'Kalimantan Selatan'],
+                'kab' => ['6303', 'Kabupaten Banjar'],
+                'kec' => ['630303', 'Martapura'],
+                'kel' => ['6303031002', 'Jawa'],
+                'detail' => 'Klinik Cantik Alami, Jl. Sekumpul Raya No. 99',
+                'klasifikasi' => 'retailer',
+                'legalitas' => 'ilegal',
+                'modus' => 'offline',
+            ],
+            ppnsUtama: $users['penyidik_3'],
+            ppnsAnggota: [$users['penyidik_1'], $users['penyidik_2']],
+            tersangkaData: [
+                'nik' => '6303035209930001',
+                'nama' => 'drg. Maya Rosita',
+                'alias' => 'Dokter Maya',
+                'bin' => 'Syamsul Bachri',
+                'tempat_lahir' => 'Martapura',
+                'tanggal_lahir' => '1993-09-12',
+                'jenis_kelamin' => 'perempuan',
+                'agama' => 'islam',
+                'pekerjaan' => 'Praktisi Estetika',
+                'pasals' => [$master['pasal_kesehatan_1'], $master['pasal_kesehatan_2']],
+            ],
+            tahapanChain: [
+                [
+                    'jenis' => JenisTahap::SPDP,
+                    'nomor' => 'B-013/SPDP/II/2026/BPOM',
+                    'tanggal' => '2026-02-28',
+                    'catatan' => 'SPDP dikirimkan ke Kejari Kabupaten Banjar.',
+                ],
+                [
+                    'jenis' => JenisTahap::TAHAP_1,
+                    'nomor' => 'B-013/Tahap-I/III/2026/BPOM',
+                    'tanggal' => '2026-03-08',
+                    'catatan' => 'Pelimpahan berkas perkara tahap 1 tanpa pengembalian (langsung P-21).',
+                ],
+                [
+                    'jenis' => JenisTahap::P21,
+                    'nomor' => 'B-733/O.3.13/Eku.1/03/2026',
+                    'tanggal' => '2026-03-18',
+                    'catatan' => 'P-21 dinyatakan lengkap oleh Jaksa Penuntut Umum.',
+                ],
+                [
+                    'jenis' => JenisTahap::TAHAP_2,
+                    'nomor' => 'BA-Pelimpahan/013/III/2026/BPOM',
+                    'tanggal' => '2026-03-24',
+                    'catatan' => 'Penyerahan tersangka dan barang bukti 450 pot cream racikan ke Kejaksaan Negeri Kabupaten Banjar.',
+                ],
+            ]
+        );
+
+        // =========================================================================
+        // KASUS 14: Perkara Tahun 2025 Melewati Batas Tahun Mutlak (Status Formal: Tidak Selesai)
+        // =========================================================================
+        $this->createCase(
+            actor: $actor,
+            noLk: 'LK/045/XI/2025/BPOM',
+            tglLk: '2025-11-12',
+            uraian: 'Peredaran obat tradisional stamina pria mengandung bahan kimia obat sildenafil tanpa izin edar di warung malam Kabupaten Tanah Laut.',
+            noSp: 'SP.Sidik/045/XI/2025/BPOM',
+            tglSp: '2025-11-14',
+            statusPerkara: 'final',
+            tkpData: [
+                'prov' => ['63', 'Kalimantan Selatan'],
+                'kab' => ['6301', 'Kabupaten Tanah Laut'],
+                'kec' => ['630103', 'Pelaihari'],
+                'kel' => ['6301031001', 'Angsau'],
+                'detail' => 'Warung Kopi Remang Simpang Tiga, Jl. A. Yani Km. 4 Pelaihari',
+                'klasifikasi' => 'retailer',
+                'legalitas' => 'ilegal',
+                'modus' => 'offline',
+            ],
+            ppnsUtama: $users['penyidik_4'],
+            ppnsAnggota: [$users['penyidik_1']],
+            tersangkaData: [
+                'nik' => '6301031204780004',
+                'nama' => 'Arbain bin Mastur',
+                'alias' => 'Pak Bain',
+                'bin' => 'Mastur',
+                'tempat_lahir' => 'Pelaihari',
+                'tanggal_lahir' => '1978-04-12',
+                'jenis_kelamin' => 'laki-laki',
+                'agama' => 'islam',
+                'pekerjaan' => 'Pedagang Warung',
+                'pasals' => [$master['pasal_kesehatan_1']],
+            ],
+            tahapanChain: [
+                [
+                    'jenis' => JenisTahap::SPDP,
+                    'nomor' => 'B-045/SPDP/XI/2025/BPOM',
+                    'tanggal' => '2025-11-18',
+                    'catatan' => 'SPDP ke Kejaksaan Negeri Tanah Laut.',
+                ],
+                [
+                    'jenis' => JenisTahap::TAHAP_1,
+                    'nomor' => 'B-045/Tahap-I/XII/2025/BPOM',
+                    'tanggal' => '2025-12-05',
+                    'catatan' => 'Penyerahan berkas perkara tahap 1.',
+                ],
+                [
+                    'jenis' => JenisTahap::P19,
+                    'nomor' => 'B-998/O.3.18/Eku.1/12/2025',
+                    'tanggal' => '2025-12-20',
+                    'catatan' => 'Petunjuk P-19 dari Jaksa Penuntut Umum untuk melengkapi keterangan saksi ahli.',
+                ],
+            ],
+            dpoData: null,
+            sp3Data: null,
+            statusFormalOverride: 'tidak_selesai'
+        );
+
+        // =========================================================================
+        // KASUS 15: Perkara Tuntas Putusan Pengadilan Negeri Marabahan (Vonis Inkrah)
+        // =========================================================================
+        $this->createCase(
+            actor: $actor,
+            noLk: 'LK/015/III/2026/BPOM',
+            tglLk: '2026-03-01',
+            uraian: 'Penyalahgunaan izin usaha toko obat menjual obat-obat tertentu (OOT) daftar G golongan trihexyphenidyl dan tramadol tanpa resep dokter di Barito Kuala.',
+            noSp: 'SP.Sidik/015/III/2026/BPOM',
+            tglSp: '2026-03-03',
+            statusPerkara: 'final',
+            tkpData: [
+                'prov' => ['63', 'Kalimantan Selatan'],
+                'kab' => ['6304', 'Kabupaten Barito Kuala'],
+                'kec' => ['630401', 'Alalak'],
+                'kel' => ['6304011002', 'Handil Bakti'],
+                'detail' => 'Toko Obat Sehat Farma, Komplek Semangat Dalam Blok C No. 21',
+                'klasifikasi' => 'distributor',
+                'legalitas' => 'legal',
+                'modus' => 'offline',
+            ],
+            ppnsUtama: $users['penyidik_1'],
+            ppnsAnggota: [$users['penyidik_2'], $users['penyidik_4']],
+            tersangkaData: [
+                'nik' => '6304011005880005',
+                'nama' => 'Hendra Gunawan, A.Md.Farm.',
+                'alias' => 'Hendra',
+                'bin' => 'Syarkawi Gunawan',
+                'tempat_lahir' => 'Marabahan',
+                'tanggal_lahir' => '1988-05-10',
+                'jenis_kelamin' => 'laki-laki',
+                'agama' => 'islam',
+                'pekerjaan' => 'Tenaga Teknis Kefarmasian',
+                'pasals' => [$master['pasal_kesehatan_1'], $master['pasal_kesehatan_2']],
+            ],
+            tahapanChain: [
+                [
+                    'jenis' => JenisTahap::SPDP,
+                    'nomor' => 'B-015/SPDP/III/2026/BPOM',
+                    'tanggal' => '2026-03-05',
+                    'catatan' => 'SPDP ke Kejaksaan Negeri Barito Kuala.',
+                ],
+                [
+                    'jenis' => JenisTahap::P16,
+                    'nomor' => 'B-515/O.3.19/Eku.1/03/2026',
+                    'tanggal' => '2026-03-07',
+                    'catatan' => 'Kejaksaan Negeri Barito Kuala. Jaksa Penuntut Umum: Diana Lestari, S.H.',
+                ],
+                [
+                    'jenis' => JenisTahap::TAHAP_1,
+                    'nomor' => 'B-015/Tahap-I/III/2026/BPOM',
+                    'tanggal' => '2026-03-12',
+                    'catatan' => 'Pelimpahan berkas perkara tahap 1.',
+                ],
+                [
+                    'jenis' => JenisTahap::P21,
+                    'nomor' => 'B-815/O.3.19/Eku.1/03/2026',
+                    'tanggal' => '2026-03-20',
+                    'catatan' => 'P-21 berkas dinyatakan lengkap.',
+                ],
+                [
+                    'jenis' => JenisTahap::TAHAP_2,
+                    'nomor' => 'BA-Pelimpahan/015/III/2026/BPOM',
+                    'tanggal' => '2026-03-25',
+                    'catatan' => 'Pelimpahan tersangka Hendra Gunawan dan barang bukti 2.000 butir obat keras ke Kejari Barito Kuala.',
+                ],
+                [
+                    'jenis' => JenisTahap::KEPUTUSAN_PENGADILAN,
+                    'nomor' => '42/Pid.Sus/2026/PN Mrh',
+                    'tanggal' => '2026-04-05',
+                    'catatan' => 'Pengadilan Negeri Marabahan. Terbukti bersalah melanggar Pasal 435 jo. Pasal 138 ayat (2) UU Kesehatan. Vonis: 2 tahun penjara dan denda Rp 150.000.000 subsider 4 bulan kurungan (Inkrah).',
+                ],
+            ]
+        );
     }
 
     /**
@@ -840,7 +1160,9 @@ class DummyDataSeeder extends Seeder
         array $ppnsAnggota,
         ?array $tersangkaData,
         array $tahapanChain,
-        ?array $dpoData = null
+        ?array $dpoData = null,
+        ?array $sp3Data = null,
+        ?string $statusFormalOverride = null
     ): void {
         // Alamat TKP
         $alamatTkp = Alamat::create([
@@ -1003,7 +1325,7 @@ class DummyDataSeeder extends Seeder
         $berkas = BerkasPerkara::updateOrCreate(
             ['perkara_id' => $perkara->id, 'tersangka_id' => $tersangka->id],
             [
-                'nomor_berkas' => $tersangkaData['nomor_berkas'],
+                'nomor_berkas' => $noLk,
                 'status_proses' => 'Baru',
                 'status_formal' => null,
                 'progress_persen' => 0,
@@ -1121,11 +1443,13 @@ class DummyDataSeeder extends Seeder
         $berkas->update([
             'progress_persen' => $currentProgress,
             'status_proses' => $currentStatusProses,
-            'status_formal' => $statusFormal,
+            'status_formal' => $statusFormalOverride ?? $statusFormal,
         ]);
 
         // DPO jika ada
         if ($dpoData !== null) {
+            $isAktif = ($dpoData['status'] ?? 'aktif') === 'aktif';
+
             $dokDpo = Dokumen::updateOrCreate(
                 [
                     'berkas_perkara_id' => $berkas->id,
@@ -1147,27 +1471,78 @@ class DummyDataSeeder extends Seeder
                 [
                     'nomor_surat' => $dpoData['nomor_surat'],
                     'tanggal_penetapan' => $dpoData['tanggal'],
-                    'status' => 'aktif',
+                    'tanggal_pencabutan' => $dpoData['tanggal_cabut'] ?? null,
+                    'status' => $dpoData['status'] ?? 'aktif',
                     'keterangan' => $dpoData['keterangan'],
+                    'alasan_pencabutan' => $dpoData['alasan_pencabutan'] ?? null,
                     'dokumen_id' => $dokDpo->id,
                     'created_by' => $actor->id,
                     'updated_by' => $actor->id,
                 ]
             );
 
-            $berkas->update(['is_dpo' => true]);
+            $berkas->update(['is_dpo' => $isAktif]);
 
             AuditLog::create([
                 'user_id' => $actor->id,
                 'perkara_id' => $perkara->id,
                 'berkas_perkara_id' => $berkas->id,
-                'aksi' => 'penetapan_dpo',
+                'aksi' => $isAktif ? 'penetapan_dpo' : 'cabut_dpo',
                 'tabel' => 'dpo',
                 'record_id' => $berkas->id,
                 'data_lama' => ['is_dpo' => false],
-                'data_baru' => ['is_dpo' => true, 'nomor_dpo' => $dpoData['nomor_surat']],
+                'data_baru' => ['is_dpo' => $isAktif, 'nomor_dpo' => $dpoData['nomor_surat']],
                 'ip_address' => '127.0.0.1',
                 'created_at' => Carbon::parse($dpoData['tanggal'])->setTime(11, 45),
+            ]);
+        }
+
+        // SP3 jika ada
+        if ($sp3Data !== null) {
+            $dokSp3 = Dokumen::updateOrCreate(
+                [
+                    'berkas_perkara_id' => $berkas->id,
+                    'kategori' => 'sp3',
+                ],
+                [
+                    'perkara_id' => $perkara->id,
+                    'nama_dokumen' => "Surat SP3 - {$sp3Data['nomor_surat']}",
+                    'nama_file_asli' => str_replace(['/', '\\'], '-', $sp3Data['nomor_surat']).'.pdf',
+                    'file_path' => 'dokumen/sample-bap.pdf',
+                    'file_size' => 134000,
+                    'created_by' => $actor->id,
+                    'updated_by' => $actor->id,
+                ]
+            );
+
+            Sp3::updateOrCreate(
+                ['berkas_perkara_id' => $berkas->id],
+                [
+                    'nomor_surat' => $sp3Data['nomor_surat'],
+                    'tanggal_sp3' => $sp3Data['tanggal'],
+                    'keterangan' => $sp3Data['keterangan'],
+                    'dokumen_id' => $dokSp3->id,
+                    'created_by' => $actor->id,
+                    'updated_by' => $actor->id,
+                ]
+            );
+
+            $berkas->update([
+                'status_proses' => 'SP3',
+                'status_formal' => 'tidak_selesai',
+            ]);
+
+            AuditLog::create([
+                'user_id' => $actor->id,
+                'perkara_id' => $perkara->id,
+                'berkas_perkara_id' => $berkas->id,
+                'aksi' => 'terbitkan_sp3',
+                'tabel' => 'sp3',
+                'record_id' => $berkas->id,
+                'data_lama' => ['status_formal' => null],
+                'data_baru' => ['status_formal' => 'tidak_selesai', 'status_proses' => 'SP3', 'nomor_sp3' => $sp3Data['nomor_surat']],
+                'ip_address' => '127.0.0.1',
+                'created_at' => Carbon::parse($sp3Data['tanggal'])->setTime(15, 0),
             ]);
         }
     }

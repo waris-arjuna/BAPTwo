@@ -186,13 +186,15 @@
                                     <span>Lihat Detail Perkara</span>
                                 </a>
                                 @can('create-cases')
-                                    <a
-                                        href="{{ route('berkas-perkara.tahapan.create', $berkas) }}"
-                                        class="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm text-gray-700 transition hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/[0.05]"
-                                    >
-                                        <i class="fi fi-rr-plus text-xs text-success-600"></i>
-                                        <span>Lanjut Tahapan</span>
-                                    </a>
+                                    @if (! $berkas->hasSp3() && $berkas->status_formal !== 'tidak_selesai' && ! $berkas->hasTahap(\App\Enums\JenisTahap::KEPUTUSAN_PENGADILAN))
+                                        <a
+                                            href="{{ route('berkas-perkara.tahapan.create', $berkas) }}"
+                                            class="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm text-gray-700 transition hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/[0.05]"
+                                        >
+                                            <i class="fi fi-rr-plus text-xs text-success-600"></i>
+                                            <span>Lanjut Tahapan</span>
+                                        </a>
+                                    @endif
                                 @endcan
                             </x-common.table-dropdown>
                         @else

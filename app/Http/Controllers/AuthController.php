@@ -12,8 +12,12 @@ use Illuminate\View\View;
 
 class AuthController extends Controller
 {
-    public function showSignin(): View
+    public function showSignin(Request $request): View
     {
+        if ($request->has('session_expired')) {
+            session()->flash('warning', __('Sesi Anda telah berakhir karena tidak ada interaksi selama 30 menit. Silakan masuk kembali.'));
+        }
+
         return view('pages.auth.signin', ['title' => __('Sign In')]);
     }
 
@@ -42,7 +46,7 @@ class AuthController extends Controller
             'is_active' => true,
         ];
 
-        if (! Auth::attempt($credentials, $request->boolean('remember'))) {
+        if (! Auth::attempt($credentials, false)) {
             throw ValidationException::withMessages([
                 'password' => __('Kata sandi yang Anda masukkan salah.'),
             ]);

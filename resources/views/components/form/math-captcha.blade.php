@@ -14,6 +14,25 @@
 <div x-data="{
     svg: @js($initialCaptcha['svg']),
     loading: false,
+    timeLeft: 30,
+    timer: null,
+    isExpired: false,
+    init() {
+        this.startTimer();
+    },
+    startTimer() {
+        this.timeLeft = 30;
+        this.isExpired = false;
+        clearInterval(this.timer);
+        this.timer = setInterval(() => {
+            if (this.timeLeft > 0) {
+                this.timeLeft--;
+            } else {
+                this.isExpired = true;
+                clearInterval(this.timer);
+            }
+        }, 1000);
+    },
     async refreshCaptcha() {
         if (this.loading) return;
         this.loading = true;
@@ -28,6 +47,7 @@
                 const data = await response.json();
                 if (data.svg) {
                     this.svg = data.svg;
+                    this.startTimer();
                 }
             }
         } catch (error) {
@@ -74,4 +94,19 @@
     @error($name)
         <p class="text-theme-xs text-error-500 mt-1">{{ $message }}</p>
     @enderror
+
+    <!-- Notifikasi Captcha Kedaluwarsa (Poin 16) -->
+    <div x-show="isExpired" x-cloak class="mt-2 flex items-center justify-between rounded-lg border border-warning-200 bg-warning-50 p-2.5 text-xs text-warning-800 dark:border-warning-500/20 dark:bg-warning-500/10 dark:text-warning-300">
+        <div class="flex items-center gap-1.5">
+            <i class="fi fi-rr-clock text-sm"></i>
+            <span>{{ __('Captcha telah kedaluwarsa (30 detik). Silakan muat ulang captcha.') }}</span>
+        </div>
+        <button type="button" @click="refreshCaptcha()" class="font-semibold underline hover:text-warning-900 dark:hover:text-warning-200">
+            {{ __('Muat Ulang') }}
+        </button>
+    </div>
+    <div x-show="!isExpired" class="mt-1 flex items-center gap-1 text-[11px] text-gray-400 dark:text-gray-500">
+        <i class="fi fi-rr-time-fast text-xs"></i>
+        <span>{{ __('Masa berlaku captcha:') }} <strong x-text="timeLeft + ' detik'"></strong></span>
+    </div>
 </div>

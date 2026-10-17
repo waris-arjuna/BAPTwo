@@ -5,8 +5,8 @@
     'required' => false,
     'existingFile' => null,
     'existingUrl' => null,
-    'helperText' => 'Format file yang diperbolehkan: PDF murni (Maksimal 20 MB).',
-    'maxSizeMb' => 20,
+    'helperText' => 'Format file yang diperbolehkan: PDF murni (Maksimal 5 MB).',
+    'maxSizeMb' => 5,
 ])
 
 @php
@@ -32,12 +32,18 @@
                 return;
             }
             if (!file.name.toLowerCase().endsWith('.pdf') && file.type !== 'application/pdf') {
-                this.error = 'File harus berformat PDF.';
+                this.error = 'File harus berformat PDF murni.';
+                if (typeof window.showAppError === 'function') {
+                    window.showAppError('Format Dokumen Tidak Sesuai', this.error, ['Format yang didukung hanya dokumen .pdf.']);
+                }
                 this.clearFile();
                 return;
             }
             if (file.size > {{ $maxSizeMb }} * 1024 * 1024) {
                 this.error = 'Ukuran file melebihi batas maksimal {{ $maxSizeMb }} MB.';
+                if (typeof window.showAppError === 'function') {
+                    window.showAppError('Ukuran Dokumen Terlalu Besar', this.error, ['Kompresi atau pilih file PDF dengan ukuran maksimal 5 MB.']);
+                }
                 this.clearFile();
                 return;
             }

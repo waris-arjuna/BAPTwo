@@ -13,12 +13,11 @@ it('locks locale to id and dir to ltr', function () {
     $response->assertOk();
     $response->assertSee('dir="ltr"', false);
     $response->assertDontSee('Language', false);
+    expect(app()->getLocale())->toBe('id');
 });
 
-it('locks locale switch route to id and ltr', function () {
+it('does not have legacy locale switch route', function () {
     $response = $this->get('/locale/en');
 
-    $response->assertRedirect();
-    $response->assertSessionHas('locale', 'id');
-    $response->assertSessionHas('dir', 'ltr');
+    $response->assertNotFound();
 });

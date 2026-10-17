@@ -71,8 +71,6 @@ class LaporanKejadianController extends Controller
      */
     public function show(mixed $perkara): View
     {
-        $this->perkaraService->ensureBaselinePerkara();
-
         if (! $perkara instanceof Perkara) {
             $perkara = Perkara::findOrFail($perkara);
         }
@@ -118,19 +116,5 @@ class LaporanKejadianController extends Controller
         return redirect()
             ->route('laporan-kejadian.show', $perkara)
             ->with('success', $message);
-    }
-
-    /**
-     * Hapus (soft delete) laporan kejadian
-     */
-    public function destroy(Request $request, Perkara $perkara): RedirectResponse
-    {
-        Gate::authorize('soft-delete');
-
-        $this->perkaraService->deleteLaporanKejadian($perkara, $request->user());
-
-        return redirect()
-            ->route('laporan-kejadian.index')
-            ->with('success', 'Laporan kejadian berhasil dihapus.');
     }
 }

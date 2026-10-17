@@ -48,7 +48,7 @@ return new class extends Migration
 
         Schema::create('user', function (Blueprint $table) {
             $table->id();
-            $table->enum('role', ['administrator', 'pimpinan', 'penyidik'])->default('penyidik');
+            $table->enum('role', ['administrator', 'pimpinan', 'penyidik', 'umum'])->default('penyidik');
             $table->foreignId('jabatan_id')->nullable()->constrained('jabatan')->nullOnDelete();
             $table->foreignId('bidang_id')->nullable()->constrained('bidang')->nullOnDelete();
             $table->foreignId('panggol_id')->nullable()->constrained('panggol')->nullOnDelete();

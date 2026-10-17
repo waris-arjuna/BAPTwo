@@ -23,7 +23,6 @@ class Sp3 extends Model
         'berkas_perkara_id',
         'nomor_surat',
         'tanggal_sp3',
-        'alasan',
         'keterangan',
         'dokumen_id',
         'created_by',

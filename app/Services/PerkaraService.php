@@ -28,8 +28,6 @@ class PerkaraService
      */
     public function getLaporanKejadianList(Request $request, int $perPage = 10): LengthAwarePaginator
     {
-        $this->ensureBaselinePerkara();
-
         $search = $request->string('search')->trim()->toString();
         $status = $request->string('status')->trim()->toString();
         $tanggalDari = $request->string('tanggal_dari', $request->string('tanggal')->toString())->trim()->toString();
@@ -97,8 +95,6 @@ class PerkaraService
      */
     public function getSprindikList(Request $request, int $perPage = 10): LengthAwarePaginator
     {
-        $this->ensureBaselinePerkara();
-
         $search = $request->string('search')->trim()->toString();
         $status = $request->string('status')->trim()->toString();
         $tanggalDari = $request->string('tanggal_dari', $request->string('tanggal')->toString())->trim()->toString();
@@ -591,20 +587,24 @@ class PerkaraService
                         ->where('tersangka_id', $tersangka->id)
                         ->first();
 
+                    $nomorBerkas = ! empty($tskData['nomor_berkas'])
+                        ? $tskData['nomor_berkas']
+                        : ($perkara->nomor_laporan_kejadian ?: 'BP-'.$perkara->id);
+
                     if ($berkas instanceof BerkasPerkara) {
                         if ($berkas->trashed()) {
                             $berkas->restore();
                         }
                         $berkas->update([
                             'perkara_id' => $perkara->id,
-                            'nomor_berkas' => $tskData['nomor_berkas'] ?? $berkas->nomor_berkas,
+                            'nomor_berkas' => $nomorBerkas,
                             'updated_by' => $user->id,
                         ]);
                     } else {
                         $berkas = BerkasPerkara::create([
                             'perkara_id' => $perkara->id,
                             'tersangka_id' => $tersangka->id,
-                            'nomor_berkas' => $tskData['nomor_berkas'] ?? null,
+                            'nomor_berkas' => $nomorBerkas,
                             'status_formal' => null,
                             'status_proses' => 'Baru',
                             'progress_persen' => 0,
@@ -752,86 +752,10 @@ class PerkaraService
     }
 
     /**
-     * Pastikan baseline perkara terisi jika database kosong (misal saat testing dengan RefreshDatabase)
-     */
-    public function ensureBaselinePerkara(): void
-    {
-        if (Perkara::count() > 0) {
-            return;
-        }
-
-        $samplePerkara = [
-            [
-                'id' => 1,
-                'nomor_laporan_kejadian' => 'LK/001/IX/2026',
-                'tanggal_laporan_kejadian' => '2026-09-02',
-                'tahap_laporan_status' => 'final',
-                'laporan_locked_at' => now(),
-                'nomor_surat_perintah' => null,
-                'tanggal_surat_perintah' => null,
-                'tahap_sprindik_status' => null,
-                'deskripsi' => 'Dugaan peredaran sediaan farmasi tanpa izin edar.',
-            ],
-            [
-                'id' => 2,
-                'nomor_laporan_kejadian' => 'LK/002/IX/2026',
-                'tanggal_laporan_kejadian' => '2026-09-04',
-                'tahap_laporan_status' => 'final',
-                'laporan_locked_at' => now(),
-                'nomor_surat_perintah' => 'SP/001/IX/2026',
-                'tanggal_surat_perintah' => '2026-09-05',
-                'tahap_sprindik_status' => 'final',
-                'sprindik_locked_at' => now(),
-                'deskripsi' => 'Dugaan peredaran kosmetik mengandung bahan berbahaya.',
-            ],
-            [
-                'id' => 3,
-                'nomor_laporan_kejadian' => 'LK/003/IX/2026',
-                'tanggal_laporan_kejadian' => '2026-09-05',
-                'tahap_laporan_status' => 'final',
-                'laporan_locked_at' => now(),
-                'nomor_surat_perintah' => 'SP/002/IX/2026',
-                'tanggal_surat_perintah' => '2026-09-06',
-                'tahap_sprindik_status' => 'final',
-                'sprindik_locked_at' => now(),
-                'deskripsi' => 'Dugaan pangan olahan tanpa izin edar skala rumahan.',
-            ],
-            [
-                'id' => 4,
-                'nomor_laporan_kejadian' => 'LK/004/IX/2026',
-                'tanggal_laporan_kejadian' => '2026-09-08',
-                'tahap_laporan_status' => 'final',
-                'laporan_locked_at' => now(),
-                'nomor_surat_perintah' => null,
-                'tanggal_surat_perintah' => null,
-                'tahap_sprindik_status' => null,
-                'deskripsi' => 'Dugaan obat tradisional ilegal mengandung BKO.',
-            ],
-            [
-                'id' => 5,
-                'nomor_laporan_kejadian' => 'LK/005/IX/2026',
-                'tanggal_laporan_kejadian' => '2026-09-10',
-                'tahap_laporan_status' => 'final',
-                'laporan_locked_at' => now(),
-                'nomor_surat_perintah' => 'SP/003/IX/2026',
-                'tanggal_surat_perintah' => '2026-09-11',
-                'tahap_sprindik_status' => 'final',
-                'sprindik_locked_at' => now(),
-                'deskripsi' => 'Dugaan suplemen kesehatan palsu secara daring.',
-            ],
-        ];
-
-        foreach ($samplePerkara as $item) {
-            Perkara::create($item);
-        }
-    }
-
-    /**
      * Ambil daftar Perkara untuk halaman Data Perkara
      */
     public function getDataPerkaraList(Request $request, int $perPage = 10): LengthAwarePaginator
     {
-        $this->ensureBaselinePerkara();
 
         $search = $request->string('search')->trim()->toString();
         $status = $request->string('status')->trim()->toString();
@@ -846,6 +770,7 @@ class PerkaraService
                 'tkp.alamat',
                 'ppnsUtama',
                 'tersangkas.berkasPerkara.pasals',
+                'berkasPerkaras.sp3',
                 'creator',
             ])
             ->when($search !== '', function (Builder $query) use ($search) {

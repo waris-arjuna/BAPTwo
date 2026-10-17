@@ -68,12 +68,6 @@
         <div class="relative flex h-screen w-full flex-col justify-center sm:p-0 lg:flex-row dark:bg-gray-900">
             <!-- Form -->
             <div class="flex w-full flex-1 flex-col justify-center px-4 py-8 sm:px-6 lg:w-1/2">
-                <div class="mx-auto mb-4 w-full max-w-lg">
-                    <a href="/" class="inline-flex items-center gap-2 text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
-                        <i class="fi fi-rr-angle-small-left text-base" aria-hidden="true"></i>
-                        {{ __('Back to dashboard') }}
-                    </a>
-                </div>
                 <div class="mx-auto w-full max-w-lg">
                     <x-common.flash-alert />
                     <!-- Card Hover Wrapper -->
@@ -133,23 +127,6 @@
                                     </div>
                                     <!-- Captcha -->
                                     <x-form.math-captcha />
-                                    <!-- Checkbox -->
-                                    <div class="flex items-center justify-between">
-                                        <div x-data="{ checkboxToggle: false }">
-                                            <label for="checkboxLabelOne" class="flex cursor-pointer items-center text-sm font-normal text-gray-700 select-none dark:text-gray-400">
-                                                <div class="relative">
-                                                    <input type="checkbox" id="checkboxLabelOne" name="remember" value="1" class="sr-only" @change="checkboxToggle = !checkboxToggle" />
-                                                    <div :class="checkboxToggle ? 'border-brand-500 bg-brand-500' : 'bg-transparent border-gray-300 dark:border-gray-700'"
-                                                        class="me-3 flex h-5 w-5 items-center justify-center rounded-md border-[1.25px]">
-                                                        <span :class="checkboxToggle ? '' : 'opacity-0'">
-                                                            <i class="fi fi-rr-check text-[10px] text-white" aria-hidden="true"></i>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                {{ __('Keep me logged in') }}
-                                            </label>
-                                        </div>
-                                    </div>
                                     <!-- Button -->
                                     <div>
                                         <button type="submit"

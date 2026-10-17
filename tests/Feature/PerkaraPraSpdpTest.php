@@ -277,7 +277,7 @@ it('allows Penyidik to save Sprindik as Draft and later finalize it', function (
         ->and($perkara->status_sprindik)->toBe('Belum Menjadi Perkara');
 });
 
-it('allows soft deleting Laporan Kejadian and prevents hard deletion', function () {
+it('ensures Perkara cannot be deleted and has no delete endpoint', function () {
     $penyidik = User::factory()->penyidik()->create();
     $perkara = Perkara::create([
         'nomor_laporan_kejadian' => 'LK/444/X/2026',
@@ -286,34 +286,14 @@ it('allows soft deleting Laporan Kejadian and prevents hard deletion', function 
     ]);
 
     $this->actingAs($penyidik)
-        ->delete(route('laporan-kejadian.destroy', $perkara))
-        ->assertRedirect(route('laporan-kejadian.index'));
-
-    expect(Perkara::find($perkara->id))->toBeNull()
-        ->and(Perkara::withTrashed()->find($perkara->id))->not->toBeNull();
-
-    $auditLog = AuditLog::where('perkara_id', $perkara->id)->where('aksi', 'delete_laporan_kejadian')->first();
-    expect($auditLog)->not->toBeNull();
-});
-
-it('allows soft deleting / resetting Sprindik from Perkara', function () {
-    $penyidik = User::factory()->penyidik()->create();
-    $perkara = Perkara::create([
-        'nomor_laporan_kejadian' => 'LK/555/X/2026',
-        'tanggal_laporan_kejadian' => '2026-10-10',
-        'tahap_laporan_status' => 'final',
-        'nomor_surat_perintah' => 'SP/555/X/2026',
-        'tanggal_surat_perintah' => '2026-10-11',
-        'tahap_sprindik_status' => 'final',
-    ]);
+        ->delete("/laporan-kejadian/{$perkara->id}")
+        ->assertStatus(405);
 
     $this->actingAs($penyidik)
-        ->delete(route('sprindik.destroy', $perkara))
-        ->assertRedirect(route('sprindik.index'));
+        ->delete("/sprindik/{$perkara->id}")
+        ->assertStatus(405);
 
-    $perkara->refresh();
-    expect($perkara->nomor_surat_perintah)->toBeNull()
-        ->and($perkara->status_laporan)->toBe('Belum Dilanjutkan');
+    expect(Perkara::find($perkara->id))->not->toBeNull();
 });
 
 it('allows authenticated users to preview and download uploaded private documents', function () {
@@ -366,19 +346,11 @@ it('blocks Pimpinan from store, update, and delete actions on Perkara and Sprind
         ->assertForbidden();
 
     $this->actingAs($pimpinan)
-        ->delete(route('laporan-kejadian.destroy', $perkara))
-        ->assertForbidden();
-
-    $this->actingAs($pimpinan)
         ->post(route('sprindik.store'), ['perkara_id' => $perkara->id])
         ->assertForbidden();
 
     $this->actingAs($pimpinan)
         ->put(route('sprindik.update', $perkara), ['nomor_sprindik' => 'SP/EDIT/2026'])
-        ->assertForbidden();
-
-    $this->actingAs($pimpinan)
-        ->delete(route('sprindik.destroy', $perkara))
         ->assertForbidden();
 });
 
@@ -566,13 +538,13 @@ it('validates that Perkara draft requires main identifier and allows incomplete 
         'tersangka' => [],
     ])->assertSessionHasErrors(['tersangka']);
 
-    // 2. Gagal jika tersangka ada tetapi nama atau nomor berkas kosong saat draft
+    // 2. Gagal jika tersangka ada tetapi nama kosong saat draft
     $this->actingAs($penyidik)->put(route('perkara.update', $perkara), [
         'action_type' => 'draft',
         'tersangka' => [
-            ['id' => null, 'nama' => '', 'nomor_berkas' => ''],
+            ['id' => null, 'nama' => ''],
         ],
-    ])->assertSessionHasErrors(['tersangka.0.nama', 'tersangka.0.nomor_berkas']);
+    ])->assertSessionHasErrors(['tersangka.0.nama']);
 
     // 3. Berhasil saat tersangka dan nomor berkas terisi, meskipun TKP, PPNS, dan Pasal kosong saat draft
     $response = $this->actingAs($penyidik)->put(route('perkara.update', $perkara), [

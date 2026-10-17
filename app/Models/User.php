@@ -151,4 +151,9 @@ class User extends Authenticatable
     {
         return $this->role === UserRole::PENYIDIK;
     }
+
+    public function isUmum(): bool
+    {
+        return $this->role === UserRole::UMUM;
+    }
 }

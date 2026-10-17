@@ -17,6 +17,8 @@ class ProgressPerkaraController extends Controller
      */
     public function index(Request $request): View
     {
+        \Illuminate\Support\Facades\Gate::authorize('view-progress-perkara');
+
         $berkasList = $this->perkaraService->getProgressPerkaraList($request);
 
         if ($request->header('X-Filter-Partial')) {

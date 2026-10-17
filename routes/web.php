@@ -6,12 +6,12 @@ use App\Http\Controllers\DataPerkaraController;
 use App\Http\Controllers\DokumenController;
 use App\Http\Controllers\DpoController;
 use App\Http\Controllers\LaporanKejadianController;
-use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\MasterDataController;
 use App\Http\Controllers\MathCaptchaController;
 use App\Http\Controllers\P21Controller;
 use App\Http\Controllers\PencarianPerkaraController;
 use App\Http\Controllers\PerkaraBerkasController;
+use App\Http\Controllers\PerkaraExportController;
 use App\Http\Controllers\PotensiTerlimpahController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgressPerkaraController;
@@ -27,9 +27,6 @@ use App\Http\Controllers\TahapanPerkaraController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WilayahController;
 use Illuminate\Support\Facades\Route;
-
-// Locale Switch Route
-Route::get('/locale/{locale}', [LocaleController::class, 'switch'])->name('locale.switch');
 
 // Captcha
 Route::get('/captcha/refresh', [MathCaptchaController::class, 'refresh'])->name('captcha.refresh');
@@ -68,10 +65,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/wilayah/kecamatan/{kabupatenKode}', [WilayahController::class, 'kecamatan'])->name('wilayah.kecamatan');
     Route::get('/wilayah/desa/{kecamatanKode}', [WilayahController::class, 'desa'])->name('wilayah.desa');
 
-    // Master Data (6 Submenus: Semua role bisa lihat; Penyidik & Admin bisa tambah/ubah/soft-delete)
-    Route::get('/master-data', [MasterDataController::class, 'redirectDefault'])->name('master-data.redirect');
-    Route::get('/master-data/{type}', [MasterDataController::class, 'index'])->name('master-data.index');
-    Route::middleware('can:manage-master-data')->group(function () {
+    // Master Data (Poin 7: Pemimpin diblokir, Penyidik hanya Pasal & Instansi Hukum, Admin semua)
+    Route::middleware('can:view-master-data')->group(function () {
+        Route::get('/master-data', [MasterDataController::class, 'redirectDefault'])->name('master-data.redirect');
+        Route::get('/master-data/{type}', [MasterDataController::class, 'index'])->name('master-data.index');
         Route::post('/master-data/{type}', [MasterDataController::class, 'store'])->name('master-data.store');
         Route::put('/master-data/{type}/{id}', [MasterDataController::class, 'update'])->name('master-data.update');
         Route::delete('/master-data/{type}/{id}', [MasterDataController::class, 'destroy'])->name('master-data.destroy');
@@ -104,7 +101,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/laporan-kejadian/{perkara}', [LaporanKejadianController::class, 'show'])->name('laporan-kejadian.show');
     Route::get('/laporan-kejadian/{perkara}/edit', [LaporanKejadianController::class, 'edit'])->middleware('can:edit-draft')->name('laporan-kejadian.edit');
     Route::put('/laporan-kejadian/{perkara}', [LaporanKejadianController::class, 'update'])->middleware('can:edit-draft')->name('laporan-kejadian.update');
-    Route::delete('/laporan-kejadian/{perkara}', [LaporanKejadianController::class, 'destroy'])->middleware('can:soft-delete')->name('laporan-kejadian.destroy');
 
     // Sprindik
     Route::get('/sprindik', [SprindikController::class, 'index'])->name('sprindik.index');
@@ -113,15 +109,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/sprindik/{perkara}', [SprindikController::class, 'show'])->name('sprindik.show');
     Route::get('/sprindik/{perkara}/edit', [SprindikController::class, 'edit'])->middleware('can:edit-draft')->name('sprindik.edit');
     Route::put('/sprindik/{perkara}', [SprindikController::class, 'update'])->middleware('can:edit-draft')->name('sprindik.update');
-    Route::delete('/sprindik/{perkara}', [SprindikController::class, 'destroy'])->middleware('can:soft-delete')->name('sprindik.destroy');
 
     // Data Perkara & Berkas Perkara Pra-SPDP (TKP, PPNS, Tersangka, Berkas, Pasal Berlapis)
     Route::get('/data-perkara', [DataPerkaraController::class, 'index'])->name('data-perkara.index');
-    Route::get('/progress-perkara', [ProgressPerkaraController::class, 'index'])->name('progress-perkara.index');
+    Route::get('/progress-perkara', [ProgressPerkaraController::class, 'index'])->middleware('can:view-progress-perkara')->name('progress-perkara.index');
     Route::get('/potensi-terlimpah', [PotensiTerlimpahController::class, 'index'])->name('potensi-terlimpah.index');
     Route::get('/perkara/{perkara}', [PerkaraBerkasController::class, 'show'])->name('perkara.show');
     Route::get('/perkara/{perkara}/buat', [PerkaraBerkasController::class, 'edit'])->middleware('can:edit-draft')->name('perkara.edit');
     Route::put('/perkara/{perkara}/buat', [PerkaraBerkasController::class, 'update'])->middleware('can:edit-draft')->name('perkara.update');
+
+    // Poin 10: Ekspor Rekap Perkara ke Excel (.xlsx) - Akses hanya Admin dan Penyidik
+    Route::get('/perkara-export', [PerkaraExportController::class, 'export'])->middleware('can:export-excel')->name('perkara.export');
 
     // Dokumen (Download & Preview Privat)
     Route::get('/dokumen/{dokumen}/download', [DokumenController::class, 'download'])->name('dokumen.download');

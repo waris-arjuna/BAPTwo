@@ -38,6 +38,27 @@ class MenuHelper
      */
     public static function getPerkaraItems(): array
     {
+        $dataPerkaraSubItems = [
+            [
+                'name' => 'Daftar Perkara',
+                'path' => '/data-perkara',
+            ],
+        ];
+
+        // Poin 20: Halaman Progres Perkara hanya tampil untuk Pemimpin dan Umum. Untuk Penyidik disembunyikan.
+        $user = auth()->user();
+        if ($user && ! $user->isPenyidik()) {
+            $dataPerkaraSubItems[] = [
+                'name' => 'Progress Perkara',
+                'path' => '/progress-perkara',
+            ];
+        }
+
+        $dataPerkaraSubItems[] = [
+            'name' => 'Potensi Terlimpah',
+            'path' => '/potensi-terlimpah',
+        ];
+
         return [
             [
                 'icon' => 'sprindik',
@@ -47,20 +68,7 @@ class MenuHelper
             [
                 'icon' => 'data-perkara',
                 'name' => 'Data Perkara',
-                'subItems' => [
-                    [
-                        'name' => 'Daftar Perkara',
-                        'path' => '/data-perkara',
-                    ],
-                    [
-                        'name' => 'Progress Perkara',
-                        'path' => '/progress-perkara',
-                    ],
-                    [
-                        'name' => 'Potensi Terlimpah',
-                        'path' => '/potensi-terlimpah',
-                    ],
-                ],
+                'subItems' => $dataPerkaraSubItems,
             ],
             [
                 'icon' => 'spdp',
@@ -95,38 +103,53 @@ class MenuHelper
      */
     public static function getSystemItems(): array
     {
-        $items = [
-            [
+        $user = auth()->user();
+        $items = [];
+
+        // Poin 7:
+        // Role Pemimpin & Umum: Master Data dihapus total (menu disembunyikan)
+        // Role Penyidik: Master Data hanya Pasal dan Instansi Hukum
+        // Role Admin: Mengelola seluruh Master Data
+        if ($user && ($user->isAdmin() || $user->isPenyidik())) {
+            $masterSubItems = [];
+
+            if ($user->isAdmin()) {
+                $masterSubItems[] = [
+                    'name' => 'Jabatan',
+                    'path' => '/master-data/jabatan',
+                ];
+                $masterSubItems[] = [
+                    'name' => 'Bidang',
+                    'path' => '/master-data/bidang',
+                ];
+                $masterSubItems[] = [
+                    'name' => 'Pangkat & Golongan',
+                    'path' => '/master-data/panggol',
+                ];
+            }
+
+            $masterSubItems[] = [
+                'name' => 'Pasal / UU',
+                'path' => '/master-data/pasal',
+            ];
+            $masterSubItems[] = [
+                'name' => 'Instansi Hukum',
+                'path' => '/master-data/instansi-hukum',
+            ];
+
+            if ($user->isAdmin()) {
+                $masterSubItems[] = [
+                    'name' => 'Jaksa Penuntut',
+                    'path' => '/master-data/jaksa-penuntut',
+                ];
+            }
+
+            $items[] = [
                 'icon' => 'master-data',
                 'name' => 'Master Data',
-                'subItems' => [
-                    [
-                        'name' => 'Jabatan',
-                        'path' => '/master-data/jabatan',
-                    ],
-                    [
-                        'name' => 'Bidang',
-                        'path' => '/master-data/bidang',
-                    ],
-                    [
-                        'name' => 'Pangkat & Golongan',
-                        'path' => '/master-data/panggol',
-                    ],
-                    [
-                        'name' => 'Pasal / UU',
-                        'path' => '/master-data/pasal',
-                    ],
-                    [
-                        'name' => 'Instansi Hukum',
-                        'path' => '/master-data/instansi-hukum',
-                    ],
-                    [
-                        'name' => 'Jaksa Penuntut',
-                        'path' => '/master-data/jaksa-penuntut',
-                    ],
-                ],
-            ],
-        ];
+                'subItems' => $masterSubItems,
+            ];
+        }
 
         if (auth()->user()?->isAdmin()) {
             $items[] = [

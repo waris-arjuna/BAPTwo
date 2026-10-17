@@ -91,8 +91,8 @@ it('renders reusable table dropdown across Laporan Kejadian, Sprindik, Data Perk
         ->assertSee('Ringkasan Cepat')
         ->assertSee('Lihat Perkara');
 
-    // 5. Progress Perkara
-    $this->actingAs($this->penyidik)
+    // 5. Progress Perkara (diakses oleh Admin atau Pemimpin sesuai Poin 20)
+    $this->actingAs($this->admin)
         ->get(route('progress-perkara.index'))
         ->assertOk()
         ->assertSee('x-teleport="body"', false)
