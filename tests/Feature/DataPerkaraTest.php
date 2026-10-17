@@ -18,11 +18,13 @@ it('renders Data Perkara dropdown menu with Daftar Perkara and Progress Perkara 
 
     $dataPerkaraItem = collect($perkaraGroup['items'])->firstWhere('name', 'Data Perkara');
     expect($dataPerkaraItem)->not->toBeNull()
-        ->and($dataPerkaraItem['subItems'])->toHaveCount(2)
+        ->and($dataPerkaraItem['subItems'])->toHaveCount(3)
         ->and($dataPerkaraItem['subItems'][0]['name'])->toBe('Daftar Perkara')
         ->and($dataPerkaraItem['subItems'][0]['path'])->toBe('/data-perkara')
         ->and($dataPerkaraItem['subItems'][1]['name'])->toBe('Progress Perkara')
-        ->and($dataPerkaraItem['subItems'][1]['path'])->toBe('/progress-perkara');
+        ->and($dataPerkaraItem['subItems'][1]['path'])->toBe('/progress-perkara')
+        ->and($dataPerkaraItem['subItems'][2]['name'])->toBe('Potensi Terlimpah')
+        ->and($dataPerkaraItem['subItems'][2]['path'])->toBe('/potensi-terlimpah');
 });
 
 it('allows authenticated users to view Daftar Perkara and shows Tambah Perkara modal only for authorized roles', function () {

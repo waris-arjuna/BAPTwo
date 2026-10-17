@@ -56,6 +56,10 @@ class MenuHelper
                         'name' => 'Progress Perkara',
                         'path' => '/progress-perkara',
                     ],
+                    [
+                        'name' => 'Potensi Terlimpah',
+                        'path' => '/potensi-terlimpah',
+                    ],
                 ],
             ],
             [

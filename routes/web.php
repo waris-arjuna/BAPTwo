@@ -12,6 +12,7 @@ use App\Http\Controllers\MathCaptchaController;
 use App\Http\Controllers\P21Controller;
 use App\Http\Controllers\PencarianPerkaraController;
 use App\Http\Controllers\PerkaraBerkasController;
+use App\Http\Controllers\PotensiTerlimpahController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgressPerkaraController;
 use App\Http\Controllers\PutusanPerkaraController;
@@ -117,6 +118,7 @@ Route::middleware('auth')->group(function () {
     // Data Perkara & Berkas Perkara Pra-SPDP (TKP, PPNS, Tersangka, Berkas, Pasal Berlapis)
     Route::get('/data-perkara', [DataPerkaraController::class, 'index'])->name('data-perkara.index');
     Route::get('/progress-perkara', [ProgressPerkaraController::class, 'index'])->name('progress-perkara.index');
+    Route::get('/potensi-terlimpah', [PotensiTerlimpahController::class, 'index'])->name('potensi-terlimpah.index');
     Route::get('/perkara/{perkara}', [PerkaraBerkasController::class, 'show'])->name('perkara.show');
     Route::get('/perkara/{perkara}/buat', [PerkaraBerkasController::class, 'edit'])->middleware('can:edit-draft')->name('perkara.edit');
     Route::put('/perkara/{perkara}/buat', [PerkaraBerkasController::class, 'update'])->middleware('can:edit-draft')->name('perkara.update');

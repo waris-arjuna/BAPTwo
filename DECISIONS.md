@@ -619,4 +619,28 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
      - 9 skenario uji mencakup akses multi-role (Penyidik, Pimpinan, Administrator), validasi 5 kartu statistik, pencarian multi-kriteria NIK/deskripsi/pasal/PPNS, filter status proses dan status formal, preset chips, respons AJAX partial, dan integritas menu navigasi Flaticon.
 - Konsekuensi: Pimpinan dan Penyidik kini memiliki akses ringkas, cepat, dan terpusat untuk memonitor seluruh perkara dan mencari berkas perkara secara fleksibel tanpa hambatan operasional.
 
+## D-034 — Dashboard Monitoring Potensi Terlimpah & Peringatan Dini Batas Waktu Akhir Tahun (PRD F-41)
+
+- Tanggal: 2026-10-17
+- Status: Disepakati & Diimplementasikan
+- Konteks: Mengimplementasikan PRD F-41 mengenai dashboard khusus untuk mengidentifikasi Berkas Perkara yang masih belum Selesai menjelang akhir tahun atau mendekati batas SLA 1 bulan kalender. Tujuannya adalah menyediakan *early warning system* bagi Penyidik dan Pimpinan guna memprioritaskan berkas yang siap dilimpahkan ke Tahap II sebelum terkena penetapan otomatis *Tidak Selesai* pada 1 Januari 00:00.
+- Keputusan:
+  1. **Submenu & Routing Navigasi (`/potensi-terlimpah`)**:
+     - Ditambahkan sebagai submenu di bawah grup menu *Data Perkara* (`App\Helpers\MenuHelper::getPerkaraItems`) bersama *Daftar Perkara* dan *Progress Perkara*.
+     - Route `GET /potensi-terlimpah` (`potensi-terlimpah.index`) dapat diakses oleh seluruh peran terautentikasi (Penyidik, Pimpinan, Administrator).
+  2. **Banner Edukasi & 5 Kartu Metrik Ringkasan Potensi Terlimpah**:
+     - Banner amber peringatan dini di bagian atas menjelaskan konsekuensi otomatis batas 31 Desember 23:59 menuju 1 Januari 00:00.
+     - 5 Kartu Ringkasan Metrik:
+       1. *Berkas Berjalan*: Total berkas perkara aktif yang belum mencapai status formal selesai/tidak selesai.
+       2. *Siap Tahap II (&ge;55%)*: Berkas yang telah mencapai Tahap I (55%) atau P-21 (85%) yang paling siap dilimpahkan.
+       3. *Mendekati Batas (&le;7 Hari)*: Berkas dengan sisa waktu SLA 1 - 7 hari menuju deadline.
+       4. *Melebihi SLA*: Berkas yang telah melampaui SLA 1 bulan kalender atau akhir tahun (sisa hari < 0).
+       5. *Terkendala DPO*: Berkas dengan status DPO aktif yang memerlukan penangkapan tersangka sebelum dapat lanjut ke Tahap II.
+  3. **Tabel Cerdas dengan Rekomendasi Tindakan Operasional**:
+     - Menampilkan kolom urut `No`, nomor berkas & perkara, tersangka & NIK, PPNS Utama, bar progress, sisa hari SLA (dengan badge dinamis merah/amber/biru), rekomendasi tindakan operasional per kondisi berkas (contoh: *P-21 Lengkap: Segera lakukan Pelimpahan Tahap II*, *Terkendala DPO: Tangkap tersangka untuk membuka Tahap II*, dll.), dan tombol aksi shortcut ke detail perkara dan lanjut tahapan.
+     - Terintegrasi penuh dengan toolbar `<x-common.table-filter>` dan partial swap AJAX `#potensi-terlimpah-table-partial` (`X-Filter-Partial: 1`).
+  4. **Pengujian Komprehensif (`tests/Feature/PotensiTerlimpahTest.php`)**:
+     - Memvalidasi akses multi-role, eksklusi berkas yang sudah selesai, filter kategori urgensi (siap tahap 2, DPO, mendekati batas, kritis), respons AJAX partial, dan keberadaan submenu di MenuHelper.
+- Konsekuensi: Penyidik dan Pimpinan memiliki instrumen kendali mutu penanganan perkara menjelang penutupan tahun yang terukur, akuntabel, dan transparan.
+
 
