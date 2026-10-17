@@ -522,7 +522,32 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
      - `App\Services\TahapanService::getNextAvailableStages()` dikonfigurasi untuk memblokir penambahan tahapan lanjutan pada berkas yang berstatus `tidak_selesai`.
   4. **Badge Status Visual & Tombol Lihat Dokumen**:
      - Pada Berkas Perkara yang telah diterbitkan SP3, ditampilkan badge merah `SP3 Terbit (Tidak Selesai)` (`fi-rr-ban`) dan tombol shortcut `Lihat SP3` (`fi-rr-document`) yang langsung membuka dokumen PDF resmi di tab baru (`route('dokumen.preview')`).
-  5. **Pengujian Komprehensif**:
-     - Dibuat `tests/Feature/Sp3Test.php` yang memvalidasi alur sukses penerbitan SP3 oleh Penyidik & Admin, proteksi hak akses Pimpinan (403), validasi format file PDF, pencegahan SP3 ganda, dan penguncian tahapan lanjutan.
 - Konsekuensi: Penyidik dan Administrator memiliki mekanisme resmi yang jelas, terdokumentasi, dan akuntabel untuk menghentikan penyidikan perkara dengan berkas PDF sah dan jejak audit lengkap.
+
+## D-031 — Mekanisme Batas Waktu SLA 1 Bulan Kalender, Batas Tahun Mutlak, dan Scheduler Otomatis 1 Januari 00:00 (PRD F-23)
+
+- Tanggal: 2026-10-17
+- Status: Disepakati & Diimplementasikan
+- Konteks: Mengimplementasikan PRD F-23 dan aturan domain batas waktu penyidikan (SLA). SLA Berkas Perkara adalah 1 bulan kalender secara total dari SPDP sampai Selesai. Berkas hanya boleh dikerjakan dalam tahun yang sama dengan tahun terbitnya SPDP, di mana batas tahun mutlak selalu didahulukan daripada SLA 1 bulan. Tepat 1 Januari 00:00, berkas yang belum mencapai status Selesai otomatis ditetapkan menjadi Tidak Selesai tanpa intervensi manusia.
+- Keputusan:
+  1. **Batas Tahun Mutlak Mendahului SLA 1 Bulan**:
+     - Pada `App\Services\TahapanService::saveStage()` dan model `BerkasPerkara`:
+       - SLA dasar: `tanggal_spdp->copy()->addMonth()`.
+       - Batas tahun: `tanggal_spdp->copy()->endOfYear()`.
+       - Tanggal jatuh tempo efektif (`effective_deadline`): jika SLA 1 bulan melewati 31 Desember tahun tersebut, maka batas akhir mutlak ditetapkan pada 31 Desember tahun yang sama.
+  2. **Evaluasi Status & Badge Visual SLA**:
+     - Ditambahkan atribut pada `BerkasPerkara`: `effective_deadline`, `sisa_hari_sla`, `sla_status`, dan `sla_badge`.
+     - Kategori status: `Pra-SPDP`, `SLA Berjalan`, `Mendekati Batas SLA` (sisa <= 7 hari), `Melebihi SLA` (overdue), `Selesai Tepat Waktu`, `Selesai Melebihi SLA`, dan `Tidak Selesai`.
+     - Status DPO aktif tidak menjeda atau menghentikan perhitungan SLA maupun batas tahun (PRD bagian DPO).
+     - Badge visual ditampilkan pada kartu Berkas Perkara di halaman detail perkara (`perkara.show`) dan tabel progress perkara (`progress-perkara`).
+  3. **Scheduler Otomatis 1 Januari 00:00 (`perkara:close-unfinished`)**:
+     - Command artisan: `App\Console\Commands\CloseUnfinishedCasesCommand` terdaftar di `routes/console.php` via `Schedule::command('perkara:close-unfinished')->yearlyOn(1, 1, '00:00')`.
+     - Mencari seluruh Berkas Perkara yang belum memiliki status formal (`status_formal IS NULL`) dari tahun sebelumnya atau tahun yang ditutup.
+     - Mengubah status formal menjadi `'tidak_selesai'`.
+     - Mencatat jejak audit ke tabel `audit_log` dengan `user_id = null` (aksi sistem scheduler), aksi `'sistem_tidak_selesai'`, dan keterangan batas tahun berakhir.
+  4. **Pengujian Komprehensif**:
+     - `tests/Feature/CloseUnfinishedCasesTest.php`: memvalidasi penutupan otomatis, preservasi berkas selesai, pencegahan dampak pada berkas tahun berjalan, opsi `--dry-run`, dan pencatatan audit trail sistem.
+     - `tests/Feature/SlaAndBatasTahunTest.php`: memvalidasi batas SLA 1 bulan kalender, batas tahun mutlak akhir Desember, evaluasi sisa hari, pemetaan badge status, serta independensi terhadap toggle DPO.
+- Konsekuensi: Integritas batas waktu perkara dan transisi status formal akhir tahun berjalan 100% otomatis, akurat, taat aturan hukum dan PRD, serta transparan bagi Penyidik dan Pimpinan.
+
 

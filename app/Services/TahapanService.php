@@ -244,7 +244,13 @@ class TahapanService
                 if ($jenisTahap === JenisTahap::SPDP && ! empty($tahap->tanggal_surat)) {
                     $tanggalSpdp = \Carbon\Carbon::parse($tahap->tanggal_surat);
                     $updateBerkas['tanggal_spdp'] = $tanggalSpdp->toDateString();
-                    $updateBerkas['sla_deadline'] = $tanggalSpdp->copy()->addMonth()->toDateString();
+
+                    // SLA 1 bulan kalender & Batas Tahun mutlak (PRD bagian Batas Waktu)
+                    $sla1Bulan = $tanggalSpdp->copy()->addMonth();
+                    $akhirTahun = $tanggalSpdp->copy()->endOfYear();
+                    $effectiveDeadline = $sla1Bulan->gt($akhirTahun) ? $akhirTahun : $sla1Bulan;
+
+                    $updateBerkas['sla_deadline'] = $effectiveDeadline->toDateString();
                 }
 
                 // PRD F-22: Simpan & Lanjut dari TAHAP II otomatis memicu status formal Selesai

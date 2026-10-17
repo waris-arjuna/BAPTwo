@@ -143,6 +143,15 @@
                                     DPO Aktif
                                 </span>
                             @endif
+                            @if ($berkas->tanggal_spdp)
+                                @php
+                                    $slaBadge = $berkas->sla_badge;
+                                @endphp
+                                <span class="inline-flex w-fit items-center gap-1 rounded-full border px-2 py-0.5 text-[11px] font-medium {{ $slaBadge['badge_class'] }}">
+                                    <i class="fi {{ $slaBadge['icon'] }} text-[10px]"></i>
+                                    {{ $slaBadge['label'] }}
+                                </span>
+                            @endif
                         </div>
                     </td>
 

@@ -76,6 +76,12 @@
             'badge' => 'bg-red-50 text-red-700 border-red-200 dark:bg-red-900/20 dark:text-red-300 dark:border-red-800',
             'icon_bg' => 'bg-red-100 text-red-600 dark:bg-red-900/40 dark:text-red-400',
         ],
+        'sistem_tidak_selesai' => [
+            'label' => 'Batas Waktu Tahun Berakhir (Tidak Selesai Otomatis)',
+            'icon' => 'fi-rr-calendar-clock',
+            'badge' => 'bg-red-50 text-red-700 border-red-200 dark:bg-red-900/20 dark:text-red-300 dark:border-red-800',
+            'icon_bg' => 'bg-red-100 text-red-600 dark:bg-red-900/40 dark:text-red-400',
+        ],
     ];
 @endphp
 
@@ -448,6 +454,20 @@
                                         Status Proses: {{ $berkas?->status_proses ?? 'Baru' }} ({{ $berkas?->progress_persen ?? 0 }}%)
                                     </span>
 
+                                    {{-- Visual Indicator SLA & Batas Waktu --}}
+                                    @if ($berkas && $berkas->tanggal_spdp)
+                                        @php
+                                            $slaBadge = $berkas->sla_badge;
+                                        @endphp
+                                        <span
+                                            class="inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium {{ $slaBadge['badge_class'] }}"
+                                            title="Jatuh Tempo: {{ $berkas->effective_deadline?->format('d-m-Y') }} (Batas tahun selalu mutlak atas SLA)"
+                                        >
+                                            <i class="fi {{ $slaBadge['icon'] }} text-xs"></i>
+                                            <span>{{ $slaBadge['label'] }}</span>
+                                        </span>
+                                    @endif
+
                                     @if ($berkas)
                                         {{-- Tombol Toggle DPO (Penyidik & Administrator) --}}
                                         @can('toggle-dpo')
@@ -606,6 +626,36 @@
                                     </p>
                                 </div>
                             </div>
+
+                            {{-- Informasi Batas Waktu & SLA Perkara (PRD bagian SLA) --}}
+                            @if ($berkas?->tanggal_spdp)
+                                <div class="mt-3 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-gray-100 bg-gray-50/60 p-3 text-xs sm:px-4 dark:border-gray-800 dark:bg-white/[0.02]">
+                                    <div class="flex flex-wrap items-center gap-4">
+                                        <div class="flex items-center gap-2">
+                                            <i class="fi fi-rr-calendar text-brand-500"></i>
+                                            <span class="text-gray-500 dark:text-gray-400">Tanggal Terbit SPDP:</span>
+                                            <strong class="text-gray-800 dark:text-white/90">{{ $berkas->tanggal_spdp->format('d-m-Y') }}</strong>
+                                        </div>
+
+                                        <div class="flex items-center gap-2">
+                                            <i class="fi fi-rr-hourglass-end text-brand-500"></i>
+                                            <span class="text-gray-500 dark:text-gray-400">Batas Waktu Penyelesaian:</span>
+                                            <strong class="text-gray-800 dark:text-white/90">{{ $berkas->effective_deadline?->format('d-m-Y') }}</strong>
+                                            <span class="text-gray-400 dark:text-gray-500">({{ $berkas->sla_deadline?->year !== $berkas->tanggal_spdp->year ? 'Batas Tahun Mutlak 31 Des' : 'SLA 1 Bulan Kalender' }})</span>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        @php
+                                            $slaBadge = $berkas->sla_badge;
+                                        @endphp
+                                        <span class="inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1 text-xs font-medium {{ $slaBadge['badge_class'] }}">
+                                            <i class="fi {{ $slaBadge['icon'] }} text-xs"></i>
+                                            <span>{{ $slaBadge['label'] }}</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            @endif
 
                             {{-- Pasal Berlapis --}}
                             <div class="mt-4">

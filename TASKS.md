@@ -86,14 +86,14 @@ _(kosong)_
 - [x] T-031D — Integrasi Sub-Tahap (P-16/P-17 ke SPDP & P-18/P-19 ke Tahap 1) dan Migrasi Halaman Tahapan Lanjutan ke Data Riil (`/tahap-1`, `/p21`, `/tahap-2`, `/putusan-perkara`) (D-024)
 - [x] T-032 — Progress berbobot & status proses otomatis (F-29, F-30)
 - [x] T-033 — Trigger Selesai dari TAHAP II (F-22)
-- [ ] T-034 — Scheduler Tidak Selesai 1 Januari 00:00 (F-23)
-- [ ] T-035 — SLA 1 bulan kalender + batas tahun (PRD bagian SLA)
+- [x] T-034 — Scheduler Tidak Selesai 1 Januari 00:00 (F-23, D-031)
+- [x] T-035 — SLA 1 bulan kalender + batas tahun (PRD bagian SLA, D-031)
 
 ## DPO, SP3, Dokumen, Audit
 
 - [x] T-040 — DPO aktif/nonaktif + gate Tahap II di server & UI (F-24–F-27, F-35, D-025)
-- [ ] T-041 — Upload SP3 setelah Tidak Selesai (F-28)
-- [ ] T-042 — Dokumen terpusat per Berkas & tahap (F-32)
+- [x] T-041 — Upload / Terbitkan SP3 (F-28, D-030)
+- [x] T-042 — Dokumen terpusat per Berkas & tahap + Seeding 10 Data Dummy Beragam (F-32)
 - [x] T-043 — Audit trail / case history (F-31, D-025)
 - [ ] T-044 — Soft delete + halaman Sampah untuk pemulihan (F-44)
 
@@ -150,3 +150,6 @@ _(kosong)_
 - [x] T-042 — 2026-10-14 Seeding 10 Data Dummy Beragam untuk Seluruh Alur & Tahapan Kasus BAPTwo di 10 Wilayah Kalsel (F-32)
 - [x] T-043 — 2026-10-14 Audit trail / case history kronologis dengan timeline modern di Detail Perkara (F-31, D-025)
 - [x] T-051 — 2026-10-14 Dashboard monitoring riil: Tabel 5 berkas prioritas + Donut Chart + 5 Card Statistik + Tombol "Lihat Semua" + Modal Quick-View read-only (F-40, F-42, F-43, D-027)
+- [x] T-034 — 2026-10-17 Scheduler Tidak Selesai Otomatis 1 Januari 00:00 (F-23, D-031)
+- [x] T-035 — 2026-10-17 SLA 1 bulan kalender + batas tahun mutlak + visual indicator badge (PRD bagian SLA, D-031)
+
