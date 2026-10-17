@@ -99,7 +99,7 @@ _(kosong)_
 
 ## Monitoring & Laporan
 
-- [ ] T-050 — Pencarian Perkara (`/pencarian-perkara`) & Seluruh Perkara (`/seluruh-perkara` + card statistik) + struktur menu Role Pimpinan/Umum (F-38, F-39)
+- [x] T-050 — Pencarian Perkara (`/pencarian-perkara`) & Seluruh Perkara (`/seluruh-perkara` + card statistik) + struktur menu Role Pimpinan/Umum (F-38, F-39, D-033)
 - [x] T-051 — Dashboard monitoring: Tabel Progress Perkara auto-filter (progress terendah & tanggal perkara tertua, maks 5 baris), tombol "Lihat Semua" (`/progress-perkara`), & interaksi double-click ID Perkara untuk modal detail lengkap tanpa kolom aksi (F-40, F-42, F-43)
 - [ ] T-052 — Dashboard Potensi Terlimpah (F-41, Should)
 - [ ] T-053 — Export Excel & CSV (F-45)
@@ -153,4 +153,5 @@ _(kosong)_
 - [x] T-034 — 2026-10-17 Scheduler Tidak Selesai Otomatis 1 Januari 00:00 (F-23, D-031)
 - [x] T-035 — 2026-10-17 SLA 1 bulan kalender + batas tahun mutlak + visual indicator badge (PRD bagian SLA, D-031)
 - [x] T-044 — 2026-10-17 Halaman Sampah (Trash) & Pemulihan Data Soft Delete Tanpa Hard Delete (PRD F-44, D-032)
+- [x] T-050 — 2026-10-17 Halaman Seluruh Perkara (dengan 5 Card Statistik), Hub Pencarian Cepat Multi-Kriteria, dan Pembaruan Struktur Navigasi Menu untuk Role Pimpinan & Umum (PRD F-38, F-39, D-033)
 

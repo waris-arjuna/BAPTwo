@@ -10,11 +10,13 @@ use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\MasterDataController;
 use App\Http\Controllers\MathCaptchaController;
 use App\Http\Controllers\P21Controller;
+use App\Http\Controllers\PencarianPerkaraController;
 use App\Http\Controllers\PerkaraBerkasController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgressPerkaraController;
 use App\Http\Controllers\PutusanPerkaraController;
 use App\Http\Controllers\SampahController;
+use App\Http\Controllers\SeluruhPerkaraController;
 use App\Http\Controllers\Sp3Controller;
 use App\Http\Controllers\SpdpController;
 use App\Http\Controllers\SprindikController;
@@ -89,6 +91,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/sampah/perkara/{id}/restore', [SampahController::class, 'restorePerkara'])->middleware('can:soft-delete')->name('sampah.perkara.restore');
     Route::post('/sampah/berkas/{id}/restore', [SampahController::class, 'restoreBerkas'])->middleware('can:soft-delete')->name('sampah.berkas.restore');
     Route::post('/sampah/user/{id}/restore', [SampahController::class, 'restoreUser'])->middleware('can:manage-users')->name('sampah.user.restore');
+
+    // Seluruh Perkara & Pencarian Cepat Perkara (PRD F-38, F-39)
+    Route::get('/seluruh-perkara', [SeluruhPerkaraController::class, 'index'])->name('seluruh-perkara.index');
+    Route::get('/pencarian-perkara', [PencarianPerkaraController::class, 'index'])->name('pencarian-perkara.index');
 
     // Laporan Kejadian
     Route::get('/laporan-kejadian', [LaporanKejadianController::class, 'index'])->name('laporan-kejadian.index');

@@ -16,6 +16,16 @@ class MenuHelper
                 'path' => '/',
             ],
             [
+                'icon' => 'all-cases',
+                'name' => 'Seluruh Perkara',
+                'path' => '/seluruh-perkara',
+            ],
+            [
+                'icon' => 'search-cases',
+                'name' => 'Pencarian Perkara',
+                'path' => '/pencarian-perkara',
+            ],
+            [
                 'icon' => 'report',
                 'name' => 'Laporan Kejadian',
                 'path' => '/laporan-kejadian',
@@ -174,6 +184,8 @@ class MenuHelper
     {
         $icons = [
             'dashboard' => '<i class="fi fi-rr-apps text-lg leading-none" aria-hidden="true"></i>',
+            'all-cases' => '<i class="fi fi-rr-layers text-lg leading-none" aria-hidden="true"></i>',
+            'search-cases' => '<i class="fi fi-rr-search text-lg leading-none" aria-hidden="true"></i>',
             'report' => '<i class="fi fi-rr-document-signed text-lg leading-none" aria-hidden="true"></i>',
             'data-perkara' => '<i class="fi fi-rr-folders text-lg leading-none" aria-hidden="true"></i>',
             'sprindik' => '<i class="fi fi-rr-file-edit text-lg leading-none" aria-hidden="true"></i>',

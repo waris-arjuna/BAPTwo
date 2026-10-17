@@ -584,4 +584,39 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
      - Validasi respons partial tabel AJAX.
 - Konsekuensi: BAPTwo memiliki sistem pemulihan data yang aman, transparan, terintegrasi audit trail, serta patuh mutlak terhadap larangan *Hard Delete*.
 
+## D-033 — Halaman Seluruh Perkara, Hub Pencarian Multi-Kriteria, dan Pembaruan Struktur Menu Role Pimpinan & Umum (PRD F-38, F-39, F-43)
+
+- Tanggal: 2026-10-17
+- Status: Disepakati & Diimplementasikan
+- Konteks: Mengimplementasikan PRD F-38, F-39, F-43 untuk menyediakan sarana monitoring perkara komprehensif bagi Pimpinan dan Penyidik. Pimpinan memerlukan akses cepat melihat seluruh perkara aktif beserta ringkasan statusnya dan mencari perkara berdasarkan multi-kriteria secara instan (target respons <= 3 detik sesuai Non-Functional Requirement).
+- Keputusan:
+  1. **Pembaruan Navigasi Menu Sidebar (`App\Helpers\MenuHelper`)**:
+     - Menambahkan dua menu utama ke dalam grup *Menu Utama*:
+       - **Seluruh Perkara** (`/seluruh-perkara`) menggunakan ikon Flaticon `layers` (`fi fi-rr-layers`).
+       - **Pencarian Perkara** (`/pencarian-perkara`) menggunakan ikon Flaticon `search` (`fi fi-rr-search`).
+     - Seluruh peran terautentikasi (Penyidik, Pimpinan, dan Administrator) memiliki akses ke kedua halaman ini (read-only bagi Pimpinan, dengan aksi detail bagi Penyidik/Admin).
+  2. **Halaman Seluruh Perkara (`/seluruh-perkara`)**:
+     - Ditampilkan 5 Card Ringkasan Statistik Metrik di bagian atas:
+       1. *Total Perkara*: Jumlah seluruh Laporan Kejadian & Sprindik terdaftar.
+       2. *Dalam Proses*: Berkas perkara yang sedang berjalan (belum selesai/tidak selesai).
+       3. *Berkas Selesai*: Berkas yang telah tuntas di Tahap 2 / Putusan Pengadilan.
+       4. *Tidak Selesai*: Berkas yang dihentikan via SP3 atau ditutup otomatis oleh scheduler 1 Januari.
+       5. *DPO Aktif*: Jumlah berkas/tersangka yang sedang dalam status buron aktif.
+     - Tabel overview komprehensif dengan penomoran urut (`No`), nomor Sprindik & LK, TKP & Wilayah, PPNS Utama, Daftar Tersangka & Berkas, Status Berkas & SLA badge, serta `<x-common.table-dropdown>` aksi menuju detail perkara.
+     - Terintegrasi `<x-common.table-filter>` dengan dukungan live swap partial AJAX (`X-Filter-Partial: 1`).
+  3. **Hub Pencarian Cepat Multi-Kriteria (`/pencarian-perkara`)**:
+     - Kotak input pencarian cerdas (`search` / `q`) yang mencakup multi-tabel secara simultan: nomor berkas, nama tersangka, NIK, alias, nomor LK, nomor sprindik, deskripsi kasus, klasifikasi TKP, pasal yang disangkakan, dan nama/NIP PPNS.
+     - Shortcut preset chips: *Semua*, *Sedang Berjalan*, *Sudah Selesai*, dan *DPO Aktif*.
+     - Filter dimensi lanjutan:
+       - Dropdown Tahapan Proses (SPDP s.d. Putusan Pengadilan).
+       - Dropdown Status Formal (Dalam Proses, Selesai, Tidak Selesai).
+       - Dropdown Status DPO (Semua, DPO Aktif, Bukan DPO).
+       - Dropdown Penyidik PPNS Penanggung Jawab.
+       - Rentang tanggal terpadu Flatpickr (`tanggal_dari` & `tanggal_sampai`).
+     - Tabel hasil pencarian dengan badge indikator total temuan, progress bar, SLA badge, dan tautan langsung ke Detail Perkara.
+     - Mendukung live filter partial AJAX `#pencarian-table-partial`.
+  4. **Pengujian Komprehensif (`tests/Feature/SeluruhDanPencarianPerkaraTest.php`)**:
+     - 9 skenario uji mencakup akses multi-role (Penyidik, Pimpinan, Administrator), validasi 5 kartu statistik, pencarian multi-kriteria NIK/deskripsi/pasal/PPNS, filter status proses dan status formal, preset chips, respons AJAX partial, dan integritas menu navigasi Flaticon.
+- Konsekuensi: Pimpinan dan Penyidik kini memiliki akses ringkas, cepat, dan terpusat untuk memonitor seluruh perkara dan mencari berkas perkara secara fleksibel tanpa hambatan operasional.
+
 
