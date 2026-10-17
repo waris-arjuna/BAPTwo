@@ -34,12 +34,9 @@
 
         {{-- Statistics --}}
         <x-dashboard.statistics />
-
-        {{-- Progress Perkara --}}
-        <x-dashboard.progress-perkara />
-
+        
         {{-- Bottom Section --}}
-        <div class="grid grid-cols-12 gap-4 md:gap-6">
+        <div class="grid grid-cols-12 gap-4 items-center md:gap-6">
             <div class="col-span-12 xl:col-span-7">
                 <x-dashboard.average-stage />
             </div>
@@ -48,6 +45,9 @@
                 <x-dashboard.case-status />
             </div>
         </div>
+
+        {{-- Progress Perkara --}}
+        <x-dashboard.progress-perkara />
 
     </div>
 @endsection
