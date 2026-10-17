@@ -95,7 +95,7 @@ _(kosong)_
 - [x] T-041 — Upload / Terbitkan SP3 (F-28, D-030)
 - [x] T-042 — Dokumen terpusat per Berkas & tahap + Seeding 10 Data Dummy Beragam (F-32)
 - [x] T-043 — Audit trail / case history (F-31, D-025)
-- [ ] T-044 — Soft delete + halaman Sampah untuk pemulihan (F-44)
+- [x] T-044 — Soft delete + halaman Sampah untuk pemulihan (F-44, D-032)
 
 ## Monitoring & Laporan
 
@@ -152,4 +152,5 @@ _(kosong)_
 - [x] T-051 — 2026-10-14 Dashboard monitoring riil: Tabel 5 berkas prioritas + Donut Chart + 5 Card Statistik + Tombol "Lihat Semua" + Modal Quick-View read-only (F-40, F-42, F-43, D-027)
 - [x] T-034 — 2026-10-17 Scheduler Tidak Selesai Otomatis 1 Januari 00:00 (F-23, D-031)
 - [x] T-035 — 2026-10-17 SLA 1 bulan kalender + batas tahun mutlak + visual indicator badge (PRD bagian SLA, D-031)
+- [x] T-044 — 2026-10-17 Halaman Sampah (Trash) & Pemulihan Data Soft Delete Tanpa Hard Delete (PRD F-44, D-032)
 

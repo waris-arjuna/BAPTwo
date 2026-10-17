@@ -14,6 +14,7 @@ use App\Http\Controllers\PerkaraBerkasController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgressPerkaraController;
 use App\Http\Controllers\PutusanPerkaraController;
+use App\Http\Controllers\SampahController;
 use App\Http\Controllers\Sp3Controller;
 use App\Http\Controllers\SpdpController;
 use App\Http\Controllers\SprindikController;
@@ -82,6 +83,12 @@ Route::middleware('auth')->group(function () {
         Route::delete('/pengaturan/{user}', [UserController::class, 'destroy'])->name('users.destroy');
         Route::post('/pengaturan/{id}/restore', [UserController::class, 'restore'])->name('users.restore');
     });
+
+    // Halaman Sampah / Pemulihan Data Soft Delete (PRD F-44)
+    Route::get('/sampah', [SampahController::class, 'index'])->name('sampah.index');
+    Route::post('/sampah/perkara/{id}/restore', [SampahController::class, 'restorePerkara'])->middleware('can:soft-delete')->name('sampah.perkara.restore');
+    Route::post('/sampah/berkas/{id}/restore', [SampahController::class, 'restoreBerkas'])->middleware('can:soft-delete')->name('sampah.berkas.restore');
+    Route::post('/sampah/user/{id}/restore', [SampahController::class, 'restoreUser'])->middleware('can:manage-users')->name('sampah.user.restore');
 
     // Laporan Kejadian
     Route::get('/laporan-kejadian', [LaporanKejadianController::class, 'index'])->name('laporan-kejadian.index');

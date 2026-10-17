@@ -550,4 +550,38 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
      - `tests/Feature/SlaAndBatasTahunTest.php`: memvalidasi batas SLA 1 bulan kalender, batas tahun mutlak akhir Desember, evaluasi sisa hari, pemetaan badge status, serta independensi terhadap toggle DPO.
 - Konsekuensi: Integritas batas waktu perkara dan transisi status formal akhir tahun berjalan 100% otomatis, akurat, taat aturan hukum dan PRD, serta transparan bagi Penyidik dan Pimpinan.
 
+## D-032 — Halaman Sampah (Trash) dan Pemulihan Data Soft Delete Tanpa Hard Delete (PRD F-44)
+
+- Tanggal: 2026-10-17
+- Status: Disepakati & Diimplementasikan
+- Konteks: Mengimplementasikan PRD F-44 dan prinsip integritas data BAPTwo, di mana seluruh penghapusan data bersifat **Soft Delete** (`deleted_at`), dan fitur **Hard Delete ditiadakan sama sekali** untuk semua peran tanpa pengecualian. Data yang dihapus (Laporan Kejadian/Perkara, Berkas Perkara, dan Pengguna) harus dapat ditinjau dan dipulihkan kembali (*restore*) ke posisi semula oleh peran yang berwenang.
+- Keputusan:
+  1. **Menu Navigasi & Halaman Sampah (`/sampah`)**:
+     - Ditambahkan ke grup navigasi *Sistem* pada sidebar (`App\Helpers\MenuHelper::getSystemItems`) menggunakan ikon Flaticon `trash` (`fi fi-rr-trash`).
+     - Tampilan ber-tab 3 kategori:
+       - Tab `perkara`: Menampilkan data Laporan Kejadian & Perkara yang di-soft-delete beserta dokumen laporan dan pembuatnya.
+       - Tab `berkas`: Menampilkan Berkas Perkara & Tersangka yang di-soft-delete beserta relasi perkara induk.
+       - Tab `user`: Menampilkan Akun Pengguna yang di-soft-delete beserta relasi jabatan dan role.
+     - Setiap tab memiliki badge counter dinamis yang menghitung jumlah item terhapus secara *real-time*.
+  2. **Zero Hard-Delete Enforced**:
+     - Halaman Sampah tidak menyediakan tombol, modal, link, maupun route untuk *Hard Delete* (hapus permanen).
+     - Data yang berada di Sampah hanya dapat dipulihkan (*Restore*) atau dibiarkan sebagai riwayat terhapus yang permanen dan aman.
+     - Banner edukasi disematkan di bagian atas halaman untuk menegaskan bahwa data tidak dimusnahkan secara fisik demi menjaga akuntabilitas penanganan perkara.
+  3. **Otorisasi & Pemulihan Bertingkat (RBAC)**:
+     - Seluruh pengguna terautentikasi dapat melihat (*read-only*) isi Sampah untuk transparansi.
+     - Aksi pemulihan Perkara & Berkas Perkara dilindungi gate `can:soft-delete` (hanya `Penyidik` dan `Administrator`); role `Pimpinan` dibatasi read-only (HTTP 403 jika mencoba memulihkan).
+     - Aksi pemulihan Pengguna dilindungi gate `can:manage-users` (khusus `Administrator`).
+     - Pemulihan Perkara (`PerkaraService::restorePerkara`) secara otomatis memulihkan dokumen lampiran, tersangka, dan berkas perkara terkait dalam transaksi DB.
+     - Pemulihan Berkas (`PerkaraService::restoreBerkas`) secara otomatis memulihkan tersangka terkait.
+  4. **Audit Trail & Filter Terpadu**:
+     - Setiap pemulihan mencatat jejak audit ke tabel `audit_log` (`restore_perkara`, `restore_berkas_perkara`, `restore_user`).
+     - Dilengkapi `<x-common.table-filter>` terpadu dengan pencarian cerdas (`nomor_berkas`, `tersangka`, `perkara`, `nip`, `email`, dll.), filter rentang tanggal `deleted_at`, serta dukungan live swap partial AJAX (`X-Filter-Partial: 1`).
+  5. **Pengujian Komprehensif (`tests/Feature/SampahTest.php`)**:
+     - Validasi akses multi-role (Penyidik, Admin, Pimpinan).
+     - Validasi pemulihan Perkara dan Berkas Perkara oleh Penyidik beserta audit log.
+     - Validasi penolakan 403 Forbidden bagi role Pimpinan saat mencoba memulihkan data.
+     - Validasi pemulihan Pengguna khusus Administrator dan penolakan bagi Penyidik.
+     - Validasi respons partial tabel AJAX.
+- Konsekuensi: BAPTwo memiliki sistem pemulihan data yang aman, transparan, terintegrasi audit trail, serta patuh mutlak terhadap larangan *Hard Delete*.
+
 

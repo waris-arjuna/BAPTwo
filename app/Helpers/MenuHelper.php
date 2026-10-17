@@ -122,6 +122,12 @@ class MenuHelper
             ];
         }
 
+        $items[] = [
+            'icon' => 'trash',
+            'name' => 'Sampah',
+            'path' => '/sampah',
+        ];
+
         return $items;
     }
 
@@ -179,6 +185,7 @@ class MenuHelper
             'court' => '<i class="fi fi-rr-gavel text-lg leading-none" aria-hidden="true"></i>',
             'master-data' => '<i class="fi fi-rr-database text-lg leading-none" aria-hidden="true"></i>',
             'settings' => '<i class="fi fi-rr-settings text-lg leading-none" aria-hidden="true"></i>',
+            'trash' => '<i class="fi fi-rr-trash text-lg leading-none" aria-hidden="true"></i>',
         ];
 
         return $icons[$iconName] ?? '<i class="fi fi-rr-circle text-lg leading-none" aria-hidden="true"></i>';
