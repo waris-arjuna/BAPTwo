@@ -171,10 +171,25 @@
                     kecamatanNama: @js(old('tkp_kecamatan_nama', $tkpAlamat?->kecamatan_nama ?? '')),
                     desaKode: @js(old('tkp_desa_kode', $tkpAlamat?->desa_kode ?? '')),
                     desaNama: @js(old('tkp_desa_nama', $tkpAlamat?->desa_nama ?? '')),
+                    kecamatanAbortController: null,
+                    desaAbortController: null,
                     async init() {
                         await this.loadKabupaten(false);
                         if (this.kabupatenKode) await this.loadKecamatan(false);
                         if (this.kecamatanKode) await this.loadDesa(false);
+
+                        this.$watch('kabupatenKode', (val) => {
+                            const found = this.kabupatenList.find(k => String(k.code || k.kode) === String(val));
+                            this.kabupatenNama = found ? (found.name || found.nama) : '';
+                        });
+                        this.$watch('kecamatanKode', (val) => {
+                            const found = this.kecamatanList.find(k => String(k.code || k.kode) === String(val));
+                            this.kecamatanNama = found ? (found.name || found.nama) : '';
+                        });
+                        this.$watch('desaKode', (val) => {
+                            const found = this.desaList.find(d => String(d.code || d.kode) === String(val));
+                            this.desaNama = found ? (found.name || found.nama) : '';
+                        });
                     },
                     async loadKabupaten(reset = true) {
                         if (reset) {
@@ -191,54 +206,131 @@
                             const res = await fetch(`/wilayah/kabupaten/${this.provinsiKode}`);
                             const json = await res.json();
                             this.kabupatenList = json.data || [];
-                            const found = this.kabupatenList.find(k => (k.code || k.kode) === this.kabupatenKode);
+                            const found = this.kabupatenList.find(k => String(k.code || k.kode) === String(this.kabupatenKode));
                             if (found) this.kabupatenNama = found.name || found.nama;
                         } catch (e) {}
                     },
-                    async loadKecamatan(reset = true) {
+                    async loadKecamatan(reset = true, targetKode = null, autoOpen = false) {
+                        if (targetKode !== null && targetKode !== undefined) {
+                            this.kabupatenKode = String(targetKode);
+                        }
                         if (reset) {
                             this.kecamatanKode = '';
                             this.kecamatanNama = '';
+                            this.kecamatanList = [];
                             this.desaKode = '';
                             this.desaNama = '';
                             this.desaList = [];
+                            this.$dispatch('searchable-select-loading', { id: 'tkp_kecamatan_kode', loading: false });
+                            this.$dispatch('searchable-select-loading', { id: 'tkp_desa_kode', loading: false });
                         }
-                        const found = this.kabupatenList.find(k => (k.code || k.kode) === this.kabupatenKode);
-                        if (found) this.kabupatenNama = found.name || found.nama;
+                        const found = this.kabupatenList.find(k => String(k.code || k.kode) === String(this.kabupatenKode));
+                        this.kabupatenNama = found ? (found.name || found.nama) : '';
+
                         if (!this.kabupatenKode) {
                             this.kecamatanList = [];
+                            this.$dispatch('searchable-select-loading', { id: 'tkp_kecamatan_kode', loading: false });
                             return;
                         }
+
+                        if (this.kecamatanAbortController) {
+                            this.kecamatanAbortController.abort();
+                        }
+                        this.kecamatanAbortController = new AbortController();
+                        const currentKab = this.kabupatenKode;
+
+                        this.$dispatch('searchable-select-loading', { id: 'tkp_kecamatan_kode', loading: true });
+
                         try {
-                            const res = await fetch(`/wilayah/kecamatan/${this.kabupatenKode}`);
+                            const res = await fetch(`/wilayah/kecamatan/${currentKab}`, {
+                                signal: this.kecamatanAbortController.signal
+                            });
                             const json = await res.json();
-                            this.kecamatanList = json.data || [];
-                            const foundKec = this.kecamatanList.find(k => (k.code || k.kode) === this.kecamatanKode);
-                            if (foundKec) this.kecamatanNama = foundKec.name || foundKec.nama;
-                        } catch (e) {}
+                            if (this.kabupatenKode === currentKab) {
+                                this.kecamatanList = json.data || [];
+                                const foundKec = this.kecamatanList.find(k => String(k.code || k.kode) === String(this.kecamatanKode));
+                                if (foundKec) this.kecamatanNama = foundKec.name || foundKec.nama;
+                                if (autoOpen && this.kecamatanList.length > 0) {
+                                    this.$nextTick(() => {
+                                        this.$dispatch('searchable-select-open', { id: 'tkp_kecamatan_kode' });
+                                    });
+                                }
+                            }
+                        } catch (e) {
+                            if (e.name !== 'AbortError') {
+                                this.kecamatanList = [];
+                            }
+                        } finally {
+                            if (this.kabupatenKode === currentKab) {
+                                this.$dispatch('searchable-select-loading', { id: 'tkp_kecamatan_kode', loading: false });
+                            }
+                        }
                     },
-                    async loadDesa(reset = true) {
+                    async loadDesa(reset = true, targetKode = null, autoOpen = false) {
+                        if (targetKode !== null && targetKode !== undefined) {
+                            this.kecamatanKode = String(targetKode);
+                        }
                         if (reset) {
                             this.desaKode = '';
                             this.desaNama = '';
+                            this.desaList = [];
+                            this.$dispatch('searchable-select-loading', { id: 'tkp_desa_kode', loading: false });
                         }
-                        const found = this.kecamatanList.find(k => (k.code || k.kode) === this.kecamatanKode);
-                        if (found) this.kecamatanNama = found.name || found.nama;
+                        const found = this.kecamatanList.find(k => String(k.code || k.kode) === String(this.kecamatanKode));
+                        this.kecamatanNama = found ? (found.name || found.nama) : '';
+
                         if (!this.kecamatanKode) {
                             this.desaList = [];
+                            this.$dispatch('searchable-select-loading', { id: 'tkp_desa_kode', loading: false });
                             return;
                         }
+
+                        if (this.desaAbortController) {
+                            this.desaAbortController.abort();
+                        }
+                        this.desaAbortController = new AbortController();
+                        const currentKec = this.kecamatanKode;
+
+                        this.$dispatch('searchable-select-loading', { id: 'tkp_desa_kode', loading: true });
+
                         try {
-                            const res = await fetch(`/wilayah/desa/${this.kecamatanKode}`);
+                            const res = await fetch(`/wilayah/desa/${currentKec}`, {
+                                signal: this.desaAbortController.signal
+                            });
                             const json = await res.json();
-                            this.desaList = json.data || [];
-                            const foundDesa = this.desaList.find(d => (d.code || d.kode) === this.desaKode);
-                            if (foundDesa) this.desaNama = foundDesa.name || foundDesa.nama;
-                        } catch (e) {}
+                            if (this.kecamatanKode === currentKec) {
+                                this.desaList = json.data || [];
+                                const foundDesa = this.desaList.find(d => String(d.code || d.kode) === String(this.desaKode));
+                                if (foundDesa) this.desaNama = foundDesa.name || foundDesa.nama;
+                                if (autoOpen && this.desaList.length > 0) {
+                                    this.$nextTick(() => {
+                                        this.$dispatch('searchable-select-open', { id: 'tkp_desa_kode' });
+                                    });
+                                }
+                            }
+                        } catch (e) {
+                            if (e.name !== 'AbortError') {
+                                this.desaList = [];
+                            }
+                        } finally {
+                            if (this.kecamatanKode === currentKec) {
+                                this.$dispatch('searchable-select-loading', { id: 'tkp_desa_kode', loading: false });
+                            }
+                        }
                     },
-                    onDesaChange() {
-                        const found = this.desaList.find(d => (d.code || d.kode) === this.desaKode);
-                        if (found) this.desaNama = found.name || found.nama;
+                    onKabupatenChange(event) {
+                        const val = event && event.target ? event.target.value : (event || this.kabupatenKode);
+                        this.loadKecamatan(true, val, true);
+                    },
+                    onKecamatanChange(event) {
+                        const val = event && event.target ? event.target.value : (event || this.kecamatanKode);
+                        this.loadDesa(true, val, true);
+                    },
+                    onDesaChange(event) {
+                        const val = event && event.target ? event.target.value : (event || this.desaKode);
+                        if (val !== undefined && val !== null) this.desaKode = String(val);
+                        const found = this.desaList.find(d => String(d.code || d.kode) === String(this.desaKode));
+                        this.desaNama = found ? (found.name || found.nama) : '';
                     }
                 }"
                 class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
@@ -279,7 +371,7 @@
                             placeholder="-- Pilih Kabupaten/Kota --"
                             search-placeholder="Ketik nama kabupaten/kota..."
                             x-model="kabupatenKode"
-                            @change="loadKecamatan(true)"
+                            @change="onKabupatenChange($event)"
                             required
                         >
                             <option value="">-- Pilih Kabupaten/Kota --</option>
@@ -299,7 +391,7 @@
                             placeholder="-- Pilih Kecamatan --"
                             search-placeholder="Ketik nama kecamatan..."
                             x-model="kecamatanKode"
-                            @change="loadDesa(true)"
+                            @change="onKecamatanChange($event)"
                             required
                         >
                             <option value="">-- Pilih Kecamatan --</option>
@@ -319,7 +411,7 @@
                             placeholder="-- Pilih Desa/Kelurahan --"
                             search-placeholder="Ketik nama desa/kelurahan..."
                             x-model="desaKode"
-                            @change="onDesaChange()"
+                            @change="onDesaChange($event)"
                             required
                         >
                             <option value="">-- Pilih Desa/Kelurahan --</option>

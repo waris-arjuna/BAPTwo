@@ -10,6 +10,8 @@
     'disabled' => false,
     'clearable' => true,
     'emptyMessage' => 'Data tidak ditemukan',
+    'loading' => false,
+    'loadingMessage' => 'Memuat data...',
     'hint' => null,
     'error' => null,
 ])
@@ -30,6 +32,7 @@
         placeholder: @js($placeholder),
         disabled: {{ $disabled ? 'true' : 'false' }},
         clearable: {{ $clearable ? 'true' : 'false' }},
+        loading: {{ $loading ? 'true' : 'false' }},
         focusedIndex: -1,
         openUp: false,
         mutationObserver: null,
@@ -129,9 +132,14 @@
             this.selectedLabel = option.label;
             if (this.$refs.nativeSelect) {
                 this.$refs.nativeSelect.value = option.value;
-                this.$refs.nativeSelect.dispatchEvent(new Event('change', { bubbles: true }));
-                this.$refs.nativeSelect.dispatchEvent(new Event('input', { bubbles: true }));
             }
+            this.$nextTick(() => {
+                if (this.$refs.nativeSelect) {
+                    this.$refs.nativeSelect.dispatchEvent(new Event('change', { bubbles: true }));
+                    this.$refs.nativeSelect.dispatchEvent(new Event('input', { bubbles: true }));
+                }
+                this.$dispatch('change', option.value);
+            });
             this.close();
         },
 
@@ -141,9 +149,14 @@
             this.selectedLabel = '';
             if (this.$refs.nativeSelect) {
                 this.$refs.nativeSelect.value = '';
-                this.$refs.nativeSelect.dispatchEvent(new Event('change', { bubbles: true }));
-                this.$refs.nativeSelect.dispatchEvent(new Event('input', { bubbles: true }));
             }
+            this.$nextTick(() => {
+                if (this.$refs.nativeSelect) {
+                    this.$refs.nativeSelect.dispatchEvent(new Event('change', { bubbles: true }));
+                    this.$refs.nativeSelect.dispatchEvent(new Event('input', { bubbles: true }));
+                }
+                this.$dispatch('change', '');
+            });
         },
 
         calculatePosition() {
@@ -188,6 +201,8 @@
     x-modelable="selectedValue"
     @click.outside="close()"
     @keydown.escape.window="close()"
+    @searchable-select-loading.window="if ($event.detail?.id === '{{ $selectId }}' || $event.detail === '{{ $selectId }}') loading = (typeof $event.detail === 'object' && 'loading' in $event.detail ? !!$event.detail.loading : true)"
+    @searchable-select-open.window="if ($event.detail?.id === '{{ $selectId }}' || $event.detail === '{{ $selectId }}') { $nextTick(() => open()); }"
     {{ $attributes->merge(['class' => 'w-full']) }}
 >
     {{-- Label Field --}}
@@ -223,7 +238,7 @@
             <span x-show="!selectedLabel" x-text="placeholder" class="text-gray-400 dark:text-gray-500"></span>
         </div>
 
-        {{-- Action Buttons: Clear & Arrow --}}
+        {{-- Action Buttons: Clear, Loading Spinner & Arrow --}}
         <div class="flex items-center gap-1.5 shrink-0">
             {{-- Tombol Clear --}}
             <button
@@ -237,8 +252,13 @@
                 <i class="fi fi-rr-cross-small text-sm leading-none"></i>
             </button>
 
+            {{-- Loading Spinner saat async fetch --}}
+            <span x-show="loading" x-cloak class="flex items-center text-brand-500">
+                <i class="fi fi-rr-spinner animate-spin text-sm leading-none"></i>
+            </span>
+
             {{-- Panah Dropdown --}}
-            <span class="text-gray-400 transition-transform duration-200 dark:text-gray-500" :class="isOpen ? 'rotate-180 text-brand-500' : ''">
+            <span x-show="!loading" class="text-gray-400 transition-transform duration-200 dark:text-gray-500" :class="isOpen ? 'rotate-180 text-brand-500' : ''">
                 <i class="fi fi-rr-angle-small-down text-base leading-none"></i>
             </span>
         </div>
@@ -309,9 +329,19 @@
                 </div>
             </template>
 
+            {{-- Status Loading saat data sedang dimuat via AJAX --}}
+            <div
+                x-show="loading"
+                x-cloak
+                class="py-6 px-4 text-center text-xs text-brand-600 dark:text-brand-400"
+            >
+                <i class="fi fi-rr-spinner mb-1.5 inline-block animate-spin text-base"></i>
+                <span class="block">{{ $loadingMessage }}</span>
+            </div>
+
             {{-- Status Kosong jika Hasil Pencarian Tidak Ada --}}
             <div
-                x-show="filteredOptions.length === 0"
+                x-show="!loading && filteredOptions.length === 0"
                 class="py-6 px-4 text-center text-xs text-gray-500 dark:text-gray-400"
             >
                 <i class="fi fi-rr-search-alt mb-1.5 block text-base text-gray-400 dark:text-gray-500"></i>

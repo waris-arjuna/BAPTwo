@@ -468,7 +468,7 @@
                                     placeholder="{{ __('-- Pilih Provinsi --') }}"
                                     search-placeholder="Cari provinsi..."
                                     x-model="wilayah.provinsi_kode"
-                                    @change="onProvinsiChange()"
+                                    @change="onProvinsiChange($event)"
                                     required
                                 >
                                     <option value="">{{ __('-- Pilih Provinsi --') }}</option>
@@ -491,7 +491,7 @@
                                     placeholder="{{ __('-- Pilih Kabupaten/Kota --') }}"
                                     search-placeholder="Cari kabupaten/kota..."
                                     x-model="wilayah.kabupaten_kode"
-                                    @change="onKabupatenChange()"
+                                    @change="onKabupatenChange($event)"
                                     x-bind:disabled="!wilayah.provinsi_kode"
                                     required
                                 >
@@ -515,7 +515,7 @@
                                     placeholder="{{ __('-- Pilih Kecamatan --') }}"
                                     search-placeholder="Cari kecamatan..."
                                     x-model="wilayah.kecamatan_kode"
-                                    @change="onKecamatanChange()"
+                                    @change="onKecamatanChange($event)"
                                     x-bind:disabled="!wilayah.kabupaten_kode"
                                     required
                                 >
@@ -539,7 +539,7 @@
                                     placeholder="{{ __('-- Pilih Desa/Kelurahan --') }}"
                                     search-placeholder="Cari desa/kelurahan..."
                                     x-model="wilayah.desa_kode"
-                                    @change="onDesaChange()"
+                                    @change="onDesaChange($event)"
                                     x-bind:disabled="!wilayah.kecamatan_kode"
                                     required
                                 >
@@ -635,6 +635,10 @@
                     listKecamatan: [],
                     listDesa: [],
 
+                    kabupatenAbortController: null,
+                    kecamatanAbortController: null,
+                    desaAbortController: null,
+
                     init() {
                         if (this.isPersonalModalOpen) {
                             this.loadInitialWilayah();
@@ -701,50 +705,115 @@
                         }
                     },
 
-                    async fetchKabupaten(provKode) {
+                    async fetchKabupaten(provKode, autoOpen = false) {
                         if (!provKode) {
                             this.listKabupaten = [];
+                            this.$dispatch('searchable-select-loading', { id: 'kabupaten_kode', loading: false });
                             return;
                         }
+                        if (this.kabupatenAbortController) {
+                            this.kabupatenAbortController.abort();
+                        }
+                        this.kabupatenAbortController = new AbortController();
+                        this.$dispatch('searchable-select-loading', { id: 'kabupaten_kode', loading: true });
                         try {
-                            const res = await fetch(`{{ url('/wilayah/kabupaten') }}/${provKode}`);
+                            const res = await fetch(`{{ url('/wilayah/kabupaten') }}/${provKode}`, {
+                                signal: this.kabupatenAbortController.signal
+                            });
                             const json = await res.json();
-                            this.listKabupaten = json.data || [];
+                            if (String(this.wilayah.provinsi_kode) === String(provKode)) {
+                                this.listKabupaten = json.data || [];
+                                if (autoOpen && this.listKabupaten.length > 0) {
+                                    this.$nextTick(() => {
+                                        this.$dispatch('searchable-select-open', { id: 'kabupaten_kode' });
+                                    });
+                                }
+                            }
                         } catch (e) {
-                            this.listKabupaten = [];
+                            if (e.name !== 'AbortError') {
+                                this.listKabupaten = [];
+                            }
+                        } finally {
+                            if (String(this.wilayah.provinsi_kode) === String(provKode)) {
+                                this.$dispatch('searchable-select-loading', { id: 'kabupaten_kode', loading: false });
+                            }
                         }
                     },
 
-                    async fetchKecamatan(kabKode) {
+                    async fetchKecamatan(kabKode, autoOpen = false) {
                         if (!kabKode) {
                             this.listKecamatan = [];
+                            this.$dispatch('searchable-select-loading', { id: 'kecamatan_kode', loading: false });
                             return;
                         }
+                        if (this.kecamatanAbortController) {
+                            this.kecamatanAbortController.abort();
+                        }
+                        this.kecamatanAbortController = new AbortController();
+                        this.$dispatch('searchable-select-loading', { id: 'kecamatan_kode', loading: true });
                         try {
-                            const res = await fetch(`{{ url('/wilayah/kecamatan') }}/${kabKode}`);
+                            const res = await fetch(`{{ url('/wilayah/kecamatan') }}/${kabKode}`, {
+                                signal: this.kecamatanAbortController.signal
+                            });
                             const json = await res.json();
-                            this.listKecamatan = json.data || [];
+                            if (String(this.wilayah.kabupaten_kode) === String(kabKode)) {
+                                this.listKecamatan = json.data || [];
+                                if (autoOpen && this.listKecamatan.length > 0) {
+                                    this.$nextTick(() => {
+                                        this.$dispatch('searchable-select-open', { id: 'kecamatan_kode' });
+                                    });
+                                }
+                            }
                         } catch (e) {
-                            this.listKecamatan = [];
+                            if (e.name !== 'AbortError') {
+                                this.listKecamatan = [];
+                            }
+                        } finally {
+                            if (String(this.wilayah.kabupaten_kode) === String(kabKode)) {
+                                this.$dispatch('searchable-select-loading', { id: 'kecamatan_kode', loading: false });
+                            }
                         }
                     },
 
-                    async fetchDesa(kecKode) {
+                    async fetchDesa(kecKode, autoOpen = false) {
                         if (!kecKode) {
                             this.listDesa = [];
+                            this.$dispatch('searchable-select-loading', { id: 'desa_kode', loading: false });
                             return;
                         }
+                        if (this.desaAbortController) {
+                            this.desaAbortController.abort();
+                        }
+                        this.desaAbortController = new AbortController();
+                        this.$dispatch('searchable-select-loading', { id: 'desa_kode', loading: true });
                         try {
-                            const res = await fetch(`{{ url('/wilayah/desa') }}/${kecKode}`);
+                            const res = await fetch(`{{ url('/wilayah/desa') }}/${kecKode}`, {
+                                signal: this.desaAbortController.signal
+                            });
                             const json = await res.json();
-                            this.listDesa = json.data || [];
+                            if (String(this.wilayah.kecamatan_kode) === String(kecKode)) {
+                                this.listDesa = json.data || [];
+                                if (autoOpen && this.listDesa.length > 0) {
+                                    this.$nextTick(() => {
+                                        this.$dispatch('searchable-select-open', { id: 'desa_kode' });
+                                    });
+                                }
+                            }
                         } catch (e) {
-                            this.listDesa = [];
+                            if (e.name !== 'AbortError') {
+                                this.listDesa = [];
+                            }
+                        } finally {
+                            if (String(this.wilayah.kecamatan_kode) === String(kecKode)) {
+                                this.$dispatch('searchable-select-loading', { id: 'desa_kode', loading: false });
+                            }
                         }
                     },
 
-                    async onProvinsiChange() {
-                        const found = this.listProvinsi.find(i => i.code === this.wilayah.provinsi_kode);
+                    async onProvinsiChange(event) {
+                        const code = event && event.target ? event.target.value : (event || this.wilayah.provinsi_kode);
+                        if (code !== undefined && code !== null) this.wilayah.provinsi_kode = String(code);
+                        const found = this.listProvinsi.find(i => String(i.code) === String(this.wilayah.provinsi_kode));
                         this.wilayah.provinsi_nama = found ? found.name : '';
                         this.wilayah.kabupaten_kode = '';
                         this.wilayah.kabupaten_nama = '';
@@ -755,11 +824,16 @@
                         this.listKabupaten = [];
                         this.listKecamatan = [];
                         this.listDesa = [];
-                        await this.fetchKabupaten(this.wilayah.provinsi_kode);
+                        this.$dispatch('searchable-select-loading', { id: 'kabupaten_kode', loading: false });
+                        this.$dispatch('searchable-select-loading', { id: 'kecamatan_kode', loading: false });
+                        this.$dispatch('searchable-select-loading', { id: 'desa_kode', loading: false });
+                        await this.fetchKabupaten(this.wilayah.provinsi_kode, true);
                     },
 
-                    async onKabupatenChange() {
-                        const found = this.listKabupaten.find(i => i.code === this.wilayah.kabupaten_kode);
+                    async onKabupatenChange(event) {
+                        const code = event && event.target ? event.target.value : (event || this.wilayah.kabupaten_kode);
+                        if (code !== undefined && code !== null) this.wilayah.kabupaten_kode = String(code);
+                        const found = this.listKabupaten.find(i => String(i.code) === String(this.wilayah.kabupaten_kode));
                         this.wilayah.kabupaten_nama = found ? found.name : '';
                         this.wilayah.kecamatan_kode = '';
                         this.wilayah.kecamatan_nama = '';
@@ -767,20 +841,27 @@
                         this.wilayah.desa_nama = '';
                         this.listKecamatan = [];
                         this.listDesa = [];
-                        await this.fetchKecamatan(this.wilayah.kabupaten_kode);
+                        this.$dispatch('searchable-select-loading', { id: 'kecamatan_kode', loading: false });
+                        this.$dispatch('searchable-select-loading', { id: 'desa_kode', loading: false });
+                        await this.fetchKecamatan(this.wilayah.kabupaten_kode, true);
                     },
 
-                    async onKecamatanChange() {
-                        const found = this.listKecamatan.find(i => i.code === this.wilayah.kecamatan_kode);
+                    async onKecamatanChange(event) {
+                        const code = event && event.target ? event.target.value : (event || this.wilayah.kecamatan_kode);
+                        if (code !== undefined && code !== null) this.wilayah.kecamatan_kode = String(code);
+                        const found = this.listKecamatan.find(i => String(i.code) === String(this.wilayah.kecamatan_kode));
                         this.wilayah.kecamatan_nama = found ? found.name : '';
                         this.wilayah.desa_kode = '';
                         this.wilayah.desa_nama = '';
                         this.listDesa = [];
-                        await this.fetchDesa(this.wilayah.kecamatan_kode);
+                        this.$dispatch('searchable-select-loading', { id: 'desa_kode', loading: false });
+                        await this.fetchDesa(this.wilayah.kecamatan_kode, true);
                     },
 
-                    onDesaChange() {
-                        const found = this.listDesa.find(i => i.code === this.wilayah.desa_kode);
+                    onDesaChange(event) {
+                        const code = event && event.target ? event.target.value : (event || this.wilayah.desa_kode);
+                        if (code !== undefined && code !== null) this.wilayah.desa_kode = String(code);
+                        const found = this.listDesa.find(i => String(i.code) === String(this.wilayah.desa_kode));
                         this.wilayah.desa_nama = found ? found.name : '';
                     }
                 };
