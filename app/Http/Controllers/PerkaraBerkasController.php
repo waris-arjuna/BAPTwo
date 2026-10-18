@@ -33,6 +33,7 @@ class PerkaraBerkasController extends Controller
             'tkp.alamat',
             'ppnsUtama',
             'ppnsAnggota',
+            'tersangkas.alamat',
             'tersangkas.berkasPerkara.pasals',
         ]);
 
@@ -76,6 +77,7 @@ class PerkaraBerkasController extends Controller
             'tkp.alamat',
             'ppnsUtama',
             'ppnsAnggota',
+            'tersangkas.alamat',
             'tersangkas.berkasPerkara.pasals',
             'tersangkas.berkasPerkara.tahapan.dokumen',
             'tersangkas.berkasPerkara.dpos.dokumen',

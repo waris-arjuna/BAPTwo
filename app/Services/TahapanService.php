@@ -357,30 +357,36 @@ class TahapanService
     }
 
     /**
-     * Mengambil daftar tahapan SPDP (termasuk sub-tahap opsional P-16 dan P-17P) dengan filter dan paginasi.
+     * Helper query terpadu untuk daftar tahapan perkara dengan filter & paginasi.
+     *
+     * @param  array<string>|string  $jenisTahap
      */
-    public function getSpdpList(\Illuminate\Http\Request $request, int $perPage = 10): \Illuminate\Pagination\LengthAwarePaginator
-    {
-        $subStage = $request->string('sub_stage', 'all')->trim()->toString();
+    protected function paginateTahapanQuery(
+        array|string $jenisTahap,
+        \Illuminate\Http\Request $request,
+        int $perPage = 10,
+        ?string $subStage = null
+    ): \Illuminate\Pagination\LengthAwarePaginator {
         $search = $request->string('search')->trim()->toString();
         $status = $request->string('status')->trim()->toString();
         $tanggalDari = $request->string('tanggal_dari', $request->string('tanggal')->toString())->trim()->toString();
         $tanggalSampai = $request->string('tanggal_sampai')->trim()->toString();
 
-        return TahapanPerkara::query()
-            ->whereIn('jenis_tahap', [JenisTahap::SPDP->value, JenisTahap::P16->value, JenisTahap::P17P->value])
-            ->when($subStage !== 'all' && $subStage !== '', function (\Illuminate\Database\Eloquent\Builder $query) use ($subStage) {
+        $query = TahapanPerkara::query();
+
+        if (is_array($jenisTahap)) {
+            $query->whereIn('jenis_tahap', $jenisTahap);
+            if ($subStage !== null && $subStage !== 'all' && $subStage !== '') {
                 $query->where('jenis_tahap', $subStage);
-            })
-            ->when($status !== '', function (\Illuminate\Database\Eloquent\Builder $query) use ($status) {
-                $query->where('status', strtolower($status));
-            })
-            ->when($tanggalDari !== '', function (\Illuminate\Database\Eloquent\Builder $query) use ($tanggalDari) {
-                $query->whereDate('tanggal_surat', '>=', $tanggalDari);
-            })
-            ->when($tanggalSampai !== '', function (\Illuminate\Database\Eloquent\Builder $query) use ($tanggalSampai) {
-                $query->whereDate('tanggal_surat', '<=', $tanggalSampai);
-            })
+            }
+        } else {
+            $query->where('jenis_tahap', $jenisTahap);
+        }
+
+        return $query
+            ->when($status !== '', fn ($q) => $q->where('status', strtolower($status)))
+            ->when($tanggalDari !== '', fn ($q) => $q->whereDate('tanggal_surat', '>=', $tanggalDari))
+            ->when($tanggalSampai !== '', fn ($q) => $q->whereDate('tanggal_surat', '<=', $tanggalSampai))
             ->when($search !== '', function (\Illuminate\Database\Eloquent\Builder $query) use ($search) {
                 $query->where(function (\Illuminate\Database\Eloquent\Builder $q) use ($search) {
                     $q->where('nomor_surat', 'like', "%{$search}%")
@@ -409,6 +415,42 @@ class TahapanService
             ->orderByDesc('id')
             ->paginate($perPage)
             ->withQueryString();
+    }
+
+    /**
+     * Helper query berkas perkara yang siap lanjut ke tahapan berikutnya.
+     */
+    protected function queryAvailableBerkas(
+        JenisTahap $requiredPreviousStage,
+        JenisTahap $targetStage,
+        bool $dpoCheck = false
+    ): \Illuminate\Database\Eloquent\Collection {
+        return BerkasPerkara::query()
+            ->whereHas('tahapan', function (\Illuminate\Database\Eloquent\Builder $q) use ($requiredPreviousStage) {
+                $q->where('jenis_tahap', $requiredPreviousStage->value)->where('status', 'final');
+            })
+            ->whereDoesntHave('tahapan', function (\Illuminate\Database\Eloquent\Builder $q) use ($targetStage) {
+                $q->where('jenis_tahap', $targetStage->value);
+            })
+            ->whereDoesntHave('sp3')
+            ->where(fn (\Illuminate\Database\Eloquent\Builder $q) => $q->whereNull('status_formal')->orWhere('status_formal', '!=', 'tidak_selesai'))
+            ->when($dpoCheck, fn ($q) => $q->where('is_dpo', false))
+            ->with(['perkara', 'tersangka'])
+            ->orderByDesc('id')
+            ->get();
+    }
+
+    /**
+     * Mengambil daftar tahapan SPDP (termasuk sub-tahap opsional P-16 dan P-17P) dengan filter dan paginasi.
+     */
+    public function getSpdpList(\Illuminate\Http\Request $request, int $perPage = 10): \Illuminate\Pagination\LengthAwarePaginator
+    {
+        return $this->paginateTahapanQuery(
+            [JenisTahap::SPDP->value, JenisTahap::P16->value, JenisTahap::P17P->value],
+            $request,
+            $perPage,
+            $request->string('sub_stage', 'all')->trim()->toString()
+        );
     }
 
     /**
@@ -530,54 +572,12 @@ class TahapanService
      */
     public function getTahap1List(\Illuminate\Http\Request $request, int $perPage = 10): \Illuminate\Pagination\LengthAwarePaginator
     {
-        $subStage = $request->string('sub_stage', 'all')->trim()->toString();
-        $search = $request->string('search')->trim()->toString();
-        $status = $request->string('status')->trim()->toString();
-        $tanggalDari = $request->string('tanggal_dari', $request->string('tanggal')->toString())->trim()->toString();
-        $tanggalSampai = $request->string('tanggal_sampai')->trim()->toString();
-
-        return TahapanPerkara::query()
-            ->whereIn('jenis_tahap', [JenisTahap::TAHAP_1->value, JenisTahap::P18P->value, JenisTahap::P19->value])
-            ->when($subStage !== 'all' && $subStage !== '', function (\Illuminate\Database\Eloquent\Builder $query) use ($subStage) {
-                $query->where('jenis_tahap', $subStage);
-            })
-            ->when($status !== '', function (\Illuminate\Database\Eloquent\Builder $query) use ($status) {
-                $query->where('status', strtolower($status));
-            })
-            ->when($tanggalDari !== '', function (\Illuminate\Database\Eloquent\Builder $query) use ($tanggalDari) {
-                $query->whereDate('tanggal_surat', '>=', $tanggalDari);
-            })
-            ->when($tanggalSampai !== '', function (\Illuminate\Database\Eloquent\Builder $query) use ($tanggalSampai) {
-                $query->whereDate('tanggal_surat', '<=', $tanggalSampai);
-            })
-            ->when($search !== '', function (\Illuminate\Database\Eloquent\Builder $query) use ($search) {
-                $query->where(function (\Illuminate\Database\Eloquent\Builder $q) use ($search) {
-                    $q->where('nomor_surat', 'like', "%{$search}%")
-                        ->orWhere('catatan', 'like', "%{$search}%")
-                        ->orWhereHas('berkasPerkara', function (\Illuminate\Database\Eloquent\Builder $bQ) use ($search) {
-                            $bQ->where('nomor_berkas', 'like', "%{$search}%")
-                                ->orWhereHas('tersangka', function (\Illuminate\Database\Eloquent\Builder $tQ) use ($search) {
-                                    $tQ->where('nama', 'like', "%{$search}%")
-                                        ->orWhere('nik', 'like', "%{$search}%");
-                                })
-                                ->orWhereHas('perkara', function (\Illuminate\Database\Eloquent\Builder $pQ) use ($search) {
-                                    $pQ->where('nomor_surat_perintah', 'like', "%{$search}%")
-                                        ->orWhere('nomor_laporan_kejadian', 'like', "%{$search}%");
-                                });
-                        });
-                });
-            })
-            ->with([
-                'berkasPerkara.perkara',
-                'berkasPerkara.tersangka',
-                'dokumen',
-                'createdBy',
-                'finalizedBy',
-            ])
-            ->orderByDesc('tanggal_surat')
-            ->orderByDesc('id')
-            ->paginate($perPage)
-            ->withQueryString();
+        return $this->paginateTahapanQuery(
+            [JenisTahap::TAHAP_1->value, JenisTahap::P18P->value, JenisTahap::P19->value],
+            $request,
+            $perPage,
+            $request->string('sub_stage', 'all')->trim()->toString()
+        );
     }
 
     /**
@@ -604,18 +604,7 @@ class TahapanService
      */
     public function getAvailableBerkasForTahap1(): \Illuminate\Database\Eloquent\Collection
     {
-        return BerkasPerkara::query()
-            ->whereHas('tahapan', function (\Illuminate\Database\Eloquent\Builder $q) {
-                $q->where('jenis_tahap', JenisTahap::SPDP->value)->where('status', 'final');
-            })
-            ->whereDoesntHave('tahapan', function (\Illuminate\Database\Eloquent\Builder $q) {
-                $q->where('jenis_tahap', JenisTahap::TAHAP_1->value);
-            })
-            ->whereDoesntHave('sp3')
-            ->where(fn (\Illuminate\Database\Eloquent\Builder $q) => $q->whereNull('status_formal')->orWhere('status_formal', '!=', 'tidak_selesai'))
-            ->with(['perkara', 'tersangka'])
-            ->orderByDesc('id')
-            ->get();
+        return $this->queryAvailableBerkas(JenisTahap::SPDP, JenisTahap::TAHAP_1);
     }
 
     /**
@@ -623,50 +612,7 @@ class TahapanService
      */
     public function getP21List(\Illuminate\Http\Request $request, int $perPage = 10): \Illuminate\Pagination\LengthAwarePaginator
     {
-        $search = $request->string('search')->trim()->toString();
-        $status = $request->string('status')->trim()->toString();
-        $tanggalDari = $request->string('tanggal_dari', $request->string('tanggal')->toString())->trim()->toString();
-        $tanggalSampai = $request->string('tanggal_sampai')->trim()->toString();
-
-        return TahapanPerkara::query()
-            ->where('jenis_tahap', JenisTahap::P21->value)
-            ->when($status !== '', function (\Illuminate\Database\Eloquent\Builder $query) use ($status) {
-                $query->where('status', strtolower($status));
-            })
-            ->when($tanggalDari !== '', function (\Illuminate\Database\Eloquent\Builder $query) use ($tanggalDari) {
-                $query->whereDate('tanggal_surat', '>=', $tanggalDari);
-            })
-            ->when($tanggalSampai !== '', function (\Illuminate\Database\Eloquent\Builder $query) use ($tanggalSampai) {
-                $query->whereDate('tanggal_surat', '<=', $tanggalSampai);
-            })
-            ->when($search !== '', function (\Illuminate\Database\Eloquent\Builder $query) use ($search) {
-                $query->where(function (\Illuminate\Database\Eloquent\Builder $q) use ($search) {
-                    $q->where('nomor_surat', 'like', "%{$search}%")
-                        ->orWhere('catatan', 'like', "%{$search}%")
-                        ->orWhereHas('berkasPerkara', function (\Illuminate\Database\Eloquent\Builder $bQ) use ($search) {
-                            $bQ->where('nomor_berkas', 'like', "%{$search}%")
-                                ->orWhereHas('tersangka', function (\Illuminate\Database\Eloquent\Builder $tQ) use ($search) {
-                                    $tQ->where('nama', 'like', "%{$search}%")
-                                        ->orWhere('nik', 'like', "%{$search}%");
-                                })
-                                ->orWhereHas('perkara', function (\Illuminate\Database\Eloquent\Builder $pQ) use ($search) {
-                                    $pQ->where('nomor_surat_perintah', 'like', "%{$search}%")
-                                        ->orWhere('nomor_laporan_kejadian', 'like', "%{$search}%");
-                                });
-                        });
-                });
-            })
-            ->with([
-                'berkasPerkara.perkara',
-                'berkasPerkara.tersangka',
-                'dokumen',
-                'createdBy',
-                'finalizedBy',
-            ])
-            ->orderByDesc('tanggal_surat')
-            ->orderByDesc('id')
-            ->paginate($perPage)
-            ->withQueryString();
+        return $this->paginateTahapanQuery(JenisTahap::P21->value, $request, $perPage);
     }
 
     /**
@@ -676,18 +622,7 @@ class TahapanService
      */
     public function getAvailableBerkasForP21(): \Illuminate\Database\Eloquent\Collection
     {
-        return BerkasPerkara::query()
-            ->whereHas('tahapan', function (\Illuminate\Database\Eloquent\Builder $q) {
-                $q->where('jenis_tahap', JenisTahap::TAHAP_1->value)->where('status', 'final');
-            })
-            ->whereDoesntHave('tahapan', function (\Illuminate\Database\Eloquent\Builder $q) {
-                $q->where('jenis_tahap', JenisTahap::P21->value);
-            })
-            ->whereDoesntHave('sp3')
-            ->where(fn (\Illuminate\Database\Eloquent\Builder $q) => $q->whereNull('status_formal')->orWhere('status_formal', '!=', 'tidak_selesai'))
-            ->with(['perkara', 'tersangka'])
-            ->orderByDesc('id')
-            ->get();
+        return $this->queryAvailableBerkas(JenisTahap::TAHAP_1, JenisTahap::P21);
     }
 
     /**
@@ -695,50 +630,7 @@ class TahapanService
      */
     public function getTahap2List(\Illuminate\Http\Request $request, int $perPage = 10): \Illuminate\Pagination\LengthAwarePaginator
     {
-        $search = $request->string('search')->trim()->toString();
-        $status = $request->string('status')->trim()->toString();
-        $tanggalDari = $request->string('tanggal_dari', $request->string('tanggal')->toString())->trim()->toString();
-        $tanggalSampai = $request->string('tanggal_sampai')->trim()->toString();
-
-        return TahapanPerkara::query()
-            ->where('jenis_tahap', JenisTahap::TAHAP_2->value)
-            ->when($status !== '', function (\Illuminate\Database\Eloquent\Builder $query) use ($status) {
-                $query->where('status', strtolower($status));
-            })
-            ->when($tanggalDari !== '', function (\Illuminate\Database\Eloquent\Builder $query) use ($tanggalDari) {
-                $query->whereDate('tanggal_surat', '>=', $tanggalDari);
-            })
-            ->when($tanggalSampai !== '', function (\Illuminate\Database\Eloquent\Builder $query) use ($tanggalSampai) {
-                $query->whereDate('tanggal_surat', '<=', $tanggalSampai);
-            })
-            ->when($search !== '', function (\Illuminate\Database\Eloquent\Builder $query) use ($search) {
-                $query->where(function (\Illuminate\Database\Eloquent\Builder $q) use ($search) {
-                    $q->where('nomor_surat', 'like', "%{$search}%")
-                        ->orWhere('catatan', 'like', "%{$search}%")
-                        ->orWhereHas('berkasPerkara', function (\Illuminate\Database\Eloquent\Builder $bQ) use ($search) {
-                            $bQ->where('nomor_berkas', 'like', "%{$search}%")
-                                ->orWhereHas('tersangka', function (\Illuminate\Database\Eloquent\Builder $tQ) use ($search) {
-                                    $tQ->where('nama', 'like', "%{$search}%")
-                                        ->orWhere('nik', 'like', "%{$search}%");
-                                })
-                                ->orWhereHas('perkara', function (\Illuminate\Database\Eloquent\Builder $pQ) use ($search) {
-                                    $pQ->where('nomor_surat_perintah', 'like', "%{$search}%")
-                                        ->orWhere('nomor_laporan_kejadian', 'like', "%{$search}%");
-                                });
-                        });
-                });
-            })
-            ->with([
-                'berkasPerkara.perkara',
-                'berkasPerkara.tersangka',
-                'dokumen',
-                'createdBy',
-                'finalizedBy',
-            ])
-            ->orderByDesc('tanggal_surat')
-            ->orderByDesc('id')
-            ->paginate($perPage)
-            ->withQueryString();
+        return $this->paginateTahapanQuery(JenisTahap::TAHAP_2->value, $request, $perPage);
     }
 
     /**
@@ -748,19 +640,7 @@ class TahapanService
      */
     public function getAvailableBerkasForTahap2(): \Illuminate\Database\Eloquent\Collection
     {
-        return BerkasPerkara::query()
-            ->whereHas('tahapan', function (\Illuminate\Database\Eloquent\Builder $q) {
-                $q->where('jenis_tahap', JenisTahap::P21->value)->where('status', 'final');
-            })
-            ->whereDoesntHave('tahapan', function (\Illuminate\Database\Eloquent\Builder $q) {
-                $q->where('jenis_tahap', JenisTahap::TAHAP_2->value);
-            })
-            ->whereDoesntHave('sp3')
-            ->where(fn (\Illuminate\Database\Eloquent\Builder $q) => $q->whereNull('status_formal')->orWhere('status_formal', '!=', 'tidak_selesai'))
-            ->where('is_dpo', false)
-            ->with(['perkara', 'tersangka'])
-            ->orderByDesc('id')
-            ->get();
+        return $this->queryAvailableBerkas(JenisTahap::P21, JenisTahap::TAHAP_2, true);
     }
 
     /**
@@ -768,50 +648,7 @@ class TahapanService
      */
     public function getPutusanPerkaraList(\Illuminate\Http\Request $request, int $perPage = 10): \Illuminate\Pagination\LengthAwarePaginator
     {
-        $search = $request->string('search')->trim()->toString();
-        $status = $request->string('status')->trim()->toString();
-        $tanggalDari = $request->string('tanggal_dari', $request->string('tanggal')->toString())->trim()->toString();
-        $tanggalSampai = $request->string('tanggal_sampai')->trim()->toString();
-
-        return TahapanPerkara::query()
-            ->where('jenis_tahap', JenisTahap::KEPUTUSAN_PENGADILAN->value)
-            ->when($status !== '', function (\Illuminate\Database\Eloquent\Builder $query) use ($status) {
-                $query->where('status', strtolower($status));
-            })
-            ->when($tanggalDari !== '', function (\Illuminate\Database\Eloquent\Builder $query) use ($tanggalDari) {
-                $query->whereDate('tanggal_surat', '>=', $tanggalDari);
-            })
-            ->when($tanggalSampai !== '', function (\Illuminate\Database\Eloquent\Builder $query) use ($tanggalSampai) {
-                $query->whereDate('tanggal_surat', '<=', $tanggalSampai);
-            })
-            ->when($search !== '', function (\Illuminate\Database\Eloquent\Builder $query) use ($search) {
-                $query->where(function (\Illuminate\Database\Eloquent\Builder $q) use ($search) {
-                    $q->where('nomor_surat', 'like', "%{$search}%")
-                        ->orWhere('catatan', 'like', "%{$search}%")
-                        ->orWhereHas('berkasPerkara', function (\Illuminate\Database\Eloquent\Builder $bQ) use ($search) {
-                            $bQ->where('nomor_berkas', 'like', "%{$search}%")
-                                ->orWhereHas('tersangka', function (\Illuminate\Database\Eloquent\Builder $tQ) use ($search) {
-                                    $tQ->where('nama', 'like', "%{$search}%")
-                                        ->orWhere('nik', 'like', "%{$search}%");
-                                })
-                                ->orWhereHas('perkara', function (\Illuminate\Database\Eloquent\Builder $pQ) use ($search) {
-                                    $pQ->where('nomor_surat_perintah', 'like', "%{$search}%")
-                                        ->orWhere('nomor_laporan_kejadian', 'like', "%{$search}%");
-                                });
-                        });
-                });
-            })
-            ->with([
-                'berkasPerkara.perkara',
-                'berkasPerkara.tersangka',
-                'dokumen',
-                'createdBy',
-                'finalizedBy',
-            ])
-            ->orderByDesc('tanggal_surat')
-            ->orderByDesc('id')
-            ->paginate($perPage)
-            ->withQueryString();
+        return $this->paginateTahapanQuery(JenisTahap::KEPUTUSAN_PENGADILAN->value, $request, $perPage);
     }
 
     /**
@@ -821,17 +658,6 @@ class TahapanService
      */
     public function getAvailableBerkasForPutusan(): \Illuminate\Database\Eloquent\Collection
     {
-        return BerkasPerkara::query()
-            ->whereHas('tahapan', function (\Illuminate\Database\Eloquent\Builder $q) {
-                $q->where('jenis_tahap', JenisTahap::TAHAP_2->value)->where('status', 'final');
-            })
-            ->whereDoesntHave('tahapan', function (\Illuminate\Database\Eloquent\Builder $q) {
-                $q->where('jenis_tahap', JenisTahap::KEPUTUSAN_PENGADILAN->value);
-            })
-            ->whereDoesntHave('sp3')
-            ->where(fn (\Illuminate\Database\Eloquent\Builder $q) => $q->whereNull('status_formal')->orWhere('status_formal', '!=', 'tidak_selesai'))
-            ->with(['perkara', 'tersangka'])
-            ->orderByDesc('id')
-            ->get();
+        return $this->queryAvailableBerkas(JenisTahap::TAHAP_2, JenisTahap::KEPUTUSAN_PENGADILAN);
     }
 }

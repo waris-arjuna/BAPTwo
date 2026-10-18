@@ -6,6 +6,8 @@
     'placeholder' => 'Dari Tanggal',
     'name' => null,
     'dateFormat' => 'Y-m-d',
+    'maxDate' => null,
+    'required' => false,
 ])
 
 <div {{ $attributes->merge(['class' => 'relative']) }} x-data="{
@@ -19,6 +21,9 @@
                 monthSelectorType: 'static',
                 dateFormat: '{{ $dateFormat }}',
                 defaultDate: {{ $defaultDate ? (is_array($defaultDate) ? json_encode($defaultDate) : "'" . $defaultDate . "'") : 'null' }},
+                @if($maxDate)
+                maxDate: '{{ $maxDate }}',
+                @endif
                 onChange: (selectedDates, dateStr, instance) => {
                     this.$refs.dateInput.dispatchEvent(new Event('change', { bubbles: true }));
                     this.$dispatch('date-change', {
@@ -51,6 +56,7 @@
             name="{{ $name }}"
             value="{{ $defaultDate ?? '' }}"
             placeholder="{{ __($placeholder) }}"
+            {{ $required ? 'required' : '' }}
             class="h-11 w-full rounded-lg border border-gray-300 bg-white ps-3.5 pe-10 text-sm text-gray-700 shadow-theme-xs outline-none transition placeholder:text-gray-400 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:placeholder:text-gray-500"
             autocomplete="off"
         />

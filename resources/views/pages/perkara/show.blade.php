@@ -631,6 +631,27 @@
                                         {{ $tersangka->pekerjaan ?: '-' }} ({{ $tersangka->kewarganegaraan ?: 'WNI' }})
                                     </p>
                                 </div>
+
+                                <div class="sm:col-span-2 lg:col-span-4 border-t border-gray-200/60 pt-3 dark:border-gray-800/60">
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Alamat Lengkap Tersangka</p>
+                                    <p class="font-medium text-gray-800 dark:text-white/90">
+                                        @if ($tersangka->alamat)
+                                            {{ $tersangka->alamat->alamat_detail }},
+                                            @if ($tersangka->alamat->rt || $tersangka->alamat->rw)
+                                                RT {{ $tersangka->alamat->rt ?: '-' }} / RW {{ $tersangka->alamat->rw ?: '-' }},
+                                            @endif
+                                            @if ($tersangka->alamat->desa_nama)
+                                                Desa/Kel. {{ $tersangka->alamat->desa_nama }},
+                                            @endif
+                                            @if ($tersangka->alamat->kecamatan_nama)
+                                                Kec. {{ $tersangka->alamat->kecamatan_nama }},
+                                            @endif
+                                            {{ $tersangka->alamat->kabupaten_nama }}, {{ $tersangka->alamat->provinsi_nama }}
+                                        @else
+                                            <span class="text-gray-400 dark:text-gray-500 italic">Belum diisi</span>
+                                        @endif
+                                    </p>
+                                </div>
                             </div>
 
                             {{-- Informasi Batas Waktu & SLA Perkara (PRD bagian SLA) --}}

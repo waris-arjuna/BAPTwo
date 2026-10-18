@@ -22,6 +22,7 @@
 
     $firstTersangka = $perkara->tersangkas->first();
     $firstBerkas = $firstTersangka?->berkasPerkara ?? $perkara->berkasPerkaras->first();
+    $tersangkaAlamat = $firstTersangka?->alamat;
 
     $oldTersangka = old('tersangka.0', []);
     $tersangkaId = old('tersangka_id', $oldTersangka['id'] ?? $firstTersangka?->id);
@@ -35,6 +36,18 @@
     $tersangkaAgama = old('tersangka_agama', $oldTersangka['agama'] ?? ($firstTersangka?->agama ?? ''));
     $tersangkaPekerjaan = old('tersangka_pekerjaan', $oldTersangka['pekerjaan'] ?? ($firstTersangka?->pekerjaan ?? ''));
     $tersangkaKewarganegaraan = old('tersangka_kewarganegaraan', $oldTersangka['kewarganegaraan'] ?? ($firstTersangka?->kewarganegaraan ?? 'WNI'));
+
+    $tersangkaProvinsiKode = old('tersangka_provinsi_kode', $oldTersangka['provinsi_kode'] ?? ($tersangkaAlamat?->provinsi_kode ?? ''));
+    $tersangkaProvinsiNama = old('tersangka_provinsi_nama', $oldTersangka['provinsi_nama'] ?? ($tersangkaAlamat?->provinsi_nama ?? ''));
+    $tersangkaKabupatenKode = old('tersangka_kabupaten_kode', $oldTersangka['kabupaten_kode'] ?? ($tersangkaAlamat?->kabupaten_kode ?? ''));
+    $tersangkaKabupatenNama = old('tersangka_kabupaten_nama', $oldTersangka['kabupaten_nama'] ?? ($tersangkaAlamat?->kabupaten_nama ?? ''));
+    $tersangkaKecamatanKode = old('tersangka_kecamatan_kode', $oldTersangka['kecamatan_kode'] ?? ($tersangkaAlamat?->kecamatan_kode ?? ''));
+    $tersangkaKecamatanNama = old('tersangka_kecamatan_nama', $oldTersangka['kecamatan_nama'] ?? ($tersangkaAlamat?->kecamatan_nama ?? ''));
+    $tersangkaDesaKode = old('tersangka_desa_kode', $oldTersangka['desa_kode'] ?? ($tersangkaAlamat?->desa_kode ?? ''));
+    $tersangkaDesaNama = old('tersangka_desa_nama', $oldTersangka['desa_nama'] ?? ($tersangkaAlamat?->desa_nama ?? ''));
+    $tersangkaRt = old('tersangka_rt', $oldTersangka['rt'] ?? ($tersangkaAlamat?->rt ?? ''));
+    $tersangkaRw = old('tersangka_rw', $oldTersangka['rw'] ?? ($tersangkaAlamat?->rw ?? ''));
+    $tersangkaAlamatDetail = old('tersangka_alamat_detail', $oldTersangka['alamat_detail'] ?? ($tersangkaAlamat?->alamat_detail ?? ''));
 
     $existingPasalIds = collect(old('pasal_ids', $oldTersangka['pasal_ids'] ?? ($firstBerkas?->pasals->pluck('id')->all() ?? [])))
         ->map(fn ($id) => (int) $id)
@@ -688,7 +701,276 @@
             </div>
 
             {{-- 3. Card Data Tersangka & Berkas Perkara (1 Perkara = 1 Berkas Perkara = 1 Tersangka — Poin 11 & 13) --}}
-            <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
+            <div
+                x-data="{
+                    isAlamatModalOpen: false,
+                    alamat: {
+                        provinsi_kode: @js($tersangkaProvinsiKode),
+                        provinsi_nama: @js($tersangkaProvinsiNama),
+                        kabupaten_kode: @js($tersangkaKabupatenKode),
+                        kabupaten_nama: @js($tersangkaKabupatenNama),
+                        kecamatan_kode: @js($tersangkaKecamatanKode),
+                        kecamatan_nama: @js($tersangkaKecamatanNama),
+                        desa_kode: @js($tersangkaDesaKode),
+                        desa_nama: @js($tersangkaDesaNama),
+                        rt: @js($tersangkaRt),
+                        rw: @js($tersangkaRw),
+                        alamat_detail: @js($tersangkaAlamatDetail),
+                    },
+                    modalWilayah: {
+                        provinsi_kode: '',
+                        provinsi_nama: '',
+                        kabupaten_kode: '',
+                        kabupaten_nama: '',
+                        kecamatan_kode: '',
+                        kecamatan_nama: '',
+                        desa_kode: '',
+                        desa_nama: '',
+                    },
+                    modalRt: '',
+                    modalRw: '',
+                    modalAlamatDetail: '',
+                    listProvinsi: [],
+                    listKabupaten: [],
+                    listKecamatan: [],
+                    listDesa: [],
+                    provinsiAbortController: null,
+                    kabupatenAbortController: null,
+                    kecamatanAbortController: null,
+                    desaAbortController: null,
+
+                    get alamatRingkasan() {
+                        if (!this.alamat.provinsi_kode && !this.alamat.alamat_detail) {
+                            return 'Belum diatur — klik untuk memilih alamat';
+                        }
+                        const parts = [];
+                        if (this.alamat.alamat_detail) parts.push(this.alamat.alamat_detail);
+                        if (this.alamat.rt || this.alamat.rw) {
+                            parts.push('RT ' + (this.alamat.rt || '-') + ' / RW ' + (this.alamat.rw || '-'));
+                        }
+                        if (this.alamat.desa_nama) parts.push('Desa/Kel. ' + this.alamat.desa_nama);
+                        if (this.alamat.kecamatan_nama) parts.push('Kec. ' + this.alamat.kecamatan_nama);
+                        if (this.alamat.kabupaten_nama) parts.push(this.alamat.kabupaten_nama);
+                        if (this.alamat.provinsi_nama) parts.push(this.alamat.provinsi_nama);
+                        return parts.join(', ');
+                    },
+
+                    async openAlamatModal() {
+                        this.modalWilayah.provinsi_kode = this.alamat.provinsi_kode || '';
+                        this.modalWilayah.provinsi_nama = this.alamat.provinsi_nama || '';
+                        this.modalWilayah.kabupaten_kode = this.alamat.kabupaten_kode || '';
+                        this.modalWilayah.kabupaten_nama = this.alamat.kabupaten_nama || '';
+                        this.modalWilayah.kecamatan_kode = this.alamat.kecamatan_kode || '';
+                        this.modalWilayah.kecamatan_nama = this.alamat.kecamatan_nama || '';
+                        this.modalWilayah.desa_kode = this.alamat.desa_kode || '';
+                        this.modalWilayah.desa_nama = this.alamat.desa_nama || '';
+                        this.modalRt = this.alamat.rt || '';
+                        this.modalRw = this.alamat.rw || '';
+                        this.modalAlamatDetail = this.alamat.alamat_detail || '';
+
+                        this.isAlamatModalOpen = true;
+
+                        await this.fetchProvinsi();
+                        if (this.modalWilayah.provinsi_kode) {
+                            await this.fetchKabupaten(this.modalWilayah.provinsi_kode);
+                        }
+                        if (this.modalWilayah.kabupaten_kode) {
+                            await this.fetchKecamatan(this.modalWilayah.kabupaten_kode);
+                        }
+                        if (this.modalWilayah.kecamatan_kode) {
+                            await this.fetchDesa(this.modalWilayah.kecamatan_kode);
+                        }
+                    },
+
+                    async fetchProvinsi() {
+                        if (this.listProvinsi.length > 0) return;
+                        try {
+                            const res = await fetch('{{ route('wilayah.provinsi') }}');
+                            const json = await res.json();
+                            this.listProvinsi = json.data || [];
+                        } catch (e) {
+                            this.listProvinsi = [];
+                        }
+                    },
+
+                    async fetchKabupaten(provKode, autoOpen = false) {
+                        if (!provKode) {
+                            this.listKabupaten = [];
+                            this.$dispatch('searchable-select-loading', { id: 'modal_tersangka_kabupaten_kode', loading: false });
+                            return;
+                        }
+                        if (this.kabupatenAbortController) {
+                            this.kabupatenAbortController.abort();
+                        }
+                        this.kabupatenAbortController = new AbortController();
+                        this.$dispatch('searchable-select-loading', { id: 'modal_tersangka_kabupaten_kode', loading: true });
+                        try {
+                            const res = await fetch(`{{ url('/wilayah/kabupaten') }}/${provKode}`, {
+                                signal: this.kabupatenAbortController.signal
+                            });
+                            const json = await res.json();
+                            if (String(this.modalWilayah.provinsi_kode) === String(provKode)) {
+                                this.listKabupaten = json.data || [];
+                                if (autoOpen && this.listKabupaten.length > 0) {
+                                    this.$nextTick(() => {
+                                        this.$dispatch('searchable-select-open', { id: 'modal_tersangka_kabupaten_kode' });
+                                    });
+                                }
+                            }
+                        } catch (e) {
+                            if (e.name !== 'AbortError') {
+                                this.listKabupaten = [];
+                            }
+                        } finally {
+                            if (String(this.modalWilayah.provinsi_kode) === String(provKode)) {
+                                this.$dispatch('searchable-select-loading', { id: 'modal_tersangka_kabupaten_kode', loading: false });
+                            }
+                        }
+                    },
+
+                    async fetchKecamatan(kabKode, autoOpen = false) {
+                        if (!kabKode) {
+                            this.listKecamatan = [];
+                            this.$dispatch('searchable-select-loading', { id: 'modal_tersangka_kecamatan_kode', loading: false });
+                            return;
+                        }
+                        if (this.kecamatanAbortController) {
+                            this.kecamatanAbortController.abort();
+                        }
+                        this.kecamatanAbortController = new AbortController();
+                        this.$dispatch('searchable-select-loading', { id: 'modal_tersangka_kecamatan_kode', loading: true });
+                        try {
+                            const res = await fetch(`{{ url('/wilayah/kecamatan') }}/${kabKode}`, {
+                                signal: this.kecamatanAbortController.signal
+                            });
+                            const json = await res.json();
+                            if (String(this.modalWilayah.kabupaten_kode) === String(kabKode)) {
+                                this.listKecamatan = json.data || [];
+                                if (autoOpen && this.listKecamatan.length > 0) {
+                                    this.$nextTick(() => {
+                                        this.$dispatch('searchable-select-open', { id: 'modal_tersangka_kecamatan_kode' });
+                                    });
+                                }
+                            }
+                        } catch (e) {
+                            if (e.name !== 'AbortError') {
+                                this.listKecamatan = [];
+                            }
+                        } finally {
+                            if (String(this.modalWilayah.kabupaten_kode) === String(kabKode)) {
+                                this.$dispatch('searchable-select-loading', { id: 'modal_tersangka_kecamatan_kode', loading: false });
+                            }
+                        }
+                    },
+
+                    async fetchDesa(kecKode, autoOpen = false) {
+                        if (!kecKode) {
+                            this.listDesa = [];
+                            this.$dispatch('searchable-select-loading', { id: 'modal_tersangka_desa_kode', loading: false });
+                            return;
+                        }
+                        if (this.desaAbortController) {
+                            this.desaAbortController.abort();
+                        }
+                        this.desaAbortController = new AbortController();
+                        this.$dispatch('searchable-select-loading', { id: 'modal_tersangka_desa_kode', loading: true });
+                        try {
+                            const res = await fetch(`{{ url('/wilayah/desa') }}/${kecKode}`, {
+                                signal: this.desaAbortController.signal
+                            });
+                            const json = await res.json();
+                            if (String(this.modalWilayah.kecamatan_kode) === String(kecKode)) {
+                                this.listDesa = json.data || [];
+                                if (autoOpen && this.listDesa.length > 0) {
+                                    this.$nextTick(() => {
+                                        this.$dispatch('searchable-select-open', { id: 'modal_tersangka_desa_kode' });
+                                    });
+                                }
+                            }
+                        } catch (e) {
+                            if (e.name !== 'AbortError') {
+                                this.listDesa = [];
+                            }
+                        } finally {
+                            if (String(this.modalWilayah.kecamatan_kode) === String(kecKode)) {
+                                this.$dispatch('searchable-select-loading', { id: 'modal_tersangka_desa_kode', loading: false });
+                            }
+                        }
+                    },
+
+                    onProvinsiChange(event) {
+                        const val = event && event.target ? event.target.value : (event || this.modalWilayah.provinsi_kode);
+                        this.modalWilayah.provinsi_kode = val ? String(val) : '';
+                        const found = this.listProvinsi.find(p => String(p.code) === String(val));
+                        this.modalWilayah.provinsi_nama = found ? (found.name || found.nama) : '';
+
+                        this.modalWilayah.kabupaten_kode = '';
+                        this.modalWilayah.kabupaten_nama = '';
+                        this.modalWilayah.kecamatan_kode = '';
+                        this.modalWilayah.kecamatan_nama = '';
+                        this.modalWilayah.desa_kode = '';
+                        this.modalWilayah.desa_nama = '';
+                        this.listKabupaten = [];
+                        this.listKecamatan = [];
+                        this.listDesa = [];
+
+                        this.fetchKabupaten(val, true);
+                    },
+
+                    onKabupatenChange(event) {
+                        const val = event && event.target ? event.target.value : (event || this.modalWilayah.kabupaten_kode);
+                        this.modalWilayah.kabupaten_kode = val ? String(val) : '';
+                        const found = this.listKabupaten.find(k => String(k.code) === String(val));
+                        this.modalWilayah.kabupaten_nama = found ? (found.name || found.nama) : '';
+
+                        this.modalWilayah.kecamatan_kode = '';
+                        this.modalWilayah.kecamatan_nama = '';
+                        this.modalWilayah.desa_kode = '';
+                        this.modalWilayah.desa_nama = '';
+                        this.listKecamatan = [];
+                        this.listDesa = [];
+
+                        this.fetchKecamatan(val, true);
+                    },
+
+                    onKecamatanChange(event) {
+                        const val = event && event.target ? event.target.value : (event || this.modalWilayah.kecamatan_kode);
+                        this.modalWilayah.kecamatan_kode = val ? String(val) : '';
+                        const found = this.listKecamatan.find(k => String(k.code) === String(val));
+                        this.modalWilayah.kecamatan_nama = found ? (found.name || found.nama) : '';
+
+                        this.modalWilayah.desa_kode = '';
+                        this.modalWilayah.desa_nama = '';
+                        this.listDesa = [];
+
+                        this.fetchDesa(val, true);
+                    },
+
+                    onDesaChange(event) {
+                        const val = event && event.target ? event.target.value : (event || this.modalWilayah.desa_kode);
+                        this.modalWilayah.desa_kode = val ? String(val) : '';
+                        const found = this.listDesa.find(d => String(d.code) === String(val));
+                        this.modalWilayah.desa_nama = found ? (found.name || found.nama) : '';
+                    },
+
+                    applyAlamat() {
+                        this.alamat.provinsi_kode = this.modalWilayah.provinsi_kode;
+                        this.alamat.provinsi_nama = this.modalWilayah.provinsi_nama;
+                        this.alamat.kabupaten_kode = this.modalWilayah.kabupaten_kode;
+                        this.alamat.kabupaten_nama = this.modalWilayah.kabupaten_nama;
+                        this.alamat.kecamatan_kode = this.modalWilayah.kecamatan_kode;
+                        this.alamat.kecamatan_nama = this.modalWilayah.kecamatan_nama;
+                        this.alamat.desa_kode = this.modalWilayah.desa_kode;
+                        this.alamat.desa_nama = this.modalWilayah.desa_nama;
+                        this.alamat.rt = this.modalRt;
+                        this.alamat.rw = this.modalRw;
+                        this.alamat.alamat_detail = this.modalAlamatDetail;
+
+                        this.isAlamatModalOpen = false;
+                    }
+                }"
+                class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
+            >
                 <div class="border-b border-gray-200 px-4 py-4 dark:border-gray-800 sm:px-6">
                     <div class="flex items-center gap-2">
                         <i class="fi fi-rr-user text-base text-brand-500"></i>
@@ -799,18 +1081,20 @@
                             >
                         </div>
 
-                        {{-- Tanggal Lahir --}}
+                        {{-- Tanggal Lahir (Datepicker Flatpickr) --}}
                         <div>
-                            <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                            <label for="tersangka_tanggal_lahir" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
                                 Tanggal Lahir <span class="text-red-500">*</span>
                             </label>
-                            <input
-                                type="date"
+                            <x-form.date-picker
+                                id="tersangka_tanggal_lahir"
                                 name="tersangka_tanggal_lahir"
-                                value="{{ $tersangkaTanggalLahir }}"
-                                class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
-                                required
-                            >
+                                placeholder="Pilih Tanggal Lahir"
+                                :default-date="$tersangkaTanggalLahir"
+                                date-format="Y-m-d"
+                                max-date="today"
+                                :required="true"
+                            />
                         </div>
 
                         {{-- Agama --}}
@@ -862,6 +1146,229 @@
                                 class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:text-white/90"
                                 required
                             >
+                        </div>
+
+                        {{-- Alamat Lengkap Tersangka (Pilih via Modal) --}}
+                        <div class="sm:col-span-2 lg:col-span-3">
+                            <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Alamat Lengkap Tersangka <span class="text-red-500">*</span>
+                            </label>
+                            <div class="flex flex-col gap-2.5 sm:flex-row sm:items-center">
+                                <div class="relative flex-1">
+                                    <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3.5 text-gray-400 dark:text-gray-500">
+                                        <i class="fi fi-rr-marker text-sm"></i>
+                                    </div>
+                                    <input
+                                        type="text"
+                                        readonly
+                                        id="tersangka_alamat_ringkasan"
+                                        :value="alamatRingkasan"
+                                        placeholder="Belum diatur — klik untuk memilih alamat"
+                                        class="h-11 w-full cursor-pointer rounded-lg border border-gray-300 bg-gray-50/80 ps-10 pe-4 text-sm text-gray-700 select-none dark:border-gray-700 dark:bg-gray-800/60 dark:text-gray-300"
+                                        @click="openAlamatModal()"
+                                    >
+                                </div>
+                                <button
+                                    type="button"
+                                    @click="openAlamatModal()"
+                                    class="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-lg border border-brand-300 bg-brand-50 px-4 text-sm font-medium text-brand-700 transition hover:bg-brand-100 dark:border-brand-500/40 dark:bg-brand-500/10 dark:text-brand-300 dark:hover:bg-brand-500/20"
+                                >
+                                    <i class="fi fi-rr-edit text-sm"></i>
+                                    <span>Atur Alamat Tersangka</span>
+                                </button>
+                            </div>
+                            <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                                Alamat KTP/domisili tersangka mencakup 38 Provinsi di seluruh Indonesia.
+                            </p>
+
+                            {{-- Hidden inputs form POST --}}
+                            <input type="hidden" name="tersangka_provinsi_kode" :value="alamat.provinsi_kode">
+                            <input type="hidden" name="tersangka_provinsi_nama" :value="alamat.provinsi_nama">
+                            <input type="hidden" name="tersangka_kabupaten_kode" :value="alamat.kabupaten_kode">
+                            <input type="hidden" name="tersangka_kabupaten_nama" :value="alamat.kabupaten_nama">
+                            <input type="hidden" name="tersangka_kecamatan_kode" :value="alamat.kecamatan_kode">
+                            <input type="hidden" name="tersangka_kecamatan_nama" :value="alamat.kecamatan_nama">
+                            <input type="hidden" name="tersangka_desa_kode" :value="alamat.desa_kode">
+                            <input type="hidden" name="tersangka_desa_nama" :value="alamat.desa_nama">
+                            <input type="hidden" name="tersangka_rt" :value="alamat.rt">
+                            <input type="hidden" name="tersangka_rw" :value="alamat.rw">
+                            <input type="hidden" name="tersangka_alamat_detail" :value="alamat.alamat_detail">
+                        </div>
+                    </div>
+
+                    {{-- Modal Pemilihan Alamat Tersangka --}}
+                    <div
+                        x-show="isAlamatModalOpen"
+                        x-cloak
+                        class="fixed inset-0 z-99999 flex items-center justify-center overflow-y-auto p-4 sm:p-6"
+                    >
+                        <div
+                            class="fixed inset-0 h-full w-full bg-gray-900/60 backdrop-blur-xs"
+                            @click="isAlamatModalOpen = false"
+                        ></div>
+
+                        <div
+                            class="relative z-10 w-full max-w-2xl rounded-2xl border border-gray-200 bg-white p-6 shadow-theme-xl dark:border-gray-800 dark:bg-gray-900"
+                            @click.stop
+                        >
+                            <button
+                                type="button"
+                                @click="isAlamatModalOpen = false"
+                                class="absolute top-5 end-5 flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
+                                aria-label="Tutup modal"
+                            >
+                                <i class="fi fi-rr-cross text-sm" aria-hidden="true"></i>
+                            </button>
+
+                            <div class="mb-5 pe-10">
+                                <div class="flex items-center gap-2">
+                                    <i class="fi fi-rr-marker text-lg text-brand-500"></i>
+                                    <h4 class="text-lg font-semibold text-gray-800 dark:text-white/90">
+                                        Atur Alamat Tersangka
+                                    </h4>
+                                </div>
+                                <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                                    Pilih wilayah bertingkat (38 provinsi seluruh Indonesia) dan lengkapi rincian alamat tersangka.
+                                </p>
+                            </div>
+
+                            <div class="space-y-4">
+                                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                                    {{-- Dropdown Provinsi --}}
+                                    <div>
+                                        <x-form.searchable-select
+                                            id="modal_tersangka_provinsi_kode"
+                                            name="modal_tersangka_provinsi_kode"
+                                            label="Provinsi"
+                                            placeholder="-- Pilih Provinsi --"
+                                            search-placeholder="Cari provinsi..."
+                                            x-model="modalWilayah.provinsi_kode"
+                                            @change="onProvinsiChange($event)"
+                                        >
+                                            <option value="">-- Pilih Provinsi --</option>
+                                            <template x-for="item in listProvinsi" :key="item.code">
+                                                <option :value="item.code" x-text="item.name" :selected="String(item.code) === String(modalWilayah.provinsi_kode)"></option>
+                                            </template>
+                                        </x-form.searchable-select>
+                                    </div>
+
+                                    {{-- Dropdown Kabupaten / Kota --}}
+                                    <div>
+                                        <x-form.searchable-select
+                                            id="modal_tersangka_kabupaten_kode"
+                                            name="modal_tersangka_kabupaten_kode"
+                                            label="Kabupaten / Kota"
+                                            placeholder="-- Pilih Kabupaten/Kota --"
+                                            search-placeholder="Cari kabupaten/kota..."
+                                            x-model="modalWilayah.kabupaten_kode"
+                                            @change="onKabupatenChange($event)"
+                                            x-bind:disabled="!modalWilayah.provinsi_kode"
+                                        >
+                                            <option value="">-- Pilih Kabupaten/Kota --</option>
+                                            <template x-for="item in listKabupaten" :key="item.code">
+                                                <option :value="item.code" x-text="item.name" :selected="String(item.code) === String(modalWilayah.kabupaten_kode)"></option>
+                                            </template>
+                                        </x-form.searchable-select>
+                                    </div>
+
+                                    {{-- Dropdown Kecamatan --}}
+                                    <div>
+                                        <x-form.searchable-select
+                                            id="modal_tersangka_kecamatan_kode"
+                                            name="modal_tersangka_kecamatan_kode"
+                                            label="Kecamatan"
+                                            placeholder="-- Pilih Kecamatan --"
+                                            search-placeholder="Cari kecamatan..."
+                                            x-model="modalWilayah.kecamatan_kode"
+                                            @change="onKecamatanChange($event)"
+                                            x-bind:disabled="!modalWilayah.kabupaten_kode"
+                                        >
+                                            <option value="">-- Pilih Kecamatan --</option>
+                                            <template x-for="item in listKecamatan" :key="item.code">
+                                                <option :value="item.code" x-text="item.name" :selected="String(item.code) === String(modalWilayah.kecamatan_kode)"></option>
+                                            </template>
+                                        </x-form.searchable-select>
+                                    </div>
+
+                                    {{-- Dropdown Desa / Kelurahan --}}
+                                    <div>
+                                        <x-form.searchable-select
+                                            id="modal_tersangka_desa_kode"
+                                            name="modal_tersangka_desa_kode"
+                                            label="Desa / Kelurahan"
+                                            placeholder="-- Pilih Desa/Kelurahan --"
+                                            search-placeholder="Cari desa/kelurahan..."
+                                            x-model="modalWilayah.desa_kode"
+                                            @change="onDesaChange($event)"
+                                            x-bind:disabled="!modalWilayah.kecamatan_kode"
+                                        >
+                                            <option value="">-- Pilih Desa/Kelurahan --</option>
+                                            <template x-for="item in listDesa" :key="item.code">
+                                                <option :value="item.code" x-text="item.name" :selected="String(item.code) === String(modalWilayah.desa_kode)"></option>
+                                            </template>
+                                        </x-form.searchable-select>
+                                    </div>
+
+                                    {{-- RT & RW --}}
+                                    <div class="grid grid-cols-2 gap-3 sm:col-span-2 sm:max-w-xs">
+                                        <div>
+                                            <label class="mb-1.5 block text-xs font-medium text-gray-700 dark:text-gray-300">RT</label>
+                                            <input
+                                                type="text"
+                                                x-model="modalRt"
+                                                maxlength="5"
+                                                inputmode="numeric"
+                                                oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                                                placeholder="001"
+                                                class="h-10 w-full rounded-lg border border-gray-300 bg-white px-3 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white/90"
+                                            >
+                                        </div>
+                                        <div>
+                                            <label class="mb-1.5 block text-xs font-medium text-gray-700 dark:text-gray-300">RW</label>
+                                            <input
+                                                type="text"
+                                                x-model="modalRw"
+                                                maxlength="5"
+                                                inputmode="numeric"
+                                                oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                                                placeholder="002"
+                                                class="h-10 w-full rounded-lg border border-gray-300 bg-white px-3 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white/90"
+                                            >
+                                        </div>
+                                    </div>
+
+                                    {{-- Detail Alamat --}}
+                                    <div class="sm:col-span-2">
+                                        <label class="mb-1.5 block text-xs font-medium text-gray-700 dark:text-gray-300">
+                                            Detail Jalan / Rumah / Patokan <span class="text-red-500">*</span>
+                                        </label>
+                                        <textarea
+                                            x-model="modalAlamatDetail"
+                                            rows="2"
+                                            placeholder="Contoh: Jl. Ahmad Yani No. 12, Komplek Melati Indah"
+                                            class="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-800 placeholder:text-gray-400 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white/90 dark:placeholder:text-gray-500"
+                                        ></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 flex items-center justify-end gap-2.5 border-t border-gray-100 pt-4 dark:border-gray-800">
+                                <button
+                                    type="button"
+                                    @click="isAlamatModalOpen = false"
+                                    class="inline-flex h-10 items-center justify-center rounded-lg border border-gray-300 bg-white px-4 text-sm font-medium text-gray-700 transition hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300"
+                                >
+                                    Batal
+                                </button>
+                                <button
+                                    type="button"
+                                    @click="applyAlamat()"
+                                    class="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-brand-600 px-5 text-sm font-medium text-white transition hover:bg-brand-700"
+                                >
+                                    <i class="fi fi-rr-check text-sm"></i>
+                                    <span>Terapkan Alamat</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

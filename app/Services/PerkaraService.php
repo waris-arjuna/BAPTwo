@@ -487,7 +487,7 @@ class PerkaraService
         }
 
         return DB::transaction(function () use ($perkara, $data, $user) {
-            $oldData = $perkara->load(['tkp.alamat', 'ppnsUsers', 'tersangkas.berkasPerkara.pasals'])->toArray();
+            $oldData = $perkara->load(['tkp.alamat', 'ppnsUsers', 'tersangkas.alamat', 'tersangkas.berkasPerkara.pasals'])->toArray();
             $isFinal = ($data['action_type'] ?? 'lanjut') === 'lanjut';
 
             // 1. Simpan / Update Alamat & TKP (F-07, F-36, F-37)
@@ -499,7 +499,7 @@ class PerkaraService
                 || ! empty($data['tkp_modus']);
 
             if ($hasTkpInput || $tkpId !== null) {
-                $alamatPayload = $this->resolveTkpAlamatPayload($data, $perkara->tkp?->alamat);
+                $alamatPayload = $this->resolveAlamatPayload($data, $perkara->tkp?->alamat, 'tkp_');
 
                 if ($perkara->tkp && $perkara->tkp->alamat) {
                     $perkara->tkp->alamat->update($alamatPayload);
@@ -558,6 +558,27 @@ class PerkaraService
                         $tersangka = Tersangka::where('perkara_id', $perkara->id)->find($existingId);
                     }
 
+                    // Simpan / Update Alamat Tersangka (PRD F-03)
+                    $hasTskAlamat = ! empty($tskData['provinsi_kode'])
+                        || ! empty($tskData['alamat_detail'])
+                        || ! empty($tskData['kabupaten_kode'])
+                        || ! empty($tskData['kecamatan_kode'])
+                        || ! empty($tskData['desa_kode']);
+
+                    $tskAlamatId = $tersangka?->alamat_id;
+
+                    if ($hasTskAlamat || $tskAlamatId !== null) {
+                        $existingTskAlamat = $tskAlamatId ? Alamat::find($tskAlamatId) : null;
+                        $alamatPayload = $this->resolveAlamatPayload($tskData, $existingTskAlamat);
+
+                        if ($existingTskAlamat instanceof Alamat) {
+                            $existingTskAlamat->update($alamatPayload);
+                        } else {
+                            $newAlamat = Alamat::create($alamatPayload);
+                            $tskAlamatId = $newAlamat->id;
+                        }
+                    }
+
                     $tskPayload = [
                         'perkara_id' => $perkara->id,
                         'nama' => $tskData['nama'] ?? null,
@@ -570,6 +591,7 @@ class PerkaraService
                         'agama' => ($tskData['agama'] ?? null) ?: null,
                         'pekerjaan' => $tskData['pekerjaan'] ?? null,
                         'kewarganegaraan' => $tskData['kewarganegaraan'] ?? 'WNI',
+                        'alamat_id' => $tskAlamatId,
                         'updated_by' => $user->id,
                     ];
 
@@ -665,19 +687,19 @@ class PerkaraService
     }
 
     /**
-     * Resolve nama wilayah dari WilayahService apabila hanya kode wilayah yang dikirim
+     * Resolusi payload alamat (TKP / Tersangka) dengan auto-fill nama wilayah via WilayahService
      *
      * @param  array<string, mixed>  $data
      * @return array<string, ?string>
      */
-    protected function resolveTkpAlamatPayload(array $data, ?Alamat $existing = null): array
+    protected function resolveAlamatPayload(array $data, ?Alamat $existing = null, string $prefix = ''): array
     {
-        $provKode = (string) ($data['tkp_provinsi_kode'] ?? $existing?->provinsi_kode ?? '');
-        $kabKode = (string) ($data['tkp_kabupaten_kode'] ?? $existing?->kabupaten_kode ?? '');
-        $kecKode = (string) ($data['tkp_kecamatan_kode'] ?? $existing?->kecamatan_kode ?? '');
-        $desaKode = (string) ($data['tkp_desa_kode'] ?? $existing?->desa_kode ?? '');
+        $provKode = (string) ($data[$prefix.'provinsi_kode'] ?? $existing?->provinsi_kode ?? '');
+        $kabKode = (string) ($data[$prefix.'kabupaten_kode'] ?? $existing?->kabupaten_kode ?? '');
+        $kecKode = (string) ($data[$prefix.'kecamatan_kode'] ?? $existing?->kecamatan_kode ?? '');
+        $desaKode = (string) ($data[$prefix.'desa_kode'] ?? $existing?->desa_kode ?? '');
 
-        $provNama = (string) ($data['tkp_provinsi_nama'] ?? '');
+        $provNama = (string) ($data[$prefix.'provinsi_nama'] ?? '');
         if ($provNama === '' && $provKode !== '') {
             foreach ($this->wilayahService->getProvinsi() as $item) {
                 if ($item['code'] === $provKode) {
@@ -687,7 +709,7 @@ class PerkaraService
             }
         }
 
-        $kabNama = (string) ($data['tkp_kabupaten_nama'] ?? '');
+        $kabNama = (string) ($data[$prefix.'kabupaten_nama'] ?? '');
         if ($kabNama === '' && $provKode !== '' && $kabKode !== '') {
             foreach ($this->wilayahService->getKabupaten($provKode) as $item) {
                 if ($item['code'] === $kabKode) {
@@ -697,7 +719,7 @@ class PerkaraService
             }
         }
 
-        $kecNama = (string) ($data['tkp_kecamatan_nama'] ?? '');
+        $kecNama = (string) ($data[$prefix.'kecamatan_nama'] ?? '');
         if ($kecNama === '' && $kabKode !== '' && $kecKode !== '') {
             foreach ($this->wilayahService->getKecamatan($kabKode) as $item) {
                 if ($item['code'] === $kecKode) {
@@ -707,7 +729,7 @@ class PerkaraService
             }
         }
 
-        $desaNama = (string) ($data['tkp_desa_nama'] ?? '');
+        $desaNama = (string) ($data[$prefix.'desa_nama'] ?? '');
         if ($desaNama === '' && $kecKode !== '' && $desaKode !== '') {
             foreach ($this->wilayahService->getDesa($kecKode) as $item) {
                 if ($item['code'] === $desaKode) {
@@ -726,9 +748,9 @@ class PerkaraService
             'kecamatan_nama' => $kecNama ?: ($existing?->kecamatan_nama ?? null),
             'desa_kode' => $desaKode ?: null,
             'desa_nama' => $desaNama ?: ($existing?->desa_nama ?? null),
-            'rt' => $data['tkp_rt'] ?? $existing?->rt,
-            'rw' => $data['tkp_rw'] ?? $existing?->rw,
-            'alamat_detail' => $data['tkp_alamat_detail'] ?? $existing?->alamat_detail,
+            'rt' => $data[$prefix.'rt'] ?? $existing?->rt,
+            'rw' => $data[$prefix.'rw'] ?? $existing?->rw,
+            'alamat_detail' => $data[$prefix.'alamat_detail'] ?? $existing?->alamat_detail,
         ];
     }
 

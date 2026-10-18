@@ -82,107 +82,42 @@ class MasterDataService
         $matchesActive = $search !== '' && str_contains($searchLower, 'aktif') && ! str_contains($searchLower, 'non');
         $matchesInactive = $search !== '' && (str_contains($searchLower, 'nonaktif') || str_contains($searchLower, 'terhapus') || str_contains($searchLower, 'hapus'));
 
+        $applySearch = function ($query, array $columns) use ($search, $matchesActive, $matchesInactive, $type) {
+            if ($search === '') {
+                return;
+            }
+            $query->where(function ($sub) use ($columns, $search, $matchesActive, $matchesInactive, $type) {
+                foreach ($columns as $idx => $col) {
+                    if ($idx === 0) {
+                        $sub->where($col, 'like', "%{$search}%");
+                    } else {
+                        $sub->orWhere($col, 'like', "%{$search}%");
+                    }
+                }
+                if ($matchesActive) {
+                    if ($type === 'pasal') {
+                        $sub->orWhere(fn ($p) => $p->whereNull('deleted_at')->where('status', 'aktif'));
+                    } else {
+                        $sub->orWhereNull('deleted_at');
+                    }
+                }
+                if ($matchesInactive) {
+                    if ($type === 'pasal') {
+                        $sub->orWhere(fn ($p) => $p->whereNotNull('deleted_at')->orWhere('status', 'nonaktif'));
+                    } else {
+                        $sub->orWhereNotNull('deleted_at');
+                    }
+                }
+            });
+        };
+
         return match ($type) {
-            'jabatan' => Jabatan::withTrashed()
-                ->when($search !== '', function ($q) use ($search, $matchesActive, $matchesInactive) {
-                    $q->where(function ($sub) use ($search, $matchesActive, $matchesInactive) {
-                        $sub->where('nama_jabatan', 'like', "%{$search}%");
-                        if ($matchesActive) {
-                            $sub->orWhereNull('deleted_at');
-                        }
-                        if ($matchesInactive) {
-                            $sub->orWhereNotNull('deleted_at');
-                        }
-                    });
-                })
-                ->tap($applyStatus)
-                ->orderBy('nama_jabatan')
-                ->get(),
-            'bidang' => Bidang::withTrashed()
-                ->when($search !== '', function ($q) use ($search, $matchesActive, $matchesInactive) {
-                    $q->where(function ($sub) use ($search, $matchesActive, $matchesInactive) {
-                        $sub->where('nama_bidang', 'like', "%{$search}%");
-                        if ($matchesActive) {
-                            $sub->orWhereNull('deleted_at');
-                        }
-                        if ($matchesInactive) {
-                            $sub->orWhereNotNull('deleted_at');
-                        }
-                    });
-                })
-                ->tap($applyStatus)
-                ->orderBy('nama_bidang')
-                ->get(),
-            'panggol' => Panggol::withTrashed()
-                ->when($search !== '', function ($q) use ($search, $matchesActive, $matchesInactive) {
-                    $q->where(function ($sub) use ($search, $matchesActive, $matchesInactive) {
-                        $sub->where('pangkat', 'like', "%{$search}%")
-                            ->orWhere('golongan', 'like', "%{$search}%");
-                        if ($matchesActive) {
-                            $sub->orWhereNull('deleted_at');
-                        }
-                        if ($matchesInactive) {
-                            $sub->orWhereNotNull('deleted_at');
-                        }
-                    });
-                })
-                ->tap($applyStatus)
-                ->orderBy('golongan')
-                ->get(),
-            'pasal' => Pasal::withTrashed()
-                ->when($search !== '', function ($q) use ($search, $matchesActive, $matchesInactive) {
-                    $q->where(function ($sub) use ($search, $matchesActive, $matchesInactive) {
-                        $sub->where('nama_pasal', 'like', "%{$search}%")
-                            ->orWhere('pasal', 'like', "%{$search}%")
-                            ->orWhere('isi', 'like', "%{$search}%")
-                            ->orWhere('status', 'like', "%{$search}%");
-                        if ($matchesActive) {
-                            $sub->orWhere(fn ($p) => $p->whereNull('deleted_at')->where('status', 'aktif'));
-                        }
-                        if ($matchesInactive) {
-                            $sub->orWhere(fn ($p) => $p->whereNotNull('deleted_at')->orWhere('status', 'nonaktif'));
-                        }
-                    });
-                })
-                ->tap($applyStatus)
-                ->orderBy('nama_pasal')
-                ->orderBy('pasal')
-                ->get(),
-            'instansi-hukum' => InstansiHukum::withTrashed()
-                ->when($search !== '', function ($q) use ($search, $matchesActive, $matchesInactive) {
-                    $q->where(function ($sub) use ($search, $matchesActive, $matchesInactive) {
-                        $sub->where('nama', 'like', "%{$search}%")
-                            ->orWhere('wilayah', 'like', "%{$search}%")
-                            ->orWhere('jenis', 'like', "%{$search}%");
-                        if ($matchesActive) {
-                            $sub->orWhereNull('deleted_at');
-                        }
-                        if ($matchesInactive) {
-                            $sub->orWhereNotNull('deleted_at');
-                        }
-                    });
-                })
-                ->tap($applyStatus)
-                ->orderBy('jenis')
-                ->orderBy('nama')
-                ->get(),
-            'jaksa-penuntut' => JaksaPenuntut::withTrashed()
-                ->with('instansiHukum')
-                ->when($search !== '', function ($q) use ($search, $matchesActive, $matchesInactive) {
-                    $q->where(function ($sub) use ($search, $matchesActive, $matchesInactive) {
-                        $sub->where('nama_jaksa', 'like', "%{$search}%")
-                            ->orWhere('nip', 'like', "%{$search}%");
-                        if ($matchesActive) {
-                            $sub->orWhereNull('deleted_at');
-                        }
-                        if ($matchesInactive) {
-                            $sub->orWhereNotNull('deleted_at');
-                        }
-                    });
-                })
-                ->tap($applyStatus)
-                ->orderBy('nama_jaksa')
-                ->get(),
+            'jabatan' => Jabatan::withTrashed()->tap(fn ($q) => $applySearch($q, ['nama_jabatan']))->tap($applyStatus)->orderBy('nama_jabatan')->get(),
+            'bidang' => Bidang::withTrashed()->tap(fn ($q) => $applySearch($q, ['nama_bidang']))->tap($applyStatus)->orderBy('nama_bidang')->get(),
+            'panggol' => Panggol::withTrashed()->tap(fn ($q) => $applySearch($q, ['pangkat', 'golongan']))->tap($applyStatus)->orderBy('golongan')->get(),
+            'pasal' => Pasal::withTrashed()->tap(fn ($q) => $applySearch($q, ['nama_pasal', 'pasal', 'isi', 'status']))->tap($applyStatus)->orderBy('nama_pasal')->orderBy('pasal')->get(),
+            'instansi-hukum' => InstansiHukum::withTrashed()->tap(fn ($q) => $applySearch($q, ['nama', 'wilayah', 'jenis']))->tap($applyStatus)->orderBy('jenis')->orderBy('nama')->get(),
+            'jaksa-penuntut' => JaksaPenuntut::withTrashed()->with('instansiHukum')->tap(fn ($q) => $applySearch($q, ['nama_jaksa', 'nip']))->tap($applyStatus)->orderBy('nama_jaksa')->get(),
         };
     }
 

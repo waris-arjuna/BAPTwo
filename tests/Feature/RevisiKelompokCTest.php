@@ -103,6 +103,15 @@ it('accepts valid 16-digit numeric NIK and saves Perkara Pra-SPDP with single en
             'tersangka_agama' => 'islam',
             'tersangka_pekerjaan' => 'Pengusaha',
             'tersangka_kewarganegaraan' => 'WNI',
+            'tersangka_provinsi_kode' => '63',
+            'tersangka_provinsi_nama' => 'Kalimantan Selatan',
+            'tersangka_kabupaten_kode' => '63.71',
+            'tersangka_kabupaten_nama' => 'Kota Banjarmasin',
+            'tersangka_kecamatan_kode' => '63.71.01',
+            'tersangka_kecamatan_nama' => 'Banjarmasin Selatan',
+            'tersangka_desa_kode' => '63.71.01.1001',
+            'tersangka_desa_nama' => 'Kelayan Selatan',
+            'tersangka_alamat_detail' => 'Jl. Kelayan A No. 10',
             'pasal_ids' => [$this->pasal->id],
         ]);
 
