@@ -233,7 +233,7 @@ Hanya dua: **Selesai** dan **Tidak Selesai**.
 ## 4. Stack Tambahan (di luar TailAdmin)
 
 - **Laravel 12** (sudah dari TailAdmin).
-- **PHP >= 8.2**.
+- **PHP >= 8.2**, build **64-bit (x64)** untuk seluruh perintah CLI: Composer, Artisan, Pint, dan Pest memakai PHP x64 Laragon (mis. `php-8.4.25-Win32-vs17-x64`), bukan `C:\php\php.exe` 32-bit. Dependensi `maennchen/zipstream-php` mensyaratkan `php-64bit ^8.3`, jadi PHP 32-bit menggagalkan `composer install` (ref: D-044).
 - **Database**: **MySQL 8** (Laragon). Lihat `DECISIONS.md` D-001.
 - **Auth**: pakai auth Laravel bawaan + **Policies/Gates** untuk RBAC.
 - **Testing**: **Pest PHP** (sudah disetup TailAdmin via `composer test`).
@@ -241,7 +241,7 @@ Hanya dua: **Selesai** dan **Tidak Selesai**.
 - **Scheduler**: pakai Laravel Scheduler untuk trigger "Tidak Selesai" 1 Januari.
 - **Wilayah**: konsumsi **API Kode Wilayah** (lihat PRD F-37).
 - **Export**: menggunakan library `phpoffice/phpspreadsheet` murni untuk format ekspor Excel 44 kolom (.xlsx). Ekstensi PHP `zip` wajib aktif di `php.ini` (ref: D-035, D-041).
-- **Composer Config**: `"platform-check": false` dikonfigurasi di `composer.json` agar seluruh perintah CLI kompatibel di terminal lokal 32-bit maupun 64-bit (ref: D-041).
+- **Composer Config**: `"platform-check": false` dikonfigurasi di `composer.json` agar runtime Laravel tidak memblokir eksekusi di lingkungan lokal (ref: D-041). Flag ini tidak memengaruhi pemeriksaan syarat paket saat `composer install` (lihat D-044).
 
 ---
 

@@ -808,6 +808,7 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
   2. Mengaktifkan ekstensi `extension=zip` pada konfigurasi `php.ini` Laragon.
   3. Menambahkan pengaturan `"platform-check": false` pada blok `"config"` di `composer.json` agar Composer tidak memblokir eksekusi `php artisan` di lingkungan CLI 32-bit maupun 64-bit lokal.
 - Konsekuensi: `composer update` tidak akan menghapus PhpSpreadsheet lagi; seluruh rangkaian 162 tes dan perintah `php artisan` dapat dijalankan dengan lancar di terminal PowerShell standar pengguna maupun di terminal Laragon.
+- Koreksi (D-044): `platform-check: false` hanya mematikan pemeriksaan saat autoload, bukan pemeriksaan syarat paket ketika `composer install`. Karena itu penolakan `php-64bit` pada dependensi `zipstream-php` tetap muncul dan baru teratasi dengan memakai PHP CLI 64-bit, bukan dengan flag tersebut.
 
 ---
 
@@ -836,6 +837,20 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
   2. Sebelum menyentuh kode, skema database, atau tampilan antarmuka, agent WAJIB memaparkan rancangan, mengajukan pertanyaan terarah, dan menyajikan opsi/alternatif keputusan secara interaktif menggunakan skill `/grill-me` (dan tool `ask_question`).
   3. Eksekusi kode hanya boleh dilakukan setelah rencana dan opsi disetujui secara eksplisit oleh pengguna.
 - Konsekuensi: Agent selalu memvalidasi arah implementasi terlebih dahulu; tidak ada kode spekulatif atau perubahan mendadak yang tidak disepakati bersama.
+
+---
+
+## D-044 — PHP CLI 64-bit sebagai Prasyarat Build dan Penghapusan `--ignore-platform-reqs` di CI
+
+- Tanggal: 2026-10-19
+- Status: Disepakati & Diimplementasikan
+- Konteks: Run GitHub Actions untuk workflow `Laravel` gagal di langkah Install Dependencies dengan pesan `Your lock file does not contain a compatible set of packages. Please run composer update.` (exit code 2, 11 detik). Penelusuran: `composer.lock` mengunci `maennchen/zipstream-php` 3.2.2 yang mensyaratkan `php-64bit ^8.3`, sementara workflow saat itu memakai PHP 8.2. Lock tersebut terbentuk di mesin pengembang yang PHP CLI-nya 32-bit (`C:\php\php.exe`, `PHP_INT_SIZE=4`), sehingga resolusi dependensi dijalankan dengan syarat platform diabaikan. Pengaturan `platform-check: false` pada D-041 tidak menutup kasus ini karena flag tersebut hanya memengaruhi pemeriksaan saat autoload, bukan pemeriksaan dependency saat `composer install`.
+- Keputusan:
+  1. Menetapkan PHP CLI 64-bit (build x64 Laragon, mis. `php-8.4.25-Win32-vs17-x64`) sebagai lingkungan resmi untuk Composer, Artisan, Pint, dan Pest. PHP 32-bit tidak lagi dipakai untuk perintah tersebut.
+  2. Menghapus `--ignore-platform-reqs` dari langkah `composer install` di `.github/workflows/laravel.yml` agar CI kembali memverifikasi kecocokan lock dengan platform, sehingga regresi serupa langsung terdeteksi.
+  3. `composer.lock` tidak diubah: `maennchen/zipstream-php` 3.2.2 dan `psr/http-message` 2.0 dipertahankan karena terpasang bersih di PHP 8.4 64-bit.
+  4. Menambahkan prasyarat PHP 64-bit, perintah pemeriksaan `PHP_INT_SIZE`, dan contoh path build x64 pada `README.md`.
+- Konsekuensi: `composer install` polos berjalan tanpa flag di lokal (x64) maupun di runner Ubuntu 64-bit; lock yang tidak lagi bisa dipasang di 64-bit akan langsung menggagalkan CI. Pengguna yang tetap memakai PHP 32-bit menerima pesan error platform dari Composer dan harus beralih ke build x64.
 
 
 

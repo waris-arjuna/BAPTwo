@@ -19,7 +19,7 @@ Dibangun di atas template **TailAdmin Free Laravel** (Laravel 12, Tailwind CSS v
 ## Kebutuhan
 
 - [Laragon](https://laragon.org/) (Windows) dengan:
-  - PHP **8.2+**
+  - PHP **8.2+** build **64-bit (x64)**
   - MySQL **8**
   - Composer
   - Node.js **18+** dan npm
@@ -29,11 +29,14 @@ Cek versi dari terminal Laragon:
 
 ```bash
 php -v
+php -r "echo PHP_INT_SIZE === 8 ? '64-bit' : '32-bit', PHP_EOL;"
 composer -V
 node -v
 npm -v
 mysql --version
 ```
+
+`composer install` wajib memakai PHP 64-bit. Paket `maennchen/zipstream-php` (dependensi ekspor Excel) mencatat syarat `php-64bit`, sehingga instalasi dengan PHP 32-bit (`C:\php\php.exe` bawaan Composer Setup) berhenti dengan pesan `Your lock file does not contain a compatible set of packages`. Gunakan build x64 dari Laragon, misalnya `C:\laragon\bin\php\php-8.4.25-Win32-vs17-x64\php.exe`, lewat terminal Laragon atau dengan mengatur ulang urutan `PATH`.
 
 ## Setup Lokal (Laragon + MySQL)
 
