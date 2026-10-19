@@ -9,6 +9,7 @@ class Alamat extends Model
     protected $table = 'alamat';
 
     protected $fillable = [
+        'nama',
         'provinsi_kode',
         'provinsi_nama',
         'kabupaten_kode',
@@ -21,6 +22,14 @@ class Alamat extends Model
         'rw',
         'alamat_detail',
     ];
+
+    /**
+     * Accessor untuk alamat lengkap format utuh (detail jalan, RT/RW, Desa, Kec, Kab, Prov)
+     */
+    public function getAlamatLengkapAttribute(): string
+    {
+        return $this->formatted();
+    }
 
     public function formatted(): string
     {

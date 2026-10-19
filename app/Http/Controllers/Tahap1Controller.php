@@ -67,13 +67,17 @@ class Tahap1Controller extends Controller
     /**
      * Menampilkan detail Tahap 1.
      */
-    public function show(mixed $id): View
+    public function show(mixed $id): View|RedirectResponse
     {
         $tahap = TahapanPerkara::with('berkasPerkara')->find($id);
 
-        return view('pages.tahap-1.show', [
-            'id' => $id,
-            'tahap' => $tahap,
-        ]);
+        if ($tahap && $tahap->berkas_perkara_id) {
+            return redirect()->route('berkas-perkara.tahapan.show', [
+                'berkas' => $tahap->berkas_perkara_id,
+                'tahapan' => $tahap->id,
+            ]);
+        }
+
+        return redirect()->route('tahap-1.index')->with('warning', 'Data Tahap 1 tidak ditemukan.');
     }
 }

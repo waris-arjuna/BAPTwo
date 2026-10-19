@@ -87,14 +87,14 @@
                         <!-- Card Header -->
                         <div class="mb-5 sm:mb-8 text-center">
                             <h1 class="text-title-sm sm:text-title-md mb-2 font-semibold text-gray-800 dark:text-white/90">
-                                {{ __('Sign In') }}
+                                {{ __('Masuk') }}
                             </h1>
                             <p class="text-sm text-gray-500 dark:text-gray-400">
                                 {{ __('Enter your email and password to sign in!') }}
                             </p>
                         </div>
                         <div>
-                            <form action="{{ route('signin.attempt') }}" method="POST">
+                            <form action="{{ route('masuk.attempt') }}" method="POST">
                                 @csrf
                                 <div class="space-y-5">
                                     <!-- Email -->
@@ -131,7 +131,7 @@
                                     <div>
                                         <button type="submit"
                                             class="bg-brand-500 shadow-theme-xs hover:bg-brand-600 flex w-full items-center justify-center rounded-lg px-4 py-3 text-sm font-medium text-white transition">
-                                            {{ __('Sign In') }}
+                                            {{ __('Masuk') }}
                                         </button>
                                     </div>
                                 </div>
@@ -139,7 +139,7 @@
                             <div class="mt-5">
                                 <p class="text-center text-sm font-normal text-gray-700 sm:text-start dark:text-gray-400">
                                     {{ __("Don't have an account?") }}
-                                    <a href="/signup" class="text-brand-500 hover:text-brand-600 dark:text-brand-400">{{ __('Contact IT Admin') }}</a>
+                                    <a href="{{ route('daftar') }}" class="text-brand-500 hover:text-brand-600 dark:text-brand-400">{{ __('Daftar') }} / {{ __('Contact IT Admin') }}</a>
                                 </p>
                             </div>
                         </div>

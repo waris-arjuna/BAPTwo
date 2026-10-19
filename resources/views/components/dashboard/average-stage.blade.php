@@ -22,7 +22,7 @@
             <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-50 text-teal-600 dark:bg-teal-500/10 dark:text-teal-400">
                 <i class="fi fi-rr-clock text-lg"></i>
             </div>
-        </div>
+        </div>  
 
     </div>
 

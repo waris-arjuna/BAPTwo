@@ -713,5 +713,74 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
      - Memangkas >8 MB media mockup demo: menghapus folder `product/`, `task/`, `video-thumb/`, `support/`, `ai/`, `cards/`, `carousel/`, `grid-image/`, `chat/`, `logistics/`, `country/`, dan avatar mockup `user-01` s.d. `user-37` (hanya mempertahankan `owner.png`).
 - Konsekuensi: Repositori BAPTwo menjadi sangat bersih, ringan, cepat, dan bebas dari sisa template TailAdmin, dengan 100% test lulus (155 tests, 1.614 assertions), lint Pint 100% pass, dan build Vite ultra-cepat (1.22s).
 
+---
+
+## D-037 — Eliminasi View Mock Tahapan, Demo Header Dropdown, dan Dead CSS (Ponytail Full Audit)
+
+- Tanggal: 2026-10-18
+- Status: Disepakati & Diimplementasikan
+- Konteks: Berdasarkan audit ponytail lanjutan, ditemukan sisa view mock statis tahap awal (`spdp/show`, `tahap-1/show`, `p21/show`) berisikan hardcoded data yang tidak terpakai karena seluruh detail tahapan telah dipusatkan pada `berkas-perkara.tahapan.show`. Selain itu, komponen dropdown notifikasi bawaan template (out-of-scope di PRD), form statis dummy `spdp/create`, route/view `signup` internal, dan sisa CSS RTL/library yang telah dihapus masih tertinggal di repositori.
+- Keputusan:
+  1. Menghapus 3 berkas view prototype tahapan (`spdp/show.blade.php`, `tahap-1/show.blade.php`, `p21/show.blade.php`, total 1.118 baris). Method `show()` pada `SpdpController`, `Tahap1Controller`, dan `P21Controller` dialihkan redirect langsung ke canonical route `berkas-perkara.tahapan.show` (seragam dengan `Tahap2Controller` dan `PutusanPerkaraController`).
+  2. Menghapus komponen demo `<x-header.notification-dropdown />` (194 baris) dan panggilannya di `app-header.blade.php`.
+  3. Memangkas 140 baris mock dummy form di `spdp/create.blade.php`, dialihkan menggunakan komponen reusable `_select-berkas` (16 baris) yang seragam dengan seluruh tahapan lainnya.
+  4. Mempertahankan route `GET /signup` dan view `signup.blade.php` sebagai halaman panduan resmi bagi pengguna untuk menghubungi Admin Tim IT BPOM Kalsel guna permohonan pembuatan akun.
+  5. Menghapus 134 baris CSS usang di `resources/css/app.css` (override ApexCharts, jsVectorMap, Swiper, hover sidebar template, dan varian RTL Flatpickr).
+- Konsekuensi: Memangkas bersih 1.542 baris dead code dan 4 file usang. Seluruh 161 automated tests (1.650 assertions) lulus 100%, lint Pint lulus sempurna, dan build bundle CSS semakin ramping.
+
+---
+
+## D-038 — Standarisasi 20 Data Perkara Dummy Realistis (DummyDataSeeder)
+
+- Tanggal: 2026-10-19
+- Status: Disepakati & Diimplementasikan
+- Konteks: Pengguna membutuhkan data dummy yang sesuai persis dengan struktur skema database mutakhir (D-035 / 22 Poin Revisi) dan tersebar secara representatif sebanyak total 20 perkara beragam untuk keperluan demonstrasi dan pengujian UI. Selain itu, data mock lama di `DatabaseSeeder.php` yang tidak lengkap (hanya 5 perkara tanpa tersangka/berkas/dokumen/tahapan) perlu dibersihkan agar pengujian baseline `AuthTest` tetap murni.
+- Keputusan:
+  1. Membersihkan `DatabaseSeeder.php` agar hanya memuat master data awal dan 3 akun pengembang (`admin@baptwo.test`, `pimpinan@baptwo.test`, `penyidik@baptwo.test`), menjaga invariant `User::count() === 3` pada pengujian `AuthTest`.
+  2. Menyusun ulang `database/seeders/DummyDataSeeder.php` dengan 20 perkara komprehensif (`LK/001/I/2026/BPOM` s.d. `LK/020/III/2026/BPOM`) yang mencakup seluruh variasi alur penanganan perkara:
+     - 4 Perkara Pra-SPDP (LK baru terdaftar, terbit Sprindik, draft berkas, dll.)
+     - 2 Perkara SPDP (1 SPDP Draft, 1 SPDP Final dengan sub-tahap P-16 dan P-17P)
+     - 2 Perkara Tahap 1 (1 Tahap 1 Draft, 1 Tahap 1 Final dengan sub-tahap P-18P & P-19)
+     - 2 Perkara P-21 / P-21a (1 P-21 dan 1 P-21a)
+     - 2 Perkara Tahap 2 (1 Tahap 2 Draft, 1 Tahap 2 Final berstatus formal Selesai)
+     - 2 Perkara Putusan Pengadilan (PN Martapura No. 42/Pid.Sus/2026/PN Mtp dan PN Marabahan No. 18/Pid.Sus/2026/PN Mrh)
+     - 2 Perkara DPO (1 DPO berstatus Aktif di Batola, 1 DPO Dicabut di Kotabaru)
+     - 2 Perkara Khusus (1 Perkara SP3 di Hulu Sungai Tengah dengan status proses SP3 & formal Tidak Selesai, 1 Perkara Warning SLA > 21 hari di Tanah Bumbu)
+  3. Mematuhi seluruh konvensi mutakhir D-035:
+     - 1 Perkara = 1 Berkas Perkara dengan `nomor_berkas` identik dengan `nomor_laporan_kejadian`.
+     - Seluruh TKP dan Tersangka berada di 13 Kota/Kabupaten Kalimantan Selatan (`provinsi_kode = '63'`).
+     - NIK tersangka tepat 16 digit.
+     - Radio TKP sesuai spesifikasi (`retailer`/`distributor`, `legal`/`ilegal`, `online`/`offline`).
+     - Format SP3 menggunakan `keterangan` (bukan alasan).
+     - Seluruh dokumen sampel berukuran aman (< 5 MB) dan tersimpan di storage privat `dokumen/sample-bap.pdf`.
+  4. Menyediakan metode pembersihan otomatis `cleanupObsoleteDummyCases()` yang idempoten pada `DummyDataSeeder` agar dapat dijalankan berulang kali tanpa memicu benturan constraint unik nomor surat perintah.
+  5. Melengkapi master data dummy masing-masing tepat 20 data:
+     - **20 Pasal**: Menjangkau tindak pidana bidang kesehatan (UU 17/2023 Pasal 435–440), pangan (UU 18/2012 Pasal 136–142), perlindungan konsumen (UU 8/1999 Pasal 62), narkotika & psikotropika (UU 35/2009 & UU 5/1997), serta KUHP (Pasal 204 & 55).
+     - **20 Instansi Hukum**: Kejati Kalsel, 13 Kejari se-Kalsel, Pengadilan Tinggi Banjarmasin, dan 5 Pengadilan Negeri se-Kalsel.
+     - **20 Jaksa Penuntut**: Jaksa Penuntut Umum realistis (lengkap NIP & pangkat/golongan) dari seluruh Kejari dan Kejati di Kalimantan Selatan.
+- Konsekuensi: Total perkara dummy tepat 20 kasus, serta Pasal (20), Instansi Hukum (20), dan Jaksa Penuntut (20) terisi lengkap dan realistis. Sebanyak 161 automated test (1.650 assertions) tetap 100% lulus dan linting Pint 100% hijau.
+
+---
+
+## D-039 — Penambahan Kolom Nama Sarana pada Alamat TKP & Standardisasi Alamat Lengkap Ekspor Excel
+
+- Tanggal: 2026-10-19
+- Status: Disepakati & Diimplementasikan (via interview /grill-me)
+- Konteks: Pada ekspor rekap perkara Excel (.xlsx), pengguna menginginkan alamat Tersangka (Kolom L) dan alamat TKP (Kolom P) berupa alamat lengkap yang utuh (Detail Jalan, RT/RW, Desa/Kelurahan, Kecamatan, Kabupaten/Kota, Provinsi). Selain itu, nama TKP (Kolom O) sebelumnya menggunakan fallback hierarki yang rumit (`nama_sarana ?? deskripsi ?? TKP Kabupaten`). Pengguna meminta agar dibuatkan kolom `nama` di tabel `alamat` dan input nama pada formulir TKP, di mana ekspor Excel langsung mengambil nama sarana dari kolom tersebut (atau `-` jika kosong).
+- Keputusan:
+  1. Menambahkan kolom `nama VARCHAR(150) NULL` pada tabel `alamat` melalui migration `2026_10_19_000001_add_nama_to_alamat_table.php` dan mendaftarkannya pada `$fillable` model `Alamat`.
+  2. Menambahkan accessor `getAlamatLengkapAttribute()` pada model `Alamat` yang mengembalikan `$this->formatted()` (menggabungkan detail jalan, RT/RW, desa/kelurahan, kecamatan, kabupaten/kota, dan provinsi).
+  3. Menambahkan field input opsional `tkp_nama` pada formulir TKP di `resources/views/pages/perkara/form.blade.php`, menampilkannya di halaman detail `pages/perkara/show.blade.php`, serta mendukungnya pada `SavePerkaraBerkasRequest` dan `PerkaraService::resolveAlamatPayload()`.
+  4. Menyederhanakan penulisan sel pada `PerkaraRekapExport.php`:
+     - Kolom L (Alamat Tersangka): `$tersangka?->alamat?->alamat_lengkap ?: '-'`
+     - Kolom O (Nama TKP): `$tkp?->alamat?->nama ?: '-'`
+     - Kolom P (Alamat TKP): `$tkp?->alamat?->alamat_lengkap ?: '-'`
+  5. Menyesuaikan seeder `DummyDataSeeder.php` agar 20 data perkara dummy otomatis mengisi nama sarana TKP ke kolom `nama` pada alamat TKP.
+- Konsekuensi: Format ekspor Excel Kolom L, O, dan P kini sepenuhnya deterministik, bersih, dan sesuai spesifikasi. Rangkaian test `composer test` (162 tests, 1.653 assertions) dan `php vendor/bin/pint --test` (141 files) 100% lulus.
+
+
+
+
+
 
 

@@ -91,8 +91,5 @@
             <i class="fi fi-rr-moon text-base dark:hidden" aria-hidden="true"></i>
         </button>
 
-        {{-- Notification --}}
-        <x-header.notification-dropdown />
-
     </div>
 </header>

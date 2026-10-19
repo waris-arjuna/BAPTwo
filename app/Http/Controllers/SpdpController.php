@@ -67,13 +67,17 @@ class SpdpController extends Controller
     /**
      * Menampilkan detail SPDP.
      */
-    public function show(mixed $id): View
+    public function show(mixed $id): View|RedirectResponse
     {
         $tahap = TahapanPerkara::with('berkasPerkara')->find($id);
 
-        return view('pages.spdp.show', [
-            'id' => $id,
-            'tahap' => $tahap,
-        ]);
+        if ($tahap && $tahap->berkas_perkara_id) {
+            return redirect()->route('berkas-perkara.tahapan.show', [
+                'berkas' => $tahap->berkas_perkara_id,
+                'tahapan' => $tahap->id,
+            ]);
+        }
+
+        return redirect()->route('spdp.index')->with('warning', 'Data SPDP tidak ditemukan.');
     }
 }

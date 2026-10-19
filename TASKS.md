@@ -165,4 +165,10 @@ _(kosong)_
   - [x] Kelompok E (Poin 6, 12, 20): Tabel dashboard di paling bawah; Horizontal scroll penuh tabel; Kolom "Tahap Saat Ini (% progress)".
   - [x] Kelompok G (Poin 19): Modal & alert penanganan error terpadu tanpa silent fail (422, 419, 403, 404, 500, timeout, offline).
   - [x] Kelompok F (Poin 10): Ekspor Rekap Perkara 44 Kolom (.xlsx) terurut tanggal LK, 4 baris header, sel tanggal Excel dd-mmm-yy, nilai kosong -, wrap text multi-value, border, freeze pane A5, modal 3 tab (Tahun, Bulan, Rentang Tanggal tiket pesawat), hak akses khusus Admin & Penyidik.
+- [x] T-061 — 2026-10-19 Standarisasi 20 Data Dummy Perkara & Master Data Realistis (ref: D-038)
+  - AC: `DatabaseSeeder.php` bersih dari mock perkara lama agar baseline user tetap 3; `DummyDataSeeder.php` menghasilkan tepat 20 perkara beragam (Pra-SPDP s.d. Putusan Pengadilan, DPO Aktif & Dicabut, SP3 terminal, Warning SLA) di seluruh 13 Kabupaten/Kota Kalsel; 1 Perkara = 1 Berkas Perkara dengan nomor LK identik; NIK 16 digit; format SP3 keterangan; seluruh dokumen sampel PDF valid; master data (Pasal: 20, Instansi Hukum: 20, Jaksa Penuntut: 20); pembersihan idempoten bebas benturan constraint unik; `composer test` (161 tests, 1.650 assertions) & `php vendor/bin/pint --test` 100% lulus.
+- [x] T-062 — 2026-10-19 Kolom Nama Sarana Alamat TKP & Standardisasi Alamat Lengkap Ekspor Excel (ref: D-039)
+  - AC: Kolom `nama` (VARCHAR 150 nullable) ditambahkan pada tabel `alamat`; accessor `alamat_lengkap` pada model `Alamat` mengembalikan format utuh; input `tkp_nama` ditambahkan pada form & detail perkara; ekspor Excel Kolom L (Alamat Tersangka) & P (Alamat TKP) memuat alamat lengkap; Kolom O (Nama TKP) mengambil dari `alamat.nama` (fallback `-`); seeder dummy 20 perkara terisi nama TKP; `composer test` (162 tests) & `php vendor/bin/pint --test` 100% lulus.
+
+
 

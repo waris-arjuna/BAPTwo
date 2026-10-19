@@ -66,13 +66,17 @@ class P21Controller extends Controller
     /**
      * Menampilkan detail P-21.
      */
-    public function show(mixed $id): View
+    public function show(mixed $id): View|RedirectResponse
     {
         $tahap = TahapanPerkara::with('berkasPerkara')->find($id);
 
-        return view('pages.p21.show', [
-            'id' => $id,
-            'tahap' => $tahap,
-        ]);
+        if ($tahap && $tahap->berkas_perkara_id) {
+            return redirect()->route('berkas-perkara.tahapan.show', [
+                'berkas' => $tahap->berkas_perkara_id,
+                'tahapan' => $tahap->id,
+            ]);
+        }
+
+        return redirect()->route('p21.index')->with('warning', 'Data P-21 tidak ditemukan.');
     }
 }

@@ -200,7 +200,7 @@
             function resetTimer() {
                 clearTimeout(inactivityTimer);
                 inactivityTimer = setTimeout(function() {
-                    window.location.href = "{{ route('signin') }}?session_expired=1";
+                    window.location.href = "{{ route('masuk') }}?session_expired=1";
                 }, INACTIVITY_TIMEOUT_MS);
             }
 

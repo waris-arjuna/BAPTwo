@@ -288,6 +288,11 @@
 
                     <div class="divide-y divide-gray-100 dark:divide-gray-800/70">
                         <div class="grid grid-cols-1 gap-1 px-4 py-3.5 sm:grid-cols-[160px_1fr] sm:px-6">
+                            <dt class="text-xs text-gray-500 dark:text-gray-400">Nama Sarana / TKP</dt>
+                            <dd class="text-sm font-medium text-gray-800 dark:text-white/90">{{ $tkpAlamat?->nama ?: '-' }}</dd>
+                        </div>
+
+                        <div class="grid grid-cols-1 gap-1 px-4 py-3.5 sm:grid-cols-[160px_1fr] sm:px-6">
                             <dt class="text-xs text-gray-500 dark:text-gray-400">Wilayah TKP</dt>
                             <dd class="text-sm text-gray-800 dark:text-white/90">
                                 @if ($tkpAlamat)

@@ -71,6 +71,7 @@ class SavePerkaraBerkasRequest extends FormRequest
             'action_type' => ['nullable', 'string', 'in:draft,lanjut'],
 
             // TKP (F-07, F-36, F-37, Poin 3 & Poin 4)
+            'tkp_nama' => ['nullable', 'string', 'max:150'],
             'tkp_klasifikasi' => [$isFinal ? 'required' : 'nullable', 'in:retailer,distributor'],
             'tkp_legalitas' => [$isFinal ? 'required' : 'nullable', 'in:legal,ilegal'],
             'tkp_modus' => [$isFinal ? 'required' : 'nullable', 'in:online,offline'],

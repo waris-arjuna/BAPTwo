@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 uses(RefreshDatabase::class);
 
 test('the application redirects guests to signin and allows authenticated users', function () {
-    $this->get('/')->assertRedirect('/signin');
+    $this->get('/')->assertRedirect('/masuk');
 
     $user = User::factory()->make();
 

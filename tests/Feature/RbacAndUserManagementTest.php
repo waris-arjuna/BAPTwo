@@ -109,11 +109,9 @@ it('hides Tambah, Edit, and stage advancement buttons from Pimpinan across index
         ->assertSee('Mulai Tahap 1');
 
     $this->actingAs($pimpinan)->get('/spdp/1')
-        ->assertOk()
-        ->assertDontSee('Lanjut Tahap 2');
+        ->assertRedirect(route('berkas-perkara.tahapan.show', ['berkas' => 1, 'tahapan' => 1]));
     $this->actingAs($penyidik)->get('/spdp/1')
-        ->assertOk()
-        ->assertSee('Lanjut Tahap 2');
+        ->assertRedirect(route('berkas-perkara.tahapan.show', ['berkas' => 1, 'tahapan' => 1]));
 
     // Tahap 1 Index & Show
     $this->actingAs($pimpinan)->get('/tahap-1')
@@ -125,12 +123,10 @@ it('hides Tambah, Edit, and stage advancement buttons from Pimpinan across index
         ->assertSee('Tambah Tahap 1')
         ->assertSee('Lanjut P-21');
 
-    $this->actingAs($pimpinan)->get('/tahap-1/1')
-        ->assertOk()
-        ->assertDontSee('Lanjut P-21');
-    $this->actingAs($penyidik)->get('/tahap-1/1')
-        ->assertOk()
-        ->assertSee('Lanjut P-21');
+    $this->actingAs($pimpinan)->get('/tahap-1/2')
+        ->assertRedirect(route('berkas-perkara.tahapan.show', ['berkas' => 1, 'tahapan' => 2]));
+    $this->actingAs($penyidik)->get('/tahap-1/2')
+        ->assertRedirect(route('berkas-perkara.tahapan.show', ['berkas' => 1, 'tahapan' => 2]));
 
     // P-21 Index & Show
     $this->actingAs($pimpinan)->get('/p21')
@@ -140,12 +136,18 @@ it('hides Tambah, Edit, and stage advancement buttons from Pimpinan across index
         ->assertOk()
         ->assertSee('Tambah P-21 / P-21a');
 
-    $this->actingAs($pimpinan)->get('/p21/1')
+    $this->actingAs($pimpinan)->get('/p21/3')
+        ->assertRedirect(route('berkas-perkara.tahapan.show', ['berkas' => 1, 'tahapan' => 3]));
+    $this->actingAs($penyidik)->get('/p21/3')
+        ->assertRedirect(route('berkas-perkara.tahapan.show', ['berkas' => 1, 'tahapan' => 3]));
+
+    // Canonical Tahapan Show RBAC
+    $this->actingAs($pimpinan)->get(route('berkas-perkara.tahapan.show', ['berkas' => 1, 'tahapan' => 1]))
         ->assertOk()
-        ->assertDontSee('Lanjut Tahap 2');
-    $this->actingAs($penyidik)->get('/p21/1')
+        ->assertDontSee('Kelola P-16');
+    $this->actingAs($penyidik)->get(route('berkas-perkara.tahapan.show', ['berkas' => 1, 'tahapan' => 1]))
         ->assertOk()
-        ->assertSee('Lanjut Tahap 2');
+        ->assertSee('Kelola P-16');
 });
 
 it('restricts user management routes to Administrator only', function () {

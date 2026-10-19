@@ -168,7 +168,10 @@ test('route spdp.show menampilkan halaman detail spdp', function () {
 
     $response = $this->actingAs($this->user)->get(route('spdp.show', $tahap->id));
 
-    $response->assertOk();
+    $response->assertRedirect(route('berkas-perkara.tahapan.show', [
+        'berkas' => $this->berkas->id,
+        'tahapan' => $tahap->id,
+    ]));
 });
 
 test('modal tambah spdp hanya memuat berkas perkara yang siap memulai spdp', function () {

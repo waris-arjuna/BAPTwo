@@ -109,7 +109,7 @@ it('refreshes captcha via json endpoint', function () {
 });
 
 it('renders signin page with captcha component and distorted SVG', function () {
-    $response = $this->get(route('signin'));
+    $response = $this->get(route('masuk'));
 
     $response->assertOk();
     $response->assertSee('name="captcha"', false);

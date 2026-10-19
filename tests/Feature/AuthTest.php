@@ -116,7 +116,7 @@ it('logs out authenticated user and invalidates session', function () {
 
     $response = $this->actingAs($user)->post('/logout');
 
-    $response->assertRedirect('/signin');
+    $response->assertRedirect('/masuk');
     $this->assertGuest();
 });
 

@@ -18,7 +18,7 @@ class AuthController extends Controller
             session()->flash('warning', __('Sesi Anda telah berakhir karena tidak ada interaksi selama 30 menit. Silakan masuk kembali.'));
         }
 
-        return view('pages.auth.signin', ['title' => __('Sign In')]);
+        return view('pages.auth.signin', ['title' => __('Masuk')]);
     }
 
     public function login(LoginRequest $request): RedirectResponse
@@ -66,6 +66,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('signin');
+        return redirect()->route('masuk');
     }
 }

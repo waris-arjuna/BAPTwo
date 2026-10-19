@@ -9,16 +9,16 @@
                     <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-theme-xs transition-all duration-300 hover:-translate-y-1 hover:border-brand-500/30 hover:shadow-theme-xl sm:p-8 dark:border-gray-800 dark:bg-gray-900/90 dark:hover:border-brand-500/30 dark:hover:shadow-theme-xl">
                         <div class="flex w-full flex-1 flex-col">
                             <div class="mx-auto w-full max-w-md pt-10">
-                                <a href="/signin" class="inline-flex items-center gap-2 text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
+                                <a href="{{ route('masuk') }}" class="inline-flex items-center gap-2 text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
                                     <i class="fi fi-rr-angle-small-left text-base" aria-hidden="true"></i>
-                                    {{ __('Back to login') }}
+                                    {{ __('Kembali ke Halaman Masuk') }}
                                 </a>
                             </div>
                             <div class="mx-auto flex w-full max-w-md flex-1 flex-col justify-center">
                                 <div>
                                     <div class="mb-5 sm:mb-8">
                                         <h1 class="text-title-sm sm:text-title-md mb-2 font-semibold text-gray-800 dark:text-white/90">
-                                            {{ __("Don't have an account?") }}
+                                            {{ __('Daftar Akun') }}
                                         </h1>
                                         <p class="text-sm text-gray-500 dark:text-gray-400">
                                             {{ __('Pendaftaran akun BAPTwo tidak tersedia untuk umum.') }}
@@ -40,9 +40,9 @@
                                         </ul>
                                     </div>
                                     <div class="mt-5">
-                                        <a href="/signin"
+                                        <a href="{{ route('masuk') }}"
                                             class="bg-brand-500 shadow-theme-xs hover:bg-brand-600 flex w-full items-center justify-center rounded-lg px-4 py-3 text-sm font-medium text-white transition">
-                                            {{ __('Back to login') }}
+                                            {{ __('Kembali ke Halaman Masuk') }}
                                         </a>
                                     </div>
                                 </div>

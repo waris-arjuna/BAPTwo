@@ -38,12 +38,17 @@ Route::get('/error-404', function () {
 
 // Guest authentication pages
 Route::middleware('guest')->group(function () {
-    Route::get('/signin', [AuthController::class, 'showSignin'])->name('signin');
-    Route::post('/signin', [AuthController::class, 'login'])->name('signin.attempt');
+    Route::get('/masuk', [AuthController::class, 'showSignin'])->name('masuk');
+    Route::post('/masuk', [AuthController::class, 'login'])->name('masuk.attempt');
 
-    Route::get('/signup', function () {
-        return view('pages.auth.signup', ['title' => __('Sign Up')]);
-    })->name('signup');
+    Route::get('/daftar', function () {
+        return view('pages.auth.signup', ['title' => __('Daftar')]);
+    })->name('daftar');
+
+    // Kompatibilitas rute lama (signin & signup)
+    Route::get('/signin', fn () => redirect()->route('masuk'))->name('signin');
+    Route::post('/signin', [AuthController::class, 'login'])->name('signin.attempt');
+    Route::get('/signup', fn () => redirect()->route('daftar'))->name('signup');
 });
 
 // Authenticated application pages

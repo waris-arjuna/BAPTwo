@@ -357,6 +357,22 @@
                 </div>
 
                 <div class="grid grid-cols-1 gap-5 px-4 py-5 sm:grid-cols-2 sm:px-6">
+                    {{-- Nama Sarana / TKP --}}
+                    <div class="sm:col-span-2">
+                        <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                            Nama Sarana / Tempat Kejadian (TKP)
+                        </label>
+                        <input
+                            type="text"
+                            name="tkp_nama"
+                            maxlength="150"
+                            value="{{ old('tkp_nama', $tkpAlamat?->nama ?? '') }}"
+                            placeholder="Contoh: Kios Kosmetik Ayu Cantik, Gudang Berkah Mandiri, Depot Jamu, Apotek, dll."
+                            class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 placeholder:text-gray-400 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:text-white/90 dark:placeholder:text-white/30"
+                        >
+                        <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Nama toko, kios, gudang, atau tempat usaha (opsional jika bukan sarana usaha).</p>
+                    </div>
+
                     {{-- Provinsi: Read-only Kalimantan Selatan (Poin 4) --}}
                     <div>
                         <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">

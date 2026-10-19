@@ -231,3 +231,51 @@ test('format daftar multi-nilai pasal dan ppns anggota mematuhi aturan tata baha
     expect($export->formatList(['Pasal 196', 'Pasal 197', 'Pasal 198']))->toBe('Pasal 196, Pasal 197, dan Pasal 198.');
     expect($export->formatList(['Ahmad Yani', 'Budi Santoso', 'Siti Aminah']))->toBe('Ahmad Yani, Budi Santoso, dan Siti Aminah.');
 });
+
+test('kolom alamat tersangka, nama tkp, dan alamat tkp menghasilkan data lengkap sesuai spesifikasi', function () {
+    $alamatTsk = \App\Models\Alamat::create([
+        'alamat_detail' => 'Jl. Belitung Darat No. 12',
+        'rt' => '003',
+        'rw' => '001',
+        'desa_nama' => 'Belitung Selatan',
+        'kecamatan_nama' => 'Banjarmasin Barat',
+        'kabupaten_nama' => 'Kota Banjarmasin',
+        'provinsi_nama' => 'Kalimantan Selatan',
+    ]);
+    $this->tersangka->update(['alamat_id' => $alamatTsk->id]);
+
+    $alamatTkp = \App\Models\Alamat::create([
+        'nama' => 'Toko Obat Sumber Waras',
+        'alamat_detail' => 'Pasar Sentra Antasari Blok C No. 5',
+        'rt' => '002',
+        'rw' => '001',
+        'desa_nama' => 'Kelayan Luar',
+        'kecamatan_nama' => 'Banjarmasin Tengah',
+        'kabupaten_nama' => 'Kota Banjarmasin',
+        'provinsi_nama' => 'Kalimantan Selatan',
+    ]);
+    $tkp = \App\Models\Tkp::create([
+        'alamat_id' => $alamatTkp->id,
+        'klasifikasi' => 'retailer',
+        'legalitas' => 'ilegal',
+        'modus' => 'offline',
+    ]);
+    $this->perkara->update(['tkp_id' => $tkp->id]);
+
+    $export = new PerkaraRekapExport(mode: 'tahun', tahun: 2026);
+    $spreadsheet = $export->generateSpreadsheet();
+    $sheet = $spreadsheet->getActiveSheet();
+
+    // Kolom L (Kolom 12): Alamat Lengkap Tersangka
+    expect($sheet->getCell('L5')->getValue())->toBe(
+        'Jl. Belitung Darat No. 12, RT 003/RW 001, Desa/Kel. Belitung Selatan, Kec. Banjarmasin Barat, Kota Banjarmasin, Kalimantan Selatan'
+    );
+
+    // Kolom O (Kolom 15): Nama TKP diambil dari alamat->nama
+    expect($sheet->getCell('O5')->getValue())->toBe('Toko Obat Sumber Waras');
+
+    // Kolom P (Kolom 16): Alamat Lengkap TKP
+    expect($sheet->getCell('P5')->getValue())->toBe(
+        'Pasar Sentra Antasari Blok C No. 5, RT 002/RW 001, Desa/Kel. Kelayan Luar, Kec. Banjarmasin Tengah, Kota Banjarmasin, Kalimantan Selatan'
+    );
+});

@@ -112,21 +112,33 @@ composer run dev
 
 Perintah ini menjalankan 4 proses: `php artisan serve` (http://localhost:8000), `php artisan queue:listen`, `php artisan pail` (log), dan `npm run dev` (Vite).
 
-## Akun Seed per Role
+## Akun Dev BAPTwo
 
-> **Belum tersedia.** Seeder akun role dikerjakan di `TASKS.md` T-011 (keputusan D-005). Saat ini seeder hanya membuat `test@example.com`.
+Aplikasi menyediakan 3 akun dev bawaan (password default `password`, login dilengkapi verifikasi matematika captcha dinamis):
 
-Rencana akun dev (password `password`, hanya untuk environment `local`/`testing`):
-
-| Role | Email | Hak akses ringkas |
+| Peran (Role) | Email Login | Hak Akses Utama |
 |---|---|---|
-| Administrator | `admin@baptwo.test` | Kelola user & permission, lihat semua, tambah berkas, edit draft, soft delete |
-| Pimpinan | `pimpinan@baptwo.test` | Lihat & cari semua perkara. Tidak bisa tambah/edit/hapus |
-| Penyidik | `penyidik@baptwo.test` | Lihat semua, tambah berkas, edit draft, soft delete |
+| **Administrator** | `admin@baptwo.test` | Kelola master data penuh, manajemen pengguna, tambah perkara, edit draft, ekspor Excel |
+| **Pimpinan** | `pimpinan@baptwo.test` | Memonitor dashboard, melihat seluruh perkara, pencarian multi-kriteria (read-only) |
+| **Penyidik** | `penyidik@baptwo.test` | Tambah Laporan Kejadian/Sprindik, buat perkara, simpan draft, finalisasi tahap, ekspor Excel |
 
-Tidak ada role yang bisa hard delete atau mengedit tahap yang sudah difinalkan.
+> Catatan Keamanan: Tidak ada peran yang memiliki hak akses *hard delete* (penghapusan fisik). Tahapan yang telah difinalkan terkunci mutlak dan tidak dapat diedit kembali oleh siapapun termasuk Administrator.
 
-Reset database + seed ulang (**menghapus semua data lokal**):
+### Seeder Data Dummy Komprehensif (20 Kasus)
+
+Untuk mengisi data pengujian realistis yang mencakup seluruh alur penanganan perkara dari Pra-SPDP, SPDP, Tahap 1, P-21, Tahap 2, Putusan Pengadilan, DPO, SP3, dan peringatan SLA di 13 Kabupaten/Kota Kalimantan Selatan:
+
+```bash
+php artisan db:seed --class=DummyDataSeeder
+```
+
+Seeder ini bersifat idempoten (aman dijalankan berulang kali) dan menghasilkan:
+- **20 Perkara** representatif dengan alur tahapan lengkap
+- **20 Pasal Pelanggaran** (UU Kesehatan, Pangan, Perlindungan Konsumen, Narkotika, Psikotropika, KUHP)
+- **20 Instansi Hukum** (Kejati Kalsel, 13 Kejari, Pengadilan Tinggi, 5 Pengadilan Negeri se-Kalsel)
+- **20 Jaksa Penuntut Umum** resmi lengkap NIP dan pangkat/golongan
+
+Reset total database dan tanam data baseline:
 
 ```bash
 php artisan migrate:fresh --seed
@@ -134,18 +146,18 @@ php artisan migrate:fresh --seed
 
 ## Testing
 
-Test memakai [Pest PHP](https://pestphp.com/):
+Test suite otomatis menggunakan [Pest PHP](https://pestphp.com/) dengan 162 skenario pengujian (1.653 assertions) mencakup seluruh alur bisnis, RBAC, dan validasi:
 
 ```bash
 composer test
 ```
 
-`composer test` membersihkan cache config lalu menjalankan `php artisan test`.
+Perintah `composer test` secara otomatis membersihkan cache config lalu menjalankan test suite lengkap.
 
-Jalankan test tertentu:
+Jalankan pengujian tertentu (misal ekspor):
 
 ```bash
-php artisan test --filter=NamaTest
+php artisan test --filter=PerkaraExportTest
 ```
 
 ## Lint (Laravel Pint)
@@ -162,11 +174,11 @@ Perbaiki otomatis:
 php vendor/bin/pint
 ```
 
-Task dianggap selesai hanya jika `composer test` dan `php vendor/bin/pint --test` lulus.
+Task dianggap selesai hanya jika `composer test` (162 tests) dan `php vendor/bin/pint --test` lulus 100%.
 
 ## Scheduler
 
-Status **Tidak Selesai** di-set otomatis pada 00:00 tanggal 1 Januari oleh Laravel Scheduler. Di lokal, jalankan manual:
+Status **Tidak Selesai** di-set otomatis pada 00:00 WITA tanggal 1 Januari oleh Laravel Scheduler. Di lokal, jalankan manual:
 
 ```bash
 php artisan schedule:work
@@ -187,12 +199,12 @@ Set `.env` produksi: `APP_ENV=production`, `APP_DEBUG=false`, `APP_URL` sesuai d
 ## Struktur Folder Utama
 
 ```
-app/            Controller, Model, Policy, Service domain
-database/       Migration, seeder, factory
+app/            Controller, Model, Policy, Service domain, Exports (Excel 44 kolom)
+database/       Migration, seeder (DummyDataSeeder 20 perkara), factory
 lang/id.json    Terjemahan label UI (bahasa Indonesia)
 resources/      Blade view, CSS (Tailwind v4 @theme), JS (Alpine.js)
 routes/         web.php, console.php (scheduler)
-tests/          Test Pest
+tests/          Test Pest (162 automated tests)
 ```
 
 ## Troubleshooting

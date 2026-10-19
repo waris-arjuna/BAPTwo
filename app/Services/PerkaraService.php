@@ -492,7 +492,8 @@ class PerkaraService
 
             // 1. Simpan / Update Alamat & TKP (F-07, F-36, F-37)
             $tkpId = $perkara->tkp_id;
-            $hasTkpInput = ! empty($data['tkp_provinsi_kode'])
+            $hasTkpInput = ! empty($data['tkp_nama'])
+                || ! empty($data['tkp_provinsi_kode'])
                 || ! empty($data['tkp_alamat_detail'])
                 || ! empty($data['tkp_klasifikasi'])
                 || ! empty($data['tkp_legalitas'])
@@ -740,6 +741,7 @@ class PerkaraService
         }
 
         return [
+            'nama' => $data[$prefix.'nama'] ?? $existing?->nama,
             'provinsi_kode' => $provKode ?: null,
             'provinsi_nama' => $provNama ?: ($existing?->provinsi_nama ?? null),
             'kabupaten_kode' => $kabKode ?: null,

@@ -350,11 +350,7 @@ class PerkaraRekapExport
         $this->setTextCell($sheet, "K{$row}", $tersangka?->agama ? ucfirst($tersangka->agama) : '-', Alignment::HORIZONTAL_CENTER);
 
         // 12. Tersangka - Alamat
-        $alamatTersangka = $tersangka?->alamat?->alamat_lengkap
-            ?? $tersangka?->alamat?->desa_nama
-            ?? $tersangka?->alamat?->kecamatan_nama
-            ?? $tersangka?->alamat?->kabupaten_nama
-            ?? '-';
+        $alamatTersangka = $tersangka?->alamat?->alamat_lengkap ?: '-';
         $this->setTextCell($sheet, "L{$row}", $alamatTersangka);
 
         // 13. Tersangka - Pekerjaan
@@ -364,15 +360,11 @@ class PerkaraRekapExport
         $this->setTextCell($sheet, "N{$row}", $tersangka?->kewarganegaraan ?? 'WNI', Alignment::HORIZONTAL_CENTER);
 
         // 15. TKP - Nama
-        $namaTkp = $tkp?->nama_sarana ?? $perkara->deskripsi ?? 'TKP '.($tkp?->alamat?->kabupaten_nama ?? 'Kalsel');
+        $namaTkp = $tkp?->alamat?->nama ?: '-';
         $this->setTextCell($sheet, "O{$row}", $namaTkp);
 
         // 16. TKP - Alamat
-        $alamatTkp = $tkp?->alamat?->alamat_lengkap
-            ?? $tkp?->alamat?->desa_nama
-            ?? $tkp?->alamat?->kecamatan_nama
-            ?? $tkp?->alamat?->kabupaten_nama
-            ?? '-';
+        $alamatTkp = $tkp?->alamat?->alamat_lengkap ?: '-';
         $this->setTextCell($sheet, "P{$row}", $alamatTkp);
 
         // 17. TKP - Klasifikasi
