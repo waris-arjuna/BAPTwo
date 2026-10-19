@@ -144,8 +144,7 @@
         @include('layouts.backdrop')
         @include('layouts.sidebar')
 
-        {{-- transition-all duration-300 ease-in-out --}}
-        <div class="flex-1 ml-0 ltr:xl:ml-[90px] rtl:xl:ml-0 rtl:xl:mr-[90px] [.sidebar-expanded_&]:ltr:xl:ml-[290px] [.sidebar-expanded_&]:rtl:xl:ml-0 [.sidebar-expanded_&]:rtl:xl:mr-[290px] transition-all duration-300 ease-in-out">
+        <div class="flex-1 min-w-0 transition-all duration-300 ease-in-out" :class="($store.sidebar.isExpanded || $store.sidebar.isHovered) ? 'xl:ml-[290px]' : 'xl:ml-[90px]'">
             <!-- app header start -->
             @include('layouts.app-header')
             <!-- app header end -->

@@ -7,7 +7,7 @@
 @endphp
 
 <aside id="sidebar"
-    class="fixed flex flex-col mt-0 top-0 px-5 start-0 bg-white dark:bg-gray-900 dark:border-gray-800 text-gray-900 h-screen transition-all duration-300 ease-in-out z-99999 ltr:border-r rtl:border-l border-gray-200 w-[90px] [.sidebar-expanded_&]:min-w-[290px]"
+    class="fixed flex flex-col mt-0 top-0 start-0 bg-white dark:bg-gray-900 dark:border-gray-800 text-gray-900 h-screen transition-all duration-300 ease-in-out z-99999 border-r border-gray-200"
     x-data="{
         openSubmenus: {},
         init() {
@@ -49,25 +49,27 @@
             return window.location.pathname === path || '{{ $currentPath }}' === path.replace(/^\//, '');
         }
     }"
-    :class="{
-        'translate-x-0': $store.sidebar.isMobileOpen,
-        'max-xl:-translate-x-full max-xl:rtl:translate-x-full': !$store.sidebar.isMobileOpen
-    }"
+    :class="[
+        ($store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen) ? 'w-[290px]' : 'w-[90px]',
+        $store.sidebar.isMobileOpen ? 'translate-x-0' : 'max-xl:-translate-x-full'
+    ]"
     @mouseenter="if (!$store.sidebar.isExpanded) $store.sidebar.setHovered(true)"
     @mouseleave="$store.sidebar.setHovered(false)">
     <!-- Logo Section -->
-    <div class="pt-8 pb-7 flex items-center gap-2" :class="(!$store.sidebar.isExpanded && !$store.sidebar.isHovered && !$store.sidebar.isMobileOpen) ? 'justify-center' : 'justify-evenly'">
-        <a href="/">
-            <div class="hidden [.sidebar-expanded_&]:block">
-                <img class="dark:hidden" src="/images/logo/logo.svg" alt="Logo" width="100" height="40" />
-                <img class="hidden dark:block" src="/images/logo/logo-dark.svg" alt="Logo" width="100" height="40" />
+    <div class="h-16 shrink-0 flex items-center border-b border-gray-200 dark:border-gray-800 px-5 transition-all duration-300 ease-in-out"
+        :class="(!$store.sidebar.isExpanded && !$store.sidebar.isHovered && !$store.sidebar.isMobileOpen) ? 'justify-center' : 'justify-start'">
+        <a href="/" class="flex items-center">
+            <div x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">
+                <img class="h-8 w-auto dark:hidden" src="/images/logo/logo.svg" alt="Logo" />
+                <img class="hidden h-8 w-auto dark:block" src="/images/logo/logo-dark.svg" alt="Logo" />
             </div>
-            <img class="block [.sidebar-expanded_&]:hidden" src="/images/logo/logo-icon.svg" alt="Logo" width="100" height="100" />
+            <img x-show="!$store.sidebar.isExpanded && !$store.sidebar.isHovered && !$store.sidebar.isMobileOpen"
+                class="h-8 w-auto" src="/images/logo/logo-icon.svg" alt="Logo" />
         </a>
     </div>
 
     <!-- Navigation + Sidebar Profile -->
-    <div class="flex min-h-0 flex-1 flex-col">
+    <div class="flex min-h-0 flex-1 flex-col px-5 pt-4">
 
         <!-- Navigation Menu -->
         <div class="min-h-0 flex-1 overflow-y-auto duration-300 ease-linear no-scrollbar">
