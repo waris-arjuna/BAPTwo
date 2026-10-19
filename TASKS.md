@@ -104,8 +104,8 @@ _(kosong)_
 - [x] T-050 — Pencarian Perkara (`/pencarian-perkara`) & Seluruh Perkara (`/seluruh-perkara` + card statistik) + struktur menu Role Pimpinan/Umum (F-38, F-39, D-033)
 - [x] T-051 — Dashboard monitoring: Tabel Progress Perkara auto-filter (progress terendah & tanggal perkara tertua, maks 5 baris), tombol "Lihat Semua" (`/progress-perkara`), & interaksi double-click ID Perkara untuk modal detail lengkap tanpa kolom aksi (F-40, F-42, F-43)
 - [x] T-052 — Dashboard Potensi Terlimpah (F-41, D-034)
-- [ ] T-053 — Export Excel & CSV (F-45)
-  - Catatan: butuh persetujuan install Laravel Excel.
+- [x] T-053 — Export Excel 44 Kolom (.xlsx) terintegrasi PhpSpreadsheet (F-45, ref: D-035, D-039, D-041)
+  - Catatan: diselesaikan menggunakan `phpoffice/phpspreadsheet` murni untuk format 44 kolom, 4 baris header, format tanggal, filter 3 tab, dan akses role Penyidik & Admin.
 
 ## Selesai
 
@@ -169,6 +169,13 @@ _(kosong)_
   - AC: `DatabaseSeeder.php` bersih dari mock perkara lama agar baseline user tetap 3; `DummyDataSeeder.php` menghasilkan tepat 20 perkara beragam (Pra-SPDP s.d. Putusan Pengadilan, DPO Aktif & Dicabut, SP3 terminal, Warning SLA) di seluruh 13 Kabupaten/Kota Kalsel; 1 Perkara = 1 Berkas Perkara dengan nomor LK identik; NIK 16 digit; format SP3 keterangan; seluruh dokumen sampel PDF valid; master data (Pasal: 20, Instansi Hukum: 20, Jaksa Penuntut: 20); pembersihan idempoten bebas benturan constraint unik; `composer test` (161 tests, 1.650 assertions) & `php vendor/bin/pint --test` 100% lulus.
 - [x] T-062 — 2026-10-19 Kolom Nama Sarana Alamat TKP & Standardisasi Alamat Lengkap Ekspor Excel (ref: D-039)
   - AC: Kolom `nama` (VARCHAR 150 nullable) ditambahkan pada tabel `alamat`; accessor `alamat_lengkap` pada model `Alamat` mengembalikan format utuh; input `tkp_nama` ditambahkan pada form & detail perkara; ekspor Excel Kolom L (Alamat Tersangka) & P (Alamat TKP) memuat alamat lengkap; Kolom O (Nama TKP) mengambil dari `alamat.nama` (fallback `-`); seeder dummy 20 perkara terisi nama TKP; `composer test` (162 tests) & `php vendor/bin/pint --test` 100% lulus.
-
-
-
+- [x] T-063 — 2026-10-19 Perbaikan Bug Layout Zoom 125% & Dynamic Offset Sidebar (ref: D-040)
+  - AC: Judul halaman dan kolom NO tidak tertutup sidebar; tidak ada strip putih di tepi kanan; container konten menggunakan dynamic padding terikat `$store.sidebar`; tabel berada di dalam `overflow-x-auto` mandiri tanpa overflow halaman global (`document.documentElement.scrollWidth <= document.documentElement.clientWidth`); logo dan ikon atas sidebar terselaraskan rapi.
+- [x] T-064 — 2026-10-19 Pendaftaran Dependensi PhpSpreadsheet & Konfigurasi Platform Composer (ref: D-041)
+  - AC: `phpoffice/phpspreadsheet` (^5.10) terdaftar permanen di `composer.json` & `composer.lock`; ekstensi `zip` diaktifkan di `php.ini` Laragon; `"platform-check": false` ditambahkan agar `php artisan test` dan perintah CLI dapat dieksekusi di seluruh terminal tanpa benturan arsitektur 32/64-bit; 162 automated test lulus & linting Pint 100% passed.
+- [x] T-065 — 2026-10-19 Pengesahan Aturan Anti AI-Slop & Standar Craftsmanship UI/Copywriting (ref: D-042)
+  - AC: Aturan eksplisit anti AI-slop dimasukkan ke `AGENTS.md` (bagian 6 & 11) dan `DECISIONS.md` (D-042); melarang em dash (`—`) di teks UI pengguna, melarang AI buzzwords, melarang dead controls, melarang desain happy path only (wajib 3 state), melarang visual generik AI slop, dan menegakkan kontras rasio WCAG AA min 4.5:1; pointer resmi `<!-- antislop:start -->` terpasang; tes dan linter 100% lulus.
+- [x] T-066 — 2026-10-19 Kewajiban Penyelarasan Rencana via Grill-Me Sebelum Eksekusi Kode (ref: D-043)
+  - AC: Larangan mutlak eksekusi kode langsung tanpa penyelarasan ditambahkan ke `AGENTS.md` (bagian 6 & 8); aturan D-043 dicatat di `DECISIONS.md`; agent wajib mewawancarai pengguna dan menyamakan persepsi via `/grill-me` (dan tool `ask_question`) sebelum menyentuh kode/skema/UI; dokumentasi terupdate rapi.
+- [x] T-067 — 2026-10-19 Sinkronisasi PRD.md dengan Implementasi Mutakhir D-035 (ref: D-035)
+  - AC: Seluruh selisih aturan di `PRD.md` (1 Perkara = 1 Berkas nomor LK, SP3 terminal picu status Tidak Selesai, peniadaan fitur hapus perkara, RBAC master data & progress perkara, PDF 5 MB, ekspor Excel 44 kolom) disinkronkan resmi atas persetujuan pengguna; status dokumen 100% konsisten.

@@ -214,7 +214,7 @@ test('halaman formulir dan detail menampilkan Card Referensi tahapan sebelumnya 
         ->assertOk();
 
     // Memuat visual indicator terkunci
-    $showResponse->assertSee('Tahap Selesai / Terkunci Permanen');
+    $showResponse->assertSee('Tahap Final & Terkunci');
 });
 
 test('upload dokumen selain format PDF ditolak per aturan D-007', function () {

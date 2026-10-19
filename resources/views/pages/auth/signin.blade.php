@@ -71,7 +71,7 @@
                 <div class="mx-auto w-full max-w-lg">
                     <x-common.flash-alert />
                     <!-- Card Hover Wrapper -->
-                    <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-theme-xs transition-all duration-300 hover:-translate-y-1 hover:border-brand-500/30 hover:shadow-theme-xl sm:p-8 dark:border-gray-800 dark:bg-gray-900/90 dark:hover:border-brand-500/30 dark:hover:shadow-theme-xl">
+                    <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-theme-xs transition-all duration-300 hover:border-brand-500/30 hover:shadow-theme-xl sm:p-8 dark:border-gray-800 dark:bg-gray-900/90 dark:hover:border-brand-500/30 dark:hover:shadow-theme-xl">
                         <!-- Logo BAPTwo -->
                         <div class="mb-6 flex items-center justify-between">
                             <a href="/" class="inline-flex items-center gap-3">
@@ -90,7 +90,7 @@
                                 {{ __('Masuk') }}
                             </h1>
                             <p class="text-sm text-gray-500 dark:text-gray-400">
-                                {{ __('Enter your email and password to sign in!') }}
+                                {{ __('Silakan masukkan email dan kata sandi kedinasan Anda.') }}
                             </p>
                         </div>
                         <div>
@@ -100,7 +100,7 @@
                                     <!-- Email -->
                                     <div>
                                         <label for="email" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-                                            {{ __('Email') }}<span class="text-error-500">*</span>
+                                             {{ __('Email') }}<span class="text-error-500">*</span>
                                         </label>
                                         <input type="email" id="email" name="email" value="{{ old('email') }}" required autocomplete="username" placeholder="nama@baptwo.go.id"
                                             class="dark:bg-dark-900 shadow-theme-xs h-11 w-full rounded-lg border bg-transparent px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 {{ $errors->has('email') ? 'border-error-500 focus:border-error-500 focus:ring-error-500/10' : 'border-gray-300 focus:border-brand-300 focus:ring-brand-500/10 dark:border-gray-700 dark:focus:border-brand-800' }}" />
@@ -114,12 +114,12 @@
                                             {{ __('Password') }}<span class="text-error-500">*</span>
                                         </label>
                                         <div class="relative" x-data="{ showPassword: false }">
-                                            <input :type="showPassword ? 'text' : 'password'" id="password" name="password" required autocomplete="current-password" placeholder="{{ __('Enter your password') }}"
+                                            <input :type="showPassword ? 'text' : 'password'" id="password" name="password" required autocomplete="current-password" placeholder="{{ __('Masukkan kata sandi Anda') }}"
                                                 class="dark:bg-dark-900 shadow-theme-xs h-11 w-full rounded-lg border bg-transparent py-2.5 pr-11 pl-4 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 {{ $errors->has('password') ? 'border-error-500 focus:border-error-500 focus:ring-error-500/10' : 'border-gray-300 focus:border-brand-300 focus:ring-brand-500/10 dark:border-gray-700 dark:focus:border-brand-800' }}" />
-                                            <span @click="showPassword = !showPassword" class="absolute top-1/2 right-4 z-30 -translate-y-1/2 cursor-pointer text-gray-500 dark:text-gray-400">
+                                            <button type="button" @click="showPassword = !showPassword" aria-label="{{ __('Tampilkan atau sembunyikan kata sandi') }}" class="absolute top-1/2 right-4 z-30 -translate-y-1/2 text-gray-500 transition hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
                                                 <i x-show="!showPassword" class="fi fi-rr-eye text-base" aria-hidden="true"></i>
                                                 <i x-show="showPassword" class="fi fi-rr-eye-crossed text-base" aria-hidden="true"></i>
-                                            </span>
+                                            </button>
                                         </div>
                                         @error('password')
                                             <p class="mt-1.5 text-theme-xs text-error-500">{{ $message }}</p>
@@ -138,8 +138,8 @@
                             </form>
                             <div class="mt-5">
                                 <p class="text-center text-sm font-normal text-gray-700 sm:text-start dark:text-gray-400">
-                                    {{ __("Don't have an account?") }}
-                                    <a href="{{ route('daftar') }}" class="text-brand-500 hover:text-brand-600 dark:text-brand-400">{{ __('Daftar') }} / {{ __('Contact IT Admin') }}</a>
+                                    {{ __('Belum memiliki akun?') }}
+                                    <a href="{{ route('daftar') }}" class="font-medium text-brand-500 hover:text-brand-600 dark:text-brand-400">{{ __('Hubungi Administrator IT BPOM') }}</a>
                                 </p>
                             </div>
                         </div>
@@ -149,7 +149,7 @@
 
             <!-- Toggler tema -->
             <div class="fixed right-6 bottom-6 z-50">
-                <button class="bg-brand-500 hover:bg-brand-600 inline-flex size-14 items-center justify-center rounded-full text-white transition-colors"
+                <button type="button" aria-label="{{ __('Alihkan mode tema (terang/gelap)') }}" title="{{ __('Alihkan mode tema') }}" class="bg-brand-500 hover:bg-brand-600 shadow-theme-md inline-flex size-12 items-center justify-center rounded-full text-white transition focus:outline-hidden focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
                     @click.prevent="$store.theme.toggle()">
                     <i class="fi fi-rr-sun hidden text-lg dark:inline-flex" aria-hidden="true"></i>
                     <i class="fi fi-rr-moon text-lg dark:hidden" aria-hidden="true"></i>

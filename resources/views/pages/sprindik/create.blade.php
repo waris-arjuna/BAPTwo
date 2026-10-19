@@ -110,7 +110,7 @@
                             value="{{ $lk->id }}"
                             {{ old('perkara_id', $selectedPerkaraId) == $lk->id ? 'selected' : '' }}
                         >
-                            {{ $lk->nomor_laporan_kejadian }} — {{ $lk->tanggal_laporan_kejadian?->format('d-m-Y') }}
+                            {{ $lk->nomor_laporan_kejadian }} (Tanggal: {{ $lk->tanggal_laporan_kejadian?->format('d-m-Y') }})
                         </option>
                     @endforeach
                 </x-form.searchable-select>

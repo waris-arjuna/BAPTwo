@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use App\Enums\JenisTahap;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class BerkasPerkara extends Model
@@ -122,9 +125,9 @@ class BerkasPerkara extends Model
     /**
      * Memeriksa apakah jenis tahapan sudah pernah dicatat pada berkas ini
      */
-    public function hasTahap(\App\Enums\JenisTahap|string $jenis): bool
+    public function hasTahap(JenisTahap|string $jenis): bool
     {
-        $value = $jenis instanceof \App\Enums\JenisTahap ? $jenis->value : $jenis;
+        $value = $jenis instanceof JenisTahap ? $jenis->value : $jenis;
 
         return $this->tahapan()->where('jenis_tahap', $value)->exists();
     }
@@ -149,9 +152,9 @@ class BerkasPerkara extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne<Sp3, $this>
+     * @return HasOne<Sp3, $this>
      */
-    public function sp3(): \Illuminate\Database\Eloquent\Relations\HasOne
+    public function sp3(): HasOne
     {
         return $this->hasOne(Sp3::class, 'berkas_perkara_id')->latestOfMany();
     }
@@ -190,7 +193,7 @@ class BerkasPerkara extends Model
     public function spdpTahap(): ?TahapanPerkara
     {
         return $this->tahapan()
-            ->where('jenis_tahap', \App\Enums\JenisTahap::SPDP->value)
+            ->where('jenis_tahap', JenisTahap::SPDP->value)
             ->where('status', 'final')
             ->first();
     }
@@ -201,7 +204,7 @@ class BerkasPerkara extends Model
     public function tahap2Final(): ?TahapanPerkara
     {
         return $this->tahapan()
-            ->where('jenis_tahap', \App\Enums\JenisTahap::TAHAP_2->value)
+            ->where('jenis_tahap', JenisTahap::TAHAP_2->value)
             ->where('status', 'final')
             ->first();
     }
@@ -209,14 +212,14 @@ class BerkasPerkara extends Model
     /**
      * Tanggal efektif batas waktu SLA & batas tahun mutlak (PRD bagian SLA)
      */
-    public function getEffectiveDeadlineAttribute(): ?\Carbon\Carbon
+    public function getEffectiveDeadlineAttribute(): ?Carbon
     {
         if ($this->sla_deadline) {
-            return \Carbon\Carbon::parse($this->sla_deadline);
+            return Carbon::parse($this->sla_deadline);
         }
 
         if ($this->tanggal_spdp) {
-            $tgl = \Carbon\Carbon::parse($this->tanggal_spdp);
+            $tgl = Carbon::parse($this->tanggal_spdp);
             $sla1Bulan = $tgl->copy()->addMonth();
             $akhirTahun = $tgl->copy()->endOfYear();
 
@@ -254,7 +257,7 @@ class BerkasPerkara extends Model
             $tahap2 = $this->tahap2Final();
             $selesaiAt = $tahap2?->finalized_at ?? $tahap2?->tanggal_surat ?? $this->updated_at;
 
-            if ($deadline && $selesaiAt && \Carbon\Carbon::parse($selesaiAt)->startOfDay()->gt($deadline->startOfDay())) {
+            if ($deadline && $selesaiAt && Carbon::parse($selesaiAt)->startOfDay()->gt($deadline->startOfDay())) {
                 return 'selesai_lewat_sla';
             }
 

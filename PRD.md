@@ -9,7 +9,7 @@ BAPTwo adalah aplikasi web internal BPOM Kalimantan Selatan untuk mencatat, memo
 - Informasi perkara dan perkembangan penanganannya perlu tersedia dalam satu sistem terpusat.
 - Informasi awal seperti Laporan Kejadian dan Surat Perintah Penyidikan perlu dicatat sebelum progress utama perkara dimulai dari SPDP.
 - Informasi pasal, tersangka, TKP, PPNS utama, dan PPNS anggota perlu tersedia sebagai bagian dari data perkara.
-- Satu Perkara dapat memiliki lebih dari satu Tersangka dan setiap Tersangka memiliki Berkas Perkara terpisah.
+- Satu Perkara terhubung langsung dengan satu Tersangka dan satu Berkas Perkara dengan penomoran identik nomor Laporan Kejadian (ref: D-035).
 - Setiap Berkas Perkara dapat memiliki pasal berlapis.
 - Satu Berkas Perkara dapat memiliki beberapa tahapan proses, tetapi jenis tahapan yang sama tidak boleh muncul lebih dari satu kali.
 - Tahapan progress harus mengikuti urutan proses yang ditentukan.
@@ -26,9 +26,9 @@ BAPTwo adalah aplikasi web internal BPOM Kalimantan Selatan untuk mencatat, memo
 
 | Persona | Peran | Kebutuhan Utama | Frekuensi Pakai |
 |---|---|---|---|
-| Penyidik | Menangani dan menginput perkara | Mengelola informasi awal, tersangka, pasal, TKP, PPNS, tahapan, dokumen, Draft, DPO, dan monitoring | Harian |
-| Pimpinan | Memantau perkembangan perkara | Melihat seluruh perkara, progress, status, dan pekerjaan penyidik | Harian/Mingguan |
-| Administrator | Mengelola pengguna dan akses | Mengelola user, role, permission, soft delete, dan aktivitas sistem | Sesuai kebutuhan |
+| Penyidik | Menangani dan menginput perkara | Mengelola informasi awal, tersangka, pasal, TKP, PPNS, tahapan, dokumen PDF (maks 5 MB), Draft, DPO, ekspor Excel | Harian |
+| Pimpinan | Memantau perkembangan perkara | Melihat seluruh perkara, progress, status, dashboard potensi terlimpah, dan pekerjaan penyidik | Harian/Mingguan |
+| Administrator | Mengelola pengguna dan akses | Mengelola user, master data lengkap, soft delete data master/user, dan aktivitas sistem | Sesuai kebutuhan |
 
 ## 4. Use Case Utama
 
@@ -62,13 +62,13 @@ BAPTwo adalah aplikasi web internal BPOM Kalimantan Selatan untuk mencatat, memo
 | ID | Fitur | Prioritas | Alasan | Acceptance Criteria |
 |---|---|---|---|---|
 | F-01 | Pengelolaan Perkara | Must | Menjadi objek utama sistem | Penyidik dapat membuat dan melihat data perkara sesuai hak akses. |
-| F-02 | Berkas Perkara per Tersangka | Must | Setiap tersangka memiliki berkas terpisah | Jumlah Berkas Perkara mengikuti jumlah tersangka. |
-| F-03 | Data Tersangka | Must | Dibutuhkan untuk setiap Berkas Perkara | Data tersangka dapat dicatat dan ditampilkan pada Berkas Perkara. |
-| F-04 | Pasal Berlapis | Must | Satu Berkas dapat memiliki beberapa pasal | Beberapa pasal dapat dicatat pada satu Berkas Perkara. |
-| F-05 | Laporan Kejadian | Must | Menjadi informasi awal perkara | Laporan Kejadian dapat dicatat dan dikaitkan dengan perkara. |
-| F-06 | Surat Perintah Penyidikan | Must | Menjadi informasi awal sebelum SPDP | Surat Perintah Penyidikan dapat dicatat dan dikaitkan dengan perkara. |
-| F-07 | Informasi TKP | Must | Menjadi informasi utama perkara | TKP dapat dicatat dan dikaitkan dengan perkara. |
-| F-08 | PPNS Utama dan PPNS Anggota | Must | Menunjukkan petugas penanganan perkara | Perkara dapat memiliki PPNS utama dan PPNS anggota. |
+| F-02 | Penggabungan Perkara & Berkas | Must | Efisiensi & kesederhanaan administrasi perkara | 1 Perkara = 1 Tersangka = 1 Berkas Perkara (ref: D-035). |
+| F-03 | Data Tersangka | Must | Dibutuhkan untuk setiap Berkas Perkara | Data tersangka (NIK 16 digit, alamat lengkap 38 provinsi, tanggal lahir) tercatat pada Berkas Perkara. |
+| F-04 | Pasal Berlapis | Must | Satu Berkas dapat memiliki beberapa pasal | Beberapa pasal dapat dicatat pada satu Berkas Perkara melalui combo box dinamis. |
+| F-05 | Laporan Kejadian | Must | Menjadi informasi awal perkara | Laporan Kejadian dicatat satu kali dan terkunci setelah digunakan pada Sprindik. |
+| F-06 | Surat Perintah Penyidikan | Must | Menjadi informasi awal sebelum SPDP | Surat Perintah Penyidikan dicatat satu kali dan terkunci setelah digunakan pada Berkas. |
+| F-07 | Informasi TKP | Must | Menjadi informasi utama perkara | TKP (nama sarana, klasifikasi retailer/distributor, legalitas legal/ilegal, modus online/offline, alamat berjenjang) dicatat pada perkara. |
+| F-08 | PPNS Utama dan PPNS Anggota | Must | Menunjukkan petugas penanganan perkara | Perkara memiliki 1 PPNS utama dan 0..N PPNS anggota (combo box dinamis + kartu terpilih). |
 | F-09 | Progress Mulai SPDP | Must | Menetapkan titik awal progress | Informasi pra-SPDP tidak masuk perhitungan progress. |
 | F-10 | Rangkaian Tahapan Progress | Must | Menjaga konsistensi proses | Sistem mendukung SPDP → P-16 → P-17P → TAHAP I → P-18P/P-19 → P-21/P21a → TAHAP II → Keputusan Pengadilan. |
 | F-11 | Satu Tahapan Maksimal Satu Kali | Must | Mencegah duplikasi tahapan | Satu jenis tahapan hanya dapat dicatat satu kali pada satu Berkas Perkara. |
@@ -77,8 +77,8 @@ BAPTwo adalah aplikasi web internal BPOM Kalimantan Selatan untuk mencatat, memo
 | F-14 | Draft pada Setiap Tahapan | Must | Data belum lengkap tetap dapat disimpan | Setiap tahapan menyediakan aksi Draft tanpa menaikkan tahap. |
 | F-15 | Tombol Batal | Must | Membatalkan input | Batal keluar tanpa menyimpan perubahan yang belum disimpan. |
 | F-16 | Tombol Draft | Must | Menyimpan data sementara | Draft menyimpan data apa adanya tanpa menaikkan tahap. |
-| F-17 | Simpan & Lanjut Tahap Berikutnya | Must | Memfinalkan tahap dan meneruskan workflow | Tahap hanya dapat dilanjutkan jika field wajib lengkap; setelah berhasil tahap terkunci. |
-| F-18 | Penguncian Tahapan | Must | Menjaga integritas data | Tahap yang telah lanjut tidak dapat diedit atau dimundurkan oleh Penyidik. |
+| F-17 | Simpan & Lanjut Tahap Berikutnya | Must | Memfinalkan tahap dan meneruskan workflow | Tahap hanya dapat dilanjutkan jika field wajib lengkap dan dokumen PDF (maks 5 MB) diunggah; setelah berhasil tahap terkunci. |
+| F-18 | Penguncian Tahapan | Must | Menjaga integritas data | Tahap yang telah lanjut tidak dapat diedit atau dimundurkan oleh siapapun termasuk Administrator. |
 | F-19 | Tampilan Lihat/Edit | Must | Membedakan data yang dapat diubah | Draft memiliki Lihat + Edit; data yang sudah lanjut hanya Lihat. |
 | F-20 | Status Formal Berkas | Must | Menentukan hasil monitoring formal | Status formal hanya Selesai dan Tidak Selesai. |
 | F-21 | Label Dalam Proses | Must | Menunjukkan kondisi selama tahun berjalan | Dalam Proses adalah label tampilan, bukan status formal. |
@@ -88,30 +88,29 @@ BAPTwo adalah aplikasi web internal BPOM Kalimantan Selatan untuk mencatat, memo
 | F-25 | Penonaktifan DPO | Must | Memungkinkan proses kembali normal | DPO dapat dinonaktifkan ketika tersangka ditemukan kembali dan tanggal penonaktifan dicatat pada jejak rekam. |
 | F-26 | Pembatasan Tahap II Saat DPO Aktif | Must | Mencegah pelimpahan fisik tersangka saat DPO | Saat DPO aktif, tombol "Simpan & Lanjut ke Tahap 2 (Pelimpahan Tersangka & Barang Bukti)" disabled. |
 | F-27 | DPO Tidak Menghentikan SLA/Batas Tahun | Must | DPO tidak memberikan pengecualian waktu | DPO tidak menghentikan atau menjeda SLA maupun batas tahun. |
-| F-28 | SP3 | Must | Menjadi bukti penutup administratif | SP3 diunggah setelah status Tidak Selesai dan dicatat dalam audit trail; SP3 bukan pemicu status. |
-| F-29 | Status Proses Otomatis | Must | Menunjukkan posisi terbaru perkara | Status proses mengikuti tahapan progress terakhir yang telah difinalkan. |
+| F-28 | SP3 Terminal | Must | Menjadi penutup administratif penghentian penyidikan | SP3 diinput dengan nomor surat, tanggal, teks keterangan, dan dokumen PDF (maks 5 MB); penerbitan SP3 langsung memicu status proses 'SP3', status formal 'Tidak Selesai', dan mengunci tahapan (ref: D-030, D-035). |
+| F-29 | Status Proses Otomatis | Must | Menunjukkan posisi terbaru perkara | Status proses mengikuti tahapan progress terakhir yang telah difinalkan, atau SP3. |
 | F-30 | Progress Berbobot | Must | Menunjukkan persentase progress | Progress menggunakan milestone SPDP 15%, TAHAP I 55%, P-21/P21a 85%, dan TAHAP II 100%. |
 | F-31 | Case History / Audit Trail | Must | Memungkinkan penelusuran perubahan | Perubahan status, upload dokumen, dan catatan progres dapat ditelusuri. |
-| F-32 | Dokumen Perkara Terpusat | Must | Menjaga keterhubungan dokumen | Dokumen terhubung dengan Berkas Perkara dan tahapan terkait. |
-| F-33 | Nomor Berkas Manual | Must | Format nomor dapat bervariasi | Nomor Berkas Perkara diinput manual tanpa validasi pola tertentu. |
+| F-32 | Dokumen Perkara Terpusat | Must | Menjaga keterhubungan dokumen | Seluruh dokumen wajib format PDF (maksimal 5 MB) dan tersimpan terpusat di private storage. |
+| F-33 | Nomor Berkas Identik LK | Must | Konsistensi penomoran berkas perkara | Nomor Berkas Perkara otomatis mengikuti dan identik dengan nomor Laporan Kejadian (ref: D-035). |
 | F-34 | Catatan/Deskripsi | Must | Menyimpan konteks tambahan | Tahapan dan kondisi khusus dapat memiliki catatan/deskripsi. |
-| F-35 | Data DPO | Must | DPO perlu dapat ditelusuri | Data DPO mencakup nomor, tanggal, dan dokumen jika tersedia. |
-| F-36 | Data Alamat Terstruktur | Must | Menjaga konsistensi wilayah | Data alamat mendukung pemilihan wilayah secara hierarkis. |
-| F-37 | Sumber Data Wilayah | Must | Mengurangi input manual | Data wilayah menggunakan API Kode Wilayah. |
-| F-38 | RBAC dan Permission | Must | Mengendalikan akses | Hak akses fitur mengikuti role dan permission. |
-| F-39 | Pencarian dan Filter | Must | Memudahkan menemukan perkara | Pengguna dapat mencari dan memfilter Berkas Perkara. |
+| F-35 | Data DPO | Must | DPO perlu dapat ditelusuri | Data DPO mencakup nomor, tanggal, dokumen PDF (maks 5 MB), dan keterangan. |
+| F-36 | Data Alamat Terstruktur | Must | Menjaga konsistensi wilayah | Data alamat mendukung pemilihan wilayah berjenjang dengan nama sarana TKP. |
+| F-37 | Sumber Data Wilayah | Must | Mengurangi input manual | Data wilayah menggunakan proxy API Kode Wilayah dengan fallback JSON offline. |
+| F-38 | RBAC dan Permission | Must | Mengendalikan akses | Hak akses fitur mengikuti role: Master Data penuh untuk Admin (Penyidik hanya Pasal & Instansi Hukum, Pimpinan diblokir); menu Progress Perkara khusus Pimpinan/Umum (ref: D-035). |
+| F-39 | Pencarian dan Filter | Must | Memudahkan menemukan perkara | Pengguna dapat mencari dan memfilter Berkas Perkara secara live via AJAX table filter. |
 | F-40 | Dashboard Monitoring Perkara | Must | Menyediakan ringkasan monitoring | Penyidik dan Pimpinan dapat melihat ringkasan progress dan status perkara. |
 | F-41 | Dashboard Potensi Terlimpah | Should | Membantu identifikasi perkara belum selesai sebelum akhir tahun | Dashboard menampilkan Berkas Perkara yang belum Selesai untuk ditindaklanjuti. |
 | F-42 | Monitoring Pekerjaan Penyidik | Must | Pimpinan perlu melihat pekerjaan penyidik | Pimpinan dapat melihat perkembangan perkara berdasarkan penyidik. |
-| F-43 | Akses Seluruh Perkara bagi Penyidik | Must | Monitoring tidak dibatasi pembuat | Penyidik dapat melihat seluruh perkara sesuai permission. |
-| F-44 | Soft Delete | Must | Mencegah penghapusan permanen | Seluruh penghapusan menggunakan soft delete dan hard delete tidak tersedia. |
-| F-45 | Export Data | Must | Mendukung kebutuhan pelaporan | Data yang berhak diekspor tersedia dalam Excel dan CSV. |
+| F-43 | Akses Seluruh Perkara bagi Pengguna | Must | Monitoring terpusat | Penyidik dan Pimpinan dapat melihat seluruh perkara sesuai permission. |
+| F-44 | Perlindungan Berkas & Soft Delete Terbatas | Must | Mencegah penghapusan berkas perkara sembarangan | Data Perkara/LK/Sprindik tidak memiliki fitur hapus; soft delete hanya berlaku untuk Master Data dan Pengguna; hard delete tidak tersedia (ref: D-035). |
+| F-45 | Export Rekap Excel 44 Kolom | Must | Mendukung kebutuhan pelaporan resmi | Data diekspor dalam format Excel (.xlsx) 44 kolom terstandarisasi BPOM dengan modal filter 3 tab (Tahun, Bulan, Rentang Tanggal) khusus Admin & Penyidik (ref: D-035, D-039). |
 
 ### Struktur Perkara dan Berkas Perkara
 
-- Satu Perkara dapat memiliki lebih dari satu Tersangka.
-- Setiap Tersangka memiliki satu Berkas Perkara terpisah.
-- Jumlah Berkas Perkara dalam suatu Perkara mengikuti jumlah Tersangka.
+- 1 Perkara = 1 Tersangka = 1 Berkas Perkara.
+- Nomor Berkas Perkara otomatis identik dengan nomor Laporan Kejadian (LK).
 - Setiap Berkas Perkara dapat memiliki pasal berlapis.
 - Aturan tahapan, SLA, status, dan penguncian berlaku pada level Berkas Perkara.
 
@@ -230,13 +229,13 @@ Aturan:
 - Tahap sebelumnya tetap dapat dikerjakan selama DPO aktif.
 - DPO tidak menghentikan atau menjeda SLA maupun batas tahun.
 
-### SP3
+### SP3 (Surat Perintah Penghentian Penyidikan)
 
-- SP3 merupakan dokumen administratif.
-- SP3 diunggah setelah status Berkas Perkara menjadi Tidak Selesai.
-- SP3 menjadi bukti penutup administratif.
-- SP3 masuk jejak rekam/audit trail.
-- SP3 **bukan pemicu** perubahan status.
+- SP3 merupakan dokumen administratif penutup penghentian penyidikan yang bersifat terminal (ref: D-030, D-035).
+- SP3 diterbitkan secara manual dengan input nomor surat, tanggal, teks keterangan ringkas, dan dokumen PDF (maksimal 5 MB).
+- Penerbitan SP3 langsung memicu perubahan status proses menjadi **SP3** dan status formal menjadi **Tidak Selesai** (D-035 Poin 15 & 22).
+- Berkas yang telah diterbitkan SP3 dikunci secara permanen dari penambahan atau pelanjutan tahapan berikutnya (tombol tahap disembunyikan).
+- Penerbitan SP3 dicatat dalam jejak rekam/audit trail.
 
 ### Draft dan Penguncian
 
@@ -286,42 +285,43 @@ Histori mencatat aktivitas penting seperti:
 
 ### Hak Akses
 
-| Role              | Lihat | Tambah Berkas | Edit Draft | Edit Setelah Lanjut | Soft Delete | Hard Delete |
-|-------------------|-------------------|---|---|---|---|---|
-| **Penyidik**      | ✅ Semua perkara | ✅ | ✅ | ❌ | ✅ | ❌ |
-| **Pimpinan**      | ✅ Semua perkara | ❌ | ❌ | ❌ | ❌ | ❌ |
-| **Administrator** | ✅ Semua perkara + data pengguna | ✅ | ✅ | ❌ | ✅ | ❌ |
+| Role | Lihat | Tambah Berkas | Edit Draft | Edit Setelah Lanjut | Soft Delete (Master/User) | Hapus Perkara | Ekspor Excel 44 Kolom |
+|---|---|---|---|---|---|---|---|
+| **Penyidik** | ✅ Semua perkara | ✅ | ✅ | ❌ | ✅ (Pasal & Instansi) | ❌ | ✅ |
+| **Pimpinan** | ✅ Semua perkara | ❌ | ❌ | ❌ | ❌ (Diblokir) | ❌ | ❌ |
+| **Administrator** | ✅ Semua perkara + data pengguna | ✅ | ✅ | ❌ | ✅ (Penuh) | ❌ | ✅ |
 
 Aturan tambahan:
 
-- Penyidik dapat melihat semua perkara sesuai permission.
-- Pimpinan memiliki akses lihat dan pencarian seluruh perkara.
-- Administrator dapat mengelola pengguna dan permission.
+- Penyidik dapat melihat semua perkara, mengelola Pra-SPDP dan Tahapan, namun akses menu dan halaman Progress Perkara diblokir (khusus Pimpinan/Umum, ref: D-035 Kelompok B).
+- Pimpinan memiliki akses lihat dan pencarian seluruh perkara, dashboard potensi terlimpah, dan progress perkara (read-only); akses Master Data diblokir (ref: D-035 Kelompok B).
+- Administrator dapat mengelola pengguna, hak akses, dan master data secara penuh.
+- **Data Perkara, Laporan Kejadian, dan Sprindik tidak dapat dihapus** oleh siapapun demi integritas catatan penanganan hukum (ref: D-035 Kelompok D).
 - **Hard delete tidak tersedia untuk role mana pun.**
-- Seluruh penghapusan menggunakan **soft delete** dan data yang dihapus tetap dapat dipulihkan melalui Sampah.
+- Penghapusan menggunakan **soft delete** hanya berlaku untuk data Master Data dan Manajemen Pengguna yang dapat dipulihkan melalui halaman Sampah.
 
 ## 6. Non-Functional Requirements
 
 | Kategori | Requirement | Target |
 |---|---|---|
 | Performance | Dashboard dan monitoring responsif | ≤ 3 detik untuk mayoritas request normal |
-| Performance | Pencarian dan filter responsif | Hasil ≤ 3 detik pada kondisi normal |
-| Security | Akses fitur dibatasi role dan permission | 100% akses tanpa permission ditolak |
-| Security | Dokumen hanya dapat diakses pengguna berwenang | 100% |
-| Security | Tahapan yang sudah dilanjutkan tidak dapat diubah oleh Penyidik | 100% |
-| Security | Audit trail tersedia untuk aktivitas penting | 100% aktivitas yang ditetapkan tercatat |
-| Security | Hard delete tidak tersedia | 100% penghapusan menggunakan soft delete |
+| Performance | Pencarian dan filter responsif | Hasil ≤ 3 detik via live AJAX filter |
+| Security | Akses fitur dibatasi role dan permission | 100% akses tanpa permission ditolak (403 Forbidden) |
+| Security | Dokumen perkara wajib format PDF (maksimal 5 MB) | 100% format non-PDF atau > 5 MB ditolak server |
+| Security | Tahapan yang sudah dilanjutkan tidak dapat diubah oleh siapapun | 100% terkunci mutlak termasuk bagi Administrator |
+| Security | Audit trail tersedia untuk aktivitas penting | 100% aktivitas yang ditetapkan tercatat terindeks |
+| Security | Perlindungan data perkara & larangan hard delete | 100% perkara terlindungi dari penghapusan; hard delete tidak tersedia |
 | Usability | Batal, Draft, dan Simpan & Lanjut mudah dibedakan | 100% tahapan memiliki ketiga aksi |
 | Usability | Tahapan, progress, status proses, dan status monitoring mudah dibedakan | Informasi dapat dipahami dalam satu tampilan |
-| Usability | DPO aktif terlihat jelas | Status DPO dan blokir Tahap II terlihat |
+| Usability | DPO aktif terlihat jelas | Status DPO dan blokir Tahap II terlihat di UI & server |
 | Reliability | Urutan tahapan tetap konsisten | Tidak ada duplikasi atau perpindahan ilegal |
 | Reliability | Progress mengikuti bobot milestone | 100% |
-| Reliability | Status proses mengikuti tahapan terakhir | 100% |
+| Reliability | Status proses mengikuti tahapan terakhir atau SP3 | 100% |
 | Reliability | Status Selesai/Tidak Selesai mengikuti trigger yang ditentukan | 100% |
-| Reliability | Trigger 1 Januari berjalan otomatis | 100% berkas yang memenuhi kondisi berubah menjadi Tidak Selesai |
+| Reliability | Trigger 1 Januari berjalan otomatis (00:00 WITA) | 100% berkas yang memenuhi kondisi berubah menjadi Tidak Selesai |
 | Reliability | DPO tidak menjeda SLA/batas tahun | Tidak ada pengecualian waktu akibat DPO |
 | Compliance | Data hanya tersedia bagi pengguna berwenang | Tidak ada akses publik |
-| Compliance | Penghapusan data dapat dipulihkan | Seluruh penghapusan menggunakan soft delete |
+| Compliance | Penghapusan master data/user dapat dipulihkan | 100% pemulihan melalui Sampah (soft delete) |
 
 ## 7. Success Metric
 
@@ -329,10 +329,10 @@ Aturan tambahan:
 |---|---|---|---|
 | Pengguna dapat mengetahui posisi perkara melalui aplikasi | Belum terukur | ≥ 80% pengguna target | Survei/evaluasi |
 | Berkas memiliki tahapan terakhir yang jelas | Belum terukur | 100% berkas aktif | Audit data |
-| Status proses sesuai tahapan terakhir | Belum terukur | 100% | Pengujian fungsional |
+| Status proses sesuai tahapan terakhir atau SP3 | Belum terukur | 100% | Pengujian fungsional |
 | Progress sesuai bobot milestone | Belum terukur | 100% | Pengujian fungsional |
 | Tidak ada duplikasi tahapan | Belum terukur | 100% | Pengujian dan audit data |
-| Tahapan final tidak dapat diedit/dimundurkan oleh Penyidik | Belum terukur | 100% | Pengujian fungsional |
+| Tahapan final tidak dapat diedit/dimundurkan | Belum terukur | 100% | Pengujian fungsional |
 | Setiap tahapan memiliki Draft | Belum terukur | 100% | Pengujian fungsional |
 | Berkas yang selesai mengikuti trigger Selesai | Belum terukur | 100% | Pengujian skenario |
 | Berkas yang belum selesai pada 1 Januari menjadi Tidak Selesai | Belum terukur | 100% | Pengujian pergantian tahun |
@@ -340,10 +340,10 @@ Aturan tambahan:
 | DPO nonaktif memungkinkan proses berjalan kembali | Belum terukur | 100% | Pengujian skenario |
 | Histori perubahan penting tersedia | Belum terukur | 100% | Audit trail |
 | Akses tanpa permission ditolak | Belum terukur | 100% | Pengujian kontrol akses |
-| Hard delete tidak tersedia | Belum terukur | 100% | Pengujian fungsional |
+| Data perkara terlindungi dari penghapusan & hard delete tidak tersedia | Belum terukur | 100% | Pengujian fungsional |
 | Pimpinan menggunakan dashboard untuk monitoring | Belum terukur | ≥ 80% | Analisis penggunaan/survei |
 | Berkas berpotensi Tidak Selesai dapat diidentifikasi sebelum akhir tahun | Belum terukur | 100% | Pengujian dashboard |
-| Data dapat diekspor | Belum terukur | 100% | Pengujian Excel dan CSV |
+| Data rekap perkara dapat diekspor ke Excel 44 kolom | Belum terukur | 100% | Pengujian dokumen Excel (.xlsx) |
 
 ## 8. Out of Scope (v1.0)
 
@@ -357,11 +357,12 @@ Aturan tambahan:
 - Rekomendasi berbasis AI/ML.
 - Fitur Machine Learning, Artificial Intelligence, dan Data Science.
 - Fitur publik atau akses masyarakat umum.
-- Pengeditan tahapan yang telah dikunci oleh Penyidik.
+- Pengeditan tahapan yang telah dikunci oleh siapapun.
 - Perpindahan mundur ke tahap sebelumnya.
 - Pemindahan Berkas Perkara ke tahun berikutnya hanya karena belum selesai.
+- Penghapusan data perkara / Laporan Kejadian / Sprindik.
 - Hard delete data.
-- Detail implementasi teknis dan arsitektur aplikasi. Detail teknis mengacu pada `architecture.md` (TBD).
+- Detail implementasi teknis dan arsitektur aplikasi (mengacu pada `ARCHITECTURE.md`).
 
 ---
 

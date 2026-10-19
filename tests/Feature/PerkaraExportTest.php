@@ -3,10 +3,12 @@
 use App\Enums\JenisTahap;
 use App\Enums\UserRole;
 use App\Exports\PerkaraRekapExport;
+use App\Models\Alamat;
 use App\Models\BerkasPerkara;
 use App\Models\Perkara;
 use App\Models\TahapanPerkara;
 use App\Models\Tersangka;
+use App\Models\Tkp;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
@@ -233,7 +235,7 @@ test('format daftar multi-nilai pasal dan ppns anggota mematuhi aturan tata baha
 });
 
 test('kolom alamat tersangka, nama tkp, dan alamat tkp menghasilkan data lengkap sesuai spesifikasi', function () {
-    $alamatTsk = \App\Models\Alamat::create([
+    $alamatTsk = Alamat::create([
         'alamat_detail' => 'Jl. Belitung Darat No. 12',
         'rt' => '003',
         'rw' => '001',
@@ -244,7 +246,7 @@ test('kolom alamat tersangka, nama tkp, dan alamat tkp menghasilkan data lengkap
     ]);
     $this->tersangka->update(['alamat_id' => $alamatTsk->id]);
 
-    $alamatTkp = \App\Models\Alamat::create([
+    $alamatTkp = Alamat::create([
         'nama' => 'Toko Obat Sumber Waras',
         'alamat_detail' => 'Pasar Sentra Antasari Blok C No. 5',
         'rt' => '002',
@@ -254,7 +256,7 @@ test('kolom alamat tersangka, nama tkp, dan alamat tkp menghasilkan data lengkap
         'kabupaten_nama' => 'Kota Banjarmasin',
         'provinsi_nama' => 'Kalimantan Selatan',
     ]);
-    $tkp = \App\Models\Tkp::create([
+    $tkp = Tkp::create([
         'alamat_id' => $alamatTkp->id,
         'klasifikasi' => 'retailer',
         'legalitas' => 'ilegal',

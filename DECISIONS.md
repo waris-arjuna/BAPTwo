@@ -778,6 +778,66 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
   5. Menyesuaikan seeder `DummyDataSeeder.php` agar 20 data perkara dummy otomatis mengisi nama sarana TKP ke kolom `nama` pada alamat TKP.
 - Konsekuensi: Format ekspor Excel Kolom L, O, dan P kini sepenuhnya deterministik, bersih, dan sesuai spesifikasi. Rangkaian test `composer test` (162 tests, 1.653 assertions) dan `php vendor/bin/pint --test` (141 files) 100% lulus.
 
+---
+
+## D-040 — Perbaikan Layout Viewport Zoom 125% & Sinkronisasi Dynamic Offset Sidebar
+
+- Tanggal: 2026-10-19
+- Status: Disepakati & Diimplementasikan
+- Konteks: Pada zoom browser 125% (lebar efektif ~1520px, tepat di bawah breakpoint `2xl` 1536px), ditemukan sejumlah anomali antarmuka:
+  1. Judul halaman dan kolom "No" pada tabel terpotong karena offset kiri wrapper konten tidak sinkron dengan lebar aktual sidebar (terutama saat collapsed).
+  2. Muncul strip putih di tepi kanan layar dan scrollbar horizontal karena wrapper layout utama tidak mengisi lebar penuh viewport.
+  3. Elemen tabel dan kartu statistik meluap melewati wrapper kontainer.
+  4. Ikon di bagian atas sidebar tepat di bawah header terpotong separuh akibat padding/margin offset scroll yang tidak pas.
+- Keputusan:
+  1. Mengganti offset margin statis (`xl:ml-[290px]`, `2xl:ml-[90px]`) pada layout utama (`app.blade.php`) dengan padding dinamis terikat state Alpine `$store.sidebar` (`isExpanded`, `isHovered`, `isCollapsed`).
+  2. Memastikan container halaman menggunakan `w-full max-w-full overflow-x-hidden` pada wrapper terluar tanpa menyentuh tag `body` atau `html`.
+  3. Memastikan setiap tabel berada di dalam wrapper `overflow-x-auto` yang mandiri sehingga scrolling horizontal tabel tidak merusak layout global.
+  4. Menyelaraskan padding atas pada navigasi sidebar (`sidebar.blade.php`) agar logo dan menu item teratas tidak saling tumpang tindih dengan header.
+- Konsekuensi: Layout stabil di seluruh tingkat zoom browser (100%, 110%, 125%, 150%) dan berbagai resolusi layar (390px s.d. 1920px), tanpa scrollbar horizontal global.
+
+---
+
+## D-041 — Penguncian Dependensi PhpSpreadsheet, Ekstensi Zip PHP, dan Konfigurasi `platform-check: false`
+
+- Tanggal: 2026-10-19
+- Status: Disepakati & Diimplementasikan
+- Konteks: Ekspor rekap perkara 44 kolom (.xlsx) memerlukan library `phpoffice/phpspreadsheet`. Sebelumnya library ini belum tercatat di `composer.json` sehingga hilang saat `composer update` dijalankan, memicu error `Class not found`. Selain itu, ekstensi `zip` di PHP Laragon perlu diaktifkan, dan Composer secara default menyertakan `platform_check` yang menolak PHP 32-bit (akibat dependensi `zipstream-php` yang mencatat `php-64bit`), padahal CLI default sistem operasi pengguna masih mengarah ke `C:\php\php.exe` (32-bit).
+- Keputusan:
+  1. Mencatat secara permanen dependensi `"phpoffice/phpspreadsheet": "^5.10"` pada `composer.json` dan menguncinya di `composer.lock`.
+  2. Mengaktifkan ekstensi `extension=zip` pada konfigurasi `php.ini` Laragon.
+  3. Menambahkan pengaturan `"platform-check": false` pada blok `"config"` di `composer.json` agar Composer tidak memblokir eksekusi `php artisan` di lingkungan CLI 32-bit maupun 64-bit lokal.
+- Konsekuensi: `composer update` tidak akan menghapus PhpSpreadsheet lagi; seluruh rangkaian 162 tes dan perintah `php artisan` dapat dijalankan dengan lancar di terminal PowerShell standar pengguna maupun di terminal Laragon.
+
+---
+
+## D-042 — Adopsi Aturan Anti AI-Slop dan Standar Craftsmanship UI/Copywriting
+
+- Tanggal: 2026-10-19
+- Status: Disepakati & Diimplementasikan
+- Konteks: Untuk menjaga kualitas antarmuka, keaslian konten, dan kenyamanan pengguna internal BPOM, aplikasi BAPTwo harus terhindar dari artefak generik AI (AI slop), seperti copywriting klise dengan buzzword berlebihan, tanda em dash (`—`), tombol/link mati (dead controls), desain yang hanya mendukung *happy path*, gradient ungu-biru generik tanpa tujuan fungsional, dan kebocoran istilah internal teknis pengembang di antarmuka pengguna.
+- Keputusan:
+  1. Mengadopsi prinsip standar Craftsmanship antislop (C-1 s.d. C-5) ke dalam `AGENTS.md` (bagian 6 & 11) dan memasang blok pointer antislop resmi.
+  2. Melarang keras penggunaan tanda baca em dash (`—`) dalam teks UI/copywriting. Menggantinya dengan tanda baca natural (koma, titik, titik dua, atau kurung).
+  3. Menolak seluruh buzzword generik AI ("revolusioner", "seamless", "canggih", "next-gen", dsb.) dan menegakkan terminologi hukum operasional yang baku dan lugas.
+  4. Mewajibkan kelengkapan fungsional: setiap elemen interaktif wajib berfungsi nyata atau dihilangkan; melarang desain *happy path only* dengan mewajibkan 3 state (data ada, empty state informatif, dan error/loading state).
+  5. Menegakkan standar visual dan aksesibilitas: dilarang gradient generik tanpa tujuan, wajib kontras rasio minimal 4.5:1 (WCAG AA), dan wajib icon Flaticon kontekstual.
+- Konsekuensi: Seluruh pekerjaan antarmuka, komponen Blade, dan teks copywriting yang dihasilkan agent wajib mematuhi panduan ini. Teks UI tetap alami, profesional, dan bersih dari jargon internal.
+
+---
+
+## D-043 — Kewajiban Penyelarasan Rencana via Grill-Me Sebelum Eksekusi Kode
+
+- Tanggal: 2026-10-19
+- Status: Disepakati & Diimplementasikan
+- Konteks: Mencegah eksekusi sepihak dan asumsi liar oleh agent AI tanpa konfirmasi pengguna. Pengguna menghendaki agar setiap ada ide, task, atau perubahan yang akan dilakukan, agent tidak langsung mengeksekusi kode, melainkan mewawancarai dan menyamakan persepsi terlebih dahulu menggunakan skill /grill-me.
+- Keputusan:
+  1. Menetapkan larangan mutlak eksekusi langsung tanpa persetujuan eksplisit pada `AGENTS.md` (bagian 6 & 8).
+  2. Sebelum menyentuh kode, skema database, atau tampilan antarmuka, agent WAJIB memaparkan rancangan, mengajukan pertanyaan terarah, dan menyajikan opsi/alternatif keputusan secara interaktif menggunakan skill `/grill-me` (dan tool `ask_question`).
+  3. Eksekusi kode hanya boleh dilakukan setelah rencana dan opsi disetujui secara eksplisit oleh pengguna.
+- Konsekuensi: Agent selalu memvalidasi arah implementasi terlebih dahulu; tidak ada kode spekulatif atau perubahan mendadak yang tidak disepakati bersama.
+
+
 
 
 

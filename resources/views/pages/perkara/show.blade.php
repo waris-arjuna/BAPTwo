@@ -342,7 +342,7 @@
                                     @foreach ($perkara->ppnsUtama as $utama)
                                         <div class="inline-flex items-center gap-2 rounded-lg bg-brand-50 px-3 py-1.5 text-xs font-medium text-brand-700 dark:bg-brand-500/10 dark:text-brand-300">
                                             <i class="fi fi-rr-badge-check text-xs"></i>
-                                            <span>{{ $utama->nama }} ({{ $utama->nip ?: $utama->role }})</span>
+                                            <span>{{ $utama->nama }}{{ $utama->nip && $utama->nip !== '-' ? " (NIP: {$utama->nip})" : '' }}</span>
                                         </div>
                                     @endforeach
                                 @else
@@ -357,7 +357,7 @@
                                 @forelse ($perkara->ppnsAnggota as $anggota)
                                     <span class="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-gray-50 px-3 py-1 text-xs text-gray-700 dark:border-gray-700 dark:bg-white/[0.03] dark:text-gray-300">
                                         <i class="fi fi-rr-user text-xs text-gray-400"></i>
-                                        <span>{{ $anggota->nama }}</span>
+                                        <span>{{ $anggota->nama }}{{ $anggota->nip && $anggota->nip !== '-' ? " (NIP: {$anggota->nip})" : '' }}</span>
                                     </span>
                                 @empty
                                     <span class="text-sm text-gray-400">-</span>

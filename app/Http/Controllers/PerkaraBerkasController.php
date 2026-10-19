@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\UserRole;
 use App\Http\Requests\SavePerkaraBerkasRequest;
 use App\Models\Pasal;
 use App\Models\Perkara;
@@ -38,7 +39,22 @@ class PerkaraBerkasController extends Controller
         ]);
 
         $pasalList = Pasal::where('status', 'aktif')->orderBy('nama_pasal')->get();
-        $ppnsUsers = User::where('is_active', true)->orderBy('nama')->get();
+
+        $existingPpnsIds = array_filter(array_merge(
+            [(int) $perkara->ppns_utama_id],
+            $perkara->ppnsAnggota->pluck('id')->all()
+        ));
+
+        $ppnsUsers = User::with('panggol')
+            ->where('is_active', true)
+            ->where(function ($q) use ($existingPpnsIds) {
+                $q->where('role', UserRole::PENYIDIK);
+                if (! empty($existingPpnsIds)) {
+                    $q->orWhereIn('id', $existingPpnsIds);
+                }
+            })
+            ->orderBy('nama')
+            ->get();
 
         return view('pages.perkara.form', compact('perkara', 'pasalList', 'ppnsUsers'));
     }

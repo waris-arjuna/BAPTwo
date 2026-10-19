@@ -216,6 +216,8 @@ tests/          Test Pest (162 automated tests)
 | Gagal koneksi database | Pastikan MySQL Laragon jalan, database `baptwo` ada, kredensial `.env` benar |
 | `baptwo.test` tidak terbuka | Laragon › Menu › Apache/Nginx › Reload; pastikan folder di `C:\laragon\www\baptwo` |
 | Aset CSS/JS tidak muncul | Jalankan `npm run dev` atau `npm run build` |
+| Ekstensi Zip belum aktif / Ekspor gagal | Aktifkan `extension=zip` di `php.ini` Laragon lalu restart Apache/Nginx |
+| Platform check Composer / 64-bit PHP | Gunakan terminal bawaan Laragon (PHP 64-bit), atau pastikan `"platform-check": false` di `composer.json` |
 
 ## Lisensi
 

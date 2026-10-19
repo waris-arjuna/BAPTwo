@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\JenisTahap;
 use App\Models\BerkasPerkara;
 use App\Models\TahapanPerkara;
 use App\Services\TahapanService;
@@ -42,12 +43,12 @@ class Tahap2Controller extends Controller
         if ($berkasId = $request->integer('berkas_id')) {
             $berkas = BerkasPerkara::findOrFail($berkasId);
 
-            if ($berkas->hasTahap(\App\Enums\JenisTahap::TAHAP_2)) {
+            if ($berkas->hasTahap(JenisTahap::TAHAP_2)) {
                 return redirect()->route('tahap-2.index')
                     ->with('error', 'Berkas perkara ini sudah memiliki tahapan Tahap 2 dan tidak dapat dipilih lagi.');
             }
 
-            if (! $this->tahapanService->canProceedTo($berkas, \App\Enums\JenisTahap::TAHAP_2)) {
+            if (! $this->tahapanService->canProceedTo($berkas, JenisTahap::TAHAP_2)) {
                 return redirect()->route('tahap-2.index')
                     ->with('error', 'Berkas perkara ini belum memenuhi syarat untuk memulai Tahap 2 (P-21 belum final atau status DPO aktif).');
             }

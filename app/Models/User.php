@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\UserRole;
+use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
+    /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable, SoftDeletes;
 
     protected $table = 'user';
@@ -96,6 +97,32 @@ class User extends Authenticatable
     public function panggol(): BelongsTo
     {
         return $this->belongsTo(Panggol::class, 'panggol_id');
+    }
+
+    /**
+     * Pangkat dari relasi panggol.
+     */
+    public function getPangkatAttribute(): ?string
+    {
+        return $this->panggol?->pangkat;
+    }
+
+    /**
+     * Label nama, NIP, dan pangkat PPNS yang rapi untuk antarmuka.
+     */
+    public function getFormattedPpnsLabelAttribute(): string
+    {
+        $parts = [];
+        if ($this->nip && $this->nip !== '-') {
+            $parts[] = "NIP: {$this->nip}";
+        }
+        if ($this->panggol?->pangkat) {
+            $parts[] = $this->panggol->pangkat;
+        }
+
+        return ! empty($parts)
+            ? "{$this->nama} (".implode(', ', $parts).')'
+            : $this->nama;
     }
 
     public function alamat(): BelongsTo

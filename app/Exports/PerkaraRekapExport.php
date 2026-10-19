@@ -12,6 +12,7 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use PhpOffice\PhpSpreadsheet\Style\Border;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
@@ -127,7 +128,7 @@ class PerkaraRekapExport
     /**
      * Membangun 4 baris header sesuai spesifikasi format rekap perkara 44 kolom.
      *
-     * @param  \PhpOffice\PhpSpreadsheet\Worksheet\Worksheet  $sheet
+     * @param  Worksheet  $sheet
      */
     protected function buildHeaders($sheet): void
     {
@@ -284,7 +285,7 @@ class PerkaraRekapExport
     /**
      * Mengisi baris data untuk satu perkara pada baris tertentu.
      *
-     * @param  \PhpOffice\PhpSpreadsheet\Worksheet\Worksheet  $sheet
+     * @param  Worksheet  $sheet
      */
     protected function populateRow($sheet, int $row, int $no, Perkara $perkara): void
     {
@@ -505,7 +506,7 @@ class PerkaraRekapExport
     /**
      * Set sel tanggal Excel asli dengan format dd-mmm-yy.
      *
-     * @param  \PhpOffice\PhpSpreadsheet\Worksheet\Worksheet  $sheet
+     * @param  Worksheet  $sheet
      */
     protected function setDateCell($sheet, string $cellCoord, mixed $dateValue): void
     {
@@ -526,7 +527,7 @@ class PerkaraRekapExport
     /**
      * Set sel teks dengan default wrap text dan horizontal alignment.
      *
-     * @param  \PhpOffice\PhpSpreadsheet\Worksheet\Worksheet  $sheet
+     * @param  Worksheet  $sheet
      */
     protected function setTextCell($sheet, string $cellCoord, mixed $value, string $align = Alignment::HORIZONTAL_LEFT): void
     {

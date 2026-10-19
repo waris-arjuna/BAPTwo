@@ -1,7 +1,8 @@
-@props(['data' => null])
+@props(['data' => null, 'tahun' => null])
 
 @php
-    $data ??= app(\App\Services\DashboardService::class)->getCaseStatusData();
+    $tahun ??= (int) date('Y');
+    $data ??= app(\App\Services\DashboardService::class)->getCaseStatusData($tahun);
 
     $totalPerkara = $data['totalPerkara'] ?? 0;
     $selesai = $data['selesai'] ?? 0;
@@ -27,10 +28,10 @@
 
     <div class="border-b border-gray-200 px-5 py-5 sm:px-6 dark:border-gray-800">
         <h2 class="text-lg font-semibold text-gray-800 dark:text-white/90">
-            Perkara Tahun Berjalan 2026
+            Perkara Tahun Berjalan {{ $tahun }}
         </h2>
         <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-            Ringkasan monitoring perkara.
+            Ringkasan monitoring proporsi berkas perkara.
         </p>
     </div>
 

@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Enums\UserRole;
+use App\Models\Perkara;
 use App\Models\User;
+use App\Policies\PerkaraPolicy;
 use App\Policies\UserPolicy;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
@@ -24,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Gate::policy(User::class, UserPolicy::class);
-        Gate::policy(\App\Models\Perkara::class, \App\Policies\PerkaraPolicy::class);
+        Gate::policy(Perkara::class, PerkaraPolicy::class);
 
         // UC-05: Hanya Administrator yang dapat mengelola pengguna
         Gate::define('manage-users', fn (User $user): bool => $user->isAdmin());

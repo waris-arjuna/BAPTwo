@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Blade;
 use Tests\TestCase;
@@ -61,7 +62,7 @@ class SearchableSelectTest extends TestCase
 
     public function test_sprindik_create_page_renders_with_searchable_select(): void
     {
-        $user = \App\Models\User::factory()->create(['role' => 'penyidik']);
+        $user = User::factory()->create(['role' => 'penyidik']);
         $response = $this->actingAs($user)->get(route('sprindik.create'));
         $response->assertStatus(200);
         $response->assertSee('role="combobox"', false);

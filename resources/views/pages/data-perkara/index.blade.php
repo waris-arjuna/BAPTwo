@@ -103,7 +103,7 @@
                                             >
                                                 @foreach ($availableSprindiks as $sprindik)
                                                     <option value="{{ $sprindik->id }}">
-                                                        {{ $sprindik->nomor_surat_perintah }} — Tanggal: {{ $sprindik->tanggal_surat_perintah?->format('d-m-Y') ?? '-' }} (LK: {{ $sprindik->nomor_laporan_kejadian }})
+                                                        {{ $sprindik->nomor_surat_perintah }} (Tanggal: {{ $sprindik->tanggal_surat_perintah?->format('d-m-Y') ?? '-' }}, LK: {{ $sprindik->nomor_laporan_kejadian }})
                                                     </option>
                                                 @endforeach
                                             </select>

@@ -10,8 +10,9 @@
     $ppnsJsonList = $ppnsUsers->map(fn ($u) => [
         'id' => (int) $u->id,
         'nama' => $u->nama,
-        'nip' => $u->nip ?: '-',
-        'pangkat' => $u->pangkat ?? '-',
+        'label' => $u->formatted_ppns_label,
+        'nip' => $u->nip && $u->nip !== '-' ? $u->nip : '',
+        'pangkat' => $u->pangkat ?: '',
     ])->values()->all();
 
     $pasalJsonList = $pasalList->map(fn ($p) => [
@@ -634,7 +635,7 @@
                             <option value="">-- Pilih PPNS Utama --</option>
                             @foreach ($ppnsUsers as $ppns)
                                 <option value="{{ $ppns->id }}" @selected((int) $existingUtamaId === $ppns->id)>
-                                    {{ $ppns->nama }} ({{ $ppns->nip ?: $ppns->role }}) — {{ $ppns->pangkat ?? '-' }}
+                                    {{ $ppns->formatted_ppns_label }}
                                 </option>
                             @endforeach
                         </x-form.searchable-select>
@@ -664,7 +665,7 @@
                             >
                                 <option value="" x-text="getAvailableAnggota().length === 0 ? 'Semua PPNS sudah terpilih' : '+ Pilih dan tambah anggota penyidik...'"></option>
                                 <template x-for="ppns in getAvailableAnggota()" :key="ppns.id">
-                                    <option :value="ppns.id" x-text="ppns.nama + (ppns.nip && ppns.nip !== '-' ? ' (NIP: ' + ppns.nip + ')' : '') + (ppns.pangkat && ppns.pangkat !== '-' ? ' — ' + ppns.pangkat : '')"></option>
+                                    <option :value="ppns.id" x-text="ppns.label || ppns.nama"></option>
                                 </template>
                             </x-form.searchable-select>
                         </div>
@@ -685,7 +686,7 @@
                                             </div>
                                             <div class="min-w-0">
                                                 <p class="truncate text-sm font-semibold text-gray-800 dark:text-white/90" x-text="ppns.nama"></p>
-                                                <p class="truncate text-xs text-gray-500 dark:text-gray-400" x-text="'NIP: ' + ppns.nip"></p>
+                                                <p class="truncate text-xs text-gray-500 dark:text-gray-400" x-text="ppns.nip ? ('NIP: ' + ppns.nip + (ppns.pangkat ? ' · ' + ppns.pangkat : '')) : (ppns.pangkat || 'Penyidik PPNS')"></p>
                                             </div>
                                         </div>
                                         <button
@@ -716,7 +717,7 @@
                 </div>
             </div>
 
-            {{-- 3. Card Data Tersangka & Berkas Perkara (1 Perkara = 1 Berkas Perkara = 1 Tersangka — Poin 11 & 13) --}}
+            {{-- 3. Card Data Tersangka & Berkas Perkara (1 Perkara = 1 Berkas Perkara = 1 Tersangka, Poin 11 & 13) --}}
             <div
                 x-data="{
                     isAlamatModalOpen: false,
@@ -757,7 +758,7 @@
 
                     get alamatRingkasan() {
                         if (!this.alamat.provinsi_kode && !this.alamat.alamat_detail) {
-                            return 'Belum diatur — klik untuk memilih alamat';
+                            return 'Belum diatur (klik untuk memilih alamat)';
                         }
                         const parts = [];
                         if (this.alamat.alamat_detail) parts.push(this.alamat.alamat_detail);
@@ -1179,7 +1180,7 @@
                                         readonly
                                         id="tersangka_alamat_ringkasan"
                                         :value="alamatRingkasan"
-                                        placeholder="Belum diatur — klik untuk memilih alamat"
+                                        placeholder="Belum diatur (klik untuk memilih alamat)"
                                         class="h-11 w-full cursor-pointer rounded-lg border border-gray-300 bg-gray-50/80 ps-10 pe-4 text-sm text-gray-700 select-none dark:border-gray-700 dark:bg-gray-800/60 dark:text-gray-300"
                                         @click="openAlamatModal()"
                                     >
@@ -1390,7 +1391,7 @@
                 </div>
             </div>
 
-            {{-- 4. Card Pemilihan Pasal Berlapis (Komponen Persis PPNS Anggota — Poin 8) --}}
+            {{-- 4. Card Pemilihan Pasal Berlapis (Komponen Persis PPNS Anggota, Poin 8) --}}
             <div
                 x-data="{
                     pasalList: @js($pasalJsonList),

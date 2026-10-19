@@ -1,9 +1,11 @@
 <?php
 
 use App\Models\Alamat;
+use App\Models\Pasal;
 use App\Models\Perkara;
 use App\Models\Tersangka;
 use App\Models\User;
+use App\Services\PerkaraService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
@@ -22,7 +24,7 @@ test('perkara service menyimpan alamat tersangka dan mengaitkan alamat_id', func
         'created_by' => $penyidik->id,
     ]);
 
-    $service = app(\App\Services\PerkaraService::class);
+    $service = app(PerkaraService::class);
 
     $payload = [
         'action_type' => 'draft',
@@ -146,7 +148,7 @@ test('simpan dan lanjut menolak jika alamat tersangka tidak lengkap', function (
         'created_by' => $penyidik->id,
     ]);
 
-    $pasal = \App\Models\Pasal::create([
+    $pasal = Pasal::create([
         'nama_pasal' => 'UU Uji',
         'pasal' => 'Pasal 1',
         'nomor' => '1',

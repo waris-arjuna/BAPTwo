@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Enums\JenisTahap;
 use App\Models\TahapanPerkara;
+use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateTahapanRequest extends FormRequest
@@ -31,7 +32,7 @@ class UpdateTahapanRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array<string, ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {

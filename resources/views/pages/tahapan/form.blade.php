@@ -54,7 +54,7 @@
                     @if ($tahap?->isFinal())
                         <span class="inline-flex items-center gap-1.5 rounded-full border border-success-200 bg-success-50 px-3.5 py-1.5 text-xs font-semibold text-success-700 dark:border-success-500/20 dark:bg-success-500/10 dark:text-success-400">
                             <i class="fi fi-rr-lock text-sm"></i>
-                            Tahap Selesai / Terkunci Permanen
+                            Tahap Final &amp; Terkunci
                         </span>
                     @elseif ($mode === 'edit')
                         <span class="inline-flex items-center gap-1.5 rounded-full border border-yellow-200 bg-yellow-50 px-3.5 py-1.5 text-xs font-semibold text-yellow-800 dark:border-yellow-500/20 dark:bg-yellow-500/10 dark:text-yellow-400">

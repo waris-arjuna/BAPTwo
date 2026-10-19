@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\JenisTahap;
 use App\Models\BerkasPerkara;
 use App\Models\Perkara;
 use App\Models\Tersangka;
@@ -207,6 +208,6 @@ test('perkara berstatus SP3 langsung berstatus proses SP3 dan formal Tidak Seles
         ->and($this->berkas->status_formal)->toBe('tidak_selesai');
 
     $tahapanService = app(TahapanService::class);
-    expect($tahapanService->canProceedTo($this->berkas, \App\Enums\JenisTahap::SPDP))->toBeFalse()
-        ->and($tahapanService->canProceedTo($this->berkas, \App\Enums\JenisTahap::TAHAP_1))->toBeFalse();
+    expect($tahapanService->canProceedTo($this->berkas, JenisTahap::SPDP))->toBeFalse()
+        ->and($tahapanService->canProceedTo($this->berkas, JenisTahap::TAHAP_1))->toBeFalse();
 });

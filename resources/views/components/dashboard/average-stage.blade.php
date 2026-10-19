@@ -1,7 +1,8 @@
-@props(['stageAverages' => null])
+@props(['stageAverages' => null, 'tahun' => null])
 
 @php
-    $stageAverages ??= app(\App\Services\DashboardService::class)->getStageAverageDays();
+    $tahun ??= (int) date('Y');
+    $stageAverages ??= app(\App\Services\DashboardService::class)->getStageAverageDays($tahun);
 @endphp
 
 <div class="h-full rounded-2xl border border-gray-200 bg-white shadow-theme-xs dark:border-gray-800 dark:bg-white/[0.03]">
@@ -15,7 +16,7 @@
                 </h2>
 
                 <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                    Tahun Berjalan 2026
+                    Tahun Anggaran {{ $tahun }}
                 </p>
             </div>
 

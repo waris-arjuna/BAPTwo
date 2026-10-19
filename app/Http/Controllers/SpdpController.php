@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\JenisTahap;
 use App\Models\BerkasPerkara;
 use App\Models\TahapanPerkara;
 use App\Services\TahapanService;
@@ -43,12 +44,12 @@ class SpdpController extends Controller
         if ($berkasId = $request->integer('berkas_id')) {
             $berkas = BerkasPerkara::findOrFail($berkasId);
 
-            if ($berkas->hasTahap(\App\Enums\JenisTahap::SPDP)) {
+            if ($berkas->hasTahap(JenisTahap::SPDP)) {
                 return redirect()->route('spdp.index')
                     ->with('error', 'Berkas perkara ini sudah memiliki tahapan SPDP dan tidak dapat dipilih lagi.');
             }
 
-            if (! $this->tahapanService->canProceedTo($berkas, \App\Enums\JenisTahap::SPDP)) {
+            if (! $this->tahapanService->canProceedTo($berkas, JenisTahap::SPDP)) {
                 return redirect()->route('spdp.index')
                     ->with('error', 'Berkas perkara ini belum memenuhi syarat untuk memulai tahapan SPDP.');
             }

@@ -4,9 +4,18 @@ namespace App\Services;
 
 use App\Enums\JenisTahap;
 use App\Models\BerkasPerkara;
+use App\Models\Dokumen;
 use App\Models\Perkara;
 use App\Models\TahapanPerkara;
+use App\Models\User;
+use Carbon\Carbon;
 use DomainException;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\DB;
 
 class TahapanService
 {
@@ -152,7 +161,7 @@ class TahapanService
     public function assertStageNotLocked(TahapanPerkara $tahap): void
     {
         if ($tahap->isFinal()) {
-            throw new \DomainException("Tahapan {$tahap->jenis_tahap->label()} telah difinalkan dan terkunci permanen. Administrator pun tidak dapat mengedit atau memundurkan tahap yang telah dikunci.");
+            throw new DomainException("Tahapan {$tahap->jenis_tahap->label()} telah difinalkan dan terkunci permanen. Administrator pun tidak dapat mengedit atau memundurkan tahap yang telah dikunci.");
         }
     }
 
@@ -164,22 +173,22 @@ class TahapanService
     public function saveStage(
         BerkasPerkara $berkas,
         array $data,
-        ?\Illuminate\Http\UploadedFile $file,
-        \App\Models\User $user,
+        ?UploadedFile $file,
+        User $user,
         ?TahapanPerkara $existingTahap = null
     ): TahapanPerkara {
-        return \Illuminate\Support\Facades\DB::transaction(function () use ($berkas, $data, $file, $user, $existingTahap): TahapanPerkara {
+        return DB::transaction(function () use ($berkas, $data, $file, $user, $existingTahap): TahapanPerkara {
             $isDraft = ($data['action_type'] ?? 'lanjut') === 'draft';
             $jenisTahap = $existingTahap !== null
                 ? $existingTahap->jenis_tahap
                 : ($data['jenis_tahap'] instanceof JenisTahap ? $data['jenis_tahap'] : JenisTahap::from((string) $data['jenis_tahap']));
 
             if ($berkas->hasSp3()) {
-                throw new \DomainException('Perkara yang telah diterbitkan SP3 tidak dapat diedit atau dilanjutkan ke tahap apa pun.');
+                throw new DomainException('Perkara yang telah diterbitkan SP3 tidak dapat diedit atau dilanjutkan ke tahap apa pun.');
             }
 
             if ($berkas->status_formal === 'tidak_selesai') {
-                throw new \DomainException('Berkas perkara dengan status Tidak Selesai tidak dapat diedit atau dilanjutkan ke tahap apa pun.');
+                throw new DomainException('Berkas perkara dengan status Tidak Selesai tidak dapat diedit atau dilanjutkan ke tahap apa pun.');
             }
 
             if ($existingTahap !== null) {
@@ -195,7 +204,7 @@ class TahapanService
 
             // DPO Gate: PRD F-24 s.d. F-27
             if ($jenisTahap === JenisTahap::TAHAP_2 && ! $isDraft && $berkas->is_dpo) {
-                throw new \DomainException('Tidak dapat melanjutkan ke Tahap II (Pelimpahan Tersangka & Barang Bukti) karena Tersangka berstatus DPO.');
+                throw new DomainException('Tidak dapat melanjutkan ke Tahap II (Pelimpahan Tersangka & Barang Bukti) karena Tersangka berstatus DPO.');
             }
 
             $tahapData = [
@@ -225,7 +234,7 @@ class TahapanService
             // Simpan dokumen jika diunggah
             if ($file !== null) {
                 $path = $file->store('dokumen/tahapan', 'local');
-                \App\Models\Dokumen::create([
+                Dokumen::create([
                     'perkara_id' => $berkas->perkara_id,
                     'berkas_perkara_id' => $berkas->id,
                     'tahapan_perkara_id' => $tahap->id,
@@ -257,7 +266,7 @@ class TahapanService
                 ];
 
                 if ($jenisTahap === JenisTahap::SPDP && ! empty($tahap->tanggal_surat)) {
-                    $tanggalSpdp = \Carbon\Carbon::parse($tahap->tanggal_surat);
+                    $tanggalSpdp = Carbon::parse($tahap->tanggal_surat);
                     $updateBerkas['tanggal_spdp'] = $tanggalSpdp->toDateString();
 
                     // SLA 1 bulan kalender & Batas Tahun mutlak (PRD bagian Batas Waktu)
@@ -363,10 +372,10 @@ class TahapanService
      */
     protected function paginateTahapanQuery(
         array|string $jenisTahap,
-        \Illuminate\Http\Request $request,
+        Request $request,
         int $perPage = 10,
         ?string $subStage = null
-    ): \Illuminate\Pagination\LengthAwarePaginator {
+    ): LengthAwarePaginator {
         $search = $request->string('search')->trim()->toString();
         $status = $request->string('status')->trim()->toString();
         $tanggalDari = $request->string('tanggal_dari', $request->string('tanggal')->toString())->trim()->toString();
@@ -387,17 +396,17 @@ class TahapanService
             ->when($status !== '', fn ($q) => $q->where('status', strtolower($status)))
             ->when($tanggalDari !== '', fn ($q) => $q->whereDate('tanggal_surat', '>=', $tanggalDari))
             ->when($tanggalSampai !== '', fn ($q) => $q->whereDate('tanggal_surat', '<=', $tanggalSampai))
-            ->when($search !== '', function (\Illuminate\Database\Eloquent\Builder $query) use ($search) {
-                $query->where(function (\Illuminate\Database\Eloquent\Builder $q) use ($search) {
+            ->when($search !== '', function (Builder $query) use ($search) {
+                $query->where(function (Builder $q) use ($search) {
                     $q->where('nomor_surat', 'like', "%{$search}%")
                         ->orWhere('catatan', 'like', "%{$search}%")
-                        ->orWhereHas('berkasPerkara', function (\Illuminate\Database\Eloquent\Builder $bQ) use ($search) {
+                        ->orWhereHas('berkasPerkara', function (Builder $bQ) use ($search) {
                             $bQ->where('nomor_berkas', 'like', "%{$search}%")
-                                ->orWhereHas('tersangka', function (\Illuminate\Database\Eloquent\Builder $tQ) use ($search) {
+                                ->orWhereHas('tersangka', function (Builder $tQ) use ($search) {
                                     $tQ->where('nama', 'like', "%{$search}%")
                                         ->orWhere('nik', 'like', "%{$search}%");
                                 })
-                                ->orWhereHas('perkara', function (\Illuminate\Database\Eloquent\Builder $pQ) use ($search) {
+                                ->orWhereHas('perkara', function (Builder $pQ) use ($search) {
                                     $pQ->where('nomor_surat_perintah', 'like', "%{$search}%")
                                         ->orWhere('nomor_laporan_kejadian', 'like', "%{$search}%");
                                 });
@@ -424,16 +433,16 @@ class TahapanService
         JenisTahap $requiredPreviousStage,
         JenisTahap $targetStage,
         bool $dpoCheck = false
-    ): \Illuminate\Database\Eloquent\Collection {
+    ): Collection {
         return BerkasPerkara::query()
-            ->whereHas('tahapan', function (\Illuminate\Database\Eloquent\Builder $q) use ($requiredPreviousStage) {
+            ->whereHas('tahapan', function (Builder $q) use ($requiredPreviousStage) {
                 $q->where('jenis_tahap', $requiredPreviousStage->value)->where('status', 'final');
             })
-            ->whereDoesntHave('tahapan', function (\Illuminate\Database\Eloquent\Builder $q) use ($targetStage) {
+            ->whereDoesntHave('tahapan', function (Builder $q) use ($targetStage) {
                 $q->where('jenis_tahap', $targetStage->value);
             })
             ->whereDoesntHave('sp3')
-            ->where(fn (\Illuminate\Database\Eloquent\Builder $q) => $q->whereNull('status_formal')->orWhere('status_formal', '!=', 'tidak_selesai'))
+            ->where(fn (Builder $q) => $q->whereNull('status_formal')->orWhere('status_formal', '!=', 'tidak_selesai'))
             ->when($dpoCheck, fn ($q) => $q->where('is_dpo', false))
             ->with(['perkara', 'tersangka'])
             ->orderByDesc('id')
@@ -443,7 +452,7 @@ class TahapanService
     /**
      * Mengambil daftar tahapan SPDP (termasuk sub-tahap opsional P-16 dan P-17P) dengan filter dan paginasi.
      */
-    public function getSpdpList(\Illuminate\Http\Request $request, int $perPage = 10): \Illuminate\Pagination\LengthAwarePaginator
+    public function getSpdpList(Request $request, int $perPage = 10): LengthAwarePaginator
     {
         return $this->paginateTahapanQuery(
             [JenisTahap::SPDP->value, JenisTahap::P16->value, JenisTahap::P17P->value],
@@ -456,19 +465,19 @@ class TahapanService
     /**
      * Mengambil daftar Berkas Perkara yang siap memulai SPDP (pra-SPDP final & belum ada SPDP).
      *
-     * @return \Illuminate\Database\Eloquent\Collection<int, BerkasPerkara>
+     * @return Collection<int, BerkasPerkara>
      */
-    public function getAvailableBerkasForSpdp(): \Illuminate\Database\Eloquent\Collection
+    public function getAvailableBerkasForSpdp(): Collection
     {
         return BerkasPerkara::query()
-            ->whereHas('perkara', function (\Illuminate\Database\Eloquent\Builder $q) {
+            ->whereHas('perkara', function (Builder $q) {
                 $q->where('tahap_perkara_status', 'final');
             })
-            ->whereDoesntHave('tahapan', function (\Illuminate\Database\Eloquent\Builder $q) {
+            ->whereDoesntHave('tahapan', function (Builder $q) {
                 $q->where('jenis_tahap', JenisTahap::SPDP->value);
             })
             ->whereDoesntHave('sp3')
-            ->where(fn (\Illuminate\Database\Eloquent\Builder $q) => $q->whereNull('status_formal')->orWhere('status_formal', '!=', 'tidak_selesai'))
+            ->where(fn (Builder $q) => $q->whereNull('status_formal')->orWhere('status_formal', '!=', 'tidak_selesai'))
             ->with(['perkara', 'tersangka'])
             ->orderByDesc('id')
             ->get();
@@ -501,8 +510,8 @@ class TahapanService
         JenisTahap $jenisTahap,
         string $prefix,
         array $data,
-        ?\Illuminate\Http\UploadedFile $file,
-        \App\Models\User $user
+        ?UploadedFile $file,
+        User $user
     ): ?TahapanPerkara {
         $nomor = $data["{$prefix}_nomor_surat"] ?? null;
         if (empty($nomor)) {
@@ -538,7 +547,7 @@ class TahapanService
 
         if ($file !== null) {
             $path = $file->store('dokumen/tahapan', 'local');
-            \App\Models\Dokumen::create([
+            Dokumen::create([
                 'perkara_id' => $berkas->perkara_id,
                 'berkas_perkara_id' => $berkas->id,
                 'tahapan_perkara_id' => $subTahap->id,
@@ -570,7 +579,7 @@ class TahapanService
     /**
      * Mengambil daftar tahapan Tahap 1 (termasuk P-18P dan P-19) dengan filter dan paginasi.
      */
-    public function getTahap1List(\Illuminate\Http\Request $request, int $perPage = 10): \Illuminate\Pagination\LengthAwarePaginator
+    public function getTahap1List(Request $request, int $perPage = 10): LengthAwarePaginator
     {
         return $this->paginateTahapanQuery(
             [JenisTahap::TAHAP_1->value, JenisTahap::P18P->value, JenisTahap::P19->value],
@@ -600,9 +609,9 @@ class TahapanService
     /**
      * Mengambil daftar Berkas Perkara yang siap memulai Tahap 1 (SPDP final & belum ada Tahap 1 final).
      *
-     * @return \Illuminate\Database\Eloquent\Collection<int, BerkasPerkara>
+     * @return Collection<int, BerkasPerkara>
      */
-    public function getAvailableBerkasForTahap1(): \Illuminate\Database\Eloquent\Collection
+    public function getAvailableBerkasForTahap1(): Collection
     {
         return $this->queryAvailableBerkas(JenisTahap::SPDP, JenisTahap::TAHAP_1);
     }
@@ -610,7 +619,7 @@ class TahapanService
     /**
      * Mengambil daftar tahapan P-21 dengan filter dan paginasi.
      */
-    public function getP21List(\Illuminate\Http\Request $request, int $perPage = 10): \Illuminate\Pagination\LengthAwarePaginator
+    public function getP21List(Request $request, int $perPage = 10): LengthAwarePaginator
     {
         return $this->paginateTahapanQuery(JenisTahap::P21->value, $request, $perPage);
     }
@@ -618,9 +627,9 @@ class TahapanService
     /**
      * Mengambil daftar Berkas Perkara yang siap memulai P-21 (Tahap 1 final & belum ada P-21 final).
      *
-     * @return \Illuminate\Database\Eloquent\Collection<int, BerkasPerkara>
+     * @return Collection<int, BerkasPerkara>
      */
-    public function getAvailableBerkasForP21(): \Illuminate\Database\Eloquent\Collection
+    public function getAvailableBerkasForP21(): Collection
     {
         return $this->queryAvailableBerkas(JenisTahap::TAHAP_1, JenisTahap::P21);
     }
@@ -628,7 +637,7 @@ class TahapanService
     /**
      * Mengambil daftar tahapan Tahap 2 dengan filter dan paginasi.
      */
-    public function getTahap2List(\Illuminate\Http\Request $request, int $perPage = 10): \Illuminate\Pagination\LengthAwarePaginator
+    public function getTahap2List(Request $request, int $perPage = 10): LengthAwarePaginator
     {
         return $this->paginateTahapanQuery(JenisTahap::TAHAP_2->value, $request, $perPage);
     }
@@ -636,9 +645,9 @@ class TahapanService
     /**
      * Mengambil daftar Berkas Perkara yang siap memulai Tahap 2 (P-21 final & belum ada Tahap 2).
      *
-     * @return \Illuminate\Database\Eloquent\Collection<int, BerkasPerkara>
+     * @return Collection<int, BerkasPerkara>
      */
-    public function getAvailableBerkasForTahap2(): \Illuminate\Database\Eloquent\Collection
+    public function getAvailableBerkasForTahap2(): Collection
     {
         return $this->queryAvailableBerkas(JenisTahap::P21, JenisTahap::TAHAP_2, true);
     }
@@ -646,7 +655,7 @@ class TahapanService
     /**
      * Mengambil daftar Putusan Perkara (Keputusan Pengadilan) dengan filter dan paginasi.
      */
-    public function getPutusanPerkaraList(\Illuminate\Http\Request $request, int $perPage = 10): \Illuminate\Pagination\LengthAwarePaginator
+    public function getPutusanPerkaraList(Request $request, int $perPage = 10): LengthAwarePaginator
     {
         return $this->paginateTahapanQuery(JenisTahap::KEPUTUSAN_PENGADILAN->value, $request, $perPage);
     }
@@ -654,9 +663,9 @@ class TahapanService
     /**
      * Mengambil daftar Berkas Perkara yang siap mencatat Putusan Pengadilan (Tahap 2 final & belum ada Putusan).
      *
-     * @return \Illuminate\Database\Eloquent\Collection<int, BerkasPerkara>
+     * @return Collection<int, BerkasPerkara>
      */
-    public function getAvailableBerkasForPutusan(): \Illuminate\Database\Eloquent\Collection
+    public function getAvailableBerkasForPutusan(): Collection
     {
         return $this->queryAvailableBerkas(JenisTahap::TAHAP_2, JenisTahap::KEPUTUSAN_PENGADILAN);
     }

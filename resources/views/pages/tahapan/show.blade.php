@@ -44,7 +44,7 @@
                     @if ($tahap->isFinal())
                         <span class="inline-flex h-10 items-center gap-1.5 rounded-lg border border-success-200 bg-success-50 px-3.5 text-xs font-semibold text-success-700 dark:border-success-500/20 dark:bg-success-500/10 dark:text-success-400">
                             <i class="fi fi-rr-lock text-sm"></i>
-                            Tahap Selesai / Terkunci Permanen
+                            Tahap Final &amp; Terkunci
                         </span>
 
                         @can('edit-draft')

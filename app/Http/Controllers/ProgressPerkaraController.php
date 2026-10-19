@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\PerkaraService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\View\View;
 
 class ProgressPerkaraController extends Controller
@@ -17,7 +18,7 @@ class ProgressPerkaraController extends Controller
      */
     public function index(Request $request): View
     {
-        \Illuminate\Support\Facades\Gate::authorize('view-progress-perkara');
+        Gate::authorize('view-progress-perkara');
 
         $berkasList = $this->perkaraService->getProgressPerkaraList($request);
 

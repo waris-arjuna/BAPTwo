@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\JenisTahap;
 use App\Models\BerkasPerkara;
 use App\Models\TahapanPerkara;
 use App\Services\TahapanService;
@@ -42,12 +43,12 @@ class P21Controller extends Controller
         if ($berkasId = $request->integer('berkas_id')) {
             $berkas = BerkasPerkara::findOrFail($berkasId);
 
-            if ($berkas->hasTahap(\App\Enums\JenisTahap::P21)) {
+            if ($berkas->hasTahap(JenisTahap::P21)) {
                 return redirect()->route('p21.index')
                     ->with('error', 'Berkas perkara ini sudah memiliki tahapan P-21 dan tidak dapat dipilih lagi.');
             }
 
-            if (! $this->tahapanService->canProceedTo($berkas, \App\Enums\JenisTahap::P21)) {
+            if (! $this->tahapanService->canProceedTo($berkas, JenisTahap::P21)) {
                 return redirect()->route('p21.index')
                     ->with('error', 'Berkas perkara ini belum memenuhi syarat untuk memulai P-21 (Tahap 1 belum final).');
             }

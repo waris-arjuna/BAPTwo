@@ -295,8 +295,29 @@
 
                 @empty
                     <tr>
-                        <td colspan="10" class="px-5 py-8 text-center text-sm text-gray-500 dark:text-gray-400">
-                            {{ __('No data available.') }}
+                        <td colspan="10" class="px-5 py-12 text-center">
+                            <div class="mx-auto flex max-w-md flex-col items-center justify-center text-center">
+                                <div class="flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 text-gray-400 dark:bg-gray-800 dark:text-gray-500">
+                                    <i class="fi fi-rr-search-alt text-xl" aria-hidden="true"></i>
+                                </div>
+                                <h3 class="mt-3 text-sm font-semibold text-gray-800 dark:text-white/90">
+                                    {{ __('Tidak ada berkas perkara yang ditemukan') }}
+                                </h3>
+                                <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                                    {{ request()->anyFilled(['search', 'status', 'tanggal_dari', 'tanggal_sampai'])
+                                        ? __('Tidak ada data yang sesuai dengan kriteria filter atau kata kunci Anda. Silakan coba kata kunci lain atau atur ulang filter.')
+                                        : __('Belum ada berkas perkara prioritas pada tahun anggaran yang dipilih.') }}
+                                </p>
+                                @if(request()->anyFilled(['search', 'status', 'tanggal_dari', 'tanggal_sampai']))
+                                    <a
+                                        href="{{ route('dashboard') }}"
+                                        class="mt-4 inline-flex items-center gap-1.5 rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 shadow-theme-xs transition hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+                                    >
+                                        <i class="fi fi-rr-refresh text-xs"></i>
+                                        <span>{{ __('Atur Ulang Filter') }}</span>
+                                    </a>
+                                @endif
+                            </div>
                         </td>
                     </tr>
                 @endforelse

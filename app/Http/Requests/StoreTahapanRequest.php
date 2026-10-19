@@ -3,6 +3,9 @@
 namespace App\Http\Requests;
 
 use App\Enums\JenisTahap;
+use App\Models\BerkasPerkara;
+use App\Services\TahapanService;
+use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -19,7 +22,7 @@ class StoreTahapanRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array<string, ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
@@ -35,16 +38,16 @@ class StoreTahapanRequest extends FormRequest
                 function ($attribute, $value, $fail) {
                     $berkas = $this->route('berkas');
                     if (is_numeric($berkas)) {
-                        $berkas = \App\Models\BerkasPerkara::find($berkas);
+                        $berkas = BerkasPerkara::find($berkas);
                     }
-                    if ($berkas instanceof \App\Models\BerkasPerkara) {
+                    if ($berkas instanceof BerkasPerkara) {
                         $enum = $value instanceof JenisTahap ? $value : JenisTahap::tryFrom((string) $value);
                         if ($enum && $berkas->hasTahap($enum)) {
                             $fail("Tahapan {$enum->label()} sudah pernah dicatat pada Berkas Perkara ini. Data dari tahap sebelumnya yang sudah dipakai tidak dapat dipilih lagi.");
 
                             return;
                         }
-                        $available = app(\App\Services\TahapanService::class)->getNextAvailableStages($berkas);
+                        $available = app(TahapanService::class)->getNextAvailableStages($berkas);
                         if ($enum && ! in_array($enum, $available, true)) {
                             $fail("Tahapan {$enum->label()} tidak valid untuk urutan Berkas Perkara saat ini.");
                         }

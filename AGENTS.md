@@ -240,7 +240,8 @@ Hanya dua: **Selesai** dan **Tidak Selesai**.
 - **Lint**: **Laravel Pint** (sudah terpasang). Cek: `php vendor/bin/pint --test`. Perbaiki: `php vendor/bin/pint`.
 - **Scheduler**: pakai Laravel Scheduler untuk trigger "Tidak Selesai" 1 Januari.
 - **Wilayah**: konsumsi **API Kode Wilayah** (lihat PRD F-37).
-- **Export**: gunakan package Laravel Excel (butuh approval sebelum install).
+- **Export**: menggunakan library `phpoffice/phpspreadsheet` murni untuk format ekspor Excel 44 kolom (.xlsx). Ekstensi PHP `zip` wajib aktif di `php.ini` (ref: D-035, D-041).
+- **Composer Config**: `"platform-check": false` dikonfigurasi di `composer.json` agar seluruh perintah CLI kompatibel di terminal lokal 32-bit maupun 64-bit (ref: D-041).
 
 ---
 
@@ -276,6 +277,12 @@ Selain konvensi TailAdmin, ikuti aturan berikut:
 - ❌ Mengubah bobot progress tanpa persetujuan.
 - ❌ Menaruh validasi tahapan / DPO gate **hanya di UI**. Harus ada di server.
 - ❌ Menampilkan nama file internal, dokumen aturan, atau referensi developer (seperti PRD, PRD F-xx, D-xx, T-xx, dll.) di teks antarmuka (UI) yang dilihat pengguna akhir. Seluruh teks bantuan, label, dan catatan di UI wajib bersih dan berfokus hanya pada petunjuk operasional pengguna.
+- ❌ Menggunakan gaya bahasa dan copywriting AI-slop: Dilarang menggunakan tanda em dash (`—`) dalam teks UI/copywriting. Dilarang menggunakan buzzword klise AI (seperti "revolusioner", "canggih", "seamless", "next-gen", dsb.). Gunakan bahasa Indonesia operasional hukum yang natural, baku, dan lugas.
+- ❌ Membuat komponen interaktif palsu atau mati (dead controls): Semua tombol, modal, link, tab, dan toggle wajib berfungsi nyata atau dihapus.
+- ❌ Menerapkan desain happy path only: Setiap tampilan penyajian data wajib menyertakan 3 state lengkap (data ada, empty state yang informatif, dan error/loading state).
+- ❌ Menggunakan visual generik AI-slop: Dilarang gradient ungu-biru / neon tanpa tujuan fungsional, dilarang glassmorphism berlebihan, dilarang border-radius pill pada seluruh elemen, dan dilarang ikon AI generik (sparkle, magic, robot).
+- ❌ Mengabaikan standar kontras dan aksesibilitas: Seluruh teks wajib memenuhi standar WCAG AA (kontras rasio minimal 4.5:1 untuk teks normal).
+- ❌ Langsung mengeksekusi kode atau perubahan tanpa penyelarasan (/grill-me): Dilarang langsung mengubah kode, skema, atau tampilan sebelum menyamakan pendapat dengan pengguna. Agent WAJIB mengajukan pertanyaan terarah/klarifikasi desain (menggunakan metode /grill-me dan dialog interaktif) untuk menyepakati rencana sebelum eksekusi.
 - ❌ Install package Composer/NPM baru tanpa bertanya (aturan TailAdmin tetap berlaku).
 
 ---
@@ -301,9 +308,9 @@ Merujuk PRD bagian 8:
 
 1. Baca `PRD.md`, `ARCHITECTURE.md`, `TASKS.md`, `DECISIONS.md`, `README.md`, dan file ini.
 2. Ringkas tujuan sesi + task yang akan dikerjakan.
-3. Jika task menyentuh aturan domain di bagian 3 → konfirmasi interpretasi dulu sebelum coding.
-4. Buat rencana implementasi singkat (file yang akan diubah/dibuat).
-5. Kerjakan **satu task kecil** dulu; jangan langsung banyak.
+3. **Wajib Penyelarasan (/grill-me)**: Sebelum menulis atau mengubah kode/skema/tampilan, ajukan pertanyaan terarah, klarifikasi kebutuhan, dan alternatif solusi kepada pengguna agar satu persepsi. Jangan langsung mengeksekusi sebelum ada kesepakatan eksplisit.
+4. Buat rencana implementasi singkat yang telah disetujui pengguna (daftar file yang akan diubah/dibuat).
+5. Kerjakan **satu task kecil** yang telah disepakati dulu; jangan langsung banyak.
 6. Setelah selesai: jalankan `composer test` + `php vendor/bin/pint --test`.
 7. Laporkan dengan format di bagian 10.
 8. Update `TASKS.md` (centang/geser status) dan `DECISIONS.md` jika ada keputusan teknis baru.
@@ -339,3 +346,50 @@ Cara Uji
 <langkah>
 Catatan / Keputusan
 <opsional — tulis juga ke DECISIONS.md jika penting>
+
+---
+
+## 11. Aturan Anti AI-Slop & Standar Craftsmanship (ref: D-042)
+
+Semua implementasi UI, copywriting, dan logika di BAPTwo wajib memenuhi standar antislop dan craftsmanship berikut:
+
+1. **Copywriting & Bahasa Indonesia yang Alami**:
+   - Dilarang keras menggunakan em dash (`—`) di teks UI pengguna. Gunakan koma (`,`), titik (`.`), titik dua (`:`), atau tanda kurung `()`.
+   - Dilarang kata-kata buzzword marketing generik AI ("Revolusioner", "Canggih", "Seamless", "Next-Gen", "Powerful", "Ultimate", dsb.).
+   - Gunakan istilah hukum dan operasional resmi BPOM/KUHAP ("Tahap Final & Terkunci", "Pelimpahan Tersangka & Barang Bukti", "Penetapan DPO", "Penghentian Penyidikan/SP3").
+   - Bersih 100% dari kebocoran istilah teknis internal developer (`PRD`, `F-xx`, `D-xx`, `T-xx`) pada teks antarmuka yang dilihat pengguna.
+
+2. **Kelengkapan Fungsional & Kontrol Nyata**:
+   - Setiap elemen interaktif (tombol, dropdown, modal, tab, link) wajib memiliki fungsi aksi nyata. Dilarang membuat tombol atau link mati (dead controls) yang tidak melakukan apa-apa.
+   - Jika aksi belum didukung dalam scope v1.0, hapus elemen tersebut dari tampilan daripada membiarkannya mati.
+
+3. **Ketahanan UI (Resilience & 3 State Wajib)**:
+   - Dilarang mendesain *happy path only*. Setiap tampilan data wajib memiliki:
+     - **Empty state**: Tampilan ramah dan informatif saat belum ada data (bukan sekadar tabel kosong atau putih polos).
+     - **Loading state**: Indikator saat data sedang diambil (AJAX partial / filter).
+     - **Error state**: Penanganan kegagalan yang jelas (modal / alert kesalahan validasi yang dapat ditindaklanjuti).
+
+4. **Visual & Styling Proporsional**:
+   - Dilarang menggunakan gradient ungu-biru, neon, atau glow berlebihan yang mencirikan default AI slop.
+   - Pertahankan tema warna resmi TailAdmin & BPOM (`brand`, `gray`, `success`, `error`, `warning`).
+   - Dilarang membuat semua komponen berbentuk pil (*pill-shaped*). Variasi radius sudut harus konsisten dengan hierarki desain.
+   - Seluruh ikon wajib menggunakan Flaticon UIcons kontekstual (`fi fi-rr-...`). Dilarang ikon AI generik (sparkle, magic, robot, diamond).
+
+5. **Aksesibilitas & Responsif (WCAG AA)**:
+   - Kontras warna teks wajib memenuhi standar rasio minimal **4.5:1** untuk teks normal dan **3:1** untuk teks besar (18px+).
+   - Seluruh modal wajib dapat ditutup dengan tombol `Escape` dan memiliki backdrop focus trap.
+   - Responsif pada tampilan seluler (tanpa overflow horizontal, target ketukan minimal 44px).
+
+<!-- antislop:start -->
+## antislop
+For UI, copy, people, mobile layout, or code comments work, read `antislop.md` (core) and then the skill for the task:
+- UI / visual: `skills/antislop-ui/SKILL.md`
+- Copy & text: `skills/antislop-copywriting/SKILL.md`
+- People: `skills/antislop-human/SKILL.md`
+- Mobile / responsive: `skills/antislop-layoutmobile/SKILL.md`
+- Code comments: `skills/antislop-code/SKILL.md`
+Before starting, follow the core's "Two Usage Modes" section in strict order: explicit session instruction first, then global preference, then ask. A session instruction always wins. For a resolved mode, say `antislop active: <mode> (session override).` or `antislop active: <mode> (global preference).` once before presenting findings or making edits, using the actual mode and source. Acknowledging the user's request without naming the source does not replace this notice.
+Only an explicit choice of antislop during or after selects a session mode. A request to review, audit, or avoid file edits does not select a mode; read the global preference in that case. Another skill's mode does not select antislop's mode.
+If the mode is unresolved, ask during/after and end the response; wait for the answer before any UI review, planning, or concept. For read-only tasks, put the active-mode notice only at the start of the final answer, never in progress messages. For editing tasks, announce before the first edit and omit it from the final answer.
+To update antislop later: download `antislop.md` again, or run `npx antislop-ai --update` if it was installed as skill folders.
+<!-- antislop:end -->
