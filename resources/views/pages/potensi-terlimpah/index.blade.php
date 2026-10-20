@@ -5,19 +5,19 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
-        {{-- Breadcrumb --}}
-        <x-common.page-breadcrumb
-            pageTitle="Monitoring Potensi Terlimpah"
+    <div class="space-y-6">
+        {{-- Breadcrumb & Header --}}
+        <x-page-header
+            title="Monitoring Potensi Terlimpah"
             :breadcrumbs="[
-                ['title' => 'Menu Utama', 'url' => route('dashboard')],
-                ['title' => 'Data Perkara', 'url' => route('data-perkara.index')],
-                ['title' => 'Potensi Terlimpah', 'url' => ''],
+                ['label' => 'Menu Utama', 'url' => route('dashboard')],
+                ['label' => 'Data Perkara', 'url' => route('data-perkara.index')],
+                ['label' => 'Potensi Terlimpah'],
             ]"
         />
 
         {{-- Banner Edukasi & Peringatan Dini Batas Akhir Tahun (PRD F-41) --}}
-        <div class="mb-6 rounded-2xl border border-amber-200 bg-amber-50/70 p-4 text-xs text-amber-900 dark:border-amber-900/40 dark:bg-amber-950/20 dark:text-amber-300">
+        <div class="rounded-2xl border border-amber-200 bg-amber-50/70 p-4 text-xs text-amber-900 dark:border-amber-900/40 dark:bg-amber-950/20 dark:text-amber-300">
             <div class="flex items-start gap-3">
                 <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-amber-600 dark:bg-amber-900/40 dark:text-amber-400">
                     <i class="fi fi-rr-alarm-exclamation text-base"></i>
@@ -32,7 +32,7 @@
         </div>
 
         {{-- 5 Kartu Metrik Ringkasan Potensi Terlimpah --}}
-        <div class="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5 md:gap-5">
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5 md:gap-5">
             {{-- Berkas Berjalan Aktif --}}
             <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs dark:border-gray-800 dark:bg-gray-900">
                 <div class="flex items-center gap-3">

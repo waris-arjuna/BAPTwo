@@ -1,139 +1,196 @@
 @props(['data' => null, 'tahun' => null])
 
 @php
-    $tahun ??= (int) date('Y');
+    $tahun = (int) ($tahun ?: date('Y'));
     $data ??= app(\App\Services\DashboardService::class)->getCaseStatusData($tahun);
-
-    $totalPerkara = $data['totalPerkara'] ?? 0;
-    $selesai = $data['selesai'] ?? 0;
-    $dalamProses = $data['dalamProses'] ?? 0;
-    $tidakSelesai = $data['tidakSelesai'] ?? 0;
-
-    $selesaiPercent = $data['selesaiPercent'] ?? 0;
-    $dalamProsesPercent = $data['dalamProsesPercent'] ?? 0;
-    $tidakSelesaiPercent = $data['tidakSelesaiPercent'] ?? 0;
-
-    $circumference = 2 * pi() * 48;
-
-    $dalamProsesLength = ($dalamProsesPercent / 100) * $circumference;
-    $selesaiLength = ($selesaiPercent / 100) * $circumference;
-    $tidakSelesaiLength = ($tidakSelesaiPercent / 100) * $circumference;
-
-    // offset kumulatif, bukan cuma offset segmen sebelumnya
-    $selesaiOffset = $dalamProsesLength;
-    $tidakSelesaiOffset = $dalamProsesLength + $selesaiLength;
+    $availableYears = $data['availableYears'] ?? app(\App\Services\DashboardService::class)->getAvailableYears();
+    $periodeText = $data['periodeText'] ?? "Tahun {$tahun}";
+    $updatedAt = $data['updatedAt'] ?? '';
 @endphp
 
-<div class="h-full rounded-2xl border border-gray-200 bg-white shadow-theme-xs dark:border-gray-800 dark:bg-white/[0.03]">
+<div
+    x-data="caseStatusCard({
+        url: '{{ route('dashboard.case-status') }}',
+        currentTahun: {{ $tahun }},
+        currentBulan: '{{ $data['bulan'] ?? '' }}',
+        periodeText: '{{ $periodeText }}',
+        updatedAt: '{{ $updatedAt }}'
+    })"
+    class="h-full rounded-2xl border border-gray-200 bg-white shadow-theme-xs dark:border-gray-800 dark:bg-white/[0.03]"
+>
 
-    <div class="border-b border-gray-200 px-5 py-5 sm:px-6 dark:border-gray-800">
-        <h2 class="text-lg font-semibold text-gray-800 dark:text-white/90">
-            Perkara Tahun Berjalan {{ $tahun }}
-        </h2>
-        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-            Ringkasan monitoring proporsi berkas perkara.
-        </p>
-    </div>
+    {{-- Card Header --}}
+    <div class="flex flex-col gap-3 border-b border-gray-200 px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 dark:border-gray-800">
+        <div>
+            <div class="flex items-center gap-2">
+                <h2 class="text-base font-semibold text-gray-800 dark:text-white/90">
+                    Perkara Tahun Berjalan (<span x-text="periodeText">{{ $periodeText }}</span>)
+                </h2>
 
-    <div class="p-5 sm:p-6">
+                {{-- Info Tooltip Button (A-2) --}}
+                <div class="relative inline-block" @keydown.escape.window="showInfo = false">
+                    <button
+                        type="button"
+                        @click="showInfo = !showInfo"
+                        @mouseenter="showInfo = true"
+                        @mouseleave="showInfo = false"
+                        @focus="showInfo = true"
+                        @blur="showInfo = false"
+                        class="flex h-5 w-5 items-center justify-center rounded-full text-gray-400 transition hover:bg-gray-100 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-brand-500 dark:hover:bg-gray-800 dark:hover:text-gray-300"
+                        aria-label="Informasi perhitungan status perkara"
+                        aria-haspopup="dialog"
+                        :aria-expanded="showInfo"
+                    >
+                        <i class="fi fi-rr-info text-xs"></i>
+                    </button>
 
-        {{-- Donut --}}
-        <div class="flex justify-center">
-            <div class="relative h-52 w-52">
-                <svg class="h-full w-full -rotate-90" viewBox="0 0 120 120">
-                    {{-- Background --}}
-                    <circle
-                        cx="60" cy="60" r="48" fill="none"
-                        class="stroke-gray-100 dark:stroke-gray-800"
-                        stroke-width="14"
-                    />
-
-                    {{-- Dalam Proses --}}
-                    @if ($dalamProsesPercent > 0)
-                        <circle
-                            cx="60" cy="60" r="48" fill="none"
-                            class="stroke-brand-500"
-                            stroke-width="14"
-                            stroke-dasharray="{{ $dalamProsesLength }} {{ $circumference }}"
-                            stroke-dashoffset="0"
-                        />
-                    @endif
-
-                    {{-- Selesai --}}
-                    @if ($selesaiPercent > 0)
-                        <circle
-                            cx="60" cy="60" r="48" fill="none"
-                            class="stroke-success-500"
-                            stroke-width="14"
-                            stroke-dasharray="{{ $selesaiLength }} {{ $circumference }}"
-                            stroke-dashoffset="-{{ $selesaiOffset }}"
-                        />
-                    @endif
-
-                    {{-- Tidak Selesai --}}
-                    @if ($tidakSelesaiPercent > 0)
-                        <circle
-                            cx="60" cy="60" r="48" fill="none"
-                            class="stroke-error-500"
-                            stroke-width="14"
-                            stroke-dasharray="{{ $tidakSelesaiLength }} {{ $circumference }}"
-                            stroke-dashoffset="-{{ $tidakSelesaiOffset }}"
-                        />
-                    @endif
-                </svg>
-
-                <div class="absolute inset-0 flex flex-col items-center justify-center">
-                    <p class="text-3xl font-semibold text-gray-800 dark:text-white/90">
-                        {{ $totalPerkara }}
-                    </p>
-                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                        Total Perkara
-                    </p>
+                    <div
+                        x-show="showInfo"
+                        x-cloak
+                        @click.outside="showInfo = false"
+                        class="absolute left-0 top-full z-50 mt-2 w-72 rounded-xl border border-gray-200 bg-white p-3.5 text-xs shadow-lg dark:border-gray-800 dark:bg-gray-900 dark:text-gray-300"
+                        role="tooltip"
+                    >
+                        <div class="flex items-center gap-1.5 font-semibold text-gray-800 dark:text-white/90">
+                            <i class="fi fi-rr-info text-brand-500"></i>
+                            <span>Informasi Monitoring</span>
+                        </div>
+                        <p class="mt-1.5 leading-relaxed text-gray-600 dark:text-gray-400">
+                            Proporsi dihitung dengan metode Largest Remainder berdasarkan total perkara pada periode Laporan Kejadian terpilih (total selalu 100%). Kategori Dalam Proses merupakan ringkasan visual monitoring perkara aktif, bukan status resmi berkas perkara.
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        {{-- Legend --}}
-        <div class="mt-6 space-y-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                    <span class="h-2.5 w-2.5 rounded-full bg-success-500"></span>
-                    <span class="text-sm text-gray-600 dark:text-gray-400">Selesai</span>
-                </div>
-                <span class="text-sm font-medium text-gray-800 dark:text-white/90">
-                    {{ $selesai }} ({{ $selesaiPercent }}%)
-                </span>
-            </div>
-
-            <div class="flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                    <span class="h-2.5 w-2.5 rounded-full bg-brand-500"></span>
-                    <span class="text-sm text-gray-600 dark:text-gray-400">Dalam Proses</span>
-                </div>
-                <span class="text-sm font-medium text-gray-800 dark:text-white/90">
-                    {{ $dalamProses }} ({{ $dalamProsesPercent }}%)
-                </span>
-            </div>
-
-            <div class="flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                    <span class="h-2.5 w-2.5 rounded-full bg-error-500"></span>
-                    <span class="text-sm text-gray-600 dark:text-gray-400">Tidak Selesai</span>
-                </div>
-                <span class="text-sm font-medium text-gray-800 dark:text-white/90">
-                    {{ $tidakSelesai }} ({{ $tidakSelesaiPercent }}%)
-                </span>
-            </div>
-        </div>
-
-        <div class="mt-6 border-t border-gray-200 pt-4 dark:border-gray-800">
-            <p class="text-xs leading-5 text-gray-400 dark:text-gray-500">
-                Perhitungan persentase berdasarkan total perkara pada Tahun Berjalan.
-                "Dalam Proses" dan "Belum Dimulai" merupakan kategori visual monitoring dashboard,
-                bukan status resmi perkara.
+            <p class="mt-0.5 text-xs text-gray-500 dark:text-gray-400">
+                Diperbarui: <span x-text="updatedAt">{{ $updatedAt }}</span>
             </p>
         </div>
 
+        {{-- Period Filters (C-1) --}}
+        <div class="flex items-center gap-2">
+            {{-- Dropdown Bulan --}}
+            <select
+                x-model="selectedBulan"
+                @change="fetchData()"
+                class="h-8 rounded-lg border border-gray-200 bg-white px-2.5 text-xs font-medium text-gray-700 shadow-theme-xs transition hover:border-gray-300 focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-300 dark:hover:border-gray-700"
+                aria-label="Pilih Bulan"
+            >
+                <option value="">Semua Bulan</option>
+                @foreach ([1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April', 5 => 'Mei', 6 => 'Juni', 7 => 'Juli', 8 => 'Agustus', 9 => 'September', 10 => 'Oktober', 11 => 'November', 12 => 'Desember'] as $mNum => $mName)
+                    <option value="{{ $mNum }}" {{ ($data['bulan'] ?? null) == $mNum ? 'selected' : '' }}>
+                        {{ $mName }}
+                    </option>
+                @endforeach
+            </select>
+
+            {{-- Dropdown Tahun --}}
+            <select
+                x-model="selectedTahun"
+                @change="fetchData()"
+                class="h-8 rounded-lg border border-gray-200 bg-white px-2.5 text-xs font-medium text-gray-700 shadow-theme-xs transition hover:border-gray-300 focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-300 dark:hover:border-gray-700"
+                aria-label="Pilih Tahun"
+            >
+                @foreach ($availableYears as $y)
+                    <option value="{{ $y }}" {{ $tahun == $y ? 'selected' : '' }}>
+                        {{ $y }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+    </div>
+
+    {{-- Loading Skeleton (A-7) --}}
+    <div x-show="isLoading" x-cloak class="p-5 sm:p-6" aria-busy="true" aria-label="Memuat status perkara...">
+        <div class="flex flex-col items-center justify-center">
+            <div class="relative flex h-56 w-56 items-center justify-center">
+                <div class="flex h-48 w-48 animate-pulse items-center justify-center rounded-full border-[14px] border-gray-100 dark:border-gray-800">
+                    <div class="flex flex-col items-center gap-1.5">
+                        <div class="h-8 w-16 animate-pulse rounded-lg bg-gray-200 dark:bg-gray-700"></div>
+                        <div class="h-3 w-20 animate-pulse rounded bg-gray-100 dark:bg-gray-800"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-6 space-y-3">
+            <div class="h-10 w-full animate-pulse rounded-xl bg-gray-100 dark:bg-gray-800"></div>
+            <div class="h-28 w-full animate-pulse rounded-xl bg-gray-100 dark:bg-gray-800"></div>
+            <div class="h-10 w-full animate-pulse rounded-xl bg-gray-100 dark:bg-gray-800"></div>
+        </div>
+    </div>
+
+    {{-- Dynamic Content Container --}}
+    <div x-show="!isLoading" x-ref="contentContainer" class="p-5 sm:p-6">
+        @include('components.dashboard._case-status-content', [
+            'data' => $data,
+            'tahun' => $tahun,
+            'bulan' => $data['bulan'] ?? null,
+        ])
     </div>
 
 </div>
+
+<script>
+    (function () {
+        const initCaseStatus = () => {
+            if (window.Alpine && !window.Alpine._caseStatusRegistered) {
+                window.Alpine._caseStatusRegistered = true;
+                window.Alpine.data('caseStatusCard', (config) => ({
+                    url: config.url,
+                    selectedTahun: config.currentTahun,
+                    selectedBulan: config.currentBulan,
+                    periodeText: config.periodeText,
+                    updatedAt: config.updatedAt,
+                    showInfo: false,
+                    isLoading: false,
+
+                    async fetchData() {
+                        this.isLoading = true;
+                        try {
+                            const params = new URLSearchParams();
+                            if (this.selectedTahun) params.append('tahun', this.selectedTahun);
+                            if (this.selectedBulan) params.append('bulan', this.selectedBulan);
+
+                            const res = await fetch(`${this.url}?${params.toString()}`, {
+                                headers: {
+                                    'X-Requested-With': 'XMLHttpRequest',
+                                    'Accept': 'text/html'
+                                }
+                            });
+
+                            if (!res.ok) throw new Error('Gagal memuat status perkara');
+
+                            const html = await res.text();
+                            const container = this.$refs.contentContainer;
+                            if (container) {
+                                container.innerHTML = html;
+                                if (window.Alpine && typeof window.Alpine.initTree === 'function') {
+                                    window.Alpine.initTree(container);
+                                }
+                            }
+
+                            const headerPeriode = res.headers.get('X-Periode-Text');
+                            const headerUpdated = res.headers.get('X-Updated-At');
+                            if (headerPeriode) {
+                                this.periodeText = headerPeriode;
+                            }
+                            if (headerUpdated) {
+                                this.updatedAt = headerUpdated;
+                            }
+                        } catch (err) {
+                            console.error('CaseStatus fetch error:', err);
+                        } finally {
+                            this.isLoading = false;
+                        }
+                    }
+                }));
+            }
+        };
+
+        if (window.Alpine) {
+            initCaseStatus();
+        } else {
+            document.addEventListener('alpine:init', initCaseStatus);
+        }
+    })();
+</script>

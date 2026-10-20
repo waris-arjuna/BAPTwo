@@ -12,7 +12,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="mx-auto max-w-screen-xl px-4 pb-8 pt-6 lg:px-6">
+    <div class="mx-auto max-w-screen-xl">
         @if ($errors->any())
             <div class="mb-6 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-500/20 dark:bg-red-500/10 dark:text-red-300">
                 <div class="flex items-center gap-2 font-medium">

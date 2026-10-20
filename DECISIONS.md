@@ -448,7 +448,7 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
        - Scrolling halaman atau kontainer tabel (`window.addEventListener('scroll', ..., true)` pada fase *capture* yang menangkap scroll di elemen `div.overflow-x-auto`).
        - Penekanan tombol `Esc` (`@keydown.escape.window`).
        - Perubahan ukuran jendela browser (`resize`).
-       - Pembersihan listener otomatis saat komponen di-*unmount* via `this.$cleanup(...)`.
+       - Pembersihan listener otomatis saat komponen di-*unmount* via lifecycle hook resmi Alpine `destroy()`.
      - **Preservasi Visual & Desain**:
        - Tampilan visual tombol "Aksi", border, sudut membulat, bayangan (`shadow-theme-lg`), mode gelap (`dark:`), dan icon panah berotasi (`fi fi-rr-angle-small-down`) 100% identik dengan gaya TailAdmin.
   2. **Migrasi Seluruh Tabel**:
@@ -892,6 +892,39 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
   3. Header modal menyediakan kendali lengkap: nama dokumen, tombol unduh (`dokumen.download`), tombol buka tab baru (`dokumen.preview`), dan tombol tutup.
   4. Menyediakan indikator loading saat iframe memuat dan fallback informatif jika peramban (misal browser perangkat bergerak) membatasi penyematan iframe PDF.
 - Konsekuensi: Penyidik dan pimpinan dapat memeriksa keabsahan dokumen perkara secara instan di dalam satu alur kerja terpadu tanpa kehilangan konteks halaman.
+
+---
+
+## D-048 : Upgrade Donut Chart Monitoring Perkara, Largest Remainder Method, 4 Sub-kategori SLA, Filter Periode AJAX, dan Drill-down Terfilter
+
+- Tanggal: 2026-10-20
+- Status: Disepakati & Diimplementasikan
+- Konteks: Kartu dashboard "Perkara Tahun Berjalan" sebelumnya menggunakan teks statis, catatan kaki menyebutkan kategori "Belum Dimulai" yang membingungkan, perhitungan persentase berisiko tidak mencapai 100% akibat pembulatan integer, warna merah pada "Tidak Selesai" memberi konotasi error pada penghentian sah (SP3), dan belum memiliki pecahan SLA, filter periode reaktif, maupun navigasi drill-down.
+- Keputusan:
+  1. **Agregasi Server-side Tunggal & Largest Remainder Method (Hare-Niemeyer)**:
+     - `DashboardService::getCaseStatusData(?int $tahun, ?int $bulan)` mengagregasi data status formal (`Selesai`, `Dalam Proses`, `Tidak Selesai`) dalam satu query SQL efisien dengan `CASE WHEN`, menggunakan acuan tanggal Laporan Kejadian (LK).
+     - Persentase dihitung dengan Largest Remainder Method (`calculatePercentages`), menjamin total selalu tepat 100% tanpa sisa pembulatan desimal.
+     - Kategori "Belum Dimulai" dihapus dari catatan dan tooltip karena seluruh perkara aktif berstatus "Dalam Proses".
+  2. **Indikator Aksesibilitas & Non-Warna**:
+     - Warna "Tidak Selesai" (termasuk SP3) dialihkan ke warna abu-abu netral (`stroke-gray-400 dark:stroke-gray-500`) karena SP3 adalah tahap akhir yang sah, bukan kesalahan.
+     - Setiap baris legend dan sub-kategori dilengkapi icon Flaticon non-warna untuk mendukung aksesibilitas pengguna buta warna.
+     - Catatan kaki panjang digantikan oleh tombol info (ⓘ) dengan tooltip popover di header kartu.
+     - Tanggal pembaruan dinamis ("Diperbarui: DD MMM YYYY, HH:mm WITA") menggantikan teks statis.
+     - Dilengkapi empty state ("Belum ada perkara pada periode ini"), loading skeleton, `aria-label`, dan teks tersembunyi untuk screen reader.
+  3. **Pecahan 4 Sub-Kategori SLA pada "Dalam Proses"**:
+     - Ditampilkan 4 sub-baris kecil:
+       a. Belum Ada SPDP (Pra-SPDP / `sla_deadline IS NULL`)
+       b. Dalam SLA (> 7 hari)
+       c. Mendekati Batas (≤ 7 hari / konstanta `AMBANG_MENDEKATI_SLA_HARI = 7`)
+       d. Melewati SLA (`sla_deadline < today`)
+     - Jumlah keempat sub-baris dijamin selalu persis sama dengan jumlah total "Dalam Proses".
+  4. **Interaktivitas, Filter Periode AJAX & Drill-Down**:
+     - Dropdown Tahun dan Bulan di header kartu; perubahan periode memicu pembaruan AJAX ke endpoint `Route::get('/dashboard/case-status')` tanpa reload halaman penuh.
+     - Dilengkapi indikator pembanding terhadap tahun sebelumnya ("▲ X perkara dibanding {tahun - 1}").
+     - Hover pada segmen chart menampilkan tooltip dinamis di tengah donut dan `<title>` browser.
+     - Klik pada segmen donut, baris legend, atau sub-baris SLA langsung mengarahkan ke `/seluruh-perkara` terfilter (query string: `tahun`, `bulan`, `status`, `sla`) yang dapat diakses oleh seluruh peran (Penyidik, Pimpinan, Administrator) tanpa hambatan permission.
+- Konsekuensi: Dashboard monitoring menyajikan proporsi penanganan perkara secara akurat, informatif, dan interaktif dengan aksesibilitas tinggi dan beban query database yang sangat ringan.
+
 
 
 

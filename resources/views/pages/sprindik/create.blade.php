@@ -7,7 +7,7 @@
 @section('content')
     <div
         x-data="{ fileName: '' }"
-        class="mx-auto max-w-screen-xl px-4 pb-8 pt-6 lg:px-6"
+        class="mx-auto max-w-screen-xl"
     >
         {{-- Header --}}
         <div class="mb-6">

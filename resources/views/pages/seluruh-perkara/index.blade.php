@@ -5,19 +5,17 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+    <div class="space-y-6">
         {{-- Header & Breadcrumb --}}
-        <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <x-common.page-breadcrumb
-                pageTitle="Seluruh Perkara"
-                :breadcrumbs="[
-                    ['title' => 'Menu Utama', 'url' => route('dashboard')],
-                    ['title' => 'Seluruh Perkara', 'url' => ''],
-                ]"
-            />
-
+        <x-page-header
+            title="Seluruh Perkara"
+            :breadcrumbs="[
+                ['label' => 'Menu Utama', 'url' => route('dashboard')],
+                ['label' => 'Seluruh Perkara'],
+            ]"
+        >
             @can('export-excel')
-                <div>
+                <x-slot:actions>
                     <button
                         type="button"
                         @click="$dispatch('open-export-modal')"
@@ -26,9 +24,9 @@
                         <i class="fi fi-rr-file-excel text-base text-success-600 dark:text-success-400"></i>
                         <span>Ekspor Excel</span>
                     </button>
-                </div>
+                </x-slot:actions>
             @endcan
-        </div>
+        </x-page-header>
 
         {{-- 5 Kartu Statistik Ringkasan Perkara (PRD F-38, F-40) --}}
         <div class="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5 md:gap-5">

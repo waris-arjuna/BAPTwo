@@ -327,11 +327,11 @@ class PerkaraRekapExport
         $this->setTextCell($sheet, "F{$row}", $pasalVal);
 
         // 7. PPNS Utama
-        $ppnsUtama = $perkara->ppnsUtama->first()?->name ?? '-';
+        $ppnsUtama = $perkara->ppnsUtama->first()?->nama ?? '-';
         $this->setTextCell($sheet, "G{$row}", $ppnsUtama);
 
         // 8. PPNS Anggota (Format tata bahasa: koma, 'dan' di tengah untuk 2 item, dan titik di akhir)
-        $ppnsAnggotaList = $perkara->ppnsAnggota->pluck('name')->filter()->values()->all() ?? [];
+        $ppnsAnggotaList = $perkara->ppnsAnggota->pluck('nama')->filter()->values()->all() ?? [];
         $ppnsAnggotaVal = $this->formatList($ppnsAnggotaList);
         $this->setTextCell($sheet, "H{$row}", $ppnsAnggotaVal);
 

@@ -89,7 +89,7 @@
 
 @section('content')
     <div
-        class="mx-auto max-w-screen-xl px-4 pb-8 pt-6 lg:px-6"
+        class="mx-auto max-w-screen-xl"
         x-data="{
             // Modal Penetapan DPO
             isDpoModalOpen: false,

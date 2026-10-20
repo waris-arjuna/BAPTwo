@@ -31,11 +31,6 @@ use Illuminate\Support\Facades\Route;
 // Captcha
 Route::get('/captcha/refresh', [MathCaptchaController::class, 'refresh'])->name('captcha.refresh');
 
-// Error pages
-Route::get('/error-404', function () {
-    return view('pages.errors.error-404', ['title' => 'Error 404']);
-})->name('error-404');
-
 // Guest authentication pages
 Route::middleware('guest')->group(function () {
     Route::get('/masuk', [AuthController::class, 'showSignin'])->name('masuk');
@@ -57,6 +52,7 @@ Route::middleware('auth')->group(function () {
 
     // Dashboard
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard/case-status', [DashboardController::class, 'caseStatus'])->name('dashboard.case-status');
 
     // Profile
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile');

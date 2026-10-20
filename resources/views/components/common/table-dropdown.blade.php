@@ -78,11 +78,11 @@
                 if (this.isOpen) this.close();
             };
             window.addEventListener('resize', this.resizeListener);
+        },
 
-            this.$cleanup(() => {
-                window.removeEventListener('scroll', this.scrollListener, true);
-                window.removeEventListener('resize', this.resizeListener);
-            });
+        destroy() {
+            window.removeEventListener('scroll', this.scrollListener, true);
+            window.removeEventListener('resize', this.resizeListener);
         }
     }"
     x-init="init()"

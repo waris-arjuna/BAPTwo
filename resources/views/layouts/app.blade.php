@@ -148,7 +148,7 @@
             <!-- app header start -->
             @include('layouts.app-header')
             <!-- app header end -->
-            <div class="p-4 mx-auto max-w-(--breakpoint-2xl) md:p-6">
+            <div class="w-full max-w-[2000px] mx-auto px-6 py-6 xl:px-8" data-content-wrapper>
                 <x-common.flash-alert />
                 @yield('content')
             </div>

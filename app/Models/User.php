@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Enums\UserRole;
 use Database\Factories\UserFactory;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -31,7 +30,6 @@ class User extends Authenticatable
         'panggol_id',
         'alamat_id',
         'nama',
-        'name',
         'nip',
         'email',
         'password',
@@ -71,17 +69,6 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
-    }
-
-    /**
-     * Alias 'name' to 'nama' for compatibility.
-     */
-    protected function name(): Attribute
-    {
-        return Attribute::make(
-            get: fn (mixed $value, array $attributes) => $attributes['nama'] ?? null,
-            set: fn (?string $value) => ['nama' => $value],
-        );
     }
 
     public function jabatan(): BelongsTo

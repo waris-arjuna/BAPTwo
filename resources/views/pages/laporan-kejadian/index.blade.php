@@ -3,43 +3,26 @@
 @section('content')
     <div class="space-y-6">
         {{-- Header --}}
-        <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-                <div class="mb-2 flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-                    <a
-                        href="{{ url('/') }}"
-                        class="hover:text-brand-500"
-                    >
-                        Home
-                    </a>
-
-                    <span>/</span>
-
-                    <span class="text-gray-700 dark:text-gray-300">
-                        Laporan Kejadian
-                    </span>
-                </div>
-
-                <h1 class="text-2xl font-semibold text-gray-800 dark:text-white/90">
-                    Laporan Kejadian
-                </h1>
-
-                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                    Kelola data laporan kejadian sebagai dasar proses penyidikan.
-                </p>
-            </div>
-
+        <x-page-header
+            title="Laporan Kejadian"
+            subtitle="Kelola data laporan kejadian sebagai dasar proses penyidikan."
+            :breadcrumbs="[
+                ['label' => 'Home', 'url' => url('/')],
+                ['label' => 'Laporan Kejadian'],
+            ]"
+        >
             @can('create-cases')
-                <a
-                    href="{{ route('laporan-kejadian.create') }}"
-                    class="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-500 px-4 py-2.5 text-sm font-medium text-white shadow-theme-xs transition hover:bg-brand-600"
-                >
-                    <i class="fi fi-rr-plus-small text-lg"></i>
-
-                    Tambah Laporan Kejadian
-                </a>
+                <x-slot:actions>
+                    <a
+                        href="{{ route('laporan-kejadian.create') }}"
+                        class="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-500 px-4 py-2.5 text-sm font-medium text-white shadow-theme-xs transition hover:bg-brand-600"
+                    >
+                        <i class="fi fi-rr-plus-small text-lg"></i>
+                        <span>Tambah Laporan Kejadian</span>
+                    </a>
+                </x-slot:actions>
             @endcan
-        </div>
+        </x-page-header>
 
         {{-- Table Area --}}
         <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">

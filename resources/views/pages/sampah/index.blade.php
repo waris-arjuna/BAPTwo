@@ -5,19 +5,19 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
-        {{-- Breadcrumb --}}
-        <x-common.page-breadcrumb
-            pageTitle="Sampah &amp; Pemulihan Data"
+    <div class="space-y-6">
+        {{-- Breadcrumb & Header --}}
+        <x-page-header
+            title="Sampah &amp; Pemulihan Data"
             :breadcrumbs="[
-                ['title' => 'Menu Utama', 'url' => route('dashboard')],
-                ['title' => 'Sistem', 'url' => '#'],
-                ['title' => 'Sampah', 'url' => ''],
+                ['label' => 'Menu Utama', 'url' => route('dashboard')],
+                ['label' => 'Sistem', 'url' => '#'],
+                ['label' => 'Sampah'],
             ]"
         />
 
         {{-- Banner Edukasi Soft Delete (PRD F-44) --}}
-        <div class="mb-6 rounded-2xl border border-blue-200 bg-blue-50/70 p-4 text-xs text-blue-800 dark:border-blue-900/40 dark:bg-blue-950/20 dark:text-blue-300">
+        <div class="rounded-2xl border border-blue-200 bg-blue-50/70 p-4 text-xs text-blue-800 dark:border-blue-900/40 dark:bg-blue-950/20 dark:text-blue-300">
             <div class="flex items-start gap-3">
                 <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-100 text-blue-600 dark:bg-blue-900/40 dark:text-blue-400">
                     <i class="fi fi-rr-info text-base"></i>

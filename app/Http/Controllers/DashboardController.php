@@ -39,4 +39,28 @@ class DashboardController extends Controller
             'perkaraList' => $perkaraList,
         ]);
     }
+
+    /**
+     * Endpoint AJAX status perkara untuk Donut Chart.
+     */
+    public function caseStatus(Request $request)
+    {
+        $tahun = $request->integer('tahun') ?: (int) date('Y');
+        $bulan = $request->integer('bulan') ?: null;
+
+        $caseStatus = $this->dashboardService->getCaseStatusData($tahun, $bulan);
+
+        if ($request->wantsJson()) {
+            return response()->json($caseStatus);
+        }
+
+        return response()->view('components.dashboard._case-status-content', [
+            'data' => $caseStatus,
+            'tahun' => $tahun,
+            'bulan' => $bulan,
+        ])->withHeaders([
+            'X-Periode-Text' => $caseStatus['periodeText'],
+            'X-Updated-At' => $caseStatus['updatedAt'],
+        ]);
+    }
 }

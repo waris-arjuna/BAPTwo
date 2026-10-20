@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class DashboardService
 {
+    /**
+     * Ambang batas hari sisa SLA untuk kategori Mendekati Batas SLA (<= 7 hari).
+     */
+    public const AMBANG_MENDEKATI_SLA_HARI = 7;
+
     public function __construct(
         protected TahapanService $tahapanService
     ) {}
@@ -106,33 +111,187 @@ class DashboardService
     }
 
     /**
+     * Mengambil daftar tahun yang memiliki data Laporan Kejadian untuk filter dropdown.
+     *
+     * @return array<int, int>
+     */
+    public function getAvailableYears(): array
+    {
+        $currentYear = (int) date('Y');
+
+        return Perkara::query()
+            ->whereNotNull('tanggal_laporan_kejadian')
+            ->pluck('tanggal_laporan_kejadian')
+            ->map(fn ($d) => (int) Carbon::parse($d)->year)
+            ->push($currentYear)
+            ->unique()
+            ->sortDesc()
+            ->values()
+            ->toArray();
+    }
+
+    /**
+     * Hitung persentase bilangan bulat menggunakan Largest Remainder Method (Hare-Niemeyer).
+     * Menjamin total akumulasi persentase selalu tepat 100% jika ada data (> 0).
+     *
+     * @param  array<string, int>  $values
+     * @return array<string, int>
+     */
+    public function calculatePercentages(array $values): array
+    {
+        $total = array_sum($values);
+        if ($total <= 0) {
+            return array_fill_keys(array_keys($values), 0);
+        }
+
+        $floored = [];
+        $remainders = [];
+        $sumFloored = 0;
+
+        foreach ($values as $key => $val) {
+            $float = ($val / $total) * 100;
+            $int = (int) floor($float);
+            $floored[$key] = $int;
+            $remainders[$key] = $float - $int;
+            $sumFloored += $int;
+        }
+
+        $remainingPoints = 100 - $sumFloored;
+        arsort($remainders);
+
+        foreach (array_keys($remainders) as $key) {
+            if ($remainingPoints <= 0) {
+                break;
+            }
+            if ($values[$key] > 0) {
+                $floored[$key] += 1;
+                $remainingPoints--;
+            }
+        }
+
+        return $floored;
+    }
+
+    /**
      * Mengambil data status perkara untuk Donut Chart pada Dashboard.
+     * Menggunakan acuan tanggal Laporan Kejadian (LK) dan agregasi tunggal efisien.
      *
      * @return array<string, mixed>
      */
-    public function getCaseStatusData(?int $tahun = null): array
+    public function getCaseStatusData(?int $tahun = null, ?int $bulan = null): array
     {
-        $total = BerkasPerkara::count();
+        $tahun = $tahun ?: (int) date('Y');
+        $bulan = ($bulan && $bulan >= 1 && $bulan <= 12) ? $bulan : null;
 
-        $selesai = BerkasPerkara::where('status_formal', 'selesai')->count();
-        $tidakSelesai = BerkasPerkara::where('status_formal', 'tidak_selesai')->count();
-        $dalamProses = BerkasPerkara::where(function ($q) {
-            $q->whereNull('status_formal')
-                ->orWhere('status_formal', 'dalam_proses');
-        })->count();
+        $today = Carbon::today()->toDateString();
+        $approachingDate = Carbon::today()->addDays(self::AMBANG_MENDEKATI_SLA_HARI)->toDateString();
 
-        $selesaiPercent = $total > 0 ? round(($selesai / $total) * 100) : 0;
-        $dalamProsesPercent = $total > 0 ? round(($dalamProses / $total) * 100) : 0;
-        $tidakSelesaiPercent = $total > 0 ? round(($tidakSelesai / $total) * 100) : 0;
+        $baseQuery = BerkasPerkara::query()
+            ->whereHas('perkara', function ($q) use ($tahun, $bulan) {
+                $q->whereYear('tanggal_laporan_kejadian', $tahun);
+                if ($bulan) {
+                    $q->whereMonth('tanggal_laporan_kejadian', $bulan);
+                }
+            });
+
+        $result = (clone $baseQuery)
+            ->selectRaw("
+                COUNT(*) as total,
+                SUM(CASE WHEN status_formal = 'selesai' THEN 1 ELSE 0 END) as selesai,
+                SUM(CASE WHEN status_formal = 'tidak_selesai' THEN 1 ELSE 0 END) as tidak_selesai,
+                SUM(CASE WHEN status_formal IS NULL OR status_formal = 'dalam_proses' THEN 1 ELSE 0 END) as dalam_proses,
+                SUM(CASE WHEN (status_formal IS NULL OR status_formal = 'dalam_proses') AND sla_deadline IS NULL THEN 1 ELSE 0 END) as belum_spdp,
+                SUM(CASE WHEN (status_formal IS NULL OR status_formal = 'dalam_proses') AND sla_deadline IS NOT NULL AND sla_deadline > '{$approachingDate}' THEN 1 ELSE 0 END) as dalam_sla,
+                SUM(CASE WHEN (status_formal IS NULL OR status_formal = 'dalam_proses') AND sla_deadline IS NOT NULL AND sla_deadline >= '{$today}' AND sla_deadline <= '{$approachingDate}' THEN 1 ELSE 0 END) as mendekati_sla,
+                SUM(CASE WHEN (status_formal IS NULL OR status_formal = 'dalam_proses') AND sla_deadline IS NOT NULL AND sla_deadline < '{$today}' THEN 1 ELSE 0 END) as lewat_sla
+            ")
+            ->first();
+
+        $total = (int) ($result->total ?? 0);
+        $selesai = (int) ($result->selesai ?? 0);
+        $tidakSelesai = (int) ($result->tidak_selesai ?? 0);
+        $dalamProses = (int) ($result->dalam_proses ?? 0);
+
+        $belumSpdp = (int) ($result->belum_spdp ?? 0);
+        $dalamSla = (int) ($result->dalam_sla ?? 0);
+        $mendekatiSla = (int) ($result->mendekati_sla ?? 0);
+        $lewatSla = (int) ($result->lewat_sla ?? 0);
+
+        $percentages = $this->calculatePercentages([
+            'selesai' => $selesai,
+            'dalamProses' => $dalamProses,
+            'tidakSelesai' => $tidakSelesai,
+        ]);
+
+        // Perhitungan perbandingan dengan periode tahun lalu (tahun - 1)
+        $prevTahun = $tahun - 1;
+        $totalPrev = BerkasPerkara::query()
+            ->whereHas('perkara', function ($q) use ($prevTahun, $bulan) {
+                $q->whereYear('tanggal_laporan_kejadian', $prevTahun);
+                if ($bulan) {
+                    $q->whereMonth('tanggal_laporan_kejadian', $bulan);
+                }
+            })
+            ->count();
+
+        $diff = $total - $totalPrev;
+        if ($totalPrev === 0 && $total === 0) {
+            $comparison = [
+                'direction' => 'none',
+                'text' => 'Belum ada perkara di '.$prevTahun,
+                'diff' => 0,
+            ];
+        } elseif ($diff > 0) {
+            $comparison = [
+                'direction' => 'up',
+                'text' => '▲ '.$diff.' perkara dibanding '.$prevTahun,
+                'diff' => $diff,
+            ];
+        } elseif ($diff < 0) {
+            $comparison = [
+                'direction' => 'down',
+                'text' => '▼ '.abs($diff).' perkara dibanding '.$prevTahun,
+                'diff' => $diff,
+            ];
+        } else {
+            $comparison = [
+                'direction' => 'same',
+                'text' => 'Sama dengan '.$prevTahun,
+                'diff' => 0,
+            ];
+        }
+
+        $bulanNames = [
+            1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April',
+            5 => 'Mei', 6 => 'Juni', 7 => 'Juli', 8 => 'Agustus',
+            9 => 'September', 10 => 'Oktober', 11 => 'November', 12 => 'Desember',
+        ];
+        $periodeText = $bulan && isset($bulanNames[$bulan])
+            ? "{$bulanNames[$bulan]} {$tahun}"
+            : "Tahun {$tahun}";
+
+        $updatedAt = Carbon::now('Asia/Makassar')->translatedFormat('d M Y, H:i').' WITA';
 
         return [
             'totalPerkara' => $total,
             'selesai' => $selesai,
             'dalamProses' => $dalamProses,
             'tidakSelesai' => $tidakSelesai,
-            'selesaiPercent' => $selesaiPercent,
-            'dalamProsesPercent' => $dalamProsesPercent,
-            'tidakSelesaiPercent' => $tidakSelesaiPercent,
+            'selesaiPercent' => $percentages['selesai'],
+            'dalamProsesPercent' => $percentages['dalamProses'],
+            'tidakSelesaiPercent' => $percentages['tidakSelesai'],
+            'sla' => [
+                'belumSpdp' => $belumSpdp,
+                'dalamSla' => $dalamSla,
+                'mendekatiSla' => $mendekatiSla,
+                'lewatSla' => $lewatSla,
+            ],
+            'comparison' => $comparison,
+            'tahun' => $tahun,
+            'bulan' => $bulan,
+            'periodeText' => $periodeText,
+            'availableYears' => $this->getAvailableYears(),
+            'updatedAt' => $updatedAt,
         ];
     }
 

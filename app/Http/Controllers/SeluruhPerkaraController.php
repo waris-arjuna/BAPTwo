@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\BerkasPerkara;
 use App\Models\Perkara;
+use App\Services\DashboardService;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -17,6 +19,9 @@ class SeluruhPerkaraController extends Controller
     {
         $search = $request->string('search')->trim()->toString();
         $status = $request->string('status')->trim()->toString();
+        $tahun = $request->integer('tahun');
+        $bulan = $request->integer('bulan');
+        $sla = $request->string('sla')->trim()->toString();
         $tanggalDari = $request->string('tanggal_dari', $request->string('tanggal')->toString())->trim()->toString();
         $tanggalSampai = $request->string('tanggal_sampai')->trim()->toString();
 
@@ -78,6 +83,32 @@ class SeluruhPerkaraController extends Controller
                         $q->where('is_dpo', true);
                     });
                 }
+            })
+            ->when($sla !== '', function (Builder $query) use ($sla) {
+                $today = Carbon::today()->toDateString();
+                $approachingDate = Carbon::today()->addDays(DashboardService::AMBANG_MENDEKATI_SLA_HARI)->toDateString();
+
+                $query->whereHas('berkasPerkaras', function ($q) use ($sla, $today, $approachingDate) {
+                    $q->where(function ($sub) {
+                        $sub->whereNull('status_formal')->orWhere('status_formal', 'dalam_proses');
+                    });
+
+                    if ($sla === 'belum_spdp') {
+                        $q->whereNull('sla_deadline');
+                    } elseif ($sla === 'dalam_sla') {
+                        $q->whereNotNull('sla_deadline')->where('sla_deadline', '>', $approachingDate);
+                    } elseif ($sla === 'mendekati_sla') {
+                        $q->whereNotNull('sla_deadline')->where('sla_deadline', '>=', $today)->where('sla_deadline', '<=', $approachingDate);
+                    } elseif ($sla === 'lewat_sla') {
+                        $q->whereNotNull('sla_deadline')->where('sla_deadline', '<', $today);
+                    }
+                });
+            })
+            ->when($tahun > 0, function (Builder $query) use ($tahun) {
+                $query->whereYear('tanggal_laporan_kejadian', $tahun);
+            })
+            ->when($bulan > 0 && $bulan <= 12, function (Builder $query) use ($bulan) {
+                $query->whereMonth('tanggal_laporan_kejadian', $bulan);
             })
             ->when($tanggalDari !== '', function (Builder $query) use ($tanggalDari) {
                 $query->where(function ($q) use ($tanggalDari) {

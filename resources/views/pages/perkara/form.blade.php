@@ -58,7 +58,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="mx-auto max-w-screen-xl px-4 pb-8 pt-6 lg:px-6">
+    <div class="mx-auto max-w-screen-xl">
         {{-- Header --}}
         <div class="mb-6">
             <div class="mb-2 flex flex-wrap items-center gap-2 text-sm text-gray-500 dark:text-gray-400">

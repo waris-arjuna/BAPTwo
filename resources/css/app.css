@@ -447,12 +447,6 @@ span.flatpickr-weekday,
 .flatpickr-calendar.static.flatpickr-left {
   @apply left-0 right-auto;
 }
-.flatpickr-calendar.hasTime {
-  width: 300px !important;
-}
-.flatpickr-calendar.hasTime .flatpickr-time {
-  border: transparent !important;
-}
 
 .input-date-icon::-webkit-inner-spin-button,
 .input-date-icon::-webkit-calendar-picker-indicator {

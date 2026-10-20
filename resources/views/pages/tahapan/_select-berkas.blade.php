@@ -11,7 +11,7 @@
     'availableBerkas',
 ])
 
-<div class="mx-auto max-w-screen-lg px-4 pb-8 pt-6 lg:px-6 space-y-6">
+<div class="mx-auto max-w-screen-lg space-y-6">
     {{-- Breadcrumb & Header --}}
     <div>
         <div class="mb-2 flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">

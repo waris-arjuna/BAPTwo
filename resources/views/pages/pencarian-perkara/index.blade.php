@@ -5,13 +5,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
-        {{-- Breadcrumb --}}
-        <x-common.page-breadcrumb
-            pageTitle="Pencarian Perkara"
+    <div class="space-y-6">
+        {{-- Breadcrumb & Header --}}
+        <x-page-header
+            title="Pencarian Perkara"
             :breadcrumbs="[
-                ['title' => 'Menu Utama', 'url' => route('dashboard')],
-                ['title' => 'Pencarian Perkara', 'url' => ''],
+                ['label' => 'Menu Utama', 'url' => route('dashboard')],
+                ['label' => 'Pencarian Perkara'],
             ]"
         />
 
