@@ -52,12 +52,12 @@
                 </div>
 
                 <div class="text-right">
-                    <p class="text-lg font-semibold tabular-nums text-gray-800 dark:text-white/90">
+                    <p class="text-lg font-semibold tabular-nums {{ $stage['value'] === '- Hari' ? 'text-gray-400 dark:text-gray-500' : 'text-gray-800 dark:text-white/90' }}">
                         {{ $stage['value'] }}
                     </p>
 
                     <p class="text-xs text-gray-400 dark:text-gray-500">
-                        Hari Kerja
+                        {{ $stage['value'] === '- Hari' ? 'Belum ada data' : 'Hari Kerja' }}
                     </p>
                 </div>
 

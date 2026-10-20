@@ -120,10 +120,12 @@ class DashboardService
     {
         if ($tahun !== null) {
             Cache::forget("dashboard_stats_{$tahun}");
+            Cache::forget("dashboard_stage_averages_{$tahun}");
         } else {
             $currentYear = (int) date('Y');
             for ($y = $currentYear - 2; $y <= $currentYear + 1; $y++) {
                 Cache::forget("dashboard_stats_{$y}");
+                Cache::forget("dashboard_stage_averages_{$y}");
             }
         }
     }
@@ -319,30 +321,113 @@ class DashboardService
     }
 
     /**
-     * Mengambil data rata-rata waktu penyelesaian per tahapan.
+     * Mengambil data rata-rata waktu penyelesaian per tahapan (dalam Hari Kerja).
+     * Mengukur selisih hari kerja antar-tahap berurutan:
+     * - SPDP: Sprindik -> SPDP
+     * - TAHAP I: SPDP -> TAHAP I
+     * - P-21: TAHAP I -> P-21
+     * - TAHAP II: P-21 -> TAHAP II
      *
-     * @return array<int, array{name: string, value: string}>
+     * @return array<int, array{name: string, value: string, sample: int}>
      */
     public function getStageAverageDays(?int $tahun = null): array
     {
-        return [
-            [
-                'name' => 'SPDP',
-                'value' => '3 Hari',
-            ],
-            [
-                'name' => 'TAHAP I',
-                'value' => '21 Hari',
-            ],
-            [
-                'name' => 'P-21',
-                'value' => '14 Hari',
-            ],
-            [
-                'name' => 'TAHAP II',
-                'value' => '7 Hari',
-            ],
-        ];
+        $tahun = $tahun ?: (int) date('Y');
+
+        return Cache::remember("dashboard_stage_averages_{$tahun}", 120, function () use ($tahun) {
+            $berkasList = BerkasPerkara::query()
+                ->whereHas('perkara', function ($q) use ($tahun) {
+                    $q->whereYear('tanggal_laporan_kejadian', $tahun)
+                        ->orWhereYear('tanggal_surat_perintah', $tahun);
+                })
+                ->with([
+                    'perkara:id,tanggal_surat_perintah',
+                    'tahapan' => function ($q) {
+                        $q->where('status', 'final')
+                            ->whereIn('jenis_tahap', [
+                                JenisTahap::SPDP->value,
+                                JenisTahap::TAHAP_1->value,
+                                JenisTahap::P21->value,
+                                JenisTahap::TAHAP_2->value,
+                            ])
+                            ->select('id', 'berkas_perkara_id', 'jenis_tahap', 'tanggal_surat');
+                    },
+                ])
+                ->get(['id', 'perkara_id', 'tanggal_spdp']);
+
+            $spdpDays = [];
+            $tahap1Days = [];
+            $p21Days = [];
+            $tahap2Days = [];
+
+            foreach ($berkasList as $berkas) {
+                $tahapanMap = $berkas->tahapan->keyBy(fn ($t) => $t->jenis_tahap->value);
+
+                $tglSprindik = $berkas->perkara?->tanggal_surat_perintah ? Carbon::parse($berkas->perkara->tanggal_surat_perintah) : null;
+                $spdpTahap = $tahapanMap->get(JenisTahap::SPDP->value);
+                $tglSpdp = $spdpTahap?->tanggal_surat ? Carbon::parse($spdpTahap->tanggal_surat) : ($berkas->tanggal_spdp ? Carbon::parse($berkas->tanggal_spdp) : null);
+
+                $tahap1Tahap = $tahapanMap->get(JenisTahap::TAHAP_1->value);
+                $tglTahap1 = $tahap1Tahap?->tanggal_surat ? Carbon::parse($tahap1Tahap->tanggal_surat) : null;
+
+                $p21Tahap = $tahapanMap->get(JenisTahap::P21->value);
+                $tglP21 = $p21Tahap?->tanggal_surat ? Carbon::parse($p21Tahap->tanggal_surat) : null;
+
+                $tahap2Tahap = $tahapanMap->get(JenisTahap::TAHAP_2->value);
+                $tglTahap2 = $tahap2Tahap?->tanggal_surat ? Carbon::parse($tahap2Tahap->tanggal_surat) : null;
+
+                // 1. SPDP: Sprindik -> SPDP
+                if ($tglSprindik && $tglSpdp && $tglSpdp->greaterThanOrEqualTo($tglSprindik)) {
+                    $spdpDays[] = $tglSprindik->diffInWeekdays($tglSpdp);
+                }
+
+                // 2. TAHAP I: SPDP -> TAHAP I
+                if ($tglSpdp && $tglTahap1 && $tglTahap1->greaterThanOrEqualTo($tglSpdp)) {
+                    $tahap1Days[] = $tglSpdp->diffInWeekdays($tglTahap1);
+                }
+
+                // 3. P-21: TAHAP I -> P-21
+                if ($tglTahap1 && $tglP21 && $tglP21->greaterThanOrEqualTo($tglTahap1)) {
+                    $p21Days[] = $tglTahap1->diffInWeekdays($tglP21);
+                }
+
+                // 4. TAHAP II: P-21 -> TAHAP II
+                if ($tglP21 && $tglTahap2 && $tglTahap2->greaterThanOrEqualTo($tglP21)) {
+                    $tahap2Days[] = $tglP21->diffInWeekdays($tglTahap2);
+                }
+            }
+
+            $formatAverage = function (array $days): string {
+                if (count($days) === 0) {
+                    return '- Hari';
+                }
+
+                return (string) round(array_sum($days) / count($days)).' Hari';
+            };
+
+            return [
+                [
+                    'name' => 'SPDP',
+                    'value' => $formatAverage($spdpDays),
+                    'sample' => count($spdpDays),
+                ],
+                [
+                    'name' => 'TAHAP I',
+                    'value' => $formatAverage($tahap1Days),
+                    'sample' => count($tahap1Days),
+                ],
+                [
+                    'name' => 'P-21',
+                    'value' => $formatAverage($p21Days),
+                    'sample' => count($p21Days),
+                ],
+                [
+                    'name' => 'TAHAP II',
+                    'value' => $formatAverage($tahap2Days),
+                    'sample' => count($tahap2Days),
+                ],
+            ];
+        });
     }
 
     /**

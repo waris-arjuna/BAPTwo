@@ -1031,6 +1031,31 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
      - Memperbaiki listener `@animationend` pada komponen toast agar memvalidasi `animationName === 'toast-shrink'` dan elapsed time untuk mencegah penutupan prematur.
 - Konsekuensi: Halaman dan fitur aplikasi berjalan stabil, andal di berbagai konfigurasi sistem operasi/browser (termasuk mode reduced-motion), dan menyajikan teks antarmuka yang bersih serta operasional.
 
+---
+
+## D-052 : Perhitungan Data Riil Rata-rata Hari Kerja Penyelesaian Tahapan Dashboard BAPTwo
+
+- Tanggal: 2026-10-21
+- Status: Disepakati
+- Konteks: Menggantikan data tiruan (hardcoded dummy) pada method `DashboardService::getStageAverageDays()` dengan perhitungan analitik data riil database untuk kartu "Rata-rata Penyelesaian per Tahap" pada Dashboard BAPTwo.
+- Keputusan:
+  1. **Acuan Durasi Antar-Tahap**:
+     - Mengukur selisih hari antar-tahap berurutan berdasarkan `tanggal_surat` resmi dokumen:
+       - **SPDP**: `tanggal_surat_perintah` (Sprindik) ke `tanggal_surat` SPDP.
+       - **TAHAP I**: `tanggal_surat` SPDP ke `tanggal_surat` TAHAP I.
+       - **P-21**: `tanggal_surat` TAHAP I ke `tanggal_surat` P-21/P21a.
+       - **TAHAP II**: `tanggal_surat` P-21 ke `tanggal_surat` TAHAP II.
+  2. **Satuan Hari Kerja (Business Days)**:
+     - Menggunakan utilitas Carbon `diffInWeekdays` untuk mengecualikan hari Sabtu dan Minggu, sesuai dengan keterangan resmi kartu dashboard.
+  3. **Penyaringan Periode & Penanganan Kosong**:
+     - Mengikuti filter tahun (`$tahun`) yang dipilih pengguna di dashboard.
+     - Jika sebuah tahap belum memiliki sampel berkas di tahun terkait, disajikan teks representatif `- Hari` dan sub-label `Belum ada data` tanpa memicu kesalahan kalkulasi pembagian nol.
+  4. **Performa & Invalidation Cache**:
+     - Eager loading terkontrol (`perkara:id,tanggal_surat_perintah` dan `tahapan`) untuk memproses kalkulasi dalam memori tanpa query N+1.
+     - Hasil perhitungan di-cache dengan key `dashboard_stage_averages_{tahun}` selama 120 detik, di-invalidasi otomatis oleh method `DashboardService::clearCache()` setiap kali terjadi mutasi pada model `Perkara`, `BerkasPerkara`, atau `TahapanPerkara`.
+- Konsekuensi: Kartu analitik dashboard menyajikan data riil operasional penanganan perkara BPOM Kalsel yang akurat, berkinerja tinggi, dan responsif terhadap filter tahun.
+
+
 
 
 
