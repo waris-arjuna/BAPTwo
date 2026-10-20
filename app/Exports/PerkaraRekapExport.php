@@ -155,9 +155,7 @@ class PerkaraRekapExport
             ->setFillType(Fill::FILL_SOLID)
             ->getStartColor()->setARGB('FFE2E8F0'); // Slate 200
 
-        // ==========================================
         // 1. Kolom tanpa sub-level (Merge Vertikal Baris 1–3)
-        // ==========================================
         $sheet->mergeCells('A1:A3');
         $sheet->setCellValue('A1', 'No.');
 
@@ -176,9 +174,7 @@ class PerkaraRekapExport
         $sheet->mergeCells('AR1:AR3');
         $sheet->setCellValue('AR1', 'Kendala dan Rencana Tindak Lanjut');
 
-        // ==========================================
         // 2. Grup level 2 (Merge Horizontal Baris 1–2, Header Kolom Baris 3)
-        // ==========================================
         // Laporan Kejadian (Cols B, C)
         $sheet->mergeCells('B1:C2');
         $sheet->setCellValue('B1', 'Laporan Kejadian');
@@ -216,9 +212,7 @@ class PerkaraRekapExport
         $sheet->setCellValue('AO3', 'Nama Instansi');
         $sheet->setCellValue('AP3', 'Nama Jaksa');
 
-        // ==========================================
         // 3. Grup level 3: Proses Penyidikan (Cols T s.d. AN)
-        // ==========================================
         $sheet->mergeCells('T1:AN1');
         $sheet->setCellValue('T1', 'Proses Penyidikan');
 
@@ -273,9 +267,7 @@ class PerkaraRekapExport
         $sheet->setCellValue('AM3', 'Nomor');
         $sheet->setCellValue('AN3', 'Tanggal');
 
-        // ==========================================
         // 4. Baris 4: Nomor Kolom 1 s.d. 44
-        // ==========================================
         for ($col = 1; $col <= 44; $col++) {
             $colLetter = Coordinate::stringFromColumnIndex($col);
             $sheet->setCellValue("{$colLetter}4", $col);

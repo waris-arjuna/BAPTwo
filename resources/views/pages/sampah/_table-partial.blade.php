@@ -25,7 +25,7 @@
         <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
             @forelse ($items as $item)
                 <tr class="transition hover:bg-gray-50/50 dark:hover:bg-gray-800/20">
-                    <td class="px-4 py-4 font-medium text-gray-500 sm:px-6">
+                    <td class="px-4 py-4 font-medium tabular-nums text-gray-500 sm:px-6">
                         {{ $loop->iteration + ($items->currentPage() - 1) * $items->perPage() }}
                     </td>
 
@@ -34,19 +34,19 @@
                         <td class="px-4 py-4 font-medium text-gray-800 dark:text-white/90 sm:px-6">
                             <div class="flex items-center gap-2">
                                 <i class="fi fi-rr-folder text-brand-500"></i>
-                                <span>{{ $item->nomor_berkas ?: 'Tanpa Nomor Berkas' }}</span>
+                                <span class="font-mono">{{ $item->nomor_berkas ?: 'Tanpa Nomor Berkas' }}</span>
                             </div>
                         </td>
                         <td class="px-4 py-4 sm:px-6">
                             <p class="font-medium text-gray-800 dark:text-white/90">{{ $item->tersangka?->nama ?: '-' }}</p>
-                            <p class="text-xs text-gray-400">NIK: {{ $item->tersangka?->nik ?: '-' }}</p>
+                            <p class="text-xs text-gray-400">NIK: <span class="font-mono tabular-nums">{{ $item->tersangka?->nik ?: '-' }}</span></p>
                         </td>
                         <td class="px-4 py-4 sm:px-6">
-                            <p class="text-xs font-medium text-gray-700 dark:text-gray-300">
+                            <p class="font-mono text-xs font-medium text-gray-700 dark:text-gray-300">
                                 {{ $item->perkara?->nomor_laporan_kejadian ?: '-' }}
                             </p>
                             @if ($item->perkara?->nomor_surat_perintah)
-                                <p class="text-xs text-gray-400">Sprindik: {{ $item->perkara->nomor_surat_perintah }}</p>
+                                <p class="text-xs text-gray-400">Sprindik: <span class="font-mono">{{ $item->perkara->nomor_surat_perintah }}</span></p>
                             @endif
                         </td>
 
@@ -54,7 +54,7 @@
                         {{-- Data Pengguna --}}
                         <td class="px-4 py-4 sm:px-6">
                             <p class="font-medium text-gray-800 dark:text-white/90">{{ $item->nama }}</p>
-                            <p class="text-xs text-gray-400">NIP: {{ $item->nip ?: '-' }}</p>
+                            <p class="text-xs text-gray-400">NIP: <span class="font-mono tabular-nums">{{ $item->nip ?: '-' }}</span></p>
                         </td>
                         <td class="px-4 py-4 sm:px-6">
                             <span class="text-xs text-gray-600 dark:text-gray-300">{{ $item->email }}</span>
@@ -73,17 +73,17 @@
                         <td class="px-4 py-4 sm:px-6">
                             <div class="flex items-center gap-2">
                                 <i class="fi fi-rr-document-signed text-brand-500"></i>
-                                <span class="font-medium text-gray-800 dark:text-white/90">
+                                <span class="font-mono font-medium text-gray-800 dark:text-white/90">
                                     {{ $item->nomor_laporan_kejadian ?: '-' }}
                                 </span>
                             </div>
                             @if ($item->nomor_surat_perintah)
                                 <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                                    Sprindik: <strong>{{ $item->nomor_surat_perintah }}</strong>
+                                    Sprindik: <strong class="font-mono">{{ $item->nomor_surat_perintah }}</strong>
                                 </p>
                             @endif
                         </td>
-                        <td class="px-4 py-4 sm:px-6">
+                        <td class="px-4 py-4 sm:px-6 tabular-nums">
                             {{ $item->tanggal_laporan_kejadian?->format('d-m-Y') ?? '-' }}
                         </td>
                         <td class="px-4 py-4 sm:px-6 max-w-xs truncate" title="{{ $item->deskripsi }}">

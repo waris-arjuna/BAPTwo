@@ -42,7 +42,7 @@
                 @endphp
 
                 <tr class="transition hover:bg-gray-50 dark:hover:bg-white/[0.02]">
-                    <td class="w-12 px-5 py-4 text-sm text-gray-600 dark:text-gray-400">
+                    <td class="w-12 px-5 py-4 text-sm tabular-nums text-gray-600 dark:text-gray-400">
                         {{ $loop->iteration + ($laporanKejadian->currentPage() - 1) * $laporanKejadian->perPage() }}
                     </td>
 
@@ -50,7 +50,7 @@
                         <div class="flex items-center gap-2">
                             <a
                                 href="{{ route('laporan-kejadian.show', $laporan) }}"
-                                class="text-sm font-medium text-gray-800 hover:text-brand-500 dark:text-white/90"
+                                class="font-mono text-sm font-medium text-gray-800 hover:text-brand-500 dark:text-white/90"
                             >
                                 {{ $laporan->nomor_laporan_kejadian ?: '(Draft Belum Bernomor)' }}
                             </a>
@@ -60,7 +60,7 @@
                         </div>
                     </td>
 
-                    <td class="px-5 py-4 text-sm text-gray-600 dark:text-gray-400">
+                    <td class="px-5 py-4 text-sm tabular-nums text-gray-600 dark:text-gray-400">
                         {{ $laporan->tanggal_laporan_kejadian?->format('d-m-Y') ?? '-' }}
                     </td>
 

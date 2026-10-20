@@ -65,7 +65,7 @@
     </script>
 </head>
 
-<body>
+<body class="font-sans antialiased">
 
     @yield('content')
     <x-common.error-modal />

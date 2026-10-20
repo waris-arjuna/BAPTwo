@@ -154,7 +154,7 @@
                 <i class="fi fi-rr-angle-small-right text-sm text-gray-400"></i>
                 <a href="{{ route('sprindik.index') }}" class="transition hover:text-brand-600 dark:hover:text-brand-400">Sprindik</a>
                 <i class="fi fi-rr-angle-small-right text-sm text-gray-400"></i>
-                <a href="{{ route('sprindik.show', $perkara) }}" class="transition hover:text-brand-600 dark:hover:text-brand-400">{{ $perkara->nomor_surat_perintah }}</a>
+                <a href="{{ route('sprindik.show', $perkara) }}" class="font-mono transition hover:text-brand-600 dark:hover:text-brand-400">{{ $perkara->nomor_surat_perintah }}</a>
                 <i class="fi fi-rr-angle-small-right text-sm text-gray-400"></i>
                 <span class="text-gray-700 dark:text-gray-300">Detail Perkara</span>
             </div>
@@ -228,11 +228,11 @@
                 <div class="grid grid-cols-1 gap-4 text-sm sm:grid-cols-2 lg:grid-cols-4">
                     <div>
                         <p class="text-xs text-gray-500 dark:text-gray-400">Nomor Laporan Kejadian</p>
-                        <a href="{{ route('laporan-kejadian.show', $perkara) }}" class="inline-flex items-center gap-1 font-medium text-brand-600 hover:underline dark:text-brand-400">
+                        <a href="{{ route('laporan-kejadian.show', $perkara) }}" class="inline-flex items-center gap-1 font-mono font-medium text-brand-600 hover:underline dark:text-brand-400">
                             <span>{{ $perkara->nomor_laporan_kejadian }}</span>
                             <i class="fi fi-rr-arrow-up-right-from-square text-xs"></i>
                         </a>
-                        <p class="mt-0.5 text-xs text-gray-500 dark:text-gray-400">Tanggal: {{ $perkara->tanggal_laporan_kejadian?->format('d-m-Y') ?? '-' }}</p>
+                        <p class="mt-0.5 text-xs text-gray-500 dark:text-gray-400">Tanggal: <span class="tabular-nums">{{ $perkara->tanggal_laporan_kejadian?->format('d-m-Y') ?? '-' }}</span></p>
                     </div>
 
                     <div>
@@ -253,11 +253,11 @@
 
                     <div>
                         <p class="text-xs text-gray-500 dark:text-gray-400">Nomor Sprindik</p>
-                        <a href="{{ route('sprindik.show', $perkara) }}" class="inline-flex items-center gap-1 font-medium text-brand-600 hover:underline dark:text-brand-400">
+                        <a href="{{ route('sprindik.show', $perkara) }}" class="inline-flex items-center gap-1 font-mono font-medium text-brand-600 hover:underline dark:text-brand-400">
                             <span>{{ $perkara->nomor_surat_perintah }}</span>
                             <i class="fi fi-rr-arrow-up-right-from-square text-xs"></i>
                         </a>
-                        <p class="mt-0.5 text-xs text-gray-500 dark:text-gray-400">Tanggal: {{ $perkara->tanggal_surat_perintah?->format('d-m-Y') ?? '-' }}</p>
+                        <p class="mt-0.5 text-xs text-gray-500 dark:text-gray-400">Tanggal: <span class="tabular-nums">{{ $perkara->tanggal_surat_perintah?->format('d-m-Y') ?? '-' }}</span></p>
                     </div>
 
                     <div>
@@ -436,7 +436,7 @@
                                         </h3>
                                         <p class="text-xs text-gray-500 dark:text-gray-400">
                                             Nomor Berkas Perkara:
-                                            <strong class="text-gray-800 dark:text-white/90">{{ $berkas?->nomor_berkas ?: '(Belum Bernomor / Draft)' }}</strong>
+                                            <strong class="font-mono text-gray-800 dark:text-white/90">{{ $berkas?->nomor_berkas ?: '(Belum Bernomor / Draft)' }}</strong>
                                         </p>
                                     </div>
                                 </div>
@@ -627,14 +627,14 @@
                                 <div>
                                     <p class="text-xs text-gray-500 dark:text-gray-400">NIK / Jenis Kelamin</p>
                                     <p class="capitalize font-medium text-gray-800 dark:text-white/90">
-                                        {{ $tersangka->nik ?: '-' }} / {{ $tersangka->jenis_kelamin ?: '-' }}
+                                        <span class="font-mono tabular-nums">{{ $tersangka->nik ?: '-' }}</span> / {{ $tersangka->jenis_kelamin ?: '-' }}
                                     </p>
                                 </div>
 
                                 <div>
                                     <p class="text-xs text-gray-500 dark:text-gray-400">Tempat, Tanggal Lahir</p>
                                     <p class="font-medium text-gray-800 dark:text-white/90">
-                                        {{ $tersangka->tempat_lahir ?: '-' }}, {{ $tersangka->tanggal_lahir?->format('d-m-Y') ?? '-' }}
+                                        {{ $tersangka->tempat_lahir ?: '-' }}, <span class="tabular-nums">{{ $tersangka->tanggal_lahir?->format('d-m-Y') ?? '-' }}</span>
                                     </p>
                                 </div>
 

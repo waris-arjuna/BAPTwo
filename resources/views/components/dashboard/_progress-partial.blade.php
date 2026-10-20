@@ -72,7 +72,7 @@
                     >
 
                         {{-- No --}}
-                        <td class="w-12 px-5 py-5 text-sm text-gray-600 dark:text-gray-400">
+                        <td class="w-12 px-5 py-5 text-sm tabular-nums text-gray-600 dark:text-gray-400">
                             {{ $index + 1 }}
                         </td>
 
@@ -80,7 +80,7 @@
                         <td class="px-5 py-5">
                             <a
                                 href="{{ $perkara['detail_url'] ?? '#' }}"
-                                class="text-sm font-medium text-gray-800 transition hover:text-brand-500 dark:text-white/90"
+                                class="font-mono text-sm font-medium text-gray-800 transition hover:text-brand-500 dark:text-white/90"
                             >
                                 {{ $perkara['nomor'] }}
                             </a>
@@ -230,7 +230,7 @@
 
                         {{-- Progress % --}}
                         <td class="px-5 py-5 text-center">
-                            <span class="text-sm font-semibold text-gray-800 dark:text-white/90">
+                            <span class="text-sm font-semibold tabular-nums text-gray-800 dark:text-white/90">
                                 {{ $perkara['progress'] }}%
                             </span>
                         </td>

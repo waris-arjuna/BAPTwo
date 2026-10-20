@@ -64,7 +64,7 @@
                 @endphp
 
                 <tr class="transition hover:bg-gray-50 dark:hover:bg-white/[0.02]">
-                    <td class="w-12 px-5 py-4 text-sm text-gray-600 dark:text-gray-400">
+                    <td class="w-12 px-5 py-4 text-sm tabular-nums text-gray-600 dark:text-gray-400">
                         {{ $loop->iteration + ($tahap1->currentPage() - 1) * $tahap1->perPage() }}
                     </td>
 
@@ -72,7 +72,7 @@
                         <div class="space-y-0.5">
                             <a
                                 href="{{ route('perkara.show', $item->berkasPerkara->perkara_id) }}"
-                                class="text-sm font-semibold text-gray-800 transition hover:text-brand-500 dark:text-white/90"
+                                class="font-mono text-sm font-semibold text-gray-800 transition hover:text-brand-500 dark:text-white/90"
                             >
                                 {{ $item->berkasPerkara?->nomor_berkas ?: '-' }}
                             </a>

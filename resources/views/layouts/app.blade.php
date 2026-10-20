@@ -138,7 +138,7 @@
 
 </head>
 
-<body>
+<body class="font-sans antialiased">
 
     <div class="min-h-screen xl:flex sidebar-expanded" x-data :class="{ 'sidebar-expanded': $store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen }">
         @include('layouts.backdrop')

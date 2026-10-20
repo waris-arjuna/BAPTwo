@@ -45,7 +45,7 @@
                 @endphp
 
                 <tr class="transition hover:bg-gray-50 dark:hover:bg-white/[0.02]">
-                    <td class="w-12 px-5 py-4 text-sm text-gray-600 dark:text-gray-400">
+                    <td class="w-12 px-5 py-4 text-sm tabular-nums text-gray-600 dark:text-gray-400">
                         {{ $loop->iteration + ($sprindiks->currentPage() - 1) * $sprindiks->perPage() }}
                     </td>
 
@@ -53,7 +53,7 @@
                         <div class="flex items-center gap-2">
                             <a
                                 href="{{ route('sprindik.show', $sprindik) }}"
-                                class="text-sm font-medium text-gray-800 transition hover:text-brand-500 dark:text-white/90"
+                                class="font-mono text-sm font-medium text-gray-800 transition hover:text-brand-500 dark:text-white/90"
                             >
                                 {{ $sprindik->nomor_surat_perintah ?: '(Draft Belum Bernomor)' }}
                             </a>
@@ -63,14 +63,14 @@
                         </div>
                     </td>
 
-                    <td class="px-5 py-4 text-sm text-gray-600 dark:text-gray-400">
+                    <td class="px-5 py-4 text-sm tabular-nums text-gray-600 dark:text-gray-400">
                         {{ $sprindik->tanggal_surat_perintah?->format('d-m-Y') ?? '-' }}
                     </td>
 
                     <td class="px-5 py-4">
                         <a
                             href="{{ route('laporan-kejadian.show', $sprindik) }}"
-                            class="text-sm text-brand-600 hover:text-brand-700 dark:text-brand-400"
+                            class="font-mono text-sm font-medium text-brand-600 hover:text-brand-700 dark:text-brand-400"
                         >
                             {{ $sprindik->nomor_laporan_kejadian }}
                         </a>

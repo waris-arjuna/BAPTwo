@@ -52,7 +52,7 @@
                 </div>
 
                 <div class="text-right">
-                    <p class="text-lg font-semibold text-gray-800 dark:text-white/90">
+                    <p class="text-lg font-semibold tabular-nums text-gray-800 dark:text-white/90">
                         {{ $stage['value'] }}
                     </p>
 

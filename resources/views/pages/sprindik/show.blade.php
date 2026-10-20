@@ -87,7 +87,7 @@
                     <div>
                         <p class="text-xs text-gray-500 dark:text-gray-400">Nomor Laporan Kejadian</p>
                         <a href="{{ route('laporan-kejadian.show', $perkara) }}" class="inline-flex items-center gap-1.5 font-medium text-brand-600 hover:underline dark:text-brand-400">
-                            <span>{{ $perkara->nomor_laporan_kejadian }}</span>
+                            <span class="font-mono">{{ $perkara->nomor_laporan_kejadian }}</span>
                             <i class="fi fi-rr-arrow-up-right-from-square text-xs"></i>
                         </a>
                     </div>
@@ -138,7 +138,7 @@
                 <div class="divide-y divide-gray-100 dark:divide-gray-800/70">
                     <div class="grid grid-cols-1 gap-1 px-4 py-4 sm:grid-cols-[200px_1fr] sm:px-6 sm:gap-6">
                         <dt class="text-sm text-gray-500 dark:text-gray-400">Nomor Sprindik</dt>
-                        <dd class="text-sm font-medium text-gray-800 dark:text-white/90">{{ $perkara->nomor_surat_perintah ?: '(Draft Belum Bernomor)' }}</dd>
+                        <dd class="font-mono text-sm font-medium text-gray-800 dark:text-white/90">{{ $perkara->nomor_surat_perintah ?: '(Draft Belum Bernomor)' }}</dd>
                     </div>
 
                     <div class="grid grid-cols-1 gap-1 px-4 py-4 sm:grid-cols-[200px_1fr] sm:px-6 sm:gap-6">

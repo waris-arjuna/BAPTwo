@@ -925,6 +925,30 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
      - Klik pada segmen donut, baris legend, atau sub-baris SLA langsung mengarahkan ke `/seluruh-perkara` terfilter (query string: `tahun`, `bulan`, `status`, `sla`) yang dapat diakses oleh seluruh peran (Penyidik, Pimpinan, Administrator) tanpa hambatan permission.
 - Konsekuensi: Dashboard monitoring menyajikan proporsi penanganan perkara secara akurat, informatif, dan interaktif dengan aksesibilitas tinggi dan beban query database yang sangat ringan.
 
+---
+
+## D-049 : Standarisasi Tipografi Lokal (Inter Variable & JetBrains Mono 500) dan Angka Tabular (tabular-nums)
+
+- Tanggal: 2026-10-20
+- Status: Disepakati & Diimplementasikan
+- Konteks: Aplikasi sebelumnya memuat font Google Fonts Outfit melalui CDN eksternal `@import url('https://fonts.googleapis.com/css2?family=Outfit...')`. Hal ini membuat font rentan gagal dimuat di lingkungan internal/offline tanpa akses internet. Selain itu, angka-angka statistik dan nomor perkara belum memiliki pemisahan tipografi yang jelas dan berisiko pergeseran lebar kolom (*layout shift*).
+- Keputusan:
+  1. **Instalasi Lokal via NPM (Offline-Ready 100%)**:
+     - Menginstal paket `@fontsource-variable/inter` dan `@fontsource/jetbrains-mono` secara lokal melalui npm.
+     - Mengimpor `@fontsource-variable/inter` dan `@fontsource/jetbrains-mono/500.css` langsung di `resources/css/app.css` agar diproses dan di-bundle oleh Vite ke folder aset lokal (`public/build/assets/`).
+     - Menghapus seluruh import CDN Google Fonts Outfit lama agar tidak terjadi duplikasi unduhan font.
+  2. **Konfigurasi Tailwind CSS v4 Theme**:
+     - Mendeklarasikan `--font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;` di blok `@theme` untuk seluruh teks UI, heading, form, tabel, dan tombol.
+     - Mendeklarasikan `--font-mono: 'JetBrains Mono', ui-monospace, monospace;` di blok `@theme` khusus untuk kode, nomor identitas perkara, dan NIK.
+     - Menerapkan `font-sans antialiased` pada `body` di CSS dan master layout (`layouts/app.blade.php`, `layouts/fullscreen-layout.blade.php`).
+  3. **Penegasan Angka Tabular (`tabular-nums`) & Monospace Nomor Perkara**:
+     - Menerapkan utilitas `tabular-nums` pada seluruh angka metrik statistik dashboard, persentase progress, perbandingan tahun, kolom `No` tabel, dan tanggal agar lebar angka sejajar rapi.
+     - Menerapkan `font-mono` (bobot 500) pada seluruh nomor perkara legal (Nomor LK, Nomor Sprindik, Nomor Berkas, Nomor SPDP, Nomor Tahapan, Nomor Putusan, dan NIK).
+  4. **Preservasi Kontras Bobot Huruf**:
+     - Tidak ada penggunaan font berbobot tipis (`font-light` / `font-thin`) pada background gelap. Seluruh teks isi memakai bobot 400, label/header memakai 500-600, dan judul/angka besar memakai 600-700.
+- Konsekuensi: Aplikasi sepenuhnya independen dari koneksi internet untuk aset font, tampilan teks UI menjadi lebih tajam, keterbacaan nomor perkara meningkat drastis, dan tata letak angka tidak lagi bergeser saat nilai berubah.
+
+
 
 
 

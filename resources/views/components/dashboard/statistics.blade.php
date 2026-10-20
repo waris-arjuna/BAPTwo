@@ -28,7 +28,7 @@
                         @endif
                     </div>
 
-                    <h3 class="mt-3 text-2xl font-semibold text-gray-800 dark:text-white/90">
+                    <h3 class="mt-3 text-2xl font-semibold tabular-nums text-gray-800 dark:text-white/90">
                         {{ $stat['value'] }}
                     </h3>
 

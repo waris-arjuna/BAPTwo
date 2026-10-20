@@ -5,7 +5,7 @@
         <h3 class="text-sm font-semibold text-gray-800 dark:text-white/90">
             Hasil Pencarian
         </h3>
-        <span class="rounded-full bg-brand-50 px-2 py-0.5 text-xs font-semibold text-brand-600 dark:bg-brand-500/10 dark:text-brand-400">
+        <span class="rounded-full bg-brand-50 px-2 py-0.5 text-xs font-semibold tabular-nums text-brand-600 dark:bg-brand-500/10 dark:text-brand-400">
             {{ $berkasList->total() }} Ditemukan
         </span>
     </div>
@@ -63,7 +63,7 @@
 
                 <tr class="transition hover:bg-gray-50 dark:hover:bg-white/[0.02]">
                     {{-- Kolom No --}}
-                    <td class="w-12 px-5 py-4 text-sm text-gray-600 dark:text-gray-400">
+                    <td class="w-12 px-5 py-4 text-sm tabular-nums text-gray-600 dark:text-gray-400">
                         {{ $loop->iteration + ($berkasList->currentPage() - 1) * $berkasList->perPage() }}
                     </td>
 
@@ -71,17 +71,17 @@
                     <td class="px-5 py-4">
                         <div class="flex items-center gap-2">
                             <i class="fi fi-rr-folder text-brand-500"></i>
-                            <span class="text-sm font-medium text-gray-800 dark:text-white/90">
+                            <span class="font-mono text-sm font-medium text-gray-800 dark:text-white/90">
                                 {{ $berkas->nomor_berkas ?: 'Tanpa Nomor Berkas' }}
                             </span>
                         </div>
                         @if ($perkara)
                             <p class="mt-0.5 text-xs text-gray-500 dark:text-gray-400">
-                                LK: <a href="{{ route('laporan-kejadian.show', $perkara) }}" class="text-brand-600 hover:underline">{{ $perkara->nomor_laporan_kejadian }}</a>
+                                LK: <a href="{{ route('laporan-kejadian.show', $perkara) }}" class="font-mono text-brand-600 hover:underline">{{ $perkara->nomor_laporan_kejadian }}</a>
                             </p>
                             @if ($perkara->nomor_surat_perintah)
                                 <p class="text-xs text-gray-400">
-                                    Sprindik: {{ $perkara->nomor_surat_perintah }}
+                                    Sprindik: <span class="font-mono">{{ $perkara->nomor_surat_perintah }}</span>
                                 </p>
                             @endif
                         @endif
@@ -100,7 +100,7 @@
                             @endif
                         </div>
                         <p class="text-xs text-gray-400">
-                            NIK: {{ $tersangka?->nik ?: '-' }}
+                            NIK: <span class="font-mono tabular-nums">{{ $tersangka?->nik ?: '-' }}</span>
                         </p>
                     </td>
 
@@ -121,7 +121,7 @@
                     <td class="px-5 py-4">
                         @if ($ppnsUtama)
                             <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{ $ppnsUtama->nama }}</p>
-                            <p class="text-xs text-gray-400">NIP: {{ $ppnsUtama->nip ?: '-' }}</p>
+                            <p class="text-xs text-gray-400">NIP: <span class="font-mono tabular-nums">{{ $ppnsUtama->nip ?: '-' }}</span></p>
                         @else
                             <span class="text-xs italic text-gray-400 dark:text-gray-500">-</span>
                         @endif
@@ -132,7 +132,7 @@
                         <div class="w-32">
                             <div class="mb-1 flex items-center justify-between text-xs">
                                 <span class="font-medium text-gray-700 dark:text-gray-300">{{ $statusProses }}</span>
-                                <span class="font-semibold text-gray-800 dark:text-white/90">{{ $progress }}%</span>
+                                <span class="font-semibold tabular-nums text-gray-800 dark:text-white/90">{{ $progress }}%</span>
                             </div>
                             <div class="h-2 w-full overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700">
                                 <div

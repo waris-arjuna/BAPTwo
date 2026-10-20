@@ -61,7 +61,7 @@
                 @endphp
 
                 <tr class="transition hover:bg-gray-50 dark:hover:bg-white/[0.02]">
-                    <td class="w-12 px-5 py-4 text-sm text-gray-600 dark:text-gray-400">
+                    <td class="w-12 px-5 py-4 text-sm tabular-nums text-gray-600 dark:text-gray-400">
                         {{ $loop->iteration + ($berkasList->currentPage() - 1) * $berkasList->perPage() }}
                     </td>
 
@@ -69,12 +69,12 @@
                         @if ($perkara)
                             <a
                                 href="{{ route('perkara.show', $perkara) }}"
-                                class="text-sm font-medium text-gray-800 transition hover:text-brand-500 dark:text-white/90"
+                                class="font-mono text-sm font-medium text-gray-800 transition hover:text-brand-500 dark:text-white/90"
                             >
                                 {{ $berkas->nomor_berkas ?: '(Draft Belum Bernomor)' }}
                             </a>
                         @else
-                            <span class="text-sm font-medium text-gray-800 dark:text-white/90">
+                            <span class="font-mono text-sm font-medium text-gray-800 dark:text-white/90">
                                 {{ $berkas->nomor_berkas ?: '(Draft Belum Bernomor)' }}
                             </span>
                         @endif
@@ -90,7 +90,7 @@
                         @if ($perkara)
                             <a
                                 href="{{ route('sprindik.show', $perkara) }}"
-                                class="text-sm text-brand-600 hover:text-brand-700 dark:text-brand-400"
+                                class="font-mono text-sm text-brand-600 hover:text-brand-700 dark:text-brand-400"
                             >
                                 {{ $perkara->nomor_surat_perintah ?: '(Tanpa Sprindik)' }}
                             </a>
@@ -124,7 +124,7 @@
                         <div class="mx-auto w-32 text-center">
                             <div class="mb-1 flex items-center justify-between text-xs font-medium">
                                 <span class="text-gray-600 dark:text-gray-400">Progress</span>
-                                <span class="text-gray-800 dark:text-white/90">{{ $progress }}%</span>
+                                <span class="tabular-nums text-gray-800 dark:text-white/90">{{ $progress }}%</span>
                             </div>
                             <div class="h-2 w-full overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700">
                                 <div class="h-full {{ $progressColor }} transition-all duration-300" style="width: {{ $progress }}%"></div>

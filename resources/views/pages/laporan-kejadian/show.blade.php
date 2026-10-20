@@ -78,7 +78,7 @@
                 <div class="divide-y divide-gray-100 dark:divide-gray-800/70">
                     <div class="grid grid-cols-1 gap-1 px-4 py-4 sm:grid-cols-[200px_1fr] sm:px-6 sm:gap-6">
                         <dt class="text-sm text-gray-500 dark:text-gray-400">Nomor Laporan</dt>
-                        <dd class="text-sm font-medium text-gray-800 dark:text-white/90">{{ $perkara->nomor_laporan_kejadian ?: '(Draft Belum Bernomor)' }}</dd>
+                        <dd class="font-mono text-sm font-medium text-gray-800 dark:text-white/90">{{ $perkara->nomor_laporan_kejadian ?: '(Draft Belum Bernomor)' }}</dd>
                     </div>
 
                     <div class="grid grid-cols-1 gap-1 px-4 py-4 sm:grid-cols-[200px_1fr] sm:px-6 sm:gap-6">

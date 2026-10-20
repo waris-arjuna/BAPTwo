@@ -131,20 +131,20 @@
                 <template x-if="hovered">
                     <div class="flex flex-col items-center justify-center transition-all">
                         <span class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400" x-text="hovered.label"></span>
-                        <span class="text-2xl font-bold tracking-tight text-gray-800 dark:text-white/90" x-text="hovered.count + ' (' + hovered.percent + '%)'"></span>
+                        <span class="text-2xl font-bold tracking-tight tabular-nums text-gray-800 dark:text-white/90" x-text="hovered.count + ' (' + hovered.percent + '%)'"></span>
                         <span class="mt-0.5 text-[10px] font-medium text-brand-600 dark:text-brand-400">Klik segmen untuk filter</span>
                     </div>
                 </template>
                 <template x-if="!hovered">
                     <div class="flex flex-col items-center justify-center transition-all">
-                        <span class="text-3xl font-bold tracking-tight text-gray-800 dark:text-white/90">
+                        <span class="text-3xl font-bold tracking-tight tabular-nums text-gray-800 dark:text-white/90">
                             {{ $totalPerkara }}
                         </span>
                         <span class="text-xs font-medium text-gray-500 dark:text-gray-400">
                             Total Perkara
                         </span>
                         @if ($comparison['direction'] !== 'none')
-                            <span class="mt-1 inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-theme-xs font-medium {{ $comparison['direction'] === 'up' ? 'bg-success-50 text-success-700 dark:bg-success-900/20 dark:text-success-400' : ($comparison['direction'] === 'down' ? 'bg-error-50 text-error-700 dark:bg-error-900/20 dark:text-error-400' : 'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400') }}">
+                            <span class="mt-1 inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-theme-xs font-medium tabular-nums {{ $comparison['direction'] === 'up' ? 'bg-success-50 text-success-700 dark:bg-success-900/20 dark:text-success-400' : ($comparison['direction'] === 'down' ? 'bg-error-50 text-error-700 dark:bg-error-900/20 dark:text-error-400' : 'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400') }}">
                                 {{ $comparison['text'] }}
                             </span>
                         @endif
@@ -175,7 +175,7 @@
                     Selesai
                 </span>
             </div>
-            <span class="text-sm font-semibold text-gray-800 dark:text-white/90">
+            <span class="text-sm font-semibold tabular-nums text-gray-800 dark:text-white/90">
                 {{ $selesai }} <span class="text-xs font-normal text-gray-500 dark:text-gray-400">({{ $selesaiPercent }}%)</span>
             </span>
         </a>
@@ -195,7 +195,7 @@
                         Dalam Proses
                     </span>
                 </div>
-                <span class="text-sm font-semibold text-gray-800 dark:text-white/90">
+                <span class="text-sm font-semibold tabular-nums text-gray-800 dark:text-white/90">
                     {{ $dalamProses }} <span class="text-xs font-normal text-gray-500 dark:text-gray-400">({{ $dalamProsesPercent }}%)</span>
                 </span>
             </a>
@@ -211,7 +211,7 @@
                         <i class="fi fi-rr-document text-gray-400"></i>
                         <span>Belum Ada SPDP (Pra-SPDP)</span>
                     </div>
-                    <span class="font-medium text-gray-700 dark:text-gray-300">{{ $sla['belumSpdp'] }}</span>
+                    <span class="font-medium tabular-nums text-gray-700 dark:text-gray-300">{{ $sla['belumSpdp'] }}</span>
                 </a>
 
                 {{-- Dalam SLA --}}
@@ -223,7 +223,7 @@
                         <i class="fi fi-rr-clock text-blue-500"></i>
                         <span>Dalam SLA (&gt; 7 hari)</span>
                     </div>
-                    <span class="font-medium text-gray-700 dark:text-gray-300">{{ $sla['dalamSla'] }}</span>
+                    <span class="font-medium tabular-nums text-gray-700 dark:text-gray-300">{{ $sla['dalamSla'] }}</span>
                 </a>
 
                 {{-- Mendekati Batas --}}
@@ -235,7 +235,7 @@
                         <i class="fi fi-rr-time-forward text-amber-500"></i>
                         <span>Mendekati Batas (≤ 7 hari)</span>
                     </div>
-                    <span class="font-semibold text-amber-600 dark:text-amber-400">{{ $sla['mendekatiSla'] }}</span>
+                    <span class="font-semibold tabular-nums text-amber-600 dark:text-amber-400">{{ $sla['mendekatiSla'] }}</span>
                 </a>
 
                 {{-- Melewati SLA --}}
@@ -247,7 +247,7 @@
                         <i class="fi fi-rr-exclamation text-error-500"></i>
                         <span class="font-medium text-error-600 dark:text-error-400">Melewati SLA</span>
                     </div>
-                    <span class="inline-flex items-center justify-center rounded-full bg-error-50 px-1.5 py-0.5 text-theme-xs font-bold text-error-600 dark:bg-error-900/30 dark:text-error-400">
+                    <span class="inline-flex items-center justify-center rounded-full bg-error-50 px-1.5 py-0.5 text-theme-xs font-bold tabular-nums text-error-600 dark:bg-error-900/30 dark:text-error-400">
                         {{ $sla['lewatSla'] }}
                     </span>
                 </a>
@@ -268,7 +268,7 @@
                     Tidak Selesai (SP3)
                 </span>
             </div>
-            <span class="text-sm font-semibold text-gray-800 dark:text-white/90">
+            <span class="text-sm font-semibold tabular-nums text-gray-800 dark:text-white/90">
                 {{ $tidakSelesai }} <span class="text-xs font-normal text-gray-500 dark:text-gray-400">({{ $tidakSelesaiPercent }}%)</span>
             </span>
         </a>

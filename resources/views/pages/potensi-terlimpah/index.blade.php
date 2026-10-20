@@ -41,7 +41,7 @@
                     </div>
                     <div>
                         <span class="text-xs font-medium text-gray-500 dark:text-gray-400">Berkas Berjalan</span>
-                        <h4 class="mt-0.5 text-xl font-bold text-gray-800 dark:text-white/90">{{ $totalPotensi }}</h4>
+                        <h4 class="mt-0.5 text-xl font-bold tabular-nums text-gray-800 dark:text-white/90">{{ $totalPotensi }}</h4>
                     </div>
                 </div>
             </div>
@@ -54,7 +54,7 @@
                     </div>
                     <div>
                         <span class="text-xs font-medium text-gray-500 dark:text-gray-400">Siap Tahap II (&ge;55%)</span>
-                        <h4 class="mt-0.5 text-xl font-bold text-gray-800 dark:text-white/90">{{ $siapTahap2Count }}</h4>
+                        <h4 class="mt-0.5 text-xl font-bold tabular-nums text-gray-800 dark:text-white/90">{{ $siapTahap2Count }}</h4>
                     </div>
                 </div>
             </div>
@@ -67,7 +67,7 @@
                     </div>
                     <div>
                         <span class="text-xs font-medium text-gray-500 dark:text-gray-400">Mendekati Batas (&le;7 Hari)</span>
-                        <h4 class="mt-0.5 text-xl font-bold text-gray-800 dark:text-white/90">{{ $mendekatiBatasCount }}</h4>
+                        <h4 class="mt-0.5 text-xl font-bold tabular-nums text-gray-800 dark:text-white/90">{{ $mendekatiBatasCount }}</h4>
                     </div>
                 </div>
             </div>
@@ -80,7 +80,7 @@
                     </div>
                     <div>
                         <span class="text-xs font-medium text-gray-500 dark:text-gray-400">Melebihi SLA</span>
-                        <h4 class="mt-0.5 text-xl font-bold text-gray-800 dark:text-white/90">{{ $kritisCount }}</h4>
+                        <h4 class="mt-0.5 text-xl font-bold tabular-nums text-gray-800 dark:text-white/90">{{ $kritisCount }}</h4>
                     </div>
                 </div>
             </div>
@@ -93,7 +93,7 @@
                     </div>
                     <div>
                         <span class="text-xs font-medium text-gray-500 dark:text-gray-400">Terkendala DPO</span>
-                        <h4 class="mt-0.5 text-xl font-bold text-gray-800 dark:text-white/90">{{ $terkendalaDpoCount }}</h4>
+                        <h4 class="mt-0.5 text-xl font-bold tabular-nums text-gray-800 dark:text-white/90">{{ $terkendalaDpoCount }}</h4>
                     </div>
                 </div>
             </div>

@@ -42,7 +42,7 @@
                     >
                         <i class="fi fi-rr-document-signed text-base"></i>
                         <span>Laporan Kejadian &amp; Perkara</span>
-                        <span class="rounded-full px-2 py-0.5 text-xs font-semibold {{ $activeTab === 'perkara' ? 'bg-brand-50 text-brand-600 dark:bg-brand-500/10 dark:text-brand-400' : 'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400' }}">
+                        <span class="rounded-full px-2 py-0.5 text-xs font-semibold tabular-nums {{ $activeTab === 'perkara' ? 'bg-brand-50 text-brand-600 dark:bg-brand-500/10 dark:text-brand-400' : 'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400' }}">
                             {{ $countPerkara }}
                         </span>
                     </a>
@@ -53,7 +53,7 @@
                     >
                         <i class="fi fi-rr-folder text-base"></i>
                         <span>Berkas Perkara &amp; Tersangka</span>
-                        <span class="rounded-full px-2 py-0.5 text-xs font-semibold {{ $activeTab === 'berkas' ? 'bg-brand-50 text-brand-600 dark:bg-brand-500/10 dark:text-brand-400' : 'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400' }}">
+                        <span class="rounded-full px-2 py-0.5 text-xs font-semibold tabular-nums {{ $activeTab === 'berkas' ? 'bg-brand-50 text-brand-600 dark:bg-brand-500/10 dark:text-brand-400' : 'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400' }}">
                             {{ $countBerkas }}
                         </span>
                     </a>
@@ -64,7 +64,7 @@
                     >
                         <i class="fi fi-rr-users text-base"></i>
                         <span>Pengguna</span>
-                        <span class="rounded-full px-2 py-0.5 text-xs font-semibold {{ $activeTab === 'user' ? 'bg-brand-50 text-brand-600 dark:bg-brand-500/10 dark:text-brand-400' : 'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400' }}">
+                        <span class="rounded-full px-2 py-0.5 text-xs font-semibold tabular-nums {{ $activeTab === 'user' ? 'bg-brand-50 text-brand-600 dark:bg-brand-500/10 dark:text-brand-400' : 'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400' }}">
                             {{ $countUser }}
                         </span>
                     </a>

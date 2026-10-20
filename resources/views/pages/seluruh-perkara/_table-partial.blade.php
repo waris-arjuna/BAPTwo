@@ -46,7 +46,7 @@
 
                 <tr class="transition hover:bg-gray-50 dark:hover:bg-white/[0.02]">
                     {{-- Kolom No --}}
-                    <td class="w-12 px-5 py-4 text-sm text-gray-600 dark:text-gray-400">
+                    <td class="w-12 px-5 py-4 text-sm tabular-nums text-gray-600 dark:text-gray-400">
                         {{ $loop->iteration + ($perkaras->currentPage() - 1) * $perkaras->perPage() }}
                     </td>
 
@@ -55,7 +55,7 @@
                         <div class="flex items-center gap-2">
                             <a
                                 href="{{ route('perkara.show', $perkara) }}"
-                                class="text-sm font-medium text-gray-800 transition hover:text-brand-500 dark:text-white/90"
+                                class="font-mono text-sm font-medium text-gray-800 transition hover:text-brand-500 dark:text-white/90"
                             >
                                 {{ $perkara->nomor_surat_perintah ?: '(Draft Sprindik)' }}
                             </a>
@@ -64,7 +64,7 @@
                             @endif
                         </div>
                         <p class="mt-0.5 text-xs text-gray-500 dark:text-gray-400">
-                            Tgl: {{ $perkara->tanggal_surat_perintah?->format('d-m-Y') ?? '-' }}
+                            Tgl: <span class="tabular-nums">{{ $perkara->tanggal_surat_perintah?->format('d-m-Y') ?? '-' }}</span>
                         </p>
                     </td>
 
@@ -72,12 +72,12 @@
                     <td class="px-5 py-4">
                         <a
                             href="{{ route('laporan-kejadian.show', $perkara) }}"
-                            class="text-sm text-brand-600 hover:text-brand-700 dark:text-brand-400"
+                            class="font-mono text-sm font-medium text-brand-600 hover:text-brand-700 dark:text-brand-400"
                         >
                             {{ $perkara->nomor_laporan_kejadian }}
                         </a>
                         <p class="mt-0.5 text-xs text-gray-500 dark:text-gray-400">
-                            Tgl: {{ $perkara->tanggal_laporan_kejadian?->format('d-m-Y') ?? '-' }}
+                            Tgl: <span class="tabular-nums">{{ $perkara->tanggal_laporan_kejadian?->format('d-m-Y') ?? '-' }}</span>
                         </p>
                     </td>
 
@@ -121,7 +121,7 @@
                                         <i class="fi fi-rr-user text-[11px] text-gray-400"></i>
                                         <span class="font-medium text-gray-800 dark:text-white/90">{{ $tersangka->nama }}</span>
                                         @if ($berkas?->nomor_berkas)
-                                            <span class="rounded bg-gray-100 px-1.5 py-0.5 text-[10px] text-gray-600 dark:bg-gray-800 dark:text-gray-400">
+                                            <span class="rounded bg-gray-100 px-1.5 py-0.5 font-mono text-[10px] font-medium tabular-nums text-gray-600 dark:bg-gray-800 dark:text-gray-400">
                                                 {{ $berkas->nomor_berkas }}
                                             </span>
                                         @endif
