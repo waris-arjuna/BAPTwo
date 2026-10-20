@@ -25,12 +25,19 @@ Thumbs.db
 
 tailadmin-laravel-main/
 /.acl-recovery/
-/.agents
 /test
-
-architecture.md 
-decision.md 
-tasks.md
-agents.md 
-docs/superpowers/ 
 /public/review_shots/
+
+# AI Assistants, Agents & LLM Tooling
+/.agents/
+/AGENTS.md
+/agents.md
+/.claude/
+/.gemini/
+/.cursor/
+/.cursorrules
+/.copilot/
+/.windsurf/
+/.ai/
+/.prompts/
+/docs/superpowers/

@@ -181,4 +181,7 @@ _(kosong)_
   - AC: Seluruh selisih aturan di `PRD.md` (1 Perkara = 1 Berkas nomor LK, SP3 terminal picu status Tidak Selesai, peniadaan fitur hapus perkara, RBAC master data & progress perkara, PDF 5 MB, ekspor Excel 44 kolom) disinkronkan resmi atas persetujuan pengguna; status dokumen 100% konsisten.
 - [x] T-068 — 2026-10-20 Pemisahan Modal Kompleks sebagai Domain Feature Partial (ref: D-045)
   - AC: Modal Alamat Tersangka diekstrak ke `resources/views/pages/perkara/_modal-alamat-tersangka.blade.php`; Modal Update Akun & Modal Edit Data Diri diekstrak ke `resources/views/pages/profile/_modal-update-akun.blade.php` & `_modal-edit-profil.blade.php`; parent view memanggil via `@include('...')`; ukuran baris template utama berkurang signifikan (form perkara berkurang 175 baris, profile berkurang 338 baris); seluruh fungsionalitas dan reaktivitas Alpine.js tetap utuh; `composer test` (163 tests, 1.654 assertions) dan `php vendor/bin/pint --test` 100% lulus.
+- [x] T-069 — 2026-10-20 Pratinjau Modal Lightbox Foto Profil (ref: D-045)
+  - AC: Avatar foto profil di halaman profil interaktif dengan kursor pointer, efek zoom halus, dan overlay indikator "Lihat Foto"; klik avatar membuka modal lightbox `_modal-foto-profil.blade.php`; modal menampilkan foto resolusi penuh, nama lengkap, jabatan/bidang, tombol silang (x), dan tombol Tutup; `ProfileTest` ditambahkan dan 164 tes otomatis lulus 100%.
+
 

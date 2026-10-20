@@ -200,3 +200,18 @@ test('endpoint proxy wilayah mengembalikan daftar wilayah berjenjang', function 
         ->assertJsonPath('data.0.code', '63')
         ->assertJsonPath('data.0.name', 'Kalimantan Selatan');
 });
+
+test('halaman profil merender tombol dan modal pratinjau foto profil', function () {
+    $user = User::factory()->create([
+        'nama' => 'Ahmad Dahlan',
+        'role' => UserRole::PENYIDIK,
+    ]);
+
+    $response = $this->actingAs($user)->get(route('profile'));
+
+    $response->assertOk()
+        ->assertSee('Lihat Foto')
+        ->assertSee('isPhotoModalOpen')
+        ->assertSee('Foto Profil')
+        ->assertSee('Tutup');
+});

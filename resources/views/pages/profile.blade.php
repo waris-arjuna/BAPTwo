@@ -79,9 +79,22 @@
             {{-- A1. CARD FOTO PROFIL --}}
             <div class="flex h-full flex-col items-center justify-between rounded-2xl border border-gray-200 bg-white p-5 text-center lg:p-6 dark:border-gray-800 dark:bg-white/[0.03]">
                 <div class="flex w-full flex-1 flex-col items-center justify-center gap-4">
-                    <div class="relative mx-auto h-40 w-40 shrink-0 overflow-hidden rounded-full border-2 border-gray-200 shadow-theme-sm dark:border-gray-700">
+                    <div
+                        @click="isPhotoModalOpen = true"
+                        class="group relative mx-auto h-40 w-40 shrink-0 cursor-pointer overflow-hidden rounded-full border-2 border-gray-200 shadow-theme-sm transition hover:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-500/20 dark:border-gray-700 dark:hover:border-brand-500"
+                        role="button"
+                        tabindex="0"
+                        @keydown.enter.prevent="isPhotoModalOpen = true"
+                        @keydown.space.prevent="isPhotoModalOpen = true"
+                        aria-label="{{ __('Lihat Foto Profil') }}"
+                        title="{{ __('Klik untuk melihat foto profil') }}"
+                    >
                         <img src="{{ $currentUser?->fotoProfilUrl() }}" alt="{{ $currentUser?->nama }}"
-                            class="h-full w-full object-cover" />
+                            class="h-full w-full object-cover transition duration-300 group-hover:scale-105" />
+                        <div class="absolute inset-0 flex flex-col items-center justify-center bg-gray-950/40 opacity-0 transition duration-300 group-hover:opacity-100">
+                            <i class="fi fi-rr-search text-xl text-white" aria-hidden="true"></i>
+                            <span class="mt-1 text-theme-xs font-medium text-white">{{ __('Lihat Foto') }}</span>
+                        </div>
                     </div>
                     <div class="min-w-0 max-w-full text-center">
                         <h3 class="truncate text-title-sm font-semibold text-gray-800 dark:text-white/90">
@@ -275,6 +288,9 @@
 
         {{-- MODAL 2: EDIT DATA DIRI (HANYA NO.TELP & ALAMAT) --}}
         @include('pages.profile._modal-edit-profil')
+
+        {{-- MODAL 3: PRATINJAU FOTO PROFIL --}}
+        @include('pages.profile._modal-foto-profil')
     </div>
 
     @push('scripts')
@@ -283,6 +299,7 @@
                 return {
                     isAccountModalOpen: config.openAccountModal || false,
                     isPersonalModalOpen: config.openPersonalModal || false,
+                    isPhotoModalOpen: false,
                     newPassword: '',
                     clientError: '',
                     wilayahLoaded: false,
@@ -314,6 +331,7 @@
                     closeModals() {
                         this.isAccountModalOpen = false;
                         this.isPersonalModalOpen = false;
+                        this.isPhotoModalOpen = false;
                     },
 
                     openPersonalEditModal() {
