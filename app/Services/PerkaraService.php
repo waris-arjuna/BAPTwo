@@ -794,6 +794,7 @@ class PerkaraService
                 'tkp.alamat',
                 'ppnsUtama',
                 'tersangkas.berkasPerkara.pasals',
+                'tersangkas.berkasPerkara.sp3',
                 'berkasPerkaras.sp3',
                 'creator',
             ])
@@ -876,6 +877,7 @@ class PerkaraService
                 'perkara.ppnsUtama',
                 'tersangka',
                 'pasals',
+                'tahapan',
             ])
             ->when($search !== '', function (Builder $query) use ($search) {
                 $query->where(function (Builder $q) use ($search) {

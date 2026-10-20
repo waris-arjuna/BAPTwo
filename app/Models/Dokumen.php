@@ -51,6 +51,22 @@ class Dokumen extends Model
     }
 
     /**
+     * @return BelongsTo<BerkasPerkara, $this>
+     */
+    public function berkasPerkara(): BelongsTo
+    {
+        return $this->belongsTo(BerkasPerkara::class, 'berkas_perkara_id');
+    }
+
+    /**
+     * @return BelongsTo<TahapanPerkara, $this>
+     */
+    public function tahapanPerkara(): BelongsTo
+    {
+        return $this->belongsTo(TahapanPerkara::class, 'tahapan_perkara_id');
+    }
+
+    /**
      * @return BelongsTo<User, $this>
      */
     public function creator(): BelongsTo

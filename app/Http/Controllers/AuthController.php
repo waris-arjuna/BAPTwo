@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Auth\LoginRequest;
 use App\Models\User;
+use App\Services\AuditTrailService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
@@ -21,20 +24,16 @@ class AuthController extends Controller
     {
         $email = $request->string('email')->trim()->toString();
         $password = $request->string('password')->toString();
+        $throttleKey = Str::transliterate(Str::lower($email).'|'.$request->ip());
+
+        if (RateLimiter::tooManyAttempts($throttleKey, 5)) {
+            $seconds = RateLimiter::availableIn($throttleKey);
+            throw ValidationException::withMessages([
+                'email' => __('Terlalu banyak percobaan masuk. Silakan coba lagi dalam :seconds detik.', ['seconds' => $seconds]),
+            ]);
+        }
 
         $user = User::withTrashed()->where('email', $email)->first();
-
-        if (! $user) {
-            throw ValidationException::withMessages([
-                'email' => __('Email tidak terdaftar dalam sistem.'),
-            ]);
-        }
-
-        if ($user->trashed() || ! $user->is_active) {
-            throw ValidationException::withMessages([
-                'email' => __('Akun Anda sedang dinonaktifkan. Hubungi Administrator.'),
-            ]);
-        }
 
         $credentials = [
             'email' => $email,
@@ -42,11 +41,22 @@ class AuthController extends Controller
             'is_active' => true,
         ];
 
-        if (! Auth::attempt($credentials, false)) {
+        if (! $user || $user->trashed() || ! $user->is_active || ! Auth::attempt($credentials, false)) {
+            RateLimiter::hit($throttleKey, 60);
+
+            app(AuditTrailService::class)->log(
+                aksi: 'login_failed',
+                tabel: 'user',
+                recordId: $user?->id ?? 0,
+                dataBaru: ['email' => $email]
+            );
+
             throw ValidationException::withMessages([
-                'password' => __('Kata sandi yang Anda masukkan salah.'),
+                'email' => __('Email atau kata sandi salah.'),
             ]);
         }
+
+        RateLimiter::clear($throttleKey);
 
         $request->session()->regenerate();
 

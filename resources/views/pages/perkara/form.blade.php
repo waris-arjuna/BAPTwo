@@ -83,7 +83,7 @@
                         @endif
                     </div>
                     <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                        Lengkapi data Tempat Kejadian Perkara (TKP), Tim Penyidik PPNS, Identitas Tersangka, dan Pasal Berlapis yang Disangkakan.
+                        Lengkapi data Tempat Kejadian Perkara (TKP), Tim Penyidik PPNS, Identitas Tersangka, dan Pasal yang Disangkakan.
                     </p>
                 </div>
                 <a
@@ -929,8 +929,22 @@
                         }
                     },
 
+                    extractEventValue(event, fallback = '') {
+                        if (event === undefined || event === null) return fallback;
+                        if (typeof event === 'object') {
+                            if ('detail' in event && event.detail !== undefined && event.detail !== null) {
+                                return String(event.detail);
+                            }
+                            if ('target' in event && event.target && 'value' in event.target && event.target.value !== undefined && event.target.value !== null) {
+                                return String(event.target.value);
+                            }
+                            return fallback;
+                        }
+                        return String(event);
+                    },
+
                     onProvinsiChange(event) {
-                        const val = event && event.target ? event.target.value : (event || this.modalWilayah.provinsi_kode);
+                        const val = this.extractEventValue(event, this.modalWilayah.provinsi_kode);
                         this.modalWilayah.provinsi_kode = val ? String(val) : '';
                         const found = this.listProvinsi.find(p => String(p.code) === String(val));
                         this.modalWilayah.provinsi_nama = found ? (found.name || found.nama) : '';
@@ -945,11 +959,11 @@
                         this.listKecamatan = [];
                         this.listDesa = [];
 
-                        this.fetchKabupaten(val, true);
+                        this.fetchKabupaten(val, false);
                     },
 
                     onKabupatenChange(event) {
-                        const val = event && event.target ? event.target.value : (event || this.modalWilayah.kabupaten_kode);
+                        const val = this.extractEventValue(event, this.modalWilayah.kabupaten_kode);
                         this.modalWilayah.kabupaten_kode = val ? String(val) : '';
                         const found = this.listKabupaten.find(k => String(k.code) === String(val));
                         this.modalWilayah.kabupaten_nama = found ? (found.name || found.nama) : '';
@@ -961,11 +975,11 @@
                         this.listKecamatan = [];
                         this.listDesa = [];
 
-                        this.fetchKecamatan(val, true);
+                        this.fetchKecamatan(val, false);
                     },
 
                     onKecamatanChange(event) {
-                        const val = event && event.target ? event.target.value : (event || this.modalWilayah.kecamatan_kode);
+                        const val = this.extractEventValue(event, this.modalWilayah.kecamatan_kode);
                         this.modalWilayah.kecamatan_kode = val ? String(val) : '';
                         const found = this.listKecamatan.find(k => String(k.code) === String(val));
                         this.modalWilayah.kecamatan_nama = found ? (found.name || found.nama) : '';
@@ -974,11 +988,11 @@
                         this.modalWilayah.desa_nama = '';
                         this.listDesa = [];
 
-                        this.fetchDesa(val, true);
+                        this.fetchDesa(val, false);
                     },
 
                     onDesaChange(event) {
-                        const val = event && event.target ? event.target.value : (event || this.modalWilayah.desa_kode);
+                        const val = this.extractEventValue(event, this.modalWilayah.desa_kode);
                         this.modalWilayah.desa_kode = val ? String(val) : '';
                         const found = this.listDesa.find(d => String(d.code) === String(val));
                         this.modalWilayah.desa_nama = found ? (found.name || found.nama) : '';
@@ -1232,7 +1246,7 @@
                 </div>
             </div>
 
-            {{-- 4. Card Pemilihan Pasal Berlapis (Komponen Persis PPNS Anggota, Poin 8) --}}
+            {{-- 4. Card Pemilihan Pasal yang Disangkakan (Komponen Persis PPNS Anggota, Poin 8) --}}
             <div
                 x-data="{
                     pasalList: @js($pasalJsonList),
@@ -1268,7 +1282,7 @@
                 <div class="border-b border-gray-200 px-4 py-4 dark:border-gray-800 sm:px-6">
                     <div class="flex items-center gap-2">
                         <i class="fi fi-rr-book-alt text-base text-brand-500"></i>
-                        <h2 class="text-base font-semibold text-gray-800 dark:text-white/90">4. Pasal Berlapis yang Disangkakan</h2>
+                        <h2 class="text-base font-semibold text-gray-800 dark:text-white/90">4. Pasal yang Disangkakan</h2>
                     </div>
                     <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Pilih satu atau lebih pasal pelanggaran yang disangkakan pada berkas perkara ini.</p>
                 </div>

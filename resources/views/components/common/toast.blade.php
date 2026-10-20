@@ -1,5 +1,9 @@
 {{-- resources/views/components/common/toast.blade.php --}}
 
+@props([
+    'top' => 'top-20',
+])
+
 @php
     $initialToasts = [];
 
@@ -48,7 +52,7 @@
 
 <div
     x-data="toastManager(@js($initialToasts))"
-    class="fixed top-5 right-5 z-99999 flex flex-col gap-3 w-full max-w-[380px] pointer-events-none px-4 sm:px-0"
+    class="fixed {{ $top }} right-4 sm:right-6 left-4 sm:left-auto sm:w-[380px] z-999999 flex flex-col gap-3 pointer-events-none"
 >
     <template x-for="toast in toasts" :key="toast.id">
         <div
@@ -99,6 +103,7 @@
             {{-- Progress Bar Tipis Berbasis CSS Animation --}}
             <div class="absolute bottom-0 left-0 right-0 h-0.75 bg-gray-100 dark:bg-gray-800 overflow-hidden">
                 <div
+                    data-toast-progress
                     class="h-full group-hover:[animation-play-state:paused] group-focus-within:[animation-play-state:paused]"
                     :class="{
                         'bg-success-500': toast.type === 'success',
@@ -108,7 +113,7 @@
                         '[animation-play-state:paused]': toast.isTouchPaused
                     }"
                     :style="'animation: toast-shrink ' + toast.duration + 'ms linear forwards;'"
-                    @animationend="removeToast(toast.id)"
+                    @animationend="onAnimationEnd($event, toast)"
                 ></div>
             </div>
         </div>

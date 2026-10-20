@@ -7,6 +7,7 @@ use App\Models\BerkasPerkara;
 use App\Models\Perkara;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class DashboardService
 {
@@ -28,86 +29,103 @@ class DashboardService
     {
         $tahun = $tahun ?: (int) date('Y');
 
-        // Total Perkara tahun berjalan
-        $totalPerkara = Perkara::query()
-            ->where(function ($q) use ($tahun) {
-                $q->whereYear('tanggal_laporan_kejadian', $tahun)
-                    ->orWhereYear('tanggal_surat_perintah', $tahun);
-            })
-            ->count();
-
-        // Jika filter tahun tertentu belum memiliki data, ambil total keseluruhan sebagai fallback informatif
-        if ($totalPerkara === 0) {
-            $totalPerkara = Perkara::count();
-        }
-
-        // Berkas Berjalan (belum berstatus formal selesai maupun tidak selesai)
-        $berkasBerjalan = BerkasPerkara::query()
-            ->whereNull('status_formal')
-            ->count();
-
-        // Menunggu Verifikasi / Tindakan Penyidik (memiliki draft aktif atau baru SPDP)
-        $menungguTindakan = BerkasPerkara::query()
-            ->where(function ($q) {
-                $q->whereHas('tahapan', function ($tQ) {
-                    $tQ->where('status', 'draft');
+        return Cache::remember("dashboard_stats_{$tahun}", 120, function () use ($tahun) {
+            // Total Perkara tahun berjalan
+            $totalPerkara = Perkara::query()
+                ->where(function ($q) use ($tahun) {
+                    $q->whereYear('tanggal_laporan_kejadian', $tahun)
+                        ->orWhereYear('tanggal_surat_perintah', $tahun);
                 })
-                    ->orWhere(function ($subQ) {
-                        $subQ->whereNull('status_formal')
-                            ->where('progress_persen', '<=', 15);
-                    });
-            })
-            ->count();
+                ->count();
 
-        // Selesai (status formal 'selesai' atau progress 100%)
-        $berkasSelesai = BerkasPerkara::query()
-            ->where(function ($q) {
-                $q->where('status_formal', 'selesai')
-                    ->orWhere('progress_persen', '>=', 100);
-            })
-            ->count();
+            // Jika filter tahun tertentu belum memiliki data, ambil total keseluruhan sebagai fallback informatif
+            if ($totalPerkara === 0) {
+                $totalPerkara = Perkara::count();
+            }
 
-        // Rata-rata waktu penyelesaian dari SPDP s.d. Tahap II
-        $avgDays = $this->calculateAverageCompletionDays();
-        $avgDaysText = $avgDays !== null ? round($avgDays).' Hari' : '-';
+            // Berkas Berjalan (belum berstatus formal selesai maupun tidak selesai)
+            $berkasBerjalan = BerkasPerkara::query()
+                ->whereNull('status_formal')
+                ->count();
 
-        return [
-            [
-                'title' => 'Perkara Aktif',
-                'value' => (string) $totalPerkara,
-                'description' => "Perkara pada tahun {$tahun}",
-                'icon' => 'document',
-                'iconClass' => 'bg-blue-50 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400',
-            ],
-            [
-                'title' => 'Perkara Berjalan',
-                'value' => (string) $berkasBerjalan,
-                'description' => 'Sedang dalam proses penyidikan',
-                'icon' => 'play-circle',
-                'iconClass' => 'bg-success-50 text-success-600 dark:bg-success-500/10 dark:text-success-400',
-            ],
-            [
-                'title' => 'Menunggu Verifikasi Penyidik',
-                'value' => (string) $menungguTindakan,
-                'description' => 'Menunggu tindakan penyidik',
-                'icon' => 'verification',
-                'iconClass' => 'bg-warning-50 text-warning-600 dark:bg-warning-500/10 dark:text-warning-400',
-            ],
-            [
-                'title' => 'Selesai',
-                'value' => (string) $berkasSelesai,
-                'description' => 'Perkara selesai',
-                'icon' => 'check',
-                'iconClass' => 'bg-purple-50 text-purple-600 dark:bg-purple-500/10 dark:text-purple-400',
-            ],
-            [
-                'title' => 'Rata-rata Waktu Penyelesaian',
-                'value' => $avgDaysText,
-                'description' => 'Dari SPDP s.d. Tahap II',
-                'icon' => 'time',
-                'iconClass' => 'bg-teal-50 text-teal-600 dark:bg-teal-500/10 dark:text-teal-400',
-            ],
-        ];
+            // Menunggu Verifikasi / Tindakan Penyidik (memiliki draft aktif atau baru SPDP)
+            $menungguTindakan = BerkasPerkara::query()
+                ->where(function ($q) {
+                    $q->whereHas('tahapan', function ($tQ) {
+                        $tQ->where('status', 'draft');
+                    })
+                        ->orWhere(function ($subQ) {
+                            $subQ->whereNull('status_formal')
+                                ->where('progress_persen', '<=', 15);
+                        });
+                })
+                ->count();
+
+            // Selesai (status formal 'selesai' atau progress 100%)
+            $berkasSelesai = BerkasPerkara::query()
+                ->where(function ($q) {
+                    $q->where('status_formal', 'selesai')
+                        ->orWhere('progress_persen', '>=', 100);
+                })
+                ->count();
+
+            // Rata-rata waktu penyelesaian dari SPDP s.d. Tahap II
+            $avgDays = $this->calculateAverageCompletionDays();
+            $avgDaysText = $avgDays !== null ? round($avgDays).' Hari' : '-';
+
+            return [
+                [
+                    'title' => 'Perkara Aktif',
+                    'value' => (string) $totalPerkara,
+                    'description' => "Perkara pada tahun {$tahun}",
+                    'icon' => 'document',
+                    'iconClass' => 'bg-blue-50 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400',
+                ],
+                [
+                    'title' => 'Perkara Berjalan',
+                    'value' => (string) $berkasBerjalan,
+                    'description' => 'Sedang dalam proses penyidikan',
+                    'icon' => 'play-circle',
+                    'iconClass' => 'bg-success-50 text-success-600 dark:bg-success-500/10 dark:text-success-400',
+                ],
+                [
+                    'title' => 'Menunggu Verifikasi Penyidik',
+                    'value' => (string) $menungguTindakan,
+                    'description' => 'Menunggu tindakan penyidik',
+                    'icon' => 'verification',
+                    'iconClass' => 'bg-warning-50 text-warning-600 dark:bg-warning-500/10 dark:text-warning-400',
+                ],
+                [
+                    'title' => 'Selesai',
+                    'value' => (string) $berkasSelesai,
+                    'description' => 'Perkara selesai',
+                    'icon' => 'check',
+                    'iconClass' => 'bg-purple-50 text-purple-600 dark:bg-purple-500/10 dark:text-purple-400',
+                ],
+                [
+                    'title' => 'Rata-rata Waktu Penyelesaian',
+                    'value' => $avgDaysText,
+                    'description' => 'Dari SPDP s.d. Tahap II',
+                    'icon' => 'time',
+                    'iconClass' => 'bg-teal-50 text-teal-600 dark:bg-teal-500/10 dark:text-teal-400',
+                ],
+            ];
+        });
+    }
+
+    /**
+     * Bersihkan cache statistik dashboard saat terjadi mutasi data.
+     */
+    public static function clearCache(?int $tahun = null): void
+    {
+        if ($tahun !== null) {
+            Cache::forget("dashboard_stats_{$tahun}");
+        } else {
+            $currentYear = (int) date('Y');
+            for ($y = $currentYear - 2; $y <= $currentYear + 1; $y++) {
+                Cache::forget("dashboard_stats_{$y}");
+            }
+        }
     }
 
     /**
@@ -201,10 +219,15 @@ class DashboardService
                 SUM(CASE WHEN status_formal = 'tidak_selesai' THEN 1 ELSE 0 END) as tidak_selesai,
                 SUM(CASE WHEN status_formal IS NULL OR status_formal = 'dalam_proses' THEN 1 ELSE 0 END) as dalam_proses,
                 SUM(CASE WHEN (status_formal IS NULL OR status_formal = 'dalam_proses') AND sla_deadline IS NULL THEN 1 ELSE 0 END) as belum_spdp,
-                SUM(CASE WHEN (status_formal IS NULL OR status_formal = 'dalam_proses') AND sla_deadline IS NOT NULL AND sla_deadline > '{$approachingDate}' THEN 1 ELSE 0 END) as dalam_sla,
-                SUM(CASE WHEN (status_formal IS NULL OR status_formal = 'dalam_proses') AND sla_deadline IS NOT NULL AND sla_deadline >= '{$today}' AND sla_deadline <= '{$approachingDate}' THEN 1 ELSE 0 END) as mendekati_sla,
-                SUM(CASE WHEN (status_formal IS NULL OR status_formal = 'dalam_proses') AND sla_deadline IS NOT NULL AND sla_deadline < '{$today}' THEN 1 ELSE 0 END) as lewat_sla
-            ")
+                SUM(CASE WHEN (status_formal IS NULL OR status_formal = 'dalam_proses') AND sla_deadline IS NOT NULL AND sla_deadline > ? THEN 1 ELSE 0 END) as dalam_sla,
+                SUM(CASE WHEN (status_formal IS NULL OR status_formal = 'dalam_proses') AND sla_deadline IS NOT NULL AND sla_deadline >= ? AND sla_deadline <= ? THEN 1 ELSE 0 END) as mendekati_sla,
+                SUM(CASE WHEN (status_formal IS NULL OR status_formal = 'dalam_proses') AND sla_deadline IS NOT NULL AND sla_deadline < ? THEN 1 ELSE 0 END) as lewat_sla
+            ", [
+                $approachingDate,
+                $today,
+                $approachingDate,
+                $today,
+            ])
             ->first();
 
         $total = (int) ($result->total ?? 0);

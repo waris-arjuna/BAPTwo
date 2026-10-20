@@ -6,7 +6,7 @@
             <!-- Form -->
             <div class="flex w-full flex-1 flex-col justify-center px-4 py-8 sm:px-6 lg:w-1/2">
                 <div class="mx-auto w-full max-w-lg">
-                    <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-theme-xs transition-all duration-300 hover:-translate-y-1 hover:border-brand-500/30 hover:shadow-theme-xl sm:p-8 dark:border-gray-800 dark:bg-gray-900/90 dark:hover:border-brand-500/30 dark:hover:shadow-theme-xl">
+                    <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-theme-xs transition-[transform,border-color,box-shadow] duration-200 hover:-translate-y-1 hover:border-brand-500/30 hover:shadow-theme-xl sm:p-8 dark:border-gray-800 dark:bg-gray-900/90 dark:hover:border-brand-500/30 dark:hover:shadow-theme-xl">
                         <div class="flex w-full flex-1 flex-col">
                             <div class="mx-auto w-full max-w-md pt-10">
                                 <a href="{{ route('masuk') }}" class="inline-flex items-center gap-2 text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">

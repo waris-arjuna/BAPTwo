@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\PerkaraRekapExport;
+use App\Services\AuditTrailService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\StreamedResponse;
@@ -50,6 +51,20 @@ class PerkaraExportController extends Controller
             bulan: $bulan,
             tanggalMulai: $tanggalMulai,
             tanggalSelesai: $tanggalSelesai
+        );
+
+        app(AuditTrailService::class)->log(
+            aksi: 'export_excel',
+            tabel: 'perkara',
+            recordId: 0,
+            dataBaru: [
+                'mode' => $mode,
+                'tahun' => $tahun,
+                'bulan' => $bulan,
+                'tanggal_mulai' => $tanggalMulai,
+                'tanggal_selesai' => $tanggalSelesai,
+                'filename' => $filename,
+            ]
         );
 
         return $export->download($filename);

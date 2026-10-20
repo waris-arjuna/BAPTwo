@@ -3,10 +3,16 @@
 namespace App\Providers;
 
 use App\Enums\UserRole;
+use App\Models\BerkasPerkara;
+use App\Models\Dokumen;
 use App\Models\Perkara;
+use App\Models\TahapanPerkara;
 use App\Models\User;
+use App\Policies\DokumenPolicy;
 use App\Policies\PerkaraPolicy;
 use App\Policies\UserPolicy;
+use App\Services\DashboardService;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
@@ -25,8 +31,20 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Model::preventLazyLoading(! $this->app->isProduction());
+
+        // Invalidation cache statistik dashboard seketika saat data perkara berubah (D-050)
+        $clearDashboardCache = fn () => DashboardService::clearCache();
+        Perkara::saved($clearDashboardCache);
+        Perkara::deleted($clearDashboardCache);
+        BerkasPerkara::saved($clearDashboardCache);
+        BerkasPerkara::deleted($clearDashboardCache);
+        TahapanPerkara::saved($clearDashboardCache);
+        TahapanPerkara::deleted($clearDashboardCache);
+
         Gate::policy(User::class, UserPolicy::class);
         Gate::policy(Perkara::class, PerkaraPolicy::class);
+        Gate::policy(Dokumen::class, DokumenPolicy::class);
 
         // UC-05: Hanya Administrator yang dapat mengelola pengguna
         Gate::define('manage-users', fn (User $user): bool => $user->isAdmin());

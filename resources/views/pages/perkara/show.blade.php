@@ -163,7 +163,7 @@
                 <div>
                     <h1 class="text-2xl font-semibold text-gray-800 dark:text-white/90">Detail Perkara &amp; Berkas Perkara</h1>
                     <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                        Data TKP, Tim PPNS, Tersangka (1 Tersangka = 1 Berkas Perkara), dan Pasal Berlapis.
+                        Data TKP, Tim PPNS, Tersangka (1 Tersangka = 1 Berkas Perkara), dan Pasal yang Disangkakan.
                     </p>
                 </div>
 
@@ -407,7 +407,7 @@
                                 Daftar Tersangka &amp; Berkas Perkara ({{ $perkara->tersangkas->count() }} Berkas)
                             </h2>
                             <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                                Setiap tersangka memiliki 1 Berkas Perkara terpisah beserta Pasal Berlapis yang disangkakan.
+                                Setiap tersangka memiliki 1 Berkas Perkara terpisah beserta Pasal yang disangkakan.
                             </p>
                         </div>
                     </div>
@@ -704,10 +704,10 @@
                                 </div>
                             @endif
 
-                            {{-- Pasal Berlapis --}}
+                            {{-- Pasal yang Disangkakan --}}
                             <div class="mt-4">
                                 <p class="mb-2 text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                                    Pasal Berlapis yang Disangkakan ({{ $berkas?->pasals->count() ?? 0 }} Pasal)
+                                    Pasal yang Disangkakan ({{ $berkas?->pasals->count() ?? 0 }} Pasal)
                                 </p>
                                 <div class="flex flex-wrap gap-2">
                                     @forelse ($berkas?->pasals ?? [] as $pasal)

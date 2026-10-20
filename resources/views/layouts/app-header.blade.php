@@ -47,12 +47,16 @@
                     class="h-8 w-auto dark:hidden"
                     src="/images/logo/logo.svg"
                     alt="BAP TWO"
+                    width="150"
+                    height="32"
                 />
 
                 <img
                     class="hidden h-8 w-auto dark:block"
                     src="/images/logo/logo-dark.svg"
                     alt="BAP TWO"
+                    width="150"
+                    height="32"
                 />
             </a>
         </div>

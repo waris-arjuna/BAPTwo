@@ -112,23 +112,27 @@
                     {{-- Tersangka & Berkas Perkara --}}
                     <td class="px-5 py-4">
                         @if ($perkara->tersangkas->isNotEmpty())
-                            <div class="flex flex-col gap-1.5">
+                            <div class="flex flex-col gap-2">
                                 @foreach ($perkara->tersangkas as $tersangka)
                                     @php
                                         $berkas = $tersangka->berkasPerkara;
                                     @endphp
-                                    <div class="flex items-center gap-1.5 text-xs">
-                                        <i class="fi fi-rr-user text-[11px] text-gray-400"></i>
-                                        <span class="font-medium text-gray-800 dark:text-white/90">{{ $tersangka->nama }}</span>
+                                    <div class="flex flex-col gap-0.5 text-xs">
+                                        <div class="flex items-center gap-1.5">
+                                            <i class="fi fi-rr-user text-[11px] text-gray-400 shrink-0"></i>
+                                            <span class="font-medium text-gray-800 dark:text-white/90 break-words" title="{{ $tersangka->nama }}">{{ $tersangka->nama }}</span>
+                                            @if ($berkas?->is_dpo)
+                                                <span class="rounded-full bg-error-50 px-1.5 py-0.2 text-[10px] font-semibold text-error-600 dark:bg-error-500/10 dark:text-error-400 shrink-0">
+                                                    DPO
+                                                </span>
+                                            @endif
+                                        </div>
                                         @if ($berkas?->nomor_berkas)
-                                            <span class="rounded bg-gray-100 px-1.5 py-0.5 font-mono text-[10px] font-medium tabular-nums text-gray-600 dark:bg-gray-800 dark:text-gray-400">
-                                                {{ $berkas->nomor_berkas }}
-                                            </span>
-                                        @endif
-                                        @if ($berkas?->is_dpo)
-                                            <span class="rounded-full bg-error-50 px-1.5 py-0.2 text-[10px] font-semibold text-error-600 dark:bg-error-500/10 dark:text-error-400">
-                                                DPO
-                                            </span>
+                                            <div class="ps-4">
+                                                <span class="inline-block rounded bg-gray-100 px-1.5 py-0.5 font-mono text-[10px] font-medium tabular-nums text-gray-600 dark:bg-gray-800 dark:text-gray-400" title="Nomor Berkas: {{ $berkas->nomor_berkas }}">
+                                                    {{ $berkas->nomor_berkas }}
+                                                </span>
+                                            </div>
                                         @endif
                                     </div>
                                 @endforeach

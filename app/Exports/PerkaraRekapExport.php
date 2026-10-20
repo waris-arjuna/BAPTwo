@@ -38,6 +38,9 @@ class PerkaraRekapExport
         $writer = new Xlsx($spreadsheet);
 
         return response()->streamDownload(function () use ($writer) {
+            if (ob_get_level() > 0) {
+                ob_end_clean();
+            }
             $writer->save('php://output');
         }, $filename, [
             'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
@@ -60,14 +63,13 @@ class PerkaraRekapExport
         // Bangun 4 baris Header (Baris 1–4)
         $this->buildHeaders($sheet);
 
-        // Ambil data perkara terurut tanggal LK
-        $perkaras = $this->query()->get();
-
-        // Isi baris data (mulai baris 5)
+        // Ambil data perkara terurut tanggal LK via LazyCollection untuk hemat memori (PERF-04)
         $currentRow = 5;
-        foreach ($perkaras as $index => $perkara) {
-            $this->populateRow($sheet, $currentRow, $index + 1, $perkara);
+        $iteration = 1;
+        foreach ($this->query()->lazy(100) as $perkara) {
+            $this->populateRow($sheet, $currentRow, $iteration, $perkara);
             $currentRow++;
+            $iteration++;
         }
 
         $lastRow = max(5, $currentRow - 1);
@@ -103,6 +105,10 @@ class PerkaraRekapExport
                 'ppnsAnggota',
                 'tkp.alamat',
                 'tersangkas.alamat',
+                'tersangkas.berkasPerkara.pasals',
+                'tersangkas.berkasPerkara.tahapan',
+                'tersangkas.berkasPerkara.dpos',
+                'tersangkas.berkasPerkara.sp3',
                 'berkasPerkaras.pasals',
                 'berkasPerkaras.tahapan',
                 'berkasPerkaras.dpos',
@@ -524,6 +530,11 @@ class PerkaraRekapExport
     protected function setTextCell($sheet, string $cellCoord, mixed $value, string $align = Alignment::HORIZONTAL_LEFT): void
     {
         $val = (string) ($value !== null && $value !== '' ? $value : '-');
+
+        if ($val !== '-' && in_array($val[0], ['=', '+', '-', '@'], true)) {
+            $val = "'".$val;
+        }
+
         $sheet->setCellValue($cellCoord, $val);
         $sheet->getStyle($cellCoord)->getAlignment()->setHorizontal($align);
         $sheet->getStyle($cellCoord)->getAlignment()->setVertical(Alignment::VERTICAL_TOP);

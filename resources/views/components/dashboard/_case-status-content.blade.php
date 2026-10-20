@@ -69,7 +69,7 @@
                 @if ($dalamProsesPercent > 0)
                     <circle
                         cx="60" cy="60" r="48" fill="none"
-                        class="cursor-pointer stroke-brand-500 transition-all duration-200 hover:opacity-85 focus:outline-none"
+                        class="cursor-pointer stroke-brand-500 transition-opacity duration-150 hover:opacity-85 focus:outline-none"
                         stroke-width="14"
                         stroke-dasharray="{{ $dalamProsesLength }} {{ $circumference }}"
                         stroke-dashoffset="0"
@@ -89,7 +89,7 @@
                 @if ($selesaiPercent > 0)
                     <circle
                         cx="60" cy="60" r="48" fill="none"
-                        class="cursor-pointer stroke-success-500 transition-all duration-200 hover:opacity-85 focus:outline-none"
+                        class="cursor-pointer stroke-success-500 transition-opacity duration-150 hover:opacity-85 focus:outline-none"
                         stroke-width="14"
                         stroke-dasharray="{{ $selesaiLength }} {{ $circumference }}"
                         stroke-dashoffset="-{{ $selesaiOffset }}"
@@ -109,7 +109,7 @@
                 @if ($tidakSelesaiPercent > 0)
                     <circle
                         cx="60" cy="60" r="48" fill="none"
-                        class="cursor-pointer stroke-gray-400 transition-all duration-200 hover:opacity-85 focus:outline-none dark:stroke-gray-500"
+                        class="cursor-pointer stroke-gray-400 transition-opacity duration-150 hover:opacity-85 focus:outline-none dark:stroke-gray-500"
                         stroke-width="14"
                         stroke-dasharray="{{ $tidakSelesaiLength }} {{ $circumference }}"
                         stroke-dashoffset="-{{ $tidakSelesaiOffset }}"
@@ -129,14 +129,14 @@
             {{-- Tengah Donut: Default Total atau Hover Detail --}}
             <div class="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-center p-2">
                 <template x-if="hovered">
-                    <div class="flex flex-col items-center justify-center transition-all">
+                    <div class="flex flex-col items-center justify-center transition-opacity duration-150">
                         <span class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400" x-text="hovered.label"></span>
                         <span class="text-2xl font-bold tracking-tight tabular-nums text-gray-800 dark:text-white/90" x-text="hovered.count + ' (' + hovered.percent + '%)'"></span>
                         <span class="mt-0.5 text-[10px] font-medium text-brand-600 dark:text-brand-400">Klik segmen untuk filter</span>
                     </div>
                 </template>
                 <template x-if="!hovered">
-                    <div class="flex flex-col items-center justify-center transition-all">
+                    <div class="flex flex-col items-center justify-center transition-opacity duration-150">
                         <span class="text-3xl font-bold tracking-tight tabular-nums text-gray-800 dark:text-white/90">
                             {{ $totalPerkara }}
                         </span>

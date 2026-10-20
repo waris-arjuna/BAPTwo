@@ -164,7 +164,7 @@ class BerkasPerkara extends Model
      */
     public function hasSp3(): bool
     {
-        return $this->sp3()->exists();
+        return $this->relationLoaded('sp3') ? $this->sp3 !== null : $this->sp3()->exists();
     }
 
     /**

@@ -90,7 +90,7 @@
                         title="{{ __('Klik untuk melihat foto profil') }}"
                     >
                         <img src="{{ $currentUser?->fotoProfilUrl() }}" alt="{{ $currentUser?->nama }}"
-                            class="h-full w-full object-cover transition duration-300 group-hover:scale-105" />
+                            class="h-full w-full object-cover transition duration-300 group-hover:scale-105" width="96" height="96" />
                         <div class="absolute inset-0 flex flex-col items-center justify-center bg-gray-950/40 opacity-0 transition duration-300 group-hover:opacity-100">
                             <i class="fi fi-rr-search text-xl text-white" aria-hidden="true"></i>
                             <span class="mt-1 text-theme-xs font-medium text-white">{{ __('Lihat Foto') }}</span>
@@ -494,8 +494,22 @@
                         }
                     },
 
+                    extractEventValue(event, fallback = '') {
+                        if (event === undefined || event === null) return fallback;
+                        if (typeof event === 'object') {
+                            if ('detail' in event && event.detail !== undefined && event.detail !== null) {
+                                return String(event.detail);
+                            }
+                            if ('target' in event && event.target && 'value' in event.target && event.target.value !== undefined && event.target.value !== null) {
+                                return String(event.target.value);
+                            }
+                            return fallback;
+                        }
+                        return String(event);
+                    },
+
                     async onProvinsiChange(event) {
-                        const code = event && event.target ? event.target.value : (event || this.wilayah.provinsi_kode);
+                        const code = this.extractEventValue(event, this.wilayah.provinsi_kode);
                         if (code !== undefined && code !== null) this.wilayah.provinsi_kode = String(code);
                         const found = this.listProvinsi.find(i => String(i.code) === String(this.wilayah.provinsi_kode));
                         this.wilayah.provinsi_nama = found ? found.name : '';
@@ -511,11 +525,11 @@
                         this.$dispatch('searchable-select-loading', { id: 'kabupaten_kode', loading: false });
                         this.$dispatch('searchable-select-loading', { id: 'kecamatan_kode', loading: false });
                         this.$dispatch('searchable-select-loading', { id: 'desa_kode', loading: false });
-                        await this.fetchKabupaten(this.wilayah.provinsi_kode, true);
+                        await this.fetchKabupaten(this.wilayah.provinsi_kode, false);
                     },
 
                     async onKabupatenChange(event) {
-                        const code = event && event.target ? event.target.value : (event || this.wilayah.kabupaten_kode);
+                        const code = this.extractEventValue(event, this.wilayah.kabupaten_kode);
                         if (code !== undefined && code !== null) this.wilayah.kabupaten_kode = String(code);
                         const found = this.listKabupaten.find(i => String(i.code) === String(this.wilayah.kabupaten_kode));
                         this.wilayah.kabupaten_nama = found ? found.name : '';
@@ -527,11 +541,11 @@
                         this.listDesa = [];
                         this.$dispatch('searchable-select-loading', { id: 'kecamatan_kode', loading: false });
                         this.$dispatch('searchable-select-loading', { id: 'desa_kode', loading: false });
-                        await this.fetchKecamatan(this.wilayah.kabupaten_kode, true);
+                        await this.fetchKecamatan(this.wilayah.kabupaten_kode, false);
                     },
 
                     async onKecamatanChange(event) {
-                        const code = event && event.target ? event.target.value : (event || this.wilayah.kecamatan_kode);
+                        const code = this.extractEventValue(event, this.wilayah.kecamatan_kode);
                         if (code !== undefined && code !== null) this.wilayah.kecamatan_kode = String(code);
                         const found = this.listKecamatan.find(i => String(i.code) === String(this.wilayah.kecamatan_kode));
                         this.wilayah.kecamatan_nama = found ? found.name : '';
@@ -539,11 +553,11 @@
                         this.wilayah.desa_nama = '';
                         this.listDesa = [];
                         this.$dispatch('searchable-select-loading', { id: 'desa_kode', loading: false });
-                        await this.fetchDesa(this.wilayah.kecamatan_kode, true);
+                        await this.fetchDesa(this.wilayah.kecamatan_kode, false);
                     },
 
                     onDesaChange(event) {
-                        const code = event && event.target ? event.target.value : (event || this.wilayah.desa_kode);
+                        const code = this.extractEventValue(event, this.wilayah.desa_kode);
                         if (code !== undefined && code !== null) this.wilayah.desa_kode = String(code);
                         const found = this.listDesa.find(i => String(i.code) === String(this.wilayah.desa_kode));
                         this.wilayah.desa_nama = found ? found.name : '';

@@ -46,7 +46,7 @@ it('authenticates active user with valid credentials and math captcha', function
     $this->assertAuthenticatedAs($user);
 });
 
-it('rejects login with specific error when password is wrong', function () {
+it('rejects login with generic error when password is wrong', function () {
     User::factory()->create([
         'email' => 'penyidik@baptwo.test',
         'password' => 'password',
@@ -62,11 +62,11 @@ it('rejects login with specific error when password is wrong', function () {
     ]);
 
     $response->assertRedirect('/signin');
-    $response->assertSessionHasErrors('password');
+    $response->assertSessionHasErrors(['email' => __('Email atau kata sandi salah.')]);
     $this->assertGuest();
 });
 
-it('rejects login with specific error when email is unregistered or captcha is wrong', function () {
+it('rejects login with generic error when email is unregistered or captcha is wrong', function () {
     app(MathCaptchaService::class)->generate();
     $answer = session(MathCaptchaService::SESSION_ANSWER_KEY);
 
@@ -77,7 +77,7 @@ it('rejects login with specific error when email is unregistered or captcha is w
     ]);
 
     $unregistered->assertRedirect('/signin');
-    $unregistered->assertSessionHasErrors('email');
+    $unregistered->assertSessionHasErrors(['email' => __('Email atau kata sandi salah.')]);
 
     app(MathCaptchaService::class)->generate();
     $wrongCaptcha = $this->from('/signin')->post('/signin', [
@@ -107,8 +107,39 @@ it('rejects login when user is inactive', function () {
     ]);
 
     $response->assertRedirect('/signin');
-    $response->assertSessionHasErrors('email');
+    $response->assertSessionHasErrors(['email' => __('Email atau kata sandi salah.')]);
     $this->assertGuest();
+});
+
+it('throttles login attempts after 5 consecutive failures and writes audit log', function () {
+    for ($i = 0; $i < 5; $i++) {
+        app(MathCaptchaService::class)->generate();
+        $answer = session(MathCaptchaService::SESSION_ANSWER_KEY);
+
+        $this->from('/signin')->post('/signin', [
+            'email' => 'throttle@baptwo.test',
+            'password' => 'wrong',
+            'captcha' => (string) $answer,
+        ]);
+    }
+
+    app(MathCaptchaService::class)->generate();
+    $answer = session(MathCaptchaService::SESSION_ANSWER_KEY);
+
+    $response = $this->from('/signin')->post('/signin', [
+        'email' => 'throttle@baptwo.test',
+        'password' => 'wrong',
+        'captcha' => (string) $answer,
+    ]);
+
+    $response->assertRedirect('/signin');
+    $response->assertSessionHasErrors('email');
+    expect(session('errors')->first('email'))->toContain('Terlalu banyak percobaan');
+
+    $this->assertDatabaseHas('audit_log', [
+        'aksi' => 'login_failed',
+        'tabel' => 'user',
+    ]);
 });
 
 it('logs out authenticated user and invalidates session', function () {

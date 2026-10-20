@@ -68,7 +68,29 @@ export default function toastManager(initialToasts = []) {
         },
 
         removeToast(id) {
+            const toast = this.toasts.find((t) => t.id === id);
+            if (toast && toast._fallbackTimer) {
+                clearTimeout(toast._fallbackTimer);
+            }
             this.toasts = this.toasts.filter((t) => t.id !== id);
+        },
+
+        onAnimationEnd(event, toast) {
+            if (event.animationName !== 'toast-shrink') return;
+
+            // Jika durasi animasi terpangkas oleh override CSS (mis. elapsed time < 80% duration)
+            const elapsedMs = (event.elapsedTime || 0) * 1000;
+            if (elapsedMs < toast.duration * 0.8) {
+                const remaining = Math.max(100, toast.duration - elapsedMs);
+                if (!toast._fallbackTimer) {
+                    toast._fallbackTimer = setTimeout(() => {
+                        this.removeToast(toast.id);
+                    }, remaining);
+                }
+                return;
+            }
+
+            this.removeToast(toast.id);
         },
 
         toggleTouchPause(id) {

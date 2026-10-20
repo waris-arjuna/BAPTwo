@@ -25,7 +25,7 @@
         <div class="flex flex-col items-center justify-center">
             <div class="relative aspect-square w-full max-w-[340px] overflow-hidden rounded-2xl border-2 border-gray-200 bg-gray-50 shadow-theme-sm dark:border-gray-700 dark:bg-gray-800">
                 <img src="{{ $currentUser?->fotoProfilUrl() }}" alt="{{ $currentUser?->nama }}"
-                    class="h-full w-full object-cover" />
+                    class="h-full w-full object-cover" width="340" height="340" />
             </div>
 
             {{-- Nama dan Jabatan Lebih Jelas & Besar --}}

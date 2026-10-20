@@ -136,8 +136,8 @@
                             </div>
                             <div class="h-2 w-full overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700">
                                 <div
-                                    class="h-full rounded-full transition-all duration-300 {{ $progress >= 100 ? 'bg-success-500' : ($progress >= 50 ? 'bg-brand-500' : 'bg-warning-500') }}"
-                                    style="width: {{ $progress }}%"
+                                    class="h-full w-full origin-left rounded-full transition-transform duration-300 ease-out {{ $progress >= 100 ? 'bg-success-500' : ($progress >= 50 ? 'bg-brand-500' : 'bg-warning-500') }}"
+                                    style="transform: scaleX({{ $progress / 100 }})"
                                 ></div>
                             </div>
                         </div>

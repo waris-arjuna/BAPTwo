@@ -8,7 +8,7 @@ use App\Models\Jabatan;
 use App\Models\JaksaPenuntut;
 use App\Models\Panggol;
 use App\Models\Pasal;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -33,7 +33,7 @@ class MasterDataService
         'pasal' => [
             'title' => 'Master Pasal & Undang-Undang',
             'singular' => 'Pasal / UU',
-            'description' => 'Kelola daftar pasal dan undang-undang untuk sangkaan berlapis berkas perkara.',
+            'description' => 'Kelola daftar pasal dan undang-undang untuk sangkaan berkas perkara.',
         ],
         'instansi-hukum' => [
             'title' => 'Master Instansi Hukum',
@@ -59,7 +59,7 @@ class MasterDataService
         return self::TYPES[$type];
     }
 
-    public function list(string $type, string $search = '', string $status = ''): Collection
+    public function list(string $type, string $search = '', string $status = '', int $perPage = 10): LengthAwarePaginator
     {
         $this->getMeta($type);
 
@@ -111,13 +111,15 @@ class MasterDataService
             });
         };
 
+        $paginate = fn ($builder) => $builder->paginate($perPage)->withQueryString();
+
         return match ($type) {
-            'jabatan' => Jabatan::withTrashed()->tap(fn ($q) => $applySearch($q, ['nama_jabatan']))->tap($applyStatus)->orderBy('nama_jabatan')->get(),
-            'bidang' => Bidang::withTrashed()->tap(fn ($q) => $applySearch($q, ['nama_bidang']))->tap($applyStatus)->orderBy('nama_bidang')->get(),
-            'panggol' => Panggol::withTrashed()->tap(fn ($q) => $applySearch($q, ['pangkat', 'golongan']))->tap($applyStatus)->orderBy('golongan')->get(),
-            'pasal' => Pasal::withTrashed()->tap(fn ($q) => $applySearch($q, ['nama_pasal', 'pasal', 'isi', 'status']))->tap($applyStatus)->orderBy('nama_pasal')->orderBy('pasal')->get(),
-            'instansi-hukum' => InstansiHukum::withTrashed()->tap(fn ($q) => $applySearch($q, ['nama', 'wilayah', 'jenis']))->tap($applyStatus)->orderBy('jenis')->orderBy('nama')->get(),
-            'jaksa-penuntut' => JaksaPenuntut::withTrashed()->with('instansiHukum')->tap(fn ($q) => $applySearch($q, ['nama_jaksa', 'nip']))->tap($applyStatus)->orderBy('nama_jaksa')->get(),
+            'jabatan' => $paginate(Jabatan::withTrashed()->tap(fn ($q) => $applySearch($q, ['nama_jabatan']))->tap($applyStatus)->orderBy('nama_jabatan')),
+            'bidang' => $paginate(Bidang::withTrashed()->tap(fn ($q) => $applySearch($q, ['nama_bidang']))->tap($applyStatus)->orderBy('nama_bidang')),
+            'panggol' => $paginate(Panggol::withTrashed()->tap(fn ($q) => $applySearch($q, ['pangkat', 'golongan']))->tap($applyStatus)->orderBy('golongan')),
+            'pasal' => $paginate(Pasal::withTrashed()->tap(fn ($q) => $applySearch($q, ['nama_pasal', 'pasal', 'isi', 'status']))->tap($applyStatus)->orderBy('nama_pasal')->orderBy('pasal')),
+            'instansi-hukum' => $paginate(InstansiHukum::withTrashed()->tap(fn ($q) => $applySearch($q, ['nama', 'wilayah', 'jenis']))->tap($applyStatus)->orderBy('jenis')->orderBy('nama')),
+            'jaksa-penuntut' => $paginate(JaksaPenuntut::withTrashed()->with('instansiHukum')->tap(fn ($q) => $applySearch($q, ['nama_jaksa', 'nip']))->tap($applyStatus)->orderBy('nama_jaksa')),
         };
     }
 

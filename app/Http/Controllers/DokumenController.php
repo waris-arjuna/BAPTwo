@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dokumen;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
@@ -13,6 +14,8 @@ class DokumenController extends Controller
      */
     public function download(Dokumen $dokumen): StreamedResponse
     {
+        Gate::authorize('download', $dokumen);
+
         if (! Storage::disk('local')->exists($dokumen->file_path)) {
             abort(404, 'Dokumen tidak ditemukan.');
         }
@@ -25,6 +28,8 @@ class DokumenController extends Controller
      */
     public function preview(Dokumen $dokumen): mixed
     {
+        Gate::authorize('view', $dokumen);
+
         if (! Storage::disk('local')->exists($dokumen->file_path)) {
             abort(404, 'Dokumen tidak ditemukan.');
         }

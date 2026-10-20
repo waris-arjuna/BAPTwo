@@ -439,7 +439,7 @@
                     </div>
 
                     <div class="rounded-xl border border-gray-200 bg-gray-50/60 p-3.5 dark:border-gray-800 dark:bg-gray-800/40">
-                        <p class="text-xs text-gray-500 dark:text-gray-400">Pasal Berlapis</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Pasal</p>
                         <p class="mt-0.5 text-sm font-medium text-gray-800 dark:text-white/90" x-text="selectedItem?.pasal || '-'"></p>
                     </div>
                 </div>
@@ -458,8 +458,8 @@
                     </div>
                     <div class="mt-2.5 h-2 w-full overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700">
                         <div
-                            class="h-full rounded-full bg-brand-500 transition-all duration-300"
-                            :style="'width: ' + (selectedItem?.progress || 0) + '%'"
+                            class="h-full w-full origin-left rounded-full bg-brand-500 transition-transform duration-300 ease-out"
+                            :style="'transform: scaleX(' + ((selectedItem?.progress || 0) / 100) + ')'"
                         ></div>
                     </div>
                 </div>

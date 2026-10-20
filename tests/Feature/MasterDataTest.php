@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\UserRole;
 use App\Models\BerkasPerkara;
 use App\Models\Bidang;
 use App\Models\InstansiHukum;
@@ -358,4 +359,33 @@ it('applies consistent search, status, and date filters across stage tables, Mas
         ->assertOk()
         ->assertSee($inactiveUser->nama)
         ->assertDontSee($activeUser->nama);
+});
+
+test('tabel master data menerapkan paginasi 10 baris per halaman dan merender navigasi halaman', function () {
+    $admin = User::factory()->create(['role' => UserRole::ADMINISTRATOR]);
+
+    // Buat 15 data jabatan
+    for ($i = 1; $i <= 15; $i++) {
+        Jabatan::create([
+            'nama_jabatan' => sprintf('Jabatan Khusus %02d', $i),
+        ]);
+    }
+
+    $response = $this->actingAs($admin)
+        ->get(route('master-data.index', ['type' => 'jabatan']));
+
+    $response->assertOk();
+    // Tampil 10 item pada halaman pertama
+    $response->assertSee('Jabatan Khusus 01');
+    $response->assertSee('Jabatan Khusus 10');
+    // Halaman kedua
+    $response->assertDontSee('Jabatan Khusus 11');
+
+    // Halaman 2 memuat sisa 5 item
+    $resPage2 = $this->actingAs($admin)
+        ->get(route('master-data.index', ['type' => 'jabatan', 'page' => 2]));
+
+    $resPage2->assertOk();
+    $resPage2->assertSee('Jabatan Khusus 11');
+    $resPage2->assertSee('Jabatan Khusus 15');
 });

@@ -46,6 +46,7 @@ class SeluruhPerkaraController extends Controller
                 'tkp.alamat',
                 'ppnsUtama',
                 'tersangkas.berkasPerkara.pasals',
+                'berkasPerkaras',
                 'creator',
             ])
             ->when($search !== '', function (Builder $query) use ($search) {

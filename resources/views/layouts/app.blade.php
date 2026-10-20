@@ -10,8 +10,6 @@
 
     <!-- Flaticon UIcons (https://www.flaticon.com/) -->
     <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
-    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css">
-    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-rounded/css/uicons-bold-rounded.css">
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -140,14 +138,11 @@
 
 <body class="font-sans antialiased">
 
-    {{-- Global Toast Notification System (D-050) --}}
-    <x-common.toast />
-
     <div class="min-h-screen xl:flex sidebar-expanded" x-data :class="{ 'sidebar-expanded': $store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen }">
         @include('layouts.backdrop')
         @include('layouts.sidebar')
 
-        <div class="flex-1 min-w-0 transition-all duration-300 ease-in-out" :class="($store.sidebar.isExpanded || $store.sidebar.isHovered) ? 'xl:ml-[290px]' : 'xl:ml-[90px]'">
+        <div class="flex-1 min-w-0 transition-[margin] duration-300 ease-in-out" :class="($store.sidebar.isExpanded || $store.sidebar.isHovered) ? 'xl:ml-[290px]' : 'xl:ml-[90px]'">
             <!-- app header start -->
             @include('layouts.app-header')
             <!-- app header end -->
@@ -158,6 +153,9 @@
 
         {{-- Global PDF Preview Modal (D-047) --}}
         <x-common.pdf-preview-modal />
+
+        {{-- Global Toast Notification System (D-050) --}}
+        <x-common.toast />
 
     </div>
 

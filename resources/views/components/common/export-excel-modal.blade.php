@@ -86,12 +86,24 @@
         <div
             x-show="isOpen"
             x-cloak
-            class="fixed inset-0 z-99999 flex items-center justify-center overflow-y-auto bg-gray-900/60 p-4 backdrop-blur-sm transition-all"
+            x-transition:enter="transition-opacity duration-200 ease-out"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="transition-opacity duration-150 ease-in"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0"
+            class="fixed inset-0 z-99999 flex items-center justify-center overflow-y-auto bg-gray-900/60 p-4 backdrop-blur-sm"
             @keydown.escape.window="if (document.querySelector('.flatpickr-calendar.open')) { fpMulai?.close(); fpSelesai?.close(); } else { isOpen = false; }"
         >
             <div
                 @click.outside="if (!$event.target.closest('.flatpickr-calendar')) isOpen = false"
-                class="w-full max-w-xl rounded-2xl border border-gray-200 bg-white p-6 shadow-2xl dark:border-gray-800 dark:bg-gray-900 transition-all sm:p-7"
+                x-transition:enter="transition-[transform,opacity] duration-200 ease-out"
+                x-transition:enter-start="opacity-0 translate-y-3 sm:scale-95"
+                x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                x-transition:leave="transition-[transform,opacity] duration-150 ease-in"
+                x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+                x-transition:leave-end="opacity-0 translate-y-2 sm:scale-95"
+                class="w-full max-w-xl rounded-2xl border border-gray-200 bg-white p-6 shadow-2xl dark:border-gray-800 dark:bg-gray-900 sm:p-7"
             >
                 {{-- Header Modal --}}
                 <div class="mb-5 flex items-center justify-between border-b border-gray-100 pb-4 dark:border-gray-800">

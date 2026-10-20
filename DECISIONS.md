@@ -957,7 +957,7 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
 - Konteks: Aplikasi sebelumnya menggunakan modal pop-up tengah layar yang menghalangi konten saat terjadi error atau login sukses (dengan timer 10 detik), modal kesalahan input pada halaman login, alert bawaan browser (`window.alert`) pada ekspor modal, serta komponen `x-common.flash-alert` yang kurang informatif dan statis. Pengguna membutuhkan notifikasi pop-up (toast) yang otomatis hilang setelah 3 detik, informatif, menarik, tidak rentan throttling latar belakang browser, serta ramah aksesibilitas dan aman dari serangan XSS.
 - Keputusan:
   1. **Komponen Reusable `<x-common.toast>` & Alpine.js Manager (`resources/js/components/toast.js`)**:
-     - Wadah toast ditempatkan di pojok kanan atas layar (`fixed top-5 right-5 z-99999`) pada desktop (lebar 380px) dan responsif penuh dengan margin di perangkat mobile.
+     - Wadah toast ditempatkan di bawah header (`fixed top-20 right-4 sm:right-6 left-4 sm:left-auto sm:w-[380px] z-999999`) pada layout dashboard berautentikasi dan `top-5` pada layout fullscreen, memastikan kartu toast tidak tertutup oleh header (tinggi 64px `z-99999`) serta tidak menutupi tombol tema atau widget kalender.
      - Penumpukan rapi dibatasi maksimal 4 toast terlihat bersamaan dengan pesan terbaru di posisi teratas. Ketika toast ke-5 masuk, toast tertua langsung dihapus secara otomatis.
      - Dilengkapi mekanisme pencegahan duplikasi pesan identik (tipe, judul, dan isi yang sama) dalam rentang 1,5 detik (1500 ms).
      - Menyediakan fungsi JavaScript global `window.toast({ type, title, message, duration })` serta helper cepat `window.toast.success`, `window.toast.error`, `window.toast.warning`, dan `window.toast.info`.
@@ -1007,6 +1007,30 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
      - Menetapkan token durasi dan kurva easing konsisten pada Tailwind v4 `@theme` (`cubic-bezier(0.22, 1, 0.36, 1)` untuk in, `cubic-bezier(0.4, 0, 1, 1)` untuk out).
      - Menegakkan `prefers-reduced-motion: reduce` secara global di CSS utama dan menyematkan `scrollbar-gutter: stable` pada elemen akar `html`.
 - Konsekuensi: Aplikasi BAPTwo memiliki fondasi keamanan hukum yang kokoh, performa tangguh bebas lag atau kebocoran memori, dan tampilan visual yang halus tanpa membebani GPU atau CPU klien.
+
+---
+
+## D-051 : Penanganan Kompatibilitas ZipStream, Eager Loading Bertingkat, Dropdown Alamat, Istilah Pasal, dan Timer Toast pada Reduced-Motion
+
+- Tanggal: 2026-10-21
+- Status: Disepakati
+- Konteks: Menyelesaikan 6 kendala operasional dan fungsional pada BAPTwo yang mencakup lazy loading violation, kegagalan ekspor file XLSX biner, susunan layout tabel tersangka/berkas, bug event input alamat dinamis, inkonsistensi label pasal di antarmuka, serta toast notifikasi yang menutup terlalu cepat di lingkungan dengan fitur reduced-motion aktif.
+- Keputusan:
+  1. **Eager Loading Berkas & Tahapan (Poin 1)**:
+     - Meng-eager load relasi `tahapan` dan `tersangkas.berkasPerkara.sp3` pada `PerkaraService::getProgressPerkaraList()` serta memanfaatkan relasi ter-load pada method `BerkasPerkara::hasSp3()`, memastikan ketaatan pada `Model::preventLazyLoading(true)` di seluruh alur.
+  2. **Kompatibilitas Ekspor Biner XLSX & ZipStream (Poin 2)**:
+     - Melakukan pembersihan output buffer (`ob_end_clean()`) sebelum streaming file Excel serta menambahkan casting tipe integer eksplisit `(int) hexdec(...)` pada kalkulasi CRC32 di `vendor/maennchen/zipstream-php/src/File.php` agar mencegah `TypeError` float-to-int pada arsitektur PHP 32-bit.
+  3. **Tata Letak Vertikal Tersangka & Berkas (Poin 3)**:
+     - Menyusun nama tersangka dan nomor berkas perkara secara vertikal (`flex flex-col gap-0.5`), menampilkan nomor berkas perkara di baris bawah dengan badge abu-abu dan indentasi `ps-4`.
+  4. **Penanganan Event Dropdown Wilayah Alamat (Poin 4)**:
+     - Memperbaiki parsing event pada `searchable-select` untuk memprioritaskan `event.detail` di samping `event.target.value`, mencegah reset otomatis nilai provinsi saat memilih opsi, dan menonaktifkan pembukaan paksa dropdown kabupaten (`autoOpen = false`).
+  5. **Standardisasi Istilah Antarmuka Pasal (Poin 5)**:
+     - Mengubah semua teks tampilan pengguna dari "Pasal Berlapis" menjadi "Pasal yang Disangkakan" (pada form, detail, header) atau "Pasal" (pada tabel ringkas), tanpa mengubah nama kolom database atau struktur internal.
+  6. **Pengecualian Timer Toast pada Reduced-Motion (Poin 6)**:
+     - Menandai progress bar toast dengan atribut `data-toast-progress` dan mengecualikannya dari selektor override `0.01ms` pada `@media (prefers-reduced-motion: reduce)` di `resources/css/app.css`.
+     - Memperbaiki listener `@animationend` pada komponen toast agar memvalidasi `animationName === 'toast-shrink'` dan elapsed time untuk mencegah penutupan prematur.
+- Konsekuensi: Halaman dan fitur aplikasi berjalan stabil, andal di berbagai konfigurasi sistem operasi/browser (termasuk mode reduced-motion), dan menyajikan teks antarmuka yang bersih serta operasional.
+
 
 
 

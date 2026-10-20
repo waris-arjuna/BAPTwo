@@ -178,6 +178,14 @@
   --z-index-999999: 999999;
 
   --animate-toast-shrink: toast-shrink 3000ms linear forwards;
+
+  --duration-fast: 150ms;
+  --duration-normal: 200ms;
+  --duration-standard: 250ms;
+  --duration-slow: 400ms;
+
+  --ease-in-smooth: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out-smooth: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @keyframes toast-shrink {
@@ -198,6 +206,10 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
+  html {
+    scrollbar-gutter: stable;
+  }
+
   *,
   ::after,
   ::before,
@@ -211,6 +223,17 @@
   }
   body {
     @apply relative font-normal font-sans antialiased z-1 bg-gray-50 dark:bg-gray-900;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *:not([data-toast-progress]),
+    *:not([data-toast-progress])::before,
+    *:not([data-toast-progress])::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 

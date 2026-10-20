@@ -24,7 +24,7 @@
                     @endif
 
                     <!-- Card Hover Wrapper -->
-                    <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-theme-xs transition-all duration-300 hover:border-brand-500/30 hover:shadow-theme-xl sm:p-8 dark:border-gray-800 dark:bg-gray-900/90 dark:hover:border-brand-500/30 dark:hover:shadow-theme-xl">
+                    <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-theme-xs transition-[border-color,box-shadow] duration-200 hover:border-brand-500/30 hover:shadow-theme-xl sm:p-8 dark:border-gray-800 dark:bg-gray-900/90 dark:hover:border-brand-500/30 dark:hover:shadow-theme-xl">
                         <!-- Logo BAPTwo -->
                         <div class="mb-6 flex items-center justify-between">
                             <a href="/" class="inline-flex items-center gap-3">

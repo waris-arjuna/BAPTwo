@@ -87,7 +87,9 @@ test('halaman seluruh perkara dapat diakses oleh seluruh peran dan merender kart
         ->assertOk()
         ->assertSee('Seluruh Perkara')
         ->assertSee('SP.Gas/001/X/2026')
-        ->assertSee('Budi Santoso');
+        ->assertSee('Budi Santoso')
+        ->assertSee('BP/001/X/2026')
+        ->assertSee('Nomor Berkas: BP/001/X/2026');
 
     // Pimpinan
     $this->actingAs($this->pimpinan)

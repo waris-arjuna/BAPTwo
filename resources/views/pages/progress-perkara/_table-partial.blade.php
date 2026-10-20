@@ -15,7 +15,7 @@
                 </th>
 
                 <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                    Pasal Berlapis
+                    Pasal
                 </th>
 
                 <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
@@ -127,7 +127,7 @@
                                 <span class="tabular-nums text-gray-800 dark:text-white/90">{{ $progress }}%</span>
                             </div>
                             <div class="h-2 w-full overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700">
-                                <div class="h-full {{ $progressColor }} transition-all duration-300" style="width: {{ $progress }}%"></div>
+                                <div class="h-full w-full origin-left {{ $progressColor }} transition-transform duration-300 ease-out" style="transform: scaleX({{ $progress / 100 }})"></div>
                             </div>
                         </div>
                     </td>

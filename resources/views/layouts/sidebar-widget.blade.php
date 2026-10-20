@@ -90,7 +90,7 @@
                     class="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full bg-brand-100 text-sm font-semibold text-brand-600 dark:bg-brand-500/10 dark:text-brand-400"
                 >
                     @if ($currentUser?->foto_profil)
-                        <img src="{{ $currentUser->fotoProfilUrl() }}" alt="{{ $userName }}" class="h-full w-full object-cover" />
+                        <img src="{{ $currentUser->fotoProfilUrl() }}" alt="{{ $userName }}" class="h-full w-full object-cover" width="44" height="44" />
                     @else
                         {{ $initials }}
                     @endif
@@ -136,7 +136,7 @@
             aria-label="Profil pengguna"
         >
             @if ($currentUser?->foto_profil)
-                <img src="{{ $currentUser->fotoProfilUrl() }}" alt="{{ $userName }}" class="h-full w-full object-cover" />
+                <img src="{{ $currentUser->fotoProfilUrl() }}" alt="{{ $userName }}" class="h-full w-full object-cover" width="44" height="44" />
             @else
                 {{ $initials }}
             @endif

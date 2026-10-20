@@ -67,8 +67,20 @@ test('administrator dan penyidik diizinkan mengekspor file rekap perkara ke Exce
     $responseAdmin->assertOk();
     expect($responseAdmin->headers->get('content-type'))->toContain('spreadsheetml.sheet');
 
+    $this->assertDatabaseHas('audit_log', [
+        'aksi' => 'export_excel',
+        'tabel' => 'perkara',
+        'user_id' => $this->admin->id,
+    ]);
+
     $responsePenyidik = $this->actingAs($this->penyidik)->get(route('perkara.export', ['mode' => 'tahun', 'tahun' => 2026]));
     $responsePenyidik->assertOk();
+
+    $this->assertDatabaseHas('audit_log', [
+        'aksi' => 'export_excel',
+        'tabel' => 'perkara',
+        'user_id' => $this->penyidik->id,
+    ]);
 });
 
 test('pimpinan dan umum diblokir dari endpoint ekspor excel (403 Forbidden)', function () {
@@ -111,6 +123,11 @@ test('filter mode tahun, bulan, dan rentang tanggal berfungsi valid pada ekspor'
         'tanggal_selesai' => '2026-10-31',
     ]));
     $resRentang->assertOk();
+
+    // Mode semua dengan query params lengkap seperti pada browser
+    $resExact = $this->actingAs($this->penyidik)->get('/perkara-export?mode=semua&tahun=2026&bulan=10&tanggal_mulai=&tanggal_selesai=');
+    $resExact->assertOk();
+    expect($resExact->headers->get('content-type'))->toContain('spreadsheetml.sheet');
 });
 
 test('struktur spreadsheet mematuhi 44 kolom, 4 baris header, merge sel, border, dan freeze pane', function () {

@@ -131,3 +131,16 @@ test('halaman login gagal validasi tidak memunculkan modal popup lama', function
     $loginPage->assertDontSee('showErrorModal');
     $loginPage->assertSee('toastManager', false);
 });
+
+test('progress bar toast memiliki atribut data-toast-progress dan listener onAnimationEnd untuk mencegah dismiss instan di mode reduced-motion', function () {
+    $response = $this->actingAs($this->penyidik)->get(route('dashboard'));
+    $response->assertOk();
+
+    // Verifikasi atribut penanda pada elemen progress bar
+    $response->assertSee('data-toast-progress', false);
+    $response->assertSee('onAnimationEnd($event, toast)', false);
+
+    // Verifikasi CSS mengecualikan elemen data-toast-progress dari pemotongan durasi 0.01ms
+    $cssContent = file_get_contents(resource_path('css/app.css'));
+    expect($cssContent)->toContain('*:not([data-toast-progress])');
+});

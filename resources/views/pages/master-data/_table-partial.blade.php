@@ -32,8 +32,8 @@
     <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
         @forelse ($records as $row)
             <tr class="{{ $row->trashed() ? 'opacity-60 bg-gray-50/50 dark:bg-gray-900/30' : '' }}">
-                <td class="w-12 px-4 py-3 text-theme-sm text-gray-500 dark:text-gray-400">
-                    {{ $loop->iteration }}
+                <td class="w-12 px-4 py-3 text-theme-sm text-gray-500 dark:text-gray-400 tabular-nums">
+                    {{ method_exists($records, 'firstItem') && $records->firstItem() ? $records->firstItem() + $loop->index : $loop->iteration }}
                 </td>
                 @if ($type === 'jabatan')
                     <td class="px-4 py-3 font-medium text-gray-800 text-theme-sm dark:text-white/90">
@@ -147,3 +147,9 @@
         @endforelse
     </tbody>
 </table>
+
+@if (method_exists($records, 'hasPages') && $records->hasPages())
+    <div class="border-t border-gray-200 px-4 py-3 sm:px-6 dark:border-gray-800">
+        {{ $records->links() }}
+    </div>
+@endif

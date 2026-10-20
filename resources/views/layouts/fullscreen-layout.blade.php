@@ -10,8 +10,6 @@
 
     <!-- Flaticon UIcons (https://www.flaticon.com/) -->
     <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
-    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css">
-    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-rounded/css/uicons-bold-rounded.css">
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -67,7 +65,7 @@
 
 <body class="font-sans antialiased">
 
-    <x-common.toast />
+    <x-common.toast top="top-5 sm:top-6" />
     @yield('content')
 
 </body>
