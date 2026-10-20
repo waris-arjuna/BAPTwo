@@ -168,6 +168,7 @@ erDiagram
    - `nama_dokumen`: string(150), `nama_file_asli`: string(255), `file_path`: string(500)
    - `file_size`: bigint unsigned (maksimum **5 MB** / 5.120 kB pada upload privat)
    - `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`
+   - *Viewer Terpadu (D-047)*: Dilengkapi komponen global `<x-common.pdf-preview-modal />` dengan delegated click listener untuk pratinjau instan in-app tanpa meninggalkan konteks halaman.
 
 8. **`sp3`** (Dokumen Penghentian Penyidikan — D-035 Poin 15, 22)
    - `id`: bigint unsigned, PK

@@ -18,7 +18,8 @@ Satu task = satu unit kerja kecil yang bisa diuji. Acceptance Criteria utama tet
 
 ## Sedang Dikerjakan
 
-_(kosong)_
+- [x] T-070 — In-App PDF Preview Modal Terpadu (ref: D-047)
+  - AC: Komponen global `<x-common.pdf-preview-modal />` dipasang di `layouts/app.blade.php`; mendukung iframe preview, loading spinner, fallback informatif, tombol unduh, tombol buka tab baru, dan tombol tutup; link dokumen di `perkara/show.blade.php`, `tahapan/show.blade.php`, `laporan-kejadian/show.blade.php`, `sprindik/show.blade.php`, dan tabel-tabel tahapan mengadopsi atribut `data-pdf-preview`; progressive enhancement berfungsi (klik kiri modal in-app, Ctrl+klik buka tab baru); automated tests lulus 100% dan Pint clean.
 
 ## Fondasi
 

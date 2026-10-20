@@ -69,7 +69,14 @@
                 <div>
                     <p class="text-xs text-gray-500 dark:text-gray-400">Dokumen Laporan</p>
                     @if ($perkara->dokumenLaporan)
-                        <a href="{{ route('dokumen.preview', $perkara->dokumenLaporan) }}" target="_blank" class="inline-flex items-center gap-1.5 text-brand-600 hover:underline dark:text-brand-400">
+                        <a
+                            href="{{ route('dokumen.preview', $perkara->dokumenLaporan) }}"
+                            target="_blank"
+                            class="inline-flex items-center gap-1.5 text-brand-600 hover:underline dark:text-brand-400"
+                            data-pdf-preview
+                            data-pdf-title="{{ $perkara->dokumenLaporan->nama_file_asli }}"
+                            data-pdf-download="{{ route('dokumen.download', $perkara->dokumenLaporan) }}"
+                        >
                             <i class="fi fi-rr-document text-xs"></i>
                             <span>{{ $perkara->dokumenLaporan->nama_file_asli }}</span>
                         </a>

@@ -86,6 +86,9 @@
                                     target="_blank"
                                     class="inline-flex max-w-[140px] items-center gap-1 truncate text-xs font-medium text-brand-600 hover:underline dark:text-brand-400"
                                     title="{{ $doc->nama_file_asli }}"
+                                    data-pdf-preview
+                                    data-pdf-title="{{ $doc->nama_file_asli }}"
+                                    data-pdf-download="{{ route('dokumen.download', $doc) }}"
                                 >
                                     <i class="fi fi-rr-document text-red-500"></i>
                                     <span class="truncate">{{ $doc->nama_file_asli }}</span>

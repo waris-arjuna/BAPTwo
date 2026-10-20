@@ -120,6 +120,9 @@
                                 <div class="flex items-center gap-2">
                                     <a
                                         href="{{ route('dokumen.preview', $perkara->dokumenLaporan) }}"
+                                        data-pdf-preview="{{ route('dokumen.preview', $perkara->dokumenLaporan) }}"
+                                        data-pdf-title="Laporan Kejadian ({{ $perkara->dokumenLaporan->nama_file_asli }})"
+                                        data-pdf-download="{{ route('dokumen.download', $perkara->dokumenLaporan) }}"
                                         target="_blank"
                                         class="inline-flex h-9 w-fit items-center justify-center rounded-lg border border-gray-300 bg-white px-3 text-sm font-medium text-gray-700 transition hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900/40 dark:text-gray-300 dark:hover:bg-white/[0.04]"
                                     >

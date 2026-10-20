@@ -188,6 +188,9 @@
         {{-- Global Error Modal (Poin 19) --}}
         <x-common.error-modal />
 
+        {{-- Global PDF Preview Modal (D-047) --}}
+        <x-common.pdf-preview-modal />
+
     </div>
 
     {{-- Session Inactivity Watcher (Poin 16: 30 menit tanpa interaksi) --}}

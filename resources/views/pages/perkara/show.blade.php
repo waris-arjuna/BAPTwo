@@ -238,7 +238,11 @@
                     <div>
                         <p class="text-xs text-gray-500 dark:text-gray-400">Dokumen Laporan Kejadian</p>
                         @if ($perkara->dokumenLaporan)
-                            <a href="{{ route('dokumen.preview', $perkara->dokumenLaporan) }}" target="_blank" class="inline-flex items-center gap-1.5 text-brand-600 hover:underline dark:text-brand-400">
+                            <a href="{{ route('dokumen.preview', $perkara->dokumenLaporan) }}"
+                               data-pdf-preview="{{ route('dokumen.preview', $perkara->dokumenLaporan) }}"
+                               data-pdf-title="Laporan Kejadian ({{ $perkara->dokumenLaporan->nama_file_asli }})"
+                               data-pdf-download="{{ route('dokumen.download', $perkara->dokumenLaporan) }}"
+                               target="_blank" class="inline-flex items-center gap-1.5 text-brand-600 hover:underline dark:text-brand-400">
                                 <i class="fi fi-rr-document text-xs"></i>
                                 <span class="truncate">{{ $perkara->dokumenLaporan->nama_file_asli }}</span>
                             </a>
@@ -259,7 +263,11 @@
                     <div>
                         <p class="text-xs text-gray-500 dark:text-gray-400">Dokumen Sprindik</p>
                         @if ($perkara->dokumenSprindik)
-                            <a href="{{ route('dokumen.preview', $perkara->dokumenSprindik) }}" target="_blank" class="inline-flex items-center gap-1.5 text-brand-600 hover:underline dark:text-brand-400">
+                            <a href="{{ route('dokumen.preview', $perkara->dokumenSprindik) }}"
+                               data-pdf-preview="{{ route('dokumen.preview', $perkara->dokumenSprindik) }}"
+                               data-pdf-title="Sprindik ({{ $perkara->dokumenSprindik->nama_file_asli }})"
+                               data-pdf-download="{{ route('dokumen.download', $perkara->dokumenSprindik) }}"
+                               target="_blank" class="inline-flex items-center gap-1.5 text-brand-600 hover:underline dark:text-brand-400">
                                 <i class="fi fi-rr-document text-xs"></i>
                                 <span class="truncate">{{ $perkara->dokumenSprindik->nama_file_asli }}</span>
                             </a>
@@ -451,6 +459,9 @@
                                         @if ($berkas->sp3?->dokumen)
                                             <a
                                                 href="{{ route('dokumen.preview', $berkas->sp3->dokumen) }}"
+                                                data-pdf-preview="{{ route('dokumen.preview', $berkas->sp3->dokumen) }}"
+                                                data-pdf-title="Dokumen SP3 ({{ $berkas->sp3->dokumen->nama_file_asli }})"
+                                                data-pdf-download="{{ route('dokumen.download', $berkas->sp3->dokumen) }}"
                                                 target="_blank"
                                                 class="inline-flex items-center gap-1.5 rounded-full border border-gray-300 bg-white px-3 py-1 text-xs font-medium text-gray-700 transition hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300"
                                                 title="Lihat Dokumen Legal SP3"
@@ -569,7 +580,11 @@
                                                 <div>
                                                     <span class="text-gray-500 dark:text-gray-400">Dokumen Penetapan:</span>
                                                     @if ($activeDpo->dokumen)
-                                                        <a href="{{ route('dokumen.preview', $activeDpo->dokumen) }}" target="_blank" class="flex items-center gap-1 font-medium text-brand-600 hover:underline dark:text-brand-400">
+                                                        <a href="{{ route('dokumen.preview', $activeDpo->dokumen) }}"
+                                                           data-pdf-preview="{{ route('dokumen.preview', $activeDpo->dokumen) }}"
+                                                           data-pdf-title="Dokumen DPO ({{ $activeDpo->dokumen->nama_file_asli }})"
+                                                           data-pdf-download="{{ route('dokumen.download', $activeDpo->dokumen) }}"
+                                                           target="_blank" class="flex items-center gap-1 font-medium text-brand-600 hover:underline dark:text-brand-400">
                                                             <i class="fi fi-rr-document text-xs"></i>
                                                             <span class="truncate">{{ $activeDpo->dokumen->nama_file_asli }}</span>
                                                         </a>

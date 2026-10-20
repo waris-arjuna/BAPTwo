@@ -865,6 +865,35 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
   3. Mengurangi ukuran template utama secara drastis (form perkara berkurang ~175 baris, profile berkurang ~335 baris) dengan keterbacaan kode yang jauh lebih baik.
 - Konsekuensi: Struktur kode lebih modular dan mudah dirawat. Pengembang dapat mengedit dialog modal secara terisolasi tanpa khawatir merusak tata letak formulir utama.
 
+---
+
+## D-046 : Pratinjau Modal Lightbox Foto Profil Pengguna
+
+- Tanggal: 2026-10-20
+- Status: Disepakati & Diimplementasikan
+- Konteks: Pada halaman Profil Saya (`/profile`), foto profil pengguna sebelumnya hanya berupa elemen gambar avatar pasif tanpa interaktivitas untuk melihat foto beresolusi penuh.
+- Keputusan:
+  1. Menjadikan avatar foto profil interaktif dengan kursor pointer, efek zoom halus, dan overlay ikon pencarian bertuliskan "Lihat Foto".
+  2. Klik pada avatar membuka dialog modal lightbox terdedikasi (`resources/views/pages/profile/_modal-foto-profil.blade.php`) sesuai standar partial D-045.
+  3. Modal menampilkan foto profil ukuran besar (340px), nama pengguna berukuran tebal (`text-title-sm sm:text-title-md`), jabatan yang jelas, badge hak akses, bidang, serta rincian pangkat dan golongan pegawai.
+  4. Menyertakan penutupan ramah pengguna: tombol Tutup, silang (x), klik backdrop luar, dan tombol Escape keyboard.
+- Konsekuensi: Pengguna dapat memeriksa kejelasan foto identitas kepegawaian mereka secara langsung dan nyaman tanpa meninggalkan halaman profil.
+
+---
+
+## D-047 : Arsitektur Modal Pratinjau PDF Terpadu (In-App PDF Viewer)
+
+- Tanggal: 2026-10-20
+- Status: Disepakati & Dalam Implementasi
+- Konteks: Pemeriksaan berkas legal PDF (Laporan Kejadian, Sprindik, SPDP, Tahapan, DPO, dan SP3) sebelumnya selalu membuka tab peramban baru via `route('dokumen.preview', $doc)`. Hal ini membuat alur kerja penyidik dan pimpinan terpecah karena harus bolak-balik antar-tab peramban saat memverifikasi berkas perkara.
+- Keputusan:
+  1. Membangun komponen global `<x-common.pdf-preview-modal />` di master layout `resources/views/layouts/app.blade.php` yang mendengarkan event Alpine window `@open-pdf-modal.window`.
+  2. Menerapkan pola *progressive enhancement* dengan delegated click listener pada atribut `data-pdf-preview`: klik kiri utama membuka viewer modal in-app yang lega (`max-w-5xl`, `h-[82vh]`), sedangkan Ctrl+Klik/klik kanan tetap mempertahankan perilaku native browser tab baru.
+  3. Header modal menyediakan kendali lengkap: nama dokumen, tombol unduh (`dokumen.download`), tombol buka tab baru (`dokumen.preview`), dan tombol tutup.
+  4. Menyediakan indikator loading saat iframe memuat dan fallback informatif jika peramban (misal browser perangkat bergerak) membatasi penyematan iframe PDF.
+- Konsekuensi: Penyidik dan pimpinan dapat memeriksa keabsahan dokumen perkara secara instan di dalam satu alur kerja terpadu tanpa kehilangan konteks halaman.
+
+
 
 
 

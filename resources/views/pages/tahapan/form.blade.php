@@ -202,7 +202,14 @@
                                     <div class="sm:col-span-2">
                                         <span class="text-xs text-gray-500 dark:text-gray-400">Dokumen Lampiran</span>
                                         <div class="mt-1 flex items-center gap-2">
-                                            <a href="{{ route('dokumen.preview', $tahap->dokumen->first()) }}" target="_blank" class="inline-flex items-center gap-1.5 text-sm font-medium text-brand-600 hover:underline dark:text-brand-400">
+                                            <a
+                                                href="{{ route('dokumen.preview', $tahap->dokumen->first()) }}"
+                                                target="_blank"
+                                                class="inline-flex items-center gap-1.5 text-sm font-medium text-brand-600 hover:underline dark:text-brand-400"
+                                                data-pdf-preview
+                                                data-pdf-title="{{ $tahap->dokumen->first()->nama_file_asli }}"
+                                                data-pdf-download="{{ route('dokumen.download', $tahap->dokumen->first()) }}"
+                                            >
                                                 <i class="fi fi-rr-document text-xs"></i>
                                                 <span>{{ $tahap->dokumen->first()->nama_file_asli }}</span>
                                             </a>

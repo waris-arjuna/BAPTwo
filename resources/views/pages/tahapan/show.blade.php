@@ -185,7 +185,11 @@
                             @if ($tahap->dokumen->isNotEmpty())
                                 @foreach ($tahap->dokumen as $doc)
                                     <div class="flex items-center gap-2">
-                                        <a href="{{ route('dokumen.preview', $doc) }}" target="_blank" class="inline-flex items-center gap-1.5 text-sm font-medium text-brand-600 hover:underline dark:text-brand-400">
+                                        <a href="{{ route('dokumen.preview', $doc) }}"
+                                           data-pdf-preview="{{ route('dokumen.preview', $doc) }}"
+                                           data-pdf-title="{{ $doc->nama_file_asli }}"
+                                           data-pdf-download="{{ route('dokumen.download', $doc) }}"
+                                           target="_blank" class="inline-flex items-center gap-1.5 text-sm font-medium text-brand-600 hover:underline dark:text-brand-400">
                                             <i class="fi fi-rr-document text-xs"></i>
                                             <span class="truncate">{{ $doc->nama_file_asli }}</span>
                                         </a>
@@ -263,7 +267,11 @@
                                         <div>
                                             <span class="text-xs text-gray-400">Dokumen:</span>
                                             <div class="mt-1 flex items-center gap-2">
-                                                <a href="{{ route('dokumen.preview', $p16->dokumen->first()) }}" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-medium text-brand-600 hover:underline dark:text-brand-400">
+                                                <a href="{{ route('dokumen.preview', $p16->dokumen->first()) }}"
+                                                   data-pdf-preview="{{ route('dokumen.preview', $p16->dokumen->first()) }}"
+                                                   data-pdf-title="Dokumen P-16 ({{ $p16->dokumen->first()->nama_file_asli }})"
+                                                   data-pdf-download="{{ route('dokumen.download', $p16->dokumen->first()) }}"
+                                                   target="_blank" class="inline-flex items-center gap-1.5 text-xs font-medium text-brand-600 hover:underline dark:text-brand-400">
                                                     <i class="fi fi-rr-document text-xs"></i>
                                                     <span>{{ $p16->dokumen->first()->nama_file_asli }}</span>
                                                 </a>
@@ -316,7 +324,11 @@
                                         <div>
                                             <span class="text-xs text-gray-400">Dokumen:</span>
                                             <div class="mt-1 flex items-center gap-2">
-                                                <a href="{{ route('dokumen.preview', $p17p->dokumen->first()) }}" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-medium text-brand-600 hover:underline dark:text-brand-400">
+                                                <a href="{{ route('dokumen.preview', $p17p->dokumen->first()) }}"
+                                                   data-pdf-preview="{{ route('dokumen.preview', $p17p->dokumen->first()) }}"
+                                                   data-pdf-title="Dokumen P-17 ({{ $p17p->dokumen->first()->nama_file_asli }})"
+                                                   data-pdf-download="{{ route('dokumen.download', $p17p->dokumen->first()) }}"
+                                                   target="_blank" class="inline-flex items-center gap-1.5 text-xs font-medium text-brand-600 hover:underline dark:text-brand-400">
                                                     <i class="fi fi-rr-document text-xs"></i>
                                                     <span>{{ $p17p->dokumen->first()->nama_file_asli }}</span>
                                                 </a>
@@ -394,7 +406,11 @@
                                         <div>
                                             <span class="text-xs text-gray-400">Dokumen:</span>
                                             <div class="mt-1 flex items-center gap-2">
-                                                <a href="{{ route('dokumen.preview', $p18p->dokumen->first()) }}" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-medium text-brand-600 hover:underline dark:text-brand-400">
+                                                <a href="{{ route('dokumen.preview', $p18p->dokumen->first()) }}"
+                                                   data-pdf-preview="{{ route('dokumen.preview', $p18p->dokumen->first()) }}"
+                                                   data-pdf-title="Dokumen P-18 ({{ $p18p->dokumen->first()->nama_file_asli }})"
+                                                   data-pdf-download="{{ route('dokumen.download', $p18p->dokumen->first()) }}"
+                                                   target="_blank" class="inline-flex items-center gap-1.5 text-xs font-medium text-brand-600 hover:underline dark:text-brand-400">
                                                     <i class="fi fi-rr-document text-xs"></i>
                                                     <span>{{ $p18p->dokumen->first()->nama_file_asli }}</span>
                                                 </a>
@@ -447,7 +463,11 @@
                                         <div>
                                             <span class="text-xs text-gray-400">Dokumen:</span>
                                             <div class="mt-1 flex items-center gap-2">
-                                                <a href="{{ route('dokumen.preview', $p19->dokumen->first()) }}" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-medium text-brand-600 hover:underline dark:text-brand-400">
+                                                <a href="{{ route('dokumen.preview', $p19->dokumen->first()) }}"
+                                                   data-pdf-preview="{{ route('dokumen.preview', $p19->dokumen->first()) }}"
+                                                   data-pdf-title="Dokumen P-19 ({{ $p19->dokumen->first()->nama_file_asli }})"
+                                                   data-pdf-download="{{ route('dokumen.download', $p19->dokumen->first()) }}"
+                                                   target="_blank" class="inline-flex items-center gap-1.5 text-xs font-medium text-brand-600 hover:underline dark:text-brand-400">
                                                     <i class="fi fi-rr-document text-xs"></i>
                                                     <span>{{ $p19->dokumen->first()->nama_file_asli }}</span>
                                                 </a>

@@ -83,6 +83,9 @@
                                 target="_blank"
                                 class="inline-flex max-w-[200px] items-center gap-2 truncate text-sm text-gray-700 hover:text-brand-600 dark:text-gray-300 dark:hover:text-brand-400"
                                 title="{{ $sprindik->dokumenSprindik->nama_file_asli }}"
+                                data-pdf-preview
+                                data-pdf-title="{{ $sprindik->dokumenSprindik->nama_file_asli }}"
+                                data-pdf-download="{{ route('dokumen.download', $sprindik->dokumenSprindik) }}"
                             >
                                 <i class="fi fi-rr-document shrink-0 text-base text-red-500"></i>
                                 <span class="truncate">{{ $sprindik->dokumenSprindik->nama_file_asli }}</span>

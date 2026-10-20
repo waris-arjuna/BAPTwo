@@ -140,6 +140,8 @@
                 href="{{ $existingUrl }}"
                 target="_blank"
                 class="inline-flex items-center gap-1 font-medium text-brand-600 hover:underline dark:text-brand-400"
+                data-pdf-preview
+                data-pdf-title="{{ $existingFile ?? 'Dokumen PDF' }}"
             >
                 <i class="fi fi-rr-eye text-[11px]"></i>
                 <span>Lihat file saat ini</span>
