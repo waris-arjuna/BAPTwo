@@ -852,6 +852,20 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
   4. Menambahkan prasyarat PHP 64-bit, perintah pemeriksaan `PHP_INT_SIZE`, dan contoh path build x64 pada `README.md`.
 - Konsekuensi: `composer install` polos berjalan tanpa flag di lokal (x64) maupun di runner Ubuntu 64-bit; lock yang tidak lagi bisa dipasang di 64-bit akan langsung menggagalkan CI. Pengguna yang tetap memakai PHP 32-bit menerima pesan error platform dari Composer dan harus beralih ke build x64.
 
+---
+
+## D-045 : Pemisahan Modal Kompleks sebagai Domain Feature Partial
+
+- Tanggal: 2026-10-20
+- Status: Disepakati & Diimplementasikan
+- Konteks: View formulir perkara (`pages/perkara/form.blade.php`) dan halaman profil (`pages/profile.blade.php`) sebelumnya membengkak hingga ratusan/ribuan baris karena dialog modal (modal pemilihan alamat tersangka bertingkat, modal update password, modal edit data diri) tertanam inline di template utama. Di sisi lain, membuat generic abstraction `<x-ui.modal>` berbasis slot murni berisiko over-engineering dan menimbulkan benturan scope reaktivitas Alpine.js.
+- Keputusan:
+  1. Modal kompleks dipisahkan menjadi file domain feature partial terdedikasi menggunakan awalan underscore (`_`) langsung pada folder halaman terkait (misal: `resources/views/pages/perkara/_modal-alamat-tersangka.blade.php`, `resources/views/pages/profile/_modal-update-akun.blade.php`, dan `_modal-edit-profil.blade.php`).
+  2. Partial modal disisipkan menggunakan `@include('...')` di dalam konteks view parent sehingga tetap terikat rapi dalam lingkup `x-data` dan DOM Alpine.js tanpa overhead generic wrapper.
+  3. Mengurangi ukuran template utama secara drastis (form perkara berkurang ~175 baris, profile berkurang ~335 baris) dengan keterbacaan kode yang jauh lebih baik.
+- Konsekuensi: Struktur kode lebih modular dan mudah dirawat. Pengembang dapat mengedit dialog modal secara terisolasi tanpa khawatir merusak tata letak formulir utama.
+
+
 
 
 
