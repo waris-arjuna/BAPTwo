@@ -33,16 +33,20 @@
             }
             if (!file.name.toLowerCase().endsWith('.pdf') && file.type !== 'application/pdf') {
                 this.error = 'File harus berformat PDF murni.';
-                if (typeof window.showAppError === 'function') {
-                    window.showAppError('Format Dokumen Tidak Sesuai', this.error, ['Format yang didukung hanya dokumen .pdf.']);
+                if (typeof window.toast?.error === 'function') {
+                    window.toast.error('Format Dokumen Tidak Sesuai', this.error);
+                } else if (typeof window.showAppError === 'function') {
+                    window.showAppError('Format Dokumen Tidak Sesuai', this.error);
                 }
                 this.clearFile();
                 return;
             }
             if (file.size > {{ $maxSizeMb }} * 1024 * 1024) {
                 this.error = 'Ukuran file melebihi batas maksimal {{ $maxSizeMb }} MB.';
-                if (typeof window.showAppError === 'function') {
-                    window.showAppError('Ukuran Dokumen Terlalu Besar', this.error, ['Kompresi atau pilih file PDF dengan ukuran maksimal 5 MB.']);
+                if (typeof window.toast?.error === 'function') {
+                    window.toast.error('Ukuran Dokumen Terlalu Besar', this.error);
+                } else if (typeof window.showAppError === 'function') {
+                    window.showAppError('Ukuran Dokumen Terlalu Besar', this.error);
                 }
                 this.clearFile();
                 return;

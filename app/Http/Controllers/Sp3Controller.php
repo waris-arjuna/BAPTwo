@@ -22,7 +22,10 @@ class Sp3Controller extends Controller
         try {
             $file = $request->file('dokumen');
             if (! $file) {
-                return redirect()->back()->with('error', 'Dokumen PDF SP3 wajib diunggah.');
+                return redirect()->back()->with('error', [
+                    'title' => 'Dokumen Wajib Diunggah',
+                    'message' => 'Dokumen PDF SP3 wajib diunggah.',
+                ]);
             }
 
             $this->sp3Service->issueSp3(
@@ -34,11 +37,17 @@ class Sp3Controller extends Controller
 
             return redirect()
                 ->route('perkara.show', $berkas->perkara_id)
-                ->with('success', 'Surat Perintah Penghentian Penyidikan (SP3) berhasil diterbitkan. Status berkas kini menjadi Tidak Selesai.');
+                ->with('success', [
+                    'title' => 'SP3 Berhasil Diterbitkan',
+                    'message' => 'Surat Perintah Penghentian Penyidikan (SP3) untuk berkas '.$berkas->nomor_berkas.' berhasil diterbitkan. Status berkas kini menjadi Tidak Selesai.',
+                ]);
         } catch (DomainException $e) {
             return redirect()
                 ->route('perkara.show', $berkas->perkara_id)
-                ->with('error', $e->getMessage());
+                ->with('error', [
+                    'title' => 'Gagal Menerbitkan SP3',
+                    'message' => $e->getMessage(),
+                ]);
         }
     }
 }

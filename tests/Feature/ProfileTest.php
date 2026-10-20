@@ -87,7 +87,8 @@ test('pengguna dapat mengganti foto profil dengan gambar valid dan ditolak jika 
         ->post(route('profile.photo.update'), ['foto_profil' => $validImage]);
 
     $response->assertRedirect()
-        ->assertSessionHas('profile_success', 'Foto profil berhasil diperbarui.');
+        ->assertSessionHas('profile_success');
+    expect(session('profile_success')['title'])->toBe('Foto Profil Diperbarui');
 
     $user->refresh();
     expect($user->foto_profil)->not->toBeNull();

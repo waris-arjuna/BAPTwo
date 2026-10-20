@@ -14,10 +14,6 @@ class AuthController extends Controller
 {
     public function showSignin(Request $request): View
     {
-        if ($request->has('session_expired')) {
-            session()->flash('warning', __('Sesi Anda telah berakhir karena tidak ada interaksi selama 30 menit. Silakan masuk kembali.'));
-        }
-
         return view('pages.auth.signin', ['title' => __('Masuk')]);
     }
 
@@ -56,7 +52,10 @@ class AuthController extends Controller
 
         return redirect()
             ->intended(route('dashboard'))
-            ->with('login_success', __('Berhasil masuk! Selamat datang kembali, :nama.', ['nama' => $user->nama]));
+            ->with('login_success', [
+                'title' => 'Berhasil Masuk',
+                'message' => __('Selamat datang kembali, :nama.', ['nama' => $user->nama]),
+            ]);
     }
 
     public function logout(Request $request): RedirectResponse

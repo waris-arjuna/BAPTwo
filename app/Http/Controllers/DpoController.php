@@ -33,11 +33,17 @@ class DpoController extends Controller
 
             return redirect()
                 ->route('perkara.show', $berkas->perkara_id)
-                ->with('success', 'Status DPO berhasil ditetapkan untuk tersangka.');
+                ->with('success', [
+                    'title' => 'Penetapan DPO Berhasil',
+                    'message' => 'Status DPO berhasil ditetapkan untuk tersangka pada berkas '.$berkas->nomor_berkas.'.',
+                ]);
         } catch (DomainException $e) {
             return redirect()
                 ->route('perkara.show', $berkas->perkara_id)
-                ->with('error', $e->getMessage());
+                ->with('error', [
+                    'title' => 'Gagal Menetapkan DPO',
+                    'message' => $e->getMessage(),
+                ]);
         }
     }
 
@@ -57,11 +63,17 @@ class DpoController extends Controller
 
             return redirect()
                 ->route('perkara.show', $berkas->perkara_id)
-                ->with('success', 'Status DPO berhasil dicabut. Berkas perkara dapat dilanjutkan normal.');
+                ->with('success', [
+                    'title' => 'Pencabutan DPO Berhasil',
+                    'message' => 'Status DPO berhasil dicabut. Berkas perkara '.$berkas->nomor_berkas.' dapat dilanjutkan normal.',
+                ]);
         } catch (DomainException $e) {
             return redirect()
                 ->route('perkara.show', $berkas->perkara_id)
-                ->with('error', $e->getMessage());
+                ->with('error', [
+                    'title' => 'Gagal Mencabut DPO',
+                    'message' => $e->getMessage(),
+                ]);
         }
     }
 }

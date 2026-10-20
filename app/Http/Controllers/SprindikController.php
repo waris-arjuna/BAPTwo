@@ -44,7 +44,10 @@ class SprindikController extends Controller
         if ($selectedPerkaraId && ! $availableLaporan->contains('id', $selectedPerkaraId)) {
             return redirect()
                 ->route('sprindik.create')
-                ->with('error', 'Laporan kejadian yang dipilih sudah terhubung ke Sprindik lain atau tidak valid.');
+                ->with('error', [
+                    'title' => 'Laporan Tidak Valid',
+                    'message' => 'Laporan kejadian yang dipilih sudah terhubung ke Sprindik lain atau tidak valid.',
+                ]);
         }
 
         return view('pages.sprindik.create', compact('availableLaporan', 'selectedPerkaraId'));
@@ -73,16 +76,25 @@ class SprindikController extends Controller
         } catch (\DomainException $e) {
             return redirect()
                 ->route('sprindik.create')
-                ->with('error', $e->getMessage());
+                ->with('error', [
+                    'title' => 'Gagal Menyimpan Sprindik',
+                    'message' => $e->getMessage(),
+                ]);
         }
 
-        $message = $isDraft
-            ? 'Draft Sprindik berhasil disimpan. Anda masih dapat mengedit data ini.'
-            : 'Sprindik berhasil disimpan dan dikunci permanen.';
+        $payload = $isDraft
+            ? [
+                'title' => 'Draft Sprindik Tersimpan',
+                'message' => 'Draft Sprindik untuk perkara '.($perkara->nomor_laporan ?: '').' berhasil disimpan.',
+            ]
+            : [
+                'title' => 'Sprindik Final',
+                'message' => 'Sprindik untuk perkara '.($perkara->nomor_laporan ?: '').' berhasil difinalkan dan dikunci permanen.',
+            ];
 
         return redirect()
             ->route('sprindik.show', $perkara)
-            ->with('success', $message);
+            ->with('success', $payload);
     }
 
     /**
@@ -138,12 +150,18 @@ class SprindikController extends Controller
             $request->user()
         );
 
-        $message = $isDraft
-            ? 'Draft Sprindik berhasil diperbarui.'
-            : 'Sprindik berhasil difinalkan dan dikunci permanen.';
+        $payload = $isDraft
+            ? [
+                'title' => 'Draft Sprindik Diperbarui',
+                'message' => 'Draft Sprindik untuk perkara '.($perkara->nomor_laporan ?: '').' berhasil diperbarui.',
+            ]
+            : [
+                'title' => 'Sprindik Final',
+                'message' => 'Sprindik untuk perkara '.($perkara->nomor_laporan ?: '').' berhasil difinalkan dan dikunci permanen.',
+            ];
 
         return redirect()
             ->route('sprindik.show', $perkara)
-            ->with('success', $message);
+            ->with('success', $payload);
     }
 }

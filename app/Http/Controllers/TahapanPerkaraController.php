@@ -31,7 +31,10 @@ class TahapanPerkaraController extends Controller
         if ($draft !== null) {
             return redirect()
                 ->route('berkas-perkara.tahapan.edit', [$berkas, $draft])
-                ->with('warning', 'Berkas perkara ini memiliki tahapan yang masih berstatus draft. Silakan selesaikan atau lanjutkan draft tersebut.');
+                ->with('warning', [
+                    'title' => 'Draft Masih Berjalan',
+                    'message' => 'Berkas perkara '.$berkas->nomor_berkas.' memiliki tahapan yang masih berstatus draft. Silakan selesaikan atau lanjutkan draft tersebut.',
+                ]);
         }
 
         $availableStages = $this->tahapanService->getNextAvailableStages($berkas);
@@ -39,14 +42,20 @@ class TahapanPerkaraController extends Controller
         if ($availableStages === []) {
             return redirect()
                 ->route('data-perkara.index')
-                ->with('warning', 'Seluruh tahapan progress pada Berkas Perkara ini telah selesai.');
+                ->with('warning', [
+                    'title' => 'Tahapan Lengkap',
+                    'message' => 'Seluruh tahapan progress pada Berkas Perkara '.$berkas->nomor_berkas.' telah selesai.',
+                ]);
         }
 
         $requestedJenis = JenisTahap::tryFrom((string) $request->query('jenis'));
         if ($requestedJenis !== null && ! in_array($requestedJenis, $availableStages, true)) {
             return redirect()
                 ->route('perkara.show', $berkas->perkara_id)
-                ->with('error', "Tahapan {$requestedJenis->label()} tidak dapat dipilih karena sudah pernah dicatat atau belum memenuhi urutan tahapan berkas perkara ini.");
+                ->with('error', [
+                    'title' => 'Tahapan Tidak Valid',
+                    'message' => "Tahapan {$requestedJenis->label()} tidak dapat dipilih karena sudah pernah dicatat atau belum memenuhi urutan tahapan berkas perkara ini.",
+                ]);
         }
 
         $selectedJenis = $requestedJenis ?? $availableStages[0];
@@ -96,16 +105,25 @@ class TahapanPerkaraController extends Controller
         } catch (\DomainException $e) {
             return redirect()
                 ->route('perkara.show', $berkas->perkara_id)
-                ->with('error', $e->getMessage());
+                ->with('error', [
+                    'title' => 'Gagal Menyimpan Tahapan',
+                    'message' => $e->getMessage(),
+                ]);
         }
 
-        $message = $isDraft
-            ? "Draft tahapan {$tahap->jenis_tahap->label()} berhasil disimpan. Anda masih dapat mengedit data ini."
-            : "Tahapan {$tahap->jenis_tahap->label()} berhasil disimpan dan dikunci permanen. Progress berkas perkara telah diperbarui.";
+        $payload = $isDraft
+            ? [
+                'title' => 'Draft Tahapan Tersimpan',
+                'message' => "Draft tahapan {$tahap->jenis_tahap->label()} untuk berkas {$berkas->nomor_berkas} berhasil disimpan.",
+            ]
+            : [
+                'title' => 'Tahapan Difinalkan',
+                'message' => "Tahapan {$tahap->jenis_tahap->label()} untuk berkas {$berkas->nomor_berkas} berhasil disimpan dan dikunci permanen. Progress berkas perkara telah diperbarui.",
+            ];
 
         return redirect()
             ->route('berkas-perkara.tahapan.show', [$berkas, $tahap])
-            ->with('success', $message);
+            ->with('success', $payload);
     }
 
     /**
@@ -146,7 +164,10 @@ class TahapanPerkaraController extends Controller
         if ($tahapan->isFinal() && ! $isSubStageEligible) {
             return redirect()
                 ->route('berkas-perkara.tahapan.show', [$berkas, $tahapan])
-                ->with('warning', 'Tahapan ini telah difinalkan dan terkunci permanen, tidak dapat diedit.');
+                ->with('warning', [
+                    'title' => 'Tahapan Terkunci',
+                    'message' => "Tahapan {$tahapan->jenis_tahap->label()} telah difinalkan dan terkunci permanen, tidak dapat diedit.",
+                ]);
         }
 
         Gate::authorize('edit-draft');
@@ -198,12 +219,18 @@ class TahapanPerkaraController extends Controller
             $tahapan
         );
 
-        $message = $isDraft
-            ? "Perubahan draft tahapan {$tahap->jenis_tahap->label()} berhasil disimpan."
-            : "Tahapan {$tahap->jenis_tahap->label()} berhasil difinalkan dan dikunci permanen. Progress berkas perkara telah diperbarui.";
+        $payload = $isDraft
+            ? [
+                'title' => 'Draft Tahapan Diperbarui',
+                'message' => "Perubahan draft tahapan {$tahap->jenis_tahap->label()} untuk berkas {$berkas->nomor_berkas} berhasil disimpan.",
+            ]
+            : [
+                'title' => 'Tahapan Difinalkan',
+                'message' => "Tahapan {$tahap->jenis_tahap->label()} untuk berkas {$berkas->nomor_berkas} berhasil difinalkan dan dikunci permanen. Progress berkas perkara telah diperbarui.",
+            ];
 
         return redirect()
             ->route('berkas-perkara.tahapan.show', [$berkas, $tahap])
-            ->with('success', $message);
+            ->with('success', $payload);
     }
 }

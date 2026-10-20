@@ -63,11 +63,15 @@
         submitExport() {
             if (this.mode === 'rentang') {
                 if (!this.tanggalMulai || !this.tanggalSelesai) {
-                    alert('Harap pilih Tanggal Mulai dan Tanggal Selesai terlebih dahulu.');
+                    if (typeof window.toast?.warning === 'function') {
+                        window.toast.warning('Rentang Tanggal Belum Lengkap', 'Harap pilih Tanggal Mulai dan Tanggal Selesai terlebih dahulu.');
+                    }
                     return;
                 }
                 if (this.tanggalMulai > this.tanggalSelesai) {
-                    alert('Tanggal Mulai tidak boleh lebih besar dari Tanggal Selesai.');
+                    if (typeof window.toast?.warning === 'function') {
+                        window.toast.warning('Urutan Tanggal Tidak Valid', 'Tanggal Mulai tidak boleh lebih besar dari Tanggal Selesai.');
+                    }
                     return;
                 }
             }

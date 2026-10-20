@@ -5,13 +5,21 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 // Global error helper
 window.showAppError = function (title, message, errors = []) {
-    window.dispatchEvent(new CustomEvent('app-error', {
-        detail: {
-            title: title || 'Terjadi Kesalahan',
-            message: message || 'Permintaan tidak dapat diproses.',
-            errors: Array.isArray(errors) ? errors : [errors]
-        }
-    }));
+    let detailMessage = message || 'Permintaan tidak dapat diproses.';
+    if (Array.isArray(errors) && errors.length > 0) {
+        detailMessage += ' ' + errors.join(' ');
+    }
+    if (typeof window.toast?.error === 'function') {
+        window.toast.error(title || 'Terjadi Kesalahan', detailMessage);
+    } else {
+        window.dispatchEvent(new CustomEvent('toast-notify', {
+            detail: {
+                type: 'error',
+                title: title || 'Terjadi Kesalahan',
+                message: detailMessage,
+            }
+        }));
+    }
 };
 
 // Global Axios Response Interceptor (Poin 19: Tangani 4xx/5xx, Timeout, Sesi Habis, Jaringan)

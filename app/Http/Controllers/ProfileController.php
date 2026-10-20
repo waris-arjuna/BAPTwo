@@ -43,7 +43,10 @@ class ProfileController extends Controller
             'updated_by' => $user->id,
         ]);
 
-        return back()->with('profile_success', __('Foto profil berhasil diperbarui.'));
+        return back()->with('profile_success', [
+            'title' => 'Foto Profil Diperbarui',
+            'message' => 'Foto profil akun Anda berhasil diperbarui.',
+        ]);
     }
 
     public function updateAccount(UpdateProfileAccountRequest $request): RedirectResponse
@@ -63,7 +66,10 @@ class ProfileController extends Controller
 
         $user->update($payload);
 
-        return back()->with('profile_success', __('Informasi akun (Email / Password) berhasil diperbarui.'));
+        return back()->with('profile_success', [
+            'title' => 'Akun Diperbarui',
+            'message' => 'Informasi akun (Email dan Kata Sandi) berhasil diperbarui.',
+        ]);
     }
 
     public function updatePersonal(UpdateProfilePersonalRequest $request): RedirectResponse
@@ -102,6 +108,9 @@ class ProfileController extends Controller
             ]);
         });
 
-        return back()->with('profile_success', __('Data diri (No. Telp/WA & Alamat) berhasil diperbarui.'));
+        return back()->with('profile_success', [
+            'title' => 'Data Diri Diperbarui',
+            'message' => 'Data diri (No. Telp/WA dan Alamat) berhasil diperbarui.',
+        ]);
     }
 }

@@ -45,12 +45,18 @@ class Tahap2Controller extends Controller
 
             if ($berkas->hasTahap(JenisTahap::TAHAP_2)) {
                 return redirect()->route('tahap-2.index')
-                    ->with('error', 'Berkas perkara ini sudah memiliki tahapan Tahap 2 dan tidak dapat dipilih lagi.');
+                    ->with('error', [
+                        'title' => 'Tahap 2 Sudah Ada',
+                        'message' => 'Berkas perkara '.$berkas->nomor_berkas.' sudah memiliki tahapan Tahap 2 dan tidak dapat dipilih lagi.',
+                    ]);
             }
 
             if (! $this->tahapanService->canProceedTo($berkas, JenisTahap::TAHAP_2)) {
                 return redirect()->route('tahap-2.index')
-                    ->with('error', 'Berkas perkara ini belum memenuhi syarat untuk memulai Tahap 2 (P-21 belum final atau status DPO aktif).');
+                    ->with('error', [
+                        'title' => 'Syarat Belum Terpenuhi',
+                        'message' => 'Berkas perkara '.$berkas->nomor_berkas.' belum memenuhi syarat untuk memulai Tahap 2 (tahapan P-21 belum final atau status DPO aktif).',
+                    ]);
             }
 
             return redirect()->route('berkas-perkara.tahapan.create', [
@@ -78,6 +84,9 @@ class Tahap2Controller extends Controller
             ]);
         }
 
-        return redirect()->route('tahap-2.index')->with('warning', 'Data Tahap 2 tidak ditemukan.');
+        return redirect()->route('tahap-2.index')->with('warning', [
+            'title' => 'Data Tidak Ditemukan',
+            'message' => 'Data tahapan Tahap 2 yang dimaksud tidak ditemukan dalam sistem.',
+        ]);
     }
 }

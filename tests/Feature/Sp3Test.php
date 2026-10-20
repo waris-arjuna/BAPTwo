@@ -57,7 +57,8 @@ test('penyidik dapat menerbitkan SP3 dengan nomor surat, tanggal, keterangan, da
         ]);
 
     $response->assertRedirect(route('perkara.show', $this->perkara));
-    $response->assertSessionHas('success', 'Surat Perintah Penghentian Penyidikan (SP3) berhasil diterbitkan. Status berkas kini menjadi Tidak Selesai.');
+    $response->assertSessionHas('success');
+    expect(session('success')['title'])->toBe('SP3 Berhasil Diterbitkan');
 
     $this->berkas->refresh();
     expect($this->berkas->status_formal)->toBe('tidak_selesai');

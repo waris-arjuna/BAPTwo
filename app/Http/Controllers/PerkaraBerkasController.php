@@ -73,13 +73,19 @@ class PerkaraBerkasController extends Controller
 
         $this->perkaraService->savePerkaraBerkas($perkara, $validated, $request->user());
 
-        $message = $isDraft
-            ? 'Draft data Perkara & Berkas Perkara berhasil disimpan. Anda masih dapat mengedit data ini.'
-            : 'Data Perkara & Berkas Perkara berhasil difinalkan dan dikunci permanen. Silakan lanjutkan ke tahap SPDP.';
+        $payload = $isDraft
+            ? [
+                'title' => 'Draft Perkara Tersimpan',
+                'message' => 'Draft data Perkara & Berkas Perkara untuk '.($perkara->nomor_laporan ?: '').' berhasil disimpan.',
+            ]
+            : [
+                'title' => 'Berkas Perkara Final',
+                'message' => 'Data Perkara & Berkas Perkara untuk '.($perkara->nomor_laporan ?: '').' berhasil difinalkan dan dikunci permanen. Silakan lanjutkan ke tahap SPDP.',
+            ];
 
         return redirect()
             ->route('perkara.show', $perkara)
-            ->with('success', $message);
+            ->with('success', $payload);
     }
 
     /**

@@ -59,7 +59,8 @@ test('penyidik dan administrator dapat menetapkan status DPO dengan nomor surat 
         ]);
 
     $response->assertRedirect(route('perkara.show', $this->perkara));
-    $response->assertSessionHas('success', 'Status DPO berhasil ditetapkan untuk tersangka.');
+    $response->assertSessionHas('success');
+    expect(session('success')['title'])->toBe('Penetapan DPO Berhasil');
 
     $this->berkas->refresh();
     expect($this->berkas->is_dpo)->toBeTrue();
@@ -136,7 +137,8 @@ test('penyidik dapat mencabut status DPO dan mengembalikan berkas ke kondisi nor
         ]);
 
     $response->assertRedirect(route('perkara.show', $this->perkara));
-    $response->assertSessionHas('success', 'Status DPO berhasil dicabut. Berkas perkara dapat dilanjutkan normal.');
+    $response->assertSessionHas('success');
+    expect(session('success')['title'])->toBe('Pencabutan DPO Berhasil');
 
     $this->berkas->refresh();
     expect($this->berkas->is_dpo)->toBeFalse();

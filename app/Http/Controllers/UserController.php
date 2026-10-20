@@ -79,14 +79,20 @@ class UserController extends Controller
     {
         $this->userService->createUser($request->validated(), $request->user()?->id);
 
-        return redirect()->route('users.index')->with('success', __('Pengguna berhasil ditambahkan.'));
+        return redirect()->route('users.index')->with('success', [
+            'title' => 'Pengguna Ditambahkan',
+            'message' => 'Akun pengguna baru berhasil ditambahkan ke dalam sistem.',
+        ]);
     }
 
     public function update(UpdateUserRequest $request, User $user): RedirectResponse
     {
         $this->userService->updateUser($user, $request->validated(), $request->user()?->id);
 
-        return redirect()->route('users.index')->with('success', __('Data pengguna berhasil diperbarui.'));
+        return redirect()->route('users.index')->with('success', [
+            'title' => 'Pengguna Diperbarui',
+            'message' => 'Data akun pengguna berhasil diperbarui.',
+        ]);
     }
 
     public function destroy(Request $request, User $user): RedirectResponse
@@ -95,7 +101,10 @@ class UserController extends Controller
 
         $this->userService->softDeleteUser($user, $request->user()?->id);
 
-        return redirect()->route('users.index')->with('success', __('Pengguna berhasil dinonaktifkan (soft delete).'));
+        return redirect()->route('users.index')->with('success', [
+            'title' => 'Pengguna Dinonaktifkan',
+            'message' => 'Akun pengguna berhasil dinonaktifkan (soft delete).',
+        ]);
     }
 
     public function restore(Request $request, int $id): RedirectResponse
@@ -106,6 +115,9 @@ class UserController extends Controller
 
         $this->userService->restoreUser($id, $request->user()?->id);
 
-        return redirect()->route('users.index')->with('success', __('Pengguna berhasil dipulihkan.'));
+        return redirect()->route('users.index')->with('success', [
+            'title' => 'Pengguna Dipulihkan',
+            'message' => 'Akun pengguna berhasil dipulihkan dari status nonaktif.',
+        ]);
     }
 }

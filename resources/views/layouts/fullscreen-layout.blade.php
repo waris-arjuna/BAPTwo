@@ -67,8 +67,8 @@
 
 <body class="font-sans antialiased">
 
+    <x-common.toast />
     @yield('content')
-    <x-common.error-modal />
 
 </body>
 

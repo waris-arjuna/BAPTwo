@@ -948,6 +948,66 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
      - Tidak ada penggunaan font berbobot tipis (`font-light` / `font-thin`) pada background gelap. Seluruh teks isi memakai bobot 400, label/header memakai 500-600, dan judul/angka besar memakai 600-700.
 - Konsekuensi: Aplikasi sepenuhnya independen dari koneksi internet untuk aset font, tampilan teks UI menjadi lebih tajam, keterbacaan nomor perkara meningkat drastis, dan tata letak angka tidak lagi bergeser saat nilai berubah.
 
+---
+
+## D-050: Sistem Notifikasi Pop-up (Toast) Terpadu Auto-Dismiss 3 Detik Berbasis CSS Animation
+
+- Tanggal: 2026-10-21
+- Status: Disepakati & Diimplementasikan
+- Konteks: Aplikasi sebelumnya menggunakan modal pop-up tengah layar yang menghalangi konten saat terjadi error atau login sukses (dengan timer 10 detik), modal kesalahan input pada halaman login, alert bawaan browser (`window.alert`) pada ekspor modal, serta komponen `x-common.flash-alert` yang kurang informatif dan statis. Pengguna membutuhkan notifikasi pop-up (toast) yang otomatis hilang setelah 3 detik, informatif, menarik, tidak rentan throttling latar belakang browser, serta ramah aksesibilitas dan aman dari serangan XSS.
+- Keputusan:
+  1. **Komponen Reusable `<x-common.toast>` & Alpine.js Manager (`resources/js/components/toast.js`)**:
+     - Wadah toast ditempatkan di pojok kanan atas layar (`fixed top-5 right-5 z-99999`) pada desktop (lebar 380px) dan responsif penuh dengan margin di perangkat mobile.
+     - Penumpukan rapi dibatasi maksimal 4 toast terlihat bersamaan dengan pesan terbaru di posisi teratas. Ketika toast ke-5 masuk, toast tertua langsung dihapus secara otomatis.
+     - Dilengkapi mekanisme pencegahan duplikasi pesan identik (tipe, judul, dan isi yang sama) dalam rentang 1,5 detik (1500 ms).
+     - Menyediakan fungsi JavaScript global `window.toast({ type, title, message, duration })` serta helper cepat `window.toast.success`, `window.toast.error`, `window.toast.warning`, dan `window.toast.info`.
+  2. **Timing & Progress Bar Berbasis CSS Animation (@keyframes)**:
+     - Menghindari penggunaan interval JavaScript 25ms agar timer tidak melenceng saat tab browser berada di latar belakang dan tidak memicu re-render Alpine per tick.
+     - Progress bar menyusut dari 100% ke 0% menggunakan CSS animation `@keyframes toast-shrink` dengan inline style `animation-duration: ...ms; animation-timing-function: linear; animation-fill-mode: forwards;`.
+     - Jeda (pause) dan lanjut (resume) otomatis ditangani melalui CSS murni: kelas `group-hover:[animation-play-state:paused]` dan `group-focus-within:[animation-play-state:paused]`, sehingga animasi berhenti seketika saat pointer mouse melintas atau tombol keyboard memfokuskan toast, dan melanjutkan sisa waktu saat keduanya dilepas.
+     - Pada perangkat layar sentuh (touch), ketukan pada badan kartu toast memicu toggle status pause. Tombol tutup (X) selalu mengeksekusi penutupan instan.
+     - Penutupan otomatis dieksekusi saat event DOM `@animationend` terpanggil pada elemen progress bar.
+  3. **Kontrak Pesan Controller (String & Array)**:
+     - Komponen Blade mendukung format string (dengan fallback judul default per tipe: "Berhasil", "Gagal", "Perhatian", "Informasi") maupun format array `['title' => '...', 'message' => '...']`.
+     - Seluruh Controller backend distandarisasi menggunakan format array dengan copywriting operasional hukum yang spesifik (judul = aksi + hasil, isi = identitas perkara/nomor surat + tindak lanjut).
+     - Pesan login sukses menyapa nama pengguna secara personal: "Selamat datang kembali di BAPTwo, {nama}."
+  4. **Pembersihan Kode Mati & Penanganan Khusus Sesi Habis**:
+     - Komponen modal error lama `error-modal.blade.php` dan `flash-alert.blade.php` dihapus bersih dari proyek.
+     - Peringatan sesi berakhir (`?session_expired=1`) ditampilkan sebagai banner inline yang stabil di halaman login tanpa modal dan tanpa toast 3 detik, agar pengguna tidak kehilangan informasi.
+     - Panggilan `window.alert` native pada `export-excel-modal.blade.php` digantikan dengan `window.toast.warning(...)`.
+  5. **Keamanan XSS & Aksesibilitas**:
+     - Serialisasi payload data awal menggunakan `@js()` dan rendering teks judul/pesan menggunakan direktif Alpine `x-text` (dilarang `x-html`).
+     - Aksesibilitas menggunakan `role="alert"` untuk error dan warning, serta `role="status"` untuk success dan info, tanpa konflik atribut `aria-live`.
+- Konsekuensi: Seluruh notifikasi aplikasi kini terpadu dalam satu sistem toast modern, konsisten dengan tema kartu gelap BAPTwo, performa rendering optimal tanpa membebani browser, dan aman dari kerentanan XSS.
+
+---
+
+## D-050 : Standar Keamanan, Performa Bebas N+1, dan Efisiensi Animasi GPU Compositor
+
+- Tanggal: 2026-10-21
+- Status: Disepakati
+- Konteks: Memperkuat postur keamanan aplikasi penanganan perkara internal BPOM Kalsel, menjamin kecepatan muat halaman (LCP ≤ 2.5 detik, CLS ≤ 0.1, INP ≤ 200 ms) tanpa query N+1, serta menetapkan arsitektur animasi GPU compositor yang konsisten dan ramah aksesibilitas.
+- Keputusan:
+  1. **Keamanan (Otorisasi Record, Sanitasi Formula Excel, Proteksi Brute-force & Error Generik)**:
+     - Seluruh akses dokumen (unduh & pratinjau PDF) wajib memeriksa otorisasi record pengguna untuk mencegah kerentanan IDOR.
+     - Ekspor data Excel wajib menetralisasi karakter formula (`=`, `+`, `-`, `@`) pada teks dengan tanda petik tunggal (`'`).
+     - Percobaan login dibatasi rate limiter (5 kali per menit per email dan IP) dengan pesan kesalahan generik ("Email atau kata sandi salah") untuk mencegah user enumeration.
+     - Header keamanan HTTP diterapkan: `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `X-Frame-Options: SAMEORIGIN`.
+     - Catat audit trail untuk aksi sensitif termasuk ekspor perkara dan kegagalan login.
+  2. **Performa (Pencegahan N+1, Agregasi Tunggal, Paginasi Penuh, & Pemuatan Aset Ramping)**:
+     - Mengaktifkan `Model::preventLazyLoading(! app()->isProduction())` di `AppServiceProvider` untuk menangkap potensi N+1 sejak tahap pengembangan.
+     - Mengubah pemuatan seluruh tabel master data menjadi terpaginasi atau ter-cache daripada `->get()` tanpa batas.
+     - Angka ringkasan dan statistik dashboard dihitung melalui query agregat tunggal terikat parameter binding, didukung cache TTL singkat.
+     - Ikon Flaticon UIcons CDN dirampingkan hanya memuat paket `uicons-regular-rounded.css` (`fi-rr`), menghapus paket solid dan bold yang tidak terpakai.
+     - Seluruh elemen gambar wajib menyertakan atribut `width` dan `height` eksplisit guna mencegah pergeseran tata letak (*Cumulative Layout Shift*).
+  3. **Animasi (GPU Compositor Only, Token Theme, & Reduced Motion)**:
+     - Seluruh animasi UI dibatasi hanya pada properti `transform` dan `opacity`. Melarang animasi properti layout (`width`, `height`, `margin`, `padding`, `top`, `left`, `box-shadow`).
+     - Progress bar diwajibkan menggunakan `transform: scaleX()` dengan `transform-origin: left`.
+     - Melarang penggunaan kelas `transition-all` secara global, mewajibkan deklarasi properti transisi spesifik.
+     - Menetapkan token durasi dan kurva easing konsisten pada Tailwind v4 `@theme` (`cubic-bezier(0.22, 1, 0.36, 1)` untuk in, `cubic-bezier(0.4, 0, 1, 1)` untuk out).
+     - Menegakkan `prefers-reduced-motion: reduce` secara global di CSS utama dan menyematkan `scrollbar-gutter: stable` pada elemen akar `html`.
+- Konsekuensi: Aplikasi BAPTwo memiliki fondasi keamanan hukum yang kokoh, performa tangguh bebas lag atau kebocoran memori, dan tampilan visual yang halus tanpa membebani GPU atau CPU klien.
+
 
 
 

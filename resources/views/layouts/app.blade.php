@@ -140,6 +140,9 @@
 
 <body class="font-sans antialiased">
 
+    {{-- Global Toast Notification System (D-050) --}}
+    <x-common.toast />
+
     <div class="min-h-screen xl:flex sidebar-expanded" x-data :class="{ 'sidebar-expanded': $store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen }">
         @include('layouts.backdrop')
         @include('layouts.sidebar')
@@ -149,44 +152,9 @@
             @include('layouts.app-header')
             <!-- app header end -->
             <div class="w-full max-w-[2000px] mx-auto px-6 py-6 xl:px-8" data-content-wrapper>
-                <x-common.flash-alert />
                 @yield('content')
             </div>
         </div>
-
-        @if (session('login_success'))
-            <div x-data="{ showSuccessModal: true }" x-init="setTimeout(() => showSuccessModal = false, 10000)" x-show="showSuccessModal" x-cloak
-                @keydown.escape.window="showSuccessModal = false"
-                class="fixed inset-0 z-99999 flex items-center justify-center p-4 bg-gray-900/50 backdrop-blur-xs">
-                <div @click.outside="showSuccessModal = false"
-                    x-transition:enter="transition ease-out duration-200"
-                    x-transition:enter-start="opacity-0 scale-95"
-                    x-transition:enter-end="opacity-100 scale-100"
-                    class="relative w-full max-w-md rounded-2xl border border-success-200 bg-white p-6 text-center shadow-theme-xl dark:border-success-500/30 dark:bg-gray-900">
-                    <button type="button" @click="showSuccessModal = false"
-                        class="absolute right-4 top-4 inline-flex h-8 w-8 items-center justify-center rounded-lg text-gray-400 transition hover:bg-gray-100 hover:text-gray-600 dark:hover:bg-gray-800 dark:hover:text-gray-300"
-                        aria-label="Tutup modal">
-                        <i class="fi fi-rr-cross-small text-lg"></i>
-                    </button>
-                    <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-success-50 text-success-600 dark:bg-success-500/15 dark:text-success-400">
-                        <i class="fi fi-rr-check text-xl"></i>
-                    </div>
-                    <h3 class="mb-2 text-lg font-semibold text-gray-800 dark:text-white/90">
-                        {{ __('Berhasil Masuk') }}
-                    </h3>
-                    <p class="mb-5 text-theme-sm text-gray-600 dark:text-gray-300">
-                        {{ session('login_success') }}
-                    </p>
-                    <button type="button" @click="showSuccessModal = false"
-                        class="w-full rounded-lg bg-success-600 px-4 py-2.5 text-theme-sm font-medium text-white transition hover:bg-success-700">
-                        {{ __('Lanjutkan ke Dashboard') }}
-                    </button>
-                </div>
-            </div>
-        @endif
-
-        {{-- Global Error Modal (Poin 19) --}}
-        <x-common.error-modal />
 
         {{-- Global PDF Preview Modal (D-047) --}}
         <x-common.pdf-preview-modal />

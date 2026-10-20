@@ -73,7 +73,10 @@ class MasterDataController extends Controller
 
         return redirect()
             ->route('master-data.index', ['type' => $type])
-            ->with('success', __(':item berhasil ditambahkan.', ['item' => __($meta['singular'])]));
+            ->with('success', [
+                'title' => 'Master Data Ditambahkan',
+                'message' => __(':item berhasil ditambahkan.', ['item' => __($meta['singular'])]),
+            ]);
     }
 
     public function update(SaveMasterDataRequest $request, string $type, int $id): RedirectResponse
@@ -85,7 +88,10 @@ class MasterDataController extends Controller
 
         return redirect()
             ->route('master-data.index', ['type' => $type])
-            ->with('success', __('Data :item berhasil diperbarui.', ['item' => __($meta['singular'])]));
+            ->with('success', [
+                'title' => 'Master Data Diperbarui',
+                'message' => __('Data :item berhasil diperbarui.', ['item' => __($meta['singular'])]),
+            ]);
     }
 
     public function destroy(Request $request, string $type, int $id): RedirectResponse
@@ -97,7 +103,10 @@ class MasterDataController extends Controller
 
         return redirect()
             ->route('master-data.index', ['type' => $type])
-            ->with('success', __(':item berhasil dinonaktifkan (soft delete).', ['item' => __($meta['singular'])]));
+            ->with('success', [
+                'title' => 'Master Data Dinonaktifkan',
+                'message' => __(':item berhasil dinonaktifkan (soft delete).', ['item' => __($meta['singular'])]),
+            ]);
     }
 
     public function restore(Request $request, string $type, int $id): RedirectResponse
@@ -109,6 +118,9 @@ class MasterDataController extends Controller
 
         return redirect()
             ->route('master-data.index', ['type' => $type])
-            ->with('success', __(':item berhasil dipulihkan.', ['item' => __($meta['singular'])]));
+            ->with('success', [
+                'title' => 'Master Data Dipulihkan',
+                'message' => __(':item berhasil dipulihkan.', ['item' => __($meta['singular'])]),
+            ]);
     }
 }

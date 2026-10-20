@@ -45,12 +45,18 @@ class PutusanPerkaraController extends Controller
 
             if ($berkas->hasTahap(JenisTahap::KEPUTUSAN_PENGADILAN)) {
                 return redirect()->route('putusan-perkara.index')
-                    ->with('error', 'Berkas perkara ini sudah memiliki tahapan Keputusan Pengadilan dan tidak dapat dipilih lagi.');
+                    ->with('error', [
+                        'title' => 'Putusan Sudah Ada',
+                        'message' => 'Berkas perkara '.$berkas->nomor_berkas.' sudah memiliki tahapan Keputusan Pengadilan dan tidak dapat dipilih lagi.',
+                    ]);
             }
 
             if (! $this->tahapanService->canProceedTo($berkas, JenisTahap::KEPUTUSAN_PENGADILAN)) {
                 return redirect()->route('putusan-perkara.index')
-                    ->with('error', 'Berkas perkara ini belum memenuhi syarat untuk mencatat Keputusan Pengadilan (Tahap 2 belum final).');
+                    ->with('error', [
+                        'title' => 'Syarat Belum Terpenuhi',
+                        'message' => 'Berkas perkara '.$berkas->nomor_berkas.' belum memenuhi syarat untuk mencatat Keputusan Pengadilan (tahapan Tahap 2 belum final).',
+                    ]);
             }
 
             return redirect()->route('berkas-perkara.tahapan.create', [
@@ -78,6 +84,9 @@ class PutusanPerkaraController extends Controller
             ]);
         }
 
-        return redirect()->route('putusan-perkara.index')->with('warning', 'Data Putusan Perkara tidak ditemukan.');
+        return redirect()->route('putusan-perkara.index')->with('warning', [
+            'title' => 'Data Tidak Ditemukan',
+            'message' => 'Data Keputusan Pengadilan yang dimaksud tidak ditemukan dalam sistem.',
+        ]);
     }
 }

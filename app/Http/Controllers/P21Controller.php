@@ -45,12 +45,18 @@ class P21Controller extends Controller
 
             if ($berkas->hasTahap(JenisTahap::P21)) {
                 return redirect()->route('p21.index')
-                    ->with('error', 'Berkas perkara ini sudah memiliki tahapan P-21 dan tidak dapat dipilih lagi.');
+                    ->with('error', [
+                        'title' => 'Tahapan P-21 Sudah Ada',
+                        'message' => 'Berkas perkara '.$berkas->nomor_berkas.' sudah memiliki tahapan P-21 dan tidak dapat dipilih lagi.',
+                    ]);
             }
 
             if (! $this->tahapanService->canProceedTo($berkas, JenisTahap::P21)) {
                 return redirect()->route('p21.index')
-                    ->with('error', 'Berkas perkara ini belum memenuhi syarat untuk memulai P-21 (Tahap 1 belum final).');
+                    ->with('error', [
+                        'title' => 'Syarat Belum Terpenuhi',
+                        'message' => 'Berkas perkara '.$berkas->nomor_berkas.' belum memenuhi syarat untuk memulai P-21 (tahapan Tahap 1 belum final).',
+                    ]);
             }
 
             return redirect()->route('berkas-perkara.tahapan.create', [
@@ -78,6 +84,9 @@ class P21Controller extends Controller
             ]);
         }
 
-        return redirect()->route('p21.index')->with('warning', 'Data P-21 tidak ditemukan.');
+        return redirect()->route('p21.index')->with('warning', [
+            'title' => 'Data Tidak Ditemukan',
+            'message' => 'Data tahapan P-21 yang dimaksud tidak ditemukan dalam sistem.',
+        ]);
     }
 }

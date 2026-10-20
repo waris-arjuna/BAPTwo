@@ -46,12 +46,18 @@ class Tahap1Controller extends Controller
 
             if ($berkas->hasTahap(JenisTahap::TAHAP_1)) {
                 return redirect()->route('tahap-1.index')
-                    ->with('error', 'Berkas perkara ini sudah memiliki tahapan Tahap 1 dan tidak dapat dipilih lagi.');
+                    ->with('error', [
+                        'title' => 'Tahap 1 Sudah Ada',
+                        'message' => 'Berkas perkara '.$berkas->nomor_berkas.' sudah memiliki tahapan Tahap 1 dan tidak dapat dipilih lagi.',
+                    ]);
             }
 
             if (! $this->tahapanService->canProceedTo($berkas, JenisTahap::TAHAP_1)) {
                 return redirect()->route('tahap-1.index')
-                    ->with('error', 'Berkas perkara ini belum memenuhi syarat untuk memulai Tahap 1 (SPDP belum final).');
+                    ->with('error', [
+                        'title' => 'Syarat Belum Terpenuhi',
+                        'message' => 'Berkas perkara '.$berkas->nomor_berkas.' belum memenuhi syarat untuk memulai Tahap 1 (tahapan SPDP belum final).',
+                    ]);
             }
 
             return redirect()->route('berkas-perkara.tahapan.create', [
@@ -79,6 +85,9 @@ class Tahap1Controller extends Controller
             ]);
         }
 
-        return redirect()->route('tahap-1.index')->with('warning', 'Data Tahap 1 tidak ditemukan.');
+        return redirect()->route('tahap-1.index')->with('warning', [
+            'title' => 'Data Tidak Ditemukan',
+            'message' => 'Data tahapan Tahap 1 yang dimaksud tidak ditemukan dalam sistem.',
+        ]);
     }
 }

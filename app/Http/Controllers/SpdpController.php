@@ -46,12 +46,18 @@ class SpdpController extends Controller
 
             if ($berkas->hasTahap(JenisTahap::SPDP)) {
                 return redirect()->route('spdp.index')
-                    ->with('error', 'Berkas perkara ini sudah memiliki tahapan SPDP dan tidak dapat dipilih lagi.');
+                    ->with('error', [
+                        'title' => 'Tahapan SPDP Sudah Ada',
+                        'message' => 'Berkas perkara '.$berkas->nomor_berkas.' sudah memiliki tahapan SPDP dan tidak dapat dipilih lagi.',
+                    ]);
             }
 
             if (! $this->tahapanService->canProceedTo($berkas, JenisTahap::SPDP)) {
                 return redirect()->route('spdp.index')
-                    ->with('error', 'Berkas perkara ini belum memenuhi syarat untuk memulai tahapan SPDP.');
+                    ->with('error', [
+                        'title' => 'Syarat Belum Terpenuhi',
+                        'message' => 'Berkas perkara '.$berkas->nomor_berkas.' belum memenuhi syarat untuk memulai tahapan SPDP.',
+                    ]);
             }
 
             return redirect()->route('berkas-perkara.tahapan.create', [
@@ -79,6 +85,9 @@ class SpdpController extends Controller
             ]);
         }
 
-        return redirect()->route('spdp.index')->with('warning', 'Data SPDP tidak ditemukan.');
+        return redirect()->route('spdp.index')->with('warning', [
+            'title' => 'Data Tidak Ditemukan',
+            'message' => 'Data tahapan SPDP yang dimaksud tidak ditemukan dalam sistem.',
+        ]);
     }
 }

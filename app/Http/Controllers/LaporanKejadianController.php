@@ -57,13 +57,19 @@ class LaporanKejadianController extends Controller
             $request->user()
         );
 
-        $message = $isDraft
-            ? 'Draft Laporan Kejadian berhasil disimpan. Anda masih dapat mengedit data ini.'
-            : 'Laporan Kejadian berhasil disimpan dan dikunci. Silakan lanjutkan ke tahap Sprindik.';
+        $payload = $isDraft
+            ? [
+                'title' => 'Draft Tersimpan',
+                'message' => 'Draft Laporan Kejadian '.($perkara->nomor_laporan ?: '').' berhasil disimpan. Anda masih dapat mengedit data ini.',
+            ]
+            : [
+                'title' => 'Laporan Kejadian Final',
+                'message' => 'Laporan Kejadian '.($perkara->nomor_laporan ?: '').' berhasil difinalkan dan dikunci. Silakan lanjutkan ke tahap Sprindik.',
+            ];
 
         return redirect()
             ->route('laporan-kejadian.show', $perkara)
-            ->with('success', $message);
+            ->with('success', $payload);
     }
 
     /**
@@ -109,12 +115,18 @@ class LaporanKejadianController extends Controller
             $request->user()
         );
 
-        $message = $isDraft
-            ? 'Draft Laporan Kejadian berhasil diperbarui.'
-            : 'Laporan Kejadian berhasil difinalkan dan dikunci permanen.';
+        $payload = $isDraft
+            ? [
+                'title' => 'Draft Diperbarui',
+                'message' => 'Draft Laporan Kejadian '.($perkara->nomor_laporan ?: '').' berhasil diperbarui.',
+            ]
+            : [
+                'title' => 'Laporan Kejadian Final',
+                'message' => 'Laporan Kejadian '.($perkara->nomor_laporan ?: '').' berhasil difinalkan dan dikunci permanen.',
+            ];
 
         return redirect()
             ->route('laporan-kejadian.show', $perkara)
-            ->with('success', $message);
+            ->with('success', $payload);
     }
 }

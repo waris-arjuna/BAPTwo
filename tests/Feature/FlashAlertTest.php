@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
-test('flash alert component renders success message with 10s timer and close button', function () {
+test('toast component renders success message with 3s duration and close button', function () {
     $user = User::factory()->create([
         'role' => UserRole::PENYIDIK,
     ]);
@@ -19,11 +19,11 @@ test('flash alert component renders success message with 10s timer and close but
     $response->assertSee('Operasi berhasil disimpan');
     $response->assertSee('fi-rr-cross-small');
     $response->assertSee('fi-rr-check');
-    $response->assertSee('10000');
-    $response->assertSee('show = false');
+    $response->assertSee('toastManager', false);
+    $response->assertSee('removeToast', false);
 });
 
-test('flash alert component renders error message with close button and 10s timer', function () {
+test('toast component renders error message with close button and 3s duration', function () {
     $user = User::factory()->create([
         'role' => UserRole::PENYIDIK,
     ]);
@@ -36,10 +36,10 @@ test('flash alert component renders error message with close button and 10s time
     $response->assertSee('Terjadi kesalahan sistem');
     $response->assertSee('fi-rr-cross-small');
     $response->assertSee('fi-rr-cross-circle');
-    $response->assertSee('10000');
+    $response->assertSee('toastManager', false);
 });
 
-test('flash alert component renders warning and profile_success messages', function () {
+test('toast component renders warning and profile_success messages', function () {
     $user = User::factory()->create([
         'role' => UserRole::PENYIDIK,
     ]);
@@ -61,7 +61,7 @@ test('flash alert component renders warning and profile_success messages', funct
     $profileResponse->assertSee('fi-rr-cross-small');
 });
 
-test('flash alert component renders nothing when no session flash messages exist', function () {
+test('toast component initializes with empty array when no session flash messages exist', function () {
     $user = User::factory()->create([
         'role' => UserRole::PENYIDIK,
     ]);
@@ -69,5 +69,5 @@ test('flash alert component renders nothing when no session flash messages exist
     $response = $this->actingAs($user)->get(route('dashboard'));
 
     $response->assertOk();
-    $response->assertDontSee('Tutup notifikasi');
+    $response->assertSee('toastManager([])', false);
 });

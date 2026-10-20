@@ -122,7 +122,10 @@ class SampahController extends Controller
 
         return redirect()
             ->route('sampah.index', ['tab' => 'perkara'])
-            ->with('success', 'Data Perkara & Laporan Kejadian berhasil dipulihkan dari Sampah.');
+            ->with('success', [
+                'title' => 'Pemulihan Berhasil',
+                'message' => 'Data Perkara & Laporan Kejadian berhasil dipulihkan dari Sampah.',
+            ]);
     }
 
     /**
@@ -136,7 +139,10 @@ class SampahController extends Controller
 
         return redirect()
             ->route('sampah.index', ['tab' => 'berkas'])
-            ->with('success', 'Berkas Perkara berhasil dipulihkan dari Sampah.');
+            ->with('success', [
+                'title' => 'Pemulihan Berhasil',
+                'message' => 'Berkas Perkara berhasil dipulihkan dari Sampah.',
+            ]);
     }
 
     /**
@@ -150,6 +156,9 @@ class SampahController extends Controller
 
         return redirect()
             ->route('sampah.index', ['tab' => 'user'])
-            ->with('success', 'Akun Pengguna berhasil dipulihkan dari Sampah.');
+            ->with('success', [
+                'title' => 'Pemulihan Berhasil',
+                'message' => 'Akun Pengguna berhasil dipulihkan dari Sampah.',
+            ]);
     }
 }
