@@ -106,6 +106,13 @@ class BerkasPerkara extends Model
      */
     public function latestFinalTahap(): ?TahapanPerkara
     {
+        if ($this->relationLoaded('tahapan')) {
+            return $this->tahapan
+                ->where('status', 'final')
+                ->sortByDesc('id')
+                ->first();
+        }
+
         return $this->tahapan()
             ->where('status', 'final')
             ->orderBy('id', 'desc')
@@ -117,6 +124,12 @@ class BerkasPerkara extends Model
      */
     public function currentDraftTahap(): ?TahapanPerkara
     {
+        if ($this->relationLoaded('tahapan')) {
+            return $this->tahapan
+                ->where('status', 'draft')
+                ->first();
+        }
+
         return $this->tahapan()
             ->where('status', 'draft')
             ->first();
@@ -128,6 +141,14 @@ class BerkasPerkara extends Model
     public function hasTahap(JenisTahap|string $jenis): bool
     {
         $value = $jenis instanceof JenisTahap ? $jenis->value : $jenis;
+
+        if ($this->relationLoaded('tahapan')) {
+            return $this->tahapan->contains(function ($t) use ($value) {
+                $tValue = $t->jenis_tahap instanceof JenisTahap ? $t->jenis_tahap->value : $t->jenis_tahap;
+
+                return $tValue === $value;
+            });
+        }
 
         return $this->tahapan()->where('jenis_tahap', $value)->exists();
     }
@@ -145,6 +166,13 @@ class BerkasPerkara extends Model
      */
     public function activeDpo(): ?Dpo
     {
+        if ($this->relationLoaded('dpos')) {
+            return $this->dpos
+                ->where('status', 'aktif')
+                ->sortByDesc('id')
+                ->first();
+        }
+
         return $this->dpos()
             ->where('status', 'aktif')
             ->latest('id')
@@ -192,6 +220,16 @@ class BerkasPerkara extends Model
      */
     public function spdpTahap(): ?TahapanPerkara
     {
+        if ($this->relationLoaded('tahapan')) {
+            return $this->tahapan
+                ->where('status', 'final')
+                ->first(function ($t) {
+                    $val = $t->jenis_tahap instanceof JenisTahap ? $t->jenis_tahap->value : $t->jenis_tahap;
+
+                    return $val === JenisTahap::SPDP->value;
+                });
+        }
+
         return $this->tahapan()
             ->where('jenis_tahap', JenisTahap::SPDP->value)
             ->where('status', 'final')
@@ -203,6 +241,16 @@ class BerkasPerkara extends Model
      */
     public function tahap2Final(): ?TahapanPerkara
     {
+        if ($this->relationLoaded('tahapan')) {
+            return $this->tahapan
+                ->where('status', 'final')
+                ->first(function ($t) {
+                    $val = $t->jenis_tahap instanceof JenisTahap ? $t->jenis_tahap->value : $t->jenis_tahap;
+
+                    return $val === JenisTahap::TAHAP_2->value;
+                });
+        }
+
         return $this->tahapan()
             ->where('jenis_tahap', JenisTahap::TAHAP_2->value)
             ->where('status', 'final')

@@ -37,6 +37,10 @@ class Perkara extends Model
         'perkara_locked_at',
         'perkara_finalized_by',
         'tkp_id',
+        'penuntut_umum_instansi_id',
+        'penuntut_umum_nama',
+        'penuntut_umum_nip',
+        'penuntut_umum_pangkat',
         'deskripsi',
         'created_by',
         'updated_by',
@@ -62,6 +66,24 @@ class Perkara extends Model
     public function tkp(): BelongsTo
     {
         return $this->belongsTo(Tkp::class, 'tkp_id');
+    }
+
+    /**
+     * Instansi Kejaksaan Penuntut Umum (Poin 2 & Poin 8, ref: D-053)
+     *
+     * @return BelongsTo<InstansiHukum, $this>
+     */
+    public function penuntutUmumInstansi(): BelongsTo
+    {
+        return $this->belongsTo(InstansiHukum::class, 'penuntut_umum_instansi_id');
+    }
+
+    /**
+     * Memeriksa apakah data Penuntut Umum telah diisi
+     */
+    public function hasPenuntutUmum(): bool
+    {
+        return $this->penuntut_umum_instansi_id !== null || ! empty($this->penuntut_umum_nama);
     }
 
     /**

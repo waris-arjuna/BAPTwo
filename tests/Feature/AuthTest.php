@@ -90,8 +90,34 @@ it('rejects login with generic error when email is unregistered or captcha is wr
     $wrongCaptcha->assertSessionHasErrors('captcha');
 });
 
-it('rejects login when user is inactive', function () {
+it('rejects login with generic error when user is inactive but enters wrong password to prevent user enumeration', function () {
     User::factory()->create([
+        'email' => 'nonaktif@baptwo.test',
+        'password' => 'password',
+        'is_active' => false,
+    ]);
+
+    app(MathCaptchaService::class)->generate();
+    $answer = session(MathCaptchaService::SESSION_ANSWER_KEY);
+
+    $response = $this->from('/signin')->post('/signin', [
+        'email' => 'nonaktif@baptwo.test',
+        'password' => 'wrong-password',
+        'captcha' => (string) $answer,
+    ]);
+
+    $response->assertRedirect('/signin');
+    $response->assertSessionHasErrors(['email' => __('Email atau kata sandi salah.')]);
+    $this->assertGuest();
+
+    $this->assertDatabaseHas('audit_log', [
+        'aksi' => 'login_failed',
+        'tabel' => 'user',
+    ]);
+});
+
+it('rejects login with specific banner and toast when inactive user enters correct password', function () {
+    $inactive = User::factory()->create([
         'email' => 'nonaktif@baptwo.test',
         'password' => 'password',
         'is_active' => false,
@@ -107,7 +133,79 @@ it('rejects login when user is inactive', function () {
     ]);
 
     $response->assertRedirect('/signin');
-    $response->assertSessionHasErrors(['email' => __('Email atau kata sandi salah.')]);
+    $response->assertSessionHas('account_inactive');
+    $response->assertSessionHas('error');
+    $this->assertGuest();
+
+    $this->assertDatabaseHas('audit_log', [
+        'aksi' => 'login_inactive',
+        'tabel' => 'user',
+        'record_id' => $inactive->id,
+    ]);
+});
+
+it('rejects login with specific banner and toast when soft-deleted user enters correct password', function () {
+    $deleted = User::factory()->create([
+        'email' => 'terhapus@baptwo.test',
+        'password' => 'password',
+        'is_active' => true,
+    ]);
+    $deleted->delete();
+
+    app(MathCaptchaService::class)->generate();
+    $answer = session(MathCaptchaService::SESSION_ANSWER_KEY);
+
+    $response = $this->from('/signin')->post('/signin', [
+        'email' => 'terhapus@baptwo.test',
+        'password' => 'password',
+        'captcha' => (string) $answer,
+    ]);
+
+    $response->assertRedirect('/signin');
+    $response->assertSessionHas('account_inactive');
+    $response->assertSessionHas('error');
+    $this->assertGuest();
+
+    $this->assertDatabaseHas('audit_log', [
+        'aksi' => 'login_inactive',
+        'tabel' => 'user',
+        'record_id' => $deleted->id,
+    ]);
+});
+
+it('force logs out active user if marked inactive during session via EnsureUserIsActive middleware', function () {
+    $user = User::factory()->create([
+        'is_active' => true,
+    ]);
+
+    $this->actingAs($user);
+
+    // Simulasi akun dinonaktifkan oleh administrator saat sesi aktif
+    $user->update(['is_active' => false]);
+
+    $response = $this->get('/');
+
+    $response->assertRedirect(route('masuk'));
+    $response->assertSessionHas('account_inactive');
+    $response->assertSessionHas('error');
+    $this->assertGuest();
+});
+
+it('force logs out active user if soft-deleted during session via EnsureUserIsActive middleware', function () {
+    $user = User::factory()->create([
+        'is_active' => true,
+    ]);
+
+    $this->actingAs($user);
+
+    // Simulasi akun dihapus secara soft-delete saat sesi aktif
+    $user->delete();
+
+    $response = $this->get('/');
+
+    $response->assertRedirect(route('masuk'));
+    $response->assertSessionHas('account_inactive');
+    $response->assertSessionHas('error');
     $this->assertGuest();
 });
 

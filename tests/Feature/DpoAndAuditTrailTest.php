@@ -197,7 +197,7 @@ test('DPO gate memblokir finalisasi Tahap II di server dan membuka blokir setela
             null,
             $this->penyidik
         );
-    })->toThrow(DomainException::class, 'Tidak dapat melanjutkan ke Tahap II (Pelimpahan Tersangka & Barang Bukti) karena Tersangka berstatus DPO.');
+    })->toThrow(DomainException::class, 'berstatus DPO');
 
     // Namun simpan draft TAHAP II tetap diizinkan
     $draftTahap2 = $tahapanService->saveStage(
@@ -271,8 +271,159 @@ test('halaman detail perkara merender badge DPO aktif, card peringatan, dan time
     $response->assertSee('DPO Aktif');
     $response->assertSee('B/DPO/99/X/2026');
     $response->assertSee('Buron ke luar pulau.');
-    $response->assertSee('Pelimpahan ke Tahap II (Pelimpahan Tersangka &amp; Barang Bukti) dinonaktifkan di sistem', false);
+    $response->assertSee('Penambahan dan pelanjutan seluruh tahapan perkara dinonaktifkan di sistem', false);
     $response->assertSee('Cabut Status DPO');
     $response->assertSee('Riwayat Penanganan Perkara (Case History)');
     $response->assertSee('Penetapan Status DPO');
+});
+
+test('DPO aktif memblokir simpan dan lanjut pada seluruh tahapan berikutnya di server dan UI', function () {
+    $tahapanService = app(TahapanService::class);
+
+    // Berkas baru (belum ada tahapan) dengan DPO aktif
+    $this->berkas->update(['is_dpo' => true]);
+
+    // 1. getNextAvailableStages mengembalikan array kosong saat DPO aktif
+    expect($tahapanService->getNextAvailableStages($this->berkas))->toBeEmpty();
+
+    // 2. Simpan dan lanjut SPDP ditolak
+    expect(function () use ($tahapanService) {
+        $tahapanService->saveStage(
+            $this->berkas,
+            [
+                'action_type' => 'lanjut',
+                'jenis_tahap' => JenisTahap::SPDP,
+                'nomor_surat' => 'SPDP/BLOCKED/2026',
+                'tanggal_surat' => '2026-10-15',
+            ],
+            null,
+            $this->penyidik
+        );
+    })->toThrow(DomainException::class, 'berstatus DPO');
+
+    // 3. Setelah DPO dicabut, tahapan dapat dilanjutkan kembali
+    $this->berkas->update(['is_dpo' => false]);
+    expect($tahapanService->getNextAvailableStages($this->berkas))->toContain(JenisTahap::SPDP);
+});
+
+test('penerbitan SP3 diperbolehkan saat tersangka berstatus DPO aktif dan otomatis mencabut status DPO', function () {
+    Storage::fake('local');
+
+    // 1. Tetapkan DPO aktif
+    $dpo = Dpo::create([
+        'berkas_perkara_id' => $this->berkas->id,
+        'nomor_surat' => 'B/DPO/SP3/2026',
+        'tanggal_penetapan' => '2026-10-10',
+        'status' => 'aktif',
+        'keterangan' => 'Buron',
+        'created_by' => $this->penyidik->id,
+    ]);
+    $this->berkas->update(['is_dpo' => true]);
+
+    $pdf = UploadedFile::fake()->create('sp3_dpo.pdf', 300, 'application/pdf');
+
+    // 2. Terbitkan SP3 saat DPO aktif
+    $response = $this->actingAs($this->penyidik)
+        ->post(route('berkas-perkara.sp3.store', $this->berkas), [
+            'nomor_surat' => 'SPPP/DPO/01/2026',
+            'tanggal_sp3' => '2026-10-16',
+            'keterangan' => 'Penghentian penyidikan dengan pencabutan DPO',
+            'dokumen' => $pdf,
+        ]);
+
+    $response->assertRedirect(route('perkara.show', $this->perkara));
+    $response->assertSessionHas('success');
+
+    // 3. Verifikasi status berkas: Tidak Selesai, SP3, dan DPO dicabut (is_dpo = false)
+    $this->berkas->refresh();
+    expect($this->berkas->status_formal)->toBe('tidak_selesai')
+        ->and($this->berkas->status_proses)->toBe('SP3')
+        ->and($this->berkas->is_dpo)->toBeFalse();
+
+    // 4. Verifikasi record DPO berubah menjadi nonaktif
+    $dpo->refresh();
+    expect($dpo->status)->toBe('nonaktif')
+        ->and($dpo->tanggal_pencabutan->toDateString())->toBe('2026-10-16')
+        ->and($dpo->alasan_pencabutan)->toContain('SP3');
+
+    // 5. Verifikasi jejak audit mencatat pencabutan DPO dan penerbitan SP3
+    $this->assertDatabaseHas('audit_log', [
+        'berkas_perkara_id' => $this->berkas->id,
+        'aksi' => 'terbitkan_sp3',
+    ]);
+    $this->assertDatabaseHas('audit_log', [
+        'berkas_perkara_id' => $this->berkas->id,
+        'aksi' => 'nonaktifkan_dpo',
+    ]);
+});
+
+test('setelah Keputusan Pengadilan dicatat seluruh tahapan perkara terkunci permanen dan tidak ada tahapan berikutnya', function () {
+    $tahapanService = app(TahapanService::class);
+
+    // Siapkan tahapan hingga Tahap II final
+    TahapanPerkara::create([
+        'berkas_perkara_id' => $this->berkas->id,
+        'jenis_tahap' => JenisTahap::SPDP,
+        'nomor_surat' => 'SPDP-FINAL',
+        'tanggal_surat' => '2026-10-01',
+        'status' => 'final',
+        'finalized_at' => now(),
+    ]);
+    TahapanPerkara::create([
+        'berkas_perkara_id' => $this->berkas->id,
+        'jenis_tahap' => JenisTahap::TAHAP_1,
+        'nomor_surat' => 'T1-FINAL',
+        'tanggal_surat' => '2026-10-05',
+        'status' => 'final',
+        'finalized_at' => now(),
+    ]);
+    TahapanPerkara::create([
+        'berkas_perkara_id' => $this->berkas->id,
+        'jenis_tahap' => JenisTahap::P21,
+        'nomor_surat' => 'P21-FINAL',
+        'tanggal_surat' => '2026-10-10',
+        'status' => 'final',
+        'finalized_at' => now(),
+    ]);
+    TahapanPerkara::create([
+        'berkas_perkara_id' => $this->berkas->id,
+        'jenis_tahap' => JenisTahap::TAHAP_2,
+        'nomor_surat' => 'T2-FINAL',
+        'tanggal_surat' => '2026-10-15',
+        'status' => 'final',
+        'finalized_at' => now(),
+    ]);
+
+    $this->berkas->update(['status_formal' => 'selesai']);
+
+    // Sebelum Putusan: getNextAvailableStages mengembalikan Keputusan Pengadilan
+    expect($tahapanService->getNextAvailableStages($this->berkas))->toBe([JenisTahap::KEPUTUSAN_PENGADILAN]);
+
+    // Catat Keputusan Pengadilan secara final
+    $putusan = TahapanPerkara::create([
+        'berkas_perkara_id' => $this->berkas->id,
+        'jenis_tahap' => JenisTahap::KEPUTUSAN_PENGADILAN,
+        'nomor_surat' => 'PUT-123/PID.SUS/2026/PN-BJM',
+        'tanggal_surat' => '2026-10-20',
+        'status' => 'final',
+        'finalized_at' => now(),
+    ]);
+
+    // Setelah Putusan dicatat: getNextAvailableStages KOSONG (terminal)
+    expect($tahapanService->getNextAvailableStages($this->berkas))->toBeEmpty();
+
+    // Percobaan menambah tahapan baru melempar DomainException
+    expect(function () use ($tahapanService) {
+        $tahapanService->saveStage(
+            $this->berkas,
+            [
+                'action_type' => 'lanjut',
+                'jenis_tahap' => JenisTahap::TAHAP_1,
+                'nomor_surat' => 'ILLEGAL',
+                'tanggal_surat' => '2026-10-21',
+            ],
+            null,
+            $this->penyidik
+        );
+    })->toThrow(DomainException::class, 'Keputusan Pengadilan');
 });

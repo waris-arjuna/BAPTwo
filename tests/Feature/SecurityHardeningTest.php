@@ -77,12 +77,22 @@ test('pesan gagal login bersifat generik untuk mencegah pemetaan akun terdaftar'
     $resNoEmail->assertRedirect('/signin');
     $resNoEmail->assertSessionHasErrors(['email' => __('Email atau kata sandi salah.')]);
 
-    // 3. Akun non-aktif
+    // 3. Akun non-aktif: password salah tetap generik (mencegah enumerasi)
     User::factory()->create([
         'email' => 'nonaktif@baptwo.test',
         'password' => 'password123',
         'is_active' => false,
     ]);
+    app(MathCaptchaService::class)->generate();
+    $resInactiveWrong = $this->from('/signin')->post('/signin', [
+        'email' => 'nonaktif@baptwo.test',
+        'password' => 'password-salah',
+        'captcha' => (string) session(MathCaptchaService::SESSION_ANSWER_KEY),
+    ]);
+    $resInactiveWrong->assertRedirect('/signin');
+    $resInactiveWrong->assertSessionHasErrors(['email' => __('Email atau kata sandi salah.')]);
+
+    // 4. Akun non-aktif: password benar menampilkan banner & toast penonaktifan (D-053)
     app(MathCaptchaService::class)->generate();
     $resInactive = $this->from('/signin')->post('/signin', [
         'email' => 'nonaktif@baptwo.test',
@@ -90,7 +100,8 @@ test('pesan gagal login bersifat generik untuk mencegah pemetaan akun terdaftar'
         'captcha' => (string) session(MathCaptchaService::SESSION_ANSWER_KEY),
     ]);
     $resInactive->assertRedirect('/signin');
-    $resInactive->assertSessionHasErrors(['email' => __('Email atau kata sandi salah.')]);
+    $resInactive->assertSessionHas('account_inactive');
+    $resInactive->assertSessionHas('error');
 });
 
 test('ekspor excel menetralisir karakter formula injection dengan tanda petik tunggal', function () {

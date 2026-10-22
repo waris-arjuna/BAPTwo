@@ -44,7 +44,7 @@
         $initialToasts[] = [
             'type' => 'error',
             'title' => 'Periksa Isian Formulir',
-            'message' => "Terdapat {$errorCount} isian yang perlu diperbaiki sebelum menyimpan formulir.",
+            'message' => $errorCount === 1 ? $errors->first() : "Terdapat {$errorCount} isian yang perlu diperbaiki sebelum menyimpan formulir.",
             'duration' => 3000,
         ];
     }

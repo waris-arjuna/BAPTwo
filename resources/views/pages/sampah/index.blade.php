@@ -1,5 +1,5 @@
 @php
-    $title = 'Sampah & Pemulihan Data';
+    $title = 'Recovery Data';
 @endphp
 
 @extends('layouts.app')
@@ -8,11 +8,11 @@
     <div class="space-y-6">
         {{-- Breadcrumb & Header --}}
         <x-page-header
-            title="Sampah &amp; Pemulihan Data"
+            title="Recovery Data"
             :breadcrumbs="[
                 ['label' => 'Menu Utama', 'url' => route('dashboard')],
                 ['label' => 'Sistem', 'url' => '#'],
-                ['label' => 'Sampah'],
+                ['label' => 'Recovery Data'],
             ]"
         />
 
@@ -25,7 +25,7 @@
                 <div class="space-y-1">
                     <p class="font-semibold text-sm">Informasi Pemulihan Data (Soft Delete)</p>
                     <p class="leading-relaxed">
-                        Seluruh penghapusan di sistem BAPTwo menggunakan mekanisme <strong>Soft Delete</strong>. Data yang dihapus tidak dimusnahkan secara permanen melainkan dipindahkan ke halaman Sampah ini dan dapat dipulihkan kembali sewaktu-waktu oleh pengguna yang berwenang (Penyidik &amp; Administrator). Fitur <em>Hard Delete</em> (hapus permanen) ditiadakan demi menjaga integritas dan akuntabilitas penanganan perkara.
+                        Seluruh penghapusan di sistem BAPTwo menggunakan mekanisme <strong>Soft Delete</strong>. Data yang dihapus tidak dimusnahkan secara permanen melainkan dipindahkan ke halaman Recovery Data ini dan dapat dipulihkan kembali sewaktu-waktu oleh pengguna yang berwenang (Penyidik &amp; Administrator). Fitur <em>Hard Delete</em> (hapus permanen) ditiadakan demi menjaga integritas dan akuntabilitas penanganan perkara.
                     </p>
                 </div>
             </div>

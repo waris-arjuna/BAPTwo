@@ -16,59 +16,37 @@ class MenuHelper
                 'path' => '/',
             ],
             [
-                'icon' => 'all-cases',
-                'name' => 'Seluruh Perkara',
-                'path' => '/seluruh-perkara',
-            ],
-            [
-                'icon' => 'search-cases',
-                'name' => 'Pencarian Perkara',
-                'path' => '/pencarian-perkara',
-            ],
-            [
-                'icon' => 'report',
-                'name' => 'Laporan Kejadian',
-                'path' => '/laporan-kejadian',
+                'icon' => 'data-perkara',
+                'name' => 'Data Perkara',
+                'subItems' => [
+                    [
+                        'name' => 'Daftar Perkara',
+                        'path' => '/data-perkara',
+                    ],
+                    [
+                        'name' => 'Potensi Terlimpah',
+                        'path' => '/potensi-terlimpah',
+                    ],
+                ],
             ],
         ];
     }
 
     /**
-     * Menu yang berkaitan dengan perkara.
+     * Menu yang berkaitan dengan perkara (7 tahapan berurutan).
      */
     public static function getPerkaraItems(): array
     {
-        $dataPerkaraSubItems = [
-            [
-                'name' => 'Daftar Perkara',
-                'path' => '/data-perkara',
-            ],
-        ];
-
-        // Poin 20: Halaman Progres Perkara hanya tampil untuk Pemimpin dan Umum. Untuk Penyidik disembunyikan.
-        $user = auth()->user();
-        if ($user && ! $user->isPenyidik()) {
-            $dataPerkaraSubItems[] = [
-                'name' => 'Progress Perkara',
-                'path' => '/progress-perkara',
-            ];
-        }
-
-        $dataPerkaraSubItems[] = [
-            'name' => 'Potensi Terlimpah',
-            'path' => '/potensi-terlimpah',
-        ];
-
         return [
+            [
+                'icon' => 'report',
+                'name' => 'Laporan Kejadian',
+                'path' => '/laporan-kejadian',
+            ],
             [
                 'icon' => 'sprindik',
                 'name' => 'Sprindik',
                 'path' => '/sprindik',
-            ],
-            [
-                'icon' => 'data-perkara',
-                'name' => 'Data Perkara',
-                'subItems' => $dataPerkaraSubItems,
             ],
             [
                 'icon' => 'spdp',
@@ -106,10 +84,10 @@ class MenuHelper
         $user = auth()->user();
         $items = [];
 
-        // Poin 7:
+        // Poin 7 & Poin 4:
         // Role Pemimpin & Umum: Master Data dihapus total (menu disembunyikan)
         // Role Penyidik: Master Data hanya Pasal dan Instansi Hukum
-        // Role Admin: Mengelola seluruh Master Data
+        // Role Admin: Mengelola seluruh Master Data lengkap
         if ($user && ($user->isAdmin() || $user->isPenyidik())) {
             $masterSubItems = [];
 
@@ -151,19 +129,38 @@ class MenuHelper
             ];
         }
 
-        if (auth()->user()?->isAdmin()) {
+        if ($user?->isAdmin()) {
             $items[] = [
                 'icon' => 'settings',
                 'name' => 'Pengaturan',
-                'path' => '/pengaturan',
+                'subItems' => [
+                    [
+                        'name' => 'User',
+                        'path' => '/pengaturan',
+                    ],
+                    [
+                        'name' => 'Petugas',
+                        'path' => '/data-petugas',
+                    ],
+                    [
+                        'name' => 'Umum',
+                        'path' => '/pengaturan/umum',
+                    ],
+                ],
+            ];
+
+            $items[] = [
+                'icon' => 'recovery-data',
+                'name' => 'Recovery Data',
+                'path' => '/recovery-data',
+            ];
+        } elseif ($user?->isPenyidik()) {
+            $items[] = [
+                'icon' => 'petugas',
+                'name' => 'Data Petugas',
+                'path' => '/data-petugas',
             ];
         }
-
-        $items[] = [
-            'icon' => 'trash',
-            'name' => 'Sampah',
-            'path' => '/sampah',
-        ];
 
         return $items;
     }
@@ -173,6 +170,35 @@ class MenuHelper
      */
     public static function getMenuGroups(): array
     {
+        $user = auth()->user();
+
+        // Poin 3: Role Pimpinan & Umum hanya memiliki 1 grup "Menu Utama":
+        // Dashboard, Pencarian Perkara, Potensi Terlimpah (ref: D-053).
+        if ($user && ($user->isPimpinan() || $user->isUmum())) {
+            return [
+                [
+                    'title' => 'Menu Utama',
+                    'items' => [
+                        [
+                            'icon' => 'dashboard',
+                            'name' => 'Dashboard',
+                            'path' => '/',
+                        ],
+                        [
+                            'icon' => 'search-cases',
+                            'name' => 'Pencarian Perkara',
+                            'path' => '/pencarian-perkara',
+                        ],
+                        [
+                            'icon' => 'potensi-terlimpah',
+                            'name' => 'Potensi Terlimpah',
+                            'path' => '/potensi-terlimpah',
+                        ],
+                    ],
+                ],
+            ];
+        }
+
         return [
             [
                 'title' => 'Menu Utama',
@@ -213,6 +239,7 @@ class MenuHelper
             'dashboard' => '<i class="fi fi-rr-apps text-lg leading-none" aria-hidden="true"></i>',
             'all-cases' => '<i class="fi fi-rr-layers text-lg leading-none" aria-hidden="true"></i>',
             'search-cases' => '<i class="fi fi-rr-search text-lg leading-none" aria-hidden="true"></i>',
+            'potensi-terlimpah' => '<i class="fi fi-rr-time-forward text-lg leading-none" aria-hidden="true"></i>',
             'report' => '<i class="fi fi-rr-document-signed text-lg leading-none" aria-hidden="true"></i>',
             'data-perkara' => '<i class="fi fi-rr-folders text-lg leading-none" aria-hidden="true"></i>',
             'sprindik' => '<i class="fi fi-rr-file-edit text-lg leading-none" aria-hidden="true"></i>',
@@ -224,6 +251,8 @@ class MenuHelper
             'court' => '<i class="fi fi-rr-gavel text-lg leading-none" aria-hidden="true"></i>',
             'master-data' => '<i class="fi fi-rr-database text-lg leading-none" aria-hidden="true"></i>',
             'settings' => '<i class="fi fi-rr-settings text-lg leading-none" aria-hidden="true"></i>',
+            'petugas' => '<i class="fi fi-rr-users text-lg leading-none" aria-hidden="true"></i>',
+            'recovery-data' => '<i class="fi fi-rr-recycle text-lg leading-none" aria-hidden="true"></i>',
             'trash' => '<i class="fi fi-rr-trash text-lg leading-none" aria-hidden="true"></i>',
         ];
 

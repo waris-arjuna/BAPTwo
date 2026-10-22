@@ -67,6 +67,13 @@ class UserFactory extends Factory
         ]);
     }
 
+    public function umum(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'role' => UserRole::UMUM,
+        ]);
+    }
+
     public function penyidik(): static
     {
         return $this->state(fn (array $attributes) => [

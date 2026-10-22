@@ -25,9 +25,17 @@ class TahapanService
      *
      * @return list<JenisTahap>
      */
-    public function getNextAvailableStages(BerkasPerkara $berkas): array
+    public function getNextAvailableStages(BerkasPerkara $berkas, bool $ignoreDpo = false): array
     {
         if ($berkas->status_formal === 'tidak_selesai' || $berkas->hasSp3()) {
+            return [];
+        }
+
+        if (! $ignoreDpo && $berkas->is_dpo) {
+            return [];
+        }
+
+        if ($berkas->hasTahap(JenisTahap::KEPUTUSAN_PENGADILAN)) {
             return [];
         }
 
@@ -93,7 +101,7 @@ class TahapanService
      *
      * @throws DomainException
      */
-    public function validateStageOrder(BerkasPerkara $berkas, JenisTahap $targetTahap): void
+    public function validateStageOrder(BerkasPerkara $berkas, JenisTahap $targetTahap, bool $isDraft = false): void
     {
         if ($berkas->hasSp3()) {
             throw new DomainException('Perkara yang telah diterbitkan SP3 tidak dapat dilanjutkan ke tahap apa pun.');
@@ -103,11 +111,19 @@ class TahapanService
             throw new DomainException('Berkas perkara dengan status Tidak Selesai tidak dapat dilanjutkan ke tahapan berikutnya.');
         }
 
+        if ($berkas->hasTahap(JenisTahap::KEPUTUSAN_PENGADILAN)) {
+            throw new DomainException('Perkara telah selesai hingga Keputusan Pengadilan dan seluruh tahapan telah terkunci permanen.');
+        }
+
+        if (! $isDraft && $berkas->is_dpo) {
+            throw new DomainException('Tidak dapat melanjutkan tahapan perkara karena Tersangka berstatus DPO Aktif.');
+        }
+
         if ($berkas->hasTahap($targetTahap)) {
             throw new DomainException("Tahapan {$targetTahap->label()} sudah pernah dicatat pada Berkas Perkara ini. Satu jenis tahapan maksimal 1 kali.");
         }
 
-        $available = $this->getNextAvailableStages($berkas);
+        $available = $this->getNextAvailableStages($berkas, ignoreDpo: true);
 
         if (! in_array($targetTahap, $available, true)) {
             $latest = $berkas->latestFinalTahap();
@@ -199,12 +215,20 @@ class TahapanService
                     }
                 }
             } else {
-                $this->validateStageOrder($berkas, $jenisTahap);
+                $this->validateStageOrder($berkas, $jenisTahap, $isDraft);
             }
 
-            // DPO Gate: PRD F-24 s.d. F-27
-            if ($jenisTahap === JenisTahap::TAHAP_2 && ! $isDraft && $berkas->is_dpo) {
-                throw new DomainException('Tidak dapat melanjutkan ke Tahap II (Pelimpahan Tersangka & Barang Bukti) karena Tersangka berstatus DPO.');
+            // DPO Gate Menyeluruh: PRD F-24 s.d. F-27, D-053
+            if (! $isDraft && $berkas->is_dpo) {
+                throw new DomainException("Tidak dapat melanjutkan ke tahapan {$jenisTahap->label()} karena Tersangka berstatus DPO Aktif.");
+            }
+
+            // Keputusan Pengadilan Terminal Gate: PRD F-18, F-22, D-053
+            if ($berkas->hasTahap(JenisTahap::KEPUTUSAN_PENGADILAN)) {
+                $finalPutusan = $berkas->tahapan()->where('jenis_tahap', JenisTahap::KEPUTUSAN_PENGADILAN)->where('status', 'final')->first();
+                if ($finalPutusan) {
+                    throw new DomainException('Seluruh tahapan perkara telah terkunci permanen setelah Keputusan Pengadilan dicatat.');
+                }
             }
 
             $tahapData = [
@@ -213,6 +237,11 @@ class TahapanService
                 'catatan' => $data['catatan'] ?? null,
                 'updated_by' => $user->id,
             ];
+
+            if ($jenisTahap === JenisTahap::KEPUTUSAN_PENGADILAN) {
+                $tahapData['pengadilan_instansi_id'] = ! empty($data['pengadilan_instansi_id']) ? (int) $data['pengadilan_instansi_id'] : null;
+                $tahapData['amar_putusan'] = ! empty($data['amar_putusan']) ? trim($data['amar_putusan']) : null;
+            }
 
             // Jika belum final, update nomor dan tanggal
             if ($existingTahap === null || ! $existingTahap->isFinal()) {
@@ -316,7 +345,7 @@ class TahapanService
     /**
      * Mendapatkan daftar ringkasan referensi tahapan sebelumnya yang telah final untuk ditampilkan pada Card Referensi.
      *
-     * @return array<int, array{nama: string, nomor: string, tanggal: string, status: string, dokumen: string|null}>
+     * @return array<int, array{nama: string, nomor: string, tanggal: string, status: string, dokumen: string|null, url: string|null}>
      */
     public function getPreviousStagesReference(BerkasPerkara $berkas): array
     {
@@ -331,6 +360,7 @@ class TahapanService
                     'tanggal' => $perkara->tanggal_laporan_kejadian?->format('d-m-Y') ?? '-',
                     'status' => 'Final / Terkunci',
                     'dokumen' => $perkara->dokumenLaporan?->nama_file_asli,
+                    'url' => route('laporan-kejadian.show', $perkara),
                 ];
             }
 
@@ -341,6 +371,7 @@ class TahapanService
                     'tanggal' => $perkara->tanggal_surat_perintah?->format('d-m-Y') ?? '-',
                     'status' => 'Final / Terkunci',
                     'dokumen' => $perkara->dokumenSprindik?->nama_file_asli,
+                    'url' => route('sprindik.show', $perkara),
                 ];
             }
         }
@@ -359,6 +390,7 @@ class TahapanService
                 'tanggal' => $t->tanggal_surat?->format('d-m-Y') ?? '-',
                 'status' => 'Final / Terkunci',
                 'dokumen' => $t->dokumen->first()?->nama_file_asli,
+                'url' => route('berkas-perkara.tahapan.show', [$berkas, $t]),
             ];
         }
 
@@ -414,9 +446,10 @@ class TahapanService
                 });
             })
             ->with([
-                'berkasPerkara.perkara',
+                'berkasPerkara.perkara.penuntutUmumInstansi',
                 'berkasPerkara.tersangka',
                 'dokumen',
+                'pengadilanInstansi',
                 'createdBy',
                 'finalizedBy',
             ])
@@ -432,7 +465,7 @@ class TahapanService
     protected function queryAvailableBerkas(
         JenisTahap $requiredPreviousStage,
         JenisTahap $targetStage,
-        bool $dpoCheck = false
+        bool $dpoCheck = true
     ): Collection {
         return BerkasPerkara::query()
             ->whereHas('tahapan', function (Builder $q) use ($requiredPreviousStage) {
@@ -440,6 +473,9 @@ class TahapanService
             })
             ->whereDoesntHave('tahapan', function (Builder $q) use ($targetStage) {
                 $q->where('jenis_tahap', $targetStage->value);
+            })
+            ->whereDoesntHave('tahapan', function (Builder $q) {
+                $q->where('jenis_tahap', JenisTahap::KEPUTUSAN_PENGADILAN->value)->where('status', 'final');
             })
             ->whereDoesntHave('sp3')
             ->where(fn (Builder $q) => $q->whereNull('status_formal')->orWhere('status_formal', '!=', 'tidak_selesai'))
@@ -477,6 +513,7 @@ class TahapanService
                 $q->where('jenis_tahap', JenisTahap::SPDP->value);
             })
             ->whereDoesntHave('sp3')
+            ->where('is_dpo', false)
             ->where(fn (Builder $q) => $q->whereNull('status_formal')->orWhere('status_formal', '!=', 'tidak_selesai'))
             ->with(['perkara', 'tersangka'])
             ->orderByDesc('id')

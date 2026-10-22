@@ -659,6 +659,10 @@ class PerkaraService
             // 4. Update status tahapan perkara
             $perkara->update([
                 'tkp_id' => $tkpId,
+                'penuntut_umum_instansi_id' => ! empty($data['penuntut_umum_instansi_id']) ? (int) $data['penuntut_umum_instansi_id'] : null,
+                'penuntut_umum_nama' => ! empty($data['penuntut_umum_nama']) ? trim($data['penuntut_umum_nama']) : null,
+                'penuntut_umum_nip' => ! empty($data['penuntut_umum_nip']) ? trim($data['penuntut_umum_nip']) : null,
+                'penuntut_umum_pangkat' => ! empty($data['penuntut_umum_pangkat']) ? trim($data['penuntut_umum_pangkat']) : null,
                 'tahap_laporan_status' => 'final',
                 'laporan_locked_at' => $perkara->laporan_locked_at ?? now(),
                 'laporan_finalized_by' => $perkara->laporan_finalized_by ?? $user->id,
@@ -793,8 +797,10 @@ class PerkaraService
                 'dokumenLaporan',
                 'tkp.alamat',
                 'ppnsUtama',
+                'penuntutUmumInstansi',
                 'tersangkas.berkasPerkara.pasals',
                 'tersangkas.berkasPerkara.sp3',
+                'berkasPerkaras.pasals',
                 'berkasPerkaras.sp3',
                 'creator',
             ])

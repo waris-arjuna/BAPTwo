@@ -107,7 +107,19 @@
                                         Final
                                     </span>
                                 </div>
-                                <p class="mt-1 font-mono text-xs text-brand-600 dark:text-brand-400">{{ $ref['nomor'] }}</p>
+                                @if (!empty($ref['url']))
+                                    <a
+                                        href="{{ $ref['url'] }}"
+                                        target="_blank"
+                                        class="mt-1 inline-flex items-center gap-1 font-mono text-xs font-medium text-brand-600 transition hover:text-brand-700 hover:underline dark:text-brand-400 dark:hover:text-brand-300"
+                                        title="Buka dokumen {{ $ref['nama'] }}"
+                                    >
+                                        <span>{{ $ref['nomor'] }}</span>
+                                        <i class="fi fi-rr-arrow-up-right-from-square text-[9px]"></i>
+                                    </a>
+                                @else
+                                    <p class="mt-1 font-mono text-xs text-brand-600 dark:text-brand-400">{{ $ref['nomor'] }}</p>
+                                @endif
                                 <p class="mt-0.5 text-[11px] text-gray-500 dark:text-gray-400">Tanggal: {{ $ref['tanggal'] }}</p>
                                 @if ($ref['dokumen'])
                                     <p class="mt-1 truncate text-[11px] text-gray-400">
@@ -119,6 +131,9 @@
                     </div>
                 </div>
             @endif
+
+            {{-- Card Informasi Penuntut Umum (Poin 2 & Poin 8, ref: D-053) --}}
+            <x-perkara.card-penuntut-umum :perkara="$berkas->perkara" />
 
             {{-- Card Detail Informasi Tahapan Utama --}}
             <div class="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] sm:p-6">
@@ -203,7 +218,27 @@
                             @endif
                         </div>
                     </div>
+
+                    @if ($tahap->jenis_tahap === \App\Enums\JenisTahap::KEPUTUSAN_PENGADILAN)
+                        <div class="sm:col-span-2">
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Instansi Pengadilan</p>
+                            <p class="mt-1 text-sm font-semibold text-gray-800 dark:text-white/90">
+                                {{ $tahap->pengadilanInstansi?->nama ?: 'Pengadilan Negeri' }}
+                            </p>
+                        </div>
+                    @endif
                 </div>
+
+                {{-- Amar Putusan Pengadilan --}}
+                @if ($tahap->jenis_tahap === \App\Enums\JenisTahap::KEPUTUSAN_PENGADILAN && $tahap->amar_putusan)
+                    <div class="mt-4 rounded-xl border border-brand-100 bg-brand-50/40 p-4 dark:border-brand-500/20 dark:bg-brand-500/5">
+                        <p class="text-xs font-semibold uppercase tracking-wider text-brand-700 dark:text-brand-300">
+                            <i class="fi fi-rr-gavel me-1 text-xs"></i>
+                            Amar Putusan Pengadilan
+                        </p>
+                        <p class="mt-2 whitespace-pre-line text-sm text-gray-800 dark:text-gray-200">{{ $tahap->amar_putusan }}</p>
+                    </div>
+                @endif
 
                 {{-- Catatan --}}
                 @if ($tahap->catatan)

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Enums\UserRole;
 use App\Http\Requests\SavePerkaraBerkasRequest;
+use App\Models\InstansiHukum;
 use App\Models\Pasal;
 use App\Models\Perkara;
 use App\Models\User;
@@ -34,11 +35,13 @@ class PerkaraBerkasController extends Controller
             'tkp.alamat',
             'ppnsUtama',
             'ppnsAnggota',
+            'penuntutUmumInstansi',
             'tersangkas.alamat',
             'tersangkas.berkasPerkara.pasals',
         ]);
 
         $pasalList = Pasal::where('status', 'aktif')->orderBy('nama_pasal')->get();
+        $kejaksaanList = InstansiHukum::where('jenis', 'kejaksaan')->orderBy('nama')->get();
 
         $existingPpnsIds = array_filter(array_merge(
             [(int) $perkara->ppns_utama_id],
@@ -56,7 +59,7 @@ class PerkaraBerkasController extends Controller
             ->orderBy('nama')
             ->get();
 
-        return view('pages.perkara.form', compact('perkara', 'pasalList', 'ppnsUsers'));
+        return view('pages.perkara.form', compact('perkara', 'pasalList', 'ppnsUsers', 'kejaksaanList'));
     }
 
     /**
@@ -99,11 +102,13 @@ class PerkaraBerkasController extends Controller
             'tkp.alamat',
             'ppnsUtama',
             'ppnsAnggota',
+            'penuntutUmumInstansi',
             'tersangkas.alamat',
             'tersangkas.berkasPerkara.pasals',
             'tersangkas.berkasPerkara.tahapan.dokumen',
             'tersangkas.berkasPerkara.dpos.dokumen',
             'tersangkas.berkasPerkara.dpos.creator',
+            'tersangkas.berkasPerkara.sp3.dokumen',
             'creator',
             'perkaraFinalizer',
             'auditLogs' => fn ($query) => $query->with(['user', 'berkasPerkara.tersangka'])->orderBy('id', 'desc'),

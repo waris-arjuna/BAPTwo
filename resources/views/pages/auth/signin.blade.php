@@ -23,6 +23,23 @@
                         </div>
                     @endif
 
+                    {{-- Banner Akun Nonaktif / Dihapus --}}
+                    @if (session('account_inactive'))
+                        <div class="mb-5 rounded-2xl border border-error-200 bg-error-50 p-4 text-error-800 dark:border-error-500/20 dark:bg-error-500/10 dark:text-error-300" role="alert">
+                            <div class="flex items-start gap-3">
+                                <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-error-100 text-error-600 dark:bg-error-500/20 dark:text-error-400">
+                                    <i class="fi fi-rr-ban text-base leading-none"></i>
+                                </div>
+                                <div class="min-w-0 flex-1 pt-0.5">
+                                    <h4 class="text-sm font-semibold">{{ __('Akses Akun Ditolak') }}</h4>
+                                    <p class="mt-0.5 text-xs leading-relaxed text-error-700 dark:text-error-300/90">
+                                        {{ session('account_inactive') }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
                     <!-- Card Hover Wrapper -->
                     <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-theme-xs transition-[border-color,box-shadow] duration-200 hover:border-brand-500/30 hover:shadow-theme-xl sm:p-8 dark:border-gray-800 dark:bg-gray-900/90 dark:hover:border-brand-500/30 dark:hover:shadow-theme-xl">
                         <!-- Logo BAPTwo -->

@@ -106,7 +106,19 @@
                                         Final
                                     </span>
                                 </div>
-                                <p class="mt-1 font-mono text-xs text-brand-600 dark:text-brand-400">{{ $ref['nomor'] }}</p>
+                                @if (!empty($ref['url']))
+                                    <a
+                                        href="{{ $ref['url'] }}"
+                                        target="_blank"
+                                        class="mt-1 inline-flex items-center gap-1 font-mono text-xs font-medium text-brand-600 transition hover:text-brand-700 hover:underline dark:text-brand-400 dark:hover:text-brand-300"
+                                        title="Buka dokumen {{ $ref['nama'] }}"
+                                    >
+                                        <span>{{ $ref['nomor'] }}</span>
+                                        <i class="fi fi-rr-arrow-up-right-from-square text-[9px]"></i>
+                                    </a>
+                                @else
+                                    <p class="mt-1 font-mono text-xs text-brand-600 dark:text-brand-400">{{ $ref['nomor'] }}</p>
+                                @endif
                                 <p class="mt-0.5 text-[11px] text-gray-500 dark:text-gray-400">Tanggal: {{ $ref['tanggal'] }}</p>
                                 @if ($ref['dokumen'])
                                     <p class="mt-1 truncate text-[11px] text-gray-400">
@@ -118,6 +130,9 @@
                     </div>
                 </div>
             @endif
+
+            {{-- Card Informasi Penuntut Umum (Poin 2 & Poin 8, ref: D-053) --}}
+            <x-perkara.card-penuntut-umum :perkara="$berkas->perkara" />
 
             {{-- Form Tahapan --}}
             <form
@@ -222,6 +237,20 @@
                                         <p class="mt-1 text-sm text-gray-700 dark:text-gray-300">{{ $tahap->catatan }}</p>
                                     </div>
                                 @endif
+                                @if ($tahap->jenis_tahap === \App\Enums\JenisTahap::KEPUTUSAN_PENGADILAN)
+                                    <div class="sm:col-span-2">
+                                        <span class="text-xs text-gray-500 dark:text-gray-400">Instansi Pengadilan</span>
+                                        <p class="mt-1 text-sm font-semibold text-gray-800 dark:text-white/90">
+                                            {{ $tahap->pengadilanInstansi?->nama ?: '-' }}
+                                        </p>
+                                    </div>
+                                    @if ($tahap->amar_putusan)
+                                        <div class="sm:col-span-2">
+                                            <span class="text-xs text-gray-500 dark:text-gray-400">Amar Putusan Pengadilan</span>
+                                            <p class="mt-1 whitespace-pre-line text-sm text-gray-700 dark:text-gray-300">{{ $tahap->amar_putusan }}</p>
+                                        </div>
+                                    @endif
+                                @endif
                             </div>
                         @else
                             {{-- Field Input Data Utama --}}
@@ -254,6 +283,42 @@
                                         defaultDate="{{ old('tanggal_surat', $tahap?->tanggal_surat?->format('Y-m-d')) }}"
                                     />
                                 </div>
+
+                                @if ($selectedJenis === \App\Enums\JenisTahap::KEPUTUSAN_PENGADILAN)
+                                    <div class="sm:col-span-2">
+                                        <label for="pengadilan_instansi_id" class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                            Nama Pengadilan <span class="text-xs text-gray-400">(Wajib untuk Simpan &amp; Lanjut)</span>
+                                        </label>
+                                        <select
+                                            id="pengadilan_instansi_id"
+                                            name="pengadilan_instansi_id"
+                                            class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
+                                        >
+                                            <option value="">-- Pilih Instansi Pengadilan --</option>
+                                            @foreach ($pengadilanList ?? [] as $pg)
+                                                <option value="{{ $pg->id }}" @selected((string) old('pengadilan_instansi_id', $tahap?->pengadilan_instansi_id) === (string) $pg->id)>
+                                                    {{ $pg->nama }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
+                                            Data pengadilan bersumber dari Master Data Instansi Hukum kategori Pengadilan (Poin 8, ref: D-053).
+                                        </p>
+                                    </div>
+
+                                    <div class="sm:col-span-2">
+                                        <label for="amar_putusan" class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                            Amar Putusan Pengadilan <span class="text-xs text-gray-400">(Wajib untuk Simpan &amp; Lanjut)</span>
+                                        </label>
+                                        <textarea
+                                            id="amar_putusan"
+                                            name="amar_putusan"
+                                            rows="4"
+                                            placeholder="Masukkan amar putusan sidang pengadilan..."
+                                            class="w-full rounded-lg border border-gray-300 bg-transparent p-4 text-sm text-gray-800 placeholder-gray-400 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
+                                        >{{ old('amar_putusan', $tahap?->amar_putusan) }}</textarea>
+                                    </div>
+                                @endif
                             </div>
 
                             {{-- Upload Dokumen PDF --}}

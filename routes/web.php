@@ -10,8 +10,10 @@ use App\Http\Controllers\MasterDataController;
 use App\Http\Controllers\MathCaptchaController;
 use App\Http\Controllers\P21Controller;
 use App\Http\Controllers\PencarianPerkaraController;
+use App\Http\Controllers\PengaturanUmumController;
 use App\Http\Controllers\PerkaraBerkasController;
 use App\Http\Controllers\PerkaraExportController;
+use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\PotensiTerlimpahController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgressPerkaraController;
@@ -83,9 +85,15 @@ Route::middleware('auth')->group(function () {
         Route::put('/pengaturan/{user}', [UserController::class, 'update'])->name('users.update');
         Route::delete('/pengaturan/{user}', [UserController::class, 'destroy'])->name('users.destroy');
         Route::post('/pengaturan/{id}/restore', [UserController::class, 'restore'])->name('users.restore');
+        Route::get('/pengaturan/umum', [PengaturanUmumController::class, 'index'])->name('pengaturan.umum');
     });
 
+    // Data Petugas (Penyidik & Administrator)
+    Route::get('/data-petugas', [PetugasController::class, 'index'])->name('data-petugas.index');
+    Route::post('/data-petugas', [PetugasController::class, 'store'])->name('data-petugas.store');
+
     // Halaman Sampah / Pemulihan Data Soft Delete (PRD F-44)
+    Route::get('/recovery-data', [SampahController::class, 'index'])->name('recovery-data.index');
     Route::get('/sampah', [SampahController::class, 'index'])->name('sampah.index');
     Route::post('/sampah/perkara/{id}/restore', [SampahController::class, 'restorePerkara'])->middleware('can:soft-delete')->name('sampah.perkara.restore');
     Route::post('/sampah/berkas/{id}/restore', [SampahController::class, 'restoreBerkas'])->middleware('can:soft-delete')->name('sampah.berkas.restore');

@@ -152,8 +152,8 @@ test('halaman potensi terlimpah merender partial tabel saat request ajax X-Filte
 });
 
 test('menu navigasi data perkara memuat submenu Potensi Terlimpah', function () {
-    $perkaraItems = MenuHelper::getPerkaraItems();
-    $dataPerkaraItem = collect($perkaraItems)->firstWhere('name', 'Data Perkara');
+    $mainItems = MenuHelper::getMainNavItems();
+    $dataPerkaraItem = collect($mainItems)->firstWhere('name', 'Data Perkara');
 
     expect($dataPerkaraItem)->not->toBeNull();
     $subPaths = array_column($dataPerkaraItem['subItems'], 'path');

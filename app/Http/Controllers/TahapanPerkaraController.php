@@ -6,6 +6,7 @@ use App\Enums\JenisTahap;
 use App\Http\Requests\StoreTahapanRequest;
 use App\Http\Requests\UpdateTahapanRequest;
 use App\Models\BerkasPerkara;
+use App\Models\InstansiHukum;
 use App\Models\TahapanPerkara;
 use App\Services\TahapanService;
 use Illuminate\Http\RedirectResponse;
@@ -73,13 +74,16 @@ class TahapanPerkaraController extends Controller
             ->get()
             ->keyBy(fn ($t) => $t->jenis_tahap->value);
 
+        $pengadilanList = InstansiHukum::where('jenis', 'pengadilan')->orderBy('nama')->get();
+
         return view('pages.tahapan.form', [
-            'berkas' => $berkas->load(['perkara', 'tersangka']),
+            'berkas' => $berkas->load(['perkara.penuntutUmumInstansi', 'tersangka']),
             'tahap' => null,
             'subTahapan' => $subTahapan,
             'selectedJenis' => $selectedJenis,
             'availableStages' => $availableStages,
             'references' => $references,
+            'pengadilanList' => $pengadilanList,
             'mode' => 'create',
             'isLocked' => false,
         ]);
@@ -131,7 +135,7 @@ class TahapanPerkaraController extends Controller
      */
     public function show(BerkasPerkara $berkas, TahapanPerkara $tahapan): View
     {
-        $tahapan->load(['dokumen', 'finalizedBy', 'createdBy', 'updatedBy']);
+        $tahapan->load(['dokumen', 'finalizedBy', 'createdBy', 'updatedBy', 'pengadilanInstansi']);
         $references = $this->tahapanService->getPreviousStagesReference($berkas);
 
         $subTahapan = TahapanPerkara::where('berkas_perkara_id', $berkas->id)
@@ -146,7 +150,7 @@ class TahapanPerkaraController extends Controller
             ->keyBy(fn ($t) => $t->jenis_tahap->value);
 
         return view('pages.tahapan.show', [
-            'berkas' => $berkas->load(['perkara', 'tersangka']),
+            'berkas' => $berkas->load(['perkara.penuntutUmumInstansi', 'tersangka']),
             'tahap' => $tahapan,
             'references' => $references,
             'isLocked' => $tahapan->isFinal(),
@@ -185,13 +189,16 @@ class TahapanPerkaraController extends Controller
             ->get()
             ->keyBy(fn ($t) => $t->jenis_tahap->value);
 
+        $pengadilanList = InstansiHukum::where('jenis', 'pengadilan')->orderBy('nama')->get();
+
         return view('pages.tahapan.form', [
-            'berkas' => $berkas->load(['perkara', 'tersangka']),
-            'tahap' => $tahapan->load('dokumen'),
+            'berkas' => $berkas->load(['perkara.penuntutUmumInstansi', 'tersangka']),
+            'tahap' => $tahapan->load(['dokumen', 'pengadilanInstansi']),
             'subTahapan' => $subTahapan,
             'selectedJenis' => $tahapan->jenis_tahap,
             'availableStages' => [$tahapan->jenis_tahap],
             'references' => $references,
+            'pengadilanList' => $pengadilanList,
             'mode' => 'edit',
             'isLocked' => $tahapan->isFinal(),
         ]);

@@ -1055,6 +1055,46 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
      - Hasil perhitungan di-cache dengan key `dashboard_stage_averages_{tahun}` selama 120 detik, di-invalidasi otomatis oleh method `DashboardService::clearCache()` setiap kali terjadi mutasi pada model `Perkara`, `BerkasPerkara`, atau `TahapanPerkara`.
 - Konsekuensi: Kartu analitik dashboard menyajikan data riil operasional penanganan perkara BPOM Kalsel yang akurat, berkinerja tinggi, dan responsif terhadap filter tahun.
 
+---
+
+## D-053 : Standardisasi 9 Kebijakan Operasional: Keamanan Akun, Penuntut Umum Terintegrasi, Tata Kelola Menu & Data Petugas, Penguncian Terminal Putusan, dan DPO Gate Menyeluruh
+
+- Tanggal: 2026-10-21
+- Status: Disepakati
+- Konteks: Menetapkan konsensus domain dan spesifikasi teknis untuk 9 area operasional aplikasi BAPTwo mencakup autentikasi akun nonaktif/terhapus, integrasi data Penuntut Umum dan Pengadilan, restrukturisasi menu per peran, penguncian perkara selesai dan DPO gate, tabel Daftar Perkara 8 kolom, serta tautan navigasi referensi tahapan.
+- Keputusan:
+  1. **Keamanan Autentikasi Akun Nonaktif & Terhapus**:
+     - Pengguna yang berstatus `is_active = false` atau terhapus secara soft delete (`deleted_at IS NOT NULL`) dilarang masuk sistem.
+     - Demi mencegah user enumeration (D-050), pesan spesifik "Akun Anda sedang dinonaktifkan atau telah dihapus" hanya ditampilkan jika kombinasi email dan password terbukti valid di database. Jika password salah, tetap menampilkan pesan generik "Email atau kata sandi salah".
+     - Notifikasi penolakan masuk disajikan dalam bentuk toast error 3 detik dan banner peringatan inline merah pada formulir masuk.
+     - Setiap percobaan masuk akun nonaktif tetap dicatat ke dalam `audit_log` dengan aksi `login_inactive` dan tunduk pada rate limiter login serta captcha.
+  2. **Pemutusan Sesi Pengguna Aktif (Force Logout Middleware)**:
+     - Dibuatkan middleware `EnsureUserIsActive` pada grup web berautentikasi. Jika akun pengguna yang sedang login dinonaktifkan atau dihapus oleh Administrator, request berikutnya langsung memutus sesi (logout) dan mengarahkan ke halaman masuk dengan flash alert penonaktifan.
+  3. **Penuntut Umum & Pengadilan Terintegrasi Master Data**:
+     - Pada form Tambah Perkara, input Nama Instansi Kejaksaan diambil dari tabel `instansi_hukum` dengan jenis `'kejaksaan'`, sedangkan Nama Jaksa, NIP Jaksa, dan Pangkat Jaksa diinput manual.
+     - Data Penuntut Umum disimpan pada tabel `perkara` (`penuntut_instansi_id`, `penuntut_nama`, `penuntut_nip`, `penuntut_pangkat`) dan ditampilkan dalam Card Informasi Penuntut Umum pada detail perkara dan tahapan jika terisi.
+     - Pada form Putusan Perkara (Keputusan Pengadilan), field "Nama Pengadilan" diambil dari tabel `instansi_hukum` dengan jenis `'pengadilan'`.
+  4. **Penguncian Terminal Keputusan Pengadilan**:
+     - Tahap 2 (Pelimpahan Tersangka & Barang Bukti) menyelesaikan penyidikan administratif (100% dan status formal Selesai).
+     - Keputusan Pengadilan dicatat setelah Tahap 2 sebagai dokumentasi resmi vonis hakim inkrah dari pihak penyidik tanpa menambah persentase di atas 100%.
+     - Setelah Keputusan Pengadilan dicatat, seluruh tahapan perkara terkunci permanen dan tidak ada lagi tahapan apa pun yang dapat ditambahkan (semua tombol aksi selanjutnya dihilangkan dan divalidasi ketat di sisi server).
+  5. **Pemblokiran Tahapan oleh DPO Aktif dan SP3 (DPO vs SP3)**:
+     - Baik status DPO aktif maupun SP3 sama-sama menghambat jalannya perkara dan memblokir SELURUH penambahan tahapan berikutnya di tahap mana pun (SPDP, Tahap 1, P-21, Tahap 2, Putusan). Tombol tahapan berikutnya dinonaktifkan/disembunyikan di UI dan divalidasi ketat (422) di server.
+     - Perbedaan mendasar: Status DPO bersifat sementara dan dapat dicabut kembali saat tersangka ditemukan (sehingga pemblokiran tahapan dicabut dan berkas dapat dilanjutkan kembali), sedangkan status SP3 bersifat terminal/permanen dan tidak dapat dicabut (perkara berhenti mutlak sebagai 'Tidak Selesai' dan 'SP3').
+     - SP3 diperbolehkan diterbitkan saat tersangka berstatus DPO aktif. Penerbitan SP3 otomatis mencabut status DPO berkas dan menetapkan perkara berstatus formal "Tidak Selesai" serta status proses "SP3".
+  6. **Penetapan Peran "Umum" sebagai Pimpinan Berfitur Terbatas**:
+     - Role `'umum'` adalah role untuk pimpinan/pemimpin instansi. Dinamakan "umum" karena fiturnya dibatasi hanya untuk monitoring: Dashboard, Pencarian Perkara, dan Potensi Terlimpah (read-only), tanpa menu Perkara operasional, Master Data, maupun Pengaturan.
+  7. **Restrukturisasi Menu & Submenu Pengaturan**:
+     - Menu Pimpinan: Menu Utama (Dashboard, Pencarian Perkara, Potensi Terlimpah).
+     - Menu Penyidik: Menu Utama (Dashboard, Data Perkara [Daftar Perkara, Potensi Terlimpah]), Perkara (7 tahapan), Sistem (Master Data [Pasal & Instansi], Data Petugas).
+     - Menu Administrator: Menu Utama (Dashboard, Data Perkara), Perkara (7 tahapan), Sistem (Master Data lengkap, Pengaturan [User, Petugas, Umum], Recovery Data).
+     - Halaman Sampah berganti nama tampilan resmi menjadi "Recovery Data" di seluruh antarmuka.
+  8. **Modul Data Petugas & Standarisasi Tabel Daftar Perkara**:
+     - Halaman "Data Petugas" menampilkan tabel petugas non-admin dengan fitur tambah penugasan (memilih user dari tabel user dan memilih role selain admin: penyidik atau umum).
+     - Tabel Daftar Perkara distandarisasi menjadi 8 kolom: No, Perkara (No LK & tanggal vertikal), TKP (kota & sarana vertikal), PPNS (nama & NIP vertikal), Tersangka (nama & alias), Pasal (maksimal 2 + tooltip daftar lengkap), Status (status perkara dan tahapan terakhir beserta angka persentase tanpa bar), dan Aksi.
+  9. **Tautan Navigasi Tahapan Sebelumnya**:
+     - Nomor surat pada Card Referensi Tahapan Sebelumnya di halaman tahapan dijadikan tautan link aktif menuju halaman tahapan terkait jika peran pengguna memiliki hak akses melihatnya.
+- Konsekuensi: Kebijakan bisnis, alur penguncian perkara, tata kelola akun, dan navigasi antarmuka selaras 100% dengan kebutuhan operasional BPOM Kalsel.
 
 
 
@@ -1068,3 +1108,18 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
 
 
 
+
+
+
+## D-054 : Seeder 100 Data Perkara Berbasis Rencana untuk Pengujian Manual
+
+- Tanggal: 2026-10-21
+- Status: Disepakati
+- Konteks: Kebutuhan data uji manual yang lebih kaya untuk menguji filter, paginasi, dashboard, DPO, SP3, dan batas tahun. Seeder sebelumnya berisi 20 perkara yang seluruhnya ditulis manual sehingga penambahan data baru memakan banyak baris dan rawan duplikasi.
+- Keputusan:
+  1. **Rencana Data Terpusat**: 100 perkara disusun dari tabel distribusi bucket tahapan, katalog 18 jenis perkara, katalog 17 wilayah, dan deret nama/jalan/usaha sebagai sumber variasi. Nomor surat, tanggal, dan NIK dibangkitkan deterministik dari tanggal dokumen dan indeks urutan.
+  2. **Penomoran per Berkas**: Nomor surat tahapan dibangkitkan di `createBerkas()` agar setiap berkas perkara memiliki nomor unik sendiri, termasuk pada perkara dengan dua atau tiga tersangka.
+  3. **Struktur Helper Terpisah**: Kasus perkara dibuat oleh `createCase()` lalu setiap tersangka menjadi satu berkas melalui `createBerkas()`, sehingga aturan 1 tersangka = 1 berkas perkara tetap terjaga dan berlaku untuk semua data.
+  4. **Idempotensi**: Seeder tetap membersihkan data dummy lama (`LK/%`) dengan eager loading `berkasPerkaras`, `tersangkas`, dan `tkp` agar tidak melanggar `Model::preventLazyLoading()`, lalu menanam ulang data dengan `updateOrCreate`.
+  5. **Konsistensi Domain**: Progress, status proses, dan status formal tidak pernah diisi manual. Semuanya dihitung dari rantai tahapan yang sudah difinalkan, dengan pengecualian `tidak_selesai` untuk berkas SPDP tahun lalu dan SP3.
+- Konsekuensi: Data uji manual mencakup seluruh tahapan, status, dan kombinasi DPO/SP3, tetap dapat dijalankan berulang tanpa duplikasi, dan mudah diperluas dengan menambah baris distribusi.

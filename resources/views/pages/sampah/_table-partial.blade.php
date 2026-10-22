@@ -126,7 +126,8 @@
                                     type="button"
                                     @click="openConfirm = true"
                                     class="inline-flex items-center gap-1.5 rounded-lg border border-success-200 bg-success-50 px-3 py-1.5 text-xs font-medium text-success-700 transition hover:bg-success-100 dark:border-success-800/40 dark:bg-success-950/20 dark:text-success-300 dark:hover:bg-success-900/40"
-                                    title="Pulihkan data dari Sampah"
+                                    title="Pulihkan data"
+                                    aria-label="Pulihkan data"
                                 >
                                     <i class="fi fi-rr-refresh text-xs"></i>
                                     <span>Pulihkan</span>
@@ -197,7 +198,7 @@
                             <div class="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 text-gray-400 dark:bg-gray-800">
                                 <i class="fi fi-rr-trash text-xl"></i>
                             </div>
-                            <p class="font-medium text-gray-600 dark:text-gray-300">Tidak ada data sampah</p>
+                            <p class="font-medium text-gray-600 dark:text-gray-300">Tidak ada data terhapus</p>
                             <p class="mt-1 text-xs text-gray-400">Belum ada item yang dihapus pada kategori ini.</p>
                         </div>
                     </td>

@@ -10,25 +10,33 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
-it('renders Data Perkara dropdown menu with role-based visibility according to Poin 20', function () {
+it('renders Data Perkara dropdown menu with role-based visibility according to Poin 4 and Poin 5', function () {
     $pimpinan = User::factory()->pimpinan()->create();
     $penyidik = User::factory()->penyidik()->create();
+    $admin = User::factory()->administrator()->create();
 
-    // Untuk Pimpinan & Admin: terdapat Progress Perkara
+    // Untuk Pimpinan (Poin 3): Hanya 1 grup Menu Utama (Dashboard, Pencarian Perkara, Potensi Terlimpah)
     $this->actingAs($pimpinan);
-    $menuGroups = MenuHelper::getMenuGroups();
-    $perkaraGroup = collect($menuGroups)->firstWhere('title', 'Perkara');
-    $dataPerkaraItem = collect($perkaraGroup['items'])->firstWhere('name', 'Data Perkara');
-    expect($dataPerkaraItem['subItems'])->toHaveCount(3)
-        ->and($dataPerkaraItem['subItems'][0]['name'])->toBe('Daftar Perkara')
-        ->and($dataPerkaraItem['subItems'][1]['name'])->toBe('Progress Perkara')
-        ->and($dataPerkaraItem['subItems'][2]['name'])->toBe('Potensi Terlimpah');
+    $menuGroupsPimpinan = MenuHelper::getMenuGroups();
+    expect($menuGroupsPimpinan)->toHaveCount(1)
+        ->and($menuGroupsPimpinan[0]['title'])->toBe('Menu Utama')
+        ->and(collect($menuGroupsPimpinan[0]['items'])->pluck('name')->all())
+        ->toEqual(['Dashboard', 'Pencarian Perkara', 'Potensi Terlimpah']);
 
-    // Untuk Penyidik: Progress Perkara disembunyikan (Poin 20)
+    // Untuk Admin (Poin 4): Menu Utama memuat Data Perkara (Daftar Perkara & Potensi Terlimpah)
+    $this->actingAs($admin);
+    $menuGroupsAdmin = MenuHelper::getMenuGroups();
+    $mainGroupAdmin = collect($menuGroupsAdmin)->firstWhere('title', 'Menu Utama');
+    $dataPerkaraItemAdmin = collect($mainGroupAdmin['items'])->firstWhere('name', 'Data Perkara');
+    expect($dataPerkaraItemAdmin['subItems'])->toHaveCount(2)
+        ->and($dataPerkaraItemAdmin['subItems'][0]['name'])->toBe('Daftar Perkara')
+        ->and($dataPerkaraItemAdmin['subItems'][1]['name'])->toBe('Potensi Terlimpah');
+
+    // Untuk Penyidik (Poin 5): Menu Utama memuat Data Perkara (Daftar Perkara & Potensi Terlimpah)
     $this->actingAs($penyidik);
     $menuGroupsPenyidik = MenuHelper::getMenuGroups();
-    $perkaraGroupPenyidik = collect($menuGroupsPenyidik)->firstWhere('title', 'Perkara');
-    $dataPerkaraItemPenyidik = collect($perkaraGroupPenyidik['items'])->firstWhere('name', 'Data Perkara');
+    $mainGroupPenyidik = collect($menuGroupsPenyidik)->firstWhere('title', 'Menu Utama');
+    $dataPerkaraItemPenyidik = collect($mainGroupPenyidik['items'])->firstWhere('name', 'Data Perkara');
     expect($dataPerkaraItemPenyidik['subItems'])->toHaveCount(2)
         ->and($dataPerkaraItemPenyidik['subItems'][0]['name'])->toBe('Daftar Perkara')
         ->and($dataPerkaraItemPenyidik['subItems'][1]['name'])->toBe('Potensi Terlimpah');
@@ -196,4 +204,84 @@ it('allows authenticated users to view Progress Perkara and filter by status', f
     $response->assertOk()
         ->assertSee('BP/PROG-01/2026')
         ->assertSee('55%');
+});
+
+it('renders standard 8-column Daftar Perkara table with pasal truncation and vertical info', function () {
+    $penyidik = User::factory()->penyidik()->create();
+
+    $perkara = Perkara::create([
+        'nomor_laporan_kejadian' => 'LK/STANDAR-08/2026',
+        'tanggal_laporan_kejadian' => '2026-10-15',
+        'nomor_surat_perintah' => 'SP/STANDAR-08/2026',
+        'tanggal_surat_perintah' => '2026-10-16',
+        'tahap_laporan_status' => 'final',
+        'tahap_sprindik_status' => 'final',
+        'tahap_perkara_status' => 'final',
+        'perkara_locked_at' => now(),
+    ]);
+
+    $tersangka = Tersangka::create([
+        'perkara_id' => $perkara->id,
+        'nama' => 'Ahmad Suhendra',
+        'alias' => 'Hendra',
+        'nik' => '6371018899001122',
+        'jenis_kelamin' => 'laki-laki',
+    ]);
+
+    $pasal1 = Pasal::create([
+        'nama_pasal' => 'UU Kesehatan',
+        'pasal' => 'Pasal 196',
+        'nomor' => '36',
+        'tahun' => '2009',
+        'status' => 'aktif',
+    ]);
+    $pasal2 = Pasal::create([
+        'nama_pasal' => 'UU Kesehatan',
+        'pasal' => 'Pasal 197',
+        'nomor' => '36',
+        'tahun' => '2009',
+        'status' => 'aktif',
+    ]);
+    $pasal3 = Pasal::create([
+        'nama_pasal' => 'UU Kesehatan',
+        'pasal' => 'Pasal 198',
+        'nomor' => '36',
+        'tahun' => '2009',
+        'status' => 'aktif',
+    ]);
+
+    $berkas = BerkasPerkara::create([
+        'perkara_id' => $perkara->id,
+        'tersangka_id' => $tersangka->id,
+        'nomor_berkas' => 'BP/STANDAR-08/2026',
+        'status_proses' => 'SPDP',
+        'progress_persen' => 15,
+    ]);
+    $berkas->pasals()->attach([$pasal1->id, $pasal2->id, $pasal3->id]);
+
+    $response = $this->actingAs($penyidik)->get(route('data-perkara.index'));
+
+    $response->assertOk()
+        // Header 8 kolom
+        ->assertSee('Perkara')
+        ->assertSee('TKP')
+        ->assertSee('PPNS')
+        ->assertSee('Tersangka')
+        ->assertSee('Pasal')
+        ->assertSee('Status')
+        ->assertSee('Aksi')
+        // Data Perkara vertikal
+        ->assertSee('LK/STANDAR-08/2026')
+        ->assertSee('15-10-2026')
+        // Tersangka & alias
+        ->assertSee('Ahmad Suhendra')
+        ->assertSee('Hendra')
+        // Pasal (maks 2 tampil, sisanya ...)
+        ->assertSee('Pasal 196')
+        ->assertSee('Pasal 197')
+        ->assertSee('...')
+        // Status & Progres angka persen
+        ->assertSee('Perkara Terbentuk')
+        ->assertSee('SPDP')
+        ->assertSee('15%');
 });

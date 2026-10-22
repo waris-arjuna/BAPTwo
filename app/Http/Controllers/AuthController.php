@@ -8,6 +8,7 @@ use App\Services\AuditTrailService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
@@ -35,13 +36,7 @@ class AuthController extends Controller
 
         $user = User::withTrashed()->where('email', $email)->first();
 
-        $credentials = [
-            'email' => $email,
-            'password' => $password,
-            'is_active' => true,
-        ];
-
-        if (! $user || $user->trashed() || ! $user->is_active || ! Auth::attempt($credentials, false)) {
+        if (! $user || ! Hash::check($password, $user->password)) {
             RateLimiter::hit($throttleKey, 60);
 
             app(AuditTrailService::class)->log(
@@ -56,14 +51,39 @@ class AuthController extends Controller
             ]);
         }
 
+        if (! $user->is_active || $user->trashed()) {
+            RateLimiter::hit($throttleKey, 60);
+
+            app(AuditTrailService::class)->log(
+                aksi: 'login_inactive',
+                tabel: 'user',
+                recordId: $user->id,
+                dataBaru: [
+                    'email' => $email,
+                    'is_active' => (bool) $user->is_active,
+                    'trashed' => $user->trashed(),
+                ]
+            );
+
+            return redirect()->back()
+                ->withInput($request->only('email'))
+                ->with('account_inactive', __('Akun Anda sedang dinonaktifkan atau telah dihapus. Silakan hubungi Administrator IT BPOM.'))
+                ->with('error', [
+                    'title' => __('Akun Dinonaktifkan'),
+                    'message' => __('Akun Anda sedang dinonaktifkan atau telah dihapus. Silakan hubungi Administrator IT BPOM.'),
+                ]);
+        }
+
         RateLimiter::clear($throttleKey);
+
+        Auth::login($user, false);
 
         $request->session()->regenerate();
 
         return redirect()
             ->intended(route('dashboard'))
             ->with('login_success', [
-                'title' => 'Berhasil Masuk',
+                'title' => __('Berhasil Masuk'),
                 'message' => __('Selamat datang kembali, :nama.', ['nama' => $user->nama]),
             ]);
     }

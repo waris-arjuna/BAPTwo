@@ -38,7 +38,7 @@
 
                     @if ($stat['title'] === 'Rata-rata Waktu Penyelesaian')
                         <p class="mt-1 text-[11px] leading-4 text-gray-400 dark:text-gray-500">
-                            Maks. 60 Hari Kalender
+                            Maks. 30 Hari Kalender
                         </p>
                     @endif
                 </div>

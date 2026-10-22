@@ -398,6 +398,9 @@
                 </div>
             </div>
 
+            {{-- Card Informasi Penuntut Umum (Poin 2 & Poin 8, ref: D-053) --}}
+            <x-perkara.card-penuntut-umum :perkara="$perkara" />
+
             {{-- Daftar Tersangka & Berkas Perkara (1 Tersangka = 1 Berkas Perkara) --}}
             <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
                 <div class="border-b border-gray-200 px-4 py-4 dark:border-gray-800 sm:px-6">
@@ -502,7 +505,7 @@
                                                     <i class="fi fi-rr-user-check text-xs"></i>
                                                     <span>Cabut Status DPO</span>
                                                 </button>
-                                            @else
+                                            @elseif ($berkas->status_formal === null && ! $berkas->hasSp3())
                                                 <button
                                                     type="button"
                                                     @click="openDpoModal({{ $berkas->id }}, '{{ addslashes($tersangka->nama) }}')"
@@ -539,7 +542,7 @@
                                                     <span>Lanjut Draft: {{ $berkas->currentDraftTahap()->jenis_tahap->label() }}</span>
                                                 </a>
                                             @endcan
-                                        @elseif ($isLocked && app(\App\Services\TahapanService::class)->getNextAvailableStages($berkas) !== [])
+                                        @elseif ($isLocked && ! $berkas->is_dpo && ! $berkas->hasTahap(\App\Enums\JenisTahap::KEPUTUSAN_PENGADILAN) && app(\App\Services\TahapanService::class)->getNextAvailableStages($berkas) !== [])
                                             @can('create-cases')
                                                 <a
                                                     href="{{ route('berkas-perkara.tahapan.create', $berkas) }}"
@@ -601,7 +604,7 @@
 
                                             <div class="mt-2.5 flex items-center gap-1.5 text-xs text-red-600 dark:text-red-400">
                                                 <i class="fi fi-rr-ban text-xs"></i>
-                                                <span>Pelimpahan ke Tahap II (Pelimpahan Tersangka &amp; Barang Bukti) dinonaktifkan di sistem sampai status DPO dicabut.</span>
+                                                <span>Penambahan dan pelanjutan seluruh tahapan perkara dinonaktifkan di sistem sampai status DPO dicabut.</span>
                                             </div>
                                         </div>
                                     </div>

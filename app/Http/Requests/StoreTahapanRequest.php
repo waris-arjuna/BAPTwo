@@ -89,6 +89,10 @@ class StoreTahapanRequest extends FormRequest
             'p19_tanggal_surat' => ['nullable', 'date'],
             'p19_catatan' => ['nullable', 'string', 'max:2000'],
             'p19_dokumen' => ['nullable', 'file', 'mimes:pdf', 'max:5120'],
+
+            // Keputusan Pengadilan (Poin 8, ref: D-053)
+            'pengadilan_instansi_id' => ['nullable', 'integer', 'exists:instansi_hukum,id'],
+            'amar_putusan' => ['nullable', 'string', 'max:5000'],
         ];
     }
 

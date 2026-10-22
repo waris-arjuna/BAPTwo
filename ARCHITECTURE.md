@@ -136,6 +136,10 @@ erDiagram
    - `tahap_sprindik_status`: enum (`draft`, `final`) nullable
    - `tahap_perkara_status`: enum (`draft`, `final`) nullable
    - `tkp_id`: FK -> `tkp.id` nullable
+   - `penuntut_instansi_id`: FK -> `instansi_hukum.id` nullable (Kejaksaan)
+   - `penuntut_nama`: string(150), nullable
+   - `penuntut_nip`: string(30), nullable
+   - `penuntut_pangkat`: string(100), nullable
    - `deskripsi`: text, nullable
    - `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`
 
@@ -178,7 +182,7 @@ erDiagram
    - `keterangan`: text (input manual uraian pertimbangan penghentian)
    - `dokumen_id`: FK -> `dokumen.id` (file PDF resmi)
    - `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`
-   - *Status Terminal*: Penerbitan SP3 langsung mengubah `status_proses = 'SP3'` dan `status_formal = 'tidak_selesai'`, serta mengunci berkas secara permanen.
+   - *Status Terminal (SP3)*: Penerbitan SP3 langsung mengubah `status_proses = 'SP3'` dan `status_formal = 'tidak_selesai'`, serta mengunci berkas dan seluruh tahapan secara permanen di UI dan server (tidak dapat dicabut). Berbeda dengan status DPO yang dapat dicabut, SP3 menghentikan perkara secara mutlak.
 
 ---
 
@@ -203,12 +207,13 @@ stateDiagram-v2
     
     state DPO_Fork <<choice>>
     P_21 --> DPO_Fork
-    DPO_Fork --> DPO_Aktif : Jika DPO Aktif (Tombol Tahap II Diblokir)
+    DPO_Fork --> DPO_Aktif : Jika DPO Aktif (Seluruh Tahap Lanjutan Diblokir)
     DPO_Fork --> TAHAP_II : Jika Bebas DPO (100% + Status Selesai)
     DPO_Aktif --> TAHAP_II : Setelah Status DPO Dicabut
+    DPO_Aktif --> SP3_Terminal : Penerbitan SP3 (Otomatis Cabut DPO)
     
     TAHAP_II --> Keputusan_Pengadilan : Pencatatan Vonis / Inkrah (100%)
-    Keputusan_Pengadilan --> [*]
+    Keputusan_Pengadilan --> [*] : Kunci Mutlak Seluruh Tahapan (Terminal)
     
     SPDP --> SP3_Terminal : Penerbitan SP3 Administratif
     TAHAP_I --> SP3_Terminal
@@ -273,6 +278,8 @@ stateDiagram-v2
 - **Captcha Dinamis (Internal)**: Operasi pengurangan acak matematika ($A > B$) yang di-render dalam SVG dinamis dengan distorsi lekukan, multi-font, rotasi/skew, dan kurva noise. Memiliki masa berlaku (**TTL**) ketat **30 detik** disertai peringatan visual sebelum kedaluwarsa.
 - **Inaktivitas Sesi 30 Menit**: Middleware `SessionTimeout` memantau aktivitas pengguna; jika tidak ada aksi selama 30 menit, sesi ditutup otomatis dan pengguna dialihkan ke halaman login dengan notifikasi peringatan.
 - **Eliminasi "Remember Me"**: Untuk menjamin keamanan data penegakan hukum di fasilitas publik/kantor, fitur checkbox persistensi sesi jangka panjang dinonaktifkan.
+- **Proteksi Akun Nonaktif & Terhapus**: Pengguna dengan status `is_active = false` atau `deleted_at` terisi ditolak masuk sistem dengan notifikasi toast dan banner peringatan inline setelah kata sandi lolos verifikasi (mencegah enumerasi akun).
+- **Force Logout Sesi Dinonaktifkan**: Middleware `EnsureUserIsActive` memeriksa status akun pada setiap HTTP request berautentikasi; jika akun dinonaktifkan atau dihapus saat sedang login, sesi langsung diputus seketika dan diarahkan ke halaman masuk (ref: D-053).
 
 ---
 

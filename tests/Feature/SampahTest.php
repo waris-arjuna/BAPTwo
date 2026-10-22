@@ -40,7 +40,7 @@ test('halaman sampah dapat diakses oleh seluruh role terautentikasi', function (
     $this->actingAs($this->penyidik)
         ->get(route('sampah.index'))
         ->assertOk()
-        ->assertSee('Sampah &amp; Pemulihan Data', false);
+        ->assertSee('Recovery Data');
 
     $this->actingAs($this->admin)
         ->get(route('sampah.index'))

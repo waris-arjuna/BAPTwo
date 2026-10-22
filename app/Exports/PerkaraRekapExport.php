@@ -104,13 +104,14 @@ class PerkaraRekapExport
                 'ppnsUtama',
                 'ppnsAnggota',
                 'tkp.alamat',
+                'penuntutUmumInstansi',
                 'tersangkas.alamat',
                 'tersangkas.berkasPerkara.pasals',
-                'tersangkas.berkasPerkara.tahapan',
+                'tersangkas.berkasPerkara.tahapan.pengadilanInstansi',
                 'tersangkas.berkasPerkara.dpos',
                 'tersangkas.berkasPerkara.sp3',
                 'berkasPerkaras.pasals',
-                'berkasPerkaras.tahapan',
+                'berkasPerkaras.tahapan.pengadilanInstansi',
                 'berkasPerkaras.dpos',
                 'berkasPerkaras.sp3',
             ]);
@@ -449,7 +450,9 @@ class PerkaraRekapExport
 
         // 41. Penuntut Umum - Nama Instansi
         $namaInstansi = '-';
-        if (! empty($p16?->catatan)) {
+        if ($perkara->penuntutUmumInstansi !== null) {
+            $namaInstansi = $perkara->penuntutUmumInstansi->nama;
+        } elseif (! empty($p16?->catatan)) {
             // Cek apakah catatan memuat nama Kejaksaan
             if (preg_match('/(Kejari|Kejati|Kejaksaan)[^\n\r,.]+/i', $p16->catatan, $m)) {
                 $namaInstansi = trim($m[0]);
@@ -461,7 +464,12 @@ class PerkaraRekapExport
 
         // 42. Penuntut Umum - Nama Jaksa (Multi-nilai baris baru)
         $namaJaksaVal = '-';
-        if (! empty($p16?->catatan)) {
+        if (! empty($perkara->penuntut_umum_nama)) {
+            $namaJaksaVal = $perkara->penuntut_umum_nama;
+            if (! empty($perkara->penuntut_umum_nip)) {
+                $namaJaksaVal .= "\nNIP: ".$perkara->penuntut_umum_nip;
+            }
+        } elseif (! empty($p16?->catatan)) {
             $namaJaksaVal = $p16->catatan;
         }
         $this->setTextCell($sheet, "AP{$row}", $namaJaksaVal);
@@ -469,7 +477,9 @@ class PerkaraRekapExport
         // 43. Pengadilan
         $pengadilanVal = '-';
         if ($putusan !== null) {
-            if (preg_match('/(PN|Pengadilan Negeri)[^\n\r,.]+/i', (string) $putusan->catatan, $mp)) {
+            if ($putusan->pengadilanInstansi !== null) {
+                $pengadilanVal = $putusan->pengadilanInstansi->nama;
+            } elseif (preg_match('/(PN|Pengadilan Negeri)[^\n\r,.]+/i', (string) $putusan->catatan, $mp)) {
                 $pengadilanVal = trim($mp[0]);
             } else {
                 $pengadilanVal = 'Pengadilan Negeri Banjarmasin';

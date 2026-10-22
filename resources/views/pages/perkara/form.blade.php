@@ -1365,6 +1365,93 @@
                 </div>
             </div>
 
+            {{-- 5. Card Penuntut Umum (Poin 2 & Poin 8, ref: D-053) --}}
+            <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-theme-xs dark:border-gray-800 dark:bg-gray-900">
+                <div class="mb-5 flex flex-col gap-1 border-b border-gray-100 pb-4 dark:border-gray-800 sm:flex-row sm:items-center sm:justify-between">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <i class="fi fi-rr-scale text-lg text-brand-500"></i>
+                            <h2 class="text-base font-semibold text-gray-800 dark:text-white/90">5. Penuntut Umum (JPU)</h2>
+                        </div>
+                        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                            Pilih instansi Kejaksaan mitra dan masukkan data Jaksa Penuntut Umum yang ditunjuk untuk koordinasi penanganan perkara.
+                        </p>
+                    </div>
+                    <span class="inline-flex items-center gap-1 self-start rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-600 dark:bg-white/[0.05] dark:text-gray-400">
+                        Opsional
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+                    {{-- Dropdown Instansi Kejaksaan --}}
+                    <div>
+                        <label for="penuntut_umum_instansi_id" class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                            Instansi Kejaksaan
+                        </label>
+                        <select
+                            id="penuntut_umum_instansi_id"
+                            name="penuntut_umum_instansi_id"
+                            class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
+                        >
+                            <option value="">-- Pilih Instansi Kejaksaan --</option>
+                            @foreach ($kejaksaanList as $kj)
+                                <option value="{{ $kj->id }}" @selected((string) old('penuntut_umum_instansi_id', $perkara->penuntut_umum_instansi_id) === (string) $kj->id)>
+                                    {{ $kj->nama }}
+                                </option>
+                            @endforeach
+                        </select>
+                        <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
+                            Data instansi bersumber dari Master Data Instansi Hukum kategori Kejaksaan.
+                        </p>
+                    </div>
+
+                    {{-- Nama Jaksa Penuntut Umum --}}
+                    <div>
+                        <label for="penuntut_umum_nama" class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                            Nama Jaksa Penuntut Umum
+                        </label>
+                        <input
+                            type="text"
+                            id="penuntut_umum_nama"
+                            name="penuntut_umum_nama"
+                            value="{{ old('penuntut_umum_nama', $perkara->penuntut_umum_nama) }}"
+                            placeholder="Contoh: Budi Gunawan, S.H., M.H."
+                            class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 placeholder-gray-400 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
+                        >
+                    </div>
+
+                    {{-- NIP Jaksa --}}
+                    <div>
+                        <label for="penuntut_umum_nip" class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                            NIP Jaksa Penuntut
+                        </label>
+                        <input
+                            type="text"
+                            id="penuntut_umum_nip"
+                            name="penuntut_umum_nip"
+                            value="{{ old('penuntut_umum_nip', $perkara->penuntut_umum_nip) }}"
+                            placeholder="Contoh: 198205122008011002"
+                            class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 placeholder-gray-400 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
+                        >
+                    </div>
+
+                    {{-- Pangkat / Golongan --}}
+                    <div>
+                        <label for="penuntut_umum_pangkat" class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                            Pangkat / Golongan Jaksa
+                        </label>
+                        <input
+                            type="text"
+                            id="penuntut_umum_pangkat"
+                            name="penuntut_umum_pangkat"
+                            value="{{ old('penuntut_umum_pangkat', $perkara->penuntut_umum_pangkat) }}"
+                            placeholder="Contoh: Jaksa Madya (IV/a)"
+                            class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 placeholder-gray-400 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
+                        >
+                    </div>
+                </div>
+            </div>
+
             {{-- Footer 3 Tombol: Batal, Simpan Draft, Simpan & Lanjut Tahap Berikutnya --}}
             <div class="rounded-2xl border border-gray-200 bg-white px-4 py-4 dark:border-gray-800 dark:bg-white/[0.03] sm:px-6">
                 <div class="flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">

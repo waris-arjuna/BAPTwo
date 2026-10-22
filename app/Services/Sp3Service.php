@@ -33,6 +33,19 @@ class Sp3Service
         }
 
         return DB::transaction(function () use ($berkas, $data, $file, $actorId): Sp3 {
+            // Periksa dan cabut status DPO jika aktif saat SP3 diterbitkan (PRD F-26, F-28, D-053)
+            $wasDpo = (bool) $berkas->is_dpo;
+            $activeDpo = $wasDpo ? $berkas->activeDpo() : null;
+
+            if ($activeDpo) {
+                $activeDpo->update([
+                    'status' => 'nonaktif',
+                    'tanggal_pencabutan' => $data['tanggal_sp3'],
+                    'alasan_pencabutan' => "Pencabutan otomatis karena penerbitan SP3 Nomor: {$data['nomor_surat']}",
+                    'updated_by' => $actorId,
+                ]);
+            }
+
             // 1. Simpan dokumen PDF privat
             $path = $file->store('dokumen', 'local');
 
@@ -59,16 +72,17 @@ class Sp3Service
                 'updated_by' => $actorId,
             ]);
 
-            // 3. Update status formal berkas perkara menjadi tidak_selesai dan status proses menjadi SP3
+            // 3. Update status formal berkas perkara menjadi tidak_selesai, status proses menjadi SP3, dan cabut DPO jika aktif
             $oldStatusFormal = $berkas->status_formal;
             $oldStatusProses = $berkas->status_proses;
             $berkas->update([
                 'status_formal' => 'tidak_selesai',
                 'status_proses' => 'SP3',
+                'is_dpo' => false,
                 'updated_by' => $actorId,
             ]);
 
-            // 4. Catat Audit Log
+            // 4. Catat Audit Log SP3
             $this->auditTrail->log(
                 aksi: 'terbitkan_sp3',
                 tabel: 'sp3',
@@ -76,10 +90,13 @@ class Sp3Service
                 dataLama: [
                     'status_formal' => $oldStatusFormal,
                     'status_proses' => $oldStatusProses,
+                    'is_dpo' => $wasDpo,
                 ],
                 dataBaru: [
                     'status_formal' => 'tidak_selesai',
                     'status_proses' => 'SP3',
+                    'is_dpo' => false,
+                    'dpo_dicabut_otomatis' => $wasDpo,
                     'nomor_sp3' => $sp3->nomor_surat,
                     'tanggal_sp3' => $sp3->tanggal_sp3->format('Y-m-d'),
                     'keterangan' => $sp3->keterangan,
@@ -88,6 +105,29 @@ class Sp3Service
                 berkasPerkaraId: $berkas->id,
                 userId: $actorId
             );
+
+            // Jika sebelumnya berstatus DPO aktif, catat jejak audit pencabutan DPO otomatis
+            if ($activeDpo) {
+                $this->auditTrail->log(
+                    aksi: 'nonaktifkan_dpo',
+                    tabel: 'dpo',
+                    recordId: $activeDpo->id,
+                    dataLama: [
+                        'status' => 'aktif',
+                        'is_dpo' => true,
+                    ],
+                    dataBaru: [
+                        'status' => 'nonaktif',
+                        'tanggal_pencabutan' => $activeDpo->tanggal_pencabutan?->toDateString(),
+                        'alasan_pencabutan' => $activeDpo->alasan_pencabutan,
+                        'is_dpo' => false,
+                        'keterangan' => 'Pencabutan otomatis akibat penerbitan SP3',
+                    ],
+                    perkaraId: $berkas->perkara_id,
+                    berkasPerkaraId: $berkas->id,
+                    userId: $actorId
+                );
+            }
 
             return $sp3;
         });

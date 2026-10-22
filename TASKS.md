@@ -200,6 +200,23 @@ Satu task = satu unit kerja kecil yang bisa diuji. Acceptance Criteria utama tet
   - AC: Poin 1 (LazyLoadingViolationException pada Progress Perkara terselesaikan via eager loading `tahapan` & `tersangkas.berkasPerkara.sp3` serta audit halaman); Poin 2 (ERR_INVALID_RESPONSE pada ekspor XLSX terselesaikan via casting integer 32-bit CRC ZipStream dan eager load); Poin 3 (Susunan Tersangka & Nomor Berkas di `/seluruh-perkara` tersusun vertikal rapi); Poin 4 (Dropdown Provinsi Alamat Tersangka tidak mereset nilai dan dropdown kabupaten tidak membuka otomatis); Poin 5 (Label teks pengguna "Pasal Berlapis" distandarisasi menjadi "Pasal yang Disangkakan" dan "Pasal"); Poin 6 (Toast tidak hilang seketika di mode prefers-reduced-motion berkat selektor pengecualian `[data-toast-progress]` dan validasi elapsed time `onAnimationEnd`); 195 test suite lulus (1876 assertions) dan Pint 100% clean.
 - [x] T-078 — 2026-10-21 Perhitungan Data Riil Rata-rata Hari Kerja Penyelesaian Tahapan Dashboard (ref: D-052)
   - AC: Method `DashboardService::getStageAverageDays()` menghitung durasi hari kerja riil (`diffInWeekdays`, mengecualikan Sabtu/Minggu) antar-tahap berurutan (Sprindik -> SPDP, SPDP -> Tahap 1, Tahap 1 -> P-21, P-21 -> Tahap 2); query efisien tanpa N+1 dibatasi filter tahun `$tahun`; hasil dicache di `dashboard_stage_averages_{tahun}` (TTL 120s) dengan auto-invalidation pada `DashboardService::clearCache()`; fallback `- Hari` dan sub-label `Belum ada data` jika tahap belum memiliki sampel; angka menggunakan `tabular-nums`; `StageAverageDaysTest` dibuat dan 200 test suite lulus (1913 assertions) serta Pint 100% clean.
+- [x] T-079 — 2026-10-21 Seeder 100 Data Perkara Beragam Berbasis Rencana (ref: D-053)
+  - AC: `DummyDataSeeder.php` menghasilkan tepat 100 perkara (88 berkas karena 10 perkara multi-tersangka) dengan sebaran 17 pola tahapan (Pra-SPDP draft/final, Sprindik draft/final, Data Perkara, SPDP draft/final, P-16, P-17P, TAHAP I draft/final, P-18P, P-19, P-21 draft/final, TAHAP II, Keputusan Pengadilan, SP3); 18 jenis perkara (obat, kosmetik, pangan, obat tradisional, suplemen, prekursor, psikotropika, alat kesehatan) di seluruh 13 Kabupaten/Kota Kalsel; 8 DPO aktif dan 4 DPO dicabut; 5 berkas SPDP tahun lalu berstatus `tidak_selesai`; 4 SP3 terminal; variasi jenis kelamin, agama, pekerjaan, pasal berlapis, modul, dan legalitas; nomor dokumen unik dan konsisten dengan tanggal (2024, 2025, 2026); seeder idempoten (dua kali jalan = jumlah baris tetap); eager loading pada pembersihan data lama; `composer test` (200 tests, 1913 assertions) dan `php vendor/bin/pint --test` 100% lulus.
+- [x] T-080 — 2026-10-21 Implementasi 9 Kebijakan Operasional BAPTwo (ref: D-053)
+  - Status Sub-langkah:
+    - [x] Langkah 0: Sinkronisasi dokumentasi (PRD, ARCHITECTURE, TASKS, DECISIONS, README, AGENTS)
+    - [x] Poin 1: Validasi login akun nonaktif/terhapus, toast error, banner peringatan inline, dan middleware `EnsureUserIsActive`
+    - [x] Poin 6 & 7: Penguncian mutlak perkara selesai pasca Keputusan Pengadilan & pemblokiran tahapan saat DPO/SP3 aktif
+    - [x] Bug Fix: Eager loading `sp3` pada `perkara.show` & `relationLoaded` cache memori pada model `BerkasPerkara`
+    - [x] Poin 3: Menu role Pimpinan/Umum (Menu Utama: Dashboard, Pencarian Perkara, Potensi Terlimpah)
+    - [x] Poin 4 Sub 4A: Menu role Admin & Perubahan nama tampilan Recovery Data (eks Sampah) beserta route alias
+    - [x] Poin 4 Sub 4B: Modul Data Petugas (penugasan role & status akun) serta Pengaturan Profil Umum BBPOM
+    - [x] Poin 4 Sub 4C: Standardisasi tabel Daftar Perkara 8 kolom (No, Perkara, TKP, PPNS, Tersangka, Pasal, Status, Aksi)
+    - [x] Poin 5: Menu role Penyidik (Menu Utama, Perkara, Sistem [Master Data terbatas & Data Petugas])
+    - [x] Poin 2 & 8: Kolom Penuntut Umum (Instansi dari master, Jaksa manual) di form perkara, Putusan Pengadilan, dan Card informasi
+    - [x] Poin 9: Tautan link nomor dokumen tahapan sebelumnya pada form tahapan berikutnya
+  - AC: Seluruh 9 poin diimplementasikan berurutan, teruji dengan test suite otomatis dan Pint linter 100% passed.
+
 
 
 

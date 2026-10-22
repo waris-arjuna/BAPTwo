@@ -3,8 +3,10 @@
 use App\Enums\JenisTahap;
 use App\Enums\UserRole;
 use App\Models\BerkasPerkara;
+use App\Models\Dokumen;
 use App\Models\Pasal;
 use App\Models\Perkara;
+use App\Models\Sp3;
 use App\Models\TahapanPerkara;
 use App\Models\Tersangka;
 use App\Models\User;
@@ -104,5 +106,35 @@ test('audit halaman utama bebas dari LazyLoadingViolationException untuk seluruh
 
         // Detail Perkara
         $this->actingAs($user)->get(route('perkara.show', $this->perkara))->assertOk();
+    }
+});
+
+test('halaman detail perkara dengan SP3 dan dokumen bebas dari LazyLoadingViolationException', function () {
+    $dokumenSp3 = Dokumen::create([
+        'berkas_perkara_id' => $this->berkas->id,
+        'kategori' => 'sp3',
+        'nama_dokumen' => 'Dokumen SP3',
+        'nama_file_asli' => 'sp3.pdf',
+        'file_path' => 'dokumen/sp3.pdf',
+        'file_size' => 1024,
+    ]);
+
+    Sp3::create([
+        'berkas_perkara_id' => $this->berkas->id,
+        'nomor_surat' => 'SP3/01/X/2026',
+        'tanggal_sp3' => '2026-10-15',
+        'keterangan' => 'Tidak cukup bukti',
+        'dokumen_id' => $dokumenSp3->id,
+    ]);
+
+    $this->berkas->update([
+        'status_formal' => 'tidak_selesai',
+        'status_proses' => 'SP3',
+    ]);
+
+    foreach ([$this->admin, $this->pimpinan, $this->penyidik, $this->umum] as $user) {
+        $response = $this->actingAs($user)->get(route('perkara.show', $this->perkara));
+        $response->assertOk()
+            ->assertSee('SP3 Terbit (Tidak Selesai)');
     }
 });

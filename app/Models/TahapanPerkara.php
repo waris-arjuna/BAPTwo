@@ -21,6 +21,8 @@ class TahapanPerkara extends Model
         'nomor_surat',
         'tanggal_surat',
         'catatan',
+        'pengadilan_instansi_id',
+        'amar_putusan',
         'status',
         'finalized_at',
         'finalized_by',
@@ -61,6 +63,16 @@ class TahapanPerkara extends Model
     public function berkasPerkara(): BelongsTo
     {
         return $this->belongsTo(BerkasPerkara::class, 'berkas_perkara_id');
+    }
+
+    /**
+     * Instansi Pengadilan pada Keputusan Pengadilan (Poin 8, ref: D-053)
+     *
+     * @return BelongsTo<InstansiHukum, $this>
+     */
+    public function pengadilanInstansi(): BelongsTo
+    {
+        return $this->belongsTo(InstansiHukum::class, 'pengadilan_instansi_id');
     }
 
     /**

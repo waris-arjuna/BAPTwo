@@ -122,7 +122,7 @@ Aplikasi menyediakan 3 akun dev bawaan (password default `password`, login dilen
 | Peran (Role) | Email Login | Hak Akses Utama |
 |---|---|---|
 | **Administrator** | `admin@baptwo.test` | Kelola master data penuh, manajemen pengguna, tambah perkara, edit draft, ekspor Excel |
-| **Pimpinan** | `pimpinan@baptwo.test` | Memonitor dashboard, melihat seluruh perkara, pencarian multi-kriteria (read-only) |
+| **Pimpinan / Umum** | `pimpinan@baptwo.test` | Memonitor dashboard, melihat seluruh perkara, pencarian multi-kriteria, potensi terlimpah (fitur monitoring terbatas) |
 | **Penyidik** | `penyidik@baptwo.test` | Tambah Laporan Kejadian/Sprindik, buat perkara, simpan draft, finalisasi tahap, ekspor Excel |
 
 > Catatan Keamanan: Tidak ada peran yang memiliki hak akses *hard delete* (penghapusan fisik). Tahapan yang telah difinalkan terkunci mutlak dan tidak dapat diedit kembali oleh siapapun termasuk Administrator.
