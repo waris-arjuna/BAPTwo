@@ -8,13 +8,25 @@ use App\Models\Perkara;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 
 class DashboardService
 {
     /**
+     * Zona waktu operasional BPOM Kalimantan Selatan (WITA / UTC+8).
+     */
+    public const ZONA_WAKTU = 'Asia/Makassar';
+
+    /**
      * Ambang batas hari sisa SLA untuk kategori Mendekati Batas SLA (<= 7 hari).
      */
     public const AMBANG_MENDEKATI_SLA_HARI = 7;
+
+    /**
+     * Ambang batas persentase progress perkara tahap awal (<= 15%, yaitu bobot tahapan SPDP).
+     * Berkas pada tahap awal ini memerlukan tindakan atau verifikasi penyidik untuk melangkah ke tahapan berikutnya.
+     */
+    public const AMBANG_PROGRESS_AWAL_PERSEN = 15;
 
     public function __construct(
         protected TahapanService $tahapanService
@@ -27,55 +39,49 @@ class DashboardService
      */
     public function getStatistics(?int $tahun = null): array
     {
-        $tahun = $tahun ?: (int) date('Y');
+        $tahun = $tahun ?: (int) Carbon::now(self::ZONA_WAKTU)->year;
 
         return Cache::remember("dashboard_stats_{$tahun}", 120, function () use ($tahun) {
-            // Total Perkara tahun berjalan
+            // Total Perkara tahun berjalan (berdasarkan tanggal Laporan Kejadian)
             $totalPerkara = Perkara::query()
-                ->where(function ($q) use ($tahun) {
-                    $q->whereYear('tanggal_laporan_kejadian', $tahun)
-                        ->orWhereYear('tanggal_surat_perintah', $tahun);
-                })
+                ->whereYear('tanggal_laporan_kejadian', $tahun)
                 ->count();
-
-            // Jika filter tahun tertentu belum memiliki data, ambil total keseluruhan sebagai fallback informatif
-            if ($totalPerkara === 0) {
-                $totalPerkara = Perkara::count();
-            }
 
             // Berkas Berjalan (belum berstatus formal selesai maupun tidak selesai)
             $berkasBerjalan = BerkasPerkara::query()
-                ->whereNull('status_formal')
+                ->tahunLk($tahun)
+                ->dalamProses()
                 ->count();
 
-            // Menunggu Verifikasi / Tindakan Penyidik (memiliki draft aktif atau baru SPDP)
+            // Menunggu Verifikasi / Tindakan Penyidik (memiliki draft aktif atau baru pada tahap awal <= 15%)
+            // Dibatasi hanya pada berkas dalam proses (tidak menghitung berkas selesai atau SP3)
             $menungguTindakan = BerkasPerkara::query()
+                ->tahunLk($tahun)
+                ->dalamProses()
                 ->where(function ($q) {
                     $q->whereHas('tahapan', function ($tQ) {
                         $tQ->where('status', 'draft');
                     })
                         ->orWhere(function ($subQ) {
-                            $subQ->whereNull('status_formal')
-                                ->where('progress_persen', '<=', 15);
+                            $subQ->whereNull('progress_persen')
+                                ->orWhere('progress_persen', '<=', self::AMBANG_PROGRESS_AWAL_PERSEN);
                         });
                 })
                 ->count();
 
-            // Selesai (status formal 'selesai' atau progress 100%)
+            // Selesai (hanya dari status formal 'selesai')
             $berkasSelesai = BerkasPerkara::query()
-                ->where(function ($q) {
-                    $q->where('status_formal', 'selesai')
-                        ->orWhere('progress_persen', '>=', 100);
-                })
+                ->tahunLk($tahun)
+                ->selesai()
                 ->count();
 
             // Rata-rata waktu penyelesaian dari SPDP s.d. Tahap II
-            $avgDays = $this->calculateAverageCompletionDays();
+            $avgDays = $this->calculateAverageCompletionDays($tahun);
             $avgDaysText = $avgDays !== null ? round($avgDays).' Hari' : '-';
 
             return [
                 [
-                    'title' => 'Perkara Aktif',
+                    'title' => 'Total Perkara',
                     'value' => (string) $totalPerkara,
                     'description' => "Perkara pada tahun {$tahun}",
                     'icon' => 'document',
@@ -122,7 +128,7 @@ class DashboardService
             Cache::forget("dashboard_stats_{$tahun}");
             Cache::forget("dashboard_stage_averages_{$tahun}");
         } else {
-            $currentYear = (int) date('Y');
+            $currentYear = (int) Carbon::now(self::ZONA_WAKTU)->year;
             for ($y = $currentYear - 2; $y <= $currentYear + 1; $y++) {
                 Cache::forget("dashboard_stats_{$y}");
                 Cache::forget("dashboard_stage_averages_{$y}");
@@ -137,17 +143,23 @@ class DashboardService
      */
     public function getAvailableYears(): array
     {
-        $currentYear = (int) date('Y');
+        $currentYear = (int) Carbon::now(self::ZONA_WAKTU)->year;
 
-        return Perkara::query()
+        $yearExpr = DB::connection()->getDriverName() === 'sqlite'
+            ? "DISTINCT strftime('%Y', tanggal_laporan_kejadian) as tahun"
+            : 'DISTINCT YEAR(tanggal_laporan_kejadian) as tahun';
+
+        $years = Perkara::query()
             ->whereNotNull('tanggal_laporan_kejadian')
-            ->pluck('tanggal_laporan_kejadian')
-            ->map(fn ($d) => (int) Carbon::parse($d)->year)
-            ->push($currentYear)
+            ->selectRaw($yearExpr)
+            ->pluck('tahun')
+            ->map(fn ($y) => (int) $y);
+
+        return $years->push($currentYear)
             ->unique()
             ->sortDesc()
             ->values()
-            ->toArray();
+            ->all();
     }
 
     /**
@@ -200,34 +212,39 @@ class DashboardService
      */
     public function getCaseStatusData(?int $tahun = null, ?int $bulan = null): array
     {
-        $tahun = $tahun ?: (int) date('Y');
+        $tahun = $tahun ?: (int) Carbon::now(self::ZONA_WAKTU)->year;
         $bulan = ($bulan && $bulan >= 1 && $bulan <= 12) ? $bulan : null;
 
-        $today = Carbon::today()->toDateString();
-        $approachingDate = Carbon::today()->addDays(self::AMBANG_MENDEKATI_SLA_HARI)->toDateString();
+        $today = Carbon::today(self::ZONA_WAKTU)->toDateString();
+        $approachingDate = Carbon::today(self::ZONA_WAKTU)->addDays(self::AMBANG_MENDEKATI_SLA_HARI)->toDateString();
 
-        $baseQuery = BerkasPerkara::query()
-            ->whereHas('perkara', function ($q) use ($tahun, $bulan) {
-                $q->whereYear('tanggal_laporan_kejadian', $tahun);
-                if ($bulan) {
-                    $q->whereMonth('tanggal_laporan_kejadian', $bulan);
-                }
-            });
+        $baseQuery = BerkasPerkara::query()->tahunLk($tahun, $bulan);
+
+        $selesaiVal = BerkasPerkara::STATUS_FORMAL_SELESAI;
+        $tidakSelesaiVal = BerkasPerkara::STATUS_FORMAL_TIDAK_SELESAI;
+        $dalamProsesVal = BerkasPerkara::STATUS_FORMAL_DALAM_PROSES;
 
         $result = (clone $baseQuery)
-            ->selectRaw("
+            ->selectRaw('
                 COUNT(*) as total,
-                SUM(CASE WHEN status_formal = 'selesai' THEN 1 ELSE 0 END) as selesai,
-                SUM(CASE WHEN status_formal = 'tidak_selesai' THEN 1 ELSE 0 END) as tidak_selesai,
-                SUM(CASE WHEN status_formal IS NULL OR status_formal = 'dalam_proses' THEN 1 ELSE 0 END) as dalam_proses,
-                SUM(CASE WHEN (status_formal IS NULL OR status_formal = 'dalam_proses') AND sla_deadline IS NULL THEN 1 ELSE 0 END) as belum_spdp,
-                SUM(CASE WHEN (status_formal IS NULL OR status_formal = 'dalam_proses') AND sla_deadline IS NOT NULL AND sla_deadline > ? THEN 1 ELSE 0 END) as dalam_sla,
-                SUM(CASE WHEN (status_formal IS NULL OR status_formal = 'dalam_proses') AND sla_deadline IS NOT NULL AND sla_deadline >= ? AND sla_deadline <= ? THEN 1 ELSE 0 END) as mendekati_sla,
-                SUM(CASE WHEN (status_formal IS NULL OR status_formal = 'dalam_proses') AND sla_deadline IS NOT NULL AND sla_deadline < ? THEN 1 ELSE 0 END) as lewat_sla
-            ", [
+                SUM(CASE WHEN status_formal = ? THEN 1 ELSE 0 END) as selesai,
+                SUM(CASE WHEN status_formal = ? THEN 1 ELSE 0 END) as tidak_selesai,
+                SUM(CASE WHEN status_formal IS NULL OR status_formal = ? THEN 1 ELSE 0 END) as dalam_proses,
+                SUM(CASE WHEN (status_formal IS NULL OR status_formal = ?) AND sla_deadline IS NULL THEN 1 ELSE 0 END) as belum_spdp,
+                SUM(CASE WHEN (status_formal IS NULL OR status_formal = ?) AND sla_deadline IS NOT NULL AND DATE(sla_deadline) > ? THEN 1 ELSE 0 END) as dalam_sla,
+                SUM(CASE WHEN (status_formal IS NULL OR status_formal = ?) AND sla_deadline IS NOT NULL AND DATE(sla_deadline) >= ? AND DATE(sla_deadline) <= ? THEN 1 ELSE 0 END) as mendekati_sla,
+                SUM(CASE WHEN (status_formal IS NULL OR status_formal = ?) AND sla_deadline IS NOT NULL AND DATE(sla_deadline) < ? THEN 1 ELSE 0 END) as lewat_sla
+            ', [
+                $selesaiVal,
+                $tidakSelesaiVal,
+                $dalamProsesVal,
+                $dalamProsesVal,
+                $dalamProsesVal,
                 $approachingDate,
+                $dalamProsesVal,
                 $today,
                 $approachingDate,
+                $dalamProsesVal,
                 $today,
             ])
             ->first();
@@ -251,12 +268,7 @@ class DashboardService
         // Perhitungan perbandingan dengan periode tahun lalu (tahun - 1)
         $prevTahun = $tahun - 1;
         $totalPrev = BerkasPerkara::query()
-            ->whereHas('perkara', function ($q) use ($prevTahun, $bulan) {
-                $q->whereYear('tanggal_laporan_kejadian', $prevTahun);
-                if ($bulan) {
-                    $q->whereMonth('tanggal_laporan_kejadian', $bulan);
-                }
-            })
+            ->tahunLk($prevTahun, $bulan)
             ->count();
 
         $diff = $total - $totalPrev;
@@ -295,7 +307,7 @@ class DashboardService
             ? "{$bulanNames[$bulan]} {$tahun}"
             : "Tahun {$tahun}";
 
-        $updatedAt = Carbon::now('Asia/Makassar')->translatedFormat('d M Y, H:i').' WITA';
+        $updatedAt = Carbon::now(self::ZONA_WAKTU)->translatedFormat('d M Y, H:i').' WITA';
 
         return [
             'totalPerkara' => $total,
@@ -332,14 +344,11 @@ class DashboardService
      */
     public function getStageAverageDays(?int $tahun = null): array
     {
-        $tahun = $tahun ?: (int) date('Y');
+        $tahun = $tahun ?: (int) Carbon::now(self::ZONA_WAKTU)->year;
 
         return Cache::remember("dashboard_stage_averages_{$tahun}", 120, function () use ($tahun) {
             $berkasList = BerkasPerkara::query()
-                ->whereHas('perkara', function ($q) use ($tahun) {
-                    $q->whereYear('tanggal_laporan_kejadian', $tahun)
-                        ->orWhereYear('tanggal_surat_perintah', $tahun);
-                })
+                ->tahunLk($tahun)
                 ->with([
                     'perkara:id,tanggal_surat_perintah',
                     'tahapan' => function ($q) {
@@ -470,22 +479,16 @@ class DashboardService
                 });
             })
             ->when($status !== '', function ($q) use ($status) {
-                if ($status === 'Dalam Proses') {
-                    $q->where(function ($sub) {
-                        $sub->whereNull('status_formal')
-                            ->orWhere('status_formal', 'dalam_proses');
-                    });
+                if (strtolower($status) === 'dalam proses') {
+                    $q->dalamProses();
                 } elseif (strtolower($status) === 'selesai') {
-                    $q->where('status_formal', 'selesai');
+                    $q->selesai();
                 } elseif (strtolower($status) === 'tidak selesai') {
-                    $q->where('status_formal', 'tidak_selesai');
+                    $q->tidakSelesai();
                 }
             }, function ($q) {
-                // default (tidak ada filter status dipilih): sembunyikan yang sudah selesai
-                $q->where(function ($sub) {
-                    $sub->whereNull('status_formal')
-                        ->orWhere('status_formal', '!=', 'selesai');
-                });
+                // default (tidak ada filter status dipilih): hanya tampilkan berkas dalam proses (sembunyikan Selesai DAN Tidak Selesai)
+                $q->dalamProses();
             })
             ->when($tanggalDari !== '', function ($q) use ($tanggalDari) {
                 $q->whereDate('tanggal_spdp', '>=', $tanggalDari);
@@ -493,6 +496,8 @@ class DashboardService
             ->when($tanggalSampai !== '', function ($q) use ($tanggalSampai) {
                 $q->whereDate('tanggal_spdp', '<=', $tanggalSampai);
             })
+            ->orderByRaw('sla_deadline IS NULL')
+            ->orderBy('sla_deadline', 'asc')
             ->orderBy('progress_persen', 'asc')
             ->orderBy('created_at', 'asc')
             ->limit($limit);
@@ -566,15 +571,22 @@ class DashboardService
     /**
      * Menghitung rata-rata hari penyelesaian dari tanggal SPDP ke Tahap 2.
      */
-    protected function calculateAverageCompletionDays(): ?float
+    protected function calculateAverageCompletionDays(?int $tahun = null): ?float
     {
         $selesaiList = BerkasPerkara::query()
-            ->where(function ($q) {
-                $q->where('status_formal', 'selesai')
-                    ->orWhere('progress_persen', '>=', 100);
-            })
-            ->with(['tahapan'])
-            ->get();
+            ->when($tahun !== null, fn ($q) => $q->tahunLk($tahun))
+            ->selesai()
+            ->with([
+                'tahapan' => function ($q) {
+                    $q->where('status', 'final')
+                        ->whereIn('jenis_tahap', [
+                            JenisTahap::SPDP->value,
+                            JenisTahap::TAHAP_2->value,
+                        ])
+                        ->select('id', 'berkas_perkara_id', 'jenis_tahap', 'tanggal_surat', 'status');
+                },
+            ])
+            ->get(['id', 'perkara_id']);
 
         if ($selesaiList->isEmpty()) {
             return null;
@@ -582,12 +594,20 @@ class DashboardService
 
         $durations = [];
         foreach ($selesaiList as $berkas) {
-            $spdp = $berkas->tahapan->firstWhere('jenis_tahap', JenisTahap::SPDP);
-            $tahap2 = $berkas->tahapan->firstWhere('jenis_tahap', JenisTahap::TAHAP_2);
+            $tahapanMap = $berkas->tahapan->keyBy(fn ($t) => $t->jenis_tahap instanceof JenisTahap ? $t->jenis_tahap->value : $t->jenis_tahap);
+            $spdp = $tahapanMap->get(JenisTahap::SPDP->value);
+            $tahap2 = $tahapanMap->get(JenisTahap::TAHAP_2->value);
 
             if ($spdp && $tahap2 && $spdp->tanggal_surat && $tahap2->tanggal_surat) {
-                $diff = Carbon::parse($spdp->tanggal_surat)->diffInDays(Carbon::parse($tahap2->tanggal_surat));
-                $durations[] = $diff;
+                $tglSpdp = Carbon::parse($spdp->tanggal_surat);
+                $tglTahap2 = Carbon::parse($tahap2->tanggal_surat);
+
+                // Lewati berkas jika tanggal Tahap II lebih awal dari tanggal SPDP (data anomali)
+                if ($tglTahap2->lessThan($tglSpdp)) {
+                    continue;
+                }
+
+                $durations[] = $tglSpdp->diffInDays($tglTahap2);
             }
         }
 

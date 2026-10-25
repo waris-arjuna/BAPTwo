@@ -1151,3 +1151,37 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
      - Modal ekspor menerapkan async pre-check sebelum submit form.
      - Format penamaan berkas terstandarisasi: `LAPJU_<periode>_<yyyy-mm-dd>.xlsx`.
 - Konsekuensi: Format ekspor Excel memenuhi standar pelaporan LAPJU BPOM Kalsel yang presisi, informatif, aman dari injeksi formula, dan teruji lulus pada 4 metode pengambilan data.
+
+---
+
+## D-056 : Penyelarasan Logika dan Standardisasi Perhitungan Dashboard BAPTwo
+
+- Tanggal: 2026-10-26
+- Status: Disepakati & Diimplementasikan
+- Konteks: Menyelaraskan seluruh kalkulasi statistik, kartu analitik, Donut Chart, dan tabel prioritas di `app/Services/DashboardService.php` agar konsisten, menghilangkan redundansi definisi antar-komponen, dan mematuhi zona waktu operasional BPOM Kalimantan Selatan.
+- Keputusan:
+  1. **Satu Definisi Status Formal (`scopeDalamProses`, `scopeSelesai`, `scopeTidakSelesai`)**:
+     - Ditambahkan konstanta dan query scope resmi pada model `BerkasPerkara`: `scopeDalamProses` (`status_formal IS NULL OR status_formal = 'dalam_proses'`), `scopeSelesai` (`status_formal = 'selesai'`), dan `scopeTidakSelesai` (`status_formal = 'tidak_selesai'`).
+     - Seluruh query kartu statistik, Donut Chart, dan tabel prioritas menggunakan sumber scope dan konstanta yang seragam.
+  2. **Kategori "Selesai" Murni dari `status_formal`**:
+     - Klausul `OR progress_persen >= 100` dihapus dari kartu statistik Selesai dan dari `calculateAverageCompletionDays`. Berkas ber-progress 100% yang belum difinalkan tetap berstatus "Dalam Proses". Kartu "Selesai" dan "Perkara Berjalan" kini 100% sinkron dengan Donut Chart.
+  3. **Satu Acuan Tahun: Tanggal Laporan Kejadian (LK)**:
+     - Dibuat query scope `scopeTahunLk($tahun, ?$bulan = null)` pada model `BerkasPerkara` via relasi `perkara`.
+     - Seluruh acuan tahun yang sebelumnya menggunakan `OR tanggal_spdp` / `tanggal_surat_perintah` digantikan murni oleh `tanggal_laporan_kejadian`.
+     - Judul kartu pertama diubah dari "Perkara Aktif" menjadi "Total Perkara" (deskripsi: "Perkara pada tahun X") karena mencakup seluruh perkara di tahun LK tersebut.
+  4. **Penyaringan Kartu "Menunggu Verifikasi Penyidik"**:
+     - Kedua kondisi (memiliki tahapan berstatus `draft` aktif maupun berada pada progress awal) dibatasi tegas dengan `scopeDalamProses()`, sehingga riwayat draft pada berkas yang telah Selesai maupun SP3 tidak terhitung.
+     - Ambang progress awal dipindahkan ke konstanta publik `DashboardService::AMBANG_PROGRESS_AWAL_PERSEN = 15;` (bobot tahap awal SPDP).
+  5. **Tabel Prioritas Progress Perkara**:
+     - Default tanpa filter status hanya menampilkan berkas `scopeDalamProses()` (menyembunyikan berkas Selesai dan Tidak Selesai/SP3). Filter manual status tetap berfungsi jika dipilih.
+     - Urutan prioritas: `sla_deadline` ASC dengan NULL di paling belakang secara portabel (`orderByRaw('sla_deadline IS NULL')`), lalu `progress_persen` ASC, lalu `created_at` ASC.
+  6. **Rata-rata Waktu Penyelesaian SPDP s.d. Tahap II**:
+     - Eager loading `tahapan` hanya memuat tahapan berstatus `final` untuk SPDP dan Tahap II.
+     - Data anomali (tanggal Tahap II lebih awal dari SPDP) otomatis diabaikan (`continue`).
+  7. **Standardisasi Zona Waktu WITA (`Asia/Makassar`)**:
+     - Ditambahkan konstanta `DashboardService::ZONA_WAKTU = 'Asia/Makassar'`.
+     - Seluruh pemanggilan `date('Y')`, `Carbon::today()`, dan `Carbon::now()` digantikan oleh instance Carbon berzona waktu Makassar.
+     - Evaluasi SLA dan perbandingan tanggal menggunakan format string `Y-m-d` via `DATE(sla_deadline)`.
+  8. **Optimalisasi `getAvailableYears`**:
+     - Menggantikan penarikan seluruh data tanggal ke memori PHP dengan kueri database `DISTINCT YEAR(tanggal_laporan_kejadian)` (MySQL) atau `DISTINCT strftime('%Y', tanggal_laporan_kejadian)` (SQLite), ditambah tahun berjalan zona Makassar, terurut menurun.
+- Konsekuensi: Seluruh data statistik dashboard konsisten, akurat, bebas anomali tanggal/status, berkinerja tinggi, dan terverifikasi penuh oleh 231 tes otomatis Pest (2162 assertions) serta standar Laravel Pint.

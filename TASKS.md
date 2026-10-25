@@ -18,8 +18,7 @@ Satu task = satu unit kerja kecil yang bisa diuji. Acceptance Criteria utama tet
 
 ## Sedang Dikerjakan
 
-- [x] T-070 — In-App PDF Preview Modal Terpadu (ref: D-047)
-  - AC: Komponen global `<x-common.pdf-preview-modal />` dipasang di `layouts/app.blade.php`; mendukung iframe preview, loading spinner, fallback informatif, tombol unduh, tombol buka tab baru, dan tombol tutup; link dokumen di `perkara/show.blade.php`, `tahapan/show.blade.php`, `laporan-kejadian/show.blade.php`, `sprindik/show.blade.php`, dan tabel-tabel tahapan mengadopsi atribut `data-pdf-preview`; progressive enhancement berfungsi (klik kiri modal in-app, Ctrl+klik buka tab baru); automated tests lulus 100% dan Pint clean.
+*(Tidak ada task aktif — seluruh task perbaikan dashboard dan kebijakan operasional telah selesai).*
 
 ## Fondasi
 
@@ -216,8 +215,12 @@ Satu task = satu unit kerja kecil yang bisa diuji. Acceptance Criteria utama tet
     - [x] Poin 2 & 8: Kolom Penuntut Umum (Instansi dari master, Jaksa manual) di form perkara, Putusan Pengadilan, dan Card informasi
     - [x] Poin 9: Tautan link nomor dokumen tahapan sebelumnya pada form tahapan berikutnya
   - AC: Seluruh 9 poin diimplementasikan berurutan, teruji dengan test suite otomatis dan Pint linter 100% passed.
+- [x] T-070 — 2026-10-20 In-App PDF Preview Modal Terpadu (ref: D-047)
+  - AC: Komponen global `<x-common.pdf-preview-modal />` dipasang di `layouts/app.blade.php`; mendukung iframe preview, loading spinner, fallback informatif, tombol unduh, tombol buka tab baru, dan tombol tutup; link dokumen di `perkara/show.blade.php`, `tahapan/show.blade.php`, `laporan-kejadian/show.blade.php`, `sprindik/show.blade.php`, dan tabel-tabel tahapan mengadopsi atribut `data-pdf-preview`; progressive enhancement berfungsi (klik kiri modal in-app, Ctrl+klik buka tab baru); automated tests lulus 100% dan Pint clean.
 - [x] T-081 — 2026-10-22 Penggantian Format Ekspor Excel Menggunakan Template LAPJU 45 Kolom (ref: D-055)
   - AC: Template `template_lapju.xlsx` (45 kolom) dimuat via PhpSpreadsheet `IOFactory::load()` di `resources/templates/`; Baris 1 judul utama rata tengah; Baris 2 keterangan periode & tanggal export dinamis; Baris 6 koreksi nomor kolom urut 1–45 (AQ=43, AR=44, AS=45); data perkara dimulai Baris 7 terurut tanggal LK terbaru ke terlama; nilai ganda bernomor `1. ...\n2. ...` dengan wrap text (tersangka I–N konsisten berurutan); tanggal Excel `dd/mm/yyyy`; netralisasi formula injection; Kolom 44 amar putusan & Kolom 45 kendala riil SP3/DPO/P18/P19; penanganan periode kosong tidak mengunduh file dengan pop-up toast BAPTwo ("Tidak ada data pada periode ini", 3s); nama berkas `LAPJU_<periode>_<yyyy-mm-dd>.xlsx`; seluruh 223 test suite lulus (2128 assertions) dan Pint clean.
+- [x] T-082 — 2026-10-26 Penyelarasan Logika dan Standardisasi Perhitungan Dashboard BAPTwo (ref: D-056)
+  - AC: (1) Query scope resmi status formal di `BerkasPerkara` (`scopeDalamProses`, `scopeSelesai`, `scopeTidakSelesai`); (2) Kategori Selesai murni dari `status_formal` (hapus `OR progress >= 100`), kartu Selesai dan Berjalan 100% sinkron dengan Donut Chart; (3) Satu acuan tahun `tanggal_laporan_kejadian` via `scopeTahunLk($tahun, ?$bulan)`, kartu pertama "Total Perkara"; (4) Menunggu Verifikasi dibatasi `dalamProses()` & konstanta `AMBANG_PROGRESS_AWAL_PERSEN = 15`; (5) Tabel prioritas Progress Perkara default hanya dalam proses & urutan `sla_deadline` ASC (NULL last); (6) Rata-rata hari SPDP-Tahap 2 eager load final & abaikan tanggal terbalik; (7) Zona waktu operasional WITA (`Asia/Makassar`) via `Carbon::now(self::ZONA_WAKTU)` & string `DATE(sla_deadline)`; (8) `getAvailableYears` kueri DISTINCT database; cache dibersihkan; 231 tes otomatis Pest (2.162 assertions) & Pint 100% passed.
 
 
 

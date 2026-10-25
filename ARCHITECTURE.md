@@ -10,7 +10,7 @@ Arsitektur teknis BAPTwo. Aturan bisnis merujuk ke `PRD.md`; log keputusan tekni
 - Satu database **MySQL 8** di lingkungan Laragon (D-001).
 - Single locale **id** (Bahasa Indonesia) dan tata letak **LTR saja** (D-003, D-004).
 - Tidak ada API publik. Integrasi eksternal hanya proxy **API Kode Wilayah** (`https://api.kodewilayah.web.id`) dengan fallback JSON offline (PRD F-37, D-015).
-- Ekspor resmi pelaporan rekap perkara format Excel (.xlsx) 44 kolom terstandarisasi BPOM (D-035 Poin 10, D-039).
+- Ekspor resmi pelaporan rekap perkara format template resmi LAPJU Excel (.xlsx) 45 kolom terstandarisasi BPOM (D-035, D-055).
 
 ```mermaid
 flowchart TD
@@ -23,7 +23,7 @@ flowchart TD
     subgraph Services ["Layanan Domain Utama"]
         PS["PerkaraService (Pra-SPDP & Berkas)"]
         TS["TahapanService (Workflow & Locking)"]
-        DS["DashboardService (Monitoring & SLA)"]
+        DS["DashboardService (Monitoring, SLA & Analitik)"]
         WS["WilayahService (Cache 30 Hari + Proxy)"]
     end
     
@@ -35,7 +35,7 @@ flowchart TD
     Services -->|Audit Trail Kronologis| AL["Tabel audit_log"]
     SCH["Laravel Scheduler (00:00 1 Jan WITA)"] -->|Tutup Otomatis Tidak Selesai| TS
     
-    C -->|Ekspor Rekap 44 Kolom| EXP["PerkaraRekapExport (PhpSpreadsheet)"]
+    C -->|Ekspor LAPJU 45 Kolom| EXP["LapjuExport (PhpSpreadsheet + Template)"]
     EXP -->|StreamedResponse .xlsx| U
 ```
 
@@ -48,10 +48,10 @@ flowchart TD
 | **Controller** | `app/Http/Controllers` | Menerima HTTP request, memanggil Form Request / Policy / Service, mengembalikan response Blade/JSON/Redirect/Streamed Excel. Bersih dari logika bisnis. |
 | **Form Request** | `app/Http/Requests` | Validasi tipe, format, digit (mis. NIK 16 digit), batasan berkas PDF (max 5 MB), dan kelengkapan field input pengguna. |
 | **Policy & Gate** | `app/Policies` & `AppServiceProvider` | Otorisasi hak akses berbasis peran (Penyidik, Pimpinan, Administrator) termasuk gate `export-excel` dan pembatasan Master Data. |
-| **Domain Service** | `app/Services` | Pusat seluruh aturan bisnis: transisi tahapan progress, kalkulasi bobot (0%, 15%, 55%, 85%, 100%), penguncian permanen, DPO gate, trigger formal, dan audit trail. |
-| **Model** | `app/Models` | Definisi tabel singular (`protected $table = '...'`), relasi Eloquent, accessor (`alamat_lengkap`), casting, dan soft deletes. |
+| **Domain Service** | `app/Services` | Pusat seluruh aturan bisnis: transisi tahapan progress, kalkulasi bobot (0%, 15%, 55%, 85%, 100%), penguncian permanen, DPO gate, trigger formal, audit trail, serta kalkulasi analitik dashboard zona Makassar (D-056). |
+| **Model** | `app/Models` | Definisi tabel singular (`protected $table = '...'`), query scopes (`dalamProses`, `selesai`, `tidakSelesai`, `tahunLk`), relasi Eloquent, accessor (`alamat_lengkap`), casting, dan soft deletes. |
 | **Enum** | `app/Enums` | Representasi tipe aman PHP 8.2: `UserRole`, `JenisTahap`, `StatusProses`, `StatusFormal`. |
-| **Export Engine** | `app/Exports` | Generator dokumen Excel (.xlsx) 44 kolom resmi: 4 baris header, format tanggal `dd-mmm-yy`, border, wrap text, dan freeze pane A5. |
+| **Export Engine** | `app/Exports` | Generator laporan Excel (.xlsx) resmi template LAPJU 45 kolom (A s.d. AS) berbasis PhpSpreadsheet IOFactory, freeze pane A7, nomor urut 1–45, dan penanganan periode kosong. |
 | **View & Component** | `resources/views` | Template Blade modular TailAdmin, interaktivitas Alpine.js, icon resmi Flaticon (`fi fi-rr-*`), teks UI via `__()` dan `lang/id.json`. |
 
 ---
@@ -258,18 +258,17 @@ stateDiagram-v2
 
 ---
 
-## 6. Fitur Pelaporan & Ekspor Excel 44 Kolom
+## 6. Fitur Pelaporan & Ekspor Excel Template LAPJU 45 Kolom (D-055)
 
-- **Engine**: Menggunakan `PhpOffice\PhpSpreadsheet` via `App\Exports\PerkaraRekapExport`.
+- **Engine**: Menggunakan `PhpOffice\PhpSpreadsheet` via `App\Exports\LapjuExport` dengan memuat template resmi `resources/templates/template_lapju.xlsx`.
 - **Spesifikasi Format Resmi**:
-  - Format huruf seragam **Arial** di seluruh sheet.
-  - **4 Baris Header Gabungan**: Baris 1–3 nama kolom & grup proses, Baris 4 penomoran kolom `1` s.d. `44`.
-  - **Freeze Pane**: Terpasang di sel **`A5`** (header tetap terlihat saat scrolling vertikal dan horizontal).
-  - **Format Tanggal**: Seluruh kolom tanggal menggunakan format tanggal Excel asli `dd-mmm-yy` (rata tengah).
-  - **Pencegahan Sel Kosong**: Nilai kosong otomatis tercetak tanda strip (`'-'`).
-  - **Auto Wrap Text**: Diaktifkan pada sel teks dengan perataan vertikal rata atas (`VERTICAL_TOP`).
-  - **Hierarki Data Alamat**: Kolom L (Alamat Tersangka) dan Kolom P (Alamat TKP) mencetak alamat lengkap utuh; Kolom O (Nama TKP) mengambil nama sarana dari `alamat.nama`.
-  - **Modal Filter 3 Tab**: Ekspor Semua Data, Filter Tahunan, Filter Bulanan, dan Filter Rentang Tanggal tiket pesawat (`tanggal_mulai` s.d. `tanggal_selesai`).
+  - Format huruf seragam **Arial 11** dan layout resmi 45 kolom (Kolom A s.d. AS).
+  - **Header Template Resmi**: Baris 1 judul utama "PROSES PENYIDIKAN / HISTORY LAPJU", Baris 2 keterangan periode & tanggal ekspor dinamis, Baris 3–5 pengelompokan tahapan, Baris 6 penomoran urut `1` s.d. `45`.
+  - **Freeze Pane**: Terpasang di sel **`A7`** (data perkara dimulai dari baris 7).
+  - **Penyajian Data**: 1 Perkara = 1 baris terurut tanggal LK terbaru (`desc`). Nilai ganda disajikan bernomor `1. ...\n2. ...` dengan *wrap text* aktif.
+  - **Keamanan Formula**: Dinetralisir dari risiko *formula injection* (`=`, `+`, `-`, `@`) menggunakan format teks eksplisit.
+  - **Kolom Keterangan Khusus**: Kolom 44 (AR) memuat amar putusan pengadilan; Kolom 45 (AS) memuat kendala operasional riil (SP3/DPO/P18/P19).
+  - **Proteksi Periode Kosong**: Jika periode tidak memiliki data, file tidak diunduh dan sistem menampilkan pop-up notifikasi toast (3s) "Tidak ada data pada periode ini".
 
 ---
 
@@ -285,7 +284,7 @@ stateDiagram-v2
 
 ## 8. Scheduler & Pergantian Tahun
 
-- **Command**: `php artisan berkas:tutup-akhir-tahun` (`TutupBerkasAkhirTahunCommand`).
+- **Command**: `php artisan perkara:close-unfinished` (`CloseUnfinishedCasesCommand`).
 - **Jadwal Eksekusi**: Tepat tanggal `1 Januari` pukul `00:00:00` WITA (`Asia/Makassar`).
 - **Aturan**: Seluruh berkas perkara yang terdaftar di tahun sebelumnya dan belum berstatus `Selesai` otomatis ditutup permanen dengan status formal **Tidak Selesai**. Audit trail dicatat dengan aktor sistem (`user_id = null`).
 
@@ -294,10 +293,37 @@ stateDiagram-v2
 ## 9. Testing & Quality Assurance
 
 - Rangkaian pengujian diuji dengan **Pest PHP** (`composer test`) dengan capaian:
-  - **162 Automated Feature & Unit Tests** (1.653 assertions) lulus 100%.
-  - Zero-warning styling via **Laravel Pint** (`php vendor/bin/pint --test`) pada 141 file PHP.
+  - **231 Automated Feature & Unit Tests** (2.162 assertions) lulus 100%.
+  - Zero-warning styling via **Laravel Pint** (`php vendor/bin/pint --test`) pada seluruh file PHP.
 - **Seeder Idempoten Komprehensif** (`database/seeders/DummyDataSeeder.php`):
-  - 20 Perkara dummy komprehensif mencakup Pra-SPDP, SPDP, Tahap 1, P-21, Tahap 2, Putusan PN Martapura & Marabahan, DPO Aktif, DPO Dicabut, SP3 terminal, dan peringatan SLA di 13 Kabupaten/Kota Kalimantan Selatan.
+  - 100 Perkara dummy komprehensif mencakup 17 pola tahapan (Pra-SPDP s.d. Putusan Pengadilan, DPO Aktif, DPO Dicabut, SP3 terminal, dan peringatan SLA) di 13 Kabupaten/Kota Kalimantan Selatan (ref: D-053).
+  - 20 Pasal UU (Kesehatan, Pangan, Perlindungan Konsumen, Narkotika, Psikotropika, KUHP).
+  - 20 Instansi Hukum (Kejati Kalsel, 13 Kejari, Pengadilan Tinggi, 5 Pengadilan Negeri se-Kalsel).
+  - 20 Jaksa Penuntut Umum resmi lengkap NIP dan pangkat/golongan.
+
+---
+
+## 10. Arsitektur Dashboard Monitoring & Analitik Perkara (D-048, D-052, D-056)
+
+- **Zona Waktu Operasional Tunggal**: Seluruh tanggal operasional dan evaluasi sisa hari SLA dikunci pada zona waktu **WITA (`Asia/Makassar`)** melalui konstanta `DashboardService::ZONA_WAKTU`.
+- **5 Kartu Statistik Utama (`getStatistics`)**:
+  1. *Total Perkara*: Total perkara tahun berjalan dihitung murni dari `tanggal_laporan_kejadian` (mencakup seluruh status).
+  2. *Perkara Berjalan*: Dihitung dari `scopeDalamProses()` (`status_formal IS NULL OR status_formal = 'dalam_proses'`).
+  3. *Menunggu Verifikasi Penyidik*: Dibatasi `scopeDalamProses()` dan kondisi memiliki tahapan draft aktif ATAU progress awal (`progress_persen IS NULL OR progress_persen <= AMBANG_PROGRESS_AWAL_PERSEN` [15% bobot SPDP]). Riwayat draft berkas selesai/SP3 otomatis diabaikan.
+  4. *Selesai*: Dihitung murni dari `scopeSelesai()` (`status_formal = 'selesai'`) tanpa fallback progress.
+  5. *Rata-rata Waktu Penyelesaian*: Durasi hari kalender dari `tanggal_surat` SPDP s.d. Tahap II dengan eager loading tahapan final, mengabaikan anomali data tanggal terbalik.
+- **Donut Chart Perkara Tahun Berjalan (`getCaseStatusData`)**:
+  - Native SVG chart tanpa library berat.
+  - Persentase bilangan bulat dihitung menggunakan algoritma **Largest Remainder Method (Hare-Niemeyer)** untuk menjamin total akumulasi selalu tepat 100%.
+  - 4 Sub-kategori SLA pada Dalam Proses: *Belum Ada SPDP*, *Dalam SLA (> 7 hari)*, *Mendekati Batas (≤ 7 hari)*, dan *Melewati SLA (< hari ini)* via `DATE(sla_deadline)`.
+  - Filter tahun berjalan global di atas statistik dan filter bulan pada kartu Donut Chart yang memuat data secara live via AJAX partial.
+- **Rata-rata Hari Kerja Antar-Tahap (`getStageAverageDays`)**:
+  - Mengukur durasi hari kerja riil (`diffInWeekdays`, mengecualikan Sabtu/Minggu) antar-tahap berurutan: Sprindik ➔ SPDP, SPDP ➔ Tahap 1, Tahap 1 ➔ P-21, P-21 ➔ Tahap 2.
+- **Tabel Prioritas Progress Perkara (`getPriorityProgressPerkara`)**:
+  - Default query tanpa filter status hanya menampilkan berkas dalam proses (`scopeDalamProses()`), menyembunyikan berkas Selesai dan Tidak Selesai (SP3).
+  - Urutan prioritas portabel: `sla_deadline` ASC (dengan NULL di paling belakang via `orderByRaw('sla_deadline IS NULL')`), lalu `progress_persen` ASC, lalu `created_at` ASC.
+- **Strategi Caching & Invalidasi**:
+  - Statistik dan rata-rata tahap di-cache selama 120 detik (`dashboard_stats_{tahun}` & `dashboard_stage_averages_{tahun}`) dan di-invalidasi otomatis oleh event mutasi data melalui `DashboardService::clearCache()`.
   - 20 Pasal UU (Kesehatan, Pangan, Perlindungan Konsumen, Narkotika, Psikotropika, KUHP).
   - 20 Instansi Hukum (Kejati Kalsel, 13 Kejari, Pengadilan Tinggi, 5 Pengadilan Negeri se-Kalsel).
   - 20 Jaksa Penuntut Umum resmi lengkap NIP dan pangkat/golongan.

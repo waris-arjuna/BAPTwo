@@ -127,7 +127,7 @@ Aplikasi menyediakan 3 akun dev bawaan (password default `password`, login dilen
 
 > Catatan Keamanan: Tidak ada peran yang memiliki hak akses *hard delete* (penghapusan fisik). Tahapan yang telah difinalkan terkunci mutlak dan tidak dapat diedit kembali oleh siapapun termasuk Administrator.
 
-### Seeder Data Dummy Komprehensif (20 Kasus)
+### Seeder Data Dummy Komprehensif (100 Kasus)
 
 Untuk mengisi data pengujian realistis yang mencakup seluruh alur penanganan perkara dari Pra-SPDP, SPDP, Tahap 1, P-21, Tahap 2, Putusan Pengadilan, DPO, SP3, dan peringatan SLA di 13 Kabupaten/Kota Kalimantan Selatan:
 
@@ -136,7 +136,7 @@ php artisan db:seed --class=DummyDataSeeder
 ```
 
 Seeder ini bersifat idempoten (aman dijalankan berulang kali) dan menghasilkan:
-- **20 Perkara** representatif dengan alur tahapan lengkap
+- **100 Perkara** representatif dengan sebaran 17 pola tahapan lengkap (ref: D-053)
 - **20 Pasal Pelanggaran** (UU Kesehatan, Pangan, Perlindungan Konsumen, Narkotika, Psikotropika, KUHP)
 - **20 Instansi Hukum** (Kejati Kalsel, 13 Kejari, Pengadilan Tinggi, 5 Pengadilan Negeri se-Kalsel)
 - **20 Jaksa Penuntut Umum** resmi lengkap NIP dan pangkat/golongan
@@ -149,7 +149,7 @@ php artisan migrate:fresh --seed
 
 ## Testing
 
-Test suite otomatis menggunakan [Pest PHP](https://pestphp.com/) dengan 162 skenario pengujian (1.653 assertions) mencakup seluruh alur bisnis, RBAC, dan validasi:
+Test suite otomatis menggunakan [Pest PHP](https://pestphp.com/) dengan 231 skenario pengujian (2.162 assertions) mencakup seluruh alur bisnis, RBAC, analitik dashboard, dan validasi:
 
 ```bash
 composer test
@@ -157,10 +157,11 @@ composer test
 
 Perintah `composer test` secara otomatis membersihkan cache config lalu menjalankan test suite lengkap.
 
-Jalankan pengujian tertentu (misal ekspor):
+Jalankan pengujian tertentu (misal ekspor atau dashboard):
 
 ```bash
-php artisan test --filter=PerkaraExportTest
+php artisan test --filter=LapjuExportTest
+php artisan test --filter=DashboardCaseStatusTest
 ```
 
 ## Lint (Laravel Pint)
@@ -177,7 +178,7 @@ Perbaiki otomatis:
 php vendor/bin/pint
 ```
 
-Task dianggap selesai hanya jika `composer test` (162 tests) dan `php vendor/bin/pint --test` lulus 100%.
+Task dianggap selesai hanya jika `composer test` (231 tests) dan `php vendor/bin/pint --test` lulus 100%.
 
 ## Scheduler
 
@@ -202,12 +203,12 @@ Set `.env` produksi: `APP_ENV=production`, `APP_DEBUG=false`, `APP_URL` sesuai d
 ## Struktur Folder Utama
 
 ```
-app/            Controller, Model, Policy, Service domain, Exports (Excel 44 kolom)
-database/       Migration, seeder (DummyDataSeeder 20 perkara), factory
+app/            Controller, Model, Policy, Service domain, Exports (Template LAPJU 45 kolom)
+database/       Migration, seeder (DummyDataSeeder 100 perkara), factory
 lang/id.json    Terjemahan label UI (bahasa Indonesia)
 resources/      Blade view, CSS (Tailwind v4 @theme), JS (Alpine.js)
 routes/         web.php, console.php (scheduler)
-tests/          Test Pest (162 automated tests)
+tests/          Test Pest (231 automated tests)
 ```
 
 ## Troubleshooting

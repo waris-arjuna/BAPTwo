@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\JenisTahap;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -15,6 +16,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class BerkasPerkara extends Model
 {
     use HasFactory, SoftDeletes;
+
+    public const STATUS_FORMAL_SELESAI = 'selesai';
+
+    public const STATUS_FORMAL_TIDAK_SELESAI = 'tidak_selesai';
+
+    public const STATUS_FORMAL_DALAM_PROSES = 'dalam_proses';
 
     /**
      * @var string
@@ -200,7 +207,61 @@ class BerkasPerkara extends Model
      */
     public function isTidakSelesai(): bool
     {
-        return $this->status_formal === 'tidak_selesai';
+        return $this->status_formal === self::STATUS_FORMAL_TIDAK_SELESAI;
+    }
+
+    /**
+     * Scope untuk berkas perkara yang masih dalam proses penyidikan aktif
+     * (status_formal bernilai NULL atau 'dalam_proses')
+     *
+     * @param  Builder<$this>  $query
+     * @return Builder<$this>
+     */
+    public function scopeDalamProses(Builder $query): Builder
+    {
+        return $query->where(function (Builder $q) {
+            $q->whereNull('status_formal')
+                ->orWhere('status_formal', self::STATUS_FORMAL_DALAM_PROSES);
+        });
+    }
+
+    /**
+     * Scope untuk berkas perkara yang sudah Selesai (tuntas Tahap II)
+     *
+     * @param  Builder<$this>  $query
+     * @return Builder<$this>
+     */
+    public function scopeSelesai(Builder $query): Builder
+    {
+        return $query->where('status_formal', self::STATUS_FORMAL_SELESAI);
+    }
+
+    /**
+     * Scope untuk berkas perkara yang Tidak Selesai (SP3 atau penutupan 1 Januari)
+     *
+     * @param  Builder<$this>  $query
+     * @return Builder<$this>
+     */
+    public function scopeTidakSelesai(Builder $query): Builder
+    {
+        return $query->where('status_formal', self::STATUS_FORMAL_TIDAK_SELESAI);
+    }
+
+    /**
+     * Scope untuk memfilter berkas perkara berdasarkan tahun (dan opsional bulan)
+     * dari tanggal Laporan Kejadian pada perkara terkait.
+     *
+     * @param  Builder<$this>  $query
+     * @return Builder<$this>
+     */
+    public function scopeTahunLk(Builder $query, int $tahun, ?int $bulan = null): Builder
+    {
+        return $query->whereHas('perkara', function (Builder $q) use ($tahun, $bulan) {
+            $q->whereYear('tanggal_laporan_kejadian', $tahun);
+            if ($bulan !== null && $bulan >= 1 && $bulan <= 12) {
+                $q->whereMonth('tanggal_laporan_kejadian', $bulan);
+            }
+        });
     }
 
     /**
@@ -209,8 +270,8 @@ class BerkasPerkara extends Model
     public function getStatusFormalLabelAttribute(): string
     {
         return match ($this->status_formal) {
-            'selesai' => 'Selesai',
-            'tidak_selesai' => 'Tidak Selesai',
+            self::STATUS_FORMAL_SELESAI => 'Selesai',
+            self::STATUS_FORMAL_TIDAK_SELESAI => 'Tidak Selesai',
             default => 'Dalam Proses',
         };
     }

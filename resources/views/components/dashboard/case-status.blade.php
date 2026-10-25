@@ -10,7 +10,7 @@
 
 <div
     x-data="caseStatusCard({
-        url: '{{ route('dashboard.case-status') }}',
+        url: '{{ route('dashboard.case-status', [], false) }}',
         currentTahun: {{ $tahun }},
         currentBulan: '{{ $data['bulan'] ?? '' }}',
         periodeText: '{{ $periodeText }}',
@@ -80,20 +80,6 @@
                 @foreach ([1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April', 5 => 'Mei', 6 => 'Juni', 7 => 'Juli', 8 => 'Agustus', 9 => 'September', 10 => 'Oktober', 11 => 'November', 12 => 'Desember'] as $mNum => $mName)
                     <option value="{{ $mNum }}" {{ ($data['bulan'] ?? null) == $mNum ? 'selected' : '' }}>
                         {{ $mName }}
-                    </option>
-                @endforeach
-            </select>
-
-            {{-- Dropdown Tahun --}}
-            <select
-                x-model="selectedTahun"
-                @change="fetchData()"
-                class="h-8 rounded-lg border border-gray-200 bg-white px-2.5 text-xs font-medium text-gray-700 shadow-theme-xs transition hover:border-gray-300 focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-300 dark:hover:border-gray-700"
-                aria-label="Pilih Tahun"
-            >
-                @foreach ($availableYears as $y)
-                    <option value="{{ $y }}" {{ $tahun == $y ? 'selected' : '' }}>
-                        {{ $y }}
                     </option>
                 @endforeach
             </select>

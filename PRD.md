@@ -100,12 +100,12 @@ BAPTwo adalah aplikasi web internal BPOM Kalimantan Selatan untuk mencatat, memo
 | F-37 | Sumber Data Wilayah | Must | Mengurangi input manual | Data wilayah menggunakan proxy API Kode Wilayah dengan fallback JSON offline. |
 | F-38 | RBAC dan Permission | Must | Mengendalikan akses | Hak akses fitur mengikuti role: Admin (akses penuh), Penyidik (operasional perkara), dan Pimpinan/Umum (monitoring terbatas: Dashboard, Pencarian, Potensi Terlimpah); Master Data khusus Admin (Penyidik hanya Pasal & Instansi) (ref: D-035, D-053). |
 | F-39 | Pencarian dan Filter | Must | Memudahkan menemukan perkara | Pengguna dapat mencari dan memfilter Berkas Perkara secara live via AJAX table filter. |
-| F-40 | Dashboard Monitoring Perkara | Must | Menyediakan ringkasan monitoring | Penyidik dan Pimpinan dapat melihat ringkasan progress dan status perkara. |
+| F-40 | Dashboard Monitoring Perkara | Must | Menyediakan ringkasan monitoring | Penyidik dan Pimpinan dapat melihat ringkasan progress, status perkara sinkron, Donut Chart Largest Remainder, pecahan SLA, rata-rata hari tahapan, dan tabel prioritas berkas aktif (ref: D-048, D-052, D-056). |
 | F-41 | Dashboard Potensi Terlimpah | Should | Membantu identifikasi perkara belum selesai sebelum akhir tahun | Dashboard menampilkan Berkas Perkara yang belum Selesai untuk ditindaklanjuti. |
 | F-42 | Monitoring Pekerjaan Penyidik | Must | Pimpinan perlu melihat pekerjaan penyidik | Pimpinan dapat melihat perkembangan perkara berdasarkan penyidik. |
 | F-43 | Akses Seluruh Perkara bagi Pengguna | Must | Monitoring terpusat | Penyidik dan Pimpinan dapat melihat seluruh perkara sesuai permission. |
 | F-44 | Perlindungan Berkas & Soft Delete Terbatas | Must | Mencegah penghapusan berkas perkara sembarangan | Data Perkara/LK/Sprindik tidak memiliki fitur hapus; soft delete hanya berlaku untuk Master Data dan Pengguna; hard delete tidak tersedia (ref: D-035). |
-| F-45 | Export Rekap Excel 44 Kolom | Must | Mendukung kebutuhan pelaporan resmi | Data diekspor dalam format Excel (.xlsx) 44 kolom terstandarisasi BPOM dengan modal filter 3 tab (Tahun, Bulan, Rentang Tanggal) khusus Admin & Penyidik (ref: D-035, D-039). |
+| F-45 | Export Rekap Excel Template LAPJU 45 Kolom | Must | Mendukung kebutuhan pelaporan resmi | Data diekspor dalam format Excel (.xlsx) template resmi LAPJU 45 kolom (A s.d. AS) berbasis PhpSpreadsheet IOFactory dengan modal filter 3 tab (Tahun, Bulan, Rentang Tanggal) khusus Admin & Penyidik (ref: D-035, D-039, D-055). |
 | F-46 | Manajemen Data Petugas & Recovery Data | Must | Fleksibilitas penugasan dan keamanan data | Menu Data Petugas memungkinkan penugasan role non-admin dari daftar user; halaman Sampah berganti nama resmi menjadi Recovery Data (ref: D-053). |
 | F-47 | Proteksi Akun Nonaktif & Force Logout | Must | Keamanan autentikasi dan integritas sesi | Akun nonaktif/terhapus ditolak masuk dengan toast dan banner peringatan setelah password valid; sesi aktif diputus otomatis via middleware EnsureUserIsActive (ref: D-053). |
 
@@ -294,7 +294,7 @@ Histori mencatat aktivitas penting seperti:
 
 ### Hak Akses
 
-| Role | Lihat | Tambah Berkas | Edit Draft | Edit Setelah Lanjut | Soft Delete (Master/User) | Hapus Perkara | Ekspor Excel 44 Kolom |
+| Role | Lihat | Tambah Berkas | Edit Draft | Edit Setelah Lanjut | Soft Delete (Master/User) | Hapus Perkara | Ekspor Excel LAPJU 45 Kolom |
 |---|---|---|---|---|---|---|---|
 | **Penyidik** | ✅ Semua perkara | ✅ | ✅ | ❌ | ✅ (Pasal & Instansi) | ❌ | ✅ |
 | **Pimpinan** | ✅ Semua perkara | ❌ | ❌ | ❌ | ❌ (Diblokir) | ❌ | ❌ |

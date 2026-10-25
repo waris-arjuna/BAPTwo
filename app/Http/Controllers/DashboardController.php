@@ -29,6 +29,7 @@ class DashboardController extends Controller
         $caseStatus = $this->dashboardService->getCaseStatusData($tahun);
         $stageAverages = $this->dashboardService->getStageAverageDays($tahun);
         $perkaraList = $this->dashboardService->getPriorityProgressPerkara($request);
+        $availableYears = $this->dashboardService->getAvailableYears();
 
         return view('pages.dashboard.ecommerce', [
             'title' => 'Dashboard BAPTwo',
@@ -37,6 +38,7 @@ class DashboardController extends Controller
             'caseStatus' => $caseStatus,
             'stageAverages' => $stageAverages,
             'perkaraList' => $perkaraList,
+            'availableYears' => $availableYears,
         ]);
     }
 

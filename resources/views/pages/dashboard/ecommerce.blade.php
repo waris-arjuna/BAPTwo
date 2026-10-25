@@ -21,20 +21,14 @@
                 <i class="fi fi-rr-calendar text-base text-gray-500 dark:text-gray-400" aria-hidden="true"></i>
                 <select
                     id="tahun"
-                    onchange="const u = new URL(window.location.href); u.searchParams.set('tahun', this.value); window.location.href = u.toString();"
+                    onchange="window.location.href = '{{ route('dashboard', [], false) }}?tahun=' + this.value;"
                     class="h-10 rounded-lg border border-gray-300 bg-white px-3 text-sm font-medium text-gray-700 outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300"
                 >
-                    <option value="2026" {{ ($tahun ?? date('Y')) == 2026 ? 'selected' : '' }}>
-                        Tahun Berjalan (2026)
-                    </option>
-
-                    <option value="2025" {{ ($tahun ?? date('Y')) == 2025 ? 'selected' : '' }}>
-                        2025
-                    </option>
-
-                    <option value="2024" {{ ($tahun ?? date('Y')) == 2024 ? 'selected' : '' }}>
-                        2024
-                    </option>
+                    @foreach ($availableYears ?? [$tahun] as $y)
+                        <option value="{{ $y }}" {{ ($tahun ?? date('Y')) == $y ? 'selected' : '' }}>
+                            {{ $y == (int) date('Y') ? "Tahun Berjalan ({$y})" : $y }}
+                        </option>
+                    @endforeach
                 </select>
             </div>
 

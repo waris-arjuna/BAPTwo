@@ -1,12 +1,15 @@
 <?php
 
+use App\Enums\JenisTahap;
 use App\Models\BerkasPerkara;
 use App\Models\Perkara;
+use App\Models\TahapanPerkara;
 use App\Models\Tersangka;
 use App\Models\User;
 use App\Services\DashboardService;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\Request;
 
 uses(RefreshDatabase::class);
 
@@ -340,4 +343,593 @@ test('drill-down dari kartu dashboard ke halaman seluruh-perkara terfilter denga
             ->assertSee('BP/DRILL/2026')
             ->assertSee('Tersangka Drilldown');
     }
+});
+
+test('query scope BerkasPerkara memfilter status formal secara konsisten', function () {
+    $p = Perkara::create([
+        'nomor_laporan_kejadian' => 'LK/SCOPE/2026',
+        'tanggal_laporan_kejadian' => '2026-05-01',
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    $t1 = Tersangka::create(['perkara_id' => $p->id, 'nama' => 'T1', 'created_by' => $this->penyidik->id]);
+    $t2 = Tersangka::create(['perkara_id' => $p->id, 'nama' => 'T2', 'created_by' => $this->penyidik->id]);
+    $t3 = Tersangka::create(['perkara_id' => $p->id, 'nama' => 'T3', 'created_by' => $this->penyidik->id]);
+
+    $bNull = BerkasPerkara::create(['perkara_id' => $p->id, 'tersangka_id' => $t1->id, 'status_formal' => null]);
+    $bSelesai = BerkasPerkara::create(['perkara_id' => $p->id, 'tersangka_id' => $t2->id, 'status_formal' => 'selesai']);
+    $bTidak = BerkasPerkara::create(['perkara_id' => $p->id, 'tersangka_id' => $t3->id, 'status_formal' => 'tidak_selesai']);
+
+    expect(BerkasPerkara::dalamProses()->pluck('id')->all())->toContain($bNull->id)
+        ->and(BerkasPerkara::dalamProses()->pluck('id')->all())->not->toContain($bSelesai->id, $bTidak->id);
+
+    expect(BerkasPerkara::selesai()->pluck('id')->all())->toBe([$bSelesai->id]);
+
+    expect(BerkasPerkara::tidakSelesai()->pluck('id')->all())->toBe([$bTidak->id]);
+});
+
+test('kartu statistik selesai dan perkara berjalan sinkron dengan donut chart serta mengabaikan progress 100 tanpa status selesai', function () {
+    Carbon::setTestNow('2026-06-15 10:00:00');
+    DashboardService::clearCache(2026);
+
+    $service = app(DashboardService::class);
+
+    $p = Perkara::create([
+        'nomor_laporan_kejadian' => 'LK/SYNC/2026',
+        'tanggal_laporan_kejadian' => '2026-01-10',
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    $t1 = Tersangka::create(['perkara_id' => $p->id, 'nama' => 'T1', 'created_by' => $this->penyidik->id]);
+    $t2 = Tersangka::create(['perkara_id' => $p->id, 'nama' => 'T2', 'created_by' => $this->penyidik->id]);
+    $t3 = Tersangka::create(['perkara_id' => $p->id, 'nama' => 'T3', 'created_by' => $this->penyidik->id]);
+    $t4 = Tersangka::create(['perkara_id' => $p->id, 'nama' => 'T4', 'created_by' => $this->penyidik->id]);
+
+    // 1. Berkas selesai resmi
+    BerkasPerkara::create([
+        'perkara_id' => $p->id,
+        'tersangka_id' => $t1->id,
+        'nomor_berkas' => 'BP/SYNC/1',
+        'status_formal' => 'selesai',
+        'progress_persen' => 100,
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    // 2. Berkas dalam proses biasa
+    BerkasPerkara::create([
+        'perkara_id' => $p->id,
+        'tersangka_id' => $t2->id,
+        'nomor_berkas' => 'BP/SYNC/2',
+        'status_formal' => null,
+        'progress_persen' => 55,
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    // 3. Berkas progress 100% tapi belum berstatus formal 'selesai' (misal draft Tahap II belum difinalkan)
+    // Wajib masuk "Dalam Proses", BUKAN "Selesai"
+    BerkasPerkara::create([
+        'perkara_id' => $p->id,
+        'tersangka_id' => $t3->id,
+        'nomor_berkas' => 'BP/SYNC/3',
+        'status_formal' => null,
+        'progress_persen' => 100,
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    // 4. Berkas tidak selesai (SP3)
+    BerkasPerkara::create([
+        'perkara_id' => $p->id,
+        'tersangka_id' => $t4->id,
+        'nomor_berkas' => 'BP/SYNC/4',
+        'status_formal' => 'tidak_selesai',
+        'progress_persen' => 55,
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    $stats = $service->getStatistics(2026);
+    $donut = $service->getCaseStatusData(2026);
+
+    $cardBerjalan = (int) collect($stats)->firstWhere('title', 'Perkara Berjalan')['value'];
+    $cardSelesai = (int) collect($stats)->firstWhere('title', 'Selesai')['value'];
+
+    $donutDalamProses = $donut['dalamProses'];
+    $donutSelesai = $donut['selesai'];
+    $donutTidakSelesai = $donut['tidakSelesai'];
+
+    // Selesai kartu harus sama persis dengan Selesai donut
+    expect($cardSelesai)->toBe(1)
+        ->and($donutSelesai)->toBe(1)
+        ->and($cardSelesai)->toBe($donutSelesai);
+
+    // Berjalan kartu harus sama persis dengan Dalam Proses donut (2 berkas: satu progress 55%, satu progress 100% status_formal null)
+    expect($cardBerjalan)->toBe(2)
+        ->and($donutDalamProses)->toBe(2)
+        ->and($cardBerjalan)->toBe($donutDalamProses);
+
+    expect($donutTidakSelesai)->toBe(1);
+
+    Carbon::setTestNow();
+});
+
+test('perkara dengan LK 2025 dan sprindik 2026 hanya dihitung pada tahun 2025 melalui scopeTahunLk', function () {
+    DashboardService::clearCache(2025);
+    DashboardService::clearCache(2026);
+
+    $service = app(DashboardService::class);
+
+    // Perkara A: LK 2025, Sprindik 2026
+    $perkara2025 = Perkara::create([
+        'nomor_laporan_kejadian' => 'LK/CROSS/2025',
+        'tanggal_laporan_kejadian' => '2025-11-20',
+        'nomor_surat_perintah' => 'SP/CROSS/2026',
+        'tanggal_surat_perintah' => '2026-01-10',
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    $tA = Tersangka::create(['perkara_id' => $perkara2025->id, 'nama' => 'Tersangka Cross', 'created_by' => $this->penyidik->id]);
+    $bA = BerkasPerkara::create([
+        'perkara_id' => $perkara2025->id,
+        'tersangka_id' => $tA->id,
+        'nomor_berkas' => 'BP/CROSS/2025',
+        'tanggal_spdp' => '2026-01-15', // SPDP 2026 tapi LK 2025
+        'status_formal' => null,
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    // Verifikasi scopeTahunLk
+    expect(BerkasPerkara::tahunLk(2025)->pluck('id')->all())->toContain($bA->id);
+    expect(BerkasPerkara::tahunLk(2026)->pluck('id')->all())->not->toContain($bA->id);
+
+    // Verifikasi filter bulan
+    expect(BerkasPerkara::tahunLk(2025, 11)->pluck('id')->all())->toContain($bA->id);
+    expect(BerkasPerkara::tahunLk(2025, 12)->pluck('id')->all())->not->toContain($bA->id);
+
+    // Verifikasi getStatistics untuk 2025 dan 2026
+    $stats2025 = $service->getStatistics(2025);
+    $cardTotal2025 = (int) collect($stats2025)->firstWhere('title', 'Total Perkara')['value'];
+    $cardBerjalan2025 = (int) collect($stats2025)->firstWhere('title', 'Perkara Berjalan')['value'];
+
+    $stats2026 = $service->getStatistics(2026);
+    $cardTotal2026 = (int) collect($stats2026)->firstWhere('title', 'Total Perkara')['value'];
+    $cardBerjalan2026 = (int) collect($stats2026)->firstWhere('title', 'Perkara Berjalan')['value'];
+
+    expect($cardTotal2025)->toBe(1)
+        ->and($cardBerjalan2025)->toBe(1)
+        ->and($cardTotal2026)->toBe(0)
+        ->and($cardBerjalan2026)->toBe(0);
+
+    // Verifikasi donut case status
+    $donut2025 = $service->getCaseStatusData(2025);
+    $donut2026 = $service->getCaseStatusData(2026);
+
+    expect($donut2025['totalPerkara'])->toBe(1)
+        ->and($donut2026['totalPerkara'])->toBe(0);
+});
+
+test('kartu menunggu verifikasi hanya menghitung berkas dalam proses dan mengabaikan draft pada berkas selesai atau SP3', function () {
+    Carbon::setTestNow('2026-07-20 10:00:00');
+    DashboardService::clearCache(2026);
+
+    $service = app(DashboardService::class);
+
+    $p = Perkara::create([
+        'nomor_laporan_kejadian' => 'LK/VERIF/2026',
+        'tanggal_laporan_kejadian' => '2026-03-01',
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    // Berkas 1: Dalam proses, memiliki draft tahapan -> HARUS terhitung
+    $t1 = Tersangka::create(['perkara_id' => $p->id, 'nama' => 'T1', 'created_by' => $this->penyidik->id]);
+    $b1 = BerkasPerkara::create([
+        'perkara_id' => $p->id,
+        'tersangka_id' => $t1->id,
+        'nomor_berkas' => 'BP/VERIF/1',
+        'status_formal' => null,
+        'progress_persen' => 55,
+        'created_by' => $this->penyidik->id,
+    ]);
+    TahapanPerkara::create([
+        'berkas_perkara_id' => $b1->id,
+        'jenis_tahap' => JenisTahap::P21,
+        'status' => 'draft',
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    // Berkas 2: Dalam proses, progress_persen 0% (tahap awal pra-SPDP) -> HARUS terhitung
+    $t2 = Tersangka::create(['perkara_id' => $p->id, 'nama' => 'T2', 'created_by' => $this->penyidik->id]);
+    BerkasPerkara::create([
+        'perkara_id' => $p->id,
+        'tersangka_id' => $t2->id,
+        'nomor_berkas' => 'BP/VERIF/2',
+        'status_formal' => null,
+        'progress_persen' => 0,
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    // Berkas 3: Dalam proses, progress 15% (baru SPDP) -> HARUS terhitung
+    $t3 = Tersangka::create(['perkara_id' => $p->id, 'nama' => 'T3', 'created_by' => $this->penyidik->id]);
+    BerkasPerkara::create([
+        'perkara_id' => $p->id,
+        'tersangka_id' => $t3->id,
+        'nomor_berkas' => 'BP/VERIF/3',
+        'status_formal' => null,
+        'progress_persen' => 15,
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    // Berkas 4: Dalam proses, progress 55% (Tahap I final), tanpa draft -> TIDAK boleh terhitung
+    $t4 = Tersangka::create(['perkara_id' => $p->id, 'nama' => 'T4', 'created_by' => $this->penyidik->id]);
+    BerkasPerkara::create([
+        'perkara_id' => $p->id,
+        'tersangka_id' => $t4->id,
+        'nomor_berkas' => 'BP/VERIF/4',
+        'status_formal' => null,
+        'progress_persen' => 55,
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    // Berkas 5: Selesai, tapi ada riwayat record berstatus draft -> TIDAK boleh terhitung
+    $t5 = Tersangka::create(['perkara_id' => $p->id, 'nama' => 'T5', 'created_by' => $this->penyidik->id]);
+    $b5 = BerkasPerkara::create([
+        'perkara_id' => $p->id,
+        'tersangka_id' => $t5->id,
+        'nomor_berkas' => 'BP/VERIF/5',
+        'status_formal' => 'selesai',
+        'progress_persen' => 100,
+        'created_by' => $this->penyidik->id,
+    ]);
+    TahapanPerkara::create([
+        'berkas_perkara_id' => $b5->id,
+        'jenis_tahap' => JenisTahap::KEPUTUSAN_PENGADILAN,
+        'status' => 'draft',
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    // Berkas 6: Tidak Selesai (SP3), tapi ada riwayat record berstatus draft -> TIDAK boleh terhitung
+    $t6 = Tersangka::create(['perkara_id' => $p->id, 'nama' => 'T6', 'created_by' => $this->penyidik->id]);
+    $b6 = BerkasPerkara::create([
+        'perkara_id' => $p->id,
+        'tersangka_id' => $t6->id,
+        'nomor_berkas' => 'BP/VERIF/6',
+        'status_formal' => 'tidak_selesai',
+        'progress_persen' => 15,
+        'created_by' => $this->penyidik->id,
+    ]);
+    TahapanPerkara::create([
+        'berkas_perkara_id' => $b6->id,
+        'jenis_tahap' => JenisTahap::TAHAP_1,
+        'status' => 'draft',
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    $stats = $service->getStatistics(2026);
+    $cardMenunggu = (int) collect($stats)->firstWhere('title', 'Menunggu Verifikasi Penyidik')['value'];
+
+    // Hanya Berkas 1, Berkas 2, dan Berkas 3 yang terhitung (total = 3)
+    expect($cardMenunggu)->toBe(3);
+
+    Carbon::setTestNow();
+});
+
+test('tabel prioritas dashboard default hanya memuat berkas dalam proses dan diurutkan berdasarkan sla_deadline asc dengan null terakhir', function () {
+    $service = app(DashboardService::class);
+
+    $p = Perkara::create([
+        'nomor_laporan_kejadian' => 'LK/PRIO/2026',
+        'tanggal_laporan_kejadian' => '2026-02-01',
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    // 1. Berkas Selesai -> TIDAK boleh muncul di default
+    $t1 = Tersangka::create(['perkara_id' => $p->id, 'nama' => 'T1 Selesai', 'created_by' => $this->penyidik->id]);
+    $bSelesai = BerkasPerkara::create([
+        'perkara_id' => $p->id,
+        'tersangka_id' => $t1->id,
+        'nomor_berkas' => 'BP/PRIO/SELESAI',
+        'status_formal' => 'selesai',
+        'progress_persen' => 100,
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    // 2. Berkas Tidak Selesai (SP3) -> TIDAK boleh muncul di default
+    $t2 = Tersangka::create(['perkara_id' => $p->id, 'nama' => 'T2 SP3', 'created_by' => $this->penyidik->id]);
+    $bSp3 = BerkasPerkara::create([
+        'perkara_id' => $p->id,
+        'tersangka_id' => $t2->id,
+        'nomor_berkas' => 'BP/PRIO/SP3',
+        'status_formal' => 'tidak_selesai',
+        'progress_persen' => 55,
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    // 3. Berkas Dalam Proses dengan SLA Deadline lebih lama (2026-05-10)
+    $t3 = Tersangka::create(['perkara_id' => $p->id, 'nama' => 'T3 Lama', 'created_by' => $this->penyidik->id]);
+    $bLama = BerkasPerkara::create([
+        'perkara_id' => $p->id,
+        'tersangka_id' => $t3->id,
+        'nomor_berkas' => 'BP/PRIO/LAMA',
+        'status_formal' => null,
+        'sla_deadline' => '2026-05-10',
+        'progress_persen' => 55,
+        'created_at' => '2026-02-01 10:00:00',
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    // 4. Berkas Dalam Proses dengan SLA Deadline lebih mendesak (2026-05-01) -> Harus Pertama
+    $t4 = Tersangka::create(['perkara_id' => $p->id, 'nama' => 'T4 Cepat', 'created_by' => $this->penyidik->id]);
+    $bCepat = BerkasPerkara::create([
+        'perkara_id' => $p->id,
+        'tersangka_id' => $t4->id,
+        'nomor_berkas' => 'BP/PRIO/CEPAT',
+        'status_formal' => null,
+        'sla_deadline' => '2026-05-01',
+        'progress_persen' => 55,
+        'created_at' => '2026-02-01 10:00:00',
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    // 5. Berkas Dalam Proses dengan SLA Deadline NULL (belum SPDP) -> Harus Terakhir di antara dalam proses
+    $t5 = Tersangka::create(['perkara_id' => $p->id, 'nama' => 'T5 Null SLA', 'created_by' => $this->penyidik->id]);
+    $bNullSla = BerkasPerkara::create([
+        'perkara_id' => $p->id,
+        'tersangka_id' => $t5->id,
+        'nomor_berkas' => 'BP/PRIO/NULLSLA',
+        'status_formal' => null,
+        'sla_deadline' => null,
+        'progress_persen' => 0,
+        'created_at' => '2026-02-01 10:00:00',
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    // Uji request tanpa filter status (default)
+    $requestDefault = new Request;
+    $priorityDefault = $service->getPriorityProgressPerkara($requestDefault, 10);
+    $ids = collect($priorityDefault)->pluck('id')->all();
+
+    // Pastikan berkas Selesai dan SP3 tidak muncul
+    expect($ids)->not->toContain($bSelesai->id)
+        ->and($ids)->not->toContain($bSp3->id);
+
+    // Pastikan urutan: bCepat (SLA 01 Mei), bLama (SLA 10 Mei), bNullSla (SLA NULL)
+    expect($ids)->toBe([$bCepat->id, $bLama->id, $bNullSla->id]);
+
+    // Uji request manual filter status = 'selesai'
+    $requestSelesai = new Request(['status' => 'Selesai']);
+    $prioritySelesai = $service->getPriorityProgressPerkara($requestSelesai, 10);
+    expect(collect($prioritySelesai)->pluck('id')->all())->toBe([$bSelesai->id]);
+
+    // Uji request manual filter status = 'tidak selesai'
+    $requestTidakSelesai = new Request(['status' => 'Tidak Selesai']);
+    $priorityTidakSelesai = $service->getPriorityProgressPerkara($requestTidakSelesai, 10);
+    expect(collect($priorityTidakSelesai)->pluck('id')->all())->toBe([$bSp3->id]);
+});
+
+test('perhitungan rata-rata waktu penyelesaian mengabaikan tahapan draft dan tanggal terbalik', function () {
+    DashboardService::clearCache(2026);
+
+    $service = app(DashboardService::class);
+
+    $p = Perkara::create([
+        'nomor_laporan_kejadian' => 'LK/AVG/2026',
+        'tanggal_laporan_kejadian' => '2026-01-01',
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    // Berkas 1: Valid 20 hari (01 Jan s.d. 21 Jan)
+    $t1 = Tersangka::create(['perkara_id' => $p->id, 'nama' => 'T1 Valid 20', 'created_by' => $this->penyidik->id]);
+    $b1 = BerkasPerkara::create([
+        'perkara_id' => $p->id,
+        'tersangka_id' => $t1->id,
+        'nomor_berkas' => 'BP/AVG/1',
+        'status_formal' => 'selesai',
+        'created_by' => $this->penyidik->id,
+    ]);
+    TahapanPerkara::create([
+        'berkas_perkara_id' => $b1->id,
+        'jenis_tahap' => JenisTahap::SPDP,
+        'tanggal_surat' => '2026-01-01',
+        'status' => 'final',
+        'created_by' => $this->penyidik->id,
+    ]);
+    TahapanPerkara::create([
+        'berkas_perkara_id' => $b1->id,
+        'jenis_tahap' => JenisTahap::TAHAP_2,
+        'tanggal_surat' => '2026-01-21',
+        'status' => 'final',
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    // Berkas 2: Valid 10 hari (01 Feb s.d. 11 Feb)
+    $t2 = Tersangka::create(['perkara_id' => $p->id, 'nama' => 'T2 Valid 10', 'created_by' => $this->penyidik->id]);
+    $b2 = BerkasPerkara::create([
+        'perkara_id' => $p->id,
+        'tersangka_id' => $t2->id,
+        'nomor_berkas' => 'BP/AVG/2',
+        'status_formal' => 'selesai',
+        'created_by' => $this->penyidik->id,
+    ]);
+    TahapanPerkara::create([
+        'berkas_perkara_id' => $b2->id,
+        'jenis_tahap' => JenisTahap::SPDP,
+        'tanggal_surat' => '2026-02-01',
+        'status' => 'final',
+        'created_by' => $this->penyidik->id,
+    ]);
+    TahapanPerkara::create([
+        'berkas_perkara_id' => $b2->id,
+        'jenis_tahap' => JenisTahap::TAHAP_2,
+        'tanggal_surat' => '2026-02-11',
+        'status' => 'final',
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    // Berkas 3: Tanggal terbalik (Tahap II 10 Jan, SPDP 20 Jan) -> Harus dilewati
+    $t3 = Tersangka::create(['perkara_id' => $p->id, 'nama' => 'T3 Terbalik', 'created_by' => $this->penyidik->id]);
+    $b3 = BerkasPerkara::create([
+        'perkara_id' => $p->id,
+        'tersangka_id' => $t3->id,
+        'nomor_berkas' => 'BP/AVG/3',
+        'status_formal' => 'selesai',
+        'created_by' => $this->penyidik->id,
+    ]);
+    TahapanPerkara::create([
+        'berkas_perkara_id' => $b3->id,
+        'jenis_tahap' => JenisTahap::SPDP,
+        'tanggal_surat' => '2026-01-20',
+        'status' => 'final',
+        'created_by' => $this->penyidik->id,
+    ]);
+    TahapanPerkara::create([
+        'berkas_perkara_id' => $b3->id,
+        'jenis_tahap' => JenisTahap::TAHAP_2,
+        'tanggal_surat' => '2026-01-10',
+        'status' => 'final',
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    // Berkas 4: Tahapan draft (bukan final) -> Harus diabaikan
+    $t4 = Tersangka::create(['perkara_id' => $p->id, 'nama' => 'T4 Draft', 'created_by' => $this->penyidik->id]);
+    $b4 = BerkasPerkara::create([
+        'perkara_id' => $p->id,
+        'tersangka_id' => $t4->id,
+        'nomor_berkas' => 'BP/AVG/4',
+        'status_formal' => 'selesai',
+        'created_by' => $this->penyidik->id,
+    ]);
+    TahapanPerkara::create([
+        'berkas_perkara_id' => $b4->id,
+        'jenis_tahap' => JenisTahap::SPDP,
+        'tanggal_surat' => '2026-01-01',
+        'status' => 'draft',
+        'created_by' => $this->penyidik->id,
+    ]);
+    TahapanPerkara::create([
+        'berkas_perkara_id' => $b4->id,
+        'jenis_tahap' => JenisTahap::TAHAP_2,
+        'tanggal_surat' => '2026-01-05',
+        'status' => 'draft',
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    $stats = $service->getStatistics(2026);
+    $cardAvg = collect($stats)->firstWhere('title', 'Rata-rata Waktu Penyelesaian')['value'];
+
+    // Rata-rata dari berkas 1 (20 hari) dan berkas 2 (10 hari) = 15 Hari
+    expect($cardAvg)->toBe('15 Hari');
+});
+
+test('evaluasi kategori sla zona waktu makassar: hari ini dan hari ini + 7 mendekati, hari ini + 8 dalam sla, kemarin lewat, null belum spdp', function () {
+    $zona = DashboardService::ZONA_WAKTU;
+    $now = Carbon::parse('2026-06-10 14:00:00', $zona);
+    Carbon::setTestNow($now);
+
+    $service = app(DashboardService::class);
+
+    $p = Perkara::create([
+        'nomor_laporan_kejadian' => 'LK/SLA-ZONE/2026',
+        'tanggal_laporan_kejadian' => '2026-05-01',
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    // 1. Deadline hari ini (2026-06-10) -> mendekati_sla
+    $t1 = Tersangka::create(['perkara_id' => $p->id, 'nama' => 'T1 Hari Ini', 'created_by' => $this->penyidik->id]);
+    BerkasPerkara::create([
+        'perkara_id' => $p->id,
+        'tersangka_id' => $t1->id,
+        'nomor_berkas' => 'BP/SLA/1',
+        'status_formal' => null,
+        'sla_deadline' => '2026-06-10',
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    // 2. Deadline hari ini + 7 (2026-06-17) -> mendekati_sla
+    $t2 = Tersangka::create(['perkara_id' => $p->id, 'nama' => 'T2 Plus 7', 'created_by' => $this->penyidik->id]);
+    BerkasPerkara::create([
+        'perkara_id' => $p->id,
+        'tersangka_id' => $t2->id,
+        'nomor_berkas' => 'BP/SLA/2',
+        'status_formal' => null,
+        'sla_deadline' => '2026-06-17',
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    // 3. Deadline hari ini + 8 (2026-06-18) -> dalam_sla
+    $t3 = Tersangka::create(['perkara_id' => $p->id, 'nama' => 'T3 Plus 8', 'created_by' => $this->penyidik->id]);
+    BerkasPerkara::create([
+        'perkara_id' => $p->id,
+        'tersangka_id' => $t3->id,
+        'nomor_berkas' => 'BP/SLA/3',
+        'status_formal' => null,
+        'sla_deadline' => '2026-06-18',
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    // 4. Deadline kemarin (2026-06-09) -> lewat_sla
+    $t4 = Tersangka::create(['perkara_id' => $p->id, 'nama' => 'T4 Kemarin', 'created_by' => $this->penyidik->id]);
+    BerkasPerkara::create([
+        'perkara_id' => $p->id,
+        'tersangka_id' => $t4->id,
+        'nomor_berkas' => 'BP/SLA/4',
+        'status_formal' => null,
+        'sla_deadline' => '2026-06-09',
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    // 5. Deadline NULL -> belum_spdp
+    $t5 = Tersangka::create(['perkara_id' => $p->id, 'nama' => 'T5 Null', 'created_by' => $this->penyidik->id]);
+    BerkasPerkara::create([
+        'perkara_id' => $p->id,
+        'tersangka_id' => $t5->id,
+        'nomor_berkas' => 'BP/SLA/5',
+        'status_formal' => null,
+        'sla_deadline' => null,
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    $data = $service->getCaseStatusData(2026);
+
+    expect($data['sla']['mendekatiSla'])->toBe(2)
+        ->and($data['sla']['dalamSla'])->toBe(1)
+        ->and($data['sla']['lewatSla'])->toBe(1)
+        ->and($data['sla']['belumSpdp'])->toBe(1)
+        ->and($data['dalamProses'])->toBe(5);
+
+    Carbon::setTestNow();
+});
+
+test('getAvailableYears mengembalikan tahun DISTINCT dari tanggal LK ditambah tahun berjalan urut menurun', function () {
+    Carbon::setTestNow('2026-08-01 10:00:00');
+
+    $service = app(DashboardService::class);
+
+    Perkara::create([
+        'nomor_laporan_kejadian' => 'LK/YEARS/2023',
+        'tanggal_laporan_kejadian' => '2023-04-12',
+        'created_by' => $this->penyidik->id,
+    ]);
+    Perkara::create([
+        'nomor_laporan_kejadian' => 'LK/YEARS/2024-1',
+        'tanggal_laporan_kejadian' => '2024-01-15',
+        'created_by' => $this->penyidik->id,
+    ]);
+    Perkara::create([
+        'nomor_laporan_kejadian' => 'LK/YEARS/2024-2',
+        'tanggal_laporan_kejadian' => '2024-09-20',
+        'created_by' => $this->penyidik->id,
+    ]);
+    // Perkara dengan hanya tanggal surat perintah tanpa tanggal LK (tidak boleh masuk)
+    Perkara::create([
+        'nomor_laporan_kejadian' => 'LK/YEARS/SP-ONLY',
+        'tanggal_laporan_kejadian' => null,
+        'nomor_surat_perintah' => 'SP/YEARS/2022',
+        'tanggal_surat_perintah' => '2022-05-10',
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    $years = $service->getAvailableYears();
+
+    // 2026 (tahun berjalan), 2024 (dari LK), 2023 (dari LK)
+    expect($years)->toBe([2026, 2024, 2023]);
+
+    Carbon::setTestNow();
 });

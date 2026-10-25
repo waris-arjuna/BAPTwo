@@ -74,7 +74,7 @@ test('halaman dashboard monitoring dapat diakses oleh penyidik, pimpinan, dan ad
         $response = $this->actingAs($user)->get(route('dashboard'));
         $response->assertOk()
             ->assertSee('Dashboard BAP TWO')
-            ->assertSee('Perkara Aktif')
+            ->assertSee('Total Perkara')
             ->assertSee('Perkara Berjalan')
             ->assertSee('Progress Perkara')
             ->assertSee('Lihat Semua');
@@ -86,7 +86,7 @@ test('dashboard menampilkan 5 card statistik dan donut chart dengan data riil da
     $stats = $service->getStatistics(2026);
 
     expect($stats)->toHaveCount(5)
-        ->and($stats[0]['title'])->toBe('Perkara Aktif')
+        ->and($stats[0]['title'])->toBe('Total Perkara')
         ->and((int) $stats[0]['value'])->toBeGreaterThanOrEqual(1)
         ->and($stats[1]['title'])->toBe('Perkara Berjalan')
         ->and((int) $stats[1]['value'])->toBeGreaterThanOrEqual(1);
