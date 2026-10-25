@@ -5,6 +5,7 @@ use App\Enums\UserRole;
 use App\Exports\PerkaraRekapExport;
 use App\Models\Alamat;
 use App\Models\BerkasPerkara;
+use App\Models\Pasal;
 use App\Models\Perkara;
 use App\Models\TahapanPerkara;
 use App\Models\Tersangka;
@@ -93,13 +94,14 @@ test('pimpinan dan umum diblokir dari endpoint ekspor excel (403 Forbidden)', fu
         ->assertForbidden();
 });
 
-test('filter mode tahun, bulan, dan rentang tanggal berfungsi valid pada ekspor', function () {
+test('filter mode tahun, bulan, dan rentang tanggal berfungsi valid pada ekspor LAPJU', function () {
     // Mode tahun
     $resTahun = $this->actingAs($this->admin)->get(route('perkara.export', [
         'mode' => 'tahun',
         'tahun' => 2026,
     ]));
     $resTahun->assertOk();
+    expect($resTahun->headers->get('content-disposition'))->toContain('LAPJU_2026_');
 
     // Mode bulan
     $resBulan = $this->actingAs($this->penyidik)->get(route('perkara.export', [
@@ -108,13 +110,14 @@ test('filter mode tahun, bulan, dan rentang tanggal berfungsi valid pada ekspor'
         'bulan' => 10,
     ]));
     $resBulan->assertOk();
+    expect($resBulan->headers->get('content-disposition'))->toContain('LAPJU_2026-10_');
 
     // Mode semua (ekspor semua data perkara)
     $resSemua = $this->actingAs($this->penyidik)->get(route('perkara.export', [
         'mode' => 'semua',
     ]));
     $resSemua->assertOk();
-    expect($resSemua->headers->get('content-disposition'))->toContain('rekap_seluruh_perkara_');
+    expect($resSemua->headers->get('content-disposition'))->toContain('LAPJU_Semua_');
 
     // Mode rentang tanggal
     $resRentang = $this->actingAs($this->penyidik)->get(route('perkara.export', [
@@ -123,6 +126,7 @@ test('filter mode tahun, bulan, dan rentang tanggal berfungsi valid pada ekspor'
         'tanggal_selesai' => '2026-10-31',
     ]));
     $resRentang->assertOk();
+    expect($resRentang->headers->get('content-disposition'))->toContain('LAPJU_2026-10-01_sd_2026-10-31_');
 
     // Mode semua dengan query params lengkap seperti pada browser
     $resExact = $this->actingAs($this->penyidik)->get('/perkara-export?mode=semua&tahun=2026&bulan=10&tanggal_mulai=&tanggal_selesai=');
@@ -130,79 +134,47 @@ test('filter mode tahun, bulan, dan rentang tanggal berfungsi valid pada ekspor'
     expect($resExact->headers->get('content-type'))->toContain('spreadsheetml.sheet');
 });
 
-test('struktur spreadsheet mematuhi 44 kolom, 4 baris header, merge sel, border, dan freeze pane', function () {
+test('struktur spreadsheet LAPJU mematuhi 45 kolom, header template, merge sel, dan freeze pane A7', function () {
     $export = new PerkaraRekapExport(mode: 'tahun', tahun: 2026);
     $spreadsheet = $export->generateSpreadsheet();
     $sheet = $spreadsheet->getActiveSheet();
 
-    // 0. Verifikasi Format Huruf adalah Arial
-    expect($spreadsheet->getDefaultStyle()->getFont()->getName())->toBe('Arial');
-    expect($sheet->getStyle('A1')->getFont()->getName())->toBe('Arial');
+    // 1. Verifikasi Freeze Panes berada di bawah header dan nomor kolom (A7)
+    expect($sheet->getFreezePane())->toBe('A7');
 
-    // 1. Verifikasi Freeze Panes berada di bawah header (A5)
-    expect($sheet->getFreezePane())->toBe('A5');
+    // 2. Verifikasi Baris 1: Judul Utama A1:AS1
+    expect($sheet->getCell('A1')->getValue())->toBe('PROSES PENYIDIKAN / HISTORY LAPJU');
+    $mergeCells = $sheet->getMergeCells();
+    expect(isset($mergeCells['A1:AS1']))->toBeTrue();
 
-    // 2. Verifikasi Baris 1: Kolom tanpa sub-level di-merge vertikal baris 1-3
-    // Col 1: A1:A3 = No.
-    expect($sheet->getCell('A1')->getValue())->toBe('No.');
-    $mergeA = $sheet->getMergeCells();
-    expect(isset($mergeA['A1:A3']))->toBeTrue();
+    // 3. Verifikasi Baris 2: Periode & Tanggal Export A2:AS2
+    expect(isset($mergeCells['A2:AS2']))->toBeTrue();
+    expect($sheet->getCell('A2')->getValue())->toContain('Periode: Tahun 2026');
+    expect($sheet->getCell('A2')->getValue())->toContain('Tanggal Export:');
 
-    // Col 6: F1:F3 = Pasal yang disangkakan
-    expect($sheet->getCell('F1')->getValue())->toBe('Pasal yang disangkakan');
-    expect(isset($mergeA['F1:F3']))->toBeTrue();
-
-    // Col 7: G1:G3 = PPNS Utama
-    expect($sheet->getCell('G1')->getValue())->toBe('PPNS Utama');
-    expect(isset($mergeA['G1:G3']))->toBeTrue();
-
-    // Col 8: H1:H3 = PPNS Anggota
-    expect($sheet->getCell('H1')->getValue())->toBe('PPNS Anggota');
-    expect(isset($mergeA['H1:H3']))->toBeTrue();
-
-    // Col 43: AQ1:AQ3 = Pengadilan
-    expect($sheet->getCell('AQ1')->getValue())->toBe('Pengadilan');
-    expect(isset($mergeA['AQ1:AQ3']))->toBeTrue();
-
-    // Col 44: AR1:AR3 = Kendala dan Rencana Tindak Lanjut
-    expect($sheet->getCell('AR1')->getValue())->toBe('Kendala dan Rencana Tindak Lanjut');
-    expect(isset($mergeA['AR1:AR3']))->toBeTrue();
-
-    // 3. Verifikasi Grup Proses Penyidikan (T1:AN1) dan sub-grupnya (baris 2)
-    expect($sheet->getCell('T1')->getValue())->toBe('Proses Penyidikan');
-    expect(isset($mergeA['T1:AN1']))->toBeTrue();
-
-    expect($sheet->getCell('T2')->getValue())->toBe('SPDP');
-    expect(isset($mergeA['T2:U2']))->toBeTrue();
-
-    expect($sheet->getCell('T3')->getValue())->toBe('Nomor');
-    expect($sheet->getCell('U3')->getValue())->toBe('Tanggal');
-
-    // 4. Verifikasi Baris 4 memuat nomor kolom 1 s.d. 44
-    for ($col = 1; $col <= 44; $col++) {
+    // 4. Verifikasi Baris 6 memuat nomor kolom 1 s.d. 45 lengkap dan dikoreksi (AQ=43, AR=44, AS=45)
+    for ($col = 1; $col <= 45; $col++) {
         $colLetter = Coordinate::stringFromColumnIndex($col);
-        expect($sheet->getCell("{$colLetter}4")->getValue())->toBe($col);
+        expect((int) $sheet->getCell("{$colLetter}6")->getValue())->toBe($col);
     }
 
-    // 5. Verifikasi Data Baris 5
-    expect($sheet->getCell('A5')->getValue())->toBe(1);
-    expect($sheet->getCell('B5')->getValue())->toBe('LK/099/X/2026');
+    // 5. Verifikasi Data Baris 7 (dimulai dari baris 7)
+    expect($sheet->getCell('A7')->getValue())->toBe('1');
+    expect($sheet->getCell('B7')->getValue())->toBe('LK/099/X/2026');
 
-    // Verifikasi kolom tanggal merupakan sel tanggal Excel dengan format dd-mmm-yy
-    expect($sheet->getStyle('C5')->getNumberFormat()->getFormatCode())->toBe('dd-mmm-yy');
-    expect($sheet->getCell('C5')->getFormattedValue())->toBe('05-Oct-26');
+    // Verifikasi kolom tanggal merupakan sel tanggal Excel dengan format dd/mm/yyyy
+    expect($sheet->getStyle('C7')->getNumberFormat()->getFormatCode())->toBe('dd/mm/yyyy');
 
-    // Verifikasi nama tersangka
-    expect($sheet->getCell('I5')->getValue())->toBe('H. Basri Rahman');
-    expect($sheet->getCell('J5')->getValue())->toBe('Laki-laki');
+    // Verifikasi nama tersangka di baris 7
+    expect($sheet->getCell('I7')->getValue())->toBe('H. Basri Rahman');
+    expect($sheet->getCell('J7')->getValue())->toBe('Laki-laki');
 
-    // Verifikasi SPDP
-    expect($sheet->getCell('T5')->getValue())->toBe('SPDP/099/X/2026');
-    expect($sheet->getStyle('U5')->getNumberFormat()->getFormatCode())->toBe('dd-mmm-yy');
-    expect($sheet->getCell('U5')->getFormattedValue())->toBe('08-Oct-26');
+    // Verifikasi SPDP di baris 7
+    expect($sheet->getCell('T7')->getValue())->toBe('SPDP/099/X/2026');
+    expect($sheet->getStyle('U7')->getNumberFormat()->getFormatCode())->toBe('dd/mm/yyyy');
 
     // Verifikasi nilai kosong ditulis "-"
-    expect($sheet->getCell('V5')->getValue())->toBe('-'); // P-16 kosong
+    expect($sheet->getCell('V7')->getValue())->toBe('-'); // P-16 kosong
 });
 
 test('tombol ekspor excel tampil untuk penyidik dan admin di halaman data-perkara dan seluruh-perkara', function () {
@@ -228,30 +200,38 @@ test('modal ekspor excel memuat input rentang tanggal dengan konfigurasi flatpic
         ->assertSee('flatpickr-calendar', false)
         ->assertSee('fpMulai', false)
         ->assertSee('fpSelesai', false)
-        ->assertSee('Semua Data', false)
-        ->assertSee('Ekspor Seluruh Perkara', false);
+        ->assertSee('Semua Data', false);
 });
 
-test('format daftar multi-nilai pasal dan ppns anggota mematuhi aturan tata bahasa koma, dan di tengah untuk 2 data, dan titik di akhir', function () {
-    $export = new PerkaraRekapExport;
+test('format nilai ganda bernomor urut 1, 2 dst pada satu sel dengan wrap text', function () {
+    // Tambah tersangka kedua pada perkara yang sama
+    $tersangka2 = Tersangka::create([
+        'perkara_id' => $this->perkara->id,
+        'nama' => 'Dewi Sartika',
+        'jenis_kelamin' => 'perempuan',
+        'agama' => 'islam',
+        'pekerjaan' => 'Apoteker',
+        'kewarganegaraan' => 'WNI',
+        'created_by' => $this->penyidik->id,
+    ]);
 
-    // 0 item
-    expect($export->formatList([]))->toBe('-');
+    $pasal1 = Pasal::firstOrCreate(['pasal' => 'Pasal 196 UU Kesehatan', 'nama_pasal' => 'Pasal 196']);
+    $pasal2 = Pasal::firstOrCreate(['pasal' => 'Pasal 197 UU Kesehatan', 'nama_pasal' => 'Pasal 197']);
+    $this->berkas->pasals()->sync([$pasal1->id, $pasal2->id]);
 
-    // 1 item
-    expect($export->formatList(['Pasal 196']))->toBe('Pasal 196.');
-    expect($export->formatList(['Siti Rahma, S.Farm., Apt.']))->toBe('Siti Rahma, S.Farm., Apt.');
+    $export = new PerkaraRekapExport(mode: 'tahun', tahun: 2026);
+    $spreadsheet = $export->generateSpreadsheet();
+    $sheet = $spreadsheet->getActiveSheet();
 
-    // 2 items: 'dan' di tengah-tengah pasal 1 dan pasal 2 / ppns 1 dan ppns 2, titik di akhir
-    expect($export->formatList(['Pasal 196', 'Pasal 197']))->toBe('Pasal 196 dan Pasal 197.');
-    expect($export->formatList(['Ahmad Yani', 'Budi Santoso']))->toBe('Ahmad Yani dan Budi Santoso.');
+    // Verifikasi Multi-Tersangka di Kolom I (Nama) dan J (Jenis Kelamin) baris 7
+    expect($sheet->getCell('I7')->getValue())->toContain("1. H. Basri Rahman\n2. Dewi Sartika");
+    expect($sheet->getCell('J7')->getValue())->toContain("1. Laki-laki\n2. Perempuan");
 
-    // 3 items: koma, 'dan' sebelum data terakhir, titik di akhir
-    expect($export->formatList(['Pasal 196', 'Pasal 197', 'Pasal 198']))->toBe('Pasal 196, Pasal 197, dan Pasal 198.');
-    expect($export->formatList(['Ahmad Yani', 'Budi Santoso', 'Siti Aminah']))->toBe('Ahmad Yani, Budi Santoso, dan Siti Aminah.');
+    // Verifikasi Multi-Pasal di Kolom F baris 7
+    expect($sheet->getCell('F7')->getValue())->toContain("1. Pasal 196 UU Kesehatan\n2. Pasal 197 UU Kesehatan");
 });
 
-test('kolom alamat tersangka, nama tkp, dan alamat tkp menghasilkan data lengkap sesuai spesifikasi', function () {
+test('kolom alamat tersangka, nama tkp, dan alamat tkp menghasilkan data lengkap sesuai spesifikasi pada baris 7', function () {
     $alamatTsk = Alamat::create([
         'alamat_detail' => 'Jl. Belitung Darat No. 12',
         'rt' => '003',
@@ -285,16 +265,41 @@ test('kolom alamat tersangka, nama tkp, dan alamat tkp menghasilkan data lengkap
     $spreadsheet = $export->generateSpreadsheet();
     $sheet = $spreadsheet->getActiveSheet();
 
-    // Kolom L (Kolom 12): Alamat Lengkap Tersangka
-    expect($sheet->getCell('L5')->getValue())->toBe(
+    // Kolom L (Kolom 12): Alamat Lengkap Tersangka pada Baris 7
+    expect($sheet->getCell('L7')->getValue())->toBe(
         'Jl. Belitung Darat No. 12, RT 003/RW 001, Desa/Kel. Belitung Selatan, Kec. Banjarmasin Barat, Kota Banjarmasin, Kalimantan Selatan'
     );
 
-    // Kolom O (Kolom 15): Nama TKP diambil dari alamat->nama
-    expect($sheet->getCell('O5')->getValue())->toBe('Toko Obat Sumber Waras');
+    // Kolom O (Kolom 15): Nama TKP diambil dari alamat->nama pada Baris 7
+    expect($sheet->getCell('O7')->getValue())->toBe('Toko Obat Sumber Waras');
 
-    // Kolom P (Kolom 16): Alamat Lengkap TKP
-    expect($sheet->getCell('P5')->getValue())->toBe(
+    // Kolom P (Kolom 16): Alamat Lengkap TKP pada Baris 7
+    expect($sheet->getCell('P7')->getValue())->toBe(
         'Pasar Sentra Antasari Blok C No. 5, RT 002/RW 001, Desa/Kel. Kelayan Luar, Kec. Banjarmasin Tengah, Kota Banjarmasin, Kalimantan Selatan'
     );
+});
+
+test('periode tanpa data perkara tidak mengunduh file dan memberikan respons warning', function () {
+    // Mode tahun 2099 tanpa data
+    $resEmpty = $this->actingAs($this->admin)->get(route('perkara.export', [
+        'mode' => 'tahun',
+        'tahun' => 2099,
+    ]));
+
+    // Redirect back dengan session warning
+    $resEmpty->assertRedirect();
+    $resEmpty->assertSessionHas('warning', 'Tidak ada data pada periode ini');
+
+    // Pre-check count via AJAX/JSON
+    $resCheck = $this->actingAs($this->admin)->getJson(route('perkara.export', [
+        'mode' => 'tahun',
+        'tahun' => 2099,
+        'check' => 1,
+    ]));
+
+    $resCheck->assertOk();
+    $resCheck->assertJson([
+        'count' => 0,
+        'message' => 'Tidak ada data pada periode ini',
+    ]);
 });

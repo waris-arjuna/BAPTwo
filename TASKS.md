@@ -216,6 +216,8 @@ Satu task = satu unit kerja kecil yang bisa diuji. Acceptance Criteria utama tet
     - [x] Poin 2 & 8: Kolom Penuntut Umum (Instansi dari master, Jaksa manual) di form perkara, Putusan Pengadilan, dan Card informasi
     - [x] Poin 9: Tautan link nomor dokumen tahapan sebelumnya pada form tahapan berikutnya
   - AC: Seluruh 9 poin diimplementasikan berurutan, teruji dengan test suite otomatis dan Pint linter 100% passed.
+- [x] T-081 — 2026-10-22 Penggantian Format Ekspor Excel Menggunakan Template LAPJU 45 Kolom (ref: D-055)
+  - AC: Template `template_lapju.xlsx` (45 kolom) dimuat via PhpSpreadsheet `IOFactory::load()` di `resources/templates/`; Baris 1 judul utama rata tengah; Baris 2 keterangan periode & tanggal export dinamis; Baris 6 koreksi nomor kolom urut 1–45 (AQ=43, AR=44, AS=45); data perkara dimulai Baris 7 terurut tanggal LK terbaru ke terlama; nilai ganda bernomor `1. ...\n2. ...` dengan wrap text (tersangka I–N konsisten berurutan); tanggal Excel `dd/mm/yyyy`; netralisasi formula injection; Kolom 44 amar putusan & Kolom 45 kendala riil SP3/DPO/P18/P19; penanganan periode kosong tidak mengunduh file dengan pop-up toast BAPTwo ("Tidak ada data pada periode ini", 3s); nama berkas `LAPJU_<periode>_<yyyy-mm-dd>.xlsx`; seluruh 223 test suite lulus (2128 assertions) dan Pint clean.
 
 
 

@@ -244,8 +244,8 @@ it('exports Penuntut Umum and Pengadilan correctly in 44-column Excel export', f
     $spreadsheet = $export->generateSpreadsheet();
     $sheet = $spreadsheet->getActiveSheet();
 
-    // Baris data pertama pada row 5 (setelah 4 baris header)
-    expect($sheet->getCell('AO5')->getValue())->toBe('Kejaksaan Negeri Banjarbaru')
-        ->and($sheet->getCell('AP5')->getValue())->toContain('Jaksa Ekspor, S.H.')
-        ->and($sheet->getCell('AQ5')->getValue())->toBe('Pengadilan Negeri Banjarbaru');
+    // Baris data pertama pada row 7 (setelah header judul, periode, header bertingkat, dan nomor kolom)
+    expect($sheet->getCell('AO7')->getValue())->toBe('Kejaksaan Negeri Banjarbaru')
+        ->and($sheet->getCell('AP7')->getValue())->toContain('Jaksa Ekspor, S.H.')
+        ->and($sheet->getCell('AQ7')->getValue())->toBe('Pengadilan Negeri Banjarbaru');
 });

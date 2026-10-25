@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Exports\PerkaraRekapExport;
 use App\Services\AuditTrailService;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\StreamedResponse;
@@ -11,10 +13,10 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 class PerkaraExportController extends Controller
 {
     /**
-     * Ekspor data rekap perkara ke format Excel (.xlsx).
+     * Ekspor data rekap perkara ke format Excel (.xlsx) dengan template LAPJU.
      * Dibatasi hanya untuk peran Administrator dan Penyidik (Poin 10).
      */
-    public function export(Request $request): StreamedResponse
+    public function export(Request $request): StreamedResponse|RedirectResponse|JsonResponse
     {
         Gate::authorize('export-excel');
 
@@ -24,6 +26,7 @@ class PerkaraExportController extends Controller
             'bulan' => ['nullable', 'integer', 'min:1', 'max:12'],
             'tanggal_mulai' => ['nullable', 'date'],
             'tanggal_selesai' => ['nullable', 'date', 'after_or_equal:tanggal_mulai'],
+            'check' => ['nullable', 'boolean'],
         ]);
 
         $mode = $validated['mode'] ?? 'semua';
@@ -32,19 +35,6 @@ class PerkaraExportController extends Controller
         $tanggalMulai = $validated['tanggal_mulai'] ?? null;
         $tanggalSelesai = $validated['tanggal_selesai'] ?? null;
 
-        $timestamp = now()->format('Ymd_His');
-
-        if ($mode === 'semua') {
-            $filename = "rekap_seluruh_perkara_{$timestamp}.xlsx";
-        } elseif ($mode === 'bulan') {
-            $bulanStr = str_pad((string) $bulan, 2, '0', STR_PAD_LEFT);
-            $filename = "rekap_perkara_{$tahun}_{$bulanStr}_{$timestamp}.xlsx";
-        } elseif ($mode === 'rentang' && $tanggalMulai && $tanggalSelesai) {
-            $filename = "rekap_perkara_{$tanggalMulai}_sd_{$tanggalSelesai}_{$timestamp}.xlsx";
-        } else {
-            $filename = "rekap_perkara_tahun_{$tahun}_{$timestamp}.xlsx";
-        }
-
         $export = new PerkaraRekapExport(
             mode: $mode,
             tahun: $tahun,
@@ -52,6 +42,23 @@ class PerkaraExportController extends Controller
             tanggalMulai: $tanggalMulai,
             tanggalSelesai: $tanggalSelesai
         );
+
+        $totalPerkara = $export->query()->count();
+
+        // Jika request pre-check jumlah data
+        if ($request->boolean('check') || $request->wantsJson() || $request->ajax()) {
+            return response()->json([
+                'count' => $totalPerkara,
+                'message' => $totalPerkara === 0 ? 'Tidak ada data pada periode ini' : 'Data tersedia',
+            ]);
+        }
+
+        // Jika periode tidak memiliki perkara: JANGAN unduh file, tampilkan pop-up warning
+        if ($totalPerkara === 0) {
+            return redirect()->back()->with('warning', 'Tidak ada data pada periode ini');
+        }
+
+        $filename = $export->getFilename();
 
         app(AuditTrailService::class)->log(
             aksi: 'export_excel',
@@ -64,6 +71,7 @@ class PerkaraExportController extends Controller
                 'tanggal_mulai' => $tanggalMulai,
                 'tanggal_selesai' => $tanggalSelesai,
                 'filename' => $filename,
+                'total_perkara' => $totalPerkara,
             ]
         );
 

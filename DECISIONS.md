@@ -1123,3 +1123,31 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
   4. **Idempotensi**: Seeder tetap membersihkan data dummy lama (`LK/%`) dengan eager loading `berkasPerkaras`, `tersangkas`, dan `tkp` agar tidak melanggar `Model::preventLazyLoading()`, lalu menanam ulang data dengan `updateOrCreate`.
   5. **Konsistensi Domain**: Progress, status proses, dan status formal tidak pernah diisi manual. Semuanya dihitung dari rantai tahapan yang sudah difinalkan, dengan pengecualian `tidak_selesai` untuk berkas SPDP tahun lalu dan SP3.
 - Konsekuensi: Data uji manual mencakup seluruh tahapan, status, dan kombinasi DPO/SP3, tetap dapat dijalankan berulang tanpa duplikasi, dan mudah diperluas dengan menambah baris distribusi.
+
+---
+
+## D-055 : Penggantian Format Ekspor Excel Menggunakan Template LAPJU 45 Kolom
+
+- Tanggal: 2026-10-22
+- Status: Disepakati & Diimplementasikan
+- Konteks: Menggantikan layout ekspor rekap perkara 44 kolom lama dengan format template resmi LAPJU (`template_lapju.xlsx`, 45 kolom: A s.d. AS) pada seluruh 4 metode pengambilan data (per tahun, per bulan, semua data, dan rentang tanggal) tanpa mengubah tombol, modal, maupun alur filter yang sudah ada.
+- Keputusan:
+  1. **Pemuatan Template Resmi (`resources/templates/template_lapju.xlsx`)**:
+     - Template dimuat langsung via PhpSpreadsheet `IOFactory::load()` untuk menjaga 100% konsistensi jenis font (Arial 11), warna header (`FFF1F5F9`), warna baris nomor (`FFE2E8F0`), merge sel bertingkat, tinggi baris, dan lebar kolom.
+  2. **Struktur Header & Keterangan Periode**:
+     - Baris 1: A1:AS1 judul "PROSES PENYIDIKAN / HISTORY LAPJU" bold rata tengah.
+     - Baris 2: Keterangan dinamis A2:AS2 tanpa border rata kiri: `Periode: <label periode>  |  Tanggal Export: <tanggal hari ini>`.
+     - Baris 6: Mengoreksi kesalahan penomoran template asli (AQ6 kosong) menjadi urut 1–45 (AQ=43, AR=44, AS=45).
+     - Freeze pane dipasang di A7 (di bawah baris nomor kolom).
+  3. **Aturan Penyajian Data**:
+     - 1 Perkara = 1 baris. Data dimulai dari Baris 7 terurut tanggal LK terbaru ke terlama (`descending`), id menurun.
+     - Nilai ganda (multi-tersangka berurutan konsisten I–N, multi-pasal, multi-PPNS, multi-putaran P-18/P-19) disajikan bernomor `1. ...\n2. ...` dengan *wrap text* aktif. Nilai tunggal disajikan tanpa nomor.
+     - Tanggal tunggal ditulis sebagai tanggal Excel asli dengan format tampilan `dd/mm/yyyy`. Tanggal ganda ditulis sebagai string bernomor dengan format `dd/mm/yyyy`.
+     - Seluruh sel teks diisi sebagai string eksplisit (`DataType::TYPE_STRING`) dan dinetralisir dari potensi *formula injection* (`=`, `+`, `@`, `-`).
+     - Kolom 44 (AR): Menampilkan amar putusan (`amar_putusan`) dari tahapan Keputusan Pengadilan.
+     - Kolom 45 (AS): Menampilkan catatan kendala operasional riil (keterangan SP3, keterangan DPO, petunjuk P-18/P-19; '-' jika lancar tanpa hambatan). Tidak menyertakan informasi SLA.
+  4. **Penanganan Periode Kosong & Penamaan Berkas**:
+     - Jika periode yang dipilih tidak memiliki perkara, berkas tidak diunduh. Controller membatalkan unduhan dan sistem menampilkan notifikasi pop-up BAPTwo (toast 3 detik): *"Tidak ada data pada periode ini"*.
+     - Modal ekspor menerapkan async pre-check sebelum submit form.
+     - Format penamaan berkas terstandarisasi: `LAPJU_<periode>_<yyyy-mm-dd>.xlsx`.
+- Konsekuensi: Format ekspor Excel memenuhi standar pelaporan LAPJU BPOM Kalsel yang presisi, informatif, aman dari injeksi formula, dan teruji lulus pada 4 metode pengambilan data.

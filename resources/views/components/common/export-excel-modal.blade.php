@@ -60,21 +60,44 @@
                 }
             });
         },
-        submitExport() {
+        async submitExport() {
             if (this.mode === 'rentang') {
                 if (!this.tanggalMulai || !this.tanggalSelesai) {
-                    if (typeof window.toast?.warning === 'function') {
-                        window.toast.warning('Rentang Tanggal Belum Lengkap', 'Harap pilih Tanggal Mulai dan Tanggal Selesai terlebih dahulu.');
-                    }
+                    window.dispatchEvent(new CustomEvent('toast-notify', {
+                        detail: { type: 'warning', title: 'Rentang Tanggal Belum Lengkap', message: 'Harap pilih Tanggal Mulai dan Tanggal Selesai terlebih dahulu.', duration: 3000 }
+                    }));
                     return;
                 }
                 if (this.tanggalMulai > this.tanggalSelesai) {
-                    if (typeof window.toast?.warning === 'function') {
-                        window.toast.warning('Urutan Tanggal Tidak Valid', 'Tanggal Mulai tidak boleh lebih besar dari Tanggal Selesai.');
-                    }
+                    window.dispatchEvent(new CustomEvent('toast-notify', {
+                        detail: { type: 'warning', title: 'Urutan Tanggal Tidak Valid', message: 'Tanggal Mulai tidak boleh lebih besar dari Tanggal Selesai.', duration: 3000 }
+                    }));
                     return;
                 }
             }
+
+            // Pre-check apakah ada data pada periode ini
+            const formData = new FormData(this.$refs.exportForm);
+            const params = new URLSearchParams(formData);
+            params.append('check', '1');
+
+            try {
+                const res = await fetch(`{{ route('perkara.export') }}?${params.toString()}`, {
+                    headers: { 'Accept': 'application/json', 'X-Requested-With': 'XMLHttpRequest' }
+                });
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.count === 0) {
+                        window.dispatchEvent(new CustomEvent('toast-notify', {
+                            detail: { type: 'warning', title: 'Perhatian', message: 'Tidak ada data pada periode ini', duration: 3000 }
+                        }));
+                        return;
+                    }
+                }
+            } catch (e) {
+                // Lanjut ke submit biasa jika network error
+            }
+
             this.$refs.exportForm.submit();
             this.isOpen = false;
         }
@@ -116,7 +139,7 @@
                                 Ekspor Rekap Perkara (Excel)
                             </h3>
                             <p class="text-xs text-gray-500 dark:text-gray-400">
-                                Format 44 kolom lengkap berdasarkan tanggal Laporan Kejadian (LK).
+                                Format LAPJU 45 kolom lengkap berdasarkan tanggal Laporan Kejadian (LK).
                             </p>
                         </div>
                     </div>
