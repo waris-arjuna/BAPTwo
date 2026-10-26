@@ -16,7 +16,7 @@
         periodeText: '{{ $periodeText }}',
         updatedAt: '{{ $updatedAt }}'
     })"
-    class="h-full rounded-2xl border border-gray-200 bg-white shadow-theme-xs dark:border-gray-800 dark:bg-white/[0.03]"
+    class="@container h-full rounded-2xl border border-gray-200 bg-white shadow-theme-xs dark:border-gray-800 dark:bg-white/[0.03]"
 >
 
     {{-- Card Header --}}
@@ -88,20 +88,28 @@
 
     {{-- Loading Skeleton (A-7) --}}
     <div x-show="isLoading" x-cloak class="p-5 sm:p-6" aria-busy="true" aria-label="Memuat status perkara...">
-        <div class="flex flex-col items-center justify-center">
-            <div class="relative flex h-56 w-56 items-center justify-center">
-                <div class="flex h-48 w-48 animate-pulse items-center justify-center rounded-full border-[14px] border-gray-100 dark:border-gray-800">
-                    <div class="flex flex-col items-center gap-1.5">
-                        <div class="h-8 w-16 animate-pulse rounded-lg bg-gray-200 dark:bg-gray-700"></div>
-                        <div class="h-3 w-20 animate-pulse rounded bg-gray-100 dark:bg-gray-800"></div>
+        <div class="grid grid-cols-1 @[600px]:grid-cols-[150px_1fr] gap-6 items-center">
+            {{-- Left column: Donut skeleton --}}
+            <div class="flex flex-col items-center justify-center">
+                <div class="relative flex h-[136px] w-[136px] items-center justify-center rounded-full border-[16px] border-gray-100 dark:border-gray-800 animate-pulse">
+                    <div class="flex flex-col items-center gap-1">
+                        <div class="h-6 w-12 rounded bg-gray-200 dark:bg-gray-700 animate-pulse"></div>
+                        <div class="h-2.5 w-16 rounded bg-gray-100 dark:bg-gray-800 animate-pulse"></div>
                     </div>
                 </div>
+                <div class="mt-3 h-3 w-24 rounded bg-gray-100 dark:bg-gray-800 animate-pulse"></div>
             </div>
-        </div>
-        <div class="mt-6 space-y-3">
-            <div class="h-10 w-full animate-pulse rounded-xl bg-gray-100 dark:bg-gray-800"></div>
-            <div class="h-28 w-full animate-pulse rounded-xl bg-gray-100 dark:bg-gray-800"></div>
-            <div class="h-10 w-full animate-pulse rounded-xl bg-gray-100 dark:bg-gray-800"></div>
+
+            {{-- Right column: Status List skeleton --}}
+            <div class="space-y-2.5">
+                <div class="h-7 w-full rounded-lg bg-gray-100 dark:bg-gray-800 animate-pulse"></div>
+                <div class="rounded-lg border border-gray-100 dark:border-gray-800 p-3 space-y-2">
+                    <div class="h-4 w-1/3 rounded bg-gray-100 dark:bg-gray-800 animate-pulse"></div>
+                    <div class="h-3 w-full rounded bg-gray-50 dark:bg-gray-800/60 animate-pulse"></div>
+                    <div class="h-3 w-full rounded bg-gray-50 dark:bg-gray-800/60 animate-pulse"></div>
+                </div>
+                <div class="h-7 w-full rounded-lg bg-gray-100 dark:bg-gray-800 animate-pulse"></div>
+            </div>
         </div>
     </div>
 

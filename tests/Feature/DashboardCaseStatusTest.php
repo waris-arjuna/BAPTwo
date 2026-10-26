@@ -933,3 +933,87 @@ test('getAvailableYears mengembalikan tahun DISTINCT dari tanggal LK ditambah ta
 
     Carbon::setTestNow();
 });
+
+test('komponen case-status merender tata letak 2 kolom, SVG donut 6 segmen radius 54, dan legenda dot', function () {
+    $p = Perkara::create([
+        'nomor_laporan_kejadian' => 'LK/UI/2026',
+        'tanggal_laporan_kejadian' => '2026-03-01',
+        'created_by' => $this->penyidik->id,
+    ]);
+    $t = Tersangka::create([
+        'perkara_id' => $p->id,
+        'nama' => 'Tersangka UI',
+        'created_by' => $this->penyidik->id,
+    ]);
+    BerkasPerkara::create([
+        'perkara_id' => $p->id,
+        'tersangka_id' => $t->id,
+        'nomor_berkas' => 'BP/UI/2026',
+        'status_formal' => null,
+        'sla_deadline' => Carbon::today()->subDay(), // lewat SLA
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    $service = app(DashboardService::class);
+    $data = $service->getCaseStatusData(2026);
+
+    $html = view('components.dashboard._case-status-content', [
+        'data' => $data,
+        'tahun' => 2026,
+    ])->render();
+
+    // Radius 54 dan stroke-width 16 pada SVG donut
+    expect($html)->toContain('r="54"')
+        ->toContain('stroke-width="16"')
+        // Angka total perkara dan label Total Perkara di tengah donut
+        ->toContain('Total Perkara')
+        // Teks perbandingan vs tahun sebelumnya di bawah donut
+        ->toContain('vs ')
+        // Panel Dalam Proses dengan 4 sub-baris SLA
+        ->toContain('Belum Ada SPDP (Pra-SPDP)')
+        ->toContain('Dalam SLA (> 7 hari)')
+        ->toContain('Mendekati Batas (≤ 7 hari)')
+        ->toContain('Melewati SLA')
+        // Tautan drill-down
+        ->toContain(e(route('seluruh-perkara.index', ['tahun' => 2026, 'status' => 'Dalam Proses', 'sla' => 'lewat_sla'])))
+        // Pill hanya muncul jika Melewati SLA > 0
+        ->toContain('bg-error-50')
+        ->toContain('text-error-600');
+});
+
+test('komponen case-status merender dot outline dan teks muted ketika sub-baris SLA bernilai 0', function () {
+    $p = Perkara::create([
+        'nomor_laporan_kejadian' => 'LK/ZERO/2026',
+        'tanggal_laporan_kejadian' => '2026-03-01',
+        'created_by' => $this->penyidik->id,
+    ]);
+    $t = Tersangka::create([
+        'perkara_id' => $p->id,
+        'nama' => 'Tersangka Zero',
+        'created_by' => $this->penyidik->id,
+    ]);
+    // Buat berkas yang Selesai, sehingga Dalam Proses = 0 dan seluruh sub-baris SLA = 0
+    BerkasPerkara::create([
+        'perkara_id' => $p->id,
+        'tersangka_id' => $t->id,
+        'nomor_berkas' => 'BP/ZERO/2026',
+        'status_formal' => 'selesai',
+        'status_proses' => 'TAHAP II',
+        'progress_persen' => 100,
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    $service = app(DashboardService::class);
+    $data = $service->getCaseStatusData(2026);
+
+    $html = view('components.dashboard._case-status-content', [
+        'data' => $data,
+        'tahun' => 2026,
+    ])->render();
+
+    // Selesai = 1, Melewati SLA = 0
+    expect($html)->toContain('border border-gray-300')
+        ->toContain('font-normal text-gray-400')
+        // Tidak ada pill danger bg-error-50 karena Melewati SLA bernilai 0
+        ->not->toContain('bg-error-50');
+});

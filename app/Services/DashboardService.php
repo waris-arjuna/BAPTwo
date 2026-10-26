@@ -6,6 +6,7 @@ use App\Enums\JenisTahap;
 use App\Models\AuditLog;
 use App\Models\BerkasPerkara;
 use App\Models\Perkara;
+use App\Models\TahapanPerkara;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
@@ -129,13 +130,95 @@ class DashboardService
         if ($tahun !== null) {
             Cache::forget("dashboard_stats_{$tahun}");
             Cache::forget("dashboard_stage_averages_{$tahun}");
+            Cache::forget("dashboard_monthly_cases_{$tahun}");
         } else {
             $currentYear = (int) Carbon::now(self::ZONA_WAKTU)->year;
             for ($y = $currentYear - 2; $y <= $currentYear + 1; $y++) {
                 Cache::forget("dashboard_stats_{$y}");
                 Cache::forget("dashboard_stage_averages_{$y}");
+                Cache::forget("dashboard_monthly_cases_{$y}");
             }
         }
+    }
+
+    /**
+     * Mengambil data tren bulanan komparasi Perkara Masuk vs Selesai (Jan-Des) untuk ApexCharts.
+     *
+     * @return array{
+     *     labels: array<int, string>,
+     *     incoming: array<int, int>,
+     *     completed: array<int, int>,
+     *     totalIncoming: int,
+     *     totalCompleted: int,
+     *     clearanceRate: float
+     * }
+     */
+    public function getMonthlyCasesTrends(?int $tahun = null): array
+    {
+        $tahun = $tahun ?: (int) Carbon::now(self::ZONA_WAKTU)->year;
+
+        return Cache::remember("dashboard_monthly_cases_{$tahun}", 120, function () use ($tahun) {
+            $isSqlite = DB::connection()->getDriverName() === 'sqlite';
+
+            $incomingMonthExpr = $isSqlite
+                ? "CAST(strftime('%m', tanggal_laporan_kejadian) AS INTEGER) as bulan"
+                : 'MONTH(tanggal_laporan_kejadian) as bulan';
+
+            $incomingGroupExpr = $isSqlite
+                ? "CAST(strftime('%m', tanggal_laporan_kejadian) AS INTEGER)"
+                : 'MONTH(tanggal_laporan_kejadian)';
+
+            $incomingRaw = Perkara::query()
+                ->whereYear('tanggal_laporan_kejadian', $tahun)
+                ->selectRaw("{$incomingMonthExpr}, COUNT(*) as total")
+                ->groupByRaw($incomingGroupExpr)
+                ->pluck('total', 'bulan')
+                ->all();
+
+            $completedMonthExpr = $isSqlite
+                ? "CAST(strftime('%m', tanggal_surat) AS INTEGER) as bulan"
+                : 'MONTH(tanggal_surat) as bulan';
+
+            $completedGroupExpr = $isSqlite
+                ? "CAST(strftime('%m', tanggal_surat) AS INTEGER)"
+                : 'MONTH(tanggal_surat)';
+
+            $completedRaw = TahapanPerkara::query()
+                ->where('jenis_tahap', JenisTahap::TAHAP_2->value)
+                ->where('status', 'final')
+                ->whereYear('tanggal_surat', $tahun)
+                ->whereHas('berkasPerkara', function ($q) {
+                    $q->selesai();
+                })
+                ->selectRaw("{$completedMonthExpr}, COUNT(*) as total")
+                ->groupByRaw($completedGroupExpr)
+                ->pluck('total', 'bulan')
+                ->all();
+
+            $labels = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+            $incoming = [];
+            $completed = [];
+
+            for ($m = 1; $m <= 12; $m++) {
+                $incoming[] = (int) ($incomingRaw[$m] ?? 0);
+                $completed[] = (int) ($completedRaw[$m] ?? 0);
+            }
+
+            $totalIncoming = array_sum($incoming);
+            $totalCompleted = array_sum($completed);
+            $clearanceRate = $totalIncoming > 0
+                ? round(($totalCompleted / $totalIncoming) * 100, 1)
+                : 0.0;
+
+            return [
+                'labels' => $labels,
+                'incoming' => $incoming,
+                'completed' => $completed,
+                'totalIncoming' => $totalIncoming,
+                'totalCompleted' => $totalCompleted,
+                'clearanceRate' => $clearanceRate,
+            ];
+        });
     }
 
     /**

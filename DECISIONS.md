@@ -1213,3 +1213,66 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
   5. **Refactor Detail Perkara (`show.blade.php`)**:
      - Array lokal `$actionMeta` 80 baris pada `resources/views/pages/perkara/show.blade.php` dihapus dan digantikan oleh panggilan properti terpusat `$log->action_meta`.
 - Konsekuensi: Tampilan dashboard BAPTwo lebih informatif, visual seimbang dan proporsional, data audit log tersaji real-time, bebas dari redundansi kode, serta terverifikasi 100% lulus 239 tes otomatis Pest PHP dan linter Laravel Pint.
+
+---
+
+## D-058 : Refactor Visual dan Desain Kartu Perkara Tahun Berjalan (Donut 6 Segmen & Layout 2 Kolom)
+
+- Tanggal: 2026-10-26
+- Status: Disepakati & Diimplementasikan
+- Konteks: Kartu "Perkara Tahun Berjalan" pada Dashboard BAPTwo memerlukan perampingan layout visual (tinggi berkurang ~50%), hierarki visual yang lebih tegas, donut dinamis 6 segmen berbasis pure SVG tanpa library eksternal, dan legenda dot 10px berwarna senada segmen donut.
+- Keputusan:
+  1. **Layout 2 Kolom Responsif dengan Container Query**:
+     - Elemen pembungkus kartu menggunakan `@container` pada `case-status.blade.php`.
+     - Tata letak body menggunakan grid 2 kolom `grid grid-cols-1 @[600px]:grid-cols-[150px_1fr] gap-6 items-center`.
+     - Skeleton loading diselaraskan dengan tata letak grid 2 kolom baru (lingkaran 136px di kiri dan 3 placeholder baris di kanan).
+  2. **Donut Dinamis 6 Segmen Berbasis Pure SVG**:
+     - Lingkaran dengan radius `r=54` (keliling `C ≈ 339.292`) dan stroke 16px di dalam viewBox `0 0 140 140`.
+     - 6 kategori data dipetakan proporsional: Selesai (`stroke-success-500`), Belum Ada SPDP (`stroke-brand-400`), Dalam SLA (`stroke-teal-500`), Mendekati Batas (`stroke-amber-500`), Melewati SLA (`stroke-error-500`), dan Tidak Selesai/SP3 (`stroke-gray-400 dark:stroke-gray-600`).
+     - Segmen bernilai 0 otomatis diabaikan dari rendering SVG. Celah 2px antar segmen dan panjang busur minimum 4px diterapkan jika terdapat lebih dari 1 segmen aktif.
+     - Di tengah donut: Angka Total Perkara (26px, `text-2xl font-semibold tabular-nums`) dan label `Total Perkara` (11px, `text-[11px]`).
+     - Tooltip melayang Alpine.js (`x-data="{ hovered: null }"`) muncul di atas donut saat hover/focus keyboard.
+  3. **Teks Perbandingan Tahun Lalu Netral**:
+     - Ditampilkan di bawah donut dengan teks netral 12px (`text-xs text-gray-500 dark:text-gray-400 tabular-nums`).
+     - Format: `▲ {diff} (+{pct}%) vs {prevYear}` atau `▼ {diff} (-{pct}%) vs {prevYear}` atau `0 vs {prevYear}` tanpa menggunakan tanda em dash (`—`) per aturan D-042. Jika tahun lalu bernilai 0, persen disembunyikan otomatis tanpa error pembagian nol.
+  4. **Daftar Status Kolom Kanan dengan Legenda Dot 10px**:
+     - Dot 10px bulat (`h-2.5 w-2.5 rounded-full`) sebagai penanda warna legenda yang identik dengan segmen donut.
+     - Panel surface level 1 "Dalam Proses" (`bg-gray-50/70 dark:bg-white/[0.02] border border-gray-100 dark:border-gray-800 rounded-xl p-3`) memuat 4 sub-baris SLA.
+     - Penanganan nilai 0: Sub-baris bernilai 0 menggunakan dot outline (`border border-gray-300 dark:border-gray-600 bg-transparent`) dan teks/angka muted (`text-gray-400 dark:text-gray-500 font-normal`).
+     - Sub-baris "Melewati SLA" hanya menampilkan badge pill bahaya (`bg-error-50 text-error-600 font-bold`) jika nilainya > 0.
+     - Seluruh segmen donut dan baris status mempertahankan tautan drill-down interaktif ke rute `seluruh-perkara.index` terfilter.
+- Konsekuensi: Tampilan kartu "Perkara Tahun Berjalan" menjadi jauh lebih kompak, proporsional, estetik, dan informatif, selaras dengan kartu feed aktivitas di sebelahnya, serta terverifikasi 100% lulus 241 tes otomatis Pest PHP dan linter Laravel Pint.
+
+---
+
+## D-059 : Tren Perkara Masuk & Selesai (ApexCharts) dan Tata Letak Grid Dashboard Simetris
+
+- Tanggal: 2026-10-26
+- Status: Disepakati & Diimplementasikan
+- Konteks: Dashboard BAPTwo memerlukan visualisasi tren perkara bulanan (Januari s.d. Desember) yang membandingkan perkara masuk (berdasarkan tanggal Laporan Kejadian) dan berkas yang berhasil diselesaikan (berdasarkan tanggal surat Tahap II berkas berstatus formal `selesai`) dalam satu tahun anggaran, serta penataan grid dashboard yang simetris dan proporsional.
+- Keputusan:
+  1. **Instalasi Pustaka ApexCharts**:
+     - Pustaka `apexcharts` dipasang resmi via `npm install apexcharts --save` dan dibundle melalui Vite.
+     - Modul JavaScript modular dibuat di `resources/js/components/monthly-cases-chart.js` dengan fungsi inisialisasi `initMonthlyCasesChart` dan Alpine data component `monthlyCasesChart`.
+     - Warna chart diselaraskan dengan Tailwind theme tokens: Perkara Masuk (Biru Brand `#465fff`) dan Perkara Selesai (Hijau Sukses `#12b76a`).
+     - Listener custom event `'theme-changed'` disematkan untuk memperbarui warna teks sumbu, garis grid, dan tooltip saat toggle mode gelap diklik secara real-time.
+  2. **Data Provider Tren Bulanan (`DashboardService::getMonthlyCasesTrends`)**:
+     - Mengagregasi data 12 bulan (indeks 0..11 untuk Jan s.d. Des) dengan query yang kompatibel baik untuk MySQL di production maupun SQLite di testing environment.
+     - Perkara Masuk dihitung dari `Perkara` berdasarkan `tanggal_laporan_kejadian` pada tahun anggaran terpilih.
+     - Perkara Selesai dihitung dari `TahapanPerkara` berjenis `TAHAP_2` berstatus `final` pada tahun anggaran terpilih dari berkas perkara berstatus formal `selesai`.
+     - Mengembalikan data `labels`, `incoming`, `completed`, `totalIncoming`, `totalCompleted`, dan `clearanceRate` (persentase rasio penyelesaian perkara).
+     - Di-cache selama 120 detik (`dashboard_monthly_cases_{tahun}`) dan di-invalidasi otomatis pada mutasi data via `DashboardService::clearCache()`.
+  3. **Komponen Blade `<x-dashboard.monthly-cases-chart>`**:
+     - Card container standar TailAdmin dengan layout `@container` dan border yang selaras dengan kartu Donut Chart di sebelahnya.
+     - Header kartu memuat judul, subjudul tahun anggaran, legenda dot 10px berwarna senada batang grafik, serta badge rasio penyelesaian tahunan.
+     - Body kartu memuat kontainer ApexCharts dengan fallback pesan informatif jika belum ada aktivitas pada tahun anggaran terpilih.
+  4. **Tata Letak Grid Dashboard Simetris**:
+     - **Baris 1**: 5 Kartu Statistik Ringkasan (`<x-dashboard.statistics />`).
+     - **Baris 2 (Visual Charts)**: Grid 12 kolom simetris (`lg:grid-cols-12 lg:gap-6`):
+       - `lg:col-span-6`: Donut Status Perkara (`<x-dashboard.case-status />`).
+       - `lg:col-span-6`: Tren Perkara Masuk & Selesai (`<x-dashboard.monthly-cases-chart />`).
+     - **Baris 3 (Operasional & Aktivitas)**: Grid 12 kolom simetris (`lg:grid-cols-12 lg:gap-6`):
+       - `lg:col-span-6`: Aktivitas Penyidikan Terkini (`<x-dashboard.recent-activities />`).
+       - `lg:col-span-6`: Rata-rata Penyelesaian per Tahap (`<x-dashboard.average-stage />`).
+     - **Baris 4 (Tabel Detail Utama)**: Tabel Prioritas Progress Perkara (`<x-dashboard.progress-perkara />`) full width di posisi paling bawah.
+- Konsekuensi: Tampilan dashboard monitoring perkara menjadi sangat seimbang secara visual dan fungsional, memberikan gambaran produktivitas penyidikan tahunan secara visual, serta terverifikasi 100% lulus 244 tes otomatis Pest PHP dan linter Laravel Pint.

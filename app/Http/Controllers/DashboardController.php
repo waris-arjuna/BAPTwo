@@ -27,6 +27,7 @@ class DashboardController extends Controller
 
         $statistics = $this->dashboardService->getStatistics($tahun);
         $caseStatus = $this->dashboardService->getCaseStatusData($tahun);
+        $monthlyCases = $this->dashboardService->getMonthlyCasesTrends($tahun);
         $stageAverages = $this->dashboardService->getStageAverageDays($tahun);
         $perkaraList = $this->dashboardService->getPriorityProgressPerkara($request);
         $availableYears = $this->dashboardService->getAvailableYears();
@@ -37,6 +38,7 @@ class DashboardController extends Controller
             'tahun' => $tahun,
             'statistics' => $statistics,
             'caseStatus' => $caseStatus,
+            'monthlyCases' => $monthlyCases,
             'stageAverages' => $stageAverages,
             'recentActivities' => $recentActivities,
             'perkaraList' => $perkaraList,

@@ -37,23 +37,33 @@
         {{-- Statistics --}}
         <x-dashboard.statistics :statistics="$statistics ?? null" :tahun="$tahun ?? date('Y')" />
 
-        {{-- Visual Statistics & Aktivitas (Baris 1: Status Perkara 6 Kolom & Aktivitas Terkini 6 Kolom) --}}
-        <div class="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-6">
+        {{-- Baris 2: Visual Charts (Donut Status Perkara 6 Kolom & Tren Bulanan ApexCharts 6 Kolom) --}}
+        <div class="grid grid-cols-1 items-stretch gap-4 lg:grid-cols-12 lg:gap-6">
 
-            <div class="lg:col-span-6">
+            <div class="flex flex-col lg:col-span-6">
                 <x-dashboard.case-status :data="$caseStatus ?? null" :tahun="$tahun ?? date('Y')" />
             </div>
+
+            <div class="flex flex-col lg:col-span-6">
+                <x-dashboard.monthly-cases-chart :data="$monthlyCases ?? null" :tahun="$tahun ?? date('Y')" />
+            </div>
+
+        </div>
+
+        {{-- Baris 3: Operasional & Aktivitas (Aktivitas Terkini 6 Kolom & Rata-rata Penyelesaian per Tahap 6 Kolom) --}}
+        <div class="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-6">
 
             <div class="lg:col-span-6">
                 <x-dashboard.recent-activities :activities="$recentActivities ?? null" />
             </div>
 
+            <div class="lg:col-span-6">
+                <x-dashboard.average-stage :stageAverages="$stageAverages ?? null" :tahun="$tahun ?? date('Y')" />
+            </div>
+
         </div>
 
-        {{-- Baris 2: Rata-rata Penyelesaian per Tahap (Full Width) --}}
-        <x-dashboard.average-stage :stageAverages="$stageAverages ?? null" :tahun="$tahun ?? date('Y')" />
-
-        {{-- Baris 3: Progress Perkara Table (Paling Bawah - Poin 6) --}}
+        {{-- Baris 4: Progress Perkara Table (Paling Bawah - Poin 6) --}}
         <x-dashboard.progress-perkara :perkaraList="$perkaraList ?? null" />
 
     </div>

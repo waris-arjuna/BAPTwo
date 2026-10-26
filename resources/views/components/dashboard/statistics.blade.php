@@ -12,7 +12,7 @@
             $isUrgentAction = $stat['title'] === 'Menunggu Verifikasi Penyidik' && (int)$stat['value'] > 0;
             $isPrimaryWorkload = $stat['title'] === 'Perkara Berjalan';
         @endphp
-        <div class="relative rounded-2xl border bg-white p-5 shadow-theme-xs dark:bg-white/[0.03] {{ $isUrgentAction ? 'border-warning-300 ring-1 ring-warning-400/20 dark:border-warning-500/40' : ($isPrimaryWorkload ? 'border-brand-300/80 dark:border-brand-500/30' : 'border-gray-200 dark:border-gray-800') }}">
+        <div class="relative flex h-full flex-col justify-between rounded-2xl border bg-white p-5 shadow-theme-xs dark:bg-white/[0.03] {{ $isUrgentAction ? 'border-warning-300 ring-1 ring-warning-400/20 dark:border-warning-500/40' : ($isPrimaryWorkload ? 'border-brand-300/80 dark:border-brand-500/30' : 'border-gray-200 dark:border-gray-800') }}">
 
             <div class="flex items-start justify-between gap-3">
 

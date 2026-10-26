@@ -303,7 +303,7 @@ stateDiagram-v2
 
 ---
 
-## 10. Arsitektur Dashboard Monitoring & Analitik Perkara (D-048, D-052, D-056)
+## 10. Arsitektur Dashboard Monitoring & Analitik Perkara (D-048, D-052, D-056, D-057, D-058, D-059)
 
 - **Zona Waktu Operasional Tunggal**: Seluruh tanggal operasional dan evaluasi sisa hari SLA dikunci pada zona waktu **WITA (`Asia/Makassar`)** melalui konstanta `DashboardService::ZONA_WAKTU`.
 - **5 Kartu Statistik Utama (`getStatistics`)**:
@@ -313,17 +313,28 @@ stateDiagram-v2
   4. *Selesai*: Dihitung murni dari `scopeSelesai()` (`status_formal = 'selesai'`) tanpa fallback progress.
   5. *Rata-rata Waktu Penyelesaian*: Durasi hari kalender dari `tanggal_surat` SPDP s.d. Tahap II dengan eager loading tahapan final, mengabaikan anomali data tanggal terbalik.
 - **Donut Chart Perkara Tahun Berjalan (`getCaseStatusData`)**:
-  - Native SVG chart tanpa library berat.
+  - Native SVG chart tanpa library berat dengan radius `r=54` dan layout 2 kolom responsif `@container`.
   - Persentase bilangan bulat dihitung menggunakan algoritma **Largest Remainder Method (Hare-Niemeyer)** untuk menjamin total akumulasi selalu tepat 100%.
   - 4 Sub-kategori SLA pada Dalam Proses: *Belum Ada SPDP*, *Dalam SLA (> 7 hari)*, *Mendekati Batas (≤ 7 hari)*, dan *Melewati SLA (< hari ini)* via `DATE(sla_deadline)`.
   - Filter tahun berjalan global di atas statistik dan filter bulan pada kartu Donut Chart yang memuat data secara live via AJAX partial.
+- **Grafik Tren Perkara Masuk & Selesai (`getMonthlyCasesTrends`)**:
+  - Visualisasi grafik batang bertingkat berbasis pustaka `ApexCharts` yang membandingkan Perkara Masuk (`tanggal_laporan_kejadian`) dan Perkara Selesai (`tanggal_surat` Tahap II final berkas selesai) selama 12 bulan (Januari s.d. Desember).
+  - Menyediakan metrik total tahunan dan rasio penyelesaian perkara (`clearanceRate`).
+  - Dinamis mengikuti pergantian tema gelap / terang via event `theme-changed`.
 - **Rata-rata Hari Kerja Antar-Tahap (`getStageAverageDays`)**:
   - Mengukur durasi hari kerja riil (`diffInWeekdays`, mengecualikan Sabtu/Minggu) antar-tahap berurutan: Sprindik ➔ SPDP, SPDP ➔ Tahap 1, Tahap 1 ➔ P-21, P-21 ➔ Tahap 2.
+- **Feed Aktivitas Penyidikan Terkini (`getRecentActivities`)**:
+  - Menampilkan riwayat aksi audit log dengan toggle tab instan "Milestone Penting" vs "Semua Aktivitas".
 - **Tabel Prioritas Progress Perkara (`getPriorityProgressPerkara`)**:
   - Default query tanpa filter status hanya menampilkan berkas dalam proses (`scopeDalamProses()`), menyembunyikan berkas Selesai dan Tidak Selesai (SP3).
   - Urutan prioritas portabel: `sla_deadline` ASC (dengan NULL di paling belakang via `orderByRaw('sla_deadline IS NULL')`), lalu `progress_persen` ASC, lalu `created_at` ASC.
+- **Susunan Grid Dashboard Simetris**:
+  - Baris 1: 5 Kartu Statistik Utama.
+  - Baris 2: Visual Charts (`lg:col-span-6` Donut Status Perkara & `lg:col-span-6` Tren Bulanan ApexCharts).
+  - Baris 3: Operasional & Aktivitas (`lg:col-span-6` Aktivitas Terkini & `lg:col-span-6` Rata-rata Tahap).
+  - Baris 4: Tabel Prioritas Progress Perkara (Full Width).
 - **Strategi Caching & Invalidasi**:
-  - Statistik dan rata-rata tahap di-cache selama 120 detik (`dashboard_stats_{tahun}` & `dashboard_stage_averages_{tahun}`) dan di-invalidasi otomatis oleh event mutasi data melalui `DashboardService::clearCache()`.
+  - Seluruh data analitik di-cache selama 120 detik (`dashboard_stats_{tahun}`, `dashboard_stage_averages_{tahun}`, `dashboard_monthly_cases_{tahun}`) dan di-invalidasi otomatis oleh event mutasi data melalui `DashboardService::clearCache()`.
   - 20 Pasal UU (Kesehatan, Pangan, Perlindungan Konsumen, Narkotika, Psikotropika, KUHP).
   - 20 Instansi Hukum (Kejati Kalsel, 13 Kejari, Pengadilan Tinggi, 5 Pengadilan Negeri se-Kalsel).
   - 20 Jaksa Penuntut Umum resmi lengkap NIP dan pangkat/golongan.
