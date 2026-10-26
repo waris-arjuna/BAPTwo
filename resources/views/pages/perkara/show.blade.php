@@ -2,87 +2,6 @@
     $title = 'Detail Perkara & Berkas Perkara';
     $isLocked = $perkara->isPerkaraLocked();
     $tkpAlamat = $perkara->tkp?->alamat;
-
-    $actionMeta = [
-        'aktifkan_dpo' => [
-            'label' => 'Penetapan Status DPO',
-            'icon' => 'fi-rr-shield-exclamation',
-            'badge' => 'bg-red-50 text-red-700 border-red-200 dark:bg-red-900/20 dark:text-red-300 dark:border-red-800',
-            'icon_bg' => 'bg-red-100 text-red-600 dark:bg-red-900/40 dark:text-red-400',
-        ],
-        'nonaktifkan_dpo' => [
-            'label' => 'Pencabutan Status DPO',
-            'icon' => 'fi-rr-user-check',
-            'badge' => 'bg-success-50 text-success-700 border-success-200 dark:bg-success-900/20 dark:text-success-300 dark:border-success-800',
-            'icon_bg' => 'bg-success-100 text-success-600 dark:bg-success-900/40 dark:text-success-400',
-        ],
-        'finalisasi_tahap' => [
-            'label' => 'Finalisasi Tahapan Perkara',
-            'icon' => 'fi-rr-badge-check',
-            'badge' => 'bg-brand-50 text-brand-700 border-brand-200 dark:bg-brand-900/20 dark:text-brand-300 dark:border-brand-800',
-            'icon_bg' => 'bg-brand-100 text-brand-600 dark:bg-brand-900/40 dark:text-brand-400',
-        ],
-        'simpan_draft_tahap' => [
-            'label' => 'Simpan Draft Tahapan Perkara',
-            'icon' => 'fi-rr-edit',
-            'badge' => 'bg-yellow-50 text-yellow-800 border-yellow-200 dark:bg-yellow-900/20 dark:text-yellow-300 dark:border-yellow-800',
-            'icon_bg' => 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-400',
-        ],
-        'simpan_sub_tahap' => [
-            'label' => 'Simpan Sub-Tahap Tersemat',
-            'icon' => 'fi-rr-document-signed',
-            'badge' => 'bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-900/20 dark:text-blue-300 dark:border-blue-800',
-            'icon_bg' => 'bg-blue-100 text-blue-600 dark:bg-blue-900/40 dark:text-blue-400',
-        ],
-        'finalisasi_perkara' => [
-            'label' => 'Finalisasi Data Perkara Pra-SPDP',
-            'icon' => 'fi-rr-lock',
-            'badge' => 'bg-brand-50 text-brand-700 border-brand-200 dark:bg-brand-900/20 dark:text-brand-300 dark:border-brand-800',
-            'icon_bg' => 'bg-brand-100 text-brand-600 dark:bg-brand-900/40 dark:text-brand-400',
-        ],
-        'simpan_draft_perkara' => [
-            'label' => 'Simpan Draft Data Perkara Pra-SPDP',
-            'icon' => 'fi-rr-edit',
-            'badge' => 'bg-yellow-50 text-yellow-800 border-yellow-200 dark:bg-yellow-900/20 dark:text-yellow-300 dark:border-yellow-800',
-            'icon_bg' => 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-400',
-        ],
-        'finalisasi_sprindik' => [
-            'label' => 'Finalisasi Surat Perintah Penyidikan',
-            'icon' => 'fi-rr-lock',
-            'badge' => 'bg-brand-50 text-brand-700 border-brand-200 dark:bg-brand-900/20 dark:text-brand-300 dark:border-brand-800',
-            'icon_bg' => 'bg-brand-100 text-brand-600 dark:bg-brand-900/40 dark:text-brand-400',
-        ],
-        'simpan_draft_sprindik' => [
-            'label' => 'Simpan Draft Sprindik',
-            'icon' => 'fi-rr-edit',
-            'badge' => 'bg-yellow-50 text-yellow-800 border-yellow-200 dark:bg-yellow-900/20 dark:text-yellow-300 dark:border-yellow-800',
-            'icon_bg' => 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-400',
-        ],
-        'finalisasi_laporan' => [
-            'label' => 'Finalisasi Laporan Kejadian',
-            'icon' => 'fi-rr-lock',
-            'badge' => 'bg-brand-50 text-brand-700 border-brand-200 dark:bg-brand-900/20 dark:text-brand-300 dark:border-brand-800',
-            'icon_bg' => 'bg-brand-100 text-brand-600 dark:bg-brand-900/40 dark:text-brand-400',
-        ],
-        'simpan_draft_laporan' => [
-            'label' => 'Simpan Draft Laporan Kejadian',
-            'icon' => 'fi-rr-edit',
-            'badge' => 'bg-yellow-50 text-yellow-800 border-yellow-200 dark:bg-yellow-900/20 dark:text-yellow-300 dark:border-yellow-800',
-            'icon_bg' => 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-400',
-        ],
-        'terbitkan_sp3' => [
-            'label' => 'Penerbitan SP3 (Penghentian Penyidikan)',
-            'icon' => 'fi-rr-ban',
-            'badge' => 'bg-red-50 text-red-700 border-red-200 dark:bg-red-900/20 dark:text-red-300 dark:border-red-800',
-            'icon_bg' => 'bg-red-100 text-red-600 dark:bg-red-900/40 dark:text-red-400',
-        ],
-        'sistem_tidak_selesai' => [
-            'label' => 'Batas Waktu Tahun Berakhir (Tidak Selesai Otomatis)',
-            'icon' => 'fi-rr-calendar-clock',
-            'badge' => 'bg-red-50 text-red-700 border-red-200 dark:bg-red-900/20 dark:text-red-300 dark:border-red-800',
-            'icon_bg' => 'bg-red-100 text-red-600 dark:bg-red-900/40 dark:text-red-400',
-        ],
-    ];
 @endphp
 
 @extends('layouts.app')
@@ -774,12 +693,7 @@
                     <div class="relative space-y-6 before:absolute before:bottom-2 before:left-[19px] before:top-2 before:w-0.5 before:bg-gray-200 dark:before:bg-gray-800">
                         @foreach ($perkara->auditLogs as $log)
                             @php
-                                $meta = $actionMeta[$log->aksi] ?? [
-                                    'label' => ucwords(str_replace('_', ' ', $log->aksi)),
-                                    'icon' => 'fi-rr-time-past',
-                                    'badge' => 'bg-gray-100 text-gray-700 border-gray-200 dark:bg-white/[0.05] dark:text-gray-300 dark:border-gray-800',
-                                    'icon_bg' => 'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400',
-                                ];
+                                $meta = $log->action_meta;
                                 $dataBaru = $log->data_baru ?? [];
                                 $dataLama = $log->data_lama ?? [];
                             @endphp

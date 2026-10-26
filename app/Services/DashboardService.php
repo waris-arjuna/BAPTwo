@@ -3,9 +3,11 @@
 namespace App\Services;
 
 use App\Enums\JenisTahap;
+use App\Models\AuditLog;
 use App\Models\BerkasPerkara;
 use App\Models\Perkara;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
@@ -612,5 +614,32 @@ class DashboardService
         }
 
         return ! empty($durations) ? (array_sum($durations) / count($durations)) : null;
+    }
+
+    /**
+     * Mengambil daftar aktivitas penyidikan terkini untuk widget dashboard (Milestone & Semua).
+     *
+     * @return array{milestones: Collection<int, AuditLog>, all: Collection<int, AuditLog>}
+     */
+    public function getRecentActivities(?int $limit = 6): array
+    {
+        $limit = $limit ?: 6;
+
+        $baseQuery = AuditLog::query()
+            ->with(['user', 'perkara', 'berkasPerkara.tersangka']);
+
+        $milestones = (clone $baseQuery)
+            ->milestone()
+            ->terkini($limit)
+            ->get();
+
+        $all = (clone $baseQuery)
+            ->terkini($limit)
+            ->get();
+
+        return [
+            'milestones' => $milestones,
+            'all' => $all,
+        ];
     }
 }

@@ -1185,3 +1185,31 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
   8. **Optimalisasi `getAvailableYears`**:
      - Menggantikan penarikan seluruh data tanggal ke memori PHP dengan kueri database `DISTINCT YEAR(tanggal_laporan_kejadian)` (MySQL) atau `DISTINCT strftime('%Y', tanggal_laporan_kejadian)` (SQLite), ditambah tahun berjalan zona Makassar, terurut menurun.
 - Konsekuensi: Seluruh data statistik dashboard konsisten, akurat, bebas anomali tanggal/status, berkinerja tinggi, dan terverifikasi penuh oleh 231 tes otomatis Pest (2162 assertions) serta standar Laravel Pint.
+
+---
+
+## D-057 : Widget Feed Aktivitas Penyidikan Terkini dan Restrukturisasi Grid Dashboard BAPTwo
+
+- Tanggal: 2026-10-26
+- Status: Disepakati & Diimplementasikan
+- Konteks: Dashboard memerlukan pemantauan riwayat dan perkembangan penyidikan perkara secara real-time (Audit Log) serta tata letak grid yang lebih seimbang antara Donut Status Perkara, Aktivitas Terkini, dan Rata-rata Penyelesaian per Tahap.
+- Keputusan:
+  1. **Pemusatan Metadata Aksi Audit Log**:
+     - Konstanta `MILESTONE_ACTIONS`, method `isMilestone()`, accessor `action_meta`, serta query scope `scopeMilestone()` dan `scopeTerkini()` dipusatkan pada model `AuditLog`.
+     - Seluruh metadata (label resmi Bahasa Indonesia operasional hukum, icon Flaticon `fi-rr-*`, badge Tailwind, icon background) terkelola dalam method statis `AuditLog::actionMeta()`.
+  2. **Data Provider Terpadu**:
+     - Method `DashboardService::getRecentActivities(?int $limit = 6)` memuat feed terkini (`milestones` dan `all`) dengan batasan limit 6 per kategori.
+     - Eager loading relasi `['user', 'perkara', 'berkasPerkara.tersangka']` diterapkan secara eksplisit untuk mencegah masalah query N+1.
+     - Dioper ke view dashboard melalui `DashboardController::index()` dalam variabel `$recentActivities`.
+  3. **Komponen Blade `<x-dashboard.recent-activities>`**:
+     - Menggunakan toggle filter client-side instan berbasis Alpine.js (`x-data="{ tab: 'milestones' }"`) antara "Milestone Penting" dan "Semua Aktivitas".
+     - Menyediakan 3 state lengkap: state ada data, empty state informatif berikon Flaticon `fi-rr-clipboard-list-check`, dan fallback state.
+     - Setiap item aktivitas menampilkan label aksi badge, waktu relatif (`diffForHumans()`), badge nomor perkara/LK yang dapat diklik langsung ke detail perkara (`route('perkara.show', $id)`), nama tersangka, dan nama petugas/penyidik yang mengeksekusi.
+     - Bebas dari tanda em dash (`—`) dan buzzword generik AI-slop sesuai aturan D-042.
+  4. **Restrukturisasi Grid Dashboard**:
+     - Baris 1: Grid 12 kolom seimbang berdampingan (`lg:col-span-6` Donut Status Perkara + `lg:col-span-6` Aktivitas Penyidikan Terkini).
+     - Baris 2: Kartu Rata-rata Penyelesaian per Tahap (`x-dashboard.average-stage`) full-width.
+     - Baris 3: Tabel Prioritas Progress Perkara (`x-dashboard.progress-perkara`) di posisi paling bawah.
+  5. **Refactor Detail Perkara (`show.blade.php`)**:
+     - Array lokal `$actionMeta` 80 baris pada `resources/views/pages/perkara/show.blade.php` dihapus dan digantikan oleh panggilan properti terpusat `$log->action_meta`.
+- Konsekuensi: Tampilan dashboard BAPTwo lebih informatif, visual seimbang dan proporsional, data audit log tersaji real-time, bebas dari redundansi kode, serta terverifikasi 100% lulus 239 tes otomatis Pest PHP dan linter Laravel Pint.

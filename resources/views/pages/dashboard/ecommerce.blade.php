@@ -37,20 +37,23 @@
         {{-- Statistics --}}
         <x-dashboard.statistics :statistics="$statistics ?? null" :tahun="$tahun ?? date('Y')" />
 
-        {{-- Visual Statistics (Grafik & Status) --}}
+        {{-- Visual Statistics & Aktivitas (Baris 1: Status Perkara 6 Kolom & Aktivitas Terkini 6 Kolom) --}}
         <div class="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-6">
 
-            <div class="lg:col-span-7">
-                <x-dashboard.average-stage :stageAverages="$stageAverages ?? null" :tahun="$tahun ?? date('Y')" />
+            <div class="lg:col-span-6">
+                <x-dashboard.case-status :data="$caseStatus ?? null" :tahun="$tahun ?? date('Y')" />
             </div>
 
-            <div class="lg:col-span-5">
-                <x-dashboard.case-status :data="$caseStatus ?? null" :tahun="$tahun ?? date('Y')" />
+            <div class="lg:col-span-6">
+                <x-dashboard.recent-activities :activities="$recentActivities ?? null" />
             </div>
 
         </div>
 
-        {{-- Progress Perkara Table (Paling Bawah - Poin 6) --}}
+        {{-- Baris 2: Rata-rata Penyelesaian per Tahap (Full Width) --}}
+        <x-dashboard.average-stage :stageAverages="$stageAverages ?? null" :tahun="$tahun ?? date('Y')" />
+
+        {{-- Baris 3: Progress Perkara Table (Paling Bawah - Poin 6) --}}
         <x-dashboard.progress-perkara :perkaraList="$perkaraList ?? null" />
 
     </div>
