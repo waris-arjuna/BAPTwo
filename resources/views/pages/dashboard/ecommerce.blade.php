@@ -47,20 +47,16 @@
             <div class="flex flex-col lg:col-span-6">
                 <x-dashboard.monthly-cases-chart :data="$monthlyCases ?? null" :tahun="$tahun ?? date('Y')" />
             </div>
-
         </div>
 
         {{-- Baris 3: Operasional & Aktivitas (Aktivitas Terkini 6 Kolom & Rata-rata Penyelesaian per Tahap 6 Kolom) --}}
         <div class="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-6">
-
             <div class="lg:col-span-6">
                 <x-dashboard.recent-activities :activities="$recentActivities ?? null" />
             </div>
-
             <div class="lg:col-span-6">
                 <x-dashboard.average-stage :stageAverages="$stageAverages ?? null" :tahun="$tahun ?? date('Y')" />
             </div>
-
         </div>
 
         {{-- Baris 4: Progress Perkara Table (Paling Bawah - Poin 6) --}}

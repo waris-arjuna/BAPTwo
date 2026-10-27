@@ -33,6 +33,13 @@ class PerkaraRekapExport
         12 => 'Desember',
     ];
 
+    /**
+     * Menyimpan daftar baris yang memiliki lebih dari satu tersangka.
+     *
+     * @var int[]
+     */
+    protected array $multiTersangkaRows = [];
+
     public function __construct(
         protected string $mode = 'semua',
         protected ?int $tahun = null,
@@ -49,6 +56,8 @@ class PerkaraRekapExport
      */
     public function download(string $filename = 'rekap_perkara.xlsx'): StreamedResponse
     {
+        @set_time_limit(120);
+
         $spreadsheet = $this->generateSpreadsheet();
         $writer = new Xlsx($spreadsheet);
 
@@ -102,6 +111,7 @@ class PerkaraRekapExport
         // 4. Baris 7 dan Seterusnya: Isi Data Perkara
         $currentRow = 7;
         $iteration = 1;
+        $this->multiTersangkaRows = [];
 
         foreach ($this->query()->lazy(100) as $perkara) {
             $this->populateRow($sheet, $currentRow, $iteration, $perkara);
@@ -109,10 +119,49 @@ class PerkaraRekapExport
             $iteration++;
         }
 
+        $lastRow = $currentRow - 1;
+        if ($lastRow >= 7) {
+            $this->applyBulkStyles($sheet, $lastRow);
+        }
+
         // Freeze panes di bawah baris nomor kolom (di bawah baris 6)
         $sheet->freezePane('A7');
 
         return $spreadsheet;
+    }
+
+    /**
+     * Terapkan styling dalam satu rentang bulk (menghindari timeout PhpSpreadsheet pada dataset besar).
+     */
+    protected function applyBulkStyles(Worksheet $sheet, int $lastRow): void
+    {
+        // 1. Terapkan border tipis, vertical center, dan wrap text ke seluruh area data
+        $dataRange = "A7:AS{$lastRow}";
+        $sheet->getStyle($dataRange)->getBorders()->getAllBorders()->setBorderStyle(Border::BORDER_THIN);
+        $sheet->getStyle($dataRange)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+        $sheet->getStyle($dataRange)->getAlignment()->setWrapText(true);
+
+        // 2. Kolom-kolom tanggal: format dd/mm/yyyy dan horizontal center
+        $dateCols = ['C', 'E', 'U', 'W', 'Y', 'AA', 'AC', 'AE', 'AG', 'AI', 'AL', 'AN'];
+        foreach ($dateCols as $col) {
+            $colRange = "{$col}7:{$col}{$lastRow}";
+            $sheet->getStyle($colRange)->getNumberFormat()->setFormatCode('dd/mm/yyyy');
+            $sheet->getStyle($colRange)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        }
+
+        // 3. Kolom-kolom teks posisi horizontal tengah
+        $centerCols = ['A', 'J', 'K', 'N', 'Q', 'R', 'S'];
+        foreach ($centerCols as $col) {
+            $colRange = "{$col}7:{$col}{$lastRow}";
+            $sheet->getStyle($colRange)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        }
+
+        // 4. Baris yang memiliki multi-tersangka dikembalikan ke rata kiri pada kolom J, K, N
+        foreach ($this->multiTersangkaRows as $row) {
+            $sheet->getStyle("J{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+            $sheet->getStyle("K{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+            $sheet->getStyle("N{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+        }
     }
 
     /**
@@ -219,7 +268,7 @@ class PerkaraRekapExport
         $tkp = $perkara->tkp;
 
         // 1. No. (Kolom A)
-        $this->setTextCell($sheet, "A{$row}", $no, Alignment::HORIZONTAL_CENTER);
+        $this->setTextCell($sheet, "A{$row}", $no);
 
         // 2. Laporan Kejadian - Nomor (Kolom B)
         $this->setTextCell($sheet, "B{$row}", $perkara->nomor_laporan_kejadian ?: '-');
@@ -253,6 +302,9 @@ class PerkaraRekapExport
         // 9–14. Informasi Pelaku / Tersangka (Kolom I–N)
         $tersangkas = $perkara->tersangkas->sortBy('id')->values();
         $isMultiTersangka = $tersangkas->count() > 1;
+        if ($isMultiTersangka) {
+            $this->multiTersangkaRows[] = $row;
+        }
 
         $namaList = [];
         $jkList = [];
@@ -274,25 +326,29 @@ class PerkaraRekapExport
                 $namaList[] = $prefix.($t->nama ?: '-');
                 $jkList[] = $prefix.$this->formatJenisKelamin($t->jenis_kelamin);
                 $agamaList[] = $prefix.($t->agama ? ucfirst($t->agama) : '-');
-                $alamatList[] = $prefix.($t->alamat?->alamat_lengkap ?: '-');
+                $alamatList[] = $prefix.$this->sanitizeAlamatTersangka($t->alamat?->alamat_lengkap ?: '-');
                 $pekerjaanList[] = $prefix.($t->pekerjaan ?: '-');
                 $kewarganegaraanList[] = $prefix.($t->kewarganegaraan ?: 'WNI');
             }
         }
 
         $this->setTextCell($sheet, "I{$row}", implode("\n", $namaList));
-        $this->setTextCell($sheet, "J{$row}", implode("\n", $jkList), $isMultiTersangka ? Alignment::HORIZONTAL_LEFT : Alignment::HORIZONTAL_CENTER);
-        $this->setTextCell($sheet, "K{$row}", implode("\n", $agamaList), $isMultiTersangka ? Alignment::HORIZONTAL_LEFT : Alignment::HORIZONTAL_CENTER);
+        $this->setTextCell($sheet, "J{$row}", implode("\n", $jkList));
+        $this->setTextCell($sheet, "K{$row}", implode("\n", $agamaList));
         $this->setTextCell($sheet, "L{$row}", implode("\n", $alamatList));
         $this->setTextCell($sheet, "M{$row}", implode("\n", $pekerjaanList));
-        $this->setTextCell($sheet, "N{$row}", implode("\n", $kewarganegaraanList), $isMultiTersangka ? Alignment::HORIZONTAL_LEFT : Alignment::HORIZONTAL_CENTER);
+        $this->setTextCell($sheet, "N{$row}", implode("\n", $kewarganegaraanList));
 
         // 15–19. Informasi Sarana / TKP (Kolom O–S)
-        $this->setTextCell($sheet, "O{$row}", $tkp?->alamat?->nama ?: '-');
-        $this->setTextCell($sheet, "P{$row}", $tkp?->alamat?->alamat_lengkap ?: '-');
-        $this->setTextCell($sheet, "Q{$row}", $tkp?->klasifikasi ? ucfirst($tkp->klasifikasi) : '-', Alignment::HORIZONTAL_CENTER);
-        $this->setTextCell($sheet, "R{$row}", $tkp?->legalitas ? ucfirst($tkp->legalitas) : '-', Alignment::HORIZONTAL_CENTER);
-        $this->setTextCell($sheet, "S{$row}", $tkp?->modus ? ucfirst($tkp->modus) : '-', Alignment::HORIZONTAL_CENTER);
+        $namaTkp = $tkp?->alamat?->nama ?: '-';
+        $rawAlamatTkp = $tkp?->alamat?->alamat_lengkap ?: '-';
+        $cleanAlamatTkp = $this->sanitizeAlamatTkp($rawAlamatTkp, $tkp?->alamat?->nama);
+
+        $this->setTextCell($sheet, "O{$row}", $namaTkp);
+        $this->setTextCell($sheet, "P{$row}", $cleanAlamatTkp);
+        $this->setTextCell($sheet, "Q{$row}", $tkp?->klasifikasi ? ucfirst($tkp->klasifikasi) : '-');
+        $this->setTextCell($sheet, "R{$row}", $tkp?->legalitas ? ucfirst($tkp->legalitas) : '-');
+        $this->setTextCell($sheet, "S{$row}", $tkp?->modus ? ucfirst($tkp->modus) : '-');
 
         // 20–40. Proses Penyidikan (Kolom T–AN)
         // SPDP (T & U)
@@ -330,7 +386,7 @@ class PerkaraRekapExport
                 $ketList[] = $pfx.($put->catatan ?: '-');
             }
             $this->setTextCell($sheet, "AH{$row}", implode("\n", $nomorList));
-            $this->setTextCell($sheet, "AI{$row}", implode("\n", $tanggalList), Alignment::HORIZONTAL_CENTER);
+            $this->setTextCell($sheet, "AI{$row}", implode("\n", $tanggalList));
             $this->setTextCell($sheet, "AJ{$row}", implode("\n", $ketList));
         } elseif ($putusanItem) {
             $this->setTextCell($sheet, "AH{$row}", $putusanItem->nomor_surat ?: '-');
@@ -353,7 +409,7 @@ class PerkaraRekapExport
                 $tanggalList[] = $pfx.($d->tanggal_penetapan ? Carbon::parse($d->tanggal_penetapan)->format('d/m/Y') : '-');
             }
             $this->setTextCell($sheet, "AK{$row}", implode("\n", $nomorList));
-            $this->setTextCell($sheet, "AL{$row}", implode("\n", $tanggalList), Alignment::HORIZONTAL_CENTER);
+            $this->setTextCell($sheet, "AL{$row}", implode("\n", $tanggalList));
         } elseif ($dpoFirst = $dpoList->first()) {
             $this->setTextCell($sheet, "AK{$row}", $dpoFirst->nomor_surat ?: '-');
             $this->setDateCell($sheet, "AL{$row}", $dpoFirst->tanggal_penetapan);
@@ -373,7 +429,7 @@ class PerkaraRekapExport
                 $tanggalList[] = $pfx.($s->tanggal_sp3 ? Carbon::parse($s->tanggal_sp3)->format('d/m/Y') : '-');
             }
             $this->setTextCell($sheet, "AM{$row}", implode("\n", $nomorList));
-            $this->setTextCell($sheet, "AN{$row}", implode("\n", $tanggalList), Alignment::HORIZONTAL_CENTER);
+            $this->setTextCell($sheet, "AN{$row}", implode("\n", $tanggalList));
         } elseif ($sp3First = $sp3List->first()) {
             $this->setTextCell($sheet, "AM{$row}", $sp3First->nomor_surat ?: '-');
             $this->setDateCell($sheet, "AN{$row}", $sp3First->tanggal_sp3);
@@ -422,10 +478,6 @@ class PerkaraRekapExport
         $kendalaList = array_unique(array_filter($kendalaList));
         $kendalaVal = ! empty($kendalaList) ? $this->formatNumberedList($kendalaList) : '-';
         $this->setTextCell($sheet, "AS{$row}", $kendalaVal);
-
-        // Terapkan border tipis dan alignment vertikal tengah ke seluruh sel pada baris data ini
-        $sheet->getStyle("A{$row}:AS{$row}")->getBorders()->getAllBorders()->setBorderStyle(Border::BORDER_THIN);
-        $sheet->getStyle("A{$row}:AS{$row}")->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
     }
 
     /**
@@ -444,7 +496,7 @@ class PerkaraRekapExport
                 $tanggalList[] = $pfx.($tahap->tanggal_surat ? $tahap->tanggal_surat->format('d/m/Y') : '-');
             }
             $this->setTextCell($sheet, "{$colNomor}{$row}", implode("\n", $nomorList));
-            $this->setTextCell($sheet, "{$colTanggal}{$row}", implode("\n", $tanggalList), Alignment::HORIZONTAL_CENTER);
+            $this->setTextCell($sheet, "{$colTanggal}{$row}", implode("\n", $tanggalList));
         } elseif ($item = $collection->first()) {
             $this->setTextCell($sheet, "{$colNomor}{$row}", $item->nomor_surat ?: '-');
             $this->setDateCell($sheet, "{$colTanggal}{$row}", $item->tanggal_surat);
@@ -487,7 +539,7 @@ class PerkaraRekapExport
                 $tanggalList[] = $pfx."{$it['label']}: ".($it['tanggal'] ? $it['tanggal']->format('d/m/Y') : '-');
             }
             $this->setTextCell($sheet, "{$colNomor}{$row}", implode("\n", $nomorList));
-            $this->setTextCell($sheet, "{$colTanggal}{$row}", implode("\n", $tanggalList), Alignment::HORIZONTAL_CENTER);
+            $this->setTextCell($sheet, "{$colTanggal}{$row}", implode("\n", $tanggalList));
         } elseif (count($items) === 1) {
             $it = $items[0];
             $this->setTextCell($sheet, "{$colNomor}{$row}", $it['nomor'] ? "{$it['label']}: {$it['nomor']}" : '-');
@@ -543,6 +595,45 @@ class PerkaraRekapExport
     }
 
     /**
+     * Membersihkan string alamat tersangka untuk ekspor Excel.
+     * Menghapus awalan "Tempat tinggal tersangka di " jika ada.
+     */
+    protected function sanitizeAlamatTersangka(?string $alamat): string
+    {
+        if (! $alamat || $alamat === '-') {
+            return '-';
+        }
+
+        $cleaned = preg_replace('/^\s*tempat\s+tinggal\s+(?:tersangka\s+)?(?:di\s*)?[:,-]?\s*/iu', '', $alamat);
+        $cleaned = preg_replace('/tempat\s+tinggal\s+tersangka\s+di\s*/iu', '', (string) $cleaned);
+        $cleaned = trim((string) $cleaned, " \t\n\r\0\x0B,");
+
+        return $cleaned !== '' ? $cleaned : '-';
+    }
+
+    /**
+     * Membersihkan string alamat TKP / sarana untuk ekspor Excel.
+     * Menghapus nama sarana / TKP yang berulang di kolom alamat karena sudah memiliki kolom tersendiri (Kolom O).
+     */
+    protected function sanitizeAlamatTkp(?string $alamat, ?string $namaTkp): string
+    {
+        if (! $alamat || $alamat === '-') {
+            return '-';
+        }
+
+        $cleaned = $alamat;
+
+        if (! empty($namaTkp) && $namaTkp !== '-') {
+            $escapedNama = preg_quote(trim($namaTkp), '/');
+            $cleaned = preg_replace('/^\s*'.$escapedNama.'\s*[,:\-–—]?\s*/iu', '', $cleaned);
+        }
+
+        $cleaned = trim((string) $cleaned, " \t\n\r\0\x0B,");
+
+        return $cleaned !== '' ? $cleaned : '-';
+    }
+
+    /**
      * Set sel tanggal Excel asli dengan format tampilan dd/mm/yyyy.
      *
      * @param  Worksheet  $sheet
@@ -553,11 +644,8 @@ class PerkaraRekapExport
             $carbon = $dateValue instanceof Carbon ? $dateValue : Carbon::parse($dateValue);
             $excelDate = Date::dateTimeToExcel($carbon);
             $sheet->setCellValue($cellCoord, $excelDate);
-            $sheet->getStyle($cellCoord)->getNumberFormat()->setFormatCode('dd/mm/yyyy');
-            $sheet->getStyle($cellCoord)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
         } else {
             $sheet->setCellValueExplicit($cellCoord, '-', DataType::TYPE_STRING);
-            $sheet->getStyle($cellCoord)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
         }
     }
 
@@ -566,7 +654,7 @@ class PerkaraRekapExport
      *
      * @param  Worksheet  $sheet
      */
-    protected function setTextCell($sheet, string $cellCoord, mixed $value, string $alignH = Alignment::HORIZONTAL_LEFT): void
+    protected function setTextCell($sheet, string $cellCoord, mixed $value, ?string $alignH = null): void
     {
         $val = $value !== null && $value !== '' ? (string) $value : '-';
 
@@ -576,7 +664,9 @@ class PerkaraRekapExport
         }
 
         $sheet->setCellValueExplicit($cellCoord, $val, DataType::TYPE_STRING);
-        $sheet->getStyle($cellCoord)->getAlignment()->setHorizontal($alignH);
-        $sheet->getStyle($cellCoord)->getAlignment()->setWrapText(true);
+
+        if ($alignH !== null && $alignH !== Alignment::HORIZONTAL_LEFT) {
+            $sheet->getStyle($cellCoord)->getAlignment()->setHorizontal($alignH);
+        }
     }
 }

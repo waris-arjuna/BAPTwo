@@ -279,6 +279,58 @@ test('kolom alamat tersangka, nama tkp, dan alamat tkp menghasilkan data lengkap
     );
 });
 
+test('ekspor excel menghapus Tempat tinggal tersangka di dan nama sarana pada kolom alamat', function () {
+    $alamatTsk = Alamat::create([
+        'alamat_detail' => 'Tempat tinggal tersangka di Jl. Hasan Basry No. 88',
+        'rt' => '001',
+        'rw' => '002',
+        'desa_nama' => 'Pangeran',
+        'kecamatan_nama' => 'Banjarmasin Utara',
+        'kabupaten_nama' => 'Kota Banjarmasin',
+        'provinsi_nama' => 'Kalimantan Selatan',
+    ]);
+    $this->tersangka->update(['alamat_id' => $alamatTsk->id]);
+
+    $alamatTkp = Alamat::create([
+        'nama' => 'Apotek Sehat Barokah',
+        'alamat_detail' => 'Apotek Sehat Barokah, Jl. Veteran No. 45',
+        'rt' => '003',
+        'rw' => '001',
+        'desa_nama' => 'Melayu',
+        'kecamatan_nama' => 'Banjarmasin Tengah',
+        'kabupaten_nama' => 'Kota Banjarmasin',
+        'provinsi_nama' => 'Kalimantan Selatan',
+    ]);
+    $tkp = Tkp::create([
+        'alamat_id' => $alamatTkp->id,
+        'klasifikasi' => 'retailer',
+        'legalitas' => 'legal',
+        'modus' => 'offline',
+    ]);
+    $this->perkara->update(['tkp_id' => $tkp->id]);
+
+    $export = new PerkaraRekapExport(mode: 'tahun', tahun: 2026);
+    $spreadsheet = $export->generateSpreadsheet();
+    $sheet = $spreadsheet->getActiveSheet();
+
+    // Kolom L (Kolom 12): Frasa 'Tempat tinggal tersangka di ' harus terhapus
+    $valL7 = $sheet->getCell('L7')->getValue();
+    expect($valL7)->not->toContain('Tempat tinggal tersangka di');
+    expect($valL7)->toBe(
+        'Jl. Hasan Basry No. 88, RT 001/RW 002, Desa/Kel. Pangeran, Kec. Banjarmasin Utara, Kota Banjarmasin, Kalimantan Selatan'
+    );
+
+    // Kolom O (Kolom 15): Nama Sarana / TKP tetap 'Apotek Sehat Barokah'
+    expect($sheet->getCell('O7')->getValue())->toBe('Apotek Sehat Barokah');
+
+    // Kolom P (Kolom 16): Nama sarana tidak boleh diulang di awal kolom alamat
+    $valP7 = $sheet->getCell('P7')->getValue();
+    expect($valP7)->not->toStartWith('Apotek Sehat Barokah');
+    expect($valP7)->toBe(
+        'Jl. Veteran No. 45, RT 003/RW 001, Desa/Kel. Melayu, Kec. Banjarmasin Tengah, Kota Banjarmasin, Kalimantan Selatan'
+    );
+});
+
 test('periode tanpa data perkara tidak mengunduh file dan memberikan respons warning', function () {
     // Mode tahun 2099 tanpa data
     $resEmpty = $this->actingAs($this->admin)->get(route('perkara.export', [

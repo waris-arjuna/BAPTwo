@@ -1276,3 +1276,69 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
        - `lg:col-span-6`: Rata-rata Penyelesaian per Tahap (`<x-dashboard.average-stage />`).
      - **Baris 4 (Tabel Detail Utama)**: Tabel Prioritas Progress Perkara (`<x-dashboard.progress-perkara />`) full width di posisi paling bawah.
 - Konsekuensi: Tampilan dashboard monitoring perkara menjadi sangat seimbang secara visual dan fungsional, memberikan gambaran produktivitas penyidikan tahunan secara visual, serta terverifikasi 100% lulus 244 tes otomatis Pest PHP dan linter Laravel Pint.
+
+---
+
+## D-060 : Standarisasi 1.000 Data Dummy Perkara, Perluasan Master Data, dan Penegakan Murni 1 Tersangka 1 Berkas
+
+- Tanggal: 2026-10-26
+- Status: Disepakati & Diimplementasikan (via interview /grill-me)
+- Konteks: Pengguna menghendaki peningkatan volume data uji seeder hingga tepat 1.000 data perkara yang sangat bervariasi untuk menguji performa analitik, monitoring dashboard, pencarian multi-kriteria, dan ekspor LAPJU. Selain itu, pengguna menginstruksikan penghapusan skenario multi-tersangka (2 atau 3 tersangka) agar murni memenuhi aturan D-035 (1 Perkara = 1 Tersangka = 1 Berkas Perkara dengan nomor berkas identik dengan nomor LK), serta memperluas seluruh master data (Pasal, Jaksa, Instansi, Panggol, Jabatan, dan Penyidik PPNS).
+- Keputusan:
+  1. **Penegakan Murni 1 Perkara = 1 Tersangka = 1 Berkas Perkara**:
+     - Seluruh logika pembentukan multi-tersangka dihapus sepenuhnya dari `DummyDataSeeder.php` (`jumlah_tersangka = 1` untuk seluruh 1.000 perkara).
+     - Kolom `nomor_berkas` selalu identik 100% dengan `nomor_laporan_kejadian` (tanpa suffix `/T2` atau `/T3`).
+  2. **Perluasan Master Data Menyeluruh**:
+     - **38 Pasal/UU**: Menjangkau tindak pidana bidang kesehatan (UU 17/2023 Pasal 435–441), pangan (UU 18/2012 Pasal 136–146), perlindungan konsumen (UU 8/1999 Pasal 62), narkotika (UU 35/2009 Pasal 114 & 129), psikotropika (UU 5/1997 Pasal 60 & 62), dan KUHP (Pasal 204, 55, 56, 378).
+     - **45 Jaksa Penuntut Umum**: Tersebar di Kejati Kalsel dan 13 Kejari se-Kalsel lengkap dengan NIP dan kepangkatan realistis.
+     - **20 Akun Penyidik PPNS**: 20 pengguna PPNS aktif (`penyidik@baptwo.test` s.d. `tri.ppns@baptwo.test`) dengan variasi jabatan fungsional, bidang, dan golongan.
+     - **9 Pangkat & Golongan**: Mencakup II/c s.d. IV/c.
+     - **9 Jabatan & 5 Bidang**: Mencakup jabatan fungsional pengawas farmasi makanan dan bidang teknis operasional.
+  3. **Distribusi Tepat 1.000 Perkara & Rentang 3 Tahun (2024–2026)**:
+     - 650 Perkara (65%) pada tahun berjalan 2026: tersebar di seluruh tahapan aktif (Pra-SPDP s.d. Tahap 2, Selesai 2026, SP3 2026, DPO aktif & nonaktif, peringatan SLA).
+     - 200 Perkara (20%) pada tahun 2025: terbagi antara status `selesai` dan `tidak_selesai` (lewat batas tahun 31 Desember atau SP3).
+     - 150 Perkara (15%) pada tahun 2024: terbagi antara status `selesai` dan `tidak_selesai`.
+     - 840 Berkas Perkara dan Tersangka (160 perkara berada di tahap Pra-SPDP LK/Sprindik).
+  4. **Pembersihan Idempoten & Kinerja Tinggi**:
+     - Pembersihan data lama menggunakan perulangan while-chunk terpadu pada `cleanupObsoleteDummyCases()` untuk menghapus ribuan record relasi tanpa memory exhaustion.
+     - Menggunakan `DB::disableQueryLog()` dan transaksi database berkala (commit per 50 perkara) sehingga 1.000 perkara beserta puluhan ribu relasi (~5.000 dokumen, ~2.700 tahapan, ~5.000 audit log) tertanam stabil dalam waktu ~1 menit.
+- Konsekuensi: Database pengujian BAPTwo memiliki 1.000 data perkara yang realistis, komprehensif, terstruktur rapi 1:1:1, dan terverifikasi 100% lulus oleh 244 tes otomatis Pest PHP dan linter Laravel Pint.
+
+---
+
+## D-061 : Optimasi Bulk Range Styling PhpSpreadsheet pada Ekspor Rekap LAPJU 45 Kolom
+
+- Tanggal: 2026-10-26
+- Status: Disepakati & Diimplementasikan
+- Konteks: Pada pengujian ekspor LAPJU dengan volume 1.000 data perkara, terjadi fatal error `Symfony\Component\ErrorHandler\Error\FatalError: Maximum execution time of 30 seconds exceeded` di `vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Style\Border.php:212`. Hasil diagnosis membuktikan bahwa query database berjalan sangat cepat (~0,49 detik), namun pemanggilan styling per sel dan per baris (`getStyle()` sebanyak 45.000 kali dan kalkulasi hash border ratusan ribu kali) memakan waktu hingga ~33 detik dan menembus limit 30 detik.
+- Keputusan:
+  1. **Bulk Range Styling Satu Kali (`applyBulkStyles`)**:
+     - Mengeliminasi pemanggilan border dan vertikal per baris di dalam `populateRow()`.
+     - Mengeliminasi pemanggilan `getStyle()` individual di dalam `setTextCell()` dan `setDateCell()`.
+     - Menerapkan border tipis, vertical center, dan wrap text sekaligus pada seluruh rentang data `A7:AS{$lastRow}` setelah loop data selesai.
+  2. **Format Kolom Massal**:
+     - Kolom tanggal (`C`, `E`, `U`, `W`, `Y`, `AA`, `AC`, `AE`, `AG`, `AI`, `AL`, `AN`) diformat massal dengan `dd/mm/yyyy` dan horizontal center per rentang kolom `{$col}7:{$col}{$lastRow}`.
+     - Kolom teks dengan posisi tengah (`A`, `J`, `K`, `N`, `Q`, `R`, `S`) diformat massal horizontal center per rentang kolom.
+     - Baris yang memiliki multi-tersangka dikembalikan ke rata kiri pada kolom J, K, N secara presisi.
+  3. **Pencegahan Timeout Runtime**:
+     - Ditambahkan `@set_time_limit(120);` pada awal metode `download()` sebagai lapisan pertahanan ganda (*defense-in-depth*).
+  4. **Hasil Benchmark**:
+     - Waktu generasi dan penyimpanan spreadsheet untuk 1.000 data perkara lengkap berkurang drastis dari **~33,88 detik** menjadi **~3,68 detik** (percepatan ~9x lipat, aman jauh di bawah ambang batas 30 detik).
+- Konsekuensi: Ekspor file LAPJU 45 kolom beroperasi dengan performa tinggi, aman dari timeout, dan 100% kompatibel dengan seluruh suite tes otomatis (244 tes lulus).
+
+---
+
+## D-062 : Pembersihan Awalan Alamat Tersangka dan Redundansi Nama Sarana pada Kolom Alamat Ekspor LAPJU
+
+- Tanggal: 2026-10-26
+- Status: Disepakati & Diimplementasikan
+- Konteks: Pada file ekspor Excel LAPJU 45 kolom, ditemukan bahwa Kolom L (Alamat Tersangka) selalu memuat frasa awalan "Tempat tinggal tersangka di ", dan Kolom P (Alamat Sarana/TKP) mengulang penulisan nama toko/sarana usaha di awal alamat padahal Kolom O sudah disediakan secara khusus untuk Nama Sarana/TKP.
+- Keputusan:
+  1. **Sanitasi Kolom L (Alamat Tersangka) pada `PerkaraRekapExport`**:
+     - Ditambahkan metode `sanitizeAlamatTersangka(?string $alamat)` yang menghapus frasa awalan `Tempat tinggal tersangka di ` (case-insensitive, termasuk variasi dengan tanda titik dua atau pemisah) dan melakukan trim karakter pemisah berlebih.
+  2. **Sanitasi Kolom P (Alamat Sarana/TKP) pada `PerkaraRekapExport`**:
+     - Ditambahkan metode `sanitizeAlamatTkp(?string $alamat, ?string $namaTkp)` yang secara dinamis memeriksa nama sarana dari Kolom O (`$tkp?->alamat?->nama`). Jika nama tersebut muncul di awal string alamat, nama dan karakter pemisahnya (koma, tanda hubung, titik dua) dihapus sehingga Kolom P murni hanya memuat alamat fisik (jalan, nomor, RT/RW, kelurahan, kecamatan, dsb.).
+  3. **Penyempurnaan Seeder `DummyDataSeeder.php`**:
+     - Seeder alamat tersangka kini menghasilkan nama jalan dan nomor acak realistis murni (`Jl. {Jalan} No. {Nomor}`) tanpa awalan string operasional.
+     - Seeder alamat TKP memisahkan nama sarana ke kolom `nama` dan hanya menyimpan detail jalan/lokasi pada kolom `alamat_detail`.
+- Konsekuensi: File ekspor Excel LAPJU menjadi lebih bersih, baku, tidak redundan antar-kolom, serta terverifikasi 100% lulus 245 tes otomatis Pest PHP dan linter Laravel Pint.

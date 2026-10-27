@@ -23,6 +23,7 @@ use App\Models\Tkp;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -48,23 +49,26 @@ class DummyDataSeeder extends Seeder
         'Bambang', 'Rudi', 'Johan', 'Arif', 'Wahyu', 'Ilham', 'Bagus', 'Eko',
         'Suryanto', 'Asep', 'Rahmat', 'Gusti', 'Mursyid', 'Hafiz', 'Ridwan', 'Aditya',
         'Yusuf', 'Zainal', 'Iwan', 'Darmawan', 'Fahri', 'Hidayat', 'Syaiful', 'Naufal',
-        'Reza', 'Taufik', 'Anwar', 'Danu',
+        'Reza', 'Taufik', 'Anwar', 'Danu', 'Fauzan', 'Syamsul', 'Agus', 'Hasan',
+        'Lukman', 'Firman', 'Kurnia', 'Mansyur', 'Farhan', 'Bayu', 'Gilang', 'Satria',
     ];
 
     private const NAMA_DEPAN_PEREMPUAN = [
         'Siti', 'Dewi', 'Nurul', 'Maya', 'Anisa', 'Linda', 'Tri', 'Rina',
         'Fitri', 'Yuni', 'Ayu', 'Diah', 'Ratna', 'Novita', 'Sri', 'Endang',
         'Lestari', 'Mira', 'Hasna', 'Sabrina', 'Wulan', 'Indah', 'Rahmi', 'Vina',
-        'Desi', 'Eka', 'Salma', 'Putri',
+        'Desi', 'Eka', 'Salma', 'Putri', 'Fatimah', 'Khadijah', 'Zahra', 'Aulia',
+        'Nabila', 'Rizka', 'Kartika', 'Dina', 'Mega', 'Sari', 'Utami', 'Rini',
     ];
 
     private const NAMA_BELAKANG = [
         'Wijaya', 'Saputra', 'Hidayat', 'Pratama', 'Kurniawan', 'Setiawan', 'Maulana',
         'Hakim', 'Santosa', 'Gunawan', 'Rahmawati', 'Lestari', 'Anggraeni', 'Wibowo',
         'Sujatmiko', 'Ramadhan', 'Prasetyo', 'Sutrisno', 'Firmansyah', 'Siregar',
-        'Nasution', 'Hakim', 'Mahfud', 'Anshari', 'Rusli', 'Syahrani', 'Mardianto',
+        'Nasution', 'Mahfud', 'Anshari', 'Rusli', 'Syahrani', 'Mardianto',
         'Kusuma', 'Halim', 'Pahlevi', 'Bachri', 'Ismail', 'Rahman', 'Sofyan',
-        'Mubarak', 'Wardana', 'Saputri', 'Maryam', 'Salsabila', 'Ningsih',
+        'Mubarak', 'Wardana', 'Saputri', 'Maryam', 'Salsabila', 'Ningsih', 'Pratiwi',
+        'Wahyuni', 'Utami', 'Damayanti', 'Handayani', 'Marlina', 'Permata', 'Sari',
     ];
 
     private const JALAN = [
@@ -73,6 +77,8 @@ class DummyDataSeeder extends Seeder
         'Sekumpul Raya', 'Putri Cipta Sari', 'Jenderal Sudirman', 'Perdagangan',
         'Lambung Mangkurat', 'Trikora', 'Sultan Adam', 'Belitung Darat',
         'Kuripan', 'Pangeran Samudera', 'Achmad Yani Km. 34', 'Gerilya',
+        'Gubernur Soebarjo', 'Sungai Jingah', 'Kayu Tangi', 'Kramat Jaya',
+        'Hasanuddin HM', 'Sutoyo S.', 'D.I. Panjaitan', 'Ulin Barat',
     ];
 
     private const NAMA_USAHA = [
@@ -80,13 +86,15 @@ class DummyDataSeeder extends Seeder
         'Cahaya Farma', 'Mekar Sari', 'Tunas Baru', 'Sinar Abadi', 'Aneka Jaya',
         'Mitra Sehat', 'Karya Mandiri', 'Rasa Murni', 'Bina Usaha', 'Surya Kencana',
         'Harapan Baru', 'Sumber Makmur', 'Amanah Farma', 'Duta Niaga', 'Panca Jaya',
-        'Nusa Indah', 'Sari Wangi', 'Cinta Bunda', 'Bintang Timur',
+        'Nusa Indah', 'Sari Wangi', 'Cinta Bunda', 'Bintang Timur', 'Sentosa Abadi',
+        'Makmur Sejahtera', 'Barokah Herbal', 'Pelita Farma', 'Dunia Sehat', 'Kurnia Alam',
     ];
 
     private const PEKERJAAN_UMUM = [
         'Wiraswasta', 'Karyawan Swasta', 'Pedagang', 'Kurir Ekspedisi', 'Petani',
         'Buruh Harian', 'Ibu Rumah Tangga', 'Pemilik Ruko', 'Pemilik Toko Online',
-        'Pengemudi Ojek Daring', 'Pemilik Warung', 'Karyawan Toko',
+        'Pengemudi Ojek Daring', 'Pemilik Warung', 'Karyawan Toko', 'Sales Kosmetik',
+        'Distributor Mandiri', 'Pengelola Gudang', 'Pengecer Jamu', 'Pengrajin Makanan',
     ];
 
     private const VONIS = [
@@ -96,6 +104,18 @@ class DummyDataSeeder extends Seeder
         '10 bulan penjara dan denda Rp 50.000.000 subsider 1 bulan kurungan',
         '4 tahun penjara dan denda Rp 500.000.000 subsider 6 bulan kurungan',
         '1 tahun penjara dengan masa percobaan 2 tahun dan denda Rp 20.000.000',
+        '2 tahun 6 bulan penjara dan denda Rp 200.000.000 subsider 3 bulan kurungan',
+        '1 tahun penjara dan denda Rp 75.000.000 subsider 2 bulan kurungan',
+        '5 tahun penjara dan denda Rp 1.000.000.000 subsider 6 bulan kurungan',
+        '8 bulan penjara dan denda Rp 30.000.000 subsider 1 bulan kurungan',
+    ];
+
+    private const ALASAN_SP3 = [
+        'Tidak diperoleh bukti yang cukup sesuai ketentuan Pasal 109 ayat (2) KUHAP.',
+        'Peristiwa yang dilaporkan bukan merupakan tindak pidana berdasarkan hasil gelar perkara.',
+        'Penghentian penyidikan demi hukum karena nebis in idem dan kedaluwarsa penuntutan.',
+        'Penyelesaian perkara melalui keadilan restoratif (Restorative Justice) dan pemulihan kerugian.',
+        'Tersangka meninggal dunia sehingga penuntutan gugur demi hukum sesuai Pasal 77 KUHP.',
     ];
 
     private const AGAMA = [
@@ -117,23 +137,23 @@ class DummyDataSeeder extends Seeder
     private int $urutanTersangka = 0;
 
     /**
-     * Jalankan seeder 100 data perkara dummy yang beragam untuk seluruh alur BAPTwo.
+     * Jalankan seeder 1.000 data perkara dummy yang beragam untuk seluruh alur BAPTwo.
      */
     public function run(): void
     {
         // 1. Pastikan sample PDF privat tersedia
         $this->ensureSamplePdf();
 
-        // 2. Bersihkan data dummy lama yang sudah usang agar jumlah data tetap konsisten
+        // 2. Bersihkan data dummy lama yang sudah usang agar jumlah data tetap tepat 1.000
         $this->cleanupObsoleteDummyCases();
 
-        // 3. Siapkan Master Data Lengkap
+        // 3. Siapkan Master Data Lengkap (Jabatan, Bidang, Panggol, 38 Pasal, 45 Jaksa, Instansi)
         $master = $this->seedMasterData();
 
-        // 4. Siapkan Pengguna Tambahan (PPNS)
+        // 4. Siapkan Pengguna PPNS (20 Penyidik)
         $users = $this->seedUsers($master);
 
-        // 5. Tanam 100 Perkara dengan variasi jenis, tahapan, DPO, SP3, dan jumlah tersangka
+        // 5. Tanam 1.000 Perkara dengan variasi alur, tahun 2024–2026, tahapan, DPO, SP3, dan murni 1 Tersangka 1 Berkas
         $this->seedPerkaraCases($master, $users);
     }
 
@@ -167,590 +187,288 @@ class DummyDataSeeder extends Seeder
     }
 
     /**
-     * Membersihkan nomor perkara dummy lama agar total perkara tepat 100 dan seeder bisa diulang.
+     * Membersihkan nomor perkara dummy lama secara efisien per batch agar idempoten.
      */
     private function cleanupObsoleteDummyCases(): void
     {
-        $obsoleteCases = Perkara::with(['berkasPerkaras', 'tersangkas', 'tkp'])
-            ->where('nomor_laporan_kejadian', 'like', 'LK/%')
-            ->get();
+        while (true) {
+            $cases = Perkara::withTrashed()
+                ->where('nomor_laporan_kejadian', 'like', 'LK/%')
+                ->take(100)
+                ->get();
 
-        foreach ($obsoleteCases as $obs) {
-            AuditLog::where('perkara_id', $obs->id)->delete();
+            if ($cases->isEmpty()) {
+                break;
+            }
 
-            $obs->berkasPerkaras()->each(function ($b) {
-                AuditLog::where('berkas_perkara_id', $b->id)->delete();
-                $b->tahapan()->forceDelete();
-                $b->dpos()->forceDelete();
-                $b->sp3()?->forceDelete();
-                $b->dokumen()->forceDelete();
-                $b->pasals()->detach();
-                $b->forceDelete();
-            });
+            $caseIds = $cases->pluck('id')->all();
+            $tkpIds = $cases->pluck('tkp_id')->filter()->all();
+            $tkpAlamatIds = Tkp::withTrashed()->whereIn('id', $tkpIds)->pluck('alamat_id')->filter()->all();
 
-            $obs->tersangkas()->each(function ($t) {
-                $alamatId = $t->alamat_id;
-                $t->forceDelete();
-                if ($alamatId) {
-                    Alamat::where('id', $alamatId)->delete();
-                }
-            });
+            $berkas = BerkasPerkara::withTrashed()->whereIn('perkara_id', $caseIds)->get();
+            $berkasIds = $berkas->pluck('id')->all();
 
-            $obs->ppnsUsers()->detach();
-            $obs->dokumen()->forceDelete();
+            $tersangkas = Tersangka::withTrashed()->whereIn('perkara_id', $caseIds)->get();
+            $tersangkaIds = $tersangkas->pluck('id')->all();
+            $tersangkaAlamatIds = $tersangkas->pluck('alamat_id')->filter()->all();
 
-            $tkp = $obs->tkp;
-            $obs->forceDelete();
-            if ($tkp) {
-                $alamatId = $tkp->alamat_id;
-                $tkp->forceDelete();
-                if ($alamatId) {
-                    Alamat::where('id', $alamatId)->delete();
-                }
+            AuditLog::whereIn('perkara_id', $caseIds)->orWhereIn('berkas_perkara_id', $berkasIds)->delete();
+            TahapanPerkara::withTrashed()->whereIn('berkas_perkara_id', $berkasIds)->forceDelete();
+            Dpo::withTrashed()->whereIn('berkas_perkara_id', $berkasIds)->forceDelete();
+            Sp3::withTrashed()->whereIn('berkas_perkara_id', $berkasIds)->forceDelete();
+            Dokumen::withTrashed()->where(function ($q) use ($caseIds, $berkasIds) {
+                $q->whereIn('perkara_id', $caseIds)->orWhereIn('berkas_perkara_id', $berkasIds);
+            })->forceDelete();
+
+            DB::table('berkas_pasal')->whereIn('berkas_perkara_id', $berkasIds)->delete();
+            DB::table('perkara_ppns')->whereIn('perkara_id', $caseIds)->delete();
+
+            BerkasPerkara::withTrashed()->whereIn('id', $berkasIds)->forceDelete();
+            Tersangka::withTrashed()->whereIn('id', $tersangkaIds)->forceDelete();
+            if (! empty($tersangkaAlamatIds)) {
+                Alamat::whereIn('id', $tersangkaAlamatIds)->delete();
+            }
+
+            Perkara::withTrashed()->whereIn('id', $caseIds)->forceDelete();
+            if (! empty($tkpIds)) {
+                Tkp::withTrashed()->whereIn('id', $tkpIds)->forceDelete();
+            }
+            if (! empty($tkpAlamatIds)) {
+                Alamat::whereIn('id', $tkpAlamatIds)->delete();
             }
         }
     }
 
     /**
-     * Master data lengkap: Jabatan, Bidang, Panggol, Pasal UU, Instansi Hukum, Jaksa.
+     * Master data lengkap: Jabatan, Bidang, Panggol, 38 Pasal UU, Instansi Hukum, 45 Jaksa.
      *
      * @return array<string, mixed>
      */
     private function seedMasterData(): array
     {
-        $jabatanPpns = Jabatan::firstOrCreate(['nama_jabatan' => 'Penyidik Pegawai Negeri Sipil (PPNS)']);
-        $jabatanPfm = Jabatan::firstOrCreate(['nama_jabatan' => 'Pengawas Farmasi dan Makanan Ahli Muda']);
-        $jabatanAnalis = Jabatan::firstOrCreate(['nama_jabatan' => 'Analis Intelijen Penindakan']);
-
-        $bidangPenindakan = Bidang::firstOrCreate(['nama_bidang' => 'Bidang Penindakan']);
-        $bidangPemeriksaan = Bidang::firstOrCreate(['nama_bidang' => 'Bidang Pemeriksaan']);
-
-        $panggolPenata = Panggol::firstOrCreate(['pangkat' => 'Penata', 'golongan' => 'III/c']);
-        $panggolPenataTk1 = Panggol::firstOrCreate(['pangkat' => 'Penata Tk. I', 'golongan' => 'III/d']);
-        $panggolPembina = Panggol::firstOrCreate(['pangkat' => 'Pembina', 'golongan' => 'IV/a']);
-
-        $pasalKesehatan1 = Pasal::firstOrCreate(
-            ['nama_pasal' => 'UU Kesehatan', 'pasal' => 'Pasal 435 jo. Pasal 138 ayat (2) dan ayat (3)'],
-            [
-                'nomor' => '17',
-                'tahun' => '2023',
-                'isi' => 'Setiap Orang yang memproduksi atau mengedarkan Sediaan Farmasi dan/atau Alat Kesehatan yang tidak memenuhi standar.',
-                'status' => 'aktif',
-            ]
-        );
-
-        $pasalKesehatan2 = Pasal::firstOrCreate(
-            ['nama_pasal' => 'UU Kesehatan', 'pasal' => 'Pasal 436 ayat (2) jo. Pasal 145 ayat (1)'],
-            [
-                'nomor' => '17',
-                'tahun' => '2023',
-                'isi' => 'Setiap Orang yang tidak memiliki keahlian dan kewenangan untuk melakukan praktik kefarmasian.',
-                'status' => 'aktif',
-            ]
-        );
-
-        $pasalKesehatan3 = Pasal::firstOrCreate(
-            ['nama_pasal' => 'UU Kesehatan', 'pasal' => 'Pasal 436 ayat (1)'],
-            [
-                'nomor' => '17',
-                'tahun' => '2023',
-                'isi' => 'Setiap Orang yang memproduksi sediaan farmasi dan/atau alat kesehatan tanpa memiliki keahlian dan kewenangan.',
-                'status' => 'aktif',
-            ]
-        );
-
-        $pasalKesehatan4 = Pasal::firstOrCreate(
-            ['nama_pasal' => 'UU Kesehatan', 'pasal' => 'Pasal 437 ayat (1)'],
-            [
-                'nomor' => '17',
-                'tahun' => '2023',
-                'isi' => 'Setiap Orang yang memproduksi atau mengedarkan sediaan farmasi dan/atau alat kesehatan palsu.',
-                'status' => 'aktif',
-            ]
-        );
-
-        $pasalKesehatan5 = Pasal::firstOrCreate(
-            ['nama_pasal' => 'UU Kesehatan', 'pasal' => 'Pasal 438 ayat (1)'],
-            [
-                'nomor' => '17',
-                'tahun' => '2023',
-                'isi' => 'Setiap Orang yang memproduksi atau mengedarkan kosmetik yang mengandung bahan berbahaya atau dilarang.',
-                'status' => 'aktif',
-            ]
-        );
-
-        $pasalKesehatan6 = Pasal::firstOrCreate(
-            ['nama_pasal' => 'UU Kesehatan', 'pasal' => 'Pasal 439 ayat (1)'],
-            [
-                'nomor' => '17',
-                'tahun' => '2023',
-                'isi' => 'Setiap Orang yang memperjualbelikan obat keras daftar G secara bebas tanpa resep dokter atau izin resmi.',
-                'status' => 'aktif',
-            ]
-        );
-
-        $pasalKesehatan7 = Pasal::firstOrCreate(
-            ['nama_pasal' => 'UU Kesehatan', 'pasal' => 'Pasal 440 ayat (1)'],
-            [
-                'nomor' => '17',
-                'tahun' => '2023',
-                'isi' => 'Setiap Orang yang mengedarkan obat bahan alam (obat tradisional) yang mengandung bahan kimia obat (BKO).',
-                'status' => 'aktif',
-            ]
-        );
-
-        $pasalPangan1 = Pasal::firstOrCreate(
-            ['nama_pasal' => 'UU Pangan', 'pasal' => 'Pasal 142 jo. Pasal 91 ayat (1)'],
-            [
-                'nomor' => '18',
-                'tahun' => '2012',
-                'isi' => 'Pelaku Usaha Pangan yang dengan sengaja tidak memiliki izin edar terhadap setiap Pangan Olahan yang diperdagangkan.',
-                'status' => 'aktif',
-            ]
-        );
-
-        $pasalPangan2 = Pasal::firstOrCreate(
-            ['nama_pasal' => 'UU Pangan', 'pasal' => 'Pasal 136 jo. Pasal 75 ayat (1)'],
-            [
-                'nomor' => '18',
-                'tahun' => '2012',
-                'isi' => 'Pelaku Usaha yang menggunakan bahan tambahan pangan yang dilarang atau melampaui ambang batas maksimal.',
-                'status' => 'aktif',
-            ]
-        );
-
-        $pasalPangan3 = Pasal::firstOrCreate(
-            ['nama_pasal' => 'UU Pangan', 'pasal' => 'Pasal 138 jo. Pasal 80 ayat (1)'],
-            [
-                'nomor' => '18',
-                'tahun' => '2012',
-                'isi' => 'Pelaku Usaha yang memperdagangkan pangan tercemar, busuk, berbau, atau mengandung bahan beracun.',
-                'status' => 'aktif',
-            ]
-        );
-
-        $pasalPangan4 = Pasal::firstOrCreate(
-            ['nama_pasal' => 'UU Pangan', 'pasal' => 'Pasal 140 jo. Pasal 86 ayat (2)'],
-            [
-                'nomor' => '18',
-                'tahun' => '2012',
-                'isi' => 'Setiap Orang yang memproduksi atau mengedarkan pangan olahan dengan label atau iklan palsu dan menyesatkan.',
-                'status' => 'aktif',
-            ]
-        );
-
-        $pasalPangan5 = Pasal::firstOrCreate(
-            ['nama_pasal' => 'UU Pangan', 'pasal' => 'Pasal 141 jo. Pasal 89'],
-            [
-                'nomor' => '18',
-                'tahun' => '2012',
-                'isi' => 'Pelaku Usaha Pangan yang mengedarkan pangan olahan dengan kemasan yang membahayakan kesehatan manusia.',
-                'status' => 'aktif',
-            ]
-        );
-
-        $pasalKonsumen1 = Pasal::firstOrCreate(
-            ['nama_pasal' => 'UU Perlindungan Konsumen', 'pasal' => 'Pasal 62 ayat (1) jo. Pasal 8 ayat (1) huruf a'],
-            [
-                'nomor' => '8',
-                'tahun' => '1999',
-                'isi' => 'Memproduksi dan/atau memperdagangkan barang dan/atau jasa yang tidak memenuhi atau tidak sesuai dengan standar mutu.',
-                'status' => 'aktif',
-            ]
-        );
-
-        $pasalKonsumen2 = Pasal::firstOrCreate(
-            ['nama_pasal' => 'UU Perlindungan Konsumen', 'pasal' => 'Pasal 62 ayat (1) jo. Pasal 8 ayat (1) huruf d'],
-            [
-                'nomor' => '8',
-                'tahun' => '1999',
-                'isi' => 'Memperdagangkan barang yang tidak sesuai dengan kondisi, jaminan, keistimewaan, atau kemanjuran yang dijanjikan.',
-                'status' => 'aktif',
-            ]
-        );
-
-        $pasalKonsumen3 = Pasal::firstOrCreate(
-            ['nama_pasal' => 'UU Perlindungan Konsumen', 'pasal' => 'Pasal 62 ayat (1) jo. Pasal 8 ayat (1) huruf i'],
-            [
-                'nomor' => '8',
-                'tahun' => '1999',
-                'isi' => 'Memperdagangkan barang yang tidak mencantumkan tanggal kedaluwarsa atau jangka waktu penggunaan yang paling baik.',
-                'status' => 'aktif',
-            ]
-        );
-
-        $pasalNarkotika1 = Pasal::firstOrCreate(
-            ['nama_pasal' => 'UU Narkotika', 'pasal' => 'Pasal 114 ayat (1)'],
-            [
-                'nomor' => '35',
-                'tahun' => '2009',
-                'isi' => 'Menawarkan untuk dijual, menjual, membeli, menerima, menjadi perantara dalam jual beli, atau menyerahkan Narkotika Golongan I.',
-                'status' => 'aktif',
-            ]
-        );
-
-        $pasalNarkotika2 = Pasal::firstOrCreate(
-            ['nama_pasal' => 'UU Narkotika', 'pasal' => 'Pasal 129 huruf a'],
-            [
-                'nomor' => '35',
-                'tahun' => '2009',
-                'isi' => 'Memproduksi, mengimpor, mengekspor, atau menyalurkan Prekursor Farmasi untuk pembuatan Narkotika secara melawan hukum.',
-                'status' => 'aktif',
-            ]
-        );
-
-        $pasalPsikotropika = Pasal::firstOrCreate(
-            ['nama_pasal' => 'UU Psikotropika', 'pasal' => 'Pasal 60 ayat (1) huruf c jo. Pasal 14 ayat (1)'],
-            [
-                'nomor' => '5',
-                'tahun' => '1997',
-                'isi' => 'Mengedarkan psikotropika tanpa izin edar resmi atau tidak memenuhi standar mutu dan keamanan.',
-                'status' => 'aktif',
-            ]
-        );
-
-        $pasalKuhp1 = Pasal::firstOrCreate(
-            ['nama_pasal' => 'KUHP', 'pasal' => 'Pasal 204 ayat (1)'],
-            [
-                'nomor' => '1',
-                'tahun' => '1946',
-                'isi' => 'Menjual, menawarkan, menerimakan atau membagi-bagikan barang yang diketahuinya membahayakan nyawa atau kesehatan orang.',
-                'status' => 'aktif',
-            ]
-        );
-
-        $pasalKuhp2 = Pasal::firstOrCreate(
-            ['nama_pasal' => 'KUHP', 'pasal' => 'Pasal 55 ayat (1) ke-1'],
-            [
-                'nomor' => '1',
-                'tahun' => '1946',
-                'isi' => 'Turut serta melakukan, menyuruh melakukan, atau membujuk melakukan suatu perbuatan tindak pidana.',
-                'status' => 'aktif',
-            ]
-        );
-
-        $kejati = InstansiHukum::firstOrCreate(
-            ['jenis' => 'kejaksaan', 'nama' => 'Kejaksaan Tinggi Kalimantan Selatan'],
-            ['wilayah' => 'Kalimantan Selatan']
-        );
-
-        $kejariBjm = InstansiHukum::firstOrCreate(
-            ['jenis' => 'kejaksaan', 'nama' => 'Kejaksaan Negeri Banjarmasin'],
-            ['wilayah' => 'Kota Banjarmasin']
-        );
-
-        $kejariBjb = InstansiHukum::firstOrCreate(
-            ['jenis' => 'kejaksaan', 'nama' => 'Kejaksaan Negeri Banjarbaru'],
-            ['wilayah' => 'Kota Banjarbaru']
-        );
-
-        $kejariBanjar = InstansiHukum::firstOrCreate(
-            ['jenis' => 'kejaksaan', 'nama' => 'Kejaksaan Negeri Banjar'],
-            ['wilayah' => 'Kabupaten Banjar']
-        );
-
-        $kejariBatola = InstansiHukum::firstOrCreate(
-            ['jenis' => 'kejaksaan', 'nama' => 'Kejaksaan Negeri Barito Kuala'],
-            ['wilayah' => 'Kabupaten Barito Kuala']
-        );
-
-        $kejariTanahlaut = InstansiHukum::firstOrCreate(
-            ['jenis' => 'kejaksaan', 'nama' => 'Kejaksaan Negeri Tanah Laut'],
-            ['wilayah' => 'Kabupaten Tanah Laut']
-        );
-
-        $kejariTapin = InstansiHukum::firstOrCreate(
-            ['jenis' => 'kejaksaan', 'nama' => 'Kejaksaan Negeri Tapin'],
-            ['wilayah' => 'Kabupaten Tapin']
-        );
-
-        $kejariHst = InstansiHukum::firstOrCreate(
-            ['jenis' => 'kejaksaan', 'nama' => 'Kejaksaan Negeri Hulu Sungai Tengah'],
-            ['wilayah' => 'Kabupaten Hulu Sungai Tengah']
-        );
-
-        $kejariHsu = InstansiHukum::firstOrCreate(
-            ['jenis' => 'kejaksaan', 'nama' => 'Kejaksaan Negeri Hulu Sungai Utara'],
-            ['wilayah' => 'Kabupaten Hulu Sungai Utara']
-        );
-
-        $kejariHss = InstansiHukum::firstOrCreate(
-            ['jenis' => 'kejaksaan', 'nama' => 'Kejaksaan Negeri Hulu Sungai Selatan'],
-            ['wilayah' => 'Kabupaten Hulu Sungai Selatan']
-        );
-
-        $kejariTabalong = InstansiHukum::firstOrCreate(
-            ['jenis' => 'kejaksaan', 'nama' => 'Kejaksaan Negeri Tabalong'],
-            ['wilayah' => 'Kabupaten Tabalong']
-        );
-
-        $kejariTanbu = InstansiHukum::firstOrCreate(
-            ['jenis' => 'kejaksaan', 'nama' => 'Kejaksaan Negeri Tanah Bumbu'],
-            ['wilayah' => 'Kabupaten Tanah Bumbu']
-        );
-
-        $kejariBalangan = InstansiHukum::firstOrCreate(
-            ['jenis' => 'kejaksaan', 'nama' => 'Kejaksaan Negeri Balangan'],
-            ['wilayah' => 'Kabupaten Balangan']
-        );
-
-        $kejariKotabaru = InstansiHukum::firstOrCreate(
-            ['jenis' => 'kejaksaan', 'nama' => 'Kejaksaan Negeri Kotabaru'],
-            ['wilayah' => 'Kabupaten Kotabaru']
-        );
-
-        $ptBjm = InstansiHukum::firstOrCreate(
-            ['jenis' => 'pengadilan', 'nama' => 'Pengadilan Tinggi Banjarmasin'],
-            ['wilayah' => 'Kalimantan Selatan']
-        );
-
-        $pnBjm = InstansiHukum::firstOrCreate(
-            ['jenis' => 'pengadilan', 'nama' => 'Pengadilan Negeri Banjarmasin'],
-            ['wilayah' => 'Kota Banjarmasin']
-        );
-
-        $pnBjb = InstansiHukum::firstOrCreate(
-            ['jenis' => 'pengadilan', 'nama' => 'Pengadilan Negeri Banjarbaru'],
-            ['wilayah' => 'Kota Banjarbaru']
-        );
-
-        $pnMtp = InstansiHukum::firstOrCreate(
-            ['jenis' => 'pengadilan', 'nama' => 'Pengadilan Negeri Martapura'],
-            ['wilayah' => 'Kabupaten Banjar']
-        );
-
-        $pnMrh = InstansiHukum::firstOrCreate(
-            ['jenis' => 'pengadilan', 'nama' => 'Pengadilan Negeri Marabahan'],
-            ['wilayah' => 'Kabupaten Barito Kuala']
-        );
-
-        $pnKotabaru = InstansiHukum::firstOrCreate(
-            ['jenis' => 'pengadilan', 'nama' => 'Pengadilan Negeri Kotabaru'],
-            ['wilayah' => 'Kabupaten Kotabaru']
-        );
-
-        $pnPelaihari = InstansiHukum::firstOrCreate(
-            ['jenis' => 'pengadilan', 'nama' => 'Pengadilan Negeri Pelaihari'],
-            ['wilayah' => 'Kabupaten Tanah Laut']
-        );
-
-        $pnRantau = InstansiHukum::firstOrCreate(
-            ['jenis' => 'pengadilan', 'nama' => 'Pengadilan Negeri Rantau'],
-            ['wilayah' => 'Kabupaten Tapin']
-        );
-
-        $pnKandangan = InstansiHukum::firstOrCreate(
-            ['jenis' => 'pengadilan', 'nama' => 'Pengadilan Negeri Kandangan'],
-            ['wilayah' => 'Kabupaten Hulu Sungai Selatan']
-        );
-
-        $pnBarabai = InstansiHukum::firstOrCreate(
-            ['jenis' => 'pengadilan', 'nama' => 'Pengadilan Negeri Barabai'],
-            ['wilayah' => 'Kabupaten Hulu Sungai Tengah']
-        );
-
-        $pnAmuntai = InstansiHukum::firstOrCreate(
-            ['jenis' => 'pengadilan', 'nama' => 'Pengadilan Negeri Amuntai'],
-            ['wilayah' => 'Kabupaten Hulu Sungai Utara']
-        );
-
-        $pnTanjung = InstansiHukum::firstOrCreate(
-            ['jenis' => 'pengadilan', 'nama' => 'Pengadilan Negeri Tanjung'],
-            ['wilayah' => 'Kabupaten Tabalong']
-        );
-
-        $pnBatulicin = InstansiHukum::firstOrCreate(
-            ['jenis' => 'pengadilan', 'nama' => 'Pengadilan Negeri Batulicin'],
-            ['wilayah' => 'Kabupaten Tanah Bumbu']
-        );
-
-        $pnParingin = InstansiHukum::firstOrCreate(
-            ['jenis' => 'pengadilan', 'nama' => 'Pengadilan Negeri Paringin'],
-            ['wilayah' => 'Kabupaten Balangan']
-        );
-
-        $jaksa1 = JaksaPenuntut::firstOrCreate(
-            ['instansi_hukum_id' => $kejati->id, 'nama_jaksa' => 'Ahmad Fauzi, S.H., M.H.'],
-            ['nip' => '198405122009121002', 'pangkat' => 'Jaksa Madya (IV/a)']
-        );
-
-        $jaksa2 = JaksaPenuntut::firstOrCreate(
-            ['instansi_hukum_id' => $kejariBjm->id, 'nama_jaksa' => 'Rian Hidayat, S.H.'],
-            ['nip' => '198807202012011003', 'pangkat' => 'Jaksa Pratama (III/c)']
-        );
-
-        $jaksa3 = JaksaPenuntut::firstOrCreate(
-            ['instansi_hukum_id' => $kejariBjb->id, 'nama_jaksa' => 'Nurul Hikmah, S.H., M.H.'],
-            ['nip' => '198611142010122001', 'pangkat' => 'Jaksa Muda (III/d)']
-        );
-
-        $jaksa4 = JaksaPenuntut::firstOrCreate(
-            ['instansi_hukum_id' => $kejariBanjar->id, 'nama_jaksa' => 'Siti Maryam, S.H.'],
-            ['nip' => '198904122014022003', 'pangkat' => 'Jaksa Pratama (III/c)']
-        );
-
-        $jaksa5 = JaksaPenuntut::firstOrCreate(
-            ['instansi_hukum_id' => $kejariBatola->id, 'nama_jaksa' => 'Diana Lestari, S.H.'],
-            ['nip' => '199003182015032002', 'pangkat' => 'Jaksa Pratama (III/c)']
-        );
-
-        $jaksa6 = JaksaPenuntut::firstOrCreate(
-            ['instansi_hukum_id' => $kejariTanahlaut->id, 'nama_jaksa' => 'Hendra Saputra, S.H., M.H.'],
-            ['nip' => '198502152010011004', 'pangkat' => 'Jaksa Muda (III/d)']
-        );
-
-        $jaksa7 = JaksaPenuntut::firstOrCreate(
-            ['instansi_hukum_id' => $kejariTapin->id, 'nama_jaksa' => 'Wahyu Wibowo, S.H.'],
-            ['nip' => '198709102011011002', 'pangkat' => 'Jaksa Pratama (III/c)']
-        );
-
-        $jaksa8 = JaksaPenuntut::firstOrCreate(
-            ['instansi_hukum_id' => $kejariHst->id, 'nama_jaksa' => 'M. Reza Pahlevi, S.H., M.H.'],
-            ['nip' => '198304192008121001', 'pangkat' => 'Jaksa Madya (IV/a)']
-        );
-
-        $jaksa9 = JaksaPenuntut::firstOrCreate(
-            ['instansi_hukum_id' => $kejariHsu->id, 'nama_jaksa' => 'Anisa Rahmawati, S.H.'],
-            ['nip' => '199106252015032004', 'pangkat' => 'Jaksa Pratama (III/c)']
-        );
-
-        $jaksa10 = JaksaPenuntut::firstOrCreate(
-            ['instansi_hukum_id' => $kejariHss->id, 'nama_jaksa' => 'Dedi Kurniawan, S.H.'],
-            ['nip' => '198812032014031001', 'pangkat' => 'Jaksa Pratama (III/c)']
-        );
-
-        $jaksa11 = JaksaPenuntut::firstOrCreate(
-            ['instansi_hukum_id' => $kejariTabalong->id, 'nama_jaksa' => 'Faisal Akbar, S.H., M.H.'],
-            ['nip' => '198411082009121003', 'pangkat' => 'Jaksa Muda (III/d)']
-        );
-
-        $jaksa12 = JaksaPenuntut::firstOrCreate(
-            ['instansi_hukum_id' => $kejariTanbu->id, 'nama_jaksa' => 'Tri Wahyuni, S.H.'],
-            ['nip' => '198908172014022005', 'pangkat' => 'Jaksa Pratama (III/c)']
-        );
-
-        $jaksa13 = JaksaPenuntut::firstOrCreate(
-            ['instansi_hukum_id' => $kejariBalangan->id, 'nama_jaksa' => 'Bagus Prasetyo, S.H.'],
-            ['nip' => '199201102016021002', 'pangkat' => 'Jaksa Pratama (III/c)']
-        );
-
-        $jaksa14 = JaksaPenuntut::firstOrCreate(
-            ['instansi_hukum_id' => $kejariKotabaru->id, 'nama_jaksa' => 'Arif Rahman, S.H., M.H.'],
-            ['nip' => '198510202010121002', 'pangkat' => 'Jaksa Muda (III/d)']
-        );
-
-        $jaksa15 = JaksaPenuntut::firstOrCreate(
-            ['instansi_hukum_id' => $kejati->id, 'nama_jaksa' => 'Eko Prasetyo, S.H., M.H.'],
-            ['nip' => '198203152007011002', 'pangkat' => 'Jaksa Utama Pratama (IV/b)']
-        );
-
-        $jaksa16 = JaksaPenuntut::firstOrCreate(
-            ['instansi_hukum_id' => $kejariBjm->id, 'nama_jaksa' => 'Linda Kusuma, S.H.'],
-            ['nip' => '199105142015022001', 'pangkat' => 'Jaksa Pratama (III/c)']
-        );
-
-        $jaksa17 = JaksaPenuntut::firstOrCreate(
-            ['instansi_hukum_id' => $kejariBjb->id, 'nama_jaksa' => 'Bambang Sutrisno, S.H.'],
-            ['nip' => '198703212011011003', 'pangkat' => 'Jaksa Muda (III/d)']
-        );
-
-        $jaksa18 = JaksaPenuntut::firstOrCreate(
-            ['instansi_hukum_id' => $kejariBanjar->id, 'nama_jaksa' => 'Dewi Anggraeni, S.H.'],
-            ['nip' => '199302182017012002', 'pangkat' => 'Ajun Jaksa Madya (III/a)']
-        );
-
-        $jaksa19 = JaksaPenuntut::firstOrCreate(
-            ['instansi_hukum_id' => $kejariTanahlaut->id, 'nama_jaksa' => 'Ilham Maulana, S.H.'],
-            ['nip' => '198806122013021001', 'pangkat' => 'Jaksa Pratama (III/c)']
-        );
-
-        $jaksa20 = JaksaPenuntut::firstOrCreate(
-            ['instansi_hukum_id' => $kejariTanbu->id, 'nama_jaksa' => 'Rizky Ramadhan, S.H.'],
-            ['nip' => '199012052015031002', 'pangkat' => 'Jaksa Pratama (III/c)']
-        );
-
-        return [
-            'jabatan_ppns' => $jabatanPpns,
-            'jabatan_pfm' => $jabatanPfm,
-            'jabatan_analis' => $jabatanAnalis,
-            'bidang_penindakan' => $bidangPenindakan,
-            'bidang_pemeriksaan' => $bidangPemeriksaan,
-            'panggol_penata' => $panggolPenata,
-            'panggol_penata_tk1' => $panggolPenataTk1,
-            'panggol_pembina' => $panggolPembina,
-            'pasal_kesehatan_1' => $pasalKesehatan1,
-            'pasal_kesehatan_2' => $pasalKesehatan2,
-            'pasal_kesehatan_3' => $pasalKesehatan3,
-            'pasal_kesehatan_4' => $pasalKesehatan4,
-            'pasal_kesehatan_5' => $pasalKesehatan5,
-            'pasal_kesehatan_6' => $pasalKesehatan6,
-            'pasal_kesehatan_7' => $pasalKesehatan7,
-            'pasal_pangan_1' => $pasalPangan1,
-            'pasal_pangan_2' => $pasalPangan2,
-            'pasal_pangan_3' => $pasalPangan3,
-            'pasal_pangan_4' => $pasalPangan4,
-            'pasal_pangan_5' => $pasalPangan5,
-            'pasal_konsumen_1' => $pasalKonsumen1,
-            'pasal_konsumen_2' => $pasalKonsumen2,
-            'pasal_konsumen_3' => $pasalKonsumen3,
-            'pasal_narkotika_1' => $pasalNarkotika1,
-            'pasal_narkotika_2' => $pasalNarkotika2,
-            'pasal_psikotropika_1' => $pasalPsikotropika,
-            'pasal_kuhp_1' => $pasalKuhp1,
-            'pasal_kuhp_2' => $pasalKuhp2,
-            'kejati' => $kejati,
-            'kejari_bjm' => $kejariBjm,
-            'kejari_bjb' => $kejariBjb,
-            'kejari_banjar' => $kejariBanjar,
-            'kejari_batola' => $kejariBatola,
-            'kejari_tanahlaut' => $kejariTanahlaut,
-            'kejari_tapin' => $kejariTapin,
-            'kejari_hst' => $kejariHst,
-            'kejari_hsu' => $kejariHsu,
-            'kejari_hss' => $kejariHss,
-            'kejari_tabalong' => $kejariTabalong,
-            'kejari_tanbu' => $kejariTanbu,
-            'kejari_balangan' => $kejariBalangan,
-            'kejari_kotabaru' => $kejariKotabaru,
-            'pt_bjm' => $ptBjm,
-            'pn_bjm' => $pnBjm,
-            'pn_bjb' => $pnBjb,
-            'pn_mtp' => $pnMtp,
-            'pn_mrh' => $pnMrh,
-            'pn_kotabaru' => $pnKotabaru,
-            'pn_pelaihari' => $pnPelaihari,
-            'pn_rantau' => $pnRantau,
-            'pn_kandangan' => $pnKandangan,
-            'pn_barabai' => $pnBarabai,
-            'pn_amuntai' => $pnAmuntai,
-            'pn_tanjung' => $pnTanjung,
-            'pn_batulicin' => $pnBatulicin,
-            'pn_paringin' => $pnParingin,
-            'jaksa_1' => $jaksa1,
-            'jaksa_2' => $jaksa2,
-            'jaksa_3' => $jaksa3,
-            'jaksa_4' => $jaksa4,
-            'jaksa_5' => $jaksa5,
-            'jaksa_6' => $jaksa6,
-            'jaksa_7' => $jaksa7,
-            'jaksa_8' => $jaksa8,
-            'jaksa_9' => $jaksa9,
-            'jaksa_10' => $jaksa10,
-            'jaksa_11' => $jaksa11,
-            'jaksa_12' => $jaksa12,
-            'jaksa_13' => $jaksa13,
-            'jaksa_14' => $jaksa14,
-            'jaksa_15' => $jaksa15,
-            'jaksa_16' => $jaksa16,
-            'jaksa_17' => $jaksa17,
-            'jaksa_18' => $jaksa18,
-            'jaksa_19' => $jaksa19,
-            'jaksa_20' => $jaksa20,
+        // 1. Jabatan
+        $jabatanList = [
+            'ppns' => Jabatan::firstOrCreate(['nama_jabatan' => 'Penyidik Pegawai Negeri Sipil (PPNS)']),
+            'pfm_pertama' => Jabatan::firstOrCreate(['nama_jabatan' => 'Pengawas Farmasi dan Makanan Ahli Pertama']),
+            'pfm_muda' => Jabatan::firstOrCreate(['nama_jabatan' => 'Pengawas Farmasi dan Makanan Ahli Muda']),
+            'pfm_madya' => Jabatan::firstOrCreate(['nama_jabatan' => 'Pengawas Farmasi dan Makanan Ahli Madya']),
+            'pfm_utama' => Jabatan::firstOrCreate(['nama_jabatan' => 'Pengawas Farmasi dan Makanan Ahli Utama']),
+            'analis' => Jabatan::firstOrCreate(['nama_jabatan' => 'Analis Intelijen Penindakan']),
+            'prakom' => Jabatan::firstOrCreate(['nama_jabatan' => 'Pranata Komputer Ahli Pertama']),
+            'kepala' => Jabatan::firstOrCreate(['nama_jabatan' => 'Kepala Balai Besar POM']),
+            'tu' => Jabatan::firstOrCreate(['nama_jabatan' => 'Kepala Bagian Tata Usaha']),
         ];
+
+        // 2. Bidang
+        $bidangList = [
+            'penindakan' => Bidang::firstOrCreate(['nama_bidang' => 'Bidang Penindakan']),
+            'pemeriksaan' => Bidang::firstOrCreate(['nama_bidang' => 'Bidang Pemeriksaan']),
+            'pengujian' => Bidang::firstOrCreate(['nama_bidang' => 'Bidang Pengujian']),
+            'infokom' => Bidang::firstOrCreate(['nama_bidang' => 'Bidang Informasi dan Komunikasi']),
+            'tu' => Bidang::firstOrCreate(['nama_bidang' => 'Bagian Tata Usaha']),
+        ];
+
+        // 3. Pangkat & Golongan
+        $panggolList = [
+            'ii_c' => Panggol::firstOrCreate(['pangkat' => 'Pengatur', 'golongan' => 'II/c']),
+            'ii_d' => Panggol::firstOrCreate(['pangkat' => 'Pengatur Tk. I', 'golongan' => 'II/d']),
+            'iii_a' => Panggol::firstOrCreate(['pangkat' => 'Penata Muda', 'golongan' => 'III/a']),
+            'iii_b' => Panggol::firstOrCreate(['pangkat' => 'Penata Muda Tk. I', 'golongan' => 'III/b']),
+            'iii_c' => Panggol::firstOrCreate(['pangkat' => 'Penata', 'golongan' => 'III/c']),
+            'iii_d' => Panggol::firstOrCreate(['pangkat' => 'Penata Tk. I', 'golongan' => 'III/d']),
+            'iv_a' => Panggol::firstOrCreate(['pangkat' => 'Pembina', 'golongan' => 'IV/a']),
+            'iv_b' => Panggol::firstOrCreate(['pangkat' => 'Pembina Tk. I', 'golongan' => 'IV/b']),
+            'iv_c' => Panggol::firstOrCreate(['pangkat' => 'Pembina Utama Muda', 'golongan' => 'IV/c']),
+        ];
+
+        // 4. Master 38 Pasal / UU Lengkap
+        $pasalRaw = [
+            // UU Kesehatan 17/2023
+            'pasal_kesehatan_1' => ['UU Kesehatan', 'Pasal 435 jo. Pasal 138 ayat (2) dan ayat (3)', '17', '2023', 'Memproduksi atau mengedarkan Sediaan Farmasi dan/atau Alat Kesehatan yang tidak memenuhi standar.'],
+            'pasal_kesehatan_2' => ['UU Kesehatan', 'Pasal 436 ayat (2) jo. Pasal 145 ayat (1)', '17', '2023', 'Melakukan praktik kefarmasian tanpa memiliki keahlian dan kewenangan resmi.'],
+            'pasal_kesehatan_3' => ['UU Kesehatan', 'Pasal 436 ayat (1)', '17', '2023', 'Memproduksi sediaan farmasi dan/atau alat kesehatan tanpa memiliki keahlian dan kewenangan.'],
+            'pasal_kesehatan_4' => ['UU Kesehatan', 'Pasal 437 ayat (1)', '17', '2023', 'Memproduksi atau mengedarkan sediaan farmasi dan/atau alat kesehatan palsu.'],
+            'pasal_kesehatan_5' => ['UU Kesehatan', 'Pasal 438 ayat (1)', '17', '2023', 'Memproduksi atau mengedarkan kosmetik yang mengandung bahan berbahaya atau dilarang.'],
+            'pasal_kesehatan_6' => ['UU Kesehatan', 'Pasal 439 ayat (1)', '17', '2023', 'Memperjualbelikan obat keras daftar G secara bebas tanpa resep dokter atau izin resmi.'],
+            'pasal_kesehatan_7' => ['UU Kesehatan', 'Pasal 440 ayat (1)', '17', '2023', 'Mengedarkan obat bahan alam (obat tradisional) yang mengandung bahan kimia obat (BKO).'],
+            'pasal_kesehatan_8' => ['UU Kesehatan', 'Pasal 437 ayat (2)', '17', '2023', 'Menyimpan atau membawa sediaan farmasi dan/atau alat kesehatan palsu untuk diedarkan.'],
+            'pasal_kesehatan_9' => ['UU Kesehatan', 'Pasal 438 ayat (2)', '17', '2023', 'Mengedarkan kosmetik tanpa izin edar notifikasi resmi dari Badan Pengawas Obat dan Makanan.'],
+            'pasal_kesehatan_10' => ['UU Kesehatan', 'Pasal 439 ayat (2)', '17', '2023', 'Penyimpanan dan penimbunan obat keras daftar G dalam jumlah besar tanpa izin pedagang besar farmasi.'],
+            'pasal_kesehatan_11' => ['UU Kesehatan', 'Pasal 440 ayat (2)', '17', '2023', 'Memproduksi obat bahan alam secara tidak higienis dan tanpa sertifikasi CPOTB bertahap.'],
+            'pasal_kesehatan_12' => ['UU Kesehatan', 'Pasal 441 ayat (1)', '17', '2023', 'Penyaluran bahan baku obat yang tidak memenuhi spesifikasi mutu Farmakope Indonesia.'],
+
+            // UU Pangan 18/2012
+            'pasal_pangan_1' => ['UU Pangan', 'Pasal 142 jo. Pasal 91 ayat (1)', '18', '2012', 'Pelaku Usaha Pangan yang dengan sengaja tidak memiliki izin edar terhadap setiap Pangan Olahan yang diperdagangkan.'],
+            'pasal_pangan_2' => ['UU Pangan', 'Pasal 136 jo. Pasal 75 ayat (1)', '18', '2012', 'Pelaku Usaha yang menggunakan bahan tambahan pangan yang dilarang atau melampaui ambang batas maksimal.'],
+            'pasal_pangan_3' => ['UU Pangan', 'Pasal 138 jo. Pasal 80 ayat (1)', '18', '2012', 'Pelaku Usaha yang memperdagangkan pangan tercemar, busuk, berbau, atau mengandung bahan beracun.'],
+            'pasal_pangan_4' => ['UU Pangan', 'Pasal 140 jo. Pasal 86 ayat (2)', '18', '2012', 'Memproduksi atau mengedarkan pangan olahan dengan label atau iklan palsu dan menyesatkan.'],
+            'pasal_pangan_5' => ['UU Pangan', 'Pasal 141 jo. Pasal 89', '18', '2012', 'Mengedarkan pangan olahan dengan kemasan yang membahayakan kesehatan manusia.'],
+            'pasal_pangan_6' => ['UU Pangan', 'Pasal 137 ayat (1)', '18', '2012', 'Memproduksi pangan dari bahan baku hasil rekayasa genetik tanpa persetujuan keamanan pangan.'],
+            'pasal_pangan_7' => ['UU Pangan', 'Pasal 139 jo. Pasal 84 ayat (1)', '18', '2012', 'Membuka kemasan akhir pangan olahan untuk dikemas kembali dan diperdagangkan tanpa izin.'],
+            'pasal_pangan_8' => ['UU Pangan', 'Pasal 143 jo. Pasal 99', '18', '2012', 'Mengedarkan pangan tercemar cemaran biologi atau kimia melampaui ambang batas batas maksimal.'],
+            'pasal_pangan_9' => ['UU Pangan', 'Pasal 144', '18', '2012', 'Memperdagangkan pangan kedaluwarsa dengan sengaja menghapus atau mengganti label tanggal kedaluwarsa.'],
+            'pasal_pangan_10' => ['UU Pangan', 'Pasal 145', '18', '2012', 'Menolak penarikan pangan olahan berbahaya yang telah diperintahkan oleh otoritas pengawas pangan.'],
+            'pasal_pangan_11' => ['UU Pangan', 'Pasal 146 ayat (1)', '18', '2012', 'Mengedarkan pangan yang mengakibatkan kerugian berat pada kesehatan dan keselamatan manusia.'],
+
+            // UU Perlindungan Konsumen 8/1999
+            'pasal_konsumen_1' => ['UU Perlindungan Konsumen', 'Pasal 62 ayat (1) jo. Pasal 8 ayat (1) huruf a', '8', '1999', 'Memproduksi dan/atau memperdagangkan barang yang tidak memenuhi atau tidak sesuai dengan standar mutu.'],
+            'pasal_konsumen_2' => ['UU Perlindungan Konsumen', 'Pasal 62 ayat (1) jo. Pasal 8 ayat (1) huruf d', '8', '1999', 'Memperdagangkan barang yang tidak sesuai dengan kondisi, jaminan, keistimewaan, atau kemanjuran yang dijanjikan.'],
+            'pasal_konsumen_3' => ['UU Perlindungan Konsumen', 'Pasal 62 ayat (1) jo. Pasal 8 ayat (1) huruf i', '8', '1999', 'Memperdagangkan barang yang tidak mencantumkan tanggal kedaluwarsa atau jangka waktu penggunaan yang paling baik.'],
+            'pasal_konsumen_4' => ['UU Perlindungan Konsumen', 'Pasal 62 ayat (2) jo. Pasal 9 ayat (1)', '8', '1999', 'Menawarkan atau mempromosikan barang secara tidak benar, salah, atau menyesatkan mengenai asal dan mutu barang.'],
+            'pasal_konsumen_5' => ['UU Perlindungan Konsumen', 'Pasal 62 ayat (3) jo. Pasal 18', '8', '1999', 'Pencantuman klausula baku pada dokumen atau perjanjian yang merugikan hak-hak konsumen.'],
+
+            // UU Narkotika 35/2009
+            'pasal_narkotika_1' => ['UU Narkotika', 'Pasal 114 ayat (1)', '35', '2009', 'Menawarkan untuk dijual, menjual, membeli, menerima, menjadi perantara dalam jual beli Narkotika Golongan I.'],
+            'pasal_narkotika_2' => ['UU Narkotika', 'Pasal 129 huruf a', '35', '2009', 'Memproduksi, mengimpor, mengekspor, atau menyalurkan Prekursor Farmasi untuk pembuatan Narkotika secara melawan hukum.'],
+            'pasal_narkotika_3' => ['UU Narkotika', 'Pasal 129 huruf b', '35', '2009', 'Mengimpor, mengekspor, menyalurkan, atau menyerahkan Prekursor Farmasi tanpa izin dari Menteri Kesehatan.'],
+
+            // UU Psikotropika 5/1997
+            'pasal_psikotropika_1' => ['UU Psikotropika', 'Pasal 60 ayat (1) huruf c jo. Pasal 14 ayat (1)', '5', '1997', 'Mengedarkan psikotropika tanpa izin edar resmi atau tidak memenuhi standar mutu dan keamanan.'],
+            'pasal_psikotropika_2' => ['UU Psikotropika', 'Pasal 62', '5', '1997', 'Secara tanpa hak memiliki, menyimpan, dan/atau membawa psikotropika golongan tertentu.'],
+
+            // KUHP UU 1/1946
+            'pasal_kuhp_1' => ['KUHP', 'Pasal 204 ayat (1)', '1', '1946', 'Menjual, menawarkan, menerimakan atau membagi-bagikan barang yang diketahuinya membahayakan nyawa atau kesehatan orang.'],
+            'pasal_kuhp_2' => ['KUHP', 'Pasal 55 ayat (1) ke-1', '1', '1946', 'Turut serta melakukan, menyuruh melakukan, atau membujuk melakukan suatu perbuatan tindak pidana.'],
+            'pasal_kuhp_3' => ['KUHP', 'Pasal 56 ke-1', '1', '1946', 'Dengan sengaja memberi bantuan pada waktu kejahatan dilakukan.'],
+            'pasal_kuhp_4' => ['KUHP', 'Pasal 204 ayat (2)', '1', '1946', 'Menjual barang berbahaya yang mengakibatkan orang mati atau luka berat.'],
+            'pasal_kuhp_5' => ['KUHP', 'Pasal 378', '1', '1946', 'Dengan maksud menguntungkan diri sendiri secara melawan hukum dengan tipu muslihat atau perkataan bohong.'],
+        ];
+
+        $pasalList = [];
+        foreach ($pasalRaw as $key => [$nama, $pasal, $nomor, $tahun, $isi]) {
+            $pasalList[$key] = Pasal::firstOrCreate(
+                ['nama_pasal' => $nama, 'pasal' => $pasal],
+                [
+                    'nomor' => $nomor,
+                    'tahun' => $tahun,
+                    'isi' => $isi,
+                    'status' => 'aktif',
+                ]
+            );
+        }
+
+        // 5. Instansi Hukum Lengkap (Kejati, 13 Kejari, Pengadilan Tinggi, 12 PN)
+        $instansiRaw = [
+            'kejati' => ['kejaksaan', 'Kejaksaan Tinggi Kalimantan Selatan', 'Kalimantan Selatan'],
+            'kejari_bjm' => ['kejaksaan', 'Kejaksaan Negeri Banjarmasin', 'Kota Banjarmasin'],
+            'kejari_bjb' => ['kejaksaan', 'Kejaksaan Negeri Banjarbaru', 'Kota Banjarbaru'],
+            'kejari_banjar' => ['kejaksaan', 'Kejaksaan Negeri Banjar', 'Kabupaten Banjar'],
+            'kejari_batola' => ['kejaksaan', 'Kejaksaan Negeri Barito Kuala', 'Kabupaten Barito Kuala'],
+            'kejari_tanahlaut' => ['kejaksaan', 'Kejaksaan Negeri Tanah Laut', 'Kabupaten Tanah Laut'],
+            'kejari_tapin' => ['kejaksaan', 'Kejaksaan Negeri Tapin', 'Kabupaten Tapin'],
+            'kejari_hst' => ['kejaksaan', 'Kejaksaan Negeri Hulu Sungai Tengah', 'Kabupaten Hulu Sungai Tengah'],
+            'kejari_hsu' => ['kejaksaan', 'Kejaksaan Negeri Hulu Sungai Utara', 'Kabupaten Hulu Sungai Utara'],
+            'kejari_hss' => ['kejaksaan', 'Kejaksaan Negeri Hulu Sungai Selatan', 'Kabupaten Hulu Sungai Selatan'],
+            'kejari_tabalong' => ['kejaksaan', 'Kejaksaan Negeri Tabalong', 'Kabupaten Tabalong'],
+            'kejari_tanbu' => ['kejaksaan', 'Kejaksaan Negeri Tanah Bumbu', 'Kabupaten Tanah Bumbu'],
+            'kejari_balangan' => ['kejaksaan', 'Kejaksaan Negeri Balangan', 'Kabupaten Balangan'],
+            'kejari_kotabaru' => ['kejaksaan', 'Kejaksaan Negeri Kotabaru', 'Kabupaten Kotabaru'],
+            'pt_bjm' => ['pengadilan', 'Pengadilan Tinggi Banjarmasin', 'Kalimantan Selatan'],
+            'pn_bjm' => ['pengadilan', 'Pengadilan Negeri Banjarmasin', 'Kota Banjarmasin'],
+            'pn_bjb' => ['pengadilan', 'Pengadilan Negeri Banjarbaru', 'Kota Banjarbaru'],
+            'pn_mtp' => ['pengadilan', 'Pengadilan Negeri Martapura', 'Kabupaten Banjar'],
+            'pn_mrh' => ['pengadilan', 'Pengadilan Negeri Marabahan', 'Kabupaten Barito Kuala'],
+            'pn_kotabaru' => ['pengadilan', 'Pengadilan Negeri Kotabaru', 'Kabupaten Kotabaru'],
+            'pn_pelaihari' => ['pengadilan', 'Pengadilan Negeri Pelaihari', 'Kabupaten Tanah Laut'],
+            'pn_rantau' => ['pengadilan', 'Pengadilan Negeri Rantau', 'Kabupaten Tapin'],
+            'pn_kandangan' => ['pengadilan', 'Pengadilan Negeri Kandangan', 'Kabupaten Hulu Sungai Selatan'],
+            'pn_barabai' => ['pengadilan', 'Pengadilan Negeri Barabai', 'Kabupaten Hulu Sungai Tengah'],
+            'pn_amuntai' => ['pengadilan', 'Pengadilan Negeri Amuntai', 'Kabupaten Hulu Sungai Utara'],
+            'pn_tanjung' => ['pengadilan', 'Pengadilan Negeri Tanjung', 'Kabupaten Tabalong'],
+            'pn_batulicin' => ['pengadilan', 'Pengadilan Negeri Batulicin', 'Kabupaten Tanah Bumbu'],
+            'pn_paringin' => ['pengadilan', 'Pengadilan Negeri Paringin', 'Kabupaten Balangan'],
+        ];
+
+        $instansiList = [];
+        foreach ($instansiRaw as $key => [$jenis, $nama, $wilayah]) {
+            $instansiList[$key] = InstansiHukum::firstOrCreate(
+                ['jenis' => $jenis, 'nama' => $nama],
+                ['wilayah' => $wilayah]
+            );
+        }
+
+        // 6. Master 45 Jaksa Penuntut Umum Realistis
+        $jaksaRaw = [
+            ['kejati', 'Ahmad Fauzi, S.H., M.H.', '198405122009121002', 'Jaksa Madya (IV/a)'],
+            ['kejati', 'Eko Prasetyo, S.H., M.H.', '198203152007011002', 'Jaksa Utama Pratama (IV/b)'],
+            ['kejati', 'Maya Lestari, S.H., M.H.', '198608242010122003', 'Jaksa Muda (III/d)'],
+            ['kejati', 'Hendra Pratama, S.H.', '198902112014021001', 'Jaksa Pratama (III/c)'],
+            ['kejati', 'Ratna Dewi, S.H.', '199107192015032002', 'Ajun Jaksa Madya (III/a)'],
+
+            ['kejari_bjm', 'Rian Hidayat, S.H.', '198807202012011003', 'Jaksa Pratama (III/c)'],
+            ['kejari_bjm', 'Linda Kusuma, S.H.', '199105142015022001', 'Jaksa Pratama (III/c)'],
+            ['kejari_bjm', 'Fajar Nugroho, S.H., M.H.', '198504102009121001', 'Jaksa Muda (III/d)'],
+            ['kejari_bjm', 'Siti Aminah, S.H.', '199309082016022003', 'Ajun Jaksa Madya (III/a)'],
+
+            ['kejari_bjb', 'Nurul Hikmah, S.H., M.H.', '198611142010122001', 'Jaksa Muda (III/d)'],
+            ['kejari_bjb', 'Bambang Sutrisno, S.H.', '198703212011011003', 'Jaksa Muda (III/d)'],
+            ['kejari_bjb', 'Aditya Wardana, S.H.', '199008122014031002', 'Jaksa Pratama (III/c)'],
+            ['kejari_bjb', 'Yuni Kartika, S.H.', '199211052016012001', 'Jaksa Pratama (III/c)'],
+
+            ['kejari_banjar', 'Siti Maryam, S.H.', '198904122014022003', 'Jaksa Pratama (III/c)'],
+            ['kejari_banjar', 'Dewi Anggraeni, S.H.', '199302182017012002', 'Ajun Jaksa Madya (III/a)'],
+            ['kejari_banjar', 'Wahyudi Rahman, S.H., M.H.', '198412032008121004', 'Jaksa Madya (IV/a)'],
+            ['kejari_banjar', 'Fitri Handayani, S.H.', '199006202015032004', 'Jaksa Pratama (III/c)'],
+
+            ['kejari_batola', 'Diana Lestari, S.H.', '199003182015032002', 'Jaksa Pratama (III/c)'],
+            ['kejari_batola', 'M. Iqbal Maulana, S.H.', '198801152013021001', 'Jaksa Pratama (III/c)'],
+            ['kejari_batola', 'Sri Mulyani, S.H., M.H.', '198509272010012002', 'Jaksa Muda (III/d)'],
+
+            ['kejari_tanahlaut', 'Hendra Saputra, S.H., M.H.', '198502152010011004', 'Jaksa Muda (III/d)'],
+            ['kejari_tanahlaut', 'Ilham Maulana, S.H.', '198806122013021001', 'Jaksa Pratama (III/c)'],
+            ['kejari_tanahlaut', 'Ratih Puspita, S.H.', '199204092016022001', 'Ajun Jaksa Madya (III/a)'],
+
+            ['kejari_tapin', 'Wahyu Wibowo, S.H.', '198709102011011002', 'Jaksa Pratama (III/c)'],
+            ['kejari_tapin', 'Anisa Triana, S.H.', '199108142015032003', 'Jaksa Pratama (III/c)'],
+            ['kejari_tapin', 'Dodi Ferdiansyah, S.H., M.H.', '198311222008011002', 'Jaksa Muda (III/d)'],
+
+            ['kejari_hst', 'M. Reza Pahlevi, S.H., M.H.', '198304192008121001', 'Jaksa Madya (IV/a)'],
+            ['kejari_hst', 'Danu Syaifullah, S.H.', '198905262014021003', 'Jaksa Pratama (III/c)'],
+            ['kejari_hst', 'Mega Utami, S.H.', '199207302017012004', 'Ajun Jaksa Madya (III/a)'],
+
+            ['kejari_hsu', 'Anisa Rahmawati, S.H.', '199106252015032004', 'Jaksa Pratama (III/c)'],
+            ['kejari_hsu', 'Rahmat Hidayat, S.H., M.H.', '198602182010121002', 'Jaksa Muda (III/d)'],
+            ['kejari_hsu', 'Tri Wahyuningsih, S.H.', '199010122014032002', 'Jaksa Pratama (III/c)'],
+
+            ['kejari_hss', 'Dedi Kurniawan, S.H.', '198812032014031001', 'Jaksa Pratama (III/c)'],
+            ['kejari_hss', 'Cindy Permata, S.H.', '199303152017012001', 'Ajun Jaksa Madya (III/a)'],
+            ['kejari_hss', 'Bima Sakti, S.H., M.H.', '198407072009011003', 'Jaksa Muda (III/d)'],
+
+            ['kejari_tabalong', 'Faisal Akbar, S.H., M.H.', '198411082009121003', 'Jaksa Muda (III/d)'],
+            ['kejari_tabalong', 'Nina Marlina, S.H.', '198909192014022002', 'Jaksa Pratama (III/c)'],
+            ['kejari_tabalong', 'Johan Syahputra, S.H.', '199201282016021001', 'Jaksa Pratama (III/c)'],
+
+            ['kejari_tanbu', 'Tri Wahyuni, S.H.', '198908172014022005', 'Jaksa Pratama (III/c)'],
+            ['kejari_tanbu', 'Rizky Ramadhan, S.H.', '199012052015031002', 'Jaksa Pratama (III/c)'],
+            ['kejari_tanbu', 'Farah Nabila, S.H., M.H.', '198606142010122004', 'Jaksa Muda (III/d)'],
+
+            ['kejari_balangan', 'Bagus Prasetyo, S.H.', '199201102016021002', 'Jaksa Pratama (III/c)'],
+            ['kejari_balangan', 'Ayu Wulandari, S.H.', '199404222018012003', 'Ajun Jaksa Madya (III/a)'],
+
+            ['kejari_kotabaru', 'Arif Rahman, S.H., M.H.', '198510202010121002', 'Jaksa Muda (III/d)'],
+            ['kejari_kotabaru', 'Desi Natalia, S.H.', '199103112015022003', 'Jaksa Pratama (III/c)'],
+        ];
+
+        $jaksaList = [];
+        foreach ($jaksaRaw as $idx => [$instansiKey, $nama, $nip, $pangkat]) {
+            $jaksaList['jaksa_'.($idx + 1)] = JaksaPenuntut::firstOrCreate(
+                ['instansi_hukum_id' => $instansiList[$instansiKey]->id, 'nama_jaksa' => $nama],
+                ['nip' => $nip, 'pangkat' => $pangkat]
+            );
+        }
+
+        return array_merge(
+            $jabatanList,
+            $bidangList,
+            $panggolList,
+            $pasalList,
+            $instansiList,
+            $jaksaList
+        );
     }
 
     /**
-     * Pengguna PPNS tambahan untuk variasi tim penyidik.
+     * 20 Pengguna Penyidik PPNS realistis untuk variasi tim penyidik perkara.
      *
      * @param  array<string, mixed>  $master
      * @return array<string, User>
@@ -775,84 +493,54 @@ class DummyDataSeeder extends Seeder
             ]
         );
 
-        $penyidik1 = User::firstOrCreate(
-            ['email' => 'penyidik@baptwo.test'],
-            [
-                'nama' => 'Penyidik PPNS',
-                'nip' => '199203032018011003',
-                'role' => UserRole::PENYIDIK,
-                'jabatan_id' => $master['jabatan_ppns']->id,
-                'bidang_id' => $master['bidang_penindakan']->id,
-                'panggol_id' => $master['panggol_penata_tk1']->id,
-                'alamat_id' => $alamat->id,
-                'password' => Hash::make('password'),
-                'status' => 'pns',
-                'is_active' => true,
-                'email_verified_at' => now(),
-            ]
-        );
-
-        $penyidik2 = User::firstOrCreate(
-            ['email' => 'budi.ppns@baptwo.test'],
-            [
-                'nama' => 'Budi Hermawan, S.Farm., Apt.',
-                'nip' => '198906152014031002',
-                'role' => UserRole::PENYIDIK,
-                'jabatan_id' => $master['jabatan_ppns']->id,
-                'bidang_id' => $master['bidang_penindakan']->id,
-                'panggol_id' => $master['panggol_penata_tk1']->id,
-                'alamat_id' => $alamat->id,
-                'password' => Hash::make('password'),
-                'status' => 'pns',
-                'is_active' => true,
-                'email_verified_at' => now(),
-            ]
-        );
-
-        $penyidik3 = User::firstOrCreate(
-            ['email' => 'siti.ppns@baptwo.test'],
-            [
-                'nama' => 'Siti Rahmah, S.H.',
-                'nip' => '199308222019022005',
-                'role' => UserRole::PENYIDIK,
-                'jabatan_id' => $master['jabatan_analis']->id,
-                'bidang_id' => $master['bidang_penindakan']->id,
-                'panggol_id' => $master['panggol_penata']->id,
-                'alamat_id' => $alamat->id,
-                'password' => Hash::make('password'),
-                'status' => 'pns',
-                'is_active' => true,
-                'email_verified_at' => now(),
-            ]
-        );
-
-        $penyidik4 = User::firstOrCreate(
-            ['email' => 'dewi.ppns@baptwo.test'],
-            [
-                'nama' => 'Dewi Sartika, S.Si., Apt.',
-                'nip' => '199104102016012004',
-                'role' => UserRole::PENYIDIK,
-                'jabatan_id' => $master['jabatan_pfm']->id,
-                'bidang_id' => $master['bidang_pemeriksaan']->id,
-                'panggol_id' => $master['panggol_penata_tk1']->id,
-                'alamat_id' => $alamat->id,
-                'password' => Hash::make('password'),
-                'status' => 'pns',
-                'is_active' => true,
-                'email_verified_at' => now(),
-            ]
-        );
-
-        return [
-            'penyidik_1' => $penyidik1,
-            'penyidik_2' => $penyidik2,
-            'penyidik_3' => $penyidik3,
-            'penyidik_4' => $penyidik4,
+        $penyidikDefinitions = [
+            ['email' => 'penyidik@baptwo.test', 'nama' => 'Penyidik PPNS', 'nip' => '199203032018011003', 'jabatan' => 'ppns', 'bidang' => 'penindakan', 'panggol' => 'iii_d'],
+            ['email' => 'budi.ppns@baptwo.test', 'nama' => 'Budi Hermawan, S.Farm., Apt.', 'nip' => '198906152014031002', 'jabatan' => 'ppns', 'bidang' => 'penindakan', 'panggol' => 'iii_d'],
+            ['email' => 'siti.ppns@baptwo.test', 'nama' => 'Siti Rahmah, S.H.', 'nip' => '199308222019022005', 'jabatan' => 'analis', 'bidang' => 'penindakan', 'panggol' => 'iii_c'],
+            ['email' => 'dewi.ppns@baptwo.test', 'nama' => 'Dewi Sartika, S.Si., Apt.', 'nip' => '199104102016012004', 'jabatan' => 'pfm_muda', 'bidang' => 'pemeriksaan', 'panggol' => 'iii_d'],
+            ['email' => 'hendra.ppns@baptwo.test', 'nama' => 'Hendra Wijaya, S.Farm., Apt.', 'nip' => '198705142011011002', 'jabatan' => 'pfm_madya', 'bidang' => 'penindakan', 'panggol' => 'iv_a'],
+            ['email' => 'rina.ppns@baptwo.test', 'nama' => 'Rina Anggraeni, S.H.', 'nip' => '199402172019012002', 'jabatan' => 'ppns', 'bidang' => 'penindakan', 'panggol' => 'iii_b'],
+            ['email' => 'fauzan.ppns@baptwo.test', 'nama' => 'Ahmad Fauzan, S.Si.', 'nip' => '199011032015031001', 'jabatan' => 'pfm_pertama', 'bidang' => 'pengujian', 'panggol' => 'iii_c'],
+            ['email' => 'maya.ppns@baptwo.test', 'nama' => 'Maya Kusuma, S.Farm., Apt.', 'nip' => '198809252012012003', 'jabatan' => 'pfm_muda', 'bidang' => 'penindakan', 'panggol' => 'iii_d'],
+            ['email' => 'arif.ppns@baptwo.test', 'nama' => 'Arif Wibowo, S.H., M.H.', 'nip' => '198501192009021001', 'jabatan' => 'ppns', 'bidang' => 'penindakan', 'panggol' => 'iv_a'],
+            ['email' => 'nurul.ppns@baptwo.test', 'nama' => 'Nurul Hidayati, S.Si., Apt.', 'nip' => '199207082017012004', 'jabatan' => 'pfm_pertama', 'bidang' => 'pemeriksaan', 'panggol' => 'iii_c'],
+            ['email' => 'rizky.ppns@baptwo.test', 'nama' => 'Rizky Maulana, S.Farm.', 'nip' => '199503122020011002', 'jabatan' => 'ppns', 'bidang' => 'penindakan', 'panggol' => 'iii_a'],
+            ['email' => 'fitriani.ppns@baptwo.test', 'nama' => 'Fitriani, S.H.', 'nip' => '199312042018022001', 'jabatan' => 'analis', 'bidang' => 'penindakan', 'panggol' => 'iii_b'],
+            ['email' => 'johan.ppns@baptwo.test', 'nama' => 'Johan Prasetyo, S.Si.', 'nip' => '198904182014021003', 'jabatan' => 'pfm_muda', 'bidang' => 'pengujian', 'panggol' => 'iii_d'],
+            ['email' => 'anisa.ppns@baptwo.test', 'nama' => 'Anisa Pratiwi, S.Farm., Apt.', 'nip' => '199109092016022002', 'jabatan' => 'pfm_pertama', 'bidang' => 'penindakan', 'panggol' => 'iii_c'],
+            ['email' => 'dedi.ppns@baptwo.test', 'nama' => 'Dedi Kurniawan, S.H.', 'nip' => '198610152010121002', 'jabatan' => 'ppns', 'bidang' => 'penindakan', 'panggol' => 'iii_d'],
+            ['email' => 'ratna.ppns@baptwo.test', 'nama' => 'Ratna Sari, S.Si.', 'nip' => '199406212019012003', 'jabatan' => 'pfm_pertama', 'bidang' => 'pemeriksaan', 'panggol' => 'iii_b'],
+            ['email' => 'wahyu.ppns@baptwo.test', 'nama' => 'Wahyu Santosa, S.Farm., Apt.', 'nip' => '198712102011021001', 'jabatan' => 'pfm_madya', 'bidang' => 'penindakan', 'panggol' => 'iv_a'],
+            ['email' => 'desi.ppns@baptwo.test', 'nama' => 'Desi Rahmawati, S.H.', 'nip' => '199208302017012002', 'jabatan' => 'analis', 'bidang' => 'penindakan', 'panggol' => 'iii_c'],
+            ['email' => 'faisal.ppns@baptwo.test', 'nama' => 'Faisal Rahman, S.Si., Apt.', 'nip' => '199003272015021001', 'jabatan' => 'ppns', 'bidang' => 'penindakan', 'panggol' => 'iii_c'],
+            ['email' => 'tri.ppns@baptwo.test', 'nama' => 'Tri Handayani, S.Farm.', 'nip' => '199605152021012001', 'jabatan' => 'pfm_pertama', 'bidang' => 'penindakan', 'panggol' => 'iii_a'],
         ];
+
+        $users = [];
+        foreach ($penyidikDefinitions as $idx => $def) {
+            $users['penyidik_'.($idx + 1)] = User::updateOrCreate(
+                ['email' => $def['email']],
+                [
+                    'nama' => $def['nama'],
+                    'nip' => $def['nip'],
+                    'role' => UserRole::PENYIDIK,
+                    'jabatan_id' => $master[$def['jabatan']]->id,
+                    'bidang_id' => $master[$def['bidang']]->id,
+                    'panggol_id' => $master[$def['panggol']]->id,
+                    'alamat_id' => $alamat->id,
+                    'password' => Hash::make('password'),
+                    'status' => 'pns',
+                    'is_active' => true,
+                    'email_verified_at' => now(),
+                ]
+            );
+        }
+
+        return $users;
     }
 
     /**
-     * Menanam 100 perkara dari pra-SPDP sampai putusan pengadilan.
+     * Menanam 1.000 perkara dari pra-SPDP sampai putusan pengadilan.
      *
      * @param  array<string, mixed>  $master
      * @param  array<string, User>  $users
@@ -866,98 +554,126 @@ class DummyDataSeeder extends Seeder
 
         $penyidik = array_values($users);
 
-        foreach ($rencana as $urutan => $baris) {
-            $archetype = $archetypeList[$baris['archetype']];
-            $lokasi = $lokasiList[$baris['lokasi']];
-            $bucket = $baris['bucket'];
+        DB::disableQueryLog();
+        DB::beginTransaction();
 
-            $tanggalLk = Carbon::create($baris['tahun'], 1, 5)->startOfDay()->addDays($urutan + ($urutan % 3));
-            $adaSprindik = ! in_array($bucket, ['lk_draft', 'lk_final'], true);
-            $tanggalSprindik = $adaSprindik ? $tanggalLk->copy()->addDays(2) : null;
-            $tanggalSpdp = $adaSprindik ? $tanggalSprindik->copy()->addDays(4) : null;
+        try {
+            foreach ($rencana as $urutan => $baris) {
+                $archetype = $archetypeList[$baris['archetype']];
+                $lokasi = $lokasiList[$baris['lokasi']];
+                $bucket = $baris['bucket'];
 
-            $detailTkp = $this->susunDetailTkp($archetype, $lokasi, $urutan);
-            $uraian = str_replace('{kabupaten}', $lokasi['kab'][1], $archetype['uraian']);
+                $tanggalLk = $this->hitungTanggalLk($baris['tahun'], $baris['idx_tahun'], $baris['total_tahun']);
+                $adaSprindik = ! in_array($bucket, ['lk_draft', 'lk_final'], true);
+                $tanggalSprindik = $adaSprindik ? $tanggalLk->copy()->addDays(2) : null;
+                $tanggalSpdp = $adaSprindik ? $tanggalSprindik->copy()->addDays(3) : null;
 
-            $adaBerkas = ! in_array($bucket, ['lk_draft', 'lk_final', 'sprindik_draft', 'sprindik_final'], true);
+                $detailTkp = $this->susunDetailTkp($archetype, $lokasi, $urutan);
+                $uraian = str_replace('{kabupaten}', $lokasi['kab'][1], $archetype['uraian']);
 
-            $tersangkaList = [];
-            if ($adaBerkas) {
-                for ($orang = 0; $orang < $baris['jumlah_tersangka']; $orang++) {
-                    $tersangkaList[] = $this->susunTersangka($master, $lokasi, $archetype, $urutan * 3 + $orang, $orang);
+                $adaBerkas = ! in_array($bucket, ['lk_draft', 'lk_final', 'sprindik_draft', 'sprindik_final'], true);
+
+                $tersangkaList = [];
+                if ($adaBerkas) {
+                    $pakaiPasalBerlapis = ($urutan % 3 === 0);
+                    $tersangkaList[] = $this->susunTersangka($master, $lokasi, $archetype, $urutan, $pakaiPasalBerlapis);
+                }
+
+                $tahapan = $tanggalSpdp ? $this->susunTahapan($bucket, $urutan, $tanggalSpdp, $archetype, $lokasi) : [];
+                $dpo = $baris['dpo'] ? $this->susunDpo($baris['dpo'], $tanggalSpdp, $urutan) : null;
+                $sp3 = $bucket === 'sp3' ? $this->susunSp3($tanggalSpdp ? $tanggalSpdp->copy()->addDays(18) : $tanggalLk->copy()->addDays(12), $urutan) : null;
+
+                $ppnsUtama = $penyidik[$urutan % count($penyidik)];
+                $ppnsAnggota = [];
+                if ($urutan % 4 !== 0) {
+                    $ppnsAnggota[] = $penyidik[($urutan + 1) % count($penyidik)];
+                }
+                if ($urutan % 6 === 0) {
+                    $ppnsAnggota[] = $penyidik[($urutan + 2) % count($penyidik)];
+                }
+
+                $this->createCase(
+                    actor: $actor,
+                    noLk: $this->nomorLk($tanggalLk),
+                    tglLk: $tanggalLk->toDateString(),
+                    uraian: $uraian,
+                    noSp: $adaSprindik ? $this->nomorSprindik($tanggalSprindik) : null,
+                    tglSp: $tanggalSprindik?->toDateString(),
+                    statusPerkara: $adaBerkas ? 'final' : null,
+                    lokasi: $lokasi,
+                    tkpData: [
+                        'prov' => $lokasi['prov'],
+                        'kab' => $lokasi['kab'],
+                        'kec' => $lokasi['kec'],
+                        'kel' => $lokasi['kel'],
+                        'detail' => $detailTkp,
+                        'klasifikasi' => $archetype['klasifikasi'],
+                        'legalitas' => $archetype['legalitas'],
+                        'modus' => $urutan % 5 === 0 ? 'online' : ($urutan % 7 === 0 ? 'offline' : $archetype['modus']),
+                    ],
+                    ppnsUtama: $ppnsUtama,
+                    ppnsAnggota: $ppnsAnggota,
+                    tersangkaList: $tersangkaList,
+                    tahapanChain: $tahapan,
+                    dpoData: $dpo,
+                    sp3Data: $sp3,
+                    statusFormalOverride: $baris['tidak_selesai'] ? 'tidak_selesai' : null,
+                    statusLaporan: $bucket === 'lk_draft' ? 'draft' : 'final',
+                    statusSprindik: $adaSprindik ? ($bucket === 'sprindik_draft' ? 'draft' : 'final') : null,
+                );
+
+                // Commit transaksi setiap 50 perkara untuk menjaga stabilitas memori
+                if (($urutan + 1) % 50 === 0) {
+                    DB::commit();
+                    DB::beginTransaction();
                 }
             }
 
-            $tahapan = $tanggalSpdp ? $this->susunTahapan($bucket, $urutan, $tanggalSpdp, $archetype, $lokasi) : [];
-            $dpo = $baris['dpo'] ? $this->susunDpo($baris['dpo'], $tanggalSpdp, $urutan) : null;
-            $sp3 = $bucket === 'sp3' ? $this->susunSp3($tanggalSpdp->copy()->addDays(20)) : null;
-
-            $ppnsUtama = $penyidik[$urutan % count($penyidik)];
-            $ppnsAnggota = [];
-            if ($urutan % 5 !== 0) {
-                $ppnsAnggota[] = $penyidik[($urutan + 1) % count($penyidik)];
-            }
-            if ($urutan % 7 === 0) {
-                $ppnsAnggota[] = $penyidik[($urutan + 2) % count($penyidik)];
-            }
-
-            $this->createCase(
-                actor: $actor,
-                noLk: $this->nomorLk($tanggalLk),
-                tglLk: $tanggalLk->toDateString(),
-                uraian: $uraian,
-                noSp: $adaSprindik ? $this->nomorSprindik($tanggalSprindik) : null,
-                tglSp: $tanggalSprindik?->toDateString(),
-                statusPerkara: $adaBerkas ? 'final' : null,
-                lokasi: $lokasi,
-                tkpData: [
-                    'prov' => $lokasi['prov'],
-                    'kab' => $lokasi['kab'],
-                    'kec' => $lokasi['kec'],
-                    'kel' => $lokasi['kel'],
-                    'detail' => $detailTkp,
-                    'klasifikasi' => $archetype['klasifikasi'],
-                    'legalitas' => $archetype['legalitas'],
-                    'modus' => $urutan % 6 === 0 ? 'offline' : $archetype['modus'],
-                ],
-                ppnsUtama: $ppnsUtama,
-                ppnsAnggota: $ppnsAnggota,
-                tersangkaList: $tersangkaList,
-                tahapanChain: $tahapan,
-                dpoData: $dpo,
-                sp3Data: $sp3,
-                statusFormalOverride: $baris['tidak_selesai'] ? 'tidak_selesai' : null,
-                statusLaporan: $bucket === 'lk_draft' ? 'draft' : 'final',
-                statusSprindik: $adaSprindik ? ($bucket === 'sprindik_draft' ? 'draft' : 'final') : null,
-            );
+            DB::commit();
+        } catch (\Throwable $e) {
+            DB::rollBack();
+            throw $e;
         }
     }
 
     /**
-     * Rencana 100 perkara: komposisi tahapan, tahun, DPO, SP3, dan jumlah tersangka.
+     * Hitung tanggal LK agar tersebar merata dalam tahun kalender masing-masing.
+     */
+    private function hitungTanggalLk(int $tahun, int $idxTahun, int $totalTahun): Carbon
+    {
+        $maksHari = ($tahun === 2026) ? 285 : 345;
+        $rasio = $totalTahun > 1 ? ($idxTahun / ($totalTahun - 1)) : 0;
+        $offset = (int) round($rasio * $maksHari);
+
+        return Carbon::create($tahun, 1, 5)->startOfDay()->addDays($offset);
+    }
+
+    /**
+     * Rencana tepat 1.000 perkara: komposisi tahapan, rentang 3 tahun, DPO, SP3, dan murni 1 tersangka.
      *
      * @return array<int, array<string, mixed>>
      */
     private function susunRencana(): array
     {
+        // Distribusi tepat 1.000 perkara ke seluruh tahapan alur BAPTwo
         $distribusi = [
-            'lk_draft' => 4,
-            'lk_final' => 7,
-            'sprindik_draft' => 5,
-            'sprindik_final' => 8,
-            'perkara_only' => 6,
-            'spdp_draft' => 5,
-            'spdp' => 9,
-            'spdp_p16' => 6,
-            'spdp_p16_p17p' => 5,
-            'tahap1_draft' => 5,
-            'tahap1' => 7,
-            'tahap1_p18p_p19' => 5,
-            'p21_draft' => 4,
-            'p21' => 6,
-            'tahap2' => 8,
-            'keputusan' => 6,
-            'sp3' => 4,
+            'lk_draft' => 30,
+            'lk_final' => 50,
+            'sprindik_draft' => 30,
+            'sprindik_final' => 50,
+            'perkara_only' => 40,
+            'spdp_draft' => 30,
+            'spdp' => 80,
+            'spdp_p16' => 50,
+            'spdp_p16_p17p' => 40,
+            'tahap1_draft' => 30,
+            'tahap1' => 70,
+            'tahap1_p18p_p19' => 50,
+            'p21_draft' => 30,
+            'p21' => 60,
+            'tahap2' => 100,
+            'keputusan' => 220,
+            'sp3' => 40,
         ];
 
         $archetypeKeys = array_keys($this->archetypeCatalog());
@@ -971,79 +687,102 @@ class DummyDataSeeder extends Seeder
                     'bucket' => $bucket,
                     'idx_bucket' => $i,
                     'archetype' => $archetypeKeys[$nomor % count($archetypeKeys)],
-                    'lokasi' => $lokasiKeys[($nomor * 5 + 3) % count($lokasiKeys)],
+                    'lokasi' => $lokasiKeys[($nomor * 7 + 3) % count($lokasiKeys)],
                     'tahun' => 2026,
+                    'idx_tahun' => 0,
+                    'total_tahun' => 650,
                     'tidak_selesai' => false,
-                    'jumlah_tersangka' => 1,
+                    'jumlah_tersangka' => 1, // Sesuai kesepakatan: murni 1 Tersangka 1 Berkas
                     'dpo' => null,
                 ];
                 $nomor++;
             }
         }
 
-        // Perkara yang sudah selesai pada tahun sebelumnya
-        foreach ([
-            ['keputusan', 0, 2024],
-            ['keputusan', 1, 2025],
-            ['keputusan', 2, 2024],
-            ['keputusan', 3, 2025],
-            ['tahap2', 0, 2025],
-        ] as [$bucket, $idx, $tahun]) {
-            foreach ($rencana as $pos => $baris) {
-                if ($baris['bucket'] === $bucket && $baris['idx_bucket'] === $idx) {
-                    $rencana[$pos]['tahun'] = $tahun;
-                    break;
-                }
-            }
-        }
-
-        // Berkas SPDP tahun lalu yang belum selesai (status formal tidak selesai)
-        foreach ([
-            ['spdp', 0, 2024],
-            ['spdp_p16', 0, 2025],
-            ['tahap1_draft', 0, 2024],
-            ['tahap1', 1, 2025],
-            ['p21', 0, 2024],
-        ] as [$bucket, $idx, $tahun]) {
-            foreach ($rencana as $pos => $baris) {
-                if ($baris['bucket'] === $bucket && $baris['idx_bucket'] === $idx) {
-                    $rencana[$pos]['tahun'] = $tahun;
-                    $rencana[$pos]['tidak_selesai'] = true;
-                    break;
-                }
-            }
-        }
-
-        // Indeks baris yang memiliki berkas perkara
-        $berkasIdx = [];
+        // Distribusi Tahun: 65% (650) tahun 2026, 20% (200) tahun 2025, 15% (150) tahun 2024
+        // Tahun 2024: 150 perkara
+        // - 110 perkara selesai (keputusan & tahap 2)
+        // - 10 perkara SP3
+        // - 30 perkara tidak selesai (lewat batas tahun 31 Desember)
+        $idx2024 = 0;
         foreach ($rencana as $pos => $baris) {
-            if (! in_array($baris['bucket'], ['lk_draft', 'lk_final', 'sprindik_draft', 'sprindik_final'], true)) {
-                $berkasIdx[] = $pos;
+            if ($idx2024 >= 150) {
+                break;
+            }
+            if ($baris['bucket'] === 'keputusan' && $idx2024 < 80) {
+                $rencana[$pos]['tahun'] = 2024;
+                $idx2024++;
+            } elseif ($baris['bucket'] === 'tahap2' && $idx2024 < 110) {
+                $rencana[$pos]['tahun'] = 2024;
+                $idx2024++;
+            } elseif ($baris['bucket'] === 'sp3' && $idx2024 < 120) {
+                $rencana[$pos]['tahun'] = 2024;
+                $rencana[$pos]['tidak_selesai'] = true;
+                $idx2024++;
+            } elseif (in_array($baris['bucket'], ['spdp', 'spdp_p16', 'tahap1', 'tahap1_p18p_p19', 'p21'], true) && $idx2024 < 150) {
+                $rencana[$pos]['tahun'] = 2024;
+                $rencana[$pos]['tidak_selesai'] = true;
+                $idx2024++;
             }
         }
 
-        // Delapan perkara dengan dua tersangka dan dua perkara dengan tiga tersangka
-        foreach ([5, 14, 23, 31, 44, 57, 66, 72] as $posisi) {
-            $rencana[$berkasIdx[$posisi]]['jumlah_tersangka'] = 2;
-        }
-        foreach ([37, 60] as $posisi) {
-            $rencana[$berkasIdx[$posisi]]['jumlah_tersangka'] = 3;
+        // Tahun 2025: 200 perkara
+        // - 130 perkara selesai (keputusan & tahap 2)
+        // - 15 perkara SP3
+        // - 55 perkara tidak selesai (lewat batas tahun 31 Desember)
+        $idx2025 = 0;
+        foreach ($rencana as $pos => $baris) {
+            if ($idx2025 >= 200) {
+                break;
+            }
+            if ($rencana[$pos]['tahun'] === 2024) {
+                continue;
+            }
+            if ($baris['bucket'] === 'keputusan' && $idx2025 < 90) {
+                $rencana[$pos]['tahun'] = 2025;
+                $idx2025++;
+            } elseif ($baris['bucket'] === 'tahap2' && $idx2025 < 130) {
+                $rencana[$pos]['tahun'] = 2025;
+                $idx2025++;
+            } elseif ($baris['bucket'] === 'sp3' && $idx2025 < 145) {
+                $rencana[$pos]['tahun'] = 2025;
+                $rencana[$pos]['tidak_selesai'] = true;
+                $idx2025++;
+            } elseif (in_array($baris['bucket'], ['spdp', 'spdp_p16', 'spdp_p16_p17p', 'tahap1_draft', 'tahap1', 'p21_draft', 'p21'], true) && $idx2025 < 200) {
+                $rencana[$pos]['tahun'] = 2025;
+                $rencana[$pos]['tidak_selesai'] = true;
+                $idx2025++;
+            }
         }
 
-        // DPO aktif dan DPO yang sudah dicabut pada berkas berjalan
-        $kandidatDpo = array_values(array_filter(
-            $berkasIdx,
-            fn (int $pos): bool => in_array($rencana[$pos]['bucket'], [
+        // Hitung total dan index per tahun agar tanggal tersebar proporsional
+        $counterTahun = [2024 => 0, 2025 => 0, 2026 => 0];
+        $totalTahun = [2024 => 0, 2025 => 0, 2026 => 0];
+        foreach ($rencana as $b) {
+            $totalTahun[$b['tahun']]++;
+        }
+        foreach ($rencana as $pos => $b) {
+            $rencana[$pos]['idx_tahun'] = $counterTahun[$b['tahun']]++;
+            $rencana[$pos]['total_tahun'] = $totalTahun[$b['tahun']];
+        }
+
+        // DPO aktif dan cabut pada berkas yang sedang berproses di tahun 2026
+        $kandidatDpo2026 = [];
+        foreach ($rencana as $pos => $b) {
+            if ($b['tahun'] === 2026 && in_array($b['bucket'], [
                 'spdp', 'spdp_p16', 'spdp_p16_p17p', 'tahap1_draft', 'tahap1',
                 'tahap1_p18p_p19', 'p21_draft', 'p21',
-            ], true)
-        ));
-
-        foreach ([1, 5, 9, 14, 19, 24, 29, 34] as $posisi) {
-            $rencana[$kandidatDpo[$posisi]]['dpo'] = 'aktif';
+            ], true)) {
+                $kandidatDpo2026[] = $pos;
+            }
         }
-        foreach ([3, 11, 17, 26] as $posisi) {
-            $rencana[$kandidatDpo[$posisi]]['dpo'] = 'cabut';
+
+        foreach ($kandidatDpo2026 as $idx => $pos) {
+            if ($idx % 11 === 0) {
+                $rencana[$pos]['dpo'] = 'aktif';
+            } elseif ($idx % 17 === 0) {
+                $rencana[$pos]['dpo'] = 'cabut';
+            }
         }
 
         return $rencana;
@@ -1253,7 +992,7 @@ class DummyDataSeeder extends Seeder
                 'obyek' => 'obat keras daftar G jenis tramadol dan trihexyphenidyl',
                 'uraian' => 'Peredaran obat keras daftar G jenis tramadol dan trihexyphenidyl tanpa izin apotek yang dijual bebas di {kabupaten}.',
                 'barang_bukti' => '1.240 butir obat keras daftar G',
-                'pasal' => ['pasal_kesehatan_1', 'pasal_kesehatan_6', 'pasal_kuhp_2'],
+                'pasal' => ['pasal_kesehatan_1', 'pasal_kesehatan_6'],
                 'klasifikasi' => 'retailer',
                 'legalitas' => 'ilegal',
                 'modus' => 'offline',
@@ -1264,7 +1003,7 @@ class DummyDataSeeder extends Seeder
                 'obyek' => 'kosmetik krim pemutih wajah berbahan merkuri',
                 'uraian' => 'Dugaan peredaran kosmetik krim pemutih wajah berbahan merkuri tanpa nomor notifikasi BPOM di {kabupaten}.',
                 'barang_bukti' => '312 pot krim pemutih bermerkuri',
-                'pasal' => ['pasal_kesehatan_1', 'pasal_kesehatan_5', 'pasal_konsumen_1'],
+                'pasal' => ['pasal_kesehatan_1', 'pasal_kesehatan_5'],
                 'klasifikasi' => 'retailer',
                 'legalitas' => 'ilegal',
                 'modus' => 'offline',
@@ -1286,7 +1025,7 @@ class DummyDataSeeder extends Seeder
                 'obyek' => 'pangan olahan kemasan tanpa izin edar BPOM',
                 'uraian' => 'Peredaran pangan olahan kemasan tanpa izin edar BPOM yang dipasok ke pedagang eceran di {kabupaten}.',
                 'barang_bukti' => '240 dus pangan olahan tanpa izin edar',
-                'pasal' => ['pasal_pangan_1', 'pasal_konsumen_3', 'pasal_kuhp_2'],
+                'pasal' => ['pasal_pangan_1', 'pasal_konsumen_3'],
                 'klasifikasi' => 'distributor',
                 'legalitas' => 'ilegal',
                 'modus' => 'offline',
@@ -1466,14 +1205,14 @@ class DummyDataSeeder extends Seeder
     }
 
     /**
-     * Data tersangka unik dan konsisten dengan wilayah TKP.
+     * Data tersangka unik dan konsisten dengan wilayah TKP (1 Tersangka per Berkas).
      *
      * @param  array<string, mixed>  $master
      * @param  array<string, mixed>  $lokasi
      * @param  array<string, mixed>  $archetype
      * @return array<string, mixed>
      */
-    private function susunTersangka(array $master, array $lokasi, array $archetype, int $seed, int $orangKe = 0): array
+    private function susunTersangka(array $master, array $lokasi, array $archetype, int $seed, bool $pakaiPasalBerlapis): array
     {
         $this->urutanTersangka++;
         $idx = $this->urutanTersangka;
@@ -1489,23 +1228,23 @@ class DummyDataSeeder extends Seeder
 
         $nik = substr($lokasi['kab'][0], 0, 4)
             .substr($lokasi['kec'][0], -2)
-            .sprintf('%02d%02d%02d%04d', $hariLahir, $bulanLahir, $tahunLahir % 100, $idx);
+            .sprintf('%02d%02d%02d%04d', $hariLahir, $bulanLahir, $tahunLahir % 100, $idx % 10000);
 
         $pasalKeys = $archetype['pasal'];
-        if ($orangKe > 0) {
-            $pasalKeys[] = 'pasal_kuhp_'.(($idx % 2) + 1);
+        if ($pakaiPasalBerlapis) {
+            $pasalKeys[] = ($idx % 2 === 0) ? 'pasal_kuhp_2' : 'pasal_konsumen_1';
         }
 
         return [
             'nama' => $nama,
-            'alias' => $idx % 4 === 0 ? ($perempuan ? 'Ibu ' : 'Pak ').$namaBelakang : null,
+            'alias' => $idx % 5 === 0 ? ($perempuan ? 'Ibu ' : 'Pak ').$namaBelakang : null,
             'bin' => self::NAMA_BELAKANG[($idx * 11) % count(self::NAMA_BELAKANG)],
             'nik' => $nik,
             'tempat_lahir' => str_replace(['Kota ', 'Kabupaten '], '', $lokasi['kab'][1]),
             'tanggal_lahir' => sprintf('%04d-%02d-%02d', $tahunLahir, $bulanLahir, $hariLahir),
             'jenis_kelamin' => $perempuan ? 'perempuan' : 'laki-laki',
             'agama' => self::AGAMA[$idx % 10],
-            'pekerjaan' => $orangKe === 0 ? $archetype['pekerjaan'] : self::PEKERJAAN_UMUM[$idx % count(self::PEKERJAAN_UMUM)],
+            'pekerjaan' => $archetype['pekerjaan'],
             'pasals' => array_map(fn (string $key): mixed => $master[$key], array_values(array_unique($pasalKeys))),
         ];
     }
@@ -1623,72 +1362,84 @@ class DummyDataSeeder extends Seeder
     }
 
     /**
-     * Catatan tahapan yang menyebut instansi hukum dan objek perkara.
-     *
      * @param  array<string, mixed>  $archetype
      * @param  array<string, mixed>  $lokasi
      */
     private function catatanTahap(string $kode, string $status, array $archetype, array $lokasi, int $urutan): string
     {
+        $drafTeks = $status === 'draft' ? ' (Konsep draft menunggu tanda tangan)' : '';
+
         return match ($kode) {
-            'spdp' => $status === 'draft'
-                ? "Formulir SPDP {$archetype['obyek']} masih disusun sebelum dikirim ke {$lokasi['kejari']}."
-                : "Pemberitahuan dimulainya penyidikan {$archetype['obyek']} disampaikan ke {$lokasi['kejari']}.",
-            'p16' => "Penunjukan Jaksa Penuntut Umum oleh {$lokasi['kejari']} untuk mengikuti perkembangan penyidikan.",
-            'p17p' => "Permintaan perkembangan hasil penyidikan dari {$lokasi['kejari']}.",
-            'tahap1' => $status === 'draft'
-                ? "Berkas perkara tahap 1 masih dalam penyusunan resume sebelum diserahkan ke {$lokasi['kejari']}."
-                : "Penyerahan berkas perkara tahap 1 kepada Jaksa Peneliti {$lokasi['kejari']}.",
-            'p18p' => "Pemberitahuan bahwa berkas perkara belum lengkap dari {$lokasi['kejari']}.",
-            'p19' => "Petunjuk perbaikan berkas perkara dari Jaksa Penuntut Umum {$lokasi['kejari']}.",
-            'p21' => $status === 'draft'
-                ? "Berkas perkara dalam proses penelitian oleh Jaksa Penuntut Umum {$lokasi['kejari']}."
-                : "Berkas perkara dinyatakan lengkap (P-21) oleh {$lokasi['kejari']}.",
-            'tahap2' => "Penyerahan tersangka dan barang bukti berupa {$archetype['barang_bukti']} kepada {$lokasi['kejari']}.",
-            'keputusan' => "{$lokasi['pn']}. Terbukti bersalah melakukan tindak pidana {$archetype['obyek']}. Vonis: "
-                .self::VONIS[$urutan % count(self::VONIS)]
-                .($urutan % 2 === 0 ? '. Putusan berkekuatan hukum tetap.' : '. Terdakwa mengajukan upaya hukum banding.'),
+            'spdp' => "Penerbitan Surat Pemberitahuan Dimulainya Penyidikan terkait dugaan tindak pidana {$archetype['obyek']} di {$lokasi['kab'][1]} ditujukan kepada Kepala {$lokasi['kejari']}.{$drafTeks}",
+            'p16' => "Penerimaan Surat P-16 dari {$lokasi['kejari']} perihal Penunjukan Jaksa Penuntut Umum untuk Mengikuti Perkembangan Penyidikan Perkara.",
+            'p17p' => "Penerimaan Surat P-17P dari {$lokasi['kejari']} perihal Permintaan Perkembangan Hasil Penyidikan.",
+            'tahap1' => "Pengiriman Berkas Perkara Tahap I kepada Kepala {$lokasi['kejari']} untuk dilakukan penelitian kelengkapan formil dan materiil.{$drafTeks}",
+            'p18p' => "Penerimaan Surat P-18P dari {$lokasi['kejari']} yang menyatakan hasil penyidikan belum lengkap.",
+            'p19' => 'Penerimaan Surat P-19 berikut petunjuk jaksa penuntut umum untuk pemenuhan kelengkapan berkas perkara.',
+            'p21' => "Pemberitahuan resmi bahwa hasil penyidikan berkas perkara telah lengkap (P-21) dari {$lokasi['kejari']}.{$drafTeks}",
+            'tahap2' => "Pelaksanaan Tahap II: Penyerahan Tersangka dan Barang Bukti ({$archetype['barang_bukti']}) kepada Jaksa Penuntut Umum di {$lokasi['kejari']}.",
+            'keputusan' => 'Perkara telah berkekuatan hukum tetap (Inkracht) berdasarkan '.$this->vonisPengadilan($urutan, $lokasi),
+            default => 'Catatan proses administrasi penanganan perkara.',
         };
     }
 
     /**
-     * Data penetapan DPO aktif atau DPO yang sudah dicabut.
-     *
-     * @return array<string, mixed>
+     * @param  array<string, mixed>  $lokasi
      */
-    private function susunDpo(string $status, Carbon $tanggalSpdp, int $urutan): array
+    private function vonisPengadilan(int $urutan, array $lokasi): string
     {
-        $tanggal = $tanggalSpdp->copy()->addDays(25);
-        $aktif = $status === 'aktif';
+        $vonis = self::VONIS[$urutan % count(self::VONIS)];
 
-        $data = [
-            'nomor_surat' => $this->nomorDpo($tanggal),
-            'tanggal' => $tanggal->toDateString(),
-            'status' => $aktif ? 'aktif' : 'nonaktif',
-            'keterangan' => $aktif
-                ? 'Tersangka tidak memenuhi panggilan penyidik sebanyak tiga kali berturut-turut. Penetapan DPO dikoordinasikan dengan kepolisian setempat.'
-                : 'Tersangka sempat tidak memenuhi panggilan penyidik saat proses penyidikan berjalan.',
-        ];
-
-        if (! $aktif) {
-            $data['tanggal_cabut'] = $tanggal->copy()->addDays(9 + ($urutan % 5))->toDateString();
-            $data['alasan_pencabutan'] = 'Tersangka berhasil diamankan tim penyidik di luar wilayah kerja, sehingga penetapan DPO dicabut.';
-        }
-
-        return $data;
+        return "{$lokasi['pn']} dengan amar putusan: pidana penjara {$vonis}, serta barang bukti dirampas untuk dimusnahkan.";
     }
 
     /**
-     * Data penghentian penyidikan (SP3).
+     * Data DPO aktif atau dicabut.
      *
      * @return array<string, mixed>
      */
-    private function susunSp3(Carbon $tanggal): array
+    private function susunDpo(string $mode, Carbon $tanggalSpdp, int $urutan): array
     {
+        $tanggalDpo = $tanggalSpdp->copy()->addDays(12 + ($urutan % 10));
+        $nomor = $this->nomorDpo($tanggalDpo);
+
+        if ($mode === 'cabut') {
+            $tanggalCabut = $tanggalDpo->copy()->addDays(20 + ($urutan % 15));
+
+            return [
+                'nomor_surat' => $nomor,
+                'tanggal' => $tanggalDpo->toDateString(),
+                'status' => 'nonaktif',
+                'keterangan' => 'Tersangka melarikan diri saat pemanggilan kedua dan telah diterbitkan DPO resmi.',
+                'tanggal_cabut' => $tanggalCabut->toDateString(),
+                'alasan_pencabutan' => 'Tersangka berhasil diamankan oleh Tim Gabungan PPNS BPOM dan Korwas PPNS Polda Kalsel.',
+            ];
+        }
+
         return [
-            'nomor_surat' => $this->nomorSp3($tanggal),
-            'tanggal' => $tanggal->toDateString(),
-            'keterangan' => 'Penghentian penyidikan karena hasil pengujian laboratorium menunjukkan sampel tidak terbukti mengandung bahan berbahaya sesuai dugaan awal.',
+            'nomor_surat' => $nomor,
+            'tanggal' => $tanggalDpo->toDateString(),
+            'status' => 'aktif',
+            'keterangan' => 'Tersangka tidak memenuhi 2 kali panggilan patut dan keberadaannya tidak diketahui, diterbitkan penetapan DPO.',
+            'tanggal_cabut' => null,
+            'alasan_pencabutan' => null,
+        ];
+    }
+
+    /**
+     * Data SP3 dengan alasan yuridis yang sah.
+     *
+     * @return array<string, mixed>
+     */
+    private function susunSp3(Carbon $tanggalSp3, int $urutan): array
+    {
+        $nomor = $this->nomorSp3($tanggalSp3);
+        $alasan = self::ALASAN_SP3[$urutan % count(self::ALASAN_SP3)];
+
+        return [
+            'nomor_surat' => $nomor,
+            'tanggal' => $tanggalSp3->toDateString(),
+            'keterangan' => "Penyidikan perkara dihentikan berdasarkan Surat Perintah Penghentian Penyidikan. Alasan: {$alasan}",
         ];
     }
 
@@ -1825,6 +1576,10 @@ class DummyDataSeeder extends Seeder
     ): void {
         // Alamat TKP
         $alamatTkpNama = $tkpData['nama'] ?? (isset($tkpData['detail']) ? trim(explode(',', (string) $tkpData['detail'])[0]) : null);
+        $alamatDetail = isset($tkpData['detail']) && str_contains((string) $tkpData['detail'], ',')
+            ? trim(substr((string) $tkpData['detail'], strpos((string) $tkpData['detail'], ',') + 1))
+            : ($tkpData['detail'] ?? null);
+
         $alamatTkp = Alamat::create([
             'nama' => $alamatTkpNama,
             'provinsi_kode' => $tkpData['prov'][0],
@@ -1835,7 +1590,7 @@ class DummyDataSeeder extends Seeder
             'kecamatan_nama' => $tkpData['kec'][1],
             'desa_kode' => $tkpData['kel'][0],
             'desa_nama' => $tkpData['kel'][1],
-            'alamat_detail' => $tkpData['detail'],
+            'alamat_detail' => $alamatDetail,
             'rt' => '001',
             'rw' => '001',
         ]);
@@ -1957,10 +1712,9 @@ class DummyDataSeeder extends Seeder
                 lokasi: $lokasi,
                 tersangkaData: $tersangkaData,
                 tahapanChain: $tahapanChain,
-                dpoData: $urutan === 0 ? $dpoData : null,
-                sp3Data: $urutan === 0 ? $sp3Data : null,
+                dpoData: $dpoData,
+                sp3Data: $sp3Data,
                 statusFormalOverride: $statusFormalOverride,
-                urutanTersangka: $urutan,
             );
         }
     }
@@ -1986,10 +1740,11 @@ class DummyDataSeeder extends Seeder
         array $tahapanChain,
         ?array $dpoData,
         ?array $sp3Data,
-        ?string $statusFormalOverride,
-        int $urutanTersangka
+        ?string $statusFormalOverride
     ): void {
         // Alamat Tersangka
+        $jalanTsk = self::JALAN[($this->urutanTersangka * 7) % count(self::JALAN)];
+        $nomorTsk = 1 + (($this->urutanTersangka * 13) % 97);
         $alamatTersangka = Alamat::create([
             'provinsi_kode' => $tkpData['prov'][0],
             'provinsi_nama' => $tkpData['prov'][1],
@@ -1999,7 +1754,7 @@ class DummyDataSeeder extends Seeder
             'kecamatan_nama' => $tkpData['kec'][1],
             'desa_kode' => $tkpData['kel'][0],
             'desa_nama' => $tkpData['kel'][1],
-            'alamat_detail' => 'Tempat tinggal tersangka di '.$tkpData['kel'][1],
+            'alamat_detail' => "Jl. {$jalanTsk} No. {$nomorTsk}",
             'rt' => '002',
             'rw' => '001',
         ]);
@@ -2022,8 +1777,8 @@ class DummyDataSeeder extends Seeder
             ]
         );
 
-        // Nomor Berkas Perkara mengikuti nomor LK, diberi akhiran bila tersangka lebih dari satu
-        $nomorBerkas = $urutanTersangka === 0 ? $noLk : $noLk.'/T'.($urutanTersangka + 1);
+        // Nomor Berkas Perkara identik dengan nomor LK (1 Perkara = 1 Tersangka = 1 Berkas Perkara)
+        $nomorBerkas = $noLk;
 
         $berkas = BerkasPerkara::updateOrCreate(
             ['perkara_id' => $perkara->id, 'tersangka_id' => $tersangka->id],
@@ -2038,7 +1793,7 @@ class DummyDataSeeder extends Seeder
             ]
         );
 
-        // Hubungkan Pasal berlapis
+        // Hubungkan Pasal
         $pasalIds = array_map(fn ($p) => $p->id, $tersangkaData['pasals']);
         $berkas->pasals()->sync($pasalIds);
 
