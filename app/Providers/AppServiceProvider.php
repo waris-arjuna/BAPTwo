@@ -12,6 +12,7 @@ use App\Policies\DokumenPolicy;
 use App\Policies\PerkaraPolicy;
 use App\Policies\UserPolicy;
 use App\Services\DashboardService;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
@@ -31,6 +32,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // Simulasi waktu testing jika APP_TEST_NOW diatur di .env
+        if ($testNow = env('APP_TEST_NOW')) {
+            Carbon::setTestNow(Carbon::parse($testNow, 'Asia/Makassar'));
+        }
+
         Model::preventLazyLoading(! $this->app->isProduction());
 
         // Invalidation cache statistik dashboard seketika saat data perkara berubah (D-050)

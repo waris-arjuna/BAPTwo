@@ -17,7 +17,7 @@ class DashboardController extends Controller
      */
     public function index(Request $request): View
     {
-        $tahun = $request->integer('tahun') ?: (int) date('Y');
+        $tahun = $request->integer('tahun') ?: now()->year;
 
         if ($request->header('X-Filter-Partial')) {
             $perkaraList = $this->dashboardService->getPriorityProgressPerkara($request);
@@ -32,6 +32,8 @@ class DashboardController extends Controller
         $perkaraList = $this->dashboardService->getPriorityProgressPerkara($request);
         $availableYears = $this->dashboardService->getAvailableYears();
         $recentActivities = $this->dashboardService->getRecentActivities(4);
+        $tkpDistribution = $this->dashboardService->getTkpDistribution($tahun);
+        $topPasals = $this->dashboardService->getTopPasals($tahun);
 
         return view('pages.dashboard.ecommerce', [
             'title' => 'Dashboard BAPTwo',
@@ -43,6 +45,8 @@ class DashboardController extends Controller
             'recentActivities' => $recentActivities,
             'perkaraList' => $perkaraList,
             'availableYears' => $availableYears,
+            'tkpDistribution' => $tkpDistribution,
+            'topPasals' => $topPasals,
         ]);
     }
 

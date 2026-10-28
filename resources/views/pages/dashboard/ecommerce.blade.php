@@ -25,8 +25,8 @@
                     class="h-10 rounded-lg border border-gray-300 bg-white px-3 text-sm font-medium text-gray-700 outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300"
                 >
                     @foreach ($availableYears ?? [$tahun] as $y)
-                        <option value="{{ $y }}" {{ ($tahun ?? date('Y')) == $y ? 'selected' : '' }}>
-                            {{ $y == (int) date('Y') ? "Tahun Berjalan ({$y})" : $y }}
+                        <option value="{{ $y }}" {{ ($tahun ?? now()->year) == $y ? 'selected' : '' }}>
+                            {{ $y == now()->year ? "Tahun Berjalan ({$y})" : $y }}
                         </option>
                     @endforeach
                 </select>
@@ -59,6 +59,17 @@
 
             <div class="flex flex-col lg:col-span-5">
                 <x-dashboard.average-stage :stageAverages="$stageAverages ?? null" :tahun="$tahun ?? date('Y')" />
+            </div>
+        </div>
+
+        {{-- Baris 5: Sebaran Wilayah TKP & Modus Peredaran (6 Kolom) & Pasal yang Paling Banyak Disangkakan (6 Kolom) --}}
+        <div class="grid grid-cols-1 items-stretch gap-4 lg:grid-cols-12 lg:gap-6">
+            <div class="flex flex-col lg:col-span-6">
+                <x-dashboard.tkp-distribution :data="$tkpDistribution ?? null" :tahun="$tahun ?? date('Y')" />
+            </div>
+
+            <div class="flex flex-col lg:col-span-6">
+                <x-dashboard.top-pasal :items="$topPasals ?? null" :tahun="$tahun ?? date('Y')" />
             </div>
         </div>
 

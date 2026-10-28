@@ -131,12 +131,16 @@ class DashboardService
             Cache::forget("dashboard_stats_{$tahun}");
             Cache::forget("dashboard_stage_averages_{$tahun}");
             Cache::forget("dashboard_monthly_cases_{$tahun}");
+            Cache::forget("dashboard_tkp_dist_{$tahun}");
+            Cache::forget("dashboard_top_pasal_{$tahun}");
         } else {
             $currentYear = (int) Carbon::now(self::ZONA_WAKTU)->year;
             for ($y = $currentYear - 2; $y <= $currentYear + 1; $y++) {
                 Cache::forget("dashboard_stats_{$y}");
                 Cache::forget("dashboard_stage_averages_{$y}");
                 Cache::forget("dashboard_monthly_cases_{$y}");
+                Cache::forget("dashboard_tkp_dist_{$y}");
+                Cache::forget("dashboard_top_pasal_{$y}");
             }
         }
     }
@@ -394,11 +398,17 @@ class DashboardService
 
         $updatedAt = Carbon::now(self::ZONA_WAKTU)->translatedFormat('d M Y, H:i').' WITA';
 
+        $dpoAktif = (clone $baseQuery)
+            ->dalamProses()
+            ->where('is_dpo', true)
+            ->count();
+
         return [
             'totalPerkara' => $total,
             'selesai' => $selesai,
             'dalamProses' => $dalamProses,
             'tidakSelesai' => $tidakSelesai,
+            'dpoAktif' => $dpoAktif,
             'selesaiPercent' => $percentages['selesai'],
             'dalamProsesPercent' => $percentages['dalamProses'],
             'tidakSelesaiPercent' => $percentages['tidakSelesai'],
@@ -425,7 +435,7 @@ class DashboardService
      * - P-21: TAHAP I -> P-21
      * - TAHAP II: P-21 -> TAHAP II
      *
-     * @return array<int, array{name: string, value: string, sample: int}>
+     * @return array<int, array{name: string, value: string, sample: int, active_count: int, active_label: string}>
      */
     public function getStageAverageDays(?int $tahun = null): array
     {
@@ -447,7 +457,7 @@ class DashboardService
                             ->select('id', 'berkas_perkara_id', 'jenis_tahap', 'tanggal_surat');
                     },
                 ])
-                ->get(['id', 'perkara_id', 'tanggal_spdp']);
+                ->get(['id', 'perkara_id', 'tanggal_spdp', 'status_proses', 'status_formal']);
 
             $spdpDays = [];
             $tahap1Days = [];
@@ -499,28 +509,186 @@ class DashboardService
                 return (string) round(array_sum($days) / count($days)).' Hari';
             };
 
+            $spdpActiveCount = $berkasList->filter(fn ($b) => $b->status_formal === null || $b->status_formal === BerkasPerkara::STATUS_FORMAL_DALAM_PROSES)
+                ->filter(fn ($b) => in_array($b->status_proses, ['SPDP', 'P-16', 'P-17P'], true))
+                ->count();
+
+            $tahap1ActiveCount = $berkasList->filter(fn ($b) => $b->status_formal === null || $b->status_formal === BerkasPerkara::STATUS_FORMAL_DALAM_PROSES)
+                ->filter(fn ($b) => in_array($b->status_proses, ['TAHAP I', 'P-18P', 'P-19'], true))
+                ->count();
+
+            $p21ActiveCount = $berkasList->filter(fn ($b) => $b->status_formal === null || $b->status_formal === BerkasPerkara::STATUS_FORMAL_DALAM_PROSES)
+                ->filter(fn ($b) => $b->status_proses === 'P-21/P21a')
+                ->count();
+
+            $tahap2DoneCount = $berkasList->filter(fn ($b) => $b->status_formal === BerkasPerkara::STATUS_FORMAL_SELESAI)
+                ->count();
+
             return [
                 [
                     'name' => 'SPDP',
                     'value' => $formatAverage($spdpDays),
                     'sample' => count($spdpDays),
+                    'active_count' => $spdpActiveCount,
+                    'active_label' => "{$spdpActiveCount} berkas aktif",
                 ],
                 [
                     'name' => 'TAHAP I',
                     'value' => $formatAverage($tahap1Days),
                     'sample' => count($tahap1Days),
+                    'active_count' => $tahap1ActiveCount,
+                    'active_label' => "{$tahap1ActiveCount} berkas aktif",
                 ],
                 [
                     'name' => 'P-21',
                     'value' => $formatAverage($p21Days),
                     'sample' => count($p21Days),
+                    'active_count' => $p21ActiveCount,
+                    'active_label' => "{$p21ActiveCount} berkas aktif",
                 ],
                 [
                     'name' => 'TAHAP II',
                     'value' => $formatAverage($tahap2Days),
                     'sample' => count($tahap2Days),
+                    'active_count' => $tahap2DoneCount,
+                    'active_label' => "{$tahap2DoneCount} selesai",
                 ],
             ];
+        });
+    }
+
+    /**
+     * Mengambil sebaran wilayah TKP (Top Kabupaten/Kota) dan proporsi modus peredaran (Offline vs Online).
+     *
+     * @return array{
+     *     totalWithTkp: int,
+     *     offlineCount: int,
+     *     onlineCount: int,
+     *     offlinePercent: int,
+     *     onlinePercent: int,
+     *     regions: array<int, array{name: string, count: int, percent: int}>
+     * }
+     */
+    public function getTkpDistribution(?int $tahun = null, int $limit = 5): array
+    {
+        $tahun = $tahun ?: (int) Carbon::now(self::ZONA_WAKTU)->year;
+
+        return Cache::remember("dashboard_tkp_dist_{$tahun}", 120, function () use ($tahun, $limit) {
+            $perkaras = Perkara::query()
+                ->whereYear('tanggal_laporan_kejadian', $tahun)
+                ->whereNotNull('tkp_id')
+                ->with(['tkp.alamat'])
+                ->get(['id', 'tkp_id']);
+
+            $offlineCount = 0;
+            $onlineCount = 0;
+            $regionCounts = [];
+
+            foreach ($perkaras as $perkara) {
+                $tkp = $perkara->tkp;
+                if (! $tkp) {
+                    continue;
+                }
+
+                $modus = strtolower((string) ($tkp->modus ?? ''));
+                if ($modus === 'offline') {
+                    $offlineCount++;
+                } elseif ($modus === 'online') {
+                    $onlineCount++;
+                }
+
+                $kabupaten = trim((string) ($tkp->alamat?->kabupaten_nama ?? ''));
+                if ($kabupaten !== '') {
+                    $regionCounts[$kabupaten] = ($regionCounts[$kabupaten] ?? 0) + 1;
+                }
+            }
+
+            $modusPct = $this->calculatePercentages([
+                'offline' => $offlineCount,
+                'online' => $onlineCount,
+            ]);
+
+            $totalWithRegion = array_sum($regionCounts);
+
+            uksort($regionCounts, function (string $a, string $b) use ($regionCounts) {
+                $cmp = $regionCounts[$b] <=> $regionCounts[$a];
+
+                return $cmp !== 0 ? $cmp : strcmp($a, $b);
+            });
+
+            $topRegions = array_slice($regionCounts, 0, $limit, true);
+            $regions = [];
+
+            foreach ($topRegions as $name => $count) {
+                $regions[] = [
+                    'name' => $name,
+                    'count' => $count,
+                    'percent' => $totalWithRegion > 0 ? (int) round(($count / $totalWithRegion) * 100) : 0,
+                ];
+            }
+
+            return [
+                'totalWithTkp' => $perkaras->count(),
+                'offlineCount' => $offlineCount,
+                'onlineCount' => $onlineCount,
+                'offlinePercent' => $modusPct['offline'],
+                'onlinePercent' => $modusPct['online'],
+                'regions' => $regions,
+            ];
+        });
+    }
+
+    /**
+     * Mengambil daftar Pasal Undang-Undang yang paling banyak disangkakan pada berkas perkara tahun berjalan.
+     *
+     * @return array<int, array{id: int, title: string, description: string, count: int}>
+     */
+    public function getTopPasals(?int $tahun = null, int $limit = 4): array
+    {
+        $tahun = $tahun ?: (int) Carbon::now(self::ZONA_WAKTU)->year;
+
+        return Cache::remember("dashboard_top_pasal_{$tahun}", 120, function () use ($tahun, $limit) {
+            $rows = DB::table('berkas_pasal')
+                ->join('pasal', 'pasal.id', '=', 'berkas_pasal.pasal_id')
+                ->join('berkas_perkara', 'berkas_perkara.id', '=', 'berkas_pasal.berkas_perkara_id')
+                ->join('perkara', 'perkara.id', '=', 'berkas_perkara.perkara_id')
+                ->whereNull('pasal.deleted_at')
+                ->whereNull('berkas_perkara.deleted_at')
+                ->whereNull('perkara.deleted_at')
+                ->whereYear('perkara.tanggal_laporan_kejadian', $tahun)
+                ->select([
+                    'pasal.id',
+                    'pasal.pasal',
+                    'pasal.nama_pasal',
+                    'pasal.nomor',
+                    'pasal.tahun',
+                    'pasal.isi',
+                    DB::raw('COUNT(DISTINCT berkas_pasal.berkas_perkara_id) as total_berkas'),
+                ])
+                ->groupBy('pasal.id', 'pasal.pasal', 'pasal.nama_pasal', 'pasal.nomor', 'pasal.tahun', 'pasal.isi')
+                ->orderByDesc('total_berkas')
+                ->orderBy('pasal.id')
+                ->limit($limit)
+                ->get();
+
+            return $rows->map(function ($row) {
+                $uuParts = array_filter([
+                    $row->nama_pasal,
+                    $row->nomor ? "No. {$row->nomor}" : null,
+                    $row->tahun ? "Tahun {$row->tahun}" : null,
+                ]);
+                $uuText = implode(' ', $uuParts);
+                $title = $uuText !== '' && $row->pasal !== $row->nama_pasal
+                    ? "{$row->pasal} ({$uuText})"
+                    : ($row->pasal ?: $row->nama_pasal);
+
+                return [
+                    'id' => (int) $row->id,
+                    'title' => $title,
+                    'description' => trim((string) ($row->isi ?: $row->nama_pasal ?: '-')),
+                    'count' => (int) $row->total_berkas,
+                ];
+            })->all();
         });
     }
 

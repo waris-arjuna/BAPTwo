@@ -39,10 +39,15 @@
                         <i class="fi fi-rr-chart-histogram text-base"></i>
                     </div>
 
-                    <div>
+                    <div class="flex items-center gap-2">
                         <p class="text-sm font-medium text-gray-800 dark:text-white/90">
                             {{ $stage['name'] }}
                         </p>
+                        @if (! empty($stage['active_label']))
+                            <span class="inline-flex items-center rounded-full bg-brand-50 px-2 py-0.5 text-[11px] font-medium text-brand-700 dark:bg-brand-500/15 dark:text-brand-300 tabular-nums">
+                                {{ $stage['active_label'] }}
+                            </span>
+                        @endif
                     </div>
 
                 </div>

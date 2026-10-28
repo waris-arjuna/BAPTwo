@@ -1613,25 +1613,31 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
 
 ---
 
-## D-075 : Penataan Ulang Layout Dashboard BAPTwo (Opsi A: Fokus Operasional & Proporsi Asimetris)
+## D-075 : Penataan Ulang Layout Dashboard BAPTwo (Opsi A + Analitik Wilayah TKP & Top Pasal)
 
 - Tanggal: 2026-10-28
 - Status: Disepakati & Diimplementasikan
-- Konteks: Berdasarkan evaluasi antarmuka (`antislop-ui`) dan sesi penyelarasan bersama pengguna pada Dashboard BAPTwo (`resources/views/pages/dashboard/ecommerce.blade.php`), ditemukan 4 area yang perlu dirapikan:
+- Konteks: Berdasarkan evaluasi antarmuka (`antislop-ui`) dan sesi penyelarasan bersama pengguna pada Dashboard BAPTwo (`resources/views/pages/dashboard/ecommerce.blade.php`), ditemukan kebutuhan untuk merapikan ukuran dan proporsi kolom, menaikkan tabel prioritas, serta memperkaya dashboard dengan analitik operasional yang sudah tersedia di database:
   1. Kartu statistik di Baris 1 (`statistics.blade.php`) terlalu tinggi karena padding `p-5`, jarak `mt-3`, dan tambahan baris teks ke-4 (`Maks. 30 Hari Kalender`) pada kartu ke-5.
-  2. Proporsi `6 : 6` di Baris 2 membuat grafik batang 12 bulan (`monthly-cases-chart.blade.php`) beserta 3 badge ringkasannya terasa sempit, sementara kartu Donut (`case-status.blade.php`) memiliki ruang kosong berlebih.
-  3. Tabel operasional `Progress Perkara (5 Prioritas Utama)` (`progress-perkara.blade.php`) berada di paling bawah (Baris 4) setelah komponen aktivitas yang panjang, sehingga penyidik/pimpinan harus scroll jauh untuk melihat daftar berkas prioritas.
-  4. Baris `recent-activities.blade.php` (6 item besar) dan `average-stage.blade.php` (4 baris tahap dengan sub-teks berulang *"Rata-rata waktu penyelesaian"*) memiliki tinggi vertikal yang timpang.
+  2. Proporsi `6 : 6` di Baris 2 membuat grafik batang 12 bulan (`monthly-cases-chart.blade.php`) sempit, sementara kartu Donut (`case-status.blade.php`) memiliki ruang kosong berlebih dan belum menampilkan status tersangka DPO Aktif.
+  3. Tabel operasional `Progress Perkara (5 Prioritas Utama)` (`progress-perkara.blade.php`) berada di paling bawah (Baris 4), terdorong jauh di bawah feed aktivitas.
+  4. Baris `recent-activities.blade.php` (6 item) dan `average-stage.blade.php` (4 baris tahap) memiliki tinggi vertikal yang timpang dan belum menginformasikan jumlah berkas yang sedang berada di tiap tahap.
+  5. Pimpinan dan penyidik membutuhkan analitik Sebaran Wilayah TKP (Top 5 Kabupaten/Kota Kalsel + rasio modus Online/Offline) serta dominasi Pasal Undang-Undang yang disangkakan pada tahun berjalan.
 - Keputusan:
-  1. **Susunan Baris & Proporsi Kolom Asimetris (`resources/views/pages/dashboard/ecommerce.blade.php`)**:
+  1. **Susunan 5 Baris & Proporsi Kolom Asimetris (`resources/views/pages/dashboard/ecommerce.blade.php`)**:
      - **Baris 1 (5 Kolom)**: `<x-dashboard.statistics>` dengan padding kompak `p-4`, gap `gap-3.5`, ikon `h-9 w-9`, dan penggabungan teks `"Maks. 30 Hari Kalender"` ke baris deskripsi kartu ke-5.
      - **Baris 2 (Grid 12 Kolom · Rasio `5 : 7`)**: Kiri `lg:col-span-5` (`<x-dashboard.case-status>`) dan Kanan `lg:col-span-7` (`<x-dashboard.monthly-cases-chart>`).
      - **Baris 3 (Lebar Penuh · 12 Kolom)**: `<x-dashboard.progress-perkara>` dinaikkan dari Baris 4 ke Baris 3 agar daftar 5 berkas prioritas langsung terlihat setelah grafik utama.
      - **Baris 4 (Grid 12 Kolom · Rasio `7 : 5`)**: Kiri `lg:col-span-7` (`<x-dashboard.recent-activities>`) dan Kanan `lg:col-span-5` (`<x-dashboard.average-stage>`).
-  2. **Pemadatan Feed Aktivitas & Penyeragaman Kartu Rata-rata Tahap**:
-     - `DashboardController::index()` dan fallback `recent-activities.blade.php` menampilkan **4 item** aktivitas terkini (`getRecentActivities(4)`) dengan padding item kompak (`p-3`, `space-y-2.5`, ikon `h-9 w-9`).
-     - `average-stage.blade.php` menggunakan `flex h-full flex-col justify-between`, menyeragamkan judul header menjadi `text-base font-semibold`, serta menghapus sub-teks berulang *"Rata-rata waktu penyelesaian"* di setiap baris tahap agar tingginya sejajar dengan kartu aktivitas di sebelahnya.
-- Konsekuensi: Tampilan Dashboard BAPTwo lebih ringkas, proporsional, bebas timpang tinggi, dan menempatkan tabel berkas prioritas lebih dekat ke pandangan utama pengguna tanpa memutus kompatibilitas pengujian yang sudah ada.
+     - **Baris 5 Baru (Grid 12 Kolom · Rasio `6 : 6`)**: Kiri `lg:col-span-6` (`<x-dashboard.tkp-distribution>`) dan Kanan `lg:col-span-6` (`<x-dashboard.top-pasal>`).
+  2. **Pengayaan Informasi & Pemadatan Komponen**:
+     - Indikator *Status Khusus DPO Aktif* dihilangkan dari kartu *Perkara Tahun Berjalan* agar panel *Dalam Proses* tetap bersih dan simetris hanya berfokus pada 4 sub-kategori Tenggang Waktu (data DPO tetap aktif pada data perkara, tabel, dan form).
+     - `DashboardController::index()` dan fallback `recent-activities.blade.php` membatasi feed menjadi 4 item terkini (`getRecentActivities(4)`) dengan padding kompak (`p-3`, `space-y-2.5`, ikon `h-9 w-9`).
+     - `average-stage.blade.php` menggunakan `flex h-full flex-col justify-between`, judul `text-base font-semibold`, menghapus sub-teks berulang *"Rata-rata waktu penyelesaian"*, dan menampilkan badge jumlah berkas aktif per tahap (`active_label`).
+     - Komponen baru `<x-dashboard.tkp-distribution>` menyajikan Top 5 Kabupaten/Kota TKP di Kalsel dengan progress bar GPU compositor (`scaleX`) dan pill rasio modus Online vs Offline via `DashboardService::getTkpDistribution()`.
+     - Komponen baru `<x-dashboard.top-pasal>` menyajikan Top 4 Pasal yang disangkakan pada berkas perkara tahun berjalan via `DashboardService::getTopPasals()`.
+     - Kueri analitik baru di-cache 120 detik dan dibersihkan otomatis pada `DashboardService::clearCache()`.
+- Konsekuensi: Tampilan Dashboard BAPTwo lebih proporsional, kaya informasi operasional riil pimpinan dan penyidik, bebas dari ketimpangan tinggi, serta teruji lulus 100% pada seluruh 281 pengujian otomatis Pest PHP dan linter Laravel Pint.
 
 
 

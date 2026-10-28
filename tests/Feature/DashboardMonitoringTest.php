@@ -148,27 +148,37 @@ test('filter pencarian pada dashboard menyaring berkas perkara dengan tepat', fu
         ->assertDontSee('BP/001/X/2026/BPOM');
 });
 
-test('dashboard merender layout Opsi A: proporsi asimetris 5:7 dan 7:5 serta tabel Progress Perkara di Baris 3 sebelum Aktivitas Terkini', function () {
-    $response = $this->actingAs($this->penyidik)->get(route('dashboard'));
+test('dashboard merender 5 baris Opsi A lengkap dengan Progress Perkara di Baris 3 serta Wilayah TKP dan Top Pasal di Baris 5', function () {
+    $this->perkara->tkp->alamat->update(['kabupaten_nama' => 'Kota Banjarmasin']);
+    $this->perkara->tkp->update(['modus' => 'offline']);
+    $this->berkas->update(['is_dpo' => true]);
+    DashboardService::clearCache(2026);
 
+    $response = $this->actingAs($this->penyidik)->get(route('dashboard'));
     $response->assertOk();
+
     $html = $response->getContent();
 
-    // Proporsi kolom asimetris 5:7 dan 7:5 tersedia di markup grid dashboard
     expect($html)->toContain('lg:col-span-5')
-        ->and($html)->toContain('lg:col-span-7');
+        ->and($html)->toContain('lg:col-span-7')
+        ->and($html)->not->toContain('Status Khusus DPO Aktif')
+        ->and($html)->toContain('Sebaran Wilayah TKP & Modus Peredaran')
+        ->and($html)->toContain('Kota Banjarmasin')
+        ->and($html)->toContain('Pasal yang Paling Banyak Disangkakan')
+        ->and($html)->toContain('Pasal 196 UU Kesehatan');
 
-    // Urutan vertikal: Progress Perkara (Baris 3) muncul sebelum Aktivitas Penyidikan Terkini & Rata-rata Penyelesaian per Tahap (Baris 4)
     $posCaseStatus = strpos($html, 'Perkara Tahun Berjalan');
-    $posMonthlyChart = strpos($html, 'Tren Perkara Masuk & Selesai');
     $posProgressTable = strpos($html, 'Monitoring perkembangan perkara tahun berjalan (5 prioritas utama).');
     $posRecentActivities = strpos($html, 'Aktivitas Penyidikan Terkini');
     $posAverageStage = strpos($html, 'Rata-rata Penyelesaian per Tahap');
+    $posTkpDist = strpos($html, 'Sebaran Wilayah TKP & Modus Peredaran');
+    $posTopPasal = strpos($html, 'Pasal yang Paling Banyak Disangkakan');
 
     expect($posCaseStatus)->toBeLessThan($posProgressTable)
-        ->and($posMonthlyChart)->toBeLessThan($posProgressTable)
         ->and($posProgressTable)->toBeLessThan($posRecentActivities)
-        ->and($posRecentActivities)->toBeLessThan($posAverageStage);
+        ->and($posRecentActivities)->toBeLessThan($posAverageStage)
+        ->and($posAverageStage)->toBeLessThan($posTkpDist)
+        ->and($posTkpDist)->toBeLessThan($posTopPasal);
 });
 
 test('DashboardController membatasi recentActivities maksimal 4 item pada halaman dashboard', function () {
@@ -190,4 +200,79 @@ test('DashboardController membatasi recentActivities maksimal 4 item pada halama
     $recentActivities = $response->viewData('recentActivities');
     expect($recentActivities['milestones'])->toHaveCount(4)
         ->and($recentActivities['all'])->toHaveCount(4);
+});
+
+test('DashboardService mengagregasi sebaran wilayah TKP, modus peredaran, top pasal, dpoAktif, dan jumlah berkas per tahap dengan akurat', function () {
+    // Update alamat & TKP perkara pertama (Kota Banjarmasin, modus offline)
+    $this->perkara->tkp->alamat->update(['kabupaten_nama' => 'Kota Banjarmasin']);
+    $this->perkara->tkp->update(['modus' => 'offline']);
+    $this->berkas->update(['is_dpo' => true]);
+
+    // Buat perkara kedua di Kab. Banjar dengan modus online
+    $alamat2 = Alamat::create([
+        'kabupaten_nama' => 'Kabupaten Banjar',
+        'alamat_detail' => 'Jl. Ahmad Yani KM 40',
+    ]);
+    $tkp2 = Tkp::create([
+        'alamat_id' => $alamat2->id,
+        'klasifikasi' => 'distributor',
+        'modus' => 'online',
+    ]);
+    $perkara2 = Perkara::create([
+        'nomor_laporan_kejadian' => 'LK/002/X/2026',
+        'tanggal_laporan_kejadian' => '2026-10-05',
+        'tahap_laporan_status' => 'final',
+        'tkp_id' => $tkp2->id,
+        'created_by' => $this->penyidik->id,
+    ]);
+    $tersangka2 = Tersangka::create([
+        'perkara_id' => $perkara2->id,
+        'nama' => 'Siti Aminah',
+        'created_by' => $this->penyidik->id,
+    ]);
+    $berkas2 = BerkasPerkara::create([
+        'perkara_id' => $perkara2->id,
+        'tersangka_id' => $tersangka2->id,
+        'nomor_berkas' => 'BP/002/X/2026/BPOM',
+        'progress_persen' => 55,
+        'status_proses' => 'TAHAP I',
+        'status_formal' => null,
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    $pasalKesehatan = Pasal::first();
+    $berkas2->pasals()->attach($pasalKesehatan->id);
+
+    DashboardService::clearCache(2026);
+    $service = app(DashboardService::class);
+
+    // 1. Verifikasi dpoAktif pada getCaseStatusData
+    $caseStatus = $service->getCaseStatusData(2026);
+    expect($caseStatus)->toHaveKey('dpoAktif')
+        ->and($caseStatus['dpoAktif'])->toBe(1);
+
+    // 2. Verifikasi active_count & active_label pada getStageAverageDays
+    $stageAverages = $service->getStageAverageDays(2026);
+    expect($stageAverages[0]['name'])->toBe('SPDP')
+        ->and($stageAverages[0]['active_count'])->toBe(1)
+        ->and($stageAverages[0]['active_label'])->toBe('1 berkas aktif')
+        ->and($stageAverages[1]['name'])->toBe('TAHAP I')
+        ->and($stageAverages[1]['active_count'])->toBe(1)
+        ->and($stageAverages[1]['active_label'])->toBe('1 berkas aktif');
+
+    // 3. Verifikasi getTkpDistribution
+    $tkpDist = $service->getTkpDistribution(2026);
+    expect($tkpDist['totalWithTkp'])->toBe(2)
+        ->and($tkpDist['offlineCount'])->toBe(1)
+        ->and($tkpDist['onlineCount'])->toBe(1)
+        ->and($tkpDist['offlinePercent'])->toBe(50)
+        ->and($tkpDist['onlinePercent'])->toBe(50)
+        ->and($tkpDist['regions'])->toHaveCount(2)
+        ->and(collect($tkpDist['regions'])->pluck('name')->all())->toContain('Kota Banjarmasin', 'Kabupaten Banjar');
+
+    // 4. Verifikasi getTopPasals
+    $topPasals = $service->getTopPasals(2026);
+    expect($topPasals)->toHaveCount(1)
+        ->and($topPasals[0]['count'])->toBe(2)
+        ->and($topPasals[0]['title'])->toContain('196');
 });
