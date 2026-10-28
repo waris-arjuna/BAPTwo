@@ -61,7 +61,7 @@ class UpdateLaporanKejadianRequest extends FormRequest
             'tanggal_laporan.required' => 'Tanggal laporan kejadian wajib diisi untuk melanjutkan tahap.',
             'tanggal_laporan.date' => 'Format tanggal laporan kejadian tidak valid.',
             'dokumen_laporan.mimes' => 'Dokumen laporan harus berformat PDF.',
-            'dokumen_laporan.max' => 'Ukuran dokumen laporan maksimal 5 MB.',
+            'dokumen_laporan.max' => 'Ukuran file dokumen tidak boleh melebihi 5 MB.',
         ];
     }
 }

@@ -115,13 +115,6 @@ class MenuHelper
                 'path' => '/master-data/instansi-hukum',
             ];
 
-            if ($user->isAdmin()) {
-                $masterSubItems[] = [
-                    'name' => 'Jaksa Penuntut',
-                    'path' => '/master-data/jaksa-penuntut',
-                ];
-            }
-
             $items[] = [
                 'icon' => 'master-data',
                 'name' => 'Master Data',
@@ -172,9 +165,9 @@ class MenuHelper
     {
         $user = auth()->user();
 
-        // Poin 3: Role Pimpinan & Umum hanya memiliki 1 grup "Menu Utama":
-        // Dashboard, Pencarian Perkara, Potensi Terlimpah (ref: D-053).
-        if ($user && ($user->isPimpinan() || $user->isUmum())) {
+        // Role Umum hanya memiliki 1 grup "Menu Utama":
+        // Dashboard, Pencarian Perkara, Potensi Terlimpah (ref: D-053, D-071).
+        if ($user && $user->isUmum()) {
             return [
                 [
                     'title' => 'Menu Utama',

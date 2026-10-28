@@ -643,7 +643,7 @@ class DashboardService
                 'ppns_utama' => $perkara?->ppnsUtama?->first()?->nama ?: '-',
                 'ppns_anggota' => $perkara?->ppnsAnggota?->pluck('nama')->join(', ') ?: '-',
                 'detail_url' => $perkara ? route('perkara.show', $perkara->id) : '#',
-                'tahapan_list' => $b->tahapan->map(fn ($t) => [
+                'tahapan_list' => $b->ordered_tahapan->map(fn ($t) => [
                     'jenis' => $t->jenis_tahap->label(),
                     'nomor' => $t->nomor_surat ?: '-',
                     'tanggal' => $t->tanggal_surat?->format('d M Y') ?? '-',

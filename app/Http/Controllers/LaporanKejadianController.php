@@ -60,11 +60,11 @@ class LaporanKejadianController extends Controller
         $payload = $isDraft
             ? [
                 'title' => 'Draft Tersimpan',
-                'message' => 'Draft Laporan Kejadian '.($perkara->nomor_laporan ?: '').' berhasil disimpan. Anda masih dapat mengedit data ini.',
+                'message' => 'Draft Laporan Kejadian '.($perkara->nomor_laporan_kejadian ?: '').' berhasil disimpan. Anda masih dapat mengedit data ini.',
             ]
             : [
                 'title' => 'Laporan Kejadian Final',
-                'message' => 'Laporan Kejadian '.($perkara->nomor_laporan ?: '').' berhasil difinalkan dan dikunci. Silakan lanjutkan ke tahap Sprindik.',
+                'message' => 'Laporan Kejadian '.($perkara->nomor_laporan_kejadian ?: '').' berhasil difinalkan dan dikunci. Silakan lanjutkan ke tahap Sprindik.',
             ];
 
         return redirect()
@@ -118,11 +118,11 @@ class LaporanKejadianController extends Controller
         $payload = $isDraft
             ? [
                 'title' => 'Draft Diperbarui',
-                'message' => 'Draft Laporan Kejadian '.($perkara->nomor_laporan ?: '').' berhasil diperbarui.',
+                'message' => 'Draft Laporan Kejadian '.($perkara->nomor_laporan_kejadian ?: '').' berhasil diperbarui.',
             ]
             : [
                 'title' => 'Laporan Kejadian Final',
-                'message' => 'Laporan Kejadian '.($perkara->nomor_laporan ?: '').' berhasil difinalkan dan dikunci permanen.',
+                'message' => 'Laporan Kejadian '.($perkara->nomor_laporan_kejadian ?: '').' berhasil difinalkan dan dikunci permanen.',
             ];
 
         return redirect()

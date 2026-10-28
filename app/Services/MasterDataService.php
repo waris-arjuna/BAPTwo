@@ -5,7 +5,6 @@ namespace App\Services;
 use App\Models\Bidang;
 use App\Models\InstansiHukum;
 use App\Models\Jabatan;
-use App\Models\JaksaPenuntut;
 use App\Models\Panggol;
 use App\Models\Pasal;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
@@ -39,11 +38,6 @@ class MasterDataService
             'title' => 'Master Instansi Hukum',
             'singular' => 'Instansi Hukum',
             'description' => 'Kelola daftar Kejaksaan dan Pengadilan mitra penanganan perkara.',
-        ],
-        'jaksa-penuntut' => [
-            'title' => 'Master Jaksa Penuntut Umum (JPU)',
-            'singular' => 'Jaksa Penuntut',
-            'description' => 'Kelola daftar Jaksa Penuntut Umum beserta asal Kejaksaan.',
         ],
     ];
 
@@ -119,7 +113,6 @@ class MasterDataService
             'panggol' => $paginate(Panggol::withTrashed()->tap(fn ($q) => $applySearch($q, ['pangkat', 'golongan']))->tap($applyStatus)->orderBy('golongan')),
             'pasal' => $paginate(Pasal::withTrashed()->tap(fn ($q) => $applySearch($q, ['nama_pasal', 'pasal', 'isi', 'status']))->tap($applyStatus)->orderBy('nama_pasal')->orderBy('pasal')),
             'instansi-hukum' => $paginate(InstansiHukum::withTrashed()->tap(fn ($q) => $applySearch($q, ['nama', 'wilayah', 'jenis']))->tap($applyStatus)->orderBy('jenis')->orderBy('nama')),
-            'jaksa-penuntut' => $paginate(JaksaPenuntut::withTrashed()->with('instansiHukum')->tap(fn ($q) => $applySearch($q, ['nama_jaksa', 'nip']))->tap($applyStatus)->orderBy('nama_jaksa')),
         };
     }
 
@@ -130,7 +123,7 @@ class MasterDataService
     {
         $modelClass = $this->resolveModelClass($type);
 
-        if (in_array($type, ['pasal', 'instansi-hukum', 'jaksa-penuntut'], true)) {
+        if (in_array($type, ['pasal', 'instansi-hukum'], true)) {
             $data['created_by'] = $actorId;
             $data['updated_by'] = $actorId;
         }
@@ -147,7 +140,7 @@ class MasterDataService
         /** @var Model $record */
         $record = $modelClass::withTrashed()->findOrFail($id);
 
-        if (in_array($type, ['pasal', 'instansi-hukum', 'jaksa-penuntut'], true)) {
+        if (in_array($type, ['pasal', 'instansi-hukum'], true)) {
             $data['updated_by'] = $actorId;
         }
 
@@ -185,7 +178,6 @@ class MasterDataService
             'panggol' => Panggol::class,
             'pasal' => Pasal::class,
             'instansi-hukum' => InstansiHukum::class,
-            'jaksa-penuntut' => JaksaPenuntut::class,
         };
     }
 }

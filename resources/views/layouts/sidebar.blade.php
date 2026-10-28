@@ -56,15 +56,14 @@
     @mouseenter="if (!$store.sidebar.isExpanded) $store.sidebar.setHovered(true)"
     @mouseleave="$store.sidebar.setHovered(false)">
     <!-- Logo Section -->
-    <div class="h-16 shrink-0 flex items-center border-b border-gray-200 dark:border-gray-800 px-5"
-        :class="(!$store.sidebar.isExpanded && !$store.sidebar.isHovered && !$store.sidebar.isMobileOpen) ? 'justify-center' : 'justify-start'">
-        <a href="/" class="flex items-center">
+    <div class="h-16 shrink-0 flex items-center justify-center border-b border-gray-200 dark:border-gray-800 px-5">
+        <a href="/" class="flex items-center justify-center">
             <div x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">
-                <img class="h-8 w-auto dark:hidden" src="/images/logo/logo.svg" alt="Logo" width="150" height="32" />
-                <img class="hidden h-8 w-auto dark:block" src="/images/logo/logo-dark.svg" alt="Logo" width="150" height="32" />
+                <img class="h-12 w-auto dark:hidden" src="/images/logo/logo.svg" alt="Logo" width="55" height="48" />
+                <img class="hidden h-12 w-auto dark:block" src="/images/logo/logo-dark.svg" alt="Logo" width="55" height="48" />
             </div>
             <img x-show="!$store.sidebar.isExpanded && !$store.sidebar.isHovered && !$store.sidebar.isMobileOpen"
-                class="h-8 w-auto" src="/images/logo/logo-icon.svg" alt="Logo" width="32" height="32" />
+                class="h-9 w-auto" src="/images/logo/logo-icon.svg" alt="Logo" width="41" height="36" />
         </a>
     </div>
 

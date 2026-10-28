@@ -41,11 +41,17 @@ it('persists Penuntut Umum input in Perkara and displays card only when filled',
         'sprindik_locked_at' => now(),
     ]);
 
-    // 1. Perkara tanpa Penuntut Umum -> Card tidak tampil di show
+    // 1. Perkara tanpa Penuntut Umum -> Card tidak tampil di show & Form tidak merender input pangkat
     $this->actingAs($penyidik)
         ->get(route('perkara.show', $perkara))
         ->assertOk()
         ->assertDontSee('Penuntut Umum (JPU)');
+
+    $this->actingAs($penyidik)
+        ->get(route('perkara.edit', $perkara))
+        ->assertOk()
+        ->assertSee('Ketik nama kejaksaan...')
+        ->assertDontSee('name="penuntut_umum_pangkat"', false);
 
     // 2. Simpan form dengan input Penuntut Umum
     $payload = [
@@ -62,7 +68,6 @@ it('persists Penuntut Umum input in Perkara and displays card only when filled',
         'penuntut_umum_instansi_id' => $kejaksaan->id,
         'penuntut_umum_nama' => 'Bambang Trihatmojo, S.H.',
         'penuntut_umum_nip' => '198501012010011005',
-        'penuntut_umum_pangkat' => 'Jaksa Muda (III/c)',
         'tersangka' => [
             [
                 'nama' => 'Tersangka JPU',
@@ -90,8 +95,7 @@ it('persists Penuntut Umum input in Perkara and displays card only when filled',
     $perkara->refresh();
     expect($perkara->penuntut_umum_instansi_id)->toBe($kejaksaan->id)
         ->and($perkara->penuntut_umum_nama)->toBe('Bambang Trihatmojo, S.H.')
-        ->and($perkara->penuntut_umum_nip)->toBe('198501012010011005')
-        ->and($perkara->penuntut_umum_pangkat)->toBe('Jaksa Muda (III/c)');
+        ->and($perkara->penuntut_umum_nip)->toBe('198501012010011005');
 
     // 3. Card Penuntut Umum sekarang tampil di detail perkara
     $this->actingAs($penyidik)
@@ -156,6 +160,7 @@ it('persists Pengadilan and Amar Putusan in Putusan Perkara and displays details
         ->assertOk()
         ->assertSee('Nama Pengadilan')
         ->assertSee('Pengadilan Negeri Banjarmasin')
+        ->assertSee('Ketik nama pengadilan...')
         ->assertSee('Amar Putusan Pengadilan');
 
     // Simpan Keputusan Pengadilan

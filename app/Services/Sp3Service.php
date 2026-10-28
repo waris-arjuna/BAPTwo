@@ -41,7 +41,7 @@ class Sp3Service
                 $activeDpo->update([
                     'status' => 'nonaktif',
                     'tanggal_pencabutan' => $data['tanggal_sp3'],
-                    'alasan_pencabutan' => "Pencabutan otomatis karena penerbitan SP3 Nomor: {$data['nomor_surat']}",
+                    'alasan_pencabutan' => 'Ditutup karena SP3',
                     'updated_by' => $actorId,
                 ]);
             }

@@ -91,13 +91,21 @@ class SavePerkaraBerkasRequest extends FormRequest
             // Tim PPNS (F-08)
             'ppns_utama_id' => [$isFinal ? 'required' : 'nullable', 'integer', 'exists:user,id'],
             'ppns_anggota_ids' => ['nullable', 'array'],
-            'ppns_anggota_ids.*' => ['integer', 'exists:user,id'],
+            'ppns_anggota_ids.*' => [
+                'integer',
+                'exists:user,id',
+                function (string $attribute, mixed $value, \Closure $fail): void {
+                    $utamaId = $this->input('ppns_utama_id');
+                    if ($utamaId !== null && $utamaId !== '' && (int) $value === (int) $utamaId) {
+                        $fail('Penyidik yang sudah dipilih sebagai PPNS Utama tidak dapat dipilih kembali sebagai Penyidik Anggota.');
+                    }
+                },
+            ],
 
             // Penuntut Umum (Poin 2 & Poin 8, ref: D-053)
             'penuntut_umum_instansi_id' => ['nullable', 'integer', 'exists:instansi_hukum,id'],
             'penuntut_umum_nama' => ['nullable', 'string', 'max:255'],
             'penuntut_umum_nip' => ['nullable', 'string', 'max:50'],
-            'penuntut_umum_pangkat' => ['nullable', 'string', 'max:100'],
 
             // Single Tersangka, Berkas Perkara & Pasal Berlapis (Poin 2, 8, 11, 13, 17)
             'tersangka' => ['required', 'array', 'min:1'],

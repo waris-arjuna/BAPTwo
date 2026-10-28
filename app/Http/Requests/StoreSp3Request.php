@@ -36,7 +36,7 @@ class StoreSp3Request extends FormRequest
             'keterangan.required' => 'Alasan dan catatan penghentian penyidikan wajib diisi.',
             'dokumen.required' => 'Dokumen fisik SP3 wajib diunggah.',
             'dokumen.mimes' => 'Dokumen SP3 wajib berupa file format PDF.',
-            'dokumen.max' => 'Ukuran dokumen maksimal 5 MB.',
+            'dokumen.max' => 'Ukuran file dokumen tidak boleh melebihi 5 MB.',
         ];
     }
 }

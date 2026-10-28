@@ -12,7 +12,7 @@ class StoreDpoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return $this->user()?->can('create-cases') ?? false;
+        return $this->user()?->can('toggle-dpo') ?? false;
     }
 
     /**
@@ -41,7 +41,7 @@ class StoreDpoRequest extends FormRequest
             'tanggal_penetapan.required' => 'Tanggal penetapan DPO wajib diisi.',
             'tanggal_penetapan.date' => 'Format tanggal penetapan DPO tidak valid.',
             'dokumen.mimes' => 'File dokumen pendukung DPO wajib berformat PDF.',
-            'dokumen.max' => 'Ukuran file dokumen pendukung DPO maksimal 5 MB.',
+            'dokumen.max' => 'Ukuran file dokumen tidak boleh melebihi 5 MB.',
         ];
     }
 }

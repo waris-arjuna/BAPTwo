@@ -19,11 +19,13 @@ class DataPerkaraController extends Controller
     {
         $perkaras = $this->perkaraService->getDataPerkaraList($request);
         $availableSprindiks = $this->perkaraService->getAvailableForPerkara();
+        $summaryCards = $this->perkaraService->getDataPerkaraSummaryCards();
+        $ppnsList = $this->perkaraService->getAvailablePpnsForFilter();
 
         if ($request->header('X-Filter-Partial')) {
             return view('pages.data-perkara._table-partial', compact('perkaras'));
         }
 
-        return view('pages.data-perkara.index', compact('perkaras', 'availableSprindiks'));
+        return view('pages.data-perkara.index', compact('perkaras', 'availableSprindiks', 'summaryCards', 'ppnsList'));
     }
 }

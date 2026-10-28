@@ -63,7 +63,7 @@ class UserFactory extends Factory
     public function pimpinan(): static
     {
         return $this->state(fn (array $attributes) => [
-            'role' => UserRole::PIMPINAN,
+            'role' => UserRole::UMUM,
         ]);
     }
 

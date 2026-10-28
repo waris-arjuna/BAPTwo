@@ -85,11 +85,11 @@ class SprindikController extends Controller
         $payload = $isDraft
             ? [
                 'title' => 'Draft Sprindik Tersimpan',
-                'message' => 'Draft Sprindik untuk perkara '.($perkara->nomor_laporan ?: '').' berhasil disimpan.',
+                'message' => 'Draft Sprindik untuk perkara '.($perkara->nomor_laporan_kejadian ?: '').' berhasil disimpan.',
             ]
             : [
                 'title' => 'Sprindik Final',
-                'message' => 'Sprindik untuk perkara '.($perkara->nomor_laporan ?: '').' berhasil difinalkan dan dikunci permanen.',
+                'message' => 'Sprindik untuk perkara '.($perkara->nomor_laporan_kejadian ?: '').' berhasil difinalkan dan dikunci permanen.',
             ];
 
         return redirect()
@@ -100,17 +100,9 @@ class SprindikController extends Controller
     /**
      * Tampilkan detail sprindik
      */
-    public function show(mixed $perkara): View
+    public function show(Perkara $perkara): View
     {
-        if (! $perkara instanceof Perkara) {
-            $perkara = Perkara::find($perkara) ?: new Perkara(['id' => $perkara]);
-        }
-
-        if (empty($perkara->nomor_surat_perintah) && empty($perkara->tahap_sprindik_status)) {
-            $perkara->nomor_surat_perintah = 'SP/001/IX/2026';
-            $perkara->tanggal_surat_perintah = $perkara->tanggal_surat_perintah ?? now();
-            $perkara->tahap_sprindik_status = 'final';
-        }
+        abort_if(empty($perkara->nomor_surat_perintah) && empty($perkara->tahap_sprindik_status), 404);
 
         $perkara->load(['dokumenSprindik', 'dokumenLaporan', 'creator', 'updater', 'laporanFinalizer', 'sprindikFinalizer', 'auditLogs.user']);
 
@@ -153,11 +145,11 @@ class SprindikController extends Controller
         $payload = $isDraft
             ? [
                 'title' => 'Draft Sprindik Diperbarui',
-                'message' => 'Draft Sprindik untuk perkara '.($perkara->nomor_laporan ?: '').' berhasil diperbarui.',
+                'message' => 'Draft Sprindik untuk perkara '.($perkara->nomor_laporan_kejadian ?: '').' berhasil diperbarui.',
             ]
             : [
                 'title' => 'Sprindik Final',
-                'message' => 'Sprindik untuk perkara '.($perkara->nomor_laporan ?: '').' berhasil difinalkan dan dikunci permanen.',
+                'message' => 'Sprindik untuk perkara '.($perkara->nomor_laporan_kejadian ?: '').' berhasil difinalkan dan dikunci permanen.',
             ];
 
         return redirect()

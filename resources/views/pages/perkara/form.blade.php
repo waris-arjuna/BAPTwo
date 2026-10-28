@@ -6,6 +6,8 @@
     $existingUtamaId = old('ppns_utama_id', $perkara->ppnsUtama->first()?->id ?? '');
     $existingAnggotaIds = collect(old('ppns_anggota_ids', $perkara->ppnsAnggota->pluck('id')->all()))
         ->map(fn ($id) => (int) $id)
+        ->filter(fn (int $id) => $id > 0 && $id !== (int) $existingUtamaId)
+        ->values()
         ->all();
     $ppnsJsonList = $ppnsUsers->map(fn ($u) => [
         'id' => (int) $u->id,
@@ -32,7 +34,10 @@
     $tersangkaBinBinti = old('tersangka_bin_binti', $oldTersangka['bin_binti'] ?? ($firstTersangka?->bin_binti ?? ''));
     $tersangkaNik = old('tersangka_nik', $oldTersangka['nik'] ?? ($firstTersangka?->nik ?? ''));
     $tersangkaTempatLahir = old('tersangka_tempat_lahir', $oldTersangka['tempat_lahir'] ?? ($firstTersangka?->tempat_lahir ?? ''));
-    $tersangkaTanggalLahir = old('tersangka_tanggal_lahir', $oldTersangka['tanggal_lahir'] ?? ($firstTersangka?->tanggal_lahir?->format('Y-m-d') ?? ''));
+    $rawTanggalLahir = old('tersangka_tanggal_lahir', $oldTersangka['tanggal_lahir'] ?? ($firstTersangka?->tanggal_lahir?->format('Y-m-d') ?? ''));
+    $tersangkaTanggalLahir = $rawTanggalLahir instanceof \DateTimeInterface
+        ? $rawTanggalLahir->format('Y-m-d')
+        : (is_string($rawTanggalLahir) && $rawTanggalLahir !== '' ? substr(trim($rawTanggalLahir), 0, 10) : '');
     $tersangkaJenisKelamin = old('tersangka_jenis_kelamin', $oldTersangka['jenis_kelamin'] ?? ($firstTersangka?->jenis_kelamin ?? ''));
     $tersangkaAgama = old('tersangka_agama', $oldTersangka['agama'] ?? ($firstTersangka?->agama ?? ''));
     $tersangkaPekerjaan = old('tersangka_pekerjaan', $oldTersangka['pekerjaan'] ?? ($firstTersangka?->pekerjaan ?? ''));
@@ -471,7 +476,7 @@
                         <div>
                             <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">RT</label>
                             <input
-                                type="text"
+                                type="number"
                                 name="tkp_rt"
                                 maxlength="5"
                                 value="{{ old('tkp_rt', $tkpAlamat?->rt ?? '') }}"
@@ -482,7 +487,7 @@
                         <div>
                             <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">RW</label>
                             <input
-                                type="text"
+                                type="number"
                                 name="tkp_rw"
                                 maxlength="5"
                                 value="{{ old('tkp_rw', $tkpAlamat?->rw ?? '') }}"
@@ -586,11 +591,30 @@
                     ppnsList: @js($ppnsJsonList),
                     selectedUtamaId: @js((int) $existingUtamaId ?: null),
                     selectedAnggotaIds: @js($existingAnggotaIds),
-                    addAnggota(id) {
-                        if (!id) return;
-                        const numId = parseInt(id, 10);
-                        if (!this.selectedAnggotaIds.includes(numId)) {
-                            this.selectedAnggotaIds.push(numId);
+                    extractId(eventOrVal) {
+                        if (eventOrVal === null || eventOrVal === undefined) return null;
+                        if (typeof eventOrVal === 'object') {
+                            if ('detail' in eventOrVal && eventOrVal.detail !== undefined) {
+                                const d = eventOrVal.detail;
+                                if (typeof d === 'object') return null;
+                                return d !== '' && d !== null ? parseInt(d, 10) || null : null;
+                            }
+                            if ('target' in eventOrVal && eventOrVal.target && 'value' in eventOrVal.target) {
+                                const v = eventOrVal.target.value;
+                                return v !== '' && v !== null ? parseInt(v, 10) || null : null;
+                            }
+                            return null;
+                        }
+                        return eventOrVal !== '' ? parseInt(eventOrVal, 10) || null : null;
+                    },
+                    addAnggota(eventOrVal) {
+                        const numId = this.extractId(eventOrVal);
+                        if (!numId) return;
+                        if (this.selectedUtamaId && Number(numId) === Number(this.selectedUtamaId)) {
+                            return;
+                        }
+                        if (!this.selectedAnggotaIds.map(Number).includes(Number(numId))) {
+                            this.selectedAnggotaIds.push(Number(numId));
                         }
                         this.$nextTick(() => {
                             const el = document.getElementById('ppns_anggota_select');
@@ -601,20 +625,32 @@
                         });
                     },
                     removeAnggota(id) {
-                        this.selectedAnggotaIds = this.selectedAnggotaIds.filter(i => i !== id);
+                        const numId = Number(id);
+                        this.selectedAnggotaIds = this.selectedAnggotaIds.filter(i => Number(i) !== numId);
                     },
-                    onUtamaChange(val) {
-                        this.selectedUtamaId = val ? parseInt(val, 10) : null;
-                        if (this.selectedUtamaId && this.selectedAnggotaIds.includes(this.selectedUtamaId)) {
+                    onUtamaChange(eventOrVal) {
+                        if (typeof eventOrVal === 'object' && eventOrVal !== null) {
+                            const isCustom = 'detail' in eventOrVal && !(eventOrVal.target instanceof HTMLSelectElement);
+                            if (isCustom && (eventOrVal.detail === undefined || typeof eventOrVal.detail === 'object')) {
+                                return;
+                            }
+                        }
+                        const numId = this.extractId(eventOrVal);
+                        this.selectedUtamaId = numId;
+                        if (this.selectedUtamaId && this.selectedAnggotaIds.map(Number).includes(Number(this.selectedUtamaId))) {
                             this.removeAnggota(this.selectedUtamaId);
                         }
                     },
                     getAvailableAnggota() {
-                        return this.ppnsList.filter(u => u.id !== this.selectedUtamaId && !this.selectedAnggotaIds.includes(u.id));
+                        const utamaId = this.selectedUtamaId ? Number(this.selectedUtamaId) : null;
+                        const anggotaSet = this.selectedAnggotaIds.map(Number);
+                        return this.ppnsList.filter(u => Number(u.id) !== utamaId && !anggotaSet.includes(Number(u.id)));
                     },
                     getSelectedAnggotaDetails() {
+                        const utamaId = this.selectedUtamaId ? Number(this.selectedUtamaId) : null;
                         return this.selectedAnggotaIds
-                            .map(id => this.ppnsList.find(u => u.id === id))
+                            .filter(id => Number(id) !== utamaId)
+                            .map(id => this.ppnsList.find(u => Number(u.id) === Number(id)))
                             .filter(Boolean);
                     }
                 }"
@@ -643,7 +679,7 @@
                             placeholder="-- Pilih PPNS Utama --"
                             search-placeholder="Ketik nama atau NIP penyidik..."
                             :value="old('ppns_utama_id', $existingUtamaId)"
-                            @change="onUtamaChange($event.target.value)"
+                            @change="onUtamaChange($event)"
                             required
                         >
                             <option value="">-- Pilih PPNS Utama --</option>
@@ -675,7 +711,7 @@
                                 placeholder="+ Pilih dan tambah anggota penyidik..."
                                 search-placeholder="Ketik nama atau NIP penyidik..."
                                 :clearable="false"
-                                @change="addAnggota($event.target.value)"
+                                @change="addAnggota($event)"
                             >
                                 <option value="" x-text="getAvailableAnggota().length === 0 ? 'Semua PPNS sudah terpilih' : '+ Pilih dan tambah anggota penyidik...'"></option>
                                 <template x-for="ppns in getAvailableAnggota()" :key="ppns.id">
@@ -683,7 +719,6 @@
                                 </template>
                             </x-form.searchable-select>
                         </div>
-                        <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">Pilih penyidik dari daftar combo box untuk menambahkannya ke tim anggota. Anda dapat memilih lebih dari satu penyidik.</p>
 
                         @error('ppns_anggota_ids')
                             <p class="mt-1.5 text-xs text-error-600 dark:text-error-400">{{ $message }}</p>
@@ -731,7 +766,7 @@
                 </div>
             </div>
 
-            {{-- 3. Card Data Tersangka & Berkas Perkara (1 Perkara = 1 Berkas Perkara = 1 Tersangka, Poin 11 & 13) --}}
+            {{-- 3. Card Data Tersangka & Berkas Perkara (1 Perkara = 1 Berkas Perkara = 1 Tersangka) --}}
             <div
                 x-data="{
                     isAlamatModalOpen: false,
@@ -1077,7 +1112,7 @@
                         {{-- NIK 16 Digit (Poin 17) --}}
                         <div>
                             <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                NIK (Tepat 16 Digit Angka) <span class="text-red-500">*</span>
+                                NIK (16 Digit Angka) <span class="text-red-500">*</span>
                             </label>
                             <input
                                 type="text"
@@ -1092,7 +1127,6 @@
                                 class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:text-white/90"
                                 required
                             >
-                            <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Harus tepat 16 digit angka sesuai KTP.</p>
                         </div>
 
                         {{-- Jenis Kelamin --}}
@@ -1136,6 +1170,7 @@
                                 name="tersangka_tanggal_lahir"
                                 placeholder="Pilih Tanggal Lahir"
                                 :default-date="$tersangkaTanggalLahir"
+                                :value="$tersangkaTanggalLahir"
                                 date-format="Y-m-d"
                                 max-date="today"
                                 :required="true"
@@ -1222,9 +1257,6 @@
                                     <span>Atur Alamat Tersangka</span>
                                 </button>
                             </div>
-                            <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                                Alamat KTP/domisili tersangka mencakup 38 Provinsi di seluruh Indonesia.
-                            </p>
 
                             {{-- Hidden inputs form POST --}}
                             <input type="hidden" name="tersangka_provinsi_kode" :value="alamat.provinsi_kode">
@@ -1317,7 +1349,6 @@
                                 </template>
                             </x-form.searchable-select>
                         </div>
-                        <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">Pilih pasal dari daftar combo box untuk menambahkannya ke berkas perkara. Anda dapat memilih lebih dari satu pasal.</p>
 
                         @error('pasal_ids')
                             <p class="mt-1.5 text-xs text-error-600 dark:text-error-400">{{ $message }}</p>
@@ -1371,7 +1402,7 @@
                     <div>
                         <div class="flex items-center gap-2">
                             <i class="fi fi-rr-scale text-lg text-brand-500"></i>
-                            <h2 class="text-base font-semibold text-gray-800 dark:text-white/90">5. Penuntut Umum (JPU)</h2>
+                            <h2 class="text-base font-semibold text-gray-800 dark:text-white/90" >5. Penuntut Umum (JPU)</h2>
                         </div>
                         <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
                             Pilih instansi Kejaksaan mitra dan masukkan data Jaksa Penuntut Umum yang ditunjuk untuk koordinasi penanganan perkara.
@@ -1382,16 +1413,16 @@
                     </span>
                 </div>
 
-                <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
-                    {{-- Dropdown Instansi Kejaksaan --}}
+                <div class="grid grid-cols-1 gap-5 md:grid-cols-3">
+                    {{-- Combobox Instansi Kejaksaan --}}
                     <div>
-                        <label for="penuntut_umum_instansi_id" class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                            Instansi Kejaksaan
-                        </label>
-                        <select
+                        <x-form.searchable-select
                             id="penuntut_umum_instansi_id"
                             name="penuntut_umum_instansi_id"
-                            class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
+                            label="Instansi Kejaksaan"
+                            placeholder="-- Pilih Instansi Kejaksaan --"
+                            search-placeholder="Ketik nama kejaksaan..."
+                            :value="old('penuntut_umum_instansi_id', $perkara->penuntut_umum_instansi_id)"
                         >
                             <option value="">-- Pilih Instansi Kejaksaan --</option>
                             @foreach ($kejaksaanList as $kj)
@@ -1399,15 +1430,12 @@
                                     {{ $kj->nama }}
                                 </option>
                             @endforeach
-                        </select>
-                        <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
-                            Data instansi bersumber dari Master Data Instansi Hukum kategori Kejaksaan.
-                        </p>
+                        </x-form.searchable-select>
                     </div>
 
                     {{-- Nama Jaksa Penuntut Umum --}}
                     <div>
-                        <label for="penuntut_umum_nama" class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                        <label for="penuntut_umum_nama" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
                             Nama Jaksa Penuntut Umum
                         </label>
                         <input
@@ -1422,30 +1450,15 @@
 
                     {{-- NIP Jaksa --}}
                     <div>
-                        <label for="penuntut_umum_nip" class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                        <label for="penuntut_umum_nip" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
                             NIP Jaksa Penuntut
                         </label>
                         <input
-                            type="text"
+                            type="number"
                             id="penuntut_umum_nip"
                             name="penuntut_umum_nip"
                             value="{{ old('penuntut_umum_nip', $perkara->penuntut_umum_nip) }}"
                             placeholder="Contoh: 198205122008011002"
-                            class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 placeholder-gray-400 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
-                        >
-                    </div>
-
-                    {{-- Pangkat / Golongan --}}
-                    <div>
-                        <label for="penuntut_umum_pangkat" class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                            Pangkat / Golongan Jaksa
-                        </label>
-                        <input
-                            type="text"
-                            id="penuntut_umum_pangkat"
-                            name="penuntut_umum_pangkat"
-                            value="{{ old('penuntut_umum_pangkat', $perkara->penuntut_umum_pangkat) }}"
-                            placeholder="Contoh: Jaksa Madya (IV/a)"
                             class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 placeholder-gray-400 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
                         >
                     </div>

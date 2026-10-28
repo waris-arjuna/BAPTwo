@@ -10,7 +10,6 @@ use App\Http\Controllers\MasterDataController;
 use App\Http\Controllers\MathCaptchaController;
 use App\Http\Controllers\P21Controller;
 use App\Http\Controllers\PencarianPerkaraController;
-use App\Http\Controllers\PengaturanUmumController;
 use App\Http\Controllers\PerkaraBerkasController;
 use App\Http\Controllers\PerkaraExportController;
 use App\Http\Controllers\PetugasController;
@@ -85,7 +84,7 @@ Route::middleware('auth')->group(function () {
         Route::put('/pengaturan/{user}', [UserController::class, 'update'])->name('users.update');
         Route::delete('/pengaturan/{user}', [UserController::class, 'destroy'])->name('users.destroy');
         Route::post('/pengaturan/{id}/restore', [UserController::class, 'restore'])->name('users.restore');
-        Route::get('/pengaturan/umum', [PengaturanUmumController::class, 'index'])->name('pengaturan.umum');
+        Route::view('/pengaturan/umum', 'pages.pengaturan.umum')->name('pengaturan.umum');
     });
 
     // Data Petugas (Penyidik & Administrator)
@@ -93,10 +92,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/data-petugas', [PetugasController::class, 'store'])->name('data-petugas.store');
 
     // Halaman Sampah / Pemulihan Data Soft Delete (PRD F-44)
-    Route::get('/recovery-data', [SampahController::class, 'index'])->name('recovery-data.index');
-    Route::get('/sampah', [SampahController::class, 'index'])->name('sampah.index');
-    Route::post('/sampah/perkara/{id}/restore', [SampahController::class, 'restorePerkara'])->middleware('can:soft-delete')->name('sampah.perkara.restore');
-    Route::post('/sampah/berkas/{id}/restore', [SampahController::class, 'restoreBerkas'])->middleware('can:soft-delete')->name('sampah.berkas.restore');
+    Route::get('/recovery-data', [SampahController::class, 'index'])->middleware('can:manage-users')->name('recovery-data.index');
+    Route::get('/sampah', [SampahController::class, 'index'])->middleware('can:manage-users')->name('sampah.index');
+    Route::post('/sampah/perkara/{id}/restore', [SampahController::class, 'restorePerkara'])->middleware('can:manage-users')->name('sampah.perkara.restore');
+    Route::post('/sampah/berkas/{id}/restore', [SampahController::class, 'restoreBerkas'])->middleware('can:manage-users')->name('sampah.berkas.restore');
     Route::post('/sampah/user/{id}/restore', [SampahController::class, 'restoreUser'])->middleware('can:manage-users')->name('sampah.user.restore');
 
     // Seluruh Perkara & Pencarian Cepat Perkara (PRD F-38, F-39)
@@ -121,7 +120,7 @@ Route::middleware('auth')->group(function () {
 
     // Data Perkara & Berkas Perkara Pra-SPDP (TKP, PPNS, Tersangka, Berkas, Pasal Berlapis)
     Route::get('/data-perkara', [DataPerkaraController::class, 'index'])->name('data-perkara.index');
-    Route::get('/progress-perkara', [ProgressPerkaraController::class, 'index'])->middleware('can:view-progress-perkara')->name('progress-perkara.index');
+    Route::get('/progress-perkara', [ProgressPerkaraController::class, 'index'])->name('progress-perkara.index');
     Route::get('/potensi-terlimpah', [PotensiTerlimpahController::class, 'index'])->name('potensi-terlimpah.index');
     Route::get('/perkara/{perkara}', [PerkaraBerkasController::class, 'show'])->name('perkara.show');
     Route::get('/perkara/{perkara}/buat', [PerkaraBerkasController::class, 'edit'])->middleware('can:edit-draft')->name('perkara.edit');

@@ -11,6 +11,7 @@ uses(RefreshDatabase::class);
 beforeEach(function () {
     $this->penyidik = User::factory()->penyidik()->create();
     $this->admin = User::factory()->administrator()->create();
+    $this->pimpinan = User::factory()->pimpinan()->create();
 
     $this->perkara = Perkara::create([
         'nomor_laporan_kejadian' => 'LK/001/X/2026',
@@ -91,10 +92,17 @@ it('renders reusable table dropdown across Laporan Kejadian, Sprindik, Data Perk
         ->assertSee('Ringkasan Cepat')
         ->assertSee('Lihat Perkara');
 
-    // 5. Progress Perkara (diakses oleh Admin atau Pemimpin sesuai Poin 20)
-    $this->actingAs($this->admin)
+    // 5. Progress Perkara (diakses oleh Pemimpin sesuai Poin 20 & Poin 3A)
+    $this->actingAs($this->pimpinan)
         ->get(route('progress-perkara.index'))
         ->assertOk()
         ->assertSee('x-teleport="body"', false)
         ->assertSee('Lihat Detail Perkara');
+
+    // 6. Data Perkara (diakses oleh Admin dan Penyidik)
+    $this->actingAs($this->admin)
+        ->get(route('data-perkara.index'))
+        ->assertOk()
+        ->assertSee('x-teleport="body"', false)
+        ->assertSee('Lihat Detail');
 });

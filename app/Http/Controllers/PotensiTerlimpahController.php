@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\BerkasPerkara;
 use App\Models\User;
+use App\Services\DashboardService;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -28,15 +30,24 @@ class PotensiTerlimpahController extends Controller
                     ->orWhere('status_formal', 'dalam_proses');
             });
 
+        $today = Carbon::today(DashboardService::ZONA_WAKTU)->toDateString();
+        $approachingDate = Carbon::today(DashboardService::ZONA_WAKTU)->addDays(DashboardService::AMBANG_MENDEKATI_SLA_HARI)->toDateString();
+
         // Hitung Ringkasan Metrik Potensi Terlimpah
         $totalPotensi = (clone $baseActiveQuery)->count();
         $siapTahap2Count = (clone $baseActiveQuery)->where('progress_persen', '>=', 55)->count();
         $terkendalaDpoCount = (clone $baseActiveQuery)->where('is_dpo', true)->count();
 
-        // Hitung evaluasi SLA dari berkas yang telah terbit SPDP
-        $activeWithSpdp = (clone $baseActiveQuery)->whereNotNull('tanggal_spdp')->get();
-        $kritisCount = $activeWithSpdp->filter(fn (BerkasPerkara $b) => $b->sla_status === 'lewat_sla')->count();
-        $mendekatiBatasCount = $activeWithSpdp->filter(fn (BerkasPerkara $b) => $b->sla_status === 'mendekati_sla')->count();
+        // Hitung evaluasi SLA dari berkas yang telah terbit SPDP via SQL langsung
+        $kritisCount = (clone $baseActiveQuery)
+            ->whereNotNull('sla_deadline')
+            ->where('sla_deadline', '<', $today)
+            ->count();
+        $mendekatiBatasCount = (clone $baseActiveQuery)
+            ->whereNotNull('sla_deadline')
+            ->where('sla_deadline', '>=', $today)
+            ->where('sla_deadline', '<=', $approachingDate)
+            ->count();
 
         // Query Utama untuk Tabel
         $query = (clone $baseActiveQuery)
@@ -52,11 +63,9 @@ class PotensiTerlimpahController extends Controller
 
         // Filter Kategori Urgensi
         if ($kategori === 'kritis') {
-            $kritisIds = $activeWithSpdp->filter(fn (BerkasPerkara $b) => $b->sla_status === 'lewat_sla')->pluck('id');
-            $query->whereIn('id', $kritisIds);
+            $query->whereNotNull('sla_deadline')->where('sla_deadline', '<', $today);
         } elseif ($kategori === 'mendekati_batas') {
-            $mendekatiIds = $activeWithSpdp->filter(fn (BerkasPerkara $b) => $b->sla_status === 'mendekati_sla')->pluck('id');
-            $query->whereIn('id', $mendekatiIds);
+            $query->whereNotNull('sla_deadline')->where('sla_deadline', '>=', $today)->where('sla_deadline', '<=', $approachingDate);
         } elseif ($kategori === 'siap_tahap2') {
             $query->where('progress_persen', '>=', 55);
         } elseif ($kategori === 'dpo') {

@@ -281,18 +281,19 @@
                                         name="tanggal_surat"
                                         placeholder="Pilih Tanggal Surat"
                                         defaultDate="{{ old('tanggal_surat', $tahap?->tanggal_surat?->format('Y-m-d')) }}"
+                                        value="{{ old('tanggal_surat', $tahap?->tanggal_surat?->format('Y-m-d')) }}"
                                     />
                                 </div>
 
                                 @if ($selectedJenis === \App\Enums\JenisTahap::KEPUTUSAN_PENGADILAN)
                                     <div class="sm:col-span-2">
-                                        <label for="pengadilan_instansi_id" class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                            Nama Pengadilan <span class="text-xs text-gray-400">(Wajib untuk Simpan &amp; Lanjut)</span>
-                                        </label>
-                                        <select
+                                        <x-form.searchable-select
                                             id="pengadilan_instansi_id"
                                             name="pengadilan_instansi_id"
-                                            class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
+                                            label="Nama Pengadilan (Wajib untuk Simpan & Lanjut)"
+                                            placeholder="-- Pilih Instansi Pengadilan --"
+                                            search-placeholder="Ketik nama pengadilan..."
+                                            :value="old('pengadilan_instansi_id', $tahap?->pengadilan_instansi_id)"
                                         >
                                             <option value="">-- Pilih Instansi Pengadilan --</option>
                                             @foreach ($pengadilanList ?? [] as $pg)
@@ -300,10 +301,7 @@
                                                     {{ $pg->nama }}
                                                 </option>
                                             @endforeach
-                                        </select>
-                                        <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
-                                            Data pengadilan bersumber dari Master Data Instansi Hukum kategori Pengadilan (Poin 8, ref: D-053).
-                                        </p>
+                                        </x-form.searchable-select>
                                     </div>
 
                                     <div class="sm:col-span-2">
@@ -328,7 +326,6 @@
                                     label="Unggah Dokumen PDF Pendukung"
                                     :existingFile="$tahap?->dokumen?->first()?->nama_file_asli"
                                     :existingUrl="$tahap?->dokumen?->first() ? route('dokumen.preview', $tahap->dokumen->first()) : null"
-                                    helperText="Format file: PDF murni (Maksimal 20 MB)."
                                 />
                             </div>
 
@@ -402,6 +399,7 @@
                                             name="p16_tanggal_surat"
                                             placeholder="Pilih Tanggal Surat P-16"
                                             defaultDate="{{ old('p16_tanggal_surat', $p16?->tanggal_surat?->format('Y-m-d')) }}"
+                                            value="{{ old('p16_tanggal_surat', $p16?->tanggal_surat?->format('Y-m-d')) }}"
                                         />
                                     </div>
                                 </div>
@@ -413,7 +411,6 @@
                                         label="Unggah Dokumen PDF P-16"
                                         :existingFile="$p16?->dokumen?->first()?->nama_file_asli"
                                         :existingUrl="$p16?->dokumen?->first() ? route('dokumen.preview', $p16->dokumen->first()) : null"
-                                        helperText="Format file: PDF murni (Maksimal 20 MB)."
                                     />
                                 </div>
 
@@ -482,6 +479,7 @@
                                             name="p17p_tanggal_surat"
                                             placeholder="Pilih Tanggal Surat P-17"
                                             defaultDate="{{ old('p17p_tanggal_surat', $p17p?->tanggal_surat?->format('Y-m-d')) }}"
+                                            value="{{ old('p17p_tanggal_surat', $p17p?->tanggal_surat?->format('Y-m-d')) }}"
                                         />
                                     </div>
                                 </div>
@@ -493,7 +491,6 @@
                                         label="Unggah Dokumen PDF P-17"
                                         :existingFile="$p17p?->dokumen?->first()?->nama_file_asli"
                                         :existingUrl="$p17p?->dokumen?->first() ? route('dokumen.preview', $p17p->dokumen->first()) : null"
-                                        helperText="Format file: PDF murni (Maksimal 20 MB)."
                                     />
                                 </div>
 
@@ -567,6 +564,7 @@
                                             name="p18p_tanggal_surat"
                                             placeholder="Pilih Tanggal Surat P-18"
                                             defaultDate="{{ old('p18p_tanggal_surat', $p18p?->tanggal_surat?->format('Y-m-d')) }}"
+                                            value="{{ old('p18p_tanggal_surat', $p18p?->tanggal_surat?->format('Y-m-d')) }}"
                                         />
                                     </div>
                                 </div>
@@ -578,7 +576,6 @@
                                         label="Unggah Dokumen PDF P-18"
                                         :existingFile="$p18p?->dokumen?->first()?->nama_file_asli"
                                         :existingUrl="$p18p?->dokumen?->first() ? route('dokumen.preview', $p18p->dokumen->first()) : null"
-                                        helperText="Format file: PDF murni (Maksimal 20 MB)."
                                     />
                                 </div>
 
@@ -647,6 +644,7 @@
                                             name="p19_tanggal_surat"
                                             placeholder="Pilih Tanggal Surat P-19"
                                             defaultDate="{{ old('p19_tanggal_surat', $p19?->tanggal_surat?->format('Y-m-d')) }}"
+                                            value="{{ old('p19_tanggal_surat', $p19?->tanggal_surat?->format('Y-m-d')) }}"
                                         />
                                     </div>
                                 </div>
@@ -658,7 +656,6 @@
                                         label="Unggah Dokumen PDF P-19"
                                         :existingFile="$p19?->dokumen?->first()?->nama_file_asli"
                                         :existingUrl="$p19?->dokumen?->first() ? route('dokumen.preview', $p19->dokumen->first()) : null"
-                                        helperText="Format file: PDF murni (Maksimal 20 MB)."
                                     />
                                 </div>
 

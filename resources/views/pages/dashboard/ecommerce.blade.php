@@ -37,30 +37,30 @@
         {{-- Statistics --}}
         <x-dashboard.statistics :statistics="$statistics ?? null" :tahun="$tahun ?? date('Y')" />
 
-        {{-- Baris 2: Visual Charts (Donut Status Perkara 6 Kolom & Tren Bulanan ApexCharts 6 Kolom) --}}
+        {{-- Baris 2: Proporsi Status (5 Kolom) & Tren Bulanan ApexCharts (7 Kolom) --}}
         <div class="grid grid-cols-1 items-stretch gap-4 lg:grid-cols-12 lg:gap-6">
-
-            <div class="flex flex-col lg:col-span-6">
+            <div class="flex flex-col lg:col-span-5">
                 <x-dashboard.case-status :data="$caseStatus ?? null" :tahun="$tahun ?? date('Y')" />
             </div>
 
-            <div class="flex flex-col lg:col-span-6">
+            <div class="flex flex-col lg:col-span-7">
                 <x-dashboard.monthly-cases-chart :data="$monthlyCases ?? null" :tahun="$tahun ?? date('Y')" />
             </div>
         </div>
 
-        {{-- Baris 3: Operasional & Aktivitas (Aktivitas Terkini 6 Kolom & Rata-rata Penyelesaian per Tahap 6 Kolom) --}}
-        <div class="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-6">
-            <div class="lg:col-span-6">
+        {{-- Baris 3: Tabel Operasional Prioritas (Progress Perkara 5 Prioritas Utama) --}}
+        <x-dashboard.progress-perkara :perkaraList="$perkaraList ?? null" />
+
+        {{-- Baris 4: Aktivitas Penyidikan Terkini (7 Kolom) & Rata-rata Penyelesaian per Tahap (5 Kolom) --}}
+        <div class="grid grid-cols-1 items-stretch gap-4 lg:grid-cols-12 lg:gap-6">
+            <div class="flex flex-col lg:col-span-7">
                 <x-dashboard.recent-activities :activities="$recentActivities ?? null" />
             </div>
-            <div class="lg:col-span-6">
+
+            <div class="flex flex-col lg:col-span-5">
                 <x-dashboard.average-stage :stageAverages="$stageAverages ?? null" :tahun="$tahun ?? date('Y')" />
             </div>
         </div>
-
-        {{-- Baris 4: Progress Perkara Table (Paling Bawah - Poin 6) --}}
-        <x-dashboard.progress-perkara :perkaraList="$perkaraList ?? null" />
 
     </div>
 @endsection

@@ -338,8 +338,14 @@
         </p>
 
         <div>
+            @php
+                $partialUser = auth()->user();
+                $targetRoute = ($partialUser && ($partialUser->isAdmin() || $partialUser->isPenyidik()))
+                    ? route('data-perkara.index')
+                    : route('progress-perkara.index');
+            @endphp
             <a
-                href="{{ route('progress-perkara.index') }}"
+                href="{{ $targetRoute }}"
                 class="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-600 hover:text-brand-700 dark:text-brand-400"
             >
                 <span>Buka Seluruh Progress Perkara</span>

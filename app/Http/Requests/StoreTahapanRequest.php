@@ -109,15 +109,15 @@ class StoreTahapanRequest extends FormRequest
             'tanggal_surat.date' => 'Format tanggal surat tidak valid.',
             'dokumen.required' => 'Dokumen fisik PDF wajib diunggah untuk melanjutkan tahapan.',
             'dokumen.mimes' => 'Dokumen tahapan harus berupa file format PDF.',
-            'dokumen.max' => 'Ukuran dokumen tahapan maksimal 5 MB.',
+            'dokumen.max' => 'Ukuran file dokumen tidak boleh melebihi 5 MB.',
             'p16_dokumen.mimes' => 'Dokumen P-16 harus berupa file format PDF.',
-            'p16_dokumen.max' => 'Ukuran dokumen P-16 maksimal 5 MB.',
+            'p16_dokumen.max' => 'Ukuran file dokumen tidak boleh melebihi 5 MB.',
             'p17p_dokumen.mimes' => 'Dokumen P-17 harus berupa file format PDF.',
-            'p17p_dokumen.max' => 'Ukuran dokumen P-17 maksimal 5 MB.',
+            'p17p_dokumen.max' => 'Ukuran file dokumen tidak boleh melebihi 5 MB.',
             'p18p_dokumen.mimes' => 'Dokumen P-18 harus berupa file format PDF.',
-            'p18p_dokumen.max' => 'Ukuran dokumen P-18 maksimal 5 MB.',
+            'p18p_dokumen.max' => 'Ukuran file dokumen tidak boleh melebihi 5 MB.',
             'p19_dokumen.mimes' => 'Dokumen P-19 harus berupa file format PDF.',
-            'p19_dokumen.max' => 'Ukuran dokumen P-19 maksimal 5 MB.',
+            'p19_dokumen.max' => 'Ukuran file dokumen tidak boleh melebihi 5 MB.',
         ];
     }
 }

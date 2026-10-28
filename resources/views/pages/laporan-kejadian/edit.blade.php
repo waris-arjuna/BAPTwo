@@ -74,6 +74,7 @@
                         <x-form.date-picker
                             id="tanggal_laporan"
                             name="tanggal_laporan"
+                            :default-date="old('tanggal_laporan', $perkara->tanggal_laporan_kejadian?->format('Y-m-d'))"
                             :value="old('tanggal_laporan', $perkara->tanggal_laporan_kejadian?->format('Y-m-d'))"
                             required
                             placeholder="Pilih Tanggal Laporan"
@@ -86,7 +87,6 @@
                             label="Dokumen Laporan (PDF)"
                             :existingFile="$perkara->dokumenLaporan?->nama_file_asli"
                             :existingUrl="$perkara->dokumenLaporan ? route('dokumen.preview', $perkara->dokumenLaporan) : null"
-                            helperText="Biarkan kosong jika tidak ingin mengubah dokumen (PDF Maksimal 20 MB)."
                         />
                     </div>
 

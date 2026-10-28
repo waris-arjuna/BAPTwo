@@ -212,3 +212,33 @@ test('perkara berstatus SP3 langsung berstatus proses SP3 dan formal Tidak Seles
     expect($tahapanService->canProceedTo($this->berkas, JenisTahap::SPDP))->toBeFalse()
         ->and($tahapanService->canProceedTo($this->berkas, JenisTahap::TAHAP_1))->toBeFalse();
 });
+
+test('halaman detail perkara menampilkan tombol Lihat SP3 dan data pop up detail SP3 lengkap', function () {
+    Storage::fake('local');
+    $this->penyidik->update([
+        'nama' => 'Budi Santoso, S.Farm., Apt.',
+        'nip' => '198804122015031002',
+    ]);
+
+    $pdf = UploadedFile::fake()->create('surat_sp3_detail.pdf', 400, 'application/pdf');
+
+    $this->actingAs($this->penyidik)
+        ->post(route('berkas-perkara.sp3.store', $this->berkas), [
+            'nomor_surat' => 'SPPP/99/BPOM/BJM/2026',
+            'tanggal_sp3' => '2026-10-20',
+            'keterangan' => 'Tersangka meninggal dunia berdasarkan akta kematian resmi.',
+            'dokumen' => $pdf,
+        ]);
+
+    $response = $this->actingAs($this->penyidik)
+        ->get(route('perkara.show', $this->perkara));
+
+    $response->assertOk()
+        ->assertSee('Lihat SP3')
+        ->assertSee('Detail Surat Perintah Penghentian Penyidikan (SP3)')
+        ->assertSee('SPPP/99/BPOM/BJM/2026')
+        ->assertSee('20-10-2026')
+        ->assertSee('Budi Santoso, S.Farm., Apt. (NIP: 198804122015031002)')
+        ->assertSee('Lihat File SP3')
+        ->assertSee('Tersangka meninggal dunia berdasarkan akta kematian resmi.');
+});

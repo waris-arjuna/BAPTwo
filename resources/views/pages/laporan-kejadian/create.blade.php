@@ -78,6 +78,7 @@
                         <x-form.date-picker
                             id="tanggal_laporan"
                             name="tanggal_laporan"
+                            :default-date="old('tanggal_laporan', date('Y-m-d'))"
                             :value="old('tanggal_laporan', date('Y-m-d'))"
                             required
                             placeholder="Pilih Tanggal Laporan"

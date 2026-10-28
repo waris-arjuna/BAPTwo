@@ -5,12 +5,17 @@
     'required' => false,
     'existingFile' => null,
     'existingUrl' => null,
-    'helperText' => 'Format file yang diperbolehkan: PDF murni (Maksimal 5 MB).',
+    'helperText' => null,
     'maxSizeMb' => 5,
 ])
 
 @php
     $inputId = $id ?? $name;
+    if ($helperText === null) {
+        $helperText = $existingFile
+            ? "Dokumen saat ini: {$existingFile}. Biarkan kosong jika tidak ingin mengubah. Format file: PDF maks. {$maxSizeMb} MB"
+            : "Format file: PDF maks. {$maxSizeMb} MB";
+    }
 @endphp
 
 <div

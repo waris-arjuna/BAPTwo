@@ -5,7 +5,6 @@ use App\Models\BerkasPerkara;
 use App\Models\Bidang;
 use App\Models\InstansiHukum;
 use App\Models\Jabatan;
-use App\Models\JaksaPenuntut;
 use App\Models\Panggol;
 use App\Models\Pasal;
 use App\Models\Perkara;
@@ -20,7 +19,7 @@ it('enforces RBAC for Master Data according to Poin 7', function () {
     $pimpinan = User::factory()->pimpinan()->create();
     $admin = User::factory()->administrator()->create();
 
-    $allTypes = ['jabatan', 'bidang', 'panggol', 'pasal', 'instansi-hukum', 'jaksa-penuntut'];
+    $allTypes = ['jabatan', 'bidang', 'panggol', 'pasal', 'instansi-hukum'];
 
     // 1. Pemimpin: diblokir total dari semua tipe (403)
     foreach ($allTypes as $type) {
@@ -29,24 +28,29 @@ it('enforces RBAC for Master Data according to Poin 7', function () {
             ->assertForbidden();
     }
 
-    // 2. Penyidik: hanya dapat melihat pasal & instansi-hukum; 4 tipe lain diblokir (403)
+    // 2. Penyidik: hanya dapat melihat pasal & instansi-hukum; 3 tipe lain diblokir (403)
     foreach (['pasal', 'instansi-hukum'] as $type) {
         $this->actingAs($penyidik)
             ->get(route('master-data.index', ['type' => $type]))
             ->assertOk();
     }
-    foreach (['jabatan', 'bidang', 'panggol', 'jaksa-penuntut'] as $type) {
+    foreach (['jabatan', 'bidang', 'panggol'] as $type) {
         $this->actingAs($penyidik)
             ->get(route('master-data.index', ['type' => $type]))
             ->assertForbidden();
     }
 
-    // 3. Administrator: dapat melihat seluruh 6 tipe
+    // 3. Administrator: dapat melihat seluruh 5 tipe
     foreach ($allTypes as $type) {
         $this->actingAs($admin)
             ->get(route('master-data.index', ['type' => $type]))
             ->assertOk();
     }
+
+    // 4. Tipe jaksa-penuntut yang sudah dihapus menghasilkan 404
+    $this->actingAs($admin)
+        ->get(route('master-data.index', ['type' => 'jaksa-penuntut']))
+        ->assertNotFound();
 });
 
 it('allows Penyidik to manage Pasal and Instansi Hukum while Admin can manage all and Pimpinan is blocked', function () {
@@ -126,26 +130,6 @@ it('allows Penyidik to manage Pasal and Instansi Hukum while Admin can manage al
 
     $kejari = InstansiHukum::first();
     expect($kejari)->not->toBeNull();
-
-    // Penyidik diblokir mengelola Jaksa Penuntut (Poin 7)
-    $this->actingAs($penyidik)
-        ->post(route('master-data.store', ['type' => 'jaksa-penuntut']), [
-            'instansi_hukum_id' => $kejari->id,
-            'nama_jaksa' => 'Hendra Wijaya, S.H.',
-        ])
-        ->assertForbidden();
-
-    // Admin dapat mengelola Jaksa Penuntut
-    $this->actingAs($admin)
-        ->post(route('master-data.store', ['type' => 'jaksa-penuntut']), [
-            'instansi_hukum_id' => $kejari->id,
-            'nama_jaksa' => 'Hendra Wijaya, S.H.',
-            'nip' => '198701012012121001',
-            'pangkat' => 'Jaksa Muda',
-        ])
-        ->assertRedirect(route('master-data.index', ['type' => 'jaksa-penuntut']));
-
-    expect(JaksaPenuntut::count())->toBe(1);
 });
 
 it('allows Administrator to select Jabatan, Bidang, and Panggol from Master Data when creating or updating a user', function () {
@@ -210,17 +194,7 @@ it('rejects invalid input character types across Master Data and User Management
         ])
         ->assertSessionHasErrors(['nomor', 'tahun']);
 
-    // 4. Jaksa Penuntut: nama_jaksa harus huruf/gelar saja, nip harus angka saja
-    $this->actingAs($admin)
-        ->post(route('master-data.store', ['type' => 'jaksa-penuntut']), [
-            'instansi_hukum_id' => $kejari->id,
-            'nama_jaksa' => 'Jaksa 007',
-            'nip' => 'NIP-12345ABC',
-            'pangkat' => 'Jaksa Muda',
-        ])
-        ->assertSessionHasErrors(['nama_jaksa', 'nip']);
-
-    // 5. Manajemen Pengguna: nama harus huruf/gelar saja, nip harus angka saja
+    // 4. Manajemen Pengguna: nama harus huruf/gelar saja, nip harus angka saja
     $this->actingAs($admin)
         ->post(route('users.store'), [
             'nama' => 'Budi 123',

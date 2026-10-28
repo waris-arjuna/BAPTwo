@@ -50,7 +50,7 @@ test('role administrator memiliki struktur menu utama, perkara 7 tahapan, dan si
         '/putusan-perkara',
     ]);
 
-    // 4. Sistem: Master Data (6 subitem), Pengaturan (User, Petugas, Umum), Recovery Data
+    // 4. Sistem: Master Data (5 subitem), Pengaturan (User, Petugas, Umum), Recovery Data
     $sistemItems = $groups[2]['items'];
     expect($sistemItems)->toHaveCount(3);
 
@@ -64,7 +64,6 @@ test('role administrator memiliki struktur menu utama, perkara 7 tahapan, dan si
         'Pangkat & Golongan',
         'Pasal / UU',
         'Instansi Hukum',
-        'Jaksa Penuntut',
     ]);
 
     // Pengaturan

@@ -1342,3 +1342,296 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
      - Seeder alamat tersangka kini menghasilkan nama jalan dan nomor acak realistis murni (`Jl. {Jalan} No. {Nomor}`) tanpa awalan string operasional.
      - Seeder alamat TKP memisahkan nama sarana ke kolom `nama` dan hanya menyimpan detail jalan/lokasi pada kolom `alamat_detail`.
 - Konsekuensi: File ekspor Excel LAPJU menjadi lebih bersih, baku, tidak redundan antar-kolom, serta terverifikasi 100% lulus 245 tes otomatis Pest PHP dan linter Laravel Pint.
+
+---
+
+## D-063 : Standarisasi Modal Pilih Berkas, Modal Loading Ekspor Excel, dan Sinkronisasi Akses Perkara Berbasis Role & Status Terpadu (Revisi Batch 27 Okt 2026)
+
+- Tanggal: 2026-10-27
+- Status: Disepakati & Diimplementasikan
+- Konteks: Berdasarkan hasil evaluasi UI/UX dan alur kerja operasional:
+  1. Komponen modal pilih berkas di 5 tahapan lanjutan (SPDP, Tahap I, P-21, Tahap II, Putusan) terduplikasi dengan layout kaku (tinggi statis) serta belum memiliki fitur pencarian/filter saat daftar berkas panjang.
+  2. Modal ekspor Excel tidak menampilkan feedback visual saat proses kompilasi berlangsung, dan tidak memberikan peringatan jelas saat data periode kosong.
+  3. Terjadi kebingungan navigasi bagi Admin dan Penyidik yang mengakses menu "Seluruh Perkara" dan "Progress Perkara" padahal alur kerja mereka berpusat di "Data Perkara", serta status SP3 dan DPO aktif belum memiliki prioritas hirarki status formal yang baku di tabel induk perkara.
+  4. Halaman Data Perkara belum menyajikan card ringkasan informasi perkara dan filter PPNS Utama untuk Administrator.
+- Keputusan:
+  1. **Komponen Bersama `<x-tahapan.select-berkas-modal>`**:
+     - Diterapkan seragam pada 5 tahapan lanjutan (SPDP, Tahap I, P-21, Tahap II, Putusan).
+     - Tinggi modal dinamis mengikuti jumlah berkas (1 s.d. 7 baris) dan mengaktifkan scrollbar vertikal halus (`max-h-[34rem] overflow-y-auto`) jika > 7 berkas.
+     - Dilengkapi input pencarian live client-side Alpine.js (`searchQuery`) dengan fallback pesan "Data tidak ditemukan".
+  2. **Modal Feedback Unduhan Excel Terpadu**:
+     - Controller `PerkaraExportController` mendeteksi header `X-Export-Fetch` dan mengembalikan respons JSON 422 jika data periode kosong, serta mengirim header `X-Export-Filename` saat berhasil.
+     - Komponen modal menampilkan dialog loading "Mengunduh data..." tanpa tombol tutup/klik luar selama fetch blob berlangsung.
+     - Jika periode kosong, modal loading ditutup, modal filter periode dibuka kembali secara otomatis, dan toast peringatan auto-dismiss 3 detik dimunculkan.
+  3. **Pengalihan Akses Menu & Prioritas Status Formal**:
+     - Admin & Penyidik yang mengakses `/seluruh-perkara` dan `/progress-perkara` dialihkan otomatis (302) ke `/data-perkara` dengan query string tetap terbawa. Pimpinan dan Umum tetap mengakses halaman monitoring masing-masing.
+     - Penerbitan SP3 pada berkas perkara yang berstatus DPO Aktif otomatis mengisi alasan pencabutan DPO dengan "Ditutup karena SP3".
+     - Hirarki prioritas evaluasi status formal perkara di `Perkara::getStatusFormalAttribute()` ditetapkan: `SP3 > Selesai > DPO Aktif > Dalam Proses`.
+  4. **Penyempurnaan Halaman Data Perkara**:
+     - Menambahkan 5 card ringkasan informasi non-clickable di atas tabel (`Total Perkara`, `Dalam Proses`, `DPO Aktif`, `Selesai`, `Tidak Selesai / SP3`) dengan format angka tabular dan suffix "X perkara".
+     - Kolom `Status & SLA` terpadu menggabungkan badge status formal, teks informatif `Tahap: {Nama} ({Persen}%)`, dan badge SLA.
+     - Menambahkan dropdown filter `PPNS Utama` (khusus Admin), `Status Formal Perkara`, dan `Tahapan Terakhir`.
+- Konsekuensi: Seluruh alur antarmuka konsisten sesuai role, pengalaman ekspor lebih responsif dan informatif, serta seluruh suite pengujian otomatis lulus 100% (251 tes Pest) dan Laravel Pint bersih.
+
+---
+
+## D-064 : Standarisasi Batas Ukuran Dokumen PDF Maksimal 5 MB & Format Note Terpadu
+
+- Tanggal: 2026-10-27
+- Status: Disepakati & Diimplementasikan (Menyesuaikan D-007)
+- Konteks: Pada implementasi awal (D-007), batas ukuran dokumen PDF ditetapkan 20 MB. Dalam evaluasi alur kerja dan optimasi penyimpanan, seluruh Form Request telah dibatasi maksimal 5 MB (`max:5120`), namun teks petunjuk (*helperText*) di beberapa view Blade masih menampilkan residu "Maksimal 20 MB" dan belum memiliki format pesan note terpadu saat menampilkan dokumen pada form edit.
+- Keputusan:
+  1. **Batas Ukuran Dokumen 5 MB Konsisten**:
+     - Seluruh input berkas PDF di BAPTwo (Laporan Kejadian, Sprindik, Tahapan & Sub-Tahapan, Modal DPO, dan Modal SP3) wajib berukuran maksimal 5 MB (`max:5120`).
+     - Pesan validasi server diseragamkan dengan pesan ramah pengguna: `"Ukuran file dokumen tidak boleh melebihi 5 MB."`.
+  2. **Format Note Terpadu pada `<x-form.pdf-upload>`**:
+     - Form Tambah / Baru (belum ada berkas): `"Format file: PDF maks. 5 MB"`.
+     - Form Edit (sudah ada berkas sebelumnya): `"Dokumen saat ini: [nama_file]. Biarkan kosong jika tidak ingin mengubah. Format file: PDF maks. 5 MB"` serta tombol modal pratinjau `"Lihat file saat ini"`.
+     - Komponen Blade `<x-form.pdf-upload>` menghasilkan teks note ini secara otomatis dan dinamis berdasarkan ada/tidaknya properti `:existingFile`.
+  3. **Pembersihan Residu 20 MB**:
+     - Seluruh prop `helperText` manual yang menyebutkan "20 MB" di form Laporan Kejadian, Sprindik, Tahapan (5 sub-dokumen), dan modal detail perkara dihapus dan diselaraskan ke komponen terpadu.
+- Konsekuensi: Pengalaman pengguna seragam, pesan validasi ramah dan konsisten, serta seluruh 255 pengujian otomatis Pest PHP dan linter Laravel Pint lulus 100%.
+
+---
+
+## D-065 : Penghapusan Master Data Jaksa Penuntut, Penyederhanaan Input Penuntut Umum, dan Combobox Pengadilan
+
+- Tanggal: 2026-10-27
+- Status: Disepakati & Diimplementasikan
+- Konteks: Berdasarkan hasil evaluasi UI/UX dan alur operasional:
+  1. Master Data Jaksa Penuntut tidak lagi diperlukan karena data Jaksa Penuntut Umum (JPU) kini diinput manual per perkara sesuai surat penunjukan dari Kejaksaan.
+  2. Input data Penuntut Umum pada form Perkara perlu disederhanakan: pilihan Instansi Kejaksaan dijadikan combobox dengan pencarian, Nama dan NIP Jaksa diinput manual, dan field Pangkat Jaksa dihapus karena tidak esensial.
+  3. Pilihan Nama Pengadilan pada form Keputusan Pengadilan (Putusan Perkara) masih berupa `<select>` biasa yang menyulitkan ketika daftar instansi pengadilan bertambah banyak, sehingga perlu diubah menjadi searchable combobox.
+- Keputusan:
+  1. **Penghapusan Master Data Jaksa Penuntut**:
+     - Menghapus submenu `Jaksa Penuntut` dari menu Master Data Administrator (`MenuHelper.php`).
+     - Menghapus tipe `'jaksa-penuntut'` dari `MasterDataService.php`, `MasterDataController.php`, `SaveMasterDataRequest.php`, serta view `pages/master-data/index.blade.php` dan `_table-partial.blade.php`.
+     - Akses langsung ke URL `/master-data/jaksa-penuntut` otomatis mengembalikan `404 Not Found`.
+     - Tabel database `jaksa_penuntut` tidak di-drop agar mencegah kehilangan data (*accidental data loss prevention*).
+  2. **Penyederhanaan Input & Card Penuntut Umum**:
+     - Form Perkara menggunakan `<x-form.searchable-select>` untuk Instansi Kejaksaan dengan search bar (`"Ketik nama kejaksaan..."`).
+     - Input Nama Jaksa (`penuntut_umum_nama`) dan NIP Jaksa (`penuntut_umum_nip`) dipertahankan secara manual.
+     - Field Pangkat Jaksa (`penuntut_umum_pangkat`) dihapus dari form, `SavePerkaraBerkasRequest.php`, `PerkaraService.php`, dan `card-penuntut-umum.blade.php`.
+  3. **Combobox Nama Pengadilan pada Putusan Perkara**:
+     - Pada form Keputusan Pengadilan (`pages/tahapan/form.blade.php`), dropdown `pengadilan_instansi_id` diubah menjadi `<x-form.searchable-select>` dengan search bar (`"Ketik nama pengadilan..."`), dengan tetap mempertahankan field nomor surat, tanggal surat, amar putusan, upload dokumen PDF maks 5 MB, dan catatan.
+- Konsekuensi: Form perkara lebih ringkas, navigasi dan input pencarian instansi lebih cepat, dan seluruh 255 pengujian otomatis Pest PHP serta Laravel Pint lulus 100%.
+
+---
+
+## D-066 : Peningkatan Ukuran Logo pada Sidebar Aktif dan Mode Terlipat (Collapsed)
+
+- Tanggal: 2026-10-27
+- Status: Disepakati & Diimplementasikan (via proses klarifikasi /grill-me)
+- Konteks: Logo aplikasi BAPTwo pada sidebar sebelumnya berukuran kecil (`h-8` atau 32 px) sehingga terlihat kurang jelas di dalam container header sidebar yang memiliki tinggi `h-16` (64 px) dan lebar sidebar `w-[290px]`. Pengguna menginginkan logo pada sidebar saat aktif (terbuka) diperbesar agar lebih jelas dan tegas.
+- Keputusan:
+  1. **Ukuran Logo Sidebar Saat Aktif (Terbuka/Hovered/Mobile Open)**:
+     - Ditingkatkan dari `h-8` (32 px) menjadi `h-12` (48 px) pada kedua varian tema (light mode `/images/logo/logo.svg` dan dark mode `/images/logo/logo-dark.svg`).
+     - Atribut dimensi numerik disesuaikan secara proporsional sesuai aspek rasio asli SVG (~1.148 : 1) menjadi `width="55" height="48"` untuk mencegah layout shift (CLS).
+     - Posisi perataan logo pada container header sidebar diatur menjadi `justify-center` secara konsisten (baik saat aktif maupun saat terlipat), sehingga logo selalu berada tepat di tengah (*center aligned*) header sidebar.
+     - Tinggi container header sidebar tetap dipertahankan `h-16` (64 px) agar garis pembatas bawah (*border bottom*) tetap presisi dan sejajar lurus dengan app header navbar atas.
+  2. **Ukuran Logo Sidebar Saat Terlipat (Collapsed / Mini Sidebar)**:
+     - Logo ikon (`/images/logo/logo-icon.svg`) disesuaikan dari `h-8` (32 px) menjadi `h-9` (36 px) dengan atribut numerik `width="41" height="36"`, sehingga tampil lebih menonjol dan proporsional di dalam sidebar mini selebar 90 px.
+  3. **Penyesuaian Safeguard Pengujian Otomatis**:
+     - `tests/Feature/PerformanceOptimizationTest.php` diperbarui untuk memvalidasi atribut dimensi logo baru `width="55" height="48"`.
+- Konsekuensi: Logo BAPTwo tampil jauh lebih jelas, tegas, dan berwibawa di sidebar tanpa mengganggu keselarasan vertikal tata letak antarmuka. Seluruh 255 pengujian otomatis Pest PHP dan linter Laravel Pint lulus 100%.
+
+---
+
+## D-067 : Standarisasi Istilah Tenggang Waktu, Pembesaran Card SPDP & Batas Waktu, serta Pengurutan Riwayat Tahapan Progress Berpanah
+
+- Tanggal: 2026-10-27
+- Status: Disepakati & Diimplementasikan
+- Konteks: Berdasarkan hasil peninjauan operasional hukum dan antarmuka BAPTwo:
+  1. Istilah akronim "SLA" (*Service Level Agreement*) disesuaikan menjadi istilah hukum operasional baku berbahasa Indonesia yaitu **"Tenggang Waktu"** pada seluruh teks antarmuka (UI) pengguna (badge status, kartu dashboard, filter tabel, dan halaman pengaturan).
+  2. Komponen informasi "Tanggal Terbit SPDP & Batas Waktu Penyelesaian" pada daftar tersangka di halaman Detail Perkara (`resources/views/pages/perkara/show.blade.php`) sebelumnya berukuran kecil dan kurang menonjol, sehingga perlu diperbesar dengan container luas, ikon di dalam kotak, dan tipografi tanggal yang lebih tegas.
+  3. Komponen "Riwayat Tahapan Progress" pada berkas perkara tersangka sebelumnya hanya menampilkan badge tahap sesuai urutan pembuatan di database tanpa pengurutan alur resmi dan tanpa tanda panah penghubung.
+- Keputusan:
+  1. **Penggantian Istilah UI "SLA" menjadi "Tenggang Waktu"**:
+     - `BerkasPerkara::getSlaBadgeAttribute()`: label `'Selesai Melebihi Tenggang Waktu'`, `'Melebihi Tenggang Waktu'`, `'Mendekati Batas Tenggang Waktu'`, dan `'Tenggang Waktu Berjalan'`.
+     - `Perkara::getSlaBadgeInfo()`: label `'Tenggang Waktu belum berjalan'`.
+     - Dashboard Donut & Panel SLA (`_case-status-content.blade.php`): label `'Dalam Tenggang Waktu'`, `'Dalam Tenggang Waktu (> 7 hari)'`, dan `'Melewati Tenggang Waktu'`.
+     - Header kolom tabel perkara (`data-perkara`, `seluruh-perkara`, `pencarian-perkara`): `Status & Tenggang Waktu`.
+     - Potensi Terlimpah & Pengaturan Umum: seluruh teks "SLA" diganti menjadi "Tenggang Waktu".
+     - Kolom database (`sla_deadline`) dan parameter query string (`sla`) tetap dipertahankan agar tidak merusak kompatibilitas data.
+  2. **Pembesaran Card SPDP & Batas Waktu Penyelesaian**:
+     - Card menggunakan kontainer `p-4 sm:p-5`, ikon di dalam kotak `h-10 w-10 rounded-xl bg-brand-50 text-brand-600 dark:bg-brand-500/15 dark:text-brand-400`, tanggal tebal `text-base font-bold tabular-nums`, keterangan `(Tenggang Waktu 1 Bulan Kalender)`, dan badge status `px-3.5 py-1.5 text-sm font-semibold`.
+  3. **Pengurutan Riwayat Tahapan Progress Berpanah**:
+     - Menambahkan accessor `getOrderedTahapanAttribute()` di model `BerkasPerkara` yang mengurutkan tahapan berdasarkan `JenisTahap::urutan()`.
+     - Bagian "Riwayat Tahapan Progress" di halaman Detail Perkara dan tabel dashboard menggunakan `ordered_tahapan` dan menyisipkan ikon panah `<i class="fi fi-rr-arrow-small-right"></i>` di antara setiap tahapan (`@if (! $loop->last)`).
+- Konsekuensi: Tampilan operasional hukum lebih baku, informasi batas waktu sangat mudah dibaca, alur tahapan progress tersaji kronologis dan runtut, serta seluruh 256 tes otomatis Pest PHP dan linter Laravel Pint 100% lulus.
+
+---
+
+## D-068 : Perbaikan Pemanggilan Nilai Tanggal pada Seluruh Form Draft (`<x-form.date-picker>`) dan Eksklusivitas Penyidik PPNS Utama pada Penyidik Anggota
+
+- Tanggal: 2026-10-27
+- Status: Disepakati & Diimplementasikan
+- Konteks: Berdasarkan temuan operasional pengguna:
+  1. Ketika pengguna menginput data tanggal pada form tahapan/perkara dan menyimpannya sebagai **Draft**, saat form dibuka kembali untuk dilanjutkan/diedit, kolom tanggal tidak terisi oleh nilai tanggal yang sudah disimpan sebelumnya. Investigasi kode menunjukkan:
+     - Komponen `resources/views/components/form/date-picker.blade.php` hanya mendeklarasikan prop `defaultDate` tanpa `value`, sedangkan form Laporan Kejadian (`create`/`edit`) dan Sprindik (`create`/`edit`) mengoper `:value="..."` sehingga atribut `value` bocor ke `<div>` pembungkus sementara `<input>` tetap kosong dan Flatpickr menerima `defaultDate: null`.
+     - Elemen `<div x-data>` pada `date-picker.blade.php` mendefinisikan `init()` di dalam objek `x-data` sekaligus atribut `x-init="init()"`, yang memicu eksekusi ganda pada Alpine.js v3.
+     - Method `TahapanService::saveSubStage()` sebelumnya mengabaikan penyimpanan draft sub-tahap (`P-16`, `P-17P`, `P-18P`, `P-19`) jika nomor surat belum diisi meskipun tanggal surat sudah diisi.
+  2. Pada form Data Perkara (`resources/views/pages/perkara/form.blade.php`), penyidik yang sudah dipilih sebagai **PPNS Utama** masih muncul dan dapat dipilih kembali di daftar **Penyidik Anggota**. Investigasi menunjukkan bahwa `<x-form.searchable-select>` memancarkan dua event `change` berurutan (`nativeSelect.dispatchEvent(new Event('change'))` lalu `this.$dispatch('change', option.value)`). Karena listener `@change="onUtamaChange($event.target.value)"` membaca `$event.target.value` dari elemen `<div>` pembungkus pada event kedua, nilai `selectedUtamaId` langsung tertimpa menjadi `undefined` (`null`), sehingga fungsi `getAvailableAnggota()` gagal menyaring PPNS Utama.
+- Keputusan:
+  1. **Standarisasi Prop Tanggal & Inisialisasi `<x-form.date-picker>`**:
+     - Menambahkan prop `'value' => null` pada `resources/views/components/form/date-picker.blade.php`, menormalisasi nilai tanggal ke format `Y-m-d` melalui `$resolvedDate = $defaultDate ?? $value`, menghapus pemanggilan ganda `x-init="init()"`, dan merender `value="{{ $resolvedDate }}"` secara konsisten pada `<input>`.
+     - Menyeragamkan pemanggilan `<x-form.date-picker>` di `laporan-kejadian/create.blade.php`, `laporan-kejadian/edit.blade.php`, `sprindik/create.blade.php`, `sprindik/edit.blade.php`, `perkara/form.blade.php`, dan `tahapan/form.blade.php` agar memanggil format `Y-m-d` dari data model yang tersimpan saat edit draft.
+     - Memperbarui `TahapanService::saveSubStage()` agar tetap menyimpan draft sub-tahap apabila tanggal surat (`{$prefix}_tanggal_surat`) atau berkas dokumen diisi meskipun nomor surat masih kosong pada mode Draft.
+  2. **Eksklusivitas Penyidik PPNS Utama vs Penyidik Anggota (UI & Server)**:
+     - Memperbaiki handler `onUtamaChange($event)` dan `addAnggota($event)` pada `resources/views/pages/perkara/form.blade.php` dengan helper `extractId(eventOrVal)` yang mengekstrak ID penyidik secara akurat baik dari `CustomEvent.detail` maupun `HTMLSelectElement.value` tanpa mereset `selectedUtamaId` menjadi `null`.
+     - Jika penyidik yang sudah ada di daftar Penyidik Anggota kemudian dipilih menjadi PPNS Utama, penyidik tersebut otomatis dihapus dari daftar Penyidik Anggota (`removeAnggota(this.selectedUtamaId)`).
+     - Memperbaiki pengumpulan `$existingPpnsIds` di `PerkaraBerkasController::edit()` menggunakan relasi `$perkara->ppnsUtama->pluck('id')->all()`.
+     - Menambahkan validasi server-side di `SavePerkaraBerkasRequest` yang menolak ID penyidik pada `ppns_anggota_ids.*` apabila sama dengan `ppns_utama_id`.
+- Konsekuensi: Seluruh input tanggal pada mode Draft di semua form (Laporan Kejadian, Sprindik, Data Perkara/Tersangka, SPDP, P-16, P-17P, Tahap I, P-18P, P-19, P-21, Tahap II, dan Keputusan Pengadilan) terpanggil kembali dengan akurat saat diedit, serta PPNS Utama dijamin tidak dapat dipilih ganda sebagai Penyidik Anggota baik di UI maupun di server.
+
+---
+
+## D-069 : Modal Pop-up Lihat Detail SP3 pada Halaman Detail Perkara
+
+- Tanggal: 2026-10-27
+- Status: Disepakati & Diimplementasikan
+- Konteks: Sebelumnya, tombol "Lihat SP3" pada kartu tersangka/berkas perkara di halaman Detail Perkara (`resources/views/pages/perkara/show.blade.php`) langsung membuka berkas PDF SP3 tanpa menampilkan rincian metadata SP3 (Nomor SP3, Tanggal SP3, Penyidik Pembuat SP3, serta Alasan & Catatan Penghentian Penyidikan).
+- Keputusan:
+  1. **Pengubahan Tombol "Lihat SP3" Menjadi Pemicu Pop-up Detail SP3**:
+     - Tombol `Lihat SP3` pada daftar berkas perkara di `resources/views/pages/perkara/show.blade.php` diubah dari tautan langsung dokumen menjadi tombol `<button type="button" @click="openViewSp3Modal(...)">` yang membuka modal pop-up Detail SP3 (`resources/views/pages/perkara/_modal-detail-sp3.blade.php`).
+  2. **5 Informasi Utama di Dalam Pop-up Detail SP3**:
+     - **Nomor SP3**: Menampilkan `$berkas->sp3->nomor_surat` dengan tipografi `font-mono`.
+     - **Tanggal SP3**: Menampilkan `$berkas->sp3->tanggal_sp3` dalam format `d-m-Y` (`tabular-nums`).
+     - **Penyidik yang Membuat SP3**: Menampilkan nama dan NIP akun penerbit SP3 (`$berkas->sp3->creator`, format `Nama (NIP: ...)`) dengan fallback otomatis ke Penyidik PPNS Utama perkara (`$perkara->ppnsUtama->first()`) apabila kosong.
+     - **Lihat File SP3**: Menampilkan informasi nama berkas PDF SP3 beserta tombol **Lihat File SP3** yang terhubung dengan In-App PDF Preview Modal (`data-pdf-preview`, `data-pdf-title`, `data-pdf-download`). Jika berkas dokumen tidak tersedia, menampilkan fallback informatif `"Dokumen file SP3 tidak tersedia"`.
+     - **Alasan & Catatan Penghentian Penyidikan**: Menampilkan isi `$berkas->sp3->keterangan` secara utuh (`whitespace-pre-line`).
+  3. **Eager Loading & Kompatibilitas Modal Bertumpuk**:
+     - Menambahkan eager loading relasi `'tersangkas.berkasPerkara.sp3.creator'` pada `PerkaraBerkasController::show()` untuk mencegah `LazyLoadingViolationException`.
+     - Menggunakan backdrop klik terpisah (`@click="closeViewSp3Modal()"`) dan `@click.stop` pada dialog modal Detail SP3 (`z-99999`) agar ketika pengguna membuka modal pratinjau PDF (`z-999999`) di atasnya, klik di dalam modal PDF tidak menutup modal Detail SP3 di bawahnya.
+- Konsekuensi: Pengguna dari seluruh role dapat meninjau rincian surat penghentian penyidikan (SP3) beserta alasan penghentiannya secara cepat dan terstruktur sebelum atau sembari membuka dokumen fisik PDF SP3.
+
+---
+
+## D-070 : Perbaikan Keamanan, Otorisasi, Logika Domain, Performa, dan UI (Audit Review 28 Okt 2026)
+
+- Tanggal: 2026-10-28
+- Status: Disepakati & Diimplementasikan
+- Konteks: Berdasarkan hasil audit menyeluruh kode sistem, ditemukan beberapa potensi celah otorisasi, anomali logika domain tahapan, query memori inefisien, ketidakkonsistenan zona waktu, dan residu inline SVG.
+- Keputusan:
+  1. **Keamanan & Otorisasi**:
+     - Route `/data-petugas` (GET & POST) diproteksi khusus untuk Administrator dan Penyidik; role Pimpinan dan Umum ditolak (403 Forbidden). Penyidik diizinkan mengubah role/status petugas non-admin (role target: `penyidik`, `pimpinan`, `umum`), dan dilarang mengubah akun dirinya sendiri.
+     - Halaman `/recovery-data` dan rute `/sampah` diproteksi middleware `can:manage-users` dan `Gate::authorize('manage-users')` (khusus Administrator).
+     - Form request master data `SaveMasterDataRequest` meneruskan parameter route `$type` ke Gate `manage-master-data`, dan Gate menolak `$type === null` untuk non-admin.
+     - Form request `StoreDpoRequest` menggunakan otorisasi gate `toggle-dpo`.
+  2. **Logika Domain & Validasi**:
+     - `UpdateTahapanRequest` mewajibkan upload file PDF (`required`) jika aksi adalah `'lanjut'` (bukan draft), tahapan bukan sub-tahap opsional, dan tahapan belum memiliki dokumen tersimpan di database.
+     - `TahapanPerkaraController::update` membungkus pemanggilan simpan tahapan dengan `try/catch (\DomainException $e)` dan mengembalikan flash error toast yang informatif.
+     - `TahapanService::saveSubStage` menyimpan sub-tahapan sebagai `'draft'` (`finalized_at = null`) jika tahapan induk adalah draft atau nomor/tanggal sub-tahap belum lengkap. Status `'final'` hanya diberikan jika induk difinalkan dan sub-tahap lengkap, atau jika sub-tahap telah final sebelumnya.
+     - Seluruh 10 toast di `PerkaraBerkasController`, `LaporanKejadianController`, dan `SprindikController` menggunakan properti model yang benar: `$perkara->nomor_laporan_kejadian`.
+     - `SprindikController::show` menghapus forging data palsu `'SP/001/IX/2026'` dan mengembalikan `abort_if(..., 404)` jika Sprindik belum pernah dibuat untuk perkara tersebut.
+     - Filter `sla` pada `PerkaraService::getDataPerkaraList` diselaraskan dengan `SeluruhPerkaraController` (`belum_spdp`, `dalam_sla`, `mendekati_sla`, `lewat_sla`) berbasis `sla_deadline` dan zona waktu `DashboardService::ZONA_WAKTU`.
+     - Filter `status_formal` pada `PerkaraService::getProgressPerkaraList` menggunakan scope resmi `BerkasPerkara` (`dalamProses()`, `selesai()`, `tidakSelesai()`).
+  3. **Performa, Zona Waktu & UI**:
+     - `PotensiTerlimpahController::index` mengeliminasi hidrasi koleksi in-memory `$activeWithSpdp` dan beralih ke kueri SQL langsung berbasis kolom `sla_deadline` dan `Carbon::today(DashboardService::ZONA_WAKTU)`.
+     - `BerkasPerkara::getSisaHariSlaAttribute()` dan `SeluruhPerkaraController` distandarisasi menggunakan `Carbon::now(DashboardService::ZONA_WAKTU)` dan `Carbon::today(DashboardService::ZONA_WAKTU)`.
+     - `export-excel-modal.blade.php` menggunakan `DashboardService::getAvailableYears()` untuk kueri distinct tahun database, membetulkan typo toast `'Siap Didownload'`, dan mengganti 2 spinner inline `<svg>` dengan ikon Flaticon `<i class="fi fi-rr-spinner animate-spin ..."></i>`.
+- Konsekuensi: Seluruh 14 poin temuan terselesaikan, integritas otorisasi terjamin, alur tahapan draft aman dari bypass dokumen, performa kueri optimal tanpa memory leak, dan seluruh test suite lulus 100%.
+
+---
+
+## D-071 : Konsolidasi Role Pimpinan Menjadi Role Umum (3 Role Resmi: Administrator, Penyidik, Umum)
+
+- Tanggal: 2026-10-28
+- Status: Disepakati & Diimplementasikan
+- Konteks: Berdasarkan permintaan pihak penyidikan, akun pimpinan menggunakan role **`Umum`** (`umum`). Sebelumnya di sistem terdapat dua opsi role dengan hak akses dan menu navigasi yang 100% identik yaitu `Pimpinan` / `Pemimpin` (`pimpinan`) dan `Umum` (`umum`), sehingga kemunculan dua nama role berbeda untuk fungsi yang sama di dropdown Manajemen Pengguna (`/pengaturan`) dan Data Petugas (`/data-petugas`) membingungkan pengguna.
+- Keputusan:
+  1. **Konsolidasi `App\Enums\UserRole` Menjadi 3 Role Resmi**:
+     - Enum `UserRole` disederhanakan menjadi tepat 3 case:
+       - `ADMINISTRATOR = 'administrator'` (`Administrator`)
+       - `PENYIDIK = 'penyidik'` (`Penyidik`)
+       - `UMUM = 'umum'` (`Umum`)
+     - Untuk menjaga kompatibilitas mundur terhadap kode dan pengujian otomatis, disediakan konstanta alias `public const PIMPINAN = self::UMUM;` pada `UserRole`, normalisasi otomatis `setAttribute('role', 'pimpinan')` ke `UserRole::UMUM` pada model `User`, serta method `$user->isPimpinan()` yang mengarah ke `$this->role === UserRole::UMUM`.
+  2. **Migrasi Database & Seeder**:
+     - Migrasi `2026_10_28_000001_consolidate_pimpinan_role_to_umum_on_user_table.php` mengonversi seluruh akun yang sebelumnya ber-role `'pimpinan'` menjadi `'umum'` dan memperbarui definisi kolom `user.role` menjadi `ENUM('administrator', 'penyidik', 'umum')`.
+     - Akun dev seeder `pimpinan@baptwo.test` di `DatabaseSeeder.php` tetap mempertahankan emailnya untuk kemudahan pengujian dev, dengan role `UserRole::UMUM` (`'umum'`).
+  3. **Penyeragaman Label dan Pilihan Role di Seluruh UI**:
+     - Halaman Data Petugas (`/data-petugas`) hanya menampilkan pilihan role non-admin **`Penyidik`** dan **`Umum`** pada filter maupun modal penugasan (menghapus opsi `Pimpinan` dan menyederhanakan label `Umum (Pimpinan Terbatas)` menjadi `Umum`).
+     - Halaman Manajemen Pengguna (`/pengaturan`) otomatis hanya menampilkan 3 role (`Administrator`, `Penyidik`, `Umum`) dari `UserRole::cases()` dan subjudul halaman disesuaikan menjadi `"Kelola akun Penyidik, Umum, dan Administrator BAPTwo (Soft Delete aktif)."`.
+- Konsekuensi: Struktur role BAPTwo menjadi bersih, tunggal, dan sesuai permintaan operasional penyidikan (3 role: Administrator, Penyidik, Umum) tanpa memutus kompatibilitas test suite yang sudah ada.
+
+---
+
+## D-072 : Pengurutan Tabel Tahapan & Perkara Berdasarkan Waktu Input Terbaru ke Sistem
+
+- Tanggal: 2026-10-28
+- Status: Disepakati & Diimplementasikan
+- Konteks: Sebelumnya, tabel daftar pada halaman Laporan Kejadian (`/laporan-kejadian`), Sprindik (`/sprindik`), SPDP (`/spdp`), Tahap 1 (`/tahap-1`), P-21 (`/p21`), Tahap 2 (`/tahap-2`), dan Putusan Perkara (`/putusan-perkara`) diurutkan berdasarkan kolom tanggal surat (`tanggal_laporan_kejadian`, `tanggal_surat_perintah`, `tanggal_surat` DESC). Akibatnya, ketika pengguna baru saja menginput data yang memiliki tanggal surat lebih lampau atau menyimpan Draft tanpa tanggal surat (`NULL`), data yang baru saja diinput tersebut tidak muncul pada baris paling atas (nomor 1).
+- Keputusan:
+  1. **Pengurutan Tabel di `PerkaraService` (`app/Services/PerkaraService.php`)**:
+     - `getLaporanKejadianList()` dan `getAvailableForSprindik()` diurutkan menggunakan `orderByDesc('created_at')->orderByDesc('id')`.
+     - `getSprindikList()`, `getDataPerkaraList()`, dan `getAvailableForPerkara()` (yang disimpan dengan memperbarui baris pada tabel `perkara`) diurutkan menggunakan `orderByDesc('updated_at')->orderByDesc('created_at')->orderByDesc('id')`.
+  2. **Pengurutan Tabel Tahapan di `TahapanService` (`app/Services/TahapanService.php`)**:
+     - `paginateTahapanQuery()` (melayani halaman SPDP, Tahap 1, P-21, Tahap 2, dan Putusan Perkara) serta `queryAvailableBerkas()` dan `getAvailableBerkasForSpdp()` diurutkan menggunakan `orderByDesc('created_at')->orderByDesc('id')`.
+- Konsekuensi: Setiap data yang baru saja diinput atau disimpan oleh petugas di seluruh 8 halaman daftar perkara dan tahapan selalu tampil langsung di baris pertama (nomor 1) terlepas dari tanggal surat yang dipilih pada form.
+
+---
+
+## D-073 : Fleksibilitas DPO Seluruh Tahapan Pra-Putusan, Proteksi Tahapan Induk Final Sub-Tahap, dan Pembersihan Dead Code
+
+- Tanggal: 2026-10-28
+- Status: Disepakati & Diimplementasikan
+- Konteks: Berdasarkan hasil peninjauan operasional hukum dan review kode:
+  1. Status DPO dapat terjadi pada tahap mana pun (mulai Pra-SPDP, SPDP, Tahap 1, P-21, Tahap 2, hingga sebelum Putusan Pengadilan final tercatat) sesuai aturan `PRD.md` Bagian F-24 s.d. F-27. Validasi sebelumnya memblokir penetapan DPO pada berkas yang kolom `status_formal`-nya non-null (misal saat Tahap 2).
+  2. Saat SPDP atau Tahap 1 yang telah final dibuka kembali untuk melengkapi sub-tahap (P-16/P-17P atau P-18P/P-19), data tahapan induk harus terlindungi dari penimpaan catatan, penambahan file dokumen, atau pencatatan ulang log finalisasi tahapan induk (PRD F-18).
+  3. Scheduler tahunan 1 Januari (`perkara:close-unfinished`) perlu menggunakan scope `dalamProses()` dan mengunci zona waktu WITA (`Asia/Makassar`).
+  4. Filter periode tahun/bulan di `PerkaraService::getDataPerkaraList()` diselaraskan dengan Donut Chart agar berbasis `tanggal_laporan_kejadian`.
+  5. Pemulihan berkas dan perkara dari Sampah (`/recovery-data`) diseragamkan hanya untuk Administrator (`can:manage-users`).
+  6. Dead code yang tidak terpakai dibersihkan: `deleteLaporanKejadian()`, `removeSprindik()`, alias `berkasPerkara()`, dan controller wrapper satu baris `PengaturanUmumController` yang digantikan oleh `Route::view()`.
+- Keputusan:
+  1. `DpoService::activateDpo()` mengizinkan penetapan DPO pada berkas perkara di setiap tahapan, dan hanya menolak jika berkas telah diterbitkan SP3, telah berstatus 'tidak_selesai', atau telah memiliki Keputusan Pengadilan berstatus final.
+  2. `TahapanService::saveStage()` menambahkan pengecekan `$existingTahap !== null && $existingTahap->isFinal()`. Jika tahapan induk sudah final, sistem hanya mengeksekusi `saveSubStage()` tanpa menyentuh record tahapan induk.
+  3. `CloseUnfinishedCasesCommand` menggunakan `dalamProses()` dan `Carbon::now(DashboardService::ZONA_WAKTU)`. Scheduler di `routes/console.php` diatur `->timezone(DashboardService::ZONA_WAKTU)`.
+  4. `PerkaraService::getDataPerkaraList()` menyelaraskan filter tahun dan bulan ke `tanggal_laporan_kejadian`.
+  5. Route dan controller pemulihan Sampah (`restorePerkara` dan `restoreBerkas`) diproteksi `can:manage-users`.
+  6. Mengeliminasi `deleteLaporanKejadian`, `removeSprindik`, alias `berkasPerkara()`, dan `PengaturanUmumController` (digantikan `Route::view()`).
+- Konsekuensi: Operasional DPO fleksibel sesuai dinamika lapangan hukum pidana hingga sebelum vonis pengadilan, integritas data tahapan final terjamin aman, akurasi scheduler batas tahun dan filter drill-down teruji presisi, serta seluruh 277 test suite Pest PHP dan linter Laravel Pint lulus 100%.
+
+---
+
+## D-074 : Halaman Log Aktivitas & Audit Sistem Terpusat pada Sub-menu Pengaturan Administrator
+
+- Tanggal: 2026-10-28
+- Status: Disepakati (Rencana Implementasi Siap Dieksekusi)
+- Konteks: Sebelumnya, catatan `audit_log` hanya ditampilkan secara terpisah pada halaman Detail Perkara (`resources/views/pages/perkara/show.blade.php`) dan 6 aktivitas penyidikan terkini di Dashboard (`<x-dashboard.recent-activities>`). Sementara itu, sistem juga mencatat aktivitas lintas-perkara dan keamanan seperti percobaan login gagal (`login_failed`), percobaan login akun nonaktif (`login_inactive`), ekspor Excel LAPJU (`export_excel`), dan pengaturan petugas (`atur_petugas`). Administrator memerlukan satu halaman terpusat untuk memantau seluruh rekam jejak audit dan keamanan sistem sesuai `PRD.md` (UC-05 & F-31).
+- Keputusan:
+  1. **Penempatan Sub-menu di Bawah Pengaturan (Khusus Administrator)**:
+     - Menambahkan sub-menu **"Log Aktivitas"** (`/pengaturan/log-aktivitas`, rute `pengaturan.log-aktivitas`) di dalam menu dropdown **Pengaturan** pada `MenuHelper::getSystemItems()` (bersama *User*, *Petugas*, dan *Umum*).
+     - Rute diproteksi di dalam grup middleware `can:manage-users` dan `Gate::authorize('manage-users')` di `AuditLogController@index`. Log bersifat mutlak *read-only* (tidak dapat diubah atau dihapus).
+  2. **Kelengkapan Pencatatan Audit Manajemen Pengguna & Kategori Aktivitas**:
+     - Melengkapi `UserService` (`app/Services/UserService.php`) agar mencatat aksi `create_user`, `update_user`, `delete_user`, dan `restore_user` ke `AuditTrailService` tanpa pernah menyertakan nilai `password` atau hash kata sandi di `data_lama` maupun `data_baru`.
+     - Menambahkan konstanta kategori aktivitas (`CATEGORY_PENYIDIKAN`, `CATEGORY_KEAMANAN`, `CATEGORY_ADMINISTRASI`), daftar aksi `SECURITY_ACTIONS` dan `ADMIN_ACTIONS`, method `categoryOptions()`, query scope `scopeCategory()`, serta melengkapi kamus `AuditLog::actionMeta()` untuk seluruh aksi keamanan dan administrasi.
+  3. **Kartu Ringkasan, Live Filter Multi-Kriteria & Modal Detail Perubahan Data**:
+     - Menampilkan 4 kartu ringkasan di atas tabel: *Total Aktivitas Tercatat*, *Aktivitas Hari Ini*, *Peringatan Keamanan & Login*, dan *Administrasi & Ekspor Data*.
+     - Menyediakan toolbar `<x-common.table-filter>` dengan dukungan live filter AJAX (`X-Filter-Partial: 1`) yang mencakup filter Kategori Aktivitas (`kategori`), Pelaksana (`pelaksana`, termasuk opsi `sistem` untuk aksi otomatis/tanpa user), Rentang Tanggal (`tanggal_dari`, `tanggal_sampai`), dan Pencarian (`search` untuk aksi, IP address, nama/NIP/email petugas, atau nomor perkara).
+     - Menyediakan tombol **Detail** pada setiap baris yang membuka **Modal Pop-up Detail Log** (`_modal-detail-log.blade.php`) berisi informasi waktu (WITA), pelaksana, IP address (`font-mono`), tautan ke Detail Perkara terkait, serta komparasi berdampingan **Data Sebelumnya (`data_lama`)** vs **Data Tercatat / Baru (`data_baru`)**.
+- Konsekuensi: Administrator memiliki visibilitas penuh dan terpusat atas seluruh aktivitas penyidikan, administrasi pengguna, ekspor data, serta peringatan keamanan login di BAPTwo dengan standar performa bebas N+1 (`withTrashed()`) dan akuntabilitas penuh.
+
+---
+
+## D-075 : Penataan Ulang Layout Dashboard BAPTwo (Opsi A: Fokus Operasional & Proporsi Asimetris)
+
+- Tanggal: 2026-10-28
+- Status: Disepakati & Diimplementasikan
+- Konteks: Berdasarkan evaluasi antarmuka (`antislop-ui`) dan sesi penyelarasan bersama pengguna pada Dashboard BAPTwo (`resources/views/pages/dashboard/ecommerce.blade.php`), ditemukan 4 area yang perlu dirapikan:
+  1. Kartu statistik di Baris 1 (`statistics.blade.php`) terlalu tinggi karena padding `p-5`, jarak `mt-3`, dan tambahan baris teks ke-4 (`Maks. 30 Hari Kalender`) pada kartu ke-5.
+  2. Proporsi `6 : 6` di Baris 2 membuat grafik batang 12 bulan (`monthly-cases-chart.blade.php`) beserta 3 badge ringkasannya terasa sempit, sementara kartu Donut (`case-status.blade.php`) memiliki ruang kosong berlebih.
+  3. Tabel operasional `Progress Perkara (5 Prioritas Utama)` (`progress-perkara.blade.php`) berada di paling bawah (Baris 4) setelah komponen aktivitas yang panjang, sehingga penyidik/pimpinan harus scroll jauh untuk melihat daftar berkas prioritas.
+  4. Baris `recent-activities.blade.php` (6 item besar) dan `average-stage.blade.php` (4 baris tahap dengan sub-teks berulang *"Rata-rata waktu penyelesaian"*) memiliki tinggi vertikal yang timpang.
+- Keputusan:
+  1. **Susunan Baris & Proporsi Kolom Asimetris (`resources/views/pages/dashboard/ecommerce.blade.php`)**:
+     - **Baris 1 (5 Kolom)**: `<x-dashboard.statistics>` dengan padding kompak `p-4`, gap `gap-3.5`, ikon `h-9 w-9`, dan penggabungan teks `"Maks. 30 Hari Kalender"` ke baris deskripsi kartu ke-5.
+     - **Baris 2 (Grid 12 Kolom · Rasio `5 : 7`)**: Kiri `lg:col-span-5` (`<x-dashboard.case-status>`) dan Kanan `lg:col-span-7` (`<x-dashboard.monthly-cases-chart>`).
+     - **Baris 3 (Lebar Penuh · 12 Kolom)**: `<x-dashboard.progress-perkara>` dinaikkan dari Baris 4 ke Baris 3 agar daftar 5 berkas prioritas langsung terlihat setelah grafik utama.
+     - **Baris 4 (Grid 12 Kolom · Rasio `7 : 5`)**: Kiri `lg:col-span-7` (`<x-dashboard.recent-activities>`) dan Kanan `lg:col-span-5` (`<x-dashboard.average-stage>`).
+  2. **Pemadatan Feed Aktivitas & Penyeragaman Kartu Rata-rata Tahap**:
+     - `DashboardController::index()` dan fallback `recent-activities.blade.php` menampilkan **4 item** aktivitas terkini (`getRecentActivities(4)`) dengan padding item kompak (`p-3`, `space-y-2.5`, ikon `h-9 w-9`).
+     - `average-stage.blade.php` menggunakan `flex h-full flex-col justify-between`, menyeragamkan judul header menjadi `text-base font-semibold`, serta menghapus sub-teks berulang *"Rata-rata waktu penyelesaian"* di setiap baris tahap agar tingginya sejajar dengan kartu aktivitas di sebelahnya.
+- Konsekuensi: Tampilan Dashboard BAPTwo lebih ringkas, proporsional, bebas timpang tinggi, dan menempatkan tabel berkas prioritas lebih dekat ke pandangan utama pengguna tanpa memutus kompatibilitas pengujian yang sudah ada.
+
+
+

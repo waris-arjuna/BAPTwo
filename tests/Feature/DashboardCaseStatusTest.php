@@ -330,18 +330,29 @@ test('drill-down dari kartu dashboard ke halaman seluruh-perkara terfilter denga
         'created_by' => $this->penyidik->id,
     ]);
 
-    $roles = [$this->penyidik, $this->pimpinan, $this->admin];
+    // Pimpinan tetap mengakses seluruh-perkara
+    $responsePimpinan = $this->actingAs($this->pimpinan)->get(route('seluruh-perkara.index', [
+        'tahun' => 2026,
+        'status' => 'Dalam Proses',
+        'sla' => 'mendekati_sla',
+    ]));
+    $responsePimpinan->assertOk()
+        ->assertSee('BP/DRILL/2026')
+        ->assertSee('Tersangka Drilldown');
 
-    foreach ($roles as $user) {
+    // Admin & Penyidik dialihkan ke data-perkara sesuai Poin 3A
+    foreach ([$this->penyidik, $this->admin] as $user) {
         $response = $this->actingAs($user)->get(route('seluruh-perkara.index', [
             'tahun' => 2026,
             'status' => 'Dalam Proses',
             'sla' => 'mendekati_sla',
         ]));
 
-        $response->assertOk()
-            ->assertSee('BP/DRILL/2026')
-            ->assertSee('Tersangka Drilldown');
+        $response->assertRedirect(route('data-perkara.index', [
+            'tahun' => 2026,
+            'status' => 'Dalam Proses',
+            'sla' => 'mendekati_sla',
+        ]));
     }
 });
 
@@ -971,9 +982,9 @@ test('komponen case-status merender tata letak 2 kolom, SVG donut 6 segmen radiu
         ->toContain('vs ')
         // Panel Dalam Proses dengan 4 sub-baris SLA
         ->toContain('Belum Ada SPDP (Pra-SPDP)')
-        ->toContain('Dalam SLA (> 7 hari)')
+        ->toContain('Dalam Tenggang Waktu (> 7 hari)')
         ->toContain('Mendekati Batas (≤ 7 hari)')
-        ->toContain('Melewati SLA')
+        ->toContain('Melewati Tenggang Waktu')
         // Tautan drill-down
         ->toContain(e(route('seluruh-perkara.index', ['tahun' => 2026, 'status' => 'Dalam Proses', 'sla' => 'lewat_sla'])))
         // Pill hanya muncul jika Melewati SLA > 0

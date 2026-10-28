@@ -120,6 +120,7 @@
                         <x-form.date-picker
                             id="tanggal_sprindik"
                             name="tanggal_sprindik"
+                            :default-date="old('tanggal_sprindik', $perkara->tanggal_surat_perintah?->format('Y-m-d'))"
                             :value="old('tanggal_sprindik', $perkara->tanggal_surat_perintah?->format('Y-m-d'))"
                             required
                             placeholder="Pilih Tanggal Sprindik"
@@ -133,7 +134,6 @@
                             label="Dokumen Sprindik (PDF)"
                             :existingFile="$perkara->dokumenSprindik?->nama_file_asli"
                             :existingUrl="$perkara->dokumenSprindik ? route('dokumen.preview', $perkara->dokumenSprindik) : null"
-                            helperText="Biarkan kosong jika tidak ingin mengubah dokumen (PDF Maksimal 20 MB)."
                         />
                     </div>
 

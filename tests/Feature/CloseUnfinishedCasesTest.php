@@ -121,3 +121,27 @@ test('command perkara:close-unfinished default tahun berjalan menutup tahun sebe
     $this->berkasTahunIni->refresh();
     expect($this->berkasTahunIni->status_formal)->toBeNull();
 });
+
+test('command perkara:close-unfinished juga menutup berkas tahun sebelumnya yang belum berstatus formal', function () {
+    $tersangka4 = Tersangka::create([
+        'perkara_id' => $this->perkara->id,
+        'nama' => 'Tersangka 4',
+        'nik' => '6371012345670004',
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    $berkasDalamProses = BerkasPerkara::create([
+        'perkara_id' => $this->perkara->id,
+        'tersangka_id' => $tersangka4->id,
+        'nomor_berkas' => 'BP/DP/2025/BPOM',
+        'tanggal_spdp' => '2025-07-01',
+        'status_formal' => null,
+        'created_at' => Carbon::create(2025, 7, 1, 10, 0, 0),
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    $this->artisan('perkara:close-unfinished', ['--year' => 2025])
+        ->assertSuccessful();
+
+    expect($berkasDalamProses->fresh()->status_formal)->toBe('tidak_selesai');
+});

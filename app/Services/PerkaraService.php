@@ -9,6 +9,7 @@ use App\Models\Perkara;
 use App\Models\Tersangka;
 use App\Models\Tkp;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -84,7 +85,7 @@ class PerkaraService
             ->when($tanggalSampai !== '', function (Builder $query) use ($tanggalSampai) {
                 $query->whereDate('tanggal_laporan_kejadian', '<=', $tanggalSampai);
             })
-            ->orderByDesc('tanggal_laporan_kejadian')
+            ->orderByDesc('created_at')
             ->orderByDesc('id')
             ->paginate($perPage)
             ->withQueryString();
@@ -150,7 +151,8 @@ class PerkaraService
             ->when($tanggalSampai !== '', function (Builder $query) use ($tanggalSampai) {
                 $query->whereDate('tanggal_surat_perintah', '<=', $tanggalSampai);
             })
-            ->orderByDesc('tanggal_surat_perintah')
+            ->orderByDesc('updated_at')
+            ->orderByDesc('created_at')
             ->orderByDesc('id')
             ->paginate($perPage)
             ->withQueryString();
@@ -174,7 +176,8 @@ class PerkaraService
                     ->orWhere('nomor_surat_perintah', '');
             })
             ->whereNull('tahap_sprindik_status')
-            ->orderByDesc('tanggal_laporan_kejadian')
+            ->orderByDesc('created_at')
+            ->orderByDesc('id')
             ->get();
     }
 
@@ -364,29 +367,6 @@ class PerkaraService
     }
 
     /**
-     * Soft delete Laporan Kejadian (dan Perkara)
-     */
-    public function deleteLaporanKejadian(Perkara $perkara, User $user): void
-    {
-        DB::transaction(function () use ($perkara, $user) {
-            $oldData = $perkara->toArray();
-
-            $this->auditTrail->log(
-                aksi: 'delete_laporan_kejadian',
-                tabel: 'perkara',
-                recordId: $perkara->id,
-                dataLama: $oldData,
-                dataBaru: null,
-                perkaraId: $perkara->id,
-                userId: $user->id
-            );
-
-            $perkara->dokumen()->delete();
-            $perkara->delete();
-        });
-    }
-
-    /**
      * Pulihkan (restore) Laporan Kejadian & Perkara yang di-soft-delete
      */
     public function restorePerkara(int $id, User $user): Perkara
@@ -437,39 +417,6 @@ class PerkaraService
             );
 
             return $berkas;
-        });
-    }
-
-    /**
-     * Hapus / Reset Sprindik dari Perkara
-     */
-    public function removeSprindik(Perkara $perkara, User $user): void
-    {
-        DB::transaction(function () use ($perkara, $user) {
-            $oldData = $perkara->toArray();
-
-            $perkara->update([
-                'tahap_laporan_status' => 'final',
-                'nomor_surat_perintah' => null,
-                'tanggal_surat_perintah' => null,
-                'tahap_sprindik_status' => null,
-                'sprindik_locked_at' => null,
-                'sprindik_finalized_by' => null,
-                'updated_by' => $user->id,
-            ]);
-
-            // Soft delete dokumen sprindik
-            $perkara->dokumen()->where('kategori', 'sprindik')->delete();
-
-            $this->auditTrail->log(
-                aksi: 'remove_sprindik',
-                tabel: 'perkara',
-                recordId: $perkara->id,
-                dataLama: $oldData,
-                dataBaru: $perkara->fresh()->toArray(),
-                perkaraId: $perkara->id,
-                userId: $user->id
-            );
         });
     }
 
@@ -662,7 +609,6 @@ class PerkaraService
                 'penuntut_umum_instansi_id' => ! empty($data['penuntut_umum_instansi_id']) ? (int) $data['penuntut_umum_instansi_id'] : null,
                 'penuntut_umum_nama' => ! empty($data['penuntut_umum_nama']) ? trim($data['penuntut_umum_nama']) : null,
                 'penuntut_umum_nip' => ! empty($data['penuntut_umum_nip']) ? trim($data['penuntut_umum_nip']) : null,
-                'penuntut_umum_pangkat' => ! empty($data['penuntut_umum_pangkat']) ? trim($data['penuntut_umum_pangkat']) : null,
                 'tahap_laporan_status' => 'final',
                 'laporan_locked_at' => $perkara->laporan_locked_at ?? now(),
                 'laporan_finalized_by' => $perkara->laporan_finalized_by ?? $user->id,
@@ -780,13 +726,47 @@ class PerkaraService
     }
 
     /**
+     * Hitung ringkasan 5 card informasi di halaman Data Perkara
+     * Menghasilkan jumlah yang konsisten: Dalam Proses + DPO Aktif + Selesai + Tidak Selesai == Total
+     *
+     * @return array{total: int, dalam_proses: int, dpo_aktif: int, selesai: int, tidak_selesai: int}
+     */
+    public function getDataPerkaraSummaryCards(): array
+    {
+        return [
+            'total' => Perkara::whereNotNull('tahap_perkara_status')->count(),
+            'dalam_proses' => Perkara::whereNotNull('tahap_perkara_status')->filterStatusFormal('dalam_proses')->count(),
+            'dpo_aktif' => Perkara::whereNotNull('tahap_perkara_status')->filterStatusFormal('dpo_aktif')->count(),
+            'selesai' => Perkara::whereNotNull('tahap_perkara_status')->filterStatusFormal('selesai')->count(),
+            'tidak_selesai' => Perkara::whereNotNull('tahap_perkara_status')->filterStatusFormal('tidak_selesai')->count(),
+        ];
+    }
+
+    /**
+     * Ambil daftar PPNS Utama yang memiliki perkara untuk filter dropdown (urut abjad)
+     *
+     * @return Collection<int, User>
+     */
+    public function getAvailablePpnsForFilter(): Collection
+    {
+        return User::query()
+            ->whereHas('perkaraUtama')
+            ->orderBy('nama')
+            ->get(['id', 'nama', 'nip']);
+    }
+
+    /**
      * Ambil daftar Perkara untuk halaman Data Perkara
      */
     public function getDataPerkaraList(Request $request, int $perPage = 10): LengthAwarePaginator
     {
-
         $search = $request->string('search')->trim()->toString();
         $status = $request->string('status')->trim()->toString();
+        $tahap = $request->string('tahap')->trim()->toString();
+        $ppnsId = $request->integer('ppns_id');
+        $sla = $request->string('sla')->trim()->toString();
+        $tahun = $request->integer('tahun');
+        $bulan = $request->integer('bulan');
         $tanggalDari = $request->string('tanggal_dari', $request->string('tanggal')->toString())->trim()->toString();
         $tanggalSampai = $request->string('tanggal_sampai')->trim()->toString();
 
@@ -802,6 +782,7 @@ class PerkaraService
                 'tersangkas.berkasPerkara.sp3',
                 'berkasPerkaras.pasals',
                 'berkasPerkaras.sp3',
+                'berkasPerkaras.tahapan',
                 'creator',
             ])
             ->when($search !== '', function (Builder $query) use ($search) {
@@ -833,12 +814,48 @@ class PerkaraService
                         });
                 });
             })
+            ->when($ppnsId > 0 && auth()->user()?->isAdmin(), function (Builder $query) use ($ppnsId) {
+                $query->whereHas('ppnsUtama', function (Builder $q) use ($ppnsId) {
+                    $q->where('user.id', $ppnsId);
+                });
+            })
             ->when($status !== '', function (Builder $query) use ($status) {
                 if ($status === 'Draft' || $status === 'Draft Perkara') {
                     $query->where('tahap_perkara_status', 'draft');
                 } elseif ($status === 'Perkara Terbentuk') {
                     $query->where('tahap_perkara_status', 'final');
+                } else {
+                    $query->filterStatusFormal($status);
                 }
+            })
+            ->when($tahap !== '', function (Builder $query) use ($tahap) {
+                $query->filterTahapTerakhir($tahap);
+            })
+            ->when($tahun > 0, function (Builder $query) use ($tahun) {
+                $query->whereYear('tanggal_laporan_kejadian', $tahun);
+            })
+            ->when($bulan > 0, function (Builder $query) use ($bulan) {
+                $query->whereMonth('tanggal_laporan_kejadian', $bulan);
+            })
+            ->when($sla !== '', function (Builder $query) use ($sla) {
+                $today = Carbon::today(DashboardService::ZONA_WAKTU)->toDateString();
+                $approachingDate = Carbon::today(DashboardService::ZONA_WAKTU)->addDays(DashboardService::AMBANG_MENDEKATI_SLA_HARI)->toDateString();
+
+                $query->whereHas('berkasPerkaras', function ($q) use ($sla, $today, $approachingDate) {
+                    $q->where(function ($sub) {
+                        $sub->whereNull('status_formal')->orWhere('status_formal', 'dalam_proses');
+                    });
+
+                    if ($sla === 'belum_spdp') {
+                        $q->whereNull('sla_deadline');
+                    } elseif ($sla === 'dalam_sla' || $sla === 'sesuai_sla') {
+                        $q->whereNotNull('sla_deadline')->where('sla_deadline', '>', $approachingDate);
+                    } elseif ($sla === 'mendekati_sla') {
+                        $q->whereNotNull('sla_deadline')->where('sla_deadline', '>=', $today)->where('sla_deadline', '<=', $approachingDate);
+                    } elseif ($sla === 'lewat_sla') {
+                        $q->whereNotNull('sla_deadline')->where('sla_deadline', '<', $today);
+                    }
+                });
             })
             ->when($tanggalDari !== '', function (Builder $query) use ($tanggalDari) {
                 $query->whereDate('tanggal_surat_perintah', '>=', $tanggalDari);
@@ -846,6 +863,8 @@ class PerkaraService
             ->when($tanggalSampai !== '', function (Builder $query) use ($tanggalSampai) {
                 $query->whereDate('tanggal_surat_perintah', '<=', $tanggalSampai);
             })
+            ->orderByDesc('updated_at')
+            ->orderByDesc('created_at')
             ->orderByDesc('id')
             ->paginate($perPage)
             ->withQueryString();
@@ -863,7 +882,9 @@ class PerkaraService
             ->where('tahap_sprindik_status', 'final')
             ->whereNull('tahap_perkara_status')
             ->whereDoesntHave('tersangkas')
-            ->orderByDesc('tanggal_surat_perintah')
+            ->orderByDesc('updated_at')
+            ->orderByDesc('created_at')
+            ->orderByDesc('id')
             ->get();
     }
 
@@ -903,13 +924,14 @@ class PerkaraService
                 });
             })
             ->when($status !== '', function (Builder $query) use ($status) {
-                if ($status === 'Dalam Proses') {
-                    $query->whereNull('status_formal');
-                } elseif ($status === 'Selesai') {
-                    $query->where('status_formal', 'Selesai');
-                } elseif ($status === 'Tidak Selesai') {
-                    $query->where('status_formal', 'Tidak Selesai');
-                } elseif ($status === 'DPO') {
+                $st = strtolower(str_replace(' ', '_', $status));
+                if ($st === 'dalam_proses') {
+                    $query->dalamProses();
+                } elseif ($st === 'selesai') {
+                    $query->selesai();
+                } elseif ($st === 'tidak_selesai') {
+                    $query->tidakSelesai();
+                } elseif ($st === 'dpo') {
                     $query->where('is_dpo', true);
                 }
             })

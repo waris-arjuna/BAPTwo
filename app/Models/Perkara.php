@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Enums\JenisTahap;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -127,14 +129,6 @@ class Perkara extends Model
     public function berkasPerkaras(): HasMany
     {
         return $this->hasMany(BerkasPerkara::class, 'perkara_id');
-    }
-
-    /**
-     * @return HasMany<BerkasPerkara, $this>
-     */
-    public function berkasPerkara(): HasMany
-    {
-        return $this->berkasPerkaras();
     }
 
     /**
@@ -275,5 +269,257 @@ class Perkara extends Model
         }
 
         return 'Belum Menjadi Perkara';
+    }
+
+    /**
+     * Evaluasi status formal level perkara dengan urutan prioritas:
+     * SP3 (tidak_selesai) > Selesai > DPO Aktif > Dalam Proses
+     */
+    public function getStatusFormalAttribute(): string
+    {
+        $berkasList = $this->relationLoaded('berkasPerkaras')
+            ? $this->berkasPerkaras
+            : $this->berkasPerkaras()->get();
+
+        if ($berkasList->isEmpty()) {
+            return 'dalam_proses';
+        }
+
+        // 1. Prioritas Tertinggi: Jika ada minimal 1 berkas yang tidak_selesai (SP3 / kedaluwarsa tahun)
+        if ($berkasList->contains(fn ($b) => $b->status_formal === 'tidak_selesai')) {
+            return 'tidak_selesai';
+        }
+
+        // 2. Jika seluruh berkas telah selesai
+        $allSelesai = $berkasList->every(fn ($b) => $b->status_formal === 'selesai');
+        if ($allSelesai) {
+            return 'selesai';
+        }
+
+        // 3. Jika perkara belum selesai semua tapi memiliki berkas dengan status DPO aktif
+        if ($berkasList->contains(fn ($b) => (bool) $b->is_dpo)) {
+            return 'dpo_aktif';
+        }
+
+        // 4. Default: Dalam Proses
+        return 'dalam_proses';
+    }
+
+    /**
+     * Label tampilan status formal level perkara
+     */
+    public function getStatusFormalLabelAttribute(): string
+    {
+        return match ($this->status_formal) {
+            'tidak_selesai' => 'Tidak Selesai / SP3',
+            'selesai' => 'Selesai',
+            'dpo_aktif' => 'DPO Aktif',
+            default => 'Dalam Proses',
+        };
+    }
+
+    /**
+     * Kelas badge warna status formal level perkara
+     */
+    public function getStatusFormalBadgeClassAttribute(): string
+    {
+        return match ($this->status_formal) {
+            'tidak_selesai' => 'bg-red-50 text-red-700 border-red-200 dark:bg-red-900/20 dark:text-red-300 dark:border-red-800',
+            'selesai' => 'bg-success-50 text-success-700 border-success-200 dark:bg-success-900/20 dark:text-success-300 dark:border-success-800',
+            'dpo_aktif' => 'bg-red-50 text-red-700 border-red-200 dark:bg-red-900/20 dark:text-red-300 dark:border-red-800',
+            default => 'bg-brand-50 text-brand-700 border-brand-200 dark:bg-brand-900/20 dark:text-brand-300 dark:border-brand-800',
+        };
+    }
+
+    /**
+     * Evaluasi tahap efektif perkara (6 nilai tahapan) beserta persentasenya.
+     * Khusus status SP3 / tidak_selesai, mengambil tahap final terakhir yang pernah dicapai.
+     *
+     * @return array{nama: string, persen: int, key: string}
+     */
+    public function getTahapTerakhirInfo(): array
+    {
+        $berkasList = $this->relationLoaded('berkasPerkaras')
+            ? $this->berkasPerkaras
+            : $this->berkasPerkaras()->with('tahapan')->get();
+
+        // Kumpulkan semua tahapan final dari berkas
+        $finalTahapTypes = collect();
+        foreach ($berkasList as $berkas) {
+            $tahapanList = $berkas->relationLoaded('tahapan') ? $berkas->tahapan : $berkas->tahapan()->get();
+            foreach ($tahapanList as $t) {
+                if ($t->status === 'final') {
+                    $val = $t->jenis_tahap instanceof JenisTahap ? $t->jenis_tahap->value : $t->jenis_tahap;
+                    $finalTahapTypes->push($val);
+                }
+            }
+        }
+
+        if ($finalTahapTypes->contains(JenisTahap::KEPUTUSAN_PENGADILAN->value)) {
+            return ['nama' => 'Keputusan Pengadilan', 'persen' => 100, 'key' => 'keputusan_pengadilan'];
+        }
+        if ($finalTahapTypes->contains(JenisTahap::TAHAP_2->value)) {
+            return ['nama' => 'Tahap II', 'persen' => 100, 'key' => 'tahap_2'];
+        }
+        if ($finalTahapTypes->contains(JenisTahap::P21->value)) {
+            return ['nama' => 'P-21', 'persen' => 85, 'key' => 'p21'];
+        }
+        if ($finalTahapTypes->contains(JenisTahap::TAHAP_1->value)) {
+            return ['nama' => 'Tahap I', 'persen' => 55, 'key' => 'tahap_1'];
+        }
+        if ($finalTahapTypes->contains(JenisTahap::SPDP->value)) {
+            return ['nama' => 'SPDP', 'persen' => 15, 'key' => 'spdp'];
+        }
+
+        return ['nama' => 'Pra-SPDP', 'persen' => 0, 'key' => 'pra_spdp'];
+    }
+
+    /**
+     * Metadata visual badge SLA untuk kolom Status & SLA
+     *
+     * @return array{label: string, badge_class: string}|null
+     */
+    public function getSlaBadgeInfo(): ?array
+    {
+        $statusFormal = $this->status_formal;
+
+        // SP3 dan DPO Aktif tidak menampilkan badge SLA
+        if ($statusFormal === 'tidak_selesai' || $statusFormal === 'dpo_aktif') {
+            return null;
+        }
+
+        $berkasList = $this->relationLoaded('berkasPerkaras')
+            ? $this->berkasPerkaras
+            : $this->berkasPerkaras()->with('tahapan')->get();
+
+        if ($statusFormal === 'selesai') {
+            $hasLewatSla = $berkasList->contains(fn ($b) => $b->sla_status === 'selesai_lewat_sla');
+            if ($hasLewatSla) {
+                return [
+                    'label' => 'Selesai Terlambat',
+                    'badge_class' => 'bg-gray-100 text-gray-700 border-gray-200 dark:bg-white/[0.05] dark:text-gray-300 dark:border-gray-800',
+                ];
+            }
+
+            return [
+                'label' => 'Selesai Tepat Waktu',
+                'badge_class' => 'bg-success-50 text-success-700 border-success-200 dark:bg-success-900/20 dark:text-success-300 dark:border-success-800',
+            ];
+        }
+
+        // Status Dalam Proses
+        $berkasDenganSpdp = $berkasList->filter(fn ($b) => $b->spdpTahap() !== null || $b->tanggal_spdp !== null);
+        if ($berkasDenganSpdp->isEmpty()) {
+            return [
+                'label' => 'Tenggang Waktu belum berjalan',
+                'badge_class' => 'bg-gray-100 text-gray-600 border-gray-200 dark:bg-white/[0.05] dark:text-gray-400 dark:border-gray-800',
+            ];
+        }
+
+        // Hitung minimum sisa hari SLA
+        $sisaList = $berkasDenganSpdp->map(fn ($b) => $b->sisa_hari_sla)->filter(fn ($v) => $v !== null);
+        if ($sisaList->isEmpty()) {
+            return [
+                'label' => 'Tenggang Waktu belum berjalan',
+                'badge_class' => 'bg-gray-100 text-gray-600 border-gray-200 dark:bg-white/[0.05] dark:text-gray-400 dark:border-gray-800',
+            ];
+        }
+
+        $minSisa = $sisaList->min();
+
+        if ($minSisa < 0) {
+            return [
+                'label' => 'Terlambat '.abs($minSisa).' hari',
+                'badge_class' => 'bg-red-50 text-red-700 border-red-200 dark:bg-red-900/20 dark:text-red-300 dark:border-red-800',
+            ];
+        }
+
+        return [
+            'label' => 'Sisa '.$minSisa.' hari',
+            'badge_class' => $minSisa <= 7
+                ? 'bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-900/20 dark:text-amber-300 dark:border-amber-800'
+                : 'bg-brand-50 text-brand-700 border-brand-200 dark:bg-brand-900/20 dark:text-brand-300 dark:border-brand-800',
+        ];
+    }
+
+    /**
+     * Query scope filter status formal perkara
+     *
+     * @param  Builder<$this>  $query
+     * @return Builder<$this>
+     */
+    public function scopeFilterStatusFormal(Builder $query, string $status): Builder
+    {
+        $statusNorm = strtolower(trim($status));
+
+        if (in_array($statusNorm, ['tidak_selesai', 'tidak selesai', 'tidak selesai (sp3)', 'sp3'], true)) {
+            return $query->whereHas('berkasPerkaras', fn ($q) => $q->where('status_formal', 'tidak_selesai'));
+        }
+
+        if (in_array($statusNorm, ['selesai'], true)) {
+            return $query->whereDoesntHave('berkasPerkaras', fn ($q) => $q->where('status_formal', 'tidak_selesai'))
+                ->whereHas('berkasPerkaras', fn ($q) => $q->where('status_formal', 'selesai'))
+                ->whereDoesntHave('berkasPerkaras', fn ($b) => $b->whereNull('status_formal')->orWhere('status_formal', '!=', 'selesai'));
+        }
+
+        if (in_array($statusNorm, ['dpo_aktif', 'dpo aktif', 'dpo'], true)) {
+            return $query->whereDoesntHave('berkasPerkaras', fn ($q) => $q->where('status_formal', 'tidak_selesai'))
+                ->whereHas('berkasPerkaras', fn ($q) => $q->where('is_dpo', true))
+                ->where(function (Builder $q) {
+                    $q->whereHas('berkasPerkaras', fn ($b) => $b->whereNull('status_formal')->orWhere('status_formal', '!=', 'selesai'));
+                });
+        }
+
+        if (in_array($statusNorm, ['dalam_proses', 'dalam proses'], true)) {
+            return $query->whereDoesntHave('berkasPerkaras', fn ($q) => $q->where('status_formal', 'tidak_selesai'))
+                ->whereDoesntHave('berkasPerkaras', fn ($q) => $q->where('is_dpo', true))
+                ->where(function (Builder $q) {
+                    $q->whereDoesntHave('berkasPerkaras')
+                        ->orWhereHas('berkasPerkaras', fn ($b) => $b->whereNull('status_formal')->orWhere('status_formal', '!=', 'selesai'));
+                });
+        }
+
+        return $query;
+    }
+
+    /**
+     * Query scope filter tahap terakhir perkara
+     *
+     * @param  Builder<$this>  $query
+     * @return Builder<$this>
+     */
+    public function scopeFilterTahapTerakhir(Builder $query, string $tahap): Builder
+    {
+        $tahapNorm = strtolower(trim($tahap));
+
+        if (in_array($tahapNorm, ['keputusan_pengadilan', 'keputusan pengadilan', 'putusan'], true)) {
+            return $query->whereHas('berkasPerkaras.tahapan', fn ($t) => $t->where('jenis_tahap', JenisTahap::KEPUTUSAN_PENGADILAN->value)->where('status', 'final'));
+        }
+
+        if (in_array($tahapNorm, ['tahap_2', 'tahap 2', 'tahap ii'], true)) {
+            return $query->whereHas('berkasPerkaras.tahapan', fn ($t) => $t->where('jenis_tahap', JenisTahap::TAHAP_2->value)->where('status', 'final'))
+                ->whereDoesntHave('berkasPerkaras.tahapan', fn ($t) => $t->where('jenis_tahap', JenisTahap::KEPUTUSAN_PENGADILAN->value)->where('status', 'final'));
+        }
+
+        if (in_array($tahapNorm, ['p21', 'p-21'], true)) {
+            return $query->whereHas('berkasPerkaras.tahapan', fn ($t) => $t->where('jenis_tahap', JenisTahap::P21->value)->where('status', 'final'))
+                ->whereDoesntHave('berkasPerkaras.tahapan', fn ($t) => $t->whereIn('jenis_tahap', [JenisTahap::TAHAP_2->value, JenisTahap::KEPUTUSAN_PENGADILAN->value])->where('status', 'final'));
+        }
+
+        if (in_array($tahapNorm, ['tahap_1', 'tahap 1', 'tahap i'], true)) {
+            return $query->whereHas('berkasPerkaras.tahapan', fn ($t) => $t->where('jenis_tahap', JenisTahap::TAHAP_1->value)->where('status', 'final'))
+                ->whereDoesntHave('berkasPerkaras.tahapan', fn ($t) => $t->whereIn('jenis_tahap', [JenisTahap::P21->value, JenisTahap::TAHAP_2->value, JenisTahap::KEPUTUSAN_PENGADILAN->value])->where('status', 'final'));
+        }
+
+        if (in_array($tahapNorm, ['spdp'], true)) {
+            return $query->whereHas('berkasPerkaras.tahapan', fn ($t) => $t->where('jenis_tahap', JenisTahap::SPDP->value)->where('status', 'final'))
+                ->whereDoesntHave('berkasPerkaras.tahapan', fn ($t) => $t->whereIn('jenis_tahap', [JenisTahap::TAHAP_1->value, JenisTahap::P21->value, JenisTahap::TAHAP_2->value, JenisTahap::KEPUTUSAN_PENGADILAN->value])->where('status', 'final'));
+        }
+
+        if (in_array($tahapNorm, ['pra_spdp', 'pra-spdp'], true)) {
+            return $query->whereDoesntHave('berkasPerkaras.tahapan', fn ($t) => $t->where('jenis_tahap', JenisTahap::SPDP->value)->where('status', 'final'));
+        }
+
+        return $query;
     }
 }

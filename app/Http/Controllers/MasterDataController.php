@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\MasterData\SaveMasterDataRequest;
-use App\Models\InstansiHukum;
 use App\Services\MasterDataService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -34,10 +33,6 @@ class MasterDataController extends Controller
         $status = $request->string('status')->trim()->toString();
         $records = $this->masterDataService->list($type, $search, $status);
 
-        $kejaksaanList = $type === 'jaksa-penuntut'
-            ? InstansiHukum::where('jenis', 'kejaksaan')->orderBy('nama')->get()
-            : collect();
-
         // Poin 7: Jika Penyidik, hanya tampilkan tab Pasal & Instansi Hukum
         $visibleTypes = auth()->user()?->isPenyidik()
             ? array_intersect_key(MasterDataService::TYPES, array_flip(['pasal', 'instansi-hukum']))
@@ -59,7 +54,6 @@ class MasterDataController extends Controller
             'records' => $records,
             'search' => $search,
             'status' => $status,
-            'kejaksaanList' => $kejaksaanList,
             'canManage' => Gate::allows('manage-master-data', $type),
         ]);
     }

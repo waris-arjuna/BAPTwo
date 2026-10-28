@@ -79,7 +79,7 @@
                         <i class="fi fi-rr-cross-circle text-xl"></i>
                     </div>
                     <div>
-                        <span class="text-xs font-medium text-gray-500 dark:text-gray-400">Melebihi SLA</span>
+                        <span class="text-xs font-medium text-gray-500 dark:text-gray-400">Melebihi Tenggang Waktu</span>
                         <h4 class="mt-0.5 text-xl font-bold tabular-nums text-gray-800 dark:text-white/90">{{ $kritisCount }}</h4>
                     </div>
                 </div>
@@ -106,8 +106,8 @@
                 searchPlaceholder="Cari nomor berkas, nama tersangka, NIK, sprindik, PPNS..."
                 :statusOptions="[
                     'siap_tahap2' => 'Siap Pelimpahan (Progress >= 55%)',
-                    'mendekati_batas' => 'Mendekati Batas SLA (<= 7 Hari)',
-                    'kritis' => 'Melebihi Batas Waktu SLA',
+                    'mendekati_batas' => 'Mendekati Batas Tenggang Waktu (<= 7 Hari)',
+                    'kritis' => 'Melebihi Batas Tenggang Waktu',
                     'dpo' => 'Terkendala DPO Aktif',
                 ]"
                 :showDate="true"

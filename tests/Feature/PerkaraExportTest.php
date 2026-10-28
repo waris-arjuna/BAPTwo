@@ -182,7 +182,7 @@ test('tombol ekspor excel tampil untuk penyidik dan admin di halaman data-perkar
         ->assertOk()
         ->assertSee('Ekspor Excel');
 
-    $this->actingAs($this->admin)->get(route('seluruh-perkara.index'))
+    $this->actingAs($this->admin)->get(route('data-perkara.index'))
         ->assertOk()
         ->assertSee('Ekspor Excel');
 

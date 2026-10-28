@@ -80,3 +80,30 @@ test('halaman pengaturan umum dapat diakses oleh administrator', function () {
         ->assertSee('Balai Besar Pengawas Obat dan Makanan di Banjarmasin')
         ->assertSee('BAPTwo v1.0');
 });
+
+test('sistem hanya menyediakan 3 role resmi (Administrator, Penyidik, Umum) dan menormalisasi pimpinan ke umum', function () {
+    $cases = UserRole::cases();
+    expect($cases)->toHaveCount(3)
+        ->and(collect($cases)->map(fn (UserRole $r) => $r->value)->all())
+        ->toBe(['administrator', 'penyidik', 'umum'])
+        ->and(UserRole::UMUM->label())->toBe('Umum');
+
+    $legacyPimpinan = User::factory()->create(['role' => 'pimpinan']);
+    expect($legacyPimpinan->role)->toBe(UserRole::UMUM)
+        ->and($legacyPimpinan->isUmum())->toBeTrue()
+        ->and($legacyPimpinan->isPimpinan())->toBeTrue();
+
+    $admin = User::factory()->administrator()->create();
+
+    $this->actingAs($admin)
+        ->get(route('data-petugas.index'))
+        ->assertOk()
+        ->assertSee('<option value="umum">Umum</option>', false)
+        ->assertDontSee('Umum (Pimpinan Terbatas)')
+        ->assertDontSee('<option value="pimpinan">', false);
+
+    $this->actingAs($admin)
+        ->get(route('users.index'))
+        ->assertOk()
+        ->assertDontSee('Pemimpin');
+});

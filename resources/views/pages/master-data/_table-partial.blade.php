@@ -18,10 +18,6 @@
                 <th class="px-4 py-3 text-start text-theme-xs font-medium text-gray-500 dark:text-gray-400">{{ __('Jenis') }}</th>
                 <th class="px-4 py-3 text-start text-theme-xs font-medium text-gray-500 dark:text-gray-400">{{ __('Nama Instansi') }}</th>
                 <th class="px-4 py-3 text-start text-theme-xs font-medium text-gray-500 dark:text-gray-400">{{ __('Wilayah') }}</th>
-            @elseif ($type === 'jaksa-penuntut')
-                <th class="px-4 py-3 text-start text-theme-xs font-medium text-gray-500 dark:text-gray-400">{{ __('Nama Jaksa') }}</th>
-                <th class="px-4 py-3 text-start text-theme-xs font-medium text-gray-500 dark:text-gray-400">{{ __('NIP & Pangkat') }}</th>
-                <th class="px-4 py-3 text-start text-theme-xs font-medium text-gray-500 dark:text-gray-400">{{ __('Kejaksaan') }}</th>
             @endif
             <th class="px-4 py-3 text-start text-theme-xs font-medium text-gray-500 dark:text-gray-400">{{ __('Status') }}</th>
             @if ($canManage)
@@ -77,17 +73,6 @@
                     </td>
                     <td class="px-4 py-3 text-theme-sm text-gray-600 dark:text-gray-300">
                         {{ $row->wilayah ?: '-' }}
-                    </td>
-                @elseif ($type === 'jaksa-penuntut')
-                    <td class="px-4 py-3 font-medium text-gray-800 text-theme-sm dark:text-white/90">
-                        {{ $row->nama_jaksa }}
-                    </td>
-                    <td class="px-4 py-3">
-                        <div class="text-theme-sm text-gray-700 dark:text-gray-300">{{ $row->pangkat ?: '-' }}</div>
-                        <div class="text-theme-xs text-gray-500 dark:text-gray-400">NIP: {{ $row->nip ?: '-' }}</div>
-                    </td>
-                    <td class="px-4 py-3 text-theme-sm text-gray-600 dark:text-gray-300">
-                        {{ $row->instansiHukum?->nama ?? '-' }}
                     </td>
                 @endif
 

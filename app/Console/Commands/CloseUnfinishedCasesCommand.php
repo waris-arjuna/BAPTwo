@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\AuditLog;
 use App\Models\BerkasPerkara;
+use App\Services\DashboardService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
 
@@ -30,7 +31,7 @@ class CloseUnfinishedCasesCommand extends Command
      */
     public function handle(): int
     {
-        $currentYear = Carbon::now()->year;
+        $currentYear = Carbon::now(DashboardService::ZONA_WAKTU)->year;
         $targetYear = $this->option('year') ? (int) $this->option('year') : ($currentYear - 1);
         $isDryRun = (bool) $this->option('dry-run');
 
@@ -43,7 +44,7 @@ class CloseUnfinishedCasesCommand extends Command
         // dan berasal dari tahun target atau tahun-tahun sebelumnya (PRD F-23 & Batas Tahun)
         $unclosedBerkas = BerkasPerkara::query()
             ->with(['perkara', 'tersangka'])
-            ->whereNull('status_formal')
+            ->dalamProses()
             ->where(function ($query) use ($targetYear) {
                 $query->where(function ($q) use ($targetYear) {
                     $q->whereNotNull('tanggal_spdp')

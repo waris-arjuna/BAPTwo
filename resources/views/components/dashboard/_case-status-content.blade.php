@@ -29,7 +29,13 @@
         if (!empty($data['bulan'])) $params['bulan'] = $data['bulan'];
         if ($status) $params['status'] = $status;
         if ($slaKey) $params['sla'] = $slaKey;
-        return route('seluruh-perkara.index', $params);
+
+        $user = auth()->user();
+        $targetRoute = ($user && ($user->isAdmin() || $user->isPenyidik()))
+            ? 'data-perkara.index'
+            : 'seluruh-perkara.index';
+
+        return route($targetRoute, $params);
     };
 
     // Format perbandingan tahun lalu netral di bawah donut
@@ -67,7 +73,7 @@
         ],
         [
             'key' => 'dalam_sla',
-            'label' => 'Dalam SLA',
+            'label' => 'Dalam Tenggang Waktu',
             'count' => (int) ($sla['dalamSla'] ?? 0),
             'strokeClass' => 'stroke-teal-500',
             'drill' => $drillUrl('Dalam Proses', 'dalam_sla'),
@@ -81,7 +87,7 @@
         ],
         [
             'key' => 'lewat_sla',
-            'label' => 'Melewati SLA',
+            'label' => 'Melewati Tenggang Waktu',
             'count' => (int) ($sla['lewatSla'] ?? 0),
             'strokeClass' => 'stroke-error-500',
             'drill' => $drillUrl('Dalam Proses', 'lewat_sla'),
@@ -309,12 +315,12 @@
                             @if ($cDalam > 0)
                                 <span class="h-2.5 w-2.5 shrink-0 rounded-full bg-teal-500"></span>
                                 <span class="font-medium text-gray-600 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white">
-                                    Dalam SLA (> 7 hari)
+                                    Dalam Tenggang Waktu (> 7 hari)
                                 </span>
                             @else
                                 <span class="h-2.5 w-2.5 shrink-0 rounded-full border border-gray-300 bg-transparent dark:border-gray-600"></span>
                                 <span class="font-normal text-gray-400 dark:text-gray-500">
-                                    Dalam SLA (> 7 hari)
+                                    Dalam Tenggang Waktu (> 7 hari)
                                 </span>
                             @endif
                         </div>
@@ -357,12 +363,12 @@
                             @if ($cLewat > 0)
                                 <span class="h-2.5 w-2.5 shrink-0 rounded-full bg-error-500"></span>
                                 <span class="font-medium text-error-600 dark:text-error-400">
-                                    Melewati SLA
+                                    Melewati Tenggang Waktu
                                 </span>
                             @else
                                 <span class="h-2.5 w-2.5 shrink-0 rounded-full border border-gray-300 bg-transparent dark:border-gray-600"></span>
                                 <span class="font-normal text-gray-400 dark:text-gray-500">
-                                    Melewati SLA
+                                    Melewati Tenggang Waktu
                                 </span>
                             @endif
                         </div>

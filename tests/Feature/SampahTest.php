@@ -36,28 +36,28 @@ beforeEach(function () {
     ]);
 });
 
-test('halaman sampah dapat diakses oleh seluruh role terautentikasi', function () {
-    $this->actingAs($this->penyidik)
+test('halaman recovery data hanya dapat diakses oleh administrator (penyidik dan pimpinan 403 forbidden)', function () {
+    $this->actingAs($this->admin)
         ->get(route('sampah.index'))
         ->assertOk()
         ->assertSee('Recovery Data');
 
-    $this->actingAs($this->admin)
+    $this->actingAs($this->penyidik)
         ->get(route('sampah.index'))
-        ->assertOk();
+        ->assertForbidden();
 
     $this->actingAs($this->pimpinan)
         ->get(route('sampah.index'))
-        ->assertOk();
+        ->assertForbidden();
 });
 
-test('perkara yang di-soft-delete muncul di tab perkara dan dapat dipulihkan oleh penyidik', function () {
+test('perkara yang di-soft-delete muncul di tab perkara dan dapat dipulihkan oleh administrator', function () {
     // 1. Soft delete perkara
     $this->perkara->delete();
     expect($this->perkara->fresh()->trashed())->toBeTrue();
 
     // 2. Cek tampil di halaman sampah tab perkara
-    $response = $this->actingAs($this->penyidik)
+    $response = $this->actingAs($this->admin)
         ->get(route('sampah.index', ['tab' => 'perkara']));
 
     $response->assertOk();
@@ -65,7 +65,7 @@ test('perkara yang di-soft-delete muncul di tab perkara dan dapat dipulihkan ole
     $response->assertSee('Pulihkan');
 
     // 3. Pulihkan perkara
-    $restoreResponse = $this->actingAs($this->penyidik)
+    $restoreResponse = $this->actingAs($this->admin)
         ->post(route('sampah.perkara.restore', $this->perkara->id));
 
     $restoreResponse->assertRedirect(route('sampah.index', ['tab' => 'perkara']));
@@ -79,7 +79,7 @@ test('perkara yang di-soft-delete muncul di tab perkara dan dapat dipulihkan ole
         'aksi' => 'restore_perkara',
         'tabel' => 'perkara',
         'record_id' => $this->perkara->id,
-        'user_id' => $this->penyidik->id,
+        'user_id' => $this->admin->id,
     ]);
 });
 
@@ -97,13 +97,13 @@ test('berkas perkara yang di-soft-delete muncul di tab berkas dan dapat dipulihk
     $this->berkas->delete();
     expect($this->berkas->fresh()->trashed())->toBeTrue();
 
-    $response = $this->actingAs($this->penyidik)
+    $response = $this->actingAs($this->admin)
         ->get(route('sampah.index', ['tab' => 'berkas']));
 
     $response->assertOk();
     $response->assertSee('BP/TRASH/001/X/2026');
 
-    $this->actingAs($this->penyidik)
+    $this->actingAs($this->admin)
         ->post(route('sampah.berkas.restore', $this->berkas->id))
         ->assertRedirect(route('sampah.index', ['tab' => 'berkas']));
 
@@ -113,7 +113,7 @@ test('berkas perkara yang di-soft-delete muncul di tab berkas dan dapat dipulihk
         'aksi' => 'restore_berkas_perkara',
         'tabel' => 'berkas_perkara',
         'record_id' => $this->berkas->id,
-        'user_id' => $this->penyidik->id,
+        'user_id' => $this->admin->id,
     ]);
 });
 
@@ -148,7 +148,7 @@ test('pengguna yang di-soft-delete muncul di tab user dan hanya administrator ya
 });
 
 test('request ajax dengan header X-Filter-Partial mengembalikan partial tabel sampah', function () {
-    $response = $this->actingAs($this->penyidik)
+    $response = $this->actingAs($this->admin)
         ->get(route('sampah.index', ['tab' => 'perkara']), [
             'X-Filter-Partial' => '1',
         ]);

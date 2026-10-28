@@ -1,7 +1,7 @@
 @props(['activities' => null])
 
 @php
-    $activities ??= app(\App\Services\DashboardService::class)->getRecentActivities(6);
+    $activities ??= app(\App\Services\DashboardService::class)->getRecentActivities(4);
     $milestones = $activities['milestones'] ?? collect();
     $all = $activities['all'] ?? collect();
 @endphp
@@ -55,18 +55,18 @@
     </div>
 
     {{-- Card Body --}}
-    <div class="flex-1 p-5 sm:p-6">
+    <div class="flex-1 p-4 sm:p-5">
         {{-- Tab: Milestone Penting --}}
         <div x-show="tab === 'milestones'" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100">
             @if ($milestones->isNotEmpty())
-                <div class="space-y-4">
+                <div class="space-y-2.5">
                     @foreach ($milestones as $log)
                         @php
                             $meta = $log->action_meta;
                         @endphp
-                        <div class="flex items-start gap-3.5 rounded-xl border border-gray-100 bg-gray-50/50 p-3.5 transition hover:bg-gray-50 dark:border-gray-800 dark:bg-white/[0.02] dark:hover:bg-white/[0.04]">
+                        <div class="flex items-start gap-3 rounded-xl border border-gray-100 bg-gray-50/50 p-3 transition hover:bg-gray-50 dark:border-gray-800 dark:bg-white/[0.02] dark:hover:bg-white/[0.04]">
                             {{-- Circle Icon --}}
-                            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/60 {{ $meta['icon_bg'] }} shadow-xs dark:border-gray-800">
+                            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/60 {{ $meta['icon_bg'] }} shadow-xs dark:border-gray-800">
                                 <i class="fi {{ $meta['icon'] }} text-base"></i>
                             </div>
 
@@ -129,14 +129,14 @@
         {{-- Tab: Semua Aktivitas --}}
         <div x-show="tab === 'all'" x-cloak x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100">
             @if ($all->isNotEmpty())
-                <div class="space-y-4">
+                <div class="space-y-2.5">
                     @foreach ($all as $log)
                         @php
                             $meta = $log->action_meta;
                         @endphp
-                        <div class="flex items-start gap-3.5 rounded-xl border border-gray-100 bg-gray-50/50 p-3.5 transition hover:bg-gray-50 dark:border-gray-800 dark:bg-white/[0.02] dark:hover:bg-white/[0.04]">
+                        <div class="flex items-start gap-3 rounded-xl border border-gray-100 bg-gray-50/50 p-3 transition hover:bg-gray-50 dark:border-gray-800 dark:bg-white/[0.02] dark:hover:bg-white/[0.04]">
                             {{-- Circle Icon --}}
-                            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/60 {{ $meta['icon_bg'] }} shadow-xs dark:border-gray-800">
+                            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/60 {{ $meta['icon_bg'] }} shadow-xs dark:border-gray-800">
                                 <i class="fi {{ $meta['icon'] }} text-base"></i>
                             </div>
 

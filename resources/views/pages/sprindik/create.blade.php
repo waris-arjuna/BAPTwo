@@ -150,6 +150,7 @@
                         <x-form.date-picker
                             id="tanggal_sprindik"
                             name="tanggal_sprindik"
+                            :default-date="old('tanggal_sprindik', date('Y-m-d'))"
                             :value="old('tanggal_sprindik', date('Y-m-d'))"
                             required
                             placeholder="Pilih Tanggal Sprindik"

@@ -88,7 +88,6 @@
                         @php
                             $roleBadgeClass = match ($petugas->role) {
                                 \App\Enums\UserRole::PENYIDIK => 'bg-brand-50 text-brand-700 border-brand-200 dark:bg-brand-500/10 dark:text-brand-300 dark:border-brand-500/20',
-                                \App\Enums\UserRole::PIMPINAN => 'bg-purple-50 text-purple-700 border-purple-200 dark:bg-purple-500/10 dark:text-purple-300 dark:border-purple-500/20',
                                 \App\Enums\UserRole::UMUM => 'bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-500/10 dark:text-amber-300 dark:border-amber-500/20',
                                 default => 'bg-gray-100 text-gray-700 border-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700',
                             };

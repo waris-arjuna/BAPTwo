@@ -45,9 +45,6 @@
             jenis: @js(old('jenis', 'kejaksaan')),
             nama: @js(old('nama', '')),
             wilayah: @js(old('wilayah', '')),
-            instansi_hukum_id: @js((string) old('instansi_hukum_id', $kejaksaanList->first()?->id ?? '')),
-            nama_jaksa: @js(old('nama_jaksa', '')),
-            nip: @js(old('nip', '')),
         },
         openCreate() {
             this.isEdit = false;
@@ -66,9 +63,6 @@
                 jenis: 'kejaksaan',
                 nama: '',
                 wilayah: '',
-                instansi_hukum_id: '{{ $kejaksaanList->first()?->id ?? '' }}',
-                nama_jaksa: '',
-                nip: '',
             };
             this.modalOpen = true;
         },
@@ -89,9 +83,6 @@
                 jenis: item.jenis || 'kejaksaan',
                 nama: item.nama || '',
                 wilayah: item.wilayah || '',
-                instansi_hukum_id: item.instansi_hukum_id ? String(item.instansi_hukum_id) : '',
-                nama_jaksa: item.nama_jaksa || '',
-                nip: item.nip || '',
             };
             this.modalOpen = true;
         }
@@ -257,49 +248,6 @@
                                     placeholder="Contoh: Kalimantan Selatan / Kota Banjarmasin"
                                     class="h-10 w-full rounded-lg border border-gray-300 bg-transparent px-3 text-theme-sm text-gray-800 dark:border-gray-700 dark:text-white/90" />
                                 <p class="mt-1 text-theme-xs text-gray-400">{{ __('Hanya huruf dan tanda baca wilayah.') }}</p>
-                            </div>
-                        @elseif ($type === 'jaksa-penuntut')
-                            <div>
-                                <x-form.searchable-select
-                                    name="instansi_hukum_id"
-                                    id="instansi_hukum_id"
-                                    :label="__('Asal Kejaksaan')"
-                                    placeholder="{{ __('Pilih Kejaksaan') }}"
-                                    search-placeholder="Cari nama kejaksaan..."
-                                    x-model="form.instansi_hukum_id"
-                                    required
-                                >
-                                    <option value="">{{ __('Pilih Kejaksaan') }}</option>
-                                    @foreach ($kejaksaanList as $kejaksaan)
-                                        <option value="{{ $kejaksaan->id }}">{{ $kejaksaan->nama }}</option>
-                                    @endforeach
-                                </x-form.searchable-select>
-                            </div>
-                            <div>
-                                <label class="mb-1 block text-theme-xs font-medium text-gray-700 dark:text-gray-300">{{ __('Nama Lengkap Jaksa') }} *</label>
-                                <input type="text" name="nama_jaksa" x-model="form.nama_jaksa" required maxlength="225"
-                                    @input="form.nama_jaksa = $event.target.value.replace(/[^a-zA-Z\s.,'\-]/g, '')"
-                                    placeholder="Contoh: Ahmad Fauzi, S.H., M.H."
-                                    class="h-10 w-full rounded-lg border border-gray-300 bg-transparent px-3 text-theme-sm text-gray-800 dark:border-gray-700 dark:text-white/90" />
-                                <p class="mt-1 text-theme-xs text-gray-400">{{ __('Hanya huruf, spasi, dan tanda baca gelar.') }}</p>
-                            </div>
-                            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                                <div>
-                                    <label class="mb-1 block text-theme-xs font-medium text-gray-700 dark:text-gray-300">{{ __('NIP') }}</label>
-                                    <input type="text" name="nip" x-model="form.nip" inputmode="numeric" maxlength="30"
-                                        @input="form.nip = $event.target.value.replace(/[^0-9]/g, '')"
-                                        placeholder="NIP Jaksa (Hanya angka)"
-                                        class="h-10 w-full rounded-lg border border-gray-300 bg-transparent px-3 text-theme-sm text-gray-800 dark:border-gray-700 dark:text-white/90" />
-                                    <p class="mt-1 text-theme-xs text-gray-400">{{ __('Hanya angka.') }}</p>
-                                </div>
-                                <div>
-                                    <label class="mb-1 block text-theme-xs font-medium text-gray-700 dark:text-gray-300">{{ __('Pangkat Jaksa') }}</label>
-                                    <input type="text" name="pangkat" x-model="form.pangkat" maxlength="100"
-                                        @input="form.pangkat = $event.target.value.replace(/[^a-zA-Z0-9\s.,\-\/()]/g, '')"
-                                        placeholder="Contoh: Jaksa Madya (IV/a)"
-                                        class="h-10 w-full rounded-lg border border-gray-300 bg-transparent px-3 text-theme-sm text-gray-800 dark:border-gray-700 dark:text-white/90" />
-                                    <p class="mt-1 text-theme-xs text-gray-400">{{ __('Huruf dan angka.') }}</p>
-                                </div>
                             </div>
                         @endif
 

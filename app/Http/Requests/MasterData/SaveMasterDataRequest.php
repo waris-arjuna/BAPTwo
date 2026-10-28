@@ -10,7 +10,7 @@ class SaveMasterDataRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return Gate::allows('manage-master-data');
+        return Gate::allows('manage-master-data', (string) $this->route('type'));
     }
 
     /**
@@ -57,12 +57,6 @@ class SaveMasterDataRequest extends FormRequest
                 'nama' => ['required', 'string', 'max:150', 'regex:/^(?=.*[\pL])[\pL0-9\s.,\-\/()]+$/u'],
                 'wilayah' => ['nullable', 'string', 'max:100', 'regex:/^[\pL\s.,\-\/()]+$/u'],
             ],
-            'jaksa-penuntut' => [
-                'instansi_hukum_id' => ['required', 'integer', 'exists:instansi_hukum,id'],
-                'nama_jaksa' => ['required', 'string', 'max:225', 'regex:/^[\pL\s.,\'\-]+$/u'],
-                'nip' => ['nullable', 'string', 'max:30', 'regex:/^[0-9]+$/'],
-                'pangkat' => ['nullable', 'string', 'max:100', 'regex:/^(?=.*[\pL])[\pL0-9\s.,\-\/()]+$/u'],
-            ],
             default => [],
         };
     }
@@ -93,12 +87,6 @@ class SaveMasterDataRequest extends FormRequest
             'nama.required' => __('Nama Instansi wajib diisi.'),
             'nama.regex' => __('Nama Instansi hanya boleh berisi huruf, angka, dan tanda baca standar (wajib mengandung huruf).'),
             'wilayah.regex' => __('Wilayah hanya boleh berisi huruf dan spasi (tanpa angka).'),
-            'instansi_hukum_id.required' => __('Asal Kejaksaan wajib dipilih.'),
-            'instansi_hukum_id.exists' => __('Asal Kejaksaan yang dipilih tidak valid.'),
-            'nama_jaksa.required' => __('Nama Lengkap Jaksa wajib diisi.'),
-            'nama_jaksa.regex' => __('Nama Lengkap Jaksa hanya boleh berisi huruf, spasi, dan tanda baca gelar (tanpa angka).'),
-            'nip.regex' => __('NIP hanya boleh berisi angka.'),
-            'pangkat.regex' => __('Pangkat Jaksa hanya boleh berisi huruf, angka, dan tanda baca standar (wajib mengandung huruf).'),
         ];
     }
 }

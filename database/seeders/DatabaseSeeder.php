@@ -108,7 +108,7 @@ class DatabaseSeeder extends Seeder
                 'nama' => 'Pimpinan BPOM Kalsel',
                 'nip' => '198502022010011002',
                 'email' => 'pimpinan@baptwo.test',
-                'role' => UserRole::PIMPINAN,
+                'role' => UserRole::UMUM,
                 'jabatan_id' => $jabatanKepala->id,
                 'bidang_id' => $bidangPenindakan->id,
                 'panggol_id' => $panggolPembina->id,

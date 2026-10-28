@@ -45,15 +45,22 @@ class PerkaraExportController extends Controller
 
         $totalPerkara = $export->query()->count();
 
-        // Jika request pre-check jumlah data
-        if ($request->boolean('check') || $request->wantsJson() || $request->ajax()) {
+        // 1. Jika request eksplisit pre-check jumlah data
+        if ($request->boolean('check')) {
             return response()->json([
                 'count' => $totalPerkara,
                 'message' => $totalPerkara === 0 ? 'Tidak ada data pada periode ini' : 'Data tersedia',
             ]);
         }
 
-        // Jika periode tidak memiliki perkara: JANGAN unduh file, tampilkan pop-up warning
+        // 2. Jika request via fetch download dan periode kosong: kembalikan 422 JSON
+        if ($totalPerkara === 0 && ($request->hasHeader('X-Export-Fetch') || $request->wantsJson() || $request->ajax())) {
+            return response()->json([
+                'message' => 'Tidak ada data pada periode ini',
+            ], 422);
+        }
+
+        // 3. Jika periode tidak memiliki perkara: JANGAN unduh file, tampilkan pop-up warning
         if ($totalPerkara === 0) {
             return redirect()->back()->with('warning', 'Tidak ada data pada periode ini');
         }
@@ -75,6 +82,9 @@ class PerkaraExportController extends Controller
             ]
         );
 
-        return $export->download($filename);
+        $response = $export->download($filename);
+        $response->headers->set('X-Export-Filename', $filename);
+
+        return $response;
     }
 }

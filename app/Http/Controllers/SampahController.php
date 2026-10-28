@@ -25,6 +25,8 @@ class SampahController extends Controller
      */
     public function index(Request $request): View
     {
+        Gate::authorize('manage-users');
+
         $activeTab = $request->string('tab', 'perkara')->trim()->toString();
         if (! in_array($activeTab, ['perkara', 'berkas', 'user'], true)) {
             $activeTab = 'perkara';
@@ -116,7 +118,7 @@ class SampahController extends Controller
      */
     public function restorePerkara(Request $request, int $id): RedirectResponse
     {
-        Gate::authorize('soft-delete');
+        Gate::authorize('manage-users');
 
         $this->perkaraService->restorePerkara($id, $request->user());
 
@@ -133,7 +135,7 @@ class SampahController extends Controller
      */
     public function restoreBerkas(Request $request, int $id): RedirectResponse
     {
-        Gate::authorize('soft-delete');
+        Gate::authorize('manage-users');
 
         $this->perkaraService->restoreBerkas($id, $request->user());
 

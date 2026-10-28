@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\JenisTahap;
+use App\Services\DashboardService;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,6 +13,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Collection;
 
 class BerkasPerkara extends Model
 {
@@ -106,6 +108,23 @@ class BerkasPerkara extends Model
     public function tahapan(): HasMany
     {
         return $this->hasMany(TahapanPerkara::class, 'berkas_perkara_id');
+    }
+
+    /**
+     * Koleksi tahapan perkara yang diurutkan sesuai urutan resmi JenisTahap::urutan()
+     * (SPDP -> P-16 -> P-17P -> TAHAP I -> P-18P -> P-19 -> P-21/P21a -> TAHAP II -> Keputusan Pengadilan).
+     *
+     * @return Collection<int, TahapanPerkara>
+     */
+    public function getOrderedTahapanAttribute(): Collection
+    {
+        $collection = $this->relationLoaded('tahapan')
+            ? $this->tahapan
+            : $this->tahapan()->get();
+
+        return $collection
+            ->sortBy(fn (TahapanPerkara $tahap) => $tahap->jenis_tahap->urutan())
+            ->values();
     }
 
     /**
@@ -208,6 +227,30 @@ class BerkasPerkara extends Model
     public function isTidakSelesai(): bool
     {
         return $this->status_formal === self::STATUS_FORMAL_TIDAK_SELESAI;
+    }
+
+    /**
+     * Memeriksa apakah berkas perkara dapat ditetapkan sebagai DPO.
+     * DPO diperbolehkan dari Pra-SPDP sampai sebelum Keputusan Pengadilan difinalkan,
+     * dan diblokir jika sudah DPO, sudah SP3, berstatus formal Tidak Selesai, atau Putusan Pengadilan sudah final.
+     */
+    public function canActivateDpo(): bool
+    {
+        if ($this->is_dpo || $this->hasSp3() || $this->isTidakSelesai()) {
+            return false;
+        }
+
+        if ($this->hasTahap(JenisTahap::KEPUTUSAN_PENGADILAN)) {
+            $isPutusanFinal = $this->relationLoaded('tahapan')
+                ? $this->tahapan->contains(fn ($t) => ($t->jenis_tahap === JenisTahap::KEPUTUSAN_PENGADILAN || ($t->jenis_tahap instanceof JenisTahap ? $t->jenis_tahap->value : $t->jenis_tahap) === JenisTahap::KEPUTUSAN_PENGADILAN->value) && $t->status === 'final')
+                : $this->tahapan()->where('jenis_tahap', JenisTahap::KEPUTUSAN_PENGADILAN->value)->where('status', 'final')->exists();
+
+            if ($isPutusanFinal) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /**
@@ -348,7 +391,7 @@ class BerkasPerkara extends Model
             return null;
         }
 
-        return (int) now()->startOfDay()->diffInDays($deadline->startOfDay(), false);
+        return (int) Carbon::now(DashboardService::ZONA_WAKTU)->startOfDay()->diffInDays($deadline->startOfDay(), false);
     }
 
     /**
@@ -404,7 +447,7 @@ class BerkasPerkara extends Model
                 'badge_class' => 'bg-success-50 text-success-700 border-success-200 dark:bg-success-900/20 dark:text-success-300 dark:border-success-800',
             ],
             'selesai_lewat_sla' => [
-                'label' => 'Selesai Melebihi SLA',
+                'label' => 'Selesai Melebihi Tenggang Waktu',
                 'icon' => 'fi-rr-check',
                 'badge_class' => 'bg-gray-100 text-gray-700 border-gray-200 dark:bg-white/[0.05] dark:text-gray-300 dark:border-gray-800',
             ],
@@ -414,17 +457,17 @@ class BerkasPerkara extends Model
                 'badge_class' => 'bg-red-50 text-red-700 border-red-200 dark:bg-red-900/20 dark:text-red-300 dark:border-red-800',
             ],
             'lewat_sla' => [
-                'label' => 'Melebihi SLA'.($this->sisa_hari_sla !== null ? ' (+'.abs($this->sisa_hari_sla).' hari)' : ''),
+                'label' => 'Melebihi Tenggang Waktu'.($this->sisa_hari_sla !== null ? ' (+'.abs($this->sisa_hari_sla).' hari)' : ''),
                 'icon' => 'fi-rr-exclamation',
                 'badge_class' => 'bg-red-50 text-red-700 border-red-200 dark:bg-red-900/20 dark:text-red-300 dark:border-red-800',
             ],
             'mendekati_sla' => [
-                'label' => 'Mendekati Batas SLA ('.($this->sisa_hari_sla ?? 0).' hari)',
+                'label' => 'Mendekati Batas Tenggang Waktu ('.($this->sisa_hari_sla ?? 0).' hari)',
                 'icon' => 'fi-rr-time-forward',
                 'badge_class' => 'bg-yellow-50 text-yellow-800 border-yellow-200 dark:bg-yellow-900/20 dark:text-yellow-300 dark:border-yellow-800',
             ],
             'sesuai_sla' => [
-                'label' => 'SLA Berjalan ('.($this->sisa_hari_sla ?? 0).' hari)',
+                'label' => 'Tenggang Waktu Berjalan ('.($this->sisa_hari_sla ?? 0).' hari)',
                 'icon' => 'fi-rr-clock',
                 'badge_class' => 'bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-900/20 dark:text-blue-300 dark:border-blue-800',
             ],

@@ -91,10 +91,10 @@ it('hides Tambah, Edit, and stage advancement buttons from Pimpinan across index
         ->assertSee('Tambah Sprindik')
         ->assertSee('Buat Perkara');
 
-    $this->actingAs($pimpinan)->get('/sprindik/1')
+    $this->actingAs($pimpinan)->get('/sprindik/2')
         ->assertOk()
         ->assertDontSee('Buat Perkara');
-    $this->actingAs($penyidik)->get('/sprindik/1')
+    $this->actingAs($penyidik)->get('/sprindik/2')
         ->assertOk()
         ->assertSee('Buat Perkara');
 

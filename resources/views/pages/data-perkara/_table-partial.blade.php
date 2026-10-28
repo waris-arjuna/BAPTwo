@@ -27,7 +27,7 @@
                 </th>
 
                 <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                    Status
+                    Status & Tenggang Waktu
                 </th>
 
                 <th class="px-5 py-3 text-center text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
@@ -161,29 +161,41 @@
                         @endif
                     </td>
 
-                    {{-- 7. Status (Status perkara dan tahapan terakhir beserta persentase progres) --}}
+                    {{-- 7. Status & SLA (Badge status formal, Tahap: <nama> (<persen>%), dan badge SLA) --}}
+                    @php
+                        $statusFormalLabel = $perkara->status_formal_label;
+                        $statusFormalBadgeClass = $perkara->status_formal_badge_class;
+                        $tahapInfo = $perkara->getTahapTerakhirInfo();
+                        $slaBadge = $perkara->getSlaBadgeInfo();
+                    @endphp
                     <td class="px-5 py-4">
-                        <div class="flex flex-col gap-1">
-                            @if ($isLocked)
-                                <span class="inline-flex w-fit items-center gap-1.5 rounded-full bg-success-50 px-2.5 py-0.5 text-xs font-medium text-success-700 dark:bg-success-500/10 dark:text-success-400">
-                                    <i class="fi fi-rr-lock text-[10px]"></i>
-                                    Perkara Terbentuk
-                                </span>
-                            @else
-                                <span class="inline-flex w-fit items-center gap-1.5 rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-medium text-blue-700 dark:bg-blue-500/10 dark:text-blue-400">
-                                    <i class="fi fi-rr-edit text-[10px]"></i>
-                                    Draft Perkara
-                                </span>
-                            @endif
+                        <div class="flex flex-col gap-1.5 min-w-[170px]">
+                            {{-- Badge Status Formal --}}
+                            <span class="inline-flex w-fit items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-semibold {{ $statusFormalBadgeClass }}">
+                                @if ($perkara->status_formal === 'tidak_selesai')
+                                    <i class="fi fi-rr-cross-circle text-[10px]"></i>
+                                @elseif ($perkara->status_formal === 'selesai')
+                                    <i class="fi fi-rr-check-circle text-[10px]"></i>
+                                @elseif ($perkara->status_formal === 'dpo_aktif')
+                                    <i class="fi fi-rr-ban text-[10px]"></i>
+                                @else
+                                    <i class="fi fi-rr-refresh text-[10px]"></i>
+                                @endif
+                                <span>{{ $statusFormalLabel }}</span>
+                            </span>
 
-                            @if ($hasSp3)
-                                <p class="text-xs font-semibold text-error-600 dark:text-error-400">
-                                    SP3 (<span class="tabular-nums">{{ $progressPersen }}%</span>)
-                                </p>
-                            @else
-                                <p class="text-xs text-gray-600 dark:text-gray-300">
-                                    {{ $tahapLabel }} (<span class="tabular-nums font-semibold">{{ $progressPersen }}%</span>)
-                                </p>
+                            {{-- Tahap & Persentase --}}
+                            <p class="text-xs text-gray-600 dark:text-gray-300">
+                                Tahap: <span class="font-medium text-gray-800 dark:text-white/90">{{ $tahapInfo['nama'] }}</span>
+                                (<span class="tabular-nums font-semibold">{{ $tahapInfo['persen'] }}%</span>)
+                            </p>
+
+                            {{-- Badge SLA --}}
+                            @if ($slaBadge)
+                                <span class="inline-flex w-fit items-center gap-1.5 rounded-md border px-2 py-0.5 text-[11px] font-medium {{ $slaBadge['badge_class'] }}">
+                                    <i class="fi fi-rr-clock text-[10px]"></i>
+                                    <span>{{ $slaBadge['label'] }}</span>
+                                </span>
                             @endif
                         </div>
                     </td>

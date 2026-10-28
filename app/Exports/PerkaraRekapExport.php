@@ -463,7 +463,7 @@ class PerkaraRekapExport
                 $kendalaList[] = $b->sp3->keterangan;
             }
             if ($b->is_dpo) {
-                $dpoAktif = $b->dpos->first();
+                $dpoAktif = $b->dpos->firstWhere('status', 'aktif') ?? $b->dpos->sortByDesc('id')->first();
                 $kendalaList[] = 'Tersangka DPO: '.($dpoAktif?->keterangan ?? 'Dalam pencarian buron.');
             }
             $p18 = $b->tahapan->firstWhere('jenis_tahap', JenisTahap::P18P->value);

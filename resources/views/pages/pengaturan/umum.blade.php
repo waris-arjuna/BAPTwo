@@ -75,13 +75,13 @@
                     </div>
 
                     <div>
-                        <span class="text-xs text-gray-500 dark:text-gray-400">SLA Penanganan Perkara:</span>
+                        <span class="text-xs text-gray-500 dark:text-gray-400">Tenggang Waktu Penanganan Perkara:</span>
                         <p class="font-medium text-gray-800 dark:text-white/90">1 Bulan Kalender Total (Sejak SPDP diterbitkan)</p>
                     </div>
 
                     <div>
                         <span class="text-xs text-gray-500 dark:text-gray-400">Batas Waktu Tahun Anggaran:</span>
-                        <p class="font-medium text-gray-800 dark:text-white/90">Mutlak 31 Desember tahun berjalan (Batas tahun menang atas SLA)</p>
+                        <p class="font-medium text-gray-800 dark:text-white/90">Mutlak 31 Desember tahun berjalan (Batas tahun menang atas Tenggang Waktu)</p>
                     </div>
 
                     <div>

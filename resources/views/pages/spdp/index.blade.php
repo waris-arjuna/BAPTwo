@@ -165,128 +165,16 @@
         </div>
 
         {{-- Modal Pemilihan Berkas Perkara untuk SPDP --}}
-        <div
-            x-show="modalOpen"
-            x-cloak
-            class="fixed inset-0 z-99999 flex items-center justify-center p-4"
-            role="dialog"
-            aria-modal="true"
-            @keydown.escape.window="modalOpen = false"
-        >
-            {{-- Backdrop --}}
-            <div
-                x-show="modalOpen"
-                x-transition:enter="transition ease-out duration-200"
-                x-transition:enter-start="opacity-0"
-                x-transition:enter-end="opacity-100"
-                x-transition:leave="transition ease-in duration-150"
-                x-transition:leave-start="opacity-100"
-                x-transition:leave-end="opacity-0"
-                @click="modalOpen = false"
-                class="fixed inset-0 bg-gray-900/50 backdrop-blur-sm"
-            ></div>
-
-            {{-- Dialog Box --}}
-            <div
-                x-show="modalOpen"
-                x-transition:enter="transition ease-out duration-200"
-                x-transition:enter-start="opacity-0 scale-95"
-                x-transition:enter-end="opacity-100 scale-100"
-                x-transition:leave="transition ease-in duration-150"
-                x-transition:leave-start="opacity-100 scale-100"
-                x-transition:leave-end="opacity-0 scale-95"
-                class="relative flex max-h-[85vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-theme-xl dark:border-gray-800 dark:bg-gray-900"
-            >
-                {{-- Modal Header --}}
-                <div class="flex items-center justify-between border-b border-gray-200 px-6 py-4 dark:border-gray-800">
-                    <div class="flex items-center gap-3">
-                        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600 dark:bg-brand-500/10 dark:text-brand-400">
-                            <i class="fi fi-rr-document-signed text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-base font-semibold text-gray-800 dark:text-white/90">
-                                Pilih Berkas Perkara untuk SPDP
-                            </h3>
-                            <p class="text-xs text-gray-500 dark:text-gray-400">
-                                Berkas perkara yang telah menyelesaikan Pra-SPDP dan siap memulai tahapan SPDP.
-                            </p>
-                        </div>
-                    </div>
-                    <button
-                        type="button"
-                        @click="modalOpen = false"
-                        class="rounded-lg p-1.5 text-gray-400 transition hover:bg-gray-100 hover:text-gray-600 dark:hover:bg-gray-800 dark:hover:text-gray-300"
-                    >
-                        <i class="fi fi-rr-cross-small text-xl"></i>
-                    </button>
-                </div>
-
-                {{-- Modal Body (Scrollable List) --}}
-                <div class="flex-1 space-y-3 overflow-y-auto p-6">
-                    @forelse ($availableBerkas as $berkas)
-                        <div class="flex flex-col gap-3 rounded-xl border border-gray-200 bg-gray-50/50 p-4 transition hover:border-brand-500 hover:bg-white sm:flex-row sm:items-center sm:justify-between dark:border-gray-800 dark:bg-gray-800/40 dark:hover:border-brand-500 dark:hover:bg-gray-800/80">
-                            <div class="space-y-1">
-                                <div class="flex items-center gap-2">
-                                    <span class="text-xs font-semibold uppercase text-brand-600 dark:text-brand-400">
-                                        Berkas:
-                                    </span>
-                                    <span class="text-sm font-semibold text-gray-800 dark:text-white/90">
-                                        {{ $berkas->nomor_berkas }}
-                                    </span>
-                                </div>
-                                <div class="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-300">
-                                    <i class="fi fi-rr-user text-[11px] text-gray-400"></i>
-                                    <span>Tersangka: <strong>{{ $berkas->tersangka?->nama ?: '-' }}</strong></span>
-                                </div>
-                                <div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
-                                    <i class="fi fi-rr-memo text-[11px] text-gray-400"></i>
-                                    <span>Sprindik: {{ $berkas->perkara?->nomor_surat_perintah ?: ($berkas->perkara?->nomor_laporan_kejadian ?: '-') }}</span>
-                                </div>
-                            </div>
-
-                            <a
-                                href="{{ route('berkas-perkara.tahapan.create', ['berkas' => $berkas, 'jenis' => 'spdp']) }}"
-                                class="inline-flex items-center justify-center gap-1.5 rounded-lg bg-brand-500 px-3.5 py-2 text-xs font-medium text-white shadow-theme-xs transition hover:bg-brand-600"
-                            >
-                                <span>Buat SPDP</span>
-                                <i class="fi fi-rr-arrow-small-right text-base"></i>
-                            </a>
-                        </div>
-                    @empty
-                        <div class="py-8 text-center">
-                            <div class="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 text-gray-400 dark:bg-gray-800 dark:text-gray-500">
-                                <i class="fi fi-rr-folder-open text-2xl"></i>
-                            </div>
-                            <h4 class="text-sm font-semibold text-gray-800 dark:text-white/90">
-                                Tidak Ada Berkas yang Siap
-                            </h4>
-                            <p class="mx-auto mt-1 max-w-md text-xs text-gray-500 dark:text-gray-400">
-                                Seluruh berkas perkara yang ada saat ini sudah memiliki SPDP, atau tahapan Pra-SPDP (Tersangka, TKP, PPNS, Berkas Perkara) belum difinalkan.
-                            </p>
-                            <div class="mt-4">
-                                <a
-                                    href="{{ route('data-perkara.index') }}"
-                                    class="inline-flex items-center gap-1.5 text-xs font-medium text-brand-600 transition hover:text-brand-700 dark:text-brand-400"
-                                >
-                                    <i class="fi fi-rr-arrow-right text-xs"></i>
-                                    <span>Buka Data Perkara Pra-SPDP</span>
-                                </a>
-                            </div>
-                        </div>
-                    @endforelse
-                </div>
-
-                {{-- Modal Footer --}}
-                <div class="flex items-center justify-end border-t border-gray-200 bg-gray-50 px-6 py-3.5 dark:border-gray-800 dark:bg-gray-900/50">
-                    <button
-                        type="button"
-                        @click="modalOpen = false"
-                        class="rounded-lg border border-gray-300 bg-white px-4 py-2 text-xs font-medium text-gray-700 shadow-theme-xs transition hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
-                    >
-                        Tutup
-                    </button>
-                </div>
-            </div>
-        </div>
+        <x-tahapan.select-berkas-modal
+            title="Pilih Berkas Perkara untuk SPDP"
+            description="Berkas perkara yang telah menyelesaikan Pra-SPDP dan siap memulai tahapan SPDP."
+            icon="fi-rr-document-signed"
+            :availableBerkas="$availableBerkas"
+            jenis="spdp"
+            actionLabel="Buat SPDP"
+            emptyTitle="Tidak Ada Berkas yang Siap"
+            emptyDescription="Seluruh berkas perkara yang ada saat ini sudah memiliki SPDP, atau tahapan Pra-SPDP (Tersangka, TKP, PPNS, Berkas Perkara) belum difinalkan."
+            openExpr="modalOpen"
+        />
     </div>
 @endsection

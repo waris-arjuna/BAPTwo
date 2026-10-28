@@ -73,6 +73,6 @@ test('elemen gambar logo dan avatar memiliki atribut width dan height numerik', 
 
     // Pastikan tag img menyertakan width dan height
     $content = $response->getContent();
-    expect($content)->toContain('width="150" height="32"');
+    expect($content)->toContain('width="55" height="48"');
     expect($content)->toContain('width="44" height="44"');
 });

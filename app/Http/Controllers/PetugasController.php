@@ -17,6 +17,8 @@ class PetugasController extends Controller
      */
     public function index(Request $request): View
     {
+        abort_unless($request->user()?->isAdmin() || $request->user()?->isPenyidik(), 403);
+
         $search = $request->string('search')->trim()->toString();
         $role = $request->string('role')->trim()->toString();
         $status = $request->string('status')->trim()->toString();
@@ -55,16 +57,24 @@ class PetugasController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        $currentUser = $request->user();
+        abort_unless($currentUser?->isAdmin() || $currentUser?->isPenyidik(), 403);
+
         $validated = $request->validate([
             'user_id' => [
                 'required',
                 Rule::exists('user', 'id')->where(function ($q) {
                     $q->where('role', '!=', UserRole::ADMINISTRATOR->value);
                 }),
+                function ($attribute, $value, $fail) use ($currentUser) {
+                    if ($currentUser?->isPenyidik() && (int) $value === (int) $currentUser->id) {
+                        $fail('Penyidik tidak diizinkan mengubah akun dirinya sendiri.');
+                    }
+                },
             ],
             'role' => [
                 'required',
-                Rule::in([UserRole::PENYIDIK->value, UserRole::PIMPINAN->value, UserRole::UMUM->value]),
+                Rule::in([UserRole::PENYIDIK->value, UserRole::UMUM->value]),
             ],
             'is_active' => ['nullable', 'boolean'],
         ], [

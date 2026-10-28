@@ -3,13 +3,7 @@
 ])
 
 @php
-    $years = $availableYears ?? \App\Models\Perkara::whereNotNull('tanggal_laporan_kejadian')
-        ->pluck('tanggal_laporan_kejadian')
-        ->map(fn ($d) => (int) \Carbon\Carbon::parse($d)->year)
-        ->unique()
-        ->sortDesc()
-        ->values()
-        ->all();
+    $years = $availableYears ?? app(\App\Services\DashboardService::class)->getAvailableYears();
 
     if (empty($years)) {
         $years = [(int) date('Y'), (int) date('Y') - 1];
@@ -17,91 +11,186 @@
 @endphp
 
 @can('export-excel')
-<div
-    x-data="{
-        isOpen: false,
-        mode: 'semua', // 'semua', 'tahun', 'bulan', 'rentang'
-        tahun: '{{ (int) date('Y') }}',
-        bulan: '{{ (int) date('n') }}',
-        tanggalMulai: '',
-        tanggalSelesai: '',
-        availableYears: {{ json_encode($years) }},
-        months: [
-            { val: 1, name: 'Januari' },
-            { val: 2, name: 'Februari' },
-            { val: 3, name: 'Maret' },
-            { val: 4, name: 'April' },
-            { val: 5, name: 'Mei' },
-            { val: 6, name: 'Juni' },
-            { val: 7, name: 'Juli' },
-            { val: 8, name: 'Agustus' },
-            { val: 9, name: 'September' },
-            { val: 10, name: 'Oktober' },
-            { val: 11, name: 'November' },
-            { val: 12, name: 'Desember' }
-        ],
-        fpMulai: null,
-        fpSelesai: null,
-        init() {
-            // Watch tanggalMulai to update minDate of tanggalSelesai
-            this.$watch('tanggalMulai', (val) => {
-                if (this.fpSelesai) {
-                    this.fpSelesai.set('minDate', val || null);
-                }
-            });
-            this.$watch('mode', () => {
-                this.fpMulai?.close();
-                this.fpSelesai?.close();
-            });
-            this.$watch('isOpen', (val) => {
-                if (!val) {
+<script>
+    function exportExcelModal(config = {}) {
+        return {
+            isOpen: false,
+            isChecking: false,
+            isDownloading: false,
+            mode: 'semua', // 'semua', 'tahun', 'bulan', 'rentang'
+            tahun: config.currentYear || '{{ (int) date('Y') }}',
+            bulan: config.currentMonth || '{{ (int) date('n') }}',
+            tanggalMulai: '',
+            tanggalSelesai: '',
+            availableYears: config.availableYears || [],
+            exportRoute: config.exportRoute || '{{ route('perkara.export') }}',
+            months: [
+                { val: 1, name: 'Januari' },
+                { val: 2, name: 'Februari' },
+                { val: 3, name: 'Maret' },
+                { val: 4, name: 'April' },
+                { val: 5, name: 'Mei' },
+                { val: 6, name: 'Juni' },
+                { val: 7, name: 'Juli' },
+                { val: 8, name: 'Agustus' },
+                { val: 9, name: 'September' },
+                { val: 10, name: 'Oktober' },
+                { val: 11, name: 'November' },
+                { val: 12, name: 'Desember' }
+            ],
+            fpMulai: null,
+            fpSelesai: null,
+            init() {
+                // Watch tanggalMulai to update minDate of tanggalSelesai
+                this.$watch('tanggalMulai', (val) => {
+                    if (this.fpSelesai) {
+                        this.fpSelesai.set('minDate', val || null);
+                    }
+                });
+                this.$watch('mode', () => {
                     this.fpMulai?.close();
                     this.fpSelesai?.close();
-                }
-            });
-        },
-        async submitExport() {
-            if (this.mode === 'rentang') {
-                if (!this.tanggalMulai || !this.tanggalSelesai) {
-                    window.dispatchEvent(new CustomEvent('toast-notify', {
-                        detail: { type: 'warning', title: 'Rentang Tanggal Belum Lengkap', message: 'Harap pilih Tanggal Mulai dan Tanggal Selesai terlebih dahulu.', duration: 3000 }
-                    }));
-                    return;
-                }
-                if (this.tanggalMulai > this.tanggalSelesai) {
-                    window.dispatchEvent(new CustomEvent('toast-notify', {
-                        detail: { type: 'warning', title: 'Urutan Tanggal Tidak Valid', message: 'Tanggal Mulai tidak boleh lebih besar dari Tanggal Selesai.', duration: 3000 }
-                    }));
-                    return;
-                }
-            }
-
-            // Pre-check apakah ada data pada periode ini
-            const formData = new FormData(this.$refs.exportForm);
-            const params = new URLSearchParams(formData);
-            params.append('check', '1');
-
-            try {
-                const res = await fetch(`{{ route('perkara.export') }}?${params.toString()}`, {
-                    headers: { 'Accept': 'application/json', 'X-Requested-With': 'XMLHttpRequest' }
                 });
-                if (res.ok) {
-                    const data = await res.json();
-                    if (data.count === 0) {
+                this.$watch('isOpen', (val) => {
+                    if (!val) {
+                        this.fpMulai?.close();
+                        this.fpSelesai?.close();
+                    }
+                });
+            },
+            async submitExport() {
+                if (this.mode === 'rentang') {
+                    if (!this.tanggalMulai || !this.tanggalSelesai) {
                         window.dispatchEvent(new CustomEvent('toast-notify', {
-                            detail: { type: 'warning', title: 'Perhatian', message: 'Tidak ada data pada periode ini', duration: 3000 }
+                            detail: { type: 'warning', title: 'Rentang Tanggal Belum Lengkap', message: 'Harap pilih Tanggal Mulai dan Tanggal Selesai terlebih dahulu.', duration: 3000 }
+                        }));
+                        return;
+                    }
+                    if (this.tanggalMulai > this.tanggalSelesai) {
+                        window.dispatchEvent(new CustomEvent('toast-notify', {
+                            detail: { type: 'warning', title: 'Urutan Tanggal Tidak Valid', message: 'Tanggal Mulai tidak boleh lebih besar dari Tanggal Selesai.', duration: 3000 }
                         }));
                         return;
                     }
                 }
-            } catch (e) {
-                // Lanjut ke submit biasa jika network error
-            }
 
-            this.$refs.exportForm.submit();
-            this.isOpen = false;
-        }
-    }"
+                const params = new URLSearchParams();
+                params.set('mode', this.mode);
+                if (this.mode === 'tahun') {
+                    params.set('tahun', this.tahun);
+                } else if (this.mode === 'bulan') {
+                    params.set('tahun', this.tahun);
+                    params.set('bulan', this.bulan);
+                } else if (this.mode === 'rentang') {
+                    params.set('tanggal_mulai', this.tanggalMulai);
+                    params.set('tanggal_selesai', this.tanggalSelesai);
+                }
+
+                this.isChecking = true;
+
+                try {
+                    const checkParams = new URLSearchParams(params);
+                    checkParams.set('check', '1');
+
+                    const res = await fetch(`${this.exportRoute}?${checkParams.toString()}`, {
+                        headers: {
+                            'Accept': 'application/json',
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    });
+
+                    if (res.ok) {
+                        const data = await res.json();
+                        if (data && data.count === 0) {
+                            this.isChecking = false;
+                            window.dispatchEvent(new CustomEvent('toast-notify', {
+                                detail: { type: 'warning', title: 'Perhatian', message: 'Tidak ada data pada periode ini', duration: 3000 }
+                            }));
+                            return;
+                        }
+                    }
+                } catch (e) {
+                    // Abaikan kesalahan jaringan pre-check, tetap izinkan proses unduh
+                }
+
+                this.isChecking = false;
+                this.isOpen = false;
+                this.isDownloading = true;
+
+                // Trigger unduhan file Excel via fetch blob dengan header X-Export-Fetch
+                try {
+                    const downloadRes = await fetch(`${this.exportRoute}?${params.toString()}`, {
+                        headers: {
+                            'X-Export-Fetch': '1',
+                            'Accept': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+                        }
+                    });
+
+                    if (!downloadRes.ok) {
+                        this.isDownloading = false;
+                        window.dispatchEvent(new CustomEvent('toast-notify', {
+                            detail: { type: 'error', title: 'Terjadi Kesalahan', message: 'Gagal mengunduh berkas. Silakan coba kembali.', duration: 3000 }
+                        }));
+                        this.isOpen = true;
+                        return;
+                    }
+
+                    let filename = downloadRes.headers.get('X-Export-Filename');
+                    if (!filename) {
+                        const disposition = downloadRes.headers.get('Content-Disposition');
+                        if (disposition && disposition.indexOf('filename=') !== -1) {
+                            const matches = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/.exec(disposition);
+                            if (matches != null && matches[1]) {
+                                filename = matches[1].replace(/['"]/g, '');
+                            }
+                        }
+                    }
+                    if (!filename) {
+                        filename = 'LAPJU_Rekap_Perkara.xlsx';
+                    }
+
+                    const blob = await downloadRes.blob();
+                    const downloadUrl = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = downloadUrl;
+                    a.download = filename;
+                    document.body.appendChild(a);
+                    a.click();
+                    setTimeout(() => {
+                        a.remove();
+                        window.URL.revokeObjectURL(downloadUrl);
+                    }, 1500);
+
+                    this.isDownloading = false;
+
+                    window.dispatchEvent(new CustomEvent('toast-notify', {
+                        detail: { type: 'success', title: 'Siap Didownload', message: `Berkas ${filename} siap didownload.`, duration: 3500 }
+                    }));
+                } catch (err) {
+                    this.isDownloading = false;
+                    // Fallback direct download jika fetch blob terhambat
+                    window.location.href = `${this.exportRoute}?${params.toString()}`;
+                }
+            }
+        };
+    }
+
+    if (window.Alpine) {
+        window.Alpine.data('exportExcelModal', exportExcelModal);
+    } else {
+        document.addEventListener('alpine:init', () => {
+            window.Alpine.data('exportExcelModal', exportExcelModal);
+        });
+    }
+</script>
+
+<div
+    x-data="exportExcelModal({
+        availableYears: {{ json_encode($years) }},
+        currentYear: '{{ (int) date('Y') }}',
+        currentMonth: '{{ (int) date('n') }}',
+        exportRoute: '{{ route('perkara.export') }}'
+    })"
     @open-export-modal.window="isOpen = true"
 >
     {{-- Modal Teleport to Body --}}
@@ -375,13 +464,34 @@
                         <button
                             type="button"
                             @click="submitExport()"
-                            class="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-success-600 px-5 text-sm font-semibold text-white shadow-theme-xs transition hover:bg-success-700"
+                            :disabled="isChecking"
+                            class="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-success-600 px-5 text-sm font-semibold text-white shadow-theme-xs transition hover:bg-success-700 disabled:cursor-not-allowed disabled:opacity-60"
                         >
-                            <i class="fi fi-rr-download text-base"></i>
-                            <span>Download File Excel (.xlsx)</span>
+                            <i x-show="!isChecking" class="fi fi-rr-download text-base"></i>
+                            <i x-show="isChecking" x-cloak class="fi fi-rr-spinner animate-spin text-base text-white"></i>
+                            <span x-text="isChecking ? 'Menyiapkan Data...' : 'Download File Excel (.xlsx)'"></span>
                         </button>
                     </div>
                 </form>
+            </div>
+        </div>
+
+        {{-- Modal Loading Unduh File Excel --}}
+        <div
+            x-show="isDownloading"
+            x-cloak
+            class="fixed inset-0 z-99999 flex items-center justify-center bg-gray-900/60 p-4 backdrop-blur-sm"
+        >
+            <div class="flex flex-col items-center justify-center rounded-2xl border border-gray-200 bg-white p-8 shadow-2xl dark:border-gray-800 dark:bg-gray-900">
+                <div class="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-50 text-brand-600 dark:bg-brand-500/10 dark:text-brand-400">
+                    <i class="fi fi-rr-spinner animate-spin text-2xl text-brand-600 dark:text-brand-400"></i>
+                </div>
+                <h4 class="text-base font-bold text-gray-800 dark:text-white/90">
+                    Mengunduh data...
+                </h4>
+                <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                    Mohon tunggu sebentar, file Excel sedang disiapkan.
+                </p>
             </div>
         </div>
     </template>

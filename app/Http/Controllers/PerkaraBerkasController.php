@@ -44,7 +44,7 @@ class PerkaraBerkasController extends Controller
         $kejaksaanList = InstansiHukum::where('jenis', 'kejaksaan')->orderBy('nama')->get();
 
         $existingPpnsIds = array_filter(array_merge(
-            [(int) $perkara->ppns_utama_id],
+            $perkara->ppnsUtama->pluck('id')->all(),
             $perkara->ppnsAnggota->pluck('id')->all()
         ));
 
@@ -79,11 +79,11 @@ class PerkaraBerkasController extends Controller
         $payload = $isDraft
             ? [
                 'title' => 'Draft Perkara Tersimpan',
-                'message' => 'Draft data Perkara & Berkas Perkara untuk '.($perkara->nomor_laporan ?: '').' berhasil disimpan.',
+                'message' => 'Draft data Perkara & Berkas Perkara untuk '.($perkara->nomor_laporan_kejadian ?: '').' berhasil disimpan.',
             ]
             : [
                 'title' => 'Berkas Perkara Final',
-                'message' => 'Data Perkara & Berkas Perkara untuk '.($perkara->nomor_laporan ?: '').' berhasil difinalkan dan dikunci permanen. Silakan lanjutkan ke tahap SPDP.',
+                'message' => 'Data Perkara & Berkas Perkara untuk '.($perkara->nomor_laporan_kejadian ?: '').' berhasil difinalkan dan dikunci permanen. Silakan lanjutkan ke tahap SPDP.',
             ];
 
         return redirect()
@@ -109,6 +109,7 @@ class PerkaraBerkasController extends Controller
             'tersangkas.berkasPerkara.dpos.dokumen',
             'tersangkas.berkasPerkara.dpos.creator',
             'tersangkas.berkasPerkara.sp3.dokumen',
+            'tersangkas.berkasPerkara.sp3.creator',
             'creator',
             'perkaraFinalizer',
             'auditLogs' => fn ($query) => $query->with(['user', 'berkasPerkara.tersangka'])->orderBy('id', 'desc'),

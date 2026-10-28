@@ -79,7 +79,6 @@
                         >
                             <option value="">Semua Role</option>
                             <option value="penyidik" {{ request('role') === 'penyidik' ? 'selected' : '' }}>Penyidik</option>
-                            <option value="pimpinan" {{ request('role') === 'pimpinan' ? 'selected' : '' }}>Pimpinan</option>
                             <option value="umum" {{ request('role') === 'umum' ? 'selected' : '' }}>Umum</option>
                         </select>
                     </div>
@@ -184,8 +183,7 @@
                             class="h-10 w-full rounded-lg border border-gray-300 bg-white px-3.5 text-sm text-gray-800 shadow-theme-xs outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
                         >
                             <option value="penyidik">Penyidik</option>
-                            <option value="pimpinan">Pimpinan</option>
-                            <option value="umum">Umum (Pimpinan Terbatas)</option>
+                            <option value="umum">Umum</option>
                         </select>
                         <p class="mt-1 text-[11px] text-gray-400">
                             Peran Administrator bersifat khusus dan dikelola langsung melalui Manajemen Pengguna.

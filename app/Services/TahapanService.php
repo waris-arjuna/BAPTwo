@@ -231,6 +231,23 @@ class TahapanService
                 }
             }
 
+            // Jika tahap induk sudah berstatus final (hanya boleh SPDP atau Tahap 1 untuk melengkapi sub-tahap),
+            // lindungi data induk dari modifikasi, unggah file induk, atau pencatatan ulang finalisasi.
+            if ($existingTahap !== null && $existingTahap->isFinal()) {
+                $tahap = $existingTahap;
+
+                // Simpan sub-tahap opsional tersemat jika ada input
+                if ($jenisTahap === JenisTahap::SPDP) {
+                    $this->saveSubStage($berkas, JenisTahap::P16, 'p16', $data, request()->file('p16_dokumen'), $user);
+                    $this->saveSubStage($berkas, JenisTahap::P17P, 'p17p', $data, request()->file('p17p_dokumen'), $user);
+                } elseif ($jenisTahap === JenisTahap::TAHAP_1) {
+                    $this->saveSubStage($berkas, JenisTahap::P18P, 'p18p', $data, request()->file('p18p_dokumen'), $user);
+                    $this->saveSubStage($berkas, JenisTahap::P19, 'p19', $data, request()->file('p19_dokumen'), $user);
+                }
+
+                return $tahap;
+            }
+
             $tahapData = [
                 'berkas_perkara_id' => $berkas->id,
                 'jenis_tahap' => $jenisTahap,
@@ -246,7 +263,9 @@ class TahapanService
             // Jika belum final, update nomor dan tanggal
             if ($existingTahap === null || ! $existingTahap->isFinal()) {
                 $tahapData['nomor_surat'] = $data['nomor_surat'] ?? null;
-                $tahapData['tanggal_surat'] = ! empty($data['tanggal_surat']) ? $data['tanggal_surat'] : null;
+                $tahapData['tanggal_surat'] = ! empty($data['tanggal_surat'])
+                    ? $data['tanggal_surat']
+                    : ($existingTahap?->tanggal_surat?->format('Y-m-d') ?? null);
                 $tahapData['status'] = $isDraft ? 'draft' : 'final';
                 $tahapData['finalized_at'] = $isDraft ? null : now();
                 $tahapData['finalized_by'] = $isDraft ? null : $user->id;
@@ -453,7 +472,7 @@ class TahapanService
                 'createdBy',
                 'finalizedBy',
             ])
-            ->orderByDesc('tanggal_surat')
+            ->orderByDesc('created_at')
             ->orderByDesc('id')
             ->paginate($perPage)
             ->withQueryString();
@@ -481,6 +500,7 @@ class TahapanService
             ->where(fn (Builder $q) => $q->whereNull('status_formal')->orWhere('status_formal', '!=', 'tidak_selesai'))
             ->when($dpoCheck, fn ($q) => $q->where('is_dpo', false))
             ->with(['perkara', 'tersangka'])
+            ->orderByDesc('created_at')
             ->orderByDesc('id')
             ->get();
     }
@@ -516,6 +536,7 @@ class TahapanService
             ->where('is_dpo', false)
             ->where(fn (Builder $q) => $q->whereNull('status_formal')->orWhere('status_formal', '!=', 'tidak_selesai'))
             ->with(['perkara', 'tersangka'])
+            ->orderByDesc('created_at')
             ->orderByDesc('id')
             ->get();
     }
@@ -550,17 +571,32 @@ class TahapanService
         ?UploadedFile $file,
         User $user
     ): ?TahapanPerkara {
-        $nomor = $data["{$prefix}_nomor_surat"] ?? null;
-        if (empty($nomor)) {
-            return null;
-        }
-
-        $tanggal = ! empty($data["{$prefix}_tanggal_surat"]) ? $data["{$prefix}_tanggal_surat"] : null;
-        $catatan = $data["{$prefix}_catatan"] ?? null;
-
         $existing = TahapanPerkara::where('berkas_perkara_id', $berkas->id)
             ->where('jenis_tahap', $jenisTahap->value)
             ->first();
+
+        $nomor = $data["{$prefix}_nomor_surat"] ?? ($existing?->nomor_surat ?? null);
+        $tanggal = ! empty($data["{$prefix}_tanggal_surat"])
+            ? $data["{$prefix}_tanggal_surat"]
+            : ($existing?->tanggal_surat?->format('Y-m-d') ?? null);
+        $catatan = $data["{$prefix}_catatan"] ?? ($existing?->catatan ?? null);
+
+        if (empty($nomor) && empty($tanggal) && empty($catatan) && $file === null) {
+            return null;
+        }
+
+        $isParentDraft = ($data['action_type'] ?? 'lanjut') === 'draft';
+        $isSubDraft = $isParentDraft || empty($nomor) || empty($tanggal);
+
+        if ($existing !== null && $existing->isFinal()) {
+            $status = 'final';
+            $finalizedAt = $existing->finalized_at ?? now();
+            $finalizedBy = $existing->finalized_by ?? $user->id;
+        } else {
+            $status = $isSubDraft ? 'draft' : 'final';
+            $finalizedAt = $status === 'final' ? now() : null;
+            $finalizedBy = $status === 'final' ? $user->id : null;
+        }
 
         $tahapData = [
             'berkas_perkara_id' => $berkas->id,
@@ -568,9 +604,9 @@ class TahapanService
             'nomor_surat' => $nomor,
             'tanggal_surat' => $tanggal,
             'catatan' => $catatan,
-            'status' => 'final',
-            'finalized_at' => now(),
-            'finalized_by' => $user->id,
+            'status' => $status,
+            'finalized_at' => $finalizedAt,
+            'finalized_by' => $finalizedBy,
             'updated_by' => $user->id,
         ];
 

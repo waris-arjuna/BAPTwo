@@ -291,4 +291,6 @@ test('tampilan komponen average-stage di dashboard merender label dan angka tabu
     $response->assertSee('TAHAP II');
     $response->assertSee('tabular-nums', false);
     $response->assertSee('Catatan: Perhitungan waktu penyelesaian tahapan menggunakan Hari Kerja.');
+    $response->assertDontSee('Rata-rata waktu penyelesaian');
+    $response->assertSee('Maks. 30 Hari Kalender');
 });

@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enums\JenisTahap;
 use App\Models\BerkasPerkara;
 use App\Models\Dokumen;
 use App\Models\Dpo;
@@ -34,8 +35,13 @@ class DpoService
                 throw new DomainException('Tersangka pada Berkas Perkara ini sudah berstatus DPO.');
             }
 
-            if ($berkas->status_formal !== null) {
-                throw new DomainException("Berkas Perkara sudah berstatus formal {$berkas->status_formal_label} dan tidak dapat diubah.");
+            if ($berkas->hasSp3() || $berkas->status_formal === 'tidak_selesai') {
+                throw new DomainException('Berkas perkara yang sudah dihentikan (SP3 / Tidak Selesai) tidak dapat ditetapkan DPO.');
+            }
+
+            if ($berkas->hasTahap(JenisTahap::KEPUTUSAN_PENGADILAN)
+                && $berkas->tahapan()->where('jenis_tahap', JenisTahap::KEPUTUSAN_PENGADILAN->value)->where('status', 'final')->exists()) {
+                throw new DomainException('Perkara telah selesai hingga Keputusan Pengadilan dan terkunci permanen.');
             }
 
             $dokumenId = null;

@@ -218,13 +218,22 @@ class TahapanPerkaraController extends Controller
         $validated = $request->validated();
         $isDraft = ($validated['action_type'] ?? 'lanjut') === 'draft';
 
-        $tahap = $this->tahapanService->saveStage(
-            $berkas,
-            $validated,
-            $request->file('dokumen'),
-            $request->user(),
-            $tahapan
-        );
+        try {
+            $tahap = $this->tahapanService->saveStage(
+                $berkas,
+                $validated,
+                $request->file('dokumen'),
+                $request->user(),
+                $tahapan
+            );
+        } catch (\DomainException $e) {
+            return redirect()
+                ->route('perkara.show', $berkas->perkara_id)
+                ->with('error', [
+                    'title' => 'Gagal Memperbarui Tahapan',
+                    'message' => $e->getMessage(),
+                ]);
+        }
 
         $payload = $isDraft
             ? [

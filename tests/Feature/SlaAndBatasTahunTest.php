@@ -99,21 +99,21 @@ test('evaluasi status SLA memberikan status dan badge yang sesuai dengan kondisi
         'sla_deadline' => Carbon::now()->addDays(20)->toDateString(),
     ]);
     expect($this->berkas->sla_status)->toBe('sesuai_sla');
-    expect($this->berkas->sla_badge['label'])->toContain('SLA Berjalan');
+    expect($this->berkas->sla_badge['label'])->toContain('Tenggang Waktu Berjalan');
 
     // 3. SPDP aktif mendekati batas waktu (<= 7 hari)
     $this->berkas->update([
         'sla_deadline' => Carbon::now()->addDays(3)->toDateString(),
     ]);
     expect($this->berkas->sla_status)->toBe('mendekati_sla');
-    expect($this->berkas->sla_badge['label'])->toContain('Mendekati Batas SLA');
+    expect($this->berkas->sla_badge['label'])->toContain('Mendekati Batas Tenggang Waktu');
 
     // 4. SPDP aktif melebihi batas waktu (overdue)
     $this->berkas->update([
         'sla_deadline' => Carbon::now()->subDays(5)->toDateString(),
     ]);
     expect($this->berkas->sla_status)->toBe('lewat_sla');
-    expect($this->berkas->sla_badge['label'])->toContain('Melebihi SLA');
+    expect($this->berkas->sla_badge['label'])->toContain('Melebihi Tenggang Waktu');
 
     // 5. Berkas selesai tepat waktu
     $this->berkas->update([

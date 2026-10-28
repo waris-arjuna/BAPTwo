@@ -82,10 +82,17 @@ test('halaman progress perkara dapat diakses tanpa LazyLoadingViolationException
     $responsePartial->assertOk()
         ->assertSee('BP/AUDIT-01/2026');
 
-    // 3. Role Admin
-    $responseAdmin = $this->actingAs($this->admin)->get(route('progress-perkara.index'));
-    $responseAdmin->assertOk()
+    // 3. Role Umum (Progress Perkara)
+    $responseUmum = $this->actingAs($this->umum)->get(route('progress-perkara.index'));
+    $responseUmum->assertOk()
         ->assertSee('BP/AUDIT-01/2026');
+
+    // 4. Role Admin dialihkan ke Data Perkara dan halaman Data Perkara bebas LazyLoadingViolationException
+    $responseAdminRedirect = $this->actingAs($this->admin)->get(route('progress-perkara.index'));
+    $responseAdminRedirect->assertRedirect(route('data-perkara.index'));
+
+    $responseDataPerkara = $this->actingAs($this->admin)->get(route('data-perkara.index'));
+    $responseDataPerkara->assertOk();
 });
 
 test('audit halaman utama bebas dari LazyLoadingViolationException untuk seluruh role', function () {
@@ -95,8 +102,12 @@ test('audit halaman utama bebas dari LazyLoadingViolationException untuk seluruh
         // Dashboard
         $this->actingAs($user)->get(route('dashboard'))->assertOk();
 
-        // Seluruh Perkara
-        $this->actingAs($user)->get(route('seluruh-perkara.index'))->assertOk();
+        // Seluruh Perkara (Pimpinan/Umum: 200 OK, Admin/Penyidik: 302 Redirect ke data-perkara)
+        if ($user->isAdmin() || $user->isPenyidik()) {
+            $this->actingAs($user)->get(route('seluruh-perkara.index'))->assertRedirect(route('data-perkara.index'));
+        } else {
+            $this->actingAs($user)->get(route('seluruh-perkara.index'))->assertOk();
+        }
 
         // Pencarian Perkara
         $this->actingAs($user)->get(route('pencarian-perkara.index'))->assertOk();

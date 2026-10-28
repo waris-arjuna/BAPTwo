@@ -7,6 +7,7 @@ use App\Models\Perkara;
 use App\Services\DashboardService;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -15,8 +16,12 @@ class SeluruhPerkaraController extends Controller
     /**
      * Tampilkan Halaman Seluruh Perkara dengan Ringkasan Statistik Metrik (PRD F-38, F-39, F-43)
      */
-    public function index(Request $request): View
+    public function index(Request $request): View|RedirectResponse
     {
+        // Admin & Penyidik dialihkan langsung ke Daftar Perkara (Poin 3A)
+        if ($request->user() && ($request->user()->isAdmin() || $request->user()->isPenyidik())) {
+            return redirect()->route('data-perkara.index', $request->query());
+        }
         $search = $request->string('search')->trim()->toString();
         $status = $request->string('status')->trim()->toString();
         $tahun = $request->integer('tahun');
@@ -86,8 +91,8 @@ class SeluruhPerkaraController extends Controller
                 }
             })
             ->when($sla !== '', function (Builder $query) use ($sla) {
-                $today = Carbon::today()->toDateString();
-                $approachingDate = Carbon::today()->addDays(DashboardService::AMBANG_MENDEKATI_SLA_HARI)->toDateString();
+                $today = Carbon::today(DashboardService::ZONA_WAKTU)->toDateString();
+                $approachingDate = Carbon::today(DashboardService::ZONA_WAKTU)->addDays(DashboardService::AMBANG_MENDEKATI_SLA_HARI)->toDateString();
 
                 $query->whereHas('berkasPerkaras', function ($q) use ($sla, $today, $approachingDate) {
                     $q->where(function ($sub) {

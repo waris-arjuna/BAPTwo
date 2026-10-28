@@ -38,8 +38,14 @@ class UpdateTahapanRequest extends FormRequest
     {
         /** @var TahapanPerkara|null $tahap */
         $tahap = $this->route('tahapan');
+        if (is_numeric($tahap)) {
+            $tahap = TahapanPerkara::find($tahap);
+        }
         $isFinal = $tahap && $tahap->isFinal();
         $isDraft = $this->input('action_type') === 'draft';
+        $isOptionalStage = $tahap && in_array($tahap->jenis_tahap?->value, ['p16', 'p17p', 'p18p', 'p19'], true);
+        $hasExistingDocument = $tahap && $tahap->dokumen()->exists();
+        $isDocumentRequired = ! $isDraft && ! $isFinal && ! $isOptionalStage && ! $hasExistingDocument;
 
         return [
             'action_type' => ['nullable', 'in:draft,lanjut'],
@@ -53,7 +59,7 @@ class UpdateTahapanRequest extends FormRequest
                 'date',
             ],
             'catatan' => ['nullable', 'string', 'max:2000'],
-            'dokumen' => ['nullable', 'file', 'mimes:pdf', 'max:5120'],
+            'dokumen' => [$isDocumentRequired ? 'required' : 'nullable', 'file', 'mimes:pdf', 'max:5120'],
 
             // Sub-tahap opsional P-16 (Penunjukan JPU pada SPDP)
             'p16_nomor_surat' => ['nullable', 'string', 'max:150'],
@@ -95,16 +101,17 @@ class UpdateTahapanRequest extends FormRequest
             'nomor_surat.max' => 'Nomor surat tidak boleh lebih dari 150 karakter.',
             'tanggal_surat.required' => 'Tanggal surat / dokumen wajib diisi untuk melanjutkan tahapan.',
             'tanggal_surat.date' => 'Format tanggal surat tidak valid.',
+            'dokumen.required' => 'Dokumen wajib diunggah saat melanjutkan tahapan.',
             'dokumen.mimes' => 'Dokumen tahapan harus berupa file PDF.',
-            'dokumen.max' => 'Ukuran dokumen tahapan maksimal 5 MB.',
+            'dokumen.max' => 'Ukuran file dokumen tidak boleh melebihi 5 MB.',
             'p16_dokumen.mimes' => 'Dokumen P-16 harus berupa file PDF.',
-            'p16_dokumen.max' => 'Ukuran dokumen P-16 maksimal 5 MB.',
+            'p16_dokumen.max' => 'Ukuran file dokumen tidak boleh melebihi 5 MB.',
             'p17p_dokumen.mimes' => 'Dokumen P-17 harus berupa file PDF.',
-            'p17p_dokumen.max' => 'Ukuran dokumen P-17 maksimal 5 MB.',
+            'p17p_dokumen.max' => 'Ukuran file dokumen tidak boleh melebihi 5 MB.',
             'p18p_dokumen.mimes' => 'Dokumen P-18 harus berupa file PDF.',
-            'p18p_dokumen.max' => 'Ukuran dokumen P-18 maksimal 5 MB.',
+            'p18p_dokumen.max' => 'Ukuran file dokumen tidak boleh melebihi 5 MB.',
             'p19_dokumen.mimes' => 'Dokumen P-19 harus berupa file PDF.',
-            'p19_dokumen.max' => 'Ukuran dokumen P-19 maksimal 5 MB.',
+            'p19_dokumen.max' => 'Ukuran file dokumen tidak boleh melebihi 5 MB.',
         ];
     }
 }

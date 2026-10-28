@@ -52,7 +52,7 @@ class AppServiceProvider extends ServiceProvider
         // PRD Hak Akses: Semua role dapat melihat perkara (termasuk Umum)
         Gate::define('view-cases', fn (User $user): bool => in_array(
             $user->role,
-            [UserRole::PENYIDIK, UserRole::PIMPINAN, UserRole::ADMINISTRATOR, UserRole::UMUM],
+            [UserRole::PENYIDIK, UserRole::ADMINISTRATOR, UserRole::UMUM],
             true
         ));
 
@@ -87,7 +87,7 @@ class AppServiceProvider extends ServiceProvider
             }
 
             if ($user->isPenyidik()) {
-                return $type === null || in_array($type, ['pasal', 'instansi-hukum'], true);
+                return $type !== null && in_array($type, ['pasal', 'instansi-hukum'], true);
             }
 
             return false;
@@ -99,7 +99,7 @@ class AppServiceProvider extends ServiceProvider
                 return false;
             }
 
-            return $user->isPimpinan() || $user->isUmum() || $user->isAdmin();
+            return $user->isUmum() || $user->isAdmin();
         });
 
         // PRD F-18 & Hak Akses: Edit hanya saat masih Draft; jika sudah lanjut ($isFinalized = true) terkunci mutlak termasuk untuk Administrator

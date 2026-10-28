@@ -62,9 +62,29 @@
                 this.sp3BerkasId = null;
                 this.sp3TersangkaNama = '';
                 this.sp3ActionUrl = '';
+            },
+
+            // Modal Lihat Detail SP3
+            isViewSp3ModalOpen: false,
+            viewSp3Data: {
+                tersangka_nama: '',
+                nomor_surat: '',
+                tanggal_sp3: '',
+                penyidik_nama: '',
+                keterangan: '',
+                dokumen_nama: '',
+                dokumen_preview_url: '',
+                dokumen_download_url: '',
+            },
+            openViewSp3Modal(data) {
+                this.viewSp3Data = data;
+                this.isViewSp3ModalOpen = true;
+            },
+            closeViewSp3Modal() {
+                this.isViewSp3ModalOpen = false;
             }
         }"
-        @keydown.escape.window="closeDpoModal(); closeRevokeModal(); closeSp3Modal();"
+        @keydown.escape.window="closeDpoModal(); closeRevokeModal(); closeSp3Modal(); closeViewSp3Modal();"
     >
         {{-- Header --}}
         <div class="mb-6">
@@ -81,9 +101,6 @@
             <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                 <div>
                     <h1 class="text-2xl font-semibold text-gray-800 dark:text-white/90">Detail Perkara &amp; Berkas Perkara</h1>
-                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                        Data TKP, Tim PPNS, Tersangka (1 Tersangka = 1 Berkas Perkara), dan Pasal yang Disangkakan.
-                    </p>
                 </div>
 
                 <div class="flex flex-wrap items-center gap-2">
@@ -328,9 +345,6 @@
                             <h2 class="text-base font-semibold text-gray-800 dark:text-white/90">
                                 Daftar Tersangka &amp; Berkas Perkara ({{ $perkara->tersangkas->count() }} Berkas)
                             </h2>
-                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                                Setiap tersangka memiliki 1 Berkas Perkara terpisah beserta Pasal yang disangkakan.
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -378,19 +392,32 @@
                                             <i class="fi fi-rr-ban text-xs"></i>
                                             <span>SP3 Terbit (Tidak Selesai)</span>
                                         </span>
-                                        @if ($berkas->sp3?->dokumen)
-                                            <a
-                                                href="{{ route('dokumen.preview', $berkas->sp3->dokumen) }}"
-                                                data-pdf-preview="{{ route('dokumen.preview', $berkas->sp3->dokumen) }}"
-                                                data-pdf-title="Dokumen SP3 ({{ $berkas->sp3->dokumen->nama_file_asli }})"
-                                                data-pdf-download="{{ route('dokumen.download', $berkas->sp3->dokumen) }}"
-                                                target="_blank"
-                                                class="inline-flex items-center gap-1.5 rounded-full border border-gray-300 bg-white px-3 py-1 text-xs font-medium text-gray-700 transition hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300"
-                                                title="Lihat Dokumen Legal SP3"
+                                        @if ($berkas->sp3)
+                                            @php
+                                                $sp3Creator = $berkas->sp3->creator ?? $perkara->ppnsUtama->first();
+                                                $sp3PenyidikLabel = $sp3Creator
+                                                    ? $sp3Creator->nama . ($sp3Creator->nip && $sp3Creator->nip !== '-' ? " (NIP: {$sp3Creator->nip})" : '')
+                                                    : '-';
+                                                $sp3ModalPayload = [
+                                                    'tersangka_nama' => $tersangka->nama,
+                                                    'nomor_surat' => $berkas->sp3->nomor_surat ?: '-',
+                                                    'tanggal_sp3' => $berkas->sp3->tanggal_sp3?->format('d-m-Y') ?? '-',
+                                                    'penyidik_nama' => $sp3PenyidikLabel,
+                                                    'keterangan' => $berkas->sp3->keterangan ?: '-',
+                                                    'dokumen_nama' => $berkas->sp3->dokumen?->nama_file_asli ?? '',
+                                                    'dokumen_preview_url' => $berkas->sp3->dokumen ? route('dokumen.preview', $berkas->sp3->dokumen) : '',
+                                                    'dokumen_download_url' => $berkas->sp3->dokumen ? route('dokumen.download', $berkas->sp3->dokumen) : '',
+                                                ];
+                                            @endphp
+                                            <button
+                                                type="button"
+                                                @click="openViewSp3Modal({{ json_encode($sp3ModalPayload, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) }})"
+                                                class="inline-flex items-center gap-1.5 rounded-full border border-gray-300 bg-white px-3 py-1 text-xs font-medium text-gray-700 transition hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+                                                title="Lihat Detail SP3"
                                             >
                                                 <i class="fi fi-rr-document text-xs"></i>
                                                 <span>Lihat SP3</span>
-                                            </a>
+                                            </button>
                                         @endif
                                     @endif
 
@@ -405,7 +432,7 @@
                                         @endphp
                                         <span
                                             class="inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium {{ $slaBadge['badge_class'] }}"
-                                            title="Jatuh Tempo: {{ $berkas->effective_deadline?->format('d-m-Y') }} (Batas tahun selalu mutlak atas SLA)"
+                                            title="Jatuh Tempo: {{ $berkas->effective_deadline?->format('d-m-Y') }} (Batas tahun selalu mutlak atas Tenggang Waktu)"
                                         >
                                             <i class="fi {{ $slaBadge['icon'] }} text-xs"></i>
                                             <span>{{ $slaBadge['label'] }}</span>
@@ -424,7 +451,7 @@
                                                     <i class="fi fi-rr-user-check text-xs"></i>
                                                     <span>Cabut Status DPO</span>
                                                 </button>
-                                            @elseif ($berkas->status_formal === null && ! $berkas->hasSp3())
+                                            @elseif ($berkas->canActivateDpo())
                                                 <button
                                                     type="button"
                                                     @click="openDpoModal({{ $berkas->id }}, '{{ addslashes($tersangka->nama) }}')"
@@ -596,30 +623,48 @@
                                 </div>
                             </div>
 
-                            {{-- Informasi Batas Waktu & SLA Perkara (PRD bagian SLA) --}}
+                            {{-- Informasi Batas Waktu & Tenggang Waktu Perkara --}}
                             @if ($berkas?->tanggal_spdp)
-                                <div class="mt-3 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-gray-100 bg-gray-50/60 p-3 text-xs sm:px-4 dark:border-gray-800 dark:bg-white/[0.02]">
-                                    <div class="flex flex-wrap items-center gap-4">
-                                        <div class="flex items-center gap-2">
-                                            <i class="fi fi-rr-calendar text-brand-500"></i>
-                                            <span class="text-gray-500 dark:text-gray-400">Tanggal Terbit SPDP:</span>
-                                            <strong class="text-gray-800 dark:text-white/90">{{ $berkas->tanggal_spdp->format('d-m-Y') }}</strong>
+                                <div class="mt-4 flex flex-col justify-between gap-4 rounded-xl border border-gray-200 bg-gray-50/80 p-4 sm:flex-row sm:items-center sm:p-5 dark:border-gray-800 dark:bg-white/[0.03]">
+                                    <div class="flex flex-wrap items-center gap-5 sm:gap-8">
+                                        <div class="flex items-center gap-3">
+                                            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-600 dark:bg-brand-500/15 dark:text-brand-400">
+                                                <i class="fi fi-rr-calendar text-base"></i>
+                                            </div>
+                                            <div>
+                                                <p class="text-xs font-medium text-gray-500 dark:text-gray-400">Tanggal Terbit SPDP</p>
+                                                <p class="mt-0.5 text-base font-bold tabular-nums text-gray-900 dark:text-white">
+                                                    {{ $berkas->tanggal_spdp->format('d-m-Y') }}
+                                                </p>
+                                            </div>
                                         </div>
 
-                                        <div class="flex items-center gap-2">
-                                            <i class="fi fi-rr-hourglass-end text-brand-500"></i>
-                                            <span class="text-gray-500 dark:text-gray-400">Batas Waktu Penyelesaian:</span>
-                                            <strong class="text-gray-800 dark:text-white/90">{{ $berkas->effective_deadline?->format('d-m-Y') }}</strong>
-                                            <span class="text-gray-400 dark:text-gray-500">({{ $berkas->sla_deadline?->year !== $berkas->tanggal_spdp->year ? 'Batas Tahun Mutlak 31 Des' : 'SLA 1 Bulan Kalender' }})</span>
+                                        <div class="hidden h-9 w-px bg-gray-200 sm:block dark:bg-gray-800"></div>
+
+                                        <div class="flex items-center gap-3">
+                                            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-600 dark:bg-brand-500/15 dark:text-brand-400">
+                                                <i class="fi fi-rr-hourglass-end text-base"></i>
+                                            </div>
+                                            <div>
+                                                <p class="text-xs font-medium text-gray-500 dark:text-gray-400">Batas Waktu Penyelesaian</p>
+                                                <div class="mt-0.5 flex flex-wrap items-baseline gap-1.5">
+                                                    <span class="text-base font-bold tabular-nums text-gray-900 dark:text-white">
+                                                        {{ $berkas->effective_deadline?->format('d-m-Y') }}
+                                                    </span>
+                                                    <span class="text-xs font-medium text-gray-500 dark:text-gray-400">
+                                                        ({{ $berkas->sla_deadline?->year !== $berkas->tanggal_spdp->year ? 'Batas Tahun Mutlak 31 Des' : 'Tenggang Waktu 1 Bulan Kalender' }})
+                                                    </span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div>
+                                    <div class="shrink-0">
                                         @php
                                             $slaBadge = $berkas->sla_badge;
                                         @endphp
-                                        <span class="inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1 text-xs font-medium {{ $slaBadge['badge_class'] }}">
-                                            <i class="fi {{ $slaBadge['icon'] }} text-xs"></i>
+                                        <span class="inline-flex items-center gap-2 rounded-lg border px-3.5 py-1.5 text-sm font-semibold {{ $slaBadge['badge_class'] }}">
+                                            <i class="fi {{ $slaBadge['icon'] }} text-sm"></i>
                                             <span>{{ $slaBadge['label'] }}</span>
                                         </span>
                                     </div>
@@ -644,12 +689,15 @@
                             </div>
 
                             {{-- Riwayat Tahapan Progress --}}
+                            @php
+                                $orderedTahapan = $berkas?->ordered_tahapan ?? collect();
+                            @endphp
                             <div class="mt-4 border-t border-gray-100 pt-3 dark:border-gray-800">
                                 <p class="mb-2 text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                                    Riwayat Tahapan Progress ({{ $berkas?->tahapan->count() ?? 0 }} Tahap)
+                                    Riwayat Tahapan Progress ({{ $orderedTahapan->count() }} Tahap)
                                 </p>
-                                <div class="flex flex-wrap gap-2">
-                                    @forelse ($berkas?->tahapan ?? [] as $tahap)
+                                <div class="flex flex-wrap items-center gap-2">
+                                    @forelse ($orderedTahapan as $tahap)
                                         <a
                                             href="{{ route('berkas-perkara.tahapan.show', [$berkas, $tahap]) }}"
                                             class="inline-flex items-center gap-1.5 rounded-lg border {{ $tahap->isFinal() ? 'border-success-200 bg-success-50 text-success-700 dark:border-success-500/30 dark:bg-success-500/10 dark:text-success-300' : 'border-yellow-200 bg-yellow-50 text-yellow-800 dark:border-yellow-500/30 dark:bg-yellow-500/10 dark:text-yellow-300' }} px-3 py-1.5 text-xs font-medium hover:underline"
@@ -657,6 +705,9 @@
                                             <i class="fi {{ $tahap->isFinal() ? 'fi-rr-lock' : 'fi-rr-edit' }} text-xs"></i>
                                             <span>{{ $tahap->jenis_tahap->label() }} ({{ $tahap->status === 'final' ? 'Final' : 'Draft' }})</span>
                                         </a>
+                                        @if (! $loop->last)
+                                            <i class="fi fi-rr-arrow-small-right text-sm text-gray-400 dark:text-gray-500" aria-hidden="true"></i>
+                                        @endif
                                     @empty
                                         <span class="text-xs italic text-gray-400">Belum ada tahapan progress yang dicatat.</span>
                                     @endforelse
@@ -875,7 +926,6 @@
                             id="dpo_dokumen"
                             name="dokumen"
                             label="Dokumen Surat Penetapan DPO (PDF, Opsional)"
-                            helperText="Format file: PDF murni (Maksimal 20 MB)."
                         />
                     </div>
 
@@ -1078,7 +1128,6 @@
                             name="dokumen"
                             label="Dokumen Fisik SP3 (PDF)"
                             required="true"
-                            helperText="Wajib format PDF murni (Maksimal 5 MB)."
                         />
                     </div>
 
@@ -1115,5 +1164,7 @@
                 </form>
             </div>
         </div>
+
+        @include('pages.perkara._modal-detail-sp3')
     </div>
 @endsection

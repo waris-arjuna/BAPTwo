@@ -45,21 +45,14 @@
                 </div>
             </div>
 
-            {{-- NIP & Pangkat --}}
+            {{-- NIP Jaksa Penuntut --}}
             <div class="rounded-xl border border-gray-100 bg-gray-50/50 p-3.5 dark:border-gray-800 dark:bg-white/[0.02]">
-                <p class="text-xs font-medium text-gray-400 dark:text-gray-500">NIP &amp; Pangkat / Golongan</p>
+                <p class="text-xs font-medium text-gray-400 dark:text-gray-500">NIP Jaksa Penuntut</p>
                 <div class="mt-1 flex items-start gap-2">
                     <i class="fi fi-rr-id-badge mt-0.5 text-sm text-gray-500 dark:text-gray-400"></i>
-                    <div>
-                        <p class="text-sm font-medium text-gray-800 dark:text-white/90">
-                            NIP: <span class="font-mono tabular-nums">{{ $perkara->penuntut_umum_nip ?: '-' }}</span>
-                        </p>
-                        @if ($perkara->penuntut_umum_pangkat)
-                            <p class="text-xs text-gray-500 dark:text-gray-400">
-                                {{ $perkara->penuntut_umum_pangkat }}
-                            </p>
-                        @endif
-                    </div>
+                    <p class="font-mono text-sm font-medium tabular-nums text-gray-800 dark:text-white/90">
+                        {{ $perkara->penuntut_umum_nip ?: '-' }}
+                    </p>
                 </div>
             </div>
         </div>

@@ -1,9 +1,11 @@
 <?php
 
+use App\Enums\JenisTahap;
 use App\Helpers\MenuHelper;
 use App\Models\BerkasPerkara;
 use App\Models\Pasal;
 use App\Models\Perkara;
+use App\Models\TahapanPerkara;
 use App\Models\Tersangka;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -181,10 +183,10 @@ it('allows authenticated users to view Progress Perkara and filter by status', f
     ]);
     $berkas->pasals()->attach($pasal->id);
 
-    // Penyidik diblokir (403 Forbidden) sesuai Poin 20
+    // Penyidik dialihkan ke Daftar Perkara sesuai Poin 3A (Revisi 27 Okt)
     $this->actingAs($penyidik)
         ->get(route('progress-perkara.index'))
-        ->assertForbidden();
+        ->assertRedirect(route('data-perkara.index'));
 
     // Pemimpin diizinkan (200 OK) sesuai Poin 20
     $this->actingAs($pimpinan)
@@ -259,6 +261,15 @@ it('renders standard 8-column Daftar Perkara table with pasal truncation and ver
     ]);
     $berkas->pasals()->attach([$pasal1->id, $pasal2->id, $pasal3->id]);
 
+    TahapanPerkara::create([
+        'berkas_perkara_id' => $berkas->id,
+        'jenis_tahap' => JenisTahap::SPDP->value,
+        'status' => 'final',
+        'nomor_surat' => 'SPDP/STANDAR/01',
+        'tanggal_surat' => '2026-10-15',
+        'finalized_at' => now(),
+    ]);
+
     $response = $this->actingAs($penyidik)->get(route('data-perkara.index'));
 
     $response->assertOk()
@@ -281,7 +292,7 @@ it('renders standard 8-column Daftar Perkara table with pasal truncation and ver
         ->assertSee('Pasal 197')
         ->assertSee('...')
         // Status & Progres angka persen
-        ->assertSee('Perkara Terbentuk')
+        ->assertSee('Dalam Proses')
         ->assertSee('SPDP')
         ->assertSee('15%');
 });

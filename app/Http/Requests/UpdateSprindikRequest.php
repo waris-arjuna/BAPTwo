@@ -61,7 +61,7 @@ class UpdateSprindikRequest extends FormRequest
             'tanggal_sprindik.required' => 'Tanggal sprindik wajib diisi untuk melanjutkan tahap.',
             'tanggal_sprindik.date' => 'Format tanggal sprindik tidak valid.',
             'dokumen_sprindik.mimes' => 'Dokumen sprindik harus berformat PDF.',
-            'dokumen_sprindik.max' => 'Ukuran dokumen sprindik maksimal 5 MB.',
+            'dokumen_sprindik.max' => 'Ukuran file dokumen tidak boleh melebihi 5 MB.',
         ];
     }
 }

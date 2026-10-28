@@ -6,6 +6,7 @@ use App\Enums\UserRole;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -87,6 +88,17 @@ class User extends Authenticatable
     }
 
     /**
+     * Relasi ke perkara di mana user bertindak sebagai PPNS Utama
+     *
+     * @return BelongsToMany<Perkara, $this>
+     */
+    public function perkaraUtama(): BelongsToMany
+    {
+        return $this->belongsToMany(Perkara::class, 'perkara_ppns', 'user_id', 'perkara_id')
+            ->wherePivot('peran', 'utama');
+    }
+
+    /**
      * Pangkat dari relasi panggol.
      */
     public function getPangkatAttribute(): ?string
@@ -151,6 +163,15 @@ class User extends Authenticatable
         };
     }
 
+    public function setAttribute($key, $value)
+    {
+        if ($key === 'role' && $value === 'pimpinan') {
+            $value = UserRole::UMUM;
+        }
+
+        return parent::setAttribute($key, $value);
+    }
+
     public function isAdmin(): bool
     {
         return $this->role === UserRole::ADMINISTRATOR;
@@ -158,7 +179,7 @@ class User extends Authenticatable
 
     public function isPimpinan(): bool
     {
-        return $this->role === UserRole::PIMPINAN;
+        return $this->role === UserRole::UMUM;
     }
 
     public function isPenyidik(): bool

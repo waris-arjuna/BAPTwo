@@ -13,6 +13,7 @@ beforeEach(function () {
     $this->admin = User::factory()->create(['role' => 'administrator']);
     $this->penyidik = User::factory()->create(['role' => 'penyidik']);
     $this->pimpinan = User::factory()->create(['role' => 'pimpinan']);
+    $this->umum = User::factory()->create(['role' => 'umum']);
 
     // Kasus 1: Perkara & Berkas 1 (Dalam Proses, DPO Aktif)
     $this->perkara1 = Perkara::create([
@@ -80,33 +81,36 @@ beforeEach(function () {
     ]);
 });
 
-test('halaman seluruh perkara dapat diakses oleh seluruh peran dan merender kartu ringkasan metrik', function () {
-    // Penyidik
-    $this->actingAs($this->penyidik)
+test('halaman seluruh perkara dapat diakses oleh peran pimpinan dan umum serta mengalihkan penyidik dan admin', function () {
+    // Pimpinan
+    $this->actingAs($this->pimpinan)
         ->get(route('seluruh-perkara.index'))
         ->assertOk()
         ->assertSee('Seluruh Perkara')
         ->assertSee('SP.Gas/001/X/2026')
         ->assertSee('Budi Santoso')
         ->assertSee('BP/001/X/2026')
-        ->assertSee('Nomor Berkas: BP/001/X/2026');
-
-    // Pimpinan
-    $this->actingAs($this->pimpinan)
-        ->get(route('seluruh-perkara.index'))
-        ->assertOk()
-        ->assertSee('Seluruh Perkara')
         ->assertSee('Total Perkara')
         ->assertSee('Dalam Proses');
 
-    // Administrator
+    // Umum
+    $this->actingAs($this->umum)
+        ->get(route('seluruh-perkara.index'))
+        ->assertOk()
+        ->assertSee('Seluruh Perkara');
+
+    // Penyidik & Administrator dialihkan ke Data Perkara sesuai Poin 3A (Revisi 27 Okt)
+    $this->actingAs($this->penyidik)
+        ->get(route('seluruh-perkara.index'))
+        ->assertRedirect(route('data-perkara.index'));
+
     $this->actingAs($this->admin)
         ->get(route('seluruh-perkara.index'))
-        ->assertOk();
+        ->assertRedirect(route('data-perkara.index'));
 });
 
-test('halaman seluruh perkara merender partial tabel saat request ajax X-Filter-Partial', function () {
-    $response = $this->actingAs($this->penyidik)
+test('halaman seluruh perkara merender partial tabel saat request ajax X-Filter-Partial oleh pimpinan', function () {
+    $response = $this->actingAs($this->pimpinan)
         ->withHeaders(['X-Filter-Partial' => '1'])
         ->get(route('seluruh-perkara.index'));
 
@@ -117,16 +121,16 @@ test('halaman seluruh perkara merender partial tabel saat request ajax X-Filter-
 });
 
 test('filter pencarian dan status pada seluruh perkara memfilter data secara akurat', function () {
-    // Cari 'Budi'
-    $responseBudi = $this->actingAs($this->penyidik)
+    // Cari 'Budi' oleh Pimpinan
+    $responseBudi = $this->actingAs($this->pimpinan)
         ->get(route('seluruh-perkara.index', ['search' => 'Budi']));
 
     $responseBudi->assertOk();
     $responseBudi->assertSee('SP.Gas/001/X/2026');
     $responseBudi->assertDontSee('SP.Gas/002/X/2026');
 
-    // Filter status 'Selesai'
-    $responseSelesai = $this->actingAs($this->penyidik)
+    // Filter status 'Selesai' oleh Pimpinan
+    $responseSelesai = $this->actingAs($this->pimpinan)
         ->get(route('seluruh-perkara.index', ['status' => 'Selesai']));
 
     $responseSelesai->assertOk();

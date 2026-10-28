@@ -75,7 +75,7 @@
                     {{ __('Daftar Pengguna Sistem') }}
                 </h2>
                 <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                    {{ __('Kelola akun Penyidik, Pimpinan, dan Administrator BAPTwo (Soft Delete aktif).') }}
+                    {{ __('Kelola akun Penyidik, Umum, dan Administrator BAPTwo (Soft Delete aktif).') }}
                 </p>
             </div>
 
