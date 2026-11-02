@@ -4,6 +4,7 @@ namespace App\Exports;
 
 use App\Enums\JenisTahap;
 use App\Models\Perkara;
+use App\Services\DashboardService;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use PhpOffice\PhpSpreadsheet\Cell\DataType;
@@ -12,6 +13,7 @@ use PhpOffice\PhpSpreadsheet\Shared\Date;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use PhpOffice\PhpSpreadsheet\Style\Border;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Symfony\Component\HttpFoundation\StreamedResponse;
@@ -127,7 +129,378 @@ class PerkaraRekapExport
         // Freeze panes di bawah baris nomor kolom (di bawah baris 6)
         $sheet->freezePane('A7');
 
+        // Tambahkan Sheet 2: Ringkasan Dashboard (Poin 9)
+        $this->buildDashboardSummarySheet($spreadsheet);
+
+        // Pastikan Sheet 1 (History LAPJU) tetap menjadi sheet aktif saat file dibuka
+        $spreadsheet->setActiveSheetIndex(0);
+
         return $spreadsheet;
+    }
+
+    /**
+     * Membangun Sheet 2: Ringkasan Dashboard (Poin 9).
+     */
+    protected function buildDashboardSummarySheet(Spreadsheet $spreadsheet): void
+    {
+        $sheet = $spreadsheet->createSheet();
+        $sheet->setTitle('Ringkasan Dashboard');
+
+        $dashboardService = app(DashboardService::class);
+        $tahun = $this->tahun ?: (int) now()->year;
+        $bulan = ($this->mode === 'bulan') ? $this->bulan : null;
+
+        $labelPeriode = $this->getPeriodeLabel();
+        $nowTz = Carbon::now(config('app.timezone', 'Asia/Makassar'));
+        $tanggalExport = sprintf('%02d %s %d', $nowTz->day, $this->bulanIndo[$nowTz->month] ?? '', $nowTz->year);
+
+        // Header Title Sheet 2
+        $sheet->setCellValue('A1', 'RINGKASAN EKSEKUTIF & STATISTIK PENANGANAN PERKARA');
+        $sheet->getStyle('A1')->getFont()->setName('Arial')->setSize(14)->setBold(true)->getColor()->setRGB('0F172A');
+
+        $sheet->setCellValue('A2', "Periode Data: {$labelPeriode}  |  Tanggal Ekspor: {$tanggalExport}");
+        $sheet->getStyle('A2')->getFont()->setName('Arial')->setSize(10)->getColor()->setRGB('475569');
+
+        // Style Helpers
+        $navyHeaderStyle = [
+            'font' => ['name' => 'Arial', 'size' => 10, 'bold' => true, 'color' => ['rgb' => 'FFFFFF']],
+            'fill' => ['fillType' => Fill::FILL_SOLID, 'startColor' => ['rgb' => '1E3A8A']],
+            'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER, 'vertical' => Alignment::VERTICAL_CENTER],
+            'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN, 'color' => ['rgb' => '0F172A']]],
+        ];
+
+        $sectionTitleStyle = [
+            'font' => ['name' => 'Arial', 'size' => 11, 'bold' => true, 'color' => ['rgb' => '1E3A8A']],
+            'alignment' => ['horizontal' => Alignment::HORIZONTAL_LEFT, 'vertical' => Alignment::VERTICAL_CENTER],
+        ];
+
+        $dataBorder = ['allBorders' => ['borderStyle' => Border::BORDER_THIN, 'color' => ['rgb' => 'E2E8F0']]];
+        $totalBorder = [
+            'top' => ['borderStyle' => Border::BORDER_THIN, 'color' => ['rgb' => '94A3B8']],
+            'bottom' => ['borderStyle' => Border::BORDER_DOUBLE, 'color' => ['rgb' => '0F172A']],
+            'left' => ['borderStyle' => Border::BORDER_THIN, 'color' => ['rgb' => 'E2E8F0']],
+            'right' => ['borderStyle' => Border::BORDER_THIN, 'color' => ['rgb' => 'E2E8F0']],
+        ];
+
+        // -------------------------------------------------------------
+        // BLOK 1: REKAPITULASI STATUS PERKARA
+        // -------------------------------------------------------------
+        $row = 4;
+        $sheet->setCellValue("A{$row}", 'I. REKAPITULASI STATUS PERKARA');
+        $sheet->getStyle("A{$row}")->applyFromArray($sectionTitleStyle);
+
+        $row = 5;
+        $sheet->setCellValue("A{$row}", 'Status Perkara');
+        $sheet->setCellValue("B{$row}", 'Jumlah Berkas');
+        $sheet->setCellValue("C{$row}", 'Persentase (%)');
+        $sheet->setCellValue("D{$row}", 'Keterangan SLA / Progres');
+        $sheet->getStyle("A{$row}:D{$row}")->applyFromArray($navyHeaderStyle);
+
+        $statusData = $dashboardService->getCaseStatusData(
+            tahun: $tahun,
+            bulan: $bulan,
+            mode: $this->mode,
+            tanggalMulai: $this->tanggalMulai,
+            tanggalSelesai: $this->tanggalSelesai
+        );
+        $totalBerkas = $statusData['totalPerkara'] ?? 0;
+        $slaData = $statusData['sla'] ?? [];
+
+        $statusItems = [
+            [
+                'status' => 'Selesai (Tahap II)',
+                'count' => $statusData['selesai'] ?? 0,
+                'desc' => '100% Selesai & Dilimpahkan ke Kejaksaan',
+            ],
+            [
+                'status' => 'Dalam Proses (Sesuai SLA)',
+                'count' => ($slaData['dalamSla'] ?? 0) + ($slaData['belumSpdp'] ?? 0),
+                'desc' => 'Proses Penyidikan Berjalan Normal',
+            ],
+            [
+                'status' => 'Dalam Proses (Mendekati Batas SLA)',
+                'count' => $slaData['mendekatiSla'] ?? 0,
+                'desc' => 'Tersisa <= 7 Hari Kalender',
+            ],
+            [
+                'status' => 'Dalam Proses (Melebihi SLA)',
+                'count' => $slaData['lewatSla'] ?? 0,
+                'desc' => 'Prioritas Tindak Lanjut / Batas Waktu Terlampaui',
+            ],
+            [
+                'status' => 'Tidak Selesai (SP3)',
+                'count' => $statusData['tidakSelesai'] ?? 0,
+                'desc' => 'Penyidikan Telah Dihentikan Secara Resmi',
+            ],
+        ];
+
+        foreach ($statusItems as $idx => $item) {
+            $row++;
+            $pct = $totalBerkas > 0 ? round(($item['count'] / $totalBerkas) * 100, 1) : 0;
+
+            $sheet->setCellValue("A{$row}", $item['status']);
+            $sheet->setCellValue("B{$row}", $item['count']);
+            $sheet->setCellValue("C{$row}", $pct.'%');
+            $sheet->setCellValue("D{$row}", $item['desc']);
+
+            $sheet->getStyle("A{$row}:D{$row}")->applyFromArray(['borders' => $dataBorder]);
+            $sheet->getStyle("A{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+            $sheet->getStyle("B{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
+            $sheet->getStyle("C{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
+            $sheet->getStyle("D{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+
+            if ($idx % 2 === 1) {
+                $sheet->getStyle("A{$row}:D{$row}")->getFill()->setFillType(Fill::FILL_SOLID)->getStartColor()->setRGB('F8FAFC');
+            }
+        }
+
+        // Total Row Blok 1
+        $row++;
+        $sheet->setCellValue("A{$row}", 'Total Berkas Perkara');
+        $sheet->setCellValue("B{$row}", $totalBerkas);
+        $sheet->setCellValue("C{$row}", '100%');
+        $sheet->setCellValue("D{$row}", '-');
+        $sheet->getStyle("A{$row}:D{$row}")->applyFromArray([
+            'font' => ['bold' => true],
+            'fill' => ['fillType' => Fill::FILL_SOLID, 'startColor' => ['rgb' => 'F1F5F9']],
+            'borders' => $totalBorder,
+        ]);
+        $sheet->getStyle("B{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
+        $sheet->getStyle("C{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
+
+        // -------------------------------------------------------------
+        // BLOK 2: TREN PERKARA BULANAN (JANUARI s.d. DESEMBER)
+        // -------------------------------------------------------------
+        $row += 2;
+        if ($this->mode === 'semua') {
+            $trenTitle = 'II. TREN PERKARA BULANAN (SEMUA DATA)';
+            $trenTotalLabel = 'Total Akumulasi (Semua Data)';
+        } elseif ($this->mode === 'rentang' && $this->tanggalMulai && $this->tanggalSelesai) {
+            $trenTitle = "II. TREN PERKARA BULANAN ({$labelPeriode})";
+            $trenTotalLabel = "Total Periode ({$labelPeriode})";
+        } else {
+            $trenTitle = "II. TREN PERKARA BULANAN TAHUN {$tahun}";
+            $trenTotalLabel = "Total Tahunan ({$tahun})";
+        }
+
+        $sheet->setCellValue("A{$row}", $trenTitle);
+        $sheet->getStyle("A{$row}")->applyFromArray($sectionTitleStyle);
+
+        $row++;
+        $sheet->setCellValue("A{$row}", 'No');
+        $sheet->setCellValue("B{$row}", 'Bulan');
+        $sheet->setCellValue("C{$row}", 'Perkara Masuk (LK)');
+        $sheet->setCellValue("D{$row}", 'Perkara Selesai (Tahap II)');
+        $sheet->setCellValue("E{$row}", 'Tingkat Penyelesaian (Clearance)');
+        $sheet->getStyle("A{$row}:E{$row}")->applyFromArray($navyHeaderStyle);
+
+        $monthlyTrends = $dashboardService->getMonthlyCasesTrends(
+            tahun: $tahun,
+            mode: $this->mode,
+            tanggalMulai: $this->tanggalMulai,
+            tanggalSelesai: $this->tanggalSelesai
+        );
+
+        for ($m = 1; $m <= 12; $m++) {
+            $row++;
+            $inc = (int) ($monthlyTrends['incoming'][$m - 1] ?? 0);
+            $comp = (int) ($monthlyTrends['completed'][$m - 1] ?? 0);
+            $cr = $inc > 0 ? round(($comp / $inc) * 100, 1).'%' : ($comp > 0 ? '100%' : '0%');
+
+            $sheet->setCellValue("A{$row}", $m);
+            $sheet->setCellValue("B{$row}", $this->bulanIndo[$m] ?? "Bulan {$m}");
+            $sheet->setCellValue("C{$row}", $inc);
+            $sheet->setCellValue("D{$row}", $comp);
+            $sheet->setCellValue("E{$row}", $cr);
+
+            $sheet->getStyle("A{$row}:E{$row}")->applyFromArray(['borders' => $dataBorder]);
+            $sheet->getStyle("A{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+            $sheet->getStyle("B{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+            $sheet->getStyle("C{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
+            $sheet->getStyle("D{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
+            $sheet->getStyle("E{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
+
+            if ($m % 2 === 0) {
+                $sheet->getStyle("A{$row}:E{$row}")->getFill()->setFillType(Fill::FILL_SOLID)->getStartColor()->setRGB('F8FAFC');
+            }
+        }
+
+        // Total Row Blok 2
+        $row++;
+        $sheet->setCellValue("A{$row}", '');
+        $sheet->setCellValue("B{$row}", $trenTotalLabel);
+        $sheet->setCellValue("C{$row}", $monthlyTrends['totalIncoming'] ?? 0);
+        $sheet->setCellValue("D{$row}", $monthlyTrends['totalCompleted'] ?? 0);
+        $sheet->setCellValue("E{$row}", ($monthlyTrends['clearanceRate'] ?? 0).'%');
+        $sheet->getStyle("A{$row}:E{$row}")->applyFromArray([
+            'font' => ['bold' => true],
+            'fill' => ['fillType' => Fill::FILL_SOLID, 'startColor' => ['rgb' => 'F1F5F9']],
+            'borders' => $totalBorder,
+        ]);
+        $sheet->getStyle("C{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
+        $sheet->getStyle("D{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
+        $sheet->getStyle("E{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
+
+        // -------------------------------------------------------------
+        // BLOK 3: SEBARAN WILAYAH TKP
+        // -------------------------------------------------------------
+        $row += 2;
+        $sheet->setCellValue("A{$row}", 'III. SEBARAN WILAYAH TEMPAT KEJADIAN PERKARA (TKP)');
+        $sheet->getStyle("A{$row}")->applyFromArray($sectionTitleStyle);
+
+        $row++;
+        $sheet->setCellValue("A{$row}", 'No');
+        $sheet->setCellValue("B{$row}", 'Kabupaten / Kota');
+        $sheet->setCellValue("C{$row}", 'Jumlah Perkara');
+        $sheet->setCellValue("D{$row}", 'Persentase (%)');
+        $sheet->getStyle("A{$row}:D{$row}")->applyFromArray($navyHeaderStyle);
+
+        $tkpData = $dashboardService->getTkpDistribution(
+            tahun: $tahun,
+            limit: 20,
+            bulan: $bulan,
+            mode: $this->mode,
+            tanggalMulai: $this->tanggalMulai,
+            tanggalSelesai: $this->tanggalSelesai
+        );
+        $regions = $tkpData['regions'] ?? [];
+        $totalTkp = $tkpData['totalWithTkp'] ?? 0;
+
+        if (empty($regions)) {
+            $row++;
+            $sheet->setCellValue("A{$row}", 'Belum ada data TKP tercatat pada periode ini.');
+            $sheet->mergeCells("A{$row}:D{$row}");
+            $sheet->getStyle("A{$row}:D{$row}")->applyFromArray(['borders' => $dataBorder]);
+            $sheet->getStyle("A{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        } else {
+            foreach ($regions as $idx => $reg) {
+                $row++;
+                $sheet->setCellValue("A{$row}", $idx + 1);
+                $sheet->setCellValue("B{$row}", $reg['name']);
+                $sheet->setCellValue("C{$row}", $reg['count']);
+                $sheet->setCellValue("D{$row}", $reg['percent'].'%');
+
+                $sheet->getStyle("A{$row}:D{$row}")->applyFromArray(['borders' => $dataBorder]);
+                $sheet->getStyle("A{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+                $sheet->getStyle("B{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+                $sheet->getStyle("C{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
+                $sheet->getStyle("D{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
+
+                if ($idx % 2 === 1) {
+                    $sheet->getStyle("A{$row}:D{$row}")->getFill()->setFillType(Fill::FILL_SOLID)->getStartColor()->setRGB('F8FAFC');
+                }
+            }
+
+            // Total Row Blok 3
+            $row++;
+            $sheet->setCellValue("A{$row}", '');
+            $sheet->setCellValue("B{$row}", 'Total Perkara Tercatat dengan TKP');
+            $sheet->setCellValue("C{$row}", $totalTkp);
+            $sheet->setCellValue("D{$row}", '100%');
+            $sheet->getStyle("A{$row}:D{$row}")->applyFromArray([
+                'font' => ['bold' => true],
+                'fill' => ['fillType' => Fill::FILL_SOLID, 'startColor' => ['rgb' => 'F1F5F9']],
+                'borders' => $totalBorder,
+            ]);
+            $sheet->getStyle("C{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
+            $sheet->getStyle("D{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
+        }
+
+        // -------------------------------------------------------------
+        // BLOK 4: TOP PASAL YANG DISANGKAKAN
+        // -------------------------------------------------------------
+        $row += 2;
+        $sheet->setCellValue("A{$row}", 'IV. PASAL UNDANG-UNDANG PALING BANYAK DISANGKAKAN');
+        $sheet->getStyle("A{$row}")->applyFromArray($sectionTitleStyle);
+
+        $row++;
+        $sheet->setCellValue("A{$row}", 'Peringkat');
+        $sheet->setCellValue("B{$row}", 'Pasal & Nama Undang-Undang');
+        $sheet->setCellValue("C{$row}", 'Uraian Singkat / Deskripsi Pelanggaran');
+        $sheet->setCellValue("D{$row}", 'Jumlah Berkas Perkara');
+        $sheet->getStyle("A{$row}:D{$row}")->applyFromArray($navyHeaderStyle);
+
+        $topPasals = $dashboardService->getTopPasals(
+            tahun: $tahun,
+            limit: 10,
+            bulan: $bulan,
+            mode: $this->mode,
+            tanggalMulai: $this->tanggalMulai,
+            tanggalSelesai: $this->tanggalSelesai
+        );
+
+        if (empty($topPasals)) {
+            $row++;
+            $sheet->setCellValue("A{$row}", 'Belum ada data pasal disangkakan pada periode ini.');
+            $sheet->mergeCells("A{$row}:D{$row}");
+            $sheet->getStyle("A{$row}:D{$row}")->applyFromArray(['borders' => $dataBorder]);
+            $sheet->getStyle("A{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        } else {
+            foreach ($topPasals as $idx => $pasal) {
+                $row++;
+                $sheet->setCellValue("A{$row}", '#'.($idx + 1));
+                $sheet->setCellValue("B{$row}", $pasal['title']);
+                $sheet->setCellValue("C{$row}", $pasal['description']);
+                $sheet->setCellValue("D{$row}", $pasal['count']);
+
+                $sheet->getStyle("A{$row}:D{$row}")->applyFromArray(['borders' => $dataBorder]);
+                $sheet->getStyle("A{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+                $sheet->getStyle("B{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+                $sheet->getStyle("C{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+                $sheet->getStyle("D{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
+
+                if ($idx % 2 === 1) {
+                    $sheet->getStyle("A{$row}:D{$row}")->getFill()->setFillType(Fill::FILL_SOLID)->getStartColor()->setRGB('F8FAFC');
+                }
+            }
+        }
+
+        // -------------------------------------------------------------
+        // BLOK 5: RATA-RATA WAKTU PENYELESAIAN PER TAHAPAN
+        // -------------------------------------------------------------
+        $row += 2;
+        $sheet->setCellValue("A{$row}", 'V. RATA-RATA WAKTU PENYELESAIAN PER TAHAPAN');
+        $sheet->getStyle("A{$row}")->applyFromArray($sectionTitleStyle);
+
+        $row++;
+        $sheet->setCellValue("A{$row}", 'Tahapan Perkara');
+        $sheet->setCellValue("B{$row}", 'Rata-rata Durasi');
+        $sheet->setCellValue("C{$row}", 'Jumlah Sampel Selesai');
+        $sheet->setCellValue("D{$row}", 'Status Berkas Berjalan Saat Ini');
+        $sheet->getStyle("A{$row}:D{$row}")->applyFromArray($navyHeaderStyle);
+
+        $stageAverages = $dashboardService->getStageAverageDays(
+            tahun: $tahun,
+            bulan: $bulan,
+            mode: $this->mode,
+            tanggalMulai: $this->tanggalMulai,
+            tanggalSelesai: $this->tanggalSelesai
+        );
+
+        foreach ($stageAverages as $idx => $stg) {
+            $row++;
+            $sheet->setCellValue("A{$row}", $stg['name']);
+            $sheet->setCellValue("B{$row}", $stg['value']);
+            $sheet->setCellValue("C{$row}", $stg['sample'].' berkas');
+            $sheet->setCellValue("D{$row}", $stg['active_label'] ?? '-');
+
+            $sheet->getStyle("A{$row}:D{$row}")->applyFromArray(['borders' => $dataBorder]);
+            $sheet->getStyle("A{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+            $sheet->getStyle("B{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
+            $sheet->getStyle("C{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
+            $sheet->getStyle("D{$row}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+
+            if ($idx % 2 === 1) {
+                $sheet->getStyle("A{$row}:D{$row}")->getFill()->setFillType(Fill::FILL_SOLID)->getStartColor()->setRGB('F8FAFC');
+            }
+        }
+
+        // Set column dimensions
+        $sheet->getColumnDimension('A')->setWidth(18);
+        $sheet->getColumnDimension('B')->setWidth(38);
+        $sheet->getColumnDimension('C')->setWidth(26);
+        $sheet->getColumnDimension('D')->setWidth(44);
+        $sheet->getColumnDimension('E')->setWidth(24);
     }
 
     /**

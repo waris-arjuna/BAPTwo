@@ -228,7 +228,7 @@
                                 Ekspor Rekap Perkara (Excel)
                             </h3>
                             <p class="text-xs text-gray-500 dark:text-gray-400">
-                                Format LAPJU 45 kolom lengkap berdasarkan tanggal Laporan Kejadian (LK).
+                                Format multi-sheet: Sheet 1 History LAPJU (45 kolom) dan Sheet 2 Ringkasan Dashboard.
                             </p>
                         </div>
                     </div>

@@ -355,3 +355,152 @@ test('periode tanpa data perkara tidak mengunduh file dan memberikan respons war
         'message' => 'Tidak ada data pada periode ini',
     ]);
 });
+
+test('sheet 2 ringkasan dashboard menyesuaikan filter semua, tahun, bulan, dan rentang tanggal secara akurat', function () {
+    // Data 1 (sudah ada dari beforeEach): LK 2026-10-05, SPDP 2026-10-08 (Dalam Proses)
+    $pasal2026 = Pasal::firstOrCreate(['pasal' => 'Pasal 196 UU Kesehatan', 'nama_pasal' => 'UU Kesehatan', 'nomor' => '17', 'tahun' => 2023]);
+    $this->berkas->pasals()->sync([$pasal2026->id]);
+
+    $alamatTkp2026 = Alamat::create([
+        'nama' => 'Apotek Banjarmasin',
+        'kabupaten_nama' => 'Kota Banjarmasin',
+    ]);
+    $tkp2026 = Tkp::create([
+        'alamat_id' => $alamatTkp2026->id,
+        'klasifikasi' => 'retailer',
+        'legalitas' => 'ilegal',
+        'modus' => 'offline',
+    ]);
+    $this->perkara->update(['tkp_id' => $tkp2026->id]);
+
+    // Data 2: Perkara Tahun 2025 (Bulan Mei 2025, Selesai Tahap II)
+    $perkara2025 = Perkara::create([
+        'nomor_laporan_kejadian' => 'LK/001/V/2025',
+        'tanggal_laporan_kejadian' => '2025-05-10',
+        'tahap_laporan_status' => 'final',
+        'nomor_surat_perintah' => 'SP/001/V/2025',
+        'tanggal_surat_perintah' => '2025-05-11',
+        'tahap_sprindik_status' => 'final',
+        'created_by' => $this->penyidik->id,
+    ]);
+    $alamatTkp2025 = Alamat::create([
+        'nama' => 'Gudang Banjarbaru',
+        'kabupaten_nama' => 'Kota Banjarbaru',
+    ]);
+    $tkp2025 = Tkp::create([
+        'alamat_id' => $alamatTkp2025->id,
+        'klasifikasi' => 'distributor',
+        'legalitas' => 'ilegal',
+        'modus' => 'online',
+    ]);
+    $perkara2025->update(['tkp_id' => $tkp2025->id]);
+
+    $tersangka2025 = Tersangka::create([
+        'perkara_id' => $perkara2025->id,
+        'nama' => 'Ahmad Fauzi',
+        'nik' => '6372012345670002',
+        'jenis_kelamin' => 'laki-laki',
+        'agama' => 'islam',
+        'pekerjaan' => 'Wiraswasta',
+        'kewarganegaraan' => 'WNI',
+        'created_by' => $this->penyidik->id,
+    ]);
+    $berkas2025 = BerkasPerkara::create([
+        'perkara_id' => $perkara2025->id,
+        'tersangka_id' => $tersangka2025->id,
+        'nomor_berkas' => 'BP/001/V/2025',
+        'tanggal_spdp' => '2025-05-12',
+        'status_formal' => BerkasPerkara::STATUS_FORMAL_SELESAI,
+        'status_proses' => 'TAHAP II',
+        'progress_persen' => 100,
+        'created_by' => $this->penyidik->id,
+    ]);
+    $pasal2025 = Pasal::firstOrCreate(['pasal' => 'Pasal 62 UU Perlindungan Konsumen', 'nama_pasal' => 'UU PK', 'nomor' => '8', 'tahun' => 1999]);
+    $berkas2025->pasals()->sync([$pasal2025->id]);
+
+    TahapanPerkara::create([
+        'berkas_perkara_id' => $berkas2025->id,
+        'jenis_tahap' => JenisTahap::SPDP->value,
+        'nomor_surat' => 'SPDP/001/V/2025',
+        'tanggal_surat' => '2025-05-12',
+        'status' => 'final',
+        'finalized_at' => now(),
+        'created_by' => $this->penyidik->id,
+    ]);
+    TahapanPerkara::create([
+        'berkas_perkara_id' => $berkas2025->id,
+        'jenis_tahap' => JenisTahap::TAHAP_2->value,
+        'nomor_surat' => 'T2/001/V/2025',
+        'tanggal_surat' => '2025-05-25',
+        'status' => 'final',
+        'finalized_at' => now(),
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    // Data 3: Perkara Tahun 2026 Bulan September (di luar Oktober 2026)
+    $perkaraSep2026 = Perkara::create([
+        'nomor_laporan_kejadian' => 'LK/050/IX/2026',
+        'tanggal_laporan_kejadian' => '2026-09-10',
+        'tahap_laporan_status' => 'final',
+        'nomor_surat_perintah' => 'SP/050/IX/2026',
+        'tanggal_surat_perintah' => '2026-09-11',
+        'tahap_sprindik_status' => 'final',
+        'created_by' => $this->penyidik->id,
+    ]);
+    $alamatTkpSep = Alamat::create([
+        'nama' => 'Toko Martapura',
+        'kabupaten_nama' => 'Kabupaten Banjar',
+    ]);
+    $tkpSep = Tkp::create([
+        'alamat_id' => $alamatTkpSep->id,
+        'klasifikasi' => 'retailer',
+        'legalitas' => 'ilegal',
+        'modus' => 'offline',
+    ]);
+    $perkaraSep2026->update(['tkp_id' => $tkpSep->id]);
+    $tersangkaSep = Tersangka::create([
+        'perkara_id' => $perkaraSep2026->id,
+        'nama' => 'Budi Santoso',
+        'jenis_kelamin' => 'laki-laki',
+        'created_by' => $this->penyidik->id,
+    ]);
+    BerkasPerkara::create([
+        'perkara_id' => $perkaraSep2026->id,
+        'tersangka_id' => $tersangkaSep->id,
+        'nomor_berkas' => 'BP/050/IX/2026',
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    // 1. Uji Mode SEMUA DATA (total 3 berkas: 1 selesai dari 2025, 2 dalam proses dari 2026)
+    $exportSemua = new PerkaraRekapExport(mode: 'semua');
+    $sheetSemua = $exportSemua->generateSpreadsheet()->getSheetByName('Ringkasan Dashboard');
+    expect($sheetSemua)->not->toBeNull();
+    expect((int) $sheetSemua->getCell('B6')->getValue())->toBe(1); // Selesai (Tahap II) = 1
+    expect((int) $sheetSemua->getCell('B11')->getValue())->toBe(3); // Total Berkas Perkara = 3
+    expect($sheetSemua->getCell('A13')->getValue())->toBe('II. TREN PERKARA BULANAN (SEMUA DATA)');
+    expect((int) $sheetSemua->getCell('C27')->getValue())->toBe(3); // Total Perkara Masuk (LK) Semua Tahun = 3
+
+    // 2. Uji Mode BULAN (Oktober 2026 -> hanya 1 berkas Oktober 2026 di Blok I/III/IV/V, tapi Blok II tetap 12 bulan 2026 = 2 perkara masuk)
+    $exportBulan = new PerkaraRekapExport(mode: 'bulan', tahun: 2026, bulan: 10);
+    $sheetBulan = $exportBulan->generateSpreadsheet()->getSheetByName('Ringkasan Dashboard');
+    expect((int) $sheetBulan->getCell('B11')->getValue())->toBe(1); // Total Berkas Oktober 2026 = 1
+    expect($sheetBulan->getCell('A13')->getValue())->toBe('II. TREN PERKARA BULANAN TAHUN 2026');
+    expect((int) $sheetBulan->getCell('C27')->getValue())->toBe(2); // Total Tahunan 2026 (Sep + Okt) = 2
+    // Blok III TKP pada bulan Oktober 2026 hanya Kota Banjarmasin (1 perkara), bukan Kabupaten Banjar
+    expect($sheetBulan->getCell('B31')->getValue())->toBe('Kota Banjarmasin');
+    expect((int) $sheetBulan->getCell('C31')->getValue())->toBe(1);
+    expect($sheetBulan->getCell('B32')->getValue())->toBe('Total Perkara Tercatat dengan TKP');
+
+    // 3. Uji Mode RENTANG TANGGAL (2025-05-01 s.d. 2025-05-31 -> hanya 1 berkas selesai di Kota Banjarbaru)
+    $exportRentang = new PerkaraRekapExport(
+        mode: 'rentang',
+        tanggalMulai: '2025-05-01',
+        tanggalSelesai: '2025-05-31'
+    );
+    $sheetRentang = $exportRentang->generateSpreadsheet()->getSheetByName('Ringkasan Dashboard');
+    expect((int) $sheetRentang->getCell('B6')->getValue())->toBe(1); // Selesai = 1
+    expect((int) $sheetRentang->getCell('B11')->getValue())->toBe(1); // Total Berkas = 1
+    expect($sheetRentang->getCell('A13')->getValue())->toContain('II. TREN PERKARA BULANAN (01 Mei 2025 s/d 31 Mei 2025)');
+    expect((int) $sheetRentang->getCell('C27')->getValue())->toBe(1); // Total Perkara Masuk pada rentang = 1
+    expect($sheetRentang->getCell('B31')->getValue())->toBe('Kota Banjarbaru');
+});

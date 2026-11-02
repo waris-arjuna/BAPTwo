@@ -1639,5 +1639,46 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
      - Kueri analitik baru di-cache 120 detik dan dibersihkan otomatis pada `DashboardService::clearCache()`.
 - Konsekuensi: Tampilan Dashboard BAPTwo lebih proporsional, kaya informasi operasional riil pimpinan dan penyidik, bebas dari ketimpangan tinggi, serta teruji lulus 100% pada seluruh 281 pengujian otomatis Pest PHP dan linter Laravel Pint.
 
+## D-076 : Format Ekspor Excel Multi-Sheet (Sheet 1: History LAPJU 45 Kolom & Sheet 2: Ringkasan Dashboard Eksekutif)
+
+- Tanggal: 2026-11-02
+- Status: Disepakati & Diimplementasikan (Task 8 / Poin 9)
+- Konteks: Kebutuhan laporan eksekutif dan operasional pengawasan penanganan perkara menuntut adanya ringkasan data agregasi (rekap status perkara, tren bulanan, sebaran wilayah TKP se-Kalsel, top pasal, dan rata-rata durasi penyelesaian tahapan) yang menyertai file ekspor resmi LAPJU tanpa mengubah susunan standar LAPJU 45 kolom.
+- Keputusan:
+  1. **Struktur Multi-Sheet (`PerkaraRekapExport.php`)**:
+     - **Sheet 1 (`History LAPJU`)**: Tetap mempertahankan template resmi 45 kolom LAPJU BPOM, lengkap dengan nomor urut, nomor laporan, identitas tersangka terpisah, pasal disangkakan, dan data tahapan.
+     - **Sheet 2 (`Ringkasan Dashboard`)**: Sheet baru yang dibangun secara dinamis menggunakan PhpSpreadsheet, berisi 5 blok tabel agregasi:
+       * Blok I: Rekapitulasi Status Perkara (Selesai, Dalam Proses Sesuai SLA, Mendekati Batas SLA, Melebihi SLA, SP3, Total Berkas).
+       * Blok II: Tren Perkara Bulanan Januari s.d. Desember (Perkara Masuk, Perkara Selesai, Clearance Rate %).
+       * Blok III: Sebaran Wilayah Tempat Kejadian Perkara (TKP) Kabupaten/Kota se-Kalsel.
+       * Blok IV: Pasal Undang-Undang Paling Banyak Disangkakan.
+       * Blok V: Rata-rata Waktu Penyelesaian per Tahapan Perkara beserta jumlah sampel dan berkas aktif.
+  2. **Styling & Estetika Excel**:
+     - Header tabel menggunakan warna Navy Brand BPOM (`#1E3A8A`) dengan teks tebal putih (`#FFFFFF`) dan border tipis.
+     - Baris genap menggunakan warna selang-seling halus (*zebra striping* `#F8FAFC`).
+     - Baris total menggunakan *double-bottom border* dan latar `#F1F5F9`.
+     - Teks rata kiri, angka/persentase rata kanan, nomor urut rata tengah.
+     - Lebar kolom diatur proporsional (`auto-width`) agar tidak ada teks terpotong.
+     - Sheet aktif saat file pertama kali dibuka selalu diatur pada Sheet 1 (`$spreadsheet->setActiveSheetIndex(0)`).
+- Konsekuensi: Pengguna Administrator dan Penyidik mendapatkan dokumen ekspor Excel profesional yang langsung menyajikan rincian perkara sekaligus ringkasan eksekutif siap cetak, teruji 100% pada `ExcelMultiSheetExportTest.php` dan `PerkaraExportTest.php`.
+
+## D-077 : Sinkronisasi Filter Periode pada Sheet 2 (Ringkasan Dashboard) Ekspor Excel
+
+- Tanggal: 2026-11-02
+- Status: Disepakati & Diimplementasikan
+- Konteks: Pada ekspor Excel multi-sheet, Sheet 2 (`Ringkasan Dashboard`) sebelumnya hanya membaca data tahunan default dan mengalami bug pembacaan key array pada Blok I (membaca `$statusData['total']` dan sub-array sla di root sehingga selalu bernilai 0). Selain itu, ketika pengguna mengekspor dengan mode filter `semua`, `bulan`, atau `rentang`, data pada Sheet 2 belum tersinkronisasi dengan cakupan periode terpilih.
+- Keputusan:
+  1. **Dukungan Filter Fleksibel di `DashboardService`**:
+     - Memperluas metode `getCaseStatusData()`, `getMonthlyCasesTrends()`, `getStageAverageDays()`, `getTkpDistribution()`, dan `getTopPasals()` dengan parameter filter opsional `$mode`, `$bulan`, `$tanggalMulai`, dan `$tanggalSelesai`.
+     - Menggunakan 2 helper protected `applyPerkaraDateFilter()` dan `applyBerkasPeriodFilter()` untuk memfilter data berdasarkan tanggal Laporan Kejadian (LK) secara seragam dan konsisten dengan Donut Chart.
+     - Menjaga isolasi berkas perkara yang di-*soft delete* melalui `whereHas('perkara')` saat mode `semua`.
+     - Mempertahankan backward compatibility dan caching 120 detik untuk Dashboard UI saat diakses tanpa parameter mode ekspor kustom.
+  2. **Perilaku 5 Blok pada Sheet 2 (`Ringkasan Dashboard`)**:
+     - **Blok I (Rekapitulasi Status Perkara)**: Memperbaiki pembacaan struktur `$statusData['totalPerkara']` serta `$statusData['sla'][...]`, dan memfilter data mengikuti mode periode aktif (`semua`, `tahun`, `bulan`, `rentang`).
+     - **Blok II (Tren Perkara Bulanan Jan–Des)**: Tetap menyajikan 12 baris bulan (Jan–Des). Pada mode `tahun` dan `bulan`, menampilkan tren 12 bulan pada tahun terpilih (`II. TREN PERKARA BULANAN TAHUN {tahun}`). Pada mode `semua`, mengakumulasikan per bulan dari seluruh tahun (`II. TREN PERKARA BULANAN (SEMUA DATA)`). Pada mode `rentang`, mengakumulasikan data yang masuk dalam rentang tanggal (`II. TREN PERKARA BULANAN ({labelPeriode})`).
+     - **Blok III (TKP), IV (Top Pasal), dan V (Rata-rata Durasi Tahapan)**: Memfilter data mengikuti mode periode aktif.
+- Konsekuensi: Seluruh 5 blok pada Sheet 2 file Excel LAPJU tersinkronisasi akurat dan konsisten dengan Sheet 1 untuk ke-4 mode filter (`semua`, `tahun`, `bulan`, `rentang`), teruji 100% pada 330 automated tests Pest PHP dan Laravel Pint clean.
+
+
 
 

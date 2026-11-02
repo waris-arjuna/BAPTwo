@@ -146,6 +146,54 @@ class DashboardService
     }
 
     /**
+     * Terapkan filter periode pada query Perkara (atau tabel dengan kolom tanggal LK/surat).
+     */
+    protected function applyPerkaraDateFilter(
+        $query,
+        string $mode,
+        ?int $tahun,
+        ?int $bulan,
+        ?string $tanggalMulai,
+        ?string $tanggalSelesai,
+        string $column = 'tanggal_laporan_kejadian'
+    ): void {
+        if ($mode === 'semua') {
+            $query->whereNotNull($column);
+        } elseif ($mode === 'bulan') {
+            $query->whereYear($column, $tahun)
+                ->whereMonth($column, $bulan);
+        } elseif ($mode === 'rentang' && $tanggalMulai && $tanggalSelesai) {
+            $query->whereBetween($column, [$tanggalMulai, $tanggalSelesai]);
+        } else {
+            $query->whereYear($column, $tahun);
+        }
+    }
+
+    /**
+     * Terapkan filter periode berdasarkan tanggal Laporan Kejadian pada query BerkasPerkara.
+     */
+    protected function applyBerkasPeriodFilter(
+        $query,
+        string $mode,
+        ?int $tahun,
+        ?int $bulan,
+        ?string $tanggalMulai,
+        ?string $tanggalSelesai
+    ): void {
+        if ($mode === 'semua') {
+            $query->whereHas('perkara');
+        } elseif ($mode === 'bulan') {
+            $query->tahunLk((int) $tahun, $bulan);
+        } elseif ($mode === 'rentang' && $tanggalMulai && $tanggalSelesai) {
+            $query->whereHas('perkara', function ($q) use ($tanggalMulai, $tanggalSelesai) {
+                $q->whereBetween('tanggal_laporan_kejadian', [$tanggalMulai, $tanggalSelesai]);
+            });
+        } else {
+            $query->tahunLk((int) $tahun);
+        }
+    }
+
+    /**
      * Mengambil data tren bulanan komparasi Perkara Masuk vs Selesai (Jan-Des) untuk ApexCharts.
      *
      * @return array{
@@ -157,11 +205,17 @@ class DashboardService
      *     clearanceRate: float
      * }
      */
-    public function getMonthlyCasesTrends(?int $tahun = null): array
-    {
+    public function getMonthlyCasesTrends(
+        ?int $tahun = null,
+        ?string $mode = null,
+        ?string $tanggalMulai = null,
+        ?string $tanggalSelesai = null
+    ): array {
         $tahun = $tahun ?: (int) Carbon::now(self::ZONA_WAKTU)->year;
+        $mode = $mode ?: 'tahun';
+        $effectiveTrendMode = ($mode === 'bulan') ? 'tahun' : $mode;
 
-        return Cache::remember("dashboard_monthly_cases_{$tahun}", 120, function () use ($tahun) {
+        $computeTrends = function () use ($tahun, $effectiveTrendMode, $tanggalMulai, $tanggalSelesai) {
             $isSqlite = DB::connection()->getDriverName() === 'sqlite';
 
             $incomingMonthExpr = $isSqlite
@@ -172,8 +226,10 @@ class DashboardService
                 ? "CAST(strftime('%m', tanggal_laporan_kejadian) AS INTEGER)"
                 : 'MONTH(tanggal_laporan_kejadian)';
 
-            $incomingRaw = Perkara::query()
-                ->whereYear('tanggal_laporan_kejadian', $tahun)
+            $incomingQuery = Perkara::query();
+            $this->applyPerkaraDateFilter($incomingQuery, $effectiveTrendMode, $tahun, null, $tanggalMulai, $tanggalSelesai, 'tanggal_laporan_kejadian');
+
+            $incomingRaw = $incomingQuery
                 ->selectRaw("{$incomingMonthExpr}, COUNT(*) as total")
                 ->groupByRaw($incomingGroupExpr)
                 ->pluck('total', 'bulan')
@@ -187,13 +243,30 @@ class DashboardService
                 ? "CAST(strftime('%m', tanggal_surat) AS INTEGER)"
                 : 'MONTH(tanggal_surat)';
 
-            $completedRaw = TahapanPerkara::query()
+            $completedQuery = TahapanPerkara::query()
                 ->where('jenis_tahap', JenisTahap::TAHAP_2->value)
-                ->where('status', 'final')
-                ->whereYear('tanggal_surat', $tahun)
-                ->whereHas('berkasPerkara', function ($q) {
-                    $q->selesai();
-                })
+                ->where('status', 'final');
+
+            if ($effectiveTrendMode === 'semua') {
+                $completedQuery->whereNotNull('tanggal_surat')
+                    ->whereHas('berkasPerkara', function ($q) {
+                        $q->selesai()->whereHas('perkara');
+                    });
+            } elseif ($effectiveTrendMode === 'rentang' && $tanggalMulai && $tanggalSelesai) {
+                $completedQuery->whereBetween('tanggal_surat', [$tanggalMulai, $tanggalSelesai])
+                    ->whereHas('berkasPerkara', function ($q) use ($tanggalMulai, $tanggalSelesai) {
+                        $q->selesai()->whereHas('perkara', function ($pq) use ($tanggalMulai, $tanggalSelesai) {
+                            $pq->whereBetween('tanggal_laporan_kejadian', [$tanggalMulai, $tanggalSelesai]);
+                        });
+                    });
+            } else {
+                $completedQuery->whereYear('tanggal_surat', $tahun)
+                    ->whereHas('berkasPerkara', function ($q) {
+                        $q->selesai();
+                    });
+            }
+
+            $completedRaw = $completedQuery
                 ->selectRaw("{$completedMonthExpr}, COUNT(*) as total")
                 ->groupByRaw($completedGroupExpr)
                 ->pluck('total', 'bulan')
@@ -222,7 +295,13 @@ class DashboardService
                 'totalCompleted' => $totalCompleted,
                 'clearanceRate' => $clearanceRate,
             ];
-        });
+        };
+
+        if (in_array($effectiveTrendMode, ['semua', 'rentang'], true)) {
+            return $computeTrends();
+        }
+
+        return Cache::remember("dashboard_monthly_cases_{$tahun}", 120, $computeTrends);
     }
 
     /**
@@ -299,15 +378,22 @@ class DashboardService
      *
      * @return array<string, mixed>
      */
-    public function getCaseStatusData(?int $tahun = null, ?int $bulan = null): array
-    {
+    public function getCaseStatusData(
+        ?int $tahun = null,
+        ?int $bulan = null,
+        ?string $mode = null,
+        ?string $tanggalMulai = null,
+        ?string $tanggalSelesai = null
+    ): array {
         $tahun = $tahun ?: (int) Carbon::now(self::ZONA_WAKTU)->year;
+        $effectiveMode = $mode ?: (($bulan && $bulan >= 1 && $bulan <= 12) ? 'bulan' : 'tahun');
         $bulan = ($bulan && $bulan >= 1 && $bulan <= 12) ? $bulan : null;
 
         $today = Carbon::today(self::ZONA_WAKTU)->toDateString();
         $approachingDate = Carbon::today(self::ZONA_WAKTU)->addDays(self::AMBANG_MENDEKATI_SLA_HARI)->toDateString();
 
-        $baseQuery = BerkasPerkara::query()->tahunLk($tahun, $bulan);
+        $baseQuery = BerkasPerkara::query();
+        $this->applyBerkasPeriodFilter($baseQuery, $effectiveMode, $tahun, $bulan, $tanggalMulai, $tanggalSelesai);
 
         $selesaiVal = BerkasPerkara::STATUS_FORMAL_SELESAI;
         $tidakSelesaiVal = BerkasPerkara::STATUS_FORMAL_TIDAK_SELESAI;
@@ -354,47 +440,61 @@ class DashboardService
             'tidakSelesai' => $tidakSelesai,
         ]);
 
-        // Perhitungan perbandingan dengan periode tahun lalu (tahun - 1)
-        $prevTahun = $tahun - 1;
-        $totalPrev = BerkasPerkara::query()
-            ->tahunLk($prevTahun, $bulan)
-            ->count();
-
-        $diff = $total - $totalPrev;
-        if ($totalPrev === 0 && $total === 0) {
+        if (in_array($effectiveMode, ['semua', 'rentang'], true)) {
             $comparison = [
                 'direction' => 'none',
-                'text' => 'Belum ada perkara di '.$prevTahun,
+                'text' => $effectiveMode === 'semua' ? 'Akumulasi semua data' : 'Filter rentang khusus',
                 'diff' => 0,
-            ];
-        } elseif ($diff > 0) {
-            $comparison = [
-                'direction' => 'up',
-                'text' => '▲ '.$diff.' perkara dibanding '.$prevTahun,
-                'diff' => $diff,
-            ];
-        } elseif ($diff < 0) {
-            $comparison = [
-                'direction' => 'down',
-                'text' => '▼ '.abs($diff).' perkara dibanding '.$prevTahun,
-                'diff' => $diff,
             ];
         } else {
-            $comparison = [
-                'direction' => 'same',
-                'text' => 'Sama dengan '.$prevTahun,
-                'diff' => 0,
-            ];
+            // Perhitungan perbandingan dengan periode tahun lalu (tahun - 1)
+            $prevTahun = $tahun - 1;
+            $totalPrev = BerkasPerkara::query()
+                ->tahunLk($prevTahun, $bulan)
+                ->count();
+
+            $diff = $total - $totalPrev;
+            if ($totalPrev === 0 && $total === 0) {
+                $comparison = [
+                    'direction' => 'none',
+                    'text' => 'Belum ada perkara di '.$prevTahun,
+                    'diff' => 0,
+                ];
+            } elseif ($diff > 0) {
+                $comparison = [
+                    'direction' => 'up',
+                    'text' => '▲ '.$diff.' perkara dibanding '.$prevTahun,
+                    'diff' => $diff,
+                ];
+            } elseif ($diff < 0) {
+                $comparison = [
+                    'direction' => 'down',
+                    'text' => '▼ '.abs($diff).' perkara dibanding '.$prevTahun,
+                    'diff' => $diff,
+                ];
+            } else {
+                $comparison = [
+                    'direction' => 'same',
+                    'text' => 'Sama dengan '.$prevTahun,
+                    'diff' => 0,
+                ];
+            }
         }
 
-        $bulanNames = [
-            1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April',
-            5 => 'Mei', 6 => 'Juni', 7 => 'Juli', 8 => 'Agustus',
-            9 => 'September', 10 => 'Oktober', 11 => 'November', 12 => 'Desember',
-        ];
-        $periodeText = $bulan && isset($bulanNames[$bulan])
-            ? "{$bulanNames[$bulan]} {$tahun}"
-            : "Tahun {$tahun}";
+        if ($effectiveMode === 'semua') {
+            $periodeText = 'Semua Data';
+        } elseif ($effectiveMode === 'rentang' && $tanggalMulai && $tanggalSelesai) {
+            $periodeText = "{$tanggalMulai} s/d {$tanggalSelesai}";
+        } else {
+            $bulanNames = [
+                1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April',
+                5 => 'Mei', 6 => 'Juni', 7 => 'Juli', 8 => 'Agustus',
+                9 => 'September', 10 => 'Oktober', 11 => 'November', 12 => 'Desember',
+            ];
+            $periodeText = $bulan && isset($bulanNames[$bulan])
+                ? "{$bulanNames[$bulan]} {$tahun}"
+                : "Tahun {$tahun}";
+        }
 
         $updatedAt = Carbon::now(self::ZONA_WAKTU)->translatedFormat('d M Y, H:i').' WITA';
 
@@ -437,13 +537,22 @@ class DashboardService
      *
      * @return array<int, array{name: string, value: string, sample: int, active_count: int, active_label: string}>
      */
-    public function getStageAverageDays(?int $tahun = null): array
-    {
+    public function getStageAverageDays(
+        ?int $tahun = null,
+        ?int $bulan = null,
+        ?string $mode = null,
+        ?string $tanggalMulai = null,
+        ?string $tanggalSelesai = null
+    ): array {
         $tahun = $tahun ?: (int) Carbon::now(self::ZONA_WAKTU)->year;
+        $effectiveMode = $mode ?: (($bulan && $bulan >= 1 && $bulan <= 12) ? 'bulan' : 'tahun');
+        $bulan = ($bulan && $bulan >= 1 && $bulan <= 12) ? $bulan : null;
 
-        return Cache::remember("dashboard_stage_averages_{$tahun}", 120, function () use ($tahun) {
-            $berkasList = BerkasPerkara::query()
-                ->tahunLk($tahun)
+        $computeStageAverages = function () use ($tahun, $bulan, $effectiveMode, $tanggalMulai, $tanggalSelesai) {
+            $berkasQuery = BerkasPerkara::query();
+            $this->applyBerkasPeriodFilter($berkasQuery, $effectiveMode, $tahun, $bulan, $tanggalMulai, $tanggalSelesai);
+
+            $berkasList = $berkasQuery
                 ->with([
                     'perkara:id,tanggal_surat_perintah',
                     'tahapan' => function ($q) {
@@ -554,7 +663,13 @@ class DashboardService
                     'active_label' => "{$tahap2DoneCount} selesai",
                 ],
             ];
-        });
+        };
+
+        if ($mode === null && $bulan === null) {
+            return Cache::remember("dashboard_stage_averages_{$tahun}", 120, $computeStageAverages);
+        }
+
+        return $computeStageAverages();
     }
 
     /**
@@ -569,14 +684,23 @@ class DashboardService
      *     regions: array<int, array{name: string, count: int, percent: int}>
      * }
      */
-    public function getTkpDistribution(?int $tahun = null, int $limit = 5): array
-    {
+    public function getTkpDistribution(
+        ?int $tahun = null,
+        int $limit = 5,
+        ?int $bulan = null,
+        ?string $mode = null,
+        ?string $tanggalMulai = null,
+        ?string $tanggalSelesai = null
+    ): array {
         $tahun = $tahun ?: (int) Carbon::now(self::ZONA_WAKTU)->year;
+        $effectiveMode = $mode ?: (($bulan && $bulan >= 1 && $bulan <= 12) ? 'bulan' : 'tahun');
+        $bulan = ($bulan && $bulan >= 1 && $bulan <= 12) ? $bulan : null;
 
-        return Cache::remember("dashboard_tkp_dist_{$tahun}", 120, function () use ($tahun, $limit) {
-            $perkaras = Perkara::query()
-                ->whereYear('tanggal_laporan_kejadian', $tahun)
-                ->whereNotNull('tkp_id')
+        $computeTkp = function () use ($tahun, $limit, $bulan, $effectiveMode, $tanggalMulai, $tanggalSelesai) {
+            $perkaraQuery = Perkara::query()->whereNotNull('tkp_id');
+            $this->applyPerkaraDateFilter($perkaraQuery, $effectiveMode, $tahun, $bulan, $tanggalMulai, $tanggalSelesai, 'tanggal_laporan_kejadian');
+
+            $perkaras = $perkaraQuery
                 ->with(['tkp.alamat'])
                 ->get(['id', 'tkp_id']);
 
@@ -635,7 +759,13 @@ class DashboardService
                 'onlinePercent' => $modusPct['online'],
                 'regions' => $regions,
             ];
-        });
+        };
+
+        if ($mode === null && $bulan === null) {
+            return Cache::remember("dashboard_tkp_dist_{$tahun}", 120, $computeTkp);
+        }
+
+        return $computeTkp();
     }
 
     /**
@@ -643,19 +773,30 @@ class DashboardService
      *
      * @return array<int, array{id: int, title: string, description: string, count: int}>
      */
-    public function getTopPasals(?int $tahun = null, int $limit = 4): array
-    {
+    public function getTopPasals(
+        ?int $tahun = null,
+        int $limit = 4,
+        ?int $bulan = null,
+        ?string $mode = null,
+        ?string $tanggalMulai = null,
+        ?string $tanggalSelesai = null
+    ): array {
         $tahun = $tahun ?: (int) Carbon::now(self::ZONA_WAKTU)->year;
+        $effectiveMode = $mode ?: (($bulan && $bulan >= 1 && $bulan <= 12) ? 'bulan' : 'tahun');
+        $bulan = ($bulan && $bulan >= 1 && $bulan <= 12) ? $bulan : null;
 
-        return Cache::remember("dashboard_top_pasal_{$tahun}", 120, function () use ($tahun, $limit) {
-            $rows = DB::table('berkas_pasal')
+        $computeTopPasals = function () use ($tahun, $limit, $bulan, $effectiveMode, $tanggalMulai, $tanggalSelesai) {
+            $pasalQuery = DB::table('berkas_pasal')
                 ->join('pasal', 'pasal.id', '=', 'berkas_pasal.pasal_id')
                 ->join('berkas_perkara', 'berkas_perkara.id', '=', 'berkas_pasal.berkas_perkara_id')
                 ->join('perkara', 'perkara.id', '=', 'berkas_perkara.perkara_id')
                 ->whereNull('pasal.deleted_at')
                 ->whereNull('berkas_perkara.deleted_at')
-                ->whereNull('perkara.deleted_at')
-                ->whereYear('perkara.tanggal_laporan_kejadian', $tahun)
+                ->whereNull('perkara.deleted_at');
+
+            $this->applyPerkaraDateFilter($pasalQuery, $effectiveMode, $tahun, $bulan, $tanggalMulai, $tanggalSelesai, 'perkara.tanggal_laporan_kejadian');
+
+            $rows = $pasalQuery
                 ->select([
                     'pasal.id',
                     'pasal.pasal',
@@ -689,7 +830,13 @@ class DashboardService
                     'count' => (int) $row->total_berkas,
                 ];
             })->all();
-        });
+        };
+
+        if ($mode === null && $bulan === null) {
+            return Cache::remember("dashboard_top_pasal_{$tahun}", 120, $computeTopPasals);
+        }
+
+        return $computeTopPasals();
     }
 
     /**
