@@ -4,6 +4,15 @@
     $p17p = $subTahapan[\App\Enums\JenisTahap::P17P->value] ?? null;
     $p18p = $subTahapan[\App\Enums\JenisTahap::P18P->value] ?? null;
     $p19 = $subTahapan[\App\Enums\JenisTahap::P19->value] ?? null;
+
+    $imageExtensions = ['jpg', 'jpeg', 'png', 'webp'];
+    $imageDocs = $tahap->dokumen->filter(function ($doc) use ($imageExtensions) {
+        return in_array(strtolower(pathinfo($doc->nama_file_asli, PATHINFO_EXTENSION)), $imageExtensions, true);
+    })->values();
+    $pdfDocs = $tahap->dokumen->reject(function ($doc) use ($imageExtensions) {
+        return in_array(strtolower(pathinfo($doc->nama_file_asli, PATHINFO_EXTENSION)), $imageExtensions, true);
+    })->values();
+    $isPutusan = $tahap->jenis_tahap === \App\Enums\JenisTahap::KEPUTUSAN_PENGADILAN;
 @endphp
 
 @extends('layouts.app')
@@ -47,26 +56,16 @@
                             Tahap Final &amp; Terkunci
                         </span>
 
-                        @can('edit-draft')
-                            @if (in_array($tahap->jenis_tahap, [\App\Enums\JenisTahap::SPDP, \App\Enums\JenisTahap::TAHAP_1], true))
-                                <a
-                                    href="{{ route('berkas-perkara.tahapan.edit', [$berkas, $tahap]) }}"
-                                    class="inline-flex h-10 items-center justify-center gap-2 rounded-lg border border-brand-200 bg-brand-50 px-4 text-sm font-medium text-brand-700 transition hover:bg-brand-100 dark:border-brand-500/30 dark:bg-brand-500/10 dark:text-brand-300 dark:hover:bg-brand-500/20"
-                                >
-                                    <i class="fi fi-rr-edit text-sm"></i>
-                                    <span>{{ $tahap->jenis_tahap === \App\Enums\JenisTahap::SPDP ? 'Kelola P-16 & P-17' : 'Kelola P-18 & P-19' }}</span>
-                                </a>
-                            @endif
-                        @endcan
+
 
                         @can('create-cases')
-                            @if ($tahap->jenis_tahap !== \App\Enums\JenisTahap::KEPUTUSAN_PENGADILAN)
+                            @if (!empty($nextStage) && ! $berkas->is_dpo)
                                 <a
-                                    href="{{ route('berkas-perkara.tahapan.create', $berkas) }}"
+                                    href="{{ route('berkas-perkara.tahapan.create', ['berkas' => $berkas->id, 'jenis' => $nextStage->value]) }}"
                                     class="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-brand-600 px-4 text-sm font-medium text-white transition hover:bg-brand-700"
                                 >
                                     <i class="fi fi-rr-arrow-right text-sm"></i>
-                                    <span>Input Tahap Selanjutnya</span>
+                                    <span>Input Tahap Selanjutnya ({{ $nextStage->label() }})</span>
                                 </a>
                             @endif
                         @endcan
@@ -85,7 +84,33 @@
             </div>
         </div>
 
-        <div class="space-y-6">
+        <div
+            class="space-y-6"
+            x-data="{
+                isLightboxOpen: false,
+                lightboxIndex: 0,
+                lightboxImages: {{ Js::from($imageDocs->map(fn($d) => ['url' => route('dokumen.preview', $d), 'title' => $d->nama_file_asli, 'download' => route('dokumen.download', $d)])->toArray()) }},
+                openLightbox(idx) {
+                    this.lightboxIndex = idx;
+                    this.isLightboxOpen = true;
+                },
+                nextImage() {
+                    if (this.lightboxImages.length > 0) {
+                        this.lightboxIndex = (this.lightboxIndex + 1) % this.lightboxImages.length;
+                    }
+                },
+                prevImage() {
+                    if (this.lightboxImages.length > 0) {
+                        this.lightboxIndex = (this.lightboxIndex - 1 + this.lightboxImages.length) % this.lightboxImages.length;
+                    }
+                },
+                get currentImage() {
+                    return this.lightboxImages[this.lightboxIndex] || { url: '', title: '', download: '' };
+                }
+            }"
+            @keydown.arrow-right.window="if (isLightboxOpen) nextImage()"
+            @keydown.arrow-left.window="if (isLightboxOpen) prevImage()"
+        >
             {{-- Card Referensi Tahapan Sebelumnya --}}
             @if (!empty($references))
                 <div class="rounded-2xl border border-gray-200 bg-gray-50/70 p-4 dark:border-gray-800 dark:bg-white/[0.02] sm:p-5">
@@ -195,17 +220,19 @@
                     </div>
 
                     <div>
-                        <p class="text-xs text-gray-500 dark:text-gray-400">Dokumen Lampiran (PDF)</p>
-                        <div class="mt-1">
-                            @if ($tahap->dokumen->isNotEmpty())
-                                @foreach ($tahap->dokumen as $doc)
+                        <p class="text-xs text-gray-500 dark:text-gray-400">
+                            {{ $isPutusan ? 'Salinan Dokumen Putusan (PDF)' : 'Dokumen Lampiran (PDF)' }}
+                        </p>
+                        <div class="mt-1 space-y-1.5">
+                            @if ($pdfDocs->isNotEmpty())
+                                @foreach ($pdfDocs as $doc)
                                     <div class="flex items-center gap-2">
                                         <a href="{{ route('dokumen.preview', $doc) }}"
                                            data-pdf-preview="{{ route('dokumen.preview', $doc) }}"
                                            data-pdf-title="{{ $doc->nama_file_asli }}"
                                            data-pdf-download="{{ route('dokumen.download', $doc) }}"
                                            target="_blank" class="inline-flex items-center gap-1.5 text-sm font-medium text-brand-600 hover:underline dark:text-brand-400">
-                                            <i class="fi fi-rr-document text-xs"></i>
+                                            <i class="fi fi-rr-file-pdf text-xs text-red-500"></i>
                                             <span class="truncate">{{ $doc->nama_file_asli }}</span>
                                         </a>
                                         <a href="{{ route('dokumen.download', $doc) }}" class="text-xs text-gray-400 hover:text-gray-600" title="Unduh">
@@ -213,13 +240,17 @@
                                         </a>
                                     </div>
                                 @endforeach
-                            @else
+                            @elseif(!$isPutusan && $tahap->dokumen->isEmpty())
                                 <span class="text-xs italic text-gray-400">Tidak ada dokumen lampiran.</span>
+                            @elseif($isPutusan && $pdfDocs->isEmpty() && $imageDocs->isEmpty())
+                                <span class="text-xs italic text-gray-400">Tidak ada dokumen lampiran.</span>
+                            @elseif($isPutusan && $pdfDocs->isEmpty())
+                                <span class="text-xs text-gray-400">Hanya melampirkan berkas foto (lihat galeri di bawah).</span>
                             @endif
                         </div>
                     </div>
 
-                    @if ($tahap->jenis_tahap === \App\Enums\JenisTahap::KEPUTUSAN_PENGADILAN)
+                    @if ($isPutusan)
                         <div class="sm:col-span-2">
                             <p class="text-xs text-gray-500 dark:text-gray-400">Instansi Pengadilan</p>
                             <p class="mt-1 text-sm font-semibold text-gray-800 dark:text-white/90">
@@ -230,13 +261,67 @@
                 </div>
 
                 {{-- Amar Putusan Pengadilan --}}
-                @if ($tahap->jenis_tahap === \App\Enums\JenisTahap::KEPUTUSAN_PENGADILAN && $tahap->amar_putusan)
+                @if ($isPutusan && $tahap->amar_putusan)
                     <div class="mt-4 rounded-xl border border-brand-100 bg-brand-50/40 p-4 dark:border-brand-500/20 dark:bg-brand-500/5">
                         <p class="text-xs font-semibold uppercase tracking-wider text-brand-700 dark:text-brand-300">
                             <i class="fi fi-rr-gavel me-1 text-xs"></i>
                             Amar Putusan Pengadilan
                         </p>
                         <p class="mt-2 whitespace-pre-line text-sm text-gray-800 dark:text-gray-200">{{ $tahap->amar_putusan }}</p>
+                    </div>
+                @endif
+
+                {{-- Galeri Foto & Dokumentasi Putusan --}}
+                @if ($imageDocs->isNotEmpty())
+                    <div class="mt-6 rounded-xl border border-gray-200 bg-gray-50/70 p-4 dark:border-gray-800 dark:bg-white/[0.02]">
+                        <div class="mb-3 flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <i class="fi fi-rr-picture text-base text-brand-500"></i>
+                                <h3 class="text-xs font-semibold uppercase tracking-wider text-gray-700 dark:text-gray-300">
+                                    Galeri Foto &amp; Dokumentasi Putusan ({{ $imageDocs->count() }} Foto)
+                                </h3>
+                            </div>
+                            <span class="text-[11px] text-gray-500 dark:text-gray-400">Klik foto untuk melihat resolusi penuh</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+                            @foreach ($imageDocs as $idx => $imgDoc)
+                                <div class="group relative overflow-hidden rounded-xl border border-gray-200 bg-white shadow-theme-xs transition hover:shadow-theme-md dark:border-gray-700 dark:bg-gray-900">
+                                    <button
+                                        type="button"
+                                        @click="openLightbox({{ $idx }})"
+                                        class="block w-full text-left"
+                                    >
+                                        <div class="relative aspect-4/3 w-full overflow-hidden bg-gray-100 dark:bg-gray-800">
+                                            <img
+                                                src="{{ route('dokumen.preview', $imgDoc) }}"
+                                                alt="{{ $imgDoc->nama_file_asli }}"
+                                                class="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                                                loading="lazy"
+                                            />
+                                            <div class="absolute inset-0 flex items-center justify-center bg-gray-900/40 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                                                <span class="inline-flex items-center gap-1.5 rounded-lg bg-white/90 px-3 py-1.5 text-xs font-semibold text-gray-900 shadow backdrop-blur-xs">
+                                                    <i class="fi fi-rr-search-alt text-xs"></i>
+                                                    Perbesar
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </button>
+                                    <div class="flex items-center justify-between gap-2 p-3">
+                                        <span class="truncate text-xs font-medium text-gray-700 dark:text-gray-300" title="{{ $imgDoc->nama_file_asli }}">
+                                            {{ $imgDoc->nama_file_asli }}
+                                        </span>
+                                        <a
+                                            href="{{ route('dokumen.download', $imgDoc) }}"
+                                            class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-gray-200 text-gray-500 hover:bg-gray-50 hover:text-brand-600 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-brand-400"
+                                            title="Unduh file"
+                                        >
+                                            <i class="fi fi-rr-download text-xs"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                 @endif
 
@@ -259,14 +344,17 @@
                                 Sub-Tahapan Kejaksaan Terkait (P-16 &amp; P-17)
                             </h2>
                         </div>
-                        @can('edit-draft')
-                            <a
-                                href="{{ route('berkas-perkara.tahapan.edit', [$berkas, $tahap]) }}"
-                                class="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-600 hover:underline dark:text-brand-400"
-                            >
-                                <i class="fi fi-rr-edit text-xs"></i>
-                                <span>Kelola P-16 &amp; P-17</span>
-                            </a>
+                        @can('create-cases')
+                            @if (! $berkas->is_dpo)
+                                <button
+                                    type="button"
+                                    @click="$dispatch('open-subtahap-modal', { group: 'spdp' })"
+                                    class="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-600 hover:underline dark:text-brand-400"
+                                >
+                                    <i class="fi fi-rr-edit text-xs"></i>
+                                    <span>Kelola P-16 &amp; P-17P</span>
+                                </button>
+                            @endif
                         @endcan
                     </div>
 
@@ -398,14 +486,17 @@
                                 Sub-Tahapan Kejaksaan Terkait (P-18 &amp; P-19)
                             </h2>
                         </div>
-                        @can('edit-draft')
-                            <a
-                                href="{{ route('berkas-perkara.tahapan.edit', [$berkas, $tahap]) }}"
-                                class="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-600 hover:underline dark:text-brand-400"
-                            >
-                                <i class="fi fi-rr-edit text-xs"></i>
-                                <span>Kelola P-18 &amp; P-19</span>
-                            </a>
+                        @can('create-cases')
+                            @if (! $berkas->is_dpo)
+                                <button
+                                    type="button"
+                                    @click="$dispatch('open-subtahap-modal', { group: 'tahap_1' })"
+                                    class="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-600 hover:underline dark:text-brand-400"
+                                >
+                                    <i class="fi fi-rr-edit text-xs"></i>
+                                    <span>Kelola P-18P &amp; P-19</span>
+                                </button>
+                            @endif
                         @endcan
                     </div>
 
@@ -526,6 +617,85 @@
                     </div>
                 </div>
             @endif
+        </div>
+
+        {{-- Modal Sub-Tahap Mandiri --}}
+        <x-tahapan.modal-subtahap :berkas="$berkas" :subTahapan="$subTahapan" />
+
+        {{-- Modal Lightbox Pratinjau Gambar Beresolusi Penuh --}}
+        <div
+            x-show="isLightboxOpen"
+            x-cloak
+            class="fixed inset-0 z-99999 flex items-center justify-center overflow-y-auto p-4 sm:p-6"
+            @keydown.escape.window="isLightboxOpen = false"
+        >
+            <div class="fixed inset-0 h-full w-full bg-gray-900/80 backdrop-blur-xs" @click="isLightboxOpen = false"></div>
+
+            <div
+                class="relative z-10 flex max-h-[92vh] w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white p-4 shadow-theme-xl dark:border-gray-800 dark:bg-gray-900 sm:p-5"
+                @click.stop
+            >
+                {{-- Header Modal --}}
+                <div class="mb-3 flex items-center justify-between gap-2 border-b border-gray-200 pb-3 dark:border-gray-800">
+                    <div class="flex min-w-0 items-center gap-2">
+                        <i class="fi fi-rr-picture text-base text-brand-500"></i>
+                        <h4 class="truncate text-sm font-semibold text-gray-800 dark:text-white/90" x-text="currentImage.title"></h4>
+                        <span
+                            x-show="lightboxImages.length > 1"
+                            class="shrink-0 rounded-md bg-gray-100 px-2 py-0.5 text-[11px] font-medium text-gray-600 dark:bg-gray-800 dark:text-gray-300"
+                            x-text="(lightboxIndex + 1) + ' dari ' + lightboxImages.length"
+                        ></span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <a
+                            :href="currentImage.download"
+                            class="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-gray-200 text-gray-500 transition hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-800"
+                            title="Unduh Gambar"
+                        >
+                            <i class="fi fi-rr-download text-sm"></i>
+                        </a>
+                        <button
+                            type="button"
+                            @click="isLightboxOpen = false"
+                            class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gray-100 text-gray-500 transition hover:bg-gray-200 hover:text-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
+                            aria-label="Tutup pratinjau"
+                        >
+                            <i class="fi fi-rr-cross-small text-lg"></i>
+                        </button>
+                    </div>
+                </div>
+
+                {{-- Body: Gambar Full Resolusi dengan Tombol Prev / Next --}}
+                <div class="relative flex min-h-0 flex-1 items-center justify-center overflow-auto rounded-xl bg-gray-100 p-2 dark:bg-gray-950/60">
+                    <img
+                        :src="currentImage.url"
+                        :alt="currentImage.title"
+                        class="max-h-[72vh] w-auto max-w-full rounded-lg object-contain shadow-sm"
+                    />
+
+                    {{-- Tombol Prev --}}
+                    <button
+                        type="button"
+                        x-show="lightboxImages.length > 1"
+                        @click.stop="prevImage()"
+                        class="absolute left-4 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-gray-900/60 text-white shadow transition hover:bg-gray-900/90 focus:outline-none"
+                        title="Foto Sebelumnya"
+                    >
+                        <i class="fi fi-rr-angle-left text-base"></i>
+                    </button>
+
+                    {{-- Tombol Next --}}
+                    <button
+                        type="button"
+                        x-show="lightboxImages.length > 1"
+                        @click.stop="nextImage()"
+                        class="absolute right-4 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-gray-900/60 text-white shadow transition hover:bg-gray-900/90 focus:outline-none"
+                        title="Foto Selanjutnya"
+                    >
+                        <i class="fi fi-rr-angle-right text-base"></i>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

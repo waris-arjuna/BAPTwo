@@ -21,7 +21,8 @@ class TahapanService
 {
     /**
      * Mendapatkan daftar jenis tahapan berikutnya yang valid untuk dicatat pada Berkas Perkara.
-     * Mendukung tahapan wajib dan skipping tahapan opsional (PRD F-10 s.d. F-13).
+     * Alur utama linier: SPDP -> Tahap I -> P-21 -> Tahap II -> Keputusan Pengadilan.
+     * Sub-tahap (P-16, P-17P, P-18P, P-19) dikelola mandiri dan tidak menghalangi alur utama.
      *
      * @return list<JenisTahap>
      */
@@ -35,56 +36,27 @@ class TahapanService
             return [];
         }
 
-        if ($berkas->hasTahap(JenisTahap::KEPUTUSAN_PENGADILAN)) {
+        if ($berkas->hasFinalTahap(JenisTahap::KEPUTUSAN_PENGADILAN) || $berkas->hasTahap(JenisTahap::KEPUTUSAN_PENGADILAN)) {
             return [];
         }
 
-        $latest = $berkas->latestFinalTahap();
-
-        if ($latest === null) {
-            // Belum ada tahapan progress, tahap pembuka wajib SPDP
-            return $berkas->hasTahap(JenisTahap::SPDP) ? [] : [JenisTahap::SPDP];
+        if ($berkas->hasFinalTahap(JenisTahap::TAHAP_2)) {
+            return $berkas->hasTahap(JenisTahap::KEPUTUSAN_PENGADILAN) ? [] : [JenisTahap::KEPUTUSAN_PENGADILAN];
         }
 
-        $candidates = match ($latest->jenis_tahap) {
-            JenisTahap::SPDP => [
-                JenisTahap::P16,
-                JenisTahap::P17P,
-                JenisTahap::TAHAP_1,
-            ],
-            JenisTahap::P16 => [
-                JenisTahap::P17P,
-                JenisTahap::TAHAP_1,
-            ],
-            JenisTahap::P17P => [
-                JenisTahap::TAHAP_1,
-            ],
-            JenisTahap::TAHAP_1 => [
-                JenisTahap::P18P,
-                JenisTahap::P19,
-                JenisTahap::P21,
-            ],
-            JenisTahap::P18P => [
-                JenisTahap::P19,
-                JenisTahap::P21,
-            ],
-            JenisTahap::P19 => [
-                JenisTahap::P21,
-            ],
-            JenisTahap::P21 => [
-                JenisTahap::TAHAP_2,
-            ],
-            JenisTahap::TAHAP_2 => [
-                JenisTahap::KEPUTUSAN_PENGADILAN,
-            ],
-            JenisTahap::KEPUTUSAN_PENGADILAN => [],
-        };
+        if ($berkas->hasFinalTahap(JenisTahap::P21)) {
+            return $berkas->hasTahap(JenisTahap::TAHAP_2) ? [] : [JenisTahap::TAHAP_2];
+        }
 
-        // Filter: tahapan yang sudah pernah dicatat tidak boleh dipilih lagi (maksimal 1x per berkas perkara - PRD F-11)
-        return array_values(array_filter(
-            $candidates,
-            fn (JenisTahap $tahap): bool => ! $berkas->hasTahap($tahap)
-        ));
+        if ($berkas->hasFinalTahap(JenisTahap::TAHAP_1)) {
+            return $berkas->hasTahap(JenisTahap::P21) ? [] : [JenisTahap::P21];
+        }
+
+        if ($berkas->hasFinalTahap(JenisTahap::SPDP)) {
+            return $berkas->hasTahap(JenisTahap::TAHAP_1) ? [] : [JenisTahap::TAHAP_1];
+        }
+
+        return $berkas->hasTahap(JenisTahap::SPDP) ? [] : [JenisTahap::SPDP];
     }
 
     /**
@@ -92,6 +64,17 @@ class TahapanService
      */
     public function canProceedTo(BerkasPerkara $berkas, JenisTahap $targetTahap): bool
     {
+        if ($targetTahap->isOptional()) {
+            if ($targetTahap === JenisTahap::P16 || $targetTahap === JenisTahap::P17P) {
+                return ($berkas->hasFinalTahap(JenisTahap::SPDP) || $berkas->hasTahap(JenisTahap::SPDP))
+                    && ! $berkas->hasTahap($targetTahap);
+            }
+            if ($targetTahap === JenisTahap::P18P || $targetTahap === JenisTahap::P19) {
+                return $berkas->hasFinalTahap(JenisTahap::TAHAP_1)
+                    && ! $berkas->hasTahap($targetTahap);
+            }
+        }
+
         return in_array($targetTahap, $this->getNextAvailableStages($berkas), true);
     }
 
@@ -121,6 +104,17 @@ class TahapanService
 
         if ($berkas->hasTahap($targetTahap)) {
             throw new DomainException("Tahapan {$targetTahap->label()} sudah pernah dicatat pada Berkas Perkara ini. Satu jenis tahapan maksimal 1 kali.");
+        }
+
+        if ($targetTahap->isOptional()) {
+            if (in_array($targetTahap, [JenisTahap::P16, JenisTahap::P17P], true) && ! $berkas->hasFinalTahap(JenisTahap::SPDP) && ! $berkas->hasTahap(JenisTahap::SPDP)) {
+                throw new DomainException("Sub-tahapan {$targetTahap->label()} hanya dapat dicatat setelah SPDP ada.");
+            }
+            if (in_array($targetTahap, [JenisTahap::P18P, JenisTahap::P19], true) && ! $berkas->hasFinalTahap(JenisTahap::TAHAP_1)) {
+                throw new DomainException("Sub-tahapan {$targetTahap->label()} hanya dapat dicatat setelah Tahap I difinalkan.");
+            }
+
+            return;
         }
 
         $available = $this->getNextAvailableStages($berkas, ignoreDpo: true);
@@ -189,7 +183,7 @@ class TahapanService
     public function saveStage(
         BerkasPerkara $berkas,
         array $data,
-        ?UploadedFile $file,
+        UploadedFile|array|null $file,
         User $user,
         ?TahapanPerkara $existingTahap = null
     ): TahapanPerkara {
@@ -279,21 +273,36 @@ class TahapanService
                 $tahap = TahapanPerkara::create($tahapData);
             }
 
-            // Simpan dokumen jika diunggah
+            // Hapus dokumen lama jika ditandai untuk dihapus pada mode draft
+            if (! empty($data['deleted_dokumen_ids']) && $existingTahap !== null && ! $existingTahap->isFinal()) {
+                $docsToDelete = $existingTahap->dokumen()
+                    ->whereIn('id', (array) $data['deleted_dokumen_ids'])
+                    ->get();
+                foreach ($docsToDelete as $doc) {
+                    $doc->delete();
+                }
+            }
+
+            // Simpan dokumen jika diunggah (mendukung berkas tunggal maupun berkas jamak/array)
             if ($file !== null) {
-                $path = $file->store('dokumen/tahapan', 'local');
-                Dokumen::create([
-                    'perkara_id' => $berkas->perkara_id,
-                    'berkas_perkara_id' => $berkas->id,
-                    'tahapan_perkara_id' => $tahap->id,
-                    'kategori' => 'tahapan',
-                    'nama_dokumen' => "Dokumen {$jenisTahap->label()} - {$tahap->nomor_surat}",
-                    'nama_file_asli' => $file->getClientOriginalName(),
-                    'file_path' => $path,
-                    'file_size' => $file->getSize() ?: 0,
-                    'created_by' => $user->id,
-                    'updated_by' => $user->id,
-                ]);
+                $filesToProcess = is_array($file) ? $file : [$file];
+                foreach ($filesToProcess as $singleFile) {
+                    if ($singleFile instanceof UploadedFile) {
+                        $path = $singleFile->store('dokumen/tahapan', 'local');
+                        Dokumen::create([
+                            'perkara_id' => $berkas->perkara_id,
+                            'berkas_perkara_id' => $berkas->id,
+                            'tahapan_perkara_id' => $tahap->id,
+                            'kategori' => 'tahapan',
+                            'nama_dokumen' => "Dokumen {$jenisTahap->label()} - {$tahap->nomor_surat}",
+                            'nama_file_asli' => $singleFile->getClientOriginalName(),
+                            'file_path' => $path,
+                            'file_size' => $singleFile->getSize() ?: 0,
+                            'created_by' => $user->id,
+                            'updated_by' => $user->id,
+                        ]);
+                    }
+                }
             }
 
             // Simpan sub-tahap opsional tersemat jika ada input
@@ -316,10 +325,13 @@ class TahapanService
                 if ($jenisTahap === JenisTahap::SPDP && ! empty($tahap->tanggal_surat)) {
                     $tanggalSpdp = Carbon::parse($tahap->tanggal_surat);
                     $updateBerkas['tanggal_spdp'] = $tanggalSpdp->toDateString();
+                }
 
-                    // SLA 1 bulan kalender & Batas Tahun mutlak (PRD bagian Batas Waktu)
-                    $sla1Bulan = $tanggalSpdp->copy()->addMonth();
-                    $akhirTahun = $tanggalSpdp->copy()->endOfYear();
+                // SOP SLA 1 Bulan Kalender (30 hari) direset per tahapan aktif (SPDP, TAHAP_1, P21) - Poin 5
+                if (in_array($jenisTahap, [JenisTahap::SPDP, JenisTahap::TAHAP_1, JenisTahap::P21], true) && ! empty($tahap->tanggal_surat)) {
+                    $tglTahap = Carbon::parse($tahap->tanggal_surat);
+                    $sla1Bulan = $tglTahap->copy()->addMonth();
+                    $akhirTahun = $tglTahap->copy()->endOfYear();
                     $effectiveDeadline = $sla1Bulan->gt($akhirTahun) ? $akhirTahun : $sla1Bulan;
 
                     $updateBerkas['sla_deadline'] = $effectiveDeadline->toDateString();

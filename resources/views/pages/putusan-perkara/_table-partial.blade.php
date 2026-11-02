@@ -79,24 +79,29 @@
 
                     <td class="px-5 py-4">
                         @if ($item->dokumen->isNotEmpty())
-                            @php $doc = $item->dokumen->first(); @endphp
+                            @php
+                                $doc = $item->dokumen->first();
+                                $isImg = in_array(strtolower(pathinfo($doc->nama_file_asli, PATHINFO_EXTENSION)), ['jpg', 'jpeg', 'png', 'webp'], true);
+                            @endphp
                             <div class="flex items-center gap-1.5">
                                 <a
                                     href="{{ route('dokumen.preview', $doc) }}"
                                     target="_blank"
                                     class="inline-flex max-w-[140px] items-center gap-1 truncate text-xs font-medium text-brand-600 hover:underline dark:text-brand-400"
                                     title="{{ $doc->nama_file_asli }}"
-                                    data-pdf-preview
-                                    data-pdf-title="{{ $doc->nama_file_asli }}"
-                                    data-pdf-download="{{ route('dokumen.download', $doc) }}"
+                                    @if (! $isImg)
+                                        data-pdf-preview
+                                        data-pdf-title="{{ $doc->nama_file_asli }}"
+                                        data-pdf-download="{{ route('dokumen.download', $doc) }}"
+                                    @endif
                                 >
-                                    <i class="fi fi-rr-document text-red-500"></i>
+                                    <i class="fi {{ $isImg ? 'fi-rr-picture text-brand-500' : 'fi-rr-document text-red-500' }}"></i>
                                     <span class="truncate">{{ $doc->nama_file_asli }}</span>
                                 </a>
                                 <a
                                     href="{{ route('dokumen.download', $doc) }}"
                                     class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
-                                    title="Unduh PDF"
+                                    title="Unduh File"
                                 >
                                     <i class="fi fi-rr-download text-xs"></i>
                                 </a>

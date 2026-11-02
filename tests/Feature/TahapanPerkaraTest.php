@@ -84,9 +84,9 @@ test('alur tahapan dengan tahapan opsional P-16 dan P-17P berjalan sesuai urutan
     expect($this->service->calculateProgress($this->berkas))->toBe(15);
     expect($this->service->determineStatusProses($this->berkas))->toBe('SPDP');
 
-    // Pilihan setelah SPDP: P-16, P-17P, atau TAHAP I
+    // Pilihan setelah SPDP: langsung TAHAP I (alur utama linier)
     $availableAfterSpdp = $this->service->getNextAvailableStages($this->berkas);
-    expect($availableAfterSpdp)->toBe([JenisTahap::P16, JenisTahap::P17P, JenisTahap::TAHAP_1]);
+    expect($availableAfterSpdp)->toBe([JenisTahap::TAHAP_1]);
 
     // 2. Pilih P-16
     TahapanPerkara::create([
@@ -101,9 +101,9 @@ test('alur tahapan dengan tahapan opsional P-16 dan P-17P berjalan sesuai urutan
     expect($this->service->calculateProgress($this->berkas))->toBe(15) // P-16 tidak menambah bobot
         ->and($this->service->determineStatusProses($this->berkas))->toBe('P-16');
 
-    // Pilihan setelah P-16: P-17P atau TAHAP I
+    // Pilihan setelah P-16: tetap TAHAP I (alur utama linier)
     $availableAfterP16 = $this->service->getNextAvailableStages($this->berkas);
-    expect($availableAfterP16)->toBe([JenisTahap::P17P, JenisTahap::TAHAP_1]);
+    expect($availableAfterP16)->toBe([JenisTahap::TAHAP_1]);
 });
 
 test('tahapan opsional dapat dilewati langsung ke tahapan wajib berikutnya', function () {

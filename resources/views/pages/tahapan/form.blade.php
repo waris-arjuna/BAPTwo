@@ -131,7 +131,7 @@
                 </div>
             @endif
 
-            {{-- Card Informasi Penuntut Umum (Poin 2 & Poin 8, ref: D-053) --}}
+            {{-- Card Informasi Penuntut Umum  --}}
             <x-perkara.card-penuntut-umum :perkara="$berkas->perkara" />
 
             {{-- Form Tahapan --}}
@@ -319,14 +319,24 @@
                                 @endif
                             </div>
 
-                            {{-- Upload Dokumen PDF --}}
+                            {{-- Upload Dokumen --}}
                             <div>
-                                <x-form.pdf-upload
-                                    name="dokumen"
-                                    label="Unggah Dokumen PDF Pendukung"
-                                    :existingFile="$tahap?->dokumen?->first()?->nama_file_asli"
-                                    :existingUrl="$tahap?->dokumen?->first() ? route('dokumen.preview', $tahap->dokumen->first()) : null"
-                                />
+                                @if ($selectedJenis === \App\Enums\JenisTahap::KEPUTUSAN_PENGADILAN)
+                                    <x-form.multi-media-upload
+                                        name="dokumen"
+                                        label="Unggah Salinan Dokumen Putusan (PDF & Foto)"
+                                        :existingDocuments="$tahap?->dokumen ?? collect()"
+                                        :maxTotalMb="10"
+                                    />
+                                @else
+                                    <x-form.pdf-upload
+                                        name="dokumen"
+                                        label="Unggah Dokumen PDF Pendukung"
+                                        :existingFile="$tahap?->dokumen?->first()?->nama_file_asli"
+                                        :existingUrl="$tahap?->dokumen?->first() ? route('dokumen.preview', $tahap->dokumen->first()) : null"
+                                        :maxSizeMb="5"
+                                    />
+                                @endif
                             </div>
 
                             {{-- Catatan / Keterangan --}}

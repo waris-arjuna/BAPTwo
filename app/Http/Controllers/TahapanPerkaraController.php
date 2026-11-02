@@ -149,12 +149,16 @@ class TahapanPerkaraController extends Controller
             ->get()
             ->keyBy(fn ($t) => $t->jenis_tahap->value);
 
+        $nextStages = $this->tahapanService->getNextAvailableStages($berkas);
+        $nextStage = $nextStages[0] ?? null;
+
         return view('pages.tahapan.show', [
             'berkas' => $berkas->load(['perkara.penuntutUmumInstansi', 'tersangka']),
             'tahap' => $tahapan,
             'references' => $references,
             'isLocked' => $tahapan->isFinal(),
             'subTahapan' => $subTahapan,
+            'nextStage' => $nextStage,
         ]);
     }
 
@@ -248,5 +252,73 @@ class TahapanPerkaraController extends Controller
         return redirect()
             ->route('berkas-perkara.tahapan.show', [$berkas, $tahap])
             ->with('success', $payload);
+    }
+
+    /**
+     * Simpan / perbarui sub-tahap mandiri (P-16, P-17P, P-18P, P-19) via modal.
+     */
+    public function saveSubTahap(Request $request, BerkasPerkara $berkas): RedirectResponse
+    {
+        Gate::authorize('create-cases');
+
+        if ($berkas->is_dpo) {
+            return redirect()
+                ->back()
+                ->with('error', [
+                    'title' => 'Tersangka DPO',
+                    'message' => 'Tidak dapat mencatat sub-tahap karena tersangka sedang berstatus DPO Aktif.',
+                ]);
+        }
+
+        if ($berkas->hasSp3() || $berkas->status_formal === 'tidak_selesai') {
+            return redirect()
+                ->back()
+                ->with('error', [
+                    'title' => 'Berkas Berhenti',
+                    'message' => 'Berkas perkara telah ditutup dan tidak dapat mencatat sub-tahap.',
+                ]);
+        }
+
+        $validated = $request->validate([
+            'sub_tahap_group' => ['required', 'in:spdp,tahap_1'],
+            'p16_nomor_surat' => ['nullable', 'string', 'max:150'],
+            'p16_tanggal_surat' => ['nullable', 'date'],
+            'p16_dokumen' => ['nullable', 'file', 'mimes:pdf', 'max:5120'],
+            'p16_catatan' => ['nullable', 'string', 'max:1000'],
+
+            'p17p_nomor_surat' => ['nullable', 'string', 'max:150'],
+            'p17p_tanggal_surat' => ['nullable', 'date'],
+            'p17p_dokumen' => ['nullable', 'file', 'mimes:pdf', 'max:5120'],
+            'p17p_catatan' => ['nullable', 'string', 'max:1000'],
+
+            'p18p_nomor_surat' => ['nullable', 'string', 'max:150'],
+            'p18p_tanggal_surat' => ['nullable', 'date'],
+            'p18p_dokumen' => ['nullable', 'file', 'mimes:pdf', 'max:5120'],
+            'p18p_catatan' => ['nullable', 'string', 'max:1000'],
+
+            'p19_nomor_surat' => ['nullable', 'string', 'max:150'],
+            'p19_tanggal_surat' => ['nullable', 'date'],
+            'p19_dokumen' => ['nullable', 'file', 'mimes:pdf', 'max:5120'],
+            'p19_catatan' => ['nullable', 'string', 'max:1000'],
+        ]);
+
+        $group = $validated['sub_tahap_group'];
+
+        if ($group === 'spdp') {
+            $this->tahapanService->saveSubStage($berkas, JenisTahap::P16, 'p16', $validated, $request->file('p16_dokumen'), $request->user());
+            $this->tahapanService->saveSubStage($berkas, JenisTahap::P17P, 'p17p', $validated, $request->file('p17p_dokumen'), $request->user());
+            $label = 'P-16 & P-17P';
+        } else {
+            $this->tahapanService->saveSubStage($berkas, JenisTahap::P18P, 'p18p', $validated, $request->file('p18p_dokumen'), $request->user());
+            $this->tahapanService->saveSubStage($berkas, JenisTahap::P19, 'p19', $validated, $request->file('p19_dokumen'), $request->user());
+            $label = 'P-18P & P-19';
+        }
+
+        return redirect()
+            ->back()
+            ->with('success', [
+                'title' => 'Sub-Tahap Berhasil Disimpan',
+                'message' => "Data sub-tahap {$label} untuk berkas {$berkas->nomor_berkas} berhasil disimpan.",
+            ]);
     }
 }

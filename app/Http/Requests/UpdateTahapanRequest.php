@@ -6,6 +6,7 @@ use App\Enums\JenisTahap;
 use App\Models\TahapanPerkara;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\UploadedFile;
 
 class UpdateTahapanRequest extends FormRequest
 {
@@ -46,8 +47,11 @@ class UpdateTahapanRequest extends FormRequest
         $isOptionalStage = $tahap && in_array($tahap->jenis_tahap?->value, ['p16', 'p17p', 'p18p', 'p19'], true);
         $hasExistingDocument = $tahap && $tahap->dokumen()->exists();
         $isDocumentRequired = ! $isDraft && ! $isFinal && ! $isOptionalStage && ! $hasExistingDocument;
+        $isKeputusanPengadilan = $tahap && $tahap->jenis_tahap === JenisTahap::KEPUTUSAN_PENGADILAN;
+        $dokumenInput = $this->file('dokumen');
+        $isMultiDokumen = is_array($dokumenInput);
 
-        return [
+        $rules = [
             'action_type' => ['nullable', 'in:draft,lanjut'],
             'nomor_surat' => [
                 $isFinal ? 'nullable' : 'required',
@@ -59,7 +63,8 @@ class UpdateTahapanRequest extends FormRequest
                 'date',
             ],
             'catatan' => ['nullable', 'string', 'max:2000'],
-            'dokumen' => [$isDocumentRequired ? 'required' : 'nullable', 'file', 'mimes:pdf', 'max:5120'],
+            'deleted_dokumen_ids' => ['nullable', 'array'],
+            'deleted_dokumen_ids.*' => ['integer'],
 
             // Sub-tahap opsional P-16 (Penunjukan JPU pada SPDP)
             'p16_nomor_surat' => ['nullable', 'string', 'max:150'],
@@ -89,6 +94,63 @@ class UpdateTahapanRequest extends FormRequest
             'pengadilan_instansi_id' => ['nullable', 'integer', 'exists:instansi_hukum,id'],
             'amar_putusan' => ['nullable', 'string', 'max:5000'],
         ];
+
+        if ($isKeputusanPengadilan) {
+            if ($isMultiDokumen) {
+                $rules['dokumen'] = ['nullable', 'array'];
+                $rules['dokumen.*'] = ['file', 'mimes:pdf,jpg,jpeg,png,webp', 'max:10240'];
+            } else {
+                $rules['dokumen'] = ['nullable', 'file', 'mimes:pdf,jpg,jpeg,png,webp', 'max:10240'];
+            }
+        } else {
+            $rules['dokumen'] = [$isDocumentRequired ? 'required' : 'nullable', 'file', 'mimes:pdf', 'max:5120'];
+        }
+
+        return $rules;
+    }
+
+    /**
+     * Configure the validator instance.
+     */
+    public function withValidator($validator): void
+    {
+        $validator->after(function ($validator) {
+            /** @var TahapanPerkara|null $tahap */
+            $tahap = $this->route('tahapan');
+            if (is_numeric($tahap)) {
+                $tahap = TahapanPerkara::find($tahap);
+            }
+            $isKeputusanPengadilan = $tahap && $tahap->jenis_tahap === JenisTahap::KEPUTUSAN_PENGADILAN;
+
+            if (! $isKeputusanPengadilan) {
+                return;
+            }
+
+            $deletedIds = (array) $this->input('deleted_dokumen_ids', []);
+            $existingDocs = $tahap ? $tahap->dokumen()->whereNotIn('id', $deletedIds)->get() : collect();
+            $existingSize = $existingDocs->sum('file_size');
+            $existingCount = $existingDocs->count();
+
+            $dokumenInput = $this->file('dokumen');
+            $newFiles = is_array($dokumenInput) ? $dokumenInput : ($dokumenInput ? [$dokumenInput] : []);
+
+            $newFilesSize = 0;
+            foreach ($newFiles as $file) {
+                if ($file instanceof UploadedFile) {
+                    $newFilesSize += $file->getSize() ?: 0;
+                }
+            }
+            $newFilesCount = count($newFiles);
+
+            if (($existingSize + $newFilesSize) > 10 * 1024 * 1024) {
+                $validator->errors()->add('dokumen', 'Total ukuran gabungan seluruh dokumen dan foto keputusan pengadilan tidak boleh melebihi 10 MB.');
+            }
+
+            $isLanjut = ($this->input('action_type') ?? 'lanjut') === 'lanjut';
+            if ($isLanjut && ($existingCount + $newFilesCount) < 1) {
+                $validator->errors()->add('dokumen', 'Wajib melampirkan minimal 1 dokumen salinan putusan (PDF atau Foto) untuk melanjutkan tahapan.');
+            }
+        });
     }
 
     /**
@@ -96,14 +158,27 @@ class UpdateTahapanRequest extends FormRequest
      */
     public function messages(): array
     {
+        /** @var TahapanPerkara|null $tahap */
+        $tahap = $this->route('tahapan');
+        if (is_numeric($tahap)) {
+            $tahap = TahapanPerkara::find($tahap);
+        }
+        $isKeputusanPengadilan = $tahap && $tahap->jenis_tahap === JenisTahap::KEPUTUSAN_PENGADILAN;
+
         return [
             'nomor_surat.required' => 'Nomor surat / dokumen wajib diisi.',
             'nomor_surat.max' => 'Nomor surat tidak boleh lebih dari 150 karakter.',
             'tanggal_surat.required' => 'Tanggal surat / dokumen wajib diisi untuk melanjutkan tahapan.',
             'tanggal_surat.date' => 'Format tanggal surat tidak valid.',
             'dokumen.required' => 'Dokumen wajib diunggah saat melanjutkan tahapan.',
-            'dokumen.mimes' => 'Dokumen tahapan harus berupa file PDF.',
-            'dokumen.max' => 'Ukuran file dokumen tidak boleh melebihi 5 MB.',
+            'dokumen.mimes' => $isKeputusanPengadilan
+                ? 'Dokumen keputusan pengadilan harus berformat PDF atau Gambar (JPG, JPEG, PNG, WEBP).'
+                : 'Dokumen tahapan harus berupa file PDF.',
+            'dokumen.max' => $isKeputusanPengadilan
+                ? 'Ukuran file dokumen keputusan pengadilan tidak boleh melebihi 10 MB.'
+                : 'Ukuran file dokumen tidak boleh melebihi 5 MB.',
+            'dokumen.*.mimes' => 'Setiap berkas keputusan pengadilan harus berformat PDF atau Gambar (JPG, JPEG, PNG, WEBP).',
+            'dokumen.*.max' => 'Ukuran setiap berkas dokumen keputusan pengadilan tidak boleh melebihi 10 MB.',
             'p16_dokumen.mimes' => 'Dokumen P-16 harus berupa file PDF.',
             'p16_dokumen.max' => 'Ukuran file dokumen tidak boleh melebihi 5 MB.',
             'p17p_dokumen.mimes' => 'Dokumen P-17 harus berupa file PDF.',

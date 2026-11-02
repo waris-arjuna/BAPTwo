@@ -7,6 +7,7 @@ use App\Models\BerkasPerkara;
 use App\Services\TahapanService;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Validation\Rule;
 
 class StoreTahapanRequest extends FormRequest
@@ -29,8 +30,11 @@ class StoreTahapanRequest extends FormRequest
         $isDraft = $this->input('action_type') === 'draft';
         $jenisInput = (string) $this->input('jenis_tahap');
         $isOptionalStage = in_array($jenisInput, ['p16', 'p17p', 'p18p', 'p19'], true);
+        $isKeputusanPengadilan = $jenisInput === JenisTahap::KEPUTUSAN_PENGADILAN->value || $jenisInput === JenisTahap::KEPUTUSAN_PENGADILAN->name;
+        $dokumenInput = $this->file('dokumen');
+        $isMultiDokumen = is_array($dokumenInput);
 
-        return [
+        $rules = [
             'action_type' => ['nullable', 'in:draft,lanjut'],
             'jenis_tahap' => [
                 'required',
@@ -64,7 +68,8 @@ class StoreTahapanRequest extends FormRequest
                 'date',
             ],
             'catatan' => ['nullable', 'string', 'max:2000'],
-            'dokumen' => [$isDraft || $isOptionalStage ? 'nullable' : 'required', 'file', 'mimes:pdf', 'max:5120'],
+            'deleted_dokumen_ids' => ['nullable', 'array'],
+            'deleted_dokumen_ids.*' => ['integer'],
 
             // Sub-tahap opsional P-16 (Penunjukan JPU pada SPDP)
             'p16_nomor_surat' => ['nullable', 'string', 'max:150'],
@@ -94,6 +99,53 @@ class StoreTahapanRequest extends FormRequest
             'pengadilan_instansi_id' => ['nullable', 'integer', 'exists:instansi_hukum,id'],
             'amar_putusan' => ['nullable', 'string', 'max:5000'],
         ];
+
+        if ($isKeputusanPengadilan) {
+            if ($isMultiDokumen) {
+                $rules['dokumen'] = ['nullable', 'array'];
+                $rules['dokumen.*'] = ['file', 'mimes:pdf,jpg,jpeg,png,webp', 'max:10240'];
+            } else {
+                $rules['dokumen'] = ['nullable', 'file', 'mimes:pdf,jpg,jpeg,png,webp', 'max:10240'];
+            }
+        } else {
+            $rules['dokumen'] = [$isDraft || $isOptionalStage ? 'nullable' : 'required', 'file', 'mimes:pdf', 'max:5120'];
+        }
+
+        return $rules;
+    }
+
+    /**
+     * Configure the validator instance.
+     */
+    public function withValidator($validator): void
+    {
+        $validator->after(function ($validator) {
+            $jenisInput = (string) $this->input('jenis_tahap');
+            $isKeputusanPengadilan = $jenisInput === JenisTahap::KEPUTUSAN_PENGADILAN->value || $jenisInput === JenisTahap::KEPUTUSAN_PENGADILAN->name;
+
+            if (! $isKeputusanPengadilan) {
+                return;
+            }
+
+            $dokumenInput = $this->file('dokumen');
+            $newFiles = is_array($dokumenInput) ? $dokumenInput : ($dokumenInput ? [$dokumenInput] : []);
+
+            $newFilesSize = 0;
+            foreach ($newFiles as $file) {
+                if ($file instanceof UploadedFile) {
+                    $newFilesSize += $file->getSize() ?: 0;
+                }
+            }
+
+            if ($newFilesSize > 10 * 1024 * 1024) {
+                $validator->errors()->add('dokumen', 'Total ukuran gabungan seluruh dokumen dan foto keputusan pengadilan tidak boleh melebihi 10 MB.');
+            }
+
+            $isLanjut = ($this->input('action_type') ?? 'lanjut') === 'lanjut';
+            if ($isLanjut && count($newFiles) < 1) {
+                $validator->errors()->add('dokumen', 'Wajib melampirkan minimal 1 dokumen salinan putusan (PDF atau Foto) untuk melanjutkan tahapan.');
+            }
+        });
     }
 
     /**
@@ -101,15 +153,24 @@ class StoreTahapanRequest extends FormRequest
      */
     public function messages(): array
     {
+        $jenisInput = (string) $this->input('jenis_tahap');
+        $isKeputusanPengadilan = $jenisInput === JenisTahap::KEPUTUSAN_PENGADILAN->value || $jenisInput === JenisTahap::KEPUTUSAN_PENGADILAN->name;
+
         return [
             'jenis_tahap.required' => 'Jenis tahapan wajib ditentukan.',
             'nomor_surat.required' => 'Nomor surat / dokumen wajib diisi.',
             'nomor_surat.max' => 'Nomor surat tidak boleh lebih dari 150 karakter.',
             'tanggal_surat.required' => 'Tanggal surat / dokumen wajib diisi untuk melanjutkan tahapan.',
             'tanggal_surat.date' => 'Format tanggal surat tidak valid.',
-            'dokumen.required' => 'Dokumen fisik PDF wajib diunggah untuk melanjutkan tahapan.',
-            'dokumen.mimes' => 'Dokumen tahapan harus berupa file format PDF.',
-            'dokumen.max' => 'Ukuran file dokumen tidak boleh melebihi 5 MB.',
+            'dokumen.required' => 'Dokumen fisik wajib diunggah untuk melanjutkan tahapan.',
+            'dokumen.mimes' => $isKeputusanPengadilan
+                ? 'Dokumen keputusan pengadilan harus berformat PDF atau Gambar (JPG, JPEG, PNG, WEBP).'
+                : 'Dokumen tahapan harus berupa file format PDF.',
+            'dokumen.max' => $isKeputusanPengadilan
+                ? 'Ukuran file dokumen keputusan pengadilan tidak boleh melebihi 10 MB.'
+                : 'Ukuran file dokumen tidak boleh melebihi 5 MB.',
+            'dokumen.*.mimes' => 'Setiap berkas keputusan pengadilan harus berformat PDF atau Gambar (JPG, JPEG, PNG, WEBP).',
+            'dokumen.*.max' => 'Ukuran setiap berkas dokumen keputusan pengadilan tidak boleh melebihi 10 MB.',
             'p16_dokumen.mimes' => 'Dokumen P-16 harus berupa file format PDF.',
             'p16_dokumen.max' => 'Ukuran file dokumen tidak boleh melebihi 5 MB.',
             'p17p_dokumen.mimes' => 'Dokumen P-17 harus berupa file format PDF.',
