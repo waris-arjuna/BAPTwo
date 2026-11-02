@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\BerkasPerkara;
 use App\Models\Dokumen;
 use App\Models\Sp3;
+use App\Models\User;
 use DomainException;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +19,7 @@ class Sp3Service
     /**
      * Menerbitkan SP3 untuk berkas perkara dan menetapkan status formal menjadi Tidak Selesai.
      *
-     * @param  array{nomor_surat: string, tanggal_sp3: string, keterangan: string}  $data
+     * @param  array{nomor_surat: string, tanggal_sp3: string, keterangan: string, penandatangan_id?: int|null, penyidik_utama_id?: int|null, penyidik_anggota_ids?: array<int>, penandatangan_nama?: string|null, penandatangan_jabatan?: string|null}  $data
      *
      * @throws DomainException
      */
@@ -61,16 +62,37 @@ class Sp3Service
                 'updated_by' => $actorId,
             ]);
 
-            // 2. Buat record SP3
+            // Ambil data pejabat penandatangan dari tabel pegawai (user)
+            if (! empty($data['penandatangan_id'])) {
+                $penandatangan = User::with('jabatan')->findOrFail($data['penandatangan_id']);
+                $penandatanganNama = $penandatangan->nama;
+                $penandatanganJabatan = $penandatangan->jabatan?->nama_jabatan ?? '-';
+            } else {
+                $penandatanganNama = $data['penandatangan_nama'] ?? null;
+                $penandatanganJabatan = $data['penandatangan_jabatan'] ?? null;
+            }
+
+            // Ambil Penyidik Utama & Anggota otomatis dari Perkara terkait jika tidak ditentukan eksplisit
+            $penyidikUtamaId = $data['penyidik_utama_id'] ?? $berkas->perkara?->ppnsUtama()->first()?->id ?? null;
+            $penyidikAnggotaIds = $data['penyidik_anggota_ids'] ?? ($berkas->perkara?->ppnsAnggota()->pluck('user.id')->toArray() ?? []);
+
+            // 2. Buat record SP3 (Poin 6)
             $sp3 = Sp3::create([
                 'berkas_perkara_id' => $berkas->id,
                 'nomor_surat' => $data['nomor_surat'],
                 'tanggal_sp3' => $data['tanggal_sp3'],
                 'keterangan' => $data['keterangan'],
                 'dokumen_id' => $dokumen->id,
+                'penyidik_utama_id' => $penyidikUtamaId,
+                'penandatangan_nama' => $penandatanganNama,
+                'penandatangan_jabatan' => $penandatanganJabatan,
                 'created_by' => $actorId,
                 'updated_by' => $actorId,
             ]);
+
+            if (! empty($penyidikAnggotaIds)) {
+                $sp3->penyidikAnggota()->sync($penyidikAnggotaIds);
+            }
 
             // 3. Update status formal berkas perkara menjadi tidak_selesai, status proses menjadi SP3, dan cabut DPO jika aktif
             $oldStatusFormal = $berkas->status_formal;
@@ -99,6 +121,10 @@ class Sp3Service
                     'dpo_dicabut_otomatis' => $wasDpo,
                     'nomor_sp3' => $sp3->nomor_surat,
                     'tanggal_sp3' => $sp3->tanggal_sp3->format('Y-m-d'),
+                    'penyidik_utama_id' => $sp3->penyidik_utama_id,
+                    'penyidik_anggota_ids' => $penyidikAnggotaIds,
+                    'penandatangan_nama' => $sp3->penandatangan_nama,
+                    'penandatangan_jabatan' => $sp3->penandatangan_jabatan,
                     'keterangan' => $sp3->keterangan,
                 ],
                 perkaraId: $berkas->perkara_id,

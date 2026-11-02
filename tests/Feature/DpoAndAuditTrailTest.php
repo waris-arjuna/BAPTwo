@@ -272,7 +272,7 @@ test('halaman detail perkara merender badge DPO aktif, card peringatan, dan time
     $response->assertSee('B/DPO/99/X/2026');
     $response->assertSee('Buron ke luar pulau.');
     $response->assertSee('Penambahan dan pelanjutan seluruh tahapan perkara dinonaktifkan di sistem', false);
-    $response->assertSee('Cabut Status DPO');
+    $response->assertSee('Catat Penangkapan', false);
     $response->assertSee('Riwayat Penanganan Perkara (Case History)');
     $response->assertSee('Penetapan Status DPO');
 });
@@ -328,6 +328,7 @@ test('penerbitan SP3 diperbolehkan saat tersangka berstatus DPO aktif dan otomat
             'nomor_surat' => 'SPPP/DPO/01/2026',
             'tanggal_sp3' => '2026-10-16',
             'keterangan' => 'Penghentian penyidikan dengan pencabutan DPO',
+            'penandatangan_id' => $this->penyidik->id,
             'dokumen' => $pdf,
         ]);
 

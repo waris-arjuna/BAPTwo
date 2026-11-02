@@ -78,17 +78,40 @@
                     ></p>
                 </div>
 
-                {{-- 3. Penyidik yang Membuat SP3 --}}
+                {{-- 3. Tim Penyidik (Poin 6) --}}
                 <div class="sm:col-span-2 border-t border-gray-200/70 pt-3 dark:border-gray-800">
-                    <p class="text-xs font-medium text-gray-500 dark:text-gray-400">Penyidik yang Membuat SP3</p>
+                    <p class="text-xs font-medium text-gray-500 dark:text-gray-400">Penyidik Utama</p>
                     <div class="mt-1 flex items-center gap-2 text-sm font-medium text-gray-800 dark:text-white/90">
-                        <i class="fi fi-rr-user text-xs text-brand-500"></i>
-                        <span x-text="viewSp3Data.penyidik_nama || '-'"></span>
+                        <i class="fi fi-rr-badge-check text-xs text-brand-500"></i>
+                        <span x-text="viewSp3Data.penyidik_utama || viewSp3Data.penyidik_nama || '-'"></span>
                     </div>
+
+                    <template x-if="viewSp3Data.penyidik_anggota && viewSp3Data.penyidik_anggota.length > 0">
+                        <div class="mt-2.5">
+                            <p class="text-xs font-medium text-gray-500 dark:text-gray-400">Penyidik Anggota</p>
+                            <div class="mt-1 flex flex-wrap gap-1.5">
+                                <template x-for="(anggota, idx) in viewSp3Data.penyidik_anggota" :key="idx">
+                                    <span class="inline-flex items-center gap-1 rounded-md bg-gray-100 px-2 py-0.5 text-xs text-gray-700 dark:bg-gray-800 dark:text-gray-300">
+                                        <i class="fi fi-rr-user text-[10px] text-gray-400"></i>
+                                        <span x-text="anggota"></span>
+                                    </span>
+                                </template>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+
+                {{-- 4. Pejabat Penandatangan SP3 (Poin 6) --}}
+                <div class="sm:col-span-2 border-t border-gray-200/70 pt-3 dark:border-gray-800">
+                    <p class="text-xs font-medium text-gray-500 dark:text-gray-400">Pejabat Penandatangan SP3</p>
+                    <div class="mt-1 text-sm font-semibold text-gray-900 dark:text-white">
+                        <span x-text="viewSp3Data.penandatangan_nama || '-'"></span>
+                    </div>
+                    <p class="text-xs text-gray-500 dark:text-gray-400" x-text="viewSp3Data.penandatangan_jabatan || '-'"></p>
                 </div>
             </div>
 
-            {{-- 4. Lihat File SP3 --}}
+            {{-- 5. Lihat File SP3 --}}
             <div>
                 <p class="mb-1.5 text-xs font-medium text-gray-700 dark:text-gray-300">
                     File Dokumen SP3

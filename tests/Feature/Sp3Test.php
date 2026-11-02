@@ -53,6 +53,7 @@ test('penyidik dapat menerbitkan SP3 dengan nomor surat, tanggal, keterangan, da
             'nomor_surat' => 'SPPP/01/BPOM/BJM/2026',
             'tanggal_sp3' => '2026-10-14',
             'keterangan' => 'Berdasarkan hasil gelar perkara, alat bukti tidak mencukupi unsur pasal.',
+            'penandatangan_id' => $this->penyidik->id,
             'dokumen' => $pdf,
         ]);
 
@@ -69,6 +70,7 @@ test('penyidik dapat menerbitkan SP3 dengan nomor surat, tanggal, keterangan, da
         'berkas_perkara_id' => $this->berkas->id,
         'nomor_surat' => 'SPPP/01/BPOM/BJM/2026',
         'keterangan' => 'Berdasarkan hasil gelar perkara, alat bukti tidak mencukupi unsur pasal.',
+        'penandatangan_nama' => $this->penyidik->nama,
         'created_by' => $this->penyidik->id,
     ]);
 
@@ -96,6 +98,7 @@ test('administrator dapat menerbitkan SP3', function () {
             'nomor_surat' => 'SPPP/ADMIN/01/2026',
             'tanggal_sp3' => '2026-10-14',
             'keterangan' => 'Peristiwa bukan merupakan tindak pidana berdasarkan gelar perkara.',
+            'penandatangan_id' => $this->admin->id,
             'dokumen' => $pdf,
         ]);
 
@@ -143,6 +146,7 @@ test('berkas perkara yang telah SP3 dikunci dari penambahan tahapan lanjutan', f
             'nomor_surat' => 'SPPP/LOCK/01/2026',
             'tanggal_sp3' => '2026-10-14',
             'keterangan' => 'Dihentikan demi hukum nebis in idem.',
+            'penandatangan_id' => $this->penyidik->id,
             'dokumen' => $pdf,
         ]);
 
@@ -163,6 +167,7 @@ test('tidak dapat menerbitkan SP3 ganda pada berkas yang sudah diterbitkan SP3',
             'nomor_surat' => 'SPPP/01/2026',
             'tanggal_sp3' => '2026-10-14',
             'keterangan' => 'Tidak cukup bukti',
+            'penandatangan_id' => $this->penyidik->id,
             'dokumen' => $pdf1,
         ]);
 
@@ -171,6 +176,7 @@ test('tidak dapat menerbitkan SP3 ganda pada berkas yang sudah diterbitkan SP3',
             'nomor_surat' => 'SPPP/02/2026',
             'tanggal_sp3' => '2026-10-14',
             'keterangan' => 'Tidak cukup bukti',
+            'penandatangan_id' => $this->penyidik->id,
             'dokumen' => $pdf2,
         ]);
 
@@ -186,6 +192,7 @@ test('validasi input SP3 menolak file PDF lebih dari 5 MB (Poin 18)', function (
             'nomor_surat' => 'SPPP/LARGE/2026',
             'tanggal_sp3' => '2026-10-14',
             'keterangan' => 'Alasan SP3 dengan file besar',
+            'penandatangan_id' => $this->penyidik->id,
             'dokumen' => $largePdf,
         ]);
 
@@ -201,6 +208,7 @@ test('perkara berstatus SP3 langsung berstatus proses SP3 dan formal Tidak Seles
             'nomor_surat' => 'SPPP/FINAL/2026',
             'tanggal_sp3' => '2026-10-14',
             'keterangan' => 'Alasan SP3 final',
+            'penandatangan_id' => $this->penyidik->id,
             'dokumen' => $pdf,
         ]);
 
@@ -227,6 +235,7 @@ test('halaman detail perkara menampilkan tombol Lihat SP3 dan data pop up detail
             'nomor_surat' => 'SPPP/99/BPOM/BJM/2026',
             'tanggal_sp3' => '2026-10-20',
             'keterangan' => 'Tersangka meninggal dunia berdasarkan akta kematian resmi.',
+            'penandatangan_id' => $this->penyidik->id,
             'dokumen' => $pdf,
         ]);
 
@@ -240,5 +249,6 @@ test('halaman detail perkara menampilkan tombol Lihat SP3 dan data pop up detail
         ->assertSee('20-10-2026')
         ->assertSee('Budi Santoso, S.Farm., Apt. (NIP: 198804122015031002)')
         ->assertSee('Lihat File SP3')
+        ->assertSee('Budi Santoso, S.Farm., Apt.')
         ->assertSee('Tersangka meninggal dunia berdasarkan akta kematian resmi.');
 });

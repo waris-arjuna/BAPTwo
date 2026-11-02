@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Dpo extends Model
@@ -28,6 +29,13 @@ class Dpo extends Model
         'keterangan',
         'alasan_pencabutan',
         'dokumen_id',
+        'nomor_surat_penangkapan',
+        'tanggal_surat_penangkapan',
+        'tanggal_penangkapan',
+        'nomor_surat_penahanan',
+        'tanggal_penahanan',
+        'dokumen_penangkapan_id',
+        'keterangan_penangkapan',
         'created_by',
         'updated_by',
     ];
@@ -40,6 +48,9 @@ class Dpo extends Model
         return [
             'tanggal_penetapan' => 'date',
             'tanggal_pencabutan' => 'date',
+            'tanggal_surat_penangkapan' => 'date',
+            'tanggal_penangkapan' => 'date',
+            'tanggal_penahanan' => 'date',
         ];
     }
 
@@ -57,6 +68,24 @@ class Dpo extends Model
     public function dokumen(): BelongsTo
     {
         return $this->belongsTo(Dokumen::class, 'dokumen_id');
+    }
+
+    /**
+     * @return BelongsTo<Dokumen, $this>
+     */
+    public function dokumenPenangkapan(): BelongsTo
+    {
+        return $this->belongsTo(Dokumen::class, 'dokumen_penangkapan_id');
+    }
+
+    /**
+     * Daftar seluruh berkas dokumen pendukung penangkapan & penahanan DPO (multi-file)
+     *
+     * @return HasMany<Dokumen, $this>
+     */
+    public function dokumenPenangkapanList(): HasMany
+    {
+        return $this->hasMany(Dokumen::class, 'dpo_id');
     }
 
     /**
