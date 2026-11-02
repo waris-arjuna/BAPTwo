@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Enums\JenisTahap;
+use App\Services\DashboardService;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -439,6 +441,107 @@ class Perkara extends Model
             'badge_class' => $minSisa <= 7
                 ? 'bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-900/20 dark:text-amber-300 dark:border-amber-800'
                 : 'bg-brand-50 text-brand-700 border-brand-200 dark:bg-brand-900/20 dark:text-brand-300 dark:border-brand-800',
+        ];
+    }
+
+    /**
+     * Rekomendasi Tindakan Administrasi / Pelimpahan Perkara (Poin 10)
+     *
+     * @return array{label: string, deskripsi: string, badge_class: string, icon: string}
+     */
+    public function getRekomendasiTindakanInfo(): array
+    {
+        $statusFormal = $this->status_formal;
+
+        // 1. Perkara Selesai
+        if ($statusFormal === 'selesai') {
+            return [
+                'label' => 'Perkara Selesai',
+                'deskripsi' => 'Seluruh berkas perkara telah diselesaikan.',
+                'badge_class' => 'bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20',
+                'icon' => 'fi fi-rr-check-circle',
+            ];
+        }
+
+        // 2. Perkara SP3 / Tidak Selesai
+        if ($statusFormal === 'tidak_selesai') {
+            return [
+                'label' => 'Perkara Dihentikan (SP3)',
+                'deskripsi' => 'Penyidikan telah dihentikan secara resmi.',
+                'badge_class' => 'bg-red-50 text-red-700 border-red-200 dark:bg-red-500/10 dark:text-red-400 dark:border-red-500/20',
+                'icon' => 'fi fi-rr-ban',
+            ];
+        }
+
+        $berkasList = $this->relationLoaded('berkasPerkaras')
+            ? $this->berkasPerkaras
+            : $this->berkasPerkaras()->with('tahapan')->get();
+
+        // 3. Terkendala DPO
+        if ($berkasList->contains(fn ($b) => $b->is_dpo)) {
+            return [
+                'label' => 'Terkendala DPO',
+                'deskripsi' => 'Pelimpahan ditunda karena Tersangka berstatus DPO Aktif.',
+                'badge_class' => 'bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-500/10 dark:text-amber-400 dark:border-amber-500/20',
+                'icon' => 'fi fi-rr-user-slash',
+            ];
+        }
+
+        // 4. Melebihi SLA (SLA habis dan belum selesai)
+        $today = Carbon::today(DashboardService::ZONA_WAKTU)->toDateString();
+        $isLewatSla = $berkasList->contains(function ($b) use ($today) {
+            $isAktif = empty($b->status_formal) || $b->status_formal === 'dalam_proses';
+
+            return $isAktif && ! empty($b->sla_deadline) && $b->sla_deadline->toDateString() < $today;
+        });
+
+        if ($isLewatSla) {
+            return [
+                'label' => 'Prioritas: Melebihi SLA',
+                'deskripsi' => 'Batas waktu tahapan terlampaui, prioritaskan tindak lanjut.',
+                'badge_class' => 'bg-rose-50 text-rose-700 border-rose-200 dark:bg-rose-500/10 dark:text-rose-400 dark:border-rose-500/20',
+                'icon' => 'fi fi-rr-alarm-exclamation',
+            ];
+        }
+
+        // 5. Siap Pelimpahan Tahap II (Progress >= 55% / Tahap 1 / P-21 dan tidak DPO)
+        $isSiapTahap2 = $berkasList->contains(function ($b) {
+            $isAktif = empty($b->status_formal) || $b->status_formal === 'dalam_proses';
+
+            return $isAktif && ! $b->is_dpo && in_array((int) $b->progress_persen, [55, 85], true);
+        });
+
+        if ($isSiapTahap2) {
+            return [
+                'label' => 'Siap Pelimpahan Tahap II',
+                'deskripsi' => 'Berkas lengkap, siap penyerahan Tersangka & Barang Bukti.',
+                'badge_class' => 'bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-500/10 dark:text-blue-400 dark:border-blue-500/20',
+                'icon' => 'fi fi-rr-paper-plane',
+            ];
+        }
+
+        // 6. Siap Pelimpahan Tahap I (Progress == 15% / SPDP final dan tidak DPO)
+        $isSiapTahap1 = $berkasList->contains(function ($b) {
+            $isAktif = empty($b->status_formal) || $b->status_formal === 'dalam_proses';
+
+            return $isAktif && ! $b->is_dpo && (int) $b->progress_persen === 15;
+        });
+
+        if ($isSiapTahap1) {
+            return [
+                'label' => 'Siap Pelimpahan Tahap I',
+                'deskripsi' => 'SPDP final, berkas perkara siap dilimpahkan ke Kejaksaan.',
+                'badge_class' => 'bg-indigo-50 text-indigo-700 border-indigo-200 dark:bg-indigo-500/10 dark:text-indigo-400 dark:border-indigo-500/20',
+                'icon' => 'fi fi-rr-document-signed',
+            ];
+        }
+
+        // 7. Default: Dalam Proses Normal
+        return [
+            'label' => 'Dalam Proses Normal',
+            'deskripsi' => 'Penyidikan berjalan sesuai tahapan.',
+            'badge_class' => 'bg-gray-50 text-gray-700 border-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700',
+            'icon' => 'fi fi-rr-time-forward',
         ];
     }
 

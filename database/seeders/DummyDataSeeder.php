@@ -21,6 +21,7 @@ use App\Models\TahapanPerkara;
 use App\Models\Tersangka;
 use App\Models\Tkp;
 use App\Models\User;
+use App\Services\DashboardService;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -137,23 +138,24 @@ class DummyDataSeeder extends Seeder
     private int $urutanTersangka = 0;
 
     /**
-     * Jalankan seeder 1.000 data perkara dummy yang beragam untuk seluruh alur BAPTwo.
+     * Jalankan seeder 500 data perkara dummy yang beragam untuk seluruh alur BAPTwo periode 2025-2026.
      */
     public function run(): void
     {
         // 1. Pastikan sample PDF privat tersedia
         $this->ensureSamplePdf();
 
-        // 2. Bersihkan data dummy lama yang sudah usang agar jumlah data tetap tepat 1.000
+        // 2. Bersihkan data dummy lama yang sudah usang agar jumlah data tetap tepat 500
         $this->cleanupObsoleteDummyCases();
 
         // 3. Siapkan Master Data Lengkap (Jabatan, Bidang, Panggol, 38 Pasal, 45 Jaksa, Instansi)
         $master = $this->seedMasterData();
 
-        // 4. Siapkan Pengguna PPNS (20 Penyidik)
+        // 4. Siapkan Pengguna PPNS (20 Penyidik) serta Administrator & Pimpinan
         $users = $this->seedUsers($master);
+        $this->call(AdminPimpinanSeeder::class);
 
-        // 5. Tanam 1.000 Perkara dengan variasi alur, tahun 2024–2026, tahapan, DPO, SP3, dan murni 1 Tersangka 1 Berkas
+        // 5. Tanam 500 Perkara dengan variasi alur, tahun 2025–2026, tahapan, DPO, SP3, dan murni 1 Tersangka 1 Berkas
         $this->seedPerkaraCases($master, $users);
     }
 
@@ -237,6 +239,8 @@ class DummyDataSeeder extends Seeder
                 Alamat::whereIn('id', $tkpAlamatIds)->delete();
             }
         }
+
+        DashboardService::clearCache();
     }
 
     /**
@@ -540,7 +544,7 @@ class DummyDataSeeder extends Seeder
     }
 
     /**
-     * Menanam 1.000 perkara dari pra-SPDP sampai putusan pengadilan.
+     * Menanam 500 perkara dari pra-SPDP sampai putusan pengadilan periode 2025-2026.
      *
      * @param  array<string, mixed>  $master
      * @param  array<string, User>  $users
@@ -567,6 +571,24 @@ class DummyDataSeeder extends Seeder
                 $adaSprindik = ! in_array($bucket, ['lk_draft', 'lk_final'], true);
                 $tanggalSprindik = $adaSprindik ? $tanggalLk->copy()->addDays(2) : null;
                 $tanggalSpdp = $adaSprindik ? $tanggalSprindik->copy()->addDays(3) : null;
+
+                // Khusus berkas berjalan tahun 2026 dengan SPDP, terapkan profil SLA agar variasi tenggang waktu realistis
+                if ($baris['tahun'] === 2026 && ! empty($baris['sla_profile']) && $tanggalSpdp !== null) {
+                    $anchorDate = Carbon::create(2026, 10, 28)->startOfDay();
+                    if ($baris['sla_profile'] === 'dalam') {
+                        // SPDP terbit 5 s.d. 19 hari yang lalu -> batas waktu masih > 7 hari ke depan
+                        $hariLalu = 5 + ($urutan % 15);
+                        $tanggalSpdp = $anchorDate->copy()->subDays($hariLalu);
+                        $tanggalSprindik = $tanggalSpdp->copy()->subDays(3);
+                        $tanggalLk = $tanggalSprindik->copy()->subDays(2);
+                    } elseif ($baris['sla_profile'] === 'mendekati') {
+                        // SPDP terbit 24 s.d. 28 hari yang lalu -> batas waktu tinggal 2 s.d. 6 hari ke depan (<= 7 hari)
+                        $hariLalu = 24 + ($urutan % 5);
+                        $tanggalSpdp = $anchorDate->copy()->subDays($hariLalu);
+                        $tanggalSprindik = $tanggalSpdp->copy()->subDays(3);
+                        $tanggalLk = $tanggalSprindik->copy()->subDays(2);
+                    }
+                }
 
                 $detailTkp = $this->susunDetailTkp($archetype, $lokasi, $urutan);
                 $uraian = str_replace('{kabupaten}', $lokasi['kab'][1], $archetype['uraian']);
@@ -609,7 +631,7 @@ class DummyDataSeeder extends Seeder
                         'detail' => $detailTkp,
                         'klasifikasi' => $archetype['klasifikasi'],
                         'legalitas' => $archetype['legalitas'],
-                        'modus' => $urutan % 5 === 0 ? 'online' : ($urutan % 7 === 0 ? 'offline' : $archetype['modus']),
+                        'modus' => (($urutan * 37) % 100 < 32) ? 'online' : 'offline',
                     ],
                     ppnsUtama: $ppnsUtama,
                     ppnsAnggota: $ppnsAnggota,
@@ -637,155 +659,216 @@ class DummyDataSeeder extends Seeder
     }
 
     /**
-     * Hitung tanggal LK agar tersebar merata dalam tahun kalender masing-masing.
+     * Hitung tanggal LK dengan pola acak dinamis fluktuatif bulanan (bukan garis lurus/rata).
      */
     private function hitungTanggalLk(int $tahun, int $idxTahun, int $totalTahun): Carbon
     {
-        $maksHari = ($tahun === 2026) ? 285 : 345;
-        $rasio = $totalTahun > 1 ? ($idxTahun / ($totalTahun - 1)) : 0;
-        $offset = (int) round($rasio * $maksHari);
+        // Pola tren bulanan naik-turun dinamis:
+        // 2026 (350 perkara across Jan-Okt): 32, 22, 46, 26, 40, 24, 44, 36, 52, 28
+        // 2025 (150 perkara across Jan-Des): 14, 8, 18, 10, 16, 7, 17, 12, 20, 11, 13, 4
+        $distribusiBulan = ($tahun === 2026)
+            ? [1 => 32, 2 => 22, 3 => 46, 4 => 26, 5 => 40, 6 => 24, 7 => 44, 8 => 36, 9 => 52, 10 => 28]
+            : [1 => 14, 2 => 8, 3 => 18, 4 => 10, 5 => 16, 6 => 7, 7 => 17, 8 => 12, 9 => 20, 10 => 11, 11 => 13, 12 => 4];
 
-        return Carbon::create($tahun, 1, 5)->startOfDay()->addDays($offset);
+        $bulan = 1;
+        $sisaIndex = $idxTahun;
+        foreach ($distribusiBulan as $m => $jumlah) {
+            if ($sisaIndex < $jumlah) {
+                $bulan = $m;
+                break;
+            }
+            $sisaIndex -= $jumlah;
+        }
+
+        $totalDiBulan = $distribusiBulan[$bulan] ?? 1;
+        $maxHariBulan = ($tahun === 2026 && $bulan === 10) ? 26 : 28;
+        $hari = 1 + (int) round(($sisaIndex / max(1, $totalDiBulan - 1)) * ($maxHariBulan - 1));
+        $hari = min(max($hari, 1), $maxHariBulan);
+
+        return Carbon::create($tahun, $bulan, $hari)->startOfDay();
     }
 
     /**
-     * Rencana tepat 1.000 perkara: komposisi tahapan, rentang 3 tahun, DPO, SP3, dan murni 1 tersangka.
+     * Rencana tepat 500 perkara (2025-2026): komposisi tahapan, rentang 2 tahun, SLA, DPO, SP3, dan murni 1 tersangka.
      *
      * @return array<int, array<string, mixed>>
      */
     private function susunRencana(): array
     {
-        // Distribusi tepat 1.000 perkara ke seluruh tahapan alur BAPTwo
-        $distribusi = [
-            'lk_draft' => 30,
-            'lk_final' => 50,
-            'sprindik_draft' => 30,
-            'sprindik_final' => 50,
-            'perkara_only' => 40,
-            'spdp_draft' => 30,
-            'spdp' => 80,
-            'spdp_p16' => 50,
-            'spdp_p16_p17p' => 40,
-            'tahap1_draft' => 30,
-            'tahap1' => 70,
-            'tahap1_p18p_p19' => 50,
-            'p21_draft' => 30,
-            'p21' => 60,
-            'tahap2' => 100,
-            'keputusan' => 220,
-            'sp3' => 40,
+        $archetypeKeys = array_keys($this->archetypeCatalog());
+
+        // 1. Tahun 2026 (Tahun Berjalan): 350 perkara
+        // - ~55% Berjalan (192 perkara): 100 Pra-SPDP, 57 SPDP, 25 Tahap I, 10 P-21
+        // - ~40% Selesai (140 perkara): 40 Tahap II, 100 Keputusan Pengadilan
+        // - ~5% SP3 (18 perkara)
+        $distribusi2026 = [
+            // Pra-SPDP (100)
+            'lk_draft' => 15,
+            'lk_final' => 25,
+            'sprindik_draft' => 15,
+            'sprindik_final' => 25,
+            'perkara_only' => 20,
+            // SPDP & Subtahap (57)
+            'spdp_draft' => 12,
+            'spdp' => 20,
+            'spdp_p16' => 15,
+            'spdp_p16_p17p' => 10,
+            // Tahap 1 (25)
+            'tahap1_draft' => 8,
+            'tahap1' => 10,
+            'tahap1_p18p_p19' => 7,
+            // P-21 (10)
+            'p21_draft' => 4,
+            'p21' => 6,
+            // Selesai (140)
+            'tahap2' => 40,
+            'keputusan' => 100,
+            // SP3 (18)
+            'sp3' => 18,
         ];
 
-        $archetypeKeys = array_keys($this->archetypeCatalog());
-        $lokasiKeys = array_keys($this->lokasiCatalog());
+        // 2. Tahun 2025 (Arsip Tahun Lalu): 150 perkara
+        // - 0 Perkara Berjalan (sesuai aturan batas tahun mutlak BPOM)
+        // - 115 perkara Selesai (30 Tahap II, 85 Keputusan Pengadilan)
+        // - 10 perkara SP3
+        // - 25 perkara Tidak Selesai (lewat batas tahun 31 Desember 2025: 8 SPDP, 10 Tahap I, 7 P-21)
+        $distribusi2025 = [
+            'tahap2' => 30,
+            'keputusan' => 85,
+            'sp3' => 10,
+            'spdp' => 8,
+            'tahap1' => 10,
+            'p21' => 7,
+        ];
 
-        $rencana = [];
-        $nomor = 0;
-        foreach ($distribusi as $bucket => $jumlah) {
+        $rencana2026 = [];
+        $nomor2026 = 0;
+        foreach ($distribusi2026 as $bucket => $jumlah) {
             for ($i = 0; $i < $jumlah; $i++) {
-                $rencana[] = [
+                $rencana2026[] = [
                     'bucket' => $bucket,
                     'idx_bucket' => $i,
-                    'archetype' => $archetypeKeys[$nomor % count($archetypeKeys)],
-                    'lokasi' => $lokasiKeys[($nomor * 7 + 3) % count($lokasiKeys)],
+                    'archetype' => $archetypeKeys[$nomor2026 % count($archetypeKeys)],
+                    'lokasi' => $this->getWeightedLokasiKey($nomor2026),
                     'tahun' => 2026,
-                    'idx_tahun' => 0,
-                    'total_tahun' => 650,
+                    'idx_tahun' => $nomor2026,
+                    'total_tahun' => 350,
                     'tidak_selesai' => false,
-                    'jumlah_tersangka' => 1, // Sesuai kesepakatan: murni 1 Tersangka 1 Berkas
+                    'jumlah_tersangka' => 1,
                     'dpo' => null,
+                    'sla_profile' => null,
                 ];
-                $nomor++;
+                $nomor2026++;
             }
         }
 
-        // Distribusi Tahun: 65% (650) tahun 2026, 20% (200) tahun 2025, 15% (150) tahun 2024
-        // Tahun 2024: 150 perkara
-        // - 110 perkara selesai (keputusan & tahap 2)
-        // - 10 perkara SP3
-        // - 30 perkara tidak selesai (lewat batas tahun 31 Desember)
-        $idx2024 = 0;
-        foreach ($rencana as $pos => $baris) {
-            if ($idx2024 >= 150) {
-                break;
-            }
-            if ($baris['bucket'] === 'keputusan' && $idx2024 < 80) {
-                $rencana[$pos]['tahun'] = 2024;
-                $idx2024++;
-            } elseif ($baris['bucket'] === 'tahap2' && $idx2024 < 110) {
-                $rencana[$pos]['tahun'] = 2024;
-                $idx2024++;
-            } elseif ($baris['bucket'] === 'sp3' && $idx2024 < 120) {
-                $rencana[$pos]['tahun'] = 2024;
-                $rencana[$pos]['tidak_selesai'] = true;
-                $idx2024++;
-            } elseif (in_array($baris['bucket'], ['spdp', 'spdp_p16', 'tahap1', 'tahap1_p18p_p19', 'p21'], true) && $idx2024 < 150) {
-                $rencana[$pos]['tahun'] = 2024;
-                $rencana[$pos]['tidak_selesai'] = true;
-                $idx2024++;
-            }
-        }
-
-        // Tahun 2025: 200 perkara
-        // - 130 perkara selesai (keputusan & tahap 2)
-        // - 15 perkara SP3
-        // - 55 perkara tidak selesai (lewat batas tahun 31 Desember)
-        $idx2025 = 0;
-        foreach ($rencana as $pos => $baris) {
-            if ($idx2025 >= 200) {
-                break;
-            }
-            if ($rencana[$pos]['tahun'] === 2024) {
-                continue;
-            }
-            if ($baris['bucket'] === 'keputusan' && $idx2025 < 90) {
-                $rencana[$pos]['tahun'] = 2025;
-                $idx2025++;
-            } elseif ($baris['bucket'] === 'tahap2' && $idx2025 < 130) {
-                $rencana[$pos]['tahun'] = 2025;
-                $idx2025++;
-            } elseif ($baris['bucket'] === 'sp3' && $idx2025 < 145) {
-                $rencana[$pos]['tahun'] = 2025;
-                $rencana[$pos]['tidak_selesai'] = true;
-                $idx2025++;
-            } elseif (in_array($baris['bucket'], ['spdp', 'spdp_p16', 'spdp_p16_p17p', 'tahap1_draft', 'tahap1', 'p21_draft', 'p21'], true) && $idx2025 < 200) {
-                $rencana[$pos]['tahun'] = 2025;
-                $rencana[$pos]['tidak_selesai'] = true;
-                $idx2025++;
-            }
-        }
-
-        // Hitung total dan index per tahun agar tanggal tersebar proporsional
-        $counterTahun = [2024 => 0, 2025 => 0, 2026 => 0];
-        $totalTahun = [2024 => 0, 2025 => 0, 2026 => 0];
-        foreach ($rencana as $b) {
-            $totalTahun[$b['tahun']]++;
-        }
-        foreach ($rencana as $pos => $b) {
-            $rencana[$pos]['idx_tahun'] = $counterTahun[$b['tahun']]++;
-            $rencana[$pos]['total_tahun'] = $totalTahun[$b['tahun']];
-        }
-
-        // DPO aktif dan cabut pada berkas yang sedang berproses di tahun 2026
-        $kandidatDpo2026 = [];
-        foreach ($rencana as $pos => $b) {
-            if ($b['tahun'] === 2026 && in_array($b['bucket'], [
-                'spdp', 'spdp_p16', 'spdp_p16_p17p', 'tahap1_draft', 'tahap1',
-                'tahap1_p18p_p19', 'p21_draft', 'p21',
+        // Variasi SLA untuk 92 berkas berjalan dengan SPDP di 2026 (57 SPDP, 25 Tahap 1, 10 P-21):
+        // 45 berkas dalam SLA (> 7 hari), 15 berkas mendekati SLA (<= 7 hari), 32 berkas lewat SLA
+        $runningSpdpIndices2026 = [];
+        foreach ($rencana2026 as $pos => $b) {
+            if (in_array($b['bucket'], [
+                'spdp_draft', 'spdp', 'spdp_p16', 'spdp_p16_p17p',
+                'tahap1_draft', 'tahap1', 'tahap1_p18p_p19',
+                'p21_draft', 'p21',
             ], true)) {
-                $kandidatDpo2026[] = $pos;
+                $runningSpdpIndices2026[] = $pos;
             }
         }
 
-        foreach ($kandidatDpo2026 as $idx => $pos) {
-            if ($idx % 11 === 0) {
-                $rencana[$pos]['dpo'] = 'aktif';
-            } elseif ($idx % 17 === 0) {
-                $rencana[$pos]['dpo'] = 'cabut';
+        foreach ($runningSpdpIndices2026 as $seq => $pos) {
+            if ($seq < 45) {
+                $rencana2026[$pos]['sla_profile'] = 'dalam';
+            } elseif ($seq < 60) {
+                $rencana2026[$pos]['sla_profile'] = 'mendekati';
+            } else {
+                $rencana2026[$pos]['sla_profile'] = 'lewat';
             }
         }
 
-        return $rencana;
+        // DPO aktif (8) dan DPO cabut (4) pada berkas berjalan tahun 2026
+        foreach ($runningSpdpIndices2026 as $seq => $pos) {
+            if ($seq < 8) {
+                $rencana2026[$pos]['dpo'] = 'aktif';
+            } elseif ($seq >= 8 && $seq < 12) {
+                $rencana2026[$pos]['dpo'] = 'cabut';
+            }
+        }
+
+        $rencana2025 = [];
+        $nomor2025 = 0;
+        foreach ($distribusi2025 as $bucket => $jumlah) {
+            $isExpiredTidakSelesai = in_array($bucket, ['spdp', 'tahap1', 'p21'], true);
+            for ($i = 0; $i < $jumlah; $i++) {
+                $globalIdx = 350 + $nomor2025;
+                $rencana2025[] = [
+                    'bucket' => $bucket,
+                    'idx_bucket' => $i,
+                    'archetype' => $archetypeKeys[$globalIdx % count($archetypeKeys)],
+                    'lokasi' => $this->getWeightedLokasiKey($globalIdx),
+                    'tahun' => 2025,
+                    'idx_tahun' => $nomor2025,
+                    'total_tahun' => 150,
+                    'tidak_selesai' => $isExpiredTidakSelesai,
+                    'jumlah_tersangka' => 1,
+                    'dpo' => null,
+                    'sla_profile' => null,
+                ];
+                $nomor2025++;
+            }
+        }
+
+        return array_merge($rencana2025, $rencana2026);
+    }
+
+    /**
+     * Mengembalikan key lokasi dari katalog dengan pembobotan sebaran wilayah Kalsel realistis:
+     * - Kota Banjarmasin: ~35%
+     * - Kota Banjarbaru: ~22%
+     * - Kabupaten Banjar: ~15%
+     * - Kabupaten Tanah Laut: ~10%
+     * - Kabupaten Barito Kuala: ~7%
+     * - 8 Kabupaten lainnya: ~11% (Tapin, HSS, HST, HSU, Tabalong, Balangan, Kotabaru, Tanbu)
+     */
+    private function getWeightedLokasiKey(int $seed): string
+    {
+        static $slots = null;
+        if ($slots === null) {
+            $slots = [];
+            // Kota Banjarmasin (35 slots: bjm, bjm_utara)
+            for ($i = 0; $i < 35; $i++) {
+                $slots[] = ($i % 2 === 0) ? 'bjm' : 'bjm_utara';
+            }
+            // Kota Banjarbaru (22 slots: bjb, bjb_ulin)
+            for ($i = 0; $i < 22; $i++) {
+                $slots[] = ($i % 2 === 0) ? 'bjb' : 'bjb_ulin';
+            }
+            // Kabupaten Banjar (15 slots: banjar, banjar_kh)
+            for ($i = 0; $i < 15; $i++) {
+                $slots[] = ($i % 2 === 0) ? 'banjar' : 'banjar_kh';
+            }
+            // Kabupaten Tanah Laut (10 slots: tanahlaut)
+            for ($i = 0; $i < 10; $i++) {
+                $slots[] = 'tanahlaut';
+            }
+            // Kabupaten Barito Kuala (7 slots: batola, batola_alalak)
+            for ($i = 0; $i < 7; $i++) {
+                $slots[] = ($i % 2 === 0) ? 'batola' : 'batola_alalak';
+            }
+            // 8 Kabupaten lainnya (11 slots total)
+            $slots[] = 'tapin';
+            $slots[] = 'tapin';
+            $slots[] = 'hss';
+            $slots[] = 'hss';
+            $slots[] = 'hst';
+            $slots[] = 'hsu';
+            $slots[] = 'tabalong';
+            $slots[] = 'tabalong_tanjung';
+            $slots[] = 'balangan';
+            $slots[] = 'kotabaru';
+            $slots[] = 'tanbu';
+        }
+
+        return $slots[$seed % count($slots)];
     }
 
     /**
@@ -1059,7 +1142,7 @@ class DummyDataSeeder extends Seeder
                 'uraian' => 'Penggunaan bahan tambahan pangan melebihi ambang batas maksimal pada produksi pangan olahan di {kabupaten}.',
                 'barang_bukti' => '64 dus pangan olahan dengan BTP berlebih',
                 'pasal' => ['pasal_pangan_2'],
-                'klasifikasi' => 'distributor',
+                'klasifikasi' => 'produksi',
                 'legalitas' => 'legal',
                 'modus' => 'offline',
                 'pekerjaan' => 'Produsen Pangan Rumahan',
@@ -1125,7 +1208,7 @@ class DummyDataSeeder extends Seeder
                 'uraian' => 'Produksi jamu cair rumahan tanpa standar higienitas dan tanpa izin edar di {kabupaten}.',
                 'barang_bukti' => '260 botol jamu cair tanpa izin edar',
                 'pasal' => ['pasal_kesehatan_1', 'pasal_konsumen_2'],
-                'klasifikasi' => 'distributor',
+                'klasifikasi' => 'produksi',
                 'legalitas' => 'ilegal',
                 'modus' => 'offline',
                 'pekerjaan' => 'Produsen Jamu Rumahan',
@@ -1231,6 +1314,23 @@ class DummyDataSeeder extends Seeder
             .sprintf('%02d%02d%02d%04d', $hariLahir, $bulanLahir, $tahunLahir % 100, $idx % 10000);
 
         $pasalKeys = $archetype['pasal'];
+
+        // Bobot berjenjang Top Pasal disangkakan sesuai spesifikasi F-38:
+        // Rank 1: Pasal 435 UU Kesehatan (pasal_kesehatan_1, ~42% perkara)
+        // Rank 2: Pasal 436 UU Kesehatan (pasal_kesehatan_2, ~26% perkara)
+        // Rank 3: Pasal 142 UU Pangan (pasal_pangan_1, ~16% perkara)
+        // Rank 4: Pasal 62 UU Perlindungan Konsumen (pasal_konsumen_1, ~9% perkara)
+        $pasalSeed = ($seed * 17 + $idx * 31) % 100;
+        if ($pasalSeed < 42) {
+            array_unshift($pasalKeys, 'pasal_kesehatan_1');
+        } elseif ($pasalSeed < 68) {
+            array_unshift($pasalKeys, 'pasal_kesehatan_2');
+        } elseif ($pasalSeed < 84) {
+            array_unshift($pasalKeys, 'pasal_pangan_1');
+        } elseif ($pasalSeed < 93) {
+            array_unshift($pasalKeys, 'pasal_konsumen_1');
+        }
+
         if ($pakaiPasalBerlapis) {
             $pasalKeys[] = ($idx % 2 === 0) ? 'pasal_kuhp_2' : 'pasal_konsumen_1';
         }
@@ -1319,6 +1419,9 @@ class DummyDataSeeder extends Seeder
         foreach ($urutanTahap as $kode) {
             $tanggal = $tanggal->copy()->addDays($offset[$kode]);
             $status = ($draft[$kode] ?? false) ? 'draft' : 'final';
+            if ($status === 'final' && $tanggal->isFuture()) {
+                $tanggal = Carbon::create(2026, 10, 28)->startOfDay()->subDays(1);
+            }
 
             $hasil[] = [
                 'jenis' => $this->jenisTahap($kode),
@@ -1574,40 +1677,45 @@ class DummyDataSeeder extends Seeder
         string $statusLaporan = 'final',
         ?string $statusSprindik = null
     ): void {
-        // Alamat TKP
-        $alamatTkpNama = $tkpData['nama'] ?? (isset($tkpData['detail']) ? trim(explode(',', (string) $tkpData['detail'])[0]) : null);
-        $alamatDetail = isset($tkpData['detail']) && str_contains((string) $tkpData['detail'], ',')
-            ? trim(substr((string) $tkpData['detail'], strpos((string) $tkpData['detail'], ',') + 1))
-            : ($tkpData['detail'] ?? null);
-
-        $alamatTkp = Alamat::create([
-            'nama' => $alamatTkpNama,
-            'provinsi_kode' => $tkpData['prov'][0],
-            'provinsi_nama' => $tkpData['prov'][1],
-            'kabupaten_kode' => $tkpData['kab'][0],
-            'kabupaten_nama' => $tkpData['kab'][1],
-            'kecamatan_kode' => $tkpData['kec'][0],
-            'kecamatan_nama' => $tkpData['kec'][1],
-            'desa_kode' => $tkpData['kel'][0],
-            'desa_nama' => $tkpData['kel'][1],
-            'alamat_detail' => $alamatDetail,
-            'rt' => '001',
-            'rw' => '001',
-        ]);
-
-        $tkp = Tkp::create([
-            'alamat_id' => $alamatTkp->id,
-            'klasifikasi' => $tkpData['klasifikasi'],
-            'legalitas' => $tkpData['legalitas'],
-            'modus' => $tkpData['modus'],
-            'created_by' => $actor->id,
-            'updated_by' => $actor->id,
-        ]);
-
         $hasSp = ! empty($noSp);
         $hasPerkara = $statusPerkara === 'final';
         $isLkFinal = $statusLaporan === 'final';
         $isSpFinal = $hasSp && ($statusSprindik === null || $statusSprindik === 'final');
+
+        // Alamat & Entitas TKP (hanya dibuat jika tahap Perkara sudah final)
+        $tkpId = null;
+        if ($hasPerkara) {
+            $alamatTkpNama = $tkpData['nama'] ?? (isset($tkpData['detail']) ? trim(explode(',', (string) $tkpData['detail'])[0]) : null);
+            $alamatDetail = isset($tkpData['detail']) && str_contains((string) $tkpData['detail'], ',')
+                ? trim(substr((string) $tkpData['detail'], strpos((string) $tkpData['detail'], ',') + 1))
+                : ($tkpData['detail'] ?? null);
+
+            $alamatTkp = Alamat::create([
+                'nama' => $alamatTkpNama,
+                'provinsi_kode' => $tkpData['prov'][0],
+                'provinsi_nama' => $tkpData['prov'][1],
+                'kabupaten_kode' => $tkpData['kab'][0],
+                'kabupaten_nama' => $tkpData['kab'][1],
+                'kecamatan_kode' => $tkpData['kec'][0],
+                'kecamatan_nama' => $tkpData['kec'][1],
+                'desa_kode' => $tkpData['kel'][0],
+                'desa_nama' => $tkpData['kel'][1],
+                'alamat_detail' => $alamatDetail,
+                'rt' => '001',
+                'rw' => '001',
+            ]);
+
+            $tkp = Tkp::create([
+                'alamat_id' => $alamatTkp->id,
+                'klasifikasi' => $tkpData['klasifikasi'],
+                'legalitas' => $tkpData['legalitas'],
+                'modus' => $tkpData['modus'],
+                'created_by' => $actor->id,
+                'updated_by' => $actor->id,
+            ]);
+
+            $tkpId = $tkp->id;
+        }
 
         // Entitas Perkara
         $perkara = Perkara::updateOrCreate(
@@ -1625,7 +1733,7 @@ class DummyDataSeeder extends Seeder
                 'tahap_perkara_status' => $hasPerkara ? 'final' : null,
                 'perkara_locked_at' => $hasPerkara ? Carbon::parse($tglSp ?? $tglLk)->addDays(3) : null,
                 'perkara_finalized_by' => $hasPerkara ? $actor->id : null,
-                'tkp_id' => $tkp->id,
+                'tkp_id' => $tkpId,
                 'deskripsi' => $uraian,
                 'created_by' => $actor->id,
                 'updated_by' => $actor->id,
@@ -1666,11 +1774,13 @@ class DummyDataSeeder extends Seeder
             );
         }
 
-        // Relasi PPNS Utama & Anggota
-        $perkara->ppnsUsers()->syncWithoutDetaching([$ppnsUtama->id => ['peran' => 'utama']]);
-        foreach ($ppnsAnggota as $anggota) {
-            if ($anggota->id !== $ppnsUtama->id) {
-                $perkara->ppnsUsers()->syncWithoutDetaching([$anggota->id => ['peran' => 'anggota']]);
+        // Relasi PPNS Utama & Anggota (hanya jika tahap Perkara sudah dibuat)
+        if ($hasPerkara) {
+            $perkara->ppnsUsers()->syncWithoutDetaching([$ppnsUtama->id => ['peran' => 'utama']]);
+            foreach ($ppnsAnggota as $anggota) {
+                if ($anggota->id !== $ppnsUtama->id) {
+                    $perkara->ppnsUsers()->syncWithoutDetaching([$anggota->id => ['peran' => 'anggota']]);
+                }
             }
         }
 

@@ -15,15 +15,14 @@ it('renders complete menu structure for Penyidik role according to Poin 5', func
     // Penyidik memiliki 3 grup menu: Menu Utama, Perkara, Sistem
     expect($groups)->toHaveCount(3);
 
-    // 1. Menu Utama
+    // 1. Menu Utama (Poin 10 & 11)
     $mainGroup = $groups[0];
     expect($mainGroup['title'])->toBe('Menu Utama');
     $mainItems = collect($mainGroup['items']);
-    expect($mainItems->pluck('name')->all())->toEqual(['Dashboard', 'Data Perkara']);
+    expect($mainItems->pluck('name')->all())->toEqual(['Dashboard', 'Daftar Perkara']);
 
-    $dataPerkaraSub = $mainItems->firstWhere('name', 'Data Perkara')['subItems'];
-    expect(collect($dataPerkaraSub)->pluck('name')->all())
-        ->toEqual(['Daftar Perkara', 'Potensi Terlimpah']);
+    $daftarPerkaraItem = $mainItems->firstWhere('name', 'Daftar Perkara');
+    expect($daftarPerkaraItem['path'])->toBe('/data-perkara');
 
     // 2. Perkara (7 tahapan berurutan)
     $perkaraGroup = $groups[1];

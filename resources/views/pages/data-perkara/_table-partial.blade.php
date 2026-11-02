@@ -1,5 +1,5 @@
 <div class="overflow-x-auto">
-    <table class="w-full min-w-[1100px]">
+    <table class="w-full min-w-[1250px]">
         <thead>
             <tr class="border-b border-gray-200 bg-gray-50 dark:border-gray-800 dark:bg-white/[0.02]">
                 <th class="w-12 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
@@ -28,6 +28,10 @@
 
                 <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
                     Status & Tenggang Waktu
+                </th>
+
+                <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                    Rekomendasi Tindakan
                 </th>
 
                 <th class="px-5 py-3 text-center text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
@@ -200,7 +204,23 @@
                         </div>
                     </td>
 
-                    {{-- 8. Aksi --}}
+                    {{-- 8. Rekomendasi Tindakan (Poin 10 & 11) --}}
+                    @php
+                        $rekomendasi = $perkara->getRekomendasiTindakanInfo();
+                    @endphp
+                    <td class="px-5 py-4">
+                        <div class="flex flex-col gap-1 min-w-[190px]">
+                            <span class="inline-flex w-fit items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-semibold {{ $rekomendasi['badge_class'] }}">
+                                <i class="{{ $rekomendasi['icon'] }} text-[11px]"></i>
+                                <span>{{ $rekomendasi['label'] }}</span>
+                            </span>
+                            <p class="text-[11px] text-gray-500 dark:text-gray-400">
+                                {{ $rekomendasi['deskripsi'] }}
+                            </p>
+                        </div>
+                    </td>
+
+                    {{-- 9. Aksi --}}
                     <td class="px-5 py-4">
                         <div x-data="{ confirmDelete: false }" class="flex justify-center">
                             <x-common.table-dropdown>
@@ -235,7 +255,7 @@
                 </tr>
             @empty
                 <tr>
-                    <td colspan="8" class="px-5 py-8 text-center text-sm text-gray-500 dark:text-gray-400">
+                    <td colspan="9" class="px-5 py-8 text-center text-sm text-gray-500 dark:text-gray-400">
                         {{ __('No data available.') }}
                     </td>
                 </tr>

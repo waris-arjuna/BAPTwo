@@ -24,7 +24,7 @@ class DokumenController extends Controller
     }
 
     /**
-     * Preview dokumen PDF langsung di browser
+     * Preview dokumen PDF atau Gambar langsung di browser
      */
     public function preview(Dokumen $dokumen): mixed
     {
@@ -34,8 +34,10 @@ class DokumenController extends Controller
             abort(404, 'Dokumen tidak ditemukan.');
         }
 
+        $mimeType = Storage::disk('local')->mimeType($dokumen->file_path) ?? 'application/pdf';
+
         return Storage::disk('local')->response($dokumen->file_path, $dokumen->nama_file_asli, [
-            'Content-Type' => 'application/pdf',
+            'Content-Type' => $mimeType,
             'Content-Disposition' => 'inline; filename="'.$dokumen->nama_file_asli.'"',
         ]);
     }

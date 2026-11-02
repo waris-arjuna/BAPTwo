@@ -12,36 +12,34 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
-it('renders Data Perkara dropdown menu with role-based visibility according to Poin 4 and Poin 5', function () {
+it('renders Daftar Perkara menu with role-based visibility according to Poin 10 and Poin 11', function () {
     $pimpinan = User::factory()->pimpinan()->create();
     $penyidik = User::factory()->penyidik()->create();
     $admin = User::factory()->administrator()->create();
 
-    // Untuk Pimpinan (Poin 3): Hanya 1 grup Menu Utama (Dashboard, Pencarian Perkara, Potensi Terlimpah)
+    // Untuk Pimpinan (Poin 10 & 11): Hanya 1 grup Menu Utama (Dashboard dan Daftar Perkara)
     $this->actingAs($pimpinan);
     $menuGroupsPimpinan = MenuHelper::getMenuGroups();
     expect($menuGroupsPimpinan)->toHaveCount(1)
         ->and($menuGroupsPimpinan[0]['title'])->toBe('Menu Utama')
         ->and(collect($menuGroupsPimpinan[0]['items'])->pluck('name')->all())
-        ->toEqual(['Dashboard', 'Pencarian Perkara', 'Potensi Terlimpah']);
+        ->toEqual(['Dashboard', 'Daftar Perkara']);
 
-    // Untuk Admin (Poin 4): Menu Utama memuat Data Perkara (Daftar Perkara & Potensi Terlimpah)
+    // Untuk Admin (Poin 10 & 11): Menu Utama memuat Dashboard dan Daftar Perkara link langsung
     $this->actingAs($admin);
     $menuGroupsAdmin = MenuHelper::getMenuGroups();
     $mainGroupAdmin = collect($menuGroupsAdmin)->firstWhere('title', 'Menu Utama');
-    $dataPerkaraItemAdmin = collect($mainGroupAdmin['items'])->firstWhere('name', 'Data Perkara');
-    expect($dataPerkaraItemAdmin['subItems'])->toHaveCount(2)
-        ->and($dataPerkaraItemAdmin['subItems'][0]['name'])->toBe('Daftar Perkara')
-        ->and($dataPerkaraItemAdmin['subItems'][1]['name'])->toBe('Potensi Terlimpah');
+    $daftarPerkaraItemAdmin = collect($mainGroupAdmin['items'])->firstWhere('name', 'Daftar Perkara');
+    expect($daftarPerkaraItemAdmin)->not->toBeNull()
+        ->and($daftarPerkaraItemAdmin['path'])->toBe('/data-perkara');
 
-    // Untuk Penyidik (Poin 5): Menu Utama memuat Data Perkara (Daftar Perkara & Potensi Terlimpah)
+    // Untuk Penyidik (Poin 10 & 11): Menu Utama memuat Dashboard dan Daftar Perkara link langsung
     $this->actingAs($penyidik);
     $menuGroupsPenyidik = MenuHelper::getMenuGroups();
     $mainGroupPenyidik = collect($menuGroupsPenyidik)->firstWhere('title', 'Menu Utama');
-    $dataPerkaraItemPenyidik = collect($mainGroupPenyidik['items'])->firstWhere('name', 'Data Perkara');
-    expect($dataPerkaraItemPenyidik['subItems'])->toHaveCount(2)
-        ->and($dataPerkaraItemPenyidik['subItems'][0]['name'])->toBe('Daftar Perkara')
-        ->and($dataPerkaraItemPenyidik['subItems'][1]['name'])->toBe('Potensi Terlimpah');
+    $daftarPerkaraItemPenyidik = collect($mainGroupPenyidik['items'])->firstWhere('name', 'Daftar Perkara');
+    expect($daftarPerkaraItemPenyidik)->not->toBeNull()
+        ->and($daftarPerkaraItemPenyidik['path'])->toBe('/data-perkara');
 });
 
 it('allows authenticated users to view Daftar Perkara and shows Tambah Perkara modal only for authorized roles', function () {

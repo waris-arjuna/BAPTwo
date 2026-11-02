@@ -28,22 +28,34 @@
                 this.dpoActionUrl = '';
             },
 
-            // Modal Pencabutan Status DPO
+            // Modal Penangkapan / Penahanan DPO (Poin 4, ref: D-053)
+            isPenangkapanModalOpen: false,
+            penangkapanBerkasId: null,
+            penangkapanTersangkaNama: '',
+            penangkapanActionUrl: '',
+            openPenangkapanDpoModal(berkasId, tersangkaNama) {
+                this.penangkapanBerkasId = berkasId;
+                this.penangkapanTersangkaNama = tersangkaNama;
+                this.penangkapanActionUrl = '{{ url('/berkas-perkara') }}/' + berkasId + '/dpo/penangkapan';
+                this.isPenangkapanModalOpen = true;
+            },
+            closePenangkapanModal() {
+                this.isPenangkapanModalOpen = false;
+                this.penangkapanBerkasId = null;
+                this.penangkapanTersangkaNama = '';
+                this.penangkapanActionUrl = '';
+            },
+
+            // Modal Pencabutan Status DPO (Fallback)
             isRevokeModalOpen: false,
             revokeBerkasId: null,
             revokeTersangkaNama: '',
             revokeActionUrl: '',
             openRevokeDpoModal(berkasId, tersangkaNama) {
-                this.revokeBerkasId = berkasId;
-                this.revokeTersangkaNama = tersangkaNama;
-                this.revokeActionUrl = '{{ url('/berkas-perkara') }}/' + berkasId + '/dpo/cabut';
-                this.isRevokeModalOpen = true;
+                this.openPenangkapanDpoModal(berkasId, tersangkaNama);
             },
             closeRevokeModal() {
-                this.isRevokeModalOpen = false;
-                this.revokeBerkasId = null;
-                this.revokeTersangkaNama = '';
-                this.revokeActionUrl = '';
+                this.closePenangkapanModal();
             },
 
             // Modal Penerbitan SP3
@@ -71,6 +83,10 @@
                 nomor_surat: '',
                 tanggal_sp3: '',
                 penyidik_nama: '',
+                penyidik_utama: '',
+                penyidik_anggota: [],
+                penandatangan_nama: '',
+                penandatangan_jabatan: '',
                 keterangan: '',
                 dokumen_nama: '',
                 dokumen_preview_url: '',
@@ -84,7 +100,7 @@
                 this.isViewSp3ModalOpen = false;
             }
         }"
-        @keydown.escape.window="closeDpoModal(); closeRevokeModal(); closeSp3Modal(); closeViewSp3Modal();"
+        @keydown.escape.window="closeDpoModal(); closePenangkapanModal(); closeRevokeModal(); closeSp3Modal(); closeViewSp3Modal();"
     >
         {{-- Header --}}
         <div class="mb-6">
@@ -394,15 +410,22 @@
                                         </span>
                                         @if ($berkas->sp3)
                                             @php
-                                                $sp3Creator = $berkas->sp3->creator ?? $perkara->ppnsUtama->first();
-                                                $sp3PenyidikLabel = $sp3Creator
-                                                    ? $sp3Creator->nama . ($sp3Creator->nip && $sp3Creator->nip !== '-' ? " (NIP: {$sp3Creator->nip})" : '')
+                                                $sp3Utama = $perkara->ppnsUtama->first() ?? $berkas->sp3->penyidikUtama ?? $berkas->sp3->creator;
+                                                $sp3UtamaLabel = $sp3Utama
+                                                    ? $sp3Utama->nama . ($sp3Utama->nip && $sp3Utama->nip !== '-' ? " (NIP: {$sp3Utama->nip})" : '')
                                                     : '-';
+                                                $sp3AnggotaLabels = $perkara->ppnsAnggota->isNotEmpty()
+                                                    ? $perkara->ppnsAnggota->map(fn ($u) => $u->nama . ($u->nip && $u->nip !== '-' ? " (NIP: {$u->nip})" : ''))->values()->toArray()
+                                                    : $berkas->sp3->penyidikAnggota->map(fn ($u) => $u->nama . ($u->nip && $u->nip !== '-' ? " (NIP: {$u->nip})" : ''))->values()->toArray();
+
                                                 $sp3ModalPayload = [
                                                     'tersangka_nama' => $tersangka->nama,
                                                     'nomor_surat' => $berkas->sp3->nomor_surat ?: '-',
                                                     'tanggal_sp3' => $berkas->sp3->tanggal_sp3?->format('d-m-Y') ?? '-',
-                                                    'penyidik_nama' => $sp3PenyidikLabel,
+                                                    'penyidik_utama' => $sp3UtamaLabel,
+                                                    'penyidik_anggota' => $sp3AnggotaLabels,
+                                                    'penandatangan_nama' => $berkas->sp3->penandatangan_nama ?: '-',
+                                                    'penandatangan_jabatan' => $berkas->sp3->penandatangan_jabatan ?: '-',
                                                     'keterangan' => $berkas->sp3->keterangan ?: '-',
                                                     'dokumen_nama' => $berkas->sp3->dokumen?->nama_file_asli ?? '',
                                                     'dokumen_preview_url' => $berkas->sp3->dokumen ? route('dokumen.preview', $berkas->sp3->dokumen) : '',
@@ -445,11 +468,11 @@
                                             @if ($berkas->is_dpo)
                                                 <button
                                                     type="button"
-                                                    @click="openRevokeDpoModal({{ $berkas->id }}, '{{ addslashes($tersangka->nama) }}')"
-                                                    class="inline-flex items-center gap-1.5 rounded-full border border-red-300 bg-red-50 px-3 py-1 text-xs font-medium text-red-700 transition hover:bg-red-100 dark:border-red-500/30 dark:bg-red-500/10 dark:text-red-300"
+                                                    @click="openPenangkapanDpoModal({{ $berkas->id }}, '{{ addslashes($tersangka->nama) }}')"
+                                                    class="inline-flex items-center gap-1.5 rounded-full border border-success-300 bg-success-50 px-3 py-1 text-xs font-medium text-success-700 transition hover:bg-success-100 dark:border-success-500/30 dark:bg-success-500/10 dark:text-success-300"
                                                 >
-                                                    <i class="fi fi-rr-user-check text-xs"></i>
-                                                    <span>Cabut Status DPO</span>
+                                                    <i class="fi fi-rr-shield-check text-xs"></i>
+                                                    <span>Catat Penangkapan &amp; Penahanan</span>
                                                 </button>
                                             @elseif ($berkas->canActivateDpo())
                                                 <button
@@ -557,17 +580,94 @@
                                 </div>
                             @endif
 
-                            {{-- Catatan Riwayat DPO yang Pernah Dicabut --}}
+                            {{-- Catatan Riwayat DPO yang Pernah Dicatat / Tertangkap --}}
                             @if (! $berkas?->is_dpo && $revokedDpos?->isNotEmpty())
                                 @php
                                     $lastRevoked = $revokedDpos->first();
+                                    $lastRevoked->loadMissing(['dokumenPenangkapan', 'dokumenPenangkapanList']);
+                                    $allDokumenPenangkapan = $lastRevoked->dokumenPenangkapanList->isNotEmpty()
+                                        ? $lastRevoked->dokumenPenangkapanList
+                                        : ($lastRevoked->dokumenPenangkapan ? collect([$lastRevoked->dokumenPenangkapan]) : collect());
                                 @endphp
-                                <div class="mb-4 rounded-xl border border-gray-200 bg-gray-50/70 p-3 text-xs text-gray-600 dark:border-gray-800 dark:bg-white/[0.02] dark:text-gray-400">
-                                    <div class="flex items-center gap-2">
-                                        <i class="fi fi-rr-info text-brand-500"></i>
-                                        <span>
-                                            Riwayat DPO: Pernah berstatus DPO (Surat: <strong>{{ $lastRevoked->nomor_surat }}</strong>) dan telah dicabut pada <strong>{{ $lastRevoked->tanggal_pencabutan?->format('d-m-Y') }}</strong> (Alasan: {{ $lastRevoked->alasan_pencabutan }}).
-                                        </span>
+                                <div class="mb-4 rounded-xl border border-success-200 bg-success-50/70 p-4 text-xs text-gray-700 dark:border-success-900/40 dark:bg-success-950/20 dark:text-gray-300">
+                                    <div class="flex items-start gap-3">
+                                        <div class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-success-100 text-success-600 dark:bg-success-900/40 dark:text-success-400">
+                                            <i class="fi fi-rr-shield-check text-sm"></i>
+                                        </div>
+                                        <div class="min-w-0 flex-1">
+                                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                                <h5 class="text-xs font-semibold text-success-800 dark:text-success-300">
+                                                    Riwayat DPO: Tersangka Telah Ditangkap / Ditahan
+                                                </h5>
+                                                @if ($lastRevoked->tanggal_penangkapan)
+                                                    <span class="rounded-full bg-success-100 px-2.5 py-0.5 text-[11px] font-medium text-success-700 dark:bg-success-900/40 dark:text-success-400">
+                                                        Tanggal Penangkapan: {{ $lastRevoked->tanggal_penangkapan->format('d-m-Y') }}
+                                                    </span>
+                                                @elseif ($lastRevoked->tanggal_pencabutan)
+                                                    <span class="rounded-full bg-success-100 px-2.5 py-0.5 text-[11px] font-medium text-success-700 dark:bg-success-900/40 dark:text-success-400">
+                                                        Dicabut: {{ $lastRevoked->tanggal_pencabutan->format('d-m-Y') }}
+                                                    </span>
+                                                @endif
+                                            </div>
+
+                                            <div class="mt-2.5 grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
+                                                <div>
+                                                    <span class="text-gray-500 dark:text-gray-400">Surat DPO Asal:</span>
+                                                    <p class="font-medium text-gray-800 dark:text-white/90">{{ $lastRevoked->nomor_surat }}</p>
+                                                </div>
+
+                                                @if ($lastRevoked->nomor_surat_penangkapan)
+                                                    <div>
+                                                        <span class="text-gray-500 dark:text-gray-400">Surat Penangkapan (Sp.Kap):</span>
+                                                        <p class="font-medium text-gray-800 dark:text-white/90">{{ $lastRevoked->nomor_surat_penangkapan }}</p>
+                                                    </div>
+                                                @endif
+
+                                                @if ($lastRevoked->nomor_surat_penahanan)
+                                                    <div>
+                                                        <span class="text-gray-500 dark:text-gray-400">Surat Penahanan (Sp.Han):</span>
+                                                        <p class="font-medium text-gray-800 dark:text-white/90">
+                                                            {{ $lastRevoked->nomor_surat_penahanan }}
+                                                            @if ($lastRevoked->tanggal_penahanan)
+                                                                <span class="text-gray-500 font-normal">({{ $lastRevoked->tanggal_penahanan->format('d-m-Y') }})</span>
+                                                            @endif
+                                                        </p>
+                                                    </div>
+                                                @endif
+
+                                                @if ($allDokumenPenangkapan->isNotEmpty())
+                                                    <div class="sm:col-span-2 lg:col-span-3">
+                                                        <span class="text-gray-500 dark:text-gray-400">Berkas Dokumen Penangkapan &amp; Penahanan:</span>
+                                                        <div class="mt-1.5 flex flex-wrap gap-2">
+                                                            @foreach ($allDokumenPenangkapan as $dokPenangkapan)
+                                                                <a href="{{ route('dokumen.preview', $dokPenangkapan) }}"
+                                                                   data-pdf-preview="{{ route('dokumen.preview', $dokPenangkapan) }}"
+                                                                   data-pdf-title="Dokumen Penangkapan ({{ $dokPenangkapan->nama_file_asli }})"
+                                                                   data-pdf-download="{{ route('dokumen.download', $dokPenangkapan) }}"
+                                                                   target="_blank"
+                                                                   class="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-2.5 py-1 text-xs font-medium text-brand-600 shadow-theme-xs transition hover:border-brand-300 hover:bg-brand-50/50 hover:underline dark:border-gray-700 dark:bg-gray-800 dark:text-brand-400 dark:hover:bg-gray-700">
+                                                                    <i class="fi fi-rr-file-pdf text-red-500 text-xs"></i>
+                                                                    <span class="max-w-[200px] truncate">{{ $dokPenangkapan->nama_file_asli }}</span>
+                                                                    <span class="text-[10px] text-gray-400">({{ $dokPenangkapan->formatted_file_size }})</span>
+                                                                </a>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                @endif
+
+                                                @if ($lastRevoked->keterangan_penangkapan)
+                                                    <div class="sm:col-span-2 lg:col-span-3">
+                                                        <span class="text-gray-500 dark:text-gray-400">Keterangan:</span>
+                                                        <p class="text-gray-700 dark:text-gray-300">{{ $lastRevoked->keterangan_penangkapan }}</p>
+                                                    </div>
+                                                @elseif ($lastRevoked->alasan_pencabutan)
+                                                    <div class="sm:col-span-2 lg:col-span-3">
+                                                        <span class="text-gray-500 dark:text-gray-400">Alasan:</span>
+                                                        <p class="text-gray-700 dark:text-gray-300">{{ $lastRevoked->alasan_pencabutan }}</p>
+                                                    </div>
+                                                @endif
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             @endif
@@ -962,208 +1062,11 @@
             </div>
         </div>
 
-        {{-- Modal Pencabutan Status DPO --}}
-        <div
-            x-show="isRevokeModalOpen"
-            x-cloak
-            class="fixed inset-0 z-99999 flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-xs"
-            x-transition:enter="transition ease-out duration-200"
-            x-transition:enter-start="opacity-0"
-            x-transition:enter-end="opacity-100"
-            x-transition:leave="transition ease-in duration-150"
-            x-transition:leave-start="opacity-100"
-            x-transition:leave-end="opacity-0"
-        >
-            <div
-                @click.outside="closeRevokeModal()"
-                class="relative w-full max-w-lg rounded-2xl border border-gray-200 bg-white p-6 shadow-theme-xl dark:border-gray-800 dark:bg-gray-900"
-                x-transition:enter="transition ease-out duration-200"
-                x-transition:enter-start="opacity-0 scale-95"
-                x-transition:enter-end="opacity-100 scale-100"
-                x-transition:leave="transition ease-in duration-150"
-                x-transition:leave-start="opacity-100 scale-100"
-                x-transition:leave-end="opacity-0 scale-95"
-            >
-                <div class="mb-4 flex items-center justify-between border-b border-gray-100 pb-3 dark:border-gray-800">
-                    <div class="flex items-center gap-2 text-success-600 dark:text-success-400">
-                        <i class="fi fi-rr-user-check text-xl"></i>
-                        <h3 class="text-base font-semibold text-gray-800 dark:text-white/90">
-                            Cabut Status DPO
-                        </h3>
-                    </div>
-                    <button
-                        type="button"
-                        @click="closeRevokeModal()"
-                        class="rounded-lg p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600 dark:hover:bg-gray-800 dark:hover:text-gray-300"
-                    >
-                        <i class="fi fi-rr-cross-small text-lg"></i>
-                    </button>
-                </div>
+        {{-- Modal Catat Penangkapan & Penahanan DPO (Poin 4, ref: D-053) --}}
+        <x-perkara.modal-penangkapan-dpo />
 
-                <div class="mb-4 rounded-lg border border-success-200 bg-success-50/70 p-3 text-xs text-success-800 dark:border-success-900/40 dark:bg-success-950/20 dark:text-success-300">
-                    Tersangka: <strong x-text="revokeTersangkaNama"></strong>. Setelah status DPO dicabut, berkas perkara dapat dilanjutkan secara normal dan pelimpahan Tahap II dapat diproses kembali.
-                </div>
-
-                <form :action="revokeActionUrl" method="POST" class="space-y-4">
-                    @csrf
-
-                    <div>
-                        <x-form.date-picker
-                            id="revoke_tanggal_pencabutan"
-                            name="tanggal_pencabutan"
-                            label="Tanggal Pencabutan DPO"
-                            placeholder="Pilih tanggal pencabutan..."
-                            defaultDate="{{ date('Y-m-d') }}"
-                        />
-                    </div>
-
-                    <div>
-                        <label for="revoke_alasan_pencabutan" class="mb-1.5 block text-xs font-medium text-gray-700 dark:text-gray-300">
-                            Alasan Pencabutan Status DPO <span class="text-red-500">*</span>
-                        </label>
-                        <textarea
-                            id="revoke_alasan_pencabutan"
-                            name="alasan_pencabutan"
-                            required
-                            rows="3"
-                            placeholder="Contoh: Tersangka telah berhasil diamankan oleh tim PPNS di lokasi..."
-                            class="w-full rounded-lg border border-gray-300 bg-white p-3 text-sm text-gray-800 shadow-theme-xs outline-none transition placeholder:text-gray-400 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-gray-500"
-                        ></textarea>
-                    </div>
-
-                    <div class="mt-6 flex items-center justify-end gap-2 border-t border-gray-100 pt-4 dark:border-gray-800">
-                        <button
-                            type="button"
-                            @click="closeRevokeModal()"
-                            class="inline-flex h-9 items-center justify-center rounded-lg border border-gray-300 bg-white px-4 text-xs font-medium text-gray-700 transition hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
-                        >
-                            Batal
-                        </button>
-                        <button
-                            type="submit"
-                            class="inline-flex h-9 items-center justify-center gap-1.5 rounded-lg bg-brand-600 px-4 text-xs font-medium text-white transition hover:bg-brand-700"
-                        >
-                            <i class="fi fi-rr-check text-xs"></i>
-                            <span>Simpan &amp; Cabut Status DPO</span>
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        {{-- Modal Penerbitan SP3 --}}
-        <div
-            x-show="isSp3ModalOpen"
-            x-cloak
-            class="fixed inset-0 z-99999 flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-xs"
-            x-transition:enter="transition ease-out duration-200"
-            x-transition:enter-start="opacity-0"
-            x-transition:enter-end="opacity-100"
-            x-transition:leave="transition ease-in duration-150"
-            x-transition:leave-start="opacity-100"
-            x-transition:leave-end="opacity-0"
-        >
-            <div
-                @click.outside="closeSp3Modal()"
-                class="relative w-full max-w-lg rounded-2xl border border-gray-200 bg-white p-6 shadow-theme-xl dark:border-gray-800 dark:bg-gray-900"
-                x-transition:enter="transition ease-out duration-200"
-                x-transition:enter-start="opacity-0 scale-95"
-                x-transition:enter-end="opacity-100 scale-100"
-                x-transition:leave="transition ease-in duration-150"
-                x-transition:leave-start="opacity-100 scale-100"
-                x-transition:leave-end="opacity-0 scale-95"
-            >
-                <div class="mb-4 flex items-center justify-between border-b border-gray-100 pb-3 dark:border-gray-800">
-                    <div class="flex items-center gap-2 text-red-600 dark:text-red-400">
-                        <i class="fi fi-rr-ban text-xl"></i>
-                        <h3 class="text-base font-semibold text-gray-800 dark:text-white/90">
-                            Terbitkan SP3 (Penghentian Penyidikan)
-                        </h3>
-                    </div>
-                    <button
-                        type="button"
-                        @click="closeSp3Modal()"
-                        class="rounded-lg p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600 dark:hover:bg-gray-800 dark:hover:text-gray-300"
-                    >
-                        <i class="fi fi-rr-cross-small text-lg"></i>
-                    </button>
-                </div>
-
-                <div class="mb-4 rounded-lg border border-red-200 bg-red-50/70 p-3 text-xs text-red-800 dark:border-red-900/40 dark:bg-red-950/20 dark:text-red-300">
-                    <p class="mb-1 font-semibold">Perhatian Penting:</p>
-                    Tersangka: <strong x-text="sp3TersangkaNama"></strong>. Penerbitan Surat Perintah Penghentian Penyidikan (SP3) akan menetapkan status berkas perkara menjadi <strong>Tidak Selesai</strong> secara formal dan mengunci tahapan penyidikan perkara untuk tersangka ini.
-                </div>
-
-                <form :action="sp3ActionUrl" method="POST" enctype="multipart/form-data" class="space-y-4">
-                    @csrf
-
-                    <div>
-                        <label for="sp3_nomor_surat" class="mb-1.5 block text-xs font-medium text-gray-700 dark:text-gray-300">
-                            Nomor Surat SP3 <span class="text-red-500">*</span>
-                        </label>
-                        <input
-                            type="text"
-                            id="sp3_nomor_surat"
-                            name="nomor_surat"
-                            required
-                            placeholder="Contoh: SPPP/01/BPOM/BJM/2026"
-                            class="h-10 w-full rounded-lg border border-gray-300 bg-white px-3.5 text-sm text-gray-800 shadow-theme-xs outline-none transition placeholder:text-gray-400 focus:border-red-500 focus:ring-2 focus:ring-red-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-gray-500"
-                        />
-                        <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Format nomor surat penghentian penyidikan yang diterbitkan.</p>
-                    </div>
-
-                    <div>
-                        <x-form.date-picker
-                            id="sp3_tanggal_sp3"
-                            name="tanggal_sp3"
-                            label="Tanggal Penetapan SP3"
-                            placeholder="Pilih tanggal penetapan..."
-                            defaultDate="{{ date('Y-m-d') }}"
-                        />
-                    </div>
-
-                    <div>
-                        <x-form.pdf-upload
-                            id="sp3_dokumen"
-                            name="dokumen"
-                            label="Dokumen Fisik SP3 (PDF)"
-                            required="true"
-                        />
-                    </div>
-
-                    <div>
-                        <label for="sp3_keterangan" class="mb-1.5 block text-xs font-medium text-gray-700 dark:text-gray-300">
-                            Alasan &amp; Catatan Penghentian Penyidikan <span class="text-red-500">*</span>
-                        </label>
-                        <textarea
-                            id="sp3_keterangan"
-                            name="keterangan"
-                            required
-                            rows="4"
-                            placeholder="Tuliskan alasan penghentian penyidikan beserta pertimbangan hukum / catatan kronologis..."
-                            class="w-full rounded-lg border border-gray-300 bg-white p-3 text-sm text-gray-800 shadow-theme-xs outline-none transition placeholder:text-gray-400 focus:border-red-500 focus:ring-2 focus:ring-red-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-gray-500"
-                        ></textarea>
-                    </div>
-
-                    <div class="mt-6 flex items-center justify-end gap-2 border-t border-gray-100 pt-4 dark:border-gray-800">
-                        <button
-                            type="button"
-                            @click="closeSp3Modal()"
-                            class="inline-flex h-9 items-center justify-center rounded-lg border border-gray-300 bg-white px-4 text-xs font-medium text-gray-700 transition hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
-                        >
-                            Batal
-                        </button>
-                        <button
-                            type="submit"
-                            class="inline-flex h-9 items-center justify-center gap-1.5 rounded-lg bg-red-600 px-4 text-xs font-medium text-white transition hover:bg-red-700"
-                        >
-                            <i class="fi fi-rr-check text-xs"></i>
-                            <span>Simpan &amp; Terbitkan SP3</span>
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
+        {{-- Modal Penerbitan SP3 (Poin 6, ref: D-030) --}}
+        <x-perkara.modal-sp3 :perkara="$perkara" />
 
         @include('pages.perkara._modal-detail-sp3')
     </div>

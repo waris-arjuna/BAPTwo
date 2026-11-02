@@ -743,6 +743,41 @@ class PerkaraService
     }
 
     /**
+     * Hitung 4 kartu metrik kesiapan pelimpahan (Poin 10 & 11)
+     */
+    public function getPotensiTerlimpahCards(): array
+    {
+        $today = Carbon::today(DashboardService::ZONA_WAKTU)->toDateString();
+        $basePerkaraQuery = Perkara::query()->whereNotNull('tahap_perkara_status');
+
+        return [
+            'siap_tahap_1' => (clone $basePerkaraQuery)->whereHas('berkasPerkaras', function ($q) {
+                $q->where(function ($sub) {
+                    $sub->whereNull('status_formal')->orWhere('status_formal', 'dalam_proses');
+                })->where('progress_persen', 15)->where('is_dpo', false);
+            })->count(),
+
+            'siap_tahap_2' => (clone $basePerkaraQuery)->whereHas('berkasPerkaras', function ($q) {
+                $q->where(function ($sub) {
+                    $sub->whereNull('status_formal')->orWhere('status_formal', 'dalam_proses');
+                })->whereIn('progress_persen', [55, 85])->where('is_dpo', false);
+            })->count(),
+
+            'terkendala_dpo' => (clone $basePerkaraQuery)->whereHas('berkasPerkaras', function ($q) {
+                $q->where(function ($sub) {
+                    $sub->whereNull('status_formal')->orWhere('status_formal', 'dalam_proses');
+                })->where('is_dpo', true);
+            })->count(),
+
+            'melebihi_sla' => (clone $basePerkaraQuery)->whereHas('berkasPerkaras', function ($q) use ($today) {
+                $q->where(function ($sub) {
+                    $sub->whereNull('status_formal')->orWhere('status_formal', 'dalam_proses');
+                })->whereNotNull('sla_deadline')->where('sla_deadline', '<', $today);
+            })->count(),
+        ];
+    }
+
+    /**
      * Ambil daftar PPNS Utama yang memiliki perkara untuk filter dropdown (urut abjad)
      *
      * @return Collection<int, User>
@@ -763,6 +798,7 @@ class PerkaraService
         $search = $request->string('search')->trim()->toString();
         $status = $request->string('status')->trim()->toString();
         $tahap = $request->string('tahap')->trim()->toString();
+        $kesiapan = $request->string('kesiapan')->trim()->toString();
         $ppnsId = $request->integer('ppns_id');
         $sla = $request->string('sla')->trim()->toString();
         $tahun = $request->integer('tahun');
@@ -830,6 +866,35 @@ class PerkaraService
             })
             ->when($tahap !== '', function (Builder $query) use ($tahap) {
                 $query->filterTahapTerakhir($tahap);
+            })
+            ->when($kesiapan !== '', function (Builder $query) use ($kesiapan) {
+                $today = Carbon::today(DashboardService::ZONA_WAKTU)->toDateString();
+
+                if ($kesiapan === 'siap_tahap_1') {
+                    $query->whereHas('berkasPerkaras', function ($q) {
+                        $q->where(function ($sub) {
+                            $sub->whereNull('status_formal')->orWhere('status_formal', 'dalam_proses');
+                        })->where('progress_persen', 15)->where('is_dpo', false);
+                    });
+                } elseif ($kesiapan === 'siap_tahap_2') {
+                    $query->whereHas('berkasPerkaras', function ($q) {
+                        $q->where(function ($sub) {
+                            $sub->whereNull('status_formal')->orWhere('status_formal', 'dalam_proses');
+                        })->whereIn('progress_persen', [55, 85])->where('is_dpo', false);
+                    });
+                } elseif ($kesiapan === 'terkendala_dpo') {
+                    $query->whereHas('berkasPerkaras', function ($q) {
+                        $q->where(function ($sub) {
+                            $sub->whereNull('status_formal')->orWhere('status_formal', 'dalam_proses');
+                        })->where('is_dpo', true);
+                    });
+                } elseif ($kesiapan === 'melebihi_sla') {
+                    $query->whereHas('berkasPerkaras', function ($q) use ($today) {
+                        $q->where(function ($sub) {
+                            $sub->whereNull('status_formal')->orWhere('status_formal', 'dalam_proses');
+                        })->whereNotNull('sla_deadline')->where('sla_deadline', '<', $today);
+                    });
+                }
             })
             ->when($tahun > 0, function (Builder $query) use ($tahun) {
                 $query->whereYear('tanggal_laporan_kejadian', $tahun);

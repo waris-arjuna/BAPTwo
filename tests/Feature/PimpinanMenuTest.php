@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
-test('role pimpinan dan umum hanya memiliki 1 grup menu utama dengan 3 menu monitoring', function () {
+test('role pimpinan dan umum hanya memiliki 1 grup menu utama dengan 2 menu: dashboard dan daftar perkara', function () {
     $pimpinan = User::factory()->pimpinan()->create();
     $umum = User::factory()->umum()->create();
 
@@ -19,15 +19,15 @@ test('role pimpinan dan umum hanya memiliki 1 grup menu utama dengan 3 menu moni
         expect($groups)->toHaveCount(1)
             ->and($groups[0]['title'])->toBe('Menu Utama');
 
-        // 2. Tepat 3 menu: Dashboard, Pencarian Perkara, Potensi Terlimpah
+        // 2. Tepat 2 menu: Dashboard dan Daftar Perkara (Poin 10 & 11)
         $items = $groups[0]['items'];
-        expect($items)->toHaveCount(3);
+        expect($items)->toHaveCount(2);
 
         $names = array_column($items, 'name');
         $paths = array_column($items, 'path');
 
-        expect($names)->toEqual(['Dashboard', 'Pencarian Perkara', 'Potensi Terlimpah'])
-            ->and($paths)->toEqual(['/', '/pencarian-perkara', '/potensi-terlimpah']);
+        expect($names)->toEqual(['Dashboard', 'Daftar Perkara'])
+            ->and($paths)->toEqual(['/', '/data-perkara']);
 
         // 3. Pastikan tidak ada grup Perkara atau Sistem
         expect(collect($groups)->firstWhere('title', 'Perkara'))->toBeNull()
@@ -43,8 +43,8 @@ test('role pimpinan dan umum hanya memiliki 1 grup menu utama dengan 3 menu moni
         $navHtml = $matches[1] ?? '';
 
         expect($navHtml)->toContain('Dashboard')
-            ->and($navHtml)->toContain('Pencarian Perkara')
-            ->and($navHtml)->toContain('Potensi Terlimpah')
+            ->and($navHtml)->toContain('Daftar Perkara')
+            ->and($navHtml)->not->toContain('Potensi Terlimpah')
             ->and($navHtml)->not->toContain('Laporan Kejadian')
             ->and($navHtml)->not->toContain('Sprindik')
             ->and($navHtml)->not->toContain('SPDP')

@@ -254,8 +254,7 @@ test('potensi terlimpah dan data perkara menampilkan data tanpa membebani memori
 
     $this->actingAs($penyidik)
         ->get(route('potensi-terlimpah.index'))
-        ->assertOk()
-        ->assertSee('Potensi Terlimpah');
+        ->assertRedirect(route('data-perkara.index'));
 
     $this->actingAs($penyidik)
         ->get(route('data-perkara.index', ['sla' => 'lewat_sla']))

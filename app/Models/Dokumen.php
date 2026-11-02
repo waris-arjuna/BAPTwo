@@ -22,6 +22,7 @@ class Dokumen extends Model
     protected $fillable = [
         'perkara_id',
         'berkas_perkara_id',
+        'dpo_id',
         'tahapan_perkara_id',
         'kategori',
         'nama_dokumen',
@@ -56,6 +57,14 @@ class Dokumen extends Model
     public function berkasPerkara(): BelongsTo
     {
         return $this->belongsTo(BerkasPerkara::class, 'berkas_perkara_id');
+    }
+
+    /**
+     * @return BelongsTo<Dpo, $this>
+     */
+    public function dpo(): BelongsTo
+    {
+        return $this->belongsTo(Dpo::class, 'dpo_id');
     }
 
     /**

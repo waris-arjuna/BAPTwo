@@ -236,6 +236,112 @@
             </div>
         </div>
 
+        {{-- 4 Kartu Kesiapan Pelimpahan Perkara (Poin 10 & 11) --}}
+        @php
+            $currentKesiapan = request('kesiapan');
+        @endphp
+        <div class="space-y-2">
+            <div class="flex items-center justify-between">
+                <h3 class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                    Kesiapan Pelimpahan &amp; Prioritas
+                </h3>
+                @if ($currentKesiapan)
+                    <a
+                        href="{{ request()->fullUrlWithQuery(['kesiapan' => null, 'page' => null]) }}"
+                        class="text-xs font-medium text-brand-600 hover:text-brand-700 dark:text-brand-400"
+                    >
+                        Reset Filter Kesiapan
+                    </a>
+                @endif
+            </div>
+
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                {{-- 1. Siap Tahap I --}}
+                <a
+                    href="{{ $currentKesiapan === 'siap_tahap_1' ? request()->fullUrlWithQuery(['kesiapan' => null, 'page' => null]) : request()->fullUrlWithQuery(['kesiapan' => 'siap_tahap_1', 'page' => null]) }}"
+                    class="group relative rounded-2xl border p-5 shadow-theme-xs transition hover:shadow-md dark:bg-white/[0.03] {{ $currentKesiapan === 'siap_tahap_1' ? 'border-blue-500 bg-blue-50/20 ring-2 ring-blue-500/20 dark:border-blue-500/50 dark:bg-blue-500/10' : 'border-gray-200 bg-white hover:border-blue-300 dark:border-gray-800 dark:hover:border-blue-500/30' }}"
+                >
+                    <div class="flex items-center gap-3">
+                        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition group-hover:scale-105 dark:bg-blue-500/10 dark:text-blue-400">
+                            <i class="fi fi-rr-paper-plane text-xl"></i>
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <p class="text-xs font-medium text-gray-500 dark:text-gray-400">Siap Tahap I</p>
+                            <h4 class="mt-1 text-lg font-bold tabular-nums text-gray-800 dark:text-white/90">
+                                {{ $kesiapanCards['siap_tahap_1'] ?? 0 }} <span class="text-xs font-normal text-gray-500 dark:text-gray-400">perkara</span>
+                            </h4>
+                        </div>
+                    </div>
+                    <p class="mt-2 text-[11px] text-gray-400 dark:text-gray-500">
+                        SPDP difinalkan, siap berkas Tahap I
+                    </p>
+                </a>
+
+                {{-- 2. Siap Tahap II --}}
+                <a
+                    href="{{ $currentKesiapan === 'siap_tahap_2' ? request()->fullUrlWithQuery(['kesiapan' => null, 'page' => null]) : request()->fullUrlWithQuery(['kesiapan' => 'siap_tahap_2', 'page' => null]) }}"
+                    class="group relative rounded-2xl border p-5 shadow-theme-xs transition hover:shadow-md dark:bg-white/[0.03] {{ $currentKesiapan === 'siap_tahap_2' ? 'border-emerald-500 bg-emerald-50/20 ring-2 ring-emerald-500/20 dark:border-emerald-500/50 dark:bg-emerald-500/10' : 'border-gray-200 bg-white hover:border-emerald-300 dark:border-gray-800 dark:hover:border-emerald-500/30' }}"
+                >
+                    <div class="flex items-center gap-3">
+                        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-success-50 text-success-600 transition group-hover:scale-105 dark:bg-success-500/10 dark:text-success-400">
+                            <i class="fi fi-rr-badge-check text-xl"></i>
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <p class="text-xs font-medium text-gray-500 dark:text-gray-400">Siap Tahap II</p>
+                            <h4 class="mt-1 text-lg font-bold tabular-nums text-gray-800 dark:text-white/90">
+                                {{ $kesiapanCards['siap_tahap_2'] ?? 0 }} <span class="text-xs font-normal text-gray-500 dark:text-gray-400">perkara</span>
+                            </h4>
+                        </div>
+                    </div>
+                    <p class="mt-2 text-[11px] text-gray-400 dark:text-gray-500">
+                        Tahap I / P-21 lengkap, siap serah tersangka
+                    </p>
+                </a>
+
+                {{-- 3. Terkendala DPO --}}
+                <a
+                    href="{{ $currentKesiapan === 'terkendala_dpo' ? request()->fullUrlWithQuery(['kesiapan' => null, 'page' => null]) : request()->fullUrlWithQuery(['kesiapan' => 'terkendala_dpo', 'page' => null]) }}"
+                    class="group relative rounded-2xl border p-5 shadow-theme-xs transition hover:shadow-md dark:bg-white/[0.03] {{ $currentKesiapan === 'terkendala_dpo' ? 'border-amber-500 bg-amber-50/20 ring-2 ring-amber-500/20 dark:border-amber-500/50 dark:bg-amber-500/10' : 'border-gray-200 bg-white hover:border-amber-300 dark:border-gray-800 dark:hover:border-amber-500/30' }}"
+                >
+                    <div class="flex items-center gap-3">
+                        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-50 text-amber-600 transition group-hover:scale-105 dark:bg-amber-500/10 dark:text-amber-400">
+                            <i class="fi fi-rr-user-slash text-xl"></i>
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <p class="text-xs font-medium text-gray-500 dark:text-gray-400">Terkendala DPO</p>
+                            <h4 class="mt-1 text-lg font-bold tabular-nums text-gray-800 dark:text-white/90">
+                                {{ $kesiapanCards['terkendala_dpo'] ?? 0 }} <span class="text-xs font-normal text-gray-500 dark:text-gray-400">perkara</span>
+                            </h4>
+                        </div>
+                    </div>
+                    <p class="mt-2 text-[11px] text-gray-400 dark:text-gray-500">
+                        Tersangka buron, tahapan tertunda sementara
+                    </p>
+                </a>
+
+                {{-- 4. Melebihi SLA --}}
+                <a
+                    href="{{ $currentKesiapan === 'melebihi_sla' ? request()->fullUrlWithQuery(['kesiapan' => null, 'page' => null]) : request()->fullUrlWithQuery(['kesiapan' => 'melebihi_sla', 'page' => null]) }}"
+                    class="group relative rounded-2xl border p-5 shadow-theme-xs transition hover:shadow-md dark:bg-white/[0.03] {{ $currentKesiapan === 'melebihi_sla' ? 'border-rose-500 bg-rose-50/20 ring-2 ring-rose-500/20 dark:border-rose-500/50 dark:bg-rose-500/10' : 'border-gray-200 bg-white hover:border-rose-300 dark:border-gray-800 dark:hover:border-rose-500/30' }}"
+                >
+                    <div class="flex items-center gap-3">
+                        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-rose-50 text-rose-600 transition group-hover:scale-105 dark:bg-rose-500/10 dark:text-rose-400">
+                            <i class="fi fi-rr-alarm-exclamation text-xl"></i>
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <p class="text-xs font-medium text-gray-500 dark:text-gray-400">Melebihi SLA</p>
+                            <h4 class="mt-1 text-lg font-bold tabular-nums text-gray-800 dark:text-white/90">
+                                {{ $kesiapanCards['melebihi_sla'] ?? 0 }} <span class="text-xs font-normal text-gray-500 dark:text-gray-400">perkara</span>
+                            </h4>
+                        </div>
+                    </div>
+                    <p class="mt-2 text-[11px] text-gray-400 dark:text-gray-500">
+                        Batas waktu tahapan terlampaui
+                    </p>
+                </a>
+            </div>
+        </div>
+
         {{-- Table Area --}}
         <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
             {{-- Toolbar Filter --}}
@@ -277,6 +383,18 @@
                     <option value="P-21" @selected(request('tahap') === 'P-21')>P-21</option>
                     <option value="Tahap II" @selected(request('tahap') === 'Tahap II')>Tahap II</option>
                     <option value="Keputusan Pengadilan" @selected(request('tahap') === 'Keputusan Pengadilan')>Keputusan Pengadilan</option>
+                </select>
+
+                {{-- Dropdown Kesiapan Pelimpahan (Poin 10 & 11) --}}
+                <select
+                    name="kesiapan"
+                    class="h-11 rounded-lg border border-gray-300 bg-white px-3 text-sm text-gray-700 outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300"
+                >
+                    <option value="">Semua Kesiapan</option>
+                    <option value="siap_tahap_1" @selected(request('kesiapan') === 'siap_tahap_1')>Siap Tahap I</option>
+                    <option value="siap_tahap_2" @selected(request('kesiapan') === 'siap_tahap_2')>Siap Tahap II</option>
+                    <option value="terkendala_dpo" @selected(request('kesiapan') === 'terkendala_dpo')>Terkendala DPO</option>
+                    <option value="melebihi_sla" @selected(request('kesiapan') === 'melebihi_sla')>Melebihi SLA</option>
                 </select>
             </x-common.table-filter>
 

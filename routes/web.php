@@ -137,12 +137,14 @@ Route::middleware('auth')->group(function () {
     Route::prefix('berkas-perkara/{berkas}')->name('berkas-perkara.')->group(function () {
         Route::get('/tahapan/tambah', [TahapanPerkaraController::class, 'create'])->middleware('can:create-cases')->name('tahapan.create');
         Route::post('/tahapan', [TahapanPerkaraController::class, 'store'])->middleware('can:create-cases')->name('tahapan.store');
+        Route::post('/sub-tahap', [TahapanPerkaraController::class, 'saveSubTahap'])->middleware('can:create-cases')->name('tahapan.sub-tahap');
         Route::get('/tahapan/{tahapan}', [TahapanPerkaraController::class, 'show'])->name('tahapan.show');
         Route::get('/tahapan/{tahapan}/edit', [TahapanPerkaraController::class, 'edit'])->middleware('can:edit-draft')->name('tahapan.edit');
         Route::put('/tahapan/{tahapan}', [TahapanPerkaraController::class, 'update'])->middleware('can:edit-draft')->name('tahapan.update');
 
-        // DPO (Aktivasi & Pencabutan - PRD F-24 s.d. F-27)
+        // DPO (Aktivasi, Penangkapan/Penahanan & Pencabutan - PRD F-24 s.d. F-27, Poin 4)
         Route::post('/dpo', [DpoController::class, 'store'])->middleware('can:toggle-dpo')->name('dpo.store');
+        Route::post('/dpo/penangkapan', [DpoController::class, 'penangkapan'])->middleware('can:toggle-dpo')->name('dpo.penangkapan');
         Route::post('/dpo/cabut', [DpoController::class, 'destroy'])->middleware('can:toggle-dpo')->name('dpo.destroy');
 
         // SP3 (Penghentian Penyidikan Administratif - PRD F-28, D-030)

@@ -7,14 +7,20 @@
     'existingUrl' => null,
     'helperText' => null,
     'maxSizeMb' => 5,
+    'allowImages' => false,
 ])
 
 @php
     $inputId = $id ?? $name;
+    $acceptTypes = $allowImages
+        ? 'application/pdf,.pdf,image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp'
+        : 'application/pdf,.pdf';
+
     if ($helperText === null) {
+        $formatDesc = $allowImages ? 'PDF atau Gambar (JPG/PNG/WebP)' : 'PDF';
         $helperText = $existingFile
-            ? "Dokumen saat ini: {$existingFile}. Biarkan kosong jika tidak ingin mengubah. Format file: PDF maks. {$maxSizeMb} MB"
-            : "Format file: PDF maks. {$maxSizeMb} MB";
+            ? "Dokumen saat ini: {$existingFile}. Biarkan kosong jika tidak ingin mengubah. Format file: {$formatDesc} maks. {$maxSizeMb} MB"
+            : "Format file: {$formatDesc} maks. {$maxSizeMb} MB";
     }
 @endphp
 
@@ -23,11 +29,17 @@
         fileName: '',
         fileSize: '',
         error: '',
+        allowImages: {{ $allowImages ? 'true' : 'false' }},
         clearFile() {
             this.$refs.fileInput.value = '';
             this.fileName = '';
             this.fileSize = '';
             this.error = '';
+        },
+        isImageFile(name) {
+            if (!name) return false;
+            const n = name.toLowerCase();
+            return n.endsWith('.jpg') || n.endsWith('.jpeg') || n.endsWith('.png') || n.endsWith('.webp');
         },
         handleFileChange(event) {
             this.error = '';
@@ -36,8 +48,19 @@
                 this.clearFile();
                 return;
             }
-            if (!file.name.toLowerCase().endsWith('.pdf') && file.type !== 'application/pdf') {
-                this.error = 'File harus berformat PDF murni.';
+
+            const validExtensions = this.allowImages
+                ? ['.pdf', '.jpg', '.jpeg', '.png', '.webp']
+                : ['.pdf'];
+            const hasValidExt = validExtensions.some(ext => file.name.toLowerCase().endsWith(ext));
+            const isValidMime = this.allowImages
+                ? (file.type === 'application/pdf' || file.type.startsWith('image/'))
+                : (file.type === 'application/pdf');
+
+            if (!hasValidExt && !isValidMime) {
+                this.error = this.allowImages
+                    ? 'File harus berformat PDF atau Gambar (JPG, JPEG, PNG, WEBP).'
+                    : 'File harus berformat PDF murni.';
                 if (typeof window.toast?.error === 'function') {
                     window.toast.error('Format Dokumen Tidak Sesuai', this.error);
                 } else if (typeof window.showAppError === 'function') {
@@ -46,6 +69,7 @@
                 this.clearFile();
                 return;
             }
+
             if (file.size > {{ $maxSizeMb }} * 1024 * 1024) {
                 this.error = 'Ukuran file melebihi batas maksimal {{ $maxSizeMb }} MB.';
                 if (typeof window.toast?.error === 'function') {
@@ -56,6 +80,7 @@
                 this.clearFile();
                 return;
             }
+
             this.fileName = file.name;
             const sizeInKb = file.size / 1024;
             this.fileSize = sizeInKb > 1024
@@ -80,7 +105,7 @@
             id="{{ $inputId }}"
             name="{{ $name }}"
             type="file"
-            accept="application/pdf,.pdf"
+            accept="{{ $acceptTypes }}"
             class="sr-only"
             @change="handleFileChange($event)"
             @if ($required && ! $existingFile) required @endif
@@ -92,7 +117,7 @@
                 {{-- State: File Baru Terpilih --}}
                 <div class="flex min-w-0 flex-1 items-center justify-between gap-2">
                     <div class="flex min-w-0 items-center gap-2">
-                        <i class="fi fi-rr-document shrink-0 text-base text-red-500"></i>
+                        <i :class="isImageFile(fileName) ? 'fi fi-rr-picture text-brand-500' : 'fi fi-rr-file-pdf text-red-500'" class="shrink-0 text-base"></i>
                         <span class="truncate font-medium text-gray-800 dark:text-white/90" x-text="fileName"></span>
                         <span class="shrink-0 text-xs text-gray-400" x-text="'(' + fileSize + ')'"></span>
                     </div>
@@ -114,12 +139,12 @@
                         for="{{ $inputId }}"
                         class="flex min-w-0 flex-1 cursor-pointer items-center gap-2 text-gray-500 transition hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
                     >
-                        <i class="fi fi-rr-file-pdf text-base text-gray-400"></i>
+                        <i class="{{ $allowImages ? 'fi fi-rr-folder-upload' : 'fi fi-rr-file-pdf' }} text-base text-gray-400"></i>
                         <span class="truncate">
                             @if ($existingFile)
                                 Dokumen saat ini: {{ $existingFile }}
                             @else
-                                Pilih file PDF...
+                                {{ $allowImages ? 'Pilih file PDF atau Gambar...' : 'Pilih file PDF...' }}
                             @endif
                         </span>
                     </label>
@@ -149,8 +174,10 @@
                 href="{{ $existingUrl }}"
                 target="_blank"
                 class="inline-flex items-center gap-1 font-medium text-brand-600 hover:underline dark:text-brand-400"
-                data-pdf-preview
-                data-pdf-title="{{ $existingFile ?? 'Dokumen PDF' }}"
+                @if(str_ends_with(strtolower($existingFile ?? ''), '.pdf'))
+                    data-pdf-preview
+                    data-pdf-title="{{ $existingFile ?? 'Dokumen PDF' }}"
+                @endif
             >
                 <i class="fi fi-rr-eye text-[11px]"></i>
                 <span>Lihat file saat ini</span>

@@ -180,6 +180,24 @@ class BerkasPerkara extends Model
     }
 
     /**
+     * Memeriksa apakah jenis tahapan sudah pernah difinalkan pada berkas ini
+     */
+    public function hasFinalTahap(JenisTahap|string $jenis): bool
+    {
+        $value = $jenis instanceof JenisTahap ? $jenis->value : $jenis;
+
+        if ($this->relationLoaded('tahapan')) {
+            return $this->tahapan->contains(function ($t) use ($value) {
+                $tValue = $t->jenis_tahap instanceof JenisTahap ? $t->jenis_tahap->value : $t->jenis_tahap;
+
+                return $tValue === $value && $t->status === 'final';
+            });
+        }
+
+        return $this->tahapan()->where('jenis_tahap', $value)->where('status', 'final')->exists();
+    }
+
+    /**
      * @return HasMany<Dpo, $this>
      */
     public function dpos(): HasMany
@@ -370,6 +388,22 @@ class BerkasPerkara extends Model
             return Carbon::parse($this->sla_deadline);
         }
 
+        // Fallback jika sla_deadline belum tersimpan di database:
+        // Gunakan tahapan final terbaru yang menjadi basis SLA aktif (P-21, Tahap 1, atau SPDP)
+        $latestStage = $this->tahapan()
+            ->where('status', 'final')
+            ->whereIn('jenis_tahap', [JenisTahap::P21->value, JenisTahap::TAHAP_1->value, JenisTahap::SPDP->value])
+            ->orderByDesc('tanggal_surat')
+            ->first();
+
+        if ($latestStage && ! empty($latestStage->tanggal_surat)) {
+            $tgl = Carbon::parse($latestStage->tanggal_surat);
+            $sla1Bulan = $tgl->copy()->addMonth();
+            $akhirTahun = $tgl->copy()->endOfYear();
+
+            return $sla1Bulan->gt($akhirTahun) ? $akhirTahun : $sla1Bulan;
+        }
+
         if ($this->tanggal_spdp) {
             $tgl = Carbon::parse($this->tanggal_spdp);
             $sla1Bulan = $tgl->copy()->addMonth();
@@ -407,7 +441,7 @@ class BerkasPerkara extends Model
 
         if ($this->status_formal === 'selesai') {
             $tahap2 = $this->tahap2Final();
-            $selesaiAt = $tahap2?->finalized_at ?? $tahap2?->tanggal_surat ?? $this->updated_at;
+            $selesaiAt = $tahap2?->tanggal_surat ?? $tahap2?->finalized_at ?? $this->updated_at;
 
             if ($deadline && $selesaiAt && Carbon::parse($selesaiAt)->startOfDay()->gt($deadline->startOfDay())) {
                 return 'selesai_lewat_sla';

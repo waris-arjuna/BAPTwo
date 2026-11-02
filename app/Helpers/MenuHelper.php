@@ -17,17 +17,8 @@ class MenuHelper
             ],
             [
                 'icon' => 'data-perkara',
-                'name' => 'Data Perkara',
-                'subItems' => [
-                    [
-                        'name' => 'Daftar Perkara',
-                        'path' => '/data-perkara',
-                    ],
-                    [
-                        'name' => 'Potensi Terlimpah',
-                        'path' => '/potensi-terlimpah',
-                    ],
-                ],
+                'name' => 'Daftar Perkara',
+                'path' => '/data-perkara',
             ],
         ];
     }
@@ -165,9 +156,9 @@ class MenuHelper
     {
         $user = auth()->user();
 
-        // Role Umum hanya memiliki 1 grup "Menu Utama":
-        // Dashboard, Pencarian Perkara, Potensi Terlimpah (ref: D-053, D-071).
-        if ($user && $user->isUmum()) {
+        // Role Umum / Pimpinan hanya memiliki 1 grup "Menu Utama" dengan 2 menu:
+        // 1. Dashboard, 2. Daftar Perkara (mode read-only / monitoring) (ref: Poin 10 & 11).
+        if ($user && ($user->isUmum() || $user->isPimpinan())) {
             return [
                 [
                     'title' => 'Menu Utama',
@@ -178,14 +169,9 @@ class MenuHelper
                             'path' => '/',
                         ],
                         [
-                            'icon' => 'search-cases',
-                            'name' => 'Pencarian Perkara',
-                            'path' => '/pencarian-perkara',
-                        ],
-                        [
-                            'icon' => 'potensi-terlimpah',
-                            'name' => 'Potensi Terlimpah',
-                            'path' => '/potensi-terlimpah',
+                            'icon' => 'data-perkara',
+                            'name' => 'Daftar Perkara',
+                            'path' => '/data-perkara',
                         ],
                     ],
                 ],

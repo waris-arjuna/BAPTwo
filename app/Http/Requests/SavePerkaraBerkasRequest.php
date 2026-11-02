@@ -73,7 +73,7 @@ class SavePerkaraBerkasRequest extends FormRequest
 
             // TKP (F-07, F-36, F-37, Poin 3 & Poin 4)
             'tkp_nama' => ['nullable', 'string', 'max:150'],
-            'tkp_klasifikasi' => [$isFinal ? 'required' : 'nullable', 'in:retailer,distributor'],
+            'tkp_klasifikasi' => [$isFinal ? 'required' : 'nullable', 'in:retailer,distributor,produksi'],
             'tkp_legalitas' => [$isFinal ? 'required' : 'nullable', 'in:legal,ilegal'],
             'tkp_modus' => [$isFinal ? 'required' : 'nullable', 'in:online,offline'],
             'tkp_provinsi_kode' => [$isFinal ? 'required' : 'nullable', 'string', 'in:63'],
@@ -105,7 +105,7 @@ class SavePerkaraBerkasRequest extends FormRequest
             // Penuntut Umum (Poin 2 & Poin 8, ref: D-053)
             'penuntut_umum_instansi_id' => ['nullable', 'integer', 'exists:instansi_hukum,id'],
             'penuntut_umum_nama' => ['nullable', 'string', 'max:255'],
-            'penuntut_umum_nip' => ['nullable', 'string', 'max:50'],
+            'penuntut_umum_nip' => ['nullable', 'numeric', 'digits:18'],
 
             // Single Tersangka, Berkas Perkara & Pasal Berlapis (Poin 2, 8, 11, 13, 17)
             'tersangka' => ['required', 'array', 'min:1'],
@@ -168,6 +168,8 @@ class SavePerkaraBerkasRequest extends FormRequest
             'tkp_desa_kode.required' => 'Desa/Kelurahan lokasi TKP wajib dipilih.',
             'tkp_alamat_detail.required' => 'Detail alamat TKP wajib diisi.',
             'ppns_utama_id.required' => 'PPNS Utama wajib dipilih.',
+            'penuntut_umum_nip.numeric' => 'NIP Jaksa Penuntut Umum harus berupa angka.',
+            'penuntut_umum_nip.digits' => 'NIP Jaksa Penuntut Umum harus tepat 18 digit angka.',
             'tersangka.required' => 'Data Tersangka pada perkara ini wajib diisi.',
             'tersangka.min' => 'Data Tersangka pada perkara ini wajib diisi.',
             'tersangka.*.nama.required' => 'Nama lengkap tersangka wajib diisi.',

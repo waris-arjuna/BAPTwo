@@ -17,14 +17,13 @@ test('role administrator memiliki struktur menu utama, perkara 7 tahapan, dan si
     $titles = array_column($groups, 'title');
     expect($titles)->toEqual(['Menu Utama', 'Perkara', 'Sistem']);
 
-    // 2. Menu Utama: Dashboard dan Data Perkara (Daftar Perkara & Potensi Terlimpah)
+    // 2. Menu Utama: Dashboard dan Daftar Perkara (Poin 10 & 11)
     $menuUtama = $groups[0]['items'];
     expect($menuUtama)->toHaveCount(2)
         ->and($menuUtama[0]['name'])->toBe('Dashboard')
         ->and($menuUtama[0]['path'])->toBe('/')
-        ->and($menuUtama[1]['name'])->toBe('Data Perkara')
-        ->and(array_column($menuUtama[1]['subItems'], 'name'))->toEqual(['Daftar Perkara', 'Potensi Terlimpah'])
-        ->and(array_column($menuUtama[1]['subItems'], 'path'))->toEqual(['/data-perkara', '/potensi-terlimpah']);
+        ->and($menuUtama[1]['name'])->toBe('Daftar Perkara')
+        ->and($menuUtama[1]['path'])->toBe('/data-perkara');
 
     // 3. Perkara: 7 tahapan berurutan
     $perkaraItems = $groups[1]['items'];
@@ -82,9 +81,8 @@ test('role administrator memiliki struktur menu utama, perkara 7 tahapan, dan si
     // 5. Verifikasi HTML sidebar render
     $response = $this->get(route('dashboard'));
     $response->assertOk()
-        ->assertSee('Data Perkara')
         ->assertSee('Daftar Perkara')
-        ->assertSee('Potensi Terlimpah')
+        ->assertDontSee('Potensi Terlimpah')
         ->assertSee('Laporan Kejadian')
         ->assertSee('Sprindik')
         ->assertSee('SPDP')

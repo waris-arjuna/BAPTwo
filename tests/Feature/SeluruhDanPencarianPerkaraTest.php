@@ -227,18 +227,19 @@ test('halaman pencarian perkara merender partial tabel saat request ajax X-Filte
     $response->assertSee('BP/001/X/2026');
 });
 
-test('menu helper navigasi memuat menu Seluruh Perkara dan Pencarian Perkara dengan icon valid', function () {
+test('menu helper navigasi memuat icon valid dan navigasi pimpinan ringkas', function () {
     $allCasesIcon = MenuHelper::getIconSvg('all-cases');
     expect($allCasesIcon)->toContain('fi fi-rr-layers');
 
     $searchCasesIcon = MenuHelper::getIconSvg('search-cases');
     expect($searchCasesIcon)->toContain('fi fi-rr-search');
 
-    $pimpinanGroups = MenuHelper::getMenuGroups();
-    // Default guest / pimpinan test
+    $dataPerkaraIcon = MenuHelper::getIconSvg('data-perkara');
+    expect($dataPerkaraIcon)->toContain('fi fi-rr-folders');
+
     $pimpinanUser = User::factory()->pimpinan()->make();
     $this->actingAs($pimpinanUser);
     $pimpinanItems = MenuHelper::getMenuGroups()[0]['items'];
     $paths = array_column($pimpinanItems, 'path');
-    expect($paths)->toContain('/pencarian-perkara');
+    expect($paths)->toEqual(['/', '/data-perkara']);
 });

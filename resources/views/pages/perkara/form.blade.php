@@ -2,9 +2,10 @@
     $isDraft = $perkara->tahap_perkara_status === 'draft';
     $title = $isDraft ? 'Edit Draft Perkara & Berkas Perkara' : 'Buat Perkara & Berkas Perkara';
 
-    $tkpAlamat = $perkara->tkp?->alamat;
-    $existingUtamaId = old('ppns_utama_id', $perkara->ppnsUtama->first()?->id ?? '');
-    $existingAnggotaIds = collect(old('ppns_anggota_ids', $perkara->ppnsAnggota->pluck('id')->all()))
+    $tkp = $isDraft ? $perkara->tkp : null;
+    $tkpAlamat = $tkp?->alamat;
+    $existingUtamaId = old('ppns_utama_id', $isDraft ? ($perkara->ppnsUtama->first()?->id ?? '') : '');
+    $existingAnggotaIds = collect(old('ppns_anggota_ids', $isDraft ? $perkara->ppnsAnggota->pluck('id')->all() : []))
         ->map(fn ($id) => (int) $id)
         ->filter(fn (int $id) => $id > 0 && $id !== (int) $existingUtamaId)
         ->values()
@@ -23,8 +24,8 @@
         'isi' => $p->isi ?? '',
     ])->values()->all();
 
-    $firstTersangka = $perkara->tersangkas->first();
-    $firstBerkas = $firstTersangka?->berkasPerkara ?? $perkara->berkasPerkaras->first();
+    $firstTersangka = $isDraft ? $perkara->tersangkas->first() : null;
+    $firstBerkas = $isDraft ? ($firstTersangka?->berkasPerkara ?? $perkara->berkasPerkaras->first()) : null;
     $tersangkaAlamat = $firstTersangka?->alamat;
 
     $oldTersangka = old('tersangka.0', []);
@@ -520,8 +521,9 @@
                             class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
                         >
                             <option value="">-- Pilih Klasifikasi --</option>
-                            <option value="retailer" @selected(old('tkp_klasifikasi', $perkara->tkp?->klasifikasi) === 'retailer')>Retailer</option>
-                            <option value="distributor" @selected(old('tkp_klasifikasi', $perkara->tkp?->klasifikasi) === 'distributor')>Distributor</option>
+                            <option value="retailer" @selected(old('tkp_klasifikasi', $tkp?->klasifikasi) === 'retailer')>Retailer</option>
+                            <option value="distributor" @selected(old('tkp_klasifikasi', $tkp?->klasifikasi) === 'distributor')>Distributor</option>
+                            <option value="produksi" @selected(old('tkp_klasifikasi', $tkp?->klasifikasi) === 'produksi')>Produksi</option>
                         </select>
                     </div>
 
@@ -536,7 +538,7 @@
                                     type="radio"
                                     name="tkp_legalitas"
                                     value="legal"
-                                    @checked(old('tkp_legalitas', $perkara->tkp?->legalitas) === 'legal')
+                                    @checked(old('tkp_legalitas', $tkp?->legalitas) === 'legal')
                                     class="h-4 w-4 border-gray-300 text-brand-600 focus:ring-brand-500 dark:border-gray-700"
                                 >
                                 <span>Legal</span>
@@ -546,7 +548,7 @@
                                     type="radio"
                                     name="tkp_legalitas"
                                     value="ilegal"
-                                    @checked(old('tkp_legalitas', $perkara->tkp?->legalitas) === 'ilegal')
+                                    @checked(old('tkp_legalitas', $tkp?->legalitas) === 'ilegal')
                                     class="h-4 w-4 border-gray-300 text-brand-600 focus:ring-brand-500 dark:border-gray-700"
                                 >
                                 <span>Ilegal</span>
@@ -565,7 +567,7 @@
                                     type="radio"
                                     name="tkp_modus"
                                     value="online"
-                                    @checked(old('tkp_modus', $perkara->tkp?->modus) === 'online')
+                                    @checked(old('tkp_modus', $tkp?->modus) === 'online')
                                     class="h-4 w-4 border-gray-300 text-brand-600 focus:ring-brand-500 dark:border-gray-700"
                                 >
                                 <span>Online</span>
@@ -575,7 +577,7 @@
                                     type="radio"
                                     name="tkp_modus"
                                     value="offline"
-                                    @checked(old('tkp_modus', $perkara->tkp?->modus) === 'offline')
+                                    @checked(old('tkp_modus', $tkp?->modus) === 'offline')
                                     class="h-4 w-4 border-gray-300 text-brand-600 focus:ring-brand-500 dark:border-gray-700"
                                 >
                                 <span>Offline</span>
@@ -1396,7 +1398,7 @@
                 </div>
             </div>
 
-            {{-- 5. Card Penuntut Umum (Poin 2 & Poin 8, ref: D-053) --}}
+            {{-- 5. Card Penuntut Umum  --}}
             <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-theme-xs dark:border-gray-800 dark:bg-gray-900">
                 <div class="mb-5 flex flex-col gap-1 border-b border-gray-100 pb-4 dark:border-gray-800 sm:flex-row sm:items-center sm:justify-between">
                     <div>
@@ -1422,11 +1424,11 @@
                             label="Instansi Kejaksaan"
                             placeholder="-- Pilih Instansi Kejaksaan --"
                             search-placeholder="Ketik nama kejaksaan..."
-                            :value="old('penuntut_umum_instansi_id', $perkara->penuntut_umum_instansi_id)"
+                            :value="old('penuntut_umum_instansi_id', $isDraft ? $perkara->penuntut_umum_instansi_id : '')"
                         >
                             <option value="">-- Pilih Instansi Kejaksaan --</option>
                             @foreach ($kejaksaanList as $kj)
-                                <option value="{{ $kj->id }}" @selected((string) old('penuntut_umum_instansi_id', $perkara->penuntut_umum_instansi_id) === (string) $kj->id)>
+                                <option value="{{ $kj->id }}" @selected((string) old('penuntut_umum_instansi_id', $isDraft ? $perkara->penuntut_umum_instansi_id : '') === (string) $kj->id)>
                                     {{ $kj->nama }}
                                 </option>
                             @endforeach
@@ -1442,7 +1444,7 @@
                             type="text"
                             id="penuntut_umum_nama"
                             name="penuntut_umum_nama"
-                            value="{{ old('penuntut_umum_nama', $perkara->penuntut_umum_nama) }}"
+                            value="{{ old('penuntut_umum_nama', $isDraft ? $perkara->penuntut_umum_nama : '') }}"
                             placeholder="Contoh: Budi Gunawan, S.H., M.H."
                             class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 placeholder-gray-400 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
                         >
@@ -1451,14 +1453,17 @@
                     {{-- NIP Jaksa --}}
                     <div>
                         <label for="penuntut_umum_nip" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                            NIP Jaksa Penuntut
+                            NIP Jaksa Penuntut (18 Digit)
                         </label>
                         <input
                             type="number"
                             id="penuntut_umum_nip"
                             name="penuntut_umum_nip"
-                            value="{{ old('penuntut_umum_nip', $perkara->penuntut_umum_nip) }}"
+                            value="{{ old('penuntut_umum_nip', $isDraft ? $perkara->penuntut_umum_nip : '') }}"
+                            maxlength="18"
+                            pattern="[0-9]{18}"
                             placeholder="Contoh: 198205122008011002"
+                            oninput="this.value = this.value.replace(/\D/g, '').slice(0, 18)"
                             class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 text-sm text-gray-800 placeholder-gray-400 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
                         >
                     </div>
