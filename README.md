@@ -174,31 +174,43 @@ Seluruh kalkulasi pada halaman Dashboard (`DashboardService.php`) merujuk pada t
 
 #### A. 5 Kartu Statistik Utama
 1. **Total Perkara**:
-   $$\text{Total Perkara} = \text{COUNT}(\text{perkara}) \quad \text{di mana } \text{YEAR}(\text{tanggal\_laporan\_kejadian}) = \text{tahun}$$
+   ```sql
+   COUNT(perkara.id) WHERE YEAR(tanggal_laporan_kejadian) = tahun
+   ```
 2. **Perkara Berjalan**:
    Jumlah berkas perkara tahun berjalan yang masih aktif diproses:
-   $$\text{berkas\_perkara.status\_formal} \in (\text{NULL}, \text{'dalam\_proses'})$$
+   ```sql
+   status_formal IS NULL OR status_formal = 'dalam_proses'
+   ```
 3. **Menunggu Verifikasi Penyidik**:
    Berkas perkara berjalan yang memerlukan tindakan operasional penyidik, yaitu berkas yang memiliki draf tahapan aktif atau progresnya masih berada pada tahap awal:
-   $$\text{Berkas Berjalan} \quad \text{AND} \quad \left(\exists \text{ tahapan berstatus 'draft'} \quad \text{OR} \quad \text{progress\_persen} \le 15\%\right)$$
+   ```sql
+   Berkas Berjalan AND (memiliki tahapan status 'draft' OR progress_persen <= 15)
+   ```
 4. **Selesai**:
    Berkas perkara yang telah tuntas dilimpahkan ke Kejaksaan melalui Tahap II:
-   $$\text{berkas\_perkara.status\_formal} = \text{'selesai'}$$
+   ```sql
+   status_formal = 'selesai'
+   ```
 5. **Rata-rata Waktu Penyelesaian**:
    Rata-rata selisih hari kalender dari tanggal surat SPDP hingga tanggal surat Tahap II pada seluruh berkas yang telah berstatus Selesai:
-   $$\text{Rata-rata Durasi} = \frac{\sum (\text{Tanggal Tahap II} - \text{Tanggal SPDP})}{N_{\text{selesai}}}$$
+   ```text
+   Rata-rata Durasi = Total (Tanggal Tahap II - Tanggal SPDP) / Jumlah Berkas Selesai
+   ```
    *(Data anomali di mana tanggal Tahap II lebih awal dari SPDP diabaikan).*
 
 #### B. 5 Widget Analitik Dashboard
 1. **Donut Chart Status Perkara & Presisi Persentase (Largest Remainder Method)**:
-   Untuk mencegah anomali pembulatan biasa (misal total $99\%$ atau $101\%$), pembulatan persentase status perkara dihitung menggunakan algoritma **Hare-Niemeyer (Largest Remainder Method)** yang menjamin akumulasi selalu tepat $100\%$:
-   $$\text{Persentase Dasar} = \left\lfloor \frac{\text{Nilai}}{\text{Total}} \times 100 \right\rfloor$$
+   Untuk mencegah anomali pembulatan biasa (misal total 99% atau 101%), pembulatan persentase status perkara dihitung menggunakan algoritma **Hare-Niemeyer (Largest Remainder Method)** yang menjamin akumulasi selalu tepat 100%:
+   ```text
+   Persentase Dasar = floor((Nilai Kategori / Total Berkas) * 100)
+   ```
    Sisa poin pembulatan dialokasikan berurutan ke kategori dengan nilai desimal terbesar.
    
    Empat sub-kategori Tenggang Waktu (SLA) pada berkas berjalan:
    * **Belum SPDP**: Belum difinalkan SPDP (`sla_deadline IS NULL`).
    * **Sesuai SLA**: Berkas aktif dengan sisa waktu aman (`DATE(sla_deadline) > hari_ini + 7 hari`).
-   * **Mendekati Batas SLA**: Berkas aktif dengan sisa waktu kritis $\le 7$ hari (`hari_ini \le DATE(sla_deadline) \le hari_ini + 7 hari`).
+   * **Mendekati Batas SLA**: Berkas aktif dengan sisa waktu kritis 0 s.d. 7 hari (`hari_ini <= DATE(sla_deadline) <= hari_ini + 7 hari`).
    * **Melebihi SLA**: Berkas aktif yang telah melewati batas tenggang waktu (`DATE(sla_deadline) < hari_ini`).
 
 2. **Tren Perkara Bulanan & Rasio Penyelesaian (*Clearance Rate*)**:
@@ -206,14 +218,17 @@ Seluruh kalkulasi pada halaman Dashboard (`DashboardService.php`) merujuk pada t
    * **Perkara Masuk**: Berdasarkan `perkara.tanggal_laporan_kejadian`.
    * **Perkara Selesai**: Berdasarkan `tahapan_perkara.tanggal_surat` pada jenis `TAHAP_2` berstatus `final` dari berkas selesai.
    * **Clearance Rate (%)**:
-     $$\text{Clearance Rate} = \begin{cases} \text{round}\left(\frac{\text{Total Selesai}}{\text{Total Masuk}} \times 100, 1\right)\%, & \text{jika Total Masuk} > 0 \\ 0.0\%, & \text{jika Total Masuk} = 0 \end{cases}$$
+     ```text
+     Clearance Rate = round((Total Selesai / Total Masuk) * 100, 1)%
+     ```
+     *(Bernilai 0.0% jika Total Masuk = 0).*
 
 3. **Rata-rata Durasi Penyelesaian per Tahap dalam Hari Kerja (*Weekdays*)**:
    Menghitung durasi hari kerja (Senin s.d. Jumat, tidak menghitung Sabtu-Minggu) antar-tahap menggunakan `diffInWeekdays()`:
-   * **SPDP**: Tanggal Sprindik $\to$ Tanggal SPDP.
-   * **TAHAP I**: Tanggal SPDP $\to$ Tanggal Tahap I.
-   * **P-21**: Tanggal Tahap I $\to$ Tanggal P-21.
-   * **TAHAP II**: Tanggal P-21 $\to$ Tanggal Tahap II.
+   * **SPDP**: Tanggal Sprindik → Tanggal SPDP.
+   * **TAHAP I**: Tanggal SPDP → Tanggal Tahap I.
+   * **P-21**: Tanggal Tahap I → Tanggal P-21.
+   * **TAHAP II**: Tanggal P-21 → Tanggal Tahap II.
 
 4. **Sebaran Wilayah TKP & Proporsi Modus Peredaran**:
    * Peringkat Kabupaten/Kota berdasarkan `COUNT(*)` data `tkp.alamat.kabupaten_nama`.
@@ -221,7 +236,9 @@ Seluruh kalkulasi pada halaman Dashboard (`DashboardService.php`) merujuk pada t
 
 5. **Pasal Undang-Undang Paling Banyak Disangkakan**:
    Ranking frekuensi pasal berdasarkan:
-   $$\text{Frekuensi} = \text{COUNT}(\text{DISTINCT } \text{berkas\_pasal.berkas\_perkara\_id})$$
+   ```sql
+   COUNT(DISTINCT berkas_pasal.berkas_perkara_id)
+   ```
 
 </details>
 
@@ -235,7 +252,9 @@ Seluruh kalkulasi pada halaman Dashboard (`DashboardService.php`) merujuk pada t
 Pada halaman **Daftar Perkara** (`/data-perkara` untuk Penyidik dan Administrator), metrik kartu ringkasan dihitung pada level **Entitas Perkara** yang telah masuk tahap operasional (`perkara.tahap_perkara_status IS NOT NULL`).
 
 Untuk memastikan prinsip matematika di mana penjumlahan 4 status selalu tepat sama dengan total perkara:
-$$\text{Dalam Proses} + \text{DPO Aktif} + \text{Selesai} + \text{Tidak Selesai} = \text{Total Perkara}$$
+```text
+Total Perkara = Dalam Proses + DPO Aktif + Selesai + Tidak Selesai (SP3)
+```
 
 Sistem menerapkan **Hierarki Prioritas Status Eksklusif Mutlak** per perkara:
 
@@ -262,17 +281,27 @@ Empat kartu indikator pelimpahan perkara pada halaman Daftar Perkara dihitung me
 
 #### A. Kriteria 4 Kartu Kesiapan Pelimpahan
 1. **Siap Tahap I**: Berkas perkara berjalan yang telah menyelesaikan SPDP dan siap dilimpahkan ke Kejaksaan:
-   $$\text{status\_formal} = \text{'dalam\_proses'} \quad \text{AND} \quad \text{progress\_persen} = 15\% \quad \text{AND} \quad \text{is\_dpo} = 0$$
+   ```sql
+   status_formal = 'dalam_proses' AND progress_persen = 15 AND is_dpo = false
+   ```
 2. **Siap Tahap II**: Berkas perkara berjalan yang telah menyelesaikan Tahap I atau P-21 dan siap penyerahan tersangka/barang bukti:
-   $$\text{status\_formal} = \text{'dalam\_proses'} \quad \text{AND} \quad \text{progress\_persen} \in (55\%, 85\%) \quad \text{AND} \quad \text{is\_dpo} = 0$$
+   ```sql
+   status_formal = 'dalam_proses' AND progress_persen IN (55, 85) AND is_dpo = false
+   ```
 3. **Terkendala DPO**: Berkas perkara berjalan di mana tersangka berstatus buron sehingga proses hukum tertahan:
-   $$\text{status\_formal} = \text{'dalam\_proses'} \quad \text{AND} \quad \text{is\_dpo} = 1$$
+   ```sql
+   status_formal = 'dalam_proses' AND is_dpo = true
+   ```
 4. **Melebihi Batas SLA**: Berkas perkara berjalan yang telah melewati batas tenggang waktu penyelesaian tahap aktif:
-   $$\text{status\_formal} = \text{'dalam\_proses'} \quad \text{AND} \quad \text{sla\_deadline} < \text{hari\_ini}$$
+   ```sql
+   status_formal = 'dalam_proses' AND sla_deadline < hari_ini
+   ```
 
 #### B. Rumus Tenggang Waktu (SLA) Per Tahap
 SOP BAPTwo menetapkan batas waktu penyelesaian maksimal **1 bulan kalender** untuk setiap tahapan aktif (SPDP, Tahap I, P-21), dengan tunduk pada **batas mutlak akhir tahun anggaran (31 Desember)**:
-$$\text{Batas Tenggang Waktu (SLA)} = \min\left(\text{Tanggal Surat Tahap Aktif} + 1\text{ Bulan Kalender}, \text{31 Desember } \text{Tahun Berjalan}\right)$$
+```text
+Batas Tenggang Waktu (SLA) = min(Tanggal Surat Tahap Aktif + 1 Bulan Kalender, 31 Desember Tahun Berjalan)
+```
 
 * Contoh 1: SPDP terbit tanggal `15 Februari 2026`, maka deadline Tahap I adalah `15 Maret 2026`.
 * Contoh 2: P-21 terbit tanggal `10 Desember 2026`, penambahan 1 bulan kalender jatuh pada `10 Januari 2027`, namun karena aturan batas tahun mutlak, deadline dibatasi maksimal tanggal `31 Desember 2026`.
