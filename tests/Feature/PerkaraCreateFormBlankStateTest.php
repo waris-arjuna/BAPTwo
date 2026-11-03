@@ -3,6 +3,7 @@
 use App\Models\Alamat;
 use App\Models\InstansiHukum;
 use App\Models\Perkara;
+use App\Models\Tersangka;
 use App\Models\Tkp;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -166,6 +167,29 @@ test('halaman edit draft perkara menampilkan data tersimpan dengan lengkap', fun
         $this->ppnsAnggota->id => ['peran' => 'anggota'],
     ]);
 
+    $alamatTersangka = Alamat::create([
+        'provinsi_kode' => '63',
+        'provinsi_nama' => 'Kalimantan Selatan',
+        'kabupaten_kode' => '6301',
+        'kabupaten_nama' => 'Kabupaten Tanah Laut',
+        'kecamatan_kode' => '630104',
+        'kecamatan_nama' => 'Pelaihari',
+        'desa_kode' => '6301041002',
+        'desa_nama' => 'Angsau',
+        'alamat_detail' => 'Jl. Kemakmuran No. 10',
+        'rt' => '002',
+        'rw' => '001',
+    ]);
+
+    Tersangka::create([
+        'perkara_id' => $perkara->id,
+        'nama' => 'Budi Santoso',
+        'nik' => '6301041234560001',
+        'jenis_kelamin' => 'laki-laki',
+        'alamat_id' => $alamatTersangka->id,
+        'created_by' => $this->penyidik->id,
+    ]);
+
     $response = $this->actingAs($this->penyidik)->get(route('perkara.edit', $perkara));
 
     $response->assertOk();
@@ -177,11 +201,22 @@ test('halaman edit draft perkara menampilkan data tersimpan dengan lengkap', fun
     $response->assertSee('value="003"', false);
     $response->assertSee('Jl. Pangeran Samudera No. 45');
     $response->assertSee("kabupatenKode: '6371'", false);
+    $response->assertSee("kecamatanKode: '637101'", false);
+    $response->assertSee("desaKode: '6371011001'", false);
+    $response->assertSee("selectedValue: '6371'", false);
+    $response->assertSee("selectedValue: '637101'", false);
+    $response->assertSee("selectedValue: '6371011001'", false);
+    $response->assertSee("selectedValue: '63'", false);
+    $response->assertSee("selectedValue: '6301'", false);
+    $response->assertSee("selectedValue: '630104'", false);
+    $response->assertSee("selectedValue: '6301041002'", false);
     $response->assertSeeInOrder(['value="produksi"', 'selected'], false);
     $response->assertSeeInOrder(['value="legal"', 'checked'], false);
     $response->assertSeeInOrder(['value="offline"', 'checked'], false);
     $response->assertSee('value="Ahmad Fauzi, S.H."', false);
     $response->assertSee('value="198501012010011001"', false);
+    $response->assertSee('value="Budi Santoso"', false);
+    $response->assertSee('Jl. Kemakmuran No. 10, RT 002 / RW 001, Desa/Kel. Angsau, Kec. Pelaihari, Kabupaten Tanah Laut, Kalimantan Selatan');
 });
 
 test('nilai old input tetap dipertahankan saat validasi form buat perkara gagal', function () {

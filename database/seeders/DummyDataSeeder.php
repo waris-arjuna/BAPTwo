@@ -137,11 +137,17 @@ class DummyDataSeeder extends Seeder
 
     private int $urutanTersangka = 0;
 
+    private int $urutanTersangkaNasional = 0;
+
     /**
      * Jalankan seeder 500 data perkara dummy yang beragam untuk seluruh alur BAPTwo periode 2025-2026.
      */
     public function run(): void
     {
+        $this->urutanNomor = [];
+        $this->urutanTersangka = 0;
+        $this->urutanTersangkaNasional = 0;
+
         // 1. Pastikan sample PDF privat tersedia
         $this->ensureSamplePdf();
 
@@ -621,7 +627,7 @@ class DummyDataSeeder extends Seeder
                     uraian: $uraian,
                     noSp: $adaSprindik ? $this->nomorSprindik($tanggalSprindik) : null,
                     tglSp: $tanggalSprindik?->toDateString(),
-                    statusPerkara: $adaBerkas ? 'final' : null,
+                    statusPerkara: ($bucket === 'perkara_draft') ? 'draft' : ($adaBerkas ? 'final' : null),
                     lokasi: $lokasi,
                     tkpData: [
                         'prov' => $lokasi['prov'],
@@ -707,7 +713,8 @@ class DummyDataSeeder extends Seeder
             'lk_final' => 25,
             'sprindik_draft' => 15,
             'sprindik_final' => 25,
-            'perkara_only' => 20,
+            'perkara_draft' => 5,
+            'perkara_only' => 15,
             // SPDP & Subtahap (57)
             'spdp_draft' => 12,
             'spdp' => 20,
@@ -882,8 +889,8 @@ class DummyDataSeeder extends Seeder
             'bjm' => [
                 'prov' => ['63', 'Kalimantan Selatan'],
                 'kab' => ['6371', 'Kota Banjarmasin'],
-                'kec' => ['637103', 'Banjarmasin Tengah'],
-                'kel' => ['6371031001', 'Kertak Baru Ilir'],
+                'kec' => ['637105', 'Banjarmasin Tengah'],
+                'kel' => ['6371051001', 'Kertak Baru Ilir'],
                 'kejari' => 'Kejaksaan Negeri Banjarmasin',
                 'kode_jaksa' => '10',
                 'pn' => 'Pengadilan Negeri Banjarmasin',
@@ -893,7 +900,7 @@ class DummyDataSeeder extends Seeder
                 'prov' => ['63', 'Kalimantan Selatan'],
                 'kab' => ['6371', 'Kota Banjarmasin'],
                 'kec' => ['637104', 'Banjarmasin Utara'],
-                'kel' => ['6371041002', 'Alalak Utara'],
+                'kel' => ['6371041003', 'Alalak Utara'],
                 'kejari' => 'Kejaksaan Negeri Banjarmasin',
                 'kode_jaksa' => '10',
                 'pn' => 'Pengadilan Negeri Banjarmasin',
@@ -902,8 +909,8 @@ class DummyDataSeeder extends Seeder
             'bjb' => [
                 'prov' => ['63', 'Kalimantan Selatan'],
                 'kab' => ['6372', 'Kota Banjarbaru'],
-                'kec' => ['637202', 'Banjarbaru Utara'],
-                'kel' => ['6372021003', 'Mentaos'],
+                'kec' => ['637204', 'Banjarbaru Utara'],
+                'kel' => ['6372041003', 'Mentaos'],
                 'kejari' => 'Kejaksaan Negeri Banjarbaru',
                 'kode_jaksa' => '11',
                 'pn' => 'Pengadilan Negeri Banjarbaru',
@@ -912,8 +919,8 @@ class DummyDataSeeder extends Seeder
             'bjb_ulin' => [
                 'prov' => ['63', 'Kalimantan Selatan'],
                 'kab' => ['6372', 'Kota Banjarbaru'],
-                'kec' => ['637201', 'Landasan Ulin'],
-                'kel' => ['6372011003', 'Guntung Payung'],
+                'kec' => ['637202', 'Landasan Ulin'],
+                'kel' => ['6372021004', 'Guntung Payung'],
                 'kejari' => 'Kejaksaan Negeri Banjarbaru',
                 'kode_jaksa' => '11',
                 'pn' => 'Pengadilan Negeri Banjarbaru',
@@ -922,8 +929,8 @@ class DummyDataSeeder extends Seeder
             'banjar' => [
                 'prov' => ['63', 'Kalimantan Selatan'],
                 'kab' => ['6303', 'Kabupaten Banjar'],
-                'kec' => ['630303', 'Martapura'],
-                'kel' => ['6303031002', 'Jawa'],
+                'kec' => ['630305', 'Martapura'],
+                'kel' => ['6303051001', 'Jawa'],
                 'kejari' => 'Kejaksaan Negeri Banjar',
                 'kode_jaksa' => '13',
                 'pn' => 'Pengadilan Negeri Martapura',
@@ -962,8 +969,8 @@ class DummyDataSeeder extends Seeder
             'tanahlaut' => [
                 'prov' => ['63', 'Kalimantan Selatan'],
                 'kab' => ['6301', 'Kabupaten Tanah Laut'],
-                'kec' => ['630104', 'Pelaihari'],
-                'kel' => ['6301041002', 'Angsau'],
+                'kec' => ['630103', 'Pelaihari'],
+                'kel' => ['6301031004', 'Angsau'],
                 'kejari' => 'Kejaksaan Negeri Tanah Laut',
                 'kode_jaksa' => '15',
                 'pn' => 'Pengadilan Negeri Pelaihari',
@@ -1058,6 +1065,412 @@ class DummyDataSeeder extends Seeder
                 'kode_jaksa' => '12',
                 'pn' => 'Pengadilan Negeri Kotabaru',
                 'kode_pn' => 'Ktb',
+            ],
+        ];
+    }
+
+    /**
+     * Katalog domisili tersangka beragam meliputi 38 provinsi di Indonesia (PRD F-03).
+     *
+     * @return array{kalsel: list<array<string, mixed>>, nasional: list<array<string, mixed>>}
+     */
+    private function lokasiTersangkaCatalog(): array
+    {
+        return [
+            'kalsel' => [
+                [
+                    'prov' => ['63', 'Kalimantan Selatan'],
+                    'kab' => ['6371', 'Kota Banjarmasin'],
+                    'kec' => ['637105', 'Banjarmasin Tengah'],
+                    'kel' => ['6371051001', 'Kertak Baru Ilir'],
+                ],
+                [
+                    'prov' => ['63', 'Kalimantan Selatan'],
+                    'kab' => ['6372', 'Kota Banjarbaru'],
+                    'kec' => ['637204', 'Banjarbaru Utara'],
+                    'kel' => ['6372041003', 'Mentaos'],
+                ],
+                [
+                    'prov' => ['63', 'Kalimantan Selatan'],
+                    'kab' => ['6303', 'Kabupaten Banjar'],
+                    'kec' => ['630305', 'Martapura'],
+                    'kel' => ['6303051001', 'Jawa'],
+                ],
+                [
+                    'prov' => ['63', 'Kalimantan Selatan'],
+                    'kab' => ['6301', 'Kabupaten Tanah Laut'],
+                    'kec' => ['630103', 'Pelaihari'],
+                    'kel' => ['6301031004', 'Angsau'],
+                ],
+                [
+                    'prov' => ['63', 'Kalimantan Selatan'],
+                    'kab' => ['6304', 'Kabupaten Barito Kuala'],
+                    'kec' => ['630403', 'Marabahan'],
+                    'kel' => ['6304031001', 'Marabahan Kota'],
+                ],
+                [
+                    'prov' => ['63', 'Kalimantan Selatan'],
+                    'kab' => ['6305', 'Kabupaten Tapin'],
+                    'kec' => ['630504', 'Tapin Utara'],
+                    'kel' => ['6305041001', 'Rantau Kiwa'],
+                ],
+                [
+                    'prov' => ['63', 'Kalimantan Selatan'],
+                    'kab' => ['6307', 'Kabupaten Hulu Sungai Tengah'],
+                    'kec' => ['630706', 'Barabai'],
+                    'kel' => ['6307061002', 'Barabai Barat'],
+                ],
+                [
+                    'prov' => ['63', 'Kalimantan Selatan'],
+                    'kab' => ['6308', 'Kabupaten Hulu Sungai Utara'],
+                    'kec' => ['630804', 'Amuntai Tengah'],
+                    'kel' => ['6308041003', 'Kebun Sari'],
+                ],
+                [
+                    'prov' => ['63', 'Kalimantan Selatan'],
+                    'kab' => ['6310', 'Kabupaten Tanah Bumbu'],
+                    'kec' => ['631001', 'Batulicin'],
+                    'kel' => ['6310011001', 'Batulicin'],
+                ],
+                [
+                    'prov' => ['63', 'Kalimantan Selatan'],
+                    'kab' => ['6302', 'Kabupaten Kotabaru'],
+                    'kec' => ['630209', 'Pulau Laut Utara'],
+                    'kel' => ['6302091001', 'Kotabaru Hulu'],
+                ],
+                [
+                    'prov' => ['63', 'Kalimantan Selatan'],
+                    'kab' => ['6309', 'Kabupaten Tabalong'],
+                    'kec' => ['630903', 'Tanjung'],
+                    'kel' => ['6309031001', 'Tanjung'],
+                ],
+            ],
+            'nasional' => [
+                // 31: DKI Jakarta
+                [
+                    'prov' => ['31', 'Daerah Khusus Ibukota Jakarta'],
+                    'kab' => ['3174', 'Kota Administrasi Jakarta Selatan'],
+                    'kec' => ['317407', 'Kebayoran Baru'],
+                    'kel' => ['3174071001', 'Melawai'],
+                ],
+                [
+                    'prov' => ['31', 'Daerah Khusus Ibukota Jakarta'],
+                    'kab' => ['3171', 'Kota Administrasi Jakarta Pusat'],
+                    'kec' => ['317101', 'Gambir'],
+                    'kel' => ['3171011001', 'Gambir'],
+                ],
+                [
+                    'prov' => ['31', 'Daerah Khusus Ibukota Jakarta'],
+                    'kab' => ['3173', 'Kota Administrasi Jakarta Barat'],
+                    'kec' => ['317305', 'Kebon Jeruk'],
+                    'kel' => ['3173051001', 'Kebon Jeruk'],
+                ],
+                // 32: Jawa Barat
+                [
+                    'prov' => ['32', 'Jawa Barat'],
+                    'kab' => ['3273', 'Kota Bandung'],
+                    'kec' => ['327305', 'Coblong'],
+                    'kel' => ['3273051001', 'Dago'],
+                ],
+                [
+                    'prov' => ['32', 'Jawa Barat'],
+                    'kab' => ['3275', 'Kota Bekasi'],
+                    'kec' => ['327503', 'Bekasi Barat'],
+                    'kel' => ['3275031001', 'Kranji'],
+                ],
+                [
+                    'prov' => ['32', 'Jawa Barat'],
+                    'kab' => ['3271', 'Kota Bogor'],
+                    'kec' => ['327101', 'Bogor Selatan'],
+                    'kel' => ['3271011001', 'Batutulis'],
+                ],
+                // 33: Jawa Tengah
+                [
+                    'prov' => ['33', 'Jawa Tengah'],
+                    'kab' => ['3374', 'Kota Semarang'],
+                    'kec' => ['337407', 'Semarang Tengah'],
+                    'kel' => ['3374071001', 'Pandansari'],
+                ],
+                [
+                    'prov' => ['33', 'Jawa Tengah'],
+                    'kab' => ['3372', 'Kota Surakarta'],
+                    'kec' => ['337205', 'Banjarsari'],
+                    'kel' => ['3372051001', 'Banjarsari'],
+                ],
+                // 34: DI Yogyakarta
+                [
+                    'prov' => ['34', 'Daerah Istimewa Yogyakarta'],
+                    'kab' => ['3471', 'Kota Yogyakarta'],
+                    'kec' => ['347104', 'Danurejan'],
+                    'kel' => ['3471041001', 'Bausasran'],
+                ],
+                [
+                    'prov' => ['34', 'Daerah Istimewa Yogyakarta'],
+                    'kab' => ['3404', 'Kabupaten Sleman'],
+                    'kec' => ['340407', 'Depok'],
+                    'kel' => ['3404072001', 'Caturtunggal'],
+                ],
+                // 35: Jawa Timur
+                [
+                    'prov' => ['35', 'Jawa Timur'],
+                    'kab' => ['3578', 'Kota Surabaya'],
+                    'kec' => ['357807', 'Tegalsari'],
+                    'kel' => ['3578071001', 'Tegalsari'],
+                ],
+                [
+                    'prov' => ['35', 'Jawa Timur'],
+                    'kab' => ['3573', 'Kota Malang'],
+                    'kec' => ['357303', 'Klojen'],
+                    'kel' => ['3573031001', 'Klojen'],
+                ],
+                [
+                    'prov' => ['35', 'Jawa Timur'],
+                    'kab' => ['3515', 'Kabupaten Sidoarjo'],
+                    'kec' => ['351508', 'Sidoarjo'],
+                    'kel' => ['3515081001', 'Sidokumpul'],
+                ],
+                // 36: Banten
+                [
+                    'prov' => ['36', 'Banten'],
+                    'kab' => ['3674', 'Kota Tangerang Selatan'],
+                    'kec' => ['367401', 'Serpong'],
+                    'kel' => ['3674011001', 'Serpong'],
+                ],
+                [
+                    'prov' => ['36', 'Banten'],
+                    'kab' => ['3671', 'Kota Tangerang'],
+                    'kec' => ['367101', 'Tangerang'],
+                    'kel' => ['3671011001', 'Sukasari'],
+                ],
+                // 51: Bali
+                [
+                    'prov' => ['51', 'Bali'],
+                    'kab' => ['5171', 'Kota Denpasar'],
+                    'kec' => ['517101', 'Denpasar Selatan'],
+                    'kel' => ['5171011001', 'Sanur'],
+                ],
+                [
+                    'prov' => ['51', 'Bali'],
+                    'kab' => ['5103', 'Kabupaten Badung'],
+                    'kec' => ['510301', 'Kuta'],
+                    'kel' => ['5103011001', 'Kuta'],
+                ],
+                // 52: Nusa Tenggara Barat
+                [
+                    'prov' => ['52', 'Nusa Tenggara Barat'],
+                    'kab' => ['5271', 'Kota Mataram'],
+                    'kec' => ['527101', 'Mataram'],
+                    'kel' => ['5271011001', 'Mataram Timur'],
+                ],
+                // 53: Nusa Tenggara Timur
+                [
+                    'prov' => ['53', 'Nusa Tenggara Timur'],
+                    'kab' => ['5371', 'Kota Kupang'],
+                    'kec' => ['537102', 'Oebobo'],
+                    'kel' => ['5371021001', 'Oebobo'],
+                ],
+                // 11: Aceh
+                [
+                    'prov' => ['11', 'Aceh'],
+                    'kab' => ['1171', 'Kota Banda Aceh'],
+                    'kec' => ['117101', 'Kuta Raja'],
+                    'kel' => ['1171012001', 'Lampaseh Kota'],
+                ],
+                // 12: Sumatera Utara
+                [
+                    'prov' => ['12', 'Sumatera Utara'],
+                    'kab' => ['1271', 'Kota Medan'],
+                    'kec' => ['127101', 'Medan Kota'],
+                    'kel' => ['1271011001', 'Pasar Baru'],
+                ],
+                // 13: Sumatera Barat
+                [
+                    'prov' => ['13', 'Sumatera Barat'],
+                    'kab' => ['1371', 'Kota Padang'],
+                    'kec' => ['137101', 'Padang Barat'],
+                    'kel' => ['1371011001', 'Kampung Pondok'],
+                ],
+                // 14: Riau
+                [
+                    'prov' => ['14', 'Riau'],
+                    'kab' => ['1471', 'Kota Pekanbaru'],
+                    'kec' => ['147101', 'Sukajadi'],
+                    'kel' => ['1471011001', 'Sukajadi'],
+                ],
+                // 21: Kepulauan Riau
+                [
+                    'prov' => ['21', 'Kepulauan Riau'],
+                    'kab' => ['2171', 'Kota Batam'],
+                    'kec' => ['217110', 'Batam Kota'],
+                    'kel' => ['2171101001', 'Teluk Tering'],
+                ],
+                // 15: Jambi
+                [
+                    'prov' => ['15', 'Jambi'],
+                    'kab' => ['1571', 'Kota Jambi'],
+                    'kec' => ['157101', 'Telanaipura'],
+                    'kel' => ['1571011001', 'Telanaipura'],
+                ],
+                // 16: Sumatera Selatan
+                [
+                    'prov' => ['16', 'Sumatera Selatan'],
+                    'kab' => ['1671', 'Kota Palembang'],
+                    'kec' => ['167101', 'Ilir Barat I'],
+                    'kel' => ['1671011001', 'Lorok Pakjo'],
+                ],
+                // 19: Kepulauan Bangka Belitung
+                [
+                    'prov' => ['19', 'Kepulauan Bangka Belitung'],
+                    'kab' => ['1971', 'Kota Pangkalpinang'],
+                    'kec' => ['197101', 'Bukit Intan'],
+                    'kel' => ['1971011001', 'Pasir Putih'],
+                ],
+                // 17: Bengkulu
+                [
+                    'prov' => ['17', 'Bengkulu'],
+                    'kab' => ['1771', 'Kota Bengkulu'],
+                    'kec' => ['177101', 'Selebar'],
+                    'kel' => ['1771011001', 'Pagar Dewa'],
+                ],
+                // 18: Lampung
+                [
+                    'prov' => ['18', 'Lampung'],
+                    'kab' => ['1871', 'Kota Bandar Lampung'],
+                    'kec' => ['187101', 'Kedaton'],
+                    'kel' => ['1871011001', 'Kedaton'],
+                ],
+                // 61: Kalimantan Barat
+                [
+                    'prov' => ['61', 'Kalimantan Barat'],
+                    'kab' => ['6171', 'Kota Pontianak'],
+                    'kec' => ['617101', 'Pontianak Kota'],
+                    'kel' => ['6171011001', 'Darat Sekip'],
+                ],
+                // 62: Kalimantan Tengah
+                [
+                    'prov' => ['62', 'Kalimantan Tengah'],
+                    'kab' => ['6271', 'Kota Palangka Raya'],
+                    'kec' => ['627101', 'Pahandut'],
+                    'kel' => ['6271011001', 'Pahandut'],
+                ],
+                // 64: Kalimantan Timur
+                [
+                    'prov' => ['64', 'Kalimantan Timur'],
+                    'kab' => ['6471', 'Kota Balikpapan'],
+                    'kec' => ['647101', 'Balikpapan Kota'],
+                    'kel' => ['6471011001', 'Prapatan'],
+                ],
+                [
+                    'prov' => ['64', 'Kalimantan Timur'],
+                    'kab' => ['6472', 'Kota Samarinda'],
+                    'kec' => ['647201', 'Samarinda Kota'],
+                    'kel' => ['6472011001', 'Pasar Pagi'],
+                ],
+                // 65: Kalimantan Utara
+                [
+                    'prov' => ['65', 'Kalimantan Utara'],
+                    'kab' => ['6571', 'Kota Tarakan'],
+                    'kec' => ['657101', 'Tarakan Barat'],
+                    'kel' => ['6571011001', 'Karang Anyar'],
+                ],
+                // 71: Sulawesi Utara
+                [
+                    'prov' => ['71', 'Sulawesi Utara'],
+                    'kab' => ['7171', 'Kota Manado'],
+                    'kec' => ['717101', 'Wenang'],
+                    'kel' => ['7171011001', 'Wenang Selatan'],
+                ],
+                // 75: Gorontalo
+                [
+                    'prov' => ['75', 'Gorontalo'],
+                    'kab' => ['7571', 'Kota Gorontalo'],
+                    'kec' => ['757101', 'Kota Barat'],
+                    'kel' => ['7571011001', 'Buluide'],
+                ],
+                // 72: Sulawesi Tengah
+                [
+                    'prov' => ['72', 'Sulawesi Tengah'],
+                    'kab' => ['7271', 'Kota Palu'],
+                    'kec' => ['727101', 'Palu Timur'],
+                    'kel' => ['7271011001', 'Besusu Barat'],
+                ],
+                // 76: Sulawesi Barat
+                [
+                    'prov' => ['76', 'Sulawesi Barat'],
+                    'kab' => ['7602', 'Kabupaten Mamuju'],
+                    'kec' => ['760201', 'Mamuju'],
+                    'kel' => ['7602011001', 'Binanga'],
+                ],
+                // 73: Sulawesi Selatan
+                [
+                    'prov' => ['73', 'Sulawesi Selatan'],
+                    'kab' => ['7371', 'Kota Makassar'],
+                    'kec' => ['737104', 'Ujung Pandang'],
+                    'kel' => ['7371041001', 'Sawerigading'],
+                ],
+                // 74: Sulawesi Tenggara
+                [
+                    'prov' => ['74', 'Sulawesi Tenggara'],
+                    'kab' => ['7471', 'Kota Kendari'],
+                    'kec' => ['747101', 'Mandonga'],
+                    'kel' => ['7471011001', 'Mandonga'],
+                ],
+                // 81: Maluku
+                [
+                    'prov' => ['81', 'Maluku'],
+                    'kab' => ['8171', 'Kota Ambon'],
+                    'kec' => ['817101', 'Nusaniwe'],
+                    'kel' => ['8171011001', 'Benteng'],
+                ],
+                // 82: Maluku Utara
+                [
+                    'prov' => ['82', 'Maluku Utara'],
+                    'kab' => ['8271', 'Kota Ternate'],
+                    'kec' => ['827101', 'Ternate Tengah'],
+                    'kel' => ['8271011001', 'Gamalama'],
+                ],
+                // 91: Papua
+                [
+                    'prov' => ['91', 'Papua'],
+                    'kab' => ['9171', 'Kota Jayapura'],
+                    'kec' => ['917101', 'Jayapura Utara'],
+                    'kel' => ['9171011001', 'Gurabesi'],
+                ],
+                // 92: Papua Barat
+                [
+                    'prov' => ['92', 'Papua Barat'],
+                    'kab' => ['9202', 'Kabupaten Manokwari'],
+                    'kec' => ['920212', 'Manokwari Barat'],
+                    'kel' => ['9202121001', 'Manokwari Barat'],
+                ],
+                // 93: Papua Selatan
+                [
+                    'prov' => ['93', 'Papua Selatan'],
+                    'kab' => ['9301', 'Kabupaten Merauke'],
+                    'kec' => ['930101', 'Merauke'],
+                    'kel' => ['9301011001', 'Marauke'],
+                ],
+                // 94: Papua Tengah
+                [
+                    'prov' => ['94', 'Papua Tengah'],
+                    'kab' => ['9401', 'Kabupaten Nabire'],
+                    'kec' => ['940101', 'Nabire'],
+                    'kel' => ['9401011001', 'Karang Mulia'],
+                ],
+                // 95: Papua Pegunungan
+                [
+                    'prov' => ['95', 'Papua Pegunungan'],
+                    'kab' => ['9501', 'Kabupaten Jayawijaya'],
+                    'kec' => ['950101', 'Wamena'],
+                    'kel' => ['9501011001', 'Wamena'],
+                ],
+                // 96: Papua Barat Daya
+                [
+                    'prov' => ['96', 'Papua Barat Daya'],
+                    'kab' => ['9671', 'Kota Sorong'],
+                    'kec' => ['967101', 'Sorong'],
+                    'kel' => ['9671011001', 'Remu Utara'],
+                ],
             ],
         ];
     }
@@ -1288,7 +1701,7 @@ class DummyDataSeeder extends Seeder
     }
 
     /**
-     * Data tersangka unik dan konsisten dengan wilayah TKP (1 Tersangka per Berkas).
+     * Data tersangka unik dan bervariasi dari 38 provinsi di Indonesia (1 Tersangka per Berkas).
      *
      * @param  array<string, mixed>  $master
      * @param  array<string, mixed>  $lokasi
@@ -1300,6 +1713,18 @@ class DummyDataSeeder extends Seeder
         $this->urutanTersangka++;
         $idx = $this->urutanTersangka;
 
+        $katalog = $this->lokasiTersangkaCatalog();
+        $kalsel = $katalog['kalsel'];
+        $nasional = $katalog['nasional'];
+
+        // 50% lokal Kalsel, 50% bervariasi dari seluruh 37 provinsi luar Kalsel di Indonesia
+        if ($idx % 2 === 0) {
+            $lokasiTsk = $kalsel[($seed + $idx) % count($kalsel)];
+        } else {
+            $lokasiTsk = $nasional[$this->urutanTersangkaNasional % count($nasional)];
+            $this->urutanTersangkaNasional++;
+        }
+
         $perempuan = $idx % 2 === 0;
         $namaDepan = $perempuan ? self::NAMA_DEPAN_PEREMPUAN : self::NAMA_DEPAN_LAKI;
         $namaBelakang = self::NAMA_BELAKANG[($seed * 3 + $idx) % count(self::NAMA_BELAKANG)];
@@ -1309,8 +1734,8 @@ class DummyDataSeeder extends Seeder
         $bulanLahir = 1 + ($idx * 5) % 12;
         $hariLahir = 1 + ($idx * 11) % 27;
 
-        $nik = substr($lokasi['kab'][0], 0, 4)
-            .substr($lokasi['kec'][0], -2)
+        $nik = substr($lokasiTsk['kab'][0], 0, 4)
+            .substr($lokasiTsk['kec'][0], -2)
             .sprintf('%02d%02d%02d%04d', $hariLahir, $bulanLahir, $tahunLahir % 100, $idx % 10000);
 
         $pasalKeys = $archetype['pasal'];
@@ -1340,12 +1765,13 @@ class DummyDataSeeder extends Seeder
             'alias' => $idx % 5 === 0 ? ($perempuan ? 'Ibu ' : 'Pak ').$namaBelakang : null,
             'bin' => self::NAMA_BELAKANG[($idx * 11) % count(self::NAMA_BELAKANG)],
             'nik' => $nik,
-            'tempat_lahir' => str_replace(['Kota ', 'Kabupaten '], '', $lokasi['kab'][1]),
+            'tempat_lahir' => str_replace(['Kota Administrasi ', 'Kota ', 'Kabupaten Administrasi ', 'Kabupaten '], '', $lokasiTsk['kab'][1]),
             'tanggal_lahir' => sprintf('%04d-%02d-%02d', $tahunLahir, $bulanLahir, $hariLahir),
             'jenis_kelamin' => $perempuan ? 'perempuan' : 'laki-laki',
             'agama' => self::AGAMA[$idx % 10],
             'pekerjaan' => $archetype['pekerjaan'],
             'pasals' => array_map(fn (string $key): mixed => $master[$key], array_values(array_unique($pasalKeys))),
+            'lokasi' => $lokasiTsk,
         ];
     }
 
@@ -1358,7 +1784,7 @@ class DummyDataSeeder extends Seeder
      */
     private function susunTahapan(string $bucket, int $urutan, Carbon $tanggalSpdp, array $archetype, array $lokasi): array
     {
-        if (in_array($bucket, ['lk_draft', 'lk_final', 'sprindik_draft', 'sprindik_final', 'perkara_only'], true)) {
+        if (in_array($bucket, ['lk_draft', 'lk_final', 'sprindik_draft', 'sprindik_final', 'perkara_only', 'perkara_draft'], true)) {
             return [];
         }
 
@@ -1679,12 +2105,13 @@ class DummyDataSeeder extends Seeder
     ): void {
         $hasSp = ! empty($noSp);
         $hasPerkara = $statusPerkara === 'final';
+        $isPerkaraDraft = $statusPerkara === 'draft';
         $isLkFinal = $statusLaporan === 'final';
         $isSpFinal = $hasSp && ($statusSprindik === null || $statusSprindik === 'final');
 
-        // Alamat & Entitas TKP (hanya dibuat jika tahap Perkara sudah final)
+        // Alamat & Entitas TKP (dibuat jika tahap Perkara sudah final atau draft)
         $tkpId = null;
-        if ($hasPerkara) {
+        if ($hasPerkara || $isPerkaraDraft) {
             $alamatTkpNama = $tkpData['nama'] ?? (isset($tkpData['detail']) ? trim(explode(',', (string) $tkpData['detail'])[0]) : null);
             $alamatDetail = isset($tkpData['detail']) && str_contains((string) $tkpData['detail'], ',')
                 ? trim(substr((string) $tkpData['detail'], strpos((string) $tkpData['detail'], ',') + 1))
@@ -1730,7 +2157,7 @@ class DummyDataSeeder extends Seeder
                 'tahap_sprindik_status' => $hasSp ? ($statusSprindik ?? 'final') : null,
                 'sprindik_locked_at' => $isSpFinal ? Carbon::parse($tglSp)->addDay() : null,
                 'sprindik_finalized_by' => $isSpFinal ? $actor->id : null,
-                'tahap_perkara_status' => $hasPerkara ? 'final' : null,
+                'tahap_perkara_status' => $hasPerkara ? 'final' : ($isPerkaraDraft ? 'draft' : null),
                 'perkara_locked_at' => $hasPerkara ? Carbon::parse($tglSp ?? $tglLk)->addDays(3) : null,
                 'perkara_finalized_by' => $hasPerkara ? $actor->id : null,
                 'tkp_id' => $tkpId,
@@ -1774,8 +2201,8 @@ class DummyDataSeeder extends Seeder
             );
         }
 
-        // Relasi PPNS Utama & Anggota (hanya jika tahap Perkara sudah dibuat)
-        if ($hasPerkara) {
+        // Relasi PPNS Utama & Anggota (jika tahap Perkara sudah dibuat baik final maupun draft)
+        if ($hasPerkara || $isPerkaraDraft) {
             $perkara->ppnsUsers()->syncWithoutDetaching([$ppnsUtama->id => ['peran' => 'utama']]);
             foreach ($ppnsAnggota as $anggota) {
                 if ($anggota->id !== $ppnsUtama->id) {
@@ -1808,6 +2235,20 @@ class DummyDataSeeder extends Seeder
                 'data_baru' => ['nomor_surat_perintah' => $noSp, 'status' => $statusSprindik ?? 'final'],
                 'ip_address' => '127.0.0.1',
                 'created_at' => Carbon::parse($tglSp)->setTime(10, 15),
+            ]);
+        }
+
+        if ($hasPerkara || $isPerkaraDraft) {
+            AuditLog::create([
+                'user_id' => $actor->id,
+                'perkara_id' => $perkara->id,
+                'aksi' => $hasPerkara ? 'finalisasi_perkara' : 'simpan_draft_perkara',
+                'tabel' => 'perkara',
+                'record_id' => $perkara->id,
+                'data_lama' => null,
+                'data_baru' => ['status' => $hasPerkara ? 'final' : 'draft'],
+                'ip_address' => '127.0.0.1',
+                'created_at' => Carbon::parse($tglSp ?? $tglLk)->addDay()->setTime(11, 0),
             ]);
         }
 
@@ -1852,18 +2293,25 @@ class DummyDataSeeder extends Seeder
         ?array $sp3Data,
         ?string $statusFormalOverride
     ): void {
-        // Alamat Tersangka
+        // Alamat Tersangka (bervariasi 38 provinsi di Indonesia sesuai F-03)
+        $lokasiTsk = $tersangkaData['lokasi'] ?? [
+            'prov' => $tkpData['prov'],
+            'kab' => $tkpData['kab'],
+            'kec' => $tkpData['kec'],
+            'kel' => $tkpData['kel'],
+        ];
+
         $jalanTsk = self::JALAN[($this->urutanTersangka * 7) % count(self::JALAN)];
         $nomorTsk = 1 + (($this->urutanTersangka * 13) % 97);
         $alamatTersangka = Alamat::create([
-            'provinsi_kode' => $tkpData['prov'][0],
-            'provinsi_nama' => $tkpData['prov'][1],
-            'kabupaten_kode' => $tkpData['kab'][0],
-            'kabupaten_nama' => $tkpData['kab'][1],
-            'kecamatan_kode' => $tkpData['kec'][0],
-            'kecamatan_nama' => $tkpData['kec'][1],
-            'desa_kode' => $tkpData['kel'][0],
-            'desa_nama' => $tkpData['kel'][1],
+            'provinsi_kode' => $lokasiTsk['prov'][0],
+            'provinsi_nama' => $lokasiTsk['prov'][1],
+            'kabupaten_kode' => $lokasiTsk['kab'][0],
+            'kabupaten_nama' => $lokasiTsk['kab'][1],
+            'kecamatan_kode' => $lokasiTsk['kec'][0],
+            'kecamatan_nama' => $lokasiTsk['kec'][1],
+            'desa_kode' => $lokasiTsk['kel'][0],
+            'desa_nama' => $lokasiTsk['kel'][1],
             'alamat_detail' => "Jl. {$jalanTsk} No. {$nomorTsk}",
             'rt' => '002',
             'rw' => '001',

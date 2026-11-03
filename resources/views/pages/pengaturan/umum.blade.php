@@ -76,7 +76,7 @@
 
                     <div>
                         <span class="text-xs text-gray-500 dark:text-gray-400">Tenggang Waktu Penanganan Perkara:</span>
-                        <p class="font-medium text-gray-800 dark:text-white/90">1 Bulan Kalender Total (Sejak SPDP diterbitkan)</p>
+                        <p class="font-medium text-gray-800 dark:text-white/90">1 Bulan Kalender per Tahapan Aktif (SPDP, Tahap I, P-21)</p>
                     </div>
 
                     <div>

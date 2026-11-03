@@ -242,7 +242,7 @@
                             </p>
 
                             <p class="mt-1 text-xs text-gray-400 dark:text-gray-500">
-                                1 bulan kalender dari SPDP
+                                1 bulan kalender tahap aktif
                             </p>
                         </td>
 

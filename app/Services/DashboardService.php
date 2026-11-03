@@ -114,7 +114,7 @@ class DashboardService
                 [
                     'title' => 'Rata-rata Waktu Penyelesaian',
                     'value' => $avgDaysText,
-                    'description' => 'Dari SPDP s.d. Tahap II',
+                    'description' => 'Rata-rata Waktu Total (SPDP s.d. Tahap II)',
                     'icon' => 'time',
                     'iconClass' => 'bg-teal-50 text-teal-600 dark:bg-teal-500/10 dark:text-teal-400',
                 ],

@@ -33,7 +33,7 @@
                     </h3>
 
                     <p class="mt-1.5 text-xs leading-4 text-gray-400 dark:text-gray-500">
-                        {{ $stat['description'] }}{{ $stat['title'] === 'Rata-rata Waktu Penyelesaian' ? ' (Maks. 30 Hari Kalender)' : '' }}
+                        {{ $stat['description'] }}
                     </p>
                 </div>
 

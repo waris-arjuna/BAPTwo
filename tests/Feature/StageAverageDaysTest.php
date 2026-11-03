@@ -292,5 +292,6 @@ test('tampilan komponen average-stage di dashboard merender label dan angka tabu
     $response->assertSee('tabular-nums', false);
     $response->assertSee('Catatan: Perhitungan waktu penyelesaian tahapan menggunakan Hari Kerja.');
     $response->assertDontSee('Rata-rata waktu penyelesaian');
-    $response->assertSee('Maks. 30 Hari Kalender');
+    $response->assertSee('Rata-rata Waktu Total (SPDP s.d. Tahap II)');
+    $response->assertDontSee('(Maks. 30 Hari Kalender)');
 });

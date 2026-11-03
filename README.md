@@ -41,7 +41,7 @@ Seluruh implementasi BAPTwo mengacu pada spesifikasi domain dan keputusan teknis
 | [`PRD.md`](PRD.md) | *Product Requirements Document*: Sumber kebenaran domain hukum, batas SLA, hak akses RBAC, dan alur penanganan perkara. |
 | [`ARCHITECTURE.md`](ARCHITECTURE.md) | Arsitektur teknis sistem: Skema 19 tabel singular, lifecycle tahapan, event audit trail, dan integrasi API wilayah. |
 | [`TASKS.md`](TASKS.md) | Daftar pekerjaan aktif dan rekam jejak penyelesaian *task* teknis (T-001 s.d. T-101). |
-| [`DECISIONS.md`](DECISIONS.md) | Log keputusan arsitektur dan teknis resmi (*Architecture Decision Records* D-001 s.d. D-077). |
+| [`DECISIONS.md`](DECISIONS.md) | Log keputusan arsitektur dan teknis resmi (*Architecture Decision Records* D-001 s.d. D-079). |
 | [`AGENTS.md`](AGENTS.md) | Pedoman kerja otomatisasi, standar koding bebas *AI-slop*, konvensi Blade, dan aturan kontras aksesibilitas. |
 
 ---

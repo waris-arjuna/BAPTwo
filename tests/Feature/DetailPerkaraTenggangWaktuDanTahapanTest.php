@@ -54,7 +54,7 @@ test('halaman detail perkara menampilkan card tenggang waktu yang diperbesar dan
         ->assertSee('22-10-2026')
         ->assertSee('Batas Waktu Penyelesaian')
         ->assertSee('22-11-2026')
-        ->assertSee('(Tenggang Waktu 1 Bulan Kalender)')
+        ->assertSee('(Tenggang Waktu 1 Bulan Tahap Aktif)')
         ->assertSee('Tenggang Waktu Berjalan')
         ->assertDontSee('SLA 1 Bulan Kalender');
 

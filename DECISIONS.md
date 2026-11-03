@@ -1679,6 +1679,82 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
      - **Blok III (TKP), IV (Top Pasal), dan V (Rata-rata Durasi Tahapan)**: Memfilter data mengikuti mode periode aktif.
 - Konsekuensi: Seluruh 5 blok pada Sheet 2 file Excel LAPJU tersinkronisasi akurat dan konsisten dengan Sheet 1 untuk ke-4 mode filter (`semua`, `tahun`, `bulan`, `rentang`), teruji 100% pada 330 automated tests Pest PHP dan Laravel Pint clean.
 
+## D-078 : Penyesuaian SOP Batas Waktu Tenggang (SLA) Menjadi 1 Bulan Kalender per Tahapan Aktif (SPDP, Tahap I, P-21)
+
+- Tanggal: 2026-11-03
+- Status: Disepakati & Diimplementasikan (ref: D-058 di dokumen spesifikasi awal)
+- Konteks: SOP awal menetapkan SLA 1 bulan kalender secara total dari SPDP s.d. Selesai (Tahap II). Secara operasional hukum acara pidana BPOM, proses penanganan perkara memerlukan waktu di setiap tahapan koordinasi penuntutan dengan Kejaksaan (SPDP ke Tahap I, penyerahan berkas ke P-21, dan pelimpahan tersangka/barang bukti ke Tahap II). Menetapkan batas 1 bulan total untuk seluruh rangkaian proses tidak realistis dan mengakibatkan mayoritas perkara mengalami *SLA breach* semu.
+- Keputusan:
+  1. **Tenggang Waktu per Tahapan Aktif**:
+     - Batas waktu / Tenggang Waktu (SLA) dihitung **1 bulan kalender di setiap tahapan aktif yang sedang berjalan** (`SPDP`, `Tahap I`, `P-21`), yang otomatis direset ke tanggal surat tahap baru saat tombol **Simpan & Lanjut** ditekan (backend telah diimplementasikan di `TahapanService::saveStage()`).
+     - Tenggang waktu bukan lagi 1 bulan total dari SPDP hingga Tahap II.
+  2. **Batas Tahun Mutlak (31 Desember)**:
+     - Aturan batas tahun anggaran mutlak (**31 Desember tahun berjalan**) tetap mendahului SLA jika penambahan 1 bulan kalender pada tahapan aktif melewati akhir tahun berjalan (`Effective Deadline = min(Tanggal Tahap Aktif + 1 Bulan, 31 Desember)`).
+  3. **Penyelarasan Teks Antarmuka (UI)**:
+     - Tabel Prioritas Utama Dashboard: subteks kolom estimasi batas waktu diselaraskan menjadi `1 bulan kalender tahap aktif`.
+     - Kartu Statistik Utama Dashboard: deskripsi kartu diselaraskan menjadi `Rata-rata Waktu Total (SPDP s.d. Tahap II)` tanpa suffix statis `(Maks. 30 Hari Kalender)` agar tidak membingungkan batas per tahapan.
+     - Halaman Detail Perkara: subteks batas waktu diselaraskan menjadi `Tenggang Waktu 1 Bulan Tahap Aktif` (atau `Batas Tahun Mutlak 31 Des`).
+     - Halaman Pengaturan Umum: ringkasan kebijakan sistem diperbarui menjadi `1 Bulan Kalender per Tahapan Aktif (SPDP, Tahap I, P-21)`.
+- Konsekuensi: Teks antarmuka, backend kalkulasi SLA, dan seluruh dokumentasi resmi (`PRD.md`, `ARCHITECTURE.md`, `README.md`, `AGENTS.md`) kini 100% selaras dan mencerminkan SOP operasional hukum yang sebenarnya.
+
+## D-079 : Ekstraksi Logika Alpine.js Form Perkara ke Modul JavaScript Modern (`perkara-form.js`)
+
+- Tanggal: 2026-11-03
+- Status: Disepakati & Diimplementasikan (Task 103)
+- Konteks: Halaman formulir input perkara (`resources/views/pages/perkara/form.blade.php`) sebelumnya memuat lebih dari 500 baris script objek inline Alpine.js (`x-data="{ ... }"`) pada 4 Card interaktif (Wilayah TKP Kalsel, Tim PPNS, Modal Alamat Tersangka 38 Provinsi, dan Pasal Berlapis). Hal ini mempersulit *maintainability*, menyulitkan *caching* bundler browser, dan rentan terhadap kesalahan sintaks Blade vs JS. Selain itu, input NIP Jaksa Penuntut Umum sebelumnya bertipe `number` yang memunculkan tombol *spinner* panah serta mengabaikan `maxlength="18"` di peramban web modern.
+- Keputusan:
+  1. **Pembuatan Modul ES6 `resources/js/components/perkara-form.js`**:
+     - Mengekstrak 4 *factory functions* Alpine.js mandiri:
+       * `tkpWilayahForm(config)`: Dropdown wilayah bertingkat TKP Kalsel (kabupaten, kecamatan, desa), pembatalan *in-flight request* via `AbortController`, dan penanganan nama wilayah.
+       * `ppnsTimForm(config)`: Manajemen PPNS Utama & Anggota dengan pencegahan pemilihan duplikat (otomatis menghapus PPNS Anggota jika kemudian dipilih menjadi PPNS Utama).
+       * `tersangkaAlamatModalForm(config)`: Manajemen modal dialog pemilihan alamat 38 provinsi seluruh Indonesia dengan *cascading fetch* dan pembentukan teks ringkasan alamat.
+       * `pasalPerkaraForm(config)`: Penambahan dan penghapusan pasal undang-undang berlapis dengan integrasi combo box.
+  2. **Registrasi Komponen di `resources/js/app.js`**:
+     - Mendaftarkan ke-4 komponen ke Alpine global menggunakan `Alpine.data()` dan mengeksposnya ke objek `window` untuk fleksibilitas runtime.
+  3. **Perampingan Template Blade**:
+     - `resources/views/pages/perkara/form.blade.php` berhasil dipangkas dari 1.517 baris menjadi 1.005 baris (pengurangan >500 baris kode inline).
+     - Seluruh konfigurasi awal Blade diteruskan ringkas melalui parameter objek (misal: `x-data="tkpWilayahForm({ ... })"`).
+  4. **Penyelarasan Input NIP Jaksa**:
+     - Mengubah input `penuntut_umum_nip` dari `type="number"` menjadi `type="text" inputmode="numeric" maxlength="18" pattern="[0-9]{18}" oninput="this.value = this.value.replace(/\D/g, '').slice(0, 18)"` agar konsisten dengan input NIK 16 digit dan bebas dari tombol spinner numerik browser.
+- Konsekuensi: Struktur kode formulir perkara menjadi sangat rapi, mudah dirawat, aset JavaScript terkompilasi optimal oleh Vite, dan seluruh 331 pengujian otomatis Pest PHP lulus 100%.
+
+## D-080 : Integrasi 5 Data Dummy Perkara Berstatus Draft pada DummyDataSeeder
+
+- Tanggal: 2026-11-03
+- Status: Disepakati & Diimplementasikan (via interview /grill-me, Task 104)
+- Konteks: Pengguna menghendaki penambahan 5 data dummy perkara berstatus konsep draft (`tahap_perkara_status = 'draft'`) untuk menguji dan memverifikasi antarmuka pengeditan draft perkara (`/perkara/{id}/edit`, tombol "Edit Draft Perkara" pada tabel Sprindik, dan tombol "Edit Draft" pada tabel Data Perkara).
+- Keputusan:
+  1. **Integrasi Permanen ke DummyDataSeeder**:
+     - Ditambahkan bucket `'perkara_draft' => 5` pada array `$distribusi2026` di `database/seeders/DummyDataSeeder.php`.
+     - Bucket `'perkara_only'` dikurangi dari 20 menjadi 15 agar total data seeder tahun 2026 tetap tepat 350 perkara (total keseluruhan seeder tetap 500 perkara).
+  2. **Kelengkapan dan Variasi Data Draft**:
+     - Laporan Kejadian dan Sprindik berstatus `final` lengkap dengan nomor surat dan berkas PDF.
+     - `tahap_perkara_status` ditetapkan sebagai `'draft'` dengan `perkara_locked_at = null` dan `perkara_finalized_by = null`.
+     - Data Tempat Kejadian Perkara (TKP) beserta alamat, Tim Penyidik PPNS (Utama & Anggota), Tersangka, Alamat Tersangka, Berkas Perkara, dan Pasal Berlapis tersimpan lengkap sebagai konsep draft.
+     - Tahapan lanjutan (SPDP, Tahap I, dst.) tidak dibuat (`susunTahapan` mengembalikan array kosong).
+     - Audit trail mencatat aksi `'simpan_draft_perkara'` pada tabel `perkara`.
+     - Tersebar bervariasi di wilayah Kalimantan Selatan (Kabupaten Tanah Laut, Barito Kuala, dll.) dengan komoditas pelanggaran yang berbeda-beda (pangan tanpa izin edar, prekursor farmasi, psikotropika, alkes, jamu BKO).
+- Konsekuensi: Sistem pengujian memiliki data draft perkara nyata yang siap diedit kapan pun seeder dijalankan ulang, terverifikasi 100% pada 331 pengujian otomatis Pest PHP (2.800 assertions) dan linter Laravel Pint clean.
+
+## D-081 : Diversifikasi Alamat Domisili Tersangka pada DummyDataSeeder Menjangkau 38 Provinsi
+
+- Tanggal: 2026-11-03
+- Status: Disepakati & Diimplementasikan (via interview /grill-me, Task 105)
+- Konteks: Pada seeder dummy perkara sebelumnya, alamat domisili seluruh tersangka (`alamat_id` pada tabel `tersangka`) selalu disamakan dengan wilayah Tempat Kejadian Perkara (TKP) di Kalimantan Selatan (kode `63`). Pengguna menghendaki agar data domisili tersangka bervariasi dari provinsi sampai desa/kelurahan mencakup seluruh 38 provinsi di Indonesia sesuai PRD F-03 (tersangka dapat berasal dari 38 provinsi se-Indonesia, sedangkan TKP tetap di Kalimantan Selatan).
+- Keputusan:
+  1. **Katalog Domisili Tersangka 38 Provinsi (`lokasiTersangkaCatalog`)**:
+     - Menambahkan method `lokasiTersangkaCatalog()` pada `database/seeders/DummyDataSeeder.php` yang membagi katalog menjadi dua sub-grup:
+       - `kalsel`: 11 titik domisili lokal di Kalimantan Selatan (Banjarmasin, Banjarbaru, Banjar, Tanah Laut, Barito Kuala, Tapin, HST, HSU, Tanah Bumbu, Kotabaru, Tabalong).
+       - `nasional`: 48 titik domisili representatif dari seluruh 37 provinsi lain di Indonesia (DKI Jakarta, Jawa Barat, Jawa Timur, Jawa Tengah, DI Yogyakarta, Banten, Bali, NTB, NTT, Aceh, Sumut, Sumbar, Riau, Kepri, Jambi, Sumsel, Babel, Bengkulu, Lampung, Kalbar, Kalteng, Kaltim, Kaltara, Sulut, Gorontalo, Sulteng, Sulbar, Sulsel, Sultra, Maluku, Malut, Papua, Papua Barat, Papua Selatan, Papua Tengah, Papua Pegunungan, Papua Barat Daya) dengan kode resmi Kemendagri valid dari level provinsi, kabupaten/kota, kecamatan, hingga desa/kelurahan 10 digit.
+  2. **Distribusi Realistis 50% Lokal & 50% Antar-Provinsi**:
+     - Dalam pembuatan tersangka (`susunTersangka`), 50% perkara lokal menggunakan domisili Kalsel, dan 50% perkara lainnya mengambil domisili berputar secara urut dari 37 provinsi luar Kalsel.
+     - NIK dan tempat lahir tersangka otomatis diselaraskan mengikuti kode kabupaten/kota dan nama daerah domisili tersangka.
+     - 5 perkara draft (`LK/081` s.d. `LK/085`) turut memiliki variasi tersangka lokal (Kalsel) dan tersangka antar-provinsi (Bengkulu, Lampung, Kalimantan Barat).
+  3. **Sinkronisasi Otomatis Nilai Form Select Native (`searchable-select`)**:
+     - Pada komponen `<x-form.searchable-select>`, method `syncFromSelect()` disempurnakan agar ketika nilai opsi cocok ditemukan (`found`), properti `native.value` seketika diselaraskan dengan `this.selectedValue` guna mencegah nilai select kosong pada pengiriman form.
+- Konsekuensi: Total 420 tersangka pada seeder kini tersebar secara nyata di seluruh 38 provinsi di Indonesia (210 tersangka Kalsel dan 210 tersangka dari 37 provinsi lainnya) tanpa ada satu pun kolom kode wilayah yang bernilai null (0 null), tampilan ringkasan alamat tersangka pada form edit draft dan detail perkara menyajikan alamat lengkap dari desa hingga provinsi, seluruh 331 pengujian Pest PHP (2.811 assertions) lulus 100%, dan linter Laravel Pint clean.
+
+
 
 
 

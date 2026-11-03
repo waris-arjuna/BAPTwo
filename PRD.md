@@ -264,13 +264,12 @@ Aturan:
 
 ### Batas Waktu (SLA) dan Tahun
 
-- SLA Berkas Perkara adalah **1 bulan kalender secara total**, dihitung dari tanggal SPDP diterbitkan sampai berkas berstatus Selesai.
+- SLA Berkas Perkara (Tenggang Waktu) adalah **1 bulan kalender per tahapan aktif yang sedang berjalan** (SPDP, Tahap I, P-21), dihitung dari tanggal surat tahapan aktif tersebut dan otomatis direset setiap kali tahap aktif difinalkan (ref: D-058).
 - SLA bukan hari kerja.
-- SLA bukan satu bulan untuk setiap tahap.
 - Berkas hanya boleh dikerjakan dalam tahun yang sama dengan tahun SPDP diterbitkan.
-- **Batas tahun bersifat mutlak dan selalu didahulukan daripada SLA 1 bulan.**
-- Jika SLA jatuh pada tahun berikutnya, pergantian tahun tetap berlaku lebih dahulu.
-- Tidak ada pengecualian untuk SPDP yang diterbitkan mendekati akhir tahun.
+- **Batas tahun bersifat mutlak dan selalu didahulukan daripada SLA 1 bulan per tahap.**
+- Jika batas tenggang waktu 1 bulan jatuh pada tahun berikutnya, batas mutlak 31 Desember tahun berjalan tetap berlaku lebih dahulu.
+- Tidak ada pengecualian untuk tahapan yang diterbitkan mendekati akhir tahun.
 - DPO tidak menghentikan atau menjeda SLA maupun batas tahun.
 
 ### Dashboard Potensi Terlimpah

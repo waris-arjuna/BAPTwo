@@ -89,6 +89,9 @@
 
             const found = opts.find(o => String(o.value) === String(this.selectedValue));
             this.selectedLabel = (found && found.value !== '') ? found.label : '';
+            if (found && native.value !== String(this.selectedValue)) {
+                native.value = this.selectedValue;
+            }
         },
 
         get filteredOptions() {

@@ -199,3 +199,24 @@ test('batas tahun mutlak tetap berlaku saat tahap aktif difinalkan di bulan Dese
     expect($this->berkas->sla_deadline?->toDateString())->toBe('2026-12-31');
     expect($this->berkas->effective_deadline?->toDateString())->toBe('2026-12-31');
 });
+
+test('antarmuka pengguna menampilkan keterangan tenggang waktu 1 bulan per tahapan aktif', function () {
+    $this->actingAs($this->penyidik);
+
+    // 1. Cek tabel prioritas dashboard
+    $resDashboard = $this->get(route('dashboard'));
+    $resDashboard->assertOk()
+        ->assertDontSee('1 bulan kalender dari SPDP')
+        ->assertSee('1 bulan kalender tahap aktif');
+
+    // 2. Cek kartu statistik rata-rata waktu total
+    $resDashboard->assertSee('Rata-rata Waktu Total (SPDP s.d. Tahap II)')
+        ->assertDontSee('(Maks. 30 Hari Kalender)');
+
+    // 3. Cek halaman pengaturan umum (sebagai administrator)
+    $admin = User::factory()->create(['role' => 'administrator']);
+    $resPengaturan = $this->actingAs($admin)->get(route('pengaturan.umum'));
+    $resPengaturan->assertOk()
+        ->assertSee('1 Bulan Kalender per Tahapan Aktif (SPDP, Tahap I, P-21)')
+        ->assertDontSee('1 Bulan Kalender Total (Sejak SPDP diterbitkan)');
+});

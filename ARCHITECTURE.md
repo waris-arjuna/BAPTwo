@@ -152,17 +152,17 @@ erDiagram
    - `alamat_id`: FK -> `alamat.id` nullable
    - `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`
 
-6. **`berkas_perkara`** (Tracking, SLA & Progress — D-035 Poin 5, 11)
+6. **`berkas_perkara`** (Tracking, SLA & Progress - D-035 Poin 5, 11, D-058)
    - `id`: bigint unsigned, PK
    - `perkara_id`: FK -> `perkara.id`, ON DELETE CASCADE
    - `tersangka_id`: FK -> `tersangka.id`, UNIQUE (1 tersangka = 1 berkas)
-   - `nomor_berkas`: string(150) — **Wajib identik dengan nomor Laporan Kejadian**
-   - `tanggal_spdp`: date, nullable (titik awal perhitungan SLA & tahun batas)
+   - `nomor_berkas`: string(150) - **Wajib identik dengan nomor Laporan Kejadian**
+   - `tanggal_spdp`: date, nullable (titik awal proses berkas perkara & tahun batas)
    - `status_formal`: enum (`selesai`, `tidak_selesai`), nullable (`null` = label "Dalam Proses")
    - `status_proses`: string(50), default 'Baru' (mengikuti tahapan final terakhir, atau 'SP3')
    - `progress_persen`: unsigned tinyint, default 0 (0, 15, 55, 85, 100)
    - `is_dpo`: boolean, default false
-   - `sla_deadline`: date, nullable (1 bulan kalender atau batas 31 Desember)
+   - `sla_deadline`: date, nullable (1 bulan kalender per tahapan aktif atau batas 31 Desember)
    - `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`
 
 7. **`dokumen`** (Sentralisasi File Wajib PDF — D-007, D-035 Poin 18)
@@ -223,7 +223,7 @@ stateDiagram-v2
 
 ### 4.1 Progress Berbobot Kumulatif
 - **Pra-SPDP**: 0%
-- **SPDP**: 15% (titik awal perhitungan SLA 1 bulan kalender)
+- **SPDP**: 15% (titik awal proses berkas perkara & perhitungan SLA 1 bulan kalender per tahap aktif)
 - **TAHAP I**: 55% (+40%)
 - **P-21 / P-21a**: 85% (+30%)
 - **TAHAP II**: 100% (+15%) ➔ Pemicu otomatis status formal **Selesai**.

@@ -56,6 +56,16 @@
     $tersangkaRw = old('tersangka_rw', $oldTersangka['rw'] ?? ($tersangkaAlamat?->rw ?? ''));
     $tersangkaAlamatDetail = old('tersangka_alamat_detail', $oldTersangka['alamat_detail'] ?? ($tersangkaAlamat?->alamat_detail ?? ''));
 
+    $tersangkaRingkasanParts = array_filter([
+        $tersangkaAlamatDetail,
+        ($tersangkaRt || $tersangkaRw) ? 'RT '.($tersangkaRt ?: '-').' / RW '.($tersangkaRw ?: '-') : null,
+        $tersangkaDesaNama ? 'Desa/Kel. '.$tersangkaDesaNama : null,
+        $tersangkaKecamatanNama ? 'Kec. '.$tersangkaKecamatanNama : null,
+        $tersangkaKabupatenNama,
+        $tersangkaProvinsiNama,
+    ]);
+    $initialTersangkaAlamatRingkasan = !empty($tersangkaRingkasanParts) ? implode(', ', $tersangkaRingkasanParts) : '';
+
     $existingPasalIds = collect(old('pasal_ids', $oldTersangka['pasal_ids'] ?? ($firstBerkas?->pasals->pluck('id')->all() ?? [])))
         ->map(fn ($id) => (int) $id)
         ->all();
@@ -193,10 +203,7 @@
 
             {{-- 1. Card Informasi TKP (Tempat Kejadian Perkara) --}}
             <div
-                x-data="{
-                    kabupatenList: [],
-                    kecamatanList: [],
-                    desaList: [],
+                x-data="tkpWilayahForm({
                     provinsiKode: '63',
                     provinsiNama: 'Kalimantan Selatan',
                     kabupatenKode: @js(old('tkp_kabupaten_kode', $tkpAlamat?->kabupaten_kode ?? '')),
@@ -204,169 +211,8 @@
                     kecamatanKode: @js(old('tkp_kecamatan_kode', $tkpAlamat?->kecamatan_kode ?? '')),
                     kecamatanNama: @js(old('tkp_kecamatan_nama', $tkpAlamat?->kecamatan_nama ?? '')),
                     desaKode: @js(old('tkp_desa_kode', $tkpAlamat?->desa_kode ?? '')),
-                    desaNama: @js(old('tkp_desa_nama', $tkpAlamat?->desa_nama ?? '')),
-                    kecamatanAbortController: null,
-                    desaAbortController: null,
-                    async init() {
-                        await this.loadKabupaten(false);
-                        if (this.kabupatenKode) await this.loadKecamatan(false);
-                        if (this.kecamatanKode) await this.loadDesa(false);
-
-                        this.$watch('kabupatenKode', (val) => {
-                            const found = this.kabupatenList.find(k => String(k.code || k.kode) === String(val));
-                            this.kabupatenNama = found ? (found.name || found.nama) : '';
-                        });
-                        this.$watch('kecamatanKode', (val) => {
-                            const found = this.kecamatanList.find(k => String(k.code || k.kode) === String(val));
-                            this.kecamatanNama = found ? (found.name || found.nama) : '';
-                        });
-                        this.$watch('desaKode', (val) => {
-                            const found = this.desaList.find(d => String(d.code || d.kode) === String(val));
-                            this.desaNama = found ? (found.name || found.nama) : '';
-                        });
-                    },
-                    async loadKabupaten(reset = true) {
-                        if (reset) {
-                            this.kabupatenKode = '';
-                            this.kabupatenNama = '';
-                            this.kecamatanKode = '';
-                            this.kecamatanNama = '';
-                            this.desaKode = '';
-                            this.desaNama = '';
-                            this.kecamatanList = [];
-                            this.desaList = [];
-                        }
-                        try {
-                            const res = await fetch(`/wilayah/kabupaten/${this.provinsiKode}`);
-                            const json = await res.json();
-                            this.kabupatenList = json.data || [];
-                            const found = this.kabupatenList.find(k => String(k.code || k.kode) === String(this.kabupatenKode));
-                            if (found) this.kabupatenNama = found.name || found.nama;
-                        } catch (e) {}
-                    },
-                    async loadKecamatan(reset = true, targetKode = null, autoOpen = false) {
-                        if (targetKode !== null && targetKode !== undefined) {
-                            this.kabupatenKode = String(targetKode);
-                        }
-                        if (reset) {
-                            this.kecamatanKode = '';
-                            this.kecamatanNama = '';
-                            this.kecamatanList = [];
-                            this.desaKode = '';
-                            this.desaNama = '';
-                            this.desaList = [];
-                            this.$dispatch('searchable-select-loading', { id: 'tkp_kecamatan_kode', loading: false });
-                            this.$dispatch('searchable-select-loading', { id: 'tkp_desa_kode', loading: false });
-                        }
-                        const found = this.kabupatenList.find(k => String(k.code || k.kode) === String(this.kabupatenKode));
-                        this.kabupatenNama = found ? (found.name || found.nama) : '';
-
-                        if (!this.kabupatenKode) {
-                            this.kecamatanList = [];
-                            this.$dispatch('searchable-select-loading', { id: 'tkp_kecamatan_kode', loading: false });
-                            return;
-                        }
-
-                        if (this.kecamatanAbortController) {
-                            this.kecamatanAbortController.abort();
-                        }
-                        this.kecamatanAbortController = new AbortController();
-                        const currentKab = this.kabupatenKode;
-
-                        this.$dispatch('searchable-select-loading', { id: 'tkp_kecamatan_kode', loading: true });
-
-                        try {
-                            const res = await fetch(`/wilayah/kecamatan/${currentKab}`, {
-                                signal: this.kecamatanAbortController.signal
-                            });
-                            const json = await res.json();
-                            if (this.kabupatenKode === currentKab) {
-                                this.kecamatanList = json.data || [];
-                                const foundKec = this.kecamatanList.find(k => String(k.code || k.kode) === String(this.kecamatanKode));
-                                if (foundKec) this.kecamatanNama = foundKec.name || foundKec.nama;
-                                if (autoOpen && this.kecamatanList.length > 0) {
-                                    this.$nextTick(() => {
-                                        this.$dispatch('searchable-select-open', { id: 'tkp_kecamatan_kode' });
-                                    });
-                                }
-                            }
-                        } catch (e) {
-                            if (e.name !== 'AbortError') {
-                                this.kecamatanList = [];
-                            }
-                        } finally {
-                            if (this.kabupatenKode === currentKab) {
-                                this.$dispatch('searchable-select-loading', { id: 'tkp_kecamatan_kode', loading: false });
-                            }
-                        }
-                    },
-                    async loadDesa(reset = true, targetKode = null, autoOpen = false) {
-                        if (targetKode !== null && targetKode !== undefined) {
-                            this.kecamatanKode = String(targetKode);
-                        }
-                        if (reset) {
-                            this.desaKode = '';
-                            this.desaNama = '';
-                            this.desaList = [];
-                            this.$dispatch('searchable-select-loading', { id: 'tkp_desa_kode', loading: false });
-                        }
-                        const found = this.kecamatanList.find(k => String(k.code || k.kode) === String(this.kecamatanKode));
-                        this.kecamatanNama = found ? (found.name || found.nama) : '';
-
-                        if (!this.kecamatanKode) {
-                            this.desaList = [];
-                            this.$dispatch('searchable-select-loading', { id: 'tkp_desa_kode', loading: false });
-                            return;
-                        }
-
-                        if (this.desaAbortController) {
-                            this.desaAbortController.abort();
-                        }
-                        this.desaAbortController = new AbortController();
-                        const currentKec = this.kecamatanKode;
-
-                        this.$dispatch('searchable-select-loading', { id: 'tkp_desa_kode', loading: true });
-
-                        try {
-                            const res = await fetch(`/wilayah/desa/${currentKec}`, {
-                                signal: this.desaAbortController.signal
-                            });
-                            const json = await res.json();
-                            if (this.kecamatanKode === currentKec) {
-                                this.desaList = json.data || [];
-                                const foundDesa = this.desaList.find(d => String(d.code || d.kode) === String(this.desaKode));
-                                if (foundDesa) this.desaNama = foundDesa.name || foundDesa.nama;
-                                if (autoOpen && this.desaList.length > 0) {
-                                    this.$nextTick(() => {
-                                        this.$dispatch('searchable-select-open', { id: 'tkp_desa_kode' });
-                                    });
-                                }
-                            }
-                        } catch (e) {
-                            if (e.name !== 'AbortError') {
-                                this.desaList = [];
-                            }
-                        } finally {
-                            if (this.kecamatanKode === currentKec) {
-                                this.$dispatch('searchable-select-loading', { id: 'tkp_desa_kode', loading: false });
-                            }
-                        }
-                    },
-                    onKabupatenChange(event) {
-                        const val = event && event.target ? event.target.value : (event || this.kabupatenKode);
-                        this.loadKecamatan(true, val, true);
-                    },
-                    onKecamatanChange(event) {
-                        const val = event && event.target ? event.target.value : (event || this.kecamatanKode);
-                        this.loadDesa(true, val, true);
-                    },
-                    onDesaChange(event) {
-                        const val = event && event.target ? event.target.value : (event || this.desaKode);
-                        if (val !== undefined && val !== null) this.desaKode = String(val);
-                        const found = this.desaList.find(d => String(d.code || d.kode) === String(this.desaKode));
-                        this.desaNama = found ? (found.name || found.nama) : '';
-                    }
-                }"
+                    desaNama: @js(old('tkp_desa_nama', $tkpAlamat?->desa_nama ?? ''))
+                })"
                 class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
             >
                 <div class="border-b border-gray-200 px-4 py-4 dark:border-gray-800 sm:px-6">
@@ -418,6 +264,7 @@
                             name="tkp_kabupaten_kode"
                             id="tkp_kabupaten_kode"
                             label="Kabupaten / Kota"
+                            :value="old('tkp_kabupaten_kode', $tkpAlamat?->kabupaten_kode ?? '')"
                             placeholder="-- Pilih Kabupaten/Kota --"
                             search-placeholder="Ketik nama kabupaten/kota..."
                             x-model="kabupatenKode"
@@ -438,6 +285,7 @@
                             name="tkp_kecamatan_kode"
                             id="tkp_kecamatan_kode"
                             label="Kecamatan"
+                            :value="old('tkp_kecamatan_kode', $tkpAlamat?->kecamatan_kode ?? '')"
                             placeholder="-- Pilih Kecamatan --"
                             search-placeholder="Ketik nama kecamatan..."
                             x-model="kecamatanKode"
@@ -458,6 +306,7 @@
                             name="tkp_desa_kode"
                             id="tkp_desa_kode"
                             label="Desa / Kelurahan"
+                            :value="old('tkp_desa_kode', $tkpAlamat?->desa_kode ?? '')"
                             placeholder="-- Pilih Desa/Kelurahan --"
                             search-placeholder="Ketik nama desa/kelurahan..."
                             x-model="desaKode"
@@ -589,73 +438,11 @@
 
             {{-- 2. Card Tim Penyidik PPNS (Utama & Anggota) --}}
             <div
-                x-data="{
+                x-data="ppnsTimForm({
                     ppnsList: @js($ppnsJsonList),
                     selectedUtamaId: @js((int) $existingUtamaId ?: null),
-                    selectedAnggotaIds: @js($existingAnggotaIds),
-                    extractId(eventOrVal) {
-                        if (eventOrVal === null || eventOrVal === undefined) return null;
-                        if (typeof eventOrVal === 'object') {
-                            if ('detail' in eventOrVal && eventOrVal.detail !== undefined) {
-                                const d = eventOrVal.detail;
-                                if (typeof d === 'object') return null;
-                                return d !== '' && d !== null ? parseInt(d, 10) || null : null;
-                            }
-                            if ('target' in eventOrVal && eventOrVal.target && 'value' in eventOrVal.target) {
-                                const v = eventOrVal.target.value;
-                                return v !== '' && v !== null ? parseInt(v, 10) || null : null;
-                            }
-                            return null;
-                        }
-                        return eventOrVal !== '' ? parseInt(eventOrVal, 10) || null : null;
-                    },
-                    addAnggota(eventOrVal) {
-                        const numId = this.extractId(eventOrVal);
-                        if (!numId) return;
-                        if (this.selectedUtamaId && Number(numId) === Number(this.selectedUtamaId)) {
-                            return;
-                        }
-                        if (!this.selectedAnggotaIds.map(Number).includes(Number(numId))) {
-                            this.selectedAnggotaIds.push(Number(numId));
-                        }
-                        this.$nextTick(() => {
-                            const el = document.getElementById('ppns_anggota_select');
-                            if (el) {
-                                el.value = '';
-                                el.dispatchEvent(new Event('change', { bubbles: true }));
-                            }
-                        });
-                    },
-                    removeAnggota(id) {
-                        const numId = Number(id);
-                        this.selectedAnggotaIds = this.selectedAnggotaIds.filter(i => Number(i) !== numId);
-                    },
-                    onUtamaChange(eventOrVal) {
-                        if (typeof eventOrVal === 'object' && eventOrVal !== null) {
-                            const isCustom = 'detail' in eventOrVal && !(eventOrVal.target instanceof HTMLSelectElement);
-                            if (isCustom && (eventOrVal.detail === undefined || typeof eventOrVal.detail === 'object')) {
-                                return;
-                            }
-                        }
-                        const numId = this.extractId(eventOrVal);
-                        this.selectedUtamaId = numId;
-                        if (this.selectedUtamaId && this.selectedAnggotaIds.map(Number).includes(Number(this.selectedUtamaId))) {
-                            this.removeAnggota(this.selectedUtamaId);
-                        }
-                    },
-                    getAvailableAnggota() {
-                        const utamaId = this.selectedUtamaId ? Number(this.selectedUtamaId) : null;
-                        const anggotaSet = this.selectedAnggotaIds.map(Number);
-                        return this.ppnsList.filter(u => Number(u.id) !== utamaId && !anggotaSet.includes(Number(u.id)));
-                    },
-                    getSelectedAnggotaDetails() {
-                        const utamaId = this.selectedUtamaId ? Number(this.selectedUtamaId) : null;
-                        return this.selectedAnggotaIds
-                            .filter(id => Number(id) !== utamaId)
-                            .map(id => this.ppnsList.find(u => Number(u.id) === Number(id)))
-                            .filter(Boolean);
-                    }
-                }"
+                    selectedAnggotaIds: @js($existingAnggotaIds)
+                })"
                 class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
             >
                 <div class="border-b border-gray-200 px-4 py-4 dark:border-gray-800 sm:px-6">
@@ -770,8 +557,7 @@
 
             {{-- 3. Card Data Tersangka & Berkas Perkara (1 Perkara = 1 Berkas Perkara = 1 Tersangka) --}}
             <div
-                x-data="{
-                    isAlamatModalOpen: false,
+                x-data="tersangkaAlamatModalForm({
                     alamat: {
                         provinsi_kode: @js($tersangkaProvinsiKode),
                         provinsi_nama: @js($tersangkaProvinsiNama),
@@ -783,274 +569,13 @@
                         desa_nama: @js($tersangkaDesaNama),
                         rt: @js($tersangkaRt),
                         rw: @js($tersangkaRw),
-                        alamat_detail: @js($tersangkaAlamatDetail),
+                        alamat_detail: @js($tersangkaAlamatDetail)
                     },
-                    modalWilayah: {
-                        provinsi_kode: '',
-                        provinsi_nama: '',
-                        kabupaten_kode: '',
-                        kabupaten_nama: '',
-                        kecamatan_kode: '',
-                        kecamatan_nama: '',
-                        desa_kode: '',
-                        desa_nama: '',
-                    },
-                    modalRt: '',
-                    modalRw: '',
-                    modalAlamatDetail: '',
-                    listProvinsi: [],
-                    listKabupaten: [],
-                    listKecamatan: [],
-                    listDesa: [],
-                    provinsiAbortController: null,
-                    kabupatenAbortController: null,
-                    kecamatanAbortController: null,
-                    desaAbortController: null,
-
-                    get alamatRingkasan() {
-                        if (!this.alamat.provinsi_kode && !this.alamat.alamat_detail) {
-                            return 'Belum diatur (klik untuk memilih alamat)';
-                        }
-                        const parts = [];
-                        if (this.alamat.alamat_detail) parts.push(this.alamat.alamat_detail);
-                        if (this.alamat.rt || this.alamat.rw) {
-                            parts.push('RT ' + (this.alamat.rt || '-') + ' / RW ' + (this.alamat.rw || '-'));
-                        }
-                        if (this.alamat.desa_nama) parts.push('Desa/Kel. ' + this.alamat.desa_nama);
-                        if (this.alamat.kecamatan_nama) parts.push('Kec. ' + this.alamat.kecamatan_nama);
-                        if (this.alamat.kabupaten_nama) parts.push(this.alamat.kabupaten_nama);
-                        if (this.alamat.provinsi_nama) parts.push(this.alamat.provinsi_nama);
-                        return parts.join(', ');
-                    },
-
-                    async openAlamatModal() {
-                        this.modalWilayah.provinsi_kode = this.alamat.provinsi_kode || '';
-                        this.modalWilayah.provinsi_nama = this.alamat.provinsi_nama || '';
-                        this.modalWilayah.kabupaten_kode = this.alamat.kabupaten_kode || '';
-                        this.modalWilayah.kabupaten_nama = this.alamat.kabupaten_nama || '';
-                        this.modalWilayah.kecamatan_kode = this.alamat.kecamatan_kode || '';
-                        this.modalWilayah.kecamatan_nama = this.alamat.kecamatan_nama || '';
-                        this.modalWilayah.desa_kode = this.alamat.desa_kode || '';
-                        this.modalWilayah.desa_nama = this.alamat.desa_nama || '';
-                        this.modalRt = this.alamat.rt || '';
-                        this.modalRw = this.alamat.rw || '';
-                        this.modalAlamatDetail = this.alamat.alamat_detail || '';
-
-                        this.isAlamatModalOpen = true;
-
-                        await this.fetchProvinsi();
-                        if (this.modalWilayah.provinsi_kode) {
-                            await this.fetchKabupaten(this.modalWilayah.provinsi_kode);
-                        }
-                        if (this.modalWilayah.kabupaten_kode) {
-                            await this.fetchKecamatan(this.modalWilayah.kabupaten_kode);
-                        }
-                        if (this.modalWilayah.kecamatan_kode) {
-                            await this.fetchDesa(this.modalWilayah.kecamatan_kode);
-                        }
-                    },
-
-                    async fetchProvinsi() {
-                        if (this.listProvinsi.length > 0) return;
-                        try {
-                            const res = await fetch('{{ route('wilayah.provinsi') }}');
-                            const json = await res.json();
-                            this.listProvinsi = json.data || [];
-                        } catch (e) {
-                            this.listProvinsi = [];
-                        }
-                    },
-
-                    async fetchKabupaten(provKode, autoOpen = false) {
-                        if (!provKode) {
-                            this.listKabupaten = [];
-                            this.$dispatch('searchable-select-loading', { id: 'modal_tersangka_kabupaten_kode', loading: false });
-                            return;
-                        }
-                        if (this.kabupatenAbortController) {
-                            this.kabupatenAbortController.abort();
-                        }
-                        this.kabupatenAbortController = new AbortController();
-                        this.$dispatch('searchable-select-loading', { id: 'modal_tersangka_kabupaten_kode', loading: true });
-                        try {
-                            const res = await fetch(`{{ url('/wilayah/kabupaten') }}/${provKode}`, {
-                                signal: this.kabupatenAbortController.signal
-                            });
-                            const json = await res.json();
-                            if (String(this.modalWilayah.provinsi_kode) === String(provKode)) {
-                                this.listKabupaten = json.data || [];
-                                if (autoOpen && this.listKabupaten.length > 0) {
-                                    this.$nextTick(() => {
-                                        this.$dispatch('searchable-select-open', { id: 'modal_tersangka_kabupaten_kode' });
-                                    });
-                                }
-                            }
-                        } catch (e) {
-                            if (e.name !== 'AbortError') {
-                                this.listKabupaten = [];
-                            }
-                        } finally {
-                            if (String(this.modalWilayah.provinsi_kode) === String(provKode)) {
-                                this.$dispatch('searchable-select-loading', { id: 'modal_tersangka_kabupaten_kode', loading: false });
-                            }
-                        }
-                    },
-
-                    async fetchKecamatan(kabKode, autoOpen = false) {
-                        if (!kabKode) {
-                            this.listKecamatan = [];
-                            this.$dispatch('searchable-select-loading', { id: 'modal_tersangka_kecamatan_kode', loading: false });
-                            return;
-                        }
-                        if (this.kecamatanAbortController) {
-                            this.kecamatanAbortController.abort();
-                        }
-                        this.kecamatanAbortController = new AbortController();
-                        this.$dispatch('searchable-select-loading', { id: 'modal_tersangka_kecamatan_kode', loading: true });
-                        try {
-                            const res = await fetch(`{{ url('/wilayah/kecamatan') }}/${kabKode}`, {
-                                signal: this.kecamatanAbortController.signal
-                            });
-                            const json = await res.json();
-                            if (String(this.modalWilayah.kabupaten_kode) === String(kabKode)) {
-                                this.listKecamatan = json.data || [];
-                                if (autoOpen && this.listKecamatan.length > 0) {
-                                    this.$nextTick(() => {
-                                        this.$dispatch('searchable-select-open', { id: 'modal_tersangka_kecamatan_kode' });
-                                    });
-                                }
-                            }
-                        } catch (e) {
-                            if (e.name !== 'AbortError') {
-                                this.listKecamatan = [];
-                            }
-                        } finally {
-                            if (String(this.modalWilayah.kabupaten_kode) === String(kabKode)) {
-                                this.$dispatch('searchable-select-loading', { id: 'modal_tersangka_kecamatan_kode', loading: false });
-                            }
-                        }
-                    },
-
-                    async fetchDesa(kecKode, autoOpen = false) {
-                        if (!kecKode) {
-                            this.listDesa = [];
-                            this.$dispatch('searchable-select-loading', { id: 'modal_tersangka_desa_kode', loading: false });
-                            return;
-                        }
-                        if (this.desaAbortController) {
-                            this.desaAbortController.abort();
-                        }
-                        this.desaAbortController = new AbortController();
-                        this.$dispatch('searchable-select-loading', { id: 'modal_tersangka_desa_kode', loading: true });
-                        try {
-                            const res = await fetch(`{{ url('/wilayah/desa') }}/${kecKode}`, {
-                                signal: this.desaAbortController.signal
-                            });
-                            const json = await res.json();
-                            if (String(this.modalWilayah.kecamatan_kode) === String(kecKode)) {
-                                this.listDesa = json.data || [];
-                                if (autoOpen && this.listDesa.length > 0) {
-                                    this.$nextTick(() => {
-                                        this.$dispatch('searchable-select-open', { id: 'modal_tersangka_desa_kode' });
-                                    });
-                                }
-                            }
-                        } catch (e) {
-                            if (e.name !== 'AbortError') {
-                                this.listDesa = [];
-                            }
-                        } finally {
-                            if (String(this.modalWilayah.kecamatan_kode) === String(kecKode)) {
-                                this.$dispatch('searchable-select-loading', { id: 'modal_tersangka_desa_kode', loading: false });
-                            }
-                        }
-                    },
-
-                    extractEventValue(event, fallback = '') {
-                        if (event === undefined || event === null) return fallback;
-                        if (typeof event === 'object') {
-                            if ('detail' in event && event.detail !== undefined && event.detail !== null) {
-                                return String(event.detail);
-                            }
-                            if ('target' in event && event.target && 'value' in event.target && event.target.value !== undefined && event.target.value !== null) {
-                                return String(event.target.value);
-                            }
-                            return fallback;
-                        }
-                        return String(event);
-                    },
-
-                    onProvinsiChange(event) {
-                        const val = this.extractEventValue(event, this.modalWilayah.provinsi_kode);
-                        this.modalWilayah.provinsi_kode = val ? String(val) : '';
-                        const found = this.listProvinsi.find(p => String(p.code) === String(val));
-                        this.modalWilayah.provinsi_nama = found ? (found.name || found.nama) : '';
-
-                        this.modalWilayah.kabupaten_kode = '';
-                        this.modalWilayah.kabupaten_nama = '';
-                        this.modalWilayah.kecamatan_kode = '';
-                        this.modalWilayah.kecamatan_nama = '';
-                        this.modalWilayah.desa_kode = '';
-                        this.modalWilayah.desa_nama = '';
-                        this.listKabupaten = [];
-                        this.listKecamatan = [];
-                        this.listDesa = [];
-
-                        this.fetchKabupaten(val, false);
-                    },
-
-                    onKabupatenChange(event) {
-                        const val = this.extractEventValue(event, this.modalWilayah.kabupaten_kode);
-                        this.modalWilayah.kabupaten_kode = val ? String(val) : '';
-                        const found = this.listKabupaten.find(k => String(k.code) === String(val));
-                        this.modalWilayah.kabupaten_nama = found ? (found.name || found.nama) : '';
-
-                        this.modalWilayah.kecamatan_kode = '';
-                        this.modalWilayah.kecamatan_nama = '';
-                        this.modalWilayah.desa_kode = '';
-                        this.modalWilayah.desa_nama = '';
-                        this.listKecamatan = [];
-                        this.listDesa = [];
-
-                        this.fetchKecamatan(val, false);
-                    },
-
-                    onKecamatanChange(event) {
-                        const val = this.extractEventValue(event, this.modalWilayah.kecamatan_kode);
-                        this.modalWilayah.kecamatan_kode = val ? String(val) : '';
-                        const found = this.listKecamatan.find(k => String(k.code) === String(val));
-                        this.modalWilayah.kecamatan_nama = found ? (found.name || found.nama) : '';
-
-                        this.modalWilayah.desa_kode = '';
-                        this.modalWilayah.desa_nama = '';
-                        this.listDesa = [];
-
-                        this.fetchDesa(val, false);
-                    },
-
-                    onDesaChange(event) {
-                        const val = this.extractEventValue(event, this.modalWilayah.desa_kode);
-                        this.modalWilayah.desa_kode = val ? String(val) : '';
-                        const found = this.listDesa.find(d => String(d.code) === String(val));
-                        this.modalWilayah.desa_nama = found ? (found.name || found.nama) : '';
-                    },
-
-                    applyAlamat() {
-                        this.alamat.provinsi_kode = this.modalWilayah.provinsi_kode;
-                        this.alamat.provinsi_nama = this.modalWilayah.provinsi_nama;
-                        this.alamat.kabupaten_kode = this.modalWilayah.kabupaten_kode;
-                        this.alamat.kabupaten_nama = this.modalWilayah.kabupaten_nama;
-                        this.alamat.kecamatan_kode = this.modalWilayah.kecamatan_kode;
-                        this.alamat.kecamatan_nama = this.modalWilayah.kecamatan_nama;
-                        this.alamat.desa_kode = this.modalWilayah.desa_kode;
-                        this.alamat.desa_nama = this.modalWilayah.desa_nama;
-                        this.alamat.rt = this.modalRt;
-                        this.alamat.rw = this.modalRw;
-                        this.alamat.alamat_detail = this.modalAlamatDetail;
-
-                        this.isAlamatModalOpen = false;
-                    }
-                }"
+                    provinsiUrl: '/wilayah/provinsi',
+                    kabupatenUrlBase: '/wilayah/kabupaten',
+                    kecamatanUrlBase: '/wilayah/kecamatan',
+                    desaUrlBase: '/wilayah/desa'
+                })"
                 class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
             >
                 <div class="border-b border-gray-200 px-4 py-4 dark:border-gray-800 sm:px-6">
@@ -1244,6 +769,7 @@
                                         type="text"
                                         readonly
                                         id="tersangka_alamat_ringkasan"
+                                        value="{{ $initialTersangkaAlamatRingkasan }}"
                                         :value="alamatRingkasan"
                                         placeholder="Belum diatur (klik untuk memilih alamat)"
                                         class="h-11 w-full cursor-pointer rounded-lg border border-gray-300 bg-gray-50/80 ps-10 pe-4 text-sm text-gray-700 select-none dark:border-gray-700 dark:bg-gray-800/60 dark:text-gray-300"
@@ -1282,35 +808,10 @@
 
             {{-- 4. Card Pemilihan Pasal yang Disangkakan (Komponen Persis PPNS Anggota, Poin 8) --}}
             <div
-                x-data="{
+                x-data="pasalPerkaraForm({
                     pasalList: @js($pasalJsonList),
-                    selectedPasalIds: @js($existingPasalIds),
-                    addPasal(id) {
-                        if (!id) return;
-                        const numId = parseInt(id, 10);
-                        if (!this.selectedPasalIds.includes(numId)) {
-                            this.selectedPasalIds.push(numId);
-                        }
-                        this.$nextTick(() => {
-                            const el = document.getElementById('pasal_select');
-                            if (el) {
-                                el.value = '';
-                                el.dispatchEvent(new Event('change', { bubbles: true }));
-                            }
-                        });
-                    },
-                    removePasal(id) {
-                        this.selectedPasalIds = this.selectedPasalIds.filter(i => i !== id);
-                    },
-                    getAvailablePasal() {
-                        return this.pasalList.filter(p => !this.selectedPasalIds.includes(p.id));
-                    },
-                    getSelectedPasalDetails() {
-                        return this.selectedPasalIds
-                            .map(id => this.pasalList.find(p => p.id === id))
-                            .filter(Boolean);
-                    }
-                }"
+                    selectedPasalIds: @js($existingPasalIds)
+                })"
                 class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
             >
                 <div class="border-b border-gray-200 px-4 py-4 dark:border-gray-800 sm:px-6">
@@ -1456,7 +957,8 @@
                             NIP Jaksa Penuntut (18 Digit)
                         </label>
                         <input
-                            type="number"
+                            type="text"
+                            inputmode="numeric"
                             id="penuntut_umum_nip"
                             name="penuntut_umum_nip"
                             value="{{ old('penuntut_umum_nip', $isDraft ? $perkara->penuntut_umum_nip : '') }}"
