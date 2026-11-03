@@ -1,0 +1,646 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1680 1220" width="1680" height="1220" style="background-color: #0B1120; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <!-- Filter Bayangan Halus untuk Kartu -->
+    <filter id="cardShadow" x="-8%" y="-8%" width="116%" height="116%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+    
+    <!-- Marker Panah Berbagai Warna -->
+    <marker id="arrow-sky" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38BDF8" />
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#60A5FA" />
+    </marker>
+    <marker id="arrow-emerald" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34D399" />
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#FBBF24" />
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#F87171" />
+    </marker>
+    <marker id="arrow-slate" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#94A3B8" />
+    </marker>
+  </defs>
+
+  <!-- Header Banner Diagram -->
+  <rect x="0" y="0" width="1680" height="60" fill="#0F172A" />
+  <line x1="0" y1="60" x2="1680" y2="60" stroke="#1E293B" stroke-width="2" />
+  <text x="40" y="38" fill="#F8FAFC" font-size="20" font-weight="700" letter-spacing="0.5">BAPTwo — ENTITY RELATIONSHIP DIAGRAM (19 DOMAIN TABLES)</text>
+  <text x="1640" y="38" text-anchor="end" fill="#94A3B8" font-size="12" font-weight="500">BPOM Kalimantan Selatan · Laravel 12 &amp; MySQL 8 · Rev. November 2026</text>
+
+  <!-- Legend Group Indikator di Bawah Header -->
+  <g transform="translate(40, 1050)">
+    <rect x="0" y="0" width="1600" height="130" rx="8" fill="#131D31" stroke="#1E293B" stroke-width="1.5" />
+    <text x="24" y="30" fill="#F1F5F9" font-size="14" font-weight="700">PANDUAN RELASI &amp; KELOMPOK TABEL DOMAIN</text>
+    
+    <!-- Legend item 1 -->
+    <rect x="24" y="48" width="16" height="16" rx="3" fill="#1E3A8A" />
+    <text x="48" y="61" fill="#CBD5E1" font-size="12">Master Data &amp; Organisasi (user, jabatan, bidang, panggol, alamat, pasal, instansi, jaksa)</text>
+
+    <!-- Legend item 2 -->
+    <rect x="24" y="74" width="16" height="16" rx="3" fill="#0284C7" />
+    <text x="48" y="87" fill="#CBD5E1" font-size="12">Fase Pra-SPDP (tkp [produksi], perkara, perkara_ppns, tersangka)</text>
+
+    <!-- Legend item 3 -->
+    <rect x="24" y="100" width="16" height="16" rx="3" fill="#059669" />
+    <text x="48" y="113" fill="#CBD5E1" font-size="12">Core Berkas &amp; Tahapan (berkas_perkara [1:1 tersangka], berkas_pasal, tahapan_perkara)</text>
+
+    <!-- Legend item 4 -->
+    <rect x="680" y="48" width="16" height="16" rx="3" fill="#D97706" />
+    <text x="704" y="61" fill="#CBD5E1" font-size="12">Status Khusus Penindakan DPO (dpo memuat Sp.Kap &amp; Sp.Han penangkapan/penahanan)</text>
+
+    <!-- Legend item 5 -->
+    <rect x="680" y="74" width="16" height="16" rx="3" fill="#DC2626" />
+    <text x="704" y="87" fill="#CBD5E1" font-size="12">Penghentian Penyidikan SP3 Terminal (sp3 memuat pejabat penandatangan &amp; tim penyidik)</text>
+
+    <!-- Legend item 6 -->
+    <rect x="680" y="100" width="16" height="16" rx="3" fill="#475569" />
+    <text x="704" y="113" fill="#CBD5E1" font-size="12">Audit Trail &amp; Repositori Dokumen (dokumen privat PDF/foto maks. 10MB, audit_log)</text>
+    
+    <!-- Legend PK / FK tag -->
+    <rect x="1340" y="48" width="28" height="15" rx="3" fill="#0284C7" />
+    <text x="1345" y="60" fill="#FFFFFF" font-size="10" font-weight="700">PK</text>
+    <text x="1376" y="61" fill="#94A3B8" font-size="12">Primary Key</text>
+
+    <rect x="1340" y="74" width="28" height="15" rx="3" fill="#D97706" />
+    <text x="1346" y="86" fill="#FFFFFF" font-size="10" font-weight="700">FK</text>
+    <text x="1376" y="87" fill="#94A3B8" font-size="12">Foreign Key</text>
+
+    <text x="1340" y="113" fill="#34D399" font-size="12" font-weight="600">─────► Relasi 1:N / N:M</text>
+  </g>
+
+  <!-- Render Garis Relasi Terlebih Dahulu (di bawah tabel) -->
+  <g id="relations" stroke-width="1.6" fill="none">
+    <!-- Relasi jabatan -> user -->
+    <path d="M 260 130 C 287 130, 293 145, 320 145" stroke="#38BDF8" stroke-dasharray="none" opacity="0.75" marker-end="url(#arrow-sky)" />
+    <!-- Relasi bidang -> user -->
+    <path d="M 260 250 C 287 250, 293 184, 320 184" stroke="#38BDF8" stroke-dasharray="none" opacity="0.75" marker-end="url(#arrow-sky)" />
+    <!-- Relasi panggol -> user -->
+    <path d="M 260 370 C 287 370, 293 223, 320 223" stroke="#38BDF8" stroke-dasharray="none" opacity="0.75" marker-end="url(#arrow-sky)" />
+    <!-- Relasi alamat -> user -->
+    <path d="M 208 440 C 208 364.4, 376 415.6, 376 340" stroke="#38BDF8" stroke-dasharray="none" opacity="0.75" marker-end="url(#arrow-sky)" />
+    <!-- Relasi alamat -> tkp -->
+    <path d="M 280 612.5 C 298 612.5, 302 688, 320 688" stroke="#38BDF8" stroke-dasharray="none" opacity="0.75" marker-end="url(#arrow-sky)" />
+    <!-- Relasi alamat -> tersangka -->
+    <path d="M 232 670 C 232 853.6, 456.4 714, 640 714" stroke="#38BDF8" stroke-dasharray="none" opacity="0.75" marker-end="url(#arrow-sky)" />
+    <!-- Relasi instansi_hukum -> jaksa_penuntut -->
+    <path d="M 160 830 C 160 830, 160 850, 160 850" stroke="#FBBF24" stroke-dasharray="none" opacity="0.75" marker-end="url(#arrow-amber)" />
+    <!-- Relasi instansi_hukum -> perkara -->
+    <path d="M 280 760 C 442 760, 478 516, 640 516" stroke="#FBBF24" stroke-dasharray="none" opacity="0.75" marker-end="url(#arrow-amber)" />
+    <!-- Relasi user -> perkara_ppns -->
+    <path d="M 600 158 C 618 158, 622 140, 640 140" stroke="#0284C7" stroke-dasharray="none" opacity="0.75" marker-end="url(#arrow-blue)" />
+    <!-- Relasi user -> audit_log -->
+    <path d="M 460 340 C 460 340, 460 360, 460 360" stroke="#94A3B8" stroke-dasharray="none" opacity="0.75" marker-end="url(#arrow-slate)" />
+    <!-- Relasi tkp -> perkara -->
+    <path d="M 600 671 C 618 671, 622 442, 640 442" stroke="#2563EB" stroke-dasharray="none" opacity="0.75" marker-end="url(#arrow-blue)" />
+    <!-- Relasi perkara -> perkara_ppns -->
+    <path d="M 795 220 C 795 215.5, 785 204.5, 785 200" stroke="#2563EB" stroke-dasharray="none" opacity="0.75" marker-end="url(#arrow-blue)" />
+    <!-- Relasi perkara -> tersangka -->
+    <path d="M 795 590 C 795 590, 795 610, 795 610" stroke="#2563EB" stroke-dasharray="none" opacity="0.75" marker-end="url(#arrow-blue)" />
+    <!-- Relasi perkara -> berkas_perkara -->
+    <path d="M 950 349.5 C 968 349.5, 972 342.5, 990 342.5" stroke="#2563EB" stroke-dasharray="none" opacity="0.75" marker-end="url(#arrow-blue)" />
+    <!-- Relasi tersangka -> berkas_perkara -->
+    <path d="M 950 662 C 1011.2 662, 1086 631.2, 1086 570" stroke="#059669" stroke-dasharray="none" opacity="0.75" marker-end="url(#arrow-emerald)" />
+    <rect x="973" y="598" width="90" height="18" rx="3" fill="#0F172A" stroke="#059669" stroke-width="1" />
+    <text x="1018" y="608" text-anchor="middle" fill="#34D399" font-size="10" font-weight="700">1:1 (Unique)</text>
+    <!-- Relasi berkas_perkara -> berkas_pasal -->
+    <path d="M 1038 570 C 1038 644.7, 872 815.3, 872 890" stroke="#059669" stroke-dasharray="none" opacity="0.75" marker-end="url(#arrow-emerald)" />
+    <!-- Relasi pasal -> berkas_pasal -->
+    <path d="M 600 930 C 618 930, 622 950, 640 950" stroke="#059669" stroke-dasharray="none" opacity="0.75" marker-end="url(#arrow-emerald)" />
+    <!-- Relasi berkas_perkara -> tahapan_perkara -->
+    <path d="M 1310 290 C 1328 290, 1332 235, 1350 235" stroke="#059669" stroke-dasharray="none" opacity="0.75" marker-end="url(#arrow-emerald)" />
+    <!-- Relasi berkas_perkara -> dpo -->
+    <path d="M 1310 430 C 1328 430, 1332 509, 1350 509" stroke="#D97706" stroke-dasharray="none" opacity="0.75" marker-end="url(#arrow-amber)" />
+    <!-- Relasi berkas_perkara -> sp3 -->
+    <path d="M 1310 517.5 C 1328 517.5, 1332 825, 1350 825" stroke="#DC2626" stroke-dasharray="none" opacity="0.75" marker-end="url(#arrow-red)" />
+    <!-- Relasi berkas_perkara -> dokumen -->
+    <path d="M 1182 570 C 1182 570, 1182 590, 1182 590" stroke="#475569" stroke-dasharray="none" opacity="0.75" marker-end="url(#arrow-slate)" />
+    <!-- Relasi sp3 -> sp3_ppns_anggota -->
+    <path d="M 1350 929 C 1323 929, 1317 930, 1290 930" stroke="#DC2626" stroke-dasharray="none" opacity="0.75" marker-end="url(#arrow-red)" />
+  </g>
+
+  <!-- Render Tabel-Tabel Domain -->
+  <g id="tables">
+    <!-- Tabel jabatan -->
+    <g transform="translate(40, 80)" filter="url(#cardShadow)">
+      <rect x="0" y="0" width="220" height="100" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+      <path d="M 0 6 A 6 6 0 0 1 6 0 L 214 0 A 6 6 0 0 1 220 6 L 220 28 L 0 28 Z" fill="#1E3A8A" />
+      <text x="10" y="19" fill="#FFFFFF" font-size="12" font-weight="700" letter-spacing="0.3">jabatan</text>
+      <text x="210" y="18" text-anchor="end" fill="#E2E8F0" font-size="9" font-weight="500" opacity="0.85">Master &amp; Organisasi</text>
+      <rect x="8" y="36" width="18" height="13" rx="2" fill="#0284C7" />
+      <text x="10" y="46" fill="#FFFFFF" font-size="8" font-weight="700">PK</text>
+      <text x="30" y="46" fill="#F8FAFC" font-size="10" font-weight="500">id</text>
+      <text x="210" y="46" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
+      <text x="10" y="64" fill="#F8FAFC" font-size="10" font-weight="500">nama_jabatan</text>
+      <text x="210" y="64" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(100)</text>
+      <text x="10" y="82" fill="#F8FAFC" font-size="10" font-weight="500">created_at / updated_at</text>
+      <text x="210" y="82" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">TIMESTAMP</text>
+    </g>
+    <!-- Tabel bidang -->
+    <g transform="translate(40, 200)" filter="url(#cardShadow)">
+      <rect x="0" y="0" width="220" height="100" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+      <path d="M 0 6 A 6 6 0 0 1 6 0 L 214 0 A 6 6 0 0 1 220 6 L 220 28 L 0 28 Z" fill="#1E3A8A" />
+      <text x="10" y="19" fill="#FFFFFF" font-size="12" font-weight="700" letter-spacing="0.3">bidang</text>
+      <text x="210" y="18" text-anchor="end" fill="#E2E8F0" font-size="9" font-weight="500" opacity="0.85">Master &amp; Organisasi</text>
+      <rect x="8" y="36" width="18" height="13" rx="2" fill="#0284C7" />
+      <text x="10" y="46" fill="#FFFFFF" font-size="8" font-weight="700">PK</text>
+      <text x="30" y="46" fill="#F8FAFC" font-size="10" font-weight="500">id</text>
+      <text x="210" y="46" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
+      <text x="10" y="64" fill="#F8FAFC" font-size="10" font-weight="500">nama_bidang</text>
+      <text x="210" y="64" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(100)</text>
+      <text x="10" y="82" fill="#F8FAFC" font-size="10" font-weight="500">created_at / updated_at</text>
+      <text x="210" y="82" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">TIMESTAMP</text>
+    </g>
+    <!-- Tabel panggol -->
+    <g transform="translate(40, 320)" filter="url(#cardShadow)">
+      <rect x="0" y="0" width="220" height="100" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+      <path d="M 0 6 A 6 6 0 0 1 6 0 L 214 0 A 6 6 0 0 1 220 6 L 220 28 L 0 28 Z" fill="#1E3A8A" />
+      <text x="10" y="19" fill="#FFFFFF" font-size="12" font-weight="700" letter-spacing="0.3">panggol</text>
+      <text x="210" y="18" text-anchor="end" fill="#E2E8F0" font-size="9" font-weight="500" opacity="0.85">Master &amp; Organisasi</text>
+      <rect x="8" y="36" width="18" height="13" rx="2" fill="#0284C7" />
+      <text x="10" y="46" fill="#FFFFFF" font-size="8" font-weight="700">PK</text>
+      <text x="30" y="46" fill="#F8FAFC" font-size="10" font-weight="500">id</text>
+      <text x="210" y="46" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
+      <text x="10" y="64" fill="#F8FAFC" font-size="10" font-weight="500">nama_pangkat</text>
+      <text x="210" y="64" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(100)</text>
+      <text x="10" y="82" fill="#F8FAFC" font-size="10" font-weight="500">golongan</text>
+      <text x="210" y="82" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(20)</text>
+    </g>
+    <!-- Tabel alamat -->
+    <g transform="translate(40, 440)" filter="url(#cardShadow)">
+      <rect x="0" y="0" width="240" height="230" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+      <path d="M 0 6 A 6 6 0 0 1 6 0 L 234 0 A 6 6 0 0 1 240 6 L 240 28 L 0 28 Z" fill="#1E3A8A" />
+      <text x="10" y="19" fill="#FFFFFF" font-size="12" font-weight="700" letter-spacing="0.3">alamat</text>
+      <text x="230" y="18" text-anchor="end" fill="#E2E8F0" font-size="9" font-weight="500" opacity="0.85">Master Wilayah</text>
+      <rect x="8" y="36" width="18" height="13" rx="2" fill="#0284C7" />
+      <text x="10" y="46" fill="#FFFFFF" font-size="8" font-weight="700">PK</text>
+      <text x="30" y="46" fill="#F8FAFC" font-size="10" font-weight="500">id</text>
+      <text x="230" y="46" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
+      <text x="10" y="64" fill="#F8FAFC" font-size="10" font-weight="500">nama</text>
+      <text x="230" y="64" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(150) NULL</text>
+      <text x="10" y="82" fill="#F8FAFC" font-size="10" font-weight="500">provinsi_kode / nama</text>
+      <text x="230" y="82" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(15/100)</text>
+      <text x="10" y="100" fill="#F8FAFC" font-size="10" font-weight="500">kabupaten_kode / nama</text>
+      <text x="230" y="100" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(15/100)</text>
+      <text x="10" y="118" fill="#F8FAFC" font-size="10" font-weight="500">kecamatan_kode / nama</text>
+      <text x="230" y="118" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(15/100)</text>
+      <text x="10" y="136" fill="#F8FAFC" font-size="10" font-weight="500">desa_kode / nama</text>
+      <text x="230" y="136" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(15/100)</text>
+      <text x="10" y="154" fill="#F8FAFC" font-size="10" font-weight="500">rt / rw / alamat_detail</text>
+      <text x="230" y="154" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR/TEXT</text>
+      <text x="10" y="172" fill="#F8FAFC" font-size="10" font-weight="500">created_at / updated_at</text>
+      <text x="230" y="172" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">TIMESTAMP</text>
+    </g>
+    <!-- Tabel instansi_hukum -->
+    <g transform="translate(40, 690)" filter="url(#cardShadow)">
+      <rect x="0" y="0" width="240" height="140" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+      <path d="M 0 6 A 6 6 0 0 1 6 0 L 234 0 A 6 6 0 0 1 240 6 L 240 28 L 0 28 Z" fill="#1E3A8A" />
+      <text x="10" y="19" fill="#FFFFFF" font-size="12" font-weight="700" letter-spacing="0.3">instansi_hukum</text>
+      <text x="230" y="18" text-anchor="end" fill="#E2E8F0" font-size="9" font-weight="500" opacity="0.85">Master Instansi</text>
+      <rect x="8" y="36" width="18" height="13" rx="2" fill="#0284C7" />
+      <text x="10" y="46" fill="#FFFFFF" font-size="8" font-weight="700">PK</text>
+      <text x="30" y="46" fill="#F8FAFC" font-size="10" font-weight="500">id</text>
+      <text x="230" y="46" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
+      <text x="10" y="64" fill="#F8FAFC" font-size="10" font-weight="500">jenis</text>
+      <text x="230" y="64" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">ENUM(&#039;kejaksaan&#039;,&#039;pengadilan&#039;)</text>
+      <text x="10" y="82" fill="#F8FAFC" font-size="10" font-weight="500">nama</text>
+      <text x="230" y="82" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(150)</text>
+      <text x="10" y="100" fill="#F8FAFC" font-size="10" font-weight="500">wilayah</text>
+      <text x="230" y="100" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(100)</text>
+      <text x="10" y="118" fill="#F8FAFC" font-size="10" font-weight="500">deleted_at</text>
+      <text x="230" y="118" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">TIMESTAMP NULL</text>
+    </g>
+    <!-- Tabel jaksa_penuntut -->
+    <g transform="translate(40, 850)" filter="url(#cardShadow)">
+      <rect x="0" y="0" width="240" height="160" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+      <path d="M 0 6 A 6 6 0 0 1 6 0 L 234 0 A 6 6 0 0 1 240 6 L 240 28 L 0 28 Z" fill="#1E3A8A" />
+      <text x="10" y="19" fill="#FFFFFF" font-size="12" font-weight="700" letter-spacing="0.3">jaksa_penuntut</text>
+      <text x="230" y="18" text-anchor="end" fill="#E2E8F0" font-size="9" font-weight="500" opacity="0.85">Master Jaksa</text>
+      <rect x="8" y="36" width="18" height="13" rx="2" fill="#0284C7" />
+      <text x="10" y="46" fill="#FFFFFF" font-size="8" font-weight="700">PK</text>
+      <text x="30" y="46" fill="#F8FAFC" font-size="10" font-weight="500">id</text>
+      <text x="230" y="46" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
+      <rect x="8" y="54" width="18" height="13" rx="2" fill="#D97706" />
+      <text x="11" y="64" fill="#FFFFFF" font-size="8" font-weight="700">FK</text>
+      <text x="30" y="64" fill="#F8FAFC" font-size="10" font-weight="500">instansi_hukum_id</text>
+      <text x="230" y="64" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
+      <text x="10" y="82" fill="#F8FAFC" font-size="10" font-weight="500">nama_jaksa</text>
+      <text x="230" y="82" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(150)</text>
+      <text x="10" y="100" fill="#F8FAFC" font-size="10" font-weight="500">nip</text>
+      <text x="230" y="100" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(18) [18 DIGIT]</text>
+      <text x="10" y="118" fill="#F8FAFC" font-size="10" font-weight="500">pangkat</text>
+      <text x="230" y="118" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(100)</text>
+      <text x="10" y="136" fill="#F8FAFC" font-size="10" font-weight="500">deleted_at</text>
+      <text x="230" y="136" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">TIMESTAMP NULL</text>
+    </g>
+    <!-- Tabel user -->
+    <g transform="translate(320, 80)" filter="url(#cardShadow)">
+      <rect x="0" y="0" width="280" height="260" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+      <path d="M 0 6 A 6 6 0 0 1 6 0 L 274 0 A 6 6 0 0 1 280 6 L 280 28 L 0 28 Z" fill="#0284C7" />
+      <text x="10" y="19" fill="#FFFFFF" font-size="12" font-weight="700" letter-spacing="0.3">user</text>
+      <text x="270" y="18" text-anchor="end" fill="#E2E8F0" font-size="9" font-weight="500" opacity="0.85">Aktor &amp; RBAC</text>
+      <rect x="8" y="36" width="18" height="13" rx="2" fill="#0284C7" />
+      <text x="10" y="46" fill="#FFFFFF" font-size="8" font-weight="700">PK</text>
+      <text x="30" y="46" fill="#F8FAFC" font-size="10" font-weight="500">id</text>
+      <text x="270" y="46" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
+      <text x="10" y="64" fill="#F8FAFC" font-size="10" font-weight="500">nama / email</text>
+      <text x="270" y="64" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(150) UNIQUE</text>
+      <text x="10" y="82" fill="#F8FAFC" font-size="10" font-weight="500">nip</text>
+      <text x="270" y="82" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(30) NULL</text>
+      <text x="10" y="100" fill="#F8FAFC" font-size="10" font-weight="500">role</text>
+      <text x="270" y="100" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">ENUM(&#039;administrator&#039;,&#039;penyidik&#039;,&#039;umum&#039;)</text>
+      <rect x="8" y="108" width="18" height="13" rx="2" fill="#D97706" />
+      <text x="11" y="118" fill="#FFFFFF" font-size="8" font-weight="700">FK</text>
+      <text x="30" y="118" fill="#F8FAFC" font-size="10" font-weight="500">jabatan_id / bidang_id</text>
+      <text x="270" y="118" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED NULL</text>
+      <rect x="8" y="126" width="18" height="13" rx="2" fill="#D97706" />
+      <text x="11" y="136" fill="#FFFFFF" font-size="8" font-weight="700">FK</text>
+      <text x="30" y="136" fill="#F8FAFC" font-size="10" font-weight="500">panggol_id / alamat_id</text>
+      <text x="270" y="136" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED NULL</text>
+      <text x="10" y="154" fill="#F8FAFC" font-size="10" font-weight="500">is_active</text>
+      <text x="270" y="154" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BOOLEAN DEFAULT 1</text>
+      <text x="10" y="172" fill="#F8FAFC" font-size="10" font-weight="500">password</text>
+      <text x="270" y="172" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(255)</text>
+      <text x="10" y="190" fill="#F8FAFC" font-size="10" font-weight="500">deleted_at</text>
+      <text x="270" y="190" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">TIMESTAMP NULL</text>
+    </g>
+    <!-- Tabel audit_log -->
+    <g transform="translate(320, 360)" filter="url(#cardShadow)">
+      <rect x="0" y="0" width="280" height="240" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+      <path d="M 0 6 A 6 6 0 0 1 6 0 L 274 0 A 6 6 0 0 1 280 6 L 280 28 L 0 28 Z" fill="#475569" />
+      <text x="10" y="19" fill="#FFFFFF" font-size="12" font-weight="700" letter-spacing="0.3">audit_log</text>
+      <text x="270" y="18" text-anchor="end" fill="#E2E8F0" font-size="9" font-weight="500" opacity="0.85">Audit &amp; Security</text>
+      <rect x="8" y="36" width="18" height="13" rx="2" fill="#0284C7" />
+      <text x="10" y="46" fill="#FFFFFF" font-size="8" font-weight="700">PK</text>
+      <text x="30" y="46" fill="#F8FAFC" font-size="10" font-weight="500">id</text>
+      <text x="270" y="46" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
+      <rect x="8" y="54" width="18" height="13" rx="2" fill="#D97706" />
+      <text x="11" y="64" fill="#FFFFFF" font-size="8" font-weight="700">FK</text>
+      <text x="30" y="64" fill="#F8FAFC" font-size="10" font-weight="500">user_id</text>
+      <text x="270" y="64" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED NULL</text>
+      <rect x="8" y="72" width="18" height="13" rx="2" fill="#D97706" />
+      <text x="11" y="82" fill="#FFFFFF" font-size="8" font-weight="700">FK</text>
+      <text x="30" y="82" fill="#F8FAFC" font-size="10" font-weight="500">perkara_id</text>
+      <text x="270" y="82" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED NULL</text>
+      <text x="10" y="100" fill="#F8FAFC" font-size="10" font-weight="500">berkas_perkara_id</text>
+      <text x="270" y="100" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED NULL</text>
+      <text x="10" y="118" fill="#F8FAFC" font-size="10" font-weight="500">aksi / tabel / record_id</text>
+      <text x="270" y="118" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(50/50)/BIGINT</text>
+      <text x="10" y="136" fill="#F8FAFC" font-size="10" font-weight="500">data_lama / data_baru</text>
+      <text x="270" y="136" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">JSON NULL</text>
+      <text x="10" y="154" fill="#F8FAFC" font-size="10" font-weight="500">ip_address / user_agent</text>
+      <text x="270" y="154" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR/TEXT</text>
+      <text x="10" y="172" fill="#F8FAFC" font-size="10" font-weight="500">created_at</text>
+      <text x="270" y="172" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">TIMESTAMP</text>
+    </g>
+    <!-- Tabel tkp -->
+    <g transform="translate(320, 620)" filter="url(#cardShadow)">
+      <rect x="0" y="0" width="280" height="170" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+      <path d="M 0 6 A 6 6 0 0 1 6 0 L 274 0 A 6 6 0 0 1 280 6 L 280 28 L 0 28 Z" fill="#0284C7" />
+      <text x="10" y="19" fill="#FFFFFF" font-size="12" font-weight="700" letter-spacing="0.3">tkp</text>
+      <text x="270" y="18" text-anchor="end" fill="#E2E8F0" font-size="9" font-weight="500" opacity="0.85">Pra-SPDP (Lokasi)</text>
+      <rect x="8" y="36" width="18" height="13" rx="2" fill="#0284C7" />
+      <text x="10" y="46" fill="#FFFFFF" font-size="8" font-weight="700">PK</text>
+      <text x="30" y="46" fill="#F8FAFC" font-size="10" font-weight="500">id</text>
+      <text x="270" y="46" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
+      <rect x="8" y="54" width="18" height="13" rx="2" fill="#D97706" />
+      <text x="11" y="64" fill="#FFFFFF" font-size="8" font-weight="700">FK</text>
+      <text x="30" y="64" fill="#F8FAFC" font-size="10" font-weight="500">alamat_id</text>
+      <text x="270" y="64" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
+      <text x="10" y="82" fill="#F8FAFC" font-size="10" font-weight="500">klasifikasi</text>
+      <text x="270" y="82" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">ENUM(&#039;retailer&#039;,&#039;distributor&#039;,&#039;produksi&#039;)</text>
+      <text x="10" y="100" fill="#F8FAFC" font-size="10" font-weight="500">legalitas</text>
+      <text x="270" y="100" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">ENUM(&#039;legal&#039;,&#039;ilegal&#039;)</text>
+      <text x="10" y="118" fill="#F8FAFC" font-size="10" font-weight="500">modus</text>
+      <text x="270" y="118" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">ENUM(&#039;online&#039;,&#039;offline&#039;)</text>
+      <text x="10" y="136" fill="#F8FAFC" font-size="10" font-weight="500">deleted_at</text>
+      <text x="270" y="136" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">TIMESTAMP NULL</text>
+    </g>
+    <!-- Tabel pasal -->
+    <g transform="translate(320, 810)" filter="url(#cardShadow)">
+      <rect x="0" y="0" width="280" height="200" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+      <path d="M 0 6 A 6 6 0 0 1 6 0 L 274 0 A 6 6 0 0 1 280 6 L 280 28 L 0 28 Z" fill="#1E3A8A" />
+      <text x="10" y="19" fill="#FFFFFF" font-size="12" font-weight="700" letter-spacing="0.3">pasal</text>
+      <text x="270" y="18" text-anchor="end" fill="#E2E8F0" font-size="9" font-weight="500" opacity="0.85">Master Hukum</text>
+      <rect x="8" y="36" width="18" height="13" rx="2" fill="#0284C7" />
+      <text x="10" y="46" fill="#FFFFFF" font-size="8" font-weight="700">PK</text>
+      <text x="30" y="46" fill="#F8FAFC" font-size="10" font-weight="500">id</text>
+      <text x="270" y="46" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
+      <text x="10" y="64" fill="#F8FAFC" font-size="10" font-weight="500">nama_pasal</text>
+      <text x="270" y="64" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(150)</text>
+      <text x="10" y="82" fill="#F8FAFC" font-size="10" font-weight="500">pasal</text>
+      <text x="270" y="82" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(100)</text>
+      <text x="10" y="100" fill="#F8FAFC" font-size="10" font-weight="500">nomor / tahun</text>
+      <text x="270" y="100" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(50)/VARCHAR(10)</text>
+      <text x="10" y="118" fill="#F8FAFC" font-size="10" font-weight="500">isi</text>
+      <text x="270" y="118" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">TEXT</text>
+      <text x="10" y="136" fill="#F8FAFC" font-size="10" font-weight="500">status</text>
+      <text x="270" y="136" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">ENUM(&#039;aktif&#039;,&#039;nonaktif&#039;)</text>
+      <text x="10" y="154" fill="#F8FAFC" font-size="10" font-weight="500">deleted_at</text>
+      <text x="270" y="154" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">TIMESTAMP NULL</text>
+    </g>
+    <!-- Tabel perkara_ppns -->
+    <g transform="translate(640, 80)" filter="url(#cardShadow)">
+      <rect x="0" y="0" width="290" height="120" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+      <path d="M 0 6 A 6 6 0 0 1 6 0 L 284 0 A 6 6 0 0 1 290 6 L 290 28 L 0 28 Z" fill="#0284C7" />
+      <text x="10" y="19" fill="#FFFFFF" font-size="12" font-weight="700" letter-spacing="0.3">perkara_ppns</text>
+      <text x="280" y="18" text-anchor="end" fill="#E2E8F0" font-size="9" font-weight="500" opacity="0.85">Pivot Tim PPNS</text>
+      <rect x="8" y="36" width="34" height="13" rx="2" fill="#0284C7" />
+      <text x="10" y="46" fill="#FFFFFF" font-size="8" font-weight="700">PK/FK</text>
+      <text x="46" y="46" fill="#F8FAFC" font-size="10" font-weight="500">perkara_id</text>
+      <text x="280" y="46" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
+      <rect x="8" y="54" width="34" height="13" rx="2" fill="#0284C7" />
+      <text x="10" y="64" fill="#FFFFFF" font-size="8" font-weight="700">PK/FK</text>
+      <text x="46" y="64" fill="#F8FAFC" font-size="10" font-weight="500">user_id</text>
+      <text x="280" y="64" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
+      <text x="10" y="82" fill="#F8FAFC" font-size="10" font-weight="500">peran</text>
+      <text x="280" y="82" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">ENUM(&#039;utama&#039;,&#039;anggota&#039;)</text>
+      <text x="10" y="100" fill="#F8FAFC" font-size="10" font-weight="500">created_at / updated_at</text>
+      <text x="280" y="100" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">TIMESTAMP</text>
+    </g>
+    <!-- Tabel perkara -->
+    <g transform="translate(640, 220)" filter="url(#cardShadow)">
+      <rect x="0" y="0" width="310" height="370" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+      <path d="M 0 6 A 6 6 0 0 1 6 0 L 304 0 A 6 6 0 0 1 310 6 L 310 28 L 0 28 Z" fill="#2563EB" />
+      <text x="10" y="19" fill="#FFFFFF" font-size="12" font-weight="700" letter-spacing="0.3">perkara</text>
+      <text x="300" y="18" text-anchor="end" fill="#E2E8F0" font-size="9" font-weight="500" opacity="0.85">Entitas Induk Perkara</text>
+      <rect x="8" y="36" width="18" height="13" rx="2" fill="#0284C7" />
+      <text x="10" y="46" fill="#FFFFFF" font-size="8" font-weight="700">PK</text>
+      <text x="30" y="46" fill="#F8FAFC" font-size="10" font-weight="500">id</text>
+      <text x="300" y="46" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
+      <text x="10" y="64" fill="#F8FAFC" font-size="10" font-weight="500">nomor_laporan_kejadian</text>
+      <text x="300" y="64" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(100) UNIQUE</text>
+      <text x="10" y="82" fill="#F8FAFC" font-size="10" font-weight="500">tanggal_laporan_kejadian</text>
+      <text x="300" y="82" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">DATE</text>
+      <text x="10" y="100" fill="#F8FAFC" font-size="10" font-weight="500">tahap_laporan_status</text>
+      <text x="300" y="100" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">ENUM(&#039;draft&#039;,&#039;final&#039;)</text>
+      <text x="10" y="118" fill="#F8FAFC" font-size="10" font-weight="500">nomor_surat_perintah</text>
+      <text x="300" y="118" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(100) NULL</text>
+      <text x="10" y="136" fill="#F8FAFC" font-size="10" font-weight="500">tanggal_surat_perintah</text>
+      <text x="300" y="136" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">DATE NULL</text>
+      <text x="10" y="154" fill="#F8FAFC" font-size="10" font-weight="500">tahap_sprindik_status</text>
+      <text x="300" y="154" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">ENUM(&#039;draft&#039;,&#039;final&#039;) NULL</text>
+      <text x="10" y="172" fill="#F8FAFC" font-size="10" font-weight="500">tahap_perkara_status</text>
+      <text x="300" y="172" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">ENUM(&#039;draft&#039;,&#039;final&#039;) NULL</text>
+      <rect x="8" y="180" width="18" height="13" rx="2" fill="#D97706" />
+      <text x="11" y="190" fill="#FFFFFF" font-size="8" font-weight="700">FK</text>
+      <text x="30" y="190" fill="#F8FAFC" font-size="10" font-weight="500">tkp_id</text>
+      <text x="300" y="190" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED NULL</text>
+      <rect x="8" y="198" width="18" height="13" rx="2" fill="#D97706" />
+      <text x="11" y="208" fill="#FFFFFF" font-size="8" font-weight="700">FK</text>
+      <text x="30" y="208" fill="#F8FAFC" font-size="10" font-weight="500">penuntut_umum_instansi_id</text>
+      <text x="300" y="208" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED NULL</text>
+      <text x="10" y="226" fill="#F8FAFC" font-size="10" font-weight="500">penuntut_umum_nama / nip</text>
+      <text x="300" y="226" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(150)/VARCHAR(18)</text>
+      <text x="10" y="244" fill="#F8FAFC" font-size="10" font-weight="500">penuntut_umum_pangkat</text>
+      <text x="300" y="244" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(100) NULL</text>
+      <text x="10" y="262" fill="#F8FAFC" font-size="10" font-weight="500">deskripsi / created_by</text>
+      <text x="300" y="262" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">TEXT / BIGINT UNSIGNED</text>
+      <text x="10" y="280" fill="#F8FAFC" font-size="10" font-weight="500">deleted_at</text>
+      <text x="300" y="280" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">TIMESTAMP NULL</text>
+    </g>
+    <!-- Tabel tersangka -->
+    <g transform="translate(640, 610)" filter="url(#cardShadow)">
+      <rect x="0" y="0" width="310" height="260" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+      <path d="M 0 6 A 6 6 0 0 1 6 0 L 304 0 A 6 6 0 0 1 310 6 L 310 28 L 0 28 Z" fill="#0284C7" />
+      <text x="10" y="19" fill="#FFFFFF" font-size="12" font-weight="700" letter-spacing="0.3">tersangka</text>
+      <text x="300" y="18" text-anchor="end" fill="#E2E8F0" font-size="9" font-weight="500" opacity="0.85">Subjek Hukum</text>
+      <rect x="8" y="36" width="18" height="13" rx="2" fill="#0284C7" />
+      <text x="10" y="46" fill="#FFFFFF" font-size="8" font-weight="700">PK</text>
+      <text x="30" y="46" fill="#F8FAFC" font-size="10" font-weight="500">id</text>
+      <text x="300" y="46" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
+      <rect x="8" y="54" width="18" height="13" rx="2" fill="#D97706" />
+      <text x="11" y="64" fill="#FFFFFF" font-size="8" font-weight="700">FK</text>
+      <text x="30" y="64" fill="#F8FAFC" font-size="10" font-weight="500">perkara_id</text>
+      <text x="300" y="64" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
+      <rect x="8" y="72" width="18" height="13" rx="2" fill="#D97706" />
+      <text x="11" y="82" fill="#FFFFFF" font-size="8" font-weight="700">FK</text>
+      <text x="30" y="82" fill="#F8FAFC" font-size="10" font-weight="500">alamat_id</text>
+      <text x="300" y="82" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED NULL</text>
+      <text x="10" y="100" fill="#F8FAFC" font-size="10" font-weight="500">nama / alias / bin_binti</text>
+      <text x="300" y="100" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(150/100/100)</text>
+      <text x="10" y="118" fill="#F8FAFC" font-size="10" font-weight="500">nik</text>
+      <text x="300" y="118" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(16) [16 DIGIT]</text>
+      <text x="10" y="136" fill="#F8FAFC" font-size="10" font-weight="500">jenis_kelamin / agama</text>
+      <text x="300" y="136" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">ENUM/VARCHAR(30)</text>
+      <text x="10" y="154" fill="#F8FAFC" font-size="10" font-weight="500">tempat_lahir / tanggal_lahir</text>
+      <text x="300" y="154" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(100)/DATE</text>
+      <text x="10" y="172" fill="#F8FAFC" font-size="10" font-weight="500">pekerjaan / kewarganegaraan</text>
+      <text x="300" y="172" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(100)/VARCHAR(50)</text>
+      <text x="10" y="190" fill="#F8FAFC" font-size="10" font-weight="500">deleted_at</text>
+      <text x="300" y="190" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">TIMESTAMP NULL</text>
+    </g>
+    <!-- Tabel berkas_pasal -->
+    <g transform="translate(640, 890)" filter="url(#cardShadow)">
+      <rect x="0" y="0" width="290" height="120" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+      <path d="M 0 6 A 6 6 0 0 1 6 0 L 284 0 A 6 6 0 0 1 290 6 L 290 28 L 0 28 Z" fill="#059669" />
+      <text x="10" y="19" fill="#FFFFFF" font-size="12" font-weight="700" letter-spacing="0.3">berkas_pasal</text>
+      <text x="280" y="18" text-anchor="end" fill="#E2E8F0" font-size="9" font-weight="500" opacity="0.85">Pivot Pasal Berlapis</text>
+      <rect x="8" y="36" width="34" height="13" rx="2" fill="#0284C7" />
+      <text x="10" y="46" fill="#FFFFFF" font-size="8" font-weight="700">PK/FK</text>
+      <text x="46" y="46" fill="#F8FAFC" font-size="10" font-weight="500">berkas_perkara_id</text>
+      <text x="280" y="46" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
+      <rect x="8" y="54" width="34" height="13" rx="2" fill="#0284C7" />
+      <text x="10" y="64" fill="#FFFFFF" font-size="8" font-weight="700">PK/FK</text>
+      <text x="46" y="64" fill="#F8FAFC" font-size="10" font-weight="500">pasal_id</text>
+      <text x="280" y="64" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
+      <text x="10" y="82" fill="#F8FAFC" font-size="10" font-weight="500">created_at / updated_at</text>
+      <text x="280" y="82" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">TIMESTAMP</text>
+    </g>
+    <!-- Tabel berkas_perkara -->
+    <g transform="translate(990, 220)" filter="url(#cardShadow)">
+      <rect x="0" y="0" width="320" height="350" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+      <path d="M 0 6 A 6 6 0 0 1 6 0 L 314 0 A 6 6 0 0 1 320 6 L 320 28 L 0 28 Z" fill="#059669" />
+      <text x="10" y="19" fill="#FFFFFF" font-size="12" font-weight="700" letter-spacing="0.3">berkas_perkara</text>
+      <text x="310" y="18" text-anchor="end" fill="#E2E8F0" font-size="9" font-weight="500" opacity="0.85">Core Berkas Perkara (1:1 Tersangka)</text>
+      <rect x="8" y="36" width="18" height="13" rx="2" fill="#0284C7" />
+      <text x="10" y="46" fill="#FFFFFF" font-size="8" font-weight="700">PK</text>
+      <text x="30" y="46" fill="#F8FAFC" font-size="10" font-weight="500">id</text>
+      <text x="310" y="46" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
+      <rect x="8" y="54" width="18" height="13" rx="2" fill="#D97706" />
+      <text x="11" y="64" fill="#FFFFFF" font-size="8" font-weight="700">FK</text>
+      <text x="30" y="64" fill="#F8FAFC" font-size="10" font-weight="500">perkara_id</text>
+      <text x="310" y="64" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
+      <rect x="8" y="72" width="18" height="13" rx="2" fill="#D97706" />
+      <text x="11" y="82" fill="#FFFFFF" font-size="8" font-weight="700">FK</text>
+      <text x="30" y="82" fill="#F8FAFC" font-size="10" font-weight="500">tersangka_id</text>
+      <text x="310" y="82" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED UNIQUE</text>
+      <text x="10" y="100" fill="#F8FAFC" font-size="10" font-weight="500">nomor_berkas</text>
+      <text x="310" y="100" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(100) (IDENTIK LK)</text>
+      <text x="10" y="118" fill="#F8FAFC" font-size="10" font-weight="500">tanggal_spdp</text>
+      <text x="310" y="118" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">DATE NULL</text>
+      <text x="10" y="136" fill="#F8FAFC" font-size="10" font-weight="500">status_formal</text>
+      <text x="310" y="136" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">ENUM(&#039;selesai&#039;,&#039;tidak_selesai&#039;) NULL</text>
+      <text x="10" y="154" fill="#F8FAFC" font-size="10" font-weight="500">status_proses</text>
+      <text x="310" y="154" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(50) [Tahap Difinalkan]</text>
+      <text x="10" y="172" fill="#F8FAFC" font-size="10" font-weight="500">progress_persen</text>
+      <text x="310" y="172" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">TINYINT UNSIGNED [0..100%]</text>
+      <text x="10" y="190" fill="#F8FAFC" font-size="10" font-weight="500">is_dpo</text>
+      <text x="310" y="190" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BOOLEAN DEFAULT 0</text>
+      <text x="10" y="208" fill="#F8FAFC" font-size="10" font-weight="500">sla_deadline</text>
+      <text x="310" y="208" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">DATE NULL [1 Bln Reset/Tahap]</text>
+      <text x="10" y="226" fill="#F8FAFC" font-size="10" font-weight="500">catatan / created_by</text>
+      <text x="310" y="226" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">TEXT / BIGINT UNSIGNED</text>
+      <text x="10" y="244" fill="#F8FAFC" font-size="10" font-weight="500">deleted_at</text>
+      <text x="310" y="244" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">TIMESTAMP NULL</text>
+    </g>
+    <!-- Tabel dokumen -->
+    <g transform="translate(990, 590)" filter="url(#cardShadow)">
+      <rect x="0" y="0" width="320" height="260" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+      <path d="M 0 6 A 6 6 0 0 1 6 0 L 314 0 A 6 6 0 0 1 320 6 L 320 28 L 0 28 Z" fill="#475569" />
+      <text x="10" y="19" fill="#FFFFFF" font-size="12" font-weight="700" letter-spacing="0.3">dokumen</text>
+      <text x="310" y="18" text-anchor="end" fill="#E2E8F0" font-size="9" font-weight="500" opacity="0.85">Manajemen Berkas Digital</text>
+      <rect x="8" y="36" width="18" height="13" rx="2" fill="#0284C7" />
+      <text x="10" y="46" fill="#FFFFFF" font-size="8" font-weight="700">PK</text>
+      <text x="30" y="46" fill="#F8FAFC" font-size="10" font-weight="500">id</text>
+      <text x="310" y="46" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
+      <rect x="8" y="54" width="18" height="13" rx="2" fill="#D97706" />
+      <text x="11" y="64" fill="#FFFFFF" font-size="8" font-weight="700">FK</text>
+      <text x="30" y="64" fill="#F8FAFC" font-size="10" font-weight="500">perkara_id</text>
+      <text x="310" y="64" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED NULL</text>
+      <rect x="8" y="72" width="18" height="13" rx="2" fill="#D97706" />
+      <text x="11" y="82" fill="#FFFFFF" font-size="8" font-weight="700">FK</text>
+      <text x="30" y="82" fill="#F8FAFC" font-size="10" font-weight="500">berkas_perkara_id</text>
+      <text x="310" y="82" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED NULL</text>
+      <rect x="8" y="90" width="18" height="13" rx="2" fill="#D97706" />
+      <text x="11" y="100" fill="#FFFFFF" font-size="8" font-weight="700">FK</text>
+      <text x="30" y="100" fill="#F8FAFC" font-size="10" font-weight="500">dpo_id</text>
+      <text x="310" y="100" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED NULL [MULTI]</text>
+      <rect x="8" y="108" width="18" height="13" rx="2" fill="#D97706" />
+      <text x="11" y="118" fill="#FFFFFF" font-size="8" font-weight="700">FK</text>
+      <text x="30" y="118" fill="#F8FAFC" font-size="10" font-weight="500">tahapan_perkara_id</text>
+      <text x="310" y="118" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED NULL</text>
+      <text x="10" y="136" fill="#F8FAFC" font-size="10" font-weight="500">kategori</text>
+      <text x="310" y="136" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(50)</text>
+      <text x="10" y="154" fill="#F8FAFC" font-size="10" font-weight="500">nama_dokumen / nama_file_asli</text>
+      <text x="310" y="154" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(255)</text>
+      <text x="10" y="172" fill="#F8FAFC" font-size="10" font-weight="500">file_path / file_size / mime_type</text>
+      <text x="310" y="172" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR/BIGINT/VARCHAR</text>
+      <text x="10" y="190" fill="#F8FAFC" font-size="10" font-weight="500">deleted_at</text>
+      <text x="310" y="190" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">TIMESTAMP NULL</text>
+    </g>
+    <!-- Tabel sp3_ppns_anggota -->
+    <g transform="translate(990, 870)" filter="url(#cardShadow)">
+      <rect x="0" y="0" width="300" height="120" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+      <path d="M 0 6 A 6 6 0 0 1 6 0 L 294 0 A 6 6 0 0 1 300 6 L 300 28 L 0 28 Z" fill="#991B1B" />
+      <text x="10" y="19" fill="#FFFFFF" font-size="12" font-weight="700" letter-spacing="0.3">sp3_ppns_anggota</text>
+      <text x="290" y="18" text-anchor="end" fill="#E2E8F0" font-size="9" font-weight="500" opacity="0.85">Pivot Anggota Tim SP3</text>
+      <rect x="8" y="36" width="34" height="13" rx="2" fill="#0284C7" />
+      <text x="10" y="46" fill="#FFFFFF" font-size="8" font-weight="700">PK/FK</text>
+      <text x="46" y="46" fill="#F8FAFC" font-size="10" font-weight="500">sp3_id</text>
+      <text x="290" y="46" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
+      <rect x="8" y="54" width="34" height="13" rx="2" fill="#0284C7" />
+      <text x="10" y="64" fill="#FFFFFF" font-size="8" font-weight="700">PK/FK</text>
+      <text x="46" y="64" fill="#F8FAFC" font-size="10" font-weight="500">user_id</text>
+      <text x="290" y="64" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
+      <text x="10" y="82" fill="#F8FAFC" font-size="10" font-weight="500">created_at / updated_at</text>
+      <text x="290" y="82" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">TIMESTAMP</text>
+    </g>
+    <!-- Tabel tahapan_perkara -->
+    <g transform="translate(1350, 80)" filter="url(#cardShadow)">
+      <rect x="0" y="0" width="300" height="310" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+      <path d="M 0 6 A 6 6 0 0 1 6 0 L 294 0 A 6 6 0 0 1 300 6 L 300 28 L 0 28 Z" fill="#059669" />
+      <text x="10" y="19" fill="#FFFFFF" font-size="12" font-weight="700" letter-spacing="0.3">tahapan_perkara</text>
+      <text x="290" y="18" text-anchor="end" fill="#E2E8F0" font-size="9" font-weight="500" opacity="0.85">Progress Tahapan Perkara</text>
+      <rect x="8" y="36" width="18" height="13" rx="2" fill="#0284C7" />
+      <text x="10" y="46" fill="#FFFFFF" font-size="8" font-weight="700">PK</text>
+      <text x="30" y="46" fill="#F8FAFC" font-size="10" font-weight="500">id</text>
+      <text x="290" y="46" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
+      <rect x="8" y="54" width="18" height="13" rx="2" fill="#D97706" />
+      <text x="11" y="64" fill="#FFFFFF" font-size="8" font-weight="700">FK</text>
+      <text x="30" y="64" fill="#F8FAFC" font-size="10" font-weight="500">berkas_perkara_id</text>
+      <text x="290" y="64" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
+      <text x="10" y="82" fill="#F8FAFC" font-size="10" font-weight="500">jenis_tahap</text>
+      <text x="290" y="82" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">ENUM(&#039;SPDP&#039;,&#039;TAHAP_1&#039;,&#039;P21&#039;,&#039;TAHAP_2&#039;,...)</text>
+      <text x="10" y="100" fill="#F8FAFC" font-size="10" font-weight="500">nomor_surat / tanggal_surat</text>
+      <text x="290" y="100" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(100) / DATE</text>
+      <text x="10" y="118" fill="#F8FAFC" font-size="10" font-weight="500">catatan</text>
+      <text x="290" y="118" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">TEXT NULL</text>
+      <rect x="8" y="126" width="18" height="13" rx="2" fill="#D97706" />
+      <text x="11" y="136" fill="#FFFFFF" font-size="8" font-weight="700">FK</text>
+      <text x="30" y="136" fill="#F8FAFC" font-size="10" font-weight="500">pengadilan_instansi_id</text>
+      <text x="290" y="136" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED NULL</text>
+      <text x="10" y="154" fill="#F8FAFC" font-size="10" font-weight="500">amar_putusan / masa_hukuman</text>
+      <text x="290" y="154" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">TEXT / VARCHAR NULL</text>
+      <text x="10" y="172" fill="#F8FAFC" font-size="10" font-weight="500">status</text>
+      <text x="290" y="172" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">ENUM(&#039;draft&#039;,&#039;final&#039;)</text>
+      <text x="10" y="190" fill="#F8FAFC" font-size="10" font-weight="500">finalized_at / finalized_by</text>
+      <text x="290" y="190" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">TIMESTAMP / BIGINT NULL</text>
+      <text x="10" y="208" fill="#F8FAFC" font-size="10" font-weight="500">deleted_at</text>
+      <text x="290" y="208" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">TIMESTAMP NULL</text>
+    </g>
+    <!-- Tabel dpo -->
+    <g transform="translate(1350, 410)" filter="url(#cardShadow)">
+      <rect x="0" y="0" width="300" height="330" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+      <path d="M 0 6 A 6 6 0 0 1 6 0 L 294 0 A 6 6 0 0 1 300 6 L 300 28 L 0 28 Z" fill="#D97706" />
+      <text x="10" y="19" fill="#FFFFFF" font-size="12" font-weight="700" letter-spacing="0.3">dpo</text>
+      <text x="290" y="18" text-anchor="end" fill="#E2E8F0" font-size="9" font-weight="500" opacity="0.85">Penetapan &amp; Penangkapan DPO</text>
+      <rect x="8" y="36" width="18" height="13" rx="2" fill="#0284C7" />
+      <text x="10" y="46" fill="#FFFFFF" font-size="8" font-weight="700">PK</text>
+      <text x="30" y="46" fill="#F8FAFC" font-size="10" font-weight="500">id</text>
+      <text x="290" y="46" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
+      <rect x="8" y="54" width="18" height="13" rx="2" fill="#D97706" />
+      <text x="11" y="64" fill="#FFFFFF" font-size="8" font-weight="700">FK</text>
+      <text x="30" y="64" fill="#F8FAFC" font-size="10" font-weight="500">berkas_perkara_id</text>
+      <text x="290" y="64" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
+      <text x="10" y="82" fill="#F8FAFC" font-size="10" font-weight="500">nomor_surat / tanggal_penetapan</text>
+      <text x="290" y="82" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(100) / DATE</text>
+      <text x="10" y="100" fill="#F8FAFC" font-size="10" font-weight="500">status</text>
+      <text x="290" y="100" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">ENUM(&#039;aktif&#039;,&#039;nonaktif&#039;)</text>
+      <text x="10" y="118" fill="#F8FAFC" font-size="10" font-weight="500">nomor_surat_penangkapan</text>
+      <text x="290" y="118" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(100) NULL</text>
+      <text x="10" y="136" fill="#F8FAFC" font-size="10" font-weight="500">tanggal_surat_penangkapan</text>
+      <text x="290" y="136" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">DATE NULL</text>
+      <text x="10" y="154" fill="#F8FAFC" font-size="10" font-weight="500">nomor_surat_penahanan</text>
+      <text x="290" y="154" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(100) NULL</text>
+      <text x="10" y="172" fill="#F8FAFC" font-size="10" font-weight="500">tanggal_penahanan</text>
+      <text x="290" y="172" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">DATE NULL</text>
+      <rect x="8" y="180" width="18" height="13" rx="2" fill="#D97706" />
+      <text x="11" y="190" fill="#FFFFFF" font-size="8" font-weight="700">FK</text>
+      <text x="30" y="190" fill="#F8FAFC" font-size="10" font-weight="500">dokumen_id / dokumen_penangkapan_id</text>
+      <text x="290" y="190" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED NULL</text>
+      <text x="10" y="208" fill="#F8FAFC" font-size="10" font-weight="500">keterangan_penangkapan</text>
+      <text x="290" y="208" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">TEXT NULL</text>
+      <text x="10" y="226" fill="#F8FAFC" font-size="10" font-weight="500">deleted_at</text>
+      <text x="290" y="226" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">TIMESTAMP NULL</text>
+    </g>
+    <!-- Tabel sp3 -->
+    <g transform="translate(1350, 760)" filter="url(#cardShadow)">
+      <rect x="0" y="0" width="300" height="260" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+      <path d="M 0 6 A 6 6 0 0 1 6 0 L 294 0 A 6 6 0 0 1 300 6 L 300 28 L 0 28 Z" fill="#DC2626" />
+      <text x="10" y="19" fill="#FFFFFF" font-size="12" font-weight="700" letter-spacing="0.3">sp3</text>
+      <text x="290" y="18" text-anchor="end" fill="#E2E8F0" font-size="9" font-weight="500" opacity="0.85">Penghentian Penyidikan (SP3 Terminal)</text>
+      <rect x="8" y="36" width="18" height="13" rx="2" fill="#0284C7" />
+      <text x="10" y="46" fill="#FFFFFF" font-size="8" font-weight="700">PK</text>
+      <text x="30" y="46" fill="#F8FAFC" font-size="10" font-weight="500">id</text>
+      <text x="290" y="46" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
+      <rect x="8" y="54" width="18" height="13" rx="2" fill="#D97706" />
+      <text x="11" y="64" fill="#FFFFFF" font-size="8" font-weight="700">FK</text>
+      <text x="30" y="64" fill="#F8FAFC" font-size="10" font-weight="500">berkas_perkara_id</text>
+      <text x="290" y="64" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
+      <text x="10" y="82" fill="#F8FAFC" font-size="10" font-weight="500">nomor_surat / tanggal_sp3</text>
+      <text x="290" y="82" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(100) / DATE</text>
+      <text x="10" y="100" fill="#F8FAFC" font-size="10" font-weight="500">alasan_penghentian / keterangan</text>
+      <text x="290" y="100" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(100) / TEXT</text>
+      <rect x="8" y="108" width="18" height="13" rx="2" fill="#D97706" />
+      <text x="11" y="118" fill="#FFFFFF" font-size="8" font-weight="700">FK</text>
+      <text x="30" y="118" fill="#F8FAFC" font-size="10" font-weight="500">dokumen_id</text>
+      <text x="290" y="118" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
+      <rect x="8" y="126" width="18" height="13" rx="2" fill="#D97706" />
+      <text x="11" y="136" fill="#FFFFFF" font-size="8" font-weight="700">FK</text>
+      <text x="30" y="136" fill="#F8FAFC" font-size="10" font-weight="500">penyidik_utama_id</text>
+      <text x="290" y="136" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED NULL</text>
+      <text x="10" y="154" fill="#F8FAFC" font-size="10" font-weight="500">penandatangan_nama</text>
+      <text x="290" y="154" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(150) NULL</text>
+      <text x="10" y="172" fill="#F8FAFC" font-size="10" font-weight="500">penandatangan_jabatan</text>
+      <text x="290" y="172" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(150) NULL</text>
+      <text x="10" y="190" fill="#F8FAFC" font-size="10" font-weight="500">deleted_at</text>
+      <text x="290" y="190" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">TIMESTAMP NULL</text>
+    </g>
+  </g>
+</svg>
