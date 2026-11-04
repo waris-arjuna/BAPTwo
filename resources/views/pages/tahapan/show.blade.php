@@ -617,6 +617,16 @@
                     </div>
                 </div>
             @endif
+
+            {{-- Jejak Aktivitas / Case History / Audit Trail (PRD F-31) --}}
+            <x-perkara.case-history
+                :perkara="$berkas->perkara"
+                stage-type="tahapan"
+                :stage-title="$tahap->jenis_tahap->label()"
+                :stage-record-id="$tahap->id"
+                :berkas-id="$berkas->id"
+                :jenis-tahap="$tahap->jenis_tahap->value"
+            />
         </div>
 
         {{-- Modal Sub-Tahap Mandiri --}}

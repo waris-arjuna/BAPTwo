@@ -153,7 +153,11 @@ class TahapanPerkaraController extends Controller
         $nextStage = $nextStages[0] ?? null;
 
         return view('pages.tahapan.show', [
-            'berkas' => $berkas->load(['perkara.penuntutUmumInstansi', 'tersangka']),
+            'berkas' => $berkas->load([
+                'perkara.penuntutUmumInstansi',
+                'perkara.auditLogs' => fn ($query) => $query->with(['user', 'berkasPerkara.tersangka'])->orderByDesc('id'),
+                'tersangka',
+            ]),
             'tahap' => $tahapan,
             'references' => $references,
             'isLocked' => $tahapan->isFinal(),

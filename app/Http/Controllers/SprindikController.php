@@ -104,7 +104,15 @@ class SprindikController extends Controller
     {
         abort_if(empty($perkara->nomor_surat_perintah) && empty($perkara->tahap_sprindik_status), 404);
 
-        $perkara->load(['dokumenSprindik', 'dokumenLaporan', 'creator', 'updater', 'laporanFinalizer', 'sprindikFinalizer', 'auditLogs.user']);
+        $perkara->load([
+            'dokumenSprindik',
+            'dokumenLaporan',
+            'creator',
+            'updater',
+            'laporanFinalizer',
+            'sprindikFinalizer',
+            'auditLogs' => fn ($query) => $query->with(['user', 'berkasPerkara.tersangka'])->orderByDesc('id'),
+        ]);
 
         return view('pages.sprindik.show', compact('perkara'));
     }

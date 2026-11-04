@@ -81,7 +81,14 @@ class LaporanKejadianController extends Controller
             $perkara = Perkara::findOrFail($perkara);
         }
 
-        $perkara->load(['dokumenLaporan', 'dokumenSprindik', 'creator', 'updater', 'laporanFinalizer', 'auditLogs.user']);
+        $perkara->load([
+            'dokumenLaporan',
+            'dokumenSprindik',
+            'creator',
+            'updater',
+            'laporanFinalizer',
+            'auditLogs' => fn ($query) => $query->with(['user', 'berkasPerkara.tersangka'])->orderByDesc('id'),
+        ]);
 
         return view('pages.laporan-kejadian.show', compact('perkara'));
     }

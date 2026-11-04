@@ -823,7 +823,7 @@
             </div>
 
             {{-- Jejak Aktivitas / Case History / Audit Trail (PRD F-31) --}}
-            @include('pages.perkara._case-history', ['perkara' => $perkara])
+            <x-perkara.case-history :perkara="$perkara" />
         </div>
 
         {{-- Modal Tetapkan Status DPO --}}

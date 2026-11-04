@@ -213,28 +213,12 @@
                 </div>
             </div>
 
-            {{-- Jejak Aktivitas / Audit Trail --}}
-            @if ($perkara->auditLogs->isNotEmpty())
-                <div class="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] sm:p-6">
-                    <h3 class="mb-4 text-base font-semibold text-gray-800 dark:text-white/90">Jejak Aktivitas (Audit Trail)</h3>
-                    <div class="space-y-3">
-                        @foreach ($perkara->auditLogs as $log)
-                            <div class="flex items-start gap-3 rounded-lg border border-gray-100 bg-gray-50/50 p-3 text-sm dark:border-gray-800 dark:bg-white/[0.02]">
-                                <i class="fi fi-rr-time-past mt-0.5 text-brand-500"></i>
-                                <div class="flex-1">
-                                    <div class="flex flex-wrap items-center justify-between gap-2">
-                                        <span class="font-medium text-gray-800 dark:text-white/90">{{ ucwords(str_replace('_', ' ', $log->aksi)) }}</span>
-                                        <span class="text-xs text-gray-400">{{ $log->created_at?->format('d-m-Y H:i:s') }}</span>
-                                    </div>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400">
-                                        Oleh: {{ $log->user?->nama ?? 'Sistem' }} (IP: {{ $log->ip_address ?? '-' }})
-                                    </p>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            @endif
+            {{-- Jejak Aktivitas / Case History / Audit Trail (PRD F-31) --}}
+            <x-perkara.case-history
+                :perkara="$perkara"
+                stage-type="sprindik"
+                stage-title="Sprindik"
+            />
         </div>
     </div>
 @endsection
