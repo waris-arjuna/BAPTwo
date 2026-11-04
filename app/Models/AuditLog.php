@@ -165,12 +165,133 @@ class AuditLog extends Model
     }
 
     /**
+     * Memeriksa apakah rekaman log cocok dengan konteks tahapan tertentu.
+     *
+     * @param  string  $stageType  ('laporan_kejadian', 'sprindik', 'tahapan')
+     * @param  int|null  $stageRecordId  ID spesifik tahapan/record
+     * @param  int|null  $berkasId  ID berkas perkara
+     * @param  string|null  $jenisTahap  Enum value jenis tahapan ('spdp', 'tahap_1', dll.)
+     */
+    public function matchesStageContext(
+        string $stageType,
+        ?int $stageRecordId = null,
+        ?int $berkasId = null,
+        ?string $jenisTahap = null
+    ): bool {
+        if ($stageType === 'laporan_kejadian') {
+            return in_array($this->aksi, [
+                'create_laporan_kejadian',
+                'finalisasi_laporan',
+                'update_laporan_kejadian',
+                'simpan_draft_laporan',
+                'delete_laporan_kejadian',
+            ], true) || str_contains($this->aksi ?? '', 'laporan');
+        }
+
+        if ($stageType === 'sprindik') {
+            return in_array($this->aksi, [
+                'attach_sprindik',
+                'finalisasi_sprindik',
+                'update_sprindik',
+                'simpan_draft_sprindik',
+                'remove_sprindik',
+            ], true) || str_contains($this->aksi ?? '', 'sprindik');
+        }
+
+        if ($stageType === 'tahapan') {
+            $tahapanActions = [
+                'finalisasi_tahap',
+                'simpan_draft_tahap',
+                'simpan_sub_tahap',
+            ];
+
+            $isTahapanAksi = in_array($this->aksi, $tahapanActions, true) || $this->tabel === 'tahapan_perkara';
+            if (! $isTahapanAksi) {
+                return false;
+            }
+
+            // Validasi kecocokan berkas perkara jika parameter berkasId dikirim
+            if ($berkasId !== null && $this->berkas_perkara_id !== null && (int) $this->berkas_perkara_id !== (int) $berkasId) {
+                return false;
+            }
+
+            // Normalisasi perbandingan jenis tahap
+            $normalizeStage = function (?string $stage): string {
+                if (! $stage) {
+                    return '';
+                }
+                $s = strtolower(trim($stage));
+                $s = str_replace(['_', '-', ' '], '', $s);
+                if ($s === 'tahapi' || $s === 'tahap1') {
+                    return 'tahap1';
+                }
+                if ($s === 'tahapii' || $s === 'tahap2') {
+                    return 'tahap2';
+                }
+                if ($s === 'p21' || $s === 'p21a' || $s === 'p21p21a') {
+                    return 'p21';
+                }
+
+                return $s;
+            };
+
+            $stageGroups = [
+                'spdp' => ['spdp', 'p16', 'p17p'],
+                'p16' => ['spdp', 'p16', 'p17p'],
+                'p17p' => ['spdp', 'p16', 'p17p'],
+                'tahap1' => ['tahap1', 'p18p', 'p19'],
+                'p18p' => ['tahap1', 'p18p', 'p19'],
+                'p19' => ['tahap1', 'p18p', 'p19'],
+                'p21' => ['p21'],
+                'tahap2' => ['tahap2'],
+                'keputusanpengadilan' => ['keputusanpengadilan'],
+            ];
+
+            if ($jenisTahap !== null) {
+                $targetNorm = $normalizeStage($jenisTahap);
+                $allowedStages = $stageGroups[$targetNorm] ?? [$targetNorm];
+
+                $logStage = $this->data_baru['jenis_tahap'] ?? $this->data_baru['tahap'] ?? null;
+                if ($logStage !== null) {
+                    $logNorm = $normalizeStage((string) $logStage);
+                    if (! in_array($logNorm, $allowedStages, true)) {
+                        return false;
+                    }
+                }
+            }
+
+            // Validasi record_id jika stageRecordId diberikan dan record_id pada log ada
+            if ($stageRecordId !== null && $this->record_id !== null) {
+                if ((int) $this->record_id !== (int) $stageRecordId) {
+                    $logStage = $this->data_baru['jenis_tahap'] ?? $this->data_baru['tahap'] ?? null;
+                    if ($jenisTahap !== null && $logStage !== null) {
+                        $targetNorm = $normalizeStage($jenisTahap);
+                        $allowedStages = $stageGroups[$targetNorm] ?? [$targetNorm];
+                        $logNorm = $normalizeStage((string) $logStage);
+                        if (! in_array($logNorm, $allowedStages, true)) {
+                            return false;
+                        }
+                    } else {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
      * Mengekstrak dan merapikan payload data lama & baru untuk visualisasi timeline.
      *
      * @return array{
      *     attributes: array<string, string>,
      *     transitions: list<array{label: string, from: string, to: string}>,
-     *     notes: array<string, string>
+     *     notes: array<string, string>,
+     *     document_chip: array{nama: string, id: int|null}|null,
+     *     status_badge: array{label: string, is_final: bool}|null
      * }
      */
     public function getFormattedDetailsAttribute(): array
@@ -230,7 +351,7 @@ class AuditLog extends Model
             'berkas_perkara_id', 'penyidik_utama_id', 'penyidik_anggota_ids',
             'laporan_finalized_by', 'sprindik_finalized_by', 'perkara_finalized_by',
             'is_final', 'dpo_dicabut_otomatis', 'file_path', 'nama_file_asli',
-            'file_size', 'is_dpo',
+            'file_size', 'is_dpo', 'dokumen_id', 'nama_dokumen',
         ];
 
         $attributeLabelMap = [
@@ -301,10 +422,44 @@ class AuditLog extends Model
             $attributes[$label] = $valStr;
         }
 
+        // 4. Deteksi Dokumen Terlampir
+        $docNama = $dataBaru['nama_dokumen'] ?? $dataBaru['nama_file_asli'] ?? (! empty($dataBaru['dokumen_id']) ? 'Dokumen #'.$dataBaru['dokumen_id'] : null);
+        $docId = ! empty($dataBaru['dokumen_id']) ? (int) $dataBaru['dokumen_id'] : null;
+
+        $documentChip = ($docNama !== null || $docId !== null) ? [
+            'nama' => $docNama ?? 'Dokumen PDF',
+            'id' => $docId,
+        ] : null;
+
+        // 5. Deteksi Badge Status (Draft vs Final)
+        $statusVal = strtolower((string) ($dataBaru['status'] ?? ''));
+        $isFinalField = $dataBaru['is_final'] ?? null;
+
+        $hasStatusBadge = false;
+        $isFinal = false;
+        $badgeLabel = '';
+
+        if ($statusVal === 'final' || $isFinalField === true || in_array($this->aksi, ['finalisasi_laporan', 'finalisasi_sprindik', 'finalisasi_tahap', 'finalize_perkara_berkas'], true)) {
+            $isFinal = true;
+            $hasStatusBadge = true;
+            $badgeLabel = 'Final';
+        } elseif ($statusVal === 'draft' || $isFinalField === false || in_array($this->aksi, ['simpan_draft_laporan', 'simpan_draft_sprindik', 'simpan_draft_tahap', 'save_draft_perkara_berkas'], true)) {
+            $isFinal = false;
+            $hasStatusBadge = true;
+            $badgeLabel = 'Draft';
+        }
+
+        $statusBadge = $hasStatusBadge ? [
+            'label' => $badgeLabel,
+            'is_final' => $isFinal,
+        ] : null;
+
         return [
             'attributes' => $attributes,
             'transitions' => $transitions,
             'notes' => $notes,
+            'document_chip' => $documentChip,
+            'status_badge' => $statusBadge,
         ];
     }
 
