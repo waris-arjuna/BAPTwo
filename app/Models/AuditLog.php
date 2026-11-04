@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Carbon;
 
 class AuditLog extends Model
 {
@@ -129,6 +130,208 @@ class AuditLog extends Model
     public function getActionMetaAttribute(): array
     {
         return self::actionMeta($this->aksi ?? '');
+    }
+
+    /**
+     * Memeriksa apakah aksi audit dilakukan secara otomatis oleh sistem (scheduler/event latar belakang).
+     */
+    public function isSystemAction(): bool
+    {
+        return empty($this->user_id);
+    }
+
+    /**
+     * Mendapatkan label nama aktor pelaksana (nama user atau 'Sistem Otomatis').
+     */
+    public function getActorLabelAttribute(): string
+    {
+        if ($this->isSystemAction()) {
+            return 'Sistem Otomatis';
+        }
+
+        return $this->user?->nama ?? 'Pengguna Tidak Dikenal';
+    }
+
+    /**
+     * Mendapatkan label peran/role aktor pelaksana.
+     */
+    public function getActorRoleLabelAttribute(): string
+    {
+        if ($this->isSystemAction()) {
+            return 'Penjadwal Otomatis Sistem';
+        }
+
+        return $this->user?->role?->label() ?? 'Pengguna Terdaftar';
+    }
+
+    /**
+     * Mengekstrak dan merapikan payload data lama & baru untuk visualisasi timeline.
+     *
+     * @return array{
+     *     attributes: array<string, string>,
+     *     transitions: list<array{label: string, from: string, to: string}>,
+     *     notes: array<string, string>
+     * }
+     */
+    public function getFormattedDetailsAttribute(): array
+    {
+        $dataLama = is_array($this->data_lama) ? $this->data_lama : [];
+        $dataBaru = is_array($this->data_baru) ? $this->data_baru : [];
+
+        $attributes = [];
+        $transitions = [];
+        $notes = [];
+
+        // 1. Deteksi Transisi Status (Sebelum -> Sesudah)
+        $statusKeys = [
+            'status_formal' => 'Status Formal',
+            'status_proses' => 'Status Proses',
+            'status' => 'Status',
+            'is_dpo' => 'Status DPO',
+        ];
+
+        $handledTransitionKeys = [];
+
+        foreach ($statusKeys as $key => $label) {
+            if (array_key_exists($key, $dataLama) && array_key_exists($key, $dataBaru)) {
+                $fromVal = $dataLama[$key];
+                $toVal = $dataBaru[$key];
+
+                if ($fromVal !== $toVal) {
+                    $transitions[] = [
+                        'label' => $label,
+                        'from' => $this->formatStatusValue($key, $fromVal),
+                        'to' => $this->formatStatusValue($key, $toVal),
+                    ];
+                    $handledTransitionKeys[] = $key;
+                }
+            }
+        }
+
+        // 2. Deteksi Catatan Khusus (Keterangan / Alasan)
+        $noteKeyMap = [
+            'keterangan' => 'Keterangan',
+            'alasan_pencabutan' => 'Alasan Pencabutan',
+            'alasan' => 'Alasan',
+            'keterangan_penangkapan' => 'Keterangan Penangkapan',
+            'deskripsi' => 'Deskripsi',
+        ];
+
+        foreach ($noteKeyMap as $key => $label) {
+            if (! empty($dataBaru[$key]) && is_string($dataBaru[$key])) {
+                $notes[$label] = $dataBaru[$key];
+            }
+        }
+
+        // 3. Deteksi Atribut Key-Value Rinci
+        $ignoredKeys = [
+            'id', 'created_at', 'updated_at', 'deleted_at',
+            'created_by', 'updated_by', 'user_id', 'perkara_id',
+            'berkas_perkara_id', 'penyidik_utama_id', 'penyidik_anggota_ids',
+            'laporan_finalized_by', 'sprindik_finalized_by', 'perkara_finalized_by',
+            'is_final', 'dpo_dicabut_otomatis', 'file_path', 'nama_file_asli',
+            'file_size', 'is_dpo',
+        ];
+
+        $attributeLabelMap = [
+            'nomor_sp3' => 'Nomor SP3',
+            'nomor_surat' => 'Nomor Surat',
+            'nomor_laporan_kejadian' => 'Nomor Laporan Kejadian',
+            'nomor_surat_perintah' => 'Nomor Sprindik',
+            'nomor_berkas' => 'Nomor Berkas',
+            'nomor_surat_penangkapan' => 'Nomor Surat Penangkapan',
+            'nomor_surat_penahanan' => 'Nomor Surat Penahanan',
+            'tanggal_sp3' => 'Tanggal SP3',
+            'tanggal_surat' => 'Tanggal Surat',
+            'tanggal_laporan_kejadian' => 'Tanggal Laporan Kejadian',
+            'tanggal_surat_perintah' => 'Tanggal Sprindik',
+            'tanggal_penetapan' => 'Tanggal Penetapan',
+            'tanggal_pencabutan' => 'Tanggal Pencabutan',
+            'tanggal_penangkapan' => 'Tanggal Penangkapan',
+            'tanggal_penahanan' => 'Tanggal Penahanan',
+            'jenis_tahap' => 'Tahapan',
+            'penandatangan_nama' => 'Penandatangan',
+            'penandatangan_jabatan' => 'Jabatan Penandatangan',
+            'jumlah_dokumen' => 'Jumlah Dokumen',
+            'nama_tersangka' => 'Nama Tersangka',
+            'tersangka' => 'Tersangka',
+            'pasal' => 'Pasal',
+            'status_proses' => 'Status Proses',
+            'status_formal' => 'Status Formal',
+            'status' => 'Status',
+        ];
+
+        foreach ($dataBaru as $key => $val) {
+            if (in_array($key, $ignoredKeys, true)) {
+                continue;
+            }
+
+            if (array_key_exists($key, $noteKeyMap)) {
+                continue;
+            }
+
+            if (in_array($key, $handledTransitionKeys, true)) {
+                continue;
+            }
+
+            if ($val === null || $val === '') {
+                continue;
+            }
+
+            if (is_array($val)) {
+                if (array_is_list($val) && count($val) > 0 && is_scalar($val[0])) {
+                    $valStr = implode(', ', $val);
+                } else {
+                    continue;
+                }
+            } elseif (is_bool($val)) {
+                $valStr = $val ? 'Ya' : 'Tidak';
+            } else {
+                $valStr = (string) $val;
+                if (str_starts_with($key, 'tanggal_') && preg_match('/^\d{4}-\d{2}-\d{2}$/', $valStr)) {
+                    try {
+                        $valStr = Carbon::parse($valStr)->translatedFormat('d F Y');
+                    } catch (\Throwable) {
+                        // Pertahankan nilai string asli jika gagal diparsing
+                    }
+                }
+            }
+
+            $label = $attributeLabelMap[$key] ?? ucwords(str_replace('_', ' ', $key));
+            $attributes[$label] = $valStr;
+        }
+
+        return [
+            'attributes' => $attributes,
+            'transitions' => $transitions,
+            'notes' => $notes,
+        ];
+    }
+
+    /**
+     * Memformat representasi string status formal, proses, atau boolean.
+     */
+    protected function formatStatusValue(string $key, mixed $val): string
+    {
+        if ($val === null || $val === '') {
+            return '-';
+        }
+
+        if (is_bool($val)) {
+            return $val ? 'Aktif' : 'Tidak Aktif';
+        }
+
+        $valStr = (string) $val;
+
+        return match (strtolower($valStr)) {
+            'tidak_selesai' => 'Tidak Selesai',
+            'selesai' => 'Selesai',
+            'aktif' => 'Aktif',
+            'nonaktif' => 'Nonaktif',
+            'draft' => 'Draft',
+            'final' => 'Final',
+            default => $valStr,
+        };
     }
 
     /**
