@@ -294,7 +294,7 @@
                         </div>
                     </div>
                     <p class="mt-2 text-[11px] text-gray-400 dark:text-gray-500">
-                        Tahap I / P-21 lengkap, siap serah tersangka
+                        P-21 final, siap serah tersangka
                     </p>
                 </a>
 

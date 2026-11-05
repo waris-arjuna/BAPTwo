@@ -5,6 +5,7 @@ use App\Models\BerkasPerkara;
 use App\Models\Perkara;
 use App\Models\Tersangka;
 use App\Models\User;
+use App\Services\PerkaraService;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -216,6 +217,56 @@ test('pil rekomendasi memuat perintah, sisa hari, dan tooltip title', function (
     $response->assertSee('Serahkan berkas TAHAP I')
         ->assertSee('10 hari lagi')
         ->assertSee('title="SPDP sudah final. Serahkan berkas perkara TAHAP I ke Kejaksaan paling lambat 15 Nov 2026."', false);
+});
+
+test('kartu dan filter siap tahap II hanya menghitung berkas P-21 final', function () {
+    $perkaraX = Perkara::create([
+        'nomor_laporan_kejadian' => 'LK/X/2026',
+        'nomor_surat_perintah' => 'SP/X/2026',
+        'tanggal_surat_perintah' => '2026-10-01',
+        'tahap_laporan_status' => 'final',
+        'tahap_sprindik_status' => 'final',
+        'tahap_perkara_status' => 'final',
+        'created_by' => $this->penyidik->id,
+    ]);
+    $tersangkaX = Tersangka::create(['perkara_id' => $perkaraX->id, 'nama' => 'Tersangka X', 'created_by' => $this->penyidik->id]);
+    BerkasPerkara::create([
+        'perkara_id' => $perkaraX->id,
+        'tersangka_id' => $tersangkaX->id,
+        'nomor_berkas' => 'BP/X/2026',
+        'status_proses' => 'TAHAP I',
+        'progress_persen' => 55,
+        'status_formal' => null,
+        'is_dpo' => false,
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    $perkaraY = Perkara::create([
+        'nomor_laporan_kejadian' => 'LK/Y/2026',
+        'nomor_surat_perintah' => 'SP/Y/2026',
+        'tanggal_surat_perintah' => '2026-10-01',
+        'tahap_laporan_status' => 'final',
+        'tahap_sprindik_status' => 'final',
+        'tahap_perkara_status' => 'final',
+        'created_by' => $this->penyidik->id,
+    ]);
+    $tersangkaY = Tersangka::create(['perkara_id' => $perkaraY->id, 'nama' => 'Tersangka Y', 'created_by' => $this->penyidik->id]);
+    BerkasPerkara::create([
+        'perkara_id' => $perkaraY->id,
+        'tersangka_id' => $tersangkaY->id,
+        'nomor_berkas' => 'BP/Y/2026',
+        'status_proses' => 'P-21/P21a',
+        'progress_persen' => 85,
+        'status_formal' => null,
+        'is_dpo' => false,
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    $cards = app(PerkaraService::class)->getPotensiTerlimpahCards();
+    expect($cards['siap_tahap_2'])->toBe(1);
+
+    $this->actingAs($this->penyidik)->get(route('data-perkara.index', ['kesiapan' => 'siap_tahap_2']))
+        ->assertSee('LK/Y/2026')->assertDontSee('LK/X/2026');
 });
 
 test('filter kesiapan pelimpahan menyaring data perkara secara akurat', function () {

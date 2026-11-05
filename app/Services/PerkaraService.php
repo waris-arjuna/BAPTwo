@@ -760,7 +760,7 @@ class PerkaraService
             'siap_tahap_2' => (clone $basePerkaraQuery)->whereHas('berkasPerkaras', function ($q) {
                 $q->where(function ($sub) {
                     $sub->whereNull('status_formal')->orWhere('status_formal', 'dalam_proses');
-                })->whereIn('progress_persen', [55, 85])->where('is_dpo', false);
+                })->where('progress_persen', 85)->where('is_dpo', false);
             })->count(),
 
             'terkendala_dpo' => (clone $basePerkaraQuery)->whereHas('berkasPerkaras', function ($q) {
@@ -880,7 +880,7 @@ class PerkaraService
                     $query->whereHas('berkasPerkaras', function ($q) {
                         $q->where(function ($sub) {
                             $sub->whereNull('status_formal')->orWhere('status_formal', 'dalam_proses');
-                        })->whereIn('progress_persen', [55, 85])->where('is_dpo', false);
+                        })->where('progress_persen', 85)->where('is_dpo', false);
                     });
                 } elseif ($kesiapan === 'terkendala_dpo') {
                     $query->whereHas('berkasPerkaras', function ($q) {
