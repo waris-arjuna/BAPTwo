@@ -21,8 +21,11 @@ class PerkaraService
 {
     public function __construct(
         protected AuditTrailService $auditTrail,
-        protected WilayahService $wilayahService
-    ) {}
+        protected WilayahService $wilayahService,
+        protected ?DokumenService $dokumenService = null
+    ) {
+        $this->dokumenService = $dokumenService ?? app(DokumenService::class);
+    }
 
     /**
      * Daftar Laporan Kejadian dengan filter dan paginasi
@@ -711,18 +714,15 @@ class PerkaraService
      */
     protected function storeDokumen(Perkara $perkara, UploadedFile $file, string $kategori, User $user): Dokumen
     {
-        $path = $file->store("dokumen/{$kategori}", 'local');
-
-        return Dokumen::create([
-            'perkara_id' => $perkara->id,
-            'kategori' => $kategori,
-            'nama_dokumen' => $file->getClientOriginalName(),
-            'nama_file_asli' => $file->getClientOriginalName(),
-            'file_path' => $path,
-            'file_size' => $file->getSize() ?: 0,
-            'created_by' => $user->id,
-            'updated_by' => $user->id,
-        ]);
+        return $this->dokumenService->simpan(
+            $file,
+            $kategori,
+            [
+                'perkara_id' => $perkara->id,
+                'nama_dokumen' => $file->getClientOriginalName(),
+            ],
+            $user
+        );
     }
 
     /**

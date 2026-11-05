@@ -13,8 +13,11 @@ use Illuminate\Support\Facades\DB;
 class Sp3Service
 {
     public function __construct(
-        protected AuditTrailService $auditTrail
-    ) {}
+        protected AuditTrailService $auditTrail,
+        protected ?DokumenService $dokumenService = null
+    ) {
+        $this->dokumenService = $dokumenService ?? app(DokumenService::class);
+    }
 
     /**
      * Menerbitkan SP3 untuk berkas perkara dan menetapkan status formal menjadi Tidak Selesai.
@@ -48,19 +51,17 @@ class Sp3Service
             }
 
             // 1. Simpan dokumen PDF privat
-            $path = $file->store('dokumen', 'local');
-
-            $dokumen = Dokumen::create([
-                'perkara_id' => $berkas->perkara_id,
-                'berkas_perkara_id' => $berkas->id,
-                'kategori' => 'sp3',
-                'nama_dokumen' => "Surat Perintah Penghentian Penyidikan - {$data['nomor_surat']}",
-                'nama_file_asli' => $file->getClientOriginalName(),
-                'file_path' => $path,
-                'file_size' => $file->getSize() ?: 0,
-                'created_by' => $actorId,
-                'updated_by' => $actorId,
-            ]);
+            $dokumen = $this->dokumenService->simpan(
+                $file,
+                'sp3',
+                [
+                    'perkara_id' => $berkas->perkara_id,
+                    'berkas_perkara_id' => $berkas->id,
+                    'folder' => 'dokumen',
+                    'nama_dokumen' => "Surat Perintah Penghentian Penyidikan - {$data['nomor_surat']}",
+                ],
+                $actorId
+            );
 
             // Ambil data pejabat penandatangan dari tabel pegawai (user)
             if (! empty($data['penandatangan_id'])) {

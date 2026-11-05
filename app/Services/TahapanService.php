@@ -19,6 +19,12 @@ use Illuminate\Support\Facades\DB;
 
 class TahapanService
 {
+    public function __construct(
+        protected ?DokumenService $dokumenService = null
+    ) {
+        $this->dokumenService = $dokumenService ?? app(DokumenService::class);
+    }
+
     /**
      * Mendapatkan daftar jenis tahapan berikutnya yang valid untuk dicatat pada Berkas Perkara.
      * Alur utama linier: SPDP -> Tahap I -> P-21 -> Tahap II -> Keputusan Pengadilan.
@@ -288,19 +294,17 @@ class TahapanService
                 $filesToProcess = is_array($file) ? $file : [$file];
                 foreach ($filesToProcess as $singleFile) {
                     if ($singleFile instanceof UploadedFile) {
-                        $path = $singleFile->store('dokumen/tahapan', 'local');
-                        Dokumen::create([
-                            'perkara_id' => $berkas->perkara_id,
-                            'berkas_perkara_id' => $berkas->id,
-                            'tahapan_perkara_id' => $tahap->id,
-                            'kategori' => 'tahapan',
-                            'nama_dokumen' => "Dokumen {$jenisTahap->label()} - {$tahap->nomor_surat}",
-                            'nama_file_asli' => $singleFile->getClientOriginalName(),
-                            'file_path' => $path,
-                            'file_size' => $singleFile->getSize() ?: 0,
-                            'created_by' => $user->id,
-                            'updated_by' => $user->id,
-                        ]);
+                        $this->dokumenService->simpan(
+                            $singleFile,
+                            'tahapan',
+                            [
+                                'perkara_id' => $berkas->perkara_id,
+                                'berkas_perkara_id' => $berkas->id,
+                                'tahapan_perkara_id' => $tahap->id,
+                                'nama_dokumen' => "Dokumen {$jenisTahap->label()} - {$tahap->nomor_surat}",
+                            ],
+                            $user
+                        );
                     }
                 }
             }
@@ -631,19 +635,17 @@ class TahapanService
         }
 
         if ($file !== null) {
-            $path = $file->store('dokumen/tahapan', 'local');
-            Dokumen::create([
-                'perkara_id' => $berkas->perkara_id,
-                'berkas_perkara_id' => $berkas->id,
-                'tahapan_perkara_id' => $subTahap->id,
-                'kategori' => 'tahapan',
-                'nama_dokumen' => "Dokumen {$jenisTahap->label()} - {$subTahap->nomor_surat}",
-                'nama_file_asli' => $file->getClientOriginalName(),
-                'file_path' => $path,
-                'file_size' => $file->getSize() ?: 0,
-                'created_by' => $user->id,
-                'updated_by' => $user->id,
-            ]);
+            $this->dokumenService->simpan(
+                $file,
+                'tahapan',
+                [
+                    'perkara_id' => $berkas->perkara_id,
+                    'berkas_perkara_id' => $berkas->id,
+                    'tahapan_perkara_id' => $subTahap->id,
+                    'nama_dokumen' => "Dokumen {$jenisTahap->label()} - {$subTahap->nomor_surat}",
+                ],
+                $user
+            );
         }
 
         // Audit log sub-tahap

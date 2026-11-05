@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Enums\JenisTahap;
 use App\Models\BerkasPerkara;
-use App\Models\Dokumen;
 use App\Models\Dpo;
 use App\Models\User;
 use DomainException;
@@ -14,8 +13,11 @@ use Illuminate\Support\Facades\DB;
 class DpoService
 {
     public function __construct(
-        protected AuditTrailService $auditTrail
-    ) {}
+        protected AuditTrailService $auditTrail,
+        protected ?DokumenService $dokumenService = null
+    ) {
+        $this->dokumenService = $dokumenService ?? app(DokumenService::class);
+    }
 
     /**
      * Mengaktifkan status DPO pada Berkas Perkara
@@ -46,18 +48,16 @@ class DpoService
 
             $dokumenId = null;
             if ($file !== null) {
-                $path = $file->store('dokumen/dpo', 'local');
-                $dokumen = Dokumen::create([
-                    'perkara_id' => $berkas->perkara_id,
-                    'berkas_perkara_id' => $berkas->id,
-                    'kategori' => 'dpo',
-                    'nama_dokumen' => "Surat Penetapan DPO - {$data['nomor_surat']}",
-                    'nama_file_asli' => $file->getClientOriginalName(),
-                    'file_path' => $path,
-                    'file_size' => $file->getSize() ?: 0,
-                    'created_by' => $user->id,
-                    'updated_by' => $user->id,
-                ]);
+                $dokumen = $this->dokumenService->simpan(
+                    $file,
+                    'dpo',
+                    [
+                        'perkara_id' => $berkas->perkara_id,
+                        'berkas_perkara_id' => $berkas->id,
+                        'nama_dokumen' => "Surat Penetapan DPO - {$data['nomor_surat']}",
+                    ],
+                    $user
+                );
                 $dokumenId = $dokumen->id;
             }
 
@@ -189,19 +189,17 @@ class DpoService
 
             foreach ($files as $file) {
                 if ($file instanceof UploadedFile) {
-                    $path = $file->store('dokumen/dpo', 'local');
-                    $dokumen = Dokumen::create([
-                        'perkara_id' => $berkas->perkara_id,
-                        'berkas_perkara_id' => $berkas->id,
-                        'dpo_id' => $activeDpo->id,
-                        'kategori' => 'dpo',
-                        'nama_dokumen' => "Surat Penangkapan/Penahanan DPO - {$data['nomor_surat_penangkapan']} ({$file->getClientOriginalName()})",
-                        'nama_file_asli' => $file->getClientOriginalName(),
-                        'file_path' => $path,
-                        'file_size' => $file->getSize() ?: 0,
-                        'created_by' => $user->id,
-                        'updated_by' => $user->id,
-                    ]);
+                    $dokumen = $this->dokumenService->simpan(
+                        $file,
+                        'dpo',
+                        [
+                            'perkara_id' => $berkas->perkara_id,
+                            'berkas_perkara_id' => $berkas->id,
+                            'dpo_id' => $activeDpo->id,
+                            'nama_dokumen' => "Surat Penangkapan/Penahanan DPO - {$data['nomor_surat_penangkapan']} ({$file->getClientOriginalName()})",
+                        ],
+                        $user
+                    );
 
                     if ($dokumenPenangkapanId === null) {
                         $dokumenPenangkapanId = $dokumen->id;
