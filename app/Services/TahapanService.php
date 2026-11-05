@@ -8,11 +8,10 @@ use App\Models\Dokumen;
 use App\Models\Perkara;
 use App\Models\TahapanPerkara;
 use App\Models\User;
+use App\Services\Queries\TahapanListQuery;
 use Carbon\Carbon;
 use DomainException;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
@@ -20,9 +19,11 @@ use Illuminate\Support\Facades\DB;
 class TahapanService
 {
     public function __construct(
-        protected ?DokumenService $dokumenService = null
+        protected ?DokumenService $dokumenService = null,
+        protected ?TahapanListQuery $listQuery = null
     ) {
         $this->dokumenService = $dokumenService ?? app(DokumenService::class);
+        $this->listQuery = $listQuery ?? app(TahapanListQuery::class);
     }
 
     /**
@@ -238,11 +239,11 @@ class TahapanService
 
                 // Simpan sub-tahap opsional tersemat jika ada input
                 if ($jenisTahap === JenisTahap::SPDP) {
-                    $this->saveSubStage($berkas, JenisTahap::P16, 'p16', $data, request()->file('p16_dokumen'), $user);
-                    $this->saveSubStage($berkas, JenisTahap::P17P, 'p17p', $data, request()->file('p17p_dokumen'), $user);
+                    $this->saveSubStage($berkas, JenisTahap::P16, 'p16', $data, $this->extractSubStageFile($data, 'p16_dokumen'), $user);
+                    $this->saveSubStage($berkas, JenisTahap::P17P, 'p17p', $data, $this->extractSubStageFile($data, 'p17p_dokumen'), $user);
                 } elseif ($jenisTahap === JenisTahap::TAHAP_1) {
-                    $this->saveSubStage($berkas, JenisTahap::P18P, 'p18p', $data, request()->file('p18p_dokumen'), $user);
-                    $this->saveSubStage($berkas, JenisTahap::P19, 'p19', $data, request()->file('p19_dokumen'), $user);
+                    $this->saveSubStage($berkas, JenisTahap::P18P, 'p18p', $data, $this->extractSubStageFile($data, 'p18p_dokumen'), $user);
+                    $this->saveSubStage($berkas, JenisTahap::P19, 'p19', $data, $this->extractSubStageFile($data, 'p19_dokumen'), $user);
                 }
 
                 return $tahap;
@@ -311,11 +312,11 @@ class TahapanService
 
             // Simpan sub-tahap opsional tersemat jika ada input
             if ($jenisTahap === JenisTahap::SPDP) {
-                $this->saveSubStage($berkas, JenisTahap::P16, 'p16', $data, request()->file('p16_dokumen'), $user);
-                $this->saveSubStage($berkas, JenisTahap::P17P, 'p17p', $data, request()->file('p17p_dokumen'), $user);
+                $this->saveSubStage($berkas, JenisTahap::P16, 'p16', $data, $this->extractSubStageFile($data, 'p16_dokumen'), $user);
+                $this->saveSubStage($berkas, JenisTahap::P17P, 'p17p', $data, $this->extractSubStageFile($data, 'p17p_dokumen'), $user);
             } elseif ($jenisTahap === JenisTahap::TAHAP_1) {
-                $this->saveSubStage($berkas, JenisTahap::P18P, 'p18p', $data, request()->file('p18p_dokumen'), $user);
-                $this->saveSubStage($berkas, JenisTahap::P19, 'p19', $data, request()->file('p19_dokumen'), $user);
+                $this->saveSubStage($berkas, JenisTahap::P18P, 'p18p', $data, $this->extractSubStageFile($data, 'p18p_dokumen'), $user);
+                $this->saveSubStage($berkas, JenisTahap::P19, 'p19', $data, $this->extractSubStageFile($data, 'p19_dokumen'), $user);
             }
 
             // Jika Simpan & Lanjut: update progres berkas perkara & tanggal SPDP jika SPDP
@@ -433,65 +434,55 @@ class TahapanService
     }
 
     /**
+     * Ekstrak file sub-tahap dari data array atau fallback ke helper request
+     */
+    protected function extractSubStageFile(array $data, string $key): ?UploadedFile
+    {
+        if (isset($data[$key]) && $data[$key] instanceof UploadedFile) {
+            return $data[$key];
+        }
+
+        if (function_exists('request') && request()) {
+            $file = request()->file($key);
+            if ($file instanceof UploadedFile) {
+                return $file;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Normalisasi filter dari Request atau array
+     *
+     * @return array<string, mixed>
+     */
+    protected function normalizeFilters(mixed $requestOrFilters): array
+    {
+        if (is_object($requestOrFilters) && method_exists($requestOrFilters, 'all')) {
+            return $requestOrFilters->all();
+        }
+
+        return (array) $requestOrFilters;
+    }
+
+    /**
      * Helper query terpadu untuk daftar tahapan perkara dengan filter & paginasi.
      *
      * @param  array<string>|string  $jenisTahap
      */
     protected function paginateTahapanQuery(
         array|string $jenisTahap,
-        Request $request,
+        mixed $requestOrFilters = [],
         int $perPage = 10,
         ?string $subStage = null
     ): LengthAwarePaginator {
-        $search = $request->string('search')->trim()->toString();
-        $status = $request->string('status')->trim()->toString();
-        $tanggalDari = $request->string('tanggal_dari', $request->string('tanggal')->toString())->trim()->toString();
-        $tanggalSampai = $request->string('tanggal_sampai')->trim()->toString();
-
-        $query = TahapanPerkara::query();
-
-        if (is_array($jenisTahap)) {
-            $query->whereIn('jenis_tahap', $jenisTahap);
-            if ($subStage !== null && $subStage !== 'all' && $subStage !== '') {
-                $query->where('jenis_tahap', $subStage);
-            }
-        } else {
-            $query->where('jenis_tahap', $jenisTahap);
-        }
-
-        return $query
-            ->when($status !== '', fn ($q) => $q->where('status', strtolower($status)))
-            ->when($tanggalDari !== '', fn ($q) => $q->whereDate('tanggal_surat', '>=', $tanggalDari))
-            ->when($tanggalSampai !== '', fn ($q) => $q->whereDate('tanggal_surat', '<=', $tanggalSampai))
-            ->when($search !== '', function (Builder $query) use ($search) {
-                $query->where(function (Builder $q) use ($search) {
-                    $q->where('nomor_surat', 'like', "%{$search}%")
-                        ->orWhere('catatan', 'like', "%{$search}%")
-                        ->orWhereHas('berkasPerkara', function (Builder $bQ) use ($search) {
-                            $bQ->where('nomor_berkas', 'like', "%{$search}%")
-                                ->orWhereHas('tersangka', function (Builder $tQ) use ($search) {
-                                    $tQ->where('nama', 'like', "%{$search}%")
-                                        ->orWhere('nik', 'like', "%{$search}%");
-                                })
-                                ->orWhereHas('perkara', function (Builder $pQ) use ($search) {
-                                    $pQ->where('nomor_surat_perintah', 'like', "%{$search}%")
-                                        ->orWhere('nomor_laporan_kejadian', 'like', "%{$search}%");
-                                });
-                        });
-                });
-            })
-            ->with([
-                'berkasPerkara.perkara.penuntutUmumInstansi',
-                'berkasPerkara.tersangka',
-                'dokumen',
-                'pengadilanInstansi',
-                'createdBy',
-                'finalizedBy',
-            ])
-            ->orderByDesc('created_at')
-            ->orderByDesc('id')
-            ->paginate($perPage)
-            ->withQueryString();
+        return $this->listQuery->paginateTahapanQuery(
+            $jenisTahap,
+            $this->normalizeFilters($requestOrFilters),
+            $perPage,
+            $subStage
+        );
     }
 
     /**
@@ -502,36 +493,15 @@ class TahapanService
         JenisTahap $targetStage,
         bool $dpoCheck = true
     ): Collection {
-        return BerkasPerkara::query()
-            ->whereHas('tahapan', function (Builder $q) use ($requiredPreviousStage) {
-                $q->where('jenis_tahap', $requiredPreviousStage->value)->where('status', 'final');
-            })
-            ->whereDoesntHave('tahapan', function (Builder $q) use ($targetStage) {
-                $q->where('jenis_tahap', $targetStage->value);
-            })
-            ->whereDoesntHave('tahapan', function (Builder $q) {
-                $q->where('jenis_tahap', JenisTahap::KEPUTUSAN_PENGADILAN->value)->where('status', 'final');
-            })
-            ->whereDoesntHave('sp3')
-            ->where(fn (Builder $q) => $q->whereNull('status_formal')->orWhere('status_formal', '!=', 'tidak_selesai'))
-            ->when($dpoCheck, fn ($q) => $q->where('is_dpo', false))
-            ->with(['perkara', 'tersangka'])
-            ->orderByDesc('created_at')
-            ->orderByDesc('id')
-            ->get();
+        return $this->listQuery->queryAvailableBerkas($requiredPreviousStage, $targetStage, $dpoCheck);
     }
 
     /**
      * Mengambil daftar tahapan SPDP (termasuk sub-tahap opsional P-16 dan P-17P) dengan filter dan paginasi.
      */
-    public function getSpdpList(Request $request, int $perPage = 10): LengthAwarePaginator
+    public function getSpdpList(mixed $requestOrFilters = [], int $perPage = 10): LengthAwarePaginator
     {
-        return $this->paginateTahapanQuery(
-            [JenisTahap::SPDP->value, JenisTahap::P16->value, JenisTahap::P17P->value],
-            $request,
-            $perPage,
-            $request->string('sub_stage', 'all')->trim()->toString()
-        );
+        return $this->listQuery->getSpdpList($this->normalizeFilters($requestOrFilters), $perPage);
     }
 
     /**
@@ -541,20 +511,7 @@ class TahapanService
      */
     public function getAvailableBerkasForSpdp(): Collection
     {
-        return BerkasPerkara::query()
-            ->whereHas('perkara', function (Builder $q) {
-                $q->where('tahap_perkara_status', 'final');
-            })
-            ->whereDoesntHave('tahapan', function (Builder $q) {
-                $q->where('jenis_tahap', JenisTahap::SPDP->value);
-            })
-            ->whereDoesntHave('sp3')
-            ->where('is_dpo', false)
-            ->where(fn (Builder $q) => $q->whereNull('status_formal')->orWhere('status_formal', '!=', 'tidak_selesai'))
-            ->with(['perkara', 'tersangka'])
-            ->orderByDesc('created_at')
-            ->orderByDesc('id')
-            ->get();
+        return $this->listQuery->getAvailableBerkasForSpdp();
     }
 
     /**
@@ -564,14 +521,7 @@ class TahapanService
      */
     public function getSpdpTabCounts(): array
     {
-        $base = TahapanPerkara::query()->whereIn('jenis_tahap', [JenisTahap::SPDP->value, JenisTahap::P16->value, JenisTahap::P17P->value]);
-
-        return [
-            'all' => (clone $base)->count(),
-            'spdp' => (clone $base)->where('jenis_tahap', JenisTahap::SPDP->value)->count(),
-            'p16' => (clone $base)->where('jenis_tahap', JenisTahap::P16->value)->count(),
-            'p17p' => (clone $base)->where('jenis_tahap', JenisTahap::P17P->value)->count(),
-        ];
+        return $this->listQuery->getSpdpTabCounts();
     }
 
     /**
@@ -666,14 +616,9 @@ class TahapanService
     /**
      * Mengambil daftar tahapan Tahap 1 (termasuk P-18P dan P-19) dengan filter dan paginasi.
      */
-    public function getTahap1List(Request $request, int $perPage = 10): LengthAwarePaginator
+    public function getTahap1List(mixed $requestOrFilters = [], int $perPage = 10): LengthAwarePaginator
     {
-        return $this->paginateTahapanQuery(
-            [JenisTahap::TAHAP_1->value, JenisTahap::P18P->value, JenisTahap::P19->value],
-            $request,
-            $perPage,
-            $request->string('sub_stage', 'all')->trim()->toString()
-        );
+        return $this->listQuery->getTahap1List($this->normalizeFilters($requestOrFilters), $perPage);
     }
 
     /**
@@ -683,14 +628,7 @@ class TahapanService
      */
     public function getTahap1TabCounts(): array
     {
-        $base = TahapanPerkara::query()->whereIn('jenis_tahap', [JenisTahap::TAHAP_1->value, JenisTahap::P18P->value, JenisTahap::P19->value]);
-
-        return [
-            'all' => (clone $base)->count(),
-            'tahap_1' => (clone $base)->where('jenis_tahap', JenisTahap::TAHAP_1->value)->count(),
-            'p18p' => (clone $base)->where('jenis_tahap', JenisTahap::P18P->value)->count(),
-            'p19' => (clone $base)->where('jenis_tahap', JenisTahap::P19->value)->count(),
-        ];
+        return $this->listQuery->getTahap1TabCounts();
     }
 
     /**
@@ -700,15 +638,15 @@ class TahapanService
      */
     public function getAvailableBerkasForTahap1(): Collection
     {
-        return $this->queryAvailableBerkas(JenisTahap::SPDP, JenisTahap::TAHAP_1);
+        return $this->listQuery->getAvailableBerkasForTahap1();
     }
 
     /**
      * Mengambil daftar tahapan P-21 dengan filter dan paginasi.
      */
-    public function getP21List(Request $request, int $perPage = 10): LengthAwarePaginator
+    public function getP21List(mixed $requestOrFilters = [], int $perPage = 10): LengthAwarePaginator
     {
-        return $this->paginateTahapanQuery(JenisTahap::P21->value, $request, $perPage);
+        return $this->listQuery->getP21List($this->normalizeFilters($requestOrFilters), $perPage);
     }
 
     /**
@@ -718,15 +656,15 @@ class TahapanService
      */
     public function getAvailableBerkasForP21(): Collection
     {
-        return $this->queryAvailableBerkas(JenisTahap::TAHAP_1, JenisTahap::P21);
+        return $this->listQuery->getAvailableBerkasForP21();
     }
 
     /**
      * Mengambil daftar tahapan Tahap 2 dengan filter dan paginasi.
      */
-    public function getTahap2List(Request $request, int $perPage = 10): LengthAwarePaginator
+    public function getTahap2List(mixed $requestOrFilters = [], int $perPage = 10): LengthAwarePaginator
     {
-        return $this->paginateTahapanQuery(JenisTahap::TAHAP_2->value, $request, $perPage);
+        return $this->listQuery->getTahap2List($this->normalizeFilters($requestOrFilters), $perPage);
     }
 
     /**
@@ -736,15 +674,15 @@ class TahapanService
      */
     public function getAvailableBerkasForTahap2(): Collection
     {
-        return $this->queryAvailableBerkas(JenisTahap::P21, JenisTahap::TAHAP_2, true);
+        return $this->listQuery->getAvailableBerkasForTahap2();
     }
 
     /**
      * Mengambil daftar Putusan Perkara (Keputusan Pengadilan) dengan filter dan paginasi.
      */
-    public function getPutusanPerkaraList(Request $request, int $perPage = 10): LengthAwarePaginator
+    public function getPutusanPerkaraList(mixed $requestOrFilters = [], int $perPage = 10): LengthAwarePaginator
     {
-        return $this->paginateTahapanQuery(JenisTahap::KEPUTUSAN_PENGADILAN->value, $request, $perPage);
+        return $this->listQuery->getPutusanPerkaraList($this->normalizeFilters($requestOrFilters), $perPage);
     }
 
     /**
@@ -754,6 +692,6 @@ class TahapanService
      */
     public function getAvailableBerkasForPutusan(): Collection
     {
-        return $this->queryAvailableBerkas(JenisTahap::TAHAP_2, JenisTahap::KEPUTUSAN_PENGADILAN);
+        return $this->listQuery->getAvailableBerkasForPutusan();
     }
 }
