@@ -277,5 +277,36 @@
     "Tidak ada data yang sesuai dengan kriteria filter atau kata kunci Anda. Silakan coba kata kunci lain atau atur ulang filter.": "Tidak ada data yang sesuai dengan kriteria filter atau kata kunci Anda. Silakan coba kata kunci lain atau atur ulang filter.",
     "Belum ada berkas perkara prioritas pada tahun anggaran yang dipilih.": "Belum ada berkas perkara prioritas pada tahun anggaran yang dipilih.",
     "Atur Ulang Filter": "Atur Ulang Filter",
-    "Perlu Tindakan": "Perlu Tindakan"
+    "Perlu Tindakan": "Perlu Tindakan",
+
+    "Penyidikan dihentikan (SP3)": "Penyidikan dihentikan (SP3)",
+    "Lewat batas tahun": "Lewat batas tahun",
+    "Tidak ada tindakan": "Tidak ada tindakan",
+    "Catat Keputusan Pengadilan": "Catat Keputusan Pengadilan",
+    "Cari tersangka, cabut DPO jika ditemukan": "Cari tersangka, cabut DPO jika ditemukan",
+    "Finalkan draft :tahap": "Finalkan draft :tahap",
+    "Kirim SPDP ke Kejaksaan": "Kirim SPDP ke Kejaksaan",
+    "Serahkan berkas TAHAP I": "Serahkan berkas TAHAP I",
+    "Pantau P-21 dari Kejaksaan": "Pantau P-21 dari Kejaksaan",
+    "Serahkan tersangka dan barang bukti (TAHAP II)": "Serahkan tersangka dan barang bukti (TAHAP II)",
+    "Finalkan data perkara": "Finalkan data perkara",
+
+    "Terlambat :n hari": "Terlambat :n hari",
+    "Hari ini": "Hari ini",
+    ":n hari lagi": ":n hari lagi",
+
+    "SP3 sudah diterbitkan. Tahapan terkunci, tidak ada tindakan lanjutan.": "SP3 sudah diterbitkan. Tahapan terkunci, tidak ada tindakan lanjutan.",
+    "Berkas tidak selesai sampai 31 Desember tahun SPDP. Tahapan terkunci, tidak ada tindakan lanjutan.": "Berkas tidak selesai sampai 31 Desember tahun SPDP. Tahapan terkunci, tidak ada tindakan lanjutan.",
+    "Seluruh tahapan sudah selesai, termasuk Keputusan Pengadilan.": "Seluruh tahapan sudah selesai, termasuk Keputusan Pengadilan.",
+    "TAHAP II sudah final. Catat Keputusan Pengadilan setelah putusan dibacakan.": "TAHAP II sudah final. Catat Keputusan Pengadilan setelah putusan dibacakan.",
+    "Tersangka berstatus DPO. Tahapan berikutnya terkunci sampai DPO dicabut. Tenggang waktu tetap berjalan.": "Tersangka berstatus DPO. Tahapan berikutnya terkunci sampai DPO dicabut. Tenggang waktu tetap berjalan.",
+    "Draft :tahap sudah tersimpan tetapi belum difinalkan. Lengkapi lalu pilih Simpan & Lanjut Tahap Berikutnya.": "Draft :tahap sudah tersimpan tetapi belum difinalkan. Lengkapi lalu pilih Simpan & Lanjut Tahap Berikutnya.",
+    "Perkara sudah terbentuk. Catat SPDP setelah dikirim ke Kejaksaan.": "Perkara sudah terbentuk. Catat SPDP setelah dikirim ke Kejaksaan.",
+    "SPDP sudah final. Serahkan berkas perkara TAHAP I ke Kejaksaan paling lambat :tanggal.": "SPDP sudah final. Serahkan berkas perkara TAHAP I ke Kejaksaan paling lambat :tanggal.",
+    "SPDP sudah final. Serahkan berkas perkara TAHAP I ke Kejaksaan.": "SPDP sudah final. Serahkan berkas perkara TAHAP I ke Kejaksaan.",
+    "TAHAP I sudah final. Tindak lanjuti P-18P atau P-19 jika ada, lalu catat P-21 paling lambat :tanggal.": "TAHAP I sudah final. Tindak lanjuti P-18P atau P-19 jika ada, lalu catat P-21 paling lambat :tanggal.",
+    "TAHAP I sudah final. Tindak lanjuti P-18P atau P-19 jika ada, lalu catat P-21.": "TAHAP I sudah final. Tindak lanjuti P-18P atau P-19 jika ada, lalu catat P-21.",
+    "P-21 sudah final. Lakukan penyerahan tersangka dan barang bukti paling lambat :tanggal.": "P-21 sudah final. Lakukan penyerahan tersangka dan barang bukti paling lambat :tanggal.",
+    "P-21 sudah final. Lakukan penyerahan tersangka dan barang bukti.": "P-21 sudah final. Lakukan penyerahan tersangka dan barang bukti.",
+    "Data perkara (TKP, PPNS, tersangka, pasal) masih draft. Finalkan agar berkas bisa masuk SPDP.": "Data perkara (TKP, PPNS, tersangka, pasal) masih draft. Finalkan agar berkas bisa masuk SPDP."
 }

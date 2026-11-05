@@ -425,7 +425,10 @@ class BerkasPerkara extends Model
             return null;
         }
 
-        return (int) Carbon::now(DashboardService::ZONA_WAKTU)->startOfDay()->diffInDays($deadline->startOfDay(), false);
+        $now = Carbon::now(DashboardService::ZONA_WAKTU)->startOfDay();
+        $target = Carbon::parse($deadline->toDateString(), DashboardService::ZONA_WAKTU)->startOfDay();
+
+        return (int) $now->diffInDays($target, false);
     }
 
     /**
