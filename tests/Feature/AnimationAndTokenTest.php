@@ -34,7 +34,6 @@ test('progress bar di seluruh partial tabel menggunakan transform scaleX gpu com
     $filesToCheck = [
         resource_path('views/components/dashboard/_progress-partial.blade.php'),
         resource_path('views/pages/pencarian-perkara/_table-partial.blade.php'),
-        resource_path('views/pages/potensi-terlimpah/_table-partial.blade.php'),
         resource_path('views/pages/progress-perkara/_table-partial.blade.php'),
     ];
 

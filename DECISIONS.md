@@ -1754,6 +1754,33 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
      - Pada komponen `<x-form.searchable-select>`, method `syncFromSelect()` disempurnakan agar ketika nilai opsi cocok ditemukan (`found`), properti `native.value` seketika diselaraskan dengan `this.selectedValue` guna mencegah nilai select kosong pada pengiriman form.
 - Konsekuensi: Total 420 tersangka pada seeder kini tersebar secara nyata di seluruh 38 provinsi di Indonesia (210 tersangka Kalsel dan 210 tersangka dari 37 provinsi lainnya) tanpa ada satu pun kolom kode wilayah yang bernilai null (0 null), tampilan ringkasan alamat tersangka pada form edit draft dan detail perkara menyajikan alamat lengkap dari desa hingga provinsi, seluruh 331 pengujian Pest PHP (2.811 assertions) lulus 100%, dan linter Laravel Pint clean.
 
+---
+
+## D-082 : Rekomendasi Tindakan Berbasis Perintah Petugas pada Daftar Perkara
+
+- Tanggal: 2026-11-05
+- Status: Disepakati & Diimplementasikan (via interview /grill-me)
+- Konteks: Kolom "Rekomendasi Tindakan" pada tabel Daftar Perkara sebelumnya hanya menampilkan status berkas statis (seperti "Dalam Proses Normal", "Siap Pelimpahan Tahap I"). Pengguna membutuhkan pil rekomendasi yang bersifat perintah instruksional langkah berikutnya yang konkret bagi petugas penanganan perkara, digabungkan dengan sisa hari tenggang waktu (SLA), indikator warna urgensi bertingkat, serta tooltip penjelasan.
+- Keputusan:
+  1. **Format Pil Gabungan**: Menyatukan perintah tindakan dan sisa hari dalam satu pil tunggal (misal `Serahkan berkas TAHAP I · 10 hari lagi`).
+  2. **Warna Urgensi Bertingkat**:
+     - `error` (merah): Jika melewati batas tenggat (`Terlambat :n hari`).
+     - `warning` (kuning): Jika sisa <= 7 hari atau tepat jatuh tempo (`Hari ini`). Status DPO selalu bertone `warning`.
+     - `info` (biru): Jika kondisi aman (sisa > 7 hari).
+     - `netral` (abu-abu): Untuk status terminal atau tanpa tenggang waktu (SP3, Lewat batas tahun, Catat Keputusan Pengadilan, Tidak ada tindakan, Finalkan data perkara).
+  3. **Pil Murni Informatif**: Pil rekomendasi berstatus informasi visual operasional (tidak dapat diklik) guna menghindari konflik alur navigasi.
+  4. **Aksesibilitas dan Tooltip**: Menggunakan atribut `title` bawaan browser yang memuat penjelasan langkah lengkap beserta tanggal tenggat (`translatedFormat('j M Y')`), serta diduplikasi dalam elemen `<span class="sr-only">` untuk pembaca layar.
+  5. **Cakupan Penerapan**: Diterapkan secara terpusat pada tabel Daftar Perkara (`resources/views/pages/data-perkara/_table-partial.blade.php`) menggunakan service baru `App\Services\RekomendasiTindakanService`. Method lama `Perkara::getRekomendasiTindakanInfo()` dihapus.
+  6. **Pembersihan View Potensi Terlimpah**: Menghapus view mati `resources/views/pages/potensi-terlimpah/index.blade.php` dan `_table-partial.blade.php` beserta referensinya di `AnimationAndTokenTest.php`. Route redirect `/potensi-terlimpah`, `PotensiTerlimpahController`, `MenuHelper`, dan `PerkaraService::getPotensiTerlimpahCards()` tetap dipertahankan.
+  7. **Sinkronisasi Kesiapan "Siap Tahap II"**: Mengubah query kartu dan filter kesiapan "Siap Tahap II" pada `PerkaraService` dari `whereIn('progress_persen', [55, 85])` menjadi `where('progress_persen', 85)` (hanya berkas P-21 final), serta memperbarui keterangan kartu menjadi "P-21 final, siap serah tersangka".
+  8. **Aturan Khusus Perkara Selesai & DPO**:
+     - Berkas Selesai tanpa putusan: "Catat Keputusan Pengadilan" (netral).
+     - Berkas Selesai dengan putusan final: "Tidak ada tindakan" (netral).
+     - Tersangka DPO: "Cari tersangka, cabut DPO jika ditemukan" (selalu kuning/warning, dengan sisa hari atau status terlambat).
+  9. **Kebijakan SP3**: SP3 menghasilkan "Penyidikan dihentikan (SP3)" (netral, ikon `fi fi-rr-ban`). Sistem tidak pernah menyarankan penerbitan SP3 karena merupakan diskresi hukum penyidik.
+- Konsekuensi: Petugas mendapatkan panduan tindakan langsung yang jelas dan terukur batas waktunya pada setiap baris perkara di Daftar Perkara. Tampilan antarmuka bersih dan konsisten dengan Dark Mode serta Flaticon UIcons. Seluruh 333+ test Pest PHP lulus sempurna, linter Pint clean, dan build Vite sukses.
+
+
 
 
 
