@@ -330,7 +330,7 @@ class TahapanService
                 // SOP SLA 1 Bulan Kalender (30 hari) direset per tahapan aktif (SPDP, TAHAP_1, P21) - Poin 5
                 if (in_array($jenisTahap, [JenisTahap::SPDP, JenisTahap::TAHAP_1, JenisTahap::P21], true) && ! empty($tahap->tanggal_surat)) {
                     $tglTahap = Carbon::parse($tahap->tanggal_surat);
-                    $sla1Bulan = $tglTahap->copy()->addMonth();
+                    $sla1Bulan = $tglTahap->copy()->addMonthNoOverflow();
                     $akhirTahun = $tglTahap->copy()->endOfYear();
                     $effectiveDeadline = $sla1Bulan->gt($akhirTahun) ? $akhirTahun : $sla1Bulan;
 

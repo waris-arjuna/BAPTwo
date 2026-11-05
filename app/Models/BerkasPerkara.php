@@ -398,7 +398,7 @@ class BerkasPerkara extends Model
 
         if ($latestStage && ! empty($latestStage->tanggal_surat)) {
             $tgl = Carbon::parse($latestStage->tanggal_surat);
-            $sla1Bulan = $tgl->copy()->addMonth();
+            $sla1Bulan = $tgl->copy()->addMonthNoOverflow();
             $akhirTahun = $tgl->copy()->endOfYear();
 
             return $sla1Bulan->gt($akhirTahun) ? $akhirTahun : $sla1Bulan;
@@ -406,13 +406,58 @@ class BerkasPerkara extends Model
 
         if ($this->tanggal_spdp) {
             $tgl = Carbon::parse($this->tanggal_spdp);
-            $sla1Bulan = $tgl->copy()->addMonth();
+            $sla1Bulan = $tgl->copy()->addMonthNoOverflow();
             $akhirTahun = $tgl->copy()->endOfYear();
 
             return $sla1Bulan->gt($akhirTahun) ? $akhirTahun : $sla1Bulan;
         }
 
         return null;
+    }
+
+    /**
+     * Keterangan batas waktu penyelesaian perkara (PRD Bagian SLA & D-078)
+     */
+    public function getDeadlineKeteranganAttribute(): string
+    {
+        $deadline = $this->effective_deadline;
+        if (! $deadline) {
+            return 'Tenggang Waktu 1 Bulan Tahap Aktif';
+        }
+
+        // Ambil tanggal surat tahap aktif terbaru (P-21, Tahap 1, atau SPDP)
+        $basisDate = null;
+        if ($this->relationLoaded('tahapan')) {
+            $stage = $this->tahapan
+                ->where('status', 'final')
+                ->whereIn('jenis_tahap', [JenisTahap::P21, JenisTahap::TAHAP_1, JenisTahap::SPDP, JenisTahap::P21->value, JenisTahap::TAHAP_1->value, JenisTahap::SPDP->value])
+                ->sortByDesc('tanggal_surat')
+                ->first();
+            $basisDate = $stage?->tanggal_surat;
+        } else {
+            $stage = $this->tahapan()
+                ->where('status', 'final')
+                ->whereIn('jenis_tahap', [JenisTahap::P21->value, JenisTahap::TAHAP_1->value, JenisTahap::SPDP->value])
+                ->orderByDesc('tanggal_surat')
+                ->first();
+            $basisDate = $stage?->tanggal_surat;
+        }
+
+        if (! $basisDate && $this->tanggal_spdp) {
+            $basisDate = $this->tanggal_spdp;
+        }
+
+        if ($basisDate) {
+            $tgl = Carbon::parse($basisDate);
+            $sla1Bulan = $tgl->copy()->addMonthNoOverflow();
+            $akhirTahun = $tgl->copy()->endOfYear();
+
+            if ($sla1Bulan->gt($akhirTahun) && $deadline->day === 31 && $deadline->month === 12) {
+                return 'Batas Tahun Mutlak 31 Des';
+            }
+        }
+
+        return 'Tenggang Waktu 1 Bulan Tahap Aktif';
     }
 
     /**
