@@ -383,8 +383,8 @@ class Perkara extends Model
     {
         $statusFormal = $this->status_formal;
 
-        // SP3 dan DPO Aktif tidak menampilkan badge SLA
-        if ($statusFormal === 'tidak_selesai' || $statusFormal === 'dpo_aktif') {
+        // SP3 tidak menampilkan badge SLA
+        if ($statusFormal === 'tidak_selesai') {
             return null;
         }
 

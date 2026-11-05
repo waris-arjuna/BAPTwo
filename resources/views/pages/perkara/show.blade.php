@@ -752,7 +752,7 @@
                                                         {{ $berkas->effective_deadline?->format('d-m-Y') }}
                                                     </span>
                                                     <span class="text-xs font-medium text-gray-500 dark:text-gray-400">
-                                                        ({{ $berkas->effective_deadline?->day === 31 && $berkas->effective_deadline?->month === 12 && ($berkas->sla_deadline?->gt($berkas->effective_deadline) || $berkas->sla_deadline?->year !== $berkas->tanggal_spdp?->year) ? 'Batas Tahun Mutlak 31 Des' : 'Tenggang Waktu 1 Bulan Tahap Aktif' }})
+                                                        ({{ $berkas->deadline_keterangan }})
                                                     </span>
                                                 </div>
                                             </div>

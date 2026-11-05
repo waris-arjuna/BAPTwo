@@ -928,13 +928,8 @@ class DashboardService
                 $pasalList = $b->pasals->pluck('pasal')->join(', ') ?: '-';
             }
 
-            // Estimasi SLA (1 bulan kalender dari SPDP)
-            $estimasi = '-';
-            if ($b->sla_deadline) {
-                $estimasi = Carbon::parse($b->sla_deadline)->format('d-m-Y');
-            } elseif ($spdpTahap && $spdpTahap->tanggal_surat) {
-                $estimasi = Carbon::parse($spdpTahap->tanggal_surat)->addMonth()->format('d-m-Y');
-            }
+            // Estimasi Tenggang Waktu (SLA)
+            $estimasi = $b->effective_deadline ? $b->effective_deadline->format('d-m-Y') : '-';
 
             return [
                 'id' => $b->id,
