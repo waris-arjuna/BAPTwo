@@ -1,3 +1,5 @@
+@inject('rekomendasiService', \App\Services\RekomendasiTindakanService::class)
+
 <div class="overflow-x-auto">
     <table class="w-full min-w-[1250px]">
         <thead>
@@ -204,20 +206,19 @@
                         </div>
                     </td>
 
-                    {{-- 8. Rekomendasi Tindakan (Poin 10 & 11) --}}
+                    {{-- 8. Rekomendasi Tindakan --}}
                     @php
-                        $rekomendasi = $perkara->getRekomendasiTindakanInfo();
+                        $r = $rekomendasiService->untukPerkara($perkara);
                     @endphp
                     <td class="px-5 py-4">
-                        <div class="flex flex-col gap-1 min-w-[190px]">
-                            <span class="inline-flex w-fit items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-semibold {{ $rekomendasi['badge_class'] }}">
-                                <i class="{{ $rekomendasi['icon'] }} text-[11px]"></i>
-                                <span>{{ $rekomendasi['label'] }}</span>
-                            </span>
-                            <p class="text-[11px] text-gray-500 dark:text-gray-400">
-                                {{ $rekomendasi['deskripsi'] }}
-                            </p>
-                        </div>
+                        <span
+                            title="{{ $r['tooltip'] }}"
+                            class="inline-flex max-w-[240px] items-start gap-1.5 rounded-lg border px-2.5 py-1 text-xs font-semibold {{ $r['badge_class'] }}"
+                        >
+                            <i class="{{ $r['icon'] }} mt-0.5 text-[11px]" aria-hidden="true"></i>
+                            <span>{{ $r['label'] }}@if ($r['hari_label']) · {{ $r['hari_label'] }}@endif</span>
+                            <span class="sr-only">{{ $r['tooltip'] }}</span>
+                        </span>
                     </td>
 
                     {{-- 9. Aksi --}}

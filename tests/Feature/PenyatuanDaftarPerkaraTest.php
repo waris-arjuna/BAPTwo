@@ -184,7 +184,38 @@ test('tabel daftar perkara menampilkan kolom rekomendasi tindakan dengan badge s
     $response = $this->actingAs($this->penyidik)->get(route('data-perkara.index'));
     $response->assertOk();
     $response->assertSee('Rekomendasi Tindakan');
-    $response->assertSee('Perkara Selesai');
+    $response->assertSee('Catat Keputusan Pengadilan');
+});
+
+test('pil rekomendasi memuat perintah, sisa hari, dan tooltip title', function () {
+    Carbon::setTestNow('2026-11-05 08:00:00');
+    $perkara = Perkara::create([
+        'nomor_laporan_kejadian' => 'LK/PIL/01',
+        'nomor_surat_perintah' => 'SP/PIL/01',
+        'tanggal_surat_perintah' => '2026-10-01',
+        'tahap_laporan_status' => 'final',
+        'tahap_sprindik_status' => 'final',
+        'tahap_perkara_status' => 'final',
+        'perkara_locked_at' => now(),
+        'created_by' => $this->penyidik->id,
+    ]);
+    $tersangka = Tersangka::create(['perkara_id' => $perkara->id, 'nama' => 'Tersangka Pil', 'created_by' => $this->penyidik->id]);
+    BerkasPerkara::create([
+        'perkara_id' => $perkara->id,
+        'tersangka_id' => $tersangka->id,
+        'nomor_berkas' => 'BP/PIL/01',
+        'status_proses' => 'SPDP',
+        'progress_persen' => 15,
+        'sla_deadline' => '2026-11-15',
+        'status_formal' => null,
+        'is_dpo' => false,
+        'created_by' => $this->penyidik->id,
+    ]);
+
+    $response = $this->actingAs($this->penyidik)->get(route('data-perkara.index'));
+    $response->assertSee('Serahkan berkas TAHAP I')
+        ->assertSee('10 hari lagi')
+        ->assertSee('title="SPDP sudah final. Serahkan berkas perkara TAHAP I ke Kejaksaan paling lambat 15 Nov 2026."', false);
 });
 
 test('filter kesiapan pelimpahan menyaring data perkara secara akurat', function () {
