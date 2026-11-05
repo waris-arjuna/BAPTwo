@@ -83,9 +83,8 @@ erDiagram
     berkas_perkara ||--o{ berkas_pasal : "pasal berlapis"
     pasal ||--o{ berkas_pasal : "pasal UU"
 
-    instansi_hukum ||--o{ jaksa_penuntut : "menaungi jpu"
-    instansi_hukum ||--o{ tahapan_perkara : "kejaksaan / pengadilan"
-    jaksa_penuntut ||--o{ tahapan_perkara : "jaksa penuntut"
+    instansi_hukum ||--o{ perkara : "kejaksaan penuntut"
+    instansi_hukum ||--o{ tahapan_perkara : "pengadilan vonis (putusan)"
     berkas_perkara ||--o{ tahapan_perkara : "tahapan progress (maks 1x)"
 
     berkas_perkara ||--o{ dpo : "riwayat penetapan dpo"
@@ -111,7 +110,7 @@ erDiagram
 
 2. **`user`** (D-005, D-008)
    - `id`: bigint unsigned, PK
-   - `role`: enum (`administrator`, `pimpinan`, `penyidik`, `umum`), default `penyidik`
+   - `role`: enum (`administrator`, `penyidik`, `umum`), default `penyidik` (D-071)
    - `jabatan_id`, `bidang_id`, `panggol_id`, `alamat_id`: FK nullable
    - `nama`: string(150), `nip`: string(30) nullable unique, `email`: string(255) unique
    - `password`: string(255)
@@ -139,7 +138,6 @@ erDiagram
    - `penuntut_instansi_id`: FK -> `instansi_hukum.id` nullable (Kejaksaan)
    - `penuntut_nama`: string(150), nullable
    - `penuntut_nip`: string(30), nullable
-   - `penuntut_pangkat`: string(100), nullable
    - `deskripsi`: text, nullable
    - `created_by`, `updated_by`, `created_at`, `updated_at`, `deleted_at`
 
@@ -248,7 +246,7 @@ stateDiagram-v2
 | Edit Tahap yang Sudah Final | ❌ (Terkunci Mutlak) | ❌ (Terkunci Mutlak) | ❌ (Terkunci Mutlak) |
 | Aktivasi & Pencabutan DPO | ✅ | ❌ | ✅ |
 | Terbitkan Dokumen SP3 | ✅ | ❌ | ✅ |
-| Ekspor Excel 44 Kolom (.xlsx) | ✅ | ❌ | ✅ |
+| Ekspor Excel LAPJU 45 Kolom (.xlsx) | ✅ | ❌ | ✅ |
 | Akses Menu Progress Perkara | ❌ (Dialihkan ke Seluruh Perkara) | ✅ | ✅ |
 | Master Data (Pasal & Instansi) | ✅ (Lihat Saja) | ❌ (403 Forbidden) | ✅ (Penuh) |
 | Master Data (Jabatan, Bidang, Panggol) | ❌ (403 Forbidden) | ❌ (403 Forbidden) | ✅ (Penuh) |
@@ -293,17 +291,17 @@ stateDiagram-v2
 ## 9. Testing & Quality Assurance
 
 - Rangkaian pengujian diuji dengan **Pest PHP** (`composer test`) dengan capaian:
-  - **231 Automated Feature & Unit Tests** (2.162 assertions) lulus 100%.
+  - **354 Automated Feature & Unit Tests** (2.926 assertions) lulus 100%.
   - Zero-warning styling via **Laravel Pint** (`php vendor/bin/pint --test`) pada seluruh file PHP.
 - **Seeder Idempoten Komprehensif** (`database/seeders/DummyDataSeeder.php`):
-  - 100 Perkara dummy komprehensif mencakup 17 pola tahapan (Pra-SPDP s.d. Putusan Pengadilan, DPO Aktif, DPO Dicabut, SP3 terminal, dan peringatan SLA) di 13 Kabupaten/Kota Kalimantan Selatan (ref: D-053).
-  - 20 Pasal UU (Kesehatan, Pangan, Perlindungan Konsumen, Narkotika, Psikotropika, KUHP).
+  - 500 Perkara dummy komprehensif mencakup 17 pola tahapan (Pra-SPDP s.d. Putusan Pengadilan, DPO Aktif, DPO Dicabut, SP3 terminal, dan peringatan SLA) di 13 Kabupaten/Kota Kalimantan Selatan, dengan 5 perkara draft (ref: D-080) dan domisili tersangka tersebar di 38 provinsi se-Indonesia (ref: D-081).
+  - 38 Pasal UU (Kesehatan, Pangan, Perlindungan Konsumen, Narkotika, Psikotropika, KUHP).
   - 20 Instansi Hukum (Kejati Kalsel, 13 Kejari, Pengadilan Tinggi, 5 Pengadilan Negeri se-Kalsel).
-  - 20 Jaksa Penuntut Umum resmi lengkap NIP dan pangkat/golongan.
+  - 20 Akun Penyidik PPNS resmi.
 
 ---
 
-## 10. Arsitektur Dashboard Monitoring & Analitik Perkara (D-048, D-052, D-056, D-057, D-058, D-059)
+## 10. Arsitektur Dashboard Monitoring & Analitik Perkara (D-048, D-052, D-056, D-057, D-058, D-059, D-075)
 
 - **Zona Waktu Operasional Tunggal**: Seluruh tanggal operasional dan evaluasi sisa hari SLA dikunci pada zona waktu **WITA (`Asia/Makassar`)** melalui konstanta `DashboardService::ZONA_WAKTU`.
 - **5 Kartu Statistik Utama (`getStatistics`)**:
@@ -328,13 +326,11 @@ stateDiagram-v2
 - **Tabel Prioritas Progress Perkara (`getPriorityProgressPerkara`)**:
   - Default query tanpa filter status hanya menampilkan berkas dalam proses (`scopeDalamProses()`), menyembunyikan berkas Selesai dan Tidak Selesai (SP3).
   - Urutan prioritas portabel: `sla_deadline` ASC (dengan NULL di paling belakang via `orderByRaw('sla_deadline IS NULL')`), lalu `progress_persen` ASC, lalu `created_at` ASC.
-- **Susunan Grid Dashboard Simetris**:
-  - Baris 1: 5 Kartu Statistik Utama.
-  - Baris 2: Visual Charts (`lg:col-span-6` Donut Status Perkara & `lg:col-span-6` Tren Bulanan ApexCharts).
-  - Baris 3: Operasional & Aktivitas (`lg:col-span-6` Aktivitas Terkini & `lg:col-span-6` Rata-rata Tahap).
-  - Baris 4: Tabel Prioritas Progress Perkara (Full Width).
+- **Susunan 5 Baris Grid Dashboard Asimetris (D-075)**:
+  - Baris 1: `<x-dashboard.statistics>` 5 Kartu Statistik Utama dipadatkan (`p-4`, `gap-3.5`, ikon `h-9 w-9`).
+  - Baris 2: Visual Charts Grid 12 Kolom rasio 5 : 7 (`lg:col-span-5` Donut Status Perkara & `lg:col-span-7` Tren Bulanan ApexCharts).
+  - Baris 3: Tabel Prioritas Progress Perkara (`<x-dashboard.progress-perkara>`, Full Width 12 Kolom).
+  - Baris 4: Operasional & Aktivitas Grid 12 Kolom rasio 7 : 5 (`lg:col-span-7` Aktivitas Terkini & `lg:col-span-5` Rata-rata Tahap).
+  - Baris 5: Analitik Lanjutan Grid 12 Kolom rasio 6 : 6 (`lg:col-span-6` Sebaran Wilayah TKP & `lg:col-span-6` Top Pasal).
 - **Strategi Caching & Invalidasi**:
   - Seluruh data analitik di-cache selama 120 detik (`dashboard_stats_{tahun}`, `dashboard_stage_averages_{tahun}`, `dashboard_monthly_cases_{tahun}`) dan di-invalidasi otomatis oleh event mutasi data melalui `DashboardService::clearCache()`.
-  - 20 Pasal UU (Kesehatan, Pangan, Perlindungan Konsumen, Narkotika, Psikotropika, KUHP).
-  - 20 Instansi Hukum (Kejati Kalsel, 13 Kejari, Pengadilan Tinggi, 5 Pengadilan Negeri se-Kalsel).
-  - 20 Jaksa Penuntut Umum resmi lengkap NIP dan pangkat/golongan.

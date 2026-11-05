@@ -1756,10 +1756,32 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
 
 ---
 
-## D-082 : Rekomendasi Tindakan Berbasis Perintah Petugas pada Daftar Perkara
+## D-082 : Komponen Reusable Case History Terpadu Lintas Halaman Detail Perkara & Tahapan
+
+- Tanggal: 2026-11-04
+- Status: Disepakati & Diimplementasikan (Task 106)
+- Konteks: Riwayat audit dan perjalanan perkara (`audit_log`) sebelumnya hanya ditampilkan pada halaman Detail Perkara (`show.blade.php`), sementara petugas yang sedang meninjau atau memproses detail tahapan (Laporan Kejadian, Sprindik, SPDP, Tahap 1, P-21, Tahap 2, Putusan Perkara) tidak memiliki visibilitas langsung terhadap rekam jejak aktivitas, log dokumen digital, dan kronologi tahapan yang bersangkutan.
+- Keputusan:
+  1. **Pembuatan Komponen Reusable `<x-perkara.case-history>` (`resources/views/components/perkara/case-history.blade.php`)**:
+     - Dilengkapi tab filter tahapan interaktif (Semua Tahapan, Pra-SPDP, SPDP, Tahap I, P-21, Tahap II, Putusan) berbasis Alpine.js (`activeTab`).
+     - Menampilkan indikator pill warna badge aksi, waktu relatif & absolut (WITA), pelaksana/aktor, tautan dokumen digital instan dengan integrasi In-App PDF Preview (`data-pdf-preview`), serta rincian komparasi perubahan data.
+     - Menyediakan *empty state* informatif jika tahapan terpilih belum memiliki catatan log.
+  2. **Pencocokan Konteks Log Tahapan pada Model `AuditLog`**:
+     - Menambahkan method `matchesStageContext(string $stage): bool` pada `app/Models/AuditLog.php` untuk memetakan kategori aksi secara presisi ke dalam tahapan yang sesuai (misal: aksi laporan kejadian & sprindik ke Pra-SPDP, p16/p17 ke SPDP, p18/p19 ke Tahap I).
+     - Pengayaan accessor `formatted_details` untuk mengekstrak metadata nama dokumen, ukuran file, dan transisi draft vs final.
+  3. **Integrasi Lintas Seluruh Halaman Detail**:
+     - Mengintegrasikan komponen ke seluruh halaman detail: `laporan-kejadian/show.blade.php`, `sprindik/show.blade.php`, `perkara/show.blade.php`, dan `tahapan/show.blade.php` (SPDP, Tahap 1, P-21, Tahap 2, Putusan Perkara).
+     - Controller terkait (`LaporanKejadianController`, `SprindikController`, `TahapanPerkaraController`) memperkaya eager loading relasi `auditLogs.user` dan dokumen terkait bebas masalah N+1 query.
+  4. **Pengujian Komprehensif**:
+     - Ditambahkan unit test `Tests\Unit\AuditLogStageMatchingTest` dan feature test `Tests\Feature\StageCaseHistoryTest` serta `Tests\Feature\CaseHistoryTimelineTest`.
+- Konsekuensi: Petugas di setiap tahapan penanganan perkara dapat langsung menelusuri riwayat kronologis lengkap dan mengakses dokumen pendukung tanpa harus bolak-balik ke halaman induk perkara, dengan performa teruji bebas query N+1.
+
+---
+
+## D-083 : Rekomendasi Tindakan Berbasis Perintah Petugas pada Daftar Perkara
 
 - Tanggal: 2026-11-05
-- Status: Disepakati & Diimplementasikan (via interview /grill-me)
+- Status: Disepakati & Diimplementasikan (via interview /grill-me, Task 107)
 - Konteks: Kolom "Rekomendasi Tindakan" pada tabel Daftar Perkara sebelumnya hanya menampilkan status berkas statis (seperti "Dalam Proses Normal", "Siap Pelimpahan Tahap I"). Pengguna membutuhkan pil rekomendasi yang bersifat perintah instruksional langkah berikutnya yang konkret bagi petugas penanganan perkara, digabungkan dengan sisa hari tenggang waktu (SLA), indikator warna urgensi bertingkat, serta tooltip penjelasan.
 - Keputusan:
   1. **Format Pil Gabungan**: Menyatukan perintah tindakan dan sisa hari dalam satu pil tunggal (misal `Serahkan berkas TAHAP I · 10 hari lagi`).
@@ -1778,7 +1800,7 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
      - Berkas Selesai dengan putusan final: "Tidak ada tindakan" (netral).
      - Tersangka DPO: "Cari tersangka, cabut DPO jika ditemukan" (selalu kuning/warning, dengan sisa hari atau status terlambat).
   9. **Kebijakan SP3**: SP3 menghasilkan "Penyidikan dihentikan (SP3)" (netral, ikon `fi fi-rr-ban`). Sistem tidak pernah menyarankan penerbitan SP3 karena merupakan diskresi hukum penyidik.
-- Konsekuensi: Petugas mendapatkan panduan tindakan langsung yang jelas dan terukur batas waktunya pada setiap baris perkara di Daftar Perkara. Tampilan antarmuka bersih dan konsisten dengan Dark Mode serta Flaticon UIcons. Seluruh 333+ test Pest PHP lulus sempurna, linter Pint clean, dan build Vite sukses.
+- Konsekuensi: Petugas mendapatkan panduan tindakan langsung yang jelas dan terukur batas waktunya pada setiap baris perkara di Daftar Perkara. Tampilan antarmuka bersih dan konsisten dengan Dark Mode serta Flaticon UIcons. Seluruh 353 test Pest PHP lulus sempurna, linter Pint clean, dan build Vite sukses.
 
 
 

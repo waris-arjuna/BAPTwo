@@ -68,7 +68,7 @@ BAPTwo adalah aplikasi web internal BPOM Kalimantan Selatan untuk mencatat, memo
 | F-05 | Laporan Kejadian | Must | Menjadi informasi awal perkara | Laporan Kejadian dicatat satu kali dan terkunci setelah digunakan pada Sprindik. |
 | F-06 | Surat Perintah Penyidikan | Must | Menjadi informasi awal sebelum SPDP | Surat Perintah Penyidikan dicatat satu kali dan terkunci setelah digunakan pada Berkas. |
 | F-07 | Informasi TKP | Must | Menjadi informasi utama perkara | TKP (nama sarana, klasifikasi retailer/distributor, legalitas legal/ilegal, modus online/offline, alamat berjenjang) dicatat pada perkara. |
-| F-08 | PPNS Utama, Anggota & Penuntut Umum | Must | Menunjukkan petugas penanganan perkara | Perkara memiliki 1 PPNS utama, 0..N PPNS anggota, serta Penuntut Umum (nama instansi dari master Kejaksaan, nama jaksa, NIP, dan pangkat diinput manual). |
+| F-08 | PPNS Utama, Anggota & Penuntut Umum | Must | Menunjukkan petugas penanganan perkara | Perkara memiliki 1 PPNS utama, 0..N PPNS anggota, serta Penuntut Umum (nama instansi dari master Kejaksaan, nama jaksa dan NIP diinput manual; ref: D-065). |
 | F-09 | Progress Mulai SPDP | Must | Menetapkan titik awal progress | Informasi pra-SPDP tidak masuk perhitungan progress. |
 | F-10 | Rangkaian Tahapan Progress | Must | Menjaga konsistensi proses | Sistem mendukung SPDP → P-16 → P-17P → TAHAP I → P-18P/P-19 → P-21/P21a → TAHAP II → Keputusan Pengadilan (terminal penutup). |
 | F-11 | Satu Tahapan Maksimal Satu Kali | Must | Mencegah duplikasi tahapan | Satu jenis tahapan hanya dapat dicatat satu kali pada satu Berkas Perkara. |
@@ -105,9 +105,11 @@ BAPTwo adalah aplikasi web internal BPOM Kalimantan Selatan untuk mencatat, memo
 | F-42 | Monitoring Pekerjaan Penyidik | Must | Pimpinan perlu melihat pekerjaan penyidik | Pimpinan dapat melihat perkembangan perkara berdasarkan penyidik. |
 | F-43 | Akses Seluruh Perkara bagi Pengguna | Must | Monitoring terpusat | Penyidik dan Pimpinan dapat melihat seluruh perkara sesuai permission. |
 | F-44 | Perlindungan Berkas & Soft Delete Terbatas | Must | Mencegah penghapusan berkas perkara sembarangan | Data Perkara/LK/Sprindik tidak memiliki fitur hapus; soft delete hanya berlaku untuk Master Data dan Pengguna; hard delete tidak tersedia (ref: D-035). |
-| F-45 | Export Rekap Excel Template LAPJU 45 Kolom | Must | Mendukung kebutuhan pelaporan resmi | Data diekspor dalam format Excel (.xlsx) template resmi LAPJU 45 kolom (A s.d. AS) berbasis PhpSpreadsheet IOFactory dengan modal filter 3 tab (Tahun, Bulan, Rentang Tanggal) khusus Admin & Penyidik (ref: D-035, D-039, D-055). |
+| F-45 | Export Rekap Excel Template LAPJU 45 Kolom Multi-Sheet | Must | Mendukung kebutuhan pelaporan resmi dan eksekutif | Data diekspor dalam format Excel (.xlsx) template resmi LAPJU 45 kolom (Sheet 1) dan Ringkasan Dashboard (Sheet 2) berbasis PhpSpreadsheet dengan modal filter 3 tab (Tahun, Bulan, Rentang Tanggal) khusus Admin & Penyidik (ref: D-035, D-055, D-076, D-077). |
 | F-46 | Manajemen Data Petugas & Recovery Data | Must | Fleksibilitas penugasan dan keamanan data | Menu Data Petugas memungkinkan penugasan role non-admin dari daftar user; halaman Sampah berganti nama resmi menjadi Recovery Data (ref: D-053). |
 | F-47 | Proteksi Akun Nonaktif & Force Logout | Must | Keamanan autentikasi dan integritas sesi | Akun nonaktif/terhapus ditolak masuk dengan toast dan banner peringatan setelah password valid; sesi aktif diputus otomatis via middleware EnsureUserIsActive (ref: D-053). |
+| F-48 | Riwayat Perkara Terpadu (Case History) | Must | Transparansi jejak audit di setiap tahapan | Komponen terpadu kronologis aktivitas perkara dan dokumen digital dengan tab filter tahapan di seluruh halaman detail perkara dan tahapan (ref: D-082). |
+| F-49 | Rekomendasi Tindakan Administrasi Perkara | Must | Panduan langkah operasional petugas penanganan perkara | Pil rekomendasi perintah tindakan berikutnya dan sisa hari tenggang waktu (SLA) dengan indikator urgensi bertingkat pada tabel Daftar Perkara (ref: D-083). |
 
 ### Struktur Perkara dan Berkas Perkara
 
@@ -296,7 +298,7 @@ Histori mencatat aktivitas penting seperti:
 | Role | Lihat | Tambah Berkas | Edit Draft | Edit Setelah Lanjut | Soft Delete (Master/User) | Hapus Perkara | Ekspor Excel LAPJU 45 Kolom |
 |---|---|---|---|---|---|---|---|
 | **Penyidik** | ✅ Semua perkara | ✅ | ✅ | ❌ | ✅ (Pasal & Instansi) | ❌ | ✅ |
-| **Pimpinan** | ✅ Semua perkara | ❌ | ❌ | ❌ | ❌ (Diblokir) | ❌ | ❌ |
+| **Pimpinan / Umum** | ✅ Semua perkara | ❌ | ❌ | ❌ | ❌ (Diblokir) | ❌ | ❌ |
 | **Administrator** | ✅ Semua perkara + data pengguna | ✅ | ✅ | ❌ | ✅ (Penuh) | ❌ | ✅ |
 
 Aturan tambahan:
@@ -323,7 +325,7 @@ Aturan tambahan:
 | Security | Perlindungan data perkara & larangan hard delete | 100% perkara terlindungi dari penghapusan; hard delete tidak tersedia |
 | Usability | Batal, Draft, dan Simpan & Lanjut mudah dibedakan | 100% tahapan memiliki ketiga aksi |
 | Usability | Tahapan, progress, status proses, dan status monitoring mudah dibedakan | Informasi dapat dipahami dalam satu tampilan |
-| Usability | DPO aktif terlihat jelas | Status DPO dan blokir Tahap II terlihat di UI & server |
+| Usability | DPO aktif terlihat jelas | Status DPO dan pemblokiran seluruh tahapan lanjutan terlihat di UI & server (ref: D-053, D-073) |
 | Reliability | Urutan tahapan tetap konsisten | Tidak ada duplikasi atau perpindahan ilegal |
 | Reliability | Progress mengikuti bobot milestone | 100% |
 | Reliability | Status proses mengikuti tahapan terakhir atau SP3 | 100% |
@@ -346,14 +348,14 @@ Aturan tambahan:
 | Setiap tahapan memiliki Draft | Belum terukur | 100% | Pengujian fungsional |
 | Berkas yang selesai mengikuti trigger Selesai | Belum terukur | 100% | Pengujian skenario |
 | Berkas yang belum selesai pada 1 Januari menjadi Tidak Selesai | Belum terukur | 100% | Pengujian pergantian tahun |
-| DPO aktif memblokir pelanjutan Tahap II | Belum terukur | 100% | Pengujian skenario DPO |
+| DPO aktif memblokir pelanjutan seluruh tahapan berikutnya | Belum terukur | 100% | Pengujian skenario DPO |
 | DPO nonaktif memungkinkan proses berjalan kembali | Belum terukur | 100% | Pengujian skenario |
 | Histori perubahan penting tersedia | Belum terukur | 100% | Audit trail |
 | Akses tanpa permission ditolak | Belum terukur | 100% | Pengujian kontrol akses |
 | Data perkara terlindungi dari penghapusan & hard delete tidak tersedia | Belum terukur | 100% | Pengujian fungsional |
 | Pimpinan menggunakan dashboard untuk monitoring | Belum terukur | ≥ 80% | Analisis penggunaan/survei |
 | Berkas berpotensi Tidak Selesai dapat diidentifikasi sebelum akhir tahun | Belum terukur | 100% | Pengujian dashboard |
-| Data rekap perkara dapat diekspor ke Excel 44 kolom | Belum terukur | 100% | Pengujian dokumen Excel (.xlsx) |
+| Data rekap perkara dapat diekspor ke Excel template resmi LAPJU 45 kolom multi-sheet | Belum terukur | 100% | Pengujian dokumen Excel (.xlsx) |
 
 ## 8. Out of Scope (v1.0)
 

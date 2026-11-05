@@ -7,7 +7,7 @@ Sistem Informasi Manajemen dan Pemantauan Penanganan Perkara Balai Besar POM di 
 [![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=flat-square&logo=mysql&logoColor=white)](https://www.mysql.com)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-v4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![Alpine.js](https://img.shields.io/badge/Alpine.js-v3-8BC0D0?style=flat-square&logo=alpinedotjs&logoColor=white)](https://alpinejs.dev)
-[![Pest PHP](https://img.shields.io/badge/Pest%20PHP-330%20Tests%20Passing-00D8A2?style=flat-square)](https://pestphp.com)
+[![Pest PHP](https://img.shields.io/badge/Pest%20PHP-354%20Tests%20Passing-00D8A2?style=flat-square)](https://pestphp.com)
 
 ---
 
@@ -40,8 +40,8 @@ Seluruh implementasi BAPTwo mengacu pada spesifikasi domain dan keputusan teknis
 |---|---|
 | [`PRD.md`](PRD.md) | *Product Requirements Document*: Sumber kebenaran domain hukum, batas SLA, hak akses RBAC, dan alur penanganan perkara. |
 | [`ARCHITECTURE.md`](ARCHITECTURE.md) | Arsitektur teknis sistem: Skema 19 tabel singular, lifecycle tahapan, event audit trail, dan integrasi API wilayah. |
-| [`TASKS.md`](TASKS.md) | Daftar pekerjaan aktif dan rekam jejak penyelesaian *task* teknis (T-001 s.d. T-101). |
-| [`DECISIONS.md`](DECISIONS.md) | Log keputusan arsitektur dan teknis resmi (*Architecture Decision Records* D-001 s.d. D-079). |
+| [`TASKS.md`](TASKS.md) | Daftar pekerjaan aktif dan rekam jejak penyelesaian *task* teknis (T-001 s.d. T-107). |
+| [`DECISIONS.md`](DECISIONS.md) | Log keputusan arsitektur dan teknis resmi (*Architecture Decision Records* D-001 s.d. D-083). |
 | [`AGENTS.md`](AGENTS.md) | Pedoman kerja otomatisasi, standar koding bebas *AI-slop*, konvensi Blade, dan aturan kontras aksesibilitas. |
 
 ---
@@ -84,12 +84,12 @@ BAPTwo menerapkan aturan integritas hukum yang ketat untuk menjamin keabsahan da
 
 ## Skema Database & Diagram ERD
 
-Skema database BAPTwo terdiri dari **19 tabel domain utama** (seluruh penamaan tabel menggunakan format singular Bahasa Indonesia tanpa akhiran plural *s*):
+Skema database BAPTwo terdiri dari **18 tabel domain aktif** (seluruh penamaan tabel menggunakan format singular Bahasa Indonesia tanpa akhiran plural *s*):
 
 ![ERD Database BAPTwo](docs/diagrams/erd-database-baptwo.svg)
 
 <details>
-<summary><strong>Klik untuk melihat kode sumber Mermaid ERD (19 Tabel Domain)</strong></summary>
+<summary><strong>Klik untuk melihat kode sumber Mermaid ERD (18 Tabel Domain Aktif)</strong></summary>
 
 ```mermaid
 erDiagram
@@ -103,7 +103,6 @@ erDiagram
     alamat ||--o{ tkp : "lokasi sarana"
     alamat ||--o{ tersangka : "alamat tinggal"
 
-    instansi_hukum ||--o{ jaksa_penuntut : "asal penugasan"
     instansi_hukum ||--o{ perkara : "kejaksaan penuntut"
     instansi_hukum ||--o{ tahapan_perkara : "pengadilan vonis"
 
@@ -132,7 +131,7 @@ erDiagram
 </details>
 
 <details>
-<summary><strong>Klik untuk melihat ringkasan fungsi 19 tabel database</strong></summary>
+<summary><strong>Klik untuk melihat ringkasan fungsi 18 tabel domain aktif</strong></summary>
 
 | Kelompok | Nama Tabel | Keterangan & Karakteristik Kunci |
 |---|---|---|
@@ -143,11 +142,10 @@ erDiagram
 | | `alamat` | Data alamat terstruktur (snapshot nama dan kode referensi wilayah BPS/Kemendagri). |
 | | `pasal` | Master data ketentuan undang-undang pidana (UU Kesehatan, Pangan, Narkotika, dll.). |
 | | `instansi_hukum` | Lembaga peradilan mitra: Kejaksaan Negeri/Tinggi dan Pengadilan Negeri/Tinggi. |
-| | `jaksa_penuntut` | Data pejabat Jaksa Penuntut Umum beserta NIP 18 digit numerik. |
 | **Fase Pra-SPDP** | `tkp` | Data Tempat Kejadian Perkara dengan klasifikasi (`retailer`, `distributor`, `produksi`), legalitas, dan modus peredaran. |
-| | `perkara` | Entitas induk penanganan perkara, mencatat nomor Laporan Kejadian (LK) dan Sprindik. |
+| | `perkara` | Entitas induk penanganan perkara, mencatat nomor Laporan Kejadian (LK) dan Sprindik. Penuntut Umum dicatat langsung pada entitas ini (ref: D-065). |
 | | `perkara_ppns` | Tabel pivot relasi banyak-ke-banyak penugasan Penyidik Utama dan Penyidik Anggota. |
-| | `tersangka` | Identitas subjek hukum tersangka lengkap dengan NIP 16 digit dan data demografi. |
+| | `tersangka` | Identitas subjek hukum tersangka lengkap dengan NIK 16 digit dan data demografi. |
 | **Core Berkas & Tahap** | `berkas_perkara` | Inti pemantauan berkas perkara per tersangka. Menyimpan nomor berkas identik LK, status formal, status proses, progres %, dan tenggang waktu SLA. |
 | | `berkas_pasal` | Tabel pivot relasi banyak-ke-banyak untuk mendukung penerapan pasal berlapis. |
 | | `tahapan_perkara` | Riwayat progres tahapan hukum (SPDP s.d. Putusan) dengan status `draft` atau `final`. |
