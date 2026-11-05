@@ -1817,6 +1817,24 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
   5. **Artisan Command `perkara:sync-sla` (`SyncSlaDeadlinesCommand`)**: Menyediakan perintah CLI `php artisan perkara:sync-sla {--dry-run}` untuk menormalkan record eksisting pada database lokal secara aman dan idempoten.
 - Konsekuensi: Seluruh kalkulasi tenggat waktu SLA dan batas tahun mutlak 100% presisi dan bebas overflow tanggal, kode view menjadi bersih dan modular, dan seluruh 360 pengujian Pest PHP lulus sempurna.
 
+---
+
+## D-085 : Banner Pemberitahuan Penutupan Berkas Awal Tahun di Dashboard
+
+- Tanggal: 2026-11-05
+- Status: Disepakati & Diimplementasikan (via interview /grill-me, Task 109)
+- Konteks: Pada pergantian tahun kalender (1 Januari), scheduler sistem `CloseUnfinishedCasesCommand` secara otomatis menutup seluruh berkas perkara tahun sebelumnya yang belum selesai menjadi status formal Tidak Selesai (D-030). Petugas penanganan perkara (Penyidik dan Administrator) memerlukan pemberitahuan visual resmi di Dashboard untuk mengetahui jumlah berkas yang terdampak dan dapat langsung meninjaunya.
+- Keputusan:
+  1. **Periode Tayang**: Tampil eksklusif selama bulan Januari (1 s.d. 31 Januari) tahun berjalan.
+  2. **Hak Akses Berbasis Peran**: Khusus ditampilkan untuk role **Penyidik** dan **Administrator** (`$user->isPenyidik() || $user->isAdmin()`). Role Umum (Pimpinan) tidak melihat banner ini.
+  3. **Kondisi Tanpa Berkas**: Jika tidak ada berkas yang ditutup sistem (`count === 0`), banner tidak ditampilkan sama sekali agar Dashboard tetap bersih.
+  4. **Penyedia Data Terpusat di `DashboardService`**: Method `getAnnualClosureNoticeInfo()` menghitung jumlah berkas perkara yang ditutup sistem secara akurat via `AuditLog::where('aksi', 'sistem_tidak_selesai')->whereYear('created_at', $currentYear)->distinct('berkas_perkara_id')->count('berkas_perkara_id')`.
+  5. **Teks Pesan Resmi & Lokalisasi**: Pesan resmi operasional "Pemberitahuan Sistem: Sebanyak :count berkas perkara tahun :tahun_lalu telah ditutup otomatis menjadi Tidak Selesai per 1 Januari :tahun_ini karena melewati batas akhir tahun penyidikan (31 Desember)." dikelola terpusat di `lang/id.json`.
+  6. **Tombol Tindak Lanjut (CTA)**: Tombol "Lihat Daftar Berkas" (ikon `fi fi-rr-arrow-small-right`) mengarahkan langsung ke halaman Daftar Perkara dengan filter `status=tidak_selesai&tahun=:tahun_lalu`.
+  7. **Interaktivitas Dismissal Klien (Alpine.js & localStorage)**: Tombol tutup (X) menyembunyikan banner secara instan dan menyimpan flag di `localStorage` per tahun penutupan (`dismiss_annual_close_{tahun_ini}`), menjaga performa backend tanpa menambah kolom database.
+- Konsekuensi: Petugas mendapatkan peringatan langsung saat membuka Dashboard di awal tahun baru dan dapat meninjau seluruh berkas yang ditutup sistem dengan 1 klik.
+
+
 
 
 
