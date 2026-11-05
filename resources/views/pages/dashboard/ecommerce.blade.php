@@ -34,6 +34,9 @@
 
         </div>
 
+        {{-- Pemberitahuan Penutupan Berkas Tahunan (Khusus Januari untuk Penyidik & Admin) --}}
+        <x-dashboard.annual-closure-banner :notice="$annualClosureNotice ?? null" />
+
         {{-- Statistics --}}
         <x-dashboard.statistics :statistics="$statistics ?? null" :tahun="$tahun ?? date('Y')" />
 

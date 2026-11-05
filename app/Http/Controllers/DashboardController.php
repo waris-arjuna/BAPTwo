@@ -34,6 +34,7 @@ class DashboardController extends Controller
         $recentActivities = $this->dashboardService->getRecentActivities(4);
         $tkpDistribution = $this->dashboardService->getTkpDistribution($tahun);
         $topPasals = $this->dashboardService->getTopPasals($tahun);
+        $annualClosureNotice = $this->dashboardService->getAnnualClosureNoticeInfo();
 
         return view('pages.dashboard.ecommerce', [
             'title' => 'Dashboard BAPTwo',
@@ -47,6 +48,7 @@ class DashboardController extends Controller
             'availableYears' => $availableYears,
             'tkpDistribution' => $tkpDistribution,
             'topPasals' => $topPasals,
+            'annualClosureNotice' => $annualClosureNotice,
         ]);
     }
 
