@@ -7,7 +7,6 @@ use App\Models\BerkasPerkara;
 use App\Models\Dokumen;
 use App\Models\Perkara;
 use App\Models\Tersangka;
-use App\Models\Tkp;
 use App\Models\User;
 use App\Services\Queries\PerkaraListQuery;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
@@ -21,10 +20,14 @@ class PerkaraService
         protected AuditTrailService $auditTrail,
         protected WilayahService $wilayahService,
         protected ?DokumenService $dokumenService = null,
-        protected ?PerkaraListQuery $listQuery = null
+        protected ?PerkaraListQuery $listQuery = null,
+        protected ?AlamatService $alamatService = null,
+        protected ?BerkasPerkaraService $berkasPerkaraService = null
     ) {
         $this->dokumenService = $dokumenService ?? app(DokumenService::class);
         $this->listQuery = $listQuery ?? app(PerkaraListQuery::class);
+        $this->alamatService = $alamatService ?? app(AlamatService::class);
+        $this->berkasPerkaraService = $berkasPerkaraService ?? app(BerkasPerkaraService::class);
     }
 
     /**
@@ -335,212 +338,7 @@ class PerkaraService
      */
     public function savePerkaraBerkas(Perkara $perkara, array $data, User $user): Perkara
     {
-        if ($perkara->isPerkaraLocked()) {
-            abort(403, 'Data pembentukan perkara dan berkas pra-SPDP sudah difinalkan dan terkunci secara permanen.');
-        }
-
-        return DB::transaction(function () use ($perkara, $data, $user) {
-            $oldData = $perkara->load(['tkp.alamat', 'ppnsUsers', 'tersangkas.alamat', 'tersangkas.berkasPerkara.pasals'])->toArray();
-            $isFinal = ($data['action_type'] ?? 'lanjut') === 'lanjut';
-
-            // 1. Simpan / Update Alamat & TKP (F-07, F-36, F-37)
-            $tkpId = $perkara->tkp_id;
-            $hasTkpInput = ! empty($data['tkp_nama'])
-                || ! empty($data['tkp_provinsi_kode'])
-                || ! empty($data['tkp_alamat_detail'])
-                || ! empty($data['tkp_klasifikasi'])
-                || ! empty($data['tkp_legalitas'])
-                || ! empty($data['tkp_modus']);
-
-            if ($hasTkpInput || $tkpId !== null) {
-                $alamatPayload = $this->resolveAlamatPayload($data, $perkara->tkp?->alamat, 'tkp_');
-
-                if ($perkara->tkp && $perkara->tkp->alamat) {
-                    $perkara->tkp->alamat->update($alamatPayload);
-                    $alamatId = $perkara->tkp->alamat_id;
-                } else {
-                    $alamat = Alamat::create($alamatPayload);
-                    $alamatId = $alamat->id;
-                }
-
-                $tkpPayload = [
-                    'alamat_id' => $alamatId,
-                    'klasifikasi' => $data['tkp_klasifikasi'] ?? $perkara->tkp?->klasifikasi,
-                    'legalitas' => $data['tkp_legalitas'] ?? $perkara->tkp?->legalitas,
-                    'modus' => $data['tkp_modus'] ?? $perkara->tkp?->modus,
-                    'updated_by' => $user->id,
-                ];
-
-                if ($perkara->tkp) {
-                    $perkara->tkp->update($tkpPayload);
-                    $tkpId = $perkara->tkp->id;
-                } else {
-                    $tkpPayload['created_by'] = $user->id;
-                    $tkp = Tkp::create($tkpPayload);
-                    $tkpId = $tkp->id;
-                }
-            }
-
-            // 2. Sinkronisasi Tim PPNS Utama & Anggota (F-08)
-            $ppnsSync = [];
-            $utamaId = ! empty($data['ppns_utama_id']) ? (int) $data['ppns_utama_id'] : null;
-            if ($utamaId !== null) {
-                $ppnsSync[$utamaId] = ['peran' => 'utama'];
-            }
-
-            $anggotaIds = is_array($data['ppns_anggota_ids'] ?? null) ? $data['ppns_anggota_ids'] : [];
-            foreach ($anggotaIds as $anggotaId) {
-                $id = (int) $anggotaId;
-                if ($id > 0 && $id !== $utamaId) {
-                    $ppnsSync[$id] = ['peran' => 'anggota'];
-                }
-            }
-
-            if ($ppnsSync !== [] || array_key_exists('ppns_utama_id', $data)) {
-                $perkara->ppnsUsers()->sync($ppnsSync);
-            }
-
-            // 3. Simpan Tersangka -> 1 Berkas Perkara per Tersangka -> Pasal Berlapis (F-02, F-03, F-04, F-33)
-            if (is_array($data['tersangka'] ?? null)) {
-                $keptTersangkaIds = [];
-
-                foreach ($data['tersangka'] as $tskData) {
-                    $existingId = ! empty($tskData['id']) ? (int) $tskData['id'] : null;
-                    $tersangka = null;
-
-                    if ($existingId !== null) {
-                        $tersangka = Tersangka::where('perkara_id', $perkara->id)->find($existingId);
-                    }
-
-                    // Simpan / Update Alamat Tersangka (PRD F-03)
-                    $hasTskAlamat = ! empty($tskData['provinsi_kode'])
-                        || ! empty($tskData['alamat_detail'])
-                        || ! empty($tskData['kabupaten_kode'])
-                        || ! empty($tskData['kecamatan_kode'])
-                        || ! empty($tskData['desa_kode']);
-
-                    $tskAlamatId = $tersangka?->alamat_id;
-
-                    if ($hasTskAlamat || $tskAlamatId !== null) {
-                        $existingTskAlamat = $tskAlamatId ? Alamat::find($tskAlamatId) : null;
-                        $alamatPayload = $this->resolveAlamatPayload($tskData, $existingTskAlamat);
-
-                        if ($existingTskAlamat instanceof Alamat) {
-                            $existingTskAlamat->update($alamatPayload);
-                        } else {
-                            $newAlamat = Alamat::create($alamatPayload);
-                            $tskAlamatId = $newAlamat->id;
-                        }
-                    }
-
-                    $tskPayload = [
-                        'perkara_id' => $perkara->id,
-                        'nama' => $tskData['nama'] ?? null,
-                        'alias' => $tskData['alias'] ?? null,
-                        'bin_binti' => $tskData['bin_binti'] ?? null,
-                        'nik' => $tskData['nik'] ?? null,
-                        'tempat_lahir' => $tskData['tempat_lahir'] ?? null,
-                        'tanggal_lahir' => ($tskData['tanggal_lahir'] ?? null) ?: null,
-                        'jenis_kelamin' => ($tskData['jenis_kelamin'] ?? null) ?: null,
-                        'agama' => ($tskData['agama'] ?? null) ?: null,
-                        'pekerjaan' => $tskData['pekerjaan'] ?? null,
-                        'kewarganegaraan' => $tskData['kewarganegaraan'] ?? 'WNI',
-                        'alamat_id' => $tskAlamatId,
-                        'updated_by' => $user->id,
-                    ];
-
-                    if ($tersangka instanceof Tersangka) {
-                        $tersangka->update($tskPayload);
-                    } else {
-                        $tskPayload['created_by'] = $user->id;
-                        $tersangka = Tersangka::create($tskPayload);
-                    }
-
-                    $keptTersangkaIds[] = $tersangka->id;
-
-                    // 1 Tersangka = 1 Berkas Perkara (UNIQUE tersangka_id, Nomor Berkas manual tanpa pola - F-02, F-33)
-                    $berkas = BerkasPerkara::withTrashed()
-                        ->where('tersangka_id', $tersangka->id)
-                        ->first();
-
-                    $nomorBerkas = ! empty($tskData['nomor_berkas'])
-                        ? $tskData['nomor_berkas']
-                        : ($perkara->nomor_laporan_kejadian ?: 'BP-'.$perkara->id);
-
-                    if ($berkas instanceof BerkasPerkara) {
-                        if ($berkas->trashed()) {
-                            $berkas->restore();
-                        }
-                        $berkas->update([
-                            'perkara_id' => $perkara->id,
-                            'nomor_berkas' => $nomorBerkas,
-                            'updated_by' => $user->id,
-                        ]);
-                    } else {
-                        $berkas = BerkasPerkara::create([
-                            'perkara_id' => $perkara->id,
-                            'tersangka_id' => $tersangka->id,
-                            'nomor_berkas' => $nomorBerkas,
-                            'status_formal' => null,
-                            'status_proses' => 'Baru',
-                            'progress_persen' => 0,
-                            'is_dpo' => false,
-                            'created_by' => $user->id,
-                            'updated_by' => $user->id,
-                        ]);
-                    }
-
-                    // Sinkronisasi Pasal Berlapis per Berkas Perkara (F-04)
-                    $pasalIds = array_values(array_filter(
-                        array_map('intval', is_array($tskData['pasal_ids'] ?? null) ? $tskData['pasal_ids'] : []),
-                        fn (int $id): bool => $id > 0
-                    ));
-                    $berkas->pasals()->sync($pasalIds);
-                }
-
-                // Soft delete tersangka & berkas yang dihapus dari daftar saat masih draft
-                $removedTersangkas = Tersangka::where('perkara_id', $perkara->id)
-                    ->whereNotIn('id', $keptTersangkaIds)
-                    ->get();
-
-                foreach ($removedTersangkas as $removed) {
-                    $removed->berkasPerkara?->delete();
-                    $removed->delete();
-                }
-            }
-
-            // 4. Update status tahapan perkara
-            $perkara->update([
-                'tkp_id' => $tkpId,
-                'penuntut_umum_instansi_id' => ! empty($data['penuntut_umum_instansi_id']) ? (int) $data['penuntut_umum_instansi_id'] : null,
-                'penuntut_umum_nama' => ! empty($data['penuntut_umum_nama']) ? trim($data['penuntut_umum_nama']) : null,
-                'penuntut_umum_nip' => ! empty($data['penuntut_umum_nip']) ? trim($data['penuntut_umum_nip']) : null,
-                'tahap_laporan_status' => 'final',
-                'laporan_locked_at' => $perkara->laporan_locked_at ?? now(),
-                'laporan_finalized_by' => $perkara->laporan_finalized_by ?? $user->id,
-                'tahap_sprindik_status' => 'final',
-                'sprindik_locked_at' => $perkara->sprindik_locked_at ?? now(),
-                'sprindik_finalized_by' => $perkara->sprindik_finalized_by ?? $user->id,
-                'tahap_perkara_status' => $isFinal ? 'final' : 'draft',
-                'perkara_locked_at' => $isFinal ? now() : null,
-                'perkara_finalized_by' => $isFinal ? $user->id : null,
-                'updated_by' => $user->id,
-            ]);
-
-            $freshPerkara = $perkara->fresh(['tkp.alamat', 'ppnsUsers', 'tersangkas.berkasPerkara.pasals']);
-
-            $this->auditTrail->log(
-                aksi: $isFinal ? 'finalize_perkara_berkas' : 'save_draft_perkara_berkas',
-                tabel: 'perkara',
-                recordId: $perkara->id,
-                dataLama: $oldData,
-                dataBaru: $freshPerkara?->toArray(),
-                perkaraId: $perkara->id,
-                userId: $user->id
-            );
-
-            return $freshPerkara ?? $perkara;
-        });
+        return $this->berkasPerkaraService->savePerkaraBerkas($perkara, $data, $user);
     }
 
     /**
@@ -549,67 +347,9 @@ class PerkaraService
      * @param  array<string, mixed>  $data
      * @return array<string, ?string>
      */
-    protected function resolveAlamatPayload(array $data, ?Alamat $existing = null, string $prefix = ''): array
+    public function resolveAlamatPayload(array $data, ?Alamat $existing = null, string $prefix = ''): array
     {
-        $provKode = (string) ($data[$prefix.'provinsi_kode'] ?? $existing?->provinsi_kode ?? '');
-        $kabKode = (string) ($data[$prefix.'kabupaten_kode'] ?? $existing?->kabupaten_kode ?? '');
-        $kecKode = (string) ($data[$prefix.'kecamatan_kode'] ?? $existing?->kecamatan_kode ?? '');
-        $desaKode = (string) ($data[$prefix.'desa_kode'] ?? $existing?->desa_kode ?? '');
-
-        $provNama = (string) ($data[$prefix.'provinsi_nama'] ?? '');
-        if ($provNama === '' && $provKode !== '') {
-            foreach ($this->wilayahService->getProvinsi() as $item) {
-                if ($item['code'] === $provKode) {
-                    $provNama = $item['name'];
-                    break;
-                }
-            }
-        }
-
-        $kabNama = (string) ($data[$prefix.'kabupaten_nama'] ?? '');
-        if ($kabNama === '' && $provKode !== '' && $kabKode !== '') {
-            foreach ($this->wilayahService->getKabupaten($provKode) as $item) {
-                if ($item['code'] === $kabKode) {
-                    $kabNama = $item['name'];
-                    break;
-                }
-            }
-        }
-
-        $kecNama = (string) ($data[$prefix.'kecamatan_nama'] ?? '');
-        if ($kecNama === '' && $kabKode !== '' && $kecKode !== '') {
-            foreach ($this->wilayahService->getKecamatan($kabKode) as $item) {
-                if ($item['code'] === $kecKode) {
-                    $kecNama = $item['name'];
-                    break;
-                }
-            }
-        }
-
-        $desaNama = (string) ($data[$prefix.'desa_nama'] ?? '');
-        if ($desaNama === '' && $kecKode !== '' && $desaKode !== '') {
-            foreach ($this->wilayahService->getDesa($kecKode) as $item) {
-                if ($item['code'] === $desaKode) {
-                    $desaNama = $item['name'];
-                    break;
-                }
-            }
-        }
-
-        return [
-            'nama' => $data[$prefix.'nama'] ?? $existing?->nama,
-            'provinsi_kode' => $provKode ?: null,
-            'provinsi_nama' => $provNama ?: ($existing?->provinsi_nama ?? null),
-            'kabupaten_kode' => $kabKode ?: null,
-            'kabupaten_nama' => $kabNama ?: ($existing?->kabupaten_nama ?? null),
-            'kecamatan_kode' => $kecKode ?: null,
-            'kecamatan_nama' => $kecNama ?: ($existing?->kecamatan_nama ?? null),
-            'desa_kode' => $desaKode ?: null,
-            'desa_nama' => $desaNama ?: ($existing?->desa_nama ?? null),
-            'rt' => $data[$prefix.'rt'] ?? $existing?->rt,
-            'rw' => $data[$prefix.'rw'] ?? $existing?->rw,
-            'alamat_detail' => $data[$prefix.'alamat_detail'] ?? $existing?->alamat_detail,
-        ];
+        return $this->alamatService->resolveAlamatPayload($data, $existing, $prefix);
     }
 
     /**
