@@ -1802,6 +1802,22 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
   9. **Kebijakan SP3**: SP3 menghasilkan "Penyidikan dihentikan (SP3)" (netral, ikon `fi fi-rr-ban`). Sistem tidak pernah menyarankan penerbitan SP3 karena merupakan diskresi hukum penyidik.
 - Konsekuensi: Petugas mendapatkan panduan tindakan langsung yang jelas dan terukur batas waktunya pada setiap baris perkara di Daftar Perkara. Tampilan antarmuka bersih dan konsisten dengan Dark Mode serta Flaticon UIcons. Seluruh 353 test Pest PHP lulus sempurna, linter Pint clean, dan build Vite sukses.
 
+---
+
+## D-084 : Penyelarasan Menyeluruh Tenggat Waktu (SLA & Batas Waktu) Bebas Overflow
+
+- Tanggal: 2026-11-05
+- Status: Disepakati & Diimplementasikan (Task 108)
+- Konteks: Audit logika tanggal mengidentifikasi 4 anomali teknis pada penanganan tenggat waktu (SLA): (1) Penambahan bulan menggunakan `addMonth()` mengalami month overflow pada tanggal 31 (misal: 31 Jan melompat ke 3 Maret alih-alih 28/29 Feb); (2) Tampilan keterangan batas waktu di detail perkara menggunakan ternary inline panjang dan tidak terpusat di model; (3) Estimasi SLA di tabel prioritas Dashboard tidak konsisten dengan `effective_deadline` berkas; (4) Perkara berstatus DPO Aktif tidak memunculkan badge SLA (sisa hari / keterlambatan) di tabel Daftar Perkara.
+- Keputusan:
+  1. **Penggunaan `addMonthNoOverflow()`**: Mengganti seluruh pemanggilan `addMonth()` untuk SLA di `TahapanService::saveStage()` dan `BerkasPerkara::getEffectiveDeadlineAttribute()` menjadi `addMonthNoOverflow()` agar jatuh di hari terakhir bulan berikutnya tanpa melompat bulan.
+  2. **Accessor Terpusat `deadline_keterangan` di `BerkasPerkara`**: Menyediakan accessor `getDeadlineKeteranganAttribute()` yang mengembalikan label resmi: `Batas Tahun Mutlak 31 Des` (jika terpotong batas akhir tahun) atau `Tenggang Waktu 1 Bulan Tahap Aktif`. View `resources/views/pages/perkara/show.blade.php` disederhanakan menggunakan accessor ini.
+  3. **Penyelarasan Estimasi SLA Dashboard**: `DashboardService::getPriorityProgressPerkara()` menggunakan `$b->effective_deadline?->format('d-m-Y') ?? '-'` sebagai fallback andal yang seragam dengan model.
+  4. **Aktivasi Badge SLA untuk Perkara DPO Aktif**: Memperbarui `Perkara::getSlaBadgeInfo()` agar tetap mengevaluasi sisa hari SLA pada perkara berstatus DPO Aktif (hanya perkara Tidak Selesai/SP3 yang mengembalikan `null`), selaras dengan aturan domain PRD F-27 bahwa DPO tidak menjeda SLA.
+  5. **Artisan Command `perkara:sync-sla` (`SyncSlaDeadlinesCommand`)**: Menyediakan perintah CLI `php artisan perkara:sync-sla {--dry-run}` untuk menormalkan record eksisting pada database lokal secara aman dan idempoten.
+- Konsekuensi: Seluruh kalkulasi tenggat waktu SLA dan batas tahun mutlak 100% presisi dan bebas overflow tanggal, kode view menjadi bersih dan modular, dan seluruh 360 pengujian Pest PHP lulus sempurna.
+
+
 
 
 
