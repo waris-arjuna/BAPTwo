@@ -308,5 +308,7 @@
     "TAHAP I sudah final. Tindak lanjuti P-18P atau P-19 jika ada, lalu catat P-21.": "TAHAP I sudah final. Tindak lanjuti P-18P atau P-19 jika ada, lalu catat P-21.",
     "P-21 sudah final. Lakukan penyerahan tersangka dan barang bukti paling lambat :tanggal.": "P-21 sudah final. Lakukan penyerahan tersangka dan barang bukti paling lambat :tanggal.",
     "P-21 sudah final. Lakukan penyerahan tersangka dan barang bukti.": "P-21 sudah final. Lakukan penyerahan tersangka dan barang bukti.",
-    "Data perkara (TKP, PPNS, tersangka, pasal) masih draft. Finalkan agar berkas bisa masuk SPDP.": "Data perkara (TKP, PPNS, tersangka, pasal) masih draft. Finalkan agar berkas bisa masuk SPDP."
+    "Data perkara (TKP, PPNS, tersangka, pasal) masih draft. Finalkan agar berkas bisa masuk SPDP.": "Data perkara (TKP, PPNS, tersangka, pasal) masih draft. Finalkan agar berkas bisa masuk SPDP.",
+    "Pemberitahuan Sistem: Sebanyak :count berkas perkara tahun :tahun_lalu telah ditutup otomatis menjadi Tidak Selesai per 1 Januari :tahun_ini karena melewati batas akhir tahun penyidikan (31 Desember).": "Pemberitahuan Sistem: Sebanyak :count berkas perkara tahun :tahun_lalu telah ditutup otomatis menjadi Tidak Selesai per 1 Januari :tahun_ini karena melewati batas akhir tahun penyidikan (31 Desember).",
+    "Lihat Daftar Berkas": "Lihat Daftar Berkas"
 }
