@@ -5,6 +5,7 @@ use App\Models\Perkara;
 use App\Models\Tersangka;
 use App\Models\Tkp;
 use App\Models\User;
+use App\Services\WilayahService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
@@ -60,6 +61,17 @@ test('endpoint wilayah desa fallback ke JSON lokal districts_kalsel untuk kecama
         ->assertOk();
     $dataCempaka = $resCempaka->json('data');
     expect(count($dataCempaka))->toBe(4);
+});
+
+test('dapat membaca data kecamatan dan desa secara offline dari file partisi kabupaten maupun fallback', function () {
+    $service = app(WilayahService::class);
+
+    $districts = $service->getKecamatan('6371');
+    expect($districts)->toBeArray()->not->toBeEmpty();
+
+    $villages = $service->getDesa('637101');
+    expect($villages)->toBeArray()->not->toBeEmpty();
+    expect(collect($villages)->pluck('code'))->toContain('6371011001');
 });
 
 test('halaman edit draft perkara menyajikan data tkp tersimpan termasuk desa_kode dan desa_nama', function () {

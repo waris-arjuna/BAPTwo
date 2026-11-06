@@ -4,13 +4,9 @@ namespace App\Services;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 
 class WilayahService
 {
-    private const BASE_URL = 'https://api.kodewilayah.web.id';
-
     private const CACHE_TTL_DAYS = 30;
 
     /**
@@ -19,9 +15,18 @@ class WilayahService
     public function getProvinsi(): array
     {
         return Cache::remember('wilayah.provinsi', now()->addDays(self::CACHE_TTL_DAYS), function (): array {
-            $data = $this->fetchFromApi('/provinces');
+            $path = resource_path('data/wilayah/provinces.json');
+            if (File::exists($path)) {
+                $decoded = File::json($path);
+                if (is_array($decoded) && $decoded !== []) {
+                    return array_values(array_map(fn (array $item): array => [
+                        'code' => (string) ($item['code'] ?? ''),
+                        'name' => (string) ($item['name'] ?? ''),
+                    ], $decoded));
+                }
+            }
 
-            return $data !== [] ? $data : $this->fallbackProvinsi();
+            return $this->fallbackProvinsi();
         });
     }
 
@@ -30,10 +35,28 @@ class WilayahService
      */
     public function getKabupaten(string $provinsiKode): array
     {
-        return Cache::remember("wilayah.kabupaten.{$provinsiKode}", now()->addDays(self::CACHE_TTL_DAYS), function () use ($provinsiKode): array {
-            $data = $this->fetchFromApi("/regencies/{$provinsiKode}");
+        $provinsiKode = trim(str_replace(['.', ' '], '', $provinsiKode));
 
-            return $data !== [] ? $data : $this->fallbackKabupaten($provinsiKode);
+        return Cache::remember("wilayah.kabupaten.{$provinsiKode}", now()->addDays(self::CACHE_TTL_DAYS), function () use ($provinsiKode): array {
+            $path = resource_path('data/wilayah/regencies.json');
+            if (File::exists($path)) {
+                $decoded = File::json($path);
+                if (is_array($decoded)) {
+                    $filtered = array_values(array_filter(
+                        $decoded,
+                        fn (array $item): bool => (string) ($item['province_code'] ?? '') === $provinsiKode
+                    ));
+
+                    if ($filtered !== []) {
+                        return array_values(array_map(fn (array $item): array => [
+                            'code' => (string) ($item['code'] ?? ''),
+                            'name' => (string) ($item['name'] ?? ''),
+                        ], $filtered));
+                    }
+                }
+            }
+
+            return $this->fallbackKabupaten($provinsiKode);
         });
     }
 
@@ -42,10 +65,21 @@ class WilayahService
      */
     public function getKecamatan(string $kabupatenKode): array
     {
-        return Cache::remember("wilayah.kecamatan.{$kabupatenKode}", now()->addDays(self::CACHE_TTL_DAYS), function () use ($kabupatenKode): array {
-            $data = $this->fetchFromApi("/districts/{$kabupatenKode}");
+        $kabupatenKode = trim(str_replace(['.', ' '], '', $kabupatenKode));
 
-            return $data !== [] ? $data : $this->fallbackKecamatan($kabupatenKode);
+        return Cache::remember("wilayah.kecamatan.{$kabupatenKode}", now()->addDays(self::CACHE_TTL_DAYS), function () use ($kabupatenKode): array {
+            $partitionPath = resource_path("data/wilayah/districts/{$kabupatenKode}.json");
+            if (File::exists($partitionPath)) {
+                $decoded = File::json($partitionPath);
+                if (is_array($decoded) && $decoded !== []) {
+                    return array_values(array_map(fn (array $item): array => [
+                        'code' => (string) ($item['code'] ?? ''),
+                        'name' => (string) ($item['name'] ?? ''),
+                    ], $decoded));
+                }
+            }
+
+            return $this->fallbackKecamatan($kabupatenKode);
         });
     }
 
@@ -54,10 +88,22 @@ class WilayahService
      */
     public function getDesa(string $kecamatanKode): array
     {
-        return Cache::remember("wilayah.desa.{$kecamatanKode}", now()->addDays(self::CACHE_TTL_DAYS), function () use ($kecamatanKode): array {
-            $data = $this->fetchFromApi("/villages/{$kecamatanKode}");
+        $kecamatanKode = trim(str_replace(['.', ' '], '', $kecamatanKode));
+        $kabupatenKode = substr($kecamatanKode, 0, 4);
 
-            return $data !== [] ? $data : $this->fallbackDesa($kecamatanKode);
+        return Cache::remember("wilayah.desa.{$kecamatanKode}", now()->addDays(self::CACHE_TTL_DAYS), function () use ($kabupatenKode, $kecamatanKode): array {
+            $partitionPath = resource_path("data/wilayah/villages/{$kabupatenKode}.json");
+            if (File::exists($partitionPath)) {
+                $decoded = File::json($partitionPath);
+                if (is_array($decoded) && isset($decoded[$kecamatanKode]) && is_array($decoded[$kecamatanKode]) && $decoded[$kecamatanKode] !== []) {
+                    return array_values(array_map(fn (array $item): array => [
+                        'code' => (string) ($item['code'] ?? ''),
+                        'name' => (string) ($item['name'] ?? ''),
+                    ], $decoded[$kecamatanKode]));
+                }
+            }
+
+            return $this->fallbackDesa($kecamatanKode);
         });
     }
 
@@ -69,59 +115,8 @@ class WilayahService
     /**
      * @return list<array{code: string, name: string}>
      */
-    private function fetchFromApi(string $endpoint): array
-    {
-        try {
-            $response = Http::timeout(8)
-                ->acceptJson()
-                ->withoutVerifying()
-                ->get(self::BASE_URL.$endpoint);
-
-            if (! $response->successful()) {
-                Log::warning('WilayahService API call unsuccessful', [
-                    'endpoint' => $endpoint,
-                    'status' => $response->status(),
-                ]);
-
-                return [];
-            }
-
-            $items = $response->json('data', []);
-            if (! is_array($items)) {
-                return [];
-            }
-
-            return array_values(array_map(fn (array $item): array => [
-                'code' => (string) ($item['code'] ?? ''),
-                'name' => (string) ($item['name'] ?? ''),
-            ], $items));
-        } catch (\Throwable $e) {
-            Log::warning('WilayahService API connection error, falling back to local data', [
-                'endpoint' => $endpoint,
-                'error' => $e->getMessage(),
-            ]);
-
-            return [];
-        }
-    }
-
-    /**
-     * @return list<array{code: string, name: string}>
-     */
     private function fallbackProvinsi(): array
     {
-        $path = resource_path('data/wilayah/provinces.json');
-        if (file_exists($path)) {
-            $content = file_get_contents($path);
-            $decoded = json_decode((string) $content, true);
-            if (is_array($decoded) && $decoded !== []) {
-                return array_values(array_map(fn (array $item): array => [
-                    'code' => (string) ($item['code'] ?? ''),
-                    'name' => (string) ($item['name'] ?? ''),
-                ], $decoded));
-            }
-        }
-
         return [
             ['code' => '63', 'name' => 'Kalimantan Selatan'],
             ['code' => '62', 'name' => 'Kalimantan Tengah'],
@@ -137,25 +132,6 @@ class WilayahService
      */
     private function fallbackKabupaten(string $provinsiKode): array
     {
-        $path = resource_path('data/wilayah/regencies.json');
-        if (file_exists($path)) {
-            $content = file_get_contents($path);
-            $decoded = json_decode((string) $content, true);
-            if (is_array($decoded)) {
-                $filtered = array_values(array_filter(
-                    $decoded,
-                    fn (array $item): bool => (string) ($item['province_code'] ?? '') === (string) $provinsiKode
-                ));
-
-                if ($filtered !== []) {
-                    return array_values(array_map(fn (array $item): array => [
-                        'code' => (string) ($item['code'] ?? ''),
-                        'name' => (string) ($item['name'] ?? ''),
-                    ], $filtered));
-                }
-            }
-        }
-
         if ($provinsiKode === '63') {
             return [
                 ['code' => '6371', 'name' => 'Kota Banjarmasin'],
