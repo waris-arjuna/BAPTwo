@@ -36,9 +36,15 @@ export function tkpWilayahForm(config = {}) {
             if (config.desaKode) this.desaKode = String(config.desaKode);
             if (config.desaNama) this.desaNama = String(config.desaNama);
 
-            await this.loadKabupaten(false);
-            if (this.kabupatenKode) await this.loadKecamatan(false);
-            if (this.kecamatanKode) await this.loadDesa(false);
+            try {
+                await this.loadKabupaten(false);
+                if (this.kabupatenKode) await this.loadKecamatan(false, this.kabupatenKode, false);
+                if (this.kecamatanKode) await this.loadDesa(false, this.kecamatanKode, false);
+            } finally {
+                this.$nextTick(() => {
+                    this.isInitializing = false;
+                });
+            }
 
             this.$watch('kabupatenKode', (val) => {
                 const found = this.kabupatenList.find(k => String(k.code || k.kode) === String(val));
@@ -51,10 +57,6 @@ export function tkpWilayahForm(config = {}) {
             this.$watch('desaKode', (val) => {
                 const found = this.desaList.find(d => String(d.code || d.kode) === String(val));
                 this.desaNama = found ? (found.name || found.nama) : '';
-            });
-
-            this.$nextTick(() => {
-                this.isInitializing = false;
             });
         },
 
@@ -118,11 +120,6 @@ export function tkpWilayahForm(config = {}) {
                     this.kecamatanList = json.data || [];
                     const foundKec = this.kecamatanList.find(k => String(k.code || k.kode) === String(this.kecamatanKode));
                     if (foundKec) this.kecamatanNama = foundKec.name || foundKec.nama;
-                    if (autoOpen && this.kecamatanList.length > 0) {
-                        this.$nextTick(() => {
-                            this.$dispatch('searchable-select-open', { id: 'tkp_kecamatan_kode' });
-                        });
-                    }
                 }
             } catch (e) {
                 if (e.name !== 'AbortError') {
@@ -171,11 +168,6 @@ export function tkpWilayahForm(config = {}) {
                     this.desaList = json.data || [];
                     const foundDesa = this.desaList.find(d => String(d.code || d.kode) === String(this.desaKode));
                     if (foundDesa) this.desaNama = foundDesa.name || foundDesa.nama;
-                    if (autoOpen && this.desaList.length > 0) {
-                        this.$nextTick(() => {
-                            this.$dispatch('searchable-select-open', { id: 'tkp_desa_kode' });
-                        });
-                    }
                 }
             } catch (e) {
                 if (e.name !== 'AbortError') {
@@ -210,23 +202,25 @@ export function tkpWilayahForm(config = {}) {
         onKabupatenChange(event) {
             if (this.isInitializing) return;
             const val = this.extractEventValue(event, this.kabupatenKode);
-            if (String(val) === String(this.kabupatenKode) && this.kecamatanList.length > 0) return;
-            this.loadKecamatan(true, val, true);
+            if (val === undefined || val === null || String(val) === String(this.kabupatenKode)) return;
+            this.loadKecamatan(true, val, false);
         },
 
         onKecamatanChange(event) {
             if (this.isInitializing) return;
             const val = this.extractEventValue(event, this.kecamatanKode);
-            if (String(val) === String(this.kecamatanKode) && this.desaList.length > 0) return;
-            this.loadDesa(true, val, true);
+            if (val === undefined || val === null || String(val) === String(this.kecamatanKode)) return;
+            this.loadDesa(true, val, false);
         },
 
         onDesaChange(event) {
             if (this.isInitializing) return;
             const val = this.extractEventValue(event, this.desaKode);
-            if (val !== undefined && val !== null) this.desaKode = String(val);
-            const found = this.desaList.find(d => String(d.code || d.kode) === String(this.desaKode));
-            this.desaNama = found ? (found.name || found.nama) : '';
+            if (val !== undefined && val !== null) {
+                this.desaKode = String(val);
+                const found = this.desaList.find(d => String(d.code || d.kode) === String(this.desaKode));
+                this.desaNama = found ? (found.name || found.nama) : '';
+            }
         }
     };
 }
@@ -390,20 +384,22 @@ export function tersangkaAlamatModalForm(config = {}) {
 
             this.isAlamatModalOpen = true;
 
-            await this.fetchProvinsi();
-            if (this.modalWilayah.provinsi_kode) {
-                await this.fetchKabupaten(this.modalWilayah.provinsi_kode);
+            try {
+                await this.fetchProvinsi();
+                if (this.modalWilayah.provinsi_kode) {
+                    await this.fetchKabupaten(this.modalWilayah.provinsi_kode, false);
+                }
+                if (this.modalWilayah.kabupaten_kode) {
+                    await this.fetchKecamatan(this.modalWilayah.kabupaten_kode, false);
+                }
+                if (this.modalWilayah.kecamatan_kode) {
+                    await this.fetchDesa(this.modalWilayah.kecamatan_kode, false);
+                }
+            } finally {
+                this.$nextTick(() => {
+                    this.isModalLoading = false;
+                });
             }
-            if (this.modalWilayah.kabupaten_kode) {
-                await this.fetchKecamatan(this.modalWilayah.kabupaten_kode);
-            }
-            if (this.modalWilayah.kecamatan_kode) {
-                await this.fetchDesa(this.modalWilayah.kecamatan_kode);
-            }
-
-            this.$nextTick(() => {
-                this.isModalLoading = false;
-            });
         },
 
         async fetchProvinsi() {
@@ -435,11 +431,6 @@ export function tersangkaAlamatModalForm(config = {}) {
                 const json = await res.json();
                 if (String(this.modalWilayah.provinsi_kode) === String(provKode)) {
                     this.listKabupaten = json.data || [];
-                    if (autoOpen && this.listKabupaten.length > 0) {
-                        this.$nextTick(() => {
-                            this.$dispatch('searchable-select-open', { id: 'modal_tersangka_kabupaten_kode' });
-                        });
-                    }
                 }
             } catch (e) {
                 if (e.name !== 'AbortError') {
@@ -470,11 +461,6 @@ export function tersangkaAlamatModalForm(config = {}) {
                 const json = await res.json();
                 if (String(this.modalWilayah.kabupaten_kode) === String(kabKode)) {
                     this.listKecamatan = json.data || [];
-                    if (autoOpen && this.listKecamatan.length > 0) {
-                        this.$nextTick(() => {
-                            this.$dispatch('searchable-select-open', { id: 'modal_tersangka_kecamatan_kode' });
-                        });
-                    }
                 }
             } catch (e) {
                 if (e.name !== 'AbortError') {
@@ -505,11 +491,6 @@ export function tersangkaAlamatModalForm(config = {}) {
                 const json = await res.json();
                 if (String(this.modalWilayah.kecamatan_kode) === String(kecKode)) {
                     this.listDesa = json.data || [];
-                    if (autoOpen && this.listDesa.length > 0) {
-                        this.$nextTick(() => {
-                            this.$dispatch('searchable-select-open', { id: 'modal_tersangka_desa_kode' });
-                        });
-                    }
                 }
             } catch (e) {
                 if (e.name !== 'AbortError') {
@@ -544,8 +525,8 @@ export function tersangkaAlamatModalForm(config = {}) {
         onProvinsiChange(event) {
             if (this.isModalLoading) return;
             const val = this.extractEventValue(event, this.modalWilayah.provinsi_kode);
-            if (String(val) === String(this.modalWilayah.provinsi_kode) && this.listKabupaten.length > 0) return;
-            this.modalWilayah.provinsi_kode = val ? String(val) : '';
+            if (val === undefined || val === null || String(val) === String(this.modalWilayah.provinsi_kode)) return;
+            this.modalWilayah.provinsi_kode = String(val);
             const found = this.listProvinsi.find(p => String(p.code) === String(val));
             this.modalWilayah.provinsi_nama = found ? (found.name || found.nama) : '';
 
@@ -567,8 +548,8 @@ export function tersangkaAlamatModalForm(config = {}) {
         onKabupatenChange(event) {
             if (this.isModalLoading) return;
             const val = this.extractEventValue(event, this.modalWilayah.kabupaten_kode);
-            if (String(val) === String(this.modalWilayah.kabupaten_kode) && this.listKecamatan.length > 0) return;
-            this.modalWilayah.kabupaten_kode = val ? String(val) : '';
+            if (val === undefined || val === null || String(val) === String(this.modalWilayah.kabupaten_kode)) return;
+            this.modalWilayah.kabupaten_kode = String(val);
             const found = this.listKabupaten.find(k => String(k.code) === String(val));
             this.modalWilayah.kabupaten_nama = found ? (found.name || found.nama) : '';
 
@@ -587,8 +568,8 @@ export function tersangkaAlamatModalForm(config = {}) {
         onKecamatanChange(event) {
             if (this.isModalLoading) return;
             const val = this.extractEventValue(event, this.modalWilayah.kecamatan_kode);
-            if (String(val) === String(this.modalWilayah.kecamatan_kode) && this.listDesa.length > 0) return;
-            this.modalWilayah.kecamatan_kode = val ? String(val) : '';
+            if (val === undefined || val === null || String(val) === String(this.modalWilayah.kecamatan_kode)) return;
+            this.modalWilayah.kecamatan_kode = String(val);
             const found = this.listKecamatan.find(k => String(k.code) === String(val));
             this.modalWilayah.kecamatan_nama = found ? (found.name || found.nama) : '';
 
@@ -604,9 +585,11 @@ export function tersangkaAlamatModalForm(config = {}) {
         onDesaChange(event) {
             if (this.isModalLoading) return;
             const val = this.extractEventValue(event, this.modalWilayah.desa_kode);
-            this.modalWilayah.desa_kode = val ? String(val) : '';
-            const found = this.listDesa.find(d => String(d.code) === String(val));
-            this.modalWilayah.desa_nama = found ? (found.name || found.nama) : '';
+            if (val !== undefined && val !== null) {
+                this.modalWilayah.desa_kode = String(val);
+                const found = this.listDesa.find(d => String(d.code) === String(val));
+                this.modalWilayah.desa_nama = found ? (found.name || found.nama) : '';
+            }
         },
 
         applyAlamat() {

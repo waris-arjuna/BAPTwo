@@ -1834,10 +1834,20 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
   7. **Interaktivitas Dismissal Klien (Alpine.js & localStorage)**: Tombol tutup (X) menyembunyikan banner secara instan dan menyimpan flag di `localStorage` per tahun penutupan (`dismiss_annual_close_{tahun_ini}`), menjaga performa backend tanpa menambah kolom database.
 - Konsekuensi: Petugas mendapatkan peringatan langsung saat membuka Dashboard di awal tahun baru dan dapat meninjau seluruh berkas yang ditutup sistem dengan 1 klik.
 
+---
 
+## D-086 : Perbaikan Siklus Hidup dan Proteksi Cascading Dropdown Wilayah (Desa/Kelurahan Edit Draft)
 
-
-
-
+- Tanggal: 2026-11-05
+- Status: Disepakati & Diimplementasikan (Task 110)
+- Konteks: Pada verifikasi cascading wilayah form TKP (`tkpWilayahForm`) dan modal alamat tersangka (`tersangkaAlamatModalForm`), saat membuka kembali halaman edit draft perkara, nilai desa/kelurahan yang sebelumnya sudah tersimpan kembali ke placeholder `"-- Pilih Desa/Kelurahan --"`. Akar penyebab: (1) `$watch('selectedValue')` pada `searchable-select` memicu event native `change` yang merambat (bubbles) ke container form Alpine, (2) event listener `@change` pada form menangkap event tersebut dan mengeksekusi reset agresif pada dropdown anak karena kondisi guard `this.desaList.length > 0` bernilai false saat async fetch berlangsung, (3) `isInitializing` dan `isModalLoading` dimatikan terlalu dini via `$nextTick` sebelum seluruh rantai pemanggilan `fetch` asynchronous selesai, (4) data fallback JSON lokal `districts_kalsel.json` belum lengkap untuk kelurahan di kecamatan Banjarmasin Selatan (`637101`), Timur (`637102`), Barat (`637103`), Cempaka (`637203`), dll., sehingga saat API offline opsi tidak cocok.
+- Keputusan:
+  1. **Kelengkapan Fallback Wilayah Kalsel**: Menambahkan seluruh kelurahan resmi untuk kecamatan Banjarmasin Selatan (12 kelurahan), Timur (9 kelurahan), Barat (9 kelurahan), serta Banjarbaru dan Banjar ke dalam `resources/data/wilayah/districts_kalsel.json`.
+  2. **Isolasi Event Native pada `searchable-select`**: Menghilangkan dispatch event bubbling `new Event('change', { bubbles: true })` dari internal watcher `$watch('selectedValue')`. Event `change` hanya ditembakkan saat interaksi pengguna nyata (`selectOption` dan `clear`).
+  3. **Penjagaan State Asli pada `syncFromSelect`**: Menjaga nilai `selectedValue` yang sudah ada dari model agar tidak tertimpa string kosong `""` saat opsi anak belum selesai dirender oleh `x-for`.
+  4. **Proteksi Strict Guard & Lifecycle `isInitializing`**: Pada `tkpWilayahForm`, `tersangkaAlamatModalForm`, dan modal profil pengguna, flag `isInitializing` / `isModalLoading` dijaga tetap `true` hingga seluruh pemanggilan async (`loadKabupaten`, `loadKecamatan`, `loadDesa`) selesai dalam blok `try...finally`. Guard pemanggilan `onKabupatenChange` dan `onKecamatanChange` memeriksa ketat `if (val === undefined || val === null || String(val) === String(currentCode)) return;` sehingga event redundant tidak mereset dropdown anak.
+  5. **Penetapan UX No Auto-Open**: Dropdown anak tidak membuka otomatis saat induk dipilih, sesuai preferensi pengguna.
+  6. **Automated Regression Test**: Dibuat test feature `tests/Feature/AlamatCascadingEditDraftTest.php` yang menguji integritas fallback desa, form edit draft perkara untuk TKP dan tersangka, serta halaman profil pengguna.
+- Konsekuensi: Nilai desa/kelurahan yang tersimpan pada draft perkara dan profil pengguna tetap terpilih secara konsisten saat form dibuka kembali. Seluruh 372 automated test Pest PHP lulus tanpa regresi.
 
 

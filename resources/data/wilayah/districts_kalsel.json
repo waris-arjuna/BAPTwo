@@ -55,6 +55,42 @@
     ]
   },
   "villages": {
+    "637101": [
+      {"code": "6371011001", "name": "Mantuil"},
+      {"code": "6371011002", "name": "Kelayan Selatan"},
+      {"code": "6371011003", "name": "Pekauman"},
+      {"code": "6371011004", "name": "Kelayan Barat"},
+      {"code": "6371011005", "name": "Kelayan Tengah"},
+      {"code": "6371011006", "name": "Kelayan Dalam"},
+      {"code": "6371011007", "name": "Murung Raya"},
+      {"code": "6371011008", "name": "Kelayan Timur"},
+      {"code": "6371011009", "name": "Tanjung Pagar"},
+      {"code": "6371011010", "name": "Pemurus Dalam"},
+      {"code": "6371011011", "name": "Pemurus Baru"},
+      {"code": "6371011012", "name": "Basirih Selatan"}
+    ],
+    "637102": [
+      {"code": "6371021001", "name": "Kuripan"},
+      {"code": "6371021002", "name": "Kebun Bunga"},
+      {"code": "6371021003", "name": "Pekapuran Raya"},
+      {"code": "6371021004", "name": "Sungai Bilu"},
+      {"code": "6371021005", "name": "Pemurus Luar"},
+      {"code": "6371021006", "name": "Pengambangan"},
+      {"code": "6371021007", "name": "Benua Anyar"},
+      {"code": "6371021008", "name": "Karang Mekar"},
+      {"code": "6371021009", "name": "Melayu"}
+    ],
+    "637103": [
+      {"code": "6371031001", "name": "Belitung Selatan"},
+      {"code": "6371031002", "name": "Belitung Utara"},
+      {"code": "6371031003", "name": "Kuin Cerucuk"},
+      {"code": "6371031004", "name": "Kuin Selatan"},
+      {"code": "6371031005", "name": "Basirih"},
+      {"code": "6371031006", "name": "Telaga Biru"},
+      {"code": "6371031007", "name": "Teluk Tiram"},
+      {"code": "6371031008", "name": "Telawang"},
+      {"code": "6371031009", "name": "Pelambuan"}
+    ],
     "637104": [
       {"code": "6371041001", "name": "Alalak Selatan"},
       {"code": "6371041002", "name": "Alalak Tengah"},
@@ -92,6 +128,24 @@
       {"code": "6372021004", "name": "Guntung Payung"},
       {"code": "6372021005", "name": "Guntung Manggis"}
     ],
+    "637203": [
+      {"code": "6372031001", "name": "Cempaka"},
+      {"code": "6372031002", "name": "Sungai Tiung"},
+      {"code": "6372031003", "name": "Bangkal"},
+      {"code": "6372031004", "name": "Palam"}
+    ],
+    "637205": [
+      {"code": "6372051001", "name": "Loktabat Selatan"},
+      {"code": "6372051002", "name": "Kemuning"},
+      {"code": "6372051003", "name": "Guntung Paikat"},
+      {"code": "6372051004", "name": "Sungai Besar"}
+    ],
+    "637206": [
+      {"code": "6372061001", "name": "Landasan Ulin Selatan"},
+      {"code": "6372061002", "name": "Landasan Ulin Barat"},
+      {"code": "6372061003", "name": "Landasan Ulin Utara"},
+      {"code": "6372061004", "name": "Landasan Ulin Tengah"}
+    ],
     "630305": [
       {"code": "6303051001", "name": "Jawa"},
       {"code": "6303051002", "name": "Keraton"},
@@ -105,6 +159,27 @@
       {"code": "6303022003", "name": "Manarap Baru"},
       {"code": "6303022001", "name": "Kertak Hanyar I"}
     ],
+    "630301": [
+      {"code": "6303012001", "name": "Aluh-Aluh Besar"},
+      {"code": "6303012002", "name": "Aluh-Aluh Kecil"},
+      {"code": "6303012003", "name": "Aluh-Aluh Kecil Muara"},
+      {"code": "6303012004", "name": "Bakambat"},
+      {"code": "6303012005", "name": "Handil Baru"},
+      {"code": "6303012006", "name": "Handil Bujur"},
+      {"code": "6303012007", "name": "Kuin Besar"},
+      {"code": "6303012008", "name": "Kuin Kecil"},
+      {"code": "6303012009", "name": "Labat Muara"},
+      {"code": "6303012010", "name": "Podok"},
+      {"code": "6303012011", "name": "Pulantan"},
+      {"code": "6303012012", "name": "Simpang Warga"},
+      {"code": "6303012013", "name": "Simpang Warga Dalam"},
+      {"code": "6303012014", "name": "Sungai Musang"},
+      {"code": "6303012015", "name": "Tanipah"},
+      {"code": "6303012016", "name": "Terapu"},
+      {"code": "6303012017", "name": "Pemurus"},
+      {"code": "6303012018", "name": "Bunipah"},
+      {"code": "6303012019", "name": "Balimau"}
+    ],
     "630403": [
       {"code": "6304031001", "name": "Marabahan Kota"}
     ],
@@ -116,6 +191,36 @@
       {"code": "6301031002", "name": "Sarang Halang"},
       {"code": "6301031003", "name": "Karang Taruna"},
       {"code": "6301031004", "name": "Angsau"}
+    ],
+    "630101": [
+      {"code": "6301012001", "name": "Takisung"},
+      {"code": "6301012002", "name": "Gunung Makmur"},
+      {"code": "6301012003", "name": "Benua Lawas"},
+      {"code": "6301012004", "name": "Benua Tengah"},
+      {"code": "6301012005", "name": "Batilai"},
+      {"code": "6301012006", "name": "Pagatan Besar"},
+      {"code": "6301012007", "name": "Tabanio"},
+      {"code": "6301012008", "name": "Kuala Tambangan"},
+      {"code": "6301012009", "name": "Telaga Langsat"},
+      {"code": "6301012010", "name": "Ranggang"},
+      {"code": "6301012011", "name": "Ranggang Dalam"},
+      {"code": "6301012012", "name": "Sumber Makmur"}
+    ],
+    "630104": [
+      {"code": "6301042001", "name": "Bati-Bati"},
+      {"code": "6301042002", "name": "Padang"},
+      {"code": "6301042003", "name": "Ujung"},
+      {"code": "6301042004", "name": "Nusa"},
+      {"code": "6301042005", "name": "Bentok Darat"},
+      {"code": "6301042006", "name": "Bentok Kampung"},
+      {"code": "6301042007", "name": "Kait-Kait"},
+      {"code": "6301042008", "name": "Kait-Kait Baru"},
+      {"code": "6301042009", "name": "Sambangan"},
+      {"code": "6301042010", "name": "Liang Anggang"},
+      {"code": "6301042011", "name": "Pandahan"},
+      {"code": "6301042012", "name": "Banyu Irang"},
+      {"code": "6301042013", "name": "Benua Raya"},
+      {"code": "6301042014", "name": "Tambang Ulang"}
     ],
     "630504": [
       {"code": "6305041001", "name": "Rantau Kiwa"}

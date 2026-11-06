@@ -58,8 +58,7 @@
                 const found = this.options.find(o => String(o.value) === String(val));
                 this.selectedLabel = (found && found.value !== '') ? found.label : '';
                 if (this.$refs.nativeSelect && this.$refs.nativeSelect.value !== String(val)) {
-                    this.$refs.nativeSelect.value = val;
-                    this.$refs.nativeSelect.dispatchEvent(new Event('change', { bubbles: true }));
+                    this.$refs.nativeSelect.value = val !== null && val !== undefined ? String(val) : '';
                 }
             });
         },
@@ -82,15 +81,19 @@
             }));
             this.options = opts;
 
-            const currentVal = native.value !== undefined ? native.value : this.selectedValue;
-            if (currentVal !== '' && currentVal !== null) {
-                this.selectedValue = currentVal;
+            // Prioritaskan selectedValue jika sudah ada nilainya, atau ambil dari native jika terpilih
+            if ((!this.selectedValue || this.selectedValue === '') && native.value !== '' && native.value !== null && native.value !== undefined) {
+                this.selectedValue = native.value;
             }
 
             const found = opts.find(o => String(o.value) === String(this.selectedValue));
-            this.selectedLabel = (found && found.value !== '') ? found.label : '';
-            if (found && native.value !== String(this.selectedValue)) {
-                native.value = this.selectedValue;
+            if (found && found.value !== '') {
+                this.selectedLabel = found.label;
+                if (native.value !== String(this.selectedValue)) {
+                    native.value = this.selectedValue;
+                }
+            } else if (!this.selectedValue) {
+                this.selectedLabel = '';
             }
         },
 

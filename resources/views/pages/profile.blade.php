@@ -303,6 +303,7 @@
                     newPassword: '',
                     clientError: '',
                     wilayahLoaded: false,
+                    isInitializingWilayah: false,
                     wilayah: {
                         provinsi_kode: config.initialWilayah.provinsi_kode || '',
                         provinsi_nama: config.initialWilayah.provinsi_nama || '',
@@ -365,17 +366,24 @@
                     },
 
                     async loadInitialWilayah() {
+                        this.isInitializingWilayah = true;
                         this.wilayahLoaded = true;
-                        await this.fetchProvinsi();
+                        try {
+                            await this.fetchProvinsi();
 
-                        if (this.wilayah.provinsi_kode) {
-                            await this.fetchKabupaten(this.wilayah.provinsi_kode);
-                        }
-                        if (this.wilayah.kabupaten_kode) {
-                            await this.fetchKecamatan(this.wilayah.kabupaten_kode);
-                        }
-                        if (this.wilayah.kecamatan_kode) {
-                            await this.fetchDesa(this.wilayah.kecamatan_kode);
+                            if (this.wilayah.provinsi_kode) {
+                                await this.fetchKabupaten(this.wilayah.provinsi_kode, false);
+                            }
+                            if (this.wilayah.kabupaten_kode) {
+                                await this.fetchKecamatan(this.wilayah.kabupaten_kode, false);
+                            }
+                            if (this.wilayah.kecamatan_kode) {
+                                await this.fetchDesa(this.wilayah.kecamatan_kode, false);
+                            }
+                        } finally {
+                            this.$nextTick(() => {
+                                this.isInitializingWilayah = false;
+                            });
                         }
                     },
 
@@ -407,11 +415,6 @@
                             const json = await res.json();
                             if (String(this.wilayah.provinsi_kode) === String(provKode)) {
                                 this.listKabupaten = json.data || [];
-                                if (autoOpen && this.listKabupaten.length > 0) {
-                                    this.$nextTick(() => {
-                                        this.$dispatch('searchable-select-open', { id: 'kabupaten_kode' });
-                                    });
-                                }
                             }
                         } catch (e) {
                             if (e.name !== 'AbortError') {
@@ -442,11 +445,6 @@
                             const json = await res.json();
                             if (String(this.wilayah.kabupaten_kode) === String(kabKode)) {
                                 this.listKecamatan = json.data || [];
-                                if (autoOpen && this.listKecamatan.length > 0) {
-                                    this.$nextTick(() => {
-                                        this.$dispatch('searchable-select-open', { id: 'kecamatan_kode' });
-                                    });
-                                }
                             }
                         } catch (e) {
                             if (e.name !== 'AbortError') {
@@ -477,11 +475,6 @@
                             const json = await res.json();
                             if (String(this.wilayah.kecamatan_kode) === String(kecKode)) {
                                 this.listDesa = json.data || [];
-                                if (autoOpen && this.listDesa.length > 0) {
-                                    this.$nextTick(() => {
-                                        this.$dispatch('searchable-select-open', { id: 'desa_kode' });
-                                    });
-                                }
                             }
                         } catch (e) {
                             if (e.name !== 'AbortError') {
@@ -509,8 +502,10 @@
                     },
 
                     async onProvinsiChange(event) {
+                        if (this.isInitializingWilayah) return;
                         const code = this.extractEventValue(event, this.wilayah.provinsi_kode);
-                        if (code !== undefined && code !== null) this.wilayah.provinsi_kode = String(code);
+                        if (code === undefined || code === null || String(code) === String(this.wilayah.provinsi_kode)) return;
+                        this.wilayah.provinsi_kode = String(code);
                         const found = this.listProvinsi.find(i => String(i.code) === String(this.wilayah.provinsi_kode));
                         this.wilayah.provinsi_nama = found ? found.name : '';
                         this.wilayah.kabupaten_kode = '';
@@ -525,12 +520,16 @@
                         this.$dispatch('searchable-select-loading', { id: 'kabupaten_kode', loading: false });
                         this.$dispatch('searchable-select-loading', { id: 'kecamatan_kode', loading: false });
                         this.$dispatch('searchable-select-loading', { id: 'desa_kode', loading: false });
-                        await this.fetchKabupaten(this.wilayah.provinsi_kode, false);
+                        if (code) {
+                            await this.fetchKabupaten(this.wilayah.provinsi_kode, false);
+                        }
                     },
 
                     async onKabupatenChange(event) {
+                        if (this.isInitializingWilayah) return;
                         const code = this.extractEventValue(event, this.wilayah.kabupaten_kode);
-                        if (code !== undefined && code !== null) this.wilayah.kabupaten_kode = String(code);
+                        if (code === undefined || code === null || String(code) === String(this.wilayah.kabupaten_kode)) return;
+                        this.wilayah.kabupaten_kode = String(code);
                         const found = this.listKabupaten.find(i => String(i.code) === String(this.wilayah.kabupaten_kode));
                         this.wilayah.kabupaten_nama = found ? found.name : '';
                         this.wilayah.kecamatan_kode = '';
@@ -541,26 +540,35 @@
                         this.listDesa = [];
                         this.$dispatch('searchable-select-loading', { id: 'kecamatan_kode', loading: false });
                         this.$dispatch('searchable-select-loading', { id: 'desa_kode', loading: false });
-                        await this.fetchKecamatan(this.wilayah.kabupaten_kode, false);
+                        if (code) {
+                            await this.fetchKecamatan(this.wilayah.kabupaten_kode, false);
+                        }
                     },
 
                     async onKecamatanChange(event) {
+                        if (this.isInitializingWilayah) return;
                         const code = this.extractEventValue(event, this.wilayah.kecamatan_kode);
-                        if (code !== undefined && code !== null) this.wilayah.kecamatan_kode = String(code);
+                        if (code === undefined || code === null || String(code) === String(this.wilayah.kecamatan_kode)) return;
+                        this.wilayah.kecamatan_kode = String(code);
                         const found = this.listKecamatan.find(i => String(i.code) === String(this.wilayah.kecamatan_kode));
                         this.wilayah.kecamatan_nama = found ? found.name : '';
                         this.wilayah.desa_kode = '';
                         this.wilayah.desa_nama = '';
                         this.listDesa = [];
                         this.$dispatch('searchable-select-loading', { id: 'desa_kode', loading: false });
-                        await this.fetchDesa(this.wilayah.kecamatan_kode, false);
+                        if (code) {
+                            await this.fetchDesa(this.wilayah.kecamatan_kode, false);
+                        }
                     },
 
                     onDesaChange(event) {
+                        if (this.isInitializingWilayah) return;
                         const code = this.extractEventValue(event, this.wilayah.desa_kode);
-                        if (code !== undefined && code !== null) this.wilayah.desa_kode = String(code);
-                        const found = this.listDesa.find(i => String(i.code) === String(this.wilayah.desa_kode));
-                        this.wilayah.desa_nama = found ? found.name : '';
+                        if (code !== undefined && code !== null) {
+                            this.wilayah.desa_kode = String(code);
+                            const found = this.listDesa.find(i => String(i.code) === String(this.wilayah.desa_kode));
+                            this.wilayah.desa_nama = found ? found.name : '';
+                        }
                     }
                 };
             }
