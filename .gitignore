@@ -40,3 +40,6 @@ tailadmin-laravel-main/
 /.ai/
 /.prompts/
 /docs/superpowers/
+/.superpowers/
+/resources/data/wilayah/raw/*
+!/resources/data/wilayah/raw/.gitkeep
