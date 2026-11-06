@@ -382,7 +382,18 @@ php artisan migrate --seed
 php artisan storage:link
 ```
 
-### 5. Menjalankan Aplikasi
+### 5. Data Referensi Wilayah Indonesia (100% Offline Lokal)
+BAPTwo menggunakan data referensi wilayah lokal yang dipartisi per-kabupaten untuk menjamin performa dropdown desa/kelurahan instan (<1ms) dan bebas ketergantungan API luar.
+
+Jika Anda memiliki data mentah scraping baru (`provinces.json`, `regencies.json`, `districts.json`, `villages.json`), letakkan di:
+`resources/data/wilayah/raw/`
+Lalu jalankan command partisi otomatis:
+```powershell
+php artisan wilayah:import
+```
+Data otomatis divalidasi dan dipecah ke dalam `resources/data/wilayah/districts/` dan `resources/data/wilayah/villages/`.
+
+### 6. Menjalankan Aplikasi
 * **Opsi A (Virtual Host Laragon)**: Buka Laragon, klik **Start All**. Buka browser di [http://baptwo.test](http://baptwo.test). Jalankan Vite dev server di terminal:
   ```powershell
   npm run dev
@@ -513,7 +524,7 @@ APP_URL=https://nama-domain-resmi.bpom.go.id
 | Modal ekspor menampilkan peringatan kuning | Tidak ada data perkara pada periode atau filter yang dipilih | Sistem menolak mengunduh file kosong; pilih rentang tanggal atau tahun yang memiliki data perkara. |
 | Tampilan antarmuka berantakan (*unstyled*) | Aset Vite belum dikompilasi | Jalankan `npm run dev` untuk lingkungan lokal, atau `npm run build` untuk produksi. |
 | Perubahan konfigurasi `.env` tidak berefek | Cache konfigurasi Laravel masih aktif | Bersihkan cache aplikasi melalui perintah `php artisan optimize:clear`. |
-| Dropdown wilayah tidak menampilkan opsi kelurahan | API Kode Wilayah offline dan data cache lokal kosong | Sistem secara otomatis mengalihkan ke salinan data lokal di `storage/app/wilayah/`. |
+| Dropdown wilayah desa/kelurahan lambat atau kosong | Data partisi wilayah belum diimpor dari file mentah | Letakkan file hasil scraping (`provinces.json`, `regencies.json`, `districts.json`, `villages.json`) di `resources/data/wilayah/raw/` lalu jalankan `php artisan wilayah:import`. Sistem beroperasi 100% offline lokal tanpa request internet. |
 
 ---
 

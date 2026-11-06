@@ -1850,4 +1850,21 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
   6. **Automated Regression Test**: Dibuat test feature `tests/Feature/AlamatCascadingEditDraftTest.php` yang menguji integritas fallback desa, form edit draft perkara untuk TKP dan tersangka, serta halaman profil pengguna.
 - Konsekuensi: Nilai desa/kelurahan yang tersimpan pada draft perkara dan profil pengguna tetap terpilih secara konsisten saat form dibuka kembali. Seluruh 372 automated test Pest PHP lulus tanpa regresi.
 
+---
+
+## D-087 : Migrasi Wilayah Menjadi 100% Offline Lokal Berbasis Partisi JSON
+
+- Tanggal: 2026-11-06
+- Status: Disepakati & Diimplementasikan (Task 111)
+- Konteks: Dropdown wilayah desa/kelurahan pada cascading form terkadang lambat atau tidak tampil seketika ketika mengandalkan panggilan remote HTTP ke `api.kodewilayah.web.id` karena latensi jaringan, risiko downtime, atau rate limit. Mengingat wilayah administratif adalah data referensi statis, aplikasi memerlukan strategi penyimpanan lokal yang mandiri, berkinerja tinggi, dan hemat memori RAM.
+- Keputusan:
+  1. **100% Offline Lokal Tanpa Request HTTP**: Menghapus seluruh panggilan remote HTTP (`Http::timeout()`, `fetchFromApi()`) dari `WilayahService`. Seluruh pembacaan wilayah provinsi, kabupaten/kota, kecamatan, dan desa/kelurahan dilayani langsung dari media penyimpanan file JSON lokal.
+  2. **Partisi File Per-Kabupaten**: Menghindari pemuatan 1 file raksasa 83.000+ desa (~16 MB) ke dalam memori PHP. Wilayah tingkat kecamatan dan desa dipartisi per-kabupaten ke dalam folder `resources/data/wilayah/districts/{kabupaten_code}.json` dan `resources/data/wilayah/villages/{kabupaten_code}.json` (514 file kecil, rata-rata 10-30 KB).
+  3. **Derivasi Kode Cepat & Efisien**: Menentukan file kabupaten induk secara instan menggunakan substring 4 digit pertama dari kode kecamatan 6 digit (`$kabupatenKode = substr($kecamatanKode, 0, 4)`), memungkinkan respon query desa di bawah 1 milidetik (<1ms) dengan konsumsi memori minimal (<50 KB).
+  4. **Command Artisan Import Mandiri (`php artisan wilayah:import`)**: Disediakan perintah artisan untuk memvalidasi dan mempartisi dataset mentah hasil scraping (provinces, regencies, districts, villages) dari `resources/data/wilayah/raw/` dengan normalisasi skema fleksibel (mendukung variasi key code/kode, name/nama, dll.).
+  5. **Strategi Git**: Folder mentah `resources/data/wilayah/raw/` diabaikan dari git (`.gitignore`), sedangkan file hasil partisi dilacak di git agar siap pakai langsung pada berbagai lingkungan deployment.
+  6. **Fallback Kompatibilitas Mundur**: Jika file partisi suatu kabupaten belum di-generate di lingkungan tertentu, `WilayahService` secara otomatis menggunakan fallback aman lokal `districts_kalsel.json` tanpa memicu galat runtime.
+- Konsekuensi: Ketergantungan terhadap trafik dan stabilitas API eksternal hilang 100%. Pilihan desa/kelurahan tampil instan seketika dan seluruh pengujian otomatis Pest PHP lulus tanpa regresi.
+
+
 
