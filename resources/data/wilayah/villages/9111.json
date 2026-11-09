@@ -1,0 +1,272 @@
+{
+    "911101": [
+        {
+            "code": "9111012001",
+            "name": "Banda"
+        },
+        {
+            "code": "9111012002",
+            "name": "Pund"
+        },
+        {
+            "code": "9111012003",
+            "name": "Kalifam"
+        },
+        {
+            "code": "9111012004",
+            "name": "Yuwainda"
+        },
+        {
+            "code": "9111012005",
+            "name": "Kalimala"
+        },
+        {
+            "code": "9111012006",
+            "name": "Ampas"
+        },
+        {
+            "code": "9111012007",
+            "name": "Bompai"
+        },
+        {
+            "code": "9111012008",
+            "name": "Sack"
+        }
+    ],
+    "911102": [
+        {
+            "code": "9111022001",
+            "name": "Arso Kota"
+        },
+        {
+            "code": "9111022002",
+            "name": "Workwana"
+        },
+        {
+            "code": "9111022003",
+            "name": "Kwimi"
+        },
+        {
+            "code": "9111022004",
+            "name": "Ubiyau"
+        },
+        {
+            "code": "9111022006",
+            "name": "Sawanawa"
+        },
+        {
+            "code": "9111022009",
+            "name": "Yuwanain"
+        },
+        {
+            "code": "9111022010",
+            "name": "Yanamaa"
+        },
+        {
+            "code": "9111022011",
+            "name": "Asyaman"
+        },
+        {
+            "code": "9111022012",
+            "name": "Yamta"
+        },
+        {
+            "code": "9111022016",
+            "name": "Bagia"
+        },
+        {
+            "code": "9111022030",
+            "name": "Sawabuun"
+        },
+        {
+            "code": "9111022031",
+            "name": "Bibiosi"
+        }
+    ],
+    "911103": [
+        {
+            "code": "9111032001",
+            "name": "Molof"
+        },
+        {
+            "code": "9111032002",
+            "name": "Senggi"
+        },
+        {
+            "code": "9111032003",
+            "name": "Warlef"
+        },
+        {
+            "code": "9111032005",
+            "name": "Usku"
+        },
+        {
+            "code": "9111032006",
+            "name": "Woslay"
+        },
+        {
+            "code": "9111032010",
+            "name": "Namla"
+        },
+        {
+            "code": "9111032011",
+            "name": "Waley"
+        }
+    ],
+    "911104": [
+        {
+            "code": "9111042001",
+            "name": "Dubu"
+        },
+        {
+            "code": "9111042002",
+            "name": "Umuraf"
+        },
+        {
+            "code": "9111042003",
+            "name": "Semografi"
+        },
+        {
+            "code": "9111042005",
+            "name": "Embi"
+        },
+        {
+            "code": "9111042015",
+            "name": "Yamraf Dua"
+        },
+        {
+            "code": "9111042017",
+            "name": "Tatakra"
+        }
+    ],
+    "911105": [
+        {
+            "code": "9111052001",
+            "name": "Skanto"
+        },
+        {
+            "code": "9111052002",
+            "name": "Jaifuri"
+        },
+        {
+            "code": "9111052003",
+            "name": "Arsopura"
+        },
+        {
+            "code": "9111052004",
+            "name": "Wiantre"
+        },
+        {
+            "code": "9111052005",
+            "name": "Naramben"
+        },
+        {
+            "code": "9111052006",
+            "name": "Intaimelyan"
+        },
+        {
+            "code": "9111052007",
+            "name": "Traimelyan"
+        },
+        {
+            "code": "9111052008",
+            "name": "Wulukubun"
+        },
+        {
+            "code": "9111052009",
+            "name": "Gudang Garam"
+        },
+        {
+            "code": "9111052010",
+            "name": "Saefen Empat Dua"
+        },
+        {
+            "code": "9111052011",
+            "name": "Walma"
+        },
+        {
+            "code": "9111052012",
+            "name": "Alang-alang Raya"
+        }
+    ],
+    "911106": [
+        {
+            "code": "9111062005",
+            "name": "Yetti"
+        },
+        {
+            "code": "9111062006",
+            "name": "Kriku"
+        },
+        {
+            "code": "9111062007",
+            "name": "Skofro"
+        },
+        {
+            "code": "9111062008",
+            "name": "Kibay"
+        },
+        {
+            "code": "9111062009",
+            "name": "Sangke"
+        },
+        {
+            "code": "9111062011",
+            "name": "Suskun"
+        },
+        {
+            "code": "9111062013",
+            "name": "Amyu"
+        },
+        {
+            "code": "9111062014",
+            "name": "Kikere"
+        },
+        {
+            "code": "9111062015",
+            "name": "Petewi"
+        }
+    ],
+    "911107": [
+        {
+            "code": "9111072001",
+            "name": "Towe Hitam"
+        },
+        {
+            "code": "9111072002",
+            "name": "Towe Atas"
+        },
+        {
+            "code": "9111072003",
+            "name": "Terfones"
+        },
+        {
+            "code": "9111072004",
+            "name": "Tefalma"
+        },
+        {
+            "code": "9111072005",
+            "name": "Bias"
+        },
+        {
+            "code": "9111072006",
+            "name": "Milki"
+        },
+        {
+            "code": "9111072007",
+            "name": "Lules"
+        },
+        {
+            "code": "9111072009",
+            "name": "Jember"
+        },
+        {
+            "code": "9111072010",
+            "name": "Niliti"
+        },
+        {
+            "code": "9111072011",
+            "name": "Pris"
+        }
+    ]
+}

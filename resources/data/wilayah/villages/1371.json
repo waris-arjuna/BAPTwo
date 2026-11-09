@@ -1,0 +1,440 @@
+{
+    "137101": [
+        {
+            "code": "1371011001",
+            "name": "Belakang Pondok"
+        },
+        {
+            "code": "1371011002",
+            "name": "Alang Laweh"
+        },
+        {
+            "code": "1371011003",
+            "name": "Ranah Parak Rumbio"
+        },
+        {
+            "code": "1371011004",
+            "name": "Pasa Gadang"
+        },
+        {
+            "code": "1371011005",
+            "name": "Batang Arau"
+        },
+        {
+            "code": "1371011006",
+            "name": "Seberang Palinggam"
+        },
+        {
+            "code": "1371011007",
+            "name": "Seberang Padang"
+        },
+        {
+            "code": "1371011008",
+            "name": "Mata Air"
+        },
+        {
+            "code": "1371011009",
+            "name": "Rawang"
+        },
+        {
+            "code": "1371011010",
+            "name": "Teluk Bayur"
+        },
+        {
+            "code": "1371011011",
+            "name": "Air Manis"
+        },
+        {
+            "code": "1371011012",
+            "name": "Bukit Gado-gado"
+        }
+    ],
+    "137102": [
+        {
+            "code": "1371021001",
+            "name": "Sawahan"
+        },
+        {
+            "code": "1371021002",
+            "name": "Jati Baru"
+        },
+        {
+            "code": "1371021003",
+            "name": "Jati"
+        },
+        {
+            "code": "1371021004",
+            "name": "Sawahan Timur"
+        },
+        {
+            "code": "1371021005",
+            "name": "Simpang Haru"
+        },
+        {
+            "code": "1371021006",
+            "name": "Kubu Marapalam"
+        },
+        {
+            "code": "1371021007",
+            "name": "Andalas"
+        },
+        {
+            "code": "1371021008",
+            "name": "Kubu Dalam Parak Karakah"
+        },
+        {
+            "code": "1371021009",
+            "name": "Parak Gadang Timur"
+        },
+        {
+            "code": "1371021010",
+            "name": "Ganting Parak Gadang"
+        }
+    ],
+    "137103": [
+        {
+            "code": "1371031001",
+            "name": "Flamboyan Baru"
+        },
+        {
+            "code": "1371031002",
+            "name": "Rimbo Kaluang"
+        },
+        {
+            "code": "1371031003",
+            "name": "Ujung Gurun"
+        },
+        {
+            "code": "1371031004",
+            "name": "Purus"
+        },
+        {
+            "code": "1371031005",
+            "name": "Padang Pasir"
+        },
+        {
+            "code": "1371031006",
+            "name": "Olo"
+        },
+        {
+            "code": "1371031007",
+            "name": "Kampung Jawa"
+        },
+        {
+            "code": "1371031008",
+            "name": "Belakang Tangsi"
+        },
+        {
+            "code": "1371031009",
+            "name": "Kampung Pondok"
+        },
+        {
+            "code": "1371031010",
+            "name": "Berok Nipah"
+        }
+    ],
+    "137104": [
+        {
+            "code": "1371041001",
+            "name": "Air Tawar Timur"
+        },
+        {
+            "code": "1371041002",
+            "name": "Air Tawar Barat"
+        },
+        {
+            "code": "1371041003",
+            "name": "Ulak Karang Utara"
+        },
+        {
+            "code": "1371041004",
+            "name": "Ulak Karang Selatan"
+        },
+        {
+            "code": "1371041005",
+            "name": "Lolong Belanti"
+        },
+        {
+            "code": "1371041006",
+            "name": "Alai Parak Kopi"
+        },
+        {
+            "code": "1371041007",
+            "name": "Gunung Pangilun"
+        }
+    ],
+    "137105": [
+        {
+            "code": "1371051001",
+            "name": "Bungus Timur"
+        },
+        {
+            "code": "1371051002",
+            "name": "Bungus Barat"
+        },
+        {
+            "code": "1371051003",
+            "name": "Bungus Selatan"
+        },
+        {
+            "code": "1371051004",
+            "name": "Teluk Kabung Utara"
+        },
+        {
+            "code": "1371051005",
+            "name": "Teluk Kabung Tengah"
+        },
+        {
+            "code": "1371051006",
+            "name": "Teluk Kabung Selatan"
+        }
+    ],
+    "137106": [
+        {
+            "code": "1371061001",
+            "name": "Cangkeh Nan XX"
+        },
+        {
+            "code": "1371061002",
+            "name": "Kampung Baru Nan XX"
+        },
+        {
+            "code": "1371061003",
+            "name": "Tanah Sirah Piai Nan XX"
+        },
+        {
+            "code": "1371061004",
+            "name": "Tanjung Saba Pitameh Nan XX"
+        },
+        {
+            "code": "1371061005",
+            "name": "Lubuk Begalung Nan XX"
+        },
+        {
+            "code": "1371061006",
+            "name": "Gurun Laweh Nan XX"
+        },
+        {
+            "code": "1371061007",
+            "name": "Tanjung Aua Nan XX"
+        },
+        {
+            "code": "1371061008",
+            "name": "Koto Baru Nan XX"
+        },
+        {
+            "code": "1371061009",
+            "name": "Banuaran Nan XX"
+        },
+        {
+            "code": "1371061010",
+            "name": "Parak Laweh Pulau Aia Nan XX"
+        },
+        {
+            "code": "1371061011",
+            "name": "Batung Taba Nan XX"
+        },
+        {
+            "code": "1371061012",
+            "name": "Pegambiran Ampalu Nan XX"
+        },
+        {
+            "code": "1371061013",
+            "name": "Pampangan Nan XX"
+        },
+        {
+            "code": "1371061014",
+            "name": "Gates Nan XX"
+        },
+        {
+            "code": "1371061015",
+            "name": "Kampung Jua Nan XX"
+        }
+    ],
+    "137107": [
+        {
+            "code": "1371071001",
+            "name": "Indarung"
+        },
+        {
+            "code": "1371071002",
+            "name": "Padang Besi"
+        },
+        {
+            "code": "1371071003",
+            "name": "Batu Gadang"
+        },
+        {
+            "code": "1371071004",
+            "name": "Banda Buek"
+        },
+        {
+            "code": "1371071005",
+            "name": "Koto Lalang"
+        },
+        {
+            "code": "1371071006",
+            "name": "Baringin"
+        },
+        {
+            "code": "1371071007",
+            "name": "Tarantang"
+        }
+    ],
+    "137108": [
+        {
+            "code": "1371081001",
+            "name": "Limau Manis"
+        },
+        {
+            "code": "1371081002",
+            "name": "Koto Lua"
+        },
+        {
+            "code": "1371081003",
+            "name": "Limau Manis Selatan"
+        },
+        {
+            "code": "1371081004",
+            "name": "Piai Tangah"
+        },
+        {
+            "code": "1371081005",
+            "name": "Cupak Tangah"
+        },
+        {
+            "code": "1371081006",
+            "name": "Pisang"
+        },
+        {
+            "code": "1371081007",
+            "name": "Binuang Kampung Dalam"
+        },
+        {
+            "code": "1371081008",
+            "name": "Kapalo Koto"
+        },
+        {
+            "code": "1371081009",
+            "name": "Lambung Bukit"
+        }
+    ],
+    "137109": [
+        {
+            "code": "1371091001",
+            "name": "Pasar Ambacang"
+        },
+        {
+            "code": "1371091002",
+            "name": "Anduring"
+        },
+        {
+            "code": "1371091003",
+            "name": "Lubuk Lintah"
+        },
+        {
+            "code": "1371091004",
+            "name": "Ampang"
+        },
+        {
+            "code": "1371091005",
+            "name": "Kalumbuk"
+        },
+        {
+            "code": "1371091006",
+            "name": "Korong Gadang"
+        },
+        {
+            "code": "1371091007",
+            "name": "Kuranji"
+        },
+        {
+            "code": "1371091008",
+            "name": "Gunung Sarik"
+        },
+        {
+            "code": "1371091009",
+            "name": "Sungai Sapih"
+        }
+    ],
+    "137110": [
+        {
+            "code": "1371101001",
+            "name": "Surau Gadang"
+        },
+        {
+            "code": "1371101002",
+            "name": "Kampung Olo"
+        },
+        {
+            "code": "1371101003",
+            "name": "Kurao Pagang"
+        },
+        {
+            "code": "1371101004",
+            "name": "Gurun Laweh"
+        },
+        {
+            "code": "1371101005",
+            "name": "Tabiang Banda Gadang"
+        },
+        {
+            "code": "1371101006",
+            "name": "Kampung Lapai"
+        }
+    ],
+    "137111": [
+        {
+            "code": "1371111001",
+            "name": "Balai Gadang"
+        },
+        {
+            "code": "1371111002",
+            "name": "Lubuk Minturun"
+        },
+        {
+            "code": "1371111003",
+            "name": "Aie Pacah"
+        },
+        {
+            "code": "1371111004",
+            "name": "Dadok Tunggul Hitam"
+        },
+        {
+            "code": "1371111005",
+            "name": "Koto Panjang Ikua Koto"
+        },
+        {
+            "code": "1371111006",
+            "name": "Koto Pulai"
+        },
+        {
+            "code": "1371111007",
+            "name": "Batipuh Panjang"
+        },
+        {
+            "code": "1371111008",
+            "name": "Padang Sarai"
+        },
+        {
+            "code": "1371111009",
+            "name": "Lubuk Buaya"
+        },
+        {
+            "code": "1371111010",
+            "name": "Batang Kabung Ganting"
+        },
+        {
+            "code": "1371111011",
+            "name": "Bungo Pasang"
+        },
+        {
+            "code": "1371111012",
+            "name": "Parupuk Tabing"
+        },
+        {
+            "code": "1371111013",
+            "name": "Pasie Nan Tigo"
+        }
+    ]
+}

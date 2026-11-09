@@ -1,0 +1,650 @@
+{
+    "810101": [
+        {
+            "code": "8101011009",
+            "name": "Hollo"
+        },
+        {
+            "code": "8101012001",
+            "name": "Tamilouw"
+        },
+        {
+            "code": "8101012002",
+            "name": "Sepa"
+        },
+        {
+            "code": "8101012003",
+            "name": "Rutah"
+        },
+        {
+            "code": "8101012004",
+            "name": "Soahuku"
+        },
+        {
+            "code": "8101012005",
+            "name": "Amahai"
+        },
+        {
+            "code": "8101012006",
+            "name": "Haruru"
+        },
+        {
+            "code": "8101012007",
+            "name": "Sehati"
+        },
+        {
+            "code": "8101012008",
+            "name": "Makariki"
+        },
+        {
+            "code": "8101012010",
+            "name": "Yafila"
+        },
+        {
+            "code": "8101012011",
+            "name": "Banda Baru"
+        },
+        {
+            "code": "8101012020",
+            "name": "Yainuelo"
+        },
+        {
+            "code": "8101012021",
+            "name": "Nua Nea"
+        },
+        {
+            "code": "8101012022",
+            "name": "Hatuhenu"
+        },
+        {
+            "code": "8101012023",
+            "name": "Nuweletetu"
+        }
+    ],
+    "810102": [
+        {
+            "code": "8101022001",
+            "name": "Usliapan"
+        },
+        {
+            "code": "8101022002",
+            "name": "Kuralele"
+        },
+        {
+            "code": "8101022003",
+            "name": "Kokroman"
+        },
+        {
+            "code": "8101022004",
+            "name": "Messa"
+        },
+        {
+            "code": "8101022005",
+            "name": "Ameth"
+        },
+        {
+            "code": "8101022006",
+            "name": "Waru"
+        },
+        {
+            "code": "8101022007",
+            "name": "Bumey"
+        },
+        {
+            "code": "8101022008",
+            "name": "Sifluru"
+        },
+        {
+            "code": "8101022009",
+            "name": "Layeni"
+        },
+        {
+            "code": "8101022010",
+            "name": "Wotay"
+        },
+        {
+            "code": "8101022011",
+            "name": "Issu"
+        },
+        {
+            "code": "8101022012",
+            "name": "Lesluru"
+        },
+        {
+            "code": "8101022013",
+            "name": "Watludan"
+        },
+        {
+            "code": "8101022014",
+            "name": "Trana"
+        },
+        {
+            "code": "8101022015",
+            "name": "Jerili"
+        },
+        {
+            "code": "8101022016",
+            "name": "Nakupia"
+        }
+    ],
+    "810111": [
+        {
+            "code": "8101112011",
+            "name": "Telutih Baru"
+        },
+        {
+            "code": "8101112012",
+            "name": "Mosso"
+        },
+        {
+            "code": "8101112013",
+            "name": "Hatumete"
+        },
+        {
+            "code": "8101112014",
+            "name": "Hatu"
+        },
+        {
+            "code": "8101112015",
+            "name": "Piliana"
+        },
+        {
+            "code": "8101112016",
+            "name": "Yaputih"
+        },
+        {
+            "code": "8101112017",
+            "name": "Saunulu"
+        },
+        {
+            "code": "8101112018",
+            "name": "Tehoru"
+        },
+        {
+            "code": "8101112019",
+            "name": "Haya"
+        },
+        {
+            "code": "8101112020",
+            "name": "Salamahu"
+        }
+    ],
+    "810112": [
+        {
+            "code": "8101122001",
+            "name": "Booi"
+        },
+        {
+            "code": "8101122002",
+            "name": "Paperu"
+        },
+        {
+            "code": "8101122003",
+            "name": "Tiouw"
+        },
+        {
+            "code": "8101122004",
+            "name": "Haria"
+        },
+        {
+            "code": "8101122005",
+            "name": "Porto"
+        },
+        {
+            "code": "8101122006",
+            "name": "Kulur"
+        },
+        {
+            "code": "8101122012",
+            "name": "Saparua"
+        }
+    ],
+    "810113": [
+        {
+            "code": "8101132001",
+            "name": "Aboru"
+        },
+        {
+            "code": "8101132002",
+            "name": "Wassu"
+        },
+        {
+            "code": "8101132003",
+            "name": "Oma"
+        },
+        {
+            "code": "8101132004",
+            "name": "Haruku"
+        },
+        {
+            "code": "8101132005",
+            "name": "Sameth"
+        },
+        {
+            "code": "8101132006",
+            "name": "Rohomoni"
+        },
+        {
+            "code": "8101132007",
+            "name": "Kabauw"
+        },
+        {
+            "code": "8101132008",
+            "name": "Kailolo"
+        },
+        {
+            "code": "8101132009",
+            "name": "Pelauw"
+        },
+        {
+            "code": "8101132010",
+            "name": "Kariu"
+        },
+        {
+            "code": "8101132011",
+            "name": "Hulaliu"
+        }
+    ],
+    "810114": [
+        {
+            "code": "8101142001",
+            "name": "Liang"
+        },
+        {
+            "code": "8101142002",
+            "name": "Waai"
+        },
+        {
+            "code": "8101142003",
+            "name": "Tulehu"
+        },
+        {
+            "code": "8101142004",
+            "name": "Tial"
+        },
+        {
+            "code": "8101142005",
+            "name": "Tengah Tengah"
+        },
+        {
+            "code": "8101142006",
+            "name": "Suli"
+        }
+    ],
+    "810115": [
+        {
+            "code": "8101152006",
+            "name": "Asilulu"
+        },
+        {
+            "code": "8101152007",
+            "name": "Ureng"
+        },
+        {
+            "code": "8101152008",
+            "name": "Negeri Lima"
+        },
+        {
+            "code": "8101152009",
+            "name": "Seith"
+        },
+        {
+            "code": "8101152010",
+            "name": "Kaitetu"
+        },
+        {
+            "code": "8101152011",
+            "name": "Hila"
+        },
+        {
+            "code": "8101152012",
+            "name": "Wakal"
+        },
+        {
+            "code": "8101152013",
+            "name": "Hitulama"
+        },
+        {
+            "code": "8101152014",
+            "name": "Hitumessing"
+        },
+        {
+            "code": "8101152015",
+            "name": "Mamala"
+        },
+        {
+            "code": "8101152016",
+            "name": "Morella"
+        }
+    ],
+    "810116": [
+        {
+            "code": "8101162001",
+            "name": "Ameth"
+        },
+        {
+            "code": "8101162002",
+            "name": "Titawaai"
+        },
+        {
+            "code": "8101162003",
+            "name": "Abubu"
+        },
+        {
+            "code": "8101162004",
+            "name": "Akoon"
+        },
+        {
+            "code": "8101162005",
+            "name": "Nalahia"
+        },
+        {
+            "code": "8101162006",
+            "name": "Sila"
+        },
+        {
+            "code": "8101162007",
+            "name": "Leinitu"
+        }
+    ],
+    "810117": [
+        {
+            "code": "8101171001",
+            "name": "Namaelo"
+        },
+        {
+            "code": "8101171002",
+            "name": "Namasina"
+        },
+        {
+            "code": "8101171003",
+            "name": "Ampera"
+        },
+        {
+            "code": "8101171004",
+            "name": "Lesane"
+        },
+        {
+            "code": "8101171005",
+            "name": "Letwaru"
+        }
+    ],
+    "810120": [
+        {
+            "code": "8101202001",
+            "name": "Saleman"
+        },
+        {
+            "code": "8101202002",
+            "name": "Horale"
+        },
+        {
+            "code": "8101202003",
+            "name": "Wailulu"
+        },
+        {
+            "code": "8101202004",
+            "name": "Paa"
+        },
+        {
+            "code": "8101202005",
+            "name": "Karlutu Kara"
+        },
+        {
+            "code": "8101202006",
+            "name": "Pasanea"
+        },
+        {
+            "code": "8101202007",
+            "name": "Labuan"
+        },
+        {
+            "code": "8101202008",
+            "name": "Gale-gale"
+        },
+        {
+            "code": "8101202009",
+            "name": "Latea"
+        },
+        {
+            "code": "8101202010",
+            "name": "Lisabata Timur"
+        },
+        {
+            "code": "8101202011",
+            "name": "Rumahwey"
+        },
+        {
+            "code": "8101202012",
+            "name": "Warasiwa"
+        },
+        {
+            "code": "8101202013",
+            "name": "Herlau Pauni"
+        }
+    ],
+    "810121": [
+        {
+            "code": "8101212001",
+            "name": "Waraka"
+        },
+        {
+            "code": "8101212002",
+            "name": "Tananahu"
+        },
+        {
+            "code": "8101212003",
+            "name": "Liang"
+        },
+        {
+            "code": "8101212004",
+            "name": "Sahulauw"
+        }
+    ],
+    "810122": [
+        {
+            "code": "8101222001",
+            "name": "Larike"
+        },
+        {
+            "code": "8101222002",
+            "name": "Wakasihu"
+        },
+        {
+            "code": "8101222003",
+            "name": "Allang"
+        },
+        {
+            "code": "8101222004",
+            "name": "Liliboy"
+        },
+        {
+            "code": "8101222005",
+            "name": "Hatu"
+        }
+    ],
+    "810123": [
+        {
+            "code": "8101232001",
+            "name": "Ulahahan"
+        },
+        {
+            "code": "8101232002",
+            "name": "Laha Kaba"
+        },
+        {
+            "code": "8101232003",
+            "name": "Lafa"
+        },
+        {
+            "code": "8101232004",
+            "name": "Yamalatu"
+        },
+        {
+            "code": "8101232005",
+            "name": "Hunisi"
+        },
+        {
+            "code": "8101232006",
+            "name": "Laimu"
+        },
+        {
+            "code": "8101232007",
+            "name": "Maneoratu"
+        },
+        {
+            "code": "8101232008",
+            "name": "Tehua"
+        },
+        {
+            "code": "8101232009",
+            "name": "Laha"
+        },
+        {
+            "code": "8101232010",
+            "name": "Wolu"
+        }
+    ],
+    "810124": [
+        {
+            "code": "8101242001",
+            "name": "Seti"
+        },
+        {
+            "code": "8101242002",
+            "name": "Kobisonta"
+        },
+        {
+            "code": "8101242003",
+            "name": "Wailoping"
+        },
+        {
+            "code": "8101242004",
+            "name": "Tihuana"
+        },
+        {
+            "code": "8101242005",
+            "name": "Waitila"
+        },
+        {
+            "code": "8101242006",
+            "name": "Waiputih"
+        },
+        {
+            "code": "8101242007",
+            "name": "Waimusal"
+        },
+        {
+            "code": "8101242008",
+            "name": "Tanah Merah"
+        },
+        {
+            "code": "8101242009",
+            "name": "Aketernate"
+        },
+        {
+            "code": "8101242010",
+            "name": "Namto"
+        },
+        {
+            "code": "8101242011",
+            "name": "Loping Mulyo"
+        },
+        {
+            "code": "8101242012",
+            "name": "Wonosari"
+        }
+    ],
+    "810125": [
+        {
+            "code": "8101252001",
+            "name": "Kobi"
+        },
+        {
+            "code": "8101252002",
+            "name": "Sariputih"
+        },
+        {
+            "code": "8101252003",
+            "name": "Maneo Rendah"
+        },
+        {
+            "code": "8101252004",
+            "name": "Kobimukti"
+        },
+        {
+            "code": "8101252005",
+            "name": "Leaway"
+        },
+        {
+            "code": "8101252006",
+            "name": "Samal"
+        },
+        {
+            "code": "8101252007",
+            "name": "Morokai"
+        },
+        {
+            "code": "8101252008",
+            "name": "Waimusi"
+        },
+        {
+            "code": "8101252009",
+            "name": "Way Asih"
+        },
+        {
+            "code": "8101252010",
+            "name": "Waitonipa"
+        },
+        {
+            "code": "8101252011",
+            "name": "Marasahua"
+        },
+        {
+            "code": "8101252012",
+            "name": "Kabauhari"
+        }
+    ],
+    "810126": [
+        {
+            "code": "8101262001",
+            "name": "Ouw"
+        },
+        {
+            "code": "8101262002",
+            "name": "Ullath"
+        },
+        {
+            "code": "8101262003",
+            "name": "Siri Sori Islam"
+        },
+        {
+            "code": "8101262004",
+            "name": "Siri Sori Amalatu"
+        },
+        {
+            "code": "8101262005",
+            "name": "Mahu"
+        },
+        {
+            "code": "8101262006",
+            "name": "Tuhaha"
+        },
+        {
+            "code": "8101262007",
+            "name": "Ihamahu"
+        },
+        {
+            "code": "8101262008",
+            "name": "Iha"
+        },
+        {
+            "code": "8101262009",
+            "name": "Nolloth"
+        },
+        {
+            "code": "8101262010",
+            "name": "Itawaka"
+        }
+    ]
+}

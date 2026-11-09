@@ -1,0 +1,478 @@
+{
+    "120601": [
+        {
+            "code": "1206011009",
+            "name": "Padang Mas"
+        },
+        {
+            "code": "1206011010",
+            "name": "Lau Cimba"
+        },
+        {
+            "code": "1206011011",
+            "name": "Gung Leto"
+        },
+        {
+            "code": "1206011012",
+            "name": "Gung Negeri"
+        },
+        {
+            "code": "1206011013",
+            "name": "Kampung Dalam"
+        },
+        {
+            "code": "1206012001",
+            "name": "Rumah Kabanjahe"
+        },
+        {
+            "code": "1206012002",
+            "name": "Kaban"
+        },
+        {
+            "code": "1206012003",
+            "name": "Ketaren"
+        },
+        {
+            "code": "1206012004",
+            "name": "Samura"
+        },
+        {
+            "code": "1206012005",
+            "name": "Lau Simomo"
+        },
+        {
+            "code": "1206012006",
+            "name": "Sumber Mufakat"
+        },
+        {
+            "code": "1206012007",
+            "name": "Kandibata"
+        },
+        {
+            "code": "1206012008",
+            "name": "Kacaribu"
+        }
+    ],
+    "120602": [
+        {
+            "code": "1206021006",
+            "name": "Tambak Lau Mulgab I"
+        },
+        {
+            "code": "1206021007",
+            "name": "Tambak Lau Mulgab II"
+        },
+        {
+            "code": "1206021008",
+            "name": "Gundaling I"
+        },
+        {
+            "code": "1206021009",
+            "name": "Gundaling II"
+        },
+        {
+            "code": "1206022001",
+            "name": "Daulu"
+        },
+        {
+            "code": "1206022002",
+            "name": "Gurusinga"
+        },
+        {
+            "code": "1206022003",
+            "name": "Raya"
+        },
+        {
+            "code": "1206022004",
+            "name": "Rumah Berastagi"
+        },
+        {
+            "code": "1206022005",
+            "name": "Sempajaya"
+        },
+        {
+            "code": "1206022010",
+            "name": "Lau Gumba"
+        }
+    ],
+    "120603": [
+        {
+            "code": "1206032001",
+            "name": "Paribun"
+        },
+        {
+            "code": "1206032002",
+            "name": "Rumamis"
+        },
+        {
+            "code": "1206032003",
+            "name": "Sinaman"
+        },
+        {
+            "code": "1206032004",
+            "name": "Sukanalu"
+        },
+        {
+            "code": "1206032005",
+            "name": "Barusjulu"
+        },
+        {
+            "code": "1206032006",
+            "name": "Tangkidik"
+        },
+        {
+            "code": "1206032007",
+            "name": "Sukajulu"
+        },
+        {
+            "code": "1206032008",
+            "name": "Barusjahe"
+        },
+        {
+            "code": "1206032009",
+            "name": "Bulanjahe"
+        },
+        {
+            "code": "1206032010",
+            "name": "Pertumbuken"
+        },
+        {
+            "code": "1206032011",
+            "name": "Talimbaru"
+        },
+        {
+            "code": "1206032012",
+            "name": "Sikab"
+        },
+        {
+            "code": "1206032013",
+            "name": "Persadanta"
+        },
+        {
+            "code": "1206032014",
+            "name": "Bulanjulu"
+        },
+        {
+            "code": "1206032015",
+            "name": "Semangat"
+        },
+        {
+            "code": "1206032016",
+            "name": "Serdang"
+        },
+        {
+            "code": "1206032017",
+            "name": "Tanjung Barus"
+        },
+        {
+            "code": "1206032018",
+            "name": "Sarimanis"
+        },
+        {
+            "code": "1206032019",
+            "name": "Penampen"
+        }
+    ],
+    "120604": [
+        {
+            "code": "1206042001",
+            "name": "Kutakepar"
+        },
+        {
+            "code": "1206042002",
+            "name": "Ajijulu"
+        },
+        {
+            "code": "1206042004",
+            "name": "Singa"
+        },
+        {
+            "code": "1206042007",
+            "name": "Ajijahe"
+        },
+        {
+            "code": "1206042008",
+            "name": "Bunuraya"
+        },
+        {
+            "code": "1206042010",
+            "name": "Kubusimbelang"
+        },
+        {
+            "code": "1206042011",
+            "name": "Tigapanah"
+        },
+        {
+            "code": "1206042012",
+            "name": "Suka"
+        },
+        {
+            "code": "1206042014",
+            "name": "Kacinambun"
+        },
+        {
+            "code": "1206042015",
+            "name": "Kutajulu"
+        },
+        {
+            "code": "1206042016",
+            "name": "Bertah"
+        },
+        {
+            "code": "1206042017",
+            "name": "Manukmulia"
+        },
+        {
+            "code": "1206042018",
+            "name": "Lauriman"
+        },
+        {
+            "code": "1206042019",
+            "name": "Sukadame"
+        },
+        {
+            "code": "1206042020",
+            "name": "Mulawari"
+        },
+        {
+            "code": "1206042023",
+            "name": "Sukamaju"
+        },
+        {
+            "code": "1206042024",
+            "name": "Kutambelin"
+        },
+        {
+            "code": "1206042025",
+            "name": "Kutabale"
+        },
+        {
+            "code": "1206042026",
+            "name": "Leparsamura"
+        },
+        {
+            "code": "1206042027",
+            "name": "Seberaya"
+        },
+        {
+            "code": "1206042028",
+            "name": "Ajimbelang"
+        },
+        {
+            "code": "1206042029",
+            "name": "Ajibuhara"
+        },
+        {
+            "code": "1206042030",
+            "name": "Lambar"
+        },
+        {
+            "code": "1206042031",
+            "name": "Salit"
+        },
+        {
+            "code": "1206042032",
+            "name": "Suka Mbayak"
+        },
+        {
+            "code": "1206042033",
+            "name": "Suka Sipilihen"
+        },
+        {
+            "code": "1206042034",
+            "name": "Sukameriah"
+        },
+        {
+            "code": "1206042035",
+            "name": "Bekerah"
+        },
+        {
+            "code": "1206042036",
+            "name": "Simacem"
+        }
+    ],
+    "120607": [
+        {
+            "code": "1206072001",
+            "name": "Juhar Perangin-angin"
+        },
+        {
+            "code": "1206072002",
+            "name": "Lau Lingga"
+        },
+        {
+            "code": "1206072003",
+            "name": "Kidupen"
+        },
+        {
+            "code": "1206072004",
+            "name": "Namosuro"
+        },
+        {
+            "code": "1206072005",
+            "name": "Bekilang"
+        },
+        {
+            "code": "1206072006",
+            "name": "Sugihen"
+        },
+        {
+            "code": "1206072007",
+            "name": "Pernantin"
+        },
+        {
+            "code": "1206072008",
+            "name": "Nageri"
+        },
+        {
+            "code": "1206072009",
+            "name": "Juhar Ginting"
+        },
+        {
+            "code": "1206072010",
+            "name": "Juhar Tarigan"
+        },
+        {
+            "code": "1206072011",
+            "name": "Pasar Baru"
+        },
+        {
+            "code": "1206072012",
+            "name": "Batu Mamak"
+        },
+        {
+            "code": "1206072013",
+            "name": "Naga"
+        },
+        {
+            "code": "1206072014",
+            "name": "Kutambelin"
+        },
+        {
+            "code": "1206072015",
+            "name": "Mbetong"
+        },
+        {
+            "code": "1206072016",
+            "name": "Keriahen"
+        },
+        {
+            "code": "1206072017",
+            "name": "Gunung Juhar"
+        },
+        {
+            "code": "1206072018",
+            "name": "Ketawaren"
+        },
+        {
+            "code": "1206072019",
+            "name": "Jandi"
+        },
+        {
+            "code": "1206072020",
+            "name": "Buluh Pancur"
+        },
+        {
+            "code": "1206072021",
+            "name": "Kutagugung"
+        },
+        {
+            "code": "1206072022",
+            "name": "Sukababo"
+        },
+        {
+            "code": "1206072023",
+            "name": "Lau Kidupen"
+        },
+        {
+            "code": "1206072024",
+            "name": "Sigenderang"
+        },
+        {
+            "code": "1206072025",
+            "name": "Juhar Ginting Sadanioga"
+        }
+    ],
+    "120608": [
+        {
+            "code": "1206081019",
+            "name": "Tiga Binanga"
+        },
+        {
+            "code": "1206082001",
+            "name": "Gunung"
+        },
+        {
+            "code": "1206082002",
+            "name": "Kem Kem"
+        },
+        {
+            "code": "1206082003",
+            "name": "Pertumbuken"
+        },
+        {
+            "code": "1206082004",
+            "name": "Kuala"
+        },
+        {
+            "code": "1206082005",
+            "name": "Limang"
+        },
+        {
+            "code": "1206082006",
+            "name": "Perbesi"
+        },
+        {
+            "code": "1206082007",
+            "name": "Lau Kapur"
+        },
+        {
+            "code": "1206082008",
+            "name": "Kuta Bangun"
+        },
+        {
+            "code": "1206082009",
+            "name": "Kuta Raya"
+        },
+        {
+            "code": "1206082010",
+            "name": "Pergendangen"
+        },
+        {
+            "code": "1206082011",
+            "name": "Simolap"
+        },
+        {
+            "code": "1206082012",
+            "name": "Simpang Pergendangen"
+        },
+        {
+            "code": "1206082013",
+            "name": "Kuta Gerat"
+        },
+        {
+            "code": "1206082014",
+            "name": "Suka Julu"
+        },
+        {
+            "code": "1206082015",
+            "name": "Kuta Galoh"
+        },
+        {
+            "code": "1206082016",
+            "name": "Bunga Baru"
+        },
+        {
+            "code": "1206082017",
+            "name": "Kutambaru Punti"
+        },
+        {
+            "code": "1206082018",
+            "name": "Kuta Buara"
+        },
+        {
+            "code": "1206082020",
+            "name": "Batumamak"
+        }
+    ]
+}

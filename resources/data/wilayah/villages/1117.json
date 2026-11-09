@@ -1,0 +1,950 @@
+{
+    "111701": [
+        {
+            "code": "1117012001",
+            "name": "Blang Rakal"
+        },
+        {
+            "code": "1117012002",
+            "name": "Negeri Antara"
+        },
+        {
+            "code": "1117012003",
+            "name": "Alur Cincin"
+        },
+        {
+            "code": "1117012004",
+            "name": "Pantan Sinaku"
+        },
+        {
+            "code": "1117012005",
+            "name": "Bintang Berangun"
+        },
+        {
+            "code": "1117012006",
+            "name": "Taman Firdaus"
+        },
+        {
+            "code": "1117012007",
+            "name": "Uning Mas"
+        },
+        {
+            "code": "1117012008",
+            "name": "Perdamaian"
+        },
+        {
+            "code": "1117012009",
+            "name": "Ulu Naron"
+        },
+        {
+            "code": "1117012010",
+            "name": "Pantan Lah"
+        },
+        {
+            "code": "1117012011",
+            "name": "Pancar Jelobok"
+        },
+        {
+            "code": "1117012012",
+            "name": "Alur Gading"
+        },
+        {
+            "code": "1117012013",
+            "name": "Rime Raya"
+        },
+        {
+            "code": "1117012014",
+            "name": "Singah Mulo"
+        },
+        {
+            "code": "1117012015",
+            "name": "Simpang Lancang"
+        },
+        {
+            "code": "1117012016",
+            "name": "Wih Porak"
+        },
+        {
+            "code": "1117012017",
+            "name": "Bener Meriah"
+        },
+        {
+            "code": "1117012018",
+            "name": "Musara 58"
+        },
+        {
+            "code": "1117012019",
+            "name": "Musara Pakat"
+        },
+        {
+            "code": "1117012020",
+            "name": "Rata Ara"
+        },
+        {
+            "code": "1117012021",
+            "name": "Gemasih"
+        },
+        {
+            "code": "1117012022",
+            "name": "Pulo Intan"
+        },
+        {
+            "code": "1117012023",
+            "name": "Blang Ara"
+        }
+    ],
+    "111702": [
+        {
+            "code": "1117022001",
+            "name": "Bener Pepanyi"
+        },
+        {
+            "code": "1117022002",
+            "name": "Bintang Bener"
+        },
+        {
+            "code": "1117022003",
+            "name": "Bintang Permata"
+        },
+        {
+            "code": "1117022004",
+            "name": "Buntul Peteri"
+        },
+        {
+            "code": "1117022005",
+            "name": "Darul Aman"
+        },
+        {
+            "code": "1117022006",
+            "name": "GLP. Wih Tenang Uken"
+        },
+        {
+            "code": "1117022007",
+            "name": "Pantan Tengah Jaya"
+        },
+        {
+            "code": "1117022008",
+            "name": "Penosan Jaya"
+        },
+        {
+            "code": "1117022009",
+            "name": "Ramung Jaya"
+        },
+        {
+            "code": "1117022010",
+            "name": "Seni Antara"
+        },
+        {
+            "code": "1117022011",
+            "name": "Temas Mumanang"
+        },
+        {
+            "code": "1117022012",
+            "name": "Wih Tenang Toa"
+        },
+        {
+            "code": "1117022013",
+            "name": "Wih Tenang Uken"
+        },
+        {
+            "code": "1117022014",
+            "name": "Ayu Ara"
+        },
+        {
+            "code": "1117022015",
+            "name": "Ceding Ayu"
+        },
+        {
+            "code": "1117022016",
+            "name": "Uning Sejuk"
+        },
+        {
+            "code": "1117022017",
+            "name": "Suku Sara Tangke"
+        },
+        {
+            "code": "1117022018",
+            "name": "Rikit Musara"
+        },
+        {
+            "code": "1117022019",
+            "name": "Jungke"
+        },
+        {
+            "code": "1117022020",
+            "name": "Burni Pase"
+        },
+        {
+            "code": "1117022021",
+            "name": "Bale Musara"
+        },
+        {
+            "code": "1117022022",
+            "name": "Pemango"
+        },
+        {
+            "code": "1117022023",
+            "name": "Jelobok"
+        },
+        {
+            "code": "1117022024",
+            "name": "Kepies"
+        },
+        {
+            "code": "1117022025",
+            "name": "Timur Jaya"
+        },
+        {
+            "code": "1117022026",
+            "name": "Bale Purnama"
+        },
+        {
+            "code": "1117022027",
+            "name": "Tawar Bengi"
+        }
+    ],
+    "111703": [
+        {
+            "code": "1117032001",
+            "name": "Blang Panu"
+        },
+        {
+            "code": "1117032003",
+            "name": "Gerpa"
+        },
+        {
+            "code": "1117032004",
+            "name": "Goneng"
+        },
+        {
+            "code": "1117032007",
+            "name": "Kerlang"
+        },
+        {
+            "code": "1117032008",
+            "name": "Kutelah Lane"
+        },
+        {
+            "code": "1117032009",
+            "name": "Pasir Putih"
+        },
+        {
+            "code": "1117032010",
+            "name": "Payung"
+        },
+        {
+            "code": "1117032012",
+            "name": "Rusip"
+        },
+        {
+            "code": "1117032014",
+            "name": "Tembolon"
+        },
+        {
+            "code": "1117032015",
+            "name": "Uning"
+        },
+        {
+            "code": "1117032016",
+            "name": "Wihni Durin"
+        },
+        {
+            "code": "1117032017",
+            "name": "Rata Mulie"
+        },
+        {
+            "code": "1117032018",
+            "name": "Tempen Baru"
+        },
+        {
+            "code": "1117032019",
+            "name": "Geruti Jaya"
+        }
+    ],
+    "111704": [
+        {
+            "code": "1117042001",
+            "name": "Bahgie Bertona"
+        },
+        {
+            "code": "1117042003",
+            "name": "Bathin Baru"
+        },
+        {
+            "code": "1117042004",
+            "name": "Blang Pulo"
+        },
+        {
+            "code": "1117042009",
+            "name": "Bukit Wih Ilang"
+        },
+        {
+            "code": "1117042010",
+            "name": "Hakim Wih Ilang"
+        },
+        {
+            "code": "1117042011",
+            "name": "Janarata"
+        },
+        {
+            "code": "1117042012",
+            "name": "Keramat Jaya"
+        },
+        {
+            "code": "1117042013",
+            "name": "Lewa Jadi"
+        },
+        {
+            "code": "1117042014",
+            "name": "Muyang Kute Mangku"
+        },
+        {
+            "code": "1117042016",
+            "name": "Pakat Jeroh"
+        },
+        {
+            "code": "1117042017",
+            "name": "Paya Baning"
+        },
+        {
+            "code": "1117042018",
+            "name": "Blang Jorong"
+        },
+        {
+            "code": "1117042019",
+            "name": "Pondok Baru"
+        },
+        {
+            "code": "1117042020",
+            "name": "Pondok Gajah"
+        },
+        {
+            "code": "1117042021",
+            "name": "Pondok Ulung"
+        },
+        {
+            "code": "1117042022",
+            "name": "Puja Mulia"
+        },
+        {
+            "code": "1117042023",
+            "name": "Purwosari"
+        },
+        {
+            "code": "1117042024",
+            "name": "Selamat Rejo"
+        },
+        {
+            "code": "1117042025",
+            "name": "Sidodadi"
+        },
+        {
+            "code": "1117042026",
+            "name": "Simpang Utama"
+        },
+        {
+            "code": "1117042027",
+            "name": "Suku Wih Ilang"
+        },
+        {
+            "code": "1117042028",
+            "name": "Tanjung Pura"
+        },
+        {
+            "code": "1117042029",
+            "name": "Wonosari"
+        },
+        {
+            "code": "1117042030",
+            "name": "Mutiara"
+        },
+        {
+            "code": "1117042032",
+            "name": "Tansaran Bidin"
+        },
+        {
+            "code": "1117042033",
+            "name": "Jadi Sepakat"
+        },
+        {
+            "code": "1117042034",
+            "name": "Selisih Mara"
+        },
+        {
+            "code": "1117042035",
+            "name": "Kala Nempan"
+        },
+        {
+            "code": "1117042036",
+            "name": "Gunung Antara"
+        },
+        {
+            "code": "1117042037",
+            "name": "Gele Semayang"
+        },
+        {
+            "code": "1117042042",
+            "name": "Tawar Sedenge"
+        },
+        {
+            "code": "1117042043",
+            "name": "Beranun Teleden"
+        },
+        {
+            "code": "1117042044",
+            "name": "Remang Ketike Jaya"
+        },
+        {
+            "code": "1117042045",
+            "name": "Makmur Sentosa"
+        },
+        {
+            "code": "1117042047",
+            "name": "Sinar Jaya Paya Ringkel"
+        }
+    ],
+    "111705": [
+        {
+            "code": "1117052001",
+            "name": "Bale Atu"
+        },
+        {
+            "code": "1117052002",
+            "name": "Bale Redelong"
+        },
+        {
+            "code": "1117052003",
+            "name": "Batin Wih Pongas"
+        },
+        {
+            "code": "1117052004",
+            "name": "Blang Ara"
+        },
+        {
+            "code": "1117052005",
+            "name": "Blang Sentang"
+        },
+        {
+            "code": "1117052006",
+            "name": "Blang Tampu"
+        },
+        {
+            "code": "1117052007",
+            "name": "Bujang"
+        },
+        {
+            "code": "1117052009",
+            "name": "Delung Tue"
+        },
+        {
+            "code": "1117052010",
+            "name": "Hakim Tungul Naru"
+        },
+        {
+            "code": "1117052011",
+            "name": "Isaq Busur"
+        },
+        {
+            "code": "1117052012",
+            "name": "Kenawat Redelong"
+        },
+        {
+            "code": "1117052013",
+            "name": "Kute Lintang"
+        },
+        {
+            "code": "1117052014",
+            "name": "Panji Mulia I"
+        },
+        {
+            "code": "1117052015",
+            "name": "Panji Mulia II"
+        },
+        {
+            "code": "1117052016",
+            "name": "Pasar Simpang Tiga"
+        },
+        {
+            "code": "1117052017",
+            "name": "Reje Guru"
+        },
+        {
+            "code": "1117052018",
+            "name": "Rembele"
+        },
+        {
+            "code": "1117052019",
+            "name": "Sedie Jadi"
+        },
+        {
+            "code": "1117052020",
+            "name": "Tingkem Asli"
+        },
+        {
+            "code": "1117052021",
+            "name": "Tingkem Benyer"
+        },
+        {
+            "code": "1117052022",
+            "name": "Tingkem Bersatu"
+        },
+        {
+            "code": "1117052023",
+            "name": "Ujung Gele"
+        },
+        {
+            "code": "1117052024",
+            "name": "Uning Bersah"
+        },
+        {
+            "code": "1117052025",
+            "name": "Uning Teritit"
+        },
+        {
+            "code": "1117052026",
+            "name": "Waq Pondok Sayur"
+        },
+        {
+            "code": "1117052027",
+            "name": "Babussalam"
+        },
+        {
+            "code": "1117052028",
+            "name": "Paya Gajah"
+        },
+        {
+            "code": "1117052029",
+            "name": "Kute Tanyung"
+        },
+        {
+            "code": "1117052030",
+            "name": "Meluem"
+        },
+        {
+            "code": "1117052031",
+            "name": "Delung Asli"
+        },
+        {
+            "code": "1117052032",
+            "name": "Pilar Jaya"
+        },
+        {
+            "code": "1117052033",
+            "name": "Serule Kayu"
+        },
+        {
+            "code": "1117052034",
+            "name": "Uring"
+        },
+        {
+            "code": "1117052035",
+            "name": "Mupakat Jadi"
+        },
+        {
+            "code": "1117052036",
+            "name": "Kute Kering"
+        },
+        {
+            "code": "1117052037",
+            "name": "Blang Panas"
+        },
+        {
+            "code": "1117052038",
+            "name": "Mutiara Baru"
+        },
+        {
+            "code": "1117052039",
+            "name": "Bukit Bersatu"
+        },
+        {
+            "code": "1117052040",
+            "name": "Godang"
+        },
+        {
+            "code": "1117052041",
+            "name": "Karang Rejo"
+        }
+    ],
+    "111706": [
+        {
+            "code": "1117062001",
+            "name": "Blang Paku"
+        },
+        {
+            "code": "1117062004",
+            "name": "Pante Raya"
+        },
+        {
+            "code": "1117062005",
+            "name": "Simpang Balek"
+        },
+        {
+            "code": "1117062006",
+            "name": "Simpang Teritit"
+        },
+        {
+            "code": "1117062007",
+            "name": "Suka Jadi"
+        },
+        {
+            "code": "1117062008",
+            "name": "Suka Makmur"
+        },
+        {
+            "code": "1117062009",
+            "name": "Suka Ramai Atas"
+        },
+        {
+            "code": "1117062010",
+            "name": "Suka Ramai Bawah"
+        },
+        {
+            "code": "1117062011",
+            "name": "Syura Jadi"
+        },
+        {
+            "code": "1117062012",
+            "name": "Jamur Uluh"
+        },
+        {
+            "code": "1117062013",
+            "name": "Gegerung"
+        },
+        {
+            "code": "1117062014",
+            "name": "Merie Satu"
+        },
+        {
+            "code": "1117062015",
+            "name": "Blang Benara"
+        },
+        {
+            "code": "1117062016",
+            "name": "Bukit Pepanyi"
+        },
+        {
+            "code": "1117062017",
+            "name": "Wih Pesam"
+        },
+        {
+            "code": "1117062018",
+            "name": "Cinta Damai"
+        },
+        {
+            "code": "1117062019",
+            "name": "Bener Ayu"
+        },
+        {
+            "code": "1117062020",
+            "name": "Bener Mulie"
+        },
+        {
+            "code": "1117062021",
+            "name": "Blang Kucak"
+        },
+        {
+            "code": "1117062022",
+            "name": "Wonosobo"
+        },
+        {
+            "code": "1117062023",
+            "name": "Lut Kucak"
+        },
+        {
+            "code": "1117062024",
+            "name": "Kebun Baru"
+        },
+        {
+            "code": "1117062025",
+            "name": "Simpang Antara"
+        },
+        {
+            "code": "1117062026",
+            "name": "Jamur Ujung"
+        },
+        {
+            "code": "1117062027",
+            "name": "Suka Makmur Timur"
+        },
+        {
+            "code": "1117062028",
+            "name": "Burni Telong"
+        }
+    ],
+    "111707": [
+        {
+            "code": "1117072001",
+            "name": "Bandar Lampahan"
+        },
+        {
+            "code": "1117072002",
+            "name": "Blang Rongka"
+        },
+        {
+            "code": "1117072003",
+            "name": "Cekal Baru"
+        },
+        {
+            "code": "1117072004",
+            "name": "Gegur Sepakat"
+        },
+        {
+            "code": "1117072005",
+            "name": "Karang Jadi"
+        },
+        {
+            "code": "1117072006",
+            "name": "Lampahan"
+        },
+        {
+            "code": "1117072010",
+            "name": "Setie"
+        },
+        {
+            "code": "1117072011",
+            "name": "Simpang Layang"
+        },
+        {
+            "code": "1117072012",
+            "name": "Suka Damai"
+        },
+        {
+            "code": "1117072014",
+            "name": "Tunyang"
+        },
+        {
+            "code": "1117072016",
+            "name": "Datu Beru"
+        },
+        {
+            "code": "1117072017",
+            "name": "Kenine"
+        },
+        {
+            "code": "1117072018",
+            "name": "Rembune"
+        },
+        {
+            "code": "1117072019",
+            "name": "Damaran Baru"
+        },
+        {
+            "code": "1117072020",
+            "name": "Fajar Harapan"
+        },
+        {
+            "code": "1117072021",
+            "name": "Mude Benara"
+        },
+        {
+            "code": "1117072022",
+            "name": "Kampung Baru 76"
+        },
+        {
+            "code": "1117072023",
+            "name": "Pantan Pediangan"
+        },
+        {
+            "code": "1117072024",
+            "name": "Bumi Ayu"
+        },
+        {
+            "code": "1117072025",
+            "name": "Kulem Para Kanis"
+        },
+        {
+            "code": "1117072026",
+            "name": "Mekar Ayu"
+        },
+        {
+            "code": "1117072027",
+            "name": "Lampahan Barat"
+        },
+        {
+            "code": "1117072028",
+            "name": "Lampahan Timur"
+        },
+        {
+            "code": "1117072029",
+            "name": "Timang Rasa"
+        },
+        {
+            "code": "1117072030",
+            "name": "Gunung Tunyang"
+        },
+        {
+            "code": "1117072031",
+            "name": "Bukit Tunyang"
+        },
+        {
+            "code": "1117072032",
+            "name": "Linung Bale"
+        },
+        {
+            "code": "1117072033",
+            "name": "Pantan Kemuning"
+        },
+        {
+            "code": "1117072034",
+            "name": "Sumber Jaya"
+        },
+        {
+            "code": "1117072035",
+            "name": "Bukit Mulie"
+        }
+    ],
+    "111708": [
+        {
+            "code": "1117082001",
+            "name": "Bandar Jaya"
+        },
+        {
+            "code": "1117082002",
+            "name": "Jongok Meluem"
+        },
+        {
+            "code": "1117082003",
+            "name": "Suku Bener"
+        },
+        {
+            "code": "1117082004",
+            "name": "Bener Lukup II"
+        },
+        {
+            "code": "1117082005",
+            "name": "Gunung Musara"
+        },
+        {
+            "code": "1117082006",
+            "name": "Bener Kelipah Selatan"
+        },
+        {
+            "code": "1117082007",
+            "name": "Bintang Musara"
+        },
+        {
+            "code": "1117082008",
+            "name": "Kala Tenang"
+        },
+        {
+            "code": "1117082009",
+            "name": "Bener Kelipah Utara"
+        },
+        {
+            "code": "1117082010",
+            "name": "Lot Bener Kelipah"
+        },
+        {
+            "code": "1117082011",
+            "name": "Nosar Tawar Jaya"
+        },
+        {
+            "code": "1117082012",
+            "name": "Nosar Baru"
+        }
+    ],
+    "111709": [
+        {
+            "code": "1117092001",
+            "name": "Cemparam Lama"
+        },
+        {
+            "code": "1117092002",
+            "name": "Cemparam Pakat Jeroh"
+        },
+        {
+            "code": "1117092003",
+            "name": "Cemparam Jaya"
+        },
+        {
+            "code": "1117092004",
+            "name": "Pantan Kuli"
+        },
+        {
+            "code": "1117092005",
+            "name": "Simpang Renggali"
+        },
+        {
+            "code": "1117092006",
+            "name": "Jamur Atu Jaya"
+        },
+        {
+            "code": "1117092007",
+            "name": "Sosial"
+        },
+        {
+            "code": "1117092008",
+            "name": "Gunung Sayang"
+        },
+        {
+            "code": "1117092009",
+            "name": "Amor"
+        },
+        {
+            "code": "1117092010",
+            "name": "Buntul Gayo"
+        },
+        {
+            "code": "1117092011",
+            "name": "Wih Resap"
+        },
+        {
+            "code": "1117092012",
+            "name": "Wer Tingkem"
+        },
+        {
+            "code": "1117092013",
+            "name": "Perumpaken Benjadi"
+        },
+        {
+            "code": "1117092014",
+            "name": "Hakim Peteri Pintu"
+        },
+        {
+            "code": "1117092015",
+            "name": "Simpur"
+        }
+    ],
+    "111710": [
+        {
+            "code": "1117102001",
+            "name": "Simpang Rahmat"
+        },
+        {
+            "code": "1117102002",
+            "name": "Gajah Putih"
+        },
+        {
+            "code": "1117102003",
+            "name": "Gayo Setie"
+        },
+        {
+            "code": "1117102004",
+            "name": "Umah Besi"
+        },
+        {
+            "code": "1117102005",
+            "name": "Pante Karya"
+        },
+        {
+            "code": "1117102006",
+            "name": "Meriah Jaya"
+        },
+        {
+            "code": "1117102007",
+            "name": "Timang Gajah"
+        },
+        {
+            "code": "1117102008",
+            "name": "Pantan Lues"
+        },
+        {
+            "code": "1117102009",
+            "name": "Alam Jaya"
+        },
+        {
+            "code": "1117102010",
+            "name": "Reronga"
+        }
+    ]
+}

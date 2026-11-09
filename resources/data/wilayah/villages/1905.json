@@ -1,0 +1,278 @@
+{
+    "190501": [
+        {
+            "code": "1905011001",
+            "name": "Tanjung"
+        },
+        {
+            "code": "1905011002",
+            "name": "Sungai Daeng"
+        },
+        {
+            "code": "1905011003",
+            "name": "Sungai Baru"
+        },
+        {
+            "code": "1905011008",
+            "name": "Keranggan"
+        },
+        {
+            "code": "1905011009",
+            "name": "Menjelang"
+        },
+        {
+            "code": "1905012004",
+            "name": "Air Putih"
+        },
+        {
+            "code": "1905012005",
+            "name": "Air Belo"
+        },
+        {
+            "code": "1905012006",
+            "name": "Belo Laut"
+        },
+        {
+            "code": "1905012007",
+            "name": "Air Limau"
+        }
+    ],
+    "190502": [
+        {
+            "code": "1905022001",
+            "name": "Pelangas"
+        },
+        {
+            "code": "1905022002",
+            "name": "Kundi"
+        },
+        {
+            "code": "1905022003",
+            "name": "Mayang"
+        },
+        {
+            "code": "1905022004",
+            "name": "Peradong"
+        },
+        {
+            "code": "1905022005",
+            "name": "Air Nyatoh"
+        },
+        {
+            "code": "1905022006",
+            "name": "Berang"
+        },
+        {
+            "code": "1905022007",
+            "name": "Rambat"
+        },
+        {
+            "code": "1905022008",
+            "name": "Simpang Gong"
+        },
+        {
+            "code": "1905022009",
+            "name": "Simpang Tiga"
+        },
+        {
+            "code": "1905022010",
+            "name": "Ibul"
+        },
+        {
+            "code": "1905022011",
+            "name": "Pangek"
+        },
+        {
+            "code": "1905022012",
+            "name": "Bukit Terak"
+        },
+        {
+            "code": "1905022013",
+            "name": "Air Menduyung"
+        }
+    ],
+    "190503": [
+        {
+            "code": "1905032001",
+            "name": "Jebus"
+        },
+        {
+            "code": "1905032002",
+            "name": "Sungai Buluh"
+        },
+        {
+            "code": "1905032003",
+            "name": "Tumbak Petar"
+        },
+        {
+            "code": "1905032004",
+            "name": "Limbung"
+        },
+        {
+            "code": "1905032005",
+            "name": "Rukam"
+        },
+        {
+            "code": "1905032008",
+            "name": "Ranggi Asam"
+        },
+        {
+            "code": "1905032009",
+            "name": "Ketap"
+        },
+        {
+            "code": "1905032018",
+            "name": "Mislak"
+        },
+        {
+            "code": "1905032019",
+            "name": "Pebuar"
+        },
+        {
+            "code": "1905032020",
+            "name": "Sinar Manik"
+        },
+        {
+            "code": "1905032021",
+            "name": "Air Kuang"
+        }
+    ],
+    "190504": [
+        {
+            "code": "1905041001",
+            "name": "Kelapa"
+        },
+        {
+            "code": "1905042002",
+            "name": "Mancung"
+        },
+        {
+            "code": "1905042003",
+            "name": "Kayu Arang"
+        },
+        {
+            "code": "1905042004",
+            "name": "Pusuk"
+        },
+        {
+            "code": "1905042005",
+            "name": "Dendang"
+        },
+        {
+            "code": "1905042006",
+            "name": "Kacung"
+        },
+        {
+            "code": "1905042007",
+            "name": "Sinar Sari"
+        },
+        {
+            "code": "1905042008",
+            "name": "Beruas"
+        },
+        {
+            "code": "1905042009",
+            "name": "Tebing"
+        },
+        {
+            "code": "1905042010",
+            "name": "Terentang"
+        },
+        {
+            "code": "1905042011",
+            "name": "Tuik"
+        },
+        {
+            "code": "1905042012",
+            "name": "Tugang"
+        },
+        {
+            "code": "1905042013",
+            "name": "Air Bulin"
+        },
+        {
+            "code": "1905042014",
+            "name": "Pangkal Beras"
+        }
+    ],
+    "190505": [
+        {
+            "code": "1905052001",
+            "name": "Tempilang"
+        },
+        {
+            "code": "1905052002",
+            "name": "Tanjung Niur"
+        },
+        {
+            "code": "1905052003",
+            "name": "Sangku"
+        },
+        {
+            "code": "1905052004",
+            "name": "Buyan Kelumbi"
+        },
+        {
+            "code": "1905052005",
+            "name": "Penyampak"
+        },
+        {
+            "code": "1905052006",
+            "name": "Benteng Kota"
+        },
+        {
+            "code": "1905052007",
+            "name": "Air Lintang"
+        },
+        {
+            "code": "1905052008",
+            "name": "Sinar Surya"
+        },
+        {
+            "code": "1905052009",
+            "name": "Simpang Yul"
+        }
+    ],
+    "190506": [
+        {
+            "code": "1905062001",
+            "name": "Sekar Biru"
+        },
+        {
+            "code": "1905062002",
+            "name": "Telak"
+        },
+        {
+            "code": "1905062003",
+            "name": "Cupat"
+        },
+        {
+            "code": "1905062004",
+            "name": "Bakit"
+        },
+        {
+            "code": "1905062005",
+            "name": "Puput"
+        },
+        {
+            "code": "1905062006",
+            "name": "Air Gantang"
+        },
+        {
+            "code": "1905062007",
+            "name": "Kelabat"
+        },
+        {
+            "code": "1905062008",
+            "name": "Kapit"
+        },
+        {
+            "code": "1905062009",
+            "name": "Semulut"
+        },
+        {
+            "code": "1905062010",
+            "name": "Teluk Limau"
+        }
+    ]
+}

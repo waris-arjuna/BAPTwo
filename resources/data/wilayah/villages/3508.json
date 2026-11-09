@@ -1,0 +1,528 @@
+{
+    "350801": [
+        {
+            "code": "3508012001",
+            "name": "Tegalrejo"
+        },
+        {
+            "code": "3508012002",
+            "name": "Bulurejo"
+        },
+        {
+            "code": "3508012003",
+            "name": "Purorejo"
+        },
+        {
+            "code": "3508012004",
+            "name": "Tempurejo"
+        },
+        {
+            "code": "3508012005",
+            "name": "Tempursari"
+        },
+        {
+            "code": "3508012006",
+            "name": "Pundungsari"
+        },
+        {
+            "code": "3508012007",
+            "name": "Kaliuling"
+        }
+    ],
+    "350802": [
+        {
+            "code": "3508022001",
+            "name": "Sidomulyo"
+        },
+        {
+            "code": "3508022002",
+            "name": "Pronojiwo"
+        },
+        {
+            "code": "3508022003",
+            "name": "Tamanayu"
+        },
+        {
+            "code": "3508022004",
+            "name": "Sumberurip"
+        },
+        {
+            "code": "3508022005",
+            "name": "Oro-oro Ombo"
+        },
+        {
+            "code": "3508022006",
+            "name": "Supiturang"
+        }
+    ],
+    "350803": [
+        {
+            "code": "3508032001",
+            "name": "Jugosari"
+        },
+        {
+            "code": "3508032002",
+            "name": "Jarit"
+        },
+        {
+            "code": "3508032003",
+            "name": "Candipuro"
+        },
+        {
+            "code": "3508032004",
+            "name": "Sumberejo"
+        },
+        {
+            "code": "3508032005",
+            "name": "Sumberwuluh"
+        },
+        {
+            "code": "3508032006",
+            "name": "Sumbermujur"
+        },
+        {
+            "code": "3508032007",
+            "name": "Penanggal"
+        },
+        {
+            "code": "3508032008",
+            "name": "Tambahrejo"
+        },
+        {
+            "code": "3508032009",
+            "name": "Kloposawit"
+        },
+        {
+            "code": "3508032010",
+            "name": "Tumpeng"
+        }
+    ],
+    "350804": [
+        {
+            "code": "3508042001",
+            "name": "Gondoruso"
+        },
+        {
+            "code": "3508042002",
+            "name": "Kalibendo"
+        },
+        {
+            "code": "3508042003",
+            "name": "Bades"
+        },
+        {
+            "code": "3508042004",
+            "name": "Bago"
+        },
+        {
+            "code": "3508042005",
+            "name": "Selok Awar - Awar"
+        },
+        {
+            "code": "3508042006",
+            "name": "Condro"
+        },
+        {
+            "code": "3508042007",
+            "name": "Madurejo"
+        },
+        {
+            "code": "3508042008",
+            "name": "Pasirian"
+        },
+        {
+            "code": "3508042009",
+            "name": "Sememu"
+        },
+        {
+            "code": "3508042010",
+            "name": "Nguter"
+        },
+        {
+            "code": "3508042011",
+            "name": "Selokanyar"
+        }
+    ],
+    "350805": [
+        {
+            "code": "3508052001",
+            "name": "Pandanwangi"
+        },
+        {
+            "code": "3508052002",
+            "name": "Sumberjati"
+        },
+        {
+            "code": "3508052003",
+            "name": "Tempeh Kidul"
+        },
+        {
+            "code": "3508052004",
+            "name": "Lempeni"
+        },
+        {
+            "code": "3508052005",
+            "name": "Tempeh Tengah"
+        },
+        {
+            "code": "3508052006",
+            "name": "Kaliwungu"
+        },
+        {
+            "code": "3508052007",
+            "name": "Tempeh Lor"
+        },
+        {
+            "code": "3508052008",
+            "name": "Besuk"
+        },
+        {
+            "code": "3508052009",
+            "name": "Jatisari"
+        },
+        {
+            "code": "3508052010",
+            "name": "Pulo"
+        },
+        {
+            "code": "3508052011",
+            "name": "Gesang"
+        },
+        {
+            "code": "3508052012",
+            "name": "Jokarto"
+        },
+        {
+            "code": "3508052013",
+            "name": "Pandanarum"
+        }
+    ],
+    "350806": [
+        {
+            "code": "3508062001",
+            "name": "Jatimulyo"
+        },
+        {
+            "code": "3508062002",
+            "name": "Jatirejo"
+        },
+        {
+            "code": "3508062003",
+            "name": "Jatigono"
+        },
+        {
+            "code": "3508062004",
+            "name": "Sukorejo"
+        },
+        {
+            "code": "3508062005",
+            "name": "Sukosari"
+        },
+        {
+            "code": "3508062006",
+            "name": "Kunir Kidul"
+        },
+        {
+            "code": "3508062007",
+            "name": "Kunir Lor"
+        },
+        {
+            "code": "3508062008",
+            "name": "Kedungmoro"
+        },
+        {
+            "code": "3508062009",
+            "name": "Karanglo"
+        },
+        {
+            "code": "3508062010",
+            "name": "Kabuaran"
+        },
+        {
+            "code": "3508062011",
+            "name": "Dorogowok"
+        }
+    ],
+    "350807": [
+        {
+            "code": "3508072001",
+            "name": "Darungan"
+        },
+        {
+            "code": "3508072002",
+            "name": "Kraton"
+        },
+        {
+            "code": "3508072003",
+            "name": "Wotgalih"
+        },
+        {
+            "code": "3508072004",
+            "name": "Tunjungrejo"
+        },
+        {
+            "code": "3508072005",
+            "name": "Yosowilangun Kidul"
+        },
+        {
+            "code": "3508072006",
+            "name": "Yosowilangun Lor"
+        },
+        {
+            "code": "3508072007",
+            "name": "Krai"
+        },
+        {
+            "code": "3508072008",
+            "name": "Karanganyar"
+        },
+        {
+            "code": "3508072009",
+            "name": "Karangrejo"
+        },
+        {
+            "code": "3508072010",
+            "name": "Munder"
+        },
+        {
+            "code": "3508072011",
+            "name": "Kebonsari"
+        },
+        {
+            "code": "3508072012",
+            "name": "Kalipepe"
+        }
+    ],
+    "350808": [
+        {
+            "code": "3508082001",
+            "name": "Nogosari"
+        },
+        {
+            "code": "3508082002",
+            "name": "Kedungrejo"
+        },
+        {
+            "code": "3508082003",
+            "name": "Sidorejo"
+        },
+        {
+            "code": "3508082004",
+            "name": "Rowokangkung"
+        },
+        {
+            "code": "3508082005",
+            "name": "Sumbersari"
+        },
+        {
+            "code": "3508082006",
+            "name": "Dawuhan Wetan"
+        },
+        {
+            "code": "3508082007",
+            "name": "Sumberanyar"
+        }
+    ],
+    "350809": [
+        {
+            "code": "3508092001",
+            "name": "Wonogriyo"
+        },
+        {
+            "code": "3508092002",
+            "name": "Wonosari"
+        },
+        {
+            "code": "3508092003",
+            "name": "Mangunsari"
+        },
+        {
+            "code": "3508092004",
+            "name": "Tekung"
+        },
+        {
+            "code": "3508092005",
+            "name": "Wonokerto"
+        },
+        {
+            "code": "3508092006",
+            "name": "Tukum"
+        },
+        {
+            "code": "3508092007",
+            "name": "Karangbendo"
+        },
+        {
+            "code": "3508092008",
+            "name": "Klampokarum"
+        }
+    ],
+    "350810": [
+        {
+            "code": "3508101003",
+            "name": "Citrodiwangsan"
+        },
+        {
+            "code": "3508101004",
+            "name": "Ditotrunan"
+        },
+        {
+            "code": "3508101005",
+            "name": "Jogotrunan"
+        },
+        {
+            "code": "3508101009",
+            "name": "Jogoyudan"
+        },
+        {
+            "code": "3508101010",
+            "name": "Rogotrunan"
+        },
+        {
+            "code": "3508101011",
+            "name": "Tompokersan"
+        },
+        {
+            "code": "3508101012",
+            "name": "Kepuharjo"
+        },
+        {
+            "code": "3508102001",
+            "name": "Banjarwaru"
+        },
+        {
+            "code": "3508102002",
+            "name": "Labruk Lor"
+        },
+        {
+            "code": "3508102006",
+            "name": "Denok"
+        },
+        {
+            "code": "3508102007",
+            "name": "Blukon"
+        },
+        {
+            "code": "3508102008",
+            "name": "Boreng"
+        }
+    ],
+    "350811": [
+        {
+            "code": "3508112001",
+            "name": "Pasrujambe"
+        },
+        {
+            "code": "3508112002",
+            "name": "Jambekumbu"
+        },
+        {
+            "code": "3508112003",
+            "name": "Sukorejo"
+        },
+        {
+            "code": "3508112004",
+            "name": "Jambearum"
+        },
+        {
+            "code": "3508112005",
+            "name": "Kertosari"
+        },
+        {
+            "code": "3508112006",
+            "name": "Pagowan"
+        },
+        {
+            "code": "3508112007",
+            "name": "Karanganom"
+        }
+    ],
+    "350812": [
+        {
+            "code": "3508122001",
+            "name": "Purworejo"
+        },
+        {
+            "code": "3508122002",
+            "name": "Sarikemuning"
+        },
+        {
+            "code": "3508122003",
+            "name": "Pandansari"
+        },
+        {
+            "code": "3508122004",
+            "name": "Senduro"
+        },
+        {
+            "code": "3508122005",
+            "name": "Burno"
+        },
+        {
+            "code": "3508122006",
+            "name": "Kandangtepus"
+        },
+        {
+            "code": "3508122007",
+            "name": "Kandangan"
+        },
+        {
+            "code": "3508122008",
+            "name": "Bedayu"
+        },
+        {
+            "code": "3508122009",
+            "name": "Bedayutalang"
+        },
+        {
+            "code": "3508122010",
+            "name": "Wonocepokoayu"
+        },
+        {
+            "code": "3508122011",
+            "name": "Argosari"
+        },
+        {
+            "code": "3508122012",
+            "name": "Ranupani"
+        }
+    ],
+    "350813": [
+        {
+            "code": "3508132001",
+            "name": "Wonokerto"
+        },
+        {
+            "code": "3508132002",
+            "name": "Pakel"
+        },
+        {
+            "code": "3508132003",
+            "name": "Kenongo"
+        },
+        {
+            "code": "3508132004",
+            "name": "Gucialit"
+        },
+        {
+            "code": "3508132005",
+            "name": "Dadapan"
+        },
+        {
+            "code": "3508132006",
+            "name": "Kertowono"
+        },
+        {
+            "code": "3508132007",
+            "name": "Tunjung"
+        },
+        {
+            "code": "3508132008",
+            "name": "Jeruk"
+        },
+        {
+            "code": "3508132009",
+            "name": "Sombo"
+        }
+    ]
+}

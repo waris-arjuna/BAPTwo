@@ -1,0 +1,818 @@
+{
+    "740201": [
+        {
+            "code": "7402011001",
+            "name": "Lambuya"
+        },
+        {
+            "code": "7402012006",
+            "name": "Awuliti"
+        },
+        {
+            "code": "7402012007",
+            "name": "Asaki"
+        },
+        {
+            "code": "7402012011",
+            "name": "Amberi"
+        },
+        {
+            "code": "7402012012",
+            "name": "Waworaha"
+        },
+        {
+            "code": "7402012015",
+            "name": "Tanggobu"
+        },
+        {
+            "code": "7402012027",
+            "name": "Meraka"
+        },
+        {
+            "code": "7402012035",
+            "name": "Wanua Hoa"
+        },
+        {
+            "code": "7402012036",
+            "name": "Watarema"
+        },
+        {
+            "code": "7402012037",
+            "name": "Tetembomua"
+        }
+    ],
+    "740202": [
+        {
+            "code": "7402021001",
+            "name": "Puunaaha"
+        },
+        {
+            "code": "7402021002",
+            "name": "Tumpas"
+        },
+        {
+            "code": "7402021003",
+            "name": "Latoma"
+        },
+        {
+            "code": "7402021004",
+            "name": "Ambekairi"
+        },
+        {
+            "code": "7402021005",
+            "name": "Arombu"
+        },
+        {
+            "code": "7402021006",
+            "name": "Asinua"
+        },
+        {
+            "code": "7402021011",
+            "name": "Wawonggole"
+        },
+        {
+            "code": "7402021012",
+            "name": "Tuoy"
+        },
+        {
+            "code": "7402021013",
+            "name": "Unaaha"
+        },
+        {
+            "code": "7402021015",
+            "name": "Inolobunggadue"
+        },
+        {
+            "code": "7402021016",
+            "name": "Asambu"
+        },
+        {
+            "code": "7402021017",
+            "name": "Tobeu"
+        }
+    ],
+    "740203": [
+        {
+            "code": "7402031001",
+            "name": "Wawotobi"
+        },
+        {
+            "code": "7402031002",
+            "name": "Inalahi"
+        },
+        {
+            "code": "7402031006",
+            "name": "Lalosabila"
+        },
+        {
+            "code": "7402031007",
+            "name": "Hopa-Hopa"
+        },
+        {
+            "code": "7402031008",
+            "name": "Kulahi"
+        },
+        {
+            "code": "7402031009",
+            "name": "Ranoeya"
+        },
+        {
+            "code": "7402031010",
+            "name": "Palarahi"
+        },
+        {
+            "code": "7402031011",
+            "name": "Kasupute"
+        },
+        {
+            "code": "7402031019",
+            "name": "Nohu - Nohu"
+        },
+        {
+            "code": "7402031020",
+            "name": "Inolobu"
+        },
+        {
+            "code": "7402031027",
+            "name": "Bose-Bose"
+        },
+        {
+            "code": "7402031028",
+            "name": "Puusinauwi"
+        },
+        {
+            "code": "7402032013",
+            "name": "Nario Indah"
+        },
+        {
+            "code": "7402032017",
+            "name": "Anggotoa"
+        },
+        {
+            "code": "7402032018",
+            "name": "Analahumbuti"
+        },
+        {
+            "code": "7402032025",
+            "name": "Karandu"
+        },
+        {
+            "code": "7402032026",
+            "name": "Korumba"
+        },
+        {
+            "code": "7402032031",
+            "name": "Kasumewuho"
+        },
+        {
+            "code": "7402032032",
+            "name": "Kukuluri"
+        }
+    ],
+    "740204": [
+        {
+            "code": "7402041001",
+            "name": "Pondidaha"
+        },
+        {
+            "code": "7402042013",
+            "name": "Hongoa"
+        },
+        {
+            "code": "7402042016",
+            "name": "Mumundowu"
+        },
+        {
+            "code": "7402042019",
+            "name": "Ahuawatu"
+        },
+        {
+            "code": "7402042025",
+            "name": "Tirawuta"
+        },
+        {
+            "code": "7402042030",
+            "name": "Ambuulanu"
+        },
+        {
+            "code": "7402042031",
+            "name": "Belatu"
+        },
+        {
+            "code": "7402042034",
+            "name": "Amesiu"
+        },
+        {
+            "code": "7402042035",
+            "name": "Puumbinisi"
+        },
+        {
+            "code": "7402042039",
+            "name": "Wawolemo"
+        },
+        {
+            "code": "7402042045",
+            "name": "Sulemandara"
+        },
+        {
+            "code": "7402042046",
+            "name": "Lalodangge"
+        },
+        {
+            "code": "7402042047",
+            "name": "Wawolahumbuti"
+        },
+        {
+            "code": "7402042048",
+            "name": "Laloika"
+        },
+        {
+            "code": "7402042049",
+            "name": "Lalonggotomi"
+        },
+        {
+            "code": "7402042050",
+            "name": "Wonua Mandara"
+        },
+        {
+            "code": "7402042051",
+            "name": "Wonua Monapa"
+        },
+        {
+            "code": "7402042052",
+            "name": "Lahonggumbi"
+        }
+    ],
+    "740205": [
+        {
+            "code": "7402051001",
+            "name": "Sampara"
+        },
+        {
+            "code": "7402051007",
+            "name": "Rawua"
+        },
+        {
+            "code": "7402052006",
+            "name": "Andepali"
+        },
+        {
+            "code": "7402052008",
+            "name": "Andaroa"
+        },
+        {
+            "code": "7402052009",
+            "name": "Puuloro"
+        },
+        {
+            "code": "7402052012",
+            "name": "Andadowi"
+        },
+        {
+            "code": "7402052027",
+            "name": "Totombe Jaya"
+        },
+        {
+            "code": "7402052028",
+            "name": "Bao-Bao"
+        },
+        {
+            "code": "7402052030",
+            "name": "Wawolimbue"
+        },
+        {
+            "code": "7402052036",
+            "name": "Baini"
+        },
+        {
+            "code": "7402052038",
+            "name": "Polua"
+        },
+        {
+            "code": "7402052041",
+            "name": "Pohara"
+        },
+        {
+            "code": "7402052048",
+            "name": "Bondoala"
+        },
+        {
+            "code": "7402052052",
+            "name": "Konggamea"
+        },
+        {
+            "code": "7402052057",
+            "name": "Wowa Andaroa"
+        }
+    ],
+    "740210": [
+        {
+            "code": "7402101001",
+            "name": "Abuki"
+        },
+        {
+            "code": "7402102007",
+            "name": "Sambeani"
+        },
+        {
+            "code": "7402102008",
+            "name": "Asolu"
+        },
+        {
+            "code": "7402102009",
+            "name": "Punggaluku"
+        },
+        {
+            "code": "7402102012",
+            "name": "Walay"
+        },
+        {
+            "code": "7402102015",
+            "name": "Epeea"
+        },
+        {
+            "code": "7402102024",
+            "name": "Kumapo"
+        },
+        {
+            "code": "7402102035",
+            "name": "Unaasi Jaya"
+        },
+        {
+            "code": "7402102038",
+            "name": "Kasuwura Indah"
+        },
+        {
+            "code": "7402102039",
+            "name": "Arubia Jaya"
+        },
+        {
+            "code": "7402102040",
+            "name": "Padangguni Utama"
+        },
+        {
+            "code": "7402102042",
+            "name": "Anggoro"
+        }
+    ],
+    "740211": [
+        {
+            "code": "7402111001",
+            "name": "Toronipa"
+        },
+        {
+            "code": "7402112002",
+            "name": "Atowatu"
+        },
+        {
+            "code": "7402112004",
+            "name": "Waworaha"
+        },
+        {
+            "code": "7402112006",
+            "name": "Sorue Jaya"
+        },
+        {
+            "code": "7402112010",
+            "name": "Soropia"
+        },
+        {
+            "code": "7402112011",
+            "name": "Tapulaga"
+        },
+        {
+            "code": "7402112012",
+            "name": "Sawapudo"
+        },
+        {
+            "code": "7402112014",
+            "name": "Bokori"
+        },
+        {
+            "code": "7402112015",
+            "name": "Saponda"
+        },
+        {
+            "code": "7402112016",
+            "name": "Mekar"
+        },
+        {
+            "code": "7402112017",
+            "name": "Bajo Indah"
+        },
+        {
+            "code": "7402112022",
+            "name": "Telaga Biru"
+        },
+        {
+            "code": "7402112023",
+            "name": "Leppe"
+        },
+        {
+            "code": "7402112024",
+            "name": "Bajoe"
+        },
+        {
+            "code": "7402112025",
+            "name": "Saponda Laut"
+        }
+    ],
+    "740215": [
+        {
+            "code": "7402151001",
+            "name": "Tongauna"
+        },
+        {
+            "code": "7402151002",
+            "name": "Mata Iwoi"
+        },
+        {
+            "code": "7402151003",
+            "name": "Puosu"
+        },
+        {
+            "code": "7402151004",
+            "name": "Sendang Mulya Sari"
+        },
+        {
+            "code": "7402151005",
+            "name": "Mekar Sari"
+        },
+        {
+            "code": "7402152006",
+            "name": "Lalonggowuna"
+        },
+        {
+            "code": "7402152007",
+            "name": "Asao"
+        },
+        {
+            "code": "7402152012",
+            "name": "Andeposandu"
+        },
+        {
+            "code": "7402152013",
+            "name": "Momea"
+        },
+        {
+            "code": "7402152018",
+            "name": "Ambepulu"
+        }
+    ],
+    "740216": [
+        {
+            "code": "7402161003",
+            "name": "Waworaha"
+        },
+        {
+            "code": "7402162001",
+            "name": "Latoma Jaya"
+        },
+        {
+            "code": "7402162002",
+            "name": "Ambekaeri Utama"
+        },
+        {
+            "code": "7402162004",
+            "name": "Amboniki"
+        },
+        {
+            "code": "7402162005",
+            "name": "Pinole"
+        },
+        {
+            "code": "7402162006",
+            "name": "Nesowi"
+        },
+        {
+            "code": "7402162007",
+            "name": "Wawolatoma"
+        },
+        {
+            "code": "7402162008",
+            "name": "Andoluto"
+        },
+        {
+            "code": "7402162009",
+            "name": "Lalowata"
+        },
+        {
+            "code": "7402162010",
+            "name": "Titiowa"
+        },
+        {
+            "code": "7402162012",
+            "name": "Angonga"
+        }
+    ],
+    "740217": [
+        {
+            "code": "7402171002",
+            "name": "Watundehoa"
+        },
+        {
+            "code": "7402172001",
+            "name": "Puriala"
+        },
+        {
+            "code": "7402172003",
+            "name": "Sonai"
+        },
+        {
+            "code": "7402172004",
+            "name": "Lalonggatu"
+        },
+        {
+            "code": "7402172005",
+            "name": "Poanaha"
+        },
+        {
+            "code": "7402172006",
+            "name": "Wonua Morome"
+        },
+        {
+            "code": "7402172007",
+            "name": "Ahuawali"
+        },
+        {
+            "code": "7402172008",
+            "name": "Watusa"
+        },
+        {
+            "code": "7402172009",
+            "name": "Puusangi"
+        },
+        {
+            "code": "7402172010",
+            "name": "Mokaleleo"
+        },
+        {
+            "code": "7402172011",
+            "name": "Unggulino"
+        },
+        {
+            "code": "7402172012",
+            "name": "Tetewatu"
+        },
+        {
+            "code": "7402172013",
+            "name": "Tetehaka"
+        },
+        {
+            "code": "7402172014",
+            "name": "Puuhopa"
+        },
+        {
+            "code": "7402172015",
+            "name": "Laloonaha"
+        },
+        {
+            "code": "7402172016",
+            "name": "Wawosanggula"
+        }
+    ],
+    "740218": [
+        {
+            "code": "7402181001",
+            "name": "Uepai"
+        },
+        {
+            "code": "7402182002",
+            "name": "Ameroro"
+        },
+        {
+            "code": "7402182003",
+            "name": "Tawarotebota"
+        },
+        {
+            "code": "7402182004",
+            "name": "Olo-Oloho"
+        },
+        {
+            "code": "7402182005",
+            "name": "Matahoalu"
+        },
+        {
+            "code": "7402182006",
+            "name": "Langgomea"
+        },
+        {
+            "code": "7402182007",
+            "name": "Rawua"
+        },
+        {
+            "code": "7402182008",
+            "name": "Baruga"
+        },
+        {
+            "code": "7402182009",
+            "name": "Amaroa"
+        },
+        {
+            "code": "7402182010",
+            "name": "Tawamelewe"
+        },
+        {
+            "code": "7402182011",
+            "name": "Anggopiu"
+        },
+        {
+            "code": "7402182012",
+            "name": "Tamesandi"
+        },
+        {
+            "code": "7402182013",
+            "name": "Humboto"
+        },
+        {
+            "code": "7402182015",
+            "name": "Anggawo"
+        },
+        {
+            "code": "7402182016",
+            "name": "Kasaeda"
+        },
+        {
+            "code": "7402182017",
+            "name": "Tanggondipo"
+        },
+        {
+            "code": "7402182018",
+            "name": "Panggulawu"
+        },
+        {
+            "code": "7402182019",
+            "name": "Puuroda Jaya"
+        }
+    ],
+    "740219": [
+        {
+            "code": "7402191009",
+            "name": "Puuduria"
+        },
+        {
+            "code": "7402192004",
+            "name": "Duriaasi"
+        },
+        {
+            "code": "7402192006",
+            "name": "Lalousu"
+        },
+        {
+            "code": "7402192008",
+            "name": "Wawoone"
+        },
+        {
+            "code": "7402192010",
+            "name": "Wawosolo"
+        },
+        {
+            "code": "7402192012",
+            "name": "Wawonggole"
+        },
+        {
+            "code": "7402192015",
+            "name": "Tetemotaha"
+        },
+        {
+            "code": "7402192016",
+            "name": "Dawi-dawi"
+        },
+        {
+            "code": "7402192017",
+            "name": "Bendewuta"
+        },
+        {
+            "code": "7402192018",
+            "name": "Langgonawe"
+        },
+        {
+            "code": "7402192019",
+            "name": "Lalohao"
+        },
+        {
+            "code": "7402192020",
+            "name": "Wukusao"
+        },
+        {
+            "code": "7402192026",
+            "name": "Tawarolondo"
+        },
+        {
+            "code": "7402192027",
+            "name": "Polandangi"
+        },
+        {
+            "code": "7402192028",
+            "name": "Anggoro"
+        },
+        {
+            "code": "7402192029",
+            "name": "Tetewonua"
+        }
+    ],
+    "740220": [
+        {
+            "code": "7402201003",
+            "name": "Besulutu"
+        },
+        {
+            "code": "7402202001",
+            "name": "Lawonua"
+        },
+        {
+            "code": "7402202002",
+            "name": "Amosilu"
+        },
+        {
+            "code": "7402202004",
+            "name": "Laloumera"
+        },
+        {
+            "code": "7402202005",
+            "name": "Asunde"
+        },
+        {
+            "code": "7402202006",
+            "name": "Ulupohara"
+        },
+        {
+            "code": "7402202007",
+            "name": "Labela"
+        },
+        {
+            "code": "7402202008",
+            "name": "Ranomolua"
+        },
+        {
+            "code": "7402202009",
+            "name": "Silea"
+        },
+        {
+            "code": "7402202010",
+            "name": "Onembute"
+        },
+        {
+            "code": "7402202011",
+            "name": "Andomesinggo"
+        },
+        {
+            "code": "7402202012",
+            "name": "Puulowaru"
+        },
+        {
+            "code": "7402202013",
+            "name": "Puundoho"
+        },
+        {
+            "code": "7402202014",
+            "name": "Punggaluku"
+        },
+        {
+            "code": "7402202015",
+            "name": "Waworaha"
+        },
+        {
+            "code": "7402202016",
+            "name": "Lalowulo"
+        }
+    ],
+    "740221": [
+        {
+            "code": "7402211003",
+            "name": "Laosu"
+        },
+        {
+            "code": "7402212002",
+            "name": "Pebunooha"
+        },
+        {
+            "code": "7402212004",
+            "name": "Lalonggalaku"
+        },
+        {
+            "code": "7402212009",
+            "name": "Diolo"
+        },
+        {
+            "code": "7402212018",
+            "name": "Pebunooha Dalam"
+        },
+        {
+            "code": "7402212023",
+            "name": "Rumbia"
+        },
+        {
+            "code": "7402212028",
+            "name": "Rambu Kongga"
+        },
+        {
+            "code": "7402212029",
+            "name": "Laosu Jaya"
+        },
+        {
+            "code": "7402212031",
+            "name": "Langgaluku Timur"
+        }
+    ]
+}

@@ -1,0 +1,448 @@
+{
+    "130101": [
+        {
+            "code": "1301012001",
+            "name": "Inderapura"
+        },
+        {
+            "code": "1301012002",
+            "name": "Muaro Sakai Inderapura"
+        },
+        {
+            "code": "1301012003",
+            "name": "Tiga Sepakat Inderapura"
+        },
+        {
+            "code": "1301012004",
+            "name": "Inderapura Barat"
+        },
+        {
+            "code": "1301012005",
+            "name": "Kudo-Kudo Inderapura"
+        },
+        {
+            "code": "1301012006",
+            "name": "Inderapura Selatan"
+        },
+        {
+            "code": "1301012009",
+            "name": "Simpang Lama Inderapura"
+        },
+        {
+            "code": "1301012010",
+            "name": "Tigo Sungai Inderapura"
+        },
+        {
+            "code": "1301012011",
+            "name": "Tluk Amplu Inderapura"
+        },
+        {
+            "code": "1301012012",
+            "name": "Inderapura Tengah"
+        }
+    ],
+    "130107": [
+        {
+            "code": "1301072001",
+            "name": "Siguntur"
+        },
+        {
+            "code": "1301072002",
+            "name": "Sungai Pinang"
+        },
+        {
+            "code": "1301072003",
+            "name": "Duku"
+        },
+        {
+            "code": "1301072004",
+            "name": "Batu Hampa"
+        },
+        {
+            "code": "1301072005",
+            "name": "Nanggalo"
+        },
+        {
+            "code": "1301072006",
+            "name": "Ampang Pulai"
+        },
+        {
+            "code": "1301072007",
+            "name": "Kapuh"
+        },
+        {
+            "code": "1301072008",
+            "name": "Barung-Barung Balantai"
+        },
+        {
+            "code": "1301072009",
+            "name": "Barung-Barung Balantai Selatan"
+        },
+        {
+            "code": "1301072010",
+            "name": "Mandeh"
+        },
+        {
+            "code": "1301072011",
+            "name": "Kapuah Utara"
+        },
+        {
+            "code": "1301072012",
+            "name": "Taratak Sungai Lundang"
+        },
+        {
+            "code": "1301072013",
+            "name": "Siguntur Tua"
+        },
+        {
+            "code": "1301072014",
+            "name": "Kampung Baru Korong Nan Ampek"
+        },
+        {
+            "code": "1301072015",
+            "name": "Duku Utara"
+        },
+        {
+            "code": "1301072016",
+            "name": "Pulau Karam Ampang Pulai"
+        },
+        {
+            "code": "1301072017",
+            "name": "Jinang Kampung Pansur Ampang Pulai"
+        },
+        {
+            "code": "1301072018",
+            "name": "Cerocok Anau Ampang Pulai"
+        },
+        {
+            "code": "1301072019",
+            "name": "Sungai Nyalo Mudiak Aia"
+        },
+        {
+            "code": "1301072020",
+            "name": "Batu Hampar Selatan"
+        },
+        {
+            "code": "1301072021",
+            "name": "Barung-Barung Balantai Timur"
+        },
+        {
+            "code": "1301072022",
+            "name": "Barung-Barung Balantai Tengah"
+        },
+        {
+            "code": "1301072023",
+            "name": "Setara Nanggalo"
+        }
+    ],
+    "130108": [
+        {
+            "code": "1301082001",
+            "name": "Taratak"
+        },
+        {
+            "code": "1301082002",
+            "name": "Surantih"
+        },
+        {
+            "code": "1301082003",
+            "name": "Amping Parak"
+        },
+        {
+            "code": "1301082004",
+            "name": "Amping Parak Timur"
+        },
+        {
+            "code": "1301082005",
+            "name": "Koto Taratak"
+        },
+        {
+            "code": "1301082006",
+            "name": "Lansano Taratak"
+        },
+        {
+            "code": "1301082007",
+            "name": "Aur Duri Surantih"
+        },
+        {
+            "code": "1301082008",
+            "name": "Rawang Gunung Malelo Surantih"
+        },
+        {
+            "code": "1301082009",
+            "name": "Koto Nan Tigo Selatan Surantih"
+        },
+        {
+            "code": "1301082010",
+            "name": "Koto Nan Tigo Utara Surantih"
+        },
+        {
+            "code": "1301082011",
+            "name": "Ganting Mudiak Selatan Surantih"
+        },
+        {
+            "code": "1301082012",
+            "name": "Ganting Mudiak Utara Surantih"
+        }
+    ],
+    "130109": [
+        {
+            "code": "1301092001",
+            "name": "Punggasan"
+        },
+        {
+            "code": "1301092002",
+            "name": "Air Haji"
+        },
+        {
+            "code": "1301092003",
+            "name": "Punggasan Utara"
+        },
+        {
+            "code": "1301092004",
+            "name": "Punggasan Timur"
+        },
+        {
+            "code": "1301092005",
+            "name": "Padang XI Punggasan"
+        },
+        {
+            "code": "1301092006",
+            "name": "Lagan Mudik Punggasan"
+        },
+        {
+            "code": "1301092007",
+            "name": "Lagan Hilir Punggasan"
+        },
+        {
+            "code": "1301092008",
+            "name": "Air Haji Tenggara"
+        },
+        {
+            "code": "1301092009",
+            "name": "Pasar Lama Muara Air Haji"
+        },
+        {
+            "code": "1301092010",
+            "name": "Pasar Bukit Air Haji"
+        },
+        {
+            "code": "1301092011",
+            "name": "Air Haji Barat"
+        },
+        {
+            "code": "1301092012",
+            "name": "Air Haji Tengah"
+        },
+        {
+            "code": "1301092013",
+            "name": "Rantau Simalenang Air Haji"
+        },
+        {
+            "code": "1301092014",
+            "name": "Muara Gadang Air Haji"
+        },
+        {
+            "code": "1301092015",
+            "name": "Sungai Sirah Air Haji"
+        },
+        {
+            "code": "1301092016",
+            "name": "Muara Kandis Punggasan"
+        }
+    ],
+    "130110": [
+        {
+            "code": "1301102001",
+            "name": "Lunang"
+        },
+        {
+            "code": "1301102003",
+            "name": "Lunang Utara"
+        },
+        {
+            "code": "1301102004",
+            "name": "Lunang Selatan"
+        },
+        {
+            "code": "1301102005",
+            "name": "Lunang Barat"
+        },
+        {
+            "code": "1301102015",
+            "name": "Sindang Lunang"
+        },
+        {
+            "code": "1301102016",
+            "name": "Pondok Parian Lunang"
+        },
+        {
+            "code": "1301102017",
+            "name": "Lunang Tengah"
+        },
+        {
+            "code": "1301102018",
+            "name": "Lunang Satu"
+        },
+        {
+            "code": "1301102019",
+            "name": "Lunang Dua"
+        },
+        {
+            "code": "1301102020",
+            "name": "Lunang Tiga"
+        }
+    ],
+    "130111": [
+        {
+            "code": "1301112001",
+            "name": "Tapan"
+        },
+        {
+            "code": "1301112002",
+            "name": "Pasar Tapan"
+        },
+        {
+            "code": "1301112007",
+            "name": "Batang Arah Tapan"
+        },
+        {
+            "code": "1301112008",
+            "name": "Ampang Tulak Tapan"
+        },
+        {
+            "code": "1301112009",
+            "name": "Tanjung Pondok Tapan"
+        },
+        {
+            "code": "1301112010",
+            "name": "Batang Betung Tapan"
+        },
+        {
+            "code": "1301112016",
+            "name": "Bukit Buai Tapan"
+        },
+        {
+            "code": "1301112017",
+            "name": "Riak Danau Tapan"
+        },
+        {
+            "code": "1301112018",
+            "name": "Koto Anau Tapan"
+        },
+        {
+            "code": "1301112019",
+            "name": "Dusun Baru Tapan"
+        }
+    ],
+    "130112": [
+        {
+            "code": "1301122001",
+            "name": "Puluik-Puluik"
+        },
+        {
+            "code": "1301122002",
+            "name": "Koto Ranah"
+        },
+        {
+            "code": "1301122003",
+            "name": "Muaro Aie"
+        },
+        {
+            "code": "1301122004",
+            "name": "Pancuang Taba"
+        },
+        {
+            "code": "1301122005",
+            "name": "Puluik-Puluik Selatan"
+        },
+        {
+            "code": "1301122006",
+            "name": "Limau Gadang Pancung Taba"
+        }
+    ],
+    "130113": [
+        {
+            "code": "1301132001",
+            "name": "Inderapura Utara"
+        },
+        {
+            "code": "1301132002",
+            "name": "Muara Inderapura"
+        },
+        {
+            "code": "1301132003",
+            "name": "Damar Lapan Batang Inderapura"
+        },
+        {
+            "code": "1301132004",
+            "name": "Lalang Panjang Inderapura"
+        },
+        {
+            "code": "1301132005",
+            "name": "Palokan Inderapura"
+        },
+        {
+            "code": "1301132006",
+            "name": "Lubuk Betung Inderapura"
+        },
+        {
+            "code": "1301132007",
+            "name": "Tluk Kualo Inderapura"
+        },
+        {
+            "code": "1301132008",
+            "name": "Tanah Bakali Inderapura"
+        },
+        {
+            "code": "1301132009",
+            "name": "Inderapura Timur"
+        },
+        {
+            "code": "1301132010",
+            "name": "Pulau Rajo Inderapura"
+        }
+    ],
+    "130114": [
+        {
+            "code": "1301142001",
+            "name": "Sungai Gambir Sako Tapan"
+        },
+        {
+            "code": "1301142002",
+            "name": "Limau Purut Tapan"
+        },
+        {
+            "code": "1301142003",
+            "name": "Talang Balarik Tapan"
+        },
+        {
+            "code": "1301142004",
+            "name": "Tebing Tinggi Tapan"
+        },
+        {
+            "code": "1301142005",
+            "name": "Binjai Tapan"
+        },
+        {
+            "code": "1301142006",
+            "name": "Sungai Pinang Tapan"
+        },
+        {
+            "code": "1301142007",
+            "name": "Talang Koto Pulai Tapan"
+        },
+        {
+            "code": "1301142008",
+            "name": "Kampung Tengah Tapan"
+        },
+        {
+            "code": "1301142009",
+            "name": "Kubu Tapan"
+        },
+        {
+            "code": "1301142010",
+            "name": "Simpang Gunung Tapan"
+        }
+    ]
+}

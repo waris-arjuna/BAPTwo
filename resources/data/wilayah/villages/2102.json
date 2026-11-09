@@ -1,0 +1,102 @@
+{
+    "210201": [
+        {
+            "code": "2102011003",
+            "name": "Moro"
+        },
+        {
+            "code": "2102011010",
+            "name": "Moro Timur"
+        },
+        {
+            "code": "2102012004",
+            "name": "Pauh"
+        },
+        {
+            "code": "2102012009",
+            "name": "Jang"
+        },
+        {
+            "code": "2102012014",
+            "name": "Pulau Moro"
+        }
+    ],
+    "210202": [
+        {
+            "code": "2102021001",
+            "name": "Tanjung Batu Barat"
+        },
+        {
+            "code": "2102021002",
+            "name": "Tanjung Batu Kota"
+        },
+        {
+            "code": "2102021009",
+            "name": "Gading Sari"
+        },
+        {
+            "code": "2102022004",
+            "name": "Sungai Sebesi"
+        },
+        {
+            "code": "2102022005",
+            "name": "Sungai Ungar"
+        },
+        {
+            "code": "2102022006",
+            "name": "Lubuk"
+        }
+    ],
+    "210203": [
+        {
+            "code": "2102031001",
+            "name": "Tanjung Balai"
+        },
+        {
+            "code": "2102031002",
+            "name": "Teluk Air"
+        },
+        {
+            "code": "2102031003",
+            "name": "Sungai Lakam Timur"
+        },
+        {
+            "code": "2102031006",
+            "name": "Lubuk Semut"
+        },
+        {
+            "code": "2102031007",
+            "name": "Tanjung Balai Kota"
+        },
+        {
+            "code": "2102031008",
+            "name": "Sungai Lakam Barat"
+        }
+    ],
+    "210205": [
+        {
+            "code": "2102051001",
+            "name": "Tebing"
+        },
+        {
+            "code": "2102051002",
+            "name": "Teluk Uma"
+        },
+        {
+            "code": "2102051003",
+            "name": "Kapling"
+        },
+        {
+            "code": "2102051004",
+            "name": "Pamak"
+        },
+        {
+            "code": "2102051008",
+            "name": "Harjosari"
+        },
+        {
+            "code": "2102052007",
+            "name": "Pongkar"
+        }
+    ]
+}

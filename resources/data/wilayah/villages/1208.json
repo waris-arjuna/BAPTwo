@@ -1,0 +1,694 @@
+{
+    "120812": [
+        {
+            "code": "1208122001",
+            "name": "Buntu Bayu"
+        },
+        {
+            "code": "1208122002",
+            "name": "Bosar Nauli"
+        },
+        {
+            "code": "1208122003",
+            "name": "Tangga Batu"
+        },
+        {
+            "code": "1208122004",
+            "name": "Buntu Turunan"
+        },
+        {
+            "code": "1208122005",
+            "name": "Saribu Asih"
+        },
+        {
+            "code": "1208122006",
+            "name": "Jawa Tongah"
+        },
+        {
+            "code": "1208122007",
+            "name": "Tonduhan"
+        },
+        {
+            "code": "1208122008",
+            "name": "Parhundalian Jawa Dipar"
+        },
+        {
+            "code": "1208122009",
+            "name": "Jawa Tongah II"
+        }
+    ],
+    "120813": [
+        {
+            "code": "1208132001",
+            "name": "Negeri Dolok"
+        },
+        {
+            "code": "1208132002",
+            "name": "Dolok Parmonangan"
+        },
+        {
+            "code": "1208132003",
+            "name": "Dolok Tomuan"
+        },
+        {
+            "code": "1208132004",
+            "name": "Marihat Dolok"
+        },
+        {
+            "code": "1208132005",
+            "name": "Tiga Dolok"
+        },
+        {
+            "code": "1208132006",
+            "name": "Ujung Bondar"
+        },
+        {
+            "code": "1208132007",
+            "name": "Marihat Raja"
+        },
+        {
+            "code": "1208132008",
+            "name": "Bandar Dolok"
+        },
+        {
+            "code": "1208132009",
+            "name": "Gunung Mariah"
+        },
+        {
+            "code": "1208132010",
+            "name": "Siatasan"
+        },
+        {
+            "code": "1208132011",
+            "name": "Marihat Marsada"
+        },
+        {
+            "code": "1208132012",
+            "name": "Pondok Buluh"
+        },
+        {
+            "code": "1208132013",
+            "name": "Marihat Pondok"
+        },
+        {
+            "code": "1208132014",
+            "name": "Lumban Gorat"
+        },
+        {
+            "code": "1208132015",
+            "name": "Palia Naopat"
+        }
+    ],
+    "120815": [
+        {
+            "code": "1208151005",
+            "name": "Haranggaol"
+        },
+        {
+            "code": "1208152001",
+            "name": "Nagori Purba"
+        },
+        {
+            "code": "1208152002",
+            "name": "Nagori Sihalpe"
+        },
+        {
+            "code": "1208152003",
+            "name": "Purba Horisan"
+        },
+        {
+            "code": "1208152004",
+            "name": "Purba Pasir"
+        }
+    ],
+    "120816": [
+        {
+            "code": "1208161003",
+            "name": "Girsang"
+        },
+        {
+            "code": "1208161004",
+            "name": "Parapat"
+        },
+        {
+            "code": "1208161005",
+            "name": "Tiga Raja"
+        },
+        {
+            "code": "1208162001",
+            "name": "Sipangan Bolon"
+        },
+        {
+            "code": "1208162002",
+            "name": "Sibaganding"
+        },
+        {
+            "code": "1208162006",
+            "name": "Sipangan Bolon Mekar"
+        }
+    ],
+    "120818": [
+        {
+            "code": "1208181013",
+            "name": "Huta Bayu"
+        },
+        {
+            "code": "1208182001",
+            "name": "Mariah Hombang"
+        },
+        {
+            "code": "1208182002",
+            "name": "Pulo Bayu"
+        },
+        {
+            "code": "1208182003",
+            "name": "Silakkidir"
+        },
+        {
+            "code": "1208182004",
+            "name": "Raja Maligas"
+        },
+        {
+            "code": "1208182005",
+            "name": "Dolok Sinumbah"
+        },
+        {
+            "code": "1208182006",
+            "name": "Maligas Bayu"
+        },
+        {
+            "code": "1208182007",
+            "name": "Jawa Baru"
+        },
+        {
+            "code": "1208182008",
+            "name": "Mancuk"
+        },
+        {
+            "code": "1208182009",
+            "name": "Marihat Mayang"
+        },
+        {
+            "code": "1208182010",
+            "name": "Bosar Bayu"
+        },
+        {
+            "code": "1208182011",
+            "name": "Raja Maligas I"
+        },
+        {
+            "code": "1208182012",
+            "name": "Bahal Batu"
+        },
+        {
+            "code": "1208182014",
+            "name": "Pokan Baru"
+        },
+        {
+            "code": "1208182015",
+            "name": "Manrayap Bayu"
+        },
+        {
+            "code": "1208182016",
+            "name": "Talang Bayu"
+        }
+    ],
+    "120824": [
+        {
+            "code": "1208242001",
+            "name": "Bandar Masilam"
+        },
+        {
+            "code": "1208242002",
+            "name": "Lias Baru"
+        },
+        {
+            "code": "1208242003",
+            "name": "Bandar Silou"
+        },
+        {
+            "code": "1208242004",
+            "name": "Panombeian Baru"
+        },
+        {
+            "code": "1208242005",
+            "name": "Gunung Serawan"
+        },
+        {
+            "code": "1208242006",
+            "name": "Bandar Masilam II"
+        },
+        {
+            "code": "1208242007",
+            "name": "Partimbalan"
+        },
+        {
+            "code": "1208242008",
+            "name": "Bandar Tinggi"
+        },
+        {
+            "code": "1208242009",
+            "name": "Bandar Rejo"
+        },
+        {
+            "code": "1208242010",
+            "name": "Bandar Gunung"
+        }
+    ],
+    "120825": [
+        {
+            "code": "1208251012",
+            "name": "Saribu Dolok"
+        },
+        {
+            "code": "1208252003",
+            "name": "Bangun Mariah"
+        },
+        {
+            "code": "1208252004",
+            "name": "Purba Sinombah"
+        },
+        {
+            "code": "1208252006",
+            "name": "Purba Tua"
+        },
+        {
+            "code": "1208252009",
+            "name": "Purba Tua Baru"
+        },
+        {
+            "code": "1208252014",
+            "name": "Sinar Baru"
+        },
+        {
+            "code": "1208252016",
+            "name": "Purba Tua Etek"
+        }
+    ],
+    "120826": [
+        {
+            "code": "1208262001",
+            "name": "Cingkes"
+        },
+        {
+            "code": "1208262002",
+            "name": "Panribuan"
+        },
+        {
+            "code": "1208262003",
+            "name": "Saran Padang"
+        },
+        {
+            "code": "1208262004",
+            "name": "Mariah Dolok"
+        },
+        {
+            "code": "1208262005",
+            "name": "Marubun Lokkung"
+        },
+        {
+            "code": "1208262006",
+            "name": "Dolok Mariah"
+        },
+        {
+            "code": "1208262007",
+            "name": "Bawang"
+        },
+        {
+            "code": "1208262008",
+            "name": "Huta Saing"
+        },
+        {
+            "code": "1208262009",
+            "name": "Togur"
+        },
+        {
+            "code": "1208262010",
+            "name": "Perasmian"
+        },
+        {
+            "code": "1208262011",
+            "name": "Tanjung Purba"
+        },
+        {
+            "code": "1208262012",
+            "name": "Silau Marawan"
+        },
+        {
+            "code": "1208262013",
+            "name": "Bosi Sinombah"
+        },
+        {
+            "code": "1208262014",
+            "name": "Ujung Bawang"
+        }
+    ],
+    "120827": [
+        {
+            "code": "1208272001",
+            "name": "Simanabun"
+        },
+        {
+            "code": "1208272002",
+            "name": "Pardomuan Tongah"
+        },
+        {
+            "code": "1208272003",
+            "name": "Nagori Dolok"
+        },
+        {
+            "code": "1208272004",
+            "name": "Bandar Maruhur"
+        },
+        {
+            "code": "1208272005",
+            "name": "Silou Dunia"
+        },
+        {
+            "code": "1208272006",
+            "name": "Dolok Marawa"
+        },
+        {
+            "code": "1208272007",
+            "name": "Mariah Buttu"
+        },
+        {
+            "code": "1208272008",
+            "name": "Dolok Saribu Bangun"
+        },
+        {
+            "code": "1208272009",
+            "name": "Bandar Nagori"
+        },
+        {
+            "code": "1208272010",
+            "name": "Silou Paribuan"
+        },
+        {
+            "code": "1208272011",
+            "name": "Buttu Bayu"
+        },
+        {
+            "code": "1208272012",
+            "name": "Nagori Tani"
+        },
+        {
+            "code": "1208272013",
+            "name": "Bah Sarimah"
+        },
+        {
+            "code": "1208272014",
+            "name": "Damaritang"
+        },
+        {
+            "code": "1208272015",
+            "name": "Sinasih"
+        },
+        {
+            "code": "1208272016",
+            "name": "Pardomuan Bandar"
+        }
+    ],
+    "120828": [
+        {
+            "code": "1208281009",
+            "name": "Sinaksak"
+        },
+        {
+            "code": "1208282001",
+            "name": "Batu Silangit"
+        },
+        {
+            "code": "1208282002",
+            "name": "Dolok Maraja"
+        },
+        {
+            "code": "1208282003",
+            "name": "Dolok Ulu"
+        },
+        {
+            "code": "1208282004",
+            "name": "Nagur Usang"
+        },
+        {
+            "code": "1208282005",
+            "name": "Dolok Kahean"
+        },
+        {
+            "code": "1208282006",
+            "name": "Naga Dolok"
+        },
+        {
+            "code": "1208282007",
+            "name": "Purbasari"
+        },
+        {
+            "code": "1208282008",
+            "name": "Pematang Dolok Kahean"
+        },
+        {
+            "code": "1208282010",
+            "name": "Negeri Bayu Muslimin"
+        },
+        {
+            "code": "1208282011",
+            "name": "Dolok Simbolon"
+        }
+    ],
+    "120829": [
+        {
+            "code": "1208291001",
+            "name": "Merek Raya"
+        },
+        {
+            "code": "1208291002",
+            "name": "Dalig Raya"
+        },
+        {
+            "code": "1208291005",
+            "name": "Sondi Raya"
+        },
+        {
+            "code": "1208291011",
+            "name": "Pamatang Raya"
+        },
+        {
+            "code": "1208291018",
+            "name": "Baringin Raya"
+        },
+        {
+            "code": "1208292004",
+            "name": "Raya Bayu"
+        },
+        {
+            "code": "1208292007",
+            "name": "Bahapal Raya"
+        },
+        {
+            "code": "1208292010",
+            "name": "Siporkas"
+        },
+        {
+            "code": "1208292012",
+            "name": "Sihubu Raya"
+        },
+        {
+            "code": "1208292013",
+            "name": "Raya Bosi"
+        },
+        {
+            "code": "1208292014",
+            "name": "Silou Huluan"
+        },
+        {
+            "code": "1208292015",
+            "name": "Silou Buttu"
+        },
+        {
+            "code": "1208292016",
+            "name": "Bongguron Kariahan"
+        },
+        {
+            "code": "1208292017",
+            "name": "Simbou Baru"
+        },
+        {
+            "code": "1208292020",
+            "name": "Dame Raya"
+        },
+        {
+            "code": "1208292021",
+            "name": "Limag Raya"
+        },
+        {
+            "code": "1208292022",
+            "name": "Lokkung Raya"
+        }
+    ],
+    "120830": [
+        {
+            "code": "1208301001",
+            "name": "Ujung Padang"
+        },
+        {
+            "code": "1208302002",
+            "name": "Huta Parik"
+        },
+        {
+            "code": "1208302003",
+            "name": "Dusun Ulu"
+        },
+        {
+            "code": "1208302004",
+            "name": "Tinjowan"
+        },
+        {
+            "code": "1208302005",
+            "name": "Sayur Matinggi"
+        },
+        {
+            "code": "1208302006",
+            "name": "Taratak Nagodang"
+        },
+        {
+            "code": "1208302007",
+            "name": "Sordang Bolon"
+        },
+        {
+            "code": "1208302008",
+            "name": "Teluk Lapian"
+        },
+        {
+            "code": "1208302009",
+            "name": "Tanjung Rapuan"
+        },
+        {
+            "code": "1208302010",
+            "name": "Pagar Bosi"
+        },
+        {
+            "code": "1208302011",
+            "name": "Bangun Sordang"
+        },
+        {
+            "code": "1208302012",
+            "name": "Aek Gerger Sidodadi"
+        },
+        {
+            "code": "1208302013",
+            "name": "Pulo Pitu Marihat"
+        },
+        {
+            "code": "1208302014",
+            "name": "Siringan Ringan"
+        },
+        {
+            "code": "1208302015",
+            "name": "Riah Na Poso"
+        },
+        {
+            "code": "1208302016",
+            "name": "Sei Merbau"
+        },
+        {
+            "code": "1208302017",
+            "name": "Kampung Lalang"
+        },
+        {
+            "code": "1208302018",
+            "name": "Sordang Baru"
+        },
+        {
+            "code": "1208302019",
+            "name": "Banjar Hulu"
+        },
+        {
+            "code": "1208302020",
+            "name": "Rawa Masin"
+        }
+    ],
+    "120831": [
+        {
+            "code": "1208312001",
+            "name": "Ujung Saribu"
+        },
+        {
+            "code": "1208312002",
+            "name": "Silimakuta Barat"
+        },
+        {
+            "code": "1208312003",
+            "name": "Siboras"
+        },
+        {
+            "code": "1208312004",
+            "name": "Mardingding"
+        },
+        {
+            "code": "1208312005",
+            "name": "Naga Saribu"
+        },
+        {
+            "code": "1208312007",
+            "name": "Saribu Jandi"
+        },
+        {
+            "code": "1208312008",
+            "name": "Sinar Naga Mariah"
+        },
+        {
+            "code": "1208312009",
+            "name": "Ujung Mariah"
+        },
+        {
+            "code": "1208312010",
+            "name": "Bandar Saribu"
+        },
+        {
+            "code": "1208312011",
+            "name": "Naga Bosar"
+        }
+    ],
+    "120832": [
+        {
+            "code": "1208322001",
+            "name": "Raya Huluan"
+        },
+        {
+            "code": "1208322002",
+            "name": "Dolog Huluan"
+        },
+        {
+            "code": "1208322003",
+            "name": "Bintang Mariah"
+        },
+        {
+            "code": "1208322004",
+            "name": "Bah Bolon"
+        },
+        {
+            "code": "1208322005",
+            "name": "Raya Usang"
+        },
+        {
+            "code": "1208322006",
+            "name": "Bangun Pane"
+        },
+        {
+            "code": "1208322007",
+            "name": "Parjalangan"
+        },
+        {
+            "code": "1208322008",
+            "name": "Partuahan"
+        },
+        {
+            "code": "1208322009",
+            "name": "Sinaman Labah"
+        },
+        {
+            "code": "1208322010",
+            "name": "Pamatang Sinaman"
+        }
+    ]
+}

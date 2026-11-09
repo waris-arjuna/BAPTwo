@@ -1,0 +1,566 @@
+{
+    "720101": [
+        {
+            "code": "7201011006",
+            "name": "Bugis"
+        },
+        {
+            "code": "7201011007",
+            "name": "Balantang"
+        },
+        {
+            "code": "7201011008",
+            "name": "Batui"
+        },
+        {
+            "code": "7201011009",
+            "name": "Tolando"
+        },
+        {
+            "code": "7201011010",
+            "name": "Lamo"
+        },
+        {
+            "code": "7201011017",
+            "name": "Sisipan"
+        },
+        {
+            "code": "7201011023",
+            "name": "Bakung"
+        },
+        {
+            "code": "7201012002",
+            "name": "Nonong"
+        },
+        {
+            "code": "7201012003",
+            "name": "Kayowa"
+        },
+        {
+            "code": "7201012005",
+            "name": "Ondo-Ondolu"
+        },
+        {
+            "code": "7201012011",
+            "name": "Honbola"
+        },
+        {
+            "code": "7201012012",
+            "name": "Uso"
+        },
+        {
+            "code": "7201012016",
+            "name": "Ondo-Ondolu I"
+        }
+    ],
+    "720102": [
+        {
+            "code": "7201021014",
+            "name": "Bunta I"
+        },
+        {
+            "code": "7201021025",
+            "name": "Bunta II"
+        },
+        {
+            "code": "7201021047",
+            "name": "Salabenda"
+        },
+        {
+            "code": "7201021048",
+            "name": "Kalaka"
+        },
+        {
+            "code": "7201022015",
+            "name": "Bohotokong"
+        },
+        {
+            "code": "7201022016",
+            "name": "Dondo Soboli"
+        },
+        {
+            "code": "7201022017",
+            "name": "Laonggo"
+        },
+        {
+            "code": "7201022023",
+            "name": "Hion"
+        },
+        {
+            "code": "7201022024",
+            "name": "Tombongan Ulos"
+        },
+        {
+            "code": "7201022026",
+            "name": "Pongian"
+        },
+        {
+            "code": "7201022027",
+            "name": "Tuntung"
+        },
+        {
+            "code": "7201022028",
+            "name": "Nanga-Nangaon"
+        },
+        {
+            "code": "7201022029",
+            "name": "Toima"
+        },
+        {
+            "code": "7201022030",
+            "name": "Matabas"
+        },
+        {
+            "code": "7201022031",
+            "name": "Huhak"
+        },
+        {
+            "code": "7201022032",
+            "name": "Lontio"
+        },
+        {
+            "code": "7201022041",
+            "name": "Demangan Jaya"
+        },
+        {
+            "code": "7201022042",
+            "name": "Balanga"
+        },
+        {
+            "code": "7201022043",
+            "name": "Longgolian"
+        },
+        {
+            "code": "7201022044",
+            "name": "Kalumbangan"
+        },
+        {
+            "code": "7201022045",
+            "name": "Polo"
+        },
+        {
+            "code": "7201022049",
+            "name": "Koili"
+        }
+    ],
+    "720103": [
+        {
+            "code": "7201031006",
+            "name": "Kintom"
+        },
+        {
+            "code": "7201031010",
+            "name": "Mendono"
+        },
+        {
+            "code": "7201031017",
+            "name": "Mondonun"
+        },
+        {
+            "code": "7201032001",
+            "name": "Kalolos"
+        },
+        {
+            "code": "7201032002",
+            "name": "Tangkiang"
+        },
+        {
+            "code": "7201032003",
+            "name": "Padang"
+        },
+        {
+            "code": "7201032004",
+            "name": "Manyula"
+        },
+        {
+            "code": "7201032005",
+            "name": "Uling"
+        },
+        {
+            "code": "7201032007",
+            "name": "Samadoya"
+        },
+        {
+            "code": "7201032008",
+            "name": "Dimpalon"
+        },
+        {
+            "code": "7201032009",
+            "name": "Solan"
+        },
+        {
+            "code": "7201032013",
+            "name": "Babang Buyangge"
+        },
+        {
+            "code": "7201032015",
+            "name": "Solan Baru"
+        },
+        {
+            "code": "7201032019",
+            "name": "Dimpalon Baru"
+        }
+    ],
+    "720104": [
+        {
+            "code": "7201041009",
+            "name": "Luwuk"
+        },
+        {
+            "code": "7201041010",
+            "name": "Baru"
+        },
+        {
+            "code": "7201041011",
+            "name": "Soho"
+        },
+        {
+            "code": "7201041012",
+            "name": "Bungin"
+        },
+        {
+            "code": "7201041031",
+            "name": "Karaton"
+        },
+        {
+            "code": "7201041033",
+            "name": "Kaleke"
+        },
+        {
+            "code": "7201041034",
+            "name": "Bungin Timur"
+        },
+        {
+            "code": "7201041035",
+            "name": "Mangkio Baru"
+        },
+        {
+            "code": "7201042008",
+            "name": "Tontouan"
+        },
+        {
+            "code": "7201042013",
+            "name": "Lumpoknyo"
+        }
+    ],
+    "720105": [
+        {
+            "code": "7201052009",
+            "name": "Nipa"
+        },
+        {
+            "code": "7201052010",
+            "name": "Kagitakan"
+        },
+        {
+            "code": "7201052011",
+            "name": "Sirom"
+        },
+        {
+            "code": "7201052012",
+            "name": "Poroan"
+        },
+        {
+            "code": "7201052013",
+            "name": "Lomba"
+        },
+        {
+            "code": "7201052014",
+            "name": "Bonebobakal"
+        },
+        {
+            "code": "7201052015",
+            "name": "Baruga"
+        },
+        {
+            "code": "7201052016",
+            "name": "Kotabaru"
+        },
+        {
+            "code": "7201052017",
+            "name": "Labotan"
+        },
+        {
+            "code": "7201052023",
+            "name": "Tinonda"
+        },
+        {
+            "code": "7201052027",
+            "name": "Bahari Makmur"
+        },
+        {
+            "code": "7201052028",
+            "name": "Kota Raya"
+        }
+    ],
+    "720106": [
+        {
+            "code": "7201061020",
+            "name": "Balantak"
+        },
+        {
+            "code": "7201061030",
+            "name": "Dale-Dale"
+        },
+        {
+            "code": "7201061031",
+            "name": "Talang Batu"
+        },
+        {
+            "code": "7201062009",
+            "name": "Talima A"
+        },
+        {
+            "code": "7201062010",
+            "name": "Talima B"
+        },
+        {
+            "code": "7201062013",
+            "name": "Dolom"
+        },
+        {
+            "code": "7201062014",
+            "name": "Kiloma"
+        },
+        {
+            "code": "7201062015",
+            "name": "Ra'u"
+        },
+        {
+            "code": "7201062016",
+            "name": "Tanotu"
+        },
+        {
+            "code": "7201062017",
+            "name": "Padang"
+        },
+        {
+            "code": "7201062018",
+            "name": "Mamping"
+        },
+        {
+            "code": "7201062021",
+            "name": "Luok"
+        },
+        {
+            "code": "7201062027",
+            "name": "Boloak"
+        }
+    ],
+    "720107": [
+        {
+            "code": "7201071011",
+            "name": "Pakowa"
+        },
+        {
+            "code": "7201071018",
+            "name": "Pagimana"
+        },
+        {
+            "code": "7201071022",
+            "name": "Basabungan"
+        },
+        {
+            "code": "7201072001",
+            "name": "Baloa Doda"
+        },
+        {
+            "code": "7201072002",
+            "name": "Tampe"
+        },
+        {
+            "code": "7201072010",
+            "name": "Asaan"
+        },
+        {
+            "code": "7201072012",
+            "name": "Balai Gondi"
+        },
+        {
+            "code": "7201072013",
+            "name": "Bajo Poat"
+        },
+        {
+            "code": "7201072014",
+            "name": "Gomuo"
+        },
+        {
+            "code": "7201072015",
+            "name": "Nain"
+        },
+        {
+            "code": "7201072016",
+            "name": "Lamo"
+        },
+        {
+            "code": "7201072017",
+            "name": "Tongkonunuk"
+        },
+        {
+            "code": "7201072019",
+            "name": "Hohudongan"
+        },
+        {
+            "code": "7201072020",
+            "name": "Sinampangnyo"
+        },
+        {
+            "code": "7201072021",
+            "name": "Jaya Bakti"
+        },
+        {
+            "code": "7201072023",
+            "name": "Pisou"
+        },
+        {
+            "code": "7201072024",
+            "name": "Lambangan"
+        },
+        {
+            "code": "7201072025",
+            "name": "Toipan"
+        },
+        {
+            "code": "7201072026",
+            "name": "Siuna"
+        },
+        {
+            "code": "7201072027",
+            "name": "Pinapuan"
+        },
+        {
+            "code": "7201072029",
+            "name": "Sepa"
+        },
+        {
+            "code": "7201072030",
+            "name": "Taloyon"
+        },
+        {
+            "code": "7201072031",
+            "name": "Uwedaka"
+        },
+        {
+            "code": "7201072032",
+            "name": "Tintingan"
+        },
+        {
+            "code": "7201072033",
+            "name": "Bungawon"
+        },
+        {
+            "code": "7201072034",
+            "name": "Huhak"
+        },
+        {
+            "code": "7201072035",
+            "name": "Poh"
+        },
+        {
+            "code": "7201072037",
+            "name": "Bondat"
+        },
+        {
+            "code": "7201072038",
+            "name": "Sammajatem"
+        },
+        {
+            "code": "7201072039",
+            "name": "Bulu"
+        },
+        {
+            "code": "7201072041",
+            "name": "Tombang"
+        },
+        {
+            "code": "7201072043",
+            "name": "Ampera"
+        },
+        {
+            "code": "7201072044",
+            "name": "Dongkalan"
+        }
+    ],
+    "720108": [
+        {
+            "code": "7201082001",
+            "name": "Bualemo A"
+        },
+        {
+            "code": "7201082002",
+            "name": "Tikupan"
+        },
+        {
+            "code": "7201082003",
+            "name": "Trans Mayayap"
+        },
+        {
+            "code": "7201082004",
+            "name": "Toiba"
+        },
+        {
+            "code": "7201082005",
+            "name": "Longkoga Barat"
+        },
+        {
+            "code": "7201082006",
+            "name": "Longkoga Timur"
+        },
+        {
+            "code": "7201082007",
+            "name": "Bualemo B"
+        },
+        {
+            "code": "7201082008",
+            "name": "Taima"
+        },
+        {
+            "code": "7201082009",
+            "name": "Sampaka"
+        },
+        {
+            "code": "7201082010",
+            "name": "Malik"
+        },
+        {
+            "code": "7201082011",
+            "name": "Binsil"
+        },
+        {
+            "code": "7201082012",
+            "name": "Binsil Padang"
+        },
+        {
+            "code": "7201082013",
+            "name": "Lembah Tompotika"
+        },
+        {
+            "code": "7201082014",
+            "name": "Mayayap"
+        },
+        {
+            "code": "7201082015",
+            "name": "Bima Karya"
+        },
+        {
+            "code": "7201082016",
+            "name": "Salipi"
+        },
+        {
+            "code": "7201082017",
+            "name": "Nipa Kalemoan"
+        },
+        {
+            "code": "7201082018",
+            "name": "Malik Makmur"
+        },
+        {
+            "code": "7201082019",
+            "name": "Lembah Makmur"
+        },
+        {
+            "code": "7201082020",
+            "name": "Dwi Karya"
+        }
+    ]
+}

@@ -1,0 +1,542 @@
+{
+    "940402": [
+        {
+            "code": "9404022001",
+            "name": "Kiliarma"
+        },
+        {
+            "code": "9404022002",
+            "name": "Amungun"
+        },
+        {
+            "code": "9404022003",
+            "name": "Aramsolki"
+        },
+        {
+            "code": "9404022004",
+            "name": "Fakafuku"
+        },
+        {
+            "code": "9404022005",
+            "name": "Masasimamo"
+        },
+        {
+            "code": "9404022006",
+            "name": "Emogoma"
+        },
+        {
+            "code": "9404022007",
+            "name": "Emkoma Halama"
+        },
+        {
+            "code": "9404022008",
+            "name": "Hinat Untung"
+        }
+    ],
+    "940403": [
+        {
+            "code": "9404031001",
+            "name": "Wania"
+        },
+        {
+            "code": "9404032002",
+            "name": "Kaugapa"
+        },
+        {
+            "code": "9404032003",
+            "name": "Poumako"
+        },
+        {
+            "code": "9404032004",
+            "name": "Tipuka"
+        },
+        {
+            "code": "9404032005",
+            "name": "Muare"
+        },
+        {
+            "code": "9404032006",
+            "name": "Hiripau"
+        }
+    ],
+    "940404": [
+        {
+            "code": "9404042001",
+            "name": "Kokonao"
+        },
+        {
+            "code": "9404042002",
+            "name": "Migiwia"
+        },
+        {
+            "code": "9404042003",
+            "name": "Kiura"
+        },
+        {
+            "code": "9404042004",
+            "name": "Mimika"
+        },
+        {
+            "code": "9404042005",
+            "name": "Aparuka"
+        },
+        {
+            "code": "9404042006",
+            "name": "Atapo"
+        },
+        {
+            "code": "9404042007",
+            "name": "Apuri"
+        }
+    ],
+    "940405": [
+        {
+            "code": "9404052001",
+            "name": "Sempan Timur"
+        },
+        {
+            "code": "9404052002",
+            "name": "Wenin"
+        },
+        {
+            "code": "9404052003",
+            "name": "Noema"
+        },
+        {
+            "code": "9404052004",
+            "name": "Wapu"
+        },
+        {
+            "code": "9404052005",
+            "name": "Sumapro"
+        },
+        {
+            "code": "9404052006",
+            "name": "Wacakam"
+        },
+        {
+            "code": "9404052007",
+            "name": "Waituku"
+        },
+        {
+            "code": "9404052008",
+            "name": "Bulumen"
+        },
+        {
+            "code": "9404052009",
+            "name": "Kanmapiri"
+        },
+        {
+            "code": "9404052010",
+            "name": "Jaitak"
+        }
+    ],
+    "940406": [
+        {
+            "code": "9404062001",
+            "name": "Jila"
+        },
+        {
+            "code": "9404062002",
+            "name": "Diloa"
+        },
+        {
+            "code": "9404062003",
+            "name": "Noemun"
+        },
+        {
+            "code": "9404062004",
+            "name": "Pasir Putih"
+        },
+        {
+            "code": "9404062005",
+            "name": "Jengkon"
+        },
+        {
+            "code": "9404062006",
+            "name": "Pilik Ogom"
+        },
+        {
+            "code": "9404062007",
+            "name": "Bunaraugin"
+        },
+        {
+            "code": "9404062008",
+            "name": "Umpliga"
+        },
+        {
+            "code": "9404062009",
+            "name": "Amua Ogom"
+        },
+        {
+            "code": "9404062010",
+            "name": "Pusuwe"
+        },
+        {
+            "code": "9404062011",
+            "name": "Wandud"
+        },
+        {
+            "code": "9404062012",
+            "name": "Diloa Dua"
+        }
+    ],
+    "940407": [
+        {
+            "code": "9404072001",
+            "name": "Ayuka"
+        },
+        {
+            "code": "9404072002",
+            "name": "Amamapare"
+        },
+        {
+            "code": "9404072003",
+            "name": "Ohotya"
+        },
+        {
+            "code": "9404072004",
+            "name": "Omawita"
+        },
+        {
+            "code": "9404072005",
+            "name": "Fanamo"
+        }
+    ],
+    "940408": [
+        {
+            "code": "9404082001",
+            "name": "Atuka"
+        },
+        {
+            "code": "9404082002",
+            "name": "Tiwaka"
+        },
+        {
+            "code": "9404082003",
+            "name": "Keakwa"
+        },
+        {
+            "code": "9404082004",
+            "name": "Aikawapuka"
+        },
+        {
+            "code": "9404082005",
+            "name": "Kamoro"
+        }
+    ],
+    "940409": [
+        {
+            "code": "9404091001",
+            "name": "Kuala Kencana"
+        },
+        {
+            "code": "9404091002",
+            "name": "Karang Senang"
+        },
+        {
+            "code": "9404092003",
+            "name": "Utikini Baru"
+        },
+        {
+            "code": "9404092004",
+            "name": "Bhintuka"
+        },
+        {
+            "code": "9404092005",
+            "name": "Tioka Kencana"
+        },
+        {
+            "code": "9404092006",
+            "name": "Mimika Gunung"
+        },
+        {
+            "code": "9404092007",
+            "name": "Karya Kencana"
+        },
+        {
+            "code": "9404092008",
+            "name": "Utikini Dua"
+        },
+        {
+            "code": "9404092009",
+            "name": "Utikini Tiga"
+        },
+        {
+            "code": "9404092010",
+            "name": "Jimbi"
+        }
+    ],
+    "940410": [
+        {
+            "code": "9404101001",
+            "name": "Tembagapura"
+        },
+        {
+            "code": "9404102002",
+            "name": "Waa"
+        },
+        {
+            "code": "9404102003",
+            "name": "Arwanop"
+        },
+        {
+            "code": "9404102004",
+            "name": "\"T\"\"Singa\""
+        },
+        {
+            "code": "9404102005",
+            "name": "Jagamin"
+        },
+        {
+            "code": "9404102006",
+            "name": "Banigogom"
+        },
+        {
+            "code": "9404102007",
+            "name": "Opitawak"
+        },
+        {
+            "code": "9404102008",
+            "name": "Doliningokngin"
+        },
+        {
+            "code": "9404102009",
+            "name": "Banti Dua"
+        },
+        {
+            "code": "9404102010",
+            "name": "Aingogin"
+        },
+        {
+            "code": "9404102011",
+            "name": "Baluni"
+        },
+        {
+            "code": "9404102012",
+            "name": "Noselanop"
+        },
+        {
+            "code": "9404102013",
+            "name": "Meningimponogama"
+        },
+        {
+            "code": "9404102014",
+            "name": "Jongkogama"
+        }
+    ],
+    "940411": [
+        {
+            "code": "9404112001",
+            "name": "Potowai Buru"
+        },
+        {
+            "code": "9404112002",
+            "name": "Yapkoka"
+        },
+        {
+            "code": "9404112003",
+            "name": "Aindua"
+        },
+        {
+            "code": "9404112004",
+            "name": "Tapomai"
+        },
+        {
+            "code": "9404112005",
+            "name": "Umar"
+        }
+    ],
+    "940412": [
+        {
+            "code": "9404122001",
+            "name": "Kapiraya"
+        },
+        {
+            "code": "9404122002",
+            "name": "Uta"
+        },
+        {
+            "code": "9404122003",
+            "name": "Mupuruka"
+        },
+        {
+            "code": "9404122004",
+            "name": "Wumuka"
+        },
+        {
+            "code": "9404122005",
+            "name": "Akar"
+        },
+        {
+            "code": "9404122006",
+            "name": "Mapar"
+        },
+        {
+            "code": "9404122007",
+            "name": "Kipia"
+        },
+        {
+            "code": "9404122008",
+            "name": "Pronggo"
+        },
+        {
+            "code": "9404122009",
+            "name": "Wakia"
+        }
+    ],
+    "940413": [
+        {
+            "code": "9404131001",
+            "name": "Harapan"
+        },
+        {
+            "code": "9404132002",
+            "name": "Meekurima"
+        },
+        {
+            "code": "9404132003",
+            "name": "Landun Mekar"
+        },
+        {
+            "code": "9404132004",
+            "name": "Olaroa"
+        },
+        {
+            "code": "9404132005",
+            "name": "Bintang Lima"
+        },
+        {
+            "code": "9404132006",
+            "name": "Damai"
+        },
+        {
+            "code": "9404132007",
+            "name": "Walani"
+        },
+        {
+            "code": "9404132008",
+            "name": "Amole"
+        },
+        {
+            "code": "9404132009",
+            "name": "Lamopi"
+        },
+        {
+            "code": "9404132010",
+            "name": "Tunas Matoa"
+        }
+    ],
+    "940414": [
+        {
+            "code": "9404142001",
+            "name": "Hoya"
+        },
+        {
+            "code": "9404142002",
+            "name": "Mamontoga"
+        },
+        {
+            "code": "9404142003",
+            "name": "Jinonin"
+        },
+        {
+            "code": "9404142004",
+            "name": "Kulama Ogom"
+        },
+        {
+            "code": "9404142005",
+            "name": "Puti"
+        },
+        {
+            "code": "9404142006",
+            "name": "Jawa"
+        }
+    ],
+    "940415": [
+        {
+            "code": "9404152001",
+            "name": "Limau Asri Timur"
+        },
+        {
+            "code": "9404152002",
+            "name": "Wangirja"
+        },
+        {
+            "code": "9404152003",
+            "name": "Iwaka"
+        },
+        {
+            "code": "9404152004",
+            "name": "Naena Muktipura"
+        },
+        {
+            "code": "9404152005",
+            "name": "Mulia Kencana"
+        },
+        {
+            "code": "9404152006",
+            "name": "Pigapu"
+        },
+        {
+            "code": "9404152007",
+            "name": "Limau Asri Barat"
+        }
+    ],
+    "940416": [
+        {
+            "code": "9404161002",
+            "name": "Kamoro Jaya"
+        },
+        {
+            "code": "9404161003",
+            "name": "Wonosari Jaya"
+        },
+        {
+            "code": "9404161005",
+            "name": "Inauga"
+        },
+        {
+            "code": "9404162001",
+            "name": "Kadun Jaya"
+        },
+        {
+            "code": "9404162004",
+            "name": "Nawaripi"
+        },
+        {
+            "code": "9404162006",
+            "name": "Mawokau Jaya"
+        },
+        {
+            "code": "9404162007",
+            "name": "Mandiri Jaya"
+        }
+    ],
+    "940417": [
+        {
+            "code": "9404172001",
+            "name": "Amar"
+        },
+        {
+            "code": "9404172002",
+            "name": "Kawar"
+        },
+        {
+            "code": "9404172003",
+            "name": "Manuare"
+        },
+        {
+            "code": "9404172004",
+            "name": "Ipiri"
+        },
+        {
+            "code": "9404172005",
+            "name": "Paripi"
+        },
+        {
+            "code": "9404172006",
+            "name": "Yaraya"
+        }
+    ]
+}

@@ -1,0 +1,414 @@
+{
+    "920301": [
+        {
+            "code": "9203011001",
+            "name": "Fak Fak Selatan"
+        },
+        {
+            "code": "9203011002",
+            "name": "Fak Fak Utara"
+        },
+        {
+            "code": "9203012007",
+            "name": "Gewerpe"
+        },
+        {
+            "code": "9203012011",
+            "name": "Lusi Peri"
+        },
+        {
+            "code": "9203012012",
+            "name": "Wrikapal"
+        }
+    ],
+    "920302": [
+        {
+            "code": "9203022001",
+            "name": "Werba"
+        },
+        {
+            "code": "9203022002",
+            "name": "Kiat"
+        },
+        {
+            "code": "9203022003",
+            "name": "Purwasak"
+        },
+        {
+            "code": "9203022008",
+            "name": "Wurkendik"
+        },
+        {
+            "code": "9203022010",
+            "name": "Kwuhkendak"
+        },
+        {
+            "code": "9203022011",
+            "name": "Purwahab Tonggo"
+        },
+        {
+            "code": "9203022012",
+            "name": "Pahger Nkindik"
+        },
+        {
+            "code": "9203022013",
+            "name": "Werba Utara"
+        },
+        {
+            "code": "9203022014",
+            "name": "Porum"
+        }
+    ],
+    "920303": [
+        {
+            "code": "9203032001",
+            "name": "Tunas Gain"
+        },
+        {
+            "code": "9203032003",
+            "name": "Urat"
+        },
+        {
+            "code": "9203032004",
+            "name": "Sanggram"
+        },
+        {
+            "code": "9203032010",
+            "name": "Weri"
+        },
+        {
+            "code": "9203032012",
+            "name": "Kiria Bisa"
+        },
+        {
+            "code": "9203032013",
+            "name": "Saharei"
+        }
+    ],
+    "920308": [
+        {
+            "code": "9203082001",
+            "name": "Kramongmongga"
+        },
+        {
+            "code": "9203082007",
+            "name": "Wargep"
+        },
+        {
+            "code": "9203082008",
+            "name": "Mamur"
+        },
+        {
+            "code": "9203082009",
+            "name": "Nembukteb"
+        },
+        {
+            "code": "9203082010",
+            "name": "Pikpik"
+        },
+        {
+            "code": "9203082011",
+            "name": "Kwamkwamur"
+        },
+        {
+            "code": "9203082012",
+            "name": "Bahbadan"
+        },
+        {
+            "code": "9203082016",
+            "name": "Gewab"
+        },
+        {
+            "code": "9203082017",
+            "name": "Tentreda"
+        },
+        {
+            "code": "9203082018",
+            "name": "Mbaham Ma Youn"
+        }
+    ],
+    "920309": [
+        {
+            "code": "9203092001",
+            "name": "Puar"
+        },
+        {
+            "code": "9203092002",
+            "name": "Degen"
+        },
+        {
+            "code": "9203092003",
+            "name": "Tetar"
+        },
+        {
+            "code": "9203092005",
+            "name": "Sum"
+        },
+        {
+            "code": "9203092011",
+            "name": "Adora"
+        },
+        {
+            "code": "9203092012",
+            "name": "Us"
+        },
+        {
+            "code": "9203092014",
+            "name": "Patipi Pasir"
+        },
+        {
+            "code": "9203092015",
+            "name": "Patipi Pulau"
+        },
+        {
+            "code": "9203092017",
+            "name": "Mawar"
+        },
+        {
+            "code": "9203092018",
+            "name": "Tibatibananam"
+        },
+        {
+            "code": "9203092020",
+            "name": "Offie"
+        },
+        {
+            "code": "9203092021",
+            "name": "Muhri"
+        },
+        {
+            "code": "9203092022",
+            "name": "Bisa"
+        }
+    ],
+    "920310": [
+        {
+            "code": "9203101001",
+            "name": "Wagom"
+        },
+        {
+            "code": "9203101002",
+            "name": "Wagom Utara"
+        },
+        {
+            "code": "9203101003",
+            "name": "Dulanpokpok"
+        },
+        {
+            "code": "9203102004",
+            "name": "Tanama"
+        },
+        {
+            "code": "9203102005",
+            "name": "Kapaurtutin"
+        },
+        {
+            "code": "9203102006",
+            "name": "Sekban"
+        },
+        {
+            "code": "9203102007",
+            "name": "Torea"
+        },
+        {
+            "code": "9203102008",
+            "name": "Sekru"
+        },
+        {
+            "code": "9203102009",
+            "name": "Sukuru Tuare"
+        }
+    ],
+    "920311": [
+        {
+            "code": "9203112001",
+            "name": "Werpigan"
+        },
+        {
+            "code": "9203112002",
+            "name": "Werabuan"
+        },
+        {
+            "code": "9203112003",
+            "name": "Wartutin"
+        },
+        {
+            "code": "9203112004",
+            "name": "Siboru"
+        },
+        {
+            "code": "9203112005",
+            "name": "Sipatnanam"
+        },
+        {
+            "code": "9203112006",
+            "name": "Kamandur Tetar"
+        }
+    ],
+    "920312": [
+        {
+            "code": "9203122001",
+            "name": "Waserat"
+        },
+        {
+            "code": "9203122002",
+            "name": "Wambar"
+        },
+        {
+            "code": "9203122003",
+            "name": "Kotam"
+        },
+        {
+            "code": "9203122004",
+            "name": "Kwama"
+        },
+        {
+            "code": "9203122005",
+            "name": "Kalamanuk"
+        },
+        {
+            "code": "9203122006",
+            "name": "Wayati Timur"
+        },
+        {
+            "code": "9203122007",
+            "name": "Wayati"
+        },
+        {
+            "code": "9203122008",
+            "name": "Wayati Barat"
+        },
+        {
+            "code": "9203122009",
+            "name": "Krabelang"
+        },
+        {
+            "code": "9203122010",
+            "name": "Wambar Timur"
+        }
+    ],
+    "920313": [
+        {
+            "code": "9203132001",
+            "name": "Andamata"
+        },
+        {
+            "code": "9203132002",
+            "name": "Taver"
+        },
+        {
+            "code": "9203132003",
+            "name": "Arguni"
+        },
+        {
+            "code": "9203132004",
+            "name": "Fior"
+        },
+        {
+            "code": "9203132005",
+            "name": "Furir"
+        }
+    ],
+    "920314": [
+        {
+            "code": "9203142001",
+            "name": "Darembang"
+        },
+        {
+            "code": "9203142002",
+            "name": "Goras"
+        },
+        {
+            "code": "9203142003",
+            "name": "Mitimber"
+        },
+        {
+            "code": "9203142004",
+            "name": "Waremu"
+        },
+        {
+            "code": "9203142005",
+            "name": "Wos"
+        },
+        {
+            "code": "9203142006",
+            "name": "Mbahamdandra"
+        },
+        {
+            "code": "9203142007",
+            "name": "Goras Selatan"
+        }
+    ],
+    "920315": [
+        {
+            "code": "9203152001",
+            "name": "Kaburbur"
+        },
+        {
+            "code": "9203152002",
+            "name": "Ubadari"
+        },
+        {
+            "code": "9203152004",
+            "name": "Homorkokma"
+        },
+        {
+            "code": "9203152005",
+            "name": "Pattukar"
+        },
+        {
+            "code": "9203152006",
+            "name": "Kayuni"
+        },
+        {
+            "code": "9203152007",
+            "name": "Kuagas"
+        },
+        {
+            "code": "9203152008",
+            "name": "Rangkendak"
+        },
+        {
+            "code": "9203152009",
+            "name": "Mananmur"
+        },
+        {
+            "code": "9203152010",
+            "name": "Warpa"
+        }
+    ],
+    "920316": [
+        {
+            "code": "9203162001",
+            "name": "Salakiti"
+        },
+        {
+            "code": "9203162002",
+            "name": "Tawar"
+        },
+        {
+            "code": "9203162003",
+            "name": "Gar"
+        },
+        {
+            "code": "9203162004",
+            "name": "Rumbati"
+        },
+        {
+            "code": "9203162005",
+            "name": "Werfra"
+        },
+        {
+            "code": "9203162006",
+            "name": "Tanehamur"
+        },
+        {
+            "code": "9203162007",
+            "name": "Sengkiti"
+        },
+        {
+            "code": "9203162008",
+            "name": "Twootkindik"
+        }
+    ]
+}

@@ -1,0 +1,436 @@
+{
+    "810701": [
+        {
+            "code": "8107011012",
+            "name": "Galai Dubu"
+        },
+        {
+            "code": "8107011013",
+            "name": "Siwa Lima"
+        },
+        {
+            "code": "8107012001",
+            "name": "Ujir"
+        },
+        {
+            "code": "8107012002",
+            "name": "Nafar"
+        },
+        {
+            "code": "8107012003",
+            "name": "Kobraur"
+        },
+        {
+            "code": "8107012004",
+            "name": "Lau-Lau"
+        },
+        {
+            "code": "8107012005",
+            "name": "Gorar"
+        },
+        {
+            "code": "8107012006",
+            "name": "Tungu"
+        },
+        {
+            "code": "8107012007",
+            "name": "Tunguwatu"
+        },
+        {
+            "code": "8107012008",
+            "name": "Jabulenga"
+        },
+        {
+            "code": "8107012009",
+            "name": "Wokam"
+        },
+        {
+            "code": "8107012010",
+            "name": "Karangguli"
+        },
+        {
+            "code": "8107012011",
+            "name": "Durjela"
+        },
+        {
+            "code": "8107012014",
+            "name": "Wangel"
+        },
+        {
+            "code": "8107012015",
+            "name": "Samang"
+        }
+    ],
+    "810703": [
+        {
+            "code": "8107032001",
+            "name": "Benjina"
+        },
+        {
+            "code": "8107032003",
+            "name": "Gardakau"
+        },
+        {
+            "code": "8107032004",
+            "name": "Irloy"
+        },
+        {
+            "code": "8107032005",
+            "name": "Algadang"
+        },
+        {
+            "code": "8107032006",
+            "name": "Lorang"
+        },
+        {
+            "code": "8107032007",
+            "name": "Murai"
+        },
+        {
+            "code": "8107032008",
+            "name": "Manjau"
+        },
+        {
+            "code": "8107032009",
+            "name": "Kwarbola"
+        },
+        {
+            "code": "8107032028",
+            "name": "Kobadangar"
+        },
+        {
+            "code": "8107032029",
+            "name": "Kobasel Fara"
+        },
+        {
+            "code": "8107032030",
+            "name": "Kobasel Timur"
+        },
+        {
+            "code": "8107032031",
+            "name": "Fatlabata"
+        },
+        {
+            "code": "8107032033",
+            "name": "Wakua"
+        },
+        {
+            "code": "8107032034",
+            "name": "Jirlay"
+        },
+        {
+            "code": "8107032035",
+            "name": "Maririmar"
+        },
+        {
+            "code": "8107032036",
+            "name": "Papakula"
+        },
+        {
+            "code": "8107032037",
+            "name": "Tanah Miring"
+        },
+        {
+            "code": "8107032038",
+            "name": "Gulili"
+        },
+        {
+            "code": "8107032039",
+            "name": "Namara"
+        },
+        {
+            "code": "8107032040",
+            "name": "Selilau"
+        },
+        {
+            "code": "8107032043",
+            "name": "Maijuring"
+        },
+        {
+            "code": "8107032045",
+            "name": "Selibata-bata"
+        }
+    ],
+    "810704": [
+        {
+            "code": "8107042001",
+            "name": "Marlasi"
+        },
+        {
+            "code": "8107042002",
+            "name": "Kolamar"
+        },
+        {
+            "code": "8107042003",
+            "name": "Kabufin"
+        },
+        {
+            "code": "8107042004",
+            "name": "Tasinwaha"
+        },
+        {
+            "code": "8107042005",
+            "name": "Foket"
+        },
+        {
+            "code": "8107042006",
+            "name": "Kaibolafin"
+        },
+        {
+            "code": "8107042007",
+            "name": "Wahangula-Ngula"
+        },
+        {
+            "code": "8107042008",
+            "name": "Wahayum"
+        },
+        {
+            "code": "8107042009",
+            "name": "Warialau"
+        },
+        {
+            "code": "8107042010",
+            "name": "Jerwatu"
+        },
+        {
+            "code": "8107042013",
+            "name": "Selmona"
+        },
+        {
+            "code": "8107042014",
+            "name": "Mesidang"
+        }
+    ],
+    "810705": [
+        {
+            "code": "8107052001",
+            "name": "Kabalsiang"
+        },
+        {
+            "code": "8107052002",
+            "name": "Benjuring"
+        },
+        {
+            "code": "8107052003",
+            "name": "Batuley"
+        },
+        {
+            "code": "8107052004",
+            "name": "Kumul"
+        },
+        {
+            "code": "8107052005",
+            "name": "Waria"
+        },
+        {
+            "code": "8107052006",
+            "name": "Sewer"
+        },
+        {
+            "code": "8107052007",
+            "name": "Jursiang"
+        },
+        {
+            "code": "8107052008",
+            "name": "Kompane"
+        },
+        {
+            "code": "8107052009",
+            "name": "Kobamar"
+        }
+    ],
+    "810706": [
+        {
+            "code": "8107062002",
+            "name": "Waifual"
+        },
+        {
+            "code": "8107062003",
+            "name": "Wafan"
+        },
+        {
+            "code": "8107062004",
+            "name": "Langhalau"
+        },
+        {
+            "code": "8107062005",
+            "name": "Gomsey"
+        },
+        {
+            "code": "8107062006",
+            "name": "Leiting"
+        },
+        {
+            "code": "8107062007",
+            "name": "Bardefan"
+        },
+        {
+            "code": "8107062008",
+            "name": "Mohongsel"
+        },
+        {
+            "code": "8107062009",
+            "name": "Kolaha"
+        },
+        {
+            "code": "8107062010",
+            "name": "Goda-Goda"
+        }
+    ],
+    "810707": [
+        {
+            "code": "8107072001",
+            "name": "Koijabi"
+        },
+        {
+            "code": "8107072002",
+            "name": "Balatan"
+        },
+        {
+            "code": "8107072003",
+            "name": "Warloy"
+        },
+        {
+            "code": "8107072004",
+            "name": "Warjukur"
+        },
+        {
+            "code": "8107072005",
+            "name": "Kobror"
+        },
+        {
+            "code": "8107072006",
+            "name": "Basada"
+        },
+        {
+            "code": "8107072007",
+            "name": "Wailay"
+        },
+        {
+            "code": "8107072008",
+            "name": "Kaiwabar"
+        },
+        {
+            "code": "8107072009",
+            "name": "Ponom"
+        },
+        {
+            "code": "8107072010",
+            "name": "Lola"
+        },
+        {
+            "code": "8107072011",
+            "name": "Mariri"
+        },
+        {
+            "code": "8107072012",
+            "name": "Dosinamalau"
+        },
+        {
+            "code": "8107072013",
+            "name": "Karawai"
+        }
+    ],
+    "810708": [
+        {
+            "code": "8107082001",
+            "name": "Longgar"
+        },
+        {
+            "code": "8107082002",
+            "name": "Apara"
+        },
+        {
+            "code": "8107082003",
+            "name": "Bemun"
+        },
+        {
+            "code": "8107082004",
+            "name": "Mesiang"
+        },
+        {
+            "code": "8107082005",
+            "name": "Gomo-Gomo"
+        },
+        {
+            "code": "8107082006",
+            "name": "Jambu Air"
+        },
+        {
+            "code": "8107082007",
+            "name": "Warabal"
+        }
+    ],
+    "810709": [
+        {
+            "code": "8107092001",
+            "name": "Meror"
+        },
+        {
+            "code": "8107092002",
+            "name": "Dosimar"
+        },
+        {
+            "code": "8107092003",
+            "name": "Batugoyang"
+        },
+        {
+            "code": "8107092004",
+            "name": "Salarem"
+        },
+        {
+            "code": "8107092005",
+            "name": "Siya"
+        },
+        {
+            "code": "8107092006",
+            "name": "Beltubur"
+        },
+        {
+            "code": "8107092007",
+            "name": "Karey"
+        },
+        {
+            "code": "8107092008",
+            "name": "Jorang"
+        },
+        {
+            "code": "8107092009",
+            "name": "Gomar Sungai"
+        },
+        {
+            "code": "8107092010",
+            "name": "Gomar Meti"
+        }
+    ],
+    "810710": [
+        {
+            "code": "8107102001",
+            "name": "Tabarfane"
+        },
+        {
+            "code": "8107102002",
+            "name": "Rebi"
+        },
+        {
+            "code": "8107102003",
+            "name": "Lutur"
+        },
+        {
+            "code": "8107102004",
+            "name": "Hokmar"
+        },
+        {
+            "code": "8107102005",
+            "name": "Juring"
+        },
+        {
+            "code": "8107102006",
+            "name": "Erersin"
+        },
+        {
+            "code": "8107102007",
+            "name": "Maekor"
+        }
+    ]
+}

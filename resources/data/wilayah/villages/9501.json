@@ -1,0 +1,846 @@
+{
+    "950103": [
+        {
+            "code": "9501032001",
+            "name": "Kimbin"
+        },
+        {
+            "code": "9501032002",
+            "name": "Walak"
+        },
+        {
+            "code": "9501032003",
+            "name": "Araboda"
+        },
+        {
+            "code": "9501032004",
+            "name": "Logotpaga"
+        },
+        {
+            "code": "9501032005",
+            "name": "Wawanca"
+        },
+        {
+            "code": "9501032006",
+            "name": "Miligatnem"
+        },
+        {
+            "code": "9501032007",
+            "name": "Loki"
+        },
+        {
+            "code": "9501032008",
+            "name": "Tikawo"
+        },
+        {
+            "code": "9501032009",
+            "name": "Kombagwe"
+        },
+        {
+            "code": "9501032010",
+            "name": "Wanggonoma"
+        }
+    ],
+    "950105": [
+        {
+            "code": "9501052001",
+            "name": "Bolakme"
+        },
+        {
+            "code": "9501052002",
+            "name": "Munak"
+        },
+        {
+            "code": "9501052003",
+            "name": "Tenonggame"
+        },
+        {
+            "code": "9501052004",
+            "name": "Bandua"
+        },
+        {
+            "code": "9501052005",
+            "name": "Lani Timur"
+        },
+        {
+            "code": "9501052006",
+            "name": "Nunggarugum"
+        },
+        {
+            "code": "9501052007",
+            "name": "Poitmos"
+        },
+        {
+            "code": "9501052008",
+            "name": "Kugitero"
+        },
+        {
+            "code": "9501052009",
+            "name": "Wenamela"
+        },
+        {
+            "code": "9501052010",
+            "name": "Bimu"
+        },
+        {
+            "code": "9501052011",
+            "name": "Tekani"
+        },
+        {
+            "code": "9501052012",
+            "name": "Owagambak"
+        }
+    ],
+    "950106": [
+        {
+            "code": "9501062001",
+            "name": "Walelagama"
+        },
+        {
+            "code": "9501062002",
+            "name": "Pugima"
+        },
+        {
+            "code": "9501062003",
+            "name": "Itlay Halitopo"
+        },
+        {
+            "code": "9501062004",
+            "name": "Kubulakma"
+        },
+        {
+            "code": "9501062005",
+            "name": "Kulaken"
+        },
+        {
+            "code": "9501062006",
+            "name": "Wamusage"
+        }
+    ],
+    "950107": [
+        {
+            "code": "9501072001",
+            "name": "Temia"
+        },
+        {
+            "code": "9501072002",
+            "name": "Anegera"
+        },
+        {
+            "code": "9501072003",
+            "name": "Elabukama"
+        },
+        {
+            "code": "9501072004",
+            "name": "Siapma"
+        },
+        {
+            "code": "9501072005",
+            "name": "Hamuhi"
+        },
+        {
+            "code": "9501072006",
+            "name": "Kosihave"
+        },
+        {
+            "code": "9501072007",
+            "name": "Mulupalek"
+        },
+        {
+            "code": "9501072008",
+            "name": "Pumasili"
+        },
+        {
+            "code": "9501072009",
+            "name": "Abulukmo"
+        },
+        {
+            "code": "9501072010",
+            "name": "Yumugima"
+        }
+    ],
+    "950108": [
+        {
+            "code": "9501082001",
+            "name": "Wolo"
+        },
+        {
+            "code": "9501082002",
+            "name": "Kukurima"
+        },
+        {
+            "code": "9501082003",
+            "name": "Pirambot"
+        },
+        {
+            "code": "9501082004",
+            "name": "Tegabaga"
+        },
+        {
+            "code": "9501082005",
+            "name": "Wollo Timur"
+        },
+        {
+            "code": "9501082006",
+            "name": "Alugi"
+        },
+        {
+            "code": "9501082007",
+            "name": "Wunan"
+        },
+        {
+            "code": "9501082008",
+            "name": "Wodloma"
+        }
+    ],
+    "950109": [
+        {
+            "code": "9501092001",
+            "name": "Sinata"
+        },
+        {
+            "code": "9501092002",
+            "name": "Asolokobal"
+        },
+        {
+            "code": "9501092003",
+            "name": "Hesatom"
+        },
+        {
+            "code": "9501092004",
+            "name": "Asotapo"
+        },
+        {
+            "code": "9501092005",
+            "name": "Wiaima"
+        },
+        {
+            "code": "9501092006",
+            "name": "Ninabua"
+        },
+        {
+            "code": "9501092007",
+            "name": "Helaluwa"
+        },
+        {
+            "code": "9501092008",
+            "name": "Mulinekama"
+        },
+        {
+            "code": "9501092009",
+            "name": "Yapema"
+        }
+    ],
+    "950110": [
+        {
+            "code": "9501102001",
+            "name": "Heatnem"
+        },
+        {
+            "code": "9501102002",
+            "name": "Wililimo"
+        },
+        {
+            "code": "9501102003",
+            "name": "Yabem"
+        },
+        {
+            "code": "9501102004",
+            "name": "Waukahilapok"
+        },
+        {
+            "code": "9501102005",
+            "name": "Aleak"
+        },
+        {
+            "code": "9501102006",
+            "name": "Inanekelok"
+        },
+        {
+            "code": "9501102007",
+            "name": "Witalak"
+        },
+        {
+            "code": "9501102008",
+            "name": "Mulukmo"
+        },
+        {
+            "code": "9501102009",
+            "name": "Landia"
+        },
+        {
+            "code": "9501102010",
+            "name": "Filia"
+        },
+        {
+            "code": "9501102011",
+            "name": "Isugunik"
+        },
+        {
+            "code": "9501102012",
+            "name": "Hitelowa"
+        },
+        {
+            "code": "9501102013",
+            "name": "Duabalek"
+        }
+    ],
+    "950111": [
+        {
+            "code": "9501112001",
+            "name": "Yalengga"
+        },
+        {
+            "code": "9501112002",
+            "name": "Taganik"
+        },
+        {
+            "code": "9501112003",
+            "name": "Wananuk"
+        },
+        {
+            "code": "9501112004",
+            "name": "Pilimo"
+        },
+        {
+            "code": "9501112005",
+            "name": "Tumun"
+        },
+        {
+            "code": "9501112006",
+            "name": "Akorek"
+        },
+        {
+            "code": "9501112007",
+            "name": "Manili"
+        },
+        {
+            "code": "9501112008",
+            "name": "Aipakma"
+        },
+        {
+            "code": "9501112009",
+            "name": "Wugurima"
+        },
+        {
+            "code": "9501112010",
+            "name": "Bitti"
+        },
+        {
+            "code": "9501112011",
+            "name": "Wamanuk Dua"
+        }
+    ],
+    "950112": [
+        {
+            "code": "9501122001",
+            "name": "Trikora"
+        },
+        {
+            "code": "9501122002",
+            "name": "Nanggo"
+        },
+        {
+            "code": "9501122003",
+            "name": "Dinggilmo"
+        },
+        {
+            "code": "9501122004",
+            "name": "Kora Jaya"
+        },
+        {
+            "code": "9501122005",
+            "name": "Korambirik"
+        },
+        {
+            "code": "9501122006",
+            "name": "Anggulpa"
+        }
+    ],
+    "950113": [
+        {
+            "code": "9501132001",
+            "name": "Napua"
+        },
+        {
+            "code": "9501132002",
+            "name": "Holima"
+        },
+        {
+            "code": "9501132003",
+            "name": "Lani Matuan"
+        },
+        {
+            "code": "9501132004",
+            "name": "Okilik"
+        },
+        {
+            "code": "9501132005",
+            "name": "Healekma"
+        },
+        {
+            "code": "9501132006",
+            "name": "Yelekama"
+        },
+        {
+            "code": "9501132007",
+            "name": "Sapalek"
+        },
+        {
+            "code": "9501132008",
+            "name": "Yomaima"
+        },
+        {
+            "code": "9501132009",
+            "name": "Wilekama"
+        }
+    ],
+    "950114": [
+        {
+            "code": "9501142001",
+            "name": "Walaik"
+        },
+        {
+            "code": "9501142002",
+            "name": "Elarek"
+        },
+        {
+            "code": "9501142003",
+            "name": "Holima"
+        },
+        {
+            "code": "9501142004",
+            "name": "Yelai"
+        },
+        {
+            "code": "9501142005",
+            "name": "Welekama"
+        }
+    ],
+    "950115": [
+        {
+            "code": "9501152001",
+            "name": "Wouma"
+        },
+        {
+            "code": "9501152002",
+            "name": "Ketimavit"
+        },
+        {
+            "code": "9501152003",
+            "name": "Wesakma"
+        },
+        {
+            "code": "9501152004",
+            "name": "Logonoba"
+        },
+        {
+            "code": "9501152005",
+            "name": "Wesakin"
+        },
+        {
+            "code": "9501152006",
+            "name": "Pipitmo"
+        },
+        {
+            "code": "9501152007",
+            "name": "Sinarekowa"
+        }
+    ],
+    "950116": [
+        {
+            "code": "9501162001",
+            "name": "Hubikiak"
+        },
+        {
+            "code": "9501162002",
+            "name": "Hetuma"
+        },
+        {
+            "code": "9501162003",
+            "name": "Dokopku"
+        },
+        {
+            "code": "9501162004",
+            "name": "Likino"
+        },
+        {
+            "code": "9501162005",
+            "name": "Musiamia"
+        },
+        {
+            "code": "9501162006",
+            "name": "Husoak"
+        },
+        {
+            "code": "9501162007",
+            "name": "Hom-hom"
+        },
+        {
+            "code": "9501162008",
+            "name": "Musiamia Dua"
+        }
+    ],
+    "950117": [
+        {
+            "code": "9501172001",
+            "name": "Yagarobak"
+        },
+        {
+            "code": "9501172002",
+            "name": "Zapma"
+        },
+        {
+            "code": "9501172003",
+            "name": "Ayobaibur"
+        },
+        {
+            "code": "9501172004",
+            "name": "Ibele"
+        },
+        {
+            "code": "9501172005",
+            "name": "Tipalok"
+        },
+        {
+            "code": "9501172006",
+            "name": "Habema"
+        },
+        {
+            "code": "9501172007",
+            "name": "Zinai"
+        },
+        {
+            "code": "9501172008",
+            "name": "Holaliba"
+        },
+        {
+            "code": "9501172009",
+            "name": "Yelebarek"
+        },
+        {
+            "code": "9501172010",
+            "name": "Yokalpalek"
+        }
+    ],
+    "950118": [
+        {
+            "code": "9501182001",
+            "name": "Tailarek"
+        },
+        {
+            "code": "9501182002",
+            "name": "Senogolik"
+        },
+        {
+            "code": "9501182003",
+            "name": "Bokiem"
+        },
+        {
+            "code": "9501182004",
+            "name": "Iyora"
+        },
+        {
+            "code": "9501182005",
+            "name": "Budliem"
+        },
+        {
+            "code": "9501182006",
+            "name": "Yoman Weya"
+        },
+        {
+            "code": "9501182007",
+            "name": "Huluaima"
+        },
+        {
+            "code": "9501182008",
+            "name": "Entagekokma"
+        }
+    ],
+    "950119": [
+        {
+            "code": "9501192001",
+            "name": "Lukaken"
+        },
+        {
+            "code": "9501192002",
+            "name": "Miami"
+        },
+        {
+            "code": "9501192003",
+            "name": "Waroba"
+        },
+        {
+            "code": "9501192004",
+            "name": "Yogonima"
+        },
+        {
+            "code": "9501192005",
+            "name": "Tomisa"
+        },
+        {
+            "code": "9501192006",
+            "name": "Helepalegem"
+        },
+        {
+            "code": "9501192007",
+            "name": "Siliwa"
+        },
+        {
+            "code": "9501192008",
+            "name": "Sumunikama"
+        },
+        {
+            "code": "9501192009",
+            "name": "Kemisake"
+        }
+    ],
+    "950120": [
+        {
+            "code": "9501202001",
+            "name": "Siepkosi"
+        },
+        {
+            "code": "9501202002",
+            "name": "Yumogima"
+        },
+        {
+            "code": "9501202003",
+            "name": "Sekan"
+        },
+        {
+            "code": "9501202004",
+            "name": "Noagalo"
+        },
+        {
+            "code": "9501202005",
+            "name": "Manika"
+        },
+        {
+            "code": "9501202006",
+            "name": "Sekan Dalam"
+        },
+        {
+            "code": "9501202007",
+            "name": "Isawa Himan"
+        },
+        {
+            "code": "9501202008",
+            "name": "Lunaima"
+        },
+        {
+            "code": "9501202009",
+            "name": "Wekia"
+        }
+    ],
+    "950121": [
+        {
+            "code": "9501212001",
+            "name": "Usilimo"
+        },
+        {
+            "code": "9501212002",
+            "name": "Siba"
+        },
+        {
+            "code": "9501212003",
+            "name": "Wosiala"
+        },
+        {
+            "code": "9501212004",
+            "name": "Gua Wisata"
+        },
+        {
+            "code": "9501212005",
+            "name": "Undulumo"
+        },
+        {
+            "code": "9501212006",
+            "name": "Fikha"
+        },
+        {
+            "code": "9501212007",
+            "name": "Meagamia"
+        },
+        {
+            "code": "9501212008",
+            "name": "Alona"
+        },
+        {
+            "code": "9501212009",
+            "name": "Abutpuk"
+        },
+        {
+            "code": "9501212010",
+            "name": "Isaiman"
+        }
+    ],
+    "950122": [
+        {
+            "code": "9501222001",
+            "name": "Korma"
+        },
+        {
+            "code": "9501222002",
+            "name": "Tulem"
+        },
+        {
+            "code": "9501222003",
+            "name": "Alula"
+        },
+        {
+            "code": "9501222004",
+            "name": "Arogolik"
+        },
+        {
+            "code": "9501222005",
+            "name": "Wiligima"
+        }
+    ],
+    "950123": [
+        {
+            "code": "9501232001",
+            "name": "Muliama"
+        },
+        {
+            "code": "9501232002",
+            "name": "Wenabubaga"
+        },
+        {
+            "code": "9501232003",
+            "name": "Kilubaga"
+        },
+        {
+            "code": "9501232004",
+            "name": "Musalfak"
+        },
+        {
+            "code": "9501232005",
+            "name": "Punakul"
+        }
+    ],
+    "950124": [
+        {
+            "code": "9501242001",
+            "name": "Wadangku"
+        },
+        {
+            "code": "9501242002",
+            "name": "Agulimo"
+        },
+        {
+            "code": "9501242003",
+            "name": "Musiem"
+        },
+        {
+            "code": "9501242004",
+            "name": "Yomosimo"
+        },
+        {
+            "code": "9501242005",
+            "name": "Luku-luku"
+        }
+    ],
+    "950125": [
+        {
+            "code": "9501252001",
+            "name": "Pisugi"
+        },
+        {
+            "code": "9501252002",
+            "name": "Pabuma"
+        },
+        {
+            "code": "9501252003",
+            "name": "Aikima"
+        },
+        {
+            "code": "9501252004",
+            "name": "Pikhe"
+        },
+        {
+            "code": "9501252005",
+            "name": "Akiaput"
+        },
+        {
+            "code": "9501252006",
+            "name": "Suroba"
+        },
+        {
+            "code": "9501252007",
+            "name": "Wara"
+        }
+    ],
+    "950127": [
+        {
+            "code": "9501272001",
+            "name": "Tagime"
+        },
+        {
+            "code": "9501272002",
+            "name": "Porome"
+        },
+        {
+            "code": "9501272003",
+            "name": "Onggobalo"
+        },
+        {
+            "code": "9501272004",
+            "name": "Lakwame"
+        },
+        {
+            "code": "9501272005",
+            "name": "Yordania Tulak"
+        },
+        {
+            "code": "9501272006",
+            "name": "Gume Kupari"
+        },
+        {
+            "code": "9501272007",
+            "name": "Wandinggunie"
+        },
+        {
+            "code": "9501272008",
+            "name": "Mulugame"
+        },
+        {
+            "code": "9501272009",
+            "name": "Lapeyo"
+        },
+        {
+            "code": "9501272010",
+            "name": "Yanggapura"
+        },
+        {
+            "code": "9501272011",
+            "name": "Yogobur"
+        }
+    ],
+    "950128": [
+        {
+            "code": "9501282001",
+            "name": "Tanahmerah"
+        },
+        {
+            "code": "9501282002",
+            "name": "Towagame"
+        },
+        {
+            "code": "9501282003",
+            "name": "Molagalome"
+        },
+        {
+            "code": "9501282004",
+            "name": "Kwigiluk"
+        },
+        {
+            "code": "9501282005",
+            "name": "Mebunukme"
+        },
+        {
+            "code": "9501282006",
+            "name": "Okwa"
+        }
+    ]
+}
