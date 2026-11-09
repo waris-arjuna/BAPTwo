@@ -51,9 +51,9 @@ test('endpoint wilayah desa fallback ke JSON lokal districts_kalsel untuk kecama
         ->assertOk();
     $dataBarat = $resBarat->json('data');
     expect(count($dataBarat))->toBe(9);
-    $belitungSelatan = collect($dataBarat)->firstWhere('code', '6371031001');
-    expect($belitungSelatan)->not->toBeNull()
-        ->and($belitungSelatan['name'])->toBe('Belitung Selatan');
+    $belitungUtara = collect($dataBarat)->firstWhere('code', '6371031001');
+    expect($belitungUtara)->not->toBeNull()
+        ->and($belitungUtara['name'])->toBe('Belitung Utara');
 
     // 4. Banjarbaru Cempaka (637203) - 4 kelurahan
     $resCempaka = $this->actingAs($user)
