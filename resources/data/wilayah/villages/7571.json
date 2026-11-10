@@ -1,46 +1,220 @@
 {
-    "757108": [
-        {
-            "code": "7571081001",
-            "name": "Leato Utara"
-        },
-        {
-            "code": "7571081002",
-            "name": "Leato Selatan"
-        },
-        {
-            "code": "7571081003",
-            "name": "Talumolo"
-        },
-        {
-            "code": "7571081004",
-            "name": "Botu"
-        },
-        {
-            "code": "7571081005",
-            "name": "Bugis"
-        }
-    ],
-    "757109": [
-        {
-            "code": "7571091001",
-            "name": "Tanjung Kramat"
-        },
-        {
-            "code": "7571091002",
-            "name": "Pohe"
-        },
-        {
-            "code": "7571091003",
-            "name": "Tenda"
-        },
-        {
-            "code": "7571091004",
-            "name": "Donggala"
-        },
-        {
-            "code": "7571091005",
-            "name": "Siendeng"
-        }
-    ]
+  "757101": [
+    {
+      "code": "7571011001",
+      "name": "Dembe I"
+    },
+    {
+      "code": "7571011002",
+      "name": "Lekobalo"
+    },
+    {
+      "code": "7571011003",
+      "name": "Pilolodaa"
+    },
+    {
+      "code": "7571011004",
+      "name": "Buliide"
+    },
+    {
+      "code": "7571011005",
+      "name": "Tenilo"
+    },
+    {
+      "code": "7571011006",
+      "name": "Molosipat W"
+    },
+    {
+      "code": "7571011008",
+      "name": "Buladu"
+    }
+  ],
+  "757102": [
+    {
+      "code": "7571021010",
+      "name": "Biawao"
+    },
+    {
+      "code": "7571021012",
+      "name": "Biawu"
+    },
+    {
+      "code": "7571021013",
+      "name": "Limba B"
+    },
+    {
+      "code": "7571021019",
+      "name": "Limba U I"
+    },
+    {
+      "code": "7571021020",
+      "name": "Limba U II"
+    }
+  ],
+  "757103": [
+    {
+      "code": "7571031003",
+      "name": "Dembe II"
+    },
+    {
+      "code": "7571031004",
+      "name": "Wongkaditi Timur"
+    },
+    {
+      "code": "7571031005",
+      "name": "Wongkaditi Barat"
+    },
+    {
+      "code": "7571031010",
+      "name": "Dulomo Selatan"
+    },
+    {
+      "code": "7571031014",
+      "name": "Dulomo Utara"
+    },
+    {
+      "code": "7571031015",
+      "name": "Dembe Jaya"
+    }
+  ],
+  "757104": [
+    {
+      "code": "7571041001",
+      "name": "Huangobotu"
+    },
+    {
+      "code": "7571041002",
+      "name": "Libuo"
+    },
+    {
+      "code": "7571041003",
+      "name": "Tomulabutao"
+    },
+    {
+      "code": "7571041004",
+      "name": "Tuladenggi"
+    },
+    {
+      "code": "7571041005",
+      "name": "Tomulabutao Selatan"
+    }
+  ],
+  "757105": [
+    {
+      "code": "7571051003",
+      "name": "Heledulaa Utara"
+    },
+    {
+      "code": "7571051004",
+      "name": "Heledulaa Selatan"
+    },
+    {
+      "code": "7571051005",
+      "name": "Ipilo"
+    },
+    {
+      "code": "7571051008",
+      "name": "Moodu"
+    },
+    {
+      "code": "7571051009",
+      "name": "Padebuolo"
+    },
+    {
+      "code": "7571051011",
+      "name": "Tamalate"
+    }
+  ],
+  "757106": [
+    {
+      "code": "7571061001",
+      "name": "Wumialo"
+    },
+    {
+      "code": "7571061002",
+      "name": "Dulalowo"
+    },
+    {
+      "code": "7571061003",
+      "name": "Liluwo"
+    },
+    {
+      "code": "7571061004",
+      "name": "Pulubala"
+    },
+    {
+      "code": "7571061005",
+      "name": "Paguyaman"
+    },
+    {
+      "code": "7571061006",
+      "name": "Dulalowo Timur"
+    }
+  ],
+  "757107": [
+    {
+      "code": "7571071001",
+      "name": "Tanggikiki"
+    },
+    {
+      "code": "7571071002",
+      "name": "Tapa"
+    },
+    {
+      "code": "7571071003",
+      "name": "Bulotadaa Barat"
+    },
+    {
+      "code": "7571071004",
+      "name": "Bulotadaa Timur"
+    },
+    {
+      "code": "7571071005",
+      "name": "Molosipat U"
+    }
+  ],
+  "757108": [
+    {
+      "code": "7571081001",
+      "name": "Leato Utara"
+    },
+    {
+      "code": "7571081002",
+      "name": "Leato Selatan"
+    },
+    {
+      "code": "7571081003",
+      "name": "Talumolo"
+    },
+    {
+      "code": "7571081004",
+      "name": "Botu"
+    },
+    {
+      "code": "7571081005",
+      "name": "Bugis"
+    }
+  ],
+  "757109": [
+    {
+      "code": "7571091001",
+      "name": "Tanjung Kramat"
+    },
+    {
+      "code": "7571091002",
+      "name": "Pohe"
+    },
+    {
+      "code": "7571091003",
+      "name": "Tenda"
+    },
+    {
+      "code": "7571091004",
+      "name": "Donggala"
+    },
+    {
+      "code": "7571091005",
+      "name": "Siendeng"
+    }
+  ]
 }

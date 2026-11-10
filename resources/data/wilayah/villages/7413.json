@@ -1,44 +1,368 @@
 {
-    "741301": [
-        {
-            "code": "7413012001",
-            "name": "Wakoila"
-        },
-        {
-            "code": "7413012002",
-            "name": "Waukuni"
-        },
-        {
-            "code": "7413012003",
-            "name": "Kampobalano"
-        },
-        {
-            "code": "7413012004",
-            "name": "Maperaha"
-        },
-        {
-            "code": "7413012005",
-            "name": "Nihi"
-        },
-        {
-            "code": "7413012006",
-            "name": "Marobea"
-        },
-        {
-            "code": "7413012007",
-            "name": "Ondoke"
-        },
-        {
-            "code": "7413012008",
-            "name": "Lakalamba"
-        },
-        {
-            "code": "7413012009",
-            "name": "Lawada Jaya"
-        },
-        {
-            "code": "7413012010",
-            "name": "Lombu Jaya"
-        }
-    ]
+  "741301": [
+    {
+      "code": "7413012001",
+      "name": "Wakoila"
+    },
+    {
+      "code": "7413012002",
+      "name": "Waukuni"
+    },
+    {
+      "code": "7413012003",
+      "name": "Kampobalano"
+    },
+    {
+      "code": "7413012004",
+      "name": "Maperaha"
+    },
+    {
+      "code": "7413012005",
+      "name": "Nihi"
+    },
+    {
+      "code": "7413012006",
+      "name": "Marobea"
+    },
+    {
+      "code": "7413012007",
+      "name": "Ondoke"
+    },
+    {
+      "code": "7413012008",
+      "name": "Lakalamba"
+    },
+    {
+      "code": "7413012009",
+      "name": "Lawada Jaya"
+    },
+    {
+      "code": "7413012010",
+      "name": "Lombu Jaya"
+    }
+  ],
+  "741302": [
+    {
+      "code": "7413022001",
+      "name": "Wuna"
+    },
+    {
+      "code": "7413022002",
+      "name": "Lafinde"
+    },
+    {
+      "code": "7413022003",
+      "name": "Waulai"
+    },
+    {
+      "code": "7413022004",
+      "name": "Walelei"
+    },
+    {
+      "code": "7413022005",
+      "name": "Sawerigadi"
+    },
+    {
+      "code": "7413022006",
+      "name": "Bungkolo"
+    },
+    {
+      "code": "7413022007",
+      "name": "Barangka"
+    },
+    {
+      "code": "7413022008",
+      "name": "Lapolea"
+    }
+  ],
+  "741303": [
+    {
+      "code": "7413031007",
+      "name": "Wamelai"
+    },
+    {
+      "code": "7413031008",
+      "name": "Lapadaku"
+    },
+    {
+      "code": "7413032001",
+      "name": "Lagadi"
+    },
+    {
+      "code": "7413032002",
+      "name": "Latugho"
+    },
+    {
+      "code": "7413032003",
+      "name": "Latompe"
+    },
+    {
+      "code": "7413032004",
+      "name": "Lalemba"
+    },
+    {
+      "code": "7413032005",
+      "name": "Madampi"
+    },
+    {
+      "code": "7413032006",
+      "name": "Watumela"
+    }
+  ],
+  "741304": [
+    {
+      "code": "7413042001",
+      "name": "Lailangga"
+    },
+    {
+      "code": "7413042002",
+      "name": "Lasosodo"
+    },
+    {
+      "code": "7413042003",
+      "name": "Wakontu"
+    },
+    {
+      "code": "7413042004",
+      "name": "Lakanaha"
+    },
+    {
+      "code": "7413042005",
+      "name": "Katobu"
+    },
+    {
+      "code": "7413042006",
+      "name": "Lindo"
+    },
+    {
+      "code": "7413042007",
+      "name": "Kampani"
+    }
+  ],
+  "741305": [
+    {
+      "code": "7413052001",
+      "name": "Parura Jaya"
+    },
+    {
+      "code": "7413052002",
+      "name": "Katangana"
+    },
+    {
+      "code": "7413052003",
+      "name": "Kasimpa Jaya"
+    },
+    {
+      "code": "7413052004",
+      "name": "Sangia Tiworo"
+    },
+    {
+      "code": "7413052005",
+      "name": "Barakkah"
+    }
+  ],
+  "741306": [
+    {
+      "code": "7413062001",
+      "name": "Kangkunawe"
+    },
+    {
+      "code": "7413062002",
+      "name": "Maginti"
+    },
+    {
+      "code": "7413062003",
+      "name": "Pajala"
+    },
+    {
+      "code": "7413062004",
+      "name": "Abadi Jaya"
+    },
+    {
+      "code": "7413062005",
+      "name": "Gala"
+    },
+    {
+      "code": "7413062006",
+      "name": "Pasipadanga"
+    },
+    {
+      "code": "7413062007",
+      "name": "Bangko"
+    },
+    {
+      "code": "7413062008",
+      "name": "Kembar Maminasa"
+    }
+  ],
+  "741307": [
+    {
+      "code": "7413072001",
+      "name": "Wanseriwu"
+    },
+    {
+      "code": "7413072002",
+      "name": "Labukolo"
+    },
+    {
+      "code": "7413072003",
+      "name": "Langku-langku"
+    },
+    {
+      "code": "7413072004",
+      "name": "Mekar Jaya"
+    },
+    {
+      "code": "7413072005",
+      "name": "Wapae Jaya"
+    },
+    {
+      "code": "7413072006",
+      "name": "Momuntu"
+    },
+    {
+      "code": "7413072007",
+      "name": "Lakabu"
+    },
+    {
+      "code": "7413072008",
+      "name": "Suka Damai"
+    }
+  ],
+  "741308": [
+    {
+      "code": "7413082001",
+      "name": "Tasipi"
+    },
+    {
+      "code": "7413082002",
+      "name": "Mandike"
+    },
+    {
+      "code": "7413082003",
+      "name": "Bero"
+    },
+    {
+      "code": "7413082004",
+      "name": "Santigi"
+    },
+    {
+      "code": "7413082005",
+      "name": "Tondasi"
+    },
+    {
+      "code": "7413082006",
+      "name": "Santiri"
+    },
+    {
+      "code": "7413082007",
+      "name": "Tiga"
+    }
+  ],
+  "741309": [
+    {
+      "code": "7413091004",
+      "name": "Waumere"
+    },
+    {
+      "code": "7413091005",
+      "name": "Tiworo"
+    },
+    {
+      "code": "7413092001",
+      "name": "Katela"
+    },
+    {
+      "code": "7413092002",
+      "name": "Lasama"
+    },
+    {
+      "code": "7413092003",
+      "name": "Sido Makmur"
+    },
+    {
+      "code": "7413092006",
+      "name": "Waturempe"
+    },
+    {
+      "code": "7413092007",
+      "name": "Laworo"
+    },
+    {
+      "code": "7413092008",
+      "name": "Wulanga Jaya"
+    },
+    {
+      "code": "7413092009",
+      "name": "Wandoke"
+    }
+  ],
+  "741310": [
+    {
+      "code": "7413101008",
+      "name": "Konawe"
+    },
+    {
+      "code": "7413102001",
+      "name": "Lemoambo"
+    },
+    {
+      "code": "7413102002",
+      "name": "Kasakamu"
+    },
+    {
+      "code": "7413102003",
+      "name": "Tanjung Pinang"
+    },
+    {
+      "code": "7413102004",
+      "name": "Sidamangura"
+    },
+    {
+      "code": "7413102005",
+      "name": "Lakawoghe"
+    },
+    {
+      "code": "7413102006",
+      "name": "Lapokainse"
+    },
+    {
+      "code": "7413102007",
+      "name": "Guali"
+    },
+    {
+      "code": "7413102009",
+      "name": "Kusambi"
+    },
+    {
+      "code": "7413102010",
+      "name": "Bakeramba"
+    }
+  ],
+  "741311": [
+    {
+      "code": "7413112001",
+      "name": "Masara"
+    },
+    {
+      "code": "7413112002",
+      "name": "Lahaji"
+    },
+    {
+      "code": "7413112003",
+      "name": "Umba"
+    },
+    {
+      "code": "7413112004",
+      "name": "Kombikuno"
+    },
+    {
+      "code": "7413112005",
+      "name": "Latawe"
+    },
+    {
+      "code": "7413112006",
+      "name": "Tangkumaho"
+    }
+  ]
 }

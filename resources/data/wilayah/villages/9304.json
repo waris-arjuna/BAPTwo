@@ -1,270 +1,948 @@
 {
-    "930413": [
-        {
-            "code": "9304132001",
-            "name": "Warse\/Jetsy"
-        },
-        {
-            "code": "9304132002",
-            "name": "Powetsy\/Amborep"
-        },
-        {
-            "code": "9304132003",
-            "name": "Pau"
-        },
-        {
-            "code": "9304132004",
-            "name": "Sesakam"
-        },
-        {
-            "code": "9304132005",
-            "name": "Akamar"
-        },
-        {
-            "code": "9304132006",
-            "name": "Birak"
-        },
-        {
-            "code": "9304132007",
-            "name": "Katew"
-        },
-        {
-            "code": "9304132008",
-            "name": "Dawer"
-        }
-    ],
-    "930414": [
-        {
-            "code": "9304142001",
-            "name": "Yamkap"
-        },
-        {
-            "code": "9304142002",
-            "name": "Amkum"
-        },
-        {
-            "code": "9304142003",
-            "name": "Amaru"
-        },
-        {
-            "code": "9304142004",
-            "name": "Amkai"
-        },
-        {
-            "code": "9304142005",
-            "name": "Amagais"
-        },
-        {
-            "code": "9304142006",
-            "name": "Erosaman"
-        }
-    ],
-    "930415": [
-        {
-            "code": "9304152001",
-            "name": "Kawem"
-        },
-        {
-            "code": "9304152002",
-            "name": "Hahare"
-        },
-        {
-            "code": "9304152003",
-            "name": "Aikut"
-        },
-        {
-            "code": "9304152004",
-            "name": "Sanem"
-        },
-        {
-            "code": "9304152005",
-            "name": "Kaipom"
-        },
-        {
-            "code": "9304152006",
-            "name": "Airo Sapem"
-        },
-        {
-            "code": "9304152007",
-            "name": "Simipit"
-        },
-        {
-            "code": "9304152008",
-            "name": "Heiyaram"
-        },
-        {
-            "code": "9304152009",
-            "name": "Wagasu"
-        },
-        {
-            "code": "9304152010",
-            "name": "Sasime"
-        }
-    ],
-    "930416": [
-        {
-            "code": "9304162001",
-            "name": "Primapun"
-        },
-        {
-            "code": "9304162002",
-            "name": "Aworket"
-        },
-        {
-            "code": "9304162003",
-            "name": "Saman"
-        },
-        {
-            "code": "9304162004",
-            "name": "Bayun"
-        },
-        {
-            "code": "9304162005",
-            "name": "Semendoro"
-        },
-        {
-            "code": "9304162006",
-            "name": "Tareo"
-        },
-        {
-            "code": "9304162007",
-            "name": "Kayirim"
-        },
-        {
-            "code": "9304162008",
-            "name": "Santambor"
-        },
-        {
-            "code": "9304162009",
-            "name": "Yaptambor"
-        },
-        {
-            "code": "9304162010",
-            "name": "Simsagar"
-        },
-        {
-            "code": "9304162011",
-            "name": "Itersok"
-        },
-        {
-            "code": "9304162012",
-            "name": "Emene"
-        }
-    ],
-    "930417": [
-        {
-            "code": "9304172001",
-            "name": "Yausakor"
-        },
-        {
-            "code": "9304172002",
-            "name": "Damen"
-        },
-        {
-            "code": "9304172003",
-            "name": "Biwar Darat"
-        },
-        {
-            "code": "9304172004",
-            "name": "Kaimo"
-        },
-        {
-            "code": "9304172005",
-            "name": "Awok"
-        },
-        {
-            "code": "9304172006",
-            "name": "Fos"
-        },
-        {
-            "code": "9304172007",
-            "name": "Waganu"
-        },
-        {
-            "code": "9304172008",
-            "name": "Sakor"
-        }
-    ],
-    "930418": [
-        {
-            "code": "9304182001",
-            "name": "Comoro"
-        },
-        {
-            "code": "9304182002",
-            "name": "Kawet"
-        },
-        {
-            "code": "9304182003",
-            "name": "Mausi"
-        },
-        {
-            "code": "9304182004",
-            "name": "Sato Yod"
-        },
-        {
-            "code": "9304182005",
-            "name": "Tamor"
-        },
-        {
-            "code": "9304182006",
-            "name": "Ero Airo"
-        }
-    ],
-    "930420": [
-        {
-            "code": "9304202001",
-            "name": "Bor"
-        },
-        {
-            "code": "9304202002",
-            "name": "Daikot"
-        },
-        {
-            "code": "9304202003",
-            "name": "Somnak"
-        },
-        {
-            "code": "9304202004",
-            "name": "Wabak"
-        },
-        {
-            "code": "9304202005",
-            "name": "Vakam"
-        },
-        {
-            "code": "9304202006",
-            "name": "Vakam Dua"
-        },
-        {
-            "code": "9304202007",
-            "name": "Dekamer"
-        }
-    ],
-    "930425": [
-        {
-            "code": "9304252001",
-            "name": "Beco"
-        },
-        {
-            "code": "9304252002",
-            "name": "Yuni"
-        },
-        {
-            "code": "9304252003",
-            "name": "Buetkawar"
-        },
-        {
-            "code": "9304252004",
-            "name": "Manep"
-        },
-        {
-            "code": "9304252005",
-            "name": "Simini"
-        },
-        {
-            "code": "9304252006",
-            "name": "Fakan\/Ani"
-        }
-    ]
+  "930401": [
+    {
+      "code": "9304012001",
+      "name": "Yomoth"
+    },
+    {
+      "code": "9304012002",
+      "name": "Uwus"
+    },
+    {
+      "code": "9304012003",
+      "name": "Asuwetsy"
+    },
+    {
+      "code": "9304012004",
+      "name": "Bismam"
+    },
+    {
+      "code": "9304012005",
+      "name": "Bis Agats"
+    },
+    {
+      "code": "9304012006",
+      "name": "Per"
+    },
+    {
+      "code": "9304012007",
+      "name": "Beriten"
+    },
+    {
+      "code": "9304012008",
+      "name": "Mbait"
+    },
+    {
+      "code": "9304012009",
+      "name": "Bou"
+    },
+    {
+      "code": "9304012010",
+      "name": "Saw"
+    },
+    {
+      "code": "9304012011",
+      "name": "Kaye"
+    },
+    {
+      "code": "9304012012",
+      "name": "Suwru"
+    }
+  ],
+  "930402": [
+    {
+      "code": "9304022001",
+      "name": "Atsj"
+    },
+    {
+      "code": "9304022002",
+      "name": "Sogoni"
+    },
+    {
+      "code": "9304022003",
+      "name": "Amanamkai"
+    },
+    {
+      "code": "9304022004",
+      "name": "Ambisu"
+    },
+    {
+      "code": "9304022005",
+      "name": "Bine"
+    },
+    {
+      "code": "9304022006",
+      "name": "Bipim"
+    },
+    {
+      "code": "9304022007",
+      "name": "Yasiuw"
+    },
+    {
+      "code": "9304022008",
+      "name": "Bakasai"
+    },
+    {
+      "code": "9304022009",
+      "name": "Cewewyamew"
+    }
+  ],
+  "930403": [
+    {
+      "code": "9304032001",
+      "name": "Sawa"
+    },
+    {
+      "code": "9304032002",
+      "name": "Erma"
+    },
+    {
+      "code": "9304032003",
+      "name": "Bu"
+    },
+    {
+      "code": "9304032004",
+      "name": "Er"
+    },
+    {
+      "code": "9304032005",
+      "name": "Pupis"
+    },
+    {
+      "code": "9304032006",
+      "name": "Sona"
+    },
+    {
+      "code": "9304032007",
+      "name": "Agani"
+    },
+    {
+      "code": "9304032008",
+      "name": "Mumugu"
+    },
+    {
+      "code": "9304032009",
+      "name": "Sauti"
+    },
+    {
+      "code": "9304032010",
+      "name": "Mumugi II"
+    }
+  ],
+  "930404": [
+    {
+      "code": "9304042001",
+      "name": "Ayam"
+    },
+    {
+      "code": "9304042006",
+      "name": "Waw"
+    },
+    {
+      "code": "9304042007",
+      "name": "Bayiw Pinam"
+    },
+    {
+      "code": "9304042008",
+      "name": "Cumnew"
+    },
+    {
+      "code": "9304042009",
+      "name": "Jewes"
+    }
+  ],
+  "930405": [
+    {
+      "code": "9304052001",
+      "name": "Basim"
+    },
+    {
+      "code": "9304052002",
+      "name": "Waras"
+    },
+    {
+      "code": "9304052003",
+      "name": "Biopis"
+    },
+    {
+      "code": "9304052004",
+      "name": "Nanai"
+    },
+    {
+      "code": "9304052005",
+      "name": "Pirien"
+    },
+    {
+      "code": "9304052006",
+      "name": "Ocenep"
+    },
+    {
+      "code": "9304052007",
+      "name": "Ais"
+    },
+    {
+      "code": "9304052008",
+      "name": "Yawas"
+    },
+    {
+      "code": "9304052009",
+      "name": "Bakyor"
+    },
+    {
+      "code": "9304052010",
+      "name": "Isar"
+    },
+    {
+      "code": "9304052011",
+      "name": "Kayarpis"
+    },
+    {
+      "code": "9304052012",
+      "name": "Sayoa"
+    },
+    {
+      "code": "9304052013",
+      "name": "Bora"
+    }
+  ],
+  "930406": [
+    {
+      "code": "9304062001",
+      "name": "Kamur"
+    },
+    {
+      "code": "9304062002",
+      "name": "Sanep"
+    },
+    {
+      "code": "9304062003",
+      "name": "Saramit"
+    },
+    {
+      "code": "9304062004",
+      "name": "Yahoi"
+    },
+    {
+      "code": "9304062005",
+      "name": "Hainam"
+    },
+    {
+      "code": "9304062006",
+      "name": "Yagamit"
+    },
+    {
+      "code": "9304062007",
+      "name": "Bawor"
+    },
+    {
+      "code": "9304062008",
+      "name": "Sanapai"
+    },
+    {
+      "code": "9304062009",
+      "name": "Sarmafo"
+    }
+  ],
+  "930407": [
+    {
+      "code": "9304072001",
+      "name": "Binam"
+    },
+    {
+      "code": "9304072002",
+      "name": "Wagabus"
+    },
+    {
+      "code": "9304072003",
+      "name": "Burbis"
+    },
+    {
+      "code": "9304072004",
+      "name": "Bubis"
+    },
+    {
+      "code": "9304072005",
+      "name": "Karbis"
+    },
+    {
+      "code": "9304072006",
+      "name": "Jinak"
+    },
+    {
+      "code": "9304072007",
+      "name": "Wowi"
+    },
+    {
+      "code": "9304072008",
+      "name": "Soray"
+    },
+    {
+      "code": "9304072009",
+      "name": "Waganu Dua"
+    },
+    {
+      "code": "9304072014",
+      "name": "Emnam"
+    }
+  ],
+  "930408": [
+    {
+      "code": "9304082001",
+      "name": "Suru-Suru"
+    },
+    {
+      "code": "9304082002",
+      "name": "See"
+    },
+    {
+      "code": "9304082009",
+      "name": "Dumaten"
+    },
+    {
+      "code": "9304082010",
+      "name": "Hom-hom"
+    },
+    {
+      "code": "9304082011",
+      "name": "Ajin"
+    },
+    {
+      "code": "9304082012",
+      "name": "Laluk"
+    },
+    {
+      "code": "9304082013",
+      "name": "Kebikduk"
+    },
+    {
+      "code": "9304082014",
+      "name": "Hulam"
+    },
+    {
+      "code": "9304082015",
+      "name": "Walase"
+    },
+    {
+      "code": "9304082016",
+      "name": "Berimono"
+    },
+    {
+      "code": "9304082017",
+      "name": "Asgun"
+    },
+    {
+      "code": "9304082018",
+      "name": "Korobuk"
+    },
+    {
+      "code": "9304082019",
+      "name": "Katalina"
+    },
+    {
+      "code": "9304082020",
+      "name": "Obio"
+    },
+    {
+      "code": "9304082021",
+      "name": "Salbik"
+    },
+    {
+      "code": "9304082022",
+      "name": "Linduk"
+    },
+    {
+      "code": "9304082023",
+      "name": "Besika"
+    }
+  ],
+  "930409": [
+    {
+      "code": "9304092001",
+      "name": "Binamsain"
+    },
+    {
+      "code": "9304092002",
+      "name": "Pirabanak"
+    },
+    {
+      "code": "9304092003",
+      "name": "Woutu Braza"
+    },
+    {
+      "code": "9304092004",
+      "name": "Patipi"
+    },
+    {
+      "code": "9304092005",
+      "name": "Ulakin"
+    },
+    {
+      "code": "9304092006",
+      "name": "Woutu Kolof"
+    },
+    {
+      "code": "9304092007",
+      "name": "Butukatnau"
+    },
+    {
+      "code": "9304092008",
+      "name": "Auban"
+    },
+    {
+      "code": "9304092009",
+      "name": "Pepera"
+    },
+    {
+      "code": "9304092010",
+      "name": "Waijens"
+    },
+    {
+      "code": "9304092011",
+      "name": "Bumu"
+    },
+    {
+      "code": "9304092012",
+      "name": "Kapayap Satu"
+    },
+    {
+      "code": "9304092013",
+      "name": "Kapayap Dua"
+    },
+    {
+      "code": "9304092014",
+      "name": "Sipanap"
+    }
+  ],
+  "930410": [
+    {
+      "code": "9304102001",
+      "name": "Komor"
+    },
+    {
+      "code": "9304102002",
+      "name": "Amor"
+    },
+    {
+      "code": "9304102003",
+      "name": "Yipawer"
+    },
+    {
+      "code": "9304102004",
+      "name": "Berip"
+    },
+    {
+      "code": "9304102005",
+      "name": "Ayir"
+    },
+    {
+      "code": "9304102006",
+      "name": "Werer"
+    },
+    {
+      "code": "9304102009",
+      "name": "Paar"
+    }
+  ],
+  "930411": [
+    {
+      "code": "9304112001",
+      "name": "Yamas"
+    },
+    {
+      "code": "9304112002",
+      "name": "Yeni"
+    },
+    {
+      "code": "9304112003",
+      "name": "Omor"
+    },
+    {
+      "code": "9304112004",
+      "name": "Jufri"
+    },
+    {
+      "code": "9304112005",
+      "name": "Yaun"
+    },
+    {
+      "code": "9304112006",
+      "name": "Onavai"
+    }
+  ],
+  "930412": [
+    {
+      "code": "9304122001",
+      "name": "Kapi"
+    },
+    {
+      "code": "9304122002",
+      "name": "As"
+    },
+    {
+      "code": "9304122003",
+      "name": "Atat"
+    },
+    {
+      "code": "9304122004",
+      "name": "Aou"
+    },
+    {
+      "code": "9304122005",
+      "name": "Nakai"
+    },
+    {
+      "code": "9304122006",
+      "name": "Esmapan"
+    },
+    {
+      "code": "9304122007",
+      "name": "Eroko"
+    },
+    {
+      "code": "9304122008",
+      "name": "Yakapis"
+    },
+    {
+      "code": "9304122009",
+      "name": "Weo"
+    },
+    {
+      "code": "9304122010",
+      "name": "Aoap"
+    },
+    {
+      "code": "9304122011",
+      "name": "Fumereipits"
+    }
+  ],
+  "930413": [
+    {
+      "code": "9304132001",
+      "name": "Warse/Jetsy"
+    },
+    {
+      "code": "9304132002",
+      "name": "Powetsy/Amborep"
+    },
+    {
+      "code": "9304132003",
+      "name": "Pau"
+    },
+    {
+      "code": "9304132004",
+      "name": "Sesakam"
+    },
+    {
+      "code": "9304132005",
+      "name": "Akamar"
+    },
+    {
+      "code": "9304132006",
+      "name": "Birak"
+    },
+    {
+      "code": "9304132007",
+      "name": "Katew"
+    },
+    {
+      "code": "9304132008",
+      "name": "Dawer"
+    }
+  ],
+  "930414": [
+    {
+      "code": "9304142001",
+      "name": "Yamkap"
+    },
+    {
+      "code": "9304142002",
+      "name": "Amkum"
+    },
+    {
+      "code": "9304142003",
+      "name": "Amaru"
+    },
+    {
+      "code": "9304142004",
+      "name": "Amkai"
+    },
+    {
+      "code": "9304142005",
+      "name": "Amagais"
+    },
+    {
+      "code": "9304142006",
+      "name": "Erosaman"
+    }
+  ],
+  "930415": [
+    {
+      "code": "9304152001",
+      "name": "Kawem"
+    },
+    {
+      "code": "9304152002",
+      "name": "Hahare"
+    },
+    {
+      "code": "9304152003",
+      "name": "Aikut"
+    },
+    {
+      "code": "9304152004",
+      "name": "Sanem"
+    },
+    {
+      "code": "9304152005",
+      "name": "Kaipom"
+    },
+    {
+      "code": "9304152006",
+      "name": "Airo Sapem"
+    },
+    {
+      "code": "9304152007",
+      "name": "Simipit"
+    },
+    {
+      "code": "9304152008",
+      "name": "Heiyaram"
+    },
+    {
+      "code": "9304152009",
+      "name": "Wagasu"
+    },
+    {
+      "code": "9304152010",
+      "name": "Sasime"
+    }
+  ],
+  "930416": [
+    {
+      "code": "9304162001",
+      "name": "Primapun"
+    },
+    {
+      "code": "9304162002",
+      "name": "Aworket"
+    },
+    {
+      "code": "9304162003",
+      "name": "Saman"
+    },
+    {
+      "code": "9304162004",
+      "name": "Bayun"
+    },
+    {
+      "code": "9304162005",
+      "name": "Semendoro"
+    },
+    {
+      "code": "9304162006",
+      "name": "Tareo"
+    },
+    {
+      "code": "9304162007",
+      "name": "Kayirim"
+    },
+    {
+      "code": "9304162008",
+      "name": "Santambor"
+    },
+    {
+      "code": "9304162009",
+      "name": "Yaptambor"
+    },
+    {
+      "code": "9304162010",
+      "name": "Simsagar"
+    },
+    {
+      "code": "9304162011",
+      "name": "Itersok"
+    },
+    {
+      "code": "9304162012",
+      "name": "Emene"
+    }
+  ],
+  "930417": [
+    {
+      "code": "9304172001",
+      "name": "Yausakor"
+    },
+    {
+      "code": "9304172002",
+      "name": "Damen"
+    },
+    {
+      "code": "9304172003",
+      "name": "Biwar Darat"
+    },
+    {
+      "code": "9304172004",
+      "name": "Kaimo"
+    },
+    {
+      "code": "9304172005",
+      "name": "Awok"
+    },
+    {
+      "code": "9304172006",
+      "name": "Fos"
+    },
+    {
+      "code": "9304172007",
+      "name": "Waganu"
+    },
+    {
+      "code": "9304172008",
+      "name": "Sakor"
+    }
+  ],
+  "930418": [
+    {
+      "code": "9304182001",
+      "name": "Comoro"
+    },
+    {
+      "code": "9304182002",
+      "name": "Kawet"
+    },
+    {
+      "code": "9304182003",
+      "name": "Mausi"
+    },
+    {
+      "code": "9304182004",
+      "name": "Sato Yod"
+    },
+    {
+      "code": "9304182005",
+      "name": "Tamor"
+    },
+    {
+      "code": "9304182006",
+      "name": "Ero Airo"
+    }
+  ],
+  "930419": [
+    {
+      "code": "9304192001",
+      "name": "Biwar Laut"
+    },
+    {
+      "code": "9304192002",
+      "name": "Atambuts"
+    },
+    {
+      "code": "9304192003",
+      "name": "Omanesep"
+    },
+    {
+      "code": "9304192004",
+      "name": "Warkai"
+    },
+    {
+      "code": "9304192005",
+      "name": "You"
+    },
+    {
+      "code": "9304192006",
+      "name": "Pirpis"
+    },
+    {
+      "code": "9304192007",
+      "name": "Desep"
+    }
+  ],
+  "930420": [
+    {
+      "code": "9304202001",
+      "name": "Bor"
+    },
+    {
+      "code": "9304202002",
+      "name": "Daikot"
+    },
+    {
+      "code": "9304202003",
+      "name": "Somnak"
+    },
+    {
+      "code": "9304202004",
+      "name": "Wabak"
+    },
+    {
+      "code": "9304202005",
+      "name": "Vakam"
+    },
+    {
+      "code": "9304202006",
+      "name": "Vakam Dua"
+    },
+    {
+      "code": "9304202007",
+      "name": "Dekamer"
+    }
+  ],
+  "930421": [
+    {
+      "code": "9304212001",
+      "name": "Piramat"
+    },
+    {
+      "code": "9304212002",
+      "name": "Bawos"
+    },
+    {
+      "code": "9304212003",
+      "name": "Akan Tapak"
+    },
+    {
+      "code": "9304212004",
+      "name": "Tauro"
+    },
+    {
+      "code": "9304212005",
+      "name": "Bagair"
+    },
+    {
+      "code": "9304212006",
+      "name": "Wiyar"
+    },
+    {
+      "code": "9304212007",
+      "name": "Kagas"
+    },
+    {
+      "code": "9304212008",
+      "name": "Mapane"
+    },
+    {
+      "code": "9304212009",
+      "name": "Ainamsato"
+    },
+    {
+      "code": "9304212010",
+      "name": "Amaita"
+    }
+  ],
+  "930422": [
+    {
+      "code": "9304222001",
+      "name": "Yerfum"
+    },
+    {
+      "code": "9304222002",
+      "name": "Suagai"
+    },
+    {
+      "code": "9304222003",
+      "name": "Sohomane"
+    },
+    {
+      "code": "9304222004",
+      "name": "Sagare"
+    },
+    {
+      "code": "9304222005",
+      "name": "Yefuwagi"
+    },
+    {
+      "code": "9304222006",
+      "name": "Wagi"
+    }
+  ],
+  "930423": [
+    {
+      "code": "9304232001",
+      "name": "Mabul"
+    },
+    {
+      "code": "9304232002",
+      "name": "Banum"
+    },
+    {
+      "code": "9304232003",
+      "name": "Ayak"
+    },
+    {
+      "code": "9304232004",
+      "name": "Amakot"
+    },
+    {
+      "code": "9304232005",
+      "name": "Nagatun"
+    },
+    {
+      "code": "9304232006",
+      "name": "Ujung Batu"
+    },
+    {
+      "code": "9304232007",
+      "name": "Kapayap Tiga"
+    }
+  ],
+  "930424": [
+    {
+      "code": "9304242001",
+      "name": "Tomor"
+    },
+    {
+      "code": "9304242002",
+      "name": "Munu"
+    },
+    {
+      "code": "9304242003",
+      "name": "Abamu"
+    },
+    {
+      "code": "9304242004",
+      "name": "Tie"
+    },
+    {
+      "code": "9304242005",
+      "name": "Koba"
+    },
+    {
+      "code": "9304242006",
+      "name": "Sagapu"
+    },
+    {
+      "code": "9304242007",
+      "name": "Jifak"
+    },
+    {
+      "code": "9304242008",
+      "name": "Yensuku"
+    }
+  ],
+  "930425": [
+    {
+      "code": "9304252001",
+      "name": "Beco"
+    },
+    {
+      "code": "9304252002",
+      "name": "Yuni"
+    },
+    {
+      "code": "9304252003",
+      "name": "Buetkawar"
+    },
+    {
+      "code": "9304252004",
+      "name": "Manep"
+    },
+    {
+      "code": "9304252005",
+      "name": "Simini"
+    },
+    {
+      "code": "9304252006",
+      "name": "Fakan/Ani"
+    }
+  ]
 }

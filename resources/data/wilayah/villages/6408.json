@@ -1,222 +1,602 @@
 {
-    "640801": [
-        {
-            "code": "6408012001",
-            "name": "Senyiur"
-        },
-        {
-            "code": "6408012002",
-            "name": "Kelinjau Ilir"
-        },
-        {
-            "code": "6408012003",
-            "name": "Kelinjau Ulu"
-        },
-        {
-            "code": "6408012004",
-            "name": "Long Nah"
-        },
-        {
-            "code": "6408012006",
-            "name": "Long Tesak"
-        },
-        {
-            "code": "6408012009",
-            "name": "Gemar Baru"
-        },
-        {
-            "code": "6408012012",
-            "name": "Long Poq Baru"
-        },
-        {
-            "code": "6408012013",
-            "name": "Muara Dun"
-        },
-        {
-            "code": "6408012014",
-            "name": "Teluk Baru"
-        }
-    ],
-    "640802": [
-        {
-            "code": "6408022001",
-            "name": "Jak Luay"
-        },
-        {
-            "code": "6408022002",
-            "name": "Nehes Liah Bing"
-        },
-        {
-            "code": "6408022003",
-            "name": "Muara Wahau"
-        },
-        {
-            "code": "6408022004",
-            "name": "Dabeq"
-        },
-        {
-            "code": "6408022005",
-            "name": "Diaq Lay"
-        },
-        {
-            "code": "6408022006",
-            "name": "Benhes"
-        },
-        {
-            "code": "6408022007",
-            "name": "Wanasari"
-        },
-        {
-            "code": "6408022008",
-            "name": "Wahau Baru"
-        },
-        {
-            "code": "6408022009",
-            "name": "Karya Bhakti"
-        },
-        {
-            "code": "6408022010",
-            "name": "Long Wehea"
-        }
-    ],
-    "640803": [
-        {
-            "code": "6408032001",
-            "name": "Senambah"
-        },
-        {
-            "code": "6408032002",
-            "name": "Ngayau"
-        },
-        {
-            "code": "6408032003",
-            "name": "Muara Bengkal Ilir"
-        },
-        {
-            "code": "6408032004",
-            "name": "Muara Bengkal Ulu"
-        },
-        {
-            "code": "6408032005",
-            "name": "Benua Baru"
-        },
-        {
-            "code": "6408032013",
-            "name": "Mulupan"
-        },
-        {
-            "code": "6408032014",
-            "name": "Batu Balai"
-        }
-    ],
-    "640804": [
-        {
-            "code": "6408041010",
-            "name": "Teluk Lingga"
-        },
-        {
-            "code": "6408042001",
-            "name": "Sangatta Utara"
-        },
-        {
-            "code": "6408042011",
-            "name": "Singa Gembara"
-        },
-        {
-            "code": "6408042012",
-            "name": "Swarga Bara"
-        }
-    ],
-    "640805": [
-        {
-            "code": "6408052001",
-            "name": "Kerayaan"
-        },
-        {
-            "code": "6408052002",
-            "name": "Tanjung Manis"
-        },
-        {
-            "code": "6408052003",
-            "name": "Peridan"
-        },
-        {
-            "code": "6408052004",
-            "name": "Saka"
-        },
-        {
-            "code": "6408052005",
-            "name": "Mandu Dalam"
-        },
-        {
-            "code": "6408052006",
-            "name": "Benua Baru Ilir"
-        },
-        {
-            "code": "6408052011",
-            "name": "Sempayau"
-        },
-        {
-            "code": "6408052012",
-            "name": "Pelawan"
-        },
-        {
-            "code": "6408052013",
-            "name": "Tepian Terap"
-        },
-        {
-            "code": "6408052015",
-            "name": "Maloy"
-        },
-        {
-            "code": "6408052016",
-            "name": "Benua Baru Ulu"
-        },
-        {
-            "code": "6408052017",
-            "name": "Kolek"
-        },
-        {
-            "code": "6408052018",
-            "name": "Pulau Miang"
-        },
-        {
-            "code": "6408052019",
-            "name": "Perupuk"
-        },
-        {
-            "code": "6408052020",
-            "name": "Mandu Pantai Sejahtera"
-        }
-    ],
-    "640808": [
-        {
-            "code": "6408082001",
-            "name": "Makmur Jaya"
-        },
-        {
-            "code": "6408082002",
-            "name": "Marga Mulya"
-        },
-        {
-            "code": "6408082003",
-            "name": "Sukamaju"
-        },
-        {
-            "code": "6408082004",
-            "name": "Sidomulyo"
-        },
-        {
-            "code": "6408082005",
-            "name": "Sri Pantun"
-        },
-        {
-            "code": "6408082006",
-            "name": "Kombeng Indah"
-        },
-        {
-            "code": "6408082007",
-            "name": "Miau Baru"
-        }
-    ]
+  "640801": [
+    {
+      "code": "6408012001",
+      "name": "Senyiur"
+    },
+    {
+      "code": "6408012002",
+      "name": "Kelinjau Ilir"
+    },
+    {
+      "code": "6408012003",
+      "name": "Kelinjau Ulu"
+    },
+    {
+      "code": "6408012004",
+      "name": "Long Nah"
+    },
+    {
+      "code": "6408012006",
+      "name": "Long Tesak"
+    },
+    {
+      "code": "6408012009",
+      "name": "Gemar Baru"
+    },
+    {
+      "code": "6408012012",
+      "name": "Long Poq Baru"
+    },
+    {
+      "code": "6408012013",
+      "name": "Muara Dun"
+    },
+    {
+      "code": "6408012014",
+      "name": "Teluk Baru"
+    }
+  ],
+  "640802": [
+    {
+      "code": "6408022001",
+      "name": "Jak Luay"
+    },
+    {
+      "code": "6408022002",
+      "name": "Nehes Liah Bing"
+    },
+    {
+      "code": "6408022003",
+      "name": "Muara Wahau"
+    },
+    {
+      "code": "6408022004",
+      "name": "Dabeq"
+    },
+    {
+      "code": "6408022005",
+      "name": "Diaq Lay"
+    },
+    {
+      "code": "6408022006",
+      "name": "Benhes"
+    },
+    {
+      "code": "6408022007",
+      "name": "Wanasari"
+    },
+    {
+      "code": "6408022008",
+      "name": "Wahau Baru"
+    },
+    {
+      "code": "6408022009",
+      "name": "Karya Bhakti"
+    },
+    {
+      "code": "6408022010",
+      "name": "Long Wehea"
+    }
+  ],
+  "640803": [
+    {
+      "code": "6408032001",
+      "name": "Senambah"
+    },
+    {
+      "code": "6408032002",
+      "name": "Ngayau"
+    },
+    {
+      "code": "6408032003",
+      "name": "Muara Bengkal Ilir"
+    },
+    {
+      "code": "6408032004",
+      "name": "Muara Bengkal Ulu"
+    },
+    {
+      "code": "6408032005",
+      "name": "Benua Baru"
+    },
+    {
+      "code": "6408032013",
+      "name": "Mulupan"
+    },
+    {
+      "code": "6408032014",
+      "name": "Batu Balai"
+    }
+  ],
+  "640804": [
+    {
+      "code": "6408041010",
+      "name": "Teluk Lingga"
+    },
+    {
+      "code": "6408042001",
+      "name": "Sangatta Utara"
+    },
+    {
+      "code": "6408042011",
+      "name": "Singa Gembara"
+    },
+    {
+      "code": "6408042012",
+      "name": "Swarga Bara"
+    }
+  ],
+  "640805": [
+    {
+      "code": "6408052001",
+      "name": "Kerayaan"
+    },
+    {
+      "code": "6408052002",
+      "name": "Tanjung Manis"
+    },
+    {
+      "code": "6408052003",
+      "name": "Peridan"
+    },
+    {
+      "code": "6408052004",
+      "name": "Saka"
+    },
+    {
+      "code": "6408052005",
+      "name": "Mandu Dalam"
+    },
+    {
+      "code": "6408052006",
+      "name": "Benua Baru Ilir"
+    },
+    {
+      "code": "6408052011",
+      "name": "Sempayau"
+    },
+    {
+      "code": "6408052012",
+      "name": "Pelawan"
+    },
+    {
+      "code": "6408052013",
+      "name": "Tepian Terap"
+    },
+    {
+      "code": "6408052015",
+      "name": "Maloy"
+    },
+    {
+      "code": "6408052016",
+      "name": "Benua Baru Ulu"
+    },
+    {
+      "code": "6408052017",
+      "name": "Kolek"
+    },
+    {
+      "code": "6408052018",
+      "name": "Pulau Miang"
+    },
+    {
+      "code": "6408052019",
+      "name": "Perupuk"
+    },
+    {
+      "code": "6408052020",
+      "name": "Mandu Pantai Sejahtera"
+    }
+  ],
+  "640806": [
+    {
+      "code": "6408062001",
+      "name": "Long Bentuq"
+    },
+    {
+      "code": "6408062002",
+      "name": "Long Pejeng"
+    },
+    {
+      "code": "6408062003",
+      "name": "Long Lees"
+    },
+    {
+      "code": "6408062004",
+      "name": "Mekar Baru"
+    },
+    {
+      "code": "6408062005",
+      "name": "Rantau Sentosa"
+    },
+    {
+      "code": "6408062006",
+      "name": "Long Nyelong"
+    }
+  ],
+  "640807": [
+    {
+      "code": "6408072001",
+      "name": "Marah Haloq"
+    },
+    {
+      "code": "6408072002",
+      "name": "Lung Melah"
+    },
+    {
+      "code": "6408072003",
+      "name": "Juk Ayaq"
+    },
+    {
+      "code": "6408072004",
+      "name": "Long Segar"
+    },
+    {
+      "code": "6408072005",
+      "name": "Long Noran"
+    },
+    {
+      "code": "6408072006",
+      "name": "Muara Pantun"
+    },
+    {
+      "code": "6408072007",
+      "name": "Rantau Panjang"
+    },
+    {
+      "code": "6408072008",
+      "name": "Kernyanyan"
+    }
+  ],
+  "640808": [
+    {
+      "code": "6408082001",
+      "name": "Makmur Jaya"
+    },
+    {
+      "code": "6408082002",
+      "name": "Marga Mulya"
+    },
+    {
+      "code": "6408082003",
+      "name": "Sukamaju"
+    },
+    {
+      "code": "6408082004",
+      "name": "Sidomulyo"
+    },
+    {
+      "code": "6408082005",
+      "name": "Sri Pantun"
+    },
+    {
+      "code": "6408082006",
+      "name": "Kombeng Indah"
+    },
+    {
+      "code": "6408082007",
+      "name": "Miau Baru"
+    }
+  ],
+  "640809": [
+    {
+      "code": "6408092001",
+      "name": "Sepaso"
+    },
+    {
+      "code": "6408092002",
+      "name": "Sekerat"
+    },
+    {
+      "code": "6408092003",
+      "name": "Keraitan"
+    },
+    {
+      "code": "6408092004",
+      "name": "Tepian Langsat"
+    },
+    {
+      "code": "6408092005",
+      "name": "Tebangan Lembak"
+    },
+    {
+      "code": "6408092006",
+      "name": "Sepaso Timur"
+    },
+    {
+      "code": "6408092007",
+      "name": "Sepaso Selatan"
+    },
+    {
+      "code": "6408092008",
+      "name": "Muara Bengalon"
+    },
+    {
+      "code": "6408092009",
+      "name": "Tepian Baru"
+    },
+    {
+      "code": "6408092010",
+      "name": "Tepian Indah"
+    },
+    {
+      "code": "6408092011",
+      "name": "Sepaso Barat"
+    }
+  ],
+  "640810": [
+    {
+      "code": "6408102001",
+      "name": "Kaliorang"
+    },
+    {
+      "code": "6408102006",
+      "name": "Bukit Makmur"
+    },
+    {
+      "code": "6408102007",
+      "name": "Bukit Harapan"
+    },
+    {
+      "code": "6408102008",
+      "name": "Citra Manunggal Jaya"
+    },
+    {
+      "code": "6408102009",
+      "name": "Bangun Jaya"
+    },
+    {
+      "code": "6408102010",
+      "name": "Bumi Sejahtera"
+    },
+    {
+      "code": "6408102013",
+      "name": "Selangkau"
+    }
+  ],
+  "640811": [
+    {
+      "code": "6408112001",
+      "name": "Sandaran"
+    },
+    {
+      "code": "6408112002",
+      "name": "Manubar"
+    },
+    {
+      "code": "6408112003",
+      "name": "Tadoan"
+    },
+    {
+      "code": "6408112004",
+      "name": "Marukangan"
+    },
+    {
+      "code": "6408112005",
+      "name": "Susuk Luar"
+    },
+    {
+      "code": "6408112006",
+      "name": "Susuk Dalam"
+    },
+    {
+      "code": "6408112007",
+      "name": "Tanjung Mangkaliat"
+    },
+    {
+      "code": "6408112008",
+      "name": "Manubar Dalam"
+    },
+    {
+      "code": "6408112009",
+      "name": "Susuk Tengah"
+    }
+  ],
+  "640812": [
+    {
+      "code": "6408121002",
+      "name": "Singa Geweh"
+    },
+    {
+      "code": "6408122001",
+      "name": "Sangatta Selatan"
+    },
+    {
+      "code": "6408122003",
+      "name": "Sangkima"
+    },
+    {
+      "code": "6408122004",
+      "name": "Teluk Singkama"
+    }
+  ],
+  "640813": [
+    {
+      "code": "6408132001",
+      "name": "Teluk Pandan"
+    },
+    {
+      "code": "6408132002",
+      "name": "Suka Rahmat"
+    },
+    {
+      "code": "6408132003",
+      "name": "Suka Damai"
+    },
+    {
+      "code": "6408132004",
+      "name": "Kandolo"
+    },
+    {
+      "code": "6408132005",
+      "name": "Danau Redan"
+    },
+    {
+      "code": "6408132006",
+      "name": "Martadinata"
+    }
+  ],
+  "640814": [
+    {
+      "code": "6408142001",
+      "name": "Mukti Jaya"
+    },
+    {
+      "code": "6408142002",
+      "name": "Pulung Sari"
+    },
+    {
+      "code": "6408142003",
+      "name": "Margo Mulyo"
+    },
+    {
+      "code": "6408142004",
+      "name": "Rantau Makmur"
+    },
+    {
+      "code": "6408142005",
+      "name": "Manunggal Jaya"
+    },
+    {
+      "code": "6408142006",
+      "name": "Tanjung Labu"
+    },
+    {
+      "code": "6408142007",
+      "name": "Kebon Agung"
+    },
+    {
+      "code": "6408142008",
+      "name": "Tepian Makmur"
+    },
+    {
+      "code": "6408142009",
+      "name": "Masalap Raya"
+    }
+  ],
+  "640815": [
+    {
+      "code": "6408152001",
+      "name": "Bumi Etam"
+    },
+    {
+      "code": "6408152002",
+      "name": "Bumi Rapak"
+    },
+    {
+      "code": "6408152003",
+      "name": "Bumi Jaya"
+    },
+    {
+      "code": "6408152004",
+      "name": "Cipta Graha"
+    },
+    {
+      "code": "6408152005",
+      "name": "Kadungan Jaya"
+    },
+    {
+      "code": "6408152006",
+      "name": "Pengadan Baru"
+    },
+    {
+      "code": "6408152007",
+      "name": "Mata Air"
+    },
+    {
+      "code": "6408152008",
+      "name": "Bukit Permata"
+    }
+  ],
+  "640816": [
+    {
+      "code": "6408162001",
+      "name": "Karangan Dalam"
+    },
+    {
+      "code": "6408162002",
+      "name": "Batu Lepoq"
+    },
+    {
+      "code": "6408162003",
+      "name": "Pengadan"
+    },
+    {
+      "code": "6408162004",
+      "name": "Baay"
+    },
+    {
+      "code": "6408162005",
+      "name": "Mukti Lestari"
+    },
+    {
+      "code": "6408162006",
+      "name": "Karangan Seberang"
+    },
+    {
+      "code": "6408162007",
+      "name": "Karangan Hilir"
+    }
+  ],
+  "640817": [
+    {
+      "code": "6408172001",
+      "name": "Batu Timbau"
+    },
+    {
+      "code": "6408172002",
+      "name": "Beno Harapan"
+    },
+    {
+      "code": "6408172003",
+      "name": "Mugi Rahayu"
+    },
+    {
+      "code": "6408172004",
+      "name": "Mawai Indah"
+    },
+    {
+      "code": "6408172005",
+      "name": "Himba Lestari"
+    },
+    {
+      "code": "6408172006",
+      "name": "Telaga"
+    },
+    {
+      "code": "6408172007",
+      "name": "Batu Timbau Ulu"
+    }
+  ],
+  "640818": [
+    {
+      "code": "6408182001",
+      "name": "Sika Makmur"
+    },
+    {
+      "code": "6408182002",
+      "name": "Segoy Makmur"
+    },
+    {
+      "code": "6408182003",
+      "name": "Mukti Utama"
+    },
+    {
+      "code": "6408182004",
+      "name": "Sumber Sari"
+    },
+    {
+      "code": "6408182005",
+      "name": "Melan"
+    },
+    {
+      "code": "6408182006",
+      "name": "Tanah Abang"
+    },
+    {
+      "code": "6408182007",
+      "name": "Sumber Agung"
+    }
+  ]
 }

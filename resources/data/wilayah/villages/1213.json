@@ -1,1664 +1,1664 @@
 {
-    "121301": [
-        {
-            "code": "1213011011",
-            "name": "Kota Siantar"
-        },
-        {
-            "code": "1213011014",
-            "name": "Kayu Jati"
-        },
-        {
-            "code": "1213011022",
-            "name": "Pasar Hilir"
-        },
-        {
-            "code": "1213011023",
-            "name": "Pidoli Dolok"
-        },
-        {
-            "code": "1213011031",
-            "name": "Panyabungan II"
-        },
-        {
-            "code": "1213011032",
-            "name": "Panyabungan III"
-        },
-        {
-            "code": "1213011033",
-            "name": "Panyabungan I"
-        },
-        {
-            "code": "1213011035",
-            "name": "Sipolu-Polu"
-        },
-        {
-            "code": "1213011036",
-            "name": "Dalan Lidang"
-        },
-        {
-            "code": "1213012001",
-            "name": "Adian Jior"
-        },
-        {
-            "code": "1213012002",
-            "name": "Aek Banir"
-        },
-        {
-            "code": "1213012003",
-            "name": "Aek Mata"
-        },
-        {
-            "code": "1213012004",
-            "name": "Darussalam"
-        },
-        {
-            "code": "1213012005",
-            "name": "Gunung Barani"
-        },
-        {
-            "code": "1213012006",
-            "name": "Gunung Manaon"
-        },
-        {
-            "code": "1213012007",
-            "name": "Gunung Tua Jae"
-        },
-        {
-            "code": "1213012008",
-            "name": "Gunung Tua Julu"
-        },
-        {
-            "code": "1213012009",
-            "name": "Gunung Tua Tonga"
-        },
-        {
-            "code": "1213012010",
-            "name": "Huta Lombang Lubis"
-        },
-        {
-            "code": "1213012012",
-            "name": "Ipar Bondar"
-        },
-        {
-            "code": "1213012013",
-            "name": "Kampung Padang"
-        },
-        {
-            "code": "1213012015",
-            "name": "Lumban Pasir"
-        },
-        {
-            "code": "1213012016",
-            "name": "Manyabar"
-        },
-        {
-            "code": "1213012017",
-            "name": "Pagaran Tonga"
-        },
-        {
-            "code": "1213012018",
-            "name": "Panyabungan Jae"
-        },
-        {
-            "code": "1213012019",
-            "name": "Panyabungan Julu"
-        },
-        {
-            "code": "1213012020",
-            "name": "Panyabungan Tonga"
-        },
-        {
-            "code": "1213012021",
-            "name": "Perbangunan"
-        },
-        {
-            "code": "1213012024",
-            "name": "Pidoli Lombang"
-        },
-        {
-            "code": "1213012025",
-            "name": "Salam Bue"
-        },
-        {
-            "code": "1213012026",
-            "name": "Sarak Matua"
-        },
-        {
-            "code": "1213012027",
-            "name": "Sigalapang Julu"
-        },
-        {
-            "code": "1213012028",
-            "name": "Siobon Julu"
-        },
-        {
-            "code": "1213012029",
-            "name": "Sipapaga"
-        },
-        {
-            "code": "1213012030",
-            "name": "Sopobatu"
-        },
-        {
-            "code": "1213012037",
-            "name": "Siobon Jae"
-        },
-        {
-            "code": "1213012038",
-            "name": "Panggorengan"
-        },
-        {
-            "code": "1213012039",
-            "name": "Saba Jambu"
-        },
-        {
-            "code": "1213012040",
-            "name": "Manyabar Jae"
-        }
-    ],
-    "121302": [
-        {
-            "code": "1213021012",
-            "name": "Mompang Jae"
-        },
-        {
-            "code": "1213022002",
-            "name": "Beringin Jaya"
-        },
-        {
-            "code": "1213022007",
-            "name": "Huta damai"
-        },
-        {
-            "code": "1213022008",
-            "name": "Jambur Padang Matinggi"
-        },
-        {
-            "code": "1213022009",
-            "name": "Kampung Baru"
-        },
-        {
-            "code": "1213022010",
-            "name": "Mompang Julu"
-        },
-        {
-            "code": "1213022014",
-            "name": "Rumbio"
-        },
-        {
-            "code": "1213022015",
-            "name": "Suka Ramai"
-        },
-        {
-            "code": "1213022017",
-            "name": "Sopo Sorik"
-        },
-        {
-            "code": "1213022018",
-            "name": "Simanondong"
-        },
-        {
-            "code": "1213022019",
-            "name": "Torbanua Raja"
-        },
-        {
-            "code": "1213022020",
-            "name": "Tanjung Mompang"
-        }
-    ],
-    "121303": [
-        {
-            "code": "1213031002",
-            "name": "Gunung Baringin"
-        },
-        {
-            "code": "1213032001",
-            "name": "Aek Nabara"
-        },
-        {
-            "code": "1213032003",
-            "name": "Hutaimbaru"
-        },
-        {
-            "code": "1213032004",
-            "name": "Huta Bangun"
-        },
-        {
-            "code": "1213032005",
-            "name": "Huta Tinggi"
-        },
-        {
-            "code": "1213032006",
-            "name": "Pagur"
-        },
-        {
-            "code": "1213032007",
-            "name": "Pardomuan"
-        },
-        {
-            "code": "1213032008",
-            "name": "Parmompang"
-        },
-        {
-            "code": "1213032009",
-            "name": "Ranto Natas"
-        },
-        {
-            "code": "1213032010",
-            "name": "Sirangkap"
-        },
-        {
-            "code": "1213032011",
-            "name": "Tanjung"
-        },
-        {
-            "code": "1213032012",
-            "name": "Tebing Tinggi"
-        },
-        {
-            "code": "1213032013",
-            "name": "Tanjung Julu"
-        },
-        {
-            "code": "1213032014",
-            "name": "Banjar Lancat"
-        },
-        {
-            "code": "1213032015",
-            "name": "Padang Laru"
-        }
-    ],
-    "121304": [
-        {
-            "code": "1213041009",
-            "name": "Tano Bato"
-        },
-        {
-            "code": "1213042001",
-            "name": "Aek Ngali"
-        },
-        {
-            "code": "1213042002",
-            "name": "Hutarimbaru"
-        },
-        {
-            "code": "1213042003",
-            "name": "Hayuraja"
-        },
-        {
-            "code": "1213042004",
-            "name": "Huta Julu"
-        },
-        {
-            "code": "1213042005",
-            "name": "Kayu Laut"
-        },
-        {
-            "code": "1213042006",
-            "name": "Lumban Dolok"
-        },
-        {
-            "code": "1213042007",
-            "name": "Roburan Dolok"
-        },
-        {
-            "code": "1213042008",
-            "name": "Roburan Lombang"
-        },
-        {
-            "code": "1213042010",
-            "name": "Huta Raja"
-        },
-        {
-            "code": "1213042011",
-            "name": "Pagaran Gala-Gala"
-        }
-    ],
-    "121305": [
-        {
-            "code": "1213051006",
-            "name": "Longat"
-        },
-        {
-            "code": "1213052001",
-            "name": "Barbaran"
-        },
-        {
-            "code": "1213052002",
-            "name": "Barbaran Jae"
-        },
-        {
-            "code": "1213052003",
-            "name": "Batang Gadis"
-        },
-        {
-            "code": "1213052004",
-            "name": "Huta Baringin"
-        },
-        {
-            "code": "1213052005",
-            "name": "Huta Tonga BB"
-        },
-        {
-            "code": "1213052007",
-            "name": "Runding"
-        },
-        {
-            "code": "1213052008",
-            "name": "Sirambas"
-        },
-        {
-            "code": "1213052009",
-            "name": "Saba Jior"
-        },
-        {
-            "code": "1213052010",
-            "name": "Batang Gadis Jae"
-        }
-    ],
-    "121306": [
-        {
-            "code": "1213061014",
-            "name": "Siabu"
-        },
-        {
-            "code": "1213061023",
-            "name": "Simangambat"
-        },
-        {
-            "code": "1213062001",
-            "name": "Aek Mual"
-        },
-        {
-            "code": "1213062002",
-            "name": "Bonan Dolok"
-        },
-        {
-            "code": "1213062003",
-            "name": "Huta Raja"
-        },
-        {
-            "code": "1213062004",
-            "name": "Huta Puli"
-        },
-        {
-            "code": "1213062005",
-            "name": "Huta Baringin"
-        },
-        {
-            "code": "1213062006",
-            "name": "Huta Godang Muda"
-        },
-        {
-            "code": "1213062007",
-            "name": "Huraba I"
-        },
-        {
-            "code": "1213062008",
-            "name": "Huraba II"
-        },
-        {
-            "code": "1213062009",
-            "name": "Lumban Pinasa"
-        },
-        {
-            "code": "1213062010",
-            "name": "Lumban Dolok"
-        },
-        {
-            "code": "1213062011",
-            "name": "Muara Btg. Angkola"
-        },
-        {
-            "code": "1213062012",
-            "name": "Pintu Padang Jae"
-        },
-        {
-            "code": "1213062013",
-            "name": "Pintu Padang Julu"
-        },
-        {
-            "code": "1213062015",
-            "name": "Sibaruang"
-        },
-        {
-            "code": "1213062016",
-            "name": "Sihepeng"
-        },
-        {
-            "code": "1213062017",
-            "name": "Simaninggir"
-        },
-        {
-            "code": "1213062018",
-            "name": "Sinonoan"
-        },
-        {
-            "code": "1213062019",
-            "name": "Tangga Bosi II"
-        },
-        {
-            "code": "1213062020",
-            "name": "Tanjung Sialang"
-        },
-        {
-            "code": "1213062021",
-            "name": "Tangga Bosi I"
-        },
-        {
-            "code": "1213062022",
-            "name": "Tangga Bosi III"
-        },
-        {
-            "code": "1213062024",
-            "name": "Sihepeng Sada"
-        },
-        {
-            "code": "1213062025",
-            "name": "Sihepeng Dua"
-        },
-        {
-            "code": "1213062026",
-            "name": "Sihepeng Tolu"
-        },
-        {
-            "code": "1213062027",
-            "name": "Sihepeng Opat"
-        },
-        {
-            "code": "1213062028",
-            "name": "Sihepeng Lima"
-        }
-    ],
-    "121307": [
-        {
-            "code": "1213072001",
-            "name": "Bange"
-        },
-        {
-            "code": "1213072003",
-            "name": "Huta Bangun"
-        },
-        {
-            "code": "1213072005",
-            "name": "Janji Matogu"
-        },
-        {
-            "code": "1213072006",
-            "name": "Malintang Jae"
-        },
-        {
-            "code": "1213072007",
-            "name": "Malintang Julu"
-        },
-        {
-            "code": "1213072008",
-            "name": "Pasar Baru Malintang"
-        },
-        {
-            "code": "1213072010",
-            "name": "Sidojadi"
-        },
-        {
-            "code": "1213072013",
-            "name": "Lambou Darul Ihsan"
-        },
-        {
-            "code": "1213072014",
-            "name": "Huta Bangun Jae"
-        },
-        {
-            "code": "1213072015",
-            "name": "Bange Nauli"
-        },
-        {
-            "code": "1213072016",
-            "name": "Malintang"
-        }
-    ],
-    "121308": [
-        {
-            "code": "1213081032",
-            "name": "Tamiang"
-        },
-        {
-            "code": "1213081036",
-            "name": "Pasar Kotanopan"
-        },
-        {
-            "code": "1213082001",
-            "name": "Batahan"
-        },
-        {
-            "code": "1213082002",
-            "name": "Botung"
-        },
-        {
-            "code": "1213082003",
-            "name": "Gading Bain"
-        },
-        {
-            "code": "1213082004",
-            "name": "Gunung Tua MS"
-        },
-        {
-            "code": "1213082005",
-            "name": "Gunung Tua SM"
-        },
-        {
-            "code": "1213082006",
-            "name": "Hutapuli"
-        },
-        {
-            "code": "1213082007",
-            "name": "Huta Padang MS"
-        },
-        {
-            "code": "1213082008",
-            "name": "Hutarimbaru SM"
-        },
-        {
-            "code": "1213082009",
-            "name": "Huta Baringin TB"
-        },
-        {
-            "code": "1213082010",
-            "name": "Huta Pungkut Jae"
-        },
-        {
-            "code": "1213082011",
-            "name": "Huta Pungkut Tonga"
-        },
-        {
-            "code": "1213082012",
-            "name": "Huta Pungkut Julu"
-        },
-        {
-            "code": "1213082013",
-            "name": "Huta Dangka"
-        },
-        {
-            "code": "1213082014",
-            "name": "Muara Potan"
-        },
-        {
-            "code": "1213082015",
-            "name": "Muara Siambak"
-        },
-        {
-            "code": "1213082016",
-            "name": "Manambin"
-        },
-        {
-            "code": "1213082017",
-            "name": "Muara Pungkut"
-        },
-        {
-            "code": "1213082018",
-            "name": "Muara Botung"
-        },
-        {
-            "code": "1213082019",
-            "name": "Pagar Gunung"
-        },
-        {
-            "code": "1213082020",
-            "name": "Padang Bulan"
-        },
-        {
-            "code": "1213082021",
-            "name": "Patialo"
-        },
-        {
-            "code": "1213082022",
-            "name": "Saba Dolok"
-        },
-        {
-            "code": "1213082023",
-            "name": "Singengu Jae"
-        },
-        {
-            "code": "1213082024",
-            "name": "Singengu Julu"
-        },
-        {
-            "code": "1213082025",
-            "name": "Sayur Maincat"
-        },
-        {
-            "code": "1213082026",
-            "name": "Simpang Tolang Jae"
-        },
-        {
-            "code": "1213082027",
-            "name": "Simpang Tolang Julu"
-        },
-        {
-            "code": "1213082028",
-            "name": "Sibio Bio"
-        },
-        {
-            "code": "1213082029",
-            "name": "Sopo Sorik"
-        },
-        {
-            "code": "1213082030",
-            "name": "Simandolam"
-        },
-        {
-            "code": "1213082031",
-            "name": "Tombang Bustak"
-        },
-        {
-            "code": "1213082033",
-            "name": "Tobang"
-        },
-        {
-            "code": "1213082034",
-            "name": "Ujung Marisi"
-        },
-        {
-            "code": "1213082035",
-            "name": "Usor Tolang"
-        }
-    ],
-    "121309": [
-        {
-            "code": "1213091008",
-            "name": "Pasar Maga"
-        },
-        {
-            "code": "1213092001",
-            "name": "Aek Marian MG"
-        },
-        {
-            "code": "1213092002",
-            "name": "Bangun Purba"
-        },
-        {
-            "code": "1213092003",
-            "name": "Maga Lombang"
-        },
-        {
-            "code": "1213092004",
-            "name": "Maga Dolok"
-        },
-        {
-            "code": "1213092005",
-            "name": "Purba Baru"
-        },
-        {
-            "code": "1213092006",
-            "name": "Purba Lamo"
-        },
-        {
-            "code": "1213092007",
-            "name": "Pangkat"
-        },
-        {
-            "code": "1213092009",
-            "name": "Siantona"
-        }
-    ],
-    "121310": [
-        {
-            "code": "1213101010",
-            "name": "Laru Lombang"
-        },
-        {
-            "code": "1213102001",
-            "name": "Angin Barat"
-        },
-        {
-            "code": "1213102006",
-            "name": "Huta Tonga AB"
-        },
-        {
-            "code": "1213102007",
-            "name": "Laru Baringin"
-        },
-        {
-            "code": "1213102008",
-            "name": "Laru Bolak"
-        },
-        {
-            "code": "1213102009",
-            "name": "Laru Dolok"
-        },
-        {
-            "code": "1213102011",
-            "name": "Lumban Pasir"
-        },
-        {
-            "code": "1213102012",
-            "name": "Muara Mais"
-        },
-        {
-            "code": "1213102013",
-            "name": "Muara Mais Jambur"
-        },
-        {
-            "code": "1213102014",
-            "name": "Padang Sanggar"
-        },
-        {
-            "code": "1213102015",
-            "name": "Panjaringan"
-        },
-        {
-            "code": "1213102016",
-            "name": "Pasar Laru"
-        },
-        {
-            "code": "1213102017",
-            "name": "Pastap"
-        },
-        {
-            "code": "1213102018",
-            "name": "Pastap Julu"
-        },
-        {
-            "code": "1213102020",
-            "name": "Rao Rao Dolok"
-        },
-        {
-            "code": "1213102021",
-            "name": "Rao Rao Lombang"
-        },
-        {
-            "code": "1213102025",
-            "name": "Simangambat TB"
-        },
-        {
-            "code": "1213102026",
-            "name": "Tambangan Jae"
-        },
-        {
-            "code": "1213102027",
-            "name": "Tambangan Pasoman"
-        },
-        {
-            "code": "1213102028",
-            "name": "Tambangan Tonga"
-        }
-    ],
-    "121311": [
-        {
-            "code": "1213111003",
-            "name": "Huta Godang"
-        },
-        {
-            "code": "1213112001",
-            "name": "Alahan Kae"
-        },
-        {
-            "code": "1213112002",
-            "name": "Habincaran"
-        },
-        {
-            "code": "1213112004",
-            "name": "Huta Padang UP"
-        },
-        {
-            "code": "1213112005",
-            "name": "Hutaimbaru UP"
-        },
-        {
-            "code": "1213112006",
-            "name": "Muara Saladi"
-        },
-        {
-            "code": "1213112007",
-            "name": "Patahajang"
-        },
-        {
-            "code": "1213112008",
-            "name": "Simpang Banyak Jae"
-        },
-        {
-            "code": "1213112009",
-            "name": "Simpang Banyak Julu"
-        },
-        {
-            "code": "1213112010",
-            "name": "Simpang Duhu Dolok"
-        },
-        {
-            "code": "1213112011",
-            "name": "Simpang Duhu Lombang"
-        },
-        {
-            "code": "1213112012",
-            "name": "Simpang Pining"
-        },
-        {
-            "code": "1213112013",
-            "name": "Tolang"
-        }
-    ],
-    "121312": [
-        {
-            "code": "1213121019",
-            "name": "Pasar Muara Sipongi"
-        },
-        {
-            "code": "1213122001",
-            "name": "Bandar Panjang"
-        },
-        {
-            "code": "1213122002",
-            "name": "Bandar Panjang Tuo"
-        },
-        {
-            "code": "1213122007",
-            "name": "Kampung Pinang"
-        },
-        {
-            "code": "1213122008",
-            "name": "Koto Baringin"
-        },
-        {
-            "code": "1213122009",
-            "name": "Limau Manis"
-        },
-        {
-            "code": "1213122012",
-            "name": "Ranjo Batu"
-        },
-        {
-            "code": "1213122013",
-            "name": "Sibinail"
-        },
-        {
-            "code": "1213122015",
-            "name": "Simpang Mandepo"
-        },
-        {
-            "code": "1213122016",
-            "name": "Tamiang Mudo"
-        },
-        {
-            "code": "1213122017",
-            "name": "Tanjung Alai"
-        },
-        {
-            "code": "1213122020",
-            "name": "Tanjung Medan"
-        },
-        {
-            "code": "1213122021",
-            "name": "Muara Kumpulan"
-        },
-        {
-            "code": "1213122022",
-            "name": "Aek Botung"
-        },
-        {
-            "code": "1213122023",
-            "name": "Koto Boru"
-        },
-        {
-            "code": "1213122024",
-            "name": "Tanjung Larangan"
-        }
-    ],
-    "121313": [
-        {
-            "code": "1213131017",
-            "name": "Muara Soma"
-        },
-        {
-            "code": "1213132001",
-            "name": "Aek Guo"
-        },
-        {
-            "code": "1213132002",
-            "name": "Aek Holbung"
-        },
-        {
-            "code": "1213132003",
-            "name": "Aek Manggis"
-        },
-        {
-            "code": "1213132004",
-            "name": "Aek Nabara"
-        },
-        {
-            "code": "1213132005",
-            "name": "Aek Nangali"
-        },
-        {
-            "code": "1213132006",
-            "name": "Ampung Julu"
-        },
-        {
-            "code": "1213132007",
-            "name": "Ampung Padang"
-        },
-        {
-            "code": "1213132008",
-            "name": "Ampung Siala"
-        },
-        {
-            "code": "1213132009",
-            "name": "Bangkelang"
-        },
-        {
-            "code": "1213132010",
-            "name": "Banjar Malayu"
-        },
-        {
-            "code": "1213132011",
-            "name": "Batu Madinding"
-        },
-        {
-            "code": "1213132012",
-            "name": "Bulu Soma"
-        },
-        {
-            "code": "1213132013",
-            "name": "Guo Batu"
-        },
-        {
-            "code": "1213132014",
-            "name": "Hadangkahan"
-        },
-        {
-            "code": "1213132015",
-            "name": "Hatupangan"
-        },
-        {
-            "code": "1213132016",
-            "name": "Muara Parlampungan"
-        },
-        {
-            "code": "1213132018",
-            "name": "Rantobi"
-        },
-        {
-            "code": "1213132019",
-            "name": "Rao Rao"
-        },
-        {
-            "code": "1213132020",
-            "name": "Simanguntong"
-        },
-        {
-            "code": "1213132021",
-            "name": "Sipogu"
-        },
-        {
-            "code": "1213132022",
-            "name": "Sopo Tinjak"
-        },
-        {
-            "code": "1213132023",
-            "name": "Tarlola"
-        },
-        {
-            "code": "1213132024",
-            "name": "Tombang Kaluang"
-        },
-        {
-            "code": "1213132025",
-            "name": "Huta Lobu"
-        },
-        {
-            "code": "1213132026",
-            "name": "Lubuk Samboa"
-        },
-        {
-            "code": "1213132027",
-            "name": "Jambur Baru"
-        },
-        {
-            "code": "1213132028",
-            "name": "Aek Baru Jae"
-        },
-        {
-            "code": "1213132029",
-            "name": "Aek Baru Julu"
-        },
-        {
-            "code": "1213132030",
-            "name": "Lubuk Bondar Panjang"
-        },
-        {
-            "code": "1213132031",
-            "name": "Tor Naincat"
-        }
-    ],
-    "121314": [
-        {
-            "code": "1213141024",
-            "name": "Simpang Gambir"
-        },
-        {
-            "code": "1213141028",
-            "name": "Tapus"
-        },
-        {
-            "code": "1213142001",
-            "name": "Aek Garingging"
-        },
-        {
-            "code": "1213142002",
-            "name": "Aek Manyuruk"
-        },
-        {
-            "code": "1213142003",
-            "name": "Bandar Limabung"
-        },
-        {
-            "code": "1213142006",
-            "name": "Lancat"
-        },
-        {
-            "code": "1213142010",
-            "name": "Kampung Baru"
-        },
-        {
-            "code": "1213142011",
-            "name": "Lobung"
-        },
-        {
-            "code": "1213142014",
-            "name": "Pangkalan"
-        },
-        {
-            "code": "1213142015",
-            "name": "Perk. Simpang Gambir"
-        },
-        {
-            "code": "1213142019",
-            "name": "Sikumbu"
-        },
-        {
-            "code": "1213142021",
-            "name": "Simpang Bajole"
-        },
-        {
-            "code": "1213142022",
-            "name": "Simpang Duku"
-        },
-        {
-            "code": "1213142023",
-            "name": "Simpang Durian"
-        },
-        {
-            "code": "1213142025",
-            "name": "Simpang Koje"
-        },
-        {
-            "code": "1213142029",
-            "name": "Dalan Lidang"
-        },
-        {
-            "code": "1213142031",
-            "name": "Bonca Bayuon"
-        },
-        {
-            "code": "1213142034",
-            "name": "Perbatasan"
-        },
-        {
-            "code": "1213142035",
-            "name": "Tangsi Atas"
-        }
-    ],
-    "121315": [
-        {
-            "code": "1213151011",
-            "name": "Pasar Baru Batahan"
-        },
-        {
-            "code": "1213152001",
-            "name": "Banjar Aur"
-        },
-        {
-            "code": "1213152003",
-            "name": "Batahan I"
-        },
-        {
-            "code": "1213152004",
-            "name": "Batu Sondat"
-        },
-        {
-            "code": "1213152005",
-            "name": "Bintungan Bejangkar"
-        },
-        {
-            "code": "1213152007",
-            "name": "Kampung Kapas"
-        },
-        {
-            "code": "1213152008",
-            "name": "Kuala Batahan"
-        },
-        {
-            "code": "1213152009",
-            "name": "Kubangan Tompek"
-        },
-        {
-            "code": "1213152010",
-            "name": "Muara Pertemuan"
-        },
-        {
-            "code": "1213152012",
-            "name": "Pasar Batahan"
-        },
-        {
-            "code": "1213152013",
-            "name": "Pulau Tamang"
-        },
-        {
-            "code": "1213152014",
-            "name": "Sari Kenanga Batahan"
-        },
-        {
-            "code": "1213152019",
-            "name": "Batahan II"
-        },
-        {
-            "code": "1213152020",
-            "name": "Batahan III"
-        },
-        {
-            "code": "1213152021",
-            "name": "Batahan IV"
-        },
-        {
-            "code": "1213152022",
-            "name": "Sinunukan VI"
-        },
-        {
-            "code": "1213152023",
-            "name": "Kampung Kapas I"
-        },
-        {
-            "code": "1213152024",
-            "name": "Kubangan Pandan Sari"
-        }
-    ],
-    "121316": [
-        {
-            "code": "1213161008",
-            "name": "Pasar II Natal"
-        },
-        {
-            "code": "1213161025",
-            "name": "Pasar I Natal"
-        },
-        {
-            "code": "1213162001",
-            "name": "Balimbing"
-        },
-        {
-            "code": "1213162002",
-            "name": "Bintuas"
-        },
-        {
-            "code": "1213162003",
-            "name": "Bonda Kase"
-        },
-        {
-            "code": "1213162004",
-            "name": "Buburan"
-        },
-        {
-            "code": "1213162005",
-            "name": "Kampung Sawah"
-        },
-        {
-            "code": "1213162006",
-            "name": "Panggautan"
-        },
-        {
-            "code": "1213162007",
-            "name": "Pardamean Baru"
-        },
-        {
-            "code": "1213162009",
-            "name": "Pasar III Natal"
-        },
-        {
-            "code": "1213162010",
-            "name": "Pasar V Natal"
-        },
-        {
-            "code": "1213162011",
-            "name": "Patiluban Hilir"
-        },
-        {
-            "code": "1213162012",
-            "name": "Patiluban Mudik"
-        },
-        {
-            "code": "1213162013",
-            "name": "Perkebunan Patiluban"
-        },
-        {
-            "code": "1213162014",
-            "name": "Rukun Jaya"
-        },
-        {
-            "code": "1213162015",
-            "name": "Setia Karya"
-        },
-        {
-            "code": "1213162016",
-            "name": "Sikara Kara"
-        },
-        {
-            "code": "1213162017",
-            "name": "Sikara Kara I"
-        },
-        {
-            "code": "1213162018",
-            "name": "Sikara Kara II"
-        },
-        {
-            "code": "1213162019",
-            "name": "Sikara Kara III"
-        },
-        {
-            "code": "1213162020",
-            "name": "Sikara Kara IV"
-        },
-        {
-            "code": "1213162021",
-            "name": "Sundutan Tigo"
-        },
-        {
-            "code": "1213162022",
-            "name": "Taluk"
-        },
-        {
-            "code": "1213162023",
-            "name": "Tegal Sari"
-        },
-        {
-            "code": "1213162024",
-            "name": "Tunas Karya"
-        },
-        {
-            "code": "1213162026",
-            "name": "Pasar VI Natal"
-        },
-        {
-            "code": "1213162027",
-            "name": "Sinunukan V"
-        },
-        {
-            "code": "1213162028",
-            "name": "Suka Maju"
-        },
-        {
-            "code": "1213162029",
-            "name": "Sasaran"
-        },
-        {
-            "code": "1213162030",
-            "name": "Kun-Kun"
-        }
-    ],
-    "121317": [
-        {
-            "code": "1213172001",
-            "name": "Batu Mundom"
-        },
-        {
-            "code": "1213172002",
-            "name": "Hutaimbaru"
-        },
-        {
-            "code": "1213172003",
-            "name": "Lubuk Kapundung"
-        },
-        {
-            "code": "1213172004",
-            "name": "Manuncang"
-        },
-        {
-            "code": "1213172005",
-            "name": "Panunggulan"
-        },
-        {
-            "code": "1213172006",
-            "name": "Pasar Singkuang I"
-        },
-        {
-            "code": "1213172007",
-            "name": "Pasar Singkuang II"
-        },
-        {
-            "code": "1213172008",
-            "name": "Rantau Panjang"
-        },
-        {
-            "code": "1213172009",
-            "name": "Sikapas"
-        },
-        {
-            "code": "1213172010",
-            "name": "Tabuyung"
-        },
-        {
-            "code": "1213172011",
-            "name": "Tagilang Julu"
-        },
-        {
-            "code": "1213172012",
-            "name": "Sali Baru"
-        },
-        {
-            "code": "1213172013",
-            "name": "Lubuk Kapundung II"
-        },
-        {
-            "code": "1213172014",
-            "name": "Suka Makmur"
-        }
-    ],
-    "121318": [
-        {
-            "code": "1213182001",
-            "name": "Manisak"
-        },
-        {
-            "code": "1213182002",
-            "name": "Simpang Talap"
-        },
-        {
-            "code": "1213182003",
-            "name": "Sampuran"
-        },
-        {
-            "code": "1213182004",
-            "name": "Tandikek"
-        },
-        {
-            "code": "1213182005",
-            "name": "Gonting"
-        },
-        {
-            "code": "1213182006",
-            "name": "Bangun Saroha"
-        },
-        {
-            "code": "1213182007",
-            "name": "Huta Baringin"
-        },
-        {
-            "code": "1213182008",
-            "name": "Muara Bangko"
-        },
-        {
-            "code": "1213182009",
-            "name": "Ranto Nalinjang"
-        },
-        {
-            "code": "1213182010",
-            "name": "Banjar Maga"
-        },
-        {
-            "code": "1213182011",
-            "name": "Huta Raja"
-        },
-        {
-            "code": "1213182012",
-            "name": "Simaninggir"
-        },
-        {
-            "code": "1213182013",
-            "name": "Ranto Panjang"
-        },
-        {
-            "code": "1213182014",
-            "name": "Huta Nauli"
-        },
-        {
-            "code": "1213182015",
-            "name": "Lubuk Kancah"
-        },
-        {
-            "code": "1213182016",
-            "name": "Dua Sepakat"
-        },
-        {
-            "code": "1213182017",
-            "name": "Gunung Godang"
-        },
-        {
-            "code": "1213182018",
-            "name": "Padang Silojongan"
-        }
-    ],
-    "121319": [
-        {
-            "code": "1213192001",
-            "name": "Bangun Sejati"
-        },
-        {
-            "code": "1213192002",
-            "name": "Hutarimbaru"
-        },
-        {
-            "code": "1213192003",
-            "name": "Pasar Huta Bargot"
-        },
-        {
-            "code": "1213192004",
-            "name": "Huta Bargot Lombang"
-        },
-        {
-            "code": "1213192005",
-            "name": "Huta Bargot Dolok"
-        },
-        {
-            "code": "1213192006",
-            "name": "Huta Bargot Setia"
-        },
-        {
-            "code": "1213192007",
-            "name": "Huta Bargot Nauli"
-        },
-        {
-            "code": "1213192008",
-            "name": "Mondan"
-        },
-        {
-            "code": "1213192009",
-            "name": "Sayur Maincat"
-        },
-        {
-            "code": "1213192010",
-            "name": "Kumpulan Setia"
-        },
-        {
-            "code": "1213192011",
-            "name": "Simalagi"
-        },
-        {
-            "code": "1213192012",
-            "name": "Saba Padang"
-        },
-        {
-            "code": "1213192013",
-            "name": "Binanga"
-        },
-        {
-            "code": "1213192014",
-            "name": "Huta Naingkan"
-        }
-    ],
-    "121320": [
-        {
-            "code": "1213202001",
-            "name": "Huta Lombang"
-        },
-        {
-            "code": "1213202002",
-            "name": "Huta Baru"
-        },
-        {
-            "code": "1213202003",
-            "name": "Handel"
-        },
-        {
-            "code": "1213202004",
-            "name": "Hutatinggi"
-        },
-        {
-            "code": "1213202005",
-            "name": "Hutanamale"
-        },
-        {
-            "code": "1213202006",
-            "name": "Hutabaringin Julu"
-        },
-        {
-            "code": "1213202007",
-            "name": "Sibanggor Jae"
-        },
-        {
-            "code": "1213202008",
-            "name": "Sibanggor Tonga"
-        },
-        {
-            "code": "1213202009",
-            "name": "Sibanggor Julu"
-        },
-        {
-            "code": "1213202010",
-            "name": "Purba Julu"
-        },
-        {
-            "code": "1213202011",
-            "name": "Huta Baringin"
-        }
-    ],
-    "121321": [
-        {
-            "code": "1213212001",
-            "name": "Pakantan Dolok"
-        },
-        {
-            "code": "1213212002",
-            "name": "Pakantan Lombang"
-        },
-        {
-            "code": "1213212003",
-            "name": "Huta Gambir"
-        },
-        {
-            "code": "1213212004",
-            "name": "Huta Lancat"
-        },
-        {
-            "code": "1213212005",
-            "name": "Huta Julu"
-        },
-        {
-            "code": "1213212006",
-            "name": "Huta Toras"
-        },
-        {
-            "code": "1213212007",
-            "name": "Huta Padang"
-        },
-        {
-            "code": "1213212008",
-            "name": "Silogun"
-        }
-    ],
-    "121322": [
-        {
-            "code": "1213222001",
-            "name": "Sinunukan I"
-        },
-        {
-            "code": "1213222002",
-            "name": "Sinunukan II"
-        },
-        {
-            "code": "1213222003",
-            "name": "Sinunukan III"
-        },
-        {
-            "code": "1213222004",
-            "name": "Sinunukan IV"
-        },
-        {
-            "code": "1213222005",
-            "name": "Bintungan Bejangkar Baru"
-        },
-        {
-            "code": "1213222006",
-            "name": "Banjar Aur Utara"
-        },
-        {
-            "code": "1213222007",
-            "name": "Kampung Kapas II"
-        },
-        {
-            "code": "1213222008",
-            "name": "Airapa"
-        },
-        {
-            "code": "1213222009",
-            "name": "Sido Makmur"
-        },
-        {
-            "code": "1213222010",
-            "name": "Wido Daren"
-        },
-        {
-            "code": "1213222011",
-            "name": "Wono Sari"
-        },
-        {
-            "code": "1213222012",
-            "name": "Suka Damai"
-        },
-        {
-            "code": "1213222013",
-            "name": "Pasir Putih"
-        },
-        {
-            "code": "1213222014",
-            "name": "Sinunukan I Central"
-        }
-    ],
-    "121323": [
-        {
-            "code": "1213232001",
-            "name": "Tambiski"
-        },
-        {
-            "code": "1213232002",
-            "name": "Tarutung Panjang"
-        },
-        {
-            "code": "1213232003",
-            "name": "Humbang I"
-        },
-        {
-            "code": "1213232004",
-            "name": "Banua Rakyat"
-        },
-        {
-            "code": "1213232005",
-            "name": "Sayur Matua"
-        },
-        {
-            "code": "1213232006",
-            "name": "Banua Simanosor"
-        },
-        {
-            "code": "1213232007",
-            "name": "Tambiski Nauli"
-        }
-    ]
+  "121301": [
+    {
+      "code": "1213011011",
+      "name": "Kota Siantar"
+    },
+    {
+      "code": "1213011014",
+      "name": "Kayu Jati"
+    },
+    {
+      "code": "1213011022",
+      "name": "Pasar Hilir"
+    },
+    {
+      "code": "1213011023",
+      "name": "Pidoli Dolok"
+    },
+    {
+      "code": "1213011031",
+      "name": "Panyabungan II"
+    },
+    {
+      "code": "1213011032",
+      "name": "Panyabungan III"
+    },
+    {
+      "code": "1213011033",
+      "name": "Panyabungan I"
+    },
+    {
+      "code": "1213011035",
+      "name": "Sipolu-Polu"
+    },
+    {
+      "code": "1213011036",
+      "name": "Dalan Lidang"
+    },
+    {
+      "code": "1213012001",
+      "name": "Adian Jior"
+    },
+    {
+      "code": "1213012002",
+      "name": "Aek Banir"
+    },
+    {
+      "code": "1213012003",
+      "name": "Aek Mata"
+    },
+    {
+      "code": "1213012004",
+      "name": "Darussalam"
+    },
+    {
+      "code": "1213012005",
+      "name": "Gunung Barani"
+    },
+    {
+      "code": "1213012006",
+      "name": "Gunung Manaon"
+    },
+    {
+      "code": "1213012007",
+      "name": "Gunung Tua Jae"
+    },
+    {
+      "code": "1213012008",
+      "name": "Gunung Tua Julu"
+    },
+    {
+      "code": "1213012009",
+      "name": "Gunung Tua Tonga"
+    },
+    {
+      "code": "1213012010",
+      "name": "Huta Lombang Lubis"
+    },
+    {
+      "code": "1213012012",
+      "name": "Ipar Bondar"
+    },
+    {
+      "code": "1213012013",
+      "name": "Kampung Padang"
+    },
+    {
+      "code": "1213012015",
+      "name": "Lumban Pasir"
+    },
+    {
+      "code": "1213012016",
+      "name": "Manyabar"
+    },
+    {
+      "code": "1213012017",
+      "name": "Pagaran Tonga"
+    },
+    {
+      "code": "1213012018",
+      "name": "Panyabungan Jae"
+    },
+    {
+      "code": "1213012019",
+      "name": "Panyabungan Julu"
+    },
+    {
+      "code": "1213012020",
+      "name": "Panyabungan Tonga"
+    },
+    {
+      "code": "1213012021",
+      "name": "Perbangunan"
+    },
+    {
+      "code": "1213012024",
+      "name": "Pidoli Lombang"
+    },
+    {
+      "code": "1213012025",
+      "name": "Salam Bue"
+    },
+    {
+      "code": "1213012026",
+      "name": "Sarak Matua"
+    },
+    {
+      "code": "1213012027",
+      "name": "Sigalapang Julu"
+    },
+    {
+      "code": "1213012028",
+      "name": "Siobon Julu"
+    },
+    {
+      "code": "1213012029",
+      "name": "Sipapaga"
+    },
+    {
+      "code": "1213012030",
+      "name": "Sopobatu"
+    },
+    {
+      "code": "1213012037",
+      "name": "Siobon Jae"
+    },
+    {
+      "code": "1213012038",
+      "name": "Panggorengan"
+    },
+    {
+      "code": "1213012039",
+      "name": "Saba Jambu"
+    },
+    {
+      "code": "1213012040",
+      "name": "Manyabar Jae"
+    }
+  ],
+  "121302": [
+    {
+      "code": "1213021012",
+      "name": "Mompang Jae"
+    },
+    {
+      "code": "1213022002",
+      "name": "Beringin Jaya"
+    },
+    {
+      "code": "1213022007",
+      "name": "Huta damai"
+    },
+    {
+      "code": "1213022008",
+      "name": "Jambur Padang Matinggi"
+    },
+    {
+      "code": "1213022009",
+      "name": "Kampung Baru"
+    },
+    {
+      "code": "1213022010",
+      "name": "Mompang Julu"
+    },
+    {
+      "code": "1213022014",
+      "name": "Rumbio"
+    },
+    {
+      "code": "1213022015",
+      "name": "Suka Ramai"
+    },
+    {
+      "code": "1213022017",
+      "name": "Sopo Sorik"
+    },
+    {
+      "code": "1213022018",
+      "name": "Simanondong"
+    },
+    {
+      "code": "1213022019",
+      "name": "Torbanua Raja"
+    },
+    {
+      "code": "1213022020",
+      "name": "Tanjung Mompang"
+    }
+  ],
+  "121303": [
+    {
+      "code": "1213031002",
+      "name": "Gunung Baringin"
+    },
+    {
+      "code": "1213032001",
+      "name": "Aek Nabara"
+    },
+    {
+      "code": "1213032003",
+      "name": "Hutaimbaru"
+    },
+    {
+      "code": "1213032004",
+      "name": "Huta Bangun"
+    },
+    {
+      "code": "1213032005",
+      "name": "Huta Tinggi"
+    },
+    {
+      "code": "1213032006",
+      "name": "Pagur"
+    },
+    {
+      "code": "1213032007",
+      "name": "Pardomuan"
+    },
+    {
+      "code": "1213032008",
+      "name": "Parmompang"
+    },
+    {
+      "code": "1213032009",
+      "name": "Ranto Natas"
+    },
+    {
+      "code": "1213032010",
+      "name": "Sirangkap"
+    },
+    {
+      "code": "1213032011",
+      "name": "Tanjung"
+    },
+    {
+      "code": "1213032012",
+      "name": "Tebing Tinggi"
+    },
+    {
+      "code": "1213032013",
+      "name": "Tanjung Julu"
+    },
+    {
+      "code": "1213032014",
+      "name": "Banjar Lancat"
+    },
+    {
+      "code": "1213032015",
+      "name": "Padang Laru"
+    }
+  ],
+  "121304": [
+    {
+      "code": "1213041009",
+      "name": "Tano Bato"
+    },
+    {
+      "code": "1213042001",
+      "name": "Aek Ngali"
+    },
+    {
+      "code": "1213042002",
+      "name": "Hutarimbaru"
+    },
+    {
+      "code": "1213042003",
+      "name": "Hayuraja"
+    },
+    {
+      "code": "1213042004",
+      "name": "Huta Julu"
+    },
+    {
+      "code": "1213042005",
+      "name": "Kayu Laut"
+    },
+    {
+      "code": "1213042006",
+      "name": "Lumban Dolok"
+    },
+    {
+      "code": "1213042007",
+      "name": "Roburan Dolok"
+    },
+    {
+      "code": "1213042008",
+      "name": "Roburan Lombang"
+    },
+    {
+      "code": "1213042010",
+      "name": "Huta Raja"
+    },
+    {
+      "code": "1213042011",
+      "name": "Pagaran Gala-Gala"
+    }
+  ],
+  "121305": [
+    {
+      "code": "1213051006",
+      "name": "Longat"
+    },
+    {
+      "code": "1213052001",
+      "name": "Barbaran"
+    },
+    {
+      "code": "1213052002",
+      "name": "Barbaran Jae"
+    },
+    {
+      "code": "1213052003",
+      "name": "Batang Gadis"
+    },
+    {
+      "code": "1213052004",
+      "name": "Huta Baringin"
+    },
+    {
+      "code": "1213052005",
+      "name": "Huta Tonga BB"
+    },
+    {
+      "code": "1213052007",
+      "name": "Runding"
+    },
+    {
+      "code": "1213052008",
+      "name": "Sirambas"
+    },
+    {
+      "code": "1213052009",
+      "name": "Saba Jior"
+    },
+    {
+      "code": "1213052010",
+      "name": "Batang Gadis Jae"
+    }
+  ],
+  "121306": [
+    {
+      "code": "1213061014",
+      "name": "Siabu"
+    },
+    {
+      "code": "1213061023",
+      "name": "Simangambat"
+    },
+    {
+      "code": "1213062001",
+      "name": "Aek Mual"
+    },
+    {
+      "code": "1213062002",
+      "name": "Bonan Dolok"
+    },
+    {
+      "code": "1213062003",
+      "name": "Huta Raja"
+    },
+    {
+      "code": "1213062004",
+      "name": "Huta Puli"
+    },
+    {
+      "code": "1213062005",
+      "name": "Huta Baringin"
+    },
+    {
+      "code": "1213062006",
+      "name": "Huta Godang Muda"
+    },
+    {
+      "code": "1213062007",
+      "name": "Huraba I"
+    },
+    {
+      "code": "1213062008",
+      "name": "Huraba II"
+    },
+    {
+      "code": "1213062009",
+      "name": "Lumban Pinasa"
+    },
+    {
+      "code": "1213062010",
+      "name": "Lumban Dolok"
+    },
+    {
+      "code": "1213062011",
+      "name": "Muara Btg. Angkola"
+    },
+    {
+      "code": "1213062012",
+      "name": "Pintu Padang Jae"
+    },
+    {
+      "code": "1213062013",
+      "name": "Pintu Padang Julu"
+    },
+    {
+      "code": "1213062015",
+      "name": "Sibaruang"
+    },
+    {
+      "code": "1213062016",
+      "name": "Sihepeng"
+    },
+    {
+      "code": "1213062017",
+      "name": "Simaninggir"
+    },
+    {
+      "code": "1213062018",
+      "name": "Sinonoan"
+    },
+    {
+      "code": "1213062019",
+      "name": "Tangga Bosi II"
+    },
+    {
+      "code": "1213062020",
+      "name": "Tanjung Sialang"
+    },
+    {
+      "code": "1213062021",
+      "name": "Tangga Bosi I"
+    },
+    {
+      "code": "1213062022",
+      "name": "Tangga Bosi III"
+    },
+    {
+      "code": "1213062024",
+      "name": "Sihepeng Sada"
+    },
+    {
+      "code": "1213062025",
+      "name": "Sihepeng Dua"
+    },
+    {
+      "code": "1213062026",
+      "name": "Sihepeng Tolu"
+    },
+    {
+      "code": "1213062027",
+      "name": "Sihepeng Opat"
+    },
+    {
+      "code": "1213062028",
+      "name": "Sihepeng Lima"
+    }
+  ],
+  "121307": [
+    {
+      "code": "1213072001",
+      "name": "Bange"
+    },
+    {
+      "code": "1213072003",
+      "name": "Huta Bangun"
+    },
+    {
+      "code": "1213072005",
+      "name": "Janji Matogu"
+    },
+    {
+      "code": "1213072006",
+      "name": "Malintang Jae"
+    },
+    {
+      "code": "1213072007",
+      "name": "Malintang Julu"
+    },
+    {
+      "code": "1213072008",
+      "name": "Pasar Baru Malintang"
+    },
+    {
+      "code": "1213072010",
+      "name": "Sidojadi"
+    },
+    {
+      "code": "1213072013",
+      "name": "Lambou Darul Ihsan"
+    },
+    {
+      "code": "1213072014",
+      "name": "Huta Bangun Jae"
+    },
+    {
+      "code": "1213072015",
+      "name": "Bange Nauli"
+    },
+    {
+      "code": "1213072016",
+      "name": "Malintang"
+    }
+  ],
+  "121308": [
+    {
+      "code": "1213081032",
+      "name": "Tamiang"
+    },
+    {
+      "code": "1213081036",
+      "name": "Pasar Kotanopan"
+    },
+    {
+      "code": "1213082001",
+      "name": "Batahan"
+    },
+    {
+      "code": "1213082002",
+      "name": "Botung"
+    },
+    {
+      "code": "1213082003",
+      "name": "Gading Bain"
+    },
+    {
+      "code": "1213082004",
+      "name": "Gunung Tua MS"
+    },
+    {
+      "code": "1213082005",
+      "name": "Gunung Tua SM"
+    },
+    {
+      "code": "1213082006",
+      "name": "Hutapuli"
+    },
+    {
+      "code": "1213082007",
+      "name": "Huta Padang MS"
+    },
+    {
+      "code": "1213082008",
+      "name": "Hutarimbaru SM"
+    },
+    {
+      "code": "1213082009",
+      "name": "Huta Baringin TB"
+    },
+    {
+      "code": "1213082010",
+      "name": "Huta Pungkut Jae"
+    },
+    {
+      "code": "1213082011",
+      "name": "Huta Pungkut Tonga"
+    },
+    {
+      "code": "1213082012",
+      "name": "Huta Pungkut Julu"
+    },
+    {
+      "code": "1213082013",
+      "name": "Huta Dangka"
+    },
+    {
+      "code": "1213082014",
+      "name": "Muara Potan"
+    },
+    {
+      "code": "1213082015",
+      "name": "Muara Siambak"
+    },
+    {
+      "code": "1213082016",
+      "name": "Manambin"
+    },
+    {
+      "code": "1213082017",
+      "name": "Muara Pungkut"
+    },
+    {
+      "code": "1213082018",
+      "name": "Muara Botung"
+    },
+    {
+      "code": "1213082019",
+      "name": "Pagar Gunung"
+    },
+    {
+      "code": "1213082020",
+      "name": "Padang Bulan"
+    },
+    {
+      "code": "1213082021",
+      "name": "Patialo"
+    },
+    {
+      "code": "1213082022",
+      "name": "Saba Dolok"
+    },
+    {
+      "code": "1213082023",
+      "name": "Singengu Jae"
+    },
+    {
+      "code": "1213082024",
+      "name": "Singengu Julu"
+    },
+    {
+      "code": "1213082025",
+      "name": "Sayur Maincat"
+    },
+    {
+      "code": "1213082026",
+      "name": "Simpang Tolang Jae"
+    },
+    {
+      "code": "1213082027",
+      "name": "Simpang Tolang Julu"
+    },
+    {
+      "code": "1213082028",
+      "name": "Sibio Bio"
+    },
+    {
+      "code": "1213082029",
+      "name": "Sopo Sorik"
+    },
+    {
+      "code": "1213082030",
+      "name": "Simandolam"
+    },
+    {
+      "code": "1213082031",
+      "name": "Tombang Bustak"
+    },
+    {
+      "code": "1213082033",
+      "name": "Tobang"
+    },
+    {
+      "code": "1213082034",
+      "name": "Ujung Marisi"
+    },
+    {
+      "code": "1213082035",
+      "name": "Usor Tolang"
+    }
+  ],
+  "121309": [
+    {
+      "code": "1213091008",
+      "name": "Pasar Maga"
+    },
+    {
+      "code": "1213092001",
+      "name": "Aek Marian MG"
+    },
+    {
+      "code": "1213092002",
+      "name": "Bangun Purba"
+    },
+    {
+      "code": "1213092003",
+      "name": "Maga Lombang"
+    },
+    {
+      "code": "1213092004",
+      "name": "Maga Dolok"
+    },
+    {
+      "code": "1213092005",
+      "name": "Purba Baru"
+    },
+    {
+      "code": "1213092006",
+      "name": "Purba Lamo"
+    },
+    {
+      "code": "1213092007",
+      "name": "Pangkat"
+    },
+    {
+      "code": "1213092009",
+      "name": "Siantona"
+    }
+  ],
+  "121310": [
+    {
+      "code": "1213101010",
+      "name": "Laru Lombang"
+    },
+    {
+      "code": "1213102001",
+      "name": "Angin Barat"
+    },
+    {
+      "code": "1213102006",
+      "name": "Huta Tonga AB"
+    },
+    {
+      "code": "1213102007",
+      "name": "Laru Baringin"
+    },
+    {
+      "code": "1213102008",
+      "name": "Laru Bolak"
+    },
+    {
+      "code": "1213102009",
+      "name": "Laru Dolok"
+    },
+    {
+      "code": "1213102011",
+      "name": "Lumban Pasir"
+    },
+    {
+      "code": "1213102012",
+      "name": "Muara Mais"
+    },
+    {
+      "code": "1213102013",
+      "name": "Muara Mais Jambur"
+    },
+    {
+      "code": "1213102014",
+      "name": "Padang Sanggar"
+    },
+    {
+      "code": "1213102015",
+      "name": "Panjaringan"
+    },
+    {
+      "code": "1213102016",
+      "name": "Pasar Laru"
+    },
+    {
+      "code": "1213102017",
+      "name": "Pastap"
+    },
+    {
+      "code": "1213102018",
+      "name": "Pastap Julu"
+    },
+    {
+      "code": "1213102020",
+      "name": "Rao Rao Dolok"
+    },
+    {
+      "code": "1213102021",
+      "name": "Rao Rao Lombang"
+    },
+    {
+      "code": "1213102025",
+      "name": "Simangambat TB"
+    },
+    {
+      "code": "1213102026",
+      "name": "Tambangan Jae"
+    },
+    {
+      "code": "1213102027",
+      "name": "Tambangan Pasoman"
+    },
+    {
+      "code": "1213102028",
+      "name": "Tambangan Tonga"
+    }
+  ],
+  "121311": [
+    {
+      "code": "1213111003",
+      "name": "Huta Godang"
+    },
+    {
+      "code": "1213112001",
+      "name": "Alahan Kae"
+    },
+    {
+      "code": "1213112002",
+      "name": "Habincaran"
+    },
+    {
+      "code": "1213112004",
+      "name": "Huta Padang UP"
+    },
+    {
+      "code": "1213112005",
+      "name": "Hutaimbaru UP"
+    },
+    {
+      "code": "1213112006",
+      "name": "Muara Saladi"
+    },
+    {
+      "code": "1213112007",
+      "name": "Patahajang"
+    },
+    {
+      "code": "1213112008",
+      "name": "Simpang Banyak Jae"
+    },
+    {
+      "code": "1213112009",
+      "name": "Simpang Banyak Julu"
+    },
+    {
+      "code": "1213112010",
+      "name": "Simpang Duhu Dolok"
+    },
+    {
+      "code": "1213112011",
+      "name": "Simpang Duhu Lombang"
+    },
+    {
+      "code": "1213112012",
+      "name": "Simpang Pining"
+    },
+    {
+      "code": "1213112013",
+      "name": "Tolang"
+    }
+  ],
+  "121312": [
+    {
+      "code": "1213121019",
+      "name": "Pasar Muara Sipongi"
+    },
+    {
+      "code": "1213122001",
+      "name": "Bandar Panjang"
+    },
+    {
+      "code": "1213122002",
+      "name": "Bandar Panjang Tuo"
+    },
+    {
+      "code": "1213122007",
+      "name": "Kampung Pinang"
+    },
+    {
+      "code": "1213122008",
+      "name": "Koto Baringin"
+    },
+    {
+      "code": "1213122009",
+      "name": "Limau Manis"
+    },
+    {
+      "code": "1213122012",
+      "name": "Ranjo Batu"
+    },
+    {
+      "code": "1213122013",
+      "name": "Sibinail"
+    },
+    {
+      "code": "1213122015",
+      "name": "Simpang Mandepo"
+    },
+    {
+      "code": "1213122016",
+      "name": "Tamiang Mudo"
+    },
+    {
+      "code": "1213122017",
+      "name": "Tanjung Alai"
+    },
+    {
+      "code": "1213122020",
+      "name": "Tanjung Medan"
+    },
+    {
+      "code": "1213122021",
+      "name": "Muara Kumpulan"
+    },
+    {
+      "code": "1213122022",
+      "name": "Aek Botung"
+    },
+    {
+      "code": "1213122023",
+      "name": "Koto Boru"
+    },
+    {
+      "code": "1213122024",
+      "name": "Tanjung Larangan"
+    }
+  ],
+  "121313": [
+    {
+      "code": "1213131017",
+      "name": "Muara Soma"
+    },
+    {
+      "code": "1213132001",
+      "name": "Aek Guo"
+    },
+    {
+      "code": "1213132002",
+      "name": "Aek Holbung"
+    },
+    {
+      "code": "1213132003",
+      "name": "Aek Manggis"
+    },
+    {
+      "code": "1213132004",
+      "name": "Aek Nabara"
+    },
+    {
+      "code": "1213132005",
+      "name": "Aek Nangali"
+    },
+    {
+      "code": "1213132006",
+      "name": "Ampung Julu"
+    },
+    {
+      "code": "1213132007",
+      "name": "Ampung Padang"
+    },
+    {
+      "code": "1213132008",
+      "name": "Ampung Siala"
+    },
+    {
+      "code": "1213132009",
+      "name": "Bangkelang"
+    },
+    {
+      "code": "1213132010",
+      "name": "Banjar Malayu"
+    },
+    {
+      "code": "1213132011",
+      "name": "Batu Madinding"
+    },
+    {
+      "code": "1213132012",
+      "name": "Bulu Soma"
+    },
+    {
+      "code": "1213132013",
+      "name": "Guo Batu"
+    },
+    {
+      "code": "1213132014",
+      "name": "Hadangkahan"
+    },
+    {
+      "code": "1213132015",
+      "name": "Hatupangan"
+    },
+    {
+      "code": "1213132016",
+      "name": "Muara Parlampungan"
+    },
+    {
+      "code": "1213132018",
+      "name": "Rantobi"
+    },
+    {
+      "code": "1213132019",
+      "name": "Rao Rao"
+    },
+    {
+      "code": "1213132020",
+      "name": "Simanguntong"
+    },
+    {
+      "code": "1213132021",
+      "name": "Sipogu"
+    },
+    {
+      "code": "1213132022",
+      "name": "Sopo Tinjak"
+    },
+    {
+      "code": "1213132023",
+      "name": "Tarlola"
+    },
+    {
+      "code": "1213132024",
+      "name": "Tombang Kaluang"
+    },
+    {
+      "code": "1213132025",
+      "name": "Huta Lobu"
+    },
+    {
+      "code": "1213132026",
+      "name": "Lubuk Samboa"
+    },
+    {
+      "code": "1213132027",
+      "name": "Jambur Baru"
+    },
+    {
+      "code": "1213132028",
+      "name": "Aek Baru Jae"
+    },
+    {
+      "code": "1213132029",
+      "name": "Aek Baru Julu"
+    },
+    {
+      "code": "1213132030",
+      "name": "Lubuk Bondar Panjang"
+    },
+    {
+      "code": "1213132031",
+      "name": "Tor Naincat"
+    }
+  ],
+  "121314": [
+    {
+      "code": "1213141024",
+      "name": "Simpang Gambir"
+    },
+    {
+      "code": "1213141028",
+      "name": "Tapus"
+    },
+    {
+      "code": "1213142001",
+      "name": "Aek Garingging"
+    },
+    {
+      "code": "1213142002",
+      "name": "Aek Manyuruk"
+    },
+    {
+      "code": "1213142003",
+      "name": "Bandar Limabung"
+    },
+    {
+      "code": "1213142006",
+      "name": "Lancat"
+    },
+    {
+      "code": "1213142010",
+      "name": "Kampung Baru"
+    },
+    {
+      "code": "1213142011",
+      "name": "Lobung"
+    },
+    {
+      "code": "1213142014",
+      "name": "Pangkalan"
+    },
+    {
+      "code": "1213142015",
+      "name": "Perk. Simpang Gambir"
+    },
+    {
+      "code": "1213142019",
+      "name": "Sikumbu"
+    },
+    {
+      "code": "1213142021",
+      "name": "Simpang Bajole"
+    },
+    {
+      "code": "1213142022",
+      "name": "Simpang Duku"
+    },
+    {
+      "code": "1213142023",
+      "name": "Simpang Durian"
+    },
+    {
+      "code": "1213142025",
+      "name": "Simpang Koje"
+    },
+    {
+      "code": "1213142029",
+      "name": "Dalan Lidang"
+    },
+    {
+      "code": "1213142031",
+      "name": "Bonca Bayuon"
+    },
+    {
+      "code": "1213142034",
+      "name": "Perbatasan"
+    },
+    {
+      "code": "1213142035",
+      "name": "Tangsi Atas"
+    }
+  ],
+  "121315": [
+    {
+      "code": "1213151011",
+      "name": "Pasar Baru Batahan"
+    },
+    {
+      "code": "1213152001",
+      "name": "Banjar Aur"
+    },
+    {
+      "code": "1213152003",
+      "name": "Batahan I"
+    },
+    {
+      "code": "1213152004",
+      "name": "Batu Sondat"
+    },
+    {
+      "code": "1213152005",
+      "name": "Bintungan Bejangkar"
+    },
+    {
+      "code": "1213152007",
+      "name": "Kampung Kapas"
+    },
+    {
+      "code": "1213152008",
+      "name": "Kuala Batahan"
+    },
+    {
+      "code": "1213152009",
+      "name": "Kubangan Tompek"
+    },
+    {
+      "code": "1213152010",
+      "name": "Muara Pertemuan"
+    },
+    {
+      "code": "1213152012",
+      "name": "Pasar Batahan"
+    },
+    {
+      "code": "1213152013",
+      "name": "Pulau Tamang"
+    },
+    {
+      "code": "1213152014",
+      "name": "Sari Kenanga Batahan"
+    },
+    {
+      "code": "1213152019",
+      "name": "Batahan II"
+    },
+    {
+      "code": "1213152020",
+      "name": "Batahan III"
+    },
+    {
+      "code": "1213152021",
+      "name": "Batahan IV"
+    },
+    {
+      "code": "1213152022",
+      "name": "Sinunukan VI"
+    },
+    {
+      "code": "1213152023",
+      "name": "Kampung Kapas I"
+    },
+    {
+      "code": "1213152024",
+      "name": "Kubangan Pandan Sari"
+    }
+  ],
+  "121316": [
+    {
+      "code": "1213161008",
+      "name": "Pasar II Natal"
+    },
+    {
+      "code": "1213161025",
+      "name": "Pasar I Natal"
+    },
+    {
+      "code": "1213162001",
+      "name": "Balimbing"
+    },
+    {
+      "code": "1213162002",
+      "name": "Bintuas"
+    },
+    {
+      "code": "1213162003",
+      "name": "Bonda Kase"
+    },
+    {
+      "code": "1213162004",
+      "name": "Buburan"
+    },
+    {
+      "code": "1213162005",
+      "name": "Kampung Sawah"
+    },
+    {
+      "code": "1213162006",
+      "name": "Panggautan"
+    },
+    {
+      "code": "1213162007",
+      "name": "Pardamean Baru"
+    },
+    {
+      "code": "1213162009",
+      "name": "Pasar III Natal"
+    },
+    {
+      "code": "1213162010",
+      "name": "Pasar V Natal"
+    },
+    {
+      "code": "1213162011",
+      "name": "Patiluban Hilir"
+    },
+    {
+      "code": "1213162012",
+      "name": "Patiluban Mudik"
+    },
+    {
+      "code": "1213162013",
+      "name": "Perkebunan Patiluban"
+    },
+    {
+      "code": "1213162014",
+      "name": "Rukun Jaya"
+    },
+    {
+      "code": "1213162015",
+      "name": "Setia Karya"
+    },
+    {
+      "code": "1213162016",
+      "name": "Sikara Kara"
+    },
+    {
+      "code": "1213162017",
+      "name": "Sikara Kara I"
+    },
+    {
+      "code": "1213162018",
+      "name": "Sikara Kara II"
+    },
+    {
+      "code": "1213162019",
+      "name": "Sikara Kara III"
+    },
+    {
+      "code": "1213162020",
+      "name": "Sikara Kara IV"
+    },
+    {
+      "code": "1213162021",
+      "name": "Sundutan Tigo"
+    },
+    {
+      "code": "1213162022",
+      "name": "Taluk"
+    },
+    {
+      "code": "1213162023",
+      "name": "Tegal Sari"
+    },
+    {
+      "code": "1213162024",
+      "name": "Tunas Karya"
+    },
+    {
+      "code": "1213162026",
+      "name": "Pasar VI Natal"
+    },
+    {
+      "code": "1213162027",
+      "name": "Sinunukan V"
+    },
+    {
+      "code": "1213162028",
+      "name": "Suka Maju"
+    },
+    {
+      "code": "1213162029",
+      "name": "Sasaran"
+    },
+    {
+      "code": "1213162030",
+      "name": "Kun-Kun"
+    }
+  ],
+  "121317": [
+    {
+      "code": "1213172001",
+      "name": "Batu Mundom"
+    },
+    {
+      "code": "1213172002",
+      "name": "Hutaimbaru"
+    },
+    {
+      "code": "1213172003",
+      "name": "Lubuk Kapundung"
+    },
+    {
+      "code": "1213172004",
+      "name": "Manuncang"
+    },
+    {
+      "code": "1213172005",
+      "name": "Panunggulan"
+    },
+    {
+      "code": "1213172006",
+      "name": "Pasar Singkuang I"
+    },
+    {
+      "code": "1213172007",
+      "name": "Pasar Singkuang II"
+    },
+    {
+      "code": "1213172008",
+      "name": "Rantau Panjang"
+    },
+    {
+      "code": "1213172009",
+      "name": "Sikapas"
+    },
+    {
+      "code": "1213172010",
+      "name": "Tabuyung"
+    },
+    {
+      "code": "1213172011",
+      "name": "Tagilang Julu"
+    },
+    {
+      "code": "1213172012",
+      "name": "Sali Baru"
+    },
+    {
+      "code": "1213172013",
+      "name": "Lubuk Kapundung II"
+    },
+    {
+      "code": "1213172014",
+      "name": "Suka Makmur"
+    }
+  ],
+  "121318": [
+    {
+      "code": "1213182001",
+      "name": "Manisak"
+    },
+    {
+      "code": "1213182002",
+      "name": "Simpang Talap"
+    },
+    {
+      "code": "1213182003",
+      "name": "Sampuran"
+    },
+    {
+      "code": "1213182004",
+      "name": "Tandikek"
+    },
+    {
+      "code": "1213182005",
+      "name": "Gonting"
+    },
+    {
+      "code": "1213182006",
+      "name": "Bangun Saroha"
+    },
+    {
+      "code": "1213182007",
+      "name": "Huta Baringin"
+    },
+    {
+      "code": "1213182008",
+      "name": "Muara Bangko"
+    },
+    {
+      "code": "1213182009",
+      "name": "Ranto Nalinjang"
+    },
+    {
+      "code": "1213182010",
+      "name": "Banjar Maga"
+    },
+    {
+      "code": "1213182011",
+      "name": "Huta Raja"
+    },
+    {
+      "code": "1213182012",
+      "name": "Simaninggir"
+    },
+    {
+      "code": "1213182013",
+      "name": "Ranto Panjang"
+    },
+    {
+      "code": "1213182014",
+      "name": "Huta Nauli"
+    },
+    {
+      "code": "1213182015",
+      "name": "Lubuk Kancah"
+    },
+    {
+      "code": "1213182016",
+      "name": "Dua Sepakat"
+    },
+    {
+      "code": "1213182017",
+      "name": "Gunung Godang"
+    },
+    {
+      "code": "1213182018",
+      "name": "Padang Silojongan"
+    }
+  ],
+  "121319": [
+    {
+      "code": "1213192001",
+      "name": "Bangun Sejati"
+    },
+    {
+      "code": "1213192002",
+      "name": "Hutarimbaru"
+    },
+    {
+      "code": "1213192003",
+      "name": "Pasar Huta Bargot"
+    },
+    {
+      "code": "1213192004",
+      "name": "Huta Bargot Lombang"
+    },
+    {
+      "code": "1213192005",
+      "name": "Huta Bargot Dolok"
+    },
+    {
+      "code": "1213192006",
+      "name": "Huta Bargot Setia"
+    },
+    {
+      "code": "1213192007",
+      "name": "Huta Bargot Nauli"
+    },
+    {
+      "code": "1213192008",
+      "name": "Mondan"
+    },
+    {
+      "code": "1213192009",
+      "name": "Sayur Maincat"
+    },
+    {
+      "code": "1213192010",
+      "name": "Kumpulan Setia"
+    },
+    {
+      "code": "1213192011",
+      "name": "Simalagi"
+    },
+    {
+      "code": "1213192012",
+      "name": "Saba Padang"
+    },
+    {
+      "code": "1213192013",
+      "name": "Binanga"
+    },
+    {
+      "code": "1213192014",
+      "name": "Huta Naingkan"
+    }
+  ],
+  "121320": [
+    {
+      "code": "1213202001",
+      "name": "Huta Lombang"
+    },
+    {
+      "code": "1213202002",
+      "name": "Huta Baru"
+    },
+    {
+      "code": "1213202003",
+      "name": "Handel"
+    },
+    {
+      "code": "1213202004",
+      "name": "Hutatinggi"
+    },
+    {
+      "code": "1213202005",
+      "name": "Hutanamale"
+    },
+    {
+      "code": "1213202006",
+      "name": "Hutabaringin Julu"
+    },
+    {
+      "code": "1213202007",
+      "name": "Sibanggor Jae"
+    },
+    {
+      "code": "1213202008",
+      "name": "Sibanggor Tonga"
+    },
+    {
+      "code": "1213202009",
+      "name": "Sibanggor Julu"
+    },
+    {
+      "code": "1213202010",
+      "name": "Purba Julu"
+    },
+    {
+      "code": "1213202011",
+      "name": "Huta Baringin"
+    }
+  ],
+  "121321": [
+    {
+      "code": "1213212001",
+      "name": "Pakantan Dolok"
+    },
+    {
+      "code": "1213212002",
+      "name": "Pakantan Lombang"
+    },
+    {
+      "code": "1213212003",
+      "name": "Huta Gambir"
+    },
+    {
+      "code": "1213212004",
+      "name": "Huta Lancat"
+    },
+    {
+      "code": "1213212005",
+      "name": "Huta Julu"
+    },
+    {
+      "code": "1213212006",
+      "name": "Huta Toras"
+    },
+    {
+      "code": "1213212007",
+      "name": "Huta Padang"
+    },
+    {
+      "code": "1213212008",
+      "name": "Silogun"
+    }
+  ],
+  "121322": [
+    {
+      "code": "1213222001",
+      "name": "Sinunukan I"
+    },
+    {
+      "code": "1213222002",
+      "name": "Sinunukan II"
+    },
+    {
+      "code": "1213222003",
+      "name": "Sinunukan III"
+    },
+    {
+      "code": "1213222004",
+      "name": "Sinunukan IV"
+    },
+    {
+      "code": "1213222005",
+      "name": "Bintungan Bejangkar Baru"
+    },
+    {
+      "code": "1213222006",
+      "name": "Banjar Aur Utara"
+    },
+    {
+      "code": "1213222007",
+      "name": "Kampung Kapas II"
+    },
+    {
+      "code": "1213222008",
+      "name": "Airapa"
+    },
+    {
+      "code": "1213222009",
+      "name": "Sido Makmur"
+    },
+    {
+      "code": "1213222010",
+      "name": "Wido Daren"
+    },
+    {
+      "code": "1213222011",
+      "name": "Wono Sari"
+    },
+    {
+      "code": "1213222012",
+      "name": "Suka Damai"
+    },
+    {
+      "code": "1213222013",
+      "name": "Pasir Putih"
+    },
+    {
+      "code": "1213222014",
+      "name": "Sinunukan I Central"
+    }
+  ],
+  "121323": [
+    {
+      "code": "1213232001",
+      "name": "Tambiski"
+    },
+    {
+      "code": "1213232002",
+      "name": "Tarutung Panjang"
+    },
+    {
+      "code": "1213232003",
+      "name": "Humbang I"
+    },
+    {
+      "code": "1213232004",
+      "name": "Banua Rakyat"
+    },
+    {
+      "code": "1213232005",
+      "name": "Sayur Matua"
+    },
+    {
+      "code": "1213232006",
+      "name": "Banua Simanosor"
+    },
+    {
+      "code": "1213232007",
+      "name": "Tambiski Nauli"
+    }
+  ]
 }

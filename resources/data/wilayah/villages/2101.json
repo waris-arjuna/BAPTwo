@@ -1,208 +1,226 @@
 {
-    "210104": [
-        {
-            "code": "2101041005",
-            "name": "Kawal"
-        },
-        {
-            "code": "2101042001",
-            "name": "Gunung Kijang"
-        },
-        {
-            "code": "2101042002",
-            "name": "Malang Rapat"
-        },
-        {
-            "code": "2101042003",
-            "name": "Teluk Bakau"
-        }
-    ],
-    "210106": [
-        {
-            "code": "2101061008",
-            "name": "Kijang Kota"
-        },
-        {
-            "code": "2101061009",
-            "name": "Sungai Lekop"
-        },
-        {
-            "code": "2101061010",
-            "name": "Gunung Lengkuas"
-        },
-        {
-            "code": "2101061011",
-            "name": "Sungai Enam"
-        }
-    ],
-    "210107": [
-        {
-            "code": "2101071001",
-            "name": "Tanjung Uban Kota"
-        },
-        {
-            "code": "2101071002",
-            "name": "Tanjung Uban Utara"
-        },
-        {
-            "code": "2101071003",
-            "name": "Tanjung Uban Selatan"
-        },
-        {
-            "code": "2101071011",
-            "name": "Tanjung Uban Timur"
-        },
-        {
-            "code": "2101072005",
-            "name": "Lancang Kuning"
-        }
-    ],
-    "210108": [
-        {
-            "code": "2101081006",
-            "name": "Tembeling Tanjung"
-        },
-        {
-            "code": "2101082001",
-            "name": "Bintan Buyu"
-        },
-        {
-            "code": "2101082002",
-            "name": "Pangkil"
-        },
-        {
-            "code": "2101082003",
-            "name": "Penaga"
-        },
-        {
-            "code": "2101082004",
-            "name": "Pengujan"
-        },
-        {
-            "code": "2101082005",
-            "name": "Tembeling"
-        }
-    ],
-    "210109": [
-        {
-            "code": "2101091001",
-            "name": "Teluk Sekuni"
-        },
-        {
-            "code": "2101092002",
-            "name": "Batu Lepuk"
-        },
-        {
-            "code": "2101092003",
-            "name": "Kampung Hilir"
-        },
-        {
-            "code": "2101092004",
-            "name": "Kampung Melayu"
-        },
-        {
-            "code": "2101092005",
-            "name": "Pulau Mentebung"
-        },
-        {
-            "code": "2101092006",
-            "name": "Pulau Pinang"
-        },
-        {
-            "code": "2101092007",
-            "name": "Kukup"
-        },
-        {
-            "code": "2101092008",
-            "name": "Pengikik"
-        }
-    ],
-    "210110": [
-        {
-            "code": "2101101007",
-            "name": "Kota Baru"
-        },
-        {
-            "code": "2101102001",
-            "name": "Berakit"
-        },
-        {
-            "code": "2101102002",
-            "name": "Ekang Anculai"
-        },
-        {
-            "code": "2101102003",
-            "name": "Pengudang"
-        },
-        {
-            "code": "2101102004",
-            "name": "Sebong Lagoi"
-        },
-        {
-            "code": "2101102005",
-            "name": "Sebong Pereh"
-        },
-        {
-            "code": "2101102006",
-            "name": "Sri Bintan"
-        }
-    ],
-    "210112": [
-        {
-            "code": "2101121004",
-            "name": "Toapaya Asri"
-        },
-        {
-            "code": "2101122001",
-            "name": "Toapaya"
-        },
-        {
-            "code": "2101122002",
-            "name": "Toapaya Utara"
-        },
-        {
-            "code": "2101122003",
-            "name": "Toapaya Selatan"
-        }
-    ],
-    "210114": [
-        {
-            "code": "2101142001",
-            "name": "Kelong"
-        },
-        {
-            "code": "2101142002",
-            "name": "Mapur"
-        },
-        {
-            "code": "2101142003",
-            "name": "Numbing"
-        },
-        {
-            "code": "2101142004",
-            "name": "Air Gelubi"
-        }
-    ],
-    "210115": [
-        {
-            "code": "2101151003",
-            "name": "Teluk Lobam"
-        },
-        {
-            "code": "2101151005",
-            "name": "Tanjung Permai"
-        },
-        {
-            "code": "2101152001",
-            "name": "Busung"
-        },
-        {
-            "code": "2101152002",
-            "name": "Teluk Sasah"
-        },
-        {
-            "code": "2101152004",
-            "name": "Kuala Sempang"
-        }
-    ]
+  "210104": [
+    {
+      "code": "2101041005",
+      "name": "Kawal"
+    },
+    {
+      "code": "2101042001",
+      "name": "Gunung Kijang"
+    },
+    {
+      "code": "2101042002",
+      "name": "Malang Rapat"
+    },
+    {
+      "code": "2101042003",
+      "name": "Teluk Bakau"
+    }
+  ],
+  "210106": [
+    {
+      "code": "2101061008",
+      "name": "Kijang Kota"
+    },
+    {
+      "code": "2101061009",
+      "name": "Sungai Lekop"
+    },
+    {
+      "code": "2101061010",
+      "name": "Gunung Lengkuas"
+    },
+    {
+      "code": "2101061011",
+      "name": "Sungai Enam"
+    }
+  ],
+  "210107": [
+    {
+      "code": "2101071001",
+      "name": "Tanjung Uban Kota"
+    },
+    {
+      "code": "2101071002",
+      "name": "Tanjung Uban Utara"
+    },
+    {
+      "code": "2101071003",
+      "name": "Tanjung Uban Selatan"
+    },
+    {
+      "code": "2101071011",
+      "name": "Tanjung Uban Timur"
+    },
+    {
+      "code": "2101072005",
+      "name": "Lancang Kuning"
+    }
+  ],
+  "210108": [
+    {
+      "code": "2101081006",
+      "name": "Tembeling Tanjung"
+    },
+    {
+      "code": "2101082001",
+      "name": "Bintan Buyu"
+    },
+    {
+      "code": "2101082002",
+      "name": "Pangkil"
+    },
+    {
+      "code": "2101082003",
+      "name": "Penaga"
+    },
+    {
+      "code": "2101082004",
+      "name": "Pengujan"
+    },
+    {
+      "code": "2101082005",
+      "name": "Tembeling"
+    }
+  ],
+  "210109": [
+    {
+      "code": "2101091001",
+      "name": "Teluk Sekuni"
+    },
+    {
+      "code": "2101092002",
+      "name": "Batu Lepuk"
+    },
+    {
+      "code": "2101092003",
+      "name": "Kampung Hilir"
+    },
+    {
+      "code": "2101092004",
+      "name": "Kampung Melayu"
+    },
+    {
+      "code": "2101092005",
+      "name": "Pulau Mentebung"
+    },
+    {
+      "code": "2101092006",
+      "name": "Pulau Pinang"
+    },
+    {
+      "code": "2101092007",
+      "name": "Kukup"
+    },
+    {
+      "code": "2101092008",
+      "name": "Pengikik"
+    }
+  ],
+  "210110": [
+    {
+      "code": "2101101007",
+      "name": "Kota Baru"
+    },
+    {
+      "code": "2101102001",
+      "name": "Berakit"
+    },
+    {
+      "code": "2101102002",
+      "name": "Ekang Anculai"
+    },
+    {
+      "code": "2101102003",
+      "name": "Pengudang"
+    },
+    {
+      "code": "2101102004",
+      "name": "Sebong Lagoi"
+    },
+    {
+      "code": "2101102005",
+      "name": "Sebong Pereh"
+    },
+    {
+      "code": "2101102006",
+      "name": "Sri Bintan"
+    }
+  ],
+  "210112": [
+    {
+      "code": "2101121004",
+      "name": "Toapaya Asri"
+    },
+    {
+      "code": "2101122001",
+      "name": "Toapaya"
+    },
+    {
+      "code": "2101122002",
+      "name": "Toapaya Utara"
+    },
+    {
+      "code": "2101122003",
+      "name": "Toapaya Selatan"
+    }
+  ],
+  "210113": [
+    {
+      "code": "2101132001",
+      "name": "Mantang Baru"
+    },
+    {
+      "code": "2101132002",
+      "name": "Mantang Besar"
+    },
+    {
+      "code": "2101132003",
+      "name": "Mantang Lama"
+    },
+    {
+      "code": "2101132004",
+      "name": "Dendun"
+    }
+  ],
+  "210114": [
+    {
+      "code": "2101142001",
+      "name": "Kelong"
+    },
+    {
+      "code": "2101142002",
+      "name": "Mapur"
+    },
+    {
+      "code": "2101142003",
+      "name": "Numbing"
+    },
+    {
+      "code": "2101142004",
+      "name": "Air Gelubi"
+    }
+  ],
+  "210115": [
+    {
+      "code": "2101151003",
+      "name": "Teluk Lobam"
+    },
+    {
+      "code": "2101151005",
+      "name": "Tanjung Permai"
+    },
+    {
+      "code": "2101152001",
+      "name": "Busung"
+    },
+    {
+      "code": "2101152002",
+      "name": "Teluk Sasah"
+    },
+    {
+      "code": "2101152004",
+      "name": "Kuala Sempang"
+    }
+  ]
 }

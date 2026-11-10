@@ -1,172 +1,374 @@
 {
-    "741004": [
-        {
-            "code": "7410042001",
-            "name": "Kotawo"
-        },
-        {
-            "code": "7410042002",
-            "name": "Karya Bhakti"
-        },
-        {
-            "code": "7410042003",
-            "name": "Marga Karya"
-        },
-        {
-            "code": "7410042004",
-            "name": "Kasulatombi"
-        },
-        {
-            "code": "7410042005",
-            "name": "Dampala Jaya"
-        },
-        {
-            "code": "7410042006",
-            "name": "Rahmat Baru"
-        },
-        {
-            "code": "7410042007",
-            "name": "Soloy Agung"
-        },
-        {
-            "code": "7410042008",
-            "name": "Bumi Lapero"
-        },
-        {
-            "code": "7410042009",
-            "name": "Karya Mulya"
-        },
-        {
-            "code": "7410042010",
-            "name": "Lambale"
-        },
-        {
-            "code": "7410042011",
-            "name": "Lapandewa"
-        },
-        {
-            "code": "7410042012",
-            "name": "Lauki"
-        },
-        {
-            "code": "7410042013",
-            "name": "Mekar Jaya"
-        },
-        {
-            "code": "7410042014",
-            "name": "Labulanda"
-        }
-    ],
-    "741005": [
-        {
-            "code": "7410052001",
-            "name": "Kurolabu"
-        },
-        {
-            "code": "7410052002",
-            "name": "Torombia"
-        },
-        {
-            "code": "7410052003",
-            "name": "Lamoahi"
-        },
-        {
-            "code": "7410052004",
-            "name": "Lanosangia"
-        },
-        {
-            "code": "7410052005",
-            "name": "Pebaoa"
-        },
-        {
-            "code": "7410052006",
-            "name": "Petetea'a"
-        },
-        {
-            "code": "7410052007",
-            "name": "Lelamo"
-        },
-        {
-            "code": "7410052008",
-            "name": "Waode Buri"
-        },
-        {
-            "code": "7410052009",
-            "name": "Ulunambo"
-        },
-        {
-            "code": "7410052010",
-            "name": "Bira"
-        },
-        {
-            "code": "7410052011",
-            "name": "E'erinere"
-        },
-        {
-            "code": "7410052012",
-            "name": "Labelete"
-        },
-        {
-            "code": "7410052013",
-            "name": "Wamboule"
-        },
-        {
-            "code": "7410052014",
-            "name": "Wowonga Jaya"
-        }
-    ],
-    "741006": [
-        {
-            "code": "7410061007",
-            "name": "Labuan"
-        },
-        {
-            "code": "7410061008",
-            "name": "Labuan Wolio"
-        },
-        {
-            "code": "7410062001",
-            "name": "Lasiwa"
-        },
-        {
-            "code": "7410062002",
-            "name": "Laeya"
-        },
-        {
-            "code": "7410062003",
-            "name": "Matalagi"
-        },
-        {
-            "code": "7410062004",
-            "name": "Wantulasi"
-        },
-        {
-            "code": "7410062005",
-            "name": "Labuan Bajo"
-        },
-        {
-            "code": "7410062006",
-            "name": "Labaraga"
-        },
-        {
-            "code": "7410062009",
-            "name": "Wamorapa"
-        },
-        {
-            "code": "7410062010",
-            "name": "Sumampeno"
-        },
-        {
-            "code": "7410062011",
-            "name": "Oengkapala"
-        },
-        {
-            "code": "7410062012",
-            "name": "Labuko"
-        },
-        {
-            "code": "7410062013",
-            "name": "Laba Jaya"
-        }
-    ]
+  "741001": [
+    {
+      "code": "7410011008",
+      "name": "Bangkudu"
+    },
+    {
+      "code": "7410011009",
+      "name": "Lipu"
+    },
+    {
+      "code": "7410011010",
+      "name": "Lakonea"
+    },
+    {
+      "code": "7410011012",
+      "name": "Lemo"
+    },
+    {
+      "code": "7410011014",
+      "name": "Bonelipu"
+    },
+    {
+      "code": "7410011016",
+      "name": "Sara'ea"
+    },
+    {
+      "code": "7410011017",
+      "name": "Wandaka"
+    },
+    {
+      "code": "7410012001",
+      "name": "Tri Wacu-Wacu"
+    },
+    {
+      "code": "7410012002",
+      "name": "Waculaea"
+    },
+    {
+      "code": "7410012003",
+      "name": "Eelahaji"
+    },
+    {
+      "code": "7410012004",
+      "name": "Tomoahi"
+    },
+    {
+      "code": "7410012005",
+      "name": "Kalibu"
+    },
+    {
+      "code": "7410012006",
+      "name": "Jampaka"
+    },
+    {
+      "code": "7410012007",
+      "name": "Loji"
+    },
+    {
+      "code": "7410012011",
+      "name": "Linsowu"
+    },
+    {
+      "code": "7410012013",
+      "name": "Rombo"
+    },
+    {
+      "code": "7410012018",
+      "name": "Wasalabose"
+    },
+    {
+      "code": "7410012019",
+      "name": "Malalanda"
+    },
+    {
+      "code": "7410012020",
+      "name": "Lemo Ea"
+    },
+    {
+      "code": "7410012021",
+      "name": "Lantagi"
+    },
+    {
+      "code": "7410012022",
+      "name": "Laangke"
+    },
+    {
+      "code": "7410012023",
+      "name": "Kadacua"
+    },
+    {
+      "code": "7410012024",
+      "name": "Banu-Banua Jaya"
+    }
+  ],
+  "741002": [
+    {
+      "code": "7410021004",
+      "name": "Kambowa"
+    },
+    {
+      "code": "7410022001",
+      "name": "Bubu"
+    },
+    {
+      "code": "7410022002",
+      "name": "Lahumoko"
+    },
+    {
+      "code": "7410022003",
+      "name": "Morindino"
+    },
+    {
+      "code": "7410022005",
+      "name": "Pongkowulu"
+    },
+    {
+      "code": "7410022006",
+      "name": "Lagundi"
+    },
+    {
+      "code": "7410022007",
+      "name": "Konde"
+    },
+    {
+      "code": "7410022008",
+      "name": "Mata"
+    },
+    {
+      "code": "7410022009",
+      "name": "Bubu Barat"
+    },
+    {
+      "code": "7410022010",
+      "name": "Bente"
+    },
+    {
+      "code": "7410022011",
+      "name": "Baluara"
+    }
+  ],
+  "741003": [
+    {
+      "code": "7410031006",
+      "name": "Buranga"
+    },
+    {
+      "code": "7410031010",
+      "name": "Bonegunu"
+    },
+    {
+      "code": "7410032001",
+      "name": "Gunung Sari"
+    },
+    {
+      "code": "7410032002",
+      "name": "Ronta"
+    },
+    {
+      "code": "7410032003",
+      "name": "Waode Angkalo"
+    },
+    {
+      "code": "7410032004",
+      "name": "Langere"
+    },
+    {
+      "code": "7410032005",
+      "name": "Koepisino"
+    },
+    {
+      "code": "7410032007",
+      "name": "Waode Kalowo"
+    },
+    {
+      "code": "7410032008",
+      "name": "Laano Ipi"
+    },
+    {
+      "code": "7410032009",
+      "name": "Eensumala"
+    },
+    {
+      "code": "7410032013",
+      "name": "Tatombuli"
+    },
+    {
+      "code": "7410032014",
+      "name": "Rante Gola"
+    },
+    {
+      "code": "7410032015",
+      "name": "Ngapa'ea"
+    },
+    {
+      "code": "7410032016",
+      "name": "Koboruno"
+    },
+    {
+      "code": "7410032017",
+      "name": "Damai Laborona"
+    }
+  ],
+  "741004": [
+    {
+      "code": "7410042001",
+      "name": "Kotawo"
+    },
+    {
+      "code": "7410042002",
+      "name": "Karya Bhakti"
+    },
+    {
+      "code": "7410042003",
+      "name": "Marga Karya"
+    },
+    {
+      "code": "7410042004",
+      "name": "Kasulatombi"
+    },
+    {
+      "code": "7410042005",
+      "name": "Dampala Jaya"
+    },
+    {
+      "code": "7410042006",
+      "name": "Rahmat Baru"
+    },
+    {
+      "code": "7410042007",
+      "name": "Soloy Agung"
+    },
+    {
+      "code": "7410042008",
+      "name": "Bumi Lapero"
+    },
+    {
+      "code": "7410042009",
+      "name": "Karya Mulya"
+    },
+    {
+      "code": "7410042010",
+      "name": "Lambale"
+    },
+    {
+      "code": "7410042011",
+      "name": "Lapandewa"
+    },
+    {
+      "code": "7410042012",
+      "name": "Lauki"
+    },
+    {
+      "code": "7410042013",
+      "name": "Mekar Jaya"
+    },
+    {
+      "code": "7410042014",
+      "name": "Labulanda"
+    }
+  ],
+  "741005": [
+    {
+      "code": "7410052001",
+      "name": "Kurolabu"
+    },
+    {
+      "code": "7410052002",
+      "name": "Torombia"
+    },
+    {
+      "code": "7410052003",
+      "name": "Lamoahi"
+    },
+    {
+      "code": "7410052004",
+      "name": "Lanosangia"
+    },
+    {
+      "code": "7410052005",
+      "name": "Pebaoa"
+    },
+    {
+      "code": "7410052006",
+      "name": "Petetea'a"
+    },
+    {
+      "code": "7410052007",
+      "name": "Lelamo"
+    },
+    {
+      "code": "7410052008",
+      "name": "Waode Buri"
+    },
+    {
+      "code": "7410052009",
+      "name": "Ulunambo"
+    },
+    {
+      "code": "7410052010",
+      "name": "Bira"
+    },
+    {
+      "code": "7410052011",
+      "name": "E'erinere"
+    },
+    {
+      "code": "7410052012",
+      "name": "Labelete"
+    },
+    {
+      "code": "7410052013",
+      "name": "Wamboule"
+    },
+    {
+      "code": "7410052014",
+      "name": "Wowonga Jaya"
+    }
+  ],
+  "741006": [
+    {
+      "code": "7410061007",
+      "name": "Labuan"
+    },
+    {
+      "code": "7410061008",
+      "name": "Labuan Wolio"
+    },
+    {
+      "code": "7410062001",
+      "name": "Lasiwa"
+    },
+    {
+      "code": "7410062002",
+      "name": "Laeya"
+    },
+    {
+      "code": "7410062003",
+      "name": "Matalagi"
+    },
+    {
+      "code": "7410062004",
+      "name": "Wantulasi"
+    },
+    {
+      "code": "7410062005",
+      "name": "Labuan Bajo"
+    },
+    {
+      "code": "7410062006",
+      "name": "Labaraga"
+    },
+    {
+      "code": "7410062009",
+      "name": "Wamorapa"
+    },
+    {
+      "code": "7410062010",
+      "name": "Sumampeno"
+    },
+    {
+      "code": "7410062011",
+      "name": "Oengkapala"
+    },
+    {
+      "code": "7410062012",
+      "name": "Labuko"
+    },
+    {
+      "code": "7410062013",
+      "name": "Laba Jaya"
+    }
+  ]
 }

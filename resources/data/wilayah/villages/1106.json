@@ -1,2464 +1,2464 @@
 {
-    "110601": [
-        {
-            "code": "1106012001",
-            "name": "Meunasah Krueng Kala"
-        },
-        {
-            "code": "1106012002",
-            "name": "Jantang"
-        },
-        {
-            "code": "1106012003",
-            "name": "Baroh Krueng Kala"
-        },
-        {
-            "code": "1106012004",
-            "name": "Tunong Krueng Kala"
-        },
-        {
-            "code": "1106012005",
-            "name": "Sungko Mulat"
-        },
-        {
-            "code": "1106012006",
-            "name": "Birek"
-        },
-        {
-            "code": "1106012007",
-            "name": "Kareung"
-        },
-        {
-            "code": "1106012008",
-            "name": "Paroy"
-        },
-        {
-            "code": "1106012009",
-            "name": "Teungoh Blang Mee"
-        },
-        {
-            "code": "1106012010",
-            "name": "Lamkuta Blang Mee"
-        },
-        {
-            "code": "1106012011",
-            "name": "Baroh Blang Mee"
-        },
-        {
-            "code": "1106012012",
-            "name": "Umong Seuribee"
-        },
-        {
-            "code": "1106012013",
-            "name": "Teungoh Geunteut"
-        },
-        {
-            "code": "1106012014",
-            "name": "Baroh Geunteut"
-        },
-        {
-            "code": "1106012015",
-            "name": "Lam Juhang"
-        },
-        {
-            "code": "1106012016",
-            "name": "Utamong"
-        },
-        {
-            "code": "1106012017",
-            "name": "Gapuy"
-        },
-        {
-            "code": "1106012018",
-            "name": "Lamsujen"
-        },
-        {
-            "code": "1106012019",
-            "name": "Mon Mata"
-        },
-        {
-            "code": "1106012020",
-            "name": "Lamgeuriheu"
-        },
-        {
-            "code": "1106012021",
-            "name": "Keutapang"
-        },
-        {
-            "code": "1106012022",
-            "name": "Saney"
-        },
-        {
-            "code": "1106012023",
-            "name": "Cundien"
-        },
-        {
-            "code": "1106012024",
-            "name": "Glee Bruek"
-        },
-        {
-            "code": "1106012025",
-            "name": "Pasi"
-        },
-        {
-            "code": "1106012026",
-            "name": "Pudeng"
-        },
-        {
-            "code": "1106012027",
-            "name": "Meunasah Cot"
-        },
-        {
-            "code": "1106012028",
-            "name": "Meunasah Lhok"
-        }
-    ],
-    "110602": [
-        {
-            "code": "1106022001",
-            "name": "Mon Ikeun"
-        },
-        {
-            "code": "1106022002",
-            "name": "Nusa"
-        },
-        {
-            "code": "1106022003",
-            "name": "Weu Raya"
-        },
-        {
-            "code": "1106022004",
-            "name": "Lamkrut"
-        },
-        {
-            "code": "1106022005",
-            "name": "Lamgaboh"
-        },
-        {
-            "code": "1106022006",
-            "name": "Lambaro Kueh"
-        },
-        {
-            "code": "1106022007",
-            "name": "Lam Ateuk"
-        },
-        {
-            "code": "1106022008",
-            "name": "Kueh"
-        },
-        {
-            "code": "1106022009",
-            "name": "Tanjong"
-        },
-        {
-            "code": "1106022010",
-            "name": "Aneuk Paya"
-        },
-        {
-            "code": "1106022011",
-            "name": "Seubun Keutapang"
-        },
-        {
-            "code": "1106022012",
-            "name": "Seubun Ayon"
-        },
-        {
-            "code": "1106022013",
-            "name": "Lambaro Seubun"
-        },
-        {
-            "code": "1106022014",
-            "name": "Naga Umbang"
-        },
-        {
-            "code": "1106022015",
-            "name": "Lampaya"
-        },
-        {
-            "code": "1106022016",
-            "name": "Meunasah Mesjid Lamlhom"
-        },
-        {
-            "code": "1106022017",
-            "name": "Meunasah Mon Cut"
-        },
-        {
-            "code": "1106022018",
-            "name": "Meunasah Manyang"
-        },
-        {
-            "code": "1106022019",
-            "name": "Meunasah Lam Girek"
-        },
-        {
-            "code": "1106022020",
-            "name": "Meunasah Lambaro"
-        },
-        {
-            "code": "1106022021",
-            "name": "Meunasah Baro Lamlhom"
-        },
-        {
-            "code": "1106022022",
-            "name": "Meunasah Beutong"
-        },
-        {
-            "code": "1106022023",
-            "name": "Mns. Mesjid Lampuuk"
-        },
-        {
-            "code": "1106022024",
-            "name": "Meunasah Balee"
-        },
-        {
-            "code": "1106022025",
-            "name": "Meunasah Karieng"
-        },
-        {
-            "code": "1106022026",
-            "name": "Lamcok"
-        },
-        {
-            "code": "1106022027",
-            "name": "Meunasah Cut"
-        },
-        {
-            "code": "1106022028",
-            "name": "Meunasah Blang"
-        }
-    ],
-    "110603": [
-        {
-            "code": "1106032001",
-            "name": "Reukih Dayah"
-        },
-        {
-            "code": "1106032002",
-            "name": "Indrapuri"
-        },
-        {
-            "code": "1106032003",
-            "name": "Lam Leubok"
-        },
-        {
-            "code": "1106032004",
-            "name": "Empee Ara"
-        },
-        {
-            "code": "1106032005",
-            "name": "Limo Blang"
-        },
-        {
-            "code": "1106032006",
-            "name": "Limo Mesjid"
-        },
-        {
-            "code": "1106032007",
-            "name": "Limo Lamleuweung"
-        },
-        {
-            "code": "1106032008",
-            "name": "Lheue"
-        },
-        {
-            "code": "1106032009",
-            "name": "Meusale"
-        },
-        {
-            "code": "1106032010",
-            "name": "Cureh"
-        },
-        {
-            "code": "1106032011",
-            "name": "Cot Kareung"
-        },
-        {
-            "code": "1106032012",
-            "name": "Lamlung"
-        },
-        {
-            "code": "1106032013",
-            "name": "Meureu Ulee Titie"
-        },
-        {
-            "code": "1106032014",
-            "name": "Meureu Bueng-U"
-        },
-        {
-            "code": "1106032015",
-            "name": "Mureu Baro"
-        },
-        {
-            "code": "1106032016",
-            "name": "Meureu Lamglumpang"
-        },
-        {
-            "code": "1106032017",
-            "name": "Pasar Indrapuri"
-        },
-        {
-            "code": "1106032018",
-            "name": "Manggra"
-        },
-        {
-            "code": "1106032019",
-            "name": "Reukih Kupula"
-        },
-        {
-            "code": "1106032020",
-            "name": "Lam Ilie Mesjid"
-        },
-        {
-            "code": "1106032021",
-            "name": "Lam Ilie Tengoh"
-        },
-        {
-            "code": "1106032022",
-            "name": "Lam Ilie Ganto"
-        },
-        {
-            "code": "1106032023",
-            "name": "Meunara"
-        },
-        {
-            "code": "1106032024",
-            "name": "Aneuk Glee"
-        },
-        {
-            "code": "1106032025",
-            "name": "Krueng Lamkareung"
-        },
-        {
-            "code": "1106032026",
-            "name": "Sinyeu"
-        },
-        {
-            "code": "1106032027",
-            "name": "Seureumo"
-        },
-        {
-            "code": "1106032028",
-            "name": "Ulee Kareung"
-        },
-        {
-            "code": "1106032029",
-            "name": "Lambeutong"
-        },
-        {
-            "code": "1106032030",
-            "name": "Lampupok Baro"
-        },
-        {
-            "code": "1106032031",
-            "name": "Lampupok Raya"
-        },
-        {
-            "code": "1106032032",
-            "name": "Seulangai"
-        },
-        {
-            "code": "1106032033",
-            "name": "Riting"
-        },
-        {
-            "code": "1106032034",
-            "name": "Sihom Lhok"
-        },
-        {
-            "code": "1106032035",
-            "name": "Sihom Cot"
-        },
-        {
-            "code": "1106032036",
-            "name": "Seuot Baroh"
-        },
-        {
-            "code": "1106032037",
-            "name": "Seuot Tunong"
-        },
-        {
-            "code": "1106032038",
-            "name": "Lampanah Ranjo"
-        },
-        {
-            "code": "1106032039",
-            "name": "Lampanah Teungoh"
-        },
-        {
-            "code": "1106032040",
-            "name": "Lampanah Dayah"
-        },
-        {
-            "code": "1106032041",
-            "name": "Lampanah Baro"
-        },
-        {
-            "code": "1106032042",
-            "name": "Lampanah Tunong"
-        },
-        {
-            "code": "1106032043",
-            "name": "Groet Blang"
-        },
-        {
-            "code": "1106032044",
-            "name": "Groet Manyang"
-        },
-        {
-            "code": "1106032045",
-            "name": "Groet Baro"
-        },
-        {
-            "code": "1106032046",
-            "name": "Jruek Bak Kreh"
-        },
-        {
-            "code": "1106032047",
-            "name": "Jruek Balee"
-        },
-        {
-            "code": "1106032049",
-            "name": "Mon Alue"
-        },
-        {
-            "code": "1106032050",
-            "name": "Lambeunot"
-        },
-        {
-            "code": "1106032051",
-            "name": "Ulee Ue"
-        },
-        {
-            "code": "1106032052",
-            "name": "Lamsiot"
-        },
-        {
-            "code": "1106032053",
-            "name": "Lingom"
-        }
-    ],
-    "110604": [
-        {
-            "code": "1106042001",
-            "name": "Peukan Seulimeum"
-        },
-        {
-            "code": "1106042002",
-            "name": "Keunaloi"
-        },
-        {
-            "code": "1106042003",
-            "name": "Lhieb"
-        },
-        {
-            "code": "1106042004",
-            "name": "Alue Gintong"
-        },
-        {
-            "code": "1106042005",
-            "name": "Gampong Seulimeum"
-        },
-        {
-            "code": "1106042006",
-            "name": "Data Gaseu"
-        },
-        {
-            "code": "1106042007",
-            "name": "Rabo"
-        },
-        {
-            "code": "1106042008",
-            "name": "Gampong Raya"
-        },
-        {
-            "code": "1106042009",
-            "name": "Lamjruen"
-        },
-        {
-            "code": "1106042010",
-            "name": "Buga"
-        },
-        {
-            "code": "1106042011",
-            "name": "Jawie"
-        },
-        {
-            "code": "1106042012",
-            "name": "Alue Rindang"
-        },
-        {
-            "code": "1106042013",
-            "name": "Iboh Tunong"
-        },
-        {
-            "code": "1106042014",
-            "name": "Iboh Tanjong"
-        },
-        {
-            "code": "1106042015",
-            "name": "Seuneubok"
-        },
-        {
-            "code": "1106042016",
-            "name": "Meunasah Baro"
-        },
-        {
-            "code": "1106042017",
-            "name": "Meunasah Tunong"
-        },
-        {
-            "code": "1106042018",
-            "name": "Batee Lhee"
-        },
-        {
-            "code": "1106042019",
-            "name": "Mangeu"
-        },
-        {
-            "code": "1106042020",
-            "name": "Bayu"
-        },
-        {
-            "code": "1106042021",
-            "name": "Ayon"
-        },
-        {
-            "code": "1106042022",
-            "name": "Lamteuba Droe"
-        },
-        {
-            "code": "1106042023",
-            "name": "Pulo"
-        },
-        {
-            "code": "1106042024",
-            "name": "Lampantee"
-        },
-        {
-            "code": "1106042025",
-            "name": "Lambada"
-        },
-        {
-            "code": "1106042026",
-            "name": "Blang Tingkeum"
-        },
-        {
-            "code": "1106042027",
-            "name": "Ateuk"
-        },
-        {
-            "code": "1106042028",
-            "name": "Lam Apeng"
-        },
-        {
-            "code": "1106042029",
-            "name": "Meurah"
-        },
-        {
-            "code": "1106042030",
-            "name": "Lampanah"
-        },
-        {
-            "code": "1106042031",
-            "name": "Ujong Mesjid Lampanah"
-        },
-        {
-            "code": "1106042032",
-            "name": "Ujong Keupula"
-        },
-        {
-            "code": "1106042033",
-            "name": "Leungah"
-        },
-        {
-            "code": "1106042034",
-            "name": "Beureunut"
-        },
-        {
-            "code": "1106042035",
-            "name": "Meunasah Jeumpa"
-        },
-        {
-            "code": "1106042036",
-            "name": "Pinto Khop"
-        },
-        {
-            "code": "1106042037",
-            "name": "Bak Seutui"
-        },
-        {
-            "code": "1106042038",
-            "name": "Bak Aghu"
-        },
-        {
-            "code": "1106042039",
-            "name": "Kayee Adang"
-        },
-        {
-            "code": "1106042040",
-            "name": "Lamkuk"
-        },
-        {
-            "code": "1106042041",
-            "name": "Ujong Mesjid Tanoh Abee"
-        },
-        {
-            "code": "1106042042",
-            "name": "Lamcarak"
-        },
-        {
-            "code": "1106042043",
-            "name": "Capeung Dayah"
-        },
-        {
-            "code": "1106042044",
-            "name": "Capeung Baroh"
-        },
-        {
-            "code": "1106042045",
-            "name": "Lampisang Dayah"
-        },
-        {
-            "code": "1106042046",
-            "name": "Lampisang Tunong"
-        },
-        {
-            "code": "1106042047",
-            "name": "Lampisang Teungoh"
-        }
-    ],
-    "110605": [
-        {
-            "code": "1106052001",
-            "name": "Mata Ie"
-        },
-        {
-            "code": "1106052002",
-            "name": "Gampong Baroh"
-        },
-        {
-            "code": "1106052003",
-            "name": "Lampaseh Lhok"
-        },
-        {
-            "code": "1106052004",
-            "name": "Lampaseh Krueng"
-        },
-        {
-            "code": "1106052005",
-            "name": "Lamnga"
-        },
-        {
-            "code": "1106052006",
-            "name": "Dayah Daboh"
-        },
-        {
-            "code": "1106052007",
-            "name": "Weu Lhok"
-        },
-        {
-            "code": "1106052008",
-            "name": "Alue"
-        },
-        {
-            "code": "1106052009",
-            "name": "Weu Krueng"
-        },
-        {
-            "code": "1106052010",
-            "name": "Seubam Cot"
-        },
-        {
-            "code": "1106052011",
-            "name": "Bak Dilip"
-        },
-        {
-            "code": "1106052012",
-            "name": "Ulee Lhat"
-        },
-        {
-            "code": "1106052015",
-            "name": "Lamraya"
-        },
-        {
-            "code": "1106052016",
-            "name": "Lamme Garot"
-        },
-        {
-            "code": "1106052017",
-            "name": "Weu Bada"
-        },
-        {
-            "code": "1106052018",
-            "name": "Meunasah Tutong"
-        },
-        {
-            "code": "1106052019",
-            "name": "Empee Tanong"
-        },
-        {
-            "code": "1106052020",
-            "name": "Bak Cirih"
-        },
-        {
-            "code": "1106052021",
-            "name": "Warabo"
-        },
-        {
-            "code": "1106052022",
-            "name": "Teubang Phui Mesjid"
-        },
-        {
-            "code": "1106052023",
-            "name": "Teubang Phui Baro"
-        },
-        {
-            "code": "1106052024",
-            "name": "Bira Cot"
-        },
-        {
-            "code": "1106052025",
-            "name": "Bira Lhok"
-        },
-        {
-            "code": "1106052026",
-            "name": "Bung Tujoh"
-        },
-        {
-            "code": "1106052027",
-            "name": "Peurumping"
-        },
-        {
-            "code": "1106052028",
-            "name": "Atong"
-        },
-        {
-            "code": "1106052029",
-            "name": "Reudeup"
-        },
-        {
-            "code": "1106052042",
-            "name": "Seubam Lhok"
-        },
-        {
-            "code": "1106052043",
-            "name": "Seumet"
-        },
-        {
-            "code": "1106052044",
-            "name": "Cot Seunong"
-        },
-        {
-            "code": "1106052045",
-            "name": "Mon Ara"
-        },
-        {
-            "code": "1106052046",
-            "name": "Cot Lhok"
-        },
-        {
-            "code": "1106052047",
-            "name": "Cot Lampoh Soh"
-        },
-        {
-            "code": "1106052048",
-            "name": "Bueng Raya"
-        },
-        {
-            "code": "1106052049",
-            "name": "Piyeung Lhang"
-        },
-        {
-            "code": "1106052050",
-            "name": "Piyeung Manee"
-        },
-        {
-            "code": "1106052051",
-            "name": "Bueng Daroh"
-        },
-        {
-            "code": "1106052052",
-            "name": "Kuweu"
-        },
-        {
-            "code": "1106052053",
-            "name": "Piyeung Datu"
-        }
-    ],
-    "110606": [
-        {
-            "code": "1106062001",
-            "name": "Reuhat Tuha"
-        },
-        {
-            "code": "1106062002",
-            "name": "Weusiteh"
-        },
-        {
-            "code": "1106062003",
-            "name": "Dilib Lamteungoh"
-        },
-        {
-            "code": "1106062004",
-            "name": "Baet Lampuot"
-        },
-        {
-            "code": "1106062005",
-            "name": "Dilib Bukit"
-        },
-        {
-            "code": "1106062006",
-            "name": "Seumeureung"
-        },
-        {
-            "code": "1106062007",
-            "name": "Sibreh Keumudee"
-        },
-        {
-            "code": "1106062008",
-            "name": "Baet Mesago"
-        },
-        {
-            "code": "1106062009",
-            "name": "Baet Mesjid"
-        },
-        {
-            "code": "1106062010",
-            "name": "Lambaro Sibreh"
-        },
-        {
-            "code": "1106062011",
-            "name": "Lamgeu Baro"
-        },
-        {
-            "code": "1106062012",
-            "name": "Lamgeu Tuha"
-        },
-        {
-            "code": "1106062013",
-            "name": "Lampanah Ineu"
-        },
-        {
-            "code": "1106062014",
-            "name": "Tampok Jeurat Raya"
-        },
-        {
-            "code": "1106062015",
-            "name": "Tampok Blang"
-        },
-        {
-            "code": "1106062016",
-            "name": "Lamteh Dayah"
-        },
-        {
-            "code": "1106062017",
-            "name": "Lam Lheu"
-        },
-        {
-            "code": "1106062018",
-            "name": "Lambarih Jurong Raya"
-        },
-        {
-            "code": "1106062019",
-            "name": "Bukloh"
-        },
-        {
-            "code": "1106062020",
-            "name": "Niron"
-        },
-        {
-            "code": "1106062021",
-            "name": "Aneuk Galong Baro"
-        },
-        {
-            "code": "1106062022",
-            "name": "Aneuk Galong Titi"
-        },
-        {
-            "code": "1106062023",
-            "name": "Blang Cut"
-        },
-        {
-            "code": "1106062024",
-            "name": "Klieng Mayang"
-        },
-        {
-            "code": "1106062025",
-            "name": "Aneuk Batee"
-        },
-        {
-            "code": "1106062026",
-            "name": "Meunasah Tuha"
-        },
-        {
-            "code": "1106062027",
-            "name": "Lampisang"
-        },
-        {
-            "code": "1106062028",
-            "name": "Meunasah Bakthu"
-        },
-        {
-            "code": "1106062029",
-            "name": "Lambarih Bak Mee"
-        },
-        {
-            "code": "1106062030",
-            "name": "Luthu Dayah Krueng"
-        },
-        {
-            "code": "1106062031",
-            "name": "Luthu Lamweu"
-        },
-        {
-            "code": "1106062032",
-            "name": "Panterawa"
-        },
-        {
-            "code": "1106062033",
-            "name": "Lambirah"
-        },
-        {
-            "code": "1106062034",
-            "name": "Kayee Adang"
-        },
-        {
-            "code": "1106062035",
-            "name": "Lam Tanjong"
-        }
-    ],
-    "110607": [
-        {
-            "code": "1106072001",
-            "name": "Lampeuneurut Ujong Blang"
-        },
-        {
-            "code": "1106072002",
-            "name": "Lampeuneurut Gampong"
-        },
-        {
-            "code": "1106072003",
-            "name": "Lamreung"
-        },
-        {
-            "code": "1106072004",
-            "name": "Lamcot"
-        },
-        {
-            "code": "1106072005",
-            "name": "Lam Blang Trieng"
-        },
-        {
-            "code": "1106072006",
-            "name": "Lam Blang Mayang"
-        },
-        {
-            "code": "1106072007",
-            "name": "Bayu"
-        },
-        {
-            "code": "1106072008",
-            "name": "Lagang"
-        },
-        {
-            "code": "1106072009",
-            "name": "Lamsiteh"
-        },
-        {
-            "code": "1106072010",
-            "name": "Lamkawe"
-        },
-        {
-            "code": "1106072011",
-            "name": "Lheu Blang"
-        },
-        {
-            "code": "1106072012",
-            "name": "Payaroh"
-        },
-        {
-            "code": "1106072013",
-            "name": "Lamsidaya"
-        },
-        {
-            "code": "1106072014",
-            "name": "Kuta Karang"
-        },
-        {
-            "code": "1106072015",
-            "name": "Leu Geu"
-        },
-        {
-            "code": "1106072016",
-            "name": "Lampeuneun"
-        },
-        {
-            "code": "1106072017",
-            "name": "Lamtheun"
-        },
-        {
-            "code": "1106072018",
-            "name": "Deunong"
-        },
-        {
-            "code": "1106072019",
-            "name": "Tingkuem"
-        },
-        {
-            "code": "1106072020",
-            "name": "Kandang"
-        },
-        {
-            "code": "1106072021",
-            "name": "Lam Bheu"
-        },
-        {
-            "code": "1106072022",
-            "name": "Daroy Kameu"
-        },
-        {
-            "code": "1106072023",
-            "name": "Geundrieng"
-        },
-        {
-            "code": "1106072024",
-            "name": "Garot"
-        },
-        {
-            "code": "1106072025",
-            "name": "Pasheu Beutong"
-        },
-        {
-            "code": "1106072026",
-            "name": "Lampasi Engking"
-        },
-        {
-            "code": "1106072027",
-            "name": "Jeumpet Ajun"
-        },
-        {
-            "code": "1106072028",
-            "name": "Gue Gajah"
-        },
-        {
-            "code": "1106072029",
-            "name": "Leu Ue"
-        },
-        {
-            "code": "1106072030",
-            "name": "Ulee Lueng"
-        },
-        {
-            "code": "1106072031",
-            "name": "Punie"
-        },
-        {
-            "code": "1106072032",
-            "name": "Ulee Tuy"
-        }
-    ],
-    "110608": [
-        {
-            "code": "1106082001",
-            "name": "Lambadeuk"
-        },
-        {
-            "code": "1106082002",
-            "name": "Lamguron"
-        },
-        {
-            "code": "1106082003",
-            "name": "Lambaro Nejid"
-        },
-        {
-            "code": "1106082004",
-            "name": "Lampageu"
-        },
-        {
-            "code": "1106082005",
-            "name": "Gampong Baro"
-        },
-        {
-            "code": "1106082006",
-            "name": "Lam Manyang"
-        },
-        {
-            "code": "1106082007",
-            "name": "Lamteh"
-        },
-        {
-            "code": "1106082008",
-            "name": "Lam Lumpu"
-        },
-        {
-            "code": "1106082009",
-            "name": "Lamteungoh"
-        },
-        {
-            "code": "1106082010",
-            "name": "Lamtutui"
-        },
-        {
-            "code": "1106082011",
-            "name": "Meunasah Tuha"
-        },
-        {
-            "code": "1106082012",
-            "name": "Lam Awe"
-        },
-        {
-            "code": "1106082013",
-            "name": "Pulo Bunta"
-        },
-        {
-            "code": "1106082014",
-            "name": "Beuradeun"
-        },
-        {
-            "code": "1106082015",
-            "name": "Lampisang"
-        },
-        {
-            "code": "1106082016",
-            "name": "Keuneu Eu"
-        },
-        {
-            "code": "1106082017",
-            "name": "Lam Isek"
-        },
-        {
-            "code": "1106082018",
-            "name": "Lamkeumok"
-        },
-        {
-            "code": "1106082019",
-            "name": "Lam Rukam"
-        },
-        {
-            "code": "1106082020",
-            "name": "Gurah"
-        },
-        {
-            "code": "1106082021",
-            "name": "Rima Jeuneu"
-        },
-        {
-            "code": "1106082022",
-            "name": "Lam Geu Eu"
-        },
-        {
-            "code": "1106082023",
-            "name": "Lam Hasan"
-        },
-        {
-            "code": "1106082024",
-            "name": "Paya Tieng"
-        },
-        {
-            "code": "1106082025",
-            "name": "Ajuen"
-        },
-        {
-            "code": "1106082026",
-            "name": "Rima Keuneurom"
-        }
-    ],
-    "110609": [
-        {
-            "code": "1106092001",
-            "name": "Meunasah Kulam"
-        },
-        {
-            "code": "1106092002",
-            "name": "Beurandeh"
-        },
-        {
-            "code": "1106092003",
-            "name": "Ie Seum"
-        },
-        {
-            "code": "1106092004",
-            "name": "Meunasah Keudee"
-        },
-        {
-            "code": "1106092005",
-            "name": "Lamreh"
-        },
-        {
-            "code": "1106092006",
-            "name": "Meunasah Mon"
-        },
-        {
-            "code": "1106092007",
-            "name": "Paya Kameng"
-        },
-        {
-            "code": "1106092008",
-            "name": "Ruyung"
-        },
-        {
-            "code": "1106092009",
-            "name": "Ladong"
-        },
-        {
-            "code": "1106092010",
-            "name": "Gampong Baro"
-        },
-        {
-            "code": "1106092011",
-            "name": "Durung"
-        },
-        {
-            "code": "1106092012",
-            "name": "Neuheun"
-        },
-        {
-            "code": "1106092013",
-            "name": "Lamnga"
-        }
-    ],
-    "110610": [
-        {
-            "code": "1106102001",
-            "name": "Lambaro"
-        },
-        {
-            "code": "1106102002",
-            "name": "Meunasah Manyang Lam Garot"
-        },
-        {
-            "code": "1106102003",
-            "name": "Bakoy"
-        },
-        {
-            "code": "1106102004",
-            "name": "Meunasah Baro"
-        },
-        {
-            "code": "1106102005",
-            "name": "Meunasah Deyah"
-        },
-        {
-            "code": "1106102006",
-            "name": "Meunasah Tutong"
-        },
-        {
-            "code": "1106102007",
-            "name": "Siron"
-        },
-        {
-            "code": "1106102008",
-            "name": "Pasie Lamgarot"
-        },
-        {
-            "code": "1106102009",
-            "name": "Dham Ceukok"
-        },
-        {
-            "code": "1106102010",
-            "name": "Dham Pulo"
-        },
-        {
-            "code": "1106102011",
-            "name": "Lubok Sukon"
-        },
-        {
-            "code": "1106102012",
-            "name": "Lubok Gapuy"
-        },
-        {
-            "code": "1106102013",
-            "name": "Pasie Lubuk"
-        },
-        {
-            "code": "1106102014",
-            "name": "Bung Ceukok"
-        },
-        {
-            "code": "1106102015",
-            "name": "Teubang Phuy"
-        },
-        {
-            "code": "1106102016",
-            "name": "Ateuk Anggok"
-        },
-        {
-            "code": "1106102017",
-            "name": "Ajee Rayeuk"
-        },
-        {
-            "code": "1106102018",
-            "name": "Ajee Cut"
-        },
-        {
-            "code": "1106102019",
-            "name": "Gani"
-        },
-        {
-            "code": "1106102020",
-            "name": "Ateuk Lueng Ie"
-        },
-        {
-            "code": "1106102021",
-            "name": "Cot Alue"
-        },
-        {
-            "code": "1106102022",
-            "name": "Cot Suruy"
-        },
-        {
-            "code": "1106102023",
-            "name": "Cot Bada"
-        },
-        {
-            "code": "1106102024",
-            "name": "Ajee Pagar Air"
-        },
-        {
-            "code": "1106102025",
-            "name": "Meunasah Krueng"
-        },
-        {
-            "code": "1106102026",
-            "name": "Jurong Peujera"
-        },
-        {
-            "code": "1106102027",
-            "name": "Lubok Batee"
-        },
-        {
-            "code": "1106102028",
-            "name": "Bineh Blang"
-        },
-        {
-            "code": "1106102029",
-            "name": "Pantee"
-        },
-        {
-            "code": "1106102030",
-            "name": "Kalut"
-        },
-        {
-            "code": "1106102031",
-            "name": "Meunasah Manyang Pagar Air"
-        },
-        {
-            "code": "1106102032",
-            "name": "Meunasah Manyet"
-        },
-        {
-            "code": "1106102033",
-            "name": "Santan"
-        },
-        {
-            "code": "1106102034",
-            "name": "Tanjong"
-        },
-        {
-            "code": "1106102035",
-            "name": "Reuloh"
-        },
-        {
-            "code": "1106102041",
-            "name": "Paleuh Blang"
-        },
-        {
-            "code": "1106102042",
-            "name": "Cot Mentiwan"
-        },
-        {
-            "code": "1106102043",
-            "name": "Lampreh Lam Jampok"
-        },
-        {
-            "code": "1106102044",
-            "name": "Paleuh Pulo"
-        },
-        {
-            "code": "1106102045",
-            "name": "Lamcot"
-        },
-        {
-            "code": "1106102046",
-            "name": "Lamsinyeu"
-        },
-        {
-            "code": "1106102047",
-            "name": "Lam Ue"
-        },
-        {
-            "code": "1106102048",
-            "name": "Cot Gud"
-        },
-        {
-            "code": "1106102049",
-            "name": "Lamdaya"
-        },
-        {
-            "code": "1106102050",
-            "name": "Lambada"
-        },
-        {
-            "code": "1106102051",
-            "name": "Ujong XII"
-        },
-        {
-            "code": "1106102052",
-            "name": "Bada"
-        },
-        {
-            "code": "1106102053",
-            "name": "Lamteungoh"
-        },
-        {
-            "code": "1106102054",
-            "name": "Kayee Lee"
-        },
-        {
-            "code": "1106102056",
-            "name": "Lampreh Lamteungoh"
-        }
-    ],
-    "110611": [
-        {
-            "code": "1106112001",
-            "name": "Krueng Anoi"
-        },
-        {
-            "code": "1106112002",
-            "name": "Lam Puuk"
-        },
-        {
-            "code": "1106112003",
-            "name": "Cot Beut"
-        },
-        {
-            "code": "1106112004",
-            "name": "Bueng Bakjok"
-        },
-        {
-            "code": "1106112005",
-            "name": "Lam Neuheun"
-        },
-        {
-            "code": "1106112006",
-            "name": "Seupeu"
-        },
-        {
-            "code": "1106112007",
-            "name": "Cot Mancang"
-        },
-        {
-            "code": "1106112008",
-            "name": "Lam Baet"
-        },
-        {
-            "code": "1106112009",
-            "name": "Cot Masam"
-        },
-        {
-            "code": "1106112016",
-            "name": "Gue"
-        },
-        {
-            "code": "1106112018",
-            "name": "Lam Sabang"
-        },
-        {
-            "code": "1106112019",
-            "name": "Lam Alue Raya"
-        },
-        {
-            "code": "1106112020",
-            "name": "Lam Alue Cut"
-        },
-        {
-            "code": "1106112021",
-            "name": "Leupung Mesjid"
-        },
-        {
-            "code": "1106112022",
-            "name": "Cot Lamee"
-        },
-        {
-            "code": "1106112023",
-            "name": "Leupung Ulee Alue"
-        },
-        {
-            "code": "1106112024",
-            "name": "Lampoh Tarom"
-        },
-        {
-            "code": "1106112025",
-            "name": "Lamteube Geupula"
-        },
-        {
-            "code": "1106112026",
-            "name": "Lamteube Mon Ara"
-        },
-        {
-            "code": "1106112027",
-            "name": "Aron"
-        },
-        {
-            "code": "1106112028",
-            "name": "Bak Buloh"
-        },
-        {
-            "code": "1106112029",
-            "name": "Lam Seunong"
-        },
-        {
-            "code": "1106112030",
-            "name": "Lam Raya"
-        },
-        {
-            "code": "1106112031",
-            "name": "Lam Roh"
-        },
-        {
-            "code": "1106112032",
-            "name": "Lambunot Tanoh"
-        },
-        {
-            "code": "1106112033",
-            "name": "Tumpok Lampoh"
-        },
-        {
-            "code": "1106112034",
-            "name": "Puuk"
-        },
-        {
-            "code": "1106112035",
-            "name": "Lambunot Paya"
-        },
-        {
-            "code": "1106112036",
-            "name": "Lampoh Keude"
-        },
-        {
-            "code": "1106112037",
-            "name": "Lam Asan"
-        },
-        {
-            "code": "1106112038",
-            "name": "Lambro Deyah"
-        },
-        {
-            "code": "1106112039",
-            "name": "Lambro Bileu"
-        },
-        {
-            "code": "1106112040",
-            "name": "Cot Peutano"
-        },
-        {
-            "code": "1106112041",
-            "name": "Cot Cut"
-        },
-        {
-            "code": "1106112042",
-            "name": "Meunasah Baktrieng"
-        },
-        {
-            "code": "1106112043",
-            "name": "Babah Jurong"
-        },
-        {
-            "code": "1106112044",
-            "name": "Lam Glumpang"
-        },
-        {
-            "code": "1106112045",
-            "name": "Rabeu"
-        },
-        {
-            "code": "1106112046",
-            "name": "Cucum"
-        },
-        {
-            "code": "1106112047",
-            "name": "Deyah"
-        },
-        {
-            "code": "1106112048",
-            "name": "Lam Trieng"
-        },
-        {
-            "code": "1106112049",
-            "name": "Beurangong"
-        },
-        {
-            "code": "1106112050",
-            "name": "Cot Preh"
-        },
-        {
-            "code": "1106112051",
-            "name": "Cot Raya"
-        },
-        {
-            "code": "1106112052",
-            "name": "Cot Yang"
-        },
-        {
-            "code": "1106112053",
-            "name": "Ujong Blang"
-        },
-        {
-            "code": "1106112054",
-            "name": "Lamceu"
-        }
-    ],
-    "110612": [
-        {
-            "code": "1106122001",
-            "name": "Angan"
-        },
-        {
-            "code": "1106122002",
-            "name": "Lam Peudaya"
-        },
-        {
-            "code": "1106122003",
-            "name": "Lambada Peukan"
-        },
-        {
-            "code": "1106122004",
-            "name": "Lambiheu La"
-        },
-        {
-            "code": "1106122005",
-            "name": "Lambaro Sukon"
-        },
-        {
-            "code": "1106122006",
-            "name": "Miruek Taman"
-        },
-        {
-            "code": "1106122007",
-            "name": "Suleue"
-        },
-        {
-            "code": "1106122008",
-            "name": "Gampong Cot"
-        },
-        {
-            "code": "1106122009",
-            "name": "Gampong Blang"
-        },
-        {
-            "code": "1106122010",
-            "name": "Lampuja"
-        },
-        {
-            "code": "1106122011",
-            "name": "Tanjung Deah"
-        },
-        {
-            "code": "1106122012",
-            "name": "Limpok"
-        },
-        {
-            "code": "1106122013",
-            "name": "Lampuuk"
-        },
-        {
-            "code": "1106122014",
-            "name": "Lam Ujong"
-        },
-        {
-            "code": "1106122015",
-            "name": "Lam Gawe"
-        },
-        {
-            "code": "1106122016",
-            "name": "Berabung"
-        },
-        {
-            "code": "1106122017",
-            "name": "Lamtimpeung"
-        },
-        {
-            "code": "1106122018",
-            "name": "Tungkop"
-        },
-        {
-            "code": "1106122019",
-            "name": "Tanjong Seulamat"
-        },
-        {
-            "code": "1106122020",
-            "name": "Lamkeunung"
-        },
-        {
-            "code": "1106122021",
-            "name": "Lam Duroy"
-        },
-        {
-            "code": "1106122022",
-            "name": "Lam Klat"
-        },
-        {
-            "code": "1106122023",
-            "name": "Lambiheu Siem"
-        },
-        {
-            "code": "1106122024",
-            "name": "Lambitra"
-        },
-        {
-            "code": "1106122025",
-            "name": "Lie Eue"
-        },
-        {
-            "code": "1106122026",
-            "name": "Krueng Kalee"
-        },
-        {
-            "code": "1106122027",
-            "name": "Lam Asan"
-        },
-        {
-            "code": "1106122028",
-            "name": "Lam Reh"
-        },
-        {
-            "code": "1106122029",
-            "name": "Siem"
-        }
-    ],
-    "110613": [
-        {
-            "code": "1106132001",
-            "name": "Rinon"
-        },
-        {
-            "code": "1106132002",
-            "name": "Alue Raya"
-        },
-        {
-            "code": "1106132003",
-            "name": "Melingge"
-        },
-        {
-            "code": "1106132004",
-            "name": "Lapeng"
-        },
-        {
-            "code": "1106132005",
-            "name": "Ulee Paya"
-        },
-        {
-            "code": "1106132006",
-            "name": "Gugop"
-        },
-        {
-            "code": "1106132007",
-            "name": "Seurapong"
-        },
-        {
-            "code": "1106132008",
-            "name": "Blang Situngkoh"
-        },
-        {
-            "code": "1106132009",
-            "name": "Paloh"
-        },
-        {
-            "code": "1106132010",
-            "name": "Lampuyang"
-        },
-        {
-            "code": "1106132011",
-            "name": "Lhok"
-        },
-        {
-            "code": "1106132012",
-            "name": "Teunom"
-        },
-        {
-            "code": "1106132013",
-            "name": "Lamteng"
-        },
-        {
-            "code": "1106132014",
-            "name": "Pasi Janeng"
-        },
-        {
-            "code": "1106132015",
-            "name": "Rabo"
-        },
-        {
-            "code": "1106132016",
-            "name": "Alue Reuyeueng"
-        },
-        {
-            "code": "1106132017",
-            "name": "Deudap"
-        }
-    ],
-    "110614": [
-        {
-            "code": "1106142001",
-            "name": "Lamtamot"
-        },
-        {
-            "code": "1106142002",
-            "name": "Lambaro Tunong"
-        },
-        {
-            "code": "1106142003",
-            "name": "Lonbaroh"
-        },
-        {
-            "code": "1106142004",
-            "name": "Lon Asan"
-        },
-        {
-            "code": "1106142005",
-            "name": "Paya Keureuleh"
-        },
-        {
-            "code": "1106142006",
-            "name": "Panca"
-        },
-        {
-            "code": "1106142007",
-            "name": "Lam Kubu"
-        },
-        {
-            "code": "1106142008",
-            "name": "Panca Kubu"
-        },
-        {
-            "code": "1106142009",
-            "name": "Suka Damai"
-        },
-        {
-            "code": "1106142010",
-            "name": "Suka Mulya"
-        },
-        {
-            "code": "1106142011",
-            "name": "Saree Aceh"
-        },
-        {
-            "code": "1106142012",
-            "name": "Teuladan"
-        }
-    ],
-    "110615": [
-        {
-            "code": "1106152001",
-            "name": "Teureubeh"
-        },
-        {
-            "code": "1106152002",
-            "name": "Barueh"
-        },
-        {
-            "code": "1106152003",
-            "name": "Jantho"
-        },
-        {
-            "code": "1106152004",
-            "name": "Awek"
-        },
-        {
-            "code": "1106152005",
-            "name": "Data Cut"
-        },
-        {
-            "code": "1106152006",
-            "name": "Bueng"
-        },
-        {
-            "code": "1106152007",
-            "name": "Weu"
-        },
-        {
-            "code": "1106152008",
-            "name": "Jalin"
-        },
-        {
-            "code": "1106152009",
-            "name": "Suka Tani"
-        },
-        {
-            "code": "1106152010",
-            "name": "Cucum"
-        },
-        {
-            "code": "1106152011",
-            "name": "Jantho Baru"
-        },
-        {
-            "code": "1106152012",
-            "name": "Jantho Makmur"
-        },
-        {
-            "code": "1106152013",
-            "name": "Bukit Meusara"
-        }
-    ],
-    "110616": [
-        {
-            "code": "1106162001",
-            "name": "Lampakuk"
-        },
-        {
-            "code": "1106162002",
-            "name": "Lampoh Raja"
-        },
-        {
-            "code": "1106162003",
-            "name": "Lam Aling"
-        },
-        {
-            "code": "1106162004",
-            "name": "Lamleupung"
-        },
-        {
-            "code": "1106162005",
-            "name": "Lamkleng"
-        },
-        {
-            "code": "1106162006",
-            "name": "Ie Alang Lamkreumeuh"
-        },
-        {
-            "code": "1106162007",
-            "name": "Ie Alang Lamghui"
-        },
-        {
-            "code": "1106162008",
-            "name": "Ie Alang Mesjid"
-        },
-        {
-            "code": "1106162009",
-            "name": "Ie Alang Dayah"
-        },
-        {
-            "code": "1106162010",
-            "name": "Lamtui"
-        },
-        {
-            "code": "1106162011",
-            "name": "Barih Lhok"
-        },
-        {
-            "code": "1106162012",
-            "name": "Bueng Simek"
-        },
-        {
-            "code": "1106162013",
-            "name": "Banda Safa"
-        },
-        {
-            "code": "1106162014",
-            "name": "Bithak"
-        },
-        {
-            "code": "1106162015",
-            "name": "Lambeugak"
-        },
-        {
-            "code": "1106162016",
-            "name": "Pakuk"
-        },
-        {
-            "code": "1106162017",
-            "name": "Lamsie"
-        },
-        {
-            "code": "1106162018",
-            "name": "Sigapang"
-        },
-        {
-            "code": "1106162019",
-            "name": "Tutui"
-        },
-        {
-            "code": "1106162020",
-            "name": "Pasar Lampaku"
-        },
-        {
-            "code": "1106162021",
-            "name": "Maheng"
-        },
-        {
-            "code": "1106162022",
-            "name": "Leupung Bruek"
-        },
-        {
-            "code": "1106162023",
-            "name": "Keumireu"
-        },
-        {
-            "code": "1106162024",
-            "name": "Lamleuot"
-        },
-        {
-            "code": "1106162025",
-            "name": "Leupung Balue"
-        },
-        {
-            "code": "1106162026",
-            "name": "Bak Sukon"
-        },
-        {
-            "code": "1106162027",
-            "name": "Cot Bayu"
-        },
-        {
-            "code": "1106162028",
-            "name": "Glee Jai"
-        },
-        {
-            "code": "1106162029",
-            "name": "Keuruweung Blang"
-        },
-        {
-            "code": "1106162030",
-            "name": "Keuruweung Krueng"
-        },
-        {
-            "code": "1106162031",
-            "name": "Siron Blang"
-        },
-        {
-            "code": "1106162032",
-            "name": "Siron Krueng"
-        }
-    ],
-    "110617": [
-        {
-            "code": "1106172001",
-            "name": "Lambaro Samahani"
-        },
-        {
-            "code": "1106172002",
-            "name": "Lam Ara Cut"
-        },
-        {
-            "code": "1106172003",
-            "name": "Lam Ara Engkit"
-        },
-        {
-            "code": "1106172004",
-            "name": "Lam Ara Tunong"
-        },
-        {
-            "code": "1106172005",
-            "name": "Leupung Riwat"
-        },
-        {
-            "code": "1106172006",
-            "name": "Tumbo Baro"
-        },
-        {
-            "code": "1106172007",
-            "name": "Leupung Cut"
-        },
-        {
-            "code": "1106172008",
-            "name": "Lamsiteh Cot"
-        },
-        {
-            "code": "1106172009",
-            "name": "Reuleung Karieng"
-        },
-        {
-            "code": "1106172010",
-            "name": "Leubok Buni"
-        },
-        {
-            "code": "1106172011",
-            "name": "Leubok Batee"
-        },
-        {
-            "code": "1106172012",
-            "name": "Bunghu"
-        },
-        {
-            "code": "1106172013",
-            "name": "Teu Dayah"
-        },
-        {
-            "code": "1106172014",
-            "name": "Leupung Rayeuk"
-        },
-        {
-            "code": "1106172015",
-            "name": "Reuleung Glumpang"
-        }
-    ],
-    "110618": [
-        {
-            "code": "1106182001",
-            "name": "Ateuk Lam Phang"
-        },
-        {
-            "code": "1106182002",
-            "name": "Ateuk Lampuot"
-        },
-        {
-            "code": "1106182003",
-            "name": "Ateuk Mon Panah"
-        },
-        {
-            "code": "1106182004",
-            "name": "Ateuk Lam Ura"
-        },
-        {
-            "code": "1106182005",
-            "name": "Ateuk Cut"
-        },
-        {
-            "code": "1106182006",
-            "name": "Ateuk Blang Asan"
-        },
-        {
-            "code": "1106182007",
-            "name": "Lamjamee Dayah"
-        },
-        {
-            "code": "1106182008",
-            "name": "Lam Batee"
-        },
-        {
-            "code": "1106182009",
-            "name": "Nya"
-        },
-        {
-            "code": "1106182010",
-            "name": "Batee Linteung"
-        },
-        {
-            "code": "1106182011",
-            "name": "Krueng Mak"
-        },
-        {
-            "code": "1106182012",
-            "name": "Lambunot"
-        },
-        {
-            "code": "1106182013",
-            "name": "Lamjamee Lamkrak"
-        },
-        {
-            "code": "1106182014",
-            "name": "Blang Miro"
-        },
-        {
-            "code": "1106182015",
-            "name": "Blang Preh"
-        },
-        {
-            "code": "1106182016",
-            "name": "Bha Ulee Tutu"
-        },
-        {
-            "code": "1106182017",
-            "name": "Lam Urit"
-        },
-        {
-            "code": "1106182018",
-            "name": "Tantuha"
-        }
-    ],
-    "110619": [
-        {
-            "code": "1106192001",
-            "name": "Lhang"
-        },
-        {
-            "code": "1106192002",
-            "name": "Biluy"
-        },
-        {
-            "code": "1106192003",
-            "name": "Lambatee"
-        },
-        {
-            "code": "1106192004",
-            "name": "Lamkunyet"
-        },
-        {
-            "code": "1106192005",
-            "name": "Lamtadok"
-        },
-        {
-            "code": "1106192006",
-            "name": "Neusok"
-        },
-        {
-            "code": "1106192007",
-            "name": "Turam"
-        },
-        {
-            "code": "1106192008",
-            "name": "Tubaluy"
-        },
-        {
-            "code": "1106192009",
-            "name": "Blang Kiree"
-        },
-        {
-            "code": "1106192010",
-            "name": "Manee Dayah"
-        },
-        {
-            "code": "1106192011",
-            "name": "Lamsod"
-        },
-        {
-            "code": "1106192012",
-            "name": "Lambleut"
-        },
-        {
-            "code": "1106192013",
-            "name": "Empee Trieng"
-        },
-        {
-            "code": "1106192014",
-            "name": "Lambaro Biluy"
-        }
-    ],
-    "110620": [
-        {
-            "code": "1106202001",
-            "name": "Cadek"
-        },
-        {
-            "code": "1106202002",
-            "name": "Kajhu"
-        },
-        {
-            "code": "1106202003",
-            "name": "Baet"
-        },
-        {
-            "code": "1106202004",
-            "name": "Blang Krueng"
-        },
-        {
-            "code": "1106202005",
-            "name": "Klieng Muria"
-        },
-        {
-            "code": "1106202006",
-            "name": "Lam Bada Lhok"
-        },
-        {
-            "code": "1106202007",
-            "name": "Lampineung"
-        },
-        {
-            "code": "1106202008",
-            "name": "Lam Asan"
-        },
-        {
-            "code": "1106202009",
-            "name": "Labuy"
-        },
-        {
-            "code": "1106202010",
-            "name": "Lam Ujong"
-        },
-        {
-            "code": "1106202011",
-            "name": "Klieng Cot Aron"
-        },
-        {
-            "code": "1106202012",
-            "name": "Cot Paya"
-        },
-        {
-            "code": "1106202013",
-            "name": "Miruk Lam Reudep"
-        }
-    ],
-    "110621": [
-        {
-            "code": "1106212001",
-            "name": "Meunasah Papeun"
-        },
-        {
-            "code": "1106212002",
-            "name": "Meunasah Baktrieng"
-        },
-        {
-            "code": "1106212003",
-            "name": "Leung Ie"
-        },
-        {
-            "code": "1106212004",
-            "name": "Lampermai"
-        },
-        {
-            "code": "1106212005",
-            "name": "Gle Deyah"
-        },
-        {
-            "code": "1106212006",
-            "name": "Miruk"
-        },
-        {
-            "code": "1106212007",
-            "name": "Lam Gapang"
-        },
-        {
-            "code": "1106212008",
-            "name": "Meunasah Manyang"
-        },
-        {
-            "code": "1106212009",
-            "name": "Meunasah Baet"
-        },
-        {
-            "code": "1106212010",
-            "name": "Meunasah Intan"
-        },
-        {
-            "code": "1106212011",
-            "name": "Rumpet"
-        },
-        {
-            "code": "1106212012",
-            "name": "Gla Meunasah Baro"
-        }
-    ],
-    "110622": [
-        {
-            "code": "1106222001",
-            "name": "Layeun"
-        },
-        {
-            "code": "1106222002",
-            "name": "Pulot"
-        },
-        {
-            "code": "1106222003",
-            "name": "Lamseunia"
-        },
-        {
-            "code": "1106222004",
-            "name": "Mns. Mesjid"
-        },
-        {
-            "code": "1106222005",
-            "name": "Meunasah Bak U"
-        },
-        {
-            "code": "1106222006",
-            "name": "Dayah Mamplam"
-        }
-    ],
-    "110623": [
-        {
-            "code": "1106232001",
-            "name": "Cot Puklat"
-        },
-        {
-            "code": "1106232002",
-            "name": "Lamme"
-        },
-        {
-            "code": "1106232003",
-            "name": "Meulayo"
-        },
-        {
-            "code": "1106232004",
-            "name": "Lam Siem"
-        },
-        {
-            "code": "1106232005",
-            "name": "Cot Geundreut"
-        },
-        {
-            "code": "1106232006",
-            "name": "Paya Ue"
-        },
-        {
-            "code": "1106232007",
-            "name": "Cot Mon Raya"
-        },
-        {
-            "code": "1106232008",
-            "name": "Cot Meulangeun"
-        },
-        {
-            "code": "1106232009",
-            "name": "Cot Madhi"
-        },
-        {
-            "code": "1106232010",
-            "name": "Bueng Sidom"
-        },
-        {
-            "code": "1106232011",
-            "name": "Cot Karieng"
-        },
-        {
-            "code": "1106232012",
-            "name": "Kampung Blang"
-        },
-        {
-            "code": "1106232013",
-            "name": "Cot Malem"
-        },
-        {
-            "code": "1106232014",
-            "name": "Cot Rumpun"
-        },
-        {
-            "code": "1106232015",
-            "name": "Cot Hoho"
-        },
-        {
-            "code": "1106232016",
-            "name": "Cot Jambo"
-        },
-        {
-            "code": "1106232017",
-            "name": "Cot Nambak"
-        },
-        {
-            "code": "1106232018",
-            "name": "Bueng Pageu"
-        },
-        {
-            "code": "1106232019",
-            "name": "Cot Sayun"
-        },
-        {
-            "code": "1106232020",
-            "name": "Teupin Batee"
-        },
-        {
-            "code": "1106232021",
-            "name": "Cot Leuot"
-        },
-        {
-            "code": "1106232022",
-            "name": "Cot Bagie"
-        },
-        {
-            "code": "1106232023",
-            "name": "Kayee Kunyet"
-        },
-        {
-            "code": "1106232024",
-            "name": "Cot Mancang"
-        },
-        {
-            "code": "1106232025",
-            "name": "Empee Bata"
-        },
-        {
-            "code": "1106232026",
-            "name": "Data Makmur"
-        }
-    ]
+  "110601": [
+    {
+      "code": "1106012001",
+      "name": "Meunasah Krueng Kala"
+    },
+    {
+      "code": "1106012002",
+      "name": "Jantang"
+    },
+    {
+      "code": "1106012003",
+      "name": "Baroh Krueng Kala"
+    },
+    {
+      "code": "1106012004",
+      "name": "Tunong Krueng Kala"
+    },
+    {
+      "code": "1106012005",
+      "name": "Sungko Mulat"
+    },
+    {
+      "code": "1106012006",
+      "name": "Birek"
+    },
+    {
+      "code": "1106012007",
+      "name": "Kareung"
+    },
+    {
+      "code": "1106012008",
+      "name": "Paroy"
+    },
+    {
+      "code": "1106012009",
+      "name": "Teungoh Blang Mee"
+    },
+    {
+      "code": "1106012010",
+      "name": "Lamkuta Blang Mee"
+    },
+    {
+      "code": "1106012011",
+      "name": "Baroh Blang Mee"
+    },
+    {
+      "code": "1106012012",
+      "name": "Umong Seuribee"
+    },
+    {
+      "code": "1106012013",
+      "name": "Teungoh Geunteut"
+    },
+    {
+      "code": "1106012014",
+      "name": "Baroh Geunteut"
+    },
+    {
+      "code": "1106012015",
+      "name": "Lam Juhang"
+    },
+    {
+      "code": "1106012016",
+      "name": "Utamong"
+    },
+    {
+      "code": "1106012017",
+      "name": "Gapuy"
+    },
+    {
+      "code": "1106012018",
+      "name": "Lamsujen"
+    },
+    {
+      "code": "1106012019",
+      "name": "Mon Mata"
+    },
+    {
+      "code": "1106012020",
+      "name": "Lamgeuriheu"
+    },
+    {
+      "code": "1106012021",
+      "name": "Keutapang"
+    },
+    {
+      "code": "1106012022",
+      "name": "Saney"
+    },
+    {
+      "code": "1106012023",
+      "name": "Cundien"
+    },
+    {
+      "code": "1106012024",
+      "name": "Glee Bruek"
+    },
+    {
+      "code": "1106012025",
+      "name": "Pasi"
+    },
+    {
+      "code": "1106012026",
+      "name": "Pudeng"
+    },
+    {
+      "code": "1106012027",
+      "name": "Meunasah Cot"
+    },
+    {
+      "code": "1106012028",
+      "name": "Meunasah Lhok"
+    }
+  ],
+  "110602": [
+    {
+      "code": "1106022001",
+      "name": "Mon Ikeun"
+    },
+    {
+      "code": "1106022002",
+      "name": "Nusa"
+    },
+    {
+      "code": "1106022003",
+      "name": "Weu Raya"
+    },
+    {
+      "code": "1106022004",
+      "name": "Lamkrut"
+    },
+    {
+      "code": "1106022005",
+      "name": "Lamgaboh"
+    },
+    {
+      "code": "1106022006",
+      "name": "Lambaro Kueh"
+    },
+    {
+      "code": "1106022007",
+      "name": "Lam Ateuk"
+    },
+    {
+      "code": "1106022008",
+      "name": "Kueh"
+    },
+    {
+      "code": "1106022009",
+      "name": "Tanjong"
+    },
+    {
+      "code": "1106022010",
+      "name": "Aneuk Paya"
+    },
+    {
+      "code": "1106022011",
+      "name": "Seubun Keutapang"
+    },
+    {
+      "code": "1106022012",
+      "name": "Seubun Ayon"
+    },
+    {
+      "code": "1106022013",
+      "name": "Lambaro Seubun"
+    },
+    {
+      "code": "1106022014",
+      "name": "Naga Umbang"
+    },
+    {
+      "code": "1106022015",
+      "name": "Lampaya"
+    },
+    {
+      "code": "1106022016",
+      "name": "Meunasah Mesjid Lamlhom"
+    },
+    {
+      "code": "1106022017",
+      "name": "Meunasah Mon Cut"
+    },
+    {
+      "code": "1106022018",
+      "name": "Meunasah Manyang"
+    },
+    {
+      "code": "1106022019",
+      "name": "Meunasah Lam Girek"
+    },
+    {
+      "code": "1106022020",
+      "name": "Meunasah Lambaro"
+    },
+    {
+      "code": "1106022021",
+      "name": "Meunasah Baro Lamlhom"
+    },
+    {
+      "code": "1106022022",
+      "name": "Meunasah Beutong"
+    },
+    {
+      "code": "1106022023",
+      "name": "Mns. Mesjid Lampuuk"
+    },
+    {
+      "code": "1106022024",
+      "name": "Meunasah Balee"
+    },
+    {
+      "code": "1106022025",
+      "name": "Meunasah Karieng"
+    },
+    {
+      "code": "1106022026",
+      "name": "Lamcok"
+    },
+    {
+      "code": "1106022027",
+      "name": "Meunasah Cut"
+    },
+    {
+      "code": "1106022028",
+      "name": "Meunasah Blang"
+    }
+  ],
+  "110603": [
+    {
+      "code": "1106032001",
+      "name": "Reukih Dayah"
+    },
+    {
+      "code": "1106032002",
+      "name": "Indrapuri"
+    },
+    {
+      "code": "1106032003",
+      "name": "Lam Leubok"
+    },
+    {
+      "code": "1106032004",
+      "name": "Empee Ara"
+    },
+    {
+      "code": "1106032005",
+      "name": "Limo Blang"
+    },
+    {
+      "code": "1106032006",
+      "name": "Limo Mesjid"
+    },
+    {
+      "code": "1106032007",
+      "name": "Limo Lamleuweung"
+    },
+    {
+      "code": "1106032008",
+      "name": "Lheue"
+    },
+    {
+      "code": "1106032009",
+      "name": "Meusale"
+    },
+    {
+      "code": "1106032010",
+      "name": "Cureh"
+    },
+    {
+      "code": "1106032011",
+      "name": "Cot Kareung"
+    },
+    {
+      "code": "1106032012",
+      "name": "Lamlung"
+    },
+    {
+      "code": "1106032013",
+      "name": "Meureu Ulee Titie"
+    },
+    {
+      "code": "1106032014",
+      "name": "Meureu Bueng-U"
+    },
+    {
+      "code": "1106032015",
+      "name": "Mureu Baro"
+    },
+    {
+      "code": "1106032016",
+      "name": "Meureu Lamglumpang"
+    },
+    {
+      "code": "1106032017",
+      "name": "Pasar Indrapuri"
+    },
+    {
+      "code": "1106032018",
+      "name": "Manggra"
+    },
+    {
+      "code": "1106032019",
+      "name": "Reukih Kupula"
+    },
+    {
+      "code": "1106032020",
+      "name": "Lam Ilie Mesjid"
+    },
+    {
+      "code": "1106032021",
+      "name": "Lam Ilie Tengoh"
+    },
+    {
+      "code": "1106032022",
+      "name": "Lam Ilie Ganto"
+    },
+    {
+      "code": "1106032023",
+      "name": "Meunara"
+    },
+    {
+      "code": "1106032024",
+      "name": "Aneuk Glee"
+    },
+    {
+      "code": "1106032025",
+      "name": "Krueng Lamkareung"
+    },
+    {
+      "code": "1106032026",
+      "name": "Sinyeu"
+    },
+    {
+      "code": "1106032027",
+      "name": "Seureumo"
+    },
+    {
+      "code": "1106032028",
+      "name": "Ulee Kareung"
+    },
+    {
+      "code": "1106032029",
+      "name": "Lambeutong"
+    },
+    {
+      "code": "1106032030",
+      "name": "Lampupok Baro"
+    },
+    {
+      "code": "1106032031",
+      "name": "Lampupok Raya"
+    },
+    {
+      "code": "1106032032",
+      "name": "Seulangai"
+    },
+    {
+      "code": "1106032033",
+      "name": "Riting"
+    },
+    {
+      "code": "1106032034",
+      "name": "Sihom Lhok"
+    },
+    {
+      "code": "1106032035",
+      "name": "Sihom Cot"
+    },
+    {
+      "code": "1106032036",
+      "name": "Seuot Baroh"
+    },
+    {
+      "code": "1106032037",
+      "name": "Seuot Tunong"
+    },
+    {
+      "code": "1106032038",
+      "name": "Lampanah Ranjo"
+    },
+    {
+      "code": "1106032039",
+      "name": "Lampanah Teungoh"
+    },
+    {
+      "code": "1106032040",
+      "name": "Lampanah Dayah"
+    },
+    {
+      "code": "1106032041",
+      "name": "Lampanah Baro"
+    },
+    {
+      "code": "1106032042",
+      "name": "Lampanah Tunong"
+    },
+    {
+      "code": "1106032043",
+      "name": "Groet Blang"
+    },
+    {
+      "code": "1106032044",
+      "name": "Groet Manyang"
+    },
+    {
+      "code": "1106032045",
+      "name": "Groet Baro"
+    },
+    {
+      "code": "1106032046",
+      "name": "Jruek Bak Kreh"
+    },
+    {
+      "code": "1106032047",
+      "name": "Jruek Balee"
+    },
+    {
+      "code": "1106032049",
+      "name": "Mon Alue"
+    },
+    {
+      "code": "1106032050",
+      "name": "Lambeunot"
+    },
+    {
+      "code": "1106032051",
+      "name": "Ulee Ue"
+    },
+    {
+      "code": "1106032052",
+      "name": "Lamsiot"
+    },
+    {
+      "code": "1106032053",
+      "name": "Lingom"
+    }
+  ],
+  "110604": [
+    {
+      "code": "1106042001",
+      "name": "Peukan Seulimeum"
+    },
+    {
+      "code": "1106042002",
+      "name": "Keunaloi"
+    },
+    {
+      "code": "1106042003",
+      "name": "Lhieb"
+    },
+    {
+      "code": "1106042004",
+      "name": "Alue Gintong"
+    },
+    {
+      "code": "1106042005",
+      "name": "Gampong Seulimeum"
+    },
+    {
+      "code": "1106042006",
+      "name": "Data Gaseu"
+    },
+    {
+      "code": "1106042007",
+      "name": "Rabo"
+    },
+    {
+      "code": "1106042008",
+      "name": "Gampong Raya"
+    },
+    {
+      "code": "1106042009",
+      "name": "Lamjruen"
+    },
+    {
+      "code": "1106042010",
+      "name": "Buga"
+    },
+    {
+      "code": "1106042011",
+      "name": "Jawie"
+    },
+    {
+      "code": "1106042012",
+      "name": "Alue Rindang"
+    },
+    {
+      "code": "1106042013",
+      "name": "Iboh Tunong"
+    },
+    {
+      "code": "1106042014",
+      "name": "Iboh Tanjong"
+    },
+    {
+      "code": "1106042015",
+      "name": "Seuneubok"
+    },
+    {
+      "code": "1106042016",
+      "name": "Meunasah Baro"
+    },
+    {
+      "code": "1106042017",
+      "name": "Meunasah Tunong"
+    },
+    {
+      "code": "1106042018",
+      "name": "Batee Lhee"
+    },
+    {
+      "code": "1106042019",
+      "name": "Mangeu"
+    },
+    {
+      "code": "1106042020",
+      "name": "Bayu"
+    },
+    {
+      "code": "1106042021",
+      "name": "Ayon"
+    },
+    {
+      "code": "1106042022",
+      "name": "Lamteuba Droe"
+    },
+    {
+      "code": "1106042023",
+      "name": "Pulo"
+    },
+    {
+      "code": "1106042024",
+      "name": "Lampantee"
+    },
+    {
+      "code": "1106042025",
+      "name": "Lambada"
+    },
+    {
+      "code": "1106042026",
+      "name": "Blang Tingkeum"
+    },
+    {
+      "code": "1106042027",
+      "name": "Ateuk"
+    },
+    {
+      "code": "1106042028",
+      "name": "Lam Apeng"
+    },
+    {
+      "code": "1106042029",
+      "name": "Meurah"
+    },
+    {
+      "code": "1106042030",
+      "name": "Lampanah"
+    },
+    {
+      "code": "1106042031",
+      "name": "Ujong Mesjid Lampanah"
+    },
+    {
+      "code": "1106042032",
+      "name": "Ujong Keupula"
+    },
+    {
+      "code": "1106042033",
+      "name": "Leungah"
+    },
+    {
+      "code": "1106042034",
+      "name": "Beureunut"
+    },
+    {
+      "code": "1106042035",
+      "name": "Meunasah Jeumpa"
+    },
+    {
+      "code": "1106042036",
+      "name": "Pinto Khop"
+    },
+    {
+      "code": "1106042037",
+      "name": "Bak Seutui"
+    },
+    {
+      "code": "1106042038",
+      "name": "Bak Aghu"
+    },
+    {
+      "code": "1106042039",
+      "name": "Kayee Adang"
+    },
+    {
+      "code": "1106042040",
+      "name": "Lamkuk"
+    },
+    {
+      "code": "1106042041",
+      "name": "Ujong Mesjid Tanoh Abee"
+    },
+    {
+      "code": "1106042042",
+      "name": "Lamcarak"
+    },
+    {
+      "code": "1106042043",
+      "name": "Capeung Dayah"
+    },
+    {
+      "code": "1106042044",
+      "name": "Capeung Baroh"
+    },
+    {
+      "code": "1106042045",
+      "name": "Lampisang Dayah"
+    },
+    {
+      "code": "1106042046",
+      "name": "Lampisang Tunong"
+    },
+    {
+      "code": "1106042047",
+      "name": "Lampisang Teungoh"
+    }
+  ],
+  "110605": [
+    {
+      "code": "1106052001",
+      "name": "Mata Ie"
+    },
+    {
+      "code": "1106052002",
+      "name": "Gampong Baroh"
+    },
+    {
+      "code": "1106052003",
+      "name": "Lampaseh Lhok"
+    },
+    {
+      "code": "1106052004",
+      "name": "Lampaseh Krueng"
+    },
+    {
+      "code": "1106052005",
+      "name": "Lamnga"
+    },
+    {
+      "code": "1106052006",
+      "name": "Dayah Daboh"
+    },
+    {
+      "code": "1106052007",
+      "name": "Weu Lhok"
+    },
+    {
+      "code": "1106052008",
+      "name": "Alue"
+    },
+    {
+      "code": "1106052009",
+      "name": "Weu Krueng"
+    },
+    {
+      "code": "1106052010",
+      "name": "Seubam Cot"
+    },
+    {
+      "code": "1106052011",
+      "name": "Bak Dilip"
+    },
+    {
+      "code": "1106052012",
+      "name": "Ulee Lhat"
+    },
+    {
+      "code": "1106052015",
+      "name": "Lamraya"
+    },
+    {
+      "code": "1106052016",
+      "name": "Lamme Garot"
+    },
+    {
+      "code": "1106052017",
+      "name": "Weu Bada"
+    },
+    {
+      "code": "1106052018",
+      "name": "Meunasah Tutong"
+    },
+    {
+      "code": "1106052019",
+      "name": "Empee Tanong"
+    },
+    {
+      "code": "1106052020",
+      "name": "Bak Cirih"
+    },
+    {
+      "code": "1106052021",
+      "name": "Warabo"
+    },
+    {
+      "code": "1106052022",
+      "name": "Teubang Phui Mesjid"
+    },
+    {
+      "code": "1106052023",
+      "name": "Teubang Phui Baro"
+    },
+    {
+      "code": "1106052024",
+      "name": "Bira Cot"
+    },
+    {
+      "code": "1106052025",
+      "name": "Bira Lhok"
+    },
+    {
+      "code": "1106052026",
+      "name": "Bung Tujoh"
+    },
+    {
+      "code": "1106052027",
+      "name": "Peurumping"
+    },
+    {
+      "code": "1106052028",
+      "name": "Atong"
+    },
+    {
+      "code": "1106052029",
+      "name": "Reudeup"
+    },
+    {
+      "code": "1106052042",
+      "name": "Seubam Lhok"
+    },
+    {
+      "code": "1106052043",
+      "name": "Seumet"
+    },
+    {
+      "code": "1106052044",
+      "name": "Cot Seunong"
+    },
+    {
+      "code": "1106052045",
+      "name": "Mon Ara"
+    },
+    {
+      "code": "1106052046",
+      "name": "Cot Lhok"
+    },
+    {
+      "code": "1106052047",
+      "name": "Cot Lampoh Soh"
+    },
+    {
+      "code": "1106052048",
+      "name": "Bueng Raya"
+    },
+    {
+      "code": "1106052049",
+      "name": "Piyeung Lhang"
+    },
+    {
+      "code": "1106052050",
+      "name": "Piyeung Manee"
+    },
+    {
+      "code": "1106052051",
+      "name": "Bueng Daroh"
+    },
+    {
+      "code": "1106052052",
+      "name": "Kuweu"
+    },
+    {
+      "code": "1106052053",
+      "name": "Piyeung Datu"
+    }
+  ],
+  "110606": [
+    {
+      "code": "1106062001",
+      "name": "Reuhat Tuha"
+    },
+    {
+      "code": "1106062002",
+      "name": "Weusiteh"
+    },
+    {
+      "code": "1106062003",
+      "name": "Dilib Lamteungoh"
+    },
+    {
+      "code": "1106062004",
+      "name": "Baet Lampuot"
+    },
+    {
+      "code": "1106062005",
+      "name": "Dilib Bukit"
+    },
+    {
+      "code": "1106062006",
+      "name": "Seumeureung"
+    },
+    {
+      "code": "1106062007",
+      "name": "Sibreh Keumudee"
+    },
+    {
+      "code": "1106062008",
+      "name": "Baet Mesago"
+    },
+    {
+      "code": "1106062009",
+      "name": "Baet Mesjid"
+    },
+    {
+      "code": "1106062010",
+      "name": "Lambaro Sibreh"
+    },
+    {
+      "code": "1106062011",
+      "name": "Lamgeu Baro"
+    },
+    {
+      "code": "1106062012",
+      "name": "Lamgeu Tuha"
+    },
+    {
+      "code": "1106062013",
+      "name": "Lampanah Ineu"
+    },
+    {
+      "code": "1106062014",
+      "name": "Tampok Jeurat Raya"
+    },
+    {
+      "code": "1106062015",
+      "name": "Tampok Blang"
+    },
+    {
+      "code": "1106062016",
+      "name": "Lamteh Dayah"
+    },
+    {
+      "code": "1106062017",
+      "name": "Lam Lheu"
+    },
+    {
+      "code": "1106062018",
+      "name": "Lambarih Jurong Raya"
+    },
+    {
+      "code": "1106062019",
+      "name": "Bukloh"
+    },
+    {
+      "code": "1106062020",
+      "name": "Niron"
+    },
+    {
+      "code": "1106062021",
+      "name": "Aneuk Galong Baro"
+    },
+    {
+      "code": "1106062022",
+      "name": "Aneuk Galong Titi"
+    },
+    {
+      "code": "1106062023",
+      "name": "Blang Cut"
+    },
+    {
+      "code": "1106062024",
+      "name": "Klieng Mayang"
+    },
+    {
+      "code": "1106062025",
+      "name": "Aneuk Batee"
+    },
+    {
+      "code": "1106062026",
+      "name": "Meunasah Tuha"
+    },
+    {
+      "code": "1106062027",
+      "name": "Lampisang"
+    },
+    {
+      "code": "1106062028",
+      "name": "Meunasah Bakthu"
+    },
+    {
+      "code": "1106062029",
+      "name": "Lambarih Bak Mee"
+    },
+    {
+      "code": "1106062030",
+      "name": "Luthu Dayah Krueng"
+    },
+    {
+      "code": "1106062031",
+      "name": "Luthu Lamweu"
+    },
+    {
+      "code": "1106062032",
+      "name": "Panterawa"
+    },
+    {
+      "code": "1106062033",
+      "name": "Lambirah"
+    },
+    {
+      "code": "1106062034",
+      "name": "Kayee Adang"
+    },
+    {
+      "code": "1106062035",
+      "name": "Lam Tanjong"
+    }
+  ],
+  "110607": [
+    {
+      "code": "1106072001",
+      "name": "Lampeuneurut Ujong Blang"
+    },
+    {
+      "code": "1106072002",
+      "name": "Lampeuneurut Gampong"
+    },
+    {
+      "code": "1106072003",
+      "name": "Lamreung"
+    },
+    {
+      "code": "1106072004",
+      "name": "Lamcot"
+    },
+    {
+      "code": "1106072005",
+      "name": "Lam Blang Trieng"
+    },
+    {
+      "code": "1106072006",
+      "name": "Lam Blang Mayang"
+    },
+    {
+      "code": "1106072007",
+      "name": "Bayu"
+    },
+    {
+      "code": "1106072008",
+      "name": "Lagang"
+    },
+    {
+      "code": "1106072009",
+      "name": "Lamsiteh"
+    },
+    {
+      "code": "1106072010",
+      "name": "Lamkawe"
+    },
+    {
+      "code": "1106072011",
+      "name": "Lheu Blang"
+    },
+    {
+      "code": "1106072012",
+      "name": "Payaroh"
+    },
+    {
+      "code": "1106072013",
+      "name": "Lamsidaya"
+    },
+    {
+      "code": "1106072014",
+      "name": "Kuta Karang"
+    },
+    {
+      "code": "1106072015",
+      "name": "Leu Geu"
+    },
+    {
+      "code": "1106072016",
+      "name": "Lampeuneun"
+    },
+    {
+      "code": "1106072017",
+      "name": "Lamtheun"
+    },
+    {
+      "code": "1106072018",
+      "name": "Deunong"
+    },
+    {
+      "code": "1106072019",
+      "name": "Tingkuem"
+    },
+    {
+      "code": "1106072020",
+      "name": "Kandang"
+    },
+    {
+      "code": "1106072021",
+      "name": "Lam Bheu"
+    },
+    {
+      "code": "1106072022",
+      "name": "Daroy Kameu"
+    },
+    {
+      "code": "1106072023",
+      "name": "Geundrieng"
+    },
+    {
+      "code": "1106072024",
+      "name": "Garot"
+    },
+    {
+      "code": "1106072025",
+      "name": "Pasheu Beutong"
+    },
+    {
+      "code": "1106072026",
+      "name": "Lampasi Engking"
+    },
+    {
+      "code": "1106072027",
+      "name": "Jeumpet Ajun"
+    },
+    {
+      "code": "1106072028",
+      "name": "Gue Gajah"
+    },
+    {
+      "code": "1106072029",
+      "name": "Leu Ue"
+    },
+    {
+      "code": "1106072030",
+      "name": "Ulee Lueng"
+    },
+    {
+      "code": "1106072031",
+      "name": "Punie"
+    },
+    {
+      "code": "1106072032",
+      "name": "Ulee Tuy"
+    }
+  ],
+  "110608": [
+    {
+      "code": "1106082001",
+      "name": "Lambadeuk"
+    },
+    {
+      "code": "1106082002",
+      "name": "Lamguron"
+    },
+    {
+      "code": "1106082003",
+      "name": "Lambaro Nejid"
+    },
+    {
+      "code": "1106082004",
+      "name": "Lampageu"
+    },
+    {
+      "code": "1106082005",
+      "name": "Gampong Baro"
+    },
+    {
+      "code": "1106082006",
+      "name": "Lam Manyang"
+    },
+    {
+      "code": "1106082007",
+      "name": "Lamteh"
+    },
+    {
+      "code": "1106082008",
+      "name": "Lam Lumpu"
+    },
+    {
+      "code": "1106082009",
+      "name": "Lamteungoh"
+    },
+    {
+      "code": "1106082010",
+      "name": "Lamtutui"
+    },
+    {
+      "code": "1106082011",
+      "name": "Meunasah Tuha"
+    },
+    {
+      "code": "1106082012",
+      "name": "Lam Awe"
+    },
+    {
+      "code": "1106082013",
+      "name": "Pulo Bunta"
+    },
+    {
+      "code": "1106082014",
+      "name": "Beuradeun"
+    },
+    {
+      "code": "1106082015",
+      "name": "Lampisang"
+    },
+    {
+      "code": "1106082016",
+      "name": "Keuneu Eu"
+    },
+    {
+      "code": "1106082017",
+      "name": "Lam Isek"
+    },
+    {
+      "code": "1106082018",
+      "name": "Lamkeumok"
+    },
+    {
+      "code": "1106082019",
+      "name": "Lam Rukam"
+    },
+    {
+      "code": "1106082020",
+      "name": "Gurah"
+    },
+    {
+      "code": "1106082021",
+      "name": "Rima Jeuneu"
+    },
+    {
+      "code": "1106082022",
+      "name": "Lam Geu Eu"
+    },
+    {
+      "code": "1106082023",
+      "name": "Lam Hasan"
+    },
+    {
+      "code": "1106082024",
+      "name": "Paya Tieng"
+    },
+    {
+      "code": "1106082025",
+      "name": "Ajuen"
+    },
+    {
+      "code": "1106082026",
+      "name": "Rima Keuneurom"
+    }
+  ],
+  "110609": [
+    {
+      "code": "1106092001",
+      "name": "Meunasah Kulam"
+    },
+    {
+      "code": "1106092002",
+      "name": "Beurandeh"
+    },
+    {
+      "code": "1106092003",
+      "name": "Ie Seum"
+    },
+    {
+      "code": "1106092004",
+      "name": "Meunasah Keudee"
+    },
+    {
+      "code": "1106092005",
+      "name": "Lamreh"
+    },
+    {
+      "code": "1106092006",
+      "name": "Meunasah Mon"
+    },
+    {
+      "code": "1106092007",
+      "name": "Paya Kameng"
+    },
+    {
+      "code": "1106092008",
+      "name": "Ruyung"
+    },
+    {
+      "code": "1106092009",
+      "name": "Ladong"
+    },
+    {
+      "code": "1106092010",
+      "name": "Gampong Baro"
+    },
+    {
+      "code": "1106092011",
+      "name": "Durung"
+    },
+    {
+      "code": "1106092012",
+      "name": "Neuheun"
+    },
+    {
+      "code": "1106092013",
+      "name": "Lamnga"
+    }
+  ],
+  "110610": [
+    {
+      "code": "1106102001",
+      "name": "Lambaro"
+    },
+    {
+      "code": "1106102002",
+      "name": "Meunasah Manyang Lam Garot"
+    },
+    {
+      "code": "1106102003",
+      "name": "Bakoy"
+    },
+    {
+      "code": "1106102004",
+      "name": "Meunasah Baro"
+    },
+    {
+      "code": "1106102005",
+      "name": "Meunasah Deyah"
+    },
+    {
+      "code": "1106102006",
+      "name": "Meunasah Tutong"
+    },
+    {
+      "code": "1106102007",
+      "name": "Siron"
+    },
+    {
+      "code": "1106102008",
+      "name": "Pasie Lamgarot"
+    },
+    {
+      "code": "1106102009",
+      "name": "Dham Ceukok"
+    },
+    {
+      "code": "1106102010",
+      "name": "Dham Pulo"
+    },
+    {
+      "code": "1106102011",
+      "name": "Lubok Sukon"
+    },
+    {
+      "code": "1106102012",
+      "name": "Lubok Gapuy"
+    },
+    {
+      "code": "1106102013",
+      "name": "Pasie Lubuk"
+    },
+    {
+      "code": "1106102014",
+      "name": "Bung Ceukok"
+    },
+    {
+      "code": "1106102015",
+      "name": "Teubang Phuy"
+    },
+    {
+      "code": "1106102016",
+      "name": "Ateuk Anggok"
+    },
+    {
+      "code": "1106102017",
+      "name": "Ajee Rayeuk"
+    },
+    {
+      "code": "1106102018",
+      "name": "Ajee Cut"
+    },
+    {
+      "code": "1106102019",
+      "name": "Gani"
+    },
+    {
+      "code": "1106102020",
+      "name": "Ateuk Lueng Ie"
+    },
+    {
+      "code": "1106102021",
+      "name": "Cot Alue"
+    },
+    {
+      "code": "1106102022",
+      "name": "Cot Suruy"
+    },
+    {
+      "code": "1106102023",
+      "name": "Cot Bada"
+    },
+    {
+      "code": "1106102024",
+      "name": "Ajee Pagar Air"
+    },
+    {
+      "code": "1106102025",
+      "name": "Meunasah Krueng"
+    },
+    {
+      "code": "1106102026",
+      "name": "Jurong Peujera"
+    },
+    {
+      "code": "1106102027",
+      "name": "Lubok Batee"
+    },
+    {
+      "code": "1106102028",
+      "name": "Bineh Blang"
+    },
+    {
+      "code": "1106102029",
+      "name": "Pantee"
+    },
+    {
+      "code": "1106102030",
+      "name": "Kalut"
+    },
+    {
+      "code": "1106102031",
+      "name": "Meunasah Manyang Pagar Air"
+    },
+    {
+      "code": "1106102032",
+      "name": "Meunasah Manyet"
+    },
+    {
+      "code": "1106102033",
+      "name": "Santan"
+    },
+    {
+      "code": "1106102034",
+      "name": "Tanjong"
+    },
+    {
+      "code": "1106102035",
+      "name": "Reuloh"
+    },
+    {
+      "code": "1106102041",
+      "name": "Paleuh Blang"
+    },
+    {
+      "code": "1106102042",
+      "name": "Cot Mentiwan"
+    },
+    {
+      "code": "1106102043",
+      "name": "Lampreh Lam Jampok"
+    },
+    {
+      "code": "1106102044",
+      "name": "Paleuh Pulo"
+    },
+    {
+      "code": "1106102045",
+      "name": "Lamcot"
+    },
+    {
+      "code": "1106102046",
+      "name": "Lamsinyeu"
+    },
+    {
+      "code": "1106102047",
+      "name": "Lam Ue"
+    },
+    {
+      "code": "1106102048",
+      "name": "Cot Gud"
+    },
+    {
+      "code": "1106102049",
+      "name": "Lamdaya"
+    },
+    {
+      "code": "1106102050",
+      "name": "Lambada"
+    },
+    {
+      "code": "1106102051",
+      "name": "Ujong XII"
+    },
+    {
+      "code": "1106102052",
+      "name": "Bada"
+    },
+    {
+      "code": "1106102053",
+      "name": "Lamteungoh"
+    },
+    {
+      "code": "1106102054",
+      "name": "Kayee Lee"
+    },
+    {
+      "code": "1106102056",
+      "name": "Lampreh Lamteungoh"
+    }
+  ],
+  "110611": [
+    {
+      "code": "1106112001",
+      "name": "Krueng Anoi"
+    },
+    {
+      "code": "1106112002",
+      "name": "Lam Puuk"
+    },
+    {
+      "code": "1106112003",
+      "name": "Cot Beut"
+    },
+    {
+      "code": "1106112004",
+      "name": "Bueng Bakjok"
+    },
+    {
+      "code": "1106112005",
+      "name": "Lam Neuheun"
+    },
+    {
+      "code": "1106112006",
+      "name": "Seupeu"
+    },
+    {
+      "code": "1106112007",
+      "name": "Cot Mancang"
+    },
+    {
+      "code": "1106112008",
+      "name": "Lam Baet"
+    },
+    {
+      "code": "1106112009",
+      "name": "Cot Masam"
+    },
+    {
+      "code": "1106112016",
+      "name": "Gue"
+    },
+    {
+      "code": "1106112018",
+      "name": "Lam Sabang"
+    },
+    {
+      "code": "1106112019",
+      "name": "Lam Alue Raya"
+    },
+    {
+      "code": "1106112020",
+      "name": "Lam Alue Cut"
+    },
+    {
+      "code": "1106112021",
+      "name": "Leupung Mesjid"
+    },
+    {
+      "code": "1106112022",
+      "name": "Cot Lamee"
+    },
+    {
+      "code": "1106112023",
+      "name": "Leupung Ulee Alue"
+    },
+    {
+      "code": "1106112024",
+      "name": "Lampoh Tarom"
+    },
+    {
+      "code": "1106112025",
+      "name": "Lamteube Geupula"
+    },
+    {
+      "code": "1106112026",
+      "name": "Lamteube Mon Ara"
+    },
+    {
+      "code": "1106112027",
+      "name": "Aron"
+    },
+    {
+      "code": "1106112028",
+      "name": "Bak Buloh"
+    },
+    {
+      "code": "1106112029",
+      "name": "Lam Seunong"
+    },
+    {
+      "code": "1106112030",
+      "name": "Lam Raya"
+    },
+    {
+      "code": "1106112031",
+      "name": "Lam Roh"
+    },
+    {
+      "code": "1106112032",
+      "name": "Lambunot Tanoh"
+    },
+    {
+      "code": "1106112033",
+      "name": "Tumpok Lampoh"
+    },
+    {
+      "code": "1106112034",
+      "name": "Puuk"
+    },
+    {
+      "code": "1106112035",
+      "name": "Lambunot Paya"
+    },
+    {
+      "code": "1106112036",
+      "name": "Lampoh Keude"
+    },
+    {
+      "code": "1106112037",
+      "name": "Lam Asan"
+    },
+    {
+      "code": "1106112038",
+      "name": "Lambro Deyah"
+    },
+    {
+      "code": "1106112039",
+      "name": "Lambro Bileu"
+    },
+    {
+      "code": "1106112040",
+      "name": "Cot Peutano"
+    },
+    {
+      "code": "1106112041",
+      "name": "Cot Cut"
+    },
+    {
+      "code": "1106112042",
+      "name": "Meunasah Baktrieng"
+    },
+    {
+      "code": "1106112043",
+      "name": "Babah Jurong"
+    },
+    {
+      "code": "1106112044",
+      "name": "Lam Glumpang"
+    },
+    {
+      "code": "1106112045",
+      "name": "Rabeu"
+    },
+    {
+      "code": "1106112046",
+      "name": "Cucum"
+    },
+    {
+      "code": "1106112047",
+      "name": "Deyah"
+    },
+    {
+      "code": "1106112048",
+      "name": "Lam Trieng"
+    },
+    {
+      "code": "1106112049",
+      "name": "Beurangong"
+    },
+    {
+      "code": "1106112050",
+      "name": "Cot Preh"
+    },
+    {
+      "code": "1106112051",
+      "name": "Cot Raya"
+    },
+    {
+      "code": "1106112052",
+      "name": "Cot Yang"
+    },
+    {
+      "code": "1106112053",
+      "name": "Ujong Blang"
+    },
+    {
+      "code": "1106112054",
+      "name": "Lamceu"
+    }
+  ],
+  "110612": [
+    {
+      "code": "1106122001",
+      "name": "Angan"
+    },
+    {
+      "code": "1106122002",
+      "name": "Lam Peudaya"
+    },
+    {
+      "code": "1106122003",
+      "name": "Lambada Peukan"
+    },
+    {
+      "code": "1106122004",
+      "name": "Lambiheu La"
+    },
+    {
+      "code": "1106122005",
+      "name": "Lambaro Sukon"
+    },
+    {
+      "code": "1106122006",
+      "name": "Miruek Taman"
+    },
+    {
+      "code": "1106122007",
+      "name": "Suleue"
+    },
+    {
+      "code": "1106122008",
+      "name": "Gampong Cot"
+    },
+    {
+      "code": "1106122009",
+      "name": "Gampong Blang"
+    },
+    {
+      "code": "1106122010",
+      "name": "Lampuja"
+    },
+    {
+      "code": "1106122011",
+      "name": "Tanjung Deah"
+    },
+    {
+      "code": "1106122012",
+      "name": "Limpok"
+    },
+    {
+      "code": "1106122013",
+      "name": "Lampuuk"
+    },
+    {
+      "code": "1106122014",
+      "name": "Lam Ujong"
+    },
+    {
+      "code": "1106122015",
+      "name": "Lam Gawe"
+    },
+    {
+      "code": "1106122016",
+      "name": "Berabung"
+    },
+    {
+      "code": "1106122017",
+      "name": "Lamtimpeung"
+    },
+    {
+      "code": "1106122018",
+      "name": "Tungkop"
+    },
+    {
+      "code": "1106122019",
+      "name": "Tanjong Seulamat"
+    },
+    {
+      "code": "1106122020",
+      "name": "Lamkeunung"
+    },
+    {
+      "code": "1106122021",
+      "name": "Lam Duroy"
+    },
+    {
+      "code": "1106122022",
+      "name": "Lam Klat"
+    },
+    {
+      "code": "1106122023",
+      "name": "Lambiheu Siem"
+    },
+    {
+      "code": "1106122024",
+      "name": "Lambitra"
+    },
+    {
+      "code": "1106122025",
+      "name": "Lie Eue"
+    },
+    {
+      "code": "1106122026",
+      "name": "Krueng Kalee"
+    },
+    {
+      "code": "1106122027",
+      "name": "Lam Asan"
+    },
+    {
+      "code": "1106122028",
+      "name": "Lam Reh"
+    },
+    {
+      "code": "1106122029",
+      "name": "Siem"
+    }
+  ],
+  "110613": [
+    {
+      "code": "1106132001",
+      "name": "Rinon"
+    },
+    {
+      "code": "1106132002",
+      "name": "Alue Raya"
+    },
+    {
+      "code": "1106132003",
+      "name": "Melingge"
+    },
+    {
+      "code": "1106132004",
+      "name": "Lapeng"
+    },
+    {
+      "code": "1106132005",
+      "name": "Ulee Paya"
+    },
+    {
+      "code": "1106132006",
+      "name": "Gugop"
+    },
+    {
+      "code": "1106132007",
+      "name": "Seurapong"
+    },
+    {
+      "code": "1106132008",
+      "name": "Blang Situngkoh"
+    },
+    {
+      "code": "1106132009",
+      "name": "Paloh"
+    },
+    {
+      "code": "1106132010",
+      "name": "Lampuyang"
+    },
+    {
+      "code": "1106132011",
+      "name": "Lhok"
+    },
+    {
+      "code": "1106132012",
+      "name": "Teunom"
+    },
+    {
+      "code": "1106132013",
+      "name": "Lamteng"
+    },
+    {
+      "code": "1106132014",
+      "name": "Pasi Janeng"
+    },
+    {
+      "code": "1106132015",
+      "name": "Rabo"
+    },
+    {
+      "code": "1106132016",
+      "name": "Alue Reuyeueng"
+    },
+    {
+      "code": "1106132017",
+      "name": "Deudap"
+    }
+  ],
+  "110614": [
+    {
+      "code": "1106142001",
+      "name": "Lamtamot"
+    },
+    {
+      "code": "1106142002",
+      "name": "Lambaro Tunong"
+    },
+    {
+      "code": "1106142003",
+      "name": "Lonbaroh"
+    },
+    {
+      "code": "1106142004",
+      "name": "Lon Asan"
+    },
+    {
+      "code": "1106142005",
+      "name": "Paya Keureuleh"
+    },
+    {
+      "code": "1106142006",
+      "name": "Panca"
+    },
+    {
+      "code": "1106142007",
+      "name": "Lam Kubu"
+    },
+    {
+      "code": "1106142008",
+      "name": "Panca Kubu"
+    },
+    {
+      "code": "1106142009",
+      "name": "Suka Damai"
+    },
+    {
+      "code": "1106142010",
+      "name": "Suka Mulya"
+    },
+    {
+      "code": "1106142011",
+      "name": "Saree Aceh"
+    },
+    {
+      "code": "1106142012",
+      "name": "Teuladan"
+    }
+  ],
+  "110615": [
+    {
+      "code": "1106152001",
+      "name": "Teureubeh"
+    },
+    {
+      "code": "1106152002",
+      "name": "Barueh"
+    },
+    {
+      "code": "1106152003",
+      "name": "Jantho"
+    },
+    {
+      "code": "1106152004",
+      "name": "Awek"
+    },
+    {
+      "code": "1106152005",
+      "name": "Data Cut"
+    },
+    {
+      "code": "1106152006",
+      "name": "Bueng"
+    },
+    {
+      "code": "1106152007",
+      "name": "Weu"
+    },
+    {
+      "code": "1106152008",
+      "name": "Jalin"
+    },
+    {
+      "code": "1106152009",
+      "name": "Suka Tani"
+    },
+    {
+      "code": "1106152010",
+      "name": "Cucum"
+    },
+    {
+      "code": "1106152011",
+      "name": "Jantho Baru"
+    },
+    {
+      "code": "1106152012",
+      "name": "Jantho Makmur"
+    },
+    {
+      "code": "1106152013",
+      "name": "Bukit Meusara"
+    }
+  ],
+  "110616": [
+    {
+      "code": "1106162001",
+      "name": "Lampakuk"
+    },
+    {
+      "code": "1106162002",
+      "name": "Lampoh Raja"
+    },
+    {
+      "code": "1106162003",
+      "name": "Lam Aling"
+    },
+    {
+      "code": "1106162004",
+      "name": "Lamleupung"
+    },
+    {
+      "code": "1106162005",
+      "name": "Lamkleng"
+    },
+    {
+      "code": "1106162006",
+      "name": "Ie Alang Lamkreumeuh"
+    },
+    {
+      "code": "1106162007",
+      "name": "Ie Alang Lamghui"
+    },
+    {
+      "code": "1106162008",
+      "name": "Ie Alang Mesjid"
+    },
+    {
+      "code": "1106162009",
+      "name": "Ie Alang Dayah"
+    },
+    {
+      "code": "1106162010",
+      "name": "Lamtui"
+    },
+    {
+      "code": "1106162011",
+      "name": "Barih Lhok"
+    },
+    {
+      "code": "1106162012",
+      "name": "Bueng Simek"
+    },
+    {
+      "code": "1106162013",
+      "name": "Banda Safa"
+    },
+    {
+      "code": "1106162014",
+      "name": "Bithak"
+    },
+    {
+      "code": "1106162015",
+      "name": "Lambeugak"
+    },
+    {
+      "code": "1106162016",
+      "name": "Pakuk"
+    },
+    {
+      "code": "1106162017",
+      "name": "Lamsie"
+    },
+    {
+      "code": "1106162018",
+      "name": "Sigapang"
+    },
+    {
+      "code": "1106162019",
+      "name": "Tutui"
+    },
+    {
+      "code": "1106162020",
+      "name": "Pasar Lampaku"
+    },
+    {
+      "code": "1106162021",
+      "name": "Maheng"
+    },
+    {
+      "code": "1106162022",
+      "name": "Leupung Bruek"
+    },
+    {
+      "code": "1106162023",
+      "name": "Keumireu"
+    },
+    {
+      "code": "1106162024",
+      "name": "Lamleuot"
+    },
+    {
+      "code": "1106162025",
+      "name": "Leupung Balue"
+    },
+    {
+      "code": "1106162026",
+      "name": "Bak Sukon"
+    },
+    {
+      "code": "1106162027",
+      "name": "Cot Bayu"
+    },
+    {
+      "code": "1106162028",
+      "name": "Glee Jai"
+    },
+    {
+      "code": "1106162029",
+      "name": "Keuruweung Blang"
+    },
+    {
+      "code": "1106162030",
+      "name": "Keuruweung Krueng"
+    },
+    {
+      "code": "1106162031",
+      "name": "Siron Blang"
+    },
+    {
+      "code": "1106162032",
+      "name": "Siron Krueng"
+    }
+  ],
+  "110617": [
+    {
+      "code": "1106172001",
+      "name": "Lambaro Samahani"
+    },
+    {
+      "code": "1106172002",
+      "name": "Lam Ara Cut"
+    },
+    {
+      "code": "1106172003",
+      "name": "Lam Ara Engkit"
+    },
+    {
+      "code": "1106172004",
+      "name": "Lam Ara Tunong"
+    },
+    {
+      "code": "1106172005",
+      "name": "Leupung Riwat"
+    },
+    {
+      "code": "1106172006",
+      "name": "Tumbo Baro"
+    },
+    {
+      "code": "1106172007",
+      "name": "Leupung Cut"
+    },
+    {
+      "code": "1106172008",
+      "name": "Lamsiteh Cot"
+    },
+    {
+      "code": "1106172009",
+      "name": "Reuleung Karieng"
+    },
+    {
+      "code": "1106172010",
+      "name": "Leubok Buni"
+    },
+    {
+      "code": "1106172011",
+      "name": "Leubok Batee"
+    },
+    {
+      "code": "1106172012",
+      "name": "Bunghu"
+    },
+    {
+      "code": "1106172013",
+      "name": "Teu Dayah"
+    },
+    {
+      "code": "1106172014",
+      "name": "Leupung Rayeuk"
+    },
+    {
+      "code": "1106172015",
+      "name": "Reuleung Glumpang"
+    }
+  ],
+  "110618": [
+    {
+      "code": "1106182001",
+      "name": "Ateuk Lam Phang"
+    },
+    {
+      "code": "1106182002",
+      "name": "Ateuk Lampuot"
+    },
+    {
+      "code": "1106182003",
+      "name": "Ateuk Mon Panah"
+    },
+    {
+      "code": "1106182004",
+      "name": "Ateuk Lam Ura"
+    },
+    {
+      "code": "1106182005",
+      "name": "Ateuk Cut"
+    },
+    {
+      "code": "1106182006",
+      "name": "Ateuk Blang Asan"
+    },
+    {
+      "code": "1106182007",
+      "name": "Lamjamee Dayah"
+    },
+    {
+      "code": "1106182008",
+      "name": "Lam Batee"
+    },
+    {
+      "code": "1106182009",
+      "name": "Nya"
+    },
+    {
+      "code": "1106182010",
+      "name": "Batee Linteung"
+    },
+    {
+      "code": "1106182011",
+      "name": "Krueng Mak"
+    },
+    {
+      "code": "1106182012",
+      "name": "Lambunot"
+    },
+    {
+      "code": "1106182013",
+      "name": "Lamjamee Lamkrak"
+    },
+    {
+      "code": "1106182014",
+      "name": "Blang Miro"
+    },
+    {
+      "code": "1106182015",
+      "name": "Blang Preh"
+    },
+    {
+      "code": "1106182016",
+      "name": "Bha Ulee Tutu"
+    },
+    {
+      "code": "1106182017",
+      "name": "Lam Urit"
+    },
+    {
+      "code": "1106182018",
+      "name": "Tantuha"
+    }
+  ],
+  "110619": [
+    {
+      "code": "1106192001",
+      "name": "Lhang"
+    },
+    {
+      "code": "1106192002",
+      "name": "Biluy"
+    },
+    {
+      "code": "1106192003",
+      "name": "Lambatee"
+    },
+    {
+      "code": "1106192004",
+      "name": "Lamkunyet"
+    },
+    {
+      "code": "1106192005",
+      "name": "Lamtadok"
+    },
+    {
+      "code": "1106192006",
+      "name": "Neusok"
+    },
+    {
+      "code": "1106192007",
+      "name": "Turam"
+    },
+    {
+      "code": "1106192008",
+      "name": "Tubaluy"
+    },
+    {
+      "code": "1106192009",
+      "name": "Blang Kiree"
+    },
+    {
+      "code": "1106192010",
+      "name": "Manee Dayah"
+    },
+    {
+      "code": "1106192011",
+      "name": "Lamsod"
+    },
+    {
+      "code": "1106192012",
+      "name": "Lambleut"
+    },
+    {
+      "code": "1106192013",
+      "name": "Empee Trieng"
+    },
+    {
+      "code": "1106192014",
+      "name": "Lambaro Biluy"
+    }
+  ],
+  "110620": [
+    {
+      "code": "1106202001",
+      "name": "Cadek"
+    },
+    {
+      "code": "1106202002",
+      "name": "Kajhu"
+    },
+    {
+      "code": "1106202003",
+      "name": "Baet"
+    },
+    {
+      "code": "1106202004",
+      "name": "Blang Krueng"
+    },
+    {
+      "code": "1106202005",
+      "name": "Klieng Muria"
+    },
+    {
+      "code": "1106202006",
+      "name": "Lam Bada Lhok"
+    },
+    {
+      "code": "1106202007",
+      "name": "Lampineung"
+    },
+    {
+      "code": "1106202008",
+      "name": "Lam Asan"
+    },
+    {
+      "code": "1106202009",
+      "name": "Labuy"
+    },
+    {
+      "code": "1106202010",
+      "name": "Lam Ujong"
+    },
+    {
+      "code": "1106202011",
+      "name": "Klieng Cot Aron"
+    },
+    {
+      "code": "1106202012",
+      "name": "Cot Paya"
+    },
+    {
+      "code": "1106202013",
+      "name": "Miruk Lam Reudep"
+    }
+  ],
+  "110621": [
+    {
+      "code": "1106212001",
+      "name": "Meunasah Papeun"
+    },
+    {
+      "code": "1106212002",
+      "name": "Meunasah Baktrieng"
+    },
+    {
+      "code": "1106212003",
+      "name": "Leung Ie"
+    },
+    {
+      "code": "1106212004",
+      "name": "Lampermai"
+    },
+    {
+      "code": "1106212005",
+      "name": "Gle Deyah"
+    },
+    {
+      "code": "1106212006",
+      "name": "Miruk"
+    },
+    {
+      "code": "1106212007",
+      "name": "Lam Gapang"
+    },
+    {
+      "code": "1106212008",
+      "name": "Meunasah Manyang"
+    },
+    {
+      "code": "1106212009",
+      "name": "Meunasah Baet"
+    },
+    {
+      "code": "1106212010",
+      "name": "Meunasah Intan"
+    },
+    {
+      "code": "1106212011",
+      "name": "Rumpet"
+    },
+    {
+      "code": "1106212012",
+      "name": "Gla Meunasah Baro"
+    }
+  ],
+  "110622": [
+    {
+      "code": "1106222001",
+      "name": "Layeun"
+    },
+    {
+      "code": "1106222002",
+      "name": "Pulot"
+    },
+    {
+      "code": "1106222003",
+      "name": "Lamseunia"
+    },
+    {
+      "code": "1106222004",
+      "name": "Mns. Mesjid"
+    },
+    {
+      "code": "1106222005",
+      "name": "Meunasah Bak U"
+    },
+    {
+      "code": "1106222006",
+      "name": "Dayah Mamplam"
+    }
+  ],
+  "110623": [
+    {
+      "code": "1106232001",
+      "name": "Cot Puklat"
+    },
+    {
+      "code": "1106232002",
+      "name": "Lamme"
+    },
+    {
+      "code": "1106232003",
+      "name": "Meulayo"
+    },
+    {
+      "code": "1106232004",
+      "name": "Lam Siem"
+    },
+    {
+      "code": "1106232005",
+      "name": "Cot Geundreut"
+    },
+    {
+      "code": "1106232006",
+      "name": "Paya Ue"
+    },
+    {
+      "code": "1106232007",
+      "name": "Cot Mon Raya"
+    },
+    {
+      "code": "1106232008",
+      "name": "Cot Meulangeun"
+    },
+    {
+      "code": "1106232009",
+      "name": "Cot Madhi"
+    },
+    {
+      "code": "1106232010",
+      "name": "Bueng Sidom"
+    },
+    {
+      "code": "1106232011",
+      "name": "Cot Karieng"
+    },
+    {
+      "code": "1106232012",
+      "name": "Kampung Blang"
+    },
+    {
+      "code": "1106232013",
+      "name": "Cot Malem"
+    },
+    {
+      "code": "1106232014",
+      "name": "Cot Rumpun"
+    },
+    {
+      "code": "1106232015",
+      "name": "Cot Hoho"
+    },
+    {
+      "code": "1106232016",
+      "name": "Cot Jambo"
+    },
+    {
+      "code": "1106232017",
+      "name": "Cot Nambak"
+    },
+    {
+      "code": "1106232018",
+      "name": "Bueng Pageu"
+    },
+    {
+      "code": "1106232019",
+      "name": "Cot Sayun"
+    },
+    {
+      "code": "1106232020",
+      "name": "Teupin Batee"
+    },
+    {
+      "code": "1106232021",
+      "name": "Cot Leuot"
+    },
+    {
+      "code": "1106232022",
+      "name": "Cot Bagie"
+    },
+    {
+      "code": "1106232023",
+      "name": "Kayee Kunyet"
+    },
+    {
+      "code": "1106232024",
+      "name": "Cot Mancang"
+    },
+    {
+      "code": "1106232025",
+      "name": "Empee Bata"
+    },
+    {
+      "code": "1106232026",
+      "name": "Data Makmur"
+    }
+  ]
 }

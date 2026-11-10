@@ -1,186 +1,186 @@
 {
-    "967101": [
-        {
-            "code": "9671011001",
-            "name": "Remu Utara"
-        },
-        {
-            "code": "9671011002",
-            "name": "Klademak"
-        },
-        {
-            "code": "9671011003",
-            "name": "Kofkerbu"
-        },
-        {
-            "code": "9671011004",
-            "name": "Remu"
-        }
-    ],
-    "967102": [
-        {
-            "code": "9671021001",
-            "name": "Klawalu"
-        },
-        {
-            "code": "9671021002",
-            "name": "Klamana"
-        },
-        {
-            "code": "9671021003",
-            "name": "Klawuyuk"
-        },
-        {
-            "code": "9671021004",
-            "name": "Kladufu"
-        }
-    ],
-    "967103": [
-        {
-            "code": "9671031001",
-            "name": "Rufei"
-        },
-        {
-            "code": "9671031002",
-            "name": "Klawasi"
-        },
-        {
-            "code": "9671031003",
-            "name": "Puncak Cendrawasih"
-        },
-        {
-            "code": "9671031004",
-            "name": "Pal Putih"
-        }
-    ],
-    "967104": [
-        {
-            "code": "9671041001",
-            "name": "Dum Barat"
-        },
-        {
-            "code": "9671041002",
-            "name": "Dum Timur"
-        },
-        {
-            "code": "9671041003",
-            "name": "Soop"
-        },
-        {
-            "code": "9671041004",
-            "name": "Raam"
-        }
-    ],
-    "967105": [
-        {
-            "code": "9671051001",
-            "name": "Malanu"
-        },
-        {
-            "code": "9671051002",
-            "name": "Malasilen"
-        },
-        {
-            "code": "9671051003",
-            "name": "Matalamagi"
-        },
-        {
-            "code": "9671051004",
-            "name": "Sawagumu"
-        }
-    ],
-    "967106": [
-        {
-            "code": "9671061001",
-            "name": "Klaligi"
-        },
-        {
-            "code": "9671061002",
-            "name": "Malawei"
-        },
-        {
-            "code": "9671061003",
-            "name": "Malabutor"
-        },
-        {
-            "code": "9671061004",
-            "name": "Remu Selatan"
-        },
-        {
-            "code": "9671061005",
-            "name": "Klasabi"
-        }
-    ],
-    "967107": [
-        {
-            "code": "9671071001",
-            "name": "Kampung Baru"
-        },
-        {
-            "code": "9671071002",
-            "name": "Klabala"
-        },
-        {
-            "code": "9671071003",
-            "name": "Klasuur"
-        },
-        {
-            "code": "9671071004",
-            "name": "Klakublik"
-        }
-    ],
-    "967108": [
-        {
-            "code": "9671081001",
-            "name": "Klasuat"
-        },
-        {
-            "code": "9671081002",
-            "name": "Klablim"
-        },
-        {
-            "code": "9671081003",
-            "name": "Klasaman"
-        },
-        {
-            "code": "9671081004",
-            "name": "Giwu"
-        }
-    ],
-    "967109": [
-        {
-            "code": "9671091001",
-            "name": "Klagete"
-        },
-        {
-            "code": "9671091002",
-            "name": "Malaingkedi"
-        },
-        {
-            "code": "9671091003",
-            "name": "Malamso"
-        },
-        {
-            "code": "9671091004",
-            "name": "Klabulu"
-        }
-    ],
-    "967110": [
-        {
-            "code": "9671101001",
-            "name": "Suprau"
-        },
-        {
-            "code": "9671101002",
-            "name": "Tampa Garam"
-        },
-        {
-            "code": "9671101003",
-            "name": "Saoka"
-        },
-        {
-            "code": "9671101004",
-            "name": "Tanjung Kasuari"
-        }
-    ]
+  "967101": [
+    {
+      "code": "9671011001",
+      "name": "Remu Utara"
+    },
+    {
+      "code": "9671011002",
+      "name": "Klademak"
+    },
+    {
+      "code": "9671011003",
+      "name": "Kofkerbu"
+    },
+    {
+      "code": "9671011004",
+      "name": "Remu"
+    }
+  ],
+  "967102": [
+    {
+      "code": "9671021001",
+      "name": "Klawalu"
+    },
+    {
+      "code": "9671021002",
+      "name": "Klamana"
+    },
+    {
+      "code": "9671021003",
+      "name": "Klawuyuk"
+    },
+    {
+      "code": "9671021004",
+      "name": "Kladufu"
+    }
+  ],
+  "967103": [
+    {
+      "code": "9671031001",
+      "name": "Rufei"
+    },
+    {
+      "code": "9671031002",
+      "name": "Klawasi"
+    },
+    {
+      "code": "9671031003",
+      "name": "Puncak Cendrawasih"
+    },
+    {
+      "code": "9671031004",
+      "name": "Pal Putih"
+    }
+  ],
+  "967104": [
+    {
+      "code": "9671041001",
+      "name": "Dum Barat"
+    },
+    {
+      "code": "9671041002",
+      "name": "Dum Timur"
+    },
+    {
+      "code": "9671041003",
+      "name": "Soop"
+    },
+    {
+      "code": "9671041004",
+      "name": "Raam"
+    }
+  ],
+  "967105": [
+    {
+      "code": "9671051001",
+      "name": "Malanu"
+    },
+    {
+      "code": "9671051002",
+      "name": "Malasilen"
+    },
+    {
+      "code": "9671051003",
+      "name": "Matalamagi"
+    },
+    {
+      "code": "9671051004",
+      "name": "Sawagumu"
+    }
+  ],
+  "967106": [
+    {
+      "code": "9671061001",
+      "name": "Klaligi"
+    },
+    {
+      "code": "9671061002",
+      "name": "Malawei"
+    },
+    {
+      "code": "9671061003",
+      "name": "Malabutor"
+    },
+    {
+      "code": "9671061004",
+      "name": "Remu Selatan"
+    },
+    {
+      "code": "9671061005",
+      "name": "Klasabi"
+    }
+  ],
+  "967107": [
+    {
+      "code": "9671071001",
+      "name": "Kampung Baru"
+    },
+    {
+      "code": "9671071002",
+      "name": "Klabala"
+    },
+    {
+      "code": "9671071003",
+      "name": "Klasuur"
+    },
+    {
+      "code": "9671071004",
+      "name": "Klakublik"
+    }
+  ],
+  "967108": [
+    {
+      "code": "9671081001",
+      "name": "Klasuat"
+    },
+    {
+      "code": "9671081002",
+      "name": "Klablim"
+    },
+    {
+      "code": "9671081003",
+      "name": "Klasaman"
+    },
+    {
+      "code": "9671081004",
+      "name": "Giwu"
+    }
+  ],
+  "967109": [
+    {
+      "code": "9671091001",
+      "name": "Klagete"
+    },
+    {
+      "code": "9671091002",
+      "name": "Malaingkedi"
+    },
+    {
+      "code": "9671091003",
+      "name": "Malamso"
+    },
+    {
+      "code": "9671091004",
+      "name": "Klabulu"
+    }
+  ],
+  "967110": [
+    {
+      "code": "9671101001",
+      "name": "Suprau"
+    },
+    {
+      "code": "9671101002",
+      "name": "Tampa Garam"
+    },
+    {
+      "code": "9671101003",
+      "name": "Saoka"
+    },
+    {
+      "code": "9671101004",
+      "name": "Tanjung Kasuari"
+    }
+  ]
 }

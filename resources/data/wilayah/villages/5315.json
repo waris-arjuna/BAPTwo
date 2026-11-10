@@ -1,420 +1,702 @@
 {
-    "531505": [
-        {
-            "code": "5315051024",
-            "name": "Wae Kelambu"
-        },
-        {
-            "code": "5315051025",
-            "name": "Labuan Bajo"
-        },
-        {
-            "code": "5315052001",
-            "name": "Komodo"
-        },
-        {
-            "code": "5315052002",
-            "name": "Pasir Putih"
-        },
-        {
-            "code": "5315052003",
-            "name": "Pasir Panjang"
-        },
-        {
-            "code": "5315052004",
-            "name": "Golo Mori"
-        },
-        {
-            "code": "5315052005",
-            "name": "Warloka"
-        },
-        {
-            "code": "5315052007",
-            "name": "Golo Bilas"
-        },
-        {
-            "code": "5315052008",
-            "name": "Macang Tanggar"
-        },
-        {
-            "code": "5315052009",
-            "name": "Watu Nggelek"
-        },
-        {
-            "code": "5315052015",
-            "name": "Golo Pongkor"
-        },
-        {
-            "code": "5315052016",
-            "name": "Nggorang"
-        },
-        {
-            "code": "5315052018",
-            "name": "Papa Garang"
-        },
-        {
-            "code": "5315052019",
-            "name": "Batu Cermin"
-        },
-        {
-            "code": "5315052020",
-            "name": "Gorontalo"
-        },
-        {
-            "code": "5315052022",
-            "name": "Tiwu Nampar"
-        },
-        {
-            "code": "5315052026",
-            "name": "Seraya Marannu"
-        },
-        {
-            "code": "5315052027",
-            "name": "Compang Longgo"
-        },
-        {
-            "code": "5315052028",
-            "name": "Pantar"
-        }
-    ],
-    "531506": [
-        {
-            "code": "5315062001",
-            "name": "Mbuit"
-        },
-        {
-            "code": "5315062002",
-            "name": "Golo Ketak"
-        },
-        {
-            "code": "5315062003",
-            "name": "Pota Wangka"
-        },
-        {
-            "code": "5315062004",
-            "name": "Tanjung Boleng"
-        },
-        {
-            "code": "5315062005",
-            "name": "Golo Sepang"
-        },
-        {
-            "code": "5315062006",
-            "name": "Pontianak"
-        },
-        {
-            "code": "5315062007",
-            "name": "Sepang"
-        },
-        {
-            "code": "5315062008",
-            "name": "Golo Lujang"
-        },
-        {
-            "code": "5315062009",
-            "name": "Batu Tiga"
-        },
-        {
-            "code": "5315062020",
-            "name": "Golo Nobo"
-        },
-        {
-            "code": "5315062021",
-            "name": "Beo Sepang"
-        }
-    ],
-    "531507": [
-        {
-            "code": "5315072001",
-            "name": "Golo Ronggot"
-        },
-        {
-            "code": "5315072002",
-            "name": "Semang"
-        },
-        {
-            "code": "5315072003",
-            "name": "Dunta"
-        },
-        {
-            "code": "5315072004",
-            "name": "Gurung"
-        },
-        {
-            "code": "5315072005",
-            "name": "Orong"
-        },
-        {
-            "code": "5315072006",
-            "name": "Pong Welak"
-        },
-        {
-            "code": "5315072007",
-            "name": "Galang"
-        },
-        {
-            "code": "5315072008",
-            "name": "Rehak"
-        },
-        {
-            "code": "5315072009",
-            "name": "Watu Umpu"
-        },
-        {
-            "code": "5315072010",
-            "name": "Pengka"
-        },
-        {
-            "code": "5315072011",
-            "name": "Lale"
-        },
-        {
-            "code": "5315072015",
-            "name": "Racang Welak"
-        },
-        {
-            "code": "5315072016",
-            "name": "Sewar"
-        },
-        {
-            "code": "5315072017",
-            "name": "Robo"
-        },
-        {
-            "code": "5315072018",
-            "name": "Wewa"
-        },
-        {
-            "code": "5315072019",
-            "name": "Golo Ndari"
-        }
-    ],
-    "531508": [
-        {
-            "code": "5315082001",
-            "name": "Golo Poleng"
-        },
-        {
-            "code": "5315082002",
-            "name": "Tentang"
-        },
-        {
-            "code": "5315082003",
-            "name": "Raka"
-        },
-        {
-            "code": "5315082004",
-            "name": "Kasong"
-        },
-        {
-            "code": "5315082005",
-            "name": "Ndoso"
-        },
-        {
-            "code": "5315082006",
-            "name": "Waning"
-        },
-        {
-            "code": "5315082007",
-            "name": "Wae Buka"
-        },
-        {
-            "code": "5315082008",
-            "name": "Momol"
-        },
-        {
-            "code": "5315082009",
-            "name": "Lumut"
-        },
-        {
-            "code": "5315082010",
-            "name": "Pong Narang"
-        },
-        {
-            "code": "5315082011",
-            "name": "Golo Bore"
-        },
-        {
-            "code": "5315082012",
-            "name": "Pateng Lesuh"
-        },
-        {
-            "code": "5315082013",
-            "name": "Tehong"
-        },
-        {
-            "code": "5315082014",
-            "name": "Golo Ru'a"
-        },
-        {
-            "code": "5315082015",
-            "name": "Golo Keli"
-        }
-    ],
-    "531509": [
-        {
-            "code": "5315092001",
-            "name": "Repi"
-        },
-        {
-            "code": "5315092002",
-            "name": "Watu Waja"
-        },
-        {
-            "code": "5315092003",
-            "name": "Surunumbeng"
-        },
-        {
-            "code": "5315092004",
-            "name": "Munting"
-        },
-        {
-            "code": "5315092005",
-            "name": "Kakor"
-        },
-        {
-            "code": "5315092006",
-            "name": "Lalong"
-        },
-        {
-            "code": "5315092007",
-            "name": "Wae Mose"
-        },
-        {
-            "code": "5315092008",
-            "name": "Nanga Lili"
-        },
-        {
-            "code": "5315092009",
-            "name": "Nanga Bere"
-        },
-        {
-            "code": "5315092010",
-            "name": "Benteng Dewa"
-        },
-        {
-            "code": "5315092011",
-            "name": "Watu Rambung"
-        },
-        {
-            "code": "5315092012",
-            "name": "Lendong"
-        },
-        {
-            "code": "5315092013",
-            "name": "Watu Tiri"
-        },
-        {
-            "code": "5315092014",
-            "name": "Benteng Tado"
-        },
-        {
-            "code": "5315092015",
-            "name": "Modo"
-        }
-    ],
-    "531510": [
-        {
-            "code": "5315102001",
-            "name": "Liang Ndara"
-        },
-        {
-            "code": "5315102002",
-            "name": "Tandong Belang"
-        },
-        {
-            "code": "5315102003",
-            "name": "Cunca Lolos"
-        },
-        {
-            "code": "5315102004",
-            "name": "Cunca Wulang"
-        },
-        {
-            "code": "5315102005",
-            "name": "Golo Damu"
-        },
-        {
-            "code": "5315102006",
-            "name": "Golo Ndoal"
-        },
-        {
-            "code": "5315102007",
-            "name": "Golo Sembea"
-        },
-        {
-            "code": "5315102008",
-            "name": "Golo Desat"
-        },
-        {
-            "code": "5315102009",
-            "name": "Kempo"
-        },
-        {
-            "code": "5315102010",
-            "name": "Wae Jare"
-        },
-        {
-            "code": "5315102011",
-            "name": "Golo Tantong"
-        },
-        {
-            "code": "5315102012",
-            "name": "Tiwi Riwung"
-        },
-        {
-            "code": "5315102013",
-            "name": "Watu Wangka"
-        },
-        {
-            "code": "5315102014",
-            "name": "Compang Liang Ndara"
-        },
-        {
-            "code": "5315102015",
-            "name": "Watu Galang"
-        }
-    ],
-    "531512": [
-        {
-            "code": "5315122001",
-            "name": "Golo Lewe"
-        },
-        {
-            "code": "5315122002",
-            "name": "Tueng"
-        },
-        {
-            "code": "5315122003",
-            "name": "Sompang Kolang"
-        },
-        {
-            "code": "5315122004",
-            "name": "Wajur"
-        },
-        {
-            "code": "5315122005",
-            "name": "Kolang"
-        },
-        {
-            "code": "5315122006",
-            "name": "Golo Riwu"
-        },
-        {
-            "code": "5315122007",
-            "name": "Compang Kules"
-        },
-        {
-            "code": "5315122008",
-            "name": "Tengku"
-        },
-        {
-            "code": "5315122009",
-            "name": "Golo Wedong"
-        },
-        {
-            "code": "5315122010",
-            "name": "Ranggu"
-        }
-    ]
+  "531501": [
+    {
+      "code": "5315012001",
+      "name": "Bari"
+    },
+    {
+      "code": "5315012002",
+      "name": "Rokap"
+    },
+    {
+      "code": "5315012003",
+      "name": "Mbakung"
+    },
+    {
+      "code": "5315012004",
+      "name": "Nggilat"
+    },
+    {
+      "code": "5315012005",
+      "name": "Rego"
+    },
+    {
+      "code": "5315012006",
+      "name": "Wontong"
+    },
+    {
+      "code": "5315012007",
+      "name": "Raba"
+    },
+    {
+      "code": "5315012008",
+      "name": "Nanga Kantor"
+    },
+    {
+      "code": "5315012014",
+      "name": "Watubaru"
+    },
+    {
+      "code": "5315012015",
+      "name": "Lewat"
+    },
+    {
+      "code": "5315012016",
+      "name": "Watu Manggar"
+    },
+    {
+      "code": "5315012025",
+      "name": "Sarae Naru"
+    },
+    {
+      "code": "5315012026",
+      "name": "Nanga Kantor Barat"
+    }
+  ],
+  "531502": [
+    {
+      "code": "5315021022",
+      "name": "Golo Ru'u"
+    },
+    {
+      "code": "5315021023",
+      "name": "Nantal"
+    },
+    {
+      "code": "5315022002",
+      "name": "Coal"
+    },
+    {
+      "code": "5315022004",
+      "name": "Pangga"
+    },
+    {
+      "code": "5315022010",
+      "name": "Lewur"
+    },
+    {
+      "code": "5315022011",
+      "name": "Lawi"
+    },
+    {
+      "code": "5315022017",
+      "name": "Compang Suka"
+    },
+    {
+      "code": "5315022018",
+      "name": "Benteng Suru"
+    },
+    {
+      "code": "5315022021",
+      "name": "Sama"
+    },
+    {
+      "code": "5315022030",
+      "name": "Bangka Lewat"
+    },
+    {
+      "code": "5315022031",
+      "name": "Suka Kiong"
+    },
+    {
+      "code": "5315022032",
+      "name": "Golo Pua"
+    }
+  ],
+  "531503": [
+    {
+      "code": "5315031032",
+      "name": "Tangge"
+    },
+    {
+      "code": "5315032003",
+      "name": "Wae Wako"
+    },
+    {
+      "code": "5315032010",
+      "name": "Wae Kanta"
+    },
+    {
+      "code": "5315032011",
+      "name": "Ponto Ara"
+    },
+    {
+      "code": "5315032012",
+      "name": "Wae Bangka"
+    },
+    {
+      "code": "5315032013",
+      "name": "Pong Majok"
+    },
+    {
+      "code": "5315032014",
+      "name": "Daleng"
+    },
+    {
+      "code": "5315032021",
+      "name": "Siru"
+    },
+    {
+      "code": "5315032022",
+      "name": "Pondo"
+    },
+    {
+      "code": "5315032023",
+      "name": "Poco Rutang"
+    },
+    {
+      "code": "5315032025",
+      "name": "Ngancar"
+    },
+    {
+      "code": "5315032033",
+      "name": "LIang Sola"
+    },
+    {
+      "code": "5315032034",
+      "name": "Wae Mowol"
+    },
+    {
+      "code": "5315032035",
+      "name": "Golo Ndeweng"
+    },
+    {
+      "code": "5315032036",
+      "name": "Poco Dedeng"
+    }
+  ],
+  "531504": [
+    {
+      "code": "5315042001",
+      "name": "Golo Ndaring"
+    },
+    {
+      "code": "5315042005",
+      "name": "Golo Kempo"
+    },
+    {
+      "code": "5315042008",
+      "name": "Golo Manting"
+    },
+    {
+      "code": "5315042009",
+      "name": "Matawae"
+    },
+    {
+      "code": "5315042011",
+      "name": "Nampar Macing"
+    },
+    {
+      "code": "5315042014",
+      "name": "Wae Sano"
+    },
+    {
+      "code": "5315042016",
+      "name": "Golo Mbu"
+    },
+    {
+      "code": "5315042017",
+      "name": "Golo Leleng"
+    },
+    {
+      "code": "5315042018",
+      "name": "Sano Nggoang"
+    },
+    {
+      "code": "5315042020",
+      "name": "Wae Lolos"
+    },
+    {
+      "code": "5315042024",
+      "name": "Golo Sengang"
+    },
+    {
+      "code": "5315042025",
+      "name": "Watu Panggal"
+    },
+    {
+      "code": "5315042026",
+      "name": "Golo Kondeng"
+    },
+    {
+      "code": "5315042027",
+      "name": "Poco Golo Kempo"
+    },
+    {
+      "code": "5315042028",
+      "name": "Pulau Nuncung"
+    }
+  ],
+  "531505": [
+    {
+      "code": "5315051024",
+      "name": "Wae Kelambu"
+    },
+    {
+      "code": "5315051025",
+      "name": "Labuan Bajo"
+    },
+    {
+      "code": "5315052001",
+      "name": "Komodo"
+    },
+    {
+      "code": "5315052002",
+      "name": "Pasir Putih"
+    },
+    {
+      "code": "5315052003",
+      "name": "Pasir Panjang"
+    },
+    {
+      "code": "5315052004",
+      "name": "Golo Mori"
+    },
+    {
+      "code": "5315052005",
+      "name": "Warloka"
+    },
+    {
+      "code": "5315052007",
+      "name": "Golo Bilas"
+    },
+    {
+      "code": "5315052008",
+      "name": "Macang Tanggar"
+    },
+    {
+      "code": "5315052009",
+      "name": "Watu Nggelek"
+    },
+    {
+      "code": "5315052015",
+      "name": "Golo Pongkor"
+    },
+    {
+      "code": "5315052016",
+      "name": "Nggorang"
+    },
+    {
+      "code": "5315052018",
+      "name": "Papa Garang"
+    },
+    {
+      "code": "5315052019",
+      "name": "Batu Cermin"
+    },
+    {
+      "code": "5315052020",
+      "name": "Gorontalo"
+    },
+    {
+      "code": "5315052022",
+      "name": "Tiwu Nampar"
+    },
+    {
+      "code": "5315052026",
+      "name": "Seraya Marannu"
+    },
+    {
+      "code": "5315052027",
+      "name": "Compang Longgo"
+    },
+    {
+      "code": "5315052028",
+      "name": "Pantar"
+    }
+  ],
+  "531506": [
+    {
+      "code": "5315062001",
+      "name": "Mbuit"
+    },
+    {
+      "code": "5315062002",
+      "name": "Golo Ketak"
+    },
+    {
+      "code": "5315062003",
+      "name": "Pota Wangka"
+    },
+    {
+      "code": "5315062004",
+      "name": "Tanjung Boleng"
+    },
+    {
+      "code": "5315062005",
+      "name": "Golo Sepang"
+    },
+    {
+      "code": "5315062006",
+      "name": "Pontianak"
+    },
+    {
+      "code": "5315062007",
+      "name": "Sepang"
+    },
+    {
+      "code": "5315062008",
+      "name": "Golo Lujang"
+    },
+    {
+      "code": "5315062009",
+      "name": "Batu Tiga"
+    },
+    {
+      "code": "5315062020",
+      "name": "Golo Nobo"
+    },
+    {
+      "code": "5315062021",
+      "name": "Beo Sepang"
+    }
+  ],
+  "531507": [
+    {
+      "code": "5315072001",
+      "name": "Golo Ronggot"
+    },
+    {
+      "code": "5315072002",
+      "name": "Semang"
+    },
+    {
+      "code": "5315072003",
+      "name": "Dunta"
+    },
+    {
+      "code": "5315072004",
+      "name": "Gurung"
+    },
+    {
+      "code": "5315072005",
+      "name": "Orong"
+    },
+    {
+      "code": "5315072006",
+      "name": "Pong Welak"
+    },
+    {
+      "code": "5315072007",
+      "name": "Galang"
+    },
+    {
+      "code": "5315072008",
+      "name": "Rehak"
+    },
+    {
+      "code": "5315072009",
+      "name": "Watu Umpu"
+    },
+    {
+      "code": "5315072010",
+      "name": "Pengka"
+    },
+    {
+      "code": "5315072011",
+      "name": "Lale"
+    },
+    {
+      "code": "5315072015",
+      "name": "Racang Welak"
+    },
+    {
+      "code": "5315072016",
+      "name": "Sewar"
+    },
+    {
+      "code": "5315072017",
+      "name": "Robo"
+    },
+    {
+      "code": "5315072018",
+      "name": "Wewa"
+    },
+    {
+      "code": "5315072019",
+      "name": "Golo Ndari"
+    }
+  ],
+  "531508": [
+    {
+      "code": "5315082001",
+      "name": "Golo Poleng"
+    },
+    {
+      "code": "5315082002",
+      "name": "Tentang"
+    },
+    {
+      "code": "5315082003",
+      "name": "Raka"
+    },
+    {
+      "code": "5315082004",
+      "name": "Kasong"
+    },
+    {
+      "code": "5315082005",
+      "name": "Ndoso"
+    },
+    {
+      "code": "5315082006",
+      "name": "Waning"
+    },
+    {
+      "code": "5315082007",
+      "name": "Wae Buka"
+    },
+    {
+      "code": "5315082008",
+      "name": "Momol"
+    },
+    {
+      "code": "5315082009",
+      "name": "Lumut"
+    },
+    {
+      "code": "5315082010",
+      "name": "Pong Narang"
+    },
+    {
+      "code": "5315082011",
+      "name": "Golo Bore"
+    },
+    {
+      "code": "5315082012",
+      "name": "Pateng Lesuh"
+    },
+    {
+      "code": "5315082013",
+      "name": "Tehong"
+    },
+    {
+      "code": "5315082014",
+      "name": "Golo Ru'a"
+    },
+    {
+      "code": "5315082015",
+      "name": "Golo Keli"
+    }
+  ],
+  "531509": [
+    {
+      "code": "5315092001",
+      "name": "Repi"
+    },
+    {
+      "code": "5315092002",
+      "name": "Watu Waja"
+    },
+    {
+      "code": "5315092003",
+      "name": "Surunumbeng"
+    },
+    {
+      "code": "5315092004",
+      "name": "Munting"
+    },
+    {
+      "code": "5315092005",
+      "name": "Kakor"
+    },
+    {
+      "code": "5315092006",
+      "name": "Lalong"
+    },
+    {
+      "code": "5315092007",
+      "name": "Wae Mose"
+    },
+    {
+      "code": "5315092008",
+      "name": "Nanga Lili"
+    },
+    {
+      "code": "5315092009",
+      "name": "Nanga Bere"
+    },
+    {
+      "code": "5315092010",
+      "name": "Benteng Dewa"
+    },
+    {
+      "code": "5315092011",
+      "name": "Watu Rambung"
+    },
+    {
+      "code": "5315092012",
+      "name": "Lendong"
+    },
+    {
+      "code": "5315092013",
+      "name": "Watu Tiri"
+    },
+    {
+      "code": "5315092014",
+      "name": "Benteng Tado"
+    },
+    {
+      "code": "5315092015",
+      "name": "Modo"
+    }
+  ],
+  "531510": [
+    {
+      "code": "5315102001",
+      "name": "Liang Ndara"
+    },
+    {
+      "code": "5315102002",
+      "name": "Tandong Belang"
+    },
+    {
+      "code": "5315102003",
+      "name": "Cunca Lolos"
+    },
+    {
+      "code": "5315102004",
+      "name": "Cunca Wulang"
+    },
+    {
+      "code": "5315102005",
+      "name": "Golo Damu"
+    },
+    {
+      "code": "5315102006",
+      "name": "Golo Ndoal"
+    },
+    {
+      "code": "5315102007",
+      "name": "Golo Sembea"
+    },
+    {
+      "code": "5315102008",
+      "name": "Golo Desat"
+    },
+    {
+      "code": "5315102009",
+      "name": "Kempo"
+    },
+    {
+      "code": "5315102010",
+      "name": "Wae Jare"
+    },
+    {
+      "code": "5315102011",
+      "name": "Golo Tantong"
+    },
+    {
+      "code": "5315102012",
+      "name": "Tiwi Riwung"
+    },
+    {
+      "code": "5315102013",
+      "name": "Watu Wangka"
+    },
+    {
+      "code": "5315102014",
+      "name": "Compang Liang Ndara"
+    },
+    {
+      "code": "5315102015",
+      "name": "Watu Galang"
+    }
+  ],
+  "531511": [
+    {
+      "code": "5315112001",
+      "name": "Pacar"
+    },
+    {
+      "code": "5315112002",
+      "name": "Manong"
+    },
+    {
+      "code": "5315112003",
+      "name": "Romang"
+    },
+    {
+      "code": "5315112004",
+      "name": "Compang"
+    },
+    {
+      "code": "5315112005",
+      "name": "Waka"
+    },
+    {
+      "code": "5315112006",
+      "name": "Pong Kolong"
+    },
+    {
+      "code": "5315112007",
+      "name": "Loha"
+    },
+    {
+      "code": "5315112008",
+      "name": "Benteng Ndope"
+    },
+    {
+      "code": "5315112009",
+      "name": "Golo Lajang"
+    },
+    {
+      "code": "5315112010",
+      "name": "Golo Lajang Barat"
+    },
+    {
+      "code": "5315112011",
+      "name": "Kombo"
+    },
+    {
+      "code": "5315112012",
+      "name": "Kombo Selatan"
+    },
+    {
+      "code": "5315112013",
+      "name": "Kombo Tengah"
+    }
+  ],
+  "531512": [
+    {
+      "code": "5315122001",
+      "name": "Golo Lewe"
+    },
+    {
+      "code": "5315122002",
+      "name": "Tueng"
+    },
+    {
+      "code": "5315122003",
+      "name": "Sompang Kolang"
+    },
+    {
+      "code": "5315122004",
+      "name": "Wajur"
+    },
+    {
+      "code": "5315122005",
+      "name": "Kolang"
+    },
+    {
+      "code": "5315122006",
+      "name": "Golo Riwu"
+    },
+    {
+      "code": "5315122007",
+      "name": "Compang Kules"
+    },
+    {
+      "code": "5315122008",
+      "name": "Tengku"
+    },
+    {
+      "code": "5315122009",
+      "name": "Golo Wedong"
+    },
+    {
+      "code": "5315122010",
+      "name": "Ranggu"
+    }
+  ]
 }

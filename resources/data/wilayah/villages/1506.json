@@ -1,0 +1,564 @@
+{
+  "150601": [
+    {
+      "code": "1506011005",
+      "name": "Pelabuhan Dagang"
+    },
+    {
+      "code": "1506012001",
+      "name": "Badang"
+    },
+    {
+      "code": "1506012002",
+      "name": "Tanjung Tayas"
+    },
+    {
+      "code": "1506012003",
+      "name": "Kuala Dasal"
+    },
+    {
+      "code": "1506012004",
+      "name": "Pematang Pauh"
+    },
+    {
+      "code": "1506012006",
+      "name": "Taman Raja"
+    },
+    {
+      "code": "1506012017",
+      "name": "Brasau"
+    },
+    {
+      "code": "1506012019",
+      "name": "Gemuruh"
+    },
+    {
+      "code": "1506012020",
+      "name": "Pematang Tembesu"
+    },
+    {
+      "code": "1506012021",
+      "name": "Badang Sepakat"
+    }
+  ],
+  "150602": [
+    {
+      "code": "1506021004",
+      "name": "Tungkal Empat Kota"
+    },
+    {
+      "code": "1506021005",
+      "name": "Tungkal III"
+    },
+    {
+      "code": "1506021006",
+      "name": "Tungkal Harapan"
+    },
+    {
+      "code": "1506021007",
+      "name": "Tungkal II"
+    },
+    {
+      "code": "1506021015",
+      "name": "Kampung Nelayan"
+    },
+    {
+      "code": "1506021016",
+      "name": "Patunas"
+    },
+    {
+      "code": "1506021017",
+      "name": "Sriwijaya"
+    },
+    {
+      "code": "1506021018",
+      "name": "Sungainibung"
+    },
+    {
+      "code": "1506022003",
+      "name": "Tungkal I"
+    },
+    {
+      "code": "1506022014",
+      "name": "Teluk Sialang"
+    }
+  ],
+  "150603": [
+    {
+      "code": "1506031001",
+      "name": "Teluknilau"
+    },
+    {
+      "code": "1506032006",
+      "name": "Parit Pudin"
+    },
+    {
+      "code": "1506032007",
+      "name": "Sungai Serindit"
+    },
+    {
+      "code": "1506032008",
+      "name": "Mekar Jati"
+    },
+    {
+      "code": "1506032012",
+      "name": "Sungai Pampang"
+    },
+    {
+      "code": "1506032013",
+      "name": "Parit Sidang"
+    },
+    {
+      "code": "1506032014",
+      "name": "Sungai Jering"
+    },
+    {
+      "code": "1506032015",
+      "name": "Parit Bilal"
+    },
+    {
+      "code": "1506032016",
+      "name": "Suak Samin"
+    },
+    {
+      "code": "1506032017",
+      "name": "Sungai Baung"
+    },
+    {
+      "code": "1506032018",
+      "name": "Karya Maju"
+    },
+    {
+      "code": "1506032019",
+      "name": "Sungai Raya"
+    },
+    {
+      "code": "1506032020",
+      "name": "Pasar Senin"
+    }
+  ],
+  "150604": [
+    {
+      "code": "1506041007",
+      "name": "Mekar Jaya"
+    },
+    {
+      "code": "1506042001",
+      "name": "Pematang Lumut"
+    },
+    {
+      "code": "1506042008",
+      "name": "Makmur Jaya"
+    },
+    {
+      "code": "1506042009",
+      "name": "Serdang Jaya"
+    },
+    {
+      "code": "1506042010",
+      "name": "Terjun Gajah"
+    },
+    {
+      "code": "1506042011",
+      "name": "Lubuk Terentang"
+    },
+    {
+      "code": "1506042012",
+      "name": "Pematang Buluh"
+    },
+    {
+      "code": "1506042013",
+      "name": "Muntialo"
+    },
+    {
+      "code": "1506042014",
+      "name": "Teluk Kulbi"
+    },
+    {
+      "code": "1506042015",
+      "name": "Bunga Tanjung"
+    },
+    {
+      "code": "1506042016",
+      "name": "Sungai Terap"
+    },
+    {
+      "code": "1506042017",
+      "name": "Mandala Jaya"
+    }
+  ],
+  "150605": [
+    {
+      "code": "1506051007",
+      "name": "Merlung"
+    },
+    {
+      "code": "1506052005",
+      "name": "Penyabungan"
+    },
+    {
+      "code": "1506052006",
+      "name": "Lubuk Terap"
+    },
+    {
+      "code": "1506052008",
+      "name": "Tanjung Paku"
+    },
+    {
+      "code": "1506052012",
+      "name": "Tanjung Benanak"
+    },
+    {
+      "code": "1506052013",
+      "name": "Bukit Harapan"
+    },
+    {
+      "code": "1506052014",
+      "name": "Adi Purwa"
+    },
+    {
+      "code": "1506052018",
+      "name": "Pinang Gading"
+    },
+    {
+      "code": "1506052020",
+      "name": "Merlung"
+    },
+    {
+      "code": "1506052021",
+      "name": "Tanjung Makmur"
+    }
+  ],
+  "150606": [
+    {
+      "code": "1506061001",
+      "name": "Tebing Tinggi"
+    },
+    {
+      "code": "1506062002",
+      "name": "Purwodadi"
+    },
+    {
+      "code": "1506062003",
+      "name": "Suka Damai"
+    },
+    {
+      "code": "1506062004",
+      "name": "Adi Jaya"
+    },
+    {
+      "code": "1506062005",
+      "name": "Kelagian"
+    },
+    {
+      "code": "1506062006",
+      "name": "Teluk Pengkah"
+    },
+    {
+      "code": "1506062007",
+      "name": "Talang Makmur"
+    },
+    {
+      "code": "1506062008",
+      "name": "Sungai Keruh"
+    },
+    {
+      "code": "1506062009",
+      "name": "Dataran Kempas"
+    },
+    {
+      "code": "1506062010",
+      "name": "Delima"
+    }
+  ],
+  "150607": [
+    {
+      "code": "1506071001",
+      "name": "Dusun Kebun"
+    },
+    {
+      "code": "1506072002",
+      "name": "Sri Agung"
+    },
+    {
+      "code": "1506072003",
+      "name": "Suban"
+    },
+    {
+      "code": "1506072004",
+      "name": "Tanjung Bojo"
+    },
+    {
+      "code": "1506072005",
+      "name": "Kampung Baru"
+    },
+    {
+      "code": "1506072006",
+      "name": "Lubuk Bernai"
+    },
+    {
+      "code": "1506072007",
+      "name": "Rawa Medang"
+    },
+    {
+      "code": "1506072008",
+      "name": "Sungai Penoban"
+    },
+    {
+      "code": "1506072009",
+      "name": "Rawang Kempas"
+    },
+    {
+      "code": "1506072010",
+      "name": "Lubuk Lawas"
+    },
+    {
+      "code": "1506072011",
+      "name": "Sungai Badar"
+    }
+  ],
+  "150608": [
+    {
+      "code": "1506081001",
+      "name": "Lubuk Kambing"
+    },
+    {
+      "code": "1506082002",
+      "name": "Pulau Pauh"
+    },
+    {
+      "code": "1506082003",
+      "name": "Rantau Benar"
+    },
+    {
+      "code": "1506082004",
+      "name": "Lampisi"
+    },
+    {
+      "code": "1506082005",
+      "name": "Cinta Damai"
+    },
+    {
+      "code": "1506082006",
+      "name": "Sungai Rotan"
+    },
+    {
+      "code": "1506082007",
+      "name": "Muara Danau"
+    },
+    {
+      "code": "1506082008",
+      "name": "Tanah Tumbuh"
+    },
+    {
+      "code": "1506082009",
+      "name": "Sungai Paur"
+    },
+    {
+      "code": "1506082010",
+      "name": "Bukit Bakar"
+    }
+  ],
+  "150609": [
+    {
+      "code": "1506091001",
+      "name": "Rantau Badak"
+    },
+    {
+      "code": "1506092002",
+      "name": "Dusun Mudo"
+    },
+    {
+      "code": "1506092003",
+      "name": "Intan Jaya"
+    },
+    {
+      "code": "1506092004",
+      "name": "Bukit Indah"
+    },
+    {
+      "code": "1506092005",
+      "name": "Kemang Manis"
+    },
+    {
+      "code": "1506092006",
+      "name": "Rantau Badak Lamo"
+    },
+    {
+      "code": "1506092007",
+      "name": "Lubuk Sebontan"
+    },
+    {
+      "code": "1506092008",
+      "name": "Sungai Papauh"
+    },
+    {
+      "code": "1506092009",
+      "name": "Sungai Muluk"
+    },
+    {
+      "code": "1506092010",
+      "name": "Pematang Balam"
+    }
+  ],
+  "150610": [
+    {
+      "code": "1506101001",
+      "name": "Tungkal V"
+    },
+    {
+      "code": "1506102002",
+      "name": "Tungkal IV Desa"
+    },
+    {
+      "code": "1506102003",
+      "name": "Kuala Baru"
+    },
+    {
+      "code": "1506102004",
+      "name": "Teluk Pulai Raya"
+    },
+    {
+      "code": "1506102005",
+      "name": "Mekar Alam"
+    },
+    {
+      "code": "1506102006",
+      "name": "Harapan Jaya"
+    },
+    {
+      "code": "1506102007",
+      "name": "Kuala Kahar"
+    },
+    {
+      "code": "1506102008",
+      "name": "Muara Seberang"
+    }
+  ],
+  "150611": [
+    {
+      "code": "1506111001",
+      "name": "Bram Itam Kiri"
+    },
+    {
+      "code": "1506112002",
+      "name": "Bram Itam Kanan"
+    },
+    {
+      "code": "1506112003",
+      "name": "Tanjung Senjulang"
+    },
+    {
+      "code": "1506112004",
+      "name": "Pembengis"
+    },
+    {
+      "code": "1506112005",
+      "name": "Bram Itam Raya"
+    },
+    {
+      "code": "1506112006",
+      "name": "Pantai Gading"
+    },
+    {
+      "code": "1506112007",
+      "name": "Jati Emas"
+    },
+    {
+      "code": "1506112008",
+      "name": "Kemuning"
+    },
+    {
+      "code": "1506112009",
+      "name": "Mekar Tanjung"
+    },
+    {
+      "code": "1506112010",
+      "name": "Semau"
+    }
+  ],
+  "150612": [
+    {
+      "code": "1506121001",
+      "name": "Betara Kiri"
+    },
+    {
+      "code": "1506122002",
+      "name": "Sungai Dualap"
+    },
+    {
+      "code": "1506122003",
+      "name": "Betara Kanan"
+    },
+    {
+      "code": "1506122004",
+      "name": "Sungai Gebar"
+    },
+    {
+      "code": "1506122005",
+      "name": "Dataran Pinang"
+    },
+    {
+      "code": "1506122006",
+      "name": "Tanjung Pasir"
+    },
+    {
+      "code": "1506122007",
+      "name": "Sungai Gebar Barat"
+    },
+    {
+      "code": "1506122008",
+      "name": "Sungai Dungun"
+    },
+    {
+      "code": "1506122009",
+      "name": "Kuala Indah"
+    },
+    {
+      "code": "1506122010",
+      "name": "Suak Labu"
+    }
+  ],
+  "150613": [
+    {
+      "code": "1506131001",
+      "name": "Senyerang"
+    },
+    {
+      "code": "1506132002",
+      "name": "Sungai Kayu Aro"
+    },
+    {
+      "code": "1506132003",
+      "name": "Teluk Ketapang"
+    },
+    {
+      "code": "1506132004",
+      "name": "Sungai Rambai"
+    },
+    {
+      "code": "1506132005",
+      "name": "Margo Rukun"
+    },
+    {
+      "code": "1506132006",
+      "name": "Kempas Jaya"
+    },
+    {
+      "code": "1506132007",
+      "name": "Lumahan"
+    },
+    {
+      "code": "1506132008",
+      "name": "Sungai Landak"
+    },
+    {
+      "code": "1506132009",
+      "name": "Sungsang"
+    },
+    {
+      "code": "1506132010",
+      "name": "Sungai Kepayang"
+    }
+  ]
+}

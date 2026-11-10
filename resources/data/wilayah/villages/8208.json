@@ -1,226 +1,302 @@
 {
-    "820803": [
-        {
-            "code": "8208032001",
-            "name": "Lede"
-        },
-        {
-            "code": "8208032002",
-            "name": "Todoli"
-        },
-        {
-            "code": "8208032003",
-            "name": "Tolong"
-        },
-        {
-            "code": "8208032004",
-            "name": "Langganu"
-        },
-        {
-            "code": "8208032005",
-            "name": "Balohang"
-        }
-    ],
-    "820804": [
-        {
-            "code": "8208042001",
-            "name": "Mananga"
-        },
-        {
-            "code": "8208042002",
-            "name": "Tanjung Una"
-        },
-        {
-            "code": "8208042003",
-            "name": "Jorjoga"
-        },
-        {
-            "code": "8208042004",
-            "name": "Gela"
-        },
-        {
-            "code": "8208042005",
-            "name": "Minton"
-        },
-        {
-            "code": "8208042006",
-            "name": "Nunca"
-        },
-        {
-            "code": "8208042007",
-            "name": "Sahu"
-        },
-        {
-            "code": "8208042008",
-            "name": "Bua Mbono"
-        },
-        {
-            "code": "8208042009",
-            "name": "Hai"
-        },
-        {
-            "code": "8208042010",
-            "name": "Tikong"
-        },
-        {
-            "code": "8208042011",
-            "name": "Dege"
-        },
-        {
-            "code": "8208042012",
-            "name": "Air Bulan"
-        },
-        {
-            "code": "8208042013",
-            "name": "Air Kalimat"
-        },
-        {
-            "code": "8208042014",
-            "name": "Ufung"
-        },
-        {
-            "code": "8208042015",
-            "name": "Padang"
-        },
-        {
-            "code": "8208042016",
-            "name": "Natang Kuning"
-        },
-        {
-            "code": "8208042017",
-            "name": "Nunu"
-        },
-        {
-            "code": "8208042018",
-            "name": "London"
-        },
-        {
-            "code": "8208042019",
-            "name": "Wahe"
-        }
-    ],
-    "820805": [
-        {
-            "code": "8208052001",
-            "name": "Penu"
-        },
-        {
-            "code": "8208052002",
-            "name": "Parigi"
-        },
-        {
-            "code": "8208052003",
-            "name": "Samuya"
-        },
-        {
-            "code": "8208052004",
-            "name": "Tubang"
-        }
-    ],
-    "820806": [
-        {
-            "code": "8208062001",
-            "name": "Waikadai"
-        },
-        {
-            "code": "8208062002",
-            "name": "Losseng"
-        },
-        {
-            "code": "8208062003",
-            "name": "Kawadang"
-        },
-        {
-            "code": "8208062004",
-            "name": "Sofan"
-        },
-        {
-            "code": "8208062005",
-            "name": "Mantarara"
-        },
-        {
-            "code": "8208062006",
-            "name": "Belo"
-        },
-        {
-            "code": "8208062007",
-            "name": "Kamaya"
-        },
-        {
-            "code": "8208062008",
-            "name": "Waikoka"
-        },
-        {
-            "code": "8208062009",
-            "name": "Waikadai Sula"
-        }
-    ],
-    "820807": [
-        {
-            "code": "8208072001",
-            "name": "Bahu"
-        },
-        {
-            "code": "8208072002",
-            "name": "Bapenu"
-        },
-        {
-            "code": "8208072003",
-            "name": "Kilo"
-        },
-        {
-            "code": "8208072004",
-            "name": "Pancado"
-        },
-        {
-            "code": "8208072005",
-            "name": "Nggaki"
-        },
-        {
-            "code": "8208072006",
-            "name": "Sumbong"
-        },
-        {
-            "code": "8208072007",
-            "name": "Maluli"
-        },
-        {
-            "code": "8208072008",
-            "name": "Galebo"
-        },
-        {
-            "code": "8208072009",
-            "name": "Nggoli"
-        }
-    ],
-    "820808": [
-        {
-            "code": "8208082001",
-            "name": "Tabona"
-        },
-        {
-            "code": "8208082002",
-            "name": "Kabunu"
-        },
-        {
-            "code": "8208082003",
-            "name": "Peleng"
-        },
-        {
-            "code": "8208082004",
-            "name": "Fayaunana"
-        },
-        {
-            "code": "8208082005",
-            "name": "Habunuha"
-        },
-        {
-            "code": "8208082006",
-            "name": "Kataga"
-        },
-        {
-            "code": "8208082007",
-            "name": "Wolio"
-        }
-    ]
+  "820801": [
+    {
+      "code": "8208012001",
+      "name": "Bobong"
+    },
+    {
+      "code": "8208012002",
+      "name": "Talo"
+    },
+    {
+      "code": "8208012003",
+      "name": "Kawalo"
+    },
+    {
+      "code": "8208012004",
+      "name": "Limbo"
+    },
+    {
+      "code": "8208012005",
+      "name": "Meranti Jaya"
+    },
+    {
+      "code": "8208012006",
+      "name": "Kramat"
+    },
+    {
+      "code": "8208012007",
+      "name": "Holbota"
+    },
+    {
+      "code": "8208012008",
+      "name": "Pancoran"
+    },
+    {
+      "code": "8208012009",
+      "name": "Wayo"
+    },
+    {
+      "code": "8208012010",
+      "name": "Loho Bubba"
+    },
+    {
+      "code": "8208012011",
+      "name": "Kilong"
+    },
+    {
+      "code": "8208012012",
+      "name": "Ratahaya"
+    },
+    {
+      "code": "8208012013",
+      "name": "Woyo"
+    }
+  ],
+  "820802": [
+    {
+      "code": "8208022001",
+      "name": "Nggele"
+    },
+    {
+      "code": "8208022002",
+      "name": "Salati"
+    },
+    {
+      "code": "8208022003",
+      "name": "Beringin Jaya"
+    },
+    {
+      "code": "8208022004",
+      "name": "Kasango"
+    },
+    {
+      "code": "8208022005",
+      "name": "Onemay"
+    }
+  ],
+  "820803": [
+    {
+      "code": "8208032001",
+      "name": "Lede"
+    },
+    {
+      "code": "8208032002",
+      "name": "Todoli"
+    },
+    {
+      "code": "8208032003",
+      "name": "Tolong"
+    },
+    {
+      "code": "8208032004",
+      "name": "Langganu"
+    },
+    {
+      "code": "8208032005",
+      "name": "Balohang"
+    }
+  ],
+  "820804": [
+    {
+      "code": "8208042001",
+      "name": "Mananga"
+    },
+    {
+      "code": "8208042002",
+      "name": "Tanjung Una"
+    },
+    {
+      "code": "8208042003",
+      "name": "Jorjoga"
+    },
+    {
+      "code": "8208042004",
+      "name": "Gela"
+    },
+    {
+      "code": "8208042005",
+      "name": "Minton"
+    },
+    {
+      "code": "8208042006",
+      "name": "Nunca"
+    },
+    {
+      "code": "8208042007",
+      "name": "Sahu"
+    },
+    {
+      "code": "8208042008",
+      "name": "Bua Mbono"
+    },
+    {
+      "code": "8208042009",
+      "name": "Hai"
+    },
+    {
+      "code": "8208042010",
+      "name": "Tikong"
+    },
+    {
+      "code": "8208042011",
+      "name": "Dege"
+    },
+    {
+      "code": "8208042012",
+      "name": "Air Bulan"
+    },
+    {
+      "code": "8208042013",
+      "name": "Air Kalimat"
+    },
+    {
+      "code": "8208042014",
+      "name": "Ufung"
+    },
+    {
+      "code": "8208042015",
+      "name": "Padang"
+    },
+    {
+      "code": "8208042016",
+      "name": "Natang Kuning"
+    },
+    {
+      "code": "8208042017",
+      "name": "Nunu"
+    },
+    {
+      "code": "8208042018",
+      "name": "London"
+    },
+    {
+      "code": "8208042019",
+      "name": "Wahe"
+    }
+  ],
+  "820805": [
+    {
+      "code": "8208052001",
+      "name": "Penu"
+    },
+    {
+      "code": "8208052002",
+      "name": "Parigi"
+    },
+    {
+      "code": "8208052003",
+      "name": "Samuya"
+    },
+    {
+      "code": "8208052004",
+      "name": "Tubang"
+    }
+  ],
+  "820806": [
+    {
+      "code": "8208062001",
+      "name": "Waikadai"
+    },
+    {
+      "code": "8208062002",
+      "name": "Losseng"
+    },
+    {
+      "code": "8208062003",
+      "name": "Kawadang"
+    },
+    {
+      "code": "8208062004",
+      "name": "Sofan"
+    },
+    {
+      "code": "8208062005",
+      "name": "Mantarara"
+    },
+    {
+      "code": "8208062006",
+      "name": "Belo"
+    },
+    {
+      "code": "8208062007",
+      "name": "Kamaya"
+    },
+    {
+      "code": "8208062008",
+      "name": "Waikoka"
+    },
+    {
+      "code": "8208062009",
+      "name": "Waikadai Sula"
+    }
+  ],
+  "820807": [
+    {
+      "code": "8208072001",
+      "name": "Bahu"
+    },
+    {
+      "code": "8208072002",
+      "name": "Bapenu"
+    },
+    {
+      "code": "8208072003",
+      "name": "Kilo"
+    },
+    {
+      "code": "8208072004",
+      "name": "Pancado"
+    },
+    {
+      "code": "8208072005",
+      "name": "Nggaki"
+    },
+    {
+      "code": "8208072006",
+      "name": "Sumbong"
+    },
+    {
+      "code": "8208072007",
+      "name": "Maluli"
+    },
+    {
+      "code": "8208072008",
+      "name": "Galebo"
+    },
+    {
+      "code": "8208072009",
+      "name": "Nggoli"
+    }
+  ],
+  "820808": [
+    {
+      "code": "8208082001",
+      "name": "Tabona"
+    },
+    {
+      "code": "8208082002",
+      "name": "Kabunu"
+    },
+    {
+      "code": "8208082003",
+      "name": "Peleng"
+    },
+    {
+      "code": "8208082004",
+      "name": "Fayaunana"
+    },
+    {
+      "code": "8208082005",
+      "name": "Habunuha"
+    },
+    {
+      "code": "8208082006",
+      "name": "Kataga"
+    },
+    {
+      "code": "8208082007",
+      "name": "Wolio"
+    }
+  ]
 }

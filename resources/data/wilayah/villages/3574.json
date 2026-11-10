@@ -1,28 +1,128 @@
 {
-    "357401": [
-        {
-            "code": "3574011001",
-            "name": "Ketapang"
-        },
-        {
-            "code": "3574011002",
-            "name": "Triwung Lor"
-        },
-        {
-            "code": "3574011003",
-            "name": "Triwung Kidul"
-        },
-        {
-            "code": "3574011007",
-            "name": "Pohsangit Kidul"
-        },
-        {
-            "code": "3574011008",
-            "name": "Kademangan"
-        },
-        {
-            "code": "3574011009",
-            "name": "Pilang"
-        }
-    ]
+  "357401": [
+    {
+      "code": "3574011001",
+      "name": "Ketapang"
+    },
+    {
+      "code": "3574011002",
+      "name": "Triwung Lor"
+    },
+    {
+      "code": "3574011003",
+      "name": "Triwung Kidul"
+    },
+    {
+      "code": "3574011007",
+      "name": "Pohsangit Kidul"
+    },
+    {
+      "code": "3574011008",
+      "name": "Kademangan"
+    },
+    {
+      "code": "3574011009",
+      "name": "Pilang"
+    }
+  ],
+  "357402": [
+    {
+      "code": "3574021001",
+      "name": "Jrebeng Kidul"
+    },
+    {
+      "code": "3574021002",
+      "name": "Pakistaji"
+    },
+    {
+      "code": "3574021003",
+      "name": "Kedunggaleng"
+    },
+    {
+      "code": "3574021005",
+      "name": "Kedung Asem"
+    },
+    {
+      "code": "3574021006",
+      "name": "Sumber Taman"
+    },
+    {
+      "code": "3574021007",
+      "name": "Wonoasih"
+    }
+  ],
+  "357403": [
+    {
+      "code": "3574031001",
+      "name": "Mayangan"
+    },
+    {
+      "code": "3574031002",
+      "name": "Mangunharjo"
+    },
+    {
+      "code": "3574031004",
+      "name": "Jati"
+    },
+    {
+      "code": "3574031007",
+      "name": "Sukabumi"
+    },
+    {
+      "code": "3574031010",
+      "name": "Wiroborang"
+    }
+  ],
+  "357404": [
+    {
+      "code": "3574041001",
+      "name": "Tisnonegaran"
+    },
+    {
+      "code": "3574041002",
+      "name": "Sukoharjo"
+    },
+    {
+      "code": "3574041003",
+      "name": "Kanigaran"
+    },
+    {
+      "code": "3574041004",
+      "name": "Kebonsari Wetan"
+    },
+    {
+      "code": "3574041005",
+      "name": "Curahgrinting"
+    },
+    {
+      "code": "3574041006",
+      "name": "Kebonsari Kulon"
+    }
+  ],
+  "357405": [
+    {
+      "code": "3574051001",
+      "name": "Jrebeng Kulon"
+    },
+    {
+      "code": "3574051002",
+      "name": "Kareng Lor"
+    },
+    {
+      "code": "3574051003",
+      "name": "Sumber Wetan"
+    },
+    {
+      "code": "3574051004",
+      "name": "Jrebeng Lor"
+    },
+    {
+      "code": "3574051005",
+      "name": "Kedopok"
+    },
+    {
+      "code": "3574051006",
+      "name": "Jrebeng Wetan"
+    }
+  ]
 }

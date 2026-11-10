@@ -1,28 +1,232 @@
 {
-    "367407": [
-        {
-            "code": "3674071001",
-            "name": "Muncul"
-        },
-        {
-            "code": "3674071002",
-            "name": "Setu"
-        },
-        {
-            "code": "3674071003",
-            "name": "Keranggan"
-        },
-        {
-            "code": "3674071004",
-            "name": "Kademangan"
-        },
-        {
-            "code": "3674071005",
-            "name": "Babakan"
-        },
-        {
-            "code": "3674071006",
-            "name": "Bakti Jaya"
-        }
-    ]
+  "367401": [
+    {
+      "code": "3674011001",
+      "name": "Ciater"
+    },
+    {
+      "code": "3674011002",
+      "name": "Rawabuntu"
+    },
+    {
+      "code": "3674011003",
+      "name": "Rawa Mekar Jaya"
+    },
+    {
+      "code": "3674011004",
+      "name": "Lengkong Gudang"
+    },
+    {
+      "code": "3674011005",
+      "name": "Lengkong Wetan"
+    },
+    {
+      "code": "3674011006",
+      "name": "Buaran"
+    },
+    {
+      "code": "3674011007",
+      "name": "Lengkong Gudang Timur"
+    },
+    {
+      "code": "3674011008",
+      "name": "Cilenggang"
+    },
+    {
+      "code": "3674011009",
+      "name": "Serpong"
+    }
+  ],
+  "367402": [
+    {
+      "code": "3674021001",
+      "name": "Pakulonan"
+    },
+    {
+      "code": "3674021002",
+      "name": "Pakualam"
+    },
+    {
+      "code": "3674021003",
+      "name": "Pakujaya"
+    },
+    {
+      "code": "3674021004",
+      "name": "Pondok Jagung"
+    },
+    {
+      "code": "3674021005",
+      "name": "Pondok Jagung Timur"
+    },
+    {
+      "code": "3674021006",
+      "name": "Jelupang"
+    },
+    {
+      "code": "3674021007",
+      "name": "Lengkong Karya"
+    }
+  ],
+  "367403": [
+    {
+      "code": "3674031001",
+      "name": "Pondok Betung"
+    },
+    {
+      "code": "3674031002",
+      "name": "Pondok Pucung"
+    },
+    {
+      "code": "3674031003",
+      "name": "Pondok Karya"
+    },
+    {
+      "code": "3674031004",
+      "name": "Pondok Jaya"
+    },
+    {
+      "code": "3674031005",
+      "name": "Pondok Aren"
+    },
+    {
+      "code": "3674031006",
+      "name": "Pondok Kacang Barat"
+    },
+    {
+      "code": "3674031007",
+      "name": "Pondok Kacang Timur"
+    },
+    {
+      "code": "3674031008",
+      "name": "Parigi"
+    },
+    {
+      "code": "3674031009",
+      "name": "Parigi Baru"
+    },
+    {
+      "code": "3674031010",
+      "name": "Jurangmangu Barat"
+    },
+    {
+      "code": "3674031011",
+      "name": "Jurangmangu Timur"
+    }
+  ],
+  "367404": [
+    {
+      "code": "3674041001",
+      "name": "Sawah Baru"
+    },
+    {
+      "code": "3674041002",
+      "name": "Serua"
+    },
+    {
+      "code": "3674041003",
+      "name": "Ciputat"
+    },
+    {
+      "code": "3674041004",
+      "name": "Sawah"
+    },
+    {
+      "code": "3674041005",
+      "name": "Serua Indah"
+    },
+    {
+      "code": "3674041006",
+      "name": "Jombang"
+    },
+    {
+      "code": "3674041007",
+      "name": "Cipayung"
+    }
+  ],
+  "367405": [
+    {
+      "code": "3674051001",
+      "name": "Cempaka Putih"
+    },
+    {
+      "code": "3674051002",
+      "name": "Pondok Ranji"
+    },
+    {
+      "code": "3674051003",
+      "name": "Pisangan"
+    },
+    {
+      "code": "3674051004",
+      "name": "Cireundeu"
+    },
+    {
+      "code": "3674051005",
+      "name": "Rempoa"
+    },
+    {
+      "code": "3674051006",
+      "name": "Rengas"
+    }
+  ],
+  "367406": [
+    {
+      "code": "3674061001",
+      "name": "Pamulang Barat"
+    },
+    {
+      "code": "3674061002",
+      "name": "Benda Baru"
+    },
+    {
+      "code": "3674061003",
+      "name": "Pondok Benda"
+    },
+    {
+      "code": "3674061004",
+      "name": "Pondok Cabe Udik"
+    },
+    {
+      "code": "3674061005",
+      "name": "Pondok Cabe Ilir"
+    },
+    {
+      "code": "3674061006",
+      "name": "Kedaung"
+    },
+    {
+      "code": "3674061007",
+      "name": "Bambu Apus"
+    },
+    {
+      "code": "3674061008",
+      "name": "Pamulang Timur"
+    }
+  ],
+  "367407": [
+    {
+      "code": "3674071001",
+      "name": "Muncul"
+    },
+    {
+      "code": "3674071002",
+      "name": "Setu"
+    },
+    {
+      "code": "3674071003",
+      "name": "Keranggan"
+    },
+    {
+      "code": "3674071004",
+      "name": "Kademangan"
+    },
+    {
+      "code": "3674071005",
+      "name": "Babakan"
+    },
+    {
+      "code": "3674071006",
+      "name": "Bakti Jaya"
+    }
+  ]
 }

@@ -1,0 +1,340 @@
+{
+  "711001": [
+    {
+      "code": "7110012001",
+      "name": "Kayumoyondi"
+    },
+    {
+      "code": "7110012002",
+      "name": "Tombolikat"
+    },
+    {
+      "code": "7110012003",
+      "name": "Tutuyan"
+    },
+    {
+      "code": "7110012004",
+      "name": "Togid"
+    },
+    {
+      "code": "7110012005",
+      "name": "Dodap"
+    },
+    {
+      "code": "7110012006",
+      "name": "Dodap Pantai"
+    },
+    {
+      "code": "7110012007",
+      "name": "Tutuyan II"
+    },
+    {
+      "code": "7110012008",
+      "name": "Tutuyan III"
+    },
+    {
+      "code": "7110012009",
+      "name": "Tombolikat Selatan"
+    },
+    {
+      "code": "7110012010",
+      "name": "Dodop Mikasa"
+    }
+  ],
+  "711002": [
+    {
+      "code": "7110022001",
+      "name": "Kotabunan"
+    },
+    {
+      "code": "7110022002",
+      "name": "Buyat"
+    },
+    {
+      "code": "7110022003",
+      "name": "Bulawan"
+    },
+    {
+      "code": "7110022004",
+      "name": "Paret"
+    },
+    {
+      "code": "7110022005",
+      "name": "Bukaka"
+    },
+    {
+      "code": "7110022006",
+      "name": "Buyat I"
+    },
+    {
+      "code": "7110022007",
+      "name": "Buyat II"
+    },
+    {
+      "code": "7110022008",
+      "name": "Buyat Selatan"
+    },
+    {
+      "code": "7110022009",
+      "name": "Buyat Tengah"
+    },
+    {
+      "code": "7110022010",
+      "name": "Buyat Barat"
+    },
+    {
+      "code": "7110022011",
+      "name": "Bulawan Satu"
+    },
+    {
+      "code": "7110022012",
+      "name": "Bulawan Dua"
+    },
+    {
+      "code": "7110022013",
+      "name": "Kotabunan Selatan"
+    },
+    {
+      "code": "7110022014",
+      "name": "Kotabunan Barat"
+    },
+    {
+      "code": "7110022015",
+      "name": "Paret Timur"
+    }
+  ],
+  "711003": [
+    {
+      "code": "7110032001",
+      "name": "Idumun"
+    },
+    {
+      "code": "7110032002",
+      "name": "Matabulu"
+    },
+    {
+      "code": "7110032003",
+      "name": "Nuangan"
+    },
+    {
+      "code": "7110032006",
+      "name": "Bai"
+    },
+    {
+      "code": "7110032007",
+      "name": "Jiko Belanga"
+    },
+    {
+      "code": "7110032010",
+      "name": "Nuangan I"
+    },
+    {
+      "code": "7110032011",
+      "name": "Iyok"
+    },
+    {
+      "code": "7110032012",
+      "name": "Loyow"
+    },
+    {
+      "code": "7110032014",
+      "name": "Matabulu Timur"
+    },
+    {
+      "code": "7110032018",
+      "name": "Nuangan Barat"
+    },
+    {
+      "code": "7110032019",
+      "name": "Nuangan Selatan"
+    }
+  ],
+  "711004": [
+    {
+      "code": "7110042001",
+      "name": "Modayag"
+    },
+    {
+      "code": "7110042002",
+      "name": "Liberia"
+    },
+    {
+      "code": "7110042003",
+      "name": "Purworejo"
+    },
+    {
+      "code": "7110042007",
+      "name": "Buyandi"
+    },
+    {
+      "code": "7110042008",
+      "name": "Tobongon"
+    },
+    {
+      "code": "7110042009",
+      "name": "Lanut"
+    },
+    {
+      "code": "7110042010",
+      "name": "Badaro"
+    },
+    {
+      "code": "7110042011",
+      "name": "Modayag II"
+    },
+    {
+      "code": "7110042012",
+      "name": "Modayag III"
+    },
+    {
+      "code": "7110042013",
+      "name": "Purworejo Timur"
+    },
+    {
+      "code": "7110042014",
+      "name": "Liberia Timur"
+    },
+    {
+      "code": "7110042016",
+      "name": "Purworejo Tengah"
+    },
+    {
+      "code": "7110042021",
+      "name": "Candi Rejo"
+    },
+    {
+      "code": "7110042022",
+      "name": "Sumber Rejo"
+    }
+  ],
+  "711005": [
+    {
+      "code": "7110052001",
+      "name": "Moyongkota"
+    },
+    {
+      "code": "7110052002",
+      "name": "Bangunan Wuwuk"
+    },
+    {
+      "code": "7110052003",
+      "name": "Bongkudai Barat"
+    },
+    {
+      "code": "7110052004",
+      "name": "Bongkudai"
+    },
+    {
+      "code": "7110052005",
+      "name": "Moyongkota Baru"
+    },
+    {
+      "code": "7110052006",
+      "name": "Moonow"
+    },
+    {
+      "code": "7110052007",
+      "name": "Inaton"
+    },
+    {
+      "code": "7110052008",
+      "name": "Bangunan Wuwuk Timur"
+    },
+    {
+      "code": "7110052009",
+      "name": "Pinonobatuan"
+    },
+    {
+      "code": "7110052010",
+      "name": "Tangaton"
+    }
+  ],
+  "711006": [
+    {
+      "code": "7110062001",
+      "name": "Motongkad Utara"
+    },
+    {
+      "code": "7110062002",
+      "name": "Motongkad"
+    },
+    {
+      "code": "7110062003",
+      "name": "Motongkad Selatan"
+    },
+    {
+      "code": "7110062004",
+      "name": "Atoga"
+    },
+    {
+      "code": "7110062005",
+      "name": "Atoga Timur"
+    },
+    {
+      "code": "7110062006",
+      "name": "Motongkad Tengah"
+    },
+    {
+      "code": "7110062007",
+      "name": "Molobog"
+    },
+    {
+      "code": "7110062008",
+      "name": "Molobog Barat"
+    },
+    {
+      "code": "7110062009",
+      "name": "Jiko"
+    },
+    {
+      "code": "7110062010",
+      "name": "Jiko Utara"
+    },
+    {
+      "code": "7110062011",
+      "name": "Molobog Timur"
+    }
+  ],
+  "711007": [
+    {
+      "code": "7110072001",
+      "name": "Mooat"
+    },
+    {
+      "code": "7110072002",
+      "name": "Bongkudai Selatan"
+    },
+    {
+      "code": "7110072003",
+      "name": "Bongkudai Baru"
+    },
+    {
+      "code": "7110072004",
+      "name": "Bongkudai Utara"
+    },
+    {
+      "code": "7110072005",
+      "name": "Bongkudai Timur"
+    },
+    {
+      "code": "7110072006",
+      "name": "Guaan"
+    },
+    {
+      "code": "7110072007",
+      "name": "Mototompiaan"
+    },
+    {
+      "code": "7110072008",
+      "name": "Mokitompia"
+    },
+    {
+      "code": "7110072009",
+      "name": "Kokapoi"
+    },
+    {
+      "code": "7110072010",
+      "name": "Kokapoi Timur"
+    }
+  ]
+}

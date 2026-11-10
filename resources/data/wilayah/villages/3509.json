@@ -1,0 +1,1056 @@
+{
+  "350901": [
+    {
+      "code": "3509012001",
+      "name": "Padomasan"
+    },
+    {
+      "code": "3509012002",
+      "name": "Keting"
+    },
+    {
+      "code": "3509012003",
+      "name": "Jombang"
+    },
+    {
+      "code": "3509012004",
+      "name": "Ngampelrejo"
+    },
+    {
+      "code": "3509012005",
+      "name": "Wringinagung"
+    },
+    {
+      "code": "3509012006",
+      "name": "Sarimulyo"
+    }
+  ],
+  "350902": [
+    {
+      "code": "3509022001",
+      "name": "Cakru"
+    },
+    {
+      "code": "3509022002",
+      "name": "Paseban"
+    },
+    {
+      "code": "3509022003",
+      "name": "Kraton"
+    },
+    {
+      "code": "3509022004",
+      "name": "Kencong"
+    },
+    {
+      "code": "3509022005",
+      "name": "Wonorejo"
+    }
+  ],
+  "350903": [
+    {
+      "code": "3509032001",
+      "name": "Jamintoro"
+    },
+    {
+      "code": "3509032002",
+      "name": "Jatiroto"
+    },
+    {
+      "code": "3509032003",
+      "name": "Kaliglagah"
+    },
+    {
+      "code": "3509032004",
+      "name": "Jambesari"
+    },
+    {
+      "code": "3509032005",
+      "name": "Yosorati"
+    },
+    {
+      "code": "3509032006",
+      "name": "Sumberagung"
+    },
+    {
+      "code": "3509032007",
+      "name": "Gelang"
+    },
+    {
+      "code": "3509032008",
+      "name": "Rowotengah"
+    },
+    {
+      "code": "3509032009",
+      "name": "Pringgowirawan"
+    },
+    {
+      "code": "3509032010",
+      "name": "Karangbayat"
+    }
+  ],
+  "350904": [
+    {
+      "code": "3509042001",
+      "name": "Kepanjen"
+    },
+    {
+      "code": "3509042002",
+      "name": "Mayangan"
+    },
+    {
+      "code": "3509042003",
+      "name": "Gumukmas"
+    },
+    {
+      "code": "3509042004",
+      "name": "Menampu"
+    },
+    {
+      "code": "3509042005",
+      "name": "Tembokrejo"
+    },
+    {
+      "code": "3509042006",
+      "name": "Purwoasri"
+    },
+    {
+      "code": "3509042007",
+      "name": "Bagorejo"
+    },
+    {
+      "code": "3509042008",
+      "name": "Karangrejo"
+    }
+  ],
+  "350905": [
+    {
+      "code": "3509052001",
+      "name": "Sukoreno"
+    },
+    {
+      "code": "3509052002",
+      "name": "Sidorejo"
+    },
+    {
+      "code": "3509052003",
+      "name": "Gunungsari"
+    },
+    {
+      "code": "3509052004",
+      "name": "Gadingrejo"
+    },
+    {
+      "code": "3509052005",
+      "name": "Umbulrejo"
+    },
+    {
+      "code": "3509052006",
+      "name": "Umbulsari"
+    },
+    {
+      "code": "3509052007",
+      "name": "Tanjungsari"
+    },
+    {
+      "code": "3509052008",
+      "name": "Tegalwangi"
+    },
+    {
+      "code": "3509052009",
+      "name": "Paleran"
+    },
+    {
+      "code": "3509052010",
+      "name": "Mundurejo"
+    }
+  ],
+  "350906": [
+    {
+      "code": "3509062001",
+      "name": "Tanggulkulon"
+    },
+    {
+      "code": "3509062002",
+      "name": "Tanggulwetan"
+    },
+    {
+      "code": "3509062003",
+      "name": "Patemon"
+    },
+    {
+      "code": "3509062004",
+      "name": "Darungan"
+    },
+    {
+      "code": "3509062005",
+      "name": "Manggisan"
+    },
+    {
+      "code": "3509062006",
+      "name": "Selodakon"
+    },
+    {
+      "code": "3509062007",
+      "name": "Kramat Sukoharjo"
+    },
+    {
+      "code": "3509062008",
+      "name": "Klatakan"
+    }
+  ],
+  "350907": [
+    {
+      "code": "3509072001",
+      "name": "Pondokjoyo"
+    },
+    {
+      "code": "3509072002",
+      "name": "Pondokdalem"
+    },
+    {
+      "code": "3509072003",
+      "name": "Rejoagung"
+    },
+    {
+      "code": "3509072004",
+      "name": "Semboro"
+    },
+    {
+      "code": "3509072005",
+      "name": "Sidomekar"
+    },
+    {
+      "code": "3509072006",
+      "name": "Sidomulyo"
+    }
+  ],
+  "350908": [
+    {
+      "code": "3509082001",
+      "name": "Mlokorejo"
+    },
+    {
+      "code": "3509082002",
+      "name": "Mojomulyo"
+    },
+    {
+      "code": "3509082003",
+      "name": "Mojosari"
+    },
+    {
+      "code": "3509082004",
+      "name": "Pugerkulon"
+    },
+    {
+      "code": "3509082005",
+      "name": "Wringintelu"
+    },
+    {
+      "code": "3509082006",
+      "name": "Kasiyan"
+    },
+    {
+      "code": "3509082007",
+      "name": "Bagon"
+    },
+    {
+      "code": "3509082008",
+      "name": "Kasiyan Timur"
+    },
+    {
+      "code": "3509082009",
+      "name": "Wonosari"
+    },
+    {
+      "code": "3509082010",
+      "name": "Jambearum"
+    },
+    {
+      "code": "3509082011",
+      "name": "Grenden"
+    },
+    {
+      "code": "3509082012",
+      "name": "Pugerwetan"
+    }
+  ],
+  "350909": [
+    {
+      "code": "3509092001",
+      "name": "Curahkalong"
+    },
+    {
+      "code": "3509092002",
+      "name": "Gambirono"
+    },
+    {
+      "code": "3509092003",
+      "name": "Bangsalsari"
+    },
+    {
+      "code": "3509092004",
+      "name": "Tugusari"
+    },
+    {
+      "code": "3509092005",
+      "name": "Karangsono"
+    },
+    {
+      "code": "3509092006",
+      "name": "Sukorejo"
+    },
+    {
+      "code": "3509092007",
+      "name": "Langkap"
+    },
+    {
+      "code": "3509092008",
+      "name": "Tisnogambar"
+    },
+    {
+      "code": "3509092009",
+      "name": "Petung"
+    },
+    {
+      "code": "3509092010",
+      "name": "Banjarsari"
+    },
+    {
+      "code": "3509092011",
+      "name": "Badean"
+    }
+  ],
+  "350910": [
+    {
+      "code": "3509102001",
+      "name": "Karangduren"
+    },
+    {
+      "code": "3509102002",
+      "name": "Karang Semanding"
+    },
+    {
+      "code": "3509102003",
+      "name": "Tutul"
+    },
+    {
+      "code": "3509102004",
+      "name": "Balungkulon"
+    },
+    {
+      "code": "3509102005",
+      "name": "Balunglor"
+    },
+    {
+      "code": "3509102006",
+      "name": "Balungkidul"
+    },
+    {
+      "code": "3509102007",
+      "name": "Curahlele"
+    },
+    {
+      "code": "3509102008",
+      "name": "Gumelar"
+    }
+  ],
+  "350911": [
+    {
+      "code": "3509112001",
+      "name": "Lojejer"
+    },
+    {
+      "code": "3509112002",
+      "name": "Ampel"
+    },
+    {
+      "code": "3509112003",
+      "name": "Tamansari"
+    },
+    {
+      "code": "3509112004",
+      "name": "Dukuhdempok"
+    },
+    {
+      "code": "3509112005",
+      "name": "Glundengan"
+    },
+    {
+      "code": "3509112006",
+      "name": "Tanjungrejo"
+    },
+    {
+      "code": "3509112007",
+      "name": "Kesilir"
+    }
+  ],
+  "350912": [
+    {
+      "code": "3509122001",
+      "name": "Tegalsari"
+    },
+    {
+      "code": "3509122002",
+      "name": "Sabrang"
+    },
+    {
+      "code": "3509122003",
+      "name": "Sumberejo"
+    },
+    {
+      "code": "3509122004",
+      "name": "Ambulu"
+    },
+    {
+      "code": "3509122005",
+      "name": "Karanganyar"
+    },
+    {
+      "code": "3509122006",
+      "name": "Andongsari"
+    },
+    {
+      "code": "3509122007",
+      "name": "Pontang"
+    }
+  ],
+  "350913": [
+    {
+      "code": "3509132001",
+      "name": "Nogosari"
+    },
+    {
+      "code": "3509132002",
+      "name": "Curahmalang"
+    },
+    {
+      "code": "3509132003",
+      "name": "Rowotamtu"
+    },
+    {
+      "code": "3509132004",
+      "name": "Kaliwining"
+    },
+    {
+      "code": "3509132005",
+      "name": "Pecoro"
+    },
+    {
+      "code": "3509132006",
+      "name": "Rambipuji"
+    },
+    {
+      "code": "3509132007",
+      "name": "Gugut"
+    },
+    {
+      "code": "3509132008",
+      "name": "Rambigundam"
+    }
+  ],
+  "350914": [
+    {
+      "code": "3509142001",
+      "name": "Pakis"
+    },
+    {
+      "code": "3509142002",
+      "name": "Kemuning Sari Lor"
+    },
+    {
+      "code": "3509142003",
+      "name": "Panti"
+    },
+    {
+      "code": "3509142004",
+      "name": "Glagahwero"
+    },
+    {
+      "code": "3509142005",
+      "name": "Suci"
+    },
+    {
+      "code": "3509142006",
+      "name": "Kemiri"
+    },
+    {
+      "code": "3509142007",
+      "name": "Serut"
+    }
+  ],
+  "350915": [
+    {
+      "code": "3509152001",
+      "name": "Jubung"
+    },
+    {
+      "code": "3509152002",
+      "name": "Dukuhmencek"
+    },
+    {
+      "code": "3509152003",
+      "name": "Sukorambi"
+    },
+    {
+      "code": "3509152004",
+      "name": "Karangpring"
+    },
+    {
+      "code": "3509152005",
+      "name": "Klungkung"
+    }
+  ],
+  "350916": [
+    {
+      "code": "3509162001",
+      "name": "Kemuningsarikidul"
+    },
+    {
+      "code": "3509162002",
+      "name": "Wonojati"
+    },
+    {
+      "code": "3509162003",
+      "name": "Jenggawah"
+    },
+    {
+      "code": "3509162004",
+      "name": "Kertonegoro"
+    },
+    {
+      "code": "3509162005",
+      "name": "Sruni"
+    },
+    {
+      "code": "3509162006",
+      "name": "Jatisari"
+    },
+    {
+      "code": "3509162007",
+      "name": "Jatimulyo"
+    },
+    {
+      "code": "3509162008",
+      "name": "Cangkring"
+    }
+  ],
+  "350917": [
+    {
+      "code": "3509172001",
+      "name": "Sukamakmur"
+    },
+    {
+      "code": "3509172002",
+      "name": "Mangaran"
+    },
+    {
+      "code": "3509172003",
+      "name": "Pancakarya"
+    },
+    {
+      "code": "3509172004",
+      "name": "Ajung"
+    },
+    {
+      "code": "3509172005",
+      "name": "Klompangan"
+    },
+    {
+      "code": "3509172006",
+      "name": "Wirowongso"
+    },
+    {
+      "code": "3509172007",
+      "name": "Rowoindah"
+    }
+  ],
+  "350918": [
+    {
+      "code": "3509182001",
+      "name": "Sidodadi"
+    },
+    {
+      "code": "3509182002",
+      "name": "Tempurejo"
+    },
+    {
+      "code": "3509182003",
+      "name": "Andongrejo"
+    },
+    {
+      "code": "3509182004",
+      "name": "Pondokrejo"
+    },
+    {
+      "code": "3509182005",
+      "name": "Wonoasri"
+    },
+    {
+      "code": "3509182006",
+      "name": "Curahnongko"
+    },
+    {
+      "code": "3509182007",
+      "name": "Curahtakir"
+    },
+    {
+      "code": "3509182008",
+      "name": "Sanenrejo"
+    }
+  ],
+  "350919": [
+    {
+      "code": "3509191001",
+      "name": "Mangli"
+    },
+    {
+      "code": "3509191002",
+      "name": "Sempusari"
+    },
+    {
+      "code": "3509191003",
+      "name": "Kebonagung"
+    },
+    {
+      "code": "3509191004",
+      "name": "Kaliwates"
+    },
+    {
+      "code": "3509191005",
+      "name": "Jemberkidul"
+    },
+    {
+      "code": "3509191006",
+      "name": "Kepatihan"
+    },
+    {
+      "code": "3509191007",
+      "name": "Tegalbesar"
+    }
+  ],
+  "350920": [
+    {
+      "code": "3509201001",
+      "name": "Banjarsengon"
+    },
+    {
+      "code": "3509201002",
+      "name": "Jumerto"
+    },
+    {
+      "code": "3509201003",
+      "name": "Gebang"
+    },
+    {
+      "code": "3509201004",
+      "name": "Slawu"
+    },
+    {
+      "code": "3509201005",
+      "name": "Bintoro"
+    },
+    {
+      "code": "3509201006",
+      "name": "Jemberlor"
+    },
+    {
+      "code": "3509201007",
+      "name": "Patrang"
+    },
+    {
+      "code": "3509201008",
+      "name": "Baratan"
+    }
+  ],
+  "350921": [
+    {
+      "code": "3509211001",
+      "name": "Kebonsari"
+    },
+    {
+      "code": "3509211002",
+      "name": "Sumbersari"
+    },
+    {
+      "code": "3509211003",
+      "name": "Kranjingan"
+    },
+    {
+      "code": "3509211004",
+      "name": "Karangrejo"
+    },
+    {
+      "code": "3509211005",
+      "name": "Tegalgede"
+    },
+    {
+      "code": "3509211006",
+      "name": "Wirolegi"
+    },
+    {
+      "code": "3509211007",
+      "name": "Antirogo"
+    }
+  ],
+  "350922": [
+    {
+      "code": "3509222001",
+      "name": "Kemuninglor"
+    },
+    {
+      "code": "3509222002",
+      "name": "Darsono"
+    },
+    {
+      "code": "3509222003",
+      "name": "Arjasa"
+    },
+    {
+      "code": "3509222004",
+      "name": "Candijati"
+    },
+    {
+      "code": "3509222005",
+      "name": "Biting"
+    },
+    {
+      "code": "3509222006",
+      "name": "Kamal"
+    }
+  ],
+  "350923": [
+    {
+      "code": "3509232001",
+      "name": "Lengkong"
+    },
+    {
+      "code": "3509232002",
+      "name": "Kawangrejo"
+    },
+    {
+      "code": "3509232003",
+      "name": "Tamansari"
+    },
+    {
+      "code": "3509232004",
+      "name": "Mumbulsari"
+    },
+    {
+      "code": "3509232005",
+      "name": "Suco"
+    },
+    {
+      "code": "3509232006",
+      "name": "Lampeji"
+    },
+    {
+      "code": "3509232007",
+      "name": "Karang Kedawung"
+    }
+  ],
+  "350924": [
+    {
+      "code": "3509242001",
+      "name": "Patemon"
+    },
+    {
+      "code": "3509242002",
+      "name": "Bedadung"
+    },
+    {
+      "code": "3509242003",
+      "name": "Sumberpinang"
+    },
+    {
+      "code": "3509242004",
+      "name": "Subo"
+    },
+    {
+      "code": "3509242005",
+      "name": "Kertosari"
+    },
+    {
+      "code": "3509242006",
+      "name": "Jatian"
+    },
+    {
+      "code": "3509242007",
+      "name": "Pakusari"
+    }
+  ],
+  "350925": [
+    {
+      "code": "3509252001",
+      "name": "Sucopangepok"
+    },
+    {
+      "code": "3509252002",
+      "name": "Panduman"
+    },
+    {
+      "code": "3509252003",
+      "name": "Sukojember"
+    },
+    {
+      "code": "3509252004",
+      "name": "Jelbuk"
+    },
+    {
+      "code": "3509252005",
+      "name": "Sukowiryo"
+    },
+    {
+      "code": "3509252006",
+      "name": "Sugerkidul"
+    }
+  ],
+  "350926": [
+    {
+      "code": "3509262001",
+      "name": "Mrawan"
+    },
+    {
+      "code": "3509262002",
+      "name": "Mayang"
+    },
+    {
+      "code": "3509262003",
+      "name": "Seputih"
+    },
+    {
+      "code": "3509262004",
+      "name": "Tegalwaru"
+    },
+    {
+      "code": "3509262005",
+      "name": "Tegalrejo"
+    },
+    {
+      "code": "3509262006",
+      "name": "Sumberkejayan"
+    },
+    {
+      "code": "3509262007",
+      "name": "Sidomukti"
+    }
+  ],
+  "350927": [
+    {
+      "code": "3509272001",
+      "name": "Gumuksari"
+    },
+    {
+      "code": "3509272002",
+      "name": "Sukoreno"
+    },
+    {
+      "code": "3509272003",
+      "name": "Patempuran"
+    },
+    {
+      "code": "3509272004",
+      "name": "Sumberkalong"
+    },
+    {
+      "code": "3509272005",
+      "name": "Sumberjeruk"
+    },
+    {
+      "code": "3509272006",
+      "name": "Glagahwero"
+    },
+    {
+      "code": "3509272007",
+      "name": "Kalisat"
+    },
+    {
+      "code": "3509272008",
+      "name": "Ajung"
+    },
+    {
+      "code": "3509272009",
+      "name": "Plalangan"
+    },
+    {
+      "code": "3509272010",
+      "name": "Gambiran"
+    },
+    {
+      "code": "3509272011",
+      "name": "Sumberketempa"
+    },
+    {
+      "code": "3509272012",
+      "name": "Sebanen"
+    }
+  ],
+  "350928": [
+    {
+      "code": "3509282001",
+      "name": "Lembengan"
+    },
+    {
+      "code": "3509282002",
+      "name": "Suren"
+    },
+    {
+      "code": "3509282003",
+      "name": "Karangpaiton"
+    },
+    {
+      "code": "3509282004",
+      "name": "Sumberanget"
+    },
+    {
+      "code": "3509282005",
+      "name": "Sukogidri"
+    },
+    {
+      "code": "3509282006",
+      "name": "Ledokombo"
+    },
+    {
+      "code": "3509282007",
+      "name": "Sumberlesung"
+    },
+    {
+      "code": "3509282008",
+      "name": "Sumbersalak"
+    },
+    {
+      "code": "3509282009",
+      "name": "Slateng"
+    },
+    {
+      "code": "3509282010",
+      "name": "Sumberbulus"
+    }
+  ],
+  "350929": [
+    {
+      "code": "3509292001",
+      "name": "Sumberwringin"
+    },
+    {
+      "code": "3509292002",
+      "name": "Sukokerto"
+    },
+    {
+      "code": "3509292003",
+      "name": "Sumberwaru"
+    },
+    {
+      "code": "3509292004",
+      "name": "Sukowono"
+    },
+    {
+      "code": "3509292005",
+      "name": "Baletbaru"
+    },
+    {
+      "code": "3509292006",
+      "name": "Sukorejo"
+    },
+    {
+      "code": "3509292007",
+      "name": "Sukosari"
+    },
+    {
+      "code": "3509292008",
+      "name": "Arjasa"
+    },
+    {
+      "code": "3509292009",
+      "name": "Sumberdanti"
+    },
+    {
+      "code": "3509292010",
+      "name": "Pocangan"
+    },
+    {
+      "code": "3509292011",
+      "name": "Dawuhanmangli"
+    },
+    {
+      "code": "3509292012",
+      "name": "Mojogemi"
+    }
+  ],
+  "350930": [
+    {
+      "code": "3509302001",
+      "name": "Sempolan"
+    },
+    {
+      "code": "3509302002",
+      "name": "Harjomulyo"
+    },
+    {
+      "code": "3509302003",
+      "name": "Karangharjo"
+    },
+    {
+      "code": "3509302004",
+      "name": "Silo"
+    },
+    {
+      "code": "3509302005",
+      "name": "Pace"
+    },
+    {
+      "code": "3509302006",
+      "name": "Mulyorejo"
+    },
+    {
+      "code": "3509302007",
+      "name": "Sumberjati"
+    },
+    {
+      "code": "3509302008",
+      "name": "Garahan"
+    },
+    {
+      "code": "3509302009",
+      "name": "Sidomulyo"
+    }
+  ],
+  "350931": [
+    {
+      "code": "3509312001",
+      "name": "Plerean"
+    },
+    {
+      "code": "3509312002",
+      "name": "Sumberpakem"
+    },
+    {
+      "code": "3509312003",
+      "name": "Pringgondani"
+    },
+    {
+      "code": "3509312004",
+      "name": "Randuagung"
+    },
+    {
+      "code": "3509312005",
+      "name": "Cumedak"
+    },
+    {
+      "code": "3509312006",
+      "name": "Sumberjambe"
+    },
+    {
+      "code": "3509312007",
+      "name": "Gunungmalang"
+    },
+    {
+      "code": "3509312008",
+      "name": "Jambearum"
+    },
+    {
+      "code": "3509312009",
+      "name": "Rowosari"
+    }
+  ]
+}

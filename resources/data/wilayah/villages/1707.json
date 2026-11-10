@@ -1,0 +1,442 @@
+{
+  "170701": [
+    {
+      "code": "1707011004",
+      "name": "Kampung Jawa"
+    },
+    {
+      "code": "1707011006",
+      "name": "Pasar Muara Aman"
+    },
+    {
+      "code": "1707012002",
+      "name": "Gandung"
+    },
+    {
+      "code": "1707012005",
+      "name": "Tunggang"
+    },
+    {
+      "code": "1707012007",
+      "name": "Talang Ulu"
+    },
+    {
+      "code": "1707012014",
+      "name": "Nangai Amen"
+    },
+    {
+      "code": "1707012016",
+      "name": "Lebong Tambang"
+    },
+    {
+      "code": "1707012022",
+      "name": "Ladang Palembang"
+    },
+    {
+      "code": "1707012023",
+      "name": "Kampung Dalam"
+    },
+    {
+      "code": "1707012024",
+      "name": "Kampung Muara Aman"
+    },
+    {
+      "code": "1707012028",
+      "name": "Lokasari"
+    },
+    {
+      "code": "1707012033",
+      "name": "Gandung Baru"
+    }
+  ],
+  "170702": [
+    {
+      "code": "1707022001",
+      "name": "Sukau Kayo"
+    },
+    {
+      "code": "1707022004",
+      "name": "Tik Tebing"
+    },
+    {
+      "code": "1707022005",
+      "name": "Tabeak Blau"
+    },
+    {
+      "code": "1707022006",
+      "name": "Tabeak Blau I"
+    },
+    {
+      "code": "1707022008",
+      "name": "Daneu"
+    },
+    {
+      "code": "1707022012",
+      "name": "Blau"
+    }
+  ],
+  "170703": [
+    {
+      "code": "1707031005",
+      "name": "Embong Panjang"
+    },
+    {
+      "code": "1707032006",
+      "name": "Tanjung Bungai I"
+    },
+    {
+      "code": "1707032007",
+      "name": "Semelako I"
+    },
+    {
+      "code": "1707032008",
+      "name": "Pagar Agung"
+    },
+    {
+      "code": "1707032009",
+      "name": "Karang Anyar"
+    },
+    {
+      "code": "1707032013",
+      "name": "Semelako II"
+    },
+    {
+      "code": "1707032014",
+      "name": "Semelako III"
+    },
+    {
+      "code": "1707032015",
+      "name": "Semelako Atas"
+    },
+    {
+      "code": "1707032016",
+      "name": "Danau Liang"
+    },
+    {
+      "code": "1707032020",
+      "name": "Suka Damai"
+    },
+    {
+      "code": "1707032023",
+      "name": "Tanjung Bungai II"
+    }
+  ],
+  "170704": [
+    {
+      "code": "1707041002",
+      "name": "Tes"
+    },
+    {
+      "code": "1707041003",
+      "name": "Taba Anyar"
+    },
+    {
+      "code": "1707041004",
+      "name": "Mubai"
+    },
+    {
+      "code": "1707041005",
+      "name": "Turan Lalang"
+    },
+    {
+      "code": "1707042001",
+      "name": "Kutai Donok"
+    },
+    {
+      "code": "1707042013",
+      "name": "Turan Tiging"
+    },
+    {
+      "code": "1707042014",
+      "name": "Suka Sari"
+    },
+    {
+      "code": "1707042016",
+      "name": "Mangkurajo"
+    },
+    {
+      "code": "1707042018",
+      "name": "Tik Jeniak"
+    },
+    {
+      "code": "1707042019",
+      "name": "Manai Blau"
+    }
+  ],
+  "170705": [
+    {
+      "code": "1707051002",
+      "name": "Rimbo Pengadang"
+    },
+    {
+      "code": "1707052009",
+      "name": "Talang Ratau"
+    },
+    {
+      "code": "1707052010",
+      "name": "Bioa Sengok"
+    },
+    {
+      "code": "1707052011",
+      "name": "Tik Kuto"
+    },
+    {
+      "code": "1707052012",
+      "name": "Teluk Dien"
+    },
+    {
+      "code": "1707052013",
+      "name": "Bajok"
+    }
+  ],
+  "170706": [
+    {
+      "code": "1707061001",
+      "name": "Topos"
+    },
+    {
+      "code": "1707062002",
+      "name": "Tik Sirong"
+    },
+    {
+      "code": "1707062003",
+      "name": "Suka Negeri"
+    },
+    {
+      "code": "1707062004",
+      "name": "Ajai Siang"
+    },
+    {
+      "code": "1707062005",
+      "name": "Talang Donok"
+    },
+    {
+      "code": "1707062006",
+      "name": "Talang Donok I"
+    },
+    {
+      "code": "1707062007",
+      "name": "Talang Baru I"
+    },
+    {
+      "code": "1707062008",
+      "name": "Talang Baru II"
+    }
+  ],
+  "170707": [
+    {
+      "code": "1707072001",
+      "name": "Karang Dapo Atas"
+    },
+    {
+      "code": "1707072002",
+      "name": "Bukit Nibung"
+    },
+    {
+      "code": "1707072003",
+      "name": "Karang Dapo Bawah"
+    },
+    {
+      "code": "1707072004",
+      "name": "Pungguk Pedaro"
+    },
+    {
+      "code": "1707072005",
+      "name": "Talang Kerinci"
+    },
+    {
+      "code": "1707072006",
+      "name": "Pelabuhan Talang Liak"
+    },
+    {
+      "code": "1707072007",
+      "name": "Talang Liak I"
+    },
+    {
+      "code": "1707072008",
+      "name": "Talang Liak II"
+    },
+    {
+      "code": "1707072009",
+      "name": "Bungin"
+    }
+  ],
+  "170708": [
+    {
+      "code": "1707082001",
+      "name": "Ujung Tanjung I"
+    },
+    {
+      "code": "1707082002",
+      "name": "Muning Agung"
+    },
+    {
+      "code": "1707082003",
+      "name": "Ujung Tanjung II"
+    },
+    {
+      "code": "1707082004",
+      "name": "Ujung Tanjung III"
+    },
+    {
+      "code": "1707082005",
+      "name": "Magelang Baru"
+    },
+    {
+      "code": "1707082006",
+      "name": "Lemeu Pit"
+    },
+    {
+      "code": "1707082007",
+      "name": "Tabeak Kauk"
+    },
+    {
+      "code": "1707082008",
+      "name": "Tabeak Dipoa"
+    },
+    {
+      "code": "1707082009",
+      "name": "Suka Bumi"
+    }
+  ],
+  "170709": [
+    {
+      "code": "1707091001",
+      "name": "Tanjung Agung"
+    },
+    {
+      "code": "1707092002",
+      "name": "Sukau Datang"
+    },
+    {
+      "code": "1707092003",
+      "name": "Sukau Datang I"
+    },
+    {
+      "code": "1707092004",
+      "name": "Gunung Alam"
+    },
+    {
+      "code": "1707092005",
+      "name": "Tabeak Blau II"
+    },
+    {
+      "code": "1707092006",
+      "name": "Kota Baru Santan"
+    },
+    {
+      "code": "1707092007",
+      "name": "Tik Teleu"
+    },
+    {
+      "code": "1707092008",
+      "name": "Pelabai"
+    }
+  ],
+  "170710": [
+    {
+      "code": "1707101009",
+      "name": "Amen"
+    },
+    {
+      "code": "1707102001",
+      "name": "Nangai Tayau"
+    },
+    {
+      "code": "1707102002",
+      "name": "Nangai Tayau I"
+    },
+    {
+      "code": "1707102003",
+      "name": "Pyang Mbik"
+    },
+    {
+      "code": "1707102004",
+      "name": "Sukau Mergo"
+    },
+    {
+      "code": "1707102005",
+      "name": "Sukau Rajo"
+    },
+    {
+      "code": "1707102006",
+      "name": "Talang Bunut"
+    },
+    {
+      "code": "1707102007",
+      "name": "Selebar Jaya"
+    },
+    {
+      "code": "1707102008",
+      "name": "Garut"
+    },
+    {
+      "code": "1707102010",
+      "name": "Sungai Gerong"
+    }
+  ],
+  "170711": [
+    {
+      "code": "1707112001",
+      "name": "Embong"
+    },
+    {
+      "code": "1707112002",
+      "name": "Embong I"
+    },
+    {
+      "code": "1707112003",
+      "name": "Kota Baru"
+    },
+    {
+      "code": "1707112004",
+      "name": "Kota Agung"
+    },
+    {
+      "code": "1707112005",
+      "name": "Lemeu"
+    },
+    {
+      "code": "1707112006",
+      "name": "Pangkalan"
+    },
+    {
+      "code": "1707112007",
+      "name": "Tangua"
+    }
+  ],
+  "170712": [
+    {
+      "code": "1707122001",
+      "name": "Ketenong I"
+    },
+    {
+      "code": "1707122002",
+      "name": "Ketenong II"
+    },
+    {
+      "code": "1707122003",
+      "name": "Ketenong Jaya"
+    },
+    {
+      "code": "1707122004",
+      "name": "Tambang Saweak"
+    },
+    {
+      "code": "1707122005",
+      "name": "Air Kopras"
+    },
+    {
+      "code": "1707122006",
+      "name": "Bioa Putiak"
+    },
+    {
+      "code": "1707122007",
+      "name": "Sebelat"
+    },
+    {
+      "code": "1707122008",
+      "name": "Sungai Lisai"
+    }
+  ]
+}

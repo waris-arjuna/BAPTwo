@@ -1,38 +1,676 @@
 {
-    "357830": [
-        {
-            "code": "3578301001",
-            "name": "Pakal"
-        },
-        {
-            "code": "3578301002",
-            "name": "Babat Jerawat"
-        },
-        {
-            "code": "3578301004",
-            "name": "Sumber Rejo"
-        },
-        {
-            "code": "3578301005",
-            "name": "Benowo"
-        }
-    ],
-    "357831": [
-        {
-            "code": "3578311001",
-            "name": "Sambikerep"
-        },
-        {
-            "code": "3578311002",
-            "name": "Made"
-        },
-        {
-            "code": "3578311003",
-            "name": "Beringin"
-        },
-        {
-            "code": "3578311004",
-            "name": "Lontar"
-        }
-    ]
+  "357801": [
+    {
+      "code": "3578011001",
+      "name": "Karang Pilang"
+    },
+    {
+      "code": "3578011002",
+      "name": "Kebraon"
+    },
+    {
+      "code": "3578011003",
+      "name": "Kedurus"
+    },
+    {
+      "code": "3578011004",
+      "name": "Waru Gunung"
+    }
+  ],
+  "357802": [
+    {
+      "code": "3578021001",
+      "name": "Sidosermo"
+    },
+    {
+      "code": "3578021002",
+      "name": "Bendul Merisi"
+    },
+    {
+      "code": "3578021003",
+      "name": "Margorejo"
+    },
+    {
+      "code": "3578021004",
+      "name": "Jemur Wonosari"
+    },
+    {
+      "code": "3578021005",
+      "name": "Siwalankerto"
+    }
+  ],
+  "357803": [
+    {
+      "code": "3578031001",
+      "name": "Kalirungkut"
+    },
+    {
+      "code": "3578031002",
+      "name": "Rungkut Kidul"
+    },
+    {
+      "code": "3578031003",
+      "name": "Kedung Baruk"
+    },
+    {
+      "code": "3578031004",
+      "name": "Penjaringansari"
+    },
+    {
+      "code": "3578031005",
+      "name": "Wonorejo"
+    },
+    {
+      "code": "3578031006",
+      "name": "Medokan Ayu"
+    }
+  ],
+  "357804": [
+    {
+      "code": "3578041001",
+      "name": "Wonokromo"
+    },
+    {
+      "code": "3578041002",
+      "name": "Jagir"
+    },
+    {
+      "code": "3578041003",
+      "name": "Ngagel"
+    },
+    {
+      "code": "3578041004",
+      "name": "Ngagel Rejo"
+    },
+    {
+      "code": "3578041005",
+      "name": "Darmo"
+    },
+    {
+      "code": "3578041006",
+      "name": "Sawunggaling"
+    }
+  ],
+  "357805": [
+    {
+      "code": "3578051001",
+      "name": "Tegalsari"
+    },
+    {
+      "code": "3578051002",
+      "name": "Dr. Soetomo"
+    },
+    {
+      "code": "3578051003",
+      "name": "Kedungdoro"
+    },
+    {
+      "code": "3578051004",
+      "name": "Keputran"
+    },
+    {
+      "code": "3578051005",
+      "name": "Wonorejo"
+    }
+  ],
+  "357806": [
+    {
+      "code": "3578061001",
+      "name": "Petemon"
+    },
+    {
+      "code": "3578061002",
+      "name": "Sawahan"
+    },
+    {
+      "code": "3578061003",
+      "name": "Banyu Urip"
+    },
+    {
+      "code": "3578061004",
+      "name": "Putat Jaya"
+    },
+    {
+      "code": "3578061005",
+      "name": "Kupang Krajan"
+    },
+    {
+      "code": "3578061006",
+      "name": "Pakis"
+    }
+  ],
+  "357807": [
+    {
+      "code": "3578071001",
+      "name": "Embong Kaliasin"
+    },
+    {
+      "code": "3578071002",
+      "name": "Genteng"
+    },
+    {
+      "code": "3578071003",
+      "name": "Kapasari"
+    },
+    {
+      "code": "3578071004",
+      "name": "Ketabang"
+    },
+    {
+      "code": "3578071005",
+      "name": "Peneleh"
+    }
+  ],
+  "357808": [
+    {
+      "code": "3578081001",
+      "name": "Gubeng"
+    },
+    {
+      "code": "3578081002",
+      "name": "Mojo"
+    },
+    {
+      "code": "3578081003",
+      "name": "Airlangga"
+    },
+    {
+      "code": "3578081004",
+      "name": "Kertajaya"
+    },
+    {
+      "code": "3578081005",
+      "name": "Baratajaya"
+    },
+    {
+      "code": "3578081006",
+      "name": "Pucang Sewu"
+    }
+  ],
+  "357809": [
+    {
+      "code": "3578091001",
+      "name": "Keputih"
+    },
+    {
+      "code": "3578091002",
+      "name": "Gebang Putih"
+    },
+    {
+      "code": "3578091003",
+      "name": "Klampis Ngasem"
+    },
+    {
+      "code": "3578091004",
+      "name": "Menur Pumpungan"
+    },
+    {
+      "code": "3578091005",
+      "name": "Nginden Jangkungan"
+    },
+    {
+      "code": "3578091006",
+      "name": "Semolowaru"
+    },
+    {
+      "code": "3578091007",
+      "name": "Medokan Semampir"
+    }
+  ],
+  "357810": [
+    {
+      "code": "3578101001",
+      "name": "Tambaksari"
+    },
+    {
+      "code": "3578101002",
+      "name": "Ploso"
+    },
+    {
+      "code": "3578101003",
+      "name": "Gading"
+    },
+    {
+      "code": "3578101004",
+      "name": "Pacarkembang"
+    },
+    {
+      "code": "3578101005",
+      "name": "Rangkah"
+    },
+    {
+      "code": "3578101006",
+      "name": "Pacarkeling"
+    },
+    {
+      "code": "3578101007",
+      "name": "Kapasmadya Baru"
+    },
+    {
+      "code": "3578101008",
+      "name": "Dukuh Setro"
+    }
+  ],
+  "357811": [
+    {
+      "code": "3578111001",
+      "name": "Simokerto"
+    },
+    {
+      "code": "3578111002",
+      "name": "Kapasan"
+    },
+    {
+      "code": "3578111003",
+      "name": "Sidodadi"
+    },
+    {
+      "code": "3578111004",
+      "name": "Simolawang"
+    },
+    {
+      "code": "3578111005",
+      "name": "Tambakrejo"
+    }
+  ],
+  "357812": [
+    {
+      "code": "3578121001",
+      "name": "Bongkaran"
+    },
+    {
+      "code": "3578121002",
+      "name": "Nyamplungan"
+    },
+    {
+      "code": "3578121003",
+      "name": "Krembangan Utara"
+    },
+    {
+      "code": "3578121006",
+      "name": "Tanjung Perak"
+    }
+  ],
+  "357813": [
+    {
+      "code": "3578131001",
+      "name": "Alun-alun Contong"
+    },
+    {
+      "code": "3578131002",
+      "name": "Bubutan"
+    },
+    {
+      "code": "3578131003",
+      "name": "Gundih"
+    },
+    {
+      "code": "3578131004",
+      "name": "Jepara"
+    },
+    {
+      "code": "3578131005",
+      "name": "Tembok Dukuh"
+    }
+  ],
+  "357814": [
+    {
+      "code": "3578141002",
+      "name": "Tandes"
+    },
+    {
+      "code": "3578141006",
+      "name": "Karang Poh"
+    },
+    {
+      "code": "3578141007",
+      "name": "Balongsari"
+    },
+    {
+      "code": "3578141009",
+      "name": "Manukan Kulon"
+    },
+    {
+      "code": "3578141011",
+      "name": "Manukan Wetan"
+    },
+    {
+      "code": "3578141012",
+      "name": "Banjar Sugihan"
+    }
+  ],
+  "357815": [
+    {
+      "code": "3578151001",
+      "name": "Krembangan Selatan"
+    },
+    {
+      "code": "3578151002",
+      "name": "Kemayoran"
+    },
+    {
+      "code": "3578151003",
+      "name": "Perak Barat"
+    },
+    {
+      "code": "3578151004",
+      "name": "Dupak"
+    },
+    {
+      "code": "3578151005",
+      "name": "Morokrembangan"
+    }
+  ],
+  "357816": [
+    {
+      "code": "3578161001",
+      "name": "Ampel"
+    },
+    {
+      "code": "3578161002",
+      "name": "Pegirian"
+    },
+    {
+      "code": "3578161003",
+      "name": "Wonokusumo"
+    },
+    {
+      "code": "3578161004",
+      "name": "Ujung"
+    },
+    {
+      "code": "3578161005",
+      "name": "Sidotopo"
+    }
+  ],
+  "357817": [
+    {
+      "code": "3578171001",
+      "name": "Tanah Kali Kedinding"
+    },
+    {
+      "code": "3578171002",
+      "name": "Sidotopo Wetan"
+    },
+    {
+      "code": "3578171003",
+      "name": "Bulak Banteng"
+    },
+    {
+      "code": "3578171004",
+      "name": "Tambak Wedi"
+    }
+  ],
+  "357818": [
+    {
+      "code": "3578181001",
+      "name": "Bangkingan"
+    },
+    {
+      "code": "3578181002",
+      "name": "Jeruk"
+    },
+    {
+      "code": "3578181003",
+      "name": "Lakarsantri"
+    },
+    {
+      "code": "3578181004",
+      "name": "Lidah kulon"
+    },
+    {
+      "code": "3578181005",
+      "name": "Lidah Wetan"
+    },
+    {
+      "code": "3578181006",
+      "name": "Sumurwelut"
+    }
+  ],
+  "357819": [
+    {
+      "code": "3578191001",
+      "name": "Kandangan"
+    },
+    {
+      "code": "3578191003",
+      "name": "Sememi"
+    },
+    {
+      "code": "3578191004",
+      "name": "Tambak Oso Wilangun"
+    },
+    {
+      "code": "3578191005",
+      "name": "Romokalisari"
+    }
+  ],
+  "357820": [
+    {
+      "code": "3578201001",
+      "name": "Wiyung"
+    },
+    {
+      "code": "3578201002",
+      "name": "Jajar Tunggal"
+    },
+    {
+      "code": "3578201003",
+      "name": "Babatan"
+    },
+    {
+      "code": "3578201004",
+      "name": "Balas Klumprik"
+    }
+  ],
+  "357821": [
+    {
+      "code": "3578211001",
+      "name": "Dukuh Pakis"
+    },
+    {
+      "code": "3578211002",
+      "name": "Dukuh Kupang"
+    },
+    {
+      "code": "3578211003",
+      "name": "Gunung Sari"
+    },
+    {
+      "code": "3578211004",
+      "name": "Pradah Kalikendal"
+    }
+  ],
+  "357822": [
+    {
+      "code": "3578221001",
+      "name": "Gayungan"
+    },
+    {
+      "code": "3578221002",
+      "name": "Menanggal"
+    },
+    {
+      "code": "3578221003",
+      "name": "Dukuh Menanggal"
+    },
+    {
+      "code": "3578221004",
+      "name": "Ketintang"
+    }
+  ],
+  "357823": [
+    {
+      "code": "3578231001",
+      "name": "Jambangan"
+    },
+    {
+      "code": "3578231002",
+      "name": "Karah"
+    },
+    {
+      "code": "3578231003",
+      "name": "Kebonsari"
+    },
+    {
+      "code": "3578231004",
+      "name": "Pagesangan"
+    }
+  ],
+  "357824": [
+    {
+      "code": "3578241001",
+      "name": "Kutisari"
+    },
+    {
+      "code": "3578241002",
+      "name": "Kendangsari"
+    },
+    {
+      "code": "3578241003",
+      "name": "Tenggilis Mejoyo"
+    },
+    {
+      "code": "3578241004",
+      "name": "Panjang Jiwo"
+    }
+  ],
+  "357825": [
+    {
+      "code": "3578251001",
+      "name": "Gunung Anyar"
+    },
+    {
+      "code": "3578251002",
+      "name": "Rungkut Tengah"
+    },
+    {
+      "code": "3578251003",
+      "name": "Rungkut Menanggal"
+    },
+    {
+      "code": "3578251004",
+      "name": "Gunung Anyar Tambak"
+    }
+  ],
+  "357826": [
+    {
+      "code": "3578261001",
+      "name": "Mulyorejo"
+    },
+    {
+      "code": "3578261002",
+      "name": "Manyar Sabrangan"
+    },
+    {
+      "code": "3578261003",
+      "name": "Kejawan Putih Tambak"
+    },
+    {
+      "code": "3578261004",
+      "name": "Kalisari"
+    },
+    {
+      "code": "3578261005",
+      "name": "Dukuh Sutorejo"
+    },
+    {
+      "code": "3578261006",
+      "name": "Kalijudan"
+    }
+  ],
+  "357827": [
+    {
+      "code": "3578271001",
+      "name": "Sukomanunggal"
+    },
+    {
+      "code": "3578271002",
+      "name": "Tanjungsari"
+    },
+    {
+      "code": "3578271003",
+      "name": "Sonokwijenan"
+    },
+    {
+      "code": "3578271004",
+      "name": "Putat Gede"
+    },
+    {
+      "code": "3578271005",
+      "name": "Simomulyo"
+    },
+    {
+      "code": "3578271006",
+      "name": "Simomulyo Baru"
+    }
+  ],
+  "357828": [
+    {
+      "code": "3578281001",
+      "name": "Asem Rowo"
+    },
+    {
+      "code": "3578281002",
+      "name": "Genting Kalianak"
+    },
+    {
+      "code": "3578281005",
+      "name": "Tambak Sarioso"
+    }
+  ],
+  "357829": [
+    {
+      "code": "3578291001",
+      "name": "Kedung Cowek"
+    },
+    {
+      "code": "3578291003",
+      "name": "Kenjeran"
+    },
+    {
+      "code": "3578291004",
+      "name": "Bulak"
+    },
+    {
+      "code": "3578291005",
+      "name": "Sukolilo Baru"
+    }
+  ],
+  "357830": [
+    {
+      "code": "3578301001",
+      "name": "Pakal"
+    },
+    {
+      "code": "3578301002",
+      "name": "Babat Jerawat"
+    },
+    {
+      "code": "3578301004",
+      "name": "Sumber Rejo"
+    },
+    {
+      "code": "3578301005",
+      "name": "Benowo"
+    }
+  ],
+  "357831": [
+    {
+      "code": "3578311001",
+      "name": "Sambikerep"
+    },
+    {
+      "code": "3578311002",
+      "name": "Made"
+    },
+    {
+      "code": "3578311003",
+      "name": "Beringin"
+    },
+    {
+      "code": "3578311004",
+      "name": "Lontar"
+    }
+  ]
 }

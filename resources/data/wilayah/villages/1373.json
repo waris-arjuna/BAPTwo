@@ -1,158 +1,158 @@
 {
-    "137301": [
-        {
-            "code": "1373011001",
-            "name": "Aur Mulio"
-        },
-        {
-            "code": "1373011002",
-            "name": "Kubang Sirakuk Utara"
-        },
-        {
-            "code": "1373011003",
-            "name": "Kubang S. Selatan"
-        },
-        {
-            "code": "1373011004",
-            "name": "Pasar"
-        },
-        {
-            "code": "1373011005",
-            "name": "Tanah Lapang"
-        },
-        {
-            "code": "1373011006",
-            "name": "Aia Dingin"
-        },
-        {
-            "code": "1373012007",
-            "name": "Lunto Timur"
-        },
-        {
-            "code": "1373012008",
-            "name": "Lunto Barat"
-        },
-        {
-            "code": "1373012009",
-            "name": "Kubang Tangah"
-        },
-        {
-            "code": "1373012010",
-            "name": "Kubang Utara Sikabu"
-        },
-        {
-            "code": "1373012011",
-            "name": "Pasa Kubang"
-        }
-    ],
-    "137302": [
-        {
-            "code": "1373021001",
-            "name": "Saringan"
-        },
-        {
-            "code": "1373021002",
-            "name": "Lubang Panjang"
-        },
-        {
-            "code": "1373021003",
-            "name": "Durian I"
-        },
-        {
-            "code": "1373021004",
-            "name": "Durian II"
-        },
-        {
-            "code": "1373022005",
-            "name": "Santur"
-        },
-        {
-            "code": "1373022006",
-            "name": "Kolok Mudiak"
-        },
-        {
-            "code": "1373022007",
-            "name": "Kolok Nan Tuo"
-        },
-        {
-            "code": "1373022008",
-            "name": "Talago Gunung"
-        },
-        {
-            "code": "1373022009",
-            "name": "Lumindai"
-        },
-        {
-            "code": "1373022010",
-            "name": "Balai Batu Sandaran"
-        }
-    ],
-    "137303": [
-        {
-            "code": "1373032001",
-            "name": "Silungkang Duo"
-        },
-        {
-            "code": "1373032002",
-            "name": "Silungkang Oso"
-        },
-        {
-            "code": "1373032003",
-            "name": "Silungkang Tigo"
-        },
-        {
-            "code": "1373032004",
-            "name": "Muaro Kalaban"
-        },
-        {
-            "code": "1373032005",
-            "name": "Taratak Boncah"
-        }
-    ],
-    "137304": [
-        {
-            "code": "1373042001",
-            "name": "Talawi Hilie"
-        },
-        {
-            "code": "1373042002",
-            "name": "Talawi Mudiak"
-        },
-        {
-            "code": "1373042003",
-            "name": "Bukit Gadang"
-        },
-        {
-            "code": "1373042004",
-            "name": "Batu Tanjung"
-        },
-        {
-            "code": "1373042005",
-            "name": "Kumbayau"
-        },
-        {
-            "code": "1373042006",
-            "name": "Tumpuk Tangah"
-        },
-        {
-            "code": "1373042007",
-            "name": "Datar Mansiang"
-        },
-        {
-            "code": "1373042008",
-            "name": "Sijantang Koto"
-        },
-        {
-            "code": "1373042009",
-            "name": "Salak"
-        },
-        {
-            "code": "1373042010",
-            "name": "Sikalang"
-        },
-        {
-            "code": "1373042011",
-            "name": "Rantih"
-        }
-    ]
+  "137301": [
+    {
+      "code": "1373011001",
+      "name": "Aur Mulio"
+    },
+    {
+      "code": "1373011002",
+      "name": "Kubang Sirakuk Utara"
+    },
+    {
+      "code": "1373011003",
+      "name": "Kubang S. Selatan"
+    },
+    {
+      "code": "1373011004",
+      "name": "Pasar"
+    },
+    {
+      "code": "1373011005",
+      "name": "Tanah Lapang"
+    },
+    {
+      "code": "1373011006",
+      "name": "Aia Dingin"
+    },
+    {
+      "code": "1373012007",
+      "name": "Lunto Timur"
+    },
+    {
+      "code": "1373012008",
+      "name": "Lunto Barat"
+    },
+    {
+      "code": "1373012009",
+      "name": "Kubang Tangah"
+    },
+    {
+      "code": "1373012010",
+      "name": "Kubang Utara Sikabu"
+    },
+    {
+      "code": "1373012011",
+      "name": "Pasa Kubang"
+    }
+  ],
+  "137302": [
+    {
+      "code": "1373021001",
+      "name": "Saringan"
+    },
+    {
+      "code": "1373021002",
+      "name": "Lubang Panjang"
+    },
+    {
+      "code": "1373021003",
+      "name": "Durian I"
+    },
+    {
+      "code": "1373021004",
+      "name": "Durian II"
+    },
+    {
+      "code": "1373022005",
+      "name": "Santur"
+    },
+    {
+      "code": "1373022006",
+      "name": "Kolok Mudiak"
+    },
+    {
+      "code": "1373022007",
+      "name": "Kolok Nan Tuo"
+    },
+    {
+      "code": "1373022008",
+      "name": "Talago Gunung"
+    },
+    {
+      "code": "1373022009",
+      "name": "Lumindai"
+    },
+    {
+      "code": "1373022010",
+      "name": "Balai Batu Sandaran"
+    }
+  ],
+  "137303": [
+    {
+      "code": "1373032001",
+      "name": "Silungkang Duo"
+    },
+    {
+      "code": "1373032002",
+      "name": "Silungkang Oso"
+    },
+    {
+      "code": "1373032003",
+      "name": "Silungkang Tigo"
+    },
+    {
+      "code": "1373032004",
+      "name": "Muaro Kalaban"
+    },
+    {
+      "code": "1373032005",
+      "name": "Taratak Boncah"
+    }
+  ],
+  "137304": [
+    {
+      "code": "1373042001",
+      "name": "Talawi Hilie"
+    },
+    {
+      "code": "1373042002",
+      "name": "Talawi Mudiak"
+    },
+    {
+      "code": "1373042003",
+      "name": "Bukit Gadang"
+    },
+    {
+      "code": "1373042004",
+      "name": "Batu Tanjung"
+    },
+    {
+      "code": "1373042005",
+      "name": "Kumbayau"
+    },
+    {
+      "code": "1373042006",
+      "name": "Tumpuk Tangah"
+    },
+    {
+      "code": "1373042007",
+      "name": "Datar Mansiang"
+    },
+    {
+      "code": "1373042008",
+      "name": "Sijantang Koto"
+    },
+    {
+      "code": "1373042009",
+      "name": "Salak"
+    },
+    {
+      "code": "1373042010",
+      "name": "Sikalang"
+    },
+    {
+      "code": "1373042011",
+      "name": "Rantih"
+    }
+  ]
 }

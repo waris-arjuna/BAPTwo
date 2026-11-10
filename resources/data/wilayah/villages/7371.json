@@ -1,0 +1,644 @@
+{
+  "737101": [
+    {
+      "code": "7371011001",
+      "name": "Bontorannu"
+    },
+    {
+      "code": "7371011002",
+      "name": "Mattoangin"
+    },
+    {
+      "code": "7371011003",
+      "name": "Kunjung Mae"
+    },
+    {
+      "code": "7371011004",
+      "name": "Lette"
+    },
+    {
+      "code": "7371011005",
+      "name": "Panambungan"
+    },
+    {
+      "code": "7371011006",
+      "name": "Mariso"
+    },
+    {
+      "code": "7371011007",
+      "name": "Mario"
+    },
+    {
+      "code": "7371011008",
+      "name": "Kampung Buyang"
+    },
+    {
+      "code": "7371011009",
+      "name": "Tamarunang"
+    }
+  ],
+  "737102": [
+    {
+      "code": "7371021001",
+      "name": "Sambung Jawa"
+    },
+    {
+      "code": "7371021002",
+      "name": "Parang"
+    },
+    {
+      "code": "7371021003",
+      "name": "Mamajang Luar"
+    },
+    {
+      "code": "7371021004",
+      "name": "Mamajang Dalam"
+    },
+    {
+      "code": "7371021005",
+      "name": "Maricaya Selatan"
+    },
+    {
+      "code": "7371021006",
+      "name": "Bonto Lebang"
+    },
+    {
+      "code": "7371021007",
+      "name": "Pa'batang"
+    },
+    {
+      "code": "7371021008",
+      "name": "Bonto Biraeng"
+    },
+    {
+      "code": "7371021009",
+      "name": "Labuang Baji"
+    },
+    {
+      "code": "7371021010",
+      "name": "Mandala"
+    },
+    {
+      "code": "7371021011",
+      "name": "Tamparang Keke"
+    },
+    {
+      "code": "7371021012",
+      "name": "Baji Mappakasunggu"
+    },
+    {
+      "code": "7371021013",
+      "name": "Karang Anyar"
+    }
+  ],
+  "737103": [
+    {
+      "code": "7371031001",
+      "name": "Maricaya"
+    },
+    {
+      "code": "7371031002",
+      "name": "Bara Baraya"
+    },
+    {
+      "code": "7371031003",
+      "name": "Maradekaya"
+    },
+    {
+      "code": "7371031004",
+      "name": "Lariangbangi"
+    },
+    {
+      "code": "7371031005",
+      "name": "Maccini"
+    },
+    {
+      "code": "7371031006",
+      "name": "Maricaya Baru"
+    },
+    {
+      "code": "7371031007",
+      "name": "Bara Baraya Timur"
+    },
+    {
+      "code": "7371031008",
+      "name": "Bara Baraya Selatan"
+    },
+    {
+      "code": "7371031009",
+      "name": "Maradekaya Selatan"
+    },
+    {
+      "code": "7371031010",
+      "name": "Barana"
+    },
+    {
+      "code": "7371031011",
+      "name": "Maccini Parang"
+    },
+    {
+      "code": "7371031012",
+      "name": "Maccini Gusung"
+    },
+    {
+      "code": "7371031013",
+      "name": "Maradekaya Utara"
+    },
+    {
+      "code": "7371031014",
+      "name": "Bara Baraya Utara"
+    }
+  ],
+  "737104": [
+    {
+      "code": "7371041001",
+      "name": "Maloku"
+    },
+    {
+      "code": "7371041002",
+      "name": "Mangkura"
+    },
+    {
+      "code": "7371041003",
+      "name": "Pisang Selatan"
+    },
+    {
+      "code": "7371041004",
+      "name": "Pisang Utara"
+    },
+    {
+      "code": "7371041005",
+      "name": "Baru"
+    },
+    {
+      "code": "7371041006",
+      "name": "Bulogading"
+    },
+    {
+      "code": "7371041007",
+      "name": "Lae-Lae"
+    },
+    {
+      "code": "7371041008",
+      "name": "Losari"
+    },
+    {
+      "code": "7371041009",
+      "name": "Sawerigading"
+    },
+    {
+      "code": "7371041010",
+      "name": "Lajangiru"
+    }
+  ],
+  "737105": [
+    {
+      "code": "7371051001",
+      "name": "Pattunuang"
+    },
+    {
+      "code": "7371051002",
+      "name": "Melayu"
+    },
+    {
+      "code": "7371051003",
+      "name": "Butung"
+    },
+    {
+      "code": "7371051004",
+      "name": "Malimongan Tua"
+    },
+    {
+      "code": "7371051005",
+      "name": "Ende"
+    },
+    {
+      "code": "7371051006",
+      "name": "Mampu"
+    },
+    {
+      "code": "7371051007",
+      "name": "Malimongan"
+    },
+    {
+      "code": "7371051008",
+      "name": "Melayu Baru"
+    }
+  ],
+  "737106": [
+    {
+      "code": "7371061001",
+      "name": "Malimongan Baru"
+    },
+    {
+      "code": "7371061002",
+      "name": "Wajo Baru"
+    },
+    {
+      "code": "7371061003",
+      "name": "Gaddong"
+    },
+    {
+      "code": "7371061004",
+      "name": "Bontoala"
+    },
+    {
+      "code": "7371061005",
+      "name": "Baraya"
+    },
+    {
+      "code": "7371061006",
+      "name": "Layang"
+    },
+    {
+      "code": "7371061007",
+      "name": "Parang Layang"
+    },
+    {
+      "code": "7371061008",
+      "name": "Bontoala Tua"
+    },
+    {
+      "code": "7371061009",
+      "name": "Bontoala Parang"
+    },
+    {
+      "code": "7371061010",
+      "name": "Tompo Balang"
+    },
+    {
+      "code": "7371061011",
+      "name": "Bunga Ejaya"
+    },
+    {
+      "code": "7371061012",
+      "name": "Timungan Lompoa"
+    }
+  ],
+  "737107": [
+    {
+      "code": "7371071001",
+      "name": "Pannampu"
+    },
+    {
+      "code": "7371071002",
+      "name": "Kalukuang"
+    },
+    {
+      "code": "7371071003",
+      "name": "Kaluku Bodoa"
+    },
+    {
+      "code": "7371071004",
+      "name": "Rappojawa"
+    },
+    {
+      "code": "7371071005",
+      "name": "Rappokalling"
+    },
+    {
+      "code": "7371071006",
+      "name": "Lakkang"
+    },
+    {
+      "code": "7371071007",
+      "name": "Tallo"
+    },
+    {
+      "code": "7371071008",
+      "name": "La'latang"
+    },
+    {
+      "code": "7371071009",
+      "name": "Wala-Walaya"
+    },
+    {
+      "code": "7371071010",
+      "name": "Tammua"
+    },
+    {
+      "code": "7371071011",
+      "name": "Buloa"
+    },
+    {
+      "code": "7371071012",
+      "name": "Suangga"
+    },
+    {
+      "code": "7371071013",
+      "name": "Ujung Pandang Baru"
+    },
+    {
+      "code": "7371071014",
+      "name": "Lembo"
+    },
+    {
+      "code": "7371071015",
+      "name": "Bunga Eja Beru"
+    }
+  ],
+  "737108": [
+    {
+      "code": "7371081002",
+      "name": "Tabaringan"
+    },
+    {
+      "code": "7371081003",
+      "name": "Patingalloang"
+    },
+    {
+      "code": "7371081004",
+      "name": "Gusung"
+    },
+    {
+      "code": "7371081005",
+      "name": "Cambaya"
+    },
+    {
+      "code": "7371081006",
+      "name": "Ujung Tanah"
+    },
+    {
+      "code": "7371081009",
+      "name": "Totaka"
+    },
+    {
+      "code": "7371081010",
+      "name": "Tamalabba"
+    },
+    {
+      "code": "7371081011",
+      "name": "Camba Berua"
+    },
+    {
+      "code": "7371081012",
+      "name": "Patingalloang Baru"
+    }
+  ],
+  "737109": [
+    {
+      "code": "7371091001",
+      "name": "Karuwisi"
+    },
+    {
+      "code": "7371091002",
+      "name": "Panaikang"
+    },
+    {
+      "code": "7371091003",
+      "name": "Tello Baru"
+    },
+    {
+      "code": "7371091004",
+      "name": "Pampang"
+    },
+    {
+      "code": "7371091005",
+      "name": "Karampuang"
+    },
+    {
+      "code": "7371091006",
+      "name": "Tamamaung"
+    },
+    {
+      "code": "7371091007",
+      "name": "Masale"
+    },
+    {
+      "code": "7371091008",
+      "name": "Pandang"
+    },
+    {
+      "code": "7371091009",
+      "name": "Karuwisi Utara"
+    },
+    {
+      "code": "7371091010",
+      "name": "Sinrijala"
+    },
+    {
+      "code": "7371091011",
+      "name": "Paropo"
+    }
+  ],
+  "737110": [
+    {
+      "code": "7371101001",
+      "name": "Barombong"
+    },
+    {
+      "code": "7371101002",
+      "name": "Maccini Sombala"
+    },
+    {
+      "code": "7371101003",
+      "name": "Jongaya"
+    },
+    {
+      "code": "7371101004",
+      "name": "Mangasa"
+    },
+    {
+      "code": "7371101005",
+      "name": "Bongaya"
+    },
+    {
+      "code": "7371101006",
+      "name": "Balang Baru"
+    },
+    {
+      "code": "7371101007",
+      "name": "Mannuruki"
+    },
+    {
+      "code": "7371101008",
+      "name": "Pa'baeng-Baeng"
+    },
+    {
+      "code": "7371101009",
+      "name": "Parang Tambung"
+    },
+    {
+      "code": "7371101010",
+      "name": "Tanjung Merdeka"
+    },
+    {
+      "code": "7371101011",
+      "name": "Bonto Duri"
+    }
+  ],
+  "737111": [
+    {
+      "code": "7371111001",
+      "name": "Paccerakkang"
+    },
+    {
+      "code": "7371111002",
+      "name": "Daya"
+    },
+    {
+      "code": "7371111003",
+      "name": "Pai"
+    },
+    {
+      "code": "7371111004",
+      "name": "Bulurokeng"
+    },
+    {
+      "code": "7371111005",
+      "name": "Sudiang"
+    },
+    {
+      "code": "7371111006",
+      "name": "Sudiang Raya"
+    },
+    {
+      "code": "7371111007",
+      "name": "Untia"
+    },
+    {
+      "code": "7371111008",
+      "name": "Laikang"
+    },
+    {
+      "code": "7371111009",
+      "name": "Berua"
+    },
+    {
+      "code": "7371111010",
+      "name": "Katimbang"
+    },
+    {
+      "code": "7371111011",
+      "name": "Bakung"
+    }
+  ],
+  "737112": [
+    {
+      "code": "7371121001",
+      "name": "Manggala"
+    },
+    {
+      "code": "7371121002",
+      "name": "Bangkala"
+    },
+    {
+      "code": "7371121003",
+      "name": "Tamangapa"
+    },
+    {
+      "code": "7371121004",
+      "name": "Antang"
+    },
+    {
+      "code": "7371121005",
+      "name": "Batua"
+    },
+    {
+      "code": "7371121006",
+      "name": "Borong"
+    },
+    {
+      "code": "7371121007",
+      "name": "Biring Romang"
+    },
+    {
+      "code": "7371121008",
+      "name": "Bitowa"
+    }
+  ],
+  "737113": [
+    {
+      "code": "7371131001",
+      "name": "Tidung"
+    },
+    {
+      "code": "7371131002",
+      "name": "Kassi - Kassi"
+    },
+    {
+      "code": "7371131003",
+      "name": "Mappala"
+    },
+    {
+      "code": "7371131004",
+      "name": "Buakana"
+    },
+    {
+      "code": "7371131005",
+      "name": "Bonto Makkio"
+    },
+    {
+      "code": "7371131006",
+      "name": "Rappocini"
+    },
+    {
+      "code": "7371131007",
+      "name": "Balla Parang"
+    },
+    {
+      "code": "7371131008",
+      "name": "Banta-Bantaeng"
+    },
+    {
+      "code": "7371131009",
+      "name": "Karunrung"
+    },
+    {
+      "code": "7371131010",
+      "name": "Gunung Sari"
+    },
+    {
+      "code": "7371131011",
+      "name": "Minasa Upa"
+    }
+  ],
+  "737114": [
+    {
+      "code": "7371141001",
+      "name": "Tamalanrea"
+    },
+    {
+      "code": "7371141002",
+      "name": "Kapasa"
+    },
+    {
+      "code": "7371141003",
+      "name": "Tamalanrea Indah"
+    },
+    {
+      "code": "7371141004",
+      "name": "Parang Loe"
+    },
+    {
+      "code": "7371141005",
+      "name": "Bira"
+    },
+    {
+      "code": "7371141006",
+      "name": "Tamalanrea Jaya"
+    },
+    {
+      "code": "7371141007",
+      "name": "Buntusu"
+    },
+    {
+      "code": "7371141008",
+      "name": "Kapasa Raya"
+    }
+  ],
+  "737115": [
+    {
+      "code": "7371151001",
+      "name": "Barrang Caddi"
+    },
+    {
+      "code": "7371151002",
+      "name": "Barrang Lompo"
+    },
+    {
+      "code": "7371151003",
+      "name": "Kodingareng"
+    }
+  ]
+}

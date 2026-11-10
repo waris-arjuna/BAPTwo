@@ -1,134 +1,278 @@
 {
-    "760101": [
-        {
-            "code": "7601011006",
-            "name": "Bambalamotu"
-        },
-        {
-            "code": "7601012003",
-            "name": "Polewali"
-        },
-        {
-            "code": "7601012004",
-            "name": "Randomayang"
-        },
-        {
-            "code": "7601012007",
-            "name": "Pangiang"
-        },
-        {
-            "code": "7601012008",
-            "name": "Kalola"
-        },
-        {
-            "code": "7601012009",
-            "name": "Wulai"
-        }
-    ],
-    "760104": [
-        {
-            "code": "7601042001",
-            "name": "Sarudu"
-        },
-        {
-            "code": "7601042003",
-            "name": "Bulu Mario"
-        },
-        {
-            "code": "7601042005",
-            "name": "Kumasari"
-        },
-        {
-            "code": "7601042011",
-            "name": "Patika"
-        },
-        {
-            "code": "7601042012",
-            "name": "Doda"
-        }
-    ],
-    "760109": [
-        {
-            "code": "7601092001",
-            "name": "Malei"
-        },
-        {
-            "code": "7601092002",
-            "name": "Pedanda"
-        },
-        {
-            "code": "7601092003",
-            "name": "Batu Oge"
-        },
-        {
-            "code": "7601092004",
-            "name": "Martasari"
-        }
-    ],
-    "760110": [
-        {
-            "code": "7601102001",
-            "name": "Bambaira"
-        },
-        {
-            "code": "7601102002",
-            "name": "Kasoloang"
-        },
-        {
-            "code": "7601102003",
-            "name": "Tampaure"
-        },
-        {
-            "code": "7601102004",
-            "name": "Kaluku Nangka"
-        }
-    ],
-    "760111": [
-        {
-            "code": "7601112001",
-            "name": "Sarjo"
-        },
-        {
-            "code": "7601112002",
-            "name": "Maponu"
-        },
-        {
-            "code": "7601112003",
-            "name": "Letawa"
-        },
-        {
-            "code": "7601112004",
-            "name": "Sarude"
-        }
-    ],
-    "760112": [
-        {
-            "code": "7601122001",
-            "name": "Parabu"
-        },
-        {
-            "code": "7601122002",
-            "name": "Kenangan"
-        },
-        {
-            "code": "7601122003",
-            "name": "Bajawali"
-        },
-        {
-            "code": "7601122004",
-            "name": "Singgani"
-        },
-        {
-            "code": "7601122005",
-            "name": "Kulu"
-        },
-        {
-            "code": "7601122006",
-            "name": "Batu Matoru"
-        },
-        {
-            "code": "7601122007",
-            "name": "Bambakoro"
-        }
-    ]
+  "760101": [
+    {
+      "code": "7601011006",
+      "name": "Bambalamotu"
+    },
+    {
+      "code": "7601012003",
+      "name": "Polewali"
+    },
+    {
+      "code": "7601012004",
+      "name": "Randomayang"
+    },
+    {
+      "code": "7601012007",
+      "name": "Pangiang"
+    },
+    {
+      "code": "7601012008",
+      "name": "Kalola"
+    },
+    {
+      "code": "7601012009",
+      "name": "Wulai"
+    }
+  ],
+  "760102": [
+    {
+      "code": "7601021001",
+      "name": "Pasangkayu"
+    },
+    {
+      "code": "7601021002",
+      "name": "Martajaya"
+    },
+    {
+      "code": "7601022010",
+      "name": "Pakava"
+    },
+    {
+      "code": "7601022014",
+      "name": "Karya Bersama"
+    },
+    {
+      "code": "7601022015",
+      "name": "Ako"
+    },
+    {
+      "code": "7601022016",
+      "name": "Gunung Sari"
+    }
+  ],
+  "760103": [
+    {
+      "code": "7601031001",
+      "name": "Baras"
+    },
+    {
+      "code": "7601032002",
+      "name": "Balanti"
+    },
+    {
+      "code": "7601032003",
+      "name": "Motu"
+    },
+    {
+      "code": "7601032012",
+      "name": "Bulu Parigi"
+    },
+    {
+      "code": "7601032013",
+      "name": "Towoni"
+    },
+    {
+      "code": "7601032016",
+      "name": "Kasano"
+    }
+  ],
+  "760104": [
+    {
+      "code": "7601042001",
+      "name": "Sarudu"
+    },
+    {
+      "code": "7601042003",
+      "name": "Bulu Mario"
+    },
+    {
+      "code": "7601042005",
+      "name": "Kumasari"
+    },
+    {
+      "code": "7601042011",
+      "name": "Patika"
+    },
+    {
+      "code": "7601042012",
+      "name": "Doda"
+    }
+  ],
+  "760105": [
+    {
+      "code": "7601052001",
+      "name": "Dapurang"
+    },
+    {
+      "code": "7601052002",
+      "name": "Benggaulu"
+    },
+    {
+      "code": "7601052003",
+      "name": "Tirtabuana"
+    },
+    {
+      "code": "7601052004",
+      "name": "Bulu Bonggu"
+    },
+    {
+      "code": "7601052005",
+      "name": "Sarasa"
+    }
+  ],
+  "760106": [
+    {
+      "code": "7601062001",
+      "name": "Tammarunang"
+    },
+    {
+      "code": "7601062002",
+      "name": "Saptanajaya"
+    },
+    {
+      "code": "7601062003",
+      "name": "Taranggi"
+    },
+    {
+      "code": "7601062004",
+      "name": "Sipakainga"
+    }
+  ],
+  "760107": [
+    {
+      "code": "7601072001",
+      "name": "Lilimori"
+    },
+    {
+      "code": "7601072002",
+      "name": "Karave"
+    },
+    {
+      "code": "7601072003",
+      "name": "Bukit Harapan"
+    },
+    {
+      "code": "7601072004",
+      "name": "Kastabuana"
+    },
+    {
+      "code": "7601072005",
+      "name": "Sumber Sari"
+    },
+    {
+      "code": "7601072006",
+      "name": "Lelejae"
+    },
+    {
+      "code": "7601072007",
+      "name": "Ompi"
+    }
+  ],
+  "760108": [
+    {
+      "code": "7601082001",
+      "name": "Tikke"
+    },
+    {
+      "code": "7601082002",
+      "name": "Makmur Jaya"
+    },
+    {
+      "code": "7601082003",
+      "name": "Lariang"
+    },
+    {
+      "code": "7601082004",
+      "name": "Pajalele"
+    },
+    {
+      "code": "7601082005",
+      "name": "Jengeng Raya"
+    }
+  ],
+  "760109": [
+    {
+      "code": "7601092001",
+      "name": "Malei"
+    },
+    {
+      "code": "7601092002",
+      "name": "Pedanda"
+    },
+    {
+      "code": "7601092003",
+      "name": "Batu Oge"
+    },
+    {
+      "code": "7601092004",
+      "name": "Martasari"
+    }
+  ],
+  "760110": [
+    {
+      "code": "7601102001",
+      "name": "Bambaira"
+    },
+    {
+      "code": "7601102002",
+      "name": "Kasoloang"
+    },
+    {
+      "code": "7601102003",
+      "name": "Tampaure"
+    },
+    {
+      "code": "7601102004",
+      "name": "Kaluku Nangka"
+    }
+  ],
+  "760111": [
+    {
+      "code": "7601112001",
+      "name": "Sarjo"
+    },
+    {
+      "code": "7601112002",
+      "name": "Maponu"
+    },
+    {
+      "code": "7601112003",
+      "name": "Letawa"
+    },
+    {
+      "code": "7601112004",
+      "name": "Sarude"
+    }
+  ],
+  "760112": [
+    {
+      "code": "7601122001",
+      "name": "Parabu"
+    },
+    {
+      "code": "7601122002",
+      "name": "Kenangan"
+    },
+    {
+      "code": "7601122003",
+      "name": "Bajawali"
+    },
+    {
+      "code": "7601122004",
+      "name": "Singgani"
+    },
+    {
+      "code": "7601122005",
+      "name": "Kulu"
+    },
+    {
+      "code": "7601122006",
+      "name": "Batu Matoru"
+    },
+    {
+      "code": "7601122007",
+      "name": "Bambakoro"
+    }
+  ]
 }

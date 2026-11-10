@@ -1,242 +1,242 @@
 {
-    "317301": [
-        {
-            "code": "3173011001",
-            "name": "Cengkareng Barat"
-        },
-        {
-            "code": "3173011002",
-            "name": "Duri Kosambi"
-        },
-        {
-            "code": "3173011003",
-            "name": "Rawa Buaya"
-        },
-        {
-            "code": "3173011004",
-            "name": "Kedaung Kali Angke"
-        },
-        {
-            "code": "3173011005",
-            "name": "Kapuk"
-        },
-        {
-            "code": "3173011006",
-            "name": "Cengkareng Timur"
-        }
-    ],
-    "317302": [
-        {
-            "code": "3173021001",
-            "name": "Grogol"
-        },
-        {
-            "code": "3173021002",
-            "name": "Tanjung Duren Utara"
-        },
-        {
-            "code": "3173021003",
-            "name": "Tomang"
-        },
-        {
-            "code": "3173021004",
-            "name": "Jelambar"
-        },
-        {
-            "code": "3173021005",
-            "name": "Tanjung Duren Selatan"
-        },
-        {
-            "code": "3173021006",
-            "name": "Jelambar Baru"
-        },
-        {
-            "code": "3173021007",
-            "name": "Wijaya Kusuma"
-        }
-    ],
-    "317303": [
-        {
-            "code": "3173031001",
-            "name": "Taman Sari"
-        },
-        {
-            "code": "3173031002",
-            "name": "Krukut"
-        },
-        {
-            "code": "3173031003",
-            "name": "Maphar"
-        },
-        {
-            "code": "3173031004",
-            "name": "Tangki"
-        },
-        {
-            "code": "3173031005",
-            "name": "Mangga Besar"
-        },
-        {
-            "code": "3173031006",
-            "name": "Keagungan"
-        },
-        {
-            "code": "3173031007",
-            "name": "Glodok"
-        },
-        {
-            "code": "3173031008",
-            "name": "Pinangsia"
-        }
-    ],
-    "317304": [
-        {
-            "code": "3173041001",
-            "name": "Tambora"
-        },
-        {
-            "code": "3173041002",
-            "name": "Kali Anyar"
-        },
-        {
-            "code": "3173041003",
-            "name": "Duri Utara"
-        },
-        {
-            "code": "3173041004",
-            "name": "Tanah Sereal"
-        },
-        {
-            "code": "3173041005",
-            "name": "Krendang"
-        },
-        {
-            "code": "3173041006",
-            "name": "Jembatan Besi"
-        },
-        {
-            "code": "3173041007",
-            "name": "Angke"
-        },
-        {
-            "code": "3173041008",
-            "name": "Jembatan Lima"
-        },
-        {
-            "code": "3173041009",
-            "name": "Pekojan"
-        },
-        {
-            "code": "3173041010",
-            "name": "Roa Malaka"
-        },
-        {
-            "code": "3173041011",
-            "name": "Duri Selatan"
-        }
-    ],
-    "317305": [
-        {
-            "code": "3173051001",
-            "name": "Kebon Jeruk"
-        },
-        {
-            "code": "3173051002",
-            "name": "Sukabumi Utara"
-        },
-        {
-            "code": "3173051003",
-            "name": "Sukabumi Selatan"
-        },
-        {
-            "code": "3173051004",
-            "name": "Kelapa Dua"
-        },
-        {
-            "code": "3173051005",
-            "name": "Duri Kepa"
-        },
-        {
-            "code": "3173051006",
-            "name": "Kedoya Utara"
-        },
-        {
-            "code": "3173051007",
-            "name": "Kedoya Selatan"
-        }
-    ],
-    "317306": [
-        {
-            "code": "3173061001",
-            "name": "Kalideres"
-        },
-        {
-            "code": "3173061002",
-            "name": "Semanan"
-        },
-        {
-            "code": "3173061003",
-            "name": "Tegal Alur"
-        },
-        {
-            "code": "3173061004",
-            "name": "Kamal"
-        },
-        {
-            "code": "3173061005",
-            "name": "Pegadungan"
-        }
-    ],
-    "317307": [
-        {
-            "code": "3173071001",
-            "name": "Palmerah"
-        },
-        {
-            "code": "3173071002",
-            "name": "Slipi"
-        },
-        {
-            "code": "3173071003",
-            "name": "Kota Bambu Utara"
-        },
-        {
-            "code": "3173071004",
-            "name": "Jatipulo"
-        },
-        {
-            "code": "3173071005",
-            "name": "Kemanggisan"
-        },
-        {
-            "code": "3173071006",
-            "name": "Kota Bambu Selatan"
-        }
-    ],
-    "317308": [
-        {
-            "code": "3173081001",
-            "name": "Kembangan Utara"
-        },
-        {
-            "code": "3173081002",
-            "name": "Meruya Utara"
-        },
-        {
-            "code": "3173081003",
-            "name": "Meruya Selatan"
-        },
-        {
-            "code": "3173081004",
-            "name": "Srengseng"
-        },
-        {
-            "code": "3173081005",
-            "name": "Joglo"
-        },
-        {
-            "code": "3173081006",
-            "name": "Kembangan Selatan"
-        }
-    ]
+  "317301": [
+    {
+      "code": "3173011001",
+      "name": "Cengkareng Barat"
+    },
+    {
+      "code": "3173011002",
+      "name": "Duri Kosambi"
+    },
+    {
+      "code": "3173011003",
+      "name": "Rawa Buaya"
+    },
+    {
+      "code": "3173011004",
+      "name": "Kedaung Kali Angke"
+    },
+    {
+      "code": "3173011005",
+      "name": "Kapuk"
+    },
+    {
+      "code": "3173011006",
+      "name": "Cengkareng Timur"
+    }
+  ],
+  "317302": [
+    {
+      "code": "3173021001",
+      "name": "Grogol"
+    },
+    {
+      "code": "3173021002",
+      "name": "Tanjung Duren Utara"
+    },
+    {
+      "code": "3173021003",
+      "name": "Tomang"
+    },
+    {
+      "code": "3173021004",
+      "name": "Jelambar"
+    },
+    {
+      "code": "3173021005",
+      "name": "Tanjung Duren Selatan"
+    },
+    {
+      "code": "3173021006",
+      "name": "Jelambar Baru"
+    },
+    {
+      "code": "3173021007",
+      "name": "Wijaya Kusuma"
+    }
+  ],
+  "317303": [
+    {
+      "code": "3173031001",
+      "name": "Taman Sari"
+    },
+    {
+      "code": "3173031002",
+      "name": "Krukut"
+    },
+    {
+      "code": "3173031003",
+      "name": "Maphar"
+    },
+    {
+      "code": "3173031004",
+      "name": "Tangki"
+    },
+    {
+      "code": "3173031005",
+      "name": "Mangga Besar"
+    },
+    {
+      "code": "3173031006",
+      "name": "Keagungan"
+    },
+    {
+      "code": "3173031007",
+      "name": "Glodok"
+    },
+    {
+      "code": "3173031008",
+      "name": "Pinangsia"
+    }
+  ],
+  "317304": [
+    {
+      "code": "3173041001",
+      "name": "Tambora"
+    },
+    {
+      "code": "3173041002",
+      "name": "Kali Anyar"
+    },
+    {
+      "code": "3173041003",
+      "name": "Duri Utara"
+    },
+    {
+      "code": "3173041004",
+      "name": "Tanah Sereal"
+    },
+    {
+      "code": "3173041005",
+      "name": "Krendang"
+    },
+    {
+      "code": "3173041006",
+      "name": "Jembatan Besi"
+    },
+    {
+      "code": "3173041007",
+      "name": "Angke"
+    },
+    {
+      "code": "3173041008",
+      "name": "Jembatan Lima"
+    },
+    {
+      "code": "3173041009",
+      "name": "Pekojan"
+    },
+    {
+      "code": "3173041010",
+      "name": "Roa Malaka"
+    },
+    {
+      "code": "3173041011",
+      "name": "Duri Selatan"
+    }
+  ],
+  "317305": [
+    {
+      "code": "3173051001",
+      "name": "Kebon Jeruk"
+    },
+    {
+      "code": "3173051002",
+      "name": "Sukabumi Utara"
+    },
+    {
+      "code": "3173051003",
+      "name": "Sukabumi Selatan"
+    },
+    {
+      "code": "3173051004",
+      "name": "Kelapa Dua"
+    },
+    {
+      "code": "3173051005",
+      "name": "Duri Kepa"
+    },
+    {
+      "code": "3173051006",
+      "name": "Kedoya Utara"
+    },
+    {
+      "code": "3173051007",
+      "name": "Kedoya Selatan"
+    }
+  ],
+  "317306": [
+    {
+      "code": "3173061001",
+      "name": "Kalideres"
+    },
+    {
+      "code": "3173061002",
+      "name": "Semanan"
+    },
+    {
+      "code": "3173061003",
+      "name": "Tegal Alur"
+    },
+    {
+      "code": "3173061004",
+      "name": "Kamal"
+    },
+    {
+      "code": "3173061005",
+      "name": "Pegadungan"
+    }
+  ],
+  "317307": [
+    {
+      "code": "3173071001",
+      "name": "Palmerah"
+    },
+    {
+      "code": "3173071002",
+      "name": "Slipi"
+    },
+    {
+      "code": "3173071003",
+      "name": "Kota Bambu Utara"
+    },
+    {
+      "code": "3173071004",
+      "name": "Jatipulo"
+    },
+    {
+      "code": "3173071005",
+      "name": "Kemanggisan"
+    },
+    {
+      "code": "3173071006",
+      "name": "Kota Bambu Selatan"
+    }
+  ],
+  "317308": [
+    {
+      "code": "3173081001",
+      "name": "Kembangan Utara"
+    },
+    {
+      "code": "3173081002",
+      "name": "Meruya Utara"
+    },
+    {
+      "code": "3173081003",
+      "name": "Meruya Selatan"
+    },
+    {
+      "code": "3173081004",
+      "name": "Srengseng"
+    },
+    {
+      "code": "3173081005",
+      "name": "Joglo"
+    },
+    {
+      "code": "3173081006",
+      "name": "Kembangan Selatan"
+    }
+  ]
 }

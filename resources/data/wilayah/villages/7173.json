@@ -1,116 +1,188 @@
 {
-    "717302": [
-        {
-            "code": "7173021009",
-            "name": "Talete Satu"
-        },
-        {
-            "code": "7173021010",
-            "name": "Talete Dua"
-        },
-        {
-            "code": "7173021011",
-            "name": "Kamasi"
-        },
-        {
-            "code": "7173021012",
-            "name": "Kolongan"
-        },
-        {
-            "code": "7173021015",
-            "name": "Matani Satu"
-        },
-        {
-            "code": "7173021016",
-            "name": "Matani Dua"
-        },
-        {
-            "code": "7173021017",
-            "name": "Matani Tiga"
-        },
-        {
-            "code": "7173021018",
-            "name": "Kamasi Satu"
-        },
-        {
-            "code": "7173021019",
-            "name": "Kolongan Satu"
-        }
-    ],
-    "717303": [
-        {
-            "code": "7173031001",
-            "name": "Tinoor Satu"
-        },
-        {
-            "code": "7173031002",
-            "name": "Tinoor Dua"
-        },
-        {
-            "code": "7173031003",
-            "name": "Kinilow"
-        },
-        {
-            "code": "7173031004",
-            "name": "Kakaskasen Satu"
-        },
-        {
-            "code": "7173031005",
-            "name": "Kakaskasen Dua"
-        },
-        {
-            "code": "7173031006",
-            "name": "Kakaskasen Tiga"
-        },
-        {
-            "code": "7173031007",
-            "name": "Wailan"
-        },
-        {
-            "code": "7173031008",
-            "name": "Kayawu"
-        },
-        {
-            "code": "7173031009",
-            "name": "Kinilow Satu"
-        },
-        {
-            "code": "7173031010",
-            "name": "Kakaskasen"
-        }
-    ],
-    "717304": [
-        {
-            "code": "7173041001",
-            "name": "Woloan Satu"
-        },
-        {
-            "code": "7173041002",
-            "name": "Woloan Dua"
-        },
-        {
-            "code": "7173041003",
-            "name": "Woloan Tiga"
-        },
-        {
-            "code": "7173041004",
-            "name": "Taratara Satu"
-        },
-        {
-            "code": "7173041005",
-            "name": "Taratara Dua"
-        },
-        {
-            "code": "7173041006",
-            "name": "Woloan Satu Utara"
-        },
-        {
-            "code": "7173041007",
-            "name": "Taratara"
-        },
-        {
-            "code": "7173041008",
-            "name": "Taratara Tiga"
-        }
-    ]
+  "717301": [
+    {
+      "code": "7173011001",
+      "name": "Pinaras"
+    },
+    {
+      "code": "7173011002",
+      "name": "Lahendong"
+    },
+    {
+      "code": "7173011003",
+      "name": "Tondangow"
+    },
+    {
+      "code": "7173011004",
+      "name": "Pangolombian"
+    },
+    {
+      "code": "7173011005",
+      "name": "Tumatangtang"
+    },
+    {
+      "code": "7173011006",
+      "name": "Kampung Jawa"
+    },
+    {
+      "code": "7173011007",
+      "name": "Lansot"
+    },
+    {
+      "code": "7173011008",
+      "name": "Walian"
+    },
+    {
+      "code": "7173011009",
+      "name": "Uluindano"
+    },
+    {
+      "code": "7173011010",
+      "name": "Walian Satu"
+    },
+    {
+      "code": "7173011011",
+      "name": "Walian Dua"
+    },
+    {
+      "code": "7173011012",
+      "name": "Tumatangtang Satu"
+    }
+  ],
+  "717302": [
+    {
+      "code": "7173021009",
+      "name": "Talete Satu"
+    },
+    {
+      "code": "7173021010",
+      "name": "Talete Dua"
+    },
+    {
+      "code": "7173021011",
+      "name": "Kamasi"
+    },
+    {
+      "code": "7173021012",
+      "name": "Kolongan"
+    },
+    {
+      "code": "7173021015",
+      "name": "Matani Satu"
+    },
+    {
+      "code": "7173021016",
+      "name": "Matani Dua"
+    },
+    {
+      "code": "7173021017",
+      "name": "Matani Tiga"
+    },
+    {
+      "code": "7173021018",
+      "name": "Kamasi Satu"
+    },
+    {
+      "code": "7173021019",
+      "name": "Kolongan Satu"
+    }
+  ],
+  "717303": [
+    {
+      "code": "7173031001",
+      "name": "Tinoor Satu"
+    },
+    {
+      "code": "7173031002",
+      "name": "Tinoor Dua"
+    },
+    {
+      "code": "7173031003",
+      "name": "Kinilow"
+    },
+    {
+      "code": "7173031004",
+      "name": "Kakaskasen Satu"
+    },
+    {
+      "code": "7173031005",
+      "name": "Kakaskasen Dua"
+    },
+    {
+      "code": "7173031006",
+      "name": "Kakaskasen Tiga"
+    },
+    {
+      "code": "7173031007",
+      "name": "Wailan"
+    },
+    {
+      "code": "7173031008",
+      "name": "Kayawu"
+    },
+    {
+      "code": "7173031009",
+      "name": "Kinilow Satu"
+    },
+    {
+      "code": "7173031010",
+      "name": "Kakaskasen"
+    }
+  ],
+  "717304": [
+    {
+      "code": "7173041001",
+      "name": "Woloan Satu"
+    },
+    {
+      "code": "7173041002",
+      "name": "Woloan Dua"
+    },
+    {
+      "code": "7173041003",
+      "name": "Woloan Tiga"
+    },
+    {
+      "code": "7173041004",
+      "name": "Taratara Satu"
+    },
+    {
+      "code": "7173041005",
+      "name": "Taratara Dua"
+    },
+    {
+      "code": "7173041006",
+      "name": "Woloan Satu Utara"
+    },
+    {
+      "code": "7173041007",
+      "name": "Taratara"
+    },
+    {
+      "code": "7173041008",
+      "name": "Taratara Tiga"
+    }
+  ],
+  "717305": [
+    {
+      "code": "7173051001",
+      "name": "Paslaten Satu"
+    },
+    {
+      "code": "7173051002",
+      "name": "Paslaten Dua"
+    },
+    {
+      "code": "7173051003",
+      "name": "Rurukan"
+    },
+    {
+      "code": "7173051004",
+      "name": "Rurukan Satu"
+    },
+    {
+      "code": "7173051005",
+      "name": "Kumelembuay"
+    }
+  ]
 }

@@ -1,0 +1,648 @@
+{
+  "732601": [
+    {
+      "code": "7326011001",
+      "name": "Laang Tanduk"
+    },
+    {
+      "code": "7326011002",
+      "name": "Rantepao"
+    },
+    {
+      "code": "7326011003",
+      "name": "Mentirotiku"
+    },
+    {
+      "code": "7326011004",
+      "name": "Manggalo"
+    },
+    {
+      "code": "7326011005",
+      "name": "Pasale"
+    },
+    {
+      "code": "7326011006",
+      "name": "Singki'"
+    },
+    {
+      "code": "7326011007",
+      "name": "Karassik"
+    },
+    {
+      "code": "7326011008",
+      "name": "Penanian"
+    },
+    {
+      "code": "7326011009",
+      "name": "Rante Pasele"
+    },
+    {
+      "code": "7326012010",
+      "name": "Limbong"
+    },
+    {
+      "code": "7326012011",
+      "name": "Saloso"
+    }
+  ],
+  "732602": [
+    {
+      "code": "7326021001",
+      "name": "Bori"
+    },
+    {
+      "code": "7326021002",
+      "name": "Pangli"
+    },
+    {
+      "code": "7326021004",
+      "name": "Palawa'"
+    },
+    {
+      "code": "7326021005",
+      "name": "Deri'"
+    },
+    {
+      "code": "7326021009",
+      "name": "Pangli Selatan"
+    },
+    {
+      "code": "7326022003",
+      "name": "Buntu Lobo'"
+    },
+    {
+      "code": "7326022006",
+      "name": "Parinding"
+    },
+    {
+      "code": "7326022007",
+      "name": "Bori' Ranteletok"
+    },
+    {
+      "code": "7326022008",
+      "name": "Bori' Lombongan"
+    }
+  ],
+  "732603": [
+    {
+      "code": "7326031004",
+      "name": "Nanggala Sanpiak Salu"
+    },
+    {
+      "code": "7326032001",
+      "name": "Nanggala"
+    },
+    {
+      "code": "7326032002",
+      "name": "Tandung Nanggala"
+    },
+    {
+      "code": "7326032003",
+      "name": "Lili'kira'"
+    },
+    {
+      "code": "7326032005",
+      "name": "Karre Limbong"
+    },
+    {
+      "code": "7326032006",
+      "name": "Rante"
+    },
+    {
+      "code": "7326032007",
+      "name": "Basokan"
+    },
+    {
+      "code": "7326032008",
+      "name": "Nanna' Nanggala"
+    },
+    {
+      "code": "7326032009",
+      "name": "Karre Pananian"
+    }
+  ],
+  "732604": [
+    {
+      "code": "7326041002",
+      "name": "Pangala'"
+    },
+    {
+      "code": "7326041004",
+      "name": "Pangala' Utara"
+    },
+    {
+      "code": "7326042001",
+      "name": "Bululangkan"
+    },
+    {
+      "code": "7326042003",
+      "name": "Rindingallo"
+    },
+    {
+      "code": "7326042005",
+      "name": "Mai'ting"
+    },
+    {
+      "code": "7326042006",
+      "name": "Lo'ko'uru Tanetebatu"
+    },
+    {
+      "code": "7326042007",
+      "name": "Ampang Batu"
+    },
+    {
+      "code": "7326042008",
+      "name": "Lempo Poton"
+    },
+    {
+      "code": "7326042009",
+      "name": "Buntu Batu"
+    }
+  ],
+  "732605": [
+    {
+      "code": "7326051005",
+      "name": "Tullang' Sura"
+    },
+    {
+      "code": "7326051006",
+      "name": "Tongkonan Bassae"
+    },
+    {
+      "code": "7326052001",
+      "name": "Sapan Kua-kua"
+    },
+    {
+      "code": "7326052002",
+      "name": "Rindingkila'"
+    },
+    {
+      "code": "7326052003",
+      "name": "Misa'ba'bana"
+    },
+    {
+      "code": "7326052004",
+      "name": "Issong Kalua'"
+    }
+  ],
+  "732606": [
+    {
+      "code": "7326061002",
+      "name": "Sa'dan Malimbong"
+    },
+    {
+      "code": "7326061004",
+      "name": "Sa'dan Matalo"
+    },
+    {
+      "code": "7326062001",
+      "name": "Sa'dan Ulusalu"
+    },
+    {
+      "code": "7326062003",
+      "name": "Sa'dan Ballo Pasange'"
+    },
+    {
+      "code": "7326062005",
+      "name": "Sa'dan Pebulian"
+    },
+    {
+      "code": "7326062006",
+      "name": "Sa'dan Sangkaropi'"
+    },
+    {
+      "code": "7326062007",
+      "name": "Sa'dan Tiroallo"
+    },
+    {
+      "code": "7326062008",
+      "name": "Sa'dan Andulan"
+    },
+    {
+      "code": "7326062009",
+      "name": "Sa'dan Pesondongan"
+    },
+    {
+      "code": "7326062010",
+      "name": "Sa'dan Liku Lambe'"
+    }
+  ],
+  "732607": [
+    {
+      "code": "7326071006",
+      "name": "Paepalean"
+    },
+    {
+      "code": "7326072001",
+      "name": "La'bo'"
+    },
+    {
+      "code": "7326072002",
+      "name": "Buntu La'bo'"
+    },
+    {
+      "code": "7326072003",
+      "name": "Tallung Penanian"
+    },
+    {
+      "code": "7326072004",
+      "name": "Pata'padang"
+    },
+    {
+      "code": "7326072005",
+      "name": "Tandung La'bo'"
+    }
+  ],
+  "732608": [
+    {
+      "code": "7326081002",
+      "name": "Nonongan Utara"
+    },
+    {
+      "code": "7326082001",
+      "name": "Salu"
+    },
+    {
+      "code": "7326082003",
+      "name": "Salu Sopai"
+    },
+    {
+      "code": "7326082004",
+      "name": "Tombang Langda"
+    },
+    {
+      "code": "7326082005",
+      "name": "Marante"
+    },
+    {
+      "code": "7326082006",
+      "name": "Langda"
+    },
+    {
+      "code": "7326082007",
+      "name": "Nonongan Selatan"
+    },
+    {
+      "code": "7326082008",
+      "name": "Salu Sarre"
+    }
+  ],
+  "732609": [
+    {
+      "code": "7326091001",
+      "name": "Tikala"
+    },
+    {
+      "code": "7326091002",
+      "name": "Buntu Barana"
+    },
+    {
+      "code": "7326092003",
+      "name": "Buntu Batu"
+    },
+    {
+      "code": "7326092004",
+      "name": "Sereale"
+    },
+    {
+      "code": "7326092005",
+      "name": "Embatau"
+    },
+    {
+      "code": "7326092006",
+      "name": "Benteng Ka'do To'ria"
+    },
+    {
+      "code": "7326092007",
+      "name": "Pangden"
+    }
+  ],
+  "732610": [
+    {
+      "code": "7326101002",
+      "name": "Tagari"
+    },
+    {
+      "code": "7326101005",
+      "name": "Balusu"
+    },
+    {
+      "code": "7326102001",
+      "name": "Palangi'"
+    },
+    {
+      "code": "7326102003",
+      "name": "Lilikira Ao'gading"
+    },
+    {
+      "code": "7326102004",
+      "name": "Karua"
+    },
+    {
+      "code": "7326102006",
+      "name": "Awa' Kawasik"
+    },
+    {
+      "code": "7326102007",
+      "name": "Balusu Bangunlipu"
+    }
+  ],
+  "732611": [
+    {
+      "code": "7326111001",
+      "name": "Tallunglipu Matalo"
+    },
+    {
+      "code": "7326111002",
+      "name": "Tallunglipu"
+    },
+    {
+      "code": "7326111003",
+      "name": "Tampo Tallunglipu"
+    },
+    {
+      "code": "7326111004",
+      "name": "Tagari Tallunglipu"
+    },
+    {
+      "code": "7326111005",
+      "name": "Tantanan Tallunglipu"
+    },
+    {
+      "code": "7326111007",
+      "name": "Rante PakuTallunglipu"
+    },
+    {
+      "code": "7326112006",
+      "name": "Buntu Tallunglipu"
+    }
+  ],
+  "732612": [
+    {
+      "code": "7326121004",
+      "name": "Pasang"
+    },
+    {
+      "code": "7326122001",
+      "name": "Ma'dong"
+    },
+    {
+      "code": "7326122002",
+      "name": "Dende'"
+    },
+    {
+      "code": "7326122003",
+      "name": "Piongan"
+    },
+    {
+      "code": "7326122005",
+      "name": "Paku"
+    },
+    {
+      "code": "7326122006",
+      "name": "Kapolang"
+    },
+    {
+      "code": "7326122007",
+      "name": "Buntu Tagari"
+    },
+    {
+      "code": "7326122008",
+      "name": "Parinding"
+    }
+  ],
+  "732613": [
+    {
+      "code": "7326131002",
+      "name": "Sapan"
+    },
+    {
+      "code": "7326132001",
+      "name": "Buntu Minanga"
+    },
+    {
+      "code": "7326132003",
+      "name": "Sarambu"
+    },
+    {
+      "code": "7326132004",
+      "name": "Rante Uma"
+    },
+    {
+      "code": "7326132005",
+      "name": "Talimbangan"
+    },
+    {
+      "code": "7326132006",
+      "name": "Pulu' Pulu'"
+    },
+    {
+      "code": "7326132007",
+      "name": "Paonganan"
+    },
+    {
+      "code": "7326132008",
+      "name": "Parandangan"
+    },
+    {
+      "code": "7326132009",
+      "name": "Roroan Barra'-Barra'"
+    },
+    {
+      "code": "7326132010",
+      "name": "Pangkung Batu"
+    },
+    {
+      "code": "7326132011",
+      "name": "Pengkaroan Manuk"
+    },
+    {
+      "code": "7326132012",
+      "name": "Batu Busa"
+    },
+    {
+      "code": "7326132013",
+      "name": "Ponglu"
+    }
+  ],
+  "732614": [
+    {
+      "code": "7326141002",
+      "name": "Baruppu Selatan"
+    },
+    {
+      "code": "7326142001",
+      "name": "Baruppu' Utara"
+    },
+    {
+      "code": "7326142003",
+      "name": "Baruppu Benteng Batu"
+    },
+    {
+      "code": "7326142004",
+      "name": "Baruppu' Parodo"
+    }
+  ],
+  "732615": [
+    {
+      "code": "7326151003",
+      "name": "Ba'tan"
+    },
+    {
+      "code": "7326151004",
+      "name": "Pantanakan Lolo"
+    },
+    {
+      "code": "7326152001",
+      "name": "Tallu Lolo"
+    },
+    {
+      "code": "7326152002",
+      "name": "Rinding Batu"
+    },
+    {
+      "code": "7326152005",
+      "name": "Angin-angin"
+    },
+    {
+      "code": "7326152006",
+      "name": "Sangbua'"
+    },
+    {
+      "code": "7326152007",
+      "name": "Tadongkon"
+    }
+  ],
+  "732616": [
+    {
+      "code": "7326162001",
+      "name": "Tondon Langi'"
+    },
+    {
+      "code": "7326162002",
+      "name": "Tondon"
+    },
+    {
+      "code": "7326162003",
+      "name": "Tondon Sibata"
+    },
+    {
+      "code": "7326162004",
+      "name": "Tondon Matallo"
+    }
+  ],
+  "732617": [
+    {
+      "code": "7326172001",
+      "name": "To'yasa Akung"
+    },
+    {
+      "code": "7326172002",
+      "name": "Batu Limbong"
+    },
+    {
+      "code": "7326172003",
+      "name": "Bangkelekila'"
+    },
+    {
+      "code": "7326172004",
+      "name": "Tampan Bonga"
+    }
+  ],
+  "732618": [
+    {
+      "code": "7326181002",
+      "name": "Bokin"
+    },
+    {
+      "code": "7326181005",
+      "name": "Buangin"
+    },
+    {
+      "code": "7326182001",
+      "name": "Rantebua"
+    },
+    {
+      "code": "7326182003",
+      "name": "Pitung Penanian"
+    },
+    {
+      "code": "7326182004",
+      "name": "Ma'kuan Pare"
+    },
+    {
+      "code": "7326182006",
+      "name": "Rantebua Sumalu"
+    },
+    {
+      "code": "7326182007",
+      "name": "Rantebua Sanggalangi'"
+    }
+  ],
+  "732619": [
+    {
+      "code": "7326192001",
+      "name": "Suloara'"
+    },
+    {
+      "code": "7326192002",
+      "name": "Sesean Matallo"
+    },
+    {
+      "code": "7326192003",
+      "name": "Landorundun"
+    },
+    {
+      "code": "7326192004",
+      "name": "Tonga Riu"
+    },
+    {
+      "code": "7326192005",
+      "name": "Lempo"
+    }
+  ],
+  "732620": [
+    {
+      "code": "7326202001",
+      "name": "Benteng Ka'do"
+    },
+    {
+      "code": "7326202002",
+      "name": "Sikuku'"
+    },
+    {
+      "code": "7326202003",
+      "name": "Polo Padang"
+    },
+    {
+      "code": "7326202004",
+      "name": "Kantun Poya"
+    },
+    {
+      "code": "7326202005",
+      "name": "Kapala Pitu"
+    },
+    {
+      "code": "7326202006",
+      "name": "Benteng Mamullu"
+    }
+  ],
+  "732621": [
+    {
+      "code": "7326212001",
+      "name": "Awan"
+    },
+    {
+      "code": "7326212002",
+      "name": "Batu Lotong"
+    },
+    {
+      "code": "7326212003",
+      "name": "Buntu Karua"
+    },
+    {
+      "code": "7326212004",
+      "name": "Londong Biang"
+    }
+  ]
+}

@@ -1,104 +1,1156 @@
 {
-    "530819": [
-        {
-            "code": "5308191001",
-            "name": "Potulando"
-        },
-        {
-            "code": "5308191002",
-            "name": "Onekore"
-        },
-        {
-            "code": "5308191003",
-            "name": "Kelimutu"
-        },
-        {
-            "code": "5308191004",
-            "name": "Paupire"
-        }
-    ],
-    "530820": [
-        {
-            "code": "5308201001",
-            "name": "Mautapaga"
-        },
-        {
-            "code": "5308201002",
-            "name": "Rewarangga"
-        },
-        {
-            "code": "5308201006",
-            "name": "Rewarangga Selatan"
-        },
-        {
-            "code": "5308202003",
-            "name": "Kedebodu"
-        },
-        {
-            "code": "5308202004",
-            "name": "Ndungga"
-        },
-        {
-            "code": "5308202005",
-            "name": "Tiwutewa"
-        }
-    ],
-    "530821": [
-        {
-            "code": "5308212001",
-            "name": "Nggumbelaka"
-        },
-        {
-            "code": "5308212002",
-            "name": "Mukureku"
-        },
-        {
-            "code": "5308212003",
-            "name": "Wologai Timur"
-        },
-        {
-            "code": "5308212004",
-            "name": "Kuru"
-        },
-        {
-            "code": "5308212005",
-            "name": "Ndenggarongge"
-        },
-        {
-            "code": "5308212006",
-            "name": "Ndikosapu"
-        },
-        {
-            "code": "5308212007",
-            "name": "Taniwoda"
-        },
-        {
-            "code": "5308212008",
-            "name": "Tanalangi"
-        },
-        {
-            "code": "5308212009",
-            "name": "Detuara"
-        },
-        {
-            "code": "5308212010",
-            "name": "Tiwusora"
-        },
-        {
-            "code": "5308212011",
-            "name": "Lisekuru"
-        },
-        {
-            "code": "5308212012",
-            "name": "Rutujeja"
-        },
-        {
-            "code": "5308212013",
-            "name": "Mukureku Sa'ate"
-        },
-        {
-            "code": "5308212014",
-            "name": "Kurusare"
-        }
-    ]
+  "530801": [
+    {
+      "code": "5308011001",
+      "name": "Ndorurea"
+    },
+    {
+      "code": "5308012002",
+      "name": "Ondorea"
+    },
+    {
+      "code": "5308012003",
+      "name": "Watumite"
+    },
+    {
+      "code": "5308012004",
+      "name": "Tendarea"
+    },
+    {
+      "code": "5308012005",
+      "name": "Kerirea"
+    },
+    {
+      "code": "5308012006",
+      "name": "Tendambepa"
+    },
+    {
+      "code": "5308012007",
+      "name": "Zozozea"
+    },
+    {
+      "code": "5308012008",
+      "name": "Rapowawo"
+    },
+    {
+      "code": "5308012009",
+      "name": "Nggorea"
+    },
+    {
+      "code": "5308012010",
+      "name": "Raporendu"
+    },
+    {
+      "code": "5308012011",
+      "name": "Bheramari"
+    },
+    {
+      "code": "5308012012",
+      "name": "Tiwerea"
+    },
+    {
+      "code": "5308012013",
+      "name": "Sanggarhorho"
+    },
+    {
+      "code": "5308012014",
+      "name": "Ndeturea"
+    },
+    {
+      "code": "5308012015",
+      "name": "Ndorurea I"
+    },
+    {
+      "code": "5308012016",
+      "name": "Penggajawa"
+    },
+    {
+      "code": "5308012017",
+      "name": "Jegharangga"
+    },
+    {
+      "code": "5308012018",
+      "name": "Ondorea Barat"
+    },
+    {
+      "code": "5308012019",
+      "name": "Romarea"
+    },
+    {
+      "code": "5308012020",
+      "name": "Timbaria"
+    },
+    {
+      "code": "5308012021",
+      "name": "Mbobhenga"
+    },
+    {
+      "code": "5308012022",
+      "name": "Malawaru"
+    },
+    {
+      "code": "5308012023",
+      "name": "Anaraja"
+    },
+    {
+      "code": "5308012024",
+      "name": "Kekandere"
+    },
+    {
+      "code": "5308012025",
+      "name": "Tanazozo"
+    },
+    {
+      "code": "5308012026",
+      "name": "Tenda Ondo"
+    },
+    {
+      "code": "5308012027",
+      "name": "Jemburea"
+    },
+    {
+      "code": "5308012028",
+      "name": "Embuzozo"
+    },
+    {
+      "code": "5308012029",
+      "name": "Uzuzozo"
+    }
+  ],
+  "530802": [
+    {
+      "code": "5308022001",
+      "name": "Aejeti"
+    },
+    {
+      "code": "5308022002",
+      "name": "Puutara"
+    },
+    {
+      "code": "5308022003",
+      "name": "Paderape"
+    },
+    {
+      "code": "5308022004",
+      "name": "Ndoriwoi"
+    },
+    {
+      "code": "5308022005",
+      "name": "Rorurangga"
+    },
+    {
+      "code": "5308022006",
+      "name": "Rendoraterua"
+    },
+    {
+      "code": "5308022007",
+      "name": "Redorori"
+    },
+    {
+      "code": "5308022008",
+      "name": "Kazo Kapo"
+    },
+    {
+      "code": "5308022009",
+      "name": "Renga Menge"
+    }
+  ],
+  "530803": [
+    {
+      "code": "5308032001",
+      "name": "Raburia"
+    },
+    {
+      "code": "5308032002",
+      "name": "Riaraja"
+    },
+    {
+      "code": "5308032003",
+      "name": "Mbotutenda"
+    },
+    {
+      "code": "5308032004",
+      "name": "Wologai"
+    },
+    {
+      "code": "5308032007",
+      "name": "Ndetundora I"
+    },
+    {
+      "code": "5308032008",
+      "name": "Ndetundora II"
+    },
+    {
+      "code": "5308032009",
+      "name": "Tomberabu I"
+    },
+    {
+      "code": "5308032010",
+      "name": "Tomberabu II"
+    },
+    {
+      "code": "5308032011",
+      "name": "Nakuramba"
+    },
+    {
+      "code": "5308032012",
+      "name": "Wolokaro"
+    },
+    {
+      "code": "5308032013",
+      "name": "Ja Moke Asa"
+    },
+    {
+      "code": "5308032014",
+      "name": "Emburia"
+    },
+    {
+      "code": "5308032016",
+      "name": "Randotonda"
+    },
+    {
+      "code": "5308032017",
+      "name": "Rukuramba"
+    },
+    {
+      "code": "5308032018",
+      "name": "Tinabani"
+    },
+    {
+      "code": "5308032019",
+      "name": "Ndetundora III"
+    },
+    {
+      "code": "5308032020",
+      "name": "Uzuramba"
+    },
+    {
+      "code": "5308032021",
+      "name": "Tonggopapa"
+    },
+    {
+      "code": "5308032022",
+      "name": "Wologai Dua"
+    },
+    {
+      "code": "5308032023",
+      "name": "Worhopapa"
+    },
+    {
+      "code": "5308032024",
+      "name": "Wawonato"
+    },
+    {
+      "code": "5308032025",
+      "name": "Jejaraja"
+    },
+    {
+      "code": "5308032026",
+      "name": "Tendambonggi"
+    },
+    {
+      "code": "5308032027",
+      "name": "Randorama"
+    },
+    {
+      "code": "5308032028",
+      "name": "Ranoramba"
+    },
+    {
+      "code": "5308032029",
+      "name": "Peozakaramba"
+    },
+    {
+      "code": "5308032030",
+      "name": "Embutheru"
+    },
+    {
+      "code": "5308032031",
+      "name": "Nuaja"
+    },
+    {
+      "code": "5308032032",
+      "name": "Wajakea Jaya"
+    },
+    {
+      "code": "5308032033",
+      "name": "Nemboramba"
+    },
+    {
+      "code": "5308032034",
+      "name": "Embu Ngena"
+    },
+    {
+      "code": "5308032035",
+      "name": "Uzuramba Barat"
+    }
+  ],
+  "530804": [
+    {
+      "code": "5308041003",
+      "name": "Mbongawani"
+    },
+    {
+      "code": "5308041004",
+      "name": "Rukun Lima"
+    },
+    {
+      "code": "5308041006",
+      "name": "Paupanda"
+    },
+    {
+      "code": "5308041008",
+      "name": "Tetandara"
+    },
+    {
+      "code": "5308041014",
+      "name": "Tanjung"
+    }
+  ],
+  "530805": [
+    {
+      "code": "5308051001",
+      "name": "Onelako"
+    },
+    {
+      "code": "5308051002",
+      "name": "Lokoboko"
+    },
+    {
+      "code": "5308052003",
+      "name": "Wolotopo"
+    },
+    {
+      "code": "5308052004",
+      "name": "Wolotolo Timur"
+    },
+    {
+      "code": "5308052006",
+      "name": "Puutuga"
+    },
+    {
+      "code": "5308052007",
+      "name": "Ngalupolo"
+    },
+    {
+      "code": "5308052012",
+      "name": "Ngaluroga"
+    },
+    {
+      "code": "5308052013",
+      "name": "Nila"
+    },
+    {
+      "code": "5308052014",
+      "name": "Kekasewa"
+    },
+    {
+      "code": "5308052015",
+      "name": "Manulando"
+    },
+    {
+      "code": "5308052016",
+      "name": "Nanganesa"
+    },
+    {
+      "code": "5308052017",
+      "name": "Wolokota"
+    },
+    {
+      "code": "5308052018",
+      "name": "Kelikiku"
+    },
+    {
+      "code": "5308052020",
+      "name": "Reka"
+    }
+  ],
+  "530806": [
+    {
+      "code": "5308061001",
+      "name": "Detusoko"
+    },
+    {
+      "code": "5308062002",
+      "name": "Detusoko Barat"
+    },
+    {
+      "code": "5308062003",
+      "name": "Wolotolo"
+    },
+    {
+      "code": "5308062004",
+      "name": "Wolotolo Tengah"
+    },
+    {
+      "code": "5308062005",
+      "name": "Roa"
+    },
+    {
+      "code": "5308062006",
+      "name": "Saga"
+    },
+    {
+      "code": "5308062007",
+      "name": "Niowula"
+    },
+    {
+      "code": "5308062008",
+      "name": "Wolofeo"
+    },
+    {
+      "code": "5308062009",
+      "name": "Nuaone"
+    },
+    {
+      "code": "5308062010",
+      "name": "Wologai"
+    },
+    {
+      "code": "5308062011",
+      "name": "Wologai Tengah"
+    },
+    {
+      "code": "5308062013",
+      "name": "Wolomage"
+    },
+    {
+      "code": "5308062015",
+      "name": "Randoria"
+    },
+    {
+      "code": "5308062016",
+      "name": "Wolomasi"
+    },
+    {
+      "code": "5308062017",
+      "name": "Rateroru"
+    },
+    {
+      "code": "5308062018",
+      "name": "Dile"
+    },
+    {
+      "code": "5308062019",
+      "name": "Ndito"
+    },
+    {
+      "code": "5308062020",
+      "name": "Sipijena"
+    },
+    {
+      "code": "5308062021",
+      "name": "Golulada"
+    },
+    {
+      "code": "5308062022",
+      "name": "Ranga"
+    },
+    {
+      "code": "5308062024",
+      "name": "Turunalu"
+    }
+  ],
+  "530807": [
+    {
+      "code": "5308072001",
+      "name": "Welamosa"
+    },
+    {
+      "code": "5308072002",
+      "name": "Nuangenda"
+    },
+    {
+      "code": "5308072003",
+      "name": "Mautenda"
+    },
+    {
+      "code": "5308072004",
+      "name": "Mautenda Barat"
+    },
+    {
+      "code": "5308072005",
+      "name": "Wewaria"
+    },
+    {
+      "code": "5308072006",
+      "name": "Tanali"
+    },
+    {
+      "code": "5308072007",
+      "name": "Detubela"
+    },
+    {
+      "code": "5308072008",
+      "name": "Fataatu"
+    },
+    {
+      "code": "5308072009",
+      "name": "Fataatu Timur"
+    },
+    {
+      "code": "5308072010",
+      "name": "Mukusaki"
+    },
+    {
+      "code": "5308072011",
+      "name": "Ekoae"
+    },
+    {
+      "code": "5308072012",
+      "name": "Aemuri"
+    },
+    {
+      "code": "5308072013",
+      "name": "Ratewati"
+    },
+    {
+      "code": "5308072014",
+      "name": "Mbotulaka"
+    },
+    {
+      "code": "5308072015",
+      "name": "Numba"
+    },
+    {
+      "code": "5308072017",
+      "name": "Kelitembu"
+    },
+    {
+      "code": "5308072018",
+      "name": "Aelipo"
+    },
+    {
+      "code": "5308072019",
+      "name": "Ratewati Selatan"
+    },
+    {
+      "code": "5308072020",
+      "name": "Waka"
+    },
+    {
+      "code": "5308072021",
+      "name": "Wolooja"
+    },
+    {
+      "code": "5308072022",
+      "name": "Ekolea"
+    },
+    {
+      "code": "5308072023",
+      "name": "Ae Ndoko"
+    }
+  ],
+  "530808": [
+    {
+      "code": "5308081001",
+      "name": "Bokasape"
+    },
+    {
+      "code": "5308082002",
+      "name": "Bokasape Timur"
+    },
+    {
+      "code": "5308082010",
+      "name": "Mbuliloo"
+    },
+    {
+      "code": "5308082011",
+      "name": "Rindiwawo"
+    },
+    {
+      "code": "5308082012",
+      "name": "Jopu"
+    },
+    {
+      "code": "5308082013",
+      "name": "Wolokoli"
+    },
+    {
+      "code": "5308082014",
+      "name": "Mbuliwaralau"
+    },
+    {
+      "code": "5308082015",
+      "name": "Mbuliwaralau Utara"
+    },
+    {
+      "code": "5308082016",
+      "name": "Lisedetu"
+    },
+    {
+      "code": "5308082017",
+      "name": "Nualise"
+    },
+    {
+      "code": "5308082018",
+      "name": "Wolosoko"
+    },
+    {
+      "code": "5308082019",
+      "name": "Liselowobora"
+    },
+    {
+      "code": "5308082020",
+      "name": "Likanaka"
+    },
+    {
+      "code": "5308082021",
+      "name": "Nakambara"
+    },
+    {
+      "code": "5308082022",
+      "name": "Niramesi"
+    },
+    {
+      "code": "5308082023",
+      "name": "Tana Lo'o"
+    },
+    {
+      "code": "5308082024",
+      "name": "Lise Pu'u"
+    }
+  ],
+  "530809": [
+    {
+      "code": "5308091001",
+      "name": "Wolojita"
+    },
+    {
+      "code": "5308092002",
+      "name": "Tenda"
+    },
+    {
+      "code": "5308092003",
+      "name": "Wiwipemo"
+    },
+    {
+      "code": "5308092004",
+      "name": "Pora"
+    },
+    {
+      "code": "5308092005",
+      "name": "Nuamulu"
+    },
+    {
+      "code": "5308092006",
+      "name": "Nggela"
+    }
+  ],
+  "530810": [
+    {
+      "code": "5308102001",
+      "name": "Maurole"
+    },
+    {
+      "code": "5308102003",
+      "name": "Aewora"
+    },
+    {
+      "code": "5308102005",
+      "name": "Mausambi"
+    },
+    {
+      "code": "5308102006",
+      "name": "Ranakolo"
+    },
+    {
+      "code": "5308102007",
+      "name": "Watukamba"
+    },
+    {
+      "code": "5308102008",
+      "name": "Ranakolo Selatan"
+    },
+    {
+      "code": "5308102009",
+      "name": "Keliwumbu"
+    },
+    {
+      "code": "5308102018",
+      "name": "Detuwulu"
+    },
+    {
+      "code": "5308102019",
+      "name": "Otogedu"
+    },
+    {
+      "code": "5308102020",
+      "name": "Woloau"
+    },
+    {
+      "code": "5308102021",
+      "name": "Ngalukoja"
+    },
+    {
+      "code": "5308102022",
+      "name": "Niranusa"
+    },
+    {
+      "code": "5308102023",
+      "name": "Uludala"
+    }
+  ],
+  "530811": [
+    {
+      "code": "5308112001",
+      "name": "Kebirangga"
+    },
+    {
+      "code": "5308112002",
+      "name": "Kebirangga Selatan"
+    },
+    {
+      "code": "5308112003",
+      "name": "Kamubheka"
+    },
+    {
+      "code": "5308112004",
+      "name": "Magekapa"
+    },
+    {
+      "code": "5308112005",
+      "name": "Boafeo"
+    },
+    {
+      "code": "5308112006",
+      "name": "Nabe"
+    },
+    {
+      "code": "5308112007",
+      "name": "Kobaleba"
+    },
+    {
+      "code": "5308112008",
+      "name": "Mundinggasa"
+    },
+    {
+      "code": "5308112009",
+      "name": "Kolikapa"
+    },
+    {
+      "code": "5308112010",
+      "name": "Kebirangga Tengah"
+    },
+    {
+      "code": "5308112011",
+      "name": "Natanangge"
+    }
+  ],
+  "530812": [
+    {
+      "code": "5308121001",
+      "name": "Watuneso"
+    },
+    {
+      "code": "5308122002",
+      "name": "Hobatua"
+    },
+    {
+      "code": "5308122003",
+      "name": "Wolosambi"
+    },
+    {
+      "code": "5308122004",
+      "name": "Woloara"
+    },
+    {
+      "code": "5308122005",
+      "name": "Detupera"
+    },
+    {
+      "code": "5308122006",
+      "name": "Wololela A"
+    },
+    {
+      "code": "5308122007",
+      "name": "Liabeke"
+    },
+    {
+      "code": "5308122013",
+      "name": "Fatamari"
+    },
+    {
+      "code": "5308122014",
+      "name": "Ranggatalo"
+    },
+    {
+      "code": "5308122015",
+      "name": "Nua Lima"
+    },
+    {
+      "code": "5308122016",
+      "name": "Tanaroga"
+    },
+    {
+      "code": "5308122017",
+      "name": "Bu Tanalagu"
+    },
+    {
+      "code": "5308122018",
+      "name": "Mbewawora"
+    }
+  ],
+  "530813": [
+    {
+      "code": "5308132001",
+      "name": "Kotabaru"
+    },
+    {
+      "code": "5308132002",
+      "name": "Tou"
+    },
+    {
+      "code": "5308132003",
+      "name": "Tou Timur"
+    },
+    {
+      "code": "5308132004",
+      "name": "Loboniki"
+    },
+    {
+      "code": "5308132005",
+      "name": "Ndondo"
+    },
+    {
+      "code": "5308132006",
+      "name": "Niopanda"
+    },
+    {
+      "code": "5308132007",
+      "name": "Hangalande"
+    },
+    {
+      "code": "5308132012",
+      "name": "Tou Barat"
+    },
+    {
+      "code": "5308132013",
+      "name": "Liselande"
+    },
+    {
+      "code": "5308132014",
+      "name": "Rangalaka"
+    },
+    {
+      "code": "5308132015",
+      "name": "Pise"
+    },
+    {
+      "code": "5308132016",
+      "name": "Neotonda"
+    },
+    {
+      "code": "5308132017",
+      "name": "Nuanaga"
+    }
+  ],
+  "530814": [
+    {
+      "code": "5308142002",
+      "name": "Nduaria"
+    },
+    {
+      "code": "5308142003",
+      "name": "Nuamuri"
+    },
+    {
+      "code": "5308142004",
+      "name": "Nuamuri Barat"
+    },
+    {
+      "code": "5308142005",
+      "name": "Koanara"
+    },
+    {
+      "code": "5308142006",
+      "name": "Woloara"
+    },
+    {
+      "code": "5308142007",
+      "name": "Pemo"
+    },
+    {
+      "code": "5308142009",
+      "name": "Detuena"
+    },
+    {
+      "code": "5308142010",
+      "name": "Wolokelo"
+    },
+    {
+      "code": "5308142011",
+      "name": "Waturaka"
+    }
+  ],
+  "530815": [
+    {
+      "code": "5308152001",
+      "name": "Nggesa"
+    },
+    {
+      "code": "5308152002",
+      "name": "Detukeli"
+    },
+    {
+      "code": "5308152003",
+      "name": "Kebesani"
+    },
+    {
+      "code": "5308152004",
+      "name": "Wolomuku"
+    },
+    {
+      "code": "5308152005",
+      "name": "Watunggere"
+    },
+    {
+      "code": "5308152006",
+      "name": "Nida"
+    },
+    {
+      "code": "5308152007",
+      "name": "Maurole Selatan"
+    },
+    {
+      "code": "5308152008",
+      "name": "Detumbewa"
+    },
+    {
+      "code": "5308152009",
+      "name": "Kanganara"
+    },
+    {
+      "code": "5308152011",
+      "name": "Unggu"
+    },
+    {
+      "code": "5308152012",
+      "name": "Nggesabiri"
+    },
+    {
+      "code": "5308152013",
+      "name": "Watunggere Marilonga"
+    },
+    {
+      "code": "5308152014",
+      "name": "Jeo Du'a"
+    }
+  ],
+  "530816": [
+    {
+      "code": "5308162001",
+      "name": "Kurulimbu"
+    },
+    {
+      "code": "5308162002",
+      "name": "Sokoria"
+    },
+    {
+      "code": "5308162003",
+      "name": "Demulaka"
+    },
+    {
+      "code": "5308162004",
+      "name": "Roga"
+    },
+    {
+      "code": "5308162005",
+      "name": "Kurulimbu Selatan"
+    },
+    {
+      "code": "5308162006",
+      "name": "Ngguwa"
+    },
+    {
+      "code": "5308162007",
+      "name": "Sokoria Selatan"
+    }
+  ],
+  "530817": [
+    {
+      "code": "5308172001",
+      "name": "Maubasa"
+    },
+    {
+      "code": "5308172002",
+      "name": "Maubasa Timur"
+    },
+    {
+      "code": "5308172003",
+      "name": "Wonda"
+    },
+    {
+      "code": "5308172004",
+      "name": "Serandori"
+    },
+    {
+      "code": "5308172005",
+      "name": "Kelisamba"
+    },
+    {
+      "code": "5308172006",
+      "name": "Mole"
+    },
+    {
+      "code": "5308172007",
+      "name": "Lungaria"
+    },
+    {
+      "code": "5308172008",
+      "name": "Aebara"
+    },
+    {
+      "code": "5308172009",
+      "name": "Ratemangga"
+    },
+    {
+      "code": "5308172010",
+      "name": "Maubasa Barat"
+    }
+  ],
+  "530818": [
+    {
+      "code": "5308181001",
+      "name": "Kota Raja"
+    },
+    {
+      "code": "5308181002",
+      "name": "Kota Ratu"
+    },
+    {
+      "code": "5308181003",
+      "name": "Roworena"
+    },
+    {
+      "code": "5308181007",
+      "name": "Roworena Barat"
+    },
+    {
+      "code": "5308182004",
+      "name": "Gheoghoma"
+    },
+    {
+      "code": "5308182005",
+      "name": "Borokanda"
+    },
+    {
+      "code": "5308182006",
+      "name": "Watusipi"
+    },
+    {
+      "code": "5308182008",
+      "name": "Mbomba"
+    },
+    {
+      "code": "5308182009",
+      "name": "Embundoa"
+    },
+    {
+      "code": "5308182010",
+      "name": "Raterua"
+    }
+  ],
+  "530819": [
+    {
+      "code": "5308191001",
+      "name": "Potulando"
+    },
+    {
+      "code": "5308191002",
+      "name": "Onekore"
+    },
+    {
+      "code": "5308191003",
+      "name": "Kelimutu"
+    },
+    {
+      "code": "5308191004",
+      "name": "Paupire"
+    }
+  ],
+  "530820": [
+    {
+      "code": "5308201001",
+      "name": "Mautapaga"
+    },
+    {
+      "code": "5308201002",
+      "name": "Rewarangga"
+    },
+    {
+      "code": "5308201006",
+      "name": "Rewarangga Selatan"
+    },
+    {
+      "code": "5308202003",
+      "name": "Kedebodu"
+    },
+    {
+      "code": "5308202004",
+      "name": "Ndungga"
+    },
+    {
+      "code": "5308202005",
+      "name": "Tiwutewa"
+    }
+  ],
+  "530821": [
+    {
+      "code": "5308212001",
+      "name": "Nggumbelaka"
+    },
+    {
+      "code": "5308212002",
+      "name": "Mukureku"
+    },
+    {
+      "code": "5308212003",
+      "name": "Wologai Timur"
+    },
+    {
+      "code": "5308212004",
+      "name": "Kuru"
+    },
+    {
+      "code": "5308212005",
+      "name": "Ndenggarongge"
+    },
+    {
+      "code": "5308212006",
+      "name": "Ndikosapu"
+    },
+    {
+      "code": "5308212007",
+      "name": "Taniwoda"
+    },
+    {
+      "code": "5308212008",
+      "name": "Tanalangi"
+    },
+    {
+      "code": "5308212009",
+      "name": "Detuara"
+    },
+    {
+      "code": "5308212010",
+      "name": "Tiwusora"
+    },
+    {
+      "code": "5308212011",
+      "name": "Lisekuru"
+    },
+    {
+      "code": "5308212012",
+      "name": "Rutujeja"
+    },
+    {
+      "code": "5308212013",
+      "name": "Mukureku Sa'ate"
+    },
+    {
+      "code": "5308212014",
+      "name": "Kurusare"
+    }
+  ]
 }

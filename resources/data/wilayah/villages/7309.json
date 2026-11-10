@@ -1,236 +1,442 @@
 {
-    "730901": [
-        {
-            "code": "7309011001",
-            "name": "Hasanuddin"
-        },
-        {
-            "code": "7309011002",
-            "name": "Bontoa"
-        },
-        {
-            "code": "7309012003",
-            "name": "Tenrigangkae"
-        },
-        {
-            "code": "7309012004",
-            "name": "Pattontongang"
-        },
-        {
-            "code": "7309012005",
-            "name": "Bonto Mate'ne"
-        },
-        {
-            "code": "7309012006",
-            "name": "Baji Mangngai"
-        }
-    ],
-    "730902": [
-        {
-            "code": "7309021001",
-            "name": "Cempaniga"
-        },
-        {
-            "code": "7309021002",
-            "name": "Mario Pulana"
-        },
-        {
-            "code": "7309022003",
-            "name": "Timpuseng"
-        },
-        {
-            "code": "7309022004",
-            "name": "Cenrana"
-        },
-        {
-            "code": "7309022005",
-            "name": "Sawaru"
-        },
-        {
-            "code": "7309022006",
-            "name": "Patanyamang"
-        },
-        {
-            "code": "7309022007",
-            "name": "Pattiro Deceng"
-        },
-        {
-            "code": "7309022008",
-            "name": "Benteng"
-        }
-    ],
-    "730903": [
-        {
-            "code": "7309031001",
-            "name": "Kalabbirang"
-        },
-        {
-            "code": "7309031002",
-            "name": "Leang-Leang"
-        },
-        {
-            "code": "7309032003",
-            "name": "Alatengae"
-        },
-        {
-            "code": "7309032004",
-            "name": "Minasa Baji"
-        },
-        {
-            "code": "7309032005",
-            "name": "Tukamasea"
-        },
-        {
-            "code": "7309032006",
-            "name": "Mattoanging"
-        },
-        {
-            "code": "7309032007",
-            "name": "Mangeloreng"
-        },
-        {
-            "code": "7309032008",
-            "name": "Baruga"
-        }
-    ],
-    "730904": [
-        {
-            "code": "7309041001",
-            "name": "Baji Pa'mai"
-        },
-        {
-            "code": "7309041002",
-            "name": "Pallantikang"
-        },
-        {
-            "code": "7309041003",
-            "name": "Baju Bodoa"
-        },
-        {
-            "code": "7309042004",
-            "name": "Borikamase"
-        },
-        {
-            "code": "7309042005",
-            "name": "Mattirotasi"
-        },
-        {
-            "code": "7309042006",
-            "name": "Majannang"
-        },
-        {
-            "code": "7309042007",
-            "name": "Borimasunggu"
-        }
-    ],
-    "730906": [
-        {
-            "code": "7309061001",
-            "name": "Sabila"
-        },
-        {
-            "code": "7309062002",
-            "name": "Padaelo"
-        },
-        {
-            "code": "7309062003",
-            "name": "Batu Putih"
-        },
-        {
-            "code": "7309062004",
-            "name": "Wanua Waru"
-        },
-        {
-            "code": "7309062005",
-            "name": "Telumpanuae"
-        },
-        {
-            "code": "7309062006",
-            "name": "Samaenre"
-        },
-        {
-            "code": "7309062007",
-            "name": "Bentenge"
-        },
-        {
-            "code": "7309062008",
-            "name": "Mattampapole"
-        },
-        {
-            "code": "7309062009",
-            "name": "Uludaya"
-        },
-        {
-            "code": "7309062010",
-            "name": "Gattareng Matinggi"
-        },
-        {
-            "code": "7309062011",
-            "name": "Barugae"
-        }
-    ],
-    "730907": [
-        {
-            "code": "7309071001",
-            "name": "Borong"
-        },
-        {
-            "code": "7309072002",
-            "name": "Allaere"
-        },
-        {
-            "code": "7309072003",
-            "name": "Toddopulia"
-        },
-        {
-            "code": "7309072004",
-            "name": "Kurusumange"
-        },
-        {
-            "code": "7309072005",
-            "name": "Lekopancing"
-        },
-        {
-            "code": "7309072006",
-            "name": "Damai"
-        },
-        {
-            "code": "7309072007",
-            "name": "Sudirman"
-        },
-        {
-            "code": "7309072008",
-            "name": "Purnakarya"
-        }
-    ],
-    "730908": [
-        {
-            "code": "7309082001",
-            "name": "Temmapaduae"
-        },
-        {
-            "code": "7309082002",
-            "name": "Nisombalia"
-        },
-        {
-            "code": "7309082003",
-            "name": "Tellumpoccoe"
-        },
-        {
-            "code": "7309082004",
-            "name": "Ma'rumpa"
-        },
-        {
-            "code": "7309082005",
-            "name": "Bonto Mate'ne"
-        },
-        {
-            "code": "7309082006",
-            "name": "Abbulosibatang"
-        },
-        {
-            "code": "7309082007",
-            "name": "Pabbentengang"
-        }
-    ]
+  "730901": [
+    {
+      "code": "7309011001",
+      "name": "Hasanuddin"
+    },
+    {
+      "code": "7309011002",
+      "name": "Bontoa"
+    },
+    {
+      "code": "7309012003",
+      "name": "Tenrigangkae"
+    },
+    {
+      "code": "7309012004",
+      "name": "Pattontongang"
+    },
+    {
+      "code": "7309012005",
+      "name": "Bonto Mate'ne"
+    },
+    {
+      "code": "7309012006",
+      "name": "Baji Mangngai"
+    }
+  ],
+  "730902": [
+    {
+      "code": "7309021001",
+      "name": "Cempaniga"
+    },
+    {
+      "code": "7309021002",
+      "name": "Mario Pulana"
+    },
+    {
+      "code": "7309022003",
+      "name": "Timpuseng"
+    },
+    {
+      "code": "7309022004",
+      "name": "Cenrana"
+    },
+    {
+      "code": "7309022005",
+      "name": "Sawaru"
+    },
+    {
+      "code": "7309022006",
+      "name": "Patanyamang"
+    },
+    {
+      "code": "7309022007",
+      "name": "Pattiro Deceng"
+    },
+    {
+      "code": "7309022008",
+      "name": "Benteng"
+    }
+  ],
+  "730903": [
+    {
+      "code": "7309031001",
+      "name": "Kalabbirang"
+    },
+    {
+      "code": "7309031002",
+      "name": "Leang-Leang"
+    },
+    {
+      "code": "7309032003",
+      "name": "Alatengae"
+    },
+    {
+      "code": "7309032004",
+      "name": "Minasa Baji"
+    },
+    {
+      "code": "7309032005",
+      "name": "Tukamasea"
+    },
+    {
+      "code": "7309032006",
+      "name": "Mattoanging"
+    },
+    {
+      "code": "7309032007",
+      "name": "Mangeloreng"
+    },
+    {
+      "code": "7309032008",
+      "name": "Baruga"
+    }
+  ],
+  "730904": [
+    {
+      "code": "7309041001",
+      "name": "Baji Pa'mai"
+    },
+    {
+      "code": "7309041002",
+      "name": "Pallantikang"
+    },
+    {
+      "code": "7309041003",
+      "name": "Baju Bodoa"
+    },
+    {
+      "code": "7309042004",
+      "name": "Borikamase"
+    },
+    {
+      "code": "7309042005",
+      "name": "Mattirotasi"
+    },
+    {
+      "code": "7309042006",
+      "name": "Majannang"
+    },
+    {
+      "code": "7309042007",
+      "name": "Borimasunggu"
+    }
+  ],
+  "730905": [
+    {
+      "code": "7309051001",
+      "name": "Bontoa"
+    },
+    {
+      "code": "7309052002",
+      "name": "Pajjukukang"
+    },
+    {
+      "code": "7309052003",
+      "name": "Tunikamaseang"
+    },
+    {
+      "code": "7309052004",
+      "name": "Tupabbiring"
+    },
+    {
+      "code": "7309052005",
+      "name": "Botolempangang"
+    },
+    {
+      "code": "7309052006",
+      "name": "Salenrang"
+    },
+    {
+      "code": "7309052007",
+      "name": "Minasa Upa"
+    },
+    {
+      "code": "7309052008",
+      "name": "Ampekale"
+    },
+    {
+      "code": "7309052009",
+      "name": "Bonto Bahari"
+    }
+  ],
+  "730906": [
+    {
+      "code": "7309061001",
+      "name": "Sabila"
+    },
+    {
+      "code": "7309062002",
+      "name": "Padaelo"
+    },
+    {
+      "code": "7309062003",
+      "name": "Batu Putih"
+    },
+    {
+      "code": "7309062004",
+      "name": "Wanua Waru"
+    },
+    {
+      "code": "7309062005",
+      "name": "Telumpanuae"
+    },
+    {
+      "code": "7309062006",
+      "name": "Samaenre"
+    },
+    {
+      "code": "7309062007",
+      "name": "Bentenge"
+    },
+    {
+      "code": "7309062008",
+      "name": "Mattampapole"
+    },
+    {
+      "code": "7309062009",
+      "name": "Uludaya"
+    },
+    {
+      "code": "7309062010",
+      "name": "Gattareng Matinggi"
+    },
+    {
+      "code": "7309062011",
+      "name": "Barugae"
+    }
+  ],
+  "730907": [
+    {
+      "code": "7309071001",
+      "name": "Borong"
+    },
+    {
+      "code": "7309072002",
+      "name": "Allaere"
+    },
+    {
+      "code": "7309072003",
+      "name": "Toddopulia"
+    },
+    {
+      "code": "7309072004",
+      "name": "Kurusumange"
+    },
+    {
+      "code": "7309072005",
+      "name": "Lekopancing"
+    },
+    {
+      "code": "7309072006",
+      "name": "Damai"
+    },
+    {
+      "code": "7309072007",
+      "name": "Sudirman"
+    },
+    {
+      "code": "7309072008",
+      "name": "Purnakarya"
+    }
+  ],
+  "730908": [
+    {
+      "code": "7309082001",
+      "name": "Temmapaduae"
+    },
+    {
+      "code": "7309082002",
+      "name": "Nisombalia"
+    },
+    {
+      "code": "7309082003",
+      "name": "Tellumpoccoe"
+    },
+    {
+      "code": "7309082004",
+      "name": "Ma'rumpa"
+    },
+    {
+      "code": "7309082005",
+      "name": "Bonto Mate'ne"
+    },
+    {
+      "code": "7309082006",
+      "name": "Abbulosibatang"
+    },
+    {
+      "code": "7309082007",
+      "name": "Pabbentengang"
+    }
+  ],
+  "730909": [
+    {
+      "code": "7309092001",
+      "name": "Jenetaesa"
+    },
+    {
+      "code": "7309092002",
+      "name": "Bonto Tallasa"
+    },
+    {
+      "code": "7309092003",
+      "name": "Sambueja"
+    },
+    {
+      "code": "7309092004",
+      "name": "Tanete"
+    },
+    {
+      "code": "7309092005",
+      "name": "Samangki"
+    },
+    {
+      "code": "7309092006",
+      "name": "Simbang"
+    }
+  ],
+  "730910": [
+    {
+      "code": "7309102001",
+      "name": "Laiya"
+    },
+    {
+      "code": "7309102002",
+      "name": "Labuaja"
+    },
+    {
+      "code": "7309102003",
+      "name": "Limampoccoe"
+    },
+    {
+      "code": "7309102004",
+      "name": "Lebbo Tengae"
+    },
+    {
+      "code": "7309102005",
+      "name": "Rompegading"
+    },
+    {
+      "code": "7309102006",
+      "name": "Baji pa'mai"
+    },
+    {
+      "code": "7309102007",
+      "name": "Cenrana Baru"
+    }
+  ],
+  "730911": [
+    {
+      "code": "7309112001",
+      "name": "Tompobulu"
+    },
+    {
+      "code": "7309112002",
+      "name": "Benteng Gajah"
+    },
+    {
+      "code": "7309112003",
+      "name": "Bonto Manai"
+    },
+    {
+      "code": "7309112004",
+      "name": "Bonto Somba"
+    },
+    {
+      "code": "7309112005",
+      "name": "Toddolimae"
+    },
+    {
+      "code": "7309112006",
+      "name": "Pucak"
+    },
+    {
+      "code": "7309112007",
+      "name": "Bonto Matinggi"
+    },
+    {
+      "code": "7309112008",
+      "name": "Bonto Manurung"
+    }
+  ],
+  "730912": [
+    {
+      "code": "7309121001",
+      "name": "Allepolea"
+    },
+    {
+      "code": "7309121002",
+      "name": "Maccini Baji"
+    },
+    {
+      "code": "7309121003",
+      "name": "Soreang"
+    },
+    {
+      "code": "7309121004",
+      "name": "Mattirodeceng"
+    },
+    {
+      "code": "7309122005",
+      "name": "Marannu"
+    },
+    {
+      "code": "7309122006",
+      "name": "Tengkuru"
+    }
+  ],
+  "730913": [
+    {
+      "code": "7309132001",
+      "name": "Moncongloe"
+    },
+    {
+      "code": "7309132002",
+      "name": "Moncongloe Bulu"
+    },
+    {
+      "code": "7309132003",
+      "name": "Moncongloe Lappara"
+    },
+    {
+      "code": "7309132004",
+      "name": "Bonto Bunga"
+    },
+    {
+      "code": "7309132005",
+      "name": "Bonto Marannu"
+    }
+  ],
+  "730914": [
+    {
+      "code": "7309141001",
+      "name": "Pettuadae"
+    },
+    {
+      "code": "7309141002",
+      "name": "Boribellayya"
+    },
+    {
+      "code": "7309141003",
+      "name": "Alliritengae"
+    },
+    {
+      "code": "7309141004",
+      "name": "Turikale"
+    },
+    {
+      "code": "7309141005",
+      "name": "Taroada"
+    },
+    {
+      "code": "7309141006",
+      "name": "Raya"
+    },
+    {
+      "code": "7309141007",
+      "name": "Adatongeng"
+    }
+  ]
 }

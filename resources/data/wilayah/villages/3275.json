@@ -1,202 +1,250 @@
 {
-    "327501": [
-        {
-            "code": "3275011001",
-            "name": "Bekasijaya"
-        },
-        {
-            "code": "3275011002",
-            "name": "Margahayu"
-        },
-        {
-            "code": "3275011003",
-            "name": "Durenjaya"
-        },
-        {
-            "code": "3275011004",
-            "name": "Arenjaya"
-        }
-    ],
-    "327502": [
-        {
-            "code": "3275021001",
-            "name": "Bintara"
-        },
-        {
-            "code": "3275021002",
-            "name": "Kranji"
-        },
-        {
-            "code": "3275021003",
-            "name": "Kotabaru"
-        },
-        {
-            "code": "3275021004",
-            "name": "Bintarajaya"
-        },
-        {
-            "code": "3275021005",
-            "name": "Jakasampurna"
-        }
-    ],
-    "327503": [
-        {
-            "code": "3275031001",
-            "name": "Kaliabang Tengah"
-        },
-        {
-            "code": "3275031002",
-            "name": "Perwira"
-        },
-        {
-            "code": "3275031003",
-            "name": "Harapanbaru"
-        },
-        {
-            "code": "3275031004",
-            "name": "Teluk Pucung"
-        },
-        {
-            "code": "3275031005",
-            "name": "Margamulya"
-        },
-        {
-            "code": "3275031006",
-            "name": "Harapanjaya"
-        }
-    ],
-    "327504": [
-        {
-            "code": "3275041001",
-            "name": "Pekayonjaya"
-        },
-        {
-            "code": "3275041002",
-            "name": "Margajaya"
-        },
-        {
-            "code": "3275041003",
-            "name": "Jakamulya"
-        },
-        {
-            "code": "3275041004",
-            "name": "Jakasetia"
-        },
-        {
-            "code": "3275041005",
-            "name": "Kayuringinjaya"
-        }
-    ],
-    "327505": [
-        {
-            "code": "3275051001",
-            "name": "Bojong Rawalumbu"
-        },
-        {
-            "code": "3275051002",
-            "name": "Pengasinan"
-        },
-        {
-            "code": "3275051003",
-            "name": "Sepanjangjaya"
-        },
-        {
-            "code": "3275051004",
-            "name": "Bojongmenteng"
-        }
-    ],
-    "327506": [
-        {
-            "code": "3275061001",
-            "name": "Medansatria"
-        },
-        {
-            "code": "3275061002",
-            "name": "Harapanmulya"
-        },
-        {
-            "code": "3275061003",
-            "name": "Pejuang"
-        },
-        {
-            "code": "3275061004",
-            "name": "Kalibaru"
-        }
-    ],
-    "327507": [
-        {
-            "code": "3275071003",
-            "name": "Bantargebang"
-        },
-        {
-            "code": "3275071004",
-            "name": "Cikiwul"
-        },
-        {
-            "code": "3275071007",
-            "name": "Ciketingudik"
-        },
-        {
-            "code": "3275071008",
-            "name": "Sumurbatu"
-        }
-    ],
-    "327510": [
-        {
-            "code": "3275101001",
-            "name": "Jatisampurna"
-        },
-        {
-            "code": "3275101002",
-            "name": "Jatikarya"
-        },
-        {
-            "code": "3275101003",
-            "name": "Jatiranggon"
-        },
-        {
-            "code": "3275101004",
-            "name": "Jatirangga"
-        },
-        {
-            "code": "3275101005",
-            "name": "Jatiraden"
-        }
-    ],
-    "327511": [
-        {
-            "code": "3275111001",
-            "name": "Padurenan"
-        },
-        {
-            "code": "3275111002",
-            "name": "Cimuning"
-        },
-        {
-            "code": "3275111003",
-            "name": "Mustikajaya"
-        },
-        {
-            "code": "3275111004",
-            "name": "Mustikasari"
-        }
-    ],
-    "327512": [
-        {
-            "code": "3275121001",
-            "name": "Jatirahayu"
-        },
-        {
-            "code": "3275121002",
-            "name": "Jatiwarna"
-        },
-        {
-            "code": "3275121003",
-            "name": "Jatimelati"
-        },
-        {
-            "code": "3275121004",
-            "name": "Jatimurni"
-        }
-    ]
+  "327501": [
+    {
+      "code": "3275011001",
+      "name": "Bekasijaya"
+    },
+    {
+      "code": "3275011002",
+      "name": "Margahayu"
+    },
+    {
+      "code": "3275011003",
+      "name": "Durenjaya"
+    },
+    {
+      "code": "3275011004",
+      "name": "Arenjaya"
+    }
+  ],
+  "327502": [
+    {
+      "code": "3275021001",
+      "name": "Bintara"
+    },
+    {
+      "code": "3275021002",
+      "name": "Kranji"
+    },
+    {
+      "code": "3275021003",
+      "name": "Kotabaru"
+    },
+    {
+      "code": "3275021004",
+      "name": "Bintarajaya"
+    },
+    {
+      "code": "3275021005",
+      "name": "Jakasampurna"
+    }
+  ],
+  "327503": [
+    {
+      "code": "3275031001",
+      "name": "Kaliabang Tengah"
+    },
+    {
+      "code": "3275031002",
+      "name": "Perwira"
+    },
+    {
+      "code": "3275031003",
+      "name": "Harapanbaru"
+    },
+    {
+      "code": "3275031004",
+      "name": "Teluk Pucung"
+    },
+    {
+      "code": "3275031005",
+      "name": "Margamulya"
+    },
+    {
+      "code": "3275031006",
+      "name": "Harapanjaya"
+    }
+  ],
+  "327504": [
+    {
+      "code": "3275041001",
+      "name": "Pekayonjaya"
+    },
+    {
+      "code": "3275041002",
+      "name": "Margajaya"
+    },
+    {
+      "code": "3275041003",
+      "name": "Jakamulya"
+    },
+    {
+      "code": "3275041004",
+      "name": "Jakasetia"
+    },
+    {
+      "code": "3275041005",
+      "name": "Kayuringinjaya"
+    }
+  ],
+  "327505": [
+    {
+      "code": "3275051001",
+      "name": "Bojong Rawalumbu"
+    },
+    {
+      "code": "3275051002",
+      "name": "Pengasinan"
+    },
+    {
+      "code": "3275051003",
+      "name": "Sepanjangjaya"
+    },
+    {
+      "code": "3275051004",
+      "name": "Bojongmenteng"
+    }
+  ],
+  "327506": [
+    {
+      "code": "3275061001",
+      "name": "Medansatria"
+    },
+    {
+      "code": "3275061002",
+      "name": "Harapanmulya"
+    },
+    {
+      "code": "3275061003",
+      "name": "Pejuang"
+    },
+    {
+      "code": "3275061004",
+      "name": "Kalibaru"
+    }
+  ],
+  "327507": [
+    {
+      "code": "3275071003",
+      "name": "Bantargebang"
+    },
+    {
+      "code": "3275071004",
+      "name": "Cikiwul"
+    },
+    {
+      "code": "3275071007",
+      "name": "Ciketingudik"
+    },
+    {
+      "code": "3275071008",
+      "name": "Sumurbatu"
+    }
+  ],
+  "327508": [
+    {
+      "code": "3275081001",
+      "name": "Jatiwaringin"
+    },
+    {
+      "code": "3275081002",
+      "name": "Jatibening"
+    },
+    {
+      "code": "3275081003",
+      "name": "Jatimakmur"
+    },
+    {
+      "code": "3275081006",
+      "name": "Jatibening Baru"
+    },
+    {
+      "code": "3275081007",
+      "name": "Jaticempaka"
+    }
+  ],
+  "327509": [
+    {
+      "code": "3275091001",
+      "name": "Jatimekar"
+    },
+    {
+      "code": "3275091002",
+      "name": "Jatiasih"
+    },
+    {
+      "code": "3275091003",
+      "name": "Jatikramat"
+    },
+    {
+      "code": "3275091004",
+      "name": "Jatirasa"
+    },
+    {
+      "code": "3275091005",
+      "name": "Jatiluhur"
+    },
+    {
+      "code": "3275091006",
+      "name": "Jatisari"
+    }
+  ],
+  "327510": [
+    {
+      "code": "3275101001",
+      "name": "Jatisampurna"
+    },
+    {
+      "code": "3275101002",
+      "name": "Jatikarya"
+    },
+    {
+      "code": "3275101003",
+      "name": "Jatiranggon"
+    },
+    {
+      "code": "3275101004",
+      "name": "Jatirangga"
+    },
+    {
+      "code": "3275101005",
+      "name": "Jatiraden"
+    }
+  ],
+  "327511": [
+    {
+      "code": "3275111001",
+      "name": "Padurenan"
+    },
+    {
+      "code": "3275111002",
+      "name": "Cimuning"
+    },
+    {
+      "code": "3275111003",
+      "name": "Mustikajaya"
+    },
+    {
+      "code": "3275111004",
+      "name": "Mustikasari"
+    }
+  ],
+  "327512": [
+    {
+      "code": "3275121001",
+      "name": "Jatirahayu"
+    },
+    {
+      "code": "3275121002",
+      "name": "Jatiwarna"
+    },
+    {
+      "code": "3275121003",
+      "name": "Jatimelati"
+    },
+    {
+      "code": "3275121004",
+      "name": "Jatimurni"
+    }
+  ]
 }

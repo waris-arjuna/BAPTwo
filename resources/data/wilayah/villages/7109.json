@@ -1,0 +1,394 @@
+{
+  "710901": [
+    {
+      "code": "7109011009",
+      "name": "Bebali"
+    },
+    {
+      "code": "7109011010",
+      "name": "Tatahadeng"
+    },
+    {
+      "code": "7109011011",
+      "name": "Tarorane"
+    },
+    {
+      "code": "7109011012",
+      "name": "Akesimbeka"
+    },
+    {
+      "code": "7109011013",
+      "name": "Bahu"
+    },
+    {
+      "code": "7109012001",
+      "name": "Bukide"
+    },
+    {
+      "code": "7109012002",
+      "name": "Apelawo"
+    },
+    {
+      "code": "7109012003",
+      "name": "Deahe"
+    },
+    {
+      "code": "7109012004",
+      "name": "Lia"
+    },
+    {
+      "code": "7109012005",
+      "name": "Kanang"
+    },
+    {
+      "code": "7109012006",
+      "name": "Buise"
+    },
+    {
+      "code": "7109012007",
+      "name": "Karalung"
+    },
+    {
+      "code": "7109012008",
+      "name": "Dame"
+    },
+    {
+      "code": "7109012014",
+      "name": "Dame I"
+    },
+    {
+      "code": "7109012015",
+      "name": "Lia Satu"
+    },
+    {
+      "code": "7109012016",
+      "name": "Karalung Satu"
+    }
+  ],
+  "710902": [
+    {
+      "code": "7109021002",
+      "name": "Paseng"
+    },
+    {
+      "code": "7109021003",
+      "name": "Paniki"
+    },
+    {
+      "code": "7109021004",
+      "name": "Ondong"
+    },
+    {
+      "code": "7109022001",
+      "name": "Peling Sawang"
+    },
+    {
+      "code": "7109022005",
+      "name": "Kanawong"
+    },
+    {
+      "code": "7109022006",
+      "name": "Bumbiha"
+    },
+    {
+      "code": "7109022007",
+      "name": "Pehe"
+    },
+    {
+      "code": "7109022008",
+      "name": "Lehi"
+    },
+    {
+      "code": "7109022009",
+      "name": "Peling"
+    },
+    {
+      "code": "7109022010",
+      "name": "Makalehi"
+    },
+    {
+      "code": "7109022011",
+      "name": "Makalehi Utara"
+    },
+    {
+      "code": "7109022012",
+      "name": "Makalehi Timur"
+    }
+  ],
+  "710903": [
+    {
+      "code": "7109031001",
+      "name": "Bahoi"
+    },
+    {
+      "code": "7109031002",
+      "name": "Balehumara"
+    },
+    {
+      "code": "7109032003",
+      "name": "Lesah"
+    },
+    {
+      "code": "7109032004",
+      "name": "Boto"
+    },
+    {
+      "code": "7109032005",
+      "name": "Mohongsawang"
+    },
+    {
+      "code": "7109032006",
+      "name": "Apengsala"
+    },
+    {
+      "code": "7109032007",
+      "name": "Mulengan"
+    },
+    {
+      "code": "7109032008",
+      "name": "Mahangiang"
+    },
+    {
+      "code": "7109032009",
+      "name": "Tulusan"
+    },
+    {
+      "code": "7109032010",
+      "name": "Haasi"
+    },
+    {
+      "code": "7109032011",
+      "name": "Pumpente"
+    },
+    {
+      "code": "7109032012",
+      "name": "Laingpatehi"
+    },
+    {
+      "code": "7109032013",
+      "name": "Lesah Rende"
+    },
+    {
+      "code": "7109032014",
+      "name": "Barangka Pehe"
+    },
+    {
+      "code": "7109032015",
+      "name": "Pahiama"
+    }
+  ],
+  "710904": [
+    {
+      "code": "7109042001",
+      "name": "Mala"
+    },
+    {
+      "code": "7109042002",
+      "name": "Pangirolong"
+    },
+    {
+      "code": "7109042003",
+      "name": "Sawang"
+    },
+    {
+      "code": "7109042004",
+      "name": "Bandil"
+    },
+    {
+      "code": "7109042005",
+      "name": "Biau"
+    },
+    {
+      "code": "7109042006",
+      "name": "Balirangeng"
+    },
+    {
+      "code": "7109042007",
+      "name": "Buhias"
+    },
+    {
+      "code": "7109042008",
+      "name": "Tapile"
+    },
+    {
+      "code": "7109042009",
+      "name": "Lahopang"
+    },
+    {
+      "code": "7109042010",
+      "name": "Binalu"
+    },
+    {
+      "code": "7109042011",
+      "name": "Kalihiang"
+    },
+    {
+      "code": "7109042012",
+      "name": "Pahepa"
+    },
+    {
+      "code": "7109042013",
+      "name": "Biau Seha"
+    },
+    {
+      "code": "7109042014",
+      "name": "Matole"
+    }
+  ],
+  "710905": [
+    {
+      "code": "7109052001",
+      "name": "Tanaki"
+    },
+    {
+      "code": "7109052002",
+      "name": "Kapeta"
+    },
+    {
+      "code": "7109052003",
+      "name": "Talawid"
+    },
+    {
+      "code": "7109052004",
+      "name": "Laghaeng"
+    },
+    {
+      "code": "7109052005",
+      "name": "Makoa"
+    },
+    {
+      "code": "7109052006",
+      "name": "Batusenggo"
+    },
+    {
+      "code": "7109052007",
+      "name": "Mahuneni"
+    }
+  ],
+  "710906": [
+    {
+      "code": "7109062001",
+      "name": "Bulangan"
+    },
+    {
+      "code": "7109062002",
+      "name": "Minanga"
+    },
+    {
+      "code": "7109062003",
+      "name": "Wo"
+    },
+    {
+      "code": "7109062004",
+      "name": "Bawoleu"
+    },
+    {
+      "code": "7109062005",
+      "name": "Lumbo"
+    },
+    {
+      "code": "7109062006",
+      "name": "Bawo"
+    }
+  ],
+  "710907": [
+    {
+      "code": "7109072001",
+      "name": "Buang"
+    },
+    {
+      "code": "7109072002",
+      "name": "Karungo"
+    },
+    {
+      "code": "7109072003",
+      "name": "Lamanggo"
+    },
+    {
+      "code": "7109072004",
+      "name": "Dalinsaheng"
+    },
+    {
+      "code": "7109072005",
+      "name": "Tope"
+    }
+  ],
+  "710908": [
+    {
+      "code": "7109082001",
+      "name": "Kinali"
+    },
+    {
+      "code": "7109082002",
+      "name": "Hiung"
+    },
+    {
+      "code": "7109082003",
+      "name": "Kiawang"
+    },
+    {
+      "code": "7109082004",
+      "name": "Kawahang"
+    },
+    {
+      "code": "7109082005",
+      "name": "Batubulan"
+    },
+    {
+      "code": "7109082006",
+      "name": "Nameng"
+    },
+    {
+      "code": "7109082007",
+      "name": "Mini"
+    },
+    {
+      "code": "7109082008",
+      "name": "Winangun"
+    }
+  ],
+  "710909": [
+    {
+      "code": "7109092001",
+      "name": "Salili"
+    },
+    {
+      "code": "7109092002",
+      "name": "Beong"
+    },
+    {
+      "code": "7109092003",
+      "name": "Lai"
+    },
+    {
+      "code": "7109092004",
+      "name": "Dompase"
+    }
+  ],
+  "710910": [
+    {
+      "code": "7109102001",
+      "name": "Humbia"
+    },
+    {
+      "code": "7109102002",
+      "name": "Kisihang"
+    },
+    {
+      "code": "7109102003",
+      "name": "Bira Kiama"
+    },
+    {
+      "code": "7109102004",
+      "name": "Buha"
+    },
+    {
+      "code": "7109102005",
+      "name": "Batumawira"
+    },
+    {
+      "code": "7109102006",
+      "name": "Birarikei"
+    }
+  ]
+}

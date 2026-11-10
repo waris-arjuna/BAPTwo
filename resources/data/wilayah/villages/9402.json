@@ -1,48 +1,1274 @@
 {
-    "940201": [
-        {
-            "code": "9402011010",
-            "name": "Wuyukwi"
-        },
-        {
-            "code": "9402011011",
-            "name": "Pagaleme"
-        },
-        {
-            "code": "9402012001",
-            "name": "Pruleme"
-        },
-        {
-            "code": "9402012002",
-            "name": "Wuyukwi"
-        },
-        {
-            "code": "9402012003",
-            "name": "Wuyuneri"
-        },
-        {
-            "code": "9402012004",
-            "name": "Pepera"
-        },
-        {
-            "code": "9402012005",
-            "name": "Muliagambut"
-        },
-        {
-            "code": "9402012006",
-            "name": "Trikora"
-        },
-        {
-            "code": "9402012007",
-            "name": "Towogi"
-        },
-        {
-            "code": "9402012008",
-            "name": "Birak Ambut"
-        },
-        {
-            "code": "9402012009",
-            "name": "Usir"
-        }
-    ]
+  "940201": [
+    {
+      "code": "9402011010",
+      "name": "Wuyukwi"
+    },
+    {
+      "code": "9402011011",
+      "name": "Pagaleme"
+    },
+    {
+      "code": "9402012001",
+      "name": "Pruleme"
+    },
+    {
+      "code": "9402012002",
+      "name": "Wuyukwi"
+    },
+    {
+      "code": "9402012003",
+      "name": "Wuyuneri"
+    },
+    {
+      "code": "9402012004",
+      "name": "Pepera"
+    },
+    {
+      "code": "9402012005",
+      "name": "Muliagambut"
+    },
+    {
+      "code": "9402012006",
+      "name": "Trikora"
+    },
+    {
+      "code": "9402012007",
+      "name": "Towogi"
+    },
+    {
+      "code": "9402012008",
+      "name": "Birak Ambut"
+    },
+    {
+      "code": "9402012009",
+      "name": "Usir"
+    }
+  ],
+  "940202": [
+    {
+      "code": "9402021021",
+      "name": "Wurak"
+    },
+    {
+      "code": "9402022001",
+      "name": "Wurak"
+    },
+    {
+      "code": "9402022002",
+      "name": "Lambo"
+    },
+    {
+      "code": "9402022003",
+      "name": "Pindebaga"
+    },
+    {
+      "code": "9402022004",
+      "name": "Dolinggame"
+    },
+    {
+      "code": "9402022005",
+      "name": "Belantara"
+    },
+    {
+      "code": "9402022006",
+      "name": "Kalengga"
+    },
+    {
+      "code": "9402022007",
+      "name": "Pulau Timur"
+    },
+    {
+      "code": "9402022008",
+      "name": "Girmor"
+    },
+    {
+      "code": "9402022009",
+      "name": "Maka"
+    },
+    {
+      "code": "9402022010",
+      "name": "Mobigi"
+    },
+    {
+      "code": "9402022011",
+      "name": "Jauria I"
+    },
+    {
+      "code": "9402022012",
+      "name": "Gubulome"
+    },
+    {
+      "code": "9402022013",
+      "name": "Megawi Megewa"
+    },
+    {
+      "code": "9402022014",
+      "name": "Kurikpulok"
+    },
+    {
+      "code": "9402022015",
+      "name": "Puky paky"
+    },
+    {
+      "code": "9402022016",
+      "name": "Kaninonggo"
+    },
+    {
+      "code": "9402022017",
+      "name": "Kirigimaduk"
+    },
+    {
+      "code": "9402022018",
+      "name": "Pologengga"
+    },
+    {
+      "code": "9402022019",
+      "name": "Ginipago"
+    },
+    {
+      "code": "9402022020",
+      "name": "Aulukme"
+    }
+  ],
+  "940203": [
+    {
+      "code": "9402032001",
+      "name": "Fawi"
+    },
+    {
+      "code": "9402032002",
+      "name": "Bakusi"
+    },
+    {
+      "code": "9402032003",
+      "name": "Turumo"
+    },
+    {
+      "code": "9402032004",
+      "name": "Kaho"
+    },
+    {
+      "code": "9402032005",
+      "name": "Biricare"
+    },
+    {
+      "code": "9402032006",
+      "name": "Dorey"
+    },
+    {
+      "code": "9402032007",
+      "name": "Fii"
+    },
+    {
+      "code": "9402032008",
+      "name": "Evo"
+    },
+    {
+      "code": "9402032009",
+      "name": "Yerei"
+    }
+  ],
+  "940204": [
+    {
+      "code": "9402042001",
+      "name": "Mewoluk"
+    },
+    {
+      "code": "9402042002",
+      "name": "Gumbru"
+    },
+    {
+      "code": "9402042003",
+      "name": "Anggulobaga"
+    },
+    {
+      "code": "9402042004",
+      "name": "Balinggup"
+    },
+    {
+      "code": "9402042005",
+      "name": "Waliba"
+    },
+    {
+      "code": "9402042006",
+      "name": "Nggininik"
+    },
+    {
+      "code": "9402042007",
+      "name": "Biak"
+    },
+    {
+      "code": "9402042008",
+      "name": "Wutikme"
+    }
+  ],
+  "940205": [
+    {
+      "code": "9402052001",
+      "name": "Yambuni"
+    },
+    {
+      "code": "9402052002",
+      "name": "Yogolawi"
+    },
+    {
+      "code": "9402052003",
+      "name": "Wundu"
+    },
+    {
+      "code": "9402052004",
+      "name": "Binime"
+    },
+    {
+      "code": "9402052005",
+      "name": "Tiogeme"
+    },
+    {
+      "code": "9402052006",
+      "name": "Goyage"
+    },
+    {
+      "code": "9402052007",
+      "name": "Kalimbut"
+    },
+    {
+      "code": "9402052008",
+      "name": "Wolame"
+    },
+    {
+      "code": "9402052009",
+      "name": "Muara"
+    },
+    {
+      "code": "9402052010",
+      "name": "Gibaga"
+    },
+    {
+      "code": "9402052011",
+      "name": "Nami"
+    },
+    {
+      "code": "9402052012",
+      "name": "Linwakwi"
+    },
+    {
+      "code": "9402052013",
+      "name": "Kwantineri"
+    },
+    {
+      "code": "9402052014",
+      "name": "Jileyale"
+    }
+  ],
+  "940206": [
+    {
+      "code": "9402062001",
+      "name": "Mepar"
+    },
+    {
+      "code": "9402062002",
+      "name": "Anebalui"
+    },
+    {
+      "code": "9402062003",
+      "name": "Pagolome"
+    },
+    {
+      "code": "9402062004",
+      "name": "Tombok"
+    },
+    {
+      "code": "9402062005",
+      "name": "Kering"
+    },
+    {
+      "code": "9402062006",
+      "name": "Meyongga"
+    },
+    {
+      "code": "9402062007",
+      "name": "Oum"
+    },
+    {
+      "code": "9402062008",
+      "name": "Nume"
+    },
+    {
+      "code": "9402062009",
+      "name": "Yawor"
+    },
+    {
+      "code": "9402062010",
+      "name": "Wurina"
+    },
+    {
+      "code": "9402062011",
+      "name": "Woraluk"
+    },
+    {
+      "code": "9402062012",
+      "name": "Onendu"
+    },
+    {
+      "code": "9402062013",
+      "name": "Akwibaga"
+    }
+  ],
+  "940207": [
+    {
+      "code": "9402072001",
+      "name": "Gubugani"
+    },
+    {
+      "code": "9402072002",
+      "name": "Ambok"
+    },
+    {
+      "code": "9402072003",
+      "name": "Awiyam"
+    },
+    {
+      "code": "9402072004",
+      "name": "Tubugime"
+    },
+    {
+      "code": "9402072005",
+      "name": "Wariru"
+    },
+    {
+      "code": "9402072006",
+      "name": "Digi"
+    },
+    {
+      "code": "9402072007",
+      "name": "Kikup"
+    },
+    {
+      "code": "9402072008",
+      "name": "Gunung Tayok"
+    },
+    {
+      "code": "9402072009",
+      "name": "Nambu"
+    },
+    {
+      "code": "9402072010",
+      "name": "Asua"
+    },
+    {
+      "code": "9402072011",
+      "name": "Degei"
+    },
+    {
+      "code": "9402072012",
+      "name": "Sigou"
+    },
+    {
+      "code": "9402072013",
+      "name": "Nalu"
+    }
+  ],
+  "940208": [
+    {
+      "code": "9402082001",
+      "name": "Tinggineri"
+    },
+    {
+      "code": "9402082002",
+      "name": "Monia"
+    },
+    {
+      "code": "9402082003",
+      "name": "Tingginambut"
+    },
+    {
+      "code": "9402082004",
+      "name": "Melekom"
+    },
+    {
+      "code": "9402082005",
+      "name": "Gigume"
+    },
+    {
+      "code": "9402082006",
+      "name": "Papua"
+    },
+    {
+      "code": "9402082007",
+      "name": "Tingginime"
+    },
+    {
+      "code": "9402082008",
+      "name": "Tombo"
+    },
+    {
+      "code": "9402082009",
+      "name": "Gimanggen"
+    },
+    {
+      "code": "9402082010",
+      "name": "Uragi"
+    },
+    {
+      "code": "9402082011",
+      "name": "Yamengga"
+    },
+    {
+      "code": "9402082012",
+      "name": "Degi"
+    },
+    {
+      "code": "9402082013",
+      "name": "Jugumblawi"
+    },
+    {
+      "code": "9402082014",
+      "name": "Paralo"
+    },
+    {
+      "code": "9402082015",
+      "name": "Womelagandan"
+    },
+    {
+      "code": "9402082016",
+      "name": "Bigirage"
+    },
+    {
+      "code": "9402082017",
+      "name": "Lumbuk"
+    },
+    {
+      "code": "9402082018",
+      "name": "Inikimaluk"
+    },
+    {
+      "code": "9402082019",
+      "name": "Yonggun"
+    },
+    {
+      "code": "9402082020",
+      "name": "Gobak"
+    },
+    {
+      "code": "9402082021",
+      "name": "Gubupur"
+    },
+    {
+      "code": "9402082022",
+      "name": "Berime"
+    }
+  ],
+  "940209": [
+    {
+      "code": "9402092001",
+      "name": "Pagaleme"
+    },
+    {
+      "code": "9402092002",
+      "name": "Muliambut"
+    },
+    {
+      "code": "9402092003",
+      "name": "Lunggineri"
+    },
+    {
+      "code": "9402092004",
+      "name": "Igimbut"
+    },
+    {
+      "code": "9402092005",
+      "name": "Kulok enggame"
+    }
+  ],
+  "940210": [
+    {
+      "code": "9402102001",
+      "name": "Yarmukum"
+    },
+    {
+      "code": "9402102002",
+      "name": "Pilia"
+    },
+    {
+      "code": "9402102003",
+      "name": "Yaniruk"
+    },
+    {
+      "code": "9402102004",
+      "name": "Gwenggu"
+    },
+    {
+      "code": "9402102005",
+      "name": "Tukwi"
+    },
+    {
+      "code": "9402102006",
+      "name": "Tiru"
+    },
+    {
+      "code": "9402102007",
+      "name": "Yogorini"
+    },
+    {
+      "code": "9402102008",
+      "name": "Nalime"
+    },
+    {
+      "code": "9402102009",
+      "name": "Urgele"
+    },
+    {
+      "code": "9402102010",
+      "name": "Yagonik"
+    },
+    {
+      "code": "9402102011",
+      "name": "Lulame"
+    }
+  ],
+  "940211": [
+    {
+      "code": "9402112001",
+      "name": "Wandenggobak"
+    },
+    {
+      "code": "9402112002",
+      "name": "Jiginikime"
+    },
+    {
+      "code": "9402112003",
+      "name": "Puncak Senyum"
+    },
+    {
+      "code": "9402112004",
+      "name": "Anggutari"
+    },
+    {
+      "code": "9402112005",
+      "name": "Wunagelo"
+    },
+    {
+      "code": "9402112006",
+      "name": "Dondo"
+    },
+    {
+      "code": "9402112007",
+      "name": "Tanoba"
+    },
+    {
+      "code": "9402112008",
+      "name": "Niruwi"
+    },
+    {
+      "code": "9402112009",
+      "name": "Yalikambi"
+    }
+  ],
+  "940212": [
+    {
+      "code": "9402122001",
+      "name": "Kulirik"
+    },
+    {
+      "code": "9402122002",
+      "name": "Doligobak"
+    },
+    {
+      "code": "9402122003",
+      "name": "Yalinggua"
+    },
+    {
+      "code": "9402122004",
+      "name": "Talilome"
+    },
+    {
+      "code": "9402122005",
+      "name": "Muara"
+    },
+    {
+      "code": "9402122006",
+      "name": "Karubate"
+    },
+    {
+      "code": "9402122007",
+      "name": "Dologobak"
+    },
+    {
+      "code": "9402122008",
+      "name": "Yambidugum"
+    }
+  ],
+  "940213": [
+    {
+      "code": "9402132001",
+      "name": "Ilamburawi"
+    },
+    {
+      "code": "9402132002",
+      "name": "Berelema"
+    },
+    {
+      "code": "9402132003",
+      "name": "Kalome"
+    },
+    {
+      "code": "9402132004",
+      "name": "Temu"
+    },
+    {
+      "code": "9402132005",
+      "name": "Jigunikime"
+    }
+  ],
+  "940214": [
+    {
+      "code": "9402142001",
+      "name": "Mondu"
+    },
+    {
+      "code": "9402142002",
+      "name": "Yambi"
+    },
+    {
+      "code": "9402142003",
+      "name": "Moulo"
+    },
+    {
+      "code": "9402142004",
+      "name": "Tenolok"
+    },
+    {
+      "code": "9402142005",
+      "name": "Ginigom"
+    },
+    {
+      "code": "9402142006",
+      "name": "Dangenpaga"
+    },
+    {
+      "code": "9402142007",
+      "name": "Wonome"
+    },
+    {
+      "code": "9402142008",
+      "name": "Yoboluk"
+    },
+    {
+      "code": "9402142009",
+      "name": "Tirineri"
+    }
+  ],
+  "940215": [
+    {
+      "code": "9402152001",
+      "name": "Lumo"
+    },
+    {
+      "code": "9402152002",
+      "name": "Kililumo"
+    },
+    {
+      "code": "9402152003",
+      "name": "Gilibe"
+    },
+    {
+      "code": "9402152004",
+      "name": "Ninggineri"
+    },
+    {
+      "code": "9402152005",
+      "name": "Wurabak"
+    },
+    {
+      "code": "9402152006",
+      "name": "Wuluma"
+    },
+    {
+      "code": "9402152007",
+      "name": "Tigir"
+    },
+    {
+      "code": "9402152008",
+      "name": "Gililome"
+    },
+    {
+      "code": "9402152009",
+      "name": "Wuramburu"
+    }
+  ],
+  "940216": [
+    {
+      "code": "9402162001",
+      "name": "Tiolome"
+    },
+    {
+      "code": "9402162002",
+      "name": "Belabaga"
+    },
+    {
+      "code": "9402162003",
+      "name": "Mewut"
+    },
+    {
+      "code": "9402162004",
+      "name": "Maloinggen"
+    },
+    {
+      "code": "9402162005",
+      "name": "Wanume"
+    }
+  ],
+  "940217": [
+    {
+      "code": "9402172001",
+      "name": "Dokome"
+    },
+    {
+      "code": "9402172002",
+      "name": "Purbalo"
+    },
+    {
+      "code": "9402172003",
+      "name": "Wurage"
+    },
+    {
+      "code": "9402172004",
+      "name": "Nowoneri"
+    },
+    {
+      "code": "9402172005",
+      "name": "Nowome"
+    },
+    {
+      "code": "9402172006",
+      "name": "Imulineri"
+    },
+    {
+      "code": "9402172007",
+      "name": "Molobak"
+    },
+    {
+      "code": "9402172008",
+      "name": "Kimibut"
+    },
+    {
+      "code": "9402172009",
+      "name": "Nunggwagi"
+    }
+  ],
+  "940218": [
+    {
+      "code": "9402182001",
+      "name": "Kalome"
+    },
+    {
+      "code": "9402182002",
+      "name": "Agape"
+    },
+    {
+      "code": "9402182003",
+      "name": "Cilome"
+    },
+    {
+      "code": "9402182004",
+      "name": "Longgawi"
+    },
+    {
+      "code": "9402182005",
+      "name": "Wundini"
+    },
+    {
+      "code": "9402182006",
+      "name": "Berem"
+    },
+    {
+      "code": "9402182007",
+      "name": "Diraluk"
+    },
+    {
+      "code": "9402182008",
+      "name": "Yanenggawi"
+    },
+    {
+      "code": "9402182009",
+      "name": "Kayogebur"
+    },
+    {
+      "code": "9402182010",
+      "name": "Wurabume"
+    },
+    {
+      "code": "9402182011",
+      "name": "Binggelakme"
+    },
+    {
+      "code": "9402182012",
+      "name": "Torage"
+    },
+    {
+      "code": "9402182013",
+      "name": "Palumagi"
+    },
+    {
+      "code": "9402182014",
+      "name": "Jiramok"
+    },
+    {
+      "code": "9402182015",
+      "name": "Jinggwi"
+    },
+    {
+      "code": "9402182016",
+      "name": "Pilibur"
+    }
+  ],
+  "940219": [
+    {
+      "code": "9402192001",
+      "name": "Wanuwi"
+    },
+    {
+      "code": "9402192002",
+      "name": "Nenegame"
+    },
+    {
+      "code": "9402192003",
+      "name": "Bime"
+    },
+    {
+      "code": "9402192004",
+      "name": "Anggege"
+    },
+    {
+      "code": "9402192005",
+      "name": "Pernaluk"
+    },
+    {
+      "code": "9402192006",
+      "name": "Kiburu"
+    },
+    {
+      "code": "9402192007",
+      "name": "Nuwi"
+    },
+    {
+      "code": "9402192008",
+      "name": "Ponggoname"
+    },
+    {
+      "code": "9402192009",
+      "name": "Gibume"
+    },
+    {
+      "code": "9402192010",
+      "name": "Naburage"
+    },
+    {
+      "code": "9402192011",
+      "name": "Yunggwi"
+    },
+    {
+      "code": "9402192012",
+      "name": "Anggagalo"
+    },
+    {
+      "code": "9402192013",
+      "name": "Anggalo"
+    },
+    {
+      "code": "9402192014",
+      "name": "Wiyage"
+    },
+    {
+      "code": "9402192015",
+      "name": "Piyabigimbut"
+    },
+    {
+      "code": "9402192016",
+      "name": "Bunaluk"
+    },
+    {
+      "code": "9402192017",
+      "name": "Gereja Lama"
+    }
+  ],
+  "940220": [
+    {
+      "code": "9402202001",
+      "name": "Amberiambut"
+    },
+    {
+      "code": "9402202002",
+      "name": "Kobarak"
+    },
+    {
+      "code": "9402202003",
+      "name": "Wugiwagi"
+    },
+    {
+      "code": "9402202004",
+      "name": "Yagaluk"
+    },
+    {
+      "code": "9402202005",
+      "name": "Moulo"
+    },
+    {
+      "code": "9402202006",
+      "name": "Jimbanime"
+    },
+    {
+      "code": "9402202007",
+      "name": "Jiguluk"
+    },
+    {
+      "code": "9402202008",
+      "name": "Yamoneri"
+    },
+    {
+      "code": "9402202009",
+      "name": "Gumawi"
+    },
+    {
+      "code": "9402202010",
+      "name": "Digolome"
+    },
+    {
+      "code": "9402202011",
+      "name": "Bunume"
+    },
+    {
+      "code": "9402202012",
+      "name": "Ngginigum"
+    },
+    {
+      "code": "9402202013",
+      "name": "Jimbeneri"
+    },
+    {
+      "code": "9402202014",
+      "name": "Jigelo"
+    },
+    {
+      "code": "9402202015",
+      "name": "Piyapigi"
+    },
+    {
+      "code": "9402202016",
+      "name": "Jibonok"
+    }
+  ],
+  "940221": [
+    {
+      "code": "9402212001",
+      "name": "Anggutare"
+    },
+    {
+      "code": "9402212002",
+      "name": "Agopaga"
+    },
+    {
+      "code": "9402212003",
+      "name": "Lerawera"
+    },
+    {
+      "code": "9402212004",
+      "name": "Nakongwe"
+    },
+    {
+      "code": "9402212005",
+      "name": "Ginilome"
+    },
+    {
+      "code": "9402212006",
+      "name": "Yalibate"
+    },
+    {
+      "code": "9402212007",
+      "name": "Wurunikime"
+    },
+    {
+      "code": "9402212008",
+      "name": "Jimbinggame"
+    },
+    {
+      "code": "9402212009",
+      "name": "Oriluk"
+    },
+    {
+      "code": "9402212010",
+      "name": "Pagarugom"
+    },
+    {
+      "code": "9402212011",
+      "name": "Towoluk"
+    },
+    {
+      "code": "9402212012",
+      "name": "Tenolok"
+    },
+    {
+      "code": "9402212013",
+      "name": "Jiogobak"
+    },
+    {
+      "code": "9402212014",
+      "name": "Tirigoi"
+    },
+    {
+      "code": "9402212015",
+      "name": "Mondogoneri"
+    },
+    {
+      "code": "9402212016",
+      "name": "Tenomanggen"
+    },
+    {
+      "code": "9402212017",
+      "name": "Andiron"
+    },
+    {
+      "code": "9402212018",
+      "name": "Ambitmbit"
+    },
+    {
+      "code": "9402212019",
+      "name": "Aulakme"
+    }
+  ],
+  "940222": [
+    {
+      "code": "9402222001",
+      "name": "Nioga"
+    },
+    {
+      "code": "9402222002",
+      "name": "Yonggi"
+    },
+    {
+      "code": "9402222003",
+      "name": "Wonggi"
+    },
+    {
+      "code": "9402222004",
+      "name": "Wambagalo"
+    },
+    {
+      "code": "9402222005",
+      "name": "Jigonikme"
+    },
+    {
+      "code": "9402222006",
+      "name": "Muruwi"
+    },
+    {
+      "code": "9402222007",
+      "name": "Wutime"
+    },
+    {
+      "code": "9402222008",
+      "name": "Gibaga"
+    },
+    {
+      "code": "9402222009",
+      "name": "Papak"
+    },
+    {
+      "code": "9402222010",
+      "name": "Wanduri"
+    },
+    {
+      "code": "9402222011",
+      "name": "Walom"
+    }
+  ],
+  "940223": [
+    {
+      "code": "9402232001",
+      "name": "Gubume"
+    },
+    {
+      "code": "9402232002",
+      "name": "Milineri"
+    },
+    {
+      "code": "9402232003",
+      "name": "Melela"
+    },
+    {
+      "code": "9402232004",
+      "name": "Kenendaga"
+    },
+    {
+      "code": "9402232005",
+      "name": "Apelome"
+    },
+    {
+      "code": "9402232006",
+      "name": "Kumigi"
+    },
+    {
+      "code": "9402232007",
+      "name": "Noba-Noba"
+    },
+    {
+      "code": "9402232008",
+      "name": "Nogi"
+    },
+    {
+      "code": "9402232009",
+      "name": "Gubuneri"
+    },
+    {
+      "code": "9402232010",
+      "name": "Liguni"
+    },
+    {
+      "code": "9402232011",
+      "name": "Mondu"
+    },
+    {
+      "code": "9402232012",
+      "name": "Jinggi"
+    },
+    {
+      "code": "9402232013",
+      "name": "Ginilume"
+    },
+    {
+      "code": "9402232014",
+      "name": "Wunggani"
+    },
+    {
+      "code": "9402232015",
+      "name": "Menggegenikime"
+    },
+    {
+      "code": "9402232016",
+      "name": "Tinggirege"
+    },
+    {
+      "code": "9402232017",
+      "name": "Timoramo"
+    }
+  ],
+  "940224": [
+    {
+      "code": "9402242001",
+      "name": "Guna"
+    },
+    {
+      "code": "9402242002",
+      "name": "Mandura"
+    },
+    {
+      "code": "9402242003",
+      "name": "Lugubago"
+    },
+    {
+      "code": "9402242004",
+      "name": "Andugir"
+    },
+    {
+      "code": "9402242005",
+      "name": "Muara Miguni"
+    },
+    {
+      "code": "9402242006",
+      "name": "Abili"
+    },
+    {
+      "code": "9402242007",
+      "name": "Pereya"
+    },
+    {
+      "code": "9402242008",
+      "name": "Ginimanggen"
+    },
+    {
+      "code": "9402242009",
+      "name": "Laworege"
+    },
+    {
+      "code": "9402242010",
+      "name": "Wumbiri"
+    }
+  ],
+  "940225": [
+    {
+      "code": "9402252001",
+      "name": "Dagai"
+    },
+    {
+      "code": "9402252002",
+      "name": "Dagai 2"
+    },
+    {
+      "code": "9402252003",
+      "name": "Deide"
+    },
+    {
+      "code": "9402252004",
+      "name": "Faride"
+    },
+    {
+      "code": "9402252005",
+      "name": "Soi"
+    },
+    {
+      "code": "9402252006",
+      "name": "Mbomban"
+    },
+    {
+      "code": "9402252007",
+      "name": "Yeihneri"
+    },
+    {
+      "code": "9402252008",
+      "name": "Mandara Lani"
+    },
+    {
+      "code": "9402252009",
+      "name": "Debite"
+    },
+    {
+      "code": "9402252010",
+      "name": "Gueri"
+    }
+  ],
+  "940226": [
+    {
+      "code": "9402262001",
+      "name": "Kiyage"
+    },
+    {
+      "code": "9402262002",
+      "name": "Wanggiba"
+    },
+    {
+      "code": "9402262003",
+      "name": "Amuringgik"
+    },
+    {
+      "code": "9402262004",
+      "name": "Tenggabanggwi"
+    },
+    {
+      "code": "9402262005",
+      "name": "Tumbiwolu"
+    },
+    {
+      "code": "9402262006",
+      "name": "Kelandu"
+    },
+    {
+      "code": "9402262007",
+      "name": "Ambo"
+    },
+    {
+      "code": "9402262008",
+      "name": "Atoli"
+    }
+  ]
 }

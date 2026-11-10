@@ -1,0 +1,534 @@
+{
+  "621001": [
+    {
+      "code": "6210011001",
+      "name": "Sepang Simin"
+    },
+    {
+      "code": "6210012002",
+      "name": "Sepang Kota"
+    },
+    {
+      "code": "6210012003",
+      "name": "Tewai Baru"
+    },
+    {
+      "code": "6210012004",
+      "name": "Tanjung Karitak"
+    },
+    {
+      "code": "6210012011",
+      "name": "Pamatang Limau"
+    },
+    {
+      "code": "6210012012",
+      "name": "Tampelas"
+    },
+    {
+      "code": "6210012014",
+      "name": "Rabauh"
+    }
+  ],
+  "621002": [
+    {
+      "code": "6210021001",
+      "name": "Tampang Tumbang Anjir"
+    },
+    {
+      "code": "6210021012",
+      "name": "Kurun"
+    },
+    {
+      "code": "6210022002",
+      "name": "Petak Bahandang"
+    },
+    {
+      "code": "6210022003",
+      "name": "Tanjung Riu"
+    },
+    {
+      "code": "6210022004",
+      "name": "Teluk Nyatu"
+    },
+    {
+      "code": "6210022005",
+      "name": "Tumbang Lampahung"
+    },
+    {
+      "code": "6210022006",
+      "name": "Tewang Pajangan"
+    },
+    {
+      "code": "6210022007",
+      "name": "Tumbang Tariak"
+    },
+    {
+      "code": "6210022008",
+      "name": "Tumbang Miwan"
+    },
+    {
+      "code": "6210022009",
+      "name": "Hurung Bunut"
+    },
+    {
+      "code": "6210022010",
+      "name": "Tumbang Hakau"
+    },
+    {
+      "code": "6210022011",
+      "name": "Pilang Munduk"
+    },
+    {
+      "code": "6210022013",
+      "name": "Tumbang Manyangan"
+    },
+    {
+      "code": "6210022014",
+      "name": "Penda Pilang"
+    },
+    {
+      "code": "6210022015",
+      "name": "Tumbang Tambirah"
+    }
+  ],
+  "621003": [
+    {
+      "code": "6210031005",
+      "name": "Tewah"
+    },
+    {
+      "code": "6210032001",
+      "name": "Sare Rangan"
+    },
+    {
+      "code": "6210032002",
+      "name": "Tumbang Pajangei"
+    },
+    {
+      "code": "6210032003",
+      "name": "Kasintu"
+    },
+    {
+      "code": "6210032004",
+      "name": "Batu Nyiwuh"
+    },
+    {
+      "code": "6210032006",
+      "name": "Tumbang Habaon"
+    },
+    {
+      "code": "6210032007",
+      "name": "Sei Riang"
+    },
+    {
+      "code": "6210032008",
+      "name": "Sandung Tambun"
+    },
+    {
+      "code": "6210032009",
+      "name": "Tanjung Untung"
+    },
+    {
+      "code": "6210032010",
+      "name": "Upon Batu"
+    },
+    {
+      "code": "6210032011",
+      "name": "Sumur Mas"
+    },
+    {
+      "code": "6210032012",
+      "name": "Batu Nyapau"
+    },
+    {
+      "code": "6210032013",
+      "name": "Taja Urap"
+    },
+    {
+      "code": "6210032014",
+      "name": "Teluk Lawah"
+    },
+    {
+      "code": "6210032015",
+      "name": "Karason Raya"
+    },
+    {
+      "code": "6210032016",
+      "name": "Rangan Mihing"
+    }
+  ],
+  "621004": [
+    {
+      "code": "6210041001",
+      "name": "Tumbang Miri"
+    },
+    {
+      "code": "6210042002",
+      "name": "Batu Tangkoi"
+    },
+    {
+      "code": "6210042005",
+      "name": "Penda Rangas"
+    },
+    {
+      "code": "6210042006",
+      "name": "Tumbang Sian"
+    },
+    {
+      "code": "6210042008",
+      "name": "Tumbang Pasangon"
+    },
+    {
+      "code": "6210042012",
+      "name": "Tumbang Korik"
+    },
+    {
+      "code": "6210042014",
+      "name": "Tumbang Ponyoi"
+    },
+    {
+      "code": "6210042019",
+      "name": "Dandang"
+    },
+    {
+      "code": "6210042020",
+      "name": "Tumbang Hamputung"
+    },
+    {
+      "code": "6210042021",
+      "name": "Tumbang Tajungan"
+    },
+    {
+      "code": "6210042028",
+      "name": "Tumbang Takaoi"
+    },
+    {
+      "code": "6210042029",
+      "name": "Teluk Kanduri"
+    }
+  ],
+  "621005": [
+    {
+      "code": "6210051021",
+      "name": "Jakatan Raya"
+    },
+    {
+      "code": "6210052001",
+      "name": "Tumbang Jutuh"
+    },
+    {
+      "code": "6210052002",
+      "name": "Tumbang Baringei"
+    },
+    {
+      "code": "6210052009",
+      "name": "Tumbang Malahoi"
+    },
+    {
+      "code": "6210052014",
+      "name": "Tumbang Bunut"
+    },
+    {
+      "code": "6210052015",
+      "name": "Tumbang Kajuei"
+    },
+    {
+      "code": "6210052016",
+      "name": "Luwuk Kantor"
+    },
+    {
+      "code": "6210052017",
+      "name": "Luwuk Langkuas"
+    },
+    {
+      "code": "6210052018",
+      "name": "Talangkah"
+    },
+    {
+      "code": "6210052019",
+      "name": "Parempei"
+    },
+    {
+      "code": "6210052020",
+      "name": "Linau"
+    },
+    {
+      "code": "6210052022",
+      "name": "Bereng Baru"
+    },
+    {
+      "code": "6210052023",
+      "name": "Bereng Malaka"
+    },
+    {
+      "code": "6210052027",
+      "name": "Karya Bhakti"
+    }
+  ],
+  "621006": [
+    {
+      "code": "6210061001",
+      "name": "Tumbang Talaken"
+    },
+    {
+      "code": "6210062002",
+      "name": "Tumbang Sepan"
+    },
+    {
+      "code": "6210062003",
+      "name": "Tangki Dahuyan"
+    },
+    {
+      "code": "6210062004",
+      "name": "Bereng Balawan"
+    },
+    {
+      "code": "6210062005",
+      "name": "Bereng Jun"
+    },
+    {
+      "code": "6210062006",
+      "name": "Takaras"
+    },
+    {
+      "code": "6210062012",
+      "name": "Belawan Mulia"
+    },
+    {
+      "code": "6210062013",
+      "name": "Taringen"
+    },
+    {
+      "code": "6210062014",
+      "name": "Bangun Sari"
+    },
+    {
+      "code": "6210062015",
+      "name": "Fajar Harapan"
+    },
+    {
+      "code": "6210062017",
+      "name": "Gohong"
+    },
+    {
+      "code": "6210062018",
+      "name": "Tumbang Jalemu"
+    }
+  ],
+  "621007": [
+    {
+      "code": "6210071005",
+      "name": "Kampuri"
+    },
+    {
+      "code": "6210072001",
+      "name": "Tuyun"
+    },
+    {
+      "code": "6210072002",
+      "name": "Tumbang Empas"
+    },
+    {
+      "code": "6210072003",
+      "name": "Rangan Tate"
+    },
+    {
+      "code": "6210072004",
+      "name": "Dahian Tambuk"
+    },
+    {
+      "code": "6210072006",
+      "name": "Tumbang Danau"
+    }
+  ],
+  "621008": [
+    {
+      "code": "6210081008",
+      "name": "Tumbang Marikoi"
+    },
+    {
+      "code": "6210082001",
+      "name": "Lawang Kanji"
+    },
+    {
+      "code": "6210082002",
+      "name": "Tumbang Mahuroi"
+    },
+    {
+      "code": "6210082003",
+      "name": "Karetau Rambangun"
+    },
+    {
+      "code": "6210082004",
+      "name": "Karetau Sarian"
+    },
+    {
+      "code": "6210082005",
+      "name": "Tumbang Posu"
+    },
+    {
+      "code": "6210082006",
+      "name": "Tumbang Maraya"
+    },
+    {
+      "code": "6210082007",
+      "name": "Tumbang Anoi"
+    }
+  ],
+  "621009": [
+    {
+      "code": "6210091003",
+      "name": "Tumbang Napoi"
+    },
+    {
+      "code": "6210092001",
+      "name": "Tumbang Siruk"
+    },
+    {
+      "code": "6210092002",
+      "name": "Mangkuhung"
+    },
+    {
+      "code": "6210092004",
+      "name": "Tumbang Masukih"
+    },
+    {
+      "code": "6210092005",
+      "name": "Rangan Hiran"
+    },
+    {
+      "code": "6210092006",
+      "name": "Harowu"
+    },
+    {
+      "code": "6210092007",
+      "name": "Tumbang Manyoi"
+    },
+    {
+      "code": "6210092008",
+      "name": "Tumbang Lapan"
+    },
+    {
+      "code": "6210092009",
+      "name": "Buntoi"
+    },
+    {
+      "code": "6210092010",
+      "name": "Tumbang Koroi"
+    },
+    {
+      "code": "6210092011",
+      "name": "Tumbang Hatung"
+    }
+  ],
+  "621010": [
+    {
+      "code": "6210101004",
+      "name": "Tumbang Rahuyan"
+    },
+    {
+      "code": "6210102001",
+      "name": "Jangkit"
+    },
+    {
+      "code": "6210102002",
+      "name": "Tumbang Lapan"
+    },
+    {
+      "code": "6210102003",
+      "name": "Batu Puter"
+    },
+    {
+      "code": "6210102005",
+      "name": "Sei Antai"
+    },
+    {
+      "code": "6210102006",
+      "name": "Hantapang"
+    },
+    {
+      "code": "6210102007",
+      "name": "Sangal"
+    },
+    {
+      "code": "6210102008",
+      "name": "Tumbang Tuwe"
+    },
+    {
+      "code": "6210102012",
+      "name": "Tumbang Mujai"
+    }
+  ],
+  "621011": [
+    {
+      "code": "6210111005",
+      "name": "Tehang"
+    },
+    {
+      "code": "6210112002",
+      "name": "Tumbang Samui"
+    },
+    {
+      "code": "6210112003",
+      "name": "Tumbang Oroi"
+    },
+    {
+      "code": "6210112004",
+      "name": "Luwuk Tukau"
+    },
+    {
+      "code": "6210112006",
+      "name": "Putat Durei"
+    },
+    {
+      "code": "6210112007",
+      "name": "Tumbang Mantuhe"
+    }
+  ],
+  "621012": [
+    {
+      "code": "6210121006",
+      "name": "Rabambang"
+    },
+    {
+      "code": "6210122001",
+      "name": "Hujung Pata"
+    },
+    {
+      "code": "6210122002",
+      "name": "Tumbang Jalemu Kajuei"
+    },
+    {
+      "code": "6210122003",
+      "name": "Jalemu Raya"
+    },
+    {
+      "code": "6210122004",
+      "name": "Jalemu Masulan"
+    },
+    {
+      "code": "6210122005",
+      "name": "Mangkawuk"
+    },
+    {
+      "code": "6210122007",
+      "name": "Tajah Antang Raya"
+    },
+    {
+      "code": "6210122008",
+      "name": "Tumbang Kuayan"
+    },
+    {
+      "code": "6210122009",
+      "name": "Tumbang Langgah"
+    },
+    {
+      "code": "6210122010",
+      "name": "Tusang Raya"
+    },
+    {
+      "code": "6210122011",
+      "name": "Tumbang Bahanei"
+    }
+  ]
+}

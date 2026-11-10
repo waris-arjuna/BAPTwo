@@ -1,78 +1,1178 @@
 {
-    "950233": [
-        {
-            "code": "9502332001",
-            "name": "Marikla"
-        },
-        {
-            "code": "9502332002",
-            "name": "Yabosorom"
-        },
-        {
-            "code": "9502332003",
-            "name": "Pamek"
-        },
-        {
-            "code": "9502332004",
-            "name": "Barice"
-        },
-        {
-            "code": "9502332005",
-            "name": "Imde"
-        },
-        {
-            "code": "9502332006",
-            "name": "Lumdakna"
-        },
-        {
-            "code": "9502332007",
-            "name": "Baramirye"
-        },
-        {
-            "code": "9502332008",
-            "name": "Mandalak"
-        },
-        {
-            "code": "9502332009",
-            "name": "Yokul"
-        },
-        {
-            "code": "9502332010",
-            "name": "Kalek"
-        },
-        {
-            "code": "9502332011",
-            "name": "Pinggon"
-        }
-    ],
-    "950234": [
-        {
-            "code": "9502342001",
-            "name": "Nongme"
-        },
-        {
-            "code": "9502342002",
-            "name": "Rubol"
-        },
-        {
-            "code": "9502342003",
-            "name": "Yokom"
-        },
-        {
-            "code": "9502342004",
-            "name": "Yarigon"
-        },
-        {
-            "code": "9502342005",
-            "name": "Omtamur"
-        },
-        {
-            "code": "9502342006",
-            "name": "Cangpally"
-        },
-        {
-            "code": "9502342007",
-            "name": "Kwarban"
-        }
-    ]
+  "950201": [
+    {
+      "code": "9502012001",
+      "name": "Kabiding"
+    },
+    {
+      "code": "9502012002",
+      "name": "Aldom"
+    },
+    {
+      "code": "9502012003",
+      "name": "Kutdol"
+    },
+    {
+      "code": "9502012004",
+      "name": "Polsam"
+    },
+    {
+      "code": "9502012005",
+      "name": "Akmakot"
+    },
+    {
+      "code": "9502012006",
+      "name": "Mabilabol"
+    },
+    {
+      "code": "9502012007",
+      "name": "Bunamdol"
+    },
+    {
+      "code": "9502012008",
+      "name": "Molbib Silibib"
+    }
+  ],
+  "950202": [
+    {
+      "code": "9502022001",
+      "name": "Oknanggul"
+    },
+    {
+      "code": "9502022002",
+      "name": "Kukihil"
+    },
+    {
+      "code": "9502022003",
+      "name": "Kiwi"
+    },
+    {
+      "code": "9502022004",
+      "name": "Berusaha"
+    },
+    {
+      "code": "9502022005",
+      "name": "Pelebib"
+    },
+    {
+      "code": "9502022006",
+      "name": "Sopamikma"
+    },
+    {
+      "code": "9502022007",
+      "name": "Asua"
+    },
+    {
+      "code": "9502022008",
+      "name": "Lolim"
+    },
+    {
+      "code": "9502022009",
+      "name": "Pomding"
+    },
+    {
+      "code": "9502022010",
+      "name": "Diip"
+    },
+    {
+      "code": "9502022011",
+      "name": "Delpem"
+    },
+    {
+      "code": "9502022012",
+      "name": "Mangoldoki"
+    }
+  ],
+  "950203": [
+    {
+      "code": "9502032001",
+      "name": "Okbifisil"
+    },
+    {
+      "code": "9502032002",
+      "name": "Abmisibil"
+    },
+    {
+      "code": "9502032003",
+      "name": "Manunggal"
+    },
+    {
+      "code": "9502032004",
+      "name": "Iriding"
+    },
+    {
+      "code": "9502032005",
+      "name": "Atolbol"
+    },
+    {
+      "code": "9502032006",
+      "name": "Oktanglap"
+    },
+    {
+      "code": "9502032007",
+      "name": "Oksemar"
+    },
+    {
+      "code": "9502032008",
+      "name": "Okaplo"
+    }
+  ],
+  "950204": [
+    {
+      "code": "9502042001",
+      "name": "Iwur"
+    },
+    {
+      "code": "9502042002",
+      "name": "Kurumklin"
+    },
+    {
+      "code": "9502042003",
+      "name": "Walapkubun"
+    },
+    {
+      "code": "9502042004",
+      "name": "Dinmot Arim"
+    },
+    {
+      "code": "9502042005",
+      "name": "Ewenkatop"
+    },
+    {
+      "code": "9502042006",
+      "name": "Ulkubi"
+    },
+    {
+      "code": "9502042007",
+      "name": "Dipol"
+    },
+    {
+      "code": "9502042008",
+      "name": "Nenginum"
+    },
+    {
+      "code": "9502042009",
+      "name": "Narnger"
+    },
+    {
+      "code": "9502042010",
+      "name": "Kamyoim"
+    }
+  ],
+  "950205": [
+    {
+      "code": "9502052001",
+      "name": "Batom"
+    },
+    {
+      "code": "9502052002",
+      "name": "Oksip"
+    },
+    {
+      "code": "9502052003",
+      "name": "Mongham"
+    },
+    {
+      "code": "9502052004",
+      "name": "Sabi"
+    },
+    {
+      "code": "9502052005",
+      "name": "Neep"
+    },
+    {
+      "code": "9502052006",
+      "name": "Muara"
+    },
+    {
+      "code": "9502052007",
+      "name": "Batom Dua"
+    },
+    {
+      "code": "9502052008",
+      "name": "Akyako"
+    },
+    {
+      "code": "9502052009",
+      "name": "Peteng"
+    },
+    {
+      "code": "9502052010",
+      "name": "Belomo"
+    },
+    {
+      "code": "9502052011",
+      "name": "Abukerom"
+    }
+  ],
+  "950206": [
+    {
+      "code": "9502062001",
+      "name": "Borme"
+    },
+    {
+      "code": "9502062002",
+      "name": "Omban"
+    },
+    {
+      "code": "9502062003",
+      "name": "Sikibur"
+    },
+    {
+      "code": "9502062004",
+      "name": "Onya"
+    },
+    {
+      "code": "9502062005",
+      "name": "Arina"
+    },
+    {
+      "code": "9502062006",
+      "name": "Bordamban"
+    },
+    {
+      "code": "9502062007",
+      "name": "Aringgon"
+    },
+    {
+      "code": "9502062008",
+      "name": "Bukam"
+    },
+    {
+      "code": "9502062009",
+      "name": "Kwime"
+    },
+    {
+      "code": "9502062010",
+      "name": "Kolgir"
+    },
+    {
+      "code": "9502062011",
+      "name": "Cangdamban"
+    },
+    {
+      "code": "9502062012",
+      "name": "Laydamban"
+    },
+    {
+      "code": "9502062013",
+      "name": "Seban"
+    }
+  ],
+  "950207": [
+    {
+      "code": "9502072001",
+      "name": "Okyop"
+    },
+    {
+      "code": "9502072002",
+      "name": "Oketur"
+    },
+    {
+      "code": "9502072003",
+      "name": "Ehipten"
+    },
+    {
+      "code": "9502072004",
+      "name": "Wantem"
+    },
+    {
+      "code": "9502072005",
+      "name": "Dikdon"
+    },
+    {
+      "code": "9502072006",
+      "name": "Okyako"
+    },
+    {
+      "code": "9502072007",
+      "name": "Okyaop"
+    },
+    {
+      "code": "9502072008",
+      "name": "Tatam"
+    },
+    {
+      "code": "9502072009",
+      "name": "Okhik"
+    }
+  ],
+  "950208": [
+    {
+      "code": "9502082001",
+      "name": "Aboy"
+    },
+    {
+      "code": "9502082002",
+      "name": "Luban"
+    },
+    {
+      "code": "9502082003",
+      "name": "Jubly"
+    },
+    {
+      "code": "9502082004",
+      "name": "Armise"
+    },
+    {
+      "code": "9502082005",
+      "name": "Woro"
+    },
+    {
+      "code": "9502082006",
+      "name": "Pipal"
+    },
+    {
+      "code": "9502082007",
+      "name": "Lulis Wii"
+    }
+  ],
+  "950209": [
+    {
+      "code": "9502092001",
+      "name": "Pepera"
+    },
+    {
+      "code": "9502092002",
+      "name": "Okbon"
+    },
+    {
+      "code": "9502092003",
+      "name": "Yun Muku"
+    },
+    {
+      "code": "9502092004",
+      "name": "Denom"
+    },
+    {
+      "code": "9502092005",
+      "name": "Bon Yakwol"
+    },
+    {
+      "code": "9502092006",
+      "name": "Ok Telabe"
+    },
+    {
+      "code": "9502092007",
+      "name": "Wok Bakon"
+    }
+  ],
+  "950210": [
+    {
+      "code": "9502102001",
+      "name": "Bime"
+    },
+    {
+      "code": "9502102002",
+      "name": "Bob"
+    },
+    {
+      "code": "9502102003",
+      "name": "Kameme"
+    },
+    {
+      "code": "9502102004",
+      "name": "Calab"
+    },
+    {
+      "code": "9502102005",
+      "name": "Limiri"
+    },
+    {
+      "code": "9502102006",
+      "name": "Teli"
+    },
+    {
+      "code": "9502102007",
+      "name": "Lim Lim"
+    },
+    {
+      "code": "9502102008",
+      "name": "Bunggon"
+    },
+    {
+      "code": "9502102009",
+      "name": "Perem"
+    },
+    {
+      "code": "9502102010",
+      "name": "Turwe"
+    }
+  ],
+  "950211": [
+    {
+      "code": "9502112001",
+      "name": "Eraduman"
+    },
+    {
+      "code": "9502112002",
+      "name": "Alemsom"
+    },
+    {
+      "code": "9502112003",
+      "name": "Tapasik"
+    },
+    {
+      "code": "9502112004",
+      "name": "Payol Masumkon"
+    },
+    {
+      "code": "9502112005",
+      "name": "Tapob"
+    },
+    {
+      "code": "9502112006",
+      "name": "Bakwalin Yub"
+    },
+    {
+      "code": "9502112007",
+      "name": "Imiryi"
+    },
+    {
+      "code": "9502112008",
+      "name": "Sumtamon"
+    },
+    {
+      "code": "9502112009",
+      "name": "Bondik"
+    },
+    {
+      "code": "9502112010",
+      "name": "Muruman"
+    },
+    {
+      "code": "9502112011",
+      "name": "Binalkom"
+    },
+    {
+      "code": "9502112012",
+      "name": "Tibal"
+    }
+  ],
+  "950212": [
+    {
+      "code": "9502122001",
+      "name": "Bape"
+    },
+    {
+      "code": "9502122002",
+      "name": "Masim"
+    },
+    {
+      "code": "9502122003",
+      "name": "Akmer"
+    },
+    {
+      "code": "9502122004",
+      "name": "Kasawi"
+    },
+    {
+      "code": "9502122005",
+      "name": "Tapasik Dua Bapenka"
+    },
+    {
+      "code": "9502122006",
+      "name": "Ibot"
+    }
+  ],
+  "950213": [
+    {
+      "code": "9502132001",
+      "name": "Dabolding"
+    },
+    {
+      "code": "9502132002",
+      "name": "Kalomdol"
+    },
+    {
+      "code": "9502132003",
+      "name": "Tulo"
+    },
+    {
+      "code": "9502132004",
+      "name": "Arinkop"
+    },
+    {
+      "code": "9502132005",
+      "name": "Imik"
+    }
+  ],
+  "950214": [
+    {
+      "code": "9502142001",
+      "name": "Oksop"
+    },
+    {
+      "code": "9502142002",
+      "name": "Mimin"
+    },
+    {
+      "code": "9502142003",
+      "name": "Atenor"
+    },
+    {
+      "code": "9502142004",
+      "name": "Oktumi"
+    },
+    {
+      "code": "9502142005",
+      "name": "Alutbakon"
+    }
+  ],
+  "950215": [
+    {
+      "code": "9502152001",
+      "name": "Yapimakot"
+    },
+    {
+      "code": "9502152002",
+      "name": "Seramkatop"
+    },
+    {
+      "code": "9502152003",
+      "name": "Parim"
+    },
+    {
+      "code": "9502152004",
+      "name": "Siminbuk"
+    },
+    {
+      "code": "9502152005",
+      "name": "Modusit"
+    },
+    {
+      "code": "9502152006",
+      "name": "Wanbakon"
+    },
+    {
+      "code": "9502152007",
+      "name": "Yakmor"
+    },
+    {
+      "code": "9502152008",
+      "name": "Okatem"
+    }
+  ],
+  "950216": [
+    {
+      "code": "9502162001",
+      "name": "Kungulding"
+    },
+    {
+      "code": "9502162002",
+      "name": "Bulangkop"
+    },
+    {
+      "code": "9502162003",
+      "name": "Limarum"
+    },
+    {
+      "code": "9502162004",
+      "name": "Yumakot"
+    },
+    {
+      "code": "9502162005",
+      "name": "Aplim"
+    },
+    {
+      "code": "9502162006",
+      "name": "Okdo"
+    }
+  ],
+  "950217": [
+    {
+      "code": "9502172001",
+      "name": "Arintap"
+    },
+    {
+      "code": "9502172002",
+      "name": "Tarngop"
+    },
+    {
+      "code": "9502172003",
+      "name": "Kawor"
+    },
+    {
+      "code": "9502172004",
+      "name": "Sakup"
+    },
+    {
+      "code": "9502172005",
+      "name": "Umding"
+    },
+    {
+      "code": "9502172006",
+      "name": "Nanum"
+    },
+    {
+      "code": "9502172007",
+      "name": "Ater"
+    }
+  ],
+  "950218": [
+    {
+      "code": "9502182001",
+      "name": "Awinbon"
+    },
+    {
+      "code": "9502182002",
+      "name": "Nanum Anaip"
+    },
+    {
+      "code": "9502182003",
+      "name": "Mikir"
+    },
+    {
+      "code": "9502182004",
+      "name": "Kawe"
+    },
+    {
+      "code": "9502182005",
+      "name": "Yelobib"
+    }
+  ],
+  "950219": [
+    {
+      "code": "9502192001",
+      "name": "Tarup"
+    },
+    {
+      "code": "9502192002",
+      "name": "Marang Tiking"
+    },
+    {
+      "code": "9502192003",
+      "name": "Imsin"
+    },
+    {
+      "code": "9502192004",
+      "name": "Bitipding"
+    },
+    {
+      "code": "9502192005",
+      "name": "Onkor"
+    },
+    {
+      "code": "9502192006",
+      "name": "Beten Dua"
+    },
+    {
+      "code": "9502192007",
+      "name": "Omor"
+    }
+  ],
+  "950220": [
+    {
+      "code": "9502202001",
+      "name": "Okelwel"
+    },
+    {
+      "code": "9502202002",
+      "name": "Kotyobakon"
+    },
+    {
+      "code": "9502202003",
+      "name": "Okteneng"
+    },
+    {
+      "code": "9502202004",
+      "name": "Tengnong"
+    }
+  ],
+  "950221": [
+    {
+      "code": "9502212001",
+      "name": "Okma"
+    },
+    {
+      "code": "9502212002",
+      "name": "Oktae"
+    },
+    {
+      "code": "9502212003",
+      "name": "Tinibil"
+    },
+    {
+      "code": "9502212004",
+      "name": "Okdilam"
+    },
+    {
+      "code": "9502212005",
+      "name": "Autpahik"
+    },
+    {
+      "code": "9502212006",
+      "name": "Tomka"
+    },
+    {
+      "code": "9502212007",
+      "name": "Okpa"
+    },
+    {
+      "code": "9502212008",
+      "name": "Okhaka"
+    },
+    {
+      "code": "9502212009",
+      "name": "Honkuding"
+    },
+    {
+      "code": "9502212010",
+      "name": "Bomding"
+    },
+    {
+      "code": "9502212011",
+      "name": "Okdunam"
+    },
+    {
+      "code": "9502212012",
+      "name": "Paune"
+    }
+  ],
+  "950222": [
+    {
+      "code": "9502222001",
+      "name": "Oklip"
+    },
+    {
+      "code": "9502222002",
+      "name": "Okhim"
+    },
+    {
+      "code": "9502222003",
+      "name": "Oktem"
+    },
+    {
+      "code": "9502222004",
+      "name": "Okbumul"
+    },
+    {
+      "code": "9502222005",
+      "name": "Okamin"
+    },
+    {
+      "code": "9502222006",
+      "name": "Oktumi"
+    },
+    {
+      "code": "9502222007",
+      "name": "Komok"
+    }
+  ],
+  "950223": [
+    {
+      "code": "9502232001",
+      "name": "Oktau"
+    },
+    {
+      "code": "9502232002",
+      "name": "Oktaru"
+    },
+    {
+      "code": "9502232003",
+      "name": "Okbem"
+    },
+    {
+      "code": "9502232004",
+      "name": "Okngam"
+    },
+    {
+      "code": "9502232005",
+      "name": "Bemhimiku"
+    },
+    {
+      "code": "9502232006",
+      "name": "Bilip Bayo"
+    },
+    {
+      "code": "9502232007",
+      "name": "Atang Doki"
+    },
+    {
+      "code": "9502232008",
+      "name": "Okalut Kumal"
+    },
+    {
+      "code": "9502232009",
+      "name": "Kaep"
+    }
+  ],
+  "950224": [
+    {
+      "code": "9502242001",
+      "name": "Kubiphkop"
+    },
+    {
+      "code": "9502242002",
+      "name": "Okano"
+    },
+    {
+      "code": "9502242003",
+      "name": "Sebul"
+    },
+    {
+      "code": "9502242004",
+      "name": "Mangabip"
+    }
+  ],
+  "950225": [
+    {
+      "code": "9502252001",
+      "name": "Sabin"
+    },
+    {
+      "code": "9502252002",
+      "name": "Borban"
+    },
+    {
+      "code": "9502252003",
+      "name": "Kirimu"
+    },
+    {
+      "code": "9502252004",
+      "name": "Dumpasi"
+    },
+    {
+      "code": "9502252005",
+      "name": "Maksum"
+    },
+    {
+      "code": "9502252006",
+      "name": "Pedam"
+    },
+    {
+      "code": "9502252007",
+      "name": "Tupoplyom"
+    },
+    {
+      "code": "9502252008",
+      "name": "Yapil"
+    },
+    {
+      "code": "9502252009",
+      "name": "Atembabol"
+    },
+    {
+      "code": "9502252010",
+      "name": "Omliom"
+    },
+    {
+      "code": "9502252011",
+      "name": "Peneli"
+    },
+    {
+      "code": "9502252012",
+      "name": "Markom"
+    }
+  ],
+  "950226": [
+    {
+      "code": "9502262001",
+      "name": "Karye"
+    },
+    {
+      "code": "9502262002",
+      "name": "Batani"
+    },
+    {
+      "code": "9502262003",
+      "name": "Segame"
+    },
+    {
+      "code": "9502262004",
+      "name": "Palur Satu"
+    },
+    {
+      "code": "9502262005",
+      "name": "Palur Dua"
+    },
+    {
+      "code": "9502262006",
+      "name": "Sople"
+    },
+    {
+      "code": "9502262007",
+      "name": "Bakata"
+    }
+  ],
+  "950227": [
+    {
+      "code": "9502272001",
+      "name": "Merpasikne"
+    },
+    {
+      "code": "9502272002",
+      "name": "Taramlu"
+    },
+    {
+      "code": "9502272003",
+      "name": "Weime"
+    },
+    {
+      "code": "9502272004",
+      "name": "Meryang"
+    },
+    {
+      "code": "9502272005",
+      "name": "Limrepasikne"
+    },
+    {
+      "code": "9502272006",
+      "name": "Youlban"
+    },
+    {
+      "code": "9502272007",
+      "name": "Mekdamgon"
+    },
+    {
+      "code": "9502272008",
+      "name": "Daluban"
+    },
+    {
+      "code": "9502272009",
+      "name": "Nomteren"
+    }
+  ],
+  "950228": [
+    {
+      "code": "9502282001",
+      "name": "Bias"
+    },
+    {
+      "code": "9502282002",
+      "name": "Bumi"
+    },
+    {
+      "code": "9502282003",
+      "name": "Tero"
+    },
+    {
+      "code": "9502282004",
+      "name": "Delemo"
+    }
+  ],
+  "950229": [
+    {
+      "code": "9502292001",
+      "name": "Mot"
+    },
+    {
+      "code": "9502292002",
+      "name": "Milki"
+    },
+    {
+      "code": "9502292003",
+      "name": "Yubu"
+    },
+    {
+      "code": "9502292004",
+      "name": "Muara Asbi"
+    },
+    {
+      "code": "9502292005",
+      "name": "Tual"
+    }
+  ],
+  "950230": [
+    {
+      "code": "9502302001",
+      "name": "Jetfa"
+    },
+    {
+      "code": "9502302002",
+      "name": "Lulis"
+    },
+    {
+      "code": "9502302003",
+      "name": "Tupalma Satu"
+    },
+    {
+      "code": "9502302004",
+      "name": "Tupalma Dua"
+    },
+    {
+      "code": "9502302005",
+      "name": "Kalimbu"
+    },
+    {
+      "code": "9502302006",
+      "name": "Bris"
+    }
+  ],
+  "950231": [
+    {
+      "code": "9502312001",
+      "name": "Teiraplu"
+    },
+    {
+      "code": "9502312002",
+      "name": "Sinami"
+    },
+    {
+      "code": "9502312003",
+      "name": "Maigame"
+    },
+    {
+      "code": "9502312004",
+      "name": "Murme"
+    },
+    {
+      "code": "9502312005",
+      "name": "Yuaban Satu"
+    },
+    {
+      "code": "9502312006",
+      "name": "Yuaban Dua"
+    },
+    {
+      "code": "9502312007",
+      "name": "Terapdei"
+    },
+    {
+      "code": "9502312008",
+      "name": "Yitarget"
+    },
+    {
+      "code": "9502312009",
+      "name": "Teriame"
+    },
+    {
+      "code": "9502312010",
+      "name": "Bautme"
+    }
+  ],
+  "950232": [
+    {
+      "code": "9502322001",
+      "name": "Eipumek"
+    },
+    {
+      "code": "9502322002",
+      "name": "Lalakon"
+    },
+    {
+      "code": "9502322003",
+      "name": "Londinin"
+    },
+    {
+      "code": "9502322004",
+      "name": "Talemu"
+    },
+    {
+      "code": "9502322005",
+      "name": "Wakidam"
+    },
+    {
+      "code": "9502322006",
+      "name": "Bunyirye"
+    },
+    {
+      "code": "9502322007",
+      "name": "Basiringe"
+    },
+    {
+      "code": "9502322008",
+      "name": "Barama"
+    },
+    {
+      "code": "9502322009",
+      "name": "Tanime"
+    },
+    {
+      "code": "9502322010",
+      "name": "Serabum"
+    },
+    {
+      "code": "9502322011",
+      "name": "Supleyu"
+    },
+    {
+      "code": "9502322012",
+      "name": "Kweredala"
+    },
+    {
+      "code": "9502322013",
+      "name": "Mungkona"
+    },
+    {
+      "code": "9502322014",
+      "name": "Malingdam"
+    }
+  ],
+  "950233": [
+    {
+      "code": "9502332001",
+      "name": "Marikla"
+    },
+    {
+      "code": "9502332002",
+      "name": "Yabosorom"
+    },
+    {
+      "code": "9502332003",
+      "name": "Pamek"
+    },
+    {
+      "code": "9502332004",
+      "name": "Barice"
+    },
+    {
+      "code": "9502332005",
+      "name": "Imde"
+    },
+    {
+      "code": "9502332006",
+      "name": "Lumdakna"
+    },
+    {
+      "code": "9502332007",
+      "name": "Baramirye"
+    },
+    {
+      "code": "9502332008",
+      "name": "Mandalak"
+    },
+    {
+      "code": "9502332009",
+      "name": "Yokul"
+    },
+    {
+      "code": "9502332010",
+      "name": "Kalek"
+    },
+    {
+      "code": "9502332011",
+      "name": "Pinggon"
+    }
+  ],
+  "950234": [
+    {
+      "code": "9502342001",
+      "name": "Nongme"
+    },
+    {
+      "code": "9502342002",
+      "name": "Rubol"
+    },
+    {
+      "code": "9502342003",
+      "name": "Yokom"
+    },
+    {
+      "code": "9502342004",
+      "name": "Yarigon"
+    },
+    {
+      "code": "9502342005",
+      "name": "Omtamur"
+    },
+    {
+      "code": "9502342006",
+      "name": "Cangpally"
+    },
+    {
+      "code": "9502342007",
+      "name": "Kwarban"
+    }
+  ]
 }

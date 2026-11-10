@@ -1,214 +1,1500 @@
 {
-    "950732": [
-        {
-            "code": "9507322001",
-            "name": "Ayafofa"
-        },
-        {
-            "code": "9507322002",
-            "name": "Salemo"
-        },
-        {
-            "code": "9507322003",
-            "name": "Yudani"
-        },
-        {
-            "code": "9507322004",
-            "name": "Towoluk"
-        },
-        {
-            "code": "9507322005",
-            "name": "Tunume"
-        },
-        {
-            "code": "9507322006",
-            "name": "Delegari"
-        },
-        {
-            "code": "9507322007",
-            "name": "Igimbua"
-        },
-        {
-            "code": "9507322008",
-            "name": "Yilokdu"
-        }
-    ],
-    "950733": [
-        {
-            "code": "9507332001",
-            "name": "Odika"
-        },
-        {
-            "code": "9507332002",
-            "name": "Yubumabur"
-        },
-        {
-            "code": "9507332003",
-            "name": "Ekapame"
-        },
-        {
-            "code": "9507332004",
-            "name": "Papani"
-        },
-        {
-            "code": "9507332005",
-            "name": "Kubagalo"
-        },
-        {
-            "code": "9507332006",
-            "name": "Jilekme"
-        },
-        {
-            "code": "9507332007",
-            "name": "Wanome"
-        },
-        {
-            "code": "9507332008",
-            "name": "Yiluweneri"
-        }
-    ],
-    "950734": [
-        {
-            "code": "9507342001",
-            "name": "Guna"
-        },
-        {
-            "code": "9507342002",
-            "name": "Gukopi"
-        },
-        {
-            "code": "9507342003",
-            "name": "Kori"
-        },
-        {
-            "code": "9507342004",
-            "name": "Keyagalo"
-        },
-        {
-            "code": "9507342005",
-            "name": "Nondinime"
-        },
-        {
-            "code": "9507342006",
-            "name": "Wigume"
-        },
-        {
-            "code": "9507342007",
-            "name": "Piwugun"
-        }
-    ],
-    "950735": [
-        {
-            "code": "9507352001",
-            "name": "Kelulome"
-        },
-        {
-            "code": "9507352002",
-            "name": "Wiyagi"
-        },
-        {
-            "code": "9507352003",
-            "name": "Talogi"
-        },
-        {
-            "code": "9507352004",
-            "name": "Wiringgame"
-        },
-        {
-            "code": "9507352005",
-            "name": "Wegenpura"
-        },
-        {
-            "code": "9507352006",
-            "name": "Ilunggijime"
-        },
-        {
-            "code": "9507352007",
-            "name": "Juyiga"
-        },
-        {
-            "code": "9507352008",
-            "name": "Peragime"
-        },
-        {
-            "code": "9507352009",
-            "name": "Muluneri"
-        },
-        {
-            "code": "9507352010",
-            "name": "Lewinagi"
-        }
-    ],
-    "950736": [
-        {
-            "code": "9507362001",
-            "name": "Wanggagome"
-        },
-        {
-            "code": "9507362002",
-            "name": "Langgime"
-        },
-        {
-            "code": "9507362003",
-            "name": "Wulawa"
-        },
-        {
-            "code": "9507362004",
-            "name": "Pindalo"
-        },
-        {
-            "code": "9507362005",
-            "name": "Kotorambur"
-        },
-        {
-            "code": "9507362006",
-            "name": "Ambime"
-        },
-        {
-            "code": "9507362007",
-            "name": "Wumbanakme"
-        },
-        {
-            "code": "9507362008",
-            "name": "Yimiribaga"
-        },
-        {
-            "code": "9507362009",
-            "name": "Elubaga"
-        }
-    ],
-    "950739": [
-        {
-            "code": "9507392001",
-            "name": "Wabiragi"
-        },
-        {
-            "code": "9507392002",
-            "name": "Yigemili"
-        },
-        {
-            "code": "9507392003",
-            "name": "Gilo"
-        },
-        {
-            "code": "9507392004",
-            "name": "Kewagi"
-        },
-        {
-            "code": "9507392005",
-            "name": "Nombome"
-        },
-        {
-            "code": "9507392006",
-            "name": "Numbokawi"
-        },
-        {
-            "code": "9507392007",
-            "name": "Mbu"
-        },
-        {
-            "code": "9507392008",
-            "name": "Wunabunggu"
-        }
-    ]
+  "950701": [
+    {
+      "code": "9507011001",
+      "name": "Bokon"
+    },
+    {
+      "code": "9507012002",
+      "name": "Oyi"
+    },
+    {
+      "code": "9507012003",
+      "name": "Gurika"
+    },
+    {
+      "code": "9507012004",
+      "name": "Olume"
+    },
+    {
+      "code": "9507012005",
+      "name": "Dura"
+    },
+    {
+      "code": "9507012006",
+      "name": "Langgalo"
+    },
+    {
+      "code": "9507012007",
+      "name": "Kuapur"
+    },
+    {
+      "code": "9507012008",
+      "name": "Wadinalome"
+    },
+    {
+      "code": "9507012009",
+      "name": "Yilondum"
+    },
+    {
+      "code": "9507012010",
+      "name": "Palunggame"
+    },
+    {
+      "code": "9507012011",
+      "name": "Ginime"
+    }
+  ],
+  "950702": [
+    {
+      "code": "9507022001",
+      "name": "Umbanume"
+    },
+    {
+      "code": "9507022002",
+      "name": "Wenam"
+    },
+    {
+      "code": "9507022003",
+      "name": "Yalipak"
+    },
+    {
+      "code": "9507022004",
+      "name": "Ekanom"
+    },
+    {
+      "code": "9507022005",
+      "name": "Yugumbinik"
+    },
+    {
+      "code": "9507022006",
+      "name": "Amberingime"
+    },
+    {
+      "code": "9507022007",
+      "name": "Aniwo"
+    },
+    {
+      "code": "9507022008",
+      "name": "Bugumbak"
+    }
+  ],
+  "950703": [
+    {
+      "code": "9507032001",
+      "name": "Kemiri"
+    },
+    {
+      "code": "9507032002",
+      "name": "Mamiri"
+    },
+    {
+      "code": "9507032003",
+      "name": "Kotorambur"
+    },
+    {
+      "code": "9507032004",
+      "name": "Yorenime"
+    },
+    {
+      "code": "9507032005",
+      "name": "Waganenga"
+    },
+    {
+      "code": "9507032006",
+      "name": "Gembilani"
+    },
+    {
+      "code": "9507032007",
+      "name": "Nambume"
+    },
+    {
+      "code": "9507032008",
+      "name": "Tengenawi"
+    }
+  ],
+  "950704": [
+    {
+      "code": "9507042001",
+      "name": "Gamelia"
+    },
+    {
+      "code": "9507042002",
+      "name": "Pirawun"
+    },
+    {
+      "code": "9507042003",
+      "name": "Wupi"
+    },
+    {
+      "code": "9507042004",
+      "name": "Gawiwarak"
+    },
+    {
+      "code": "9507042005",
+      "name": "Meyagale"
+    },
+    {
+      "code": "9507042006",
+      "name": "Wulaipas"
+    },
+    {
+      "code": "9507042007",
+      "name": "Gunagewak"
+    },
+    {
+      "code": "9507042008",
+      "name": "Wunume"
+    }
+  ],
+  "950705": [
+    {
+      "code": "9507052001",
+      "name": "Dimba"
+    },
+    {
+      "code": "9507052002",
+      "name": "Yugwa"
+    },
+    {
+      "code": "9507052003",
+      "name": "Magegobak"
+    },
+    {
+      "code": "9507052004",
+      "name": "Nongopnage"
+    },
+    {
+      "code": "9507052005",
+      "name": "Wengenambur"
+    },
+    {
+      "code": "9507052006",
+      "name": "Wawiragi"
+    },
+    {
+      "code": "9507052007",
+      "name": "Mewilangun"
+    },
+    {
+      "code": "9507052008",
+      "name": "Talibarenak"
+    }
+  ],
+  "950706": [
+    {
+      "code": "9507062001",
+      "name": "Malagai"
+    },
+    {
+      "code": "9507062002",
+      "name": "Oka"
+    },
+    {
+      "code": "9507062003",
+      "name": "Bagi"
+    },
+    {
+      "code": "9507062004",
+      "name": "Ganume"
+    },
+    {
+      "code": "9507062005",
+      "name": "Binilani"
+    },
+    {
+      "code": "9507062006",
+      "name": "Gumban"
+    },
+    {
+      "code": "9507062007",
+      "name": "Lowanom"
+    },
+    {
+      "code": "9507062008",
+      "name": "Nambu"
+    }
+  ],
+  "950707": [
+    {
+      "code": "9507072001",
+      "name": "Tima"
+    },
+    {
+      "code": "9507072002",
+      "name": "Balime"
+    },
+    {
+      "code": "9507072003",
+      "name": "Balingga"
+    },
+    {
+      "code": "9507072004",
+      "name": "Gume"
+    },
+    {
+      "code": "9507072005",
+      "name": "Timonikime"
+    },
+    {
+      "code": "9507072006",
+      "name": "Binolanggen"
+    },
+    {
+      "code": "9507072007",
+      "name": "Dewaka"
+    },
+    {
+      "code": "9507072008",
+      "name": "Yialo"
+    },
+    {
+      "code": "9507072009",
+      "name": "Towewak"
+    },
+    {
+      "code": "9507072010",
+      "name": "Yumaneri"
+    }
+  ],
+  "950708": [
+    {
+      "code": "9507082001",
+      "name": "Kuwobaga"
+    },
+    {
+      "code": "9507082002",
+      "name": "Milinggame"
+    },
+    {
+      "code": "9507082003",
+      "name": "Arigineri"
+    },
+    {
+      "code": "9507082004",
+      "name": "Muleme"
+    },
+    {
+      "code": "9507082005",
+      "name": "Arungwi"
+    },
+    {
+      "code": "9507082006",
+      "name": "Ponuma"
+    },
+    {
+      "code": "9507082007",
+      "name": "Gubulela"
+    },
+    {
+      "code": "9507082008",
+      "name": "Kolari"
+    },
+    {
+      "code": "9507082009",
+      "name": "Gumbo"
+    }
+  ],
+  "950709": [
+    {
+      "code": "9507092001",
+      "name": "Kuyawage"
+    },
+    {
+      "code": "9507092002",
+      "name": "Wupaga"
+    },
+    {
+      "code": "9507092003",
+      "name": "Luarem"
+    },
+    {
+      "code": "9507092004",
+      "name": "Tumbupur"
+    },
+    {
+      "code": "9507092005",
+      "name": "Uwome"
+    },
+    {
+      "code": "9507092006",
+      "name": "Tunikele"
+    },
+    {
+      "code": "9507092007",
+      "name": "Peko"
+    },
+    {
+      "code": "9507092008",
+      "name": "Yugunomba"
+    }
+  ],
+  "950710": [
+    {
+      "code": "9507102001",
+      "name": "Megalunik"
+    },
+    {
+      "code": "9507102002",
+      "name": "Lugobak"
+    },
+    {
+      "code": "9507102003",
+      "name": "Kanikbukme"
+    },
+    {
+      "code": "9507102004",
+      "name": "Poga"
+    },
+    {
+      "code": "9507102005",
+      "name": "Bigipaga"
+    },
+    {
+      "code": "9507102006",
+      "name": "Luneri"
+    },
+    {
+      "code": "9507102007",
+      "name": "Binipaga"
+    },
+    {
+      "code": "9507102008",
+      "name": "Mugime"
+    },
+    {
+      "code": "9507102009",
+      "name": "Brigme"
+    },
+    {
+      "code": "9507102010",
+      "name": "Unikme"
+    },
+    {
+      "code": "9507102011",
+      "name": "Binompaga"
+    },
+    {
+      "code": "9507102012",
+      "name": "Lugwa"
+    },
+    {
+      "code": "9507102013",
+      "name": "Guaneri"
+    }
+  ],
+  "950711": [
+    {
+      "code": "9507112001",
+      "name": "Dugume"
+    },
+    {
+      "code": "9507112002",
+      "name": "Wulundia"
+    },
+    {
+      "code": "9507112003",
+      "name": "Dapogi"
+    },
+    {
+      "code": "9507112004",
+      "name": "Kulumburu"
+    },
+    {
+      "code": "9507112005",
+      "name": "Molobok"
+    },
+    {
+      "code": "9507112006",
+      "name": "Tugunakwi"
+    },
+    {
+      "code": "9507112007",
+      "name": "Yanuru"
+    }
+  ],
+  "950712": [
+    {
+      "code": "9507122001",
+      "name": "Yirene"
+    },
+    {
+      "code": "9507122002",
+      "name": "Yogobak"
+    },
+    {
+      "code": "9507122003",
+      "name": "Kwenukwi"
+    },
+    {
+      "code": "9507122004",
+      "name": "Libungga"
+    },
+    {
+      "code": "9507122005",
+      "name": "Unom"
+    },
+    {
+      "code": "9507122006",
+      "name": "Wimolome"
+    },
+    {
+      "code": "9507122007",
+      "name": "Weneogun"
+    },
+    {
+      "code": "9507122008",
+      "name": "Berangwi"
+    }
+  ],
+  "950713": [
+    {
+      "code": "9507132001",
+      "name": "Tepogi"
+    },
+    {
+      "code": "9507132002",
+      "name": "Ninabua"
+    },
+    {
+      "code": "9507132003",
+      "name": "Golikme"
+    },
+    {
+      "code": "9507132004",
+      "name": "Ninengwa"
+    },
+    {
+      "code": "9507132005",
+      "name": "Weri"
+    },
+    {
+      "code": "9507132006",
+      "name": "Gumagame"
+    },
+    {
+      "code": "9507132007",
+      "name": "Abua"
+    }
+  ],
+  "950714": [
+    {
+      "code": "9507142001",
+      "name": "Kumuluk"
+    },
+    {
+      "code": "9507142002",
+      "name": "Giari"
+    },
+    {
+      "code": "9507142003",
+      "name": "Bonanip"
+    },
+    {
+      "code": "9507142004",
+      "name": "Kukepake"
+    },
+    {
+      "code": "9507142005",
+      "name": "Wayuleme"
+    },
+    {
+      "code": "9507142006",
+      "name": "Bogomanum"
+    },
+    {
+      "code": "9507142007",
+      "name": "Pindoak"
+    },
+    {
+      "code": "9507142008",
+      "name": "Kotorambur"
+    },
+    {
+      "code": "9507142009",
+      "name": "Numbo"
+    },
+    {
+      "code": "9507142010",
+      "name": "Lambui"
+    }
+  ],
+  "950715": [
+    {
+      "code": "9507152001",
+      "name": "Konikme"
+    },
+    {
+      "code": "9507152002",
+      "name": "Giwan"
+    },
+    {
+      "code": "9507152003",
+      "name": "Lugom"
+    },
+    {
+      "code": "9507152004",
+      "name": "Mabume"
+    },
+    {
+      "code": "9507152005",
+      "name": "Wandoak"
+    },
+    {
+      "code": "9507152006",
+      "name": "Bogun Kunik"
+    },
+    {
+      "code": "9507152007",
+      "name": "Urgelo"
+    },
+    {
+      "code": "9507152008",
+      "name": "Omapaga"
+    },
+    {
+      "code": "9507152009",
+      "name": "Gimili Alome"
+    }
+  ],
+  "950716": [
+    {
+      "code": "9507162001",
+      "name": "Guninggame"
+    },
+    {
+      "code": "9507162002",
+      "name": "Mokoni"
+    },
+    {
+      "code": "9507162003",
+      "name": "Popome"
+    },
+    {
+      "code": "9507162004",
+      "name": "Wakumalo"
+    },
+    {
+      "code": "9507162005",
+      "name": "Bigipura"
+    },
+    {
+      "code": "9507162006",
+      "name": "Yanggelome"
+    },
+    {
+      "code": "9507162007",
+      "name": "Wuyumbur"
+    },
+    {
+      "code": "9507162008",
+      "name": "Kondename"
+    },
+    {
+      "code": "9507162009",
+      "name": "Bumalome"
+    }
+  ],
+  "950717": [
+    {
+      "code": "9507172001",
+      "name": "Tabukeker"
+    },
+    {
+      "code": "9507172002",
+      "name": "Ponalo"
+    },
+    {
+      "code": "9507172003",
+      "name": "Timi"
+    },
+    {
+      "code": "9507172004",
+      "name": "Wuragi"
+    },
+    {
+      "code": "9507172005",
+      "name": "Tiwa"
+    },
+    {
+      "code": "9507172006",
+      "name": "Dingun"
+    },
+    {
+      "code": "9507172007",
+      "name": "Lura Marah"
+    },
+    {
+      "code": "9507172008",
+      "name": "Pelek"
+    },
+    {
+      "code": "9507172009",
+      "name": "Beyongwi"
+    }
+  ],
+  "950718": [
+    {
+      "code": "9507182001",
+      "name": "Milimbo"
+    },
+    {
+      "code": "9507182002",
+      "name": "Takobak"
+    },
+    {
+      "code": "9507182003",
+      "name": "Kugame"
+    },
+    {
+      "code": "9507182004",
+      "name": "Wamindik"
+    },
+    {
+      "code": "9507182005",
+      "name": "Kidoni"
+    },
+    {
+      "code": "9507182006",
+      "name": "Jinok"
+    },
+    {
+      "code": "9507182007",
+      "name": "Wewolome"
+    },
+    {
+      "code": "9507182008",
+      "name": "Umbename"
+    }
+  ],
+  "950719": [
+    {
+      "code": "9507192001",
+      "name": "Yiwili"
+    },
+    {
+      "code": "9507192002",
+      "name": "Golo"
+    },
+    {
+      "code": "9507192003",
+      "name": "Golomi"
+    },
+    {
+      "code": "9507192004",
+      "name": "Yugumobur"
+    },
+    {
+      "code": "9507192005",
+      "name": "Milidi"
+    },
+    {
+      "code": "9507192006",
+      "name": "Uniwani"
+    },
+    {
+      "code": "9507192007",
+      "name": "Wiringgambut"
+    },
+    {
+      "code": "9507192008",
+      "name": "Wuluwebur"
+    },
+    {
+      "code": "9507192009",
+      "name": "Kiludo"
+    },
+    {
+      "code": "9507192010",
+      "name": "Giruwi"
+    }
+  ],
+  "950720": [
+    {
+      "code": "9507202001",
+      "name": "Golopura"
+    },
+    {
+      "code": "9507202002",
+      "name": "Wirini"
+    },
+    {
+      "code": "9507202003",
+      "name": "Nileme"
+    },
+    {
+      "code": "9507202004",
+      "name": "Libome"
+    },
+    {
+      "code": "9507202005",
+      "name": "Kulia"
+    },
+    {
+      "code": "9507202006",
+      "name": "Yamiga"
+    },
+    {
+      "code": "9507202007",
+      "name": "Gubugame"
+    },
+    {
+      "code": "9507202008",
+      "name": "Kamenak"
+    },
+    {
+      "code": "9507202009",
+      "name": "Perime"
+    },
+    {
+      "code": "9507202010",
+      "name": "Wadinawi"
+    },
+    {
+      "code": "9507202011",
+      "name": "Nengguga"
+    }
+  ],
+  "950721": [
+    {
+      "code": "9507212001",
+      "name": "Nambume"
+    },
+    {
+      "code": "9507212002",
+      "name": "Indawa"
+    },
+    {
+      "code": "9507212003",
+      "name": "Eyuni"
+    },
+    {
+      "code": "9507212004",
+      "name": "Yugumia"
+    },
+    {
+      "code": "9507212005",
+      "name": "Dolinggame"
+    },
+    {
+      "code": "9507212006",
+      "name": "Tinggira"
+    },
+    {
+      "code": "9507212007",
+      "name": "Wumuak"
+    },
+    {
+      "code": "9507212008",
+      "name": "Andiaput"
+    },
+    {
+      "code": "9507212009",
+      "name": "Wuragabur"
+    }
+  ],
+  "950722": [
+    {
+      "code": "9507222001",
+      "name": "Anitila"
+    },
+    {
+      "code": "9507222002",
+      "name": "Nanim"
+    },
+    {
+      "code": "9507222003",
+      "name": "Lubutini"
+    },
+    {
+      "code": "9507222004",
+      "name": "Tikome"
+    },
+    {
+      "code": "9507222005",
+      "name": "Tikoyowa"
+    },
+    {
+      "code": "9507222006",
+      "name": "Bogogunik"
+    },
+    {
+      "code": "9507222007",
+      "name": "Wanggunom"
+    },
+    {
+      "code": "9507222008",
+      "name": "Nindonak"
+    },
+    {
+      "code": "9507222009",
+      "name": "Luagame"
+    }
+  ],
+  "950723": [
+    {
+      "code": "9507232001",
+      "name": "Wamiru"
+    },
+    {
+      "code": "9507232002",
+      "name": "Dugu-dugu"
+    },
+    {
+      "code": "9507232003",
+      "name": "Andugume"
+    },
+    {
+      "code": "9507232004",
+      "name": "Tinime"
+    },
+    {
+      "code": "9507232005",
+      "name": "Mume"
+    },
+    {
+      "code": "9507232006",
+      "name": "Nenggeya"
+    },
+    {
+      "code": "9507232007",
+      "name": "Tenawi"
+    },
+    {
+      "code": "9507232008",
+      "name": "Kobanu"
+    },
+    {
+      "code": "9507232009",
+      "name": "Piragi"
+    },
+    {
+      "code": "9507232010",
+      "name": "Nabei"
+    },
+    {
+      "code": "9507232011",
+      "name": "Mingga"
+    }
+  ],
+  "950724": [
+    {
+      "code": "9507242001",
+      "name": "Wamitu"
+    },
+    {
+      "code": "9507242002",
+      "name": "Balimneri"
+    },
+    {
+      "code": "9507242003",
+      "name": "Timotani"
+    },
+    {
+      "code": "9507242004",
+      "name": "Kungganeri"
+    },
+    {
+      "code": "9507242005",
+      "name": "Gwilonik"
+    },
+    {
+      "code": "9507242006",
+      "name": "Ilim"
+    },
+    {
+      "code": "9507242007",
+      "name": "Dinuwi"
+    }
+  ],
+  "950725": [
+    {
+      "code": "9507252001",
+      "name": "Bruyugu"
+    },
+    {
+      "code": "9507252002",
+      "name": "Wame"
+    },
+    {
+      "code": "9507252003",
+      "name": "Ogodome"
+    },
+    {
+      "code": "9507252004",
+      "name": "Ekaba"
+    },
+    {
+      "code": "9507252005",
+      "name": "Longgapur"
+    },
+    {
+      "code": "9507252006",
+      "name": "Tikuluk"
+    },
+    {
+      "code": "9507252007",
+      "name": "Birik"
+    },
+    {
+      "code": "9507252008",
+      "name": "Yalogu"
+    },
+    {
+      "code": "9507252009",
+      "name": "Wumbugi"
+    }
+  ],
+  "950726": [
+    {
+      "code": "9507262001",
+      "name": "Tinggipura"
+    },
+    {
+      "code": "9507262002",
+      "name": "Yeyugu"
+    },
+    {
+      "code": "9507262003",
+      "name": "Yugume"
+    },
+    {
+      "code": "9507262004",
+      "name": "Baliempura"
+    },
+    {
+      "code": "9507262005",
+      "name": "Denomagi"
+    },
+    {
+      "code": "9507262006",
+      "name": "Magame"
+    },
+    {
+      "code": "9507262007",
+      "name": "Lorea"
+    },
+    {
+      "code": "9507262008",
+      "name": "Anggumabume"
+    }
+  ],
+  "950727": [
+    {
+      "code": "9507272001",
+      "name": "Lelam"
+    },
+    {
+      "code": "9507272002",
+      "name": "Teiko"
+    },
+    {
+      "code": "9507272003",
+      "name": "Yaneko"
+    },
+    {
+      "code": "9507272004",
+      "name": "Kimbo"
+    },
+    {
+      "code": "9507272005",
+      "name": "Penggima"
+    },
+    {
+      "code": "9507272006",
+      "name": "Magelo"
+    },
+    {
+      "code": "9507272007",
+      "name": "Onesia"
+    },
+    {
+      "code": "9507272008",
+      "name": "Wapur"
+    },
+    {
+      "code": "9507272009",
+      "name": "Andeyok"
+    },
+    {
+      "code": "9507272010",
+      "name": "Kibingga"
+    },
+    {
+      "code": "9507272011",
+      "name": "Ogobakni"
+    },
+    {
+      "code": "9507272012",
+      "name": "Jilam"
+    }
+  ],
+  "950728": [
+    {
+      "code": "9507282001",
+      "name": "Ambena"
+    },
+    {
+      "code": "9507282002",
+      "name": "Kolayak"
+    },
+    {
+      "code": "9507282003",
+      "name": "Wanuga"
+    },
+    {
+      "code": "9507282004",
+      "name": "Labora"
+    },
+    {
+      "code": "9507282005",
+      "name": "Kondena"
+    },
+    {
+      "code": "9507282006",
+      "name": "Kolunggu"
+    },
+    {
+      "code": "9507282007",
+      "name": "Yagarikme"
+    },
+    {
+      "code": "9507282008",
+      "name": "Timotius"
+    },
+    {
+      "code": "9507282009",
+      "name": "Gunumbur"
+    },
+    {
+      "code": "9507282010",
+      "name": "Lalugume"
+    }
+  ],
+  "950729": [
+    {
+      "code": "9507292001",
+      "name": "Pirambor"
+    },
+    {
+      "code": "9507292002",
+      "name": "Gondura"
+    },
+    {
+      "code": "9507292003",
+      "name": "Juta"
+    },
+    {
+      "code": "9507292004",
+      "name": "Tigima"
+    },
+    {
+      "code": "9507292005",
+      "name": "Gelok"
+    },
+    {
+      "code": "9507292006",
+      "name": "Murtani"
+    },
+    {
+      "code": "9507292007",
+      "name": "Beam"
+    },
+    {
+      "code": "9507292008",
+      "name": "Wanggu"
+    },
+    {
+      "code": "9507292009",
+      "name": "Kulip"
+    }
+  ],
+  "950730": [
+    {
+      "code": "9507302001",
+      "name": "Indugu"
+    },
+    {
+      "code": "9507302002",
+      "name": "Guburini"
+    },
+    {
+      "code": "9507302003",
+      "name": "Jiwikelanny"
+    },
+    {
+      "code": "9507302004",
+      "name": "Nisimok"
+    },
+    {
+      "code": "9507302005",
+      "name": "Yugume"
+    },
+    {
+      "code": "9507302006",
+      "name": "Piname"
+    },
+    {
+      "code": "9507302007",
+      "name": "Londu"
+    },
+    {
+      "code": "9507302008",
+      "name": "Kagaluwi"
+    }
+  ],
+  "950731": [
+    {
+      "code": "9507312001",
+      "name": "Bonom"
+    },
+    {
+      "code": "9507312002",
+      "name": "Kuwanom"
+    },
+    {
+      "code": "9507312003",
+      "name": "Kumulume"
+    },
+    {
+      "code": "9507312004",
+      "name": "Uwagambur"
+    },
+    {
+      "code": "9507312005",
+      "name": "Lagame"
+    },
+    {
+      "code": "9507312006",
+      "name": "Kuwoge"
+    },
+    {
+      "code": "9507312007",
+      "name": "Laurapaga"
+    },
+    {
+      "code": "9507312008",
+      "name": "Bawi"
+    },
+    {
+      "code": "9507312009",
+      "name": "Yugimbo"
+    },
+    {
+      "code": "9507312010",
+      "name": "Tinggini"
+    },
+    {
+      "code": "9507312011",
+      "name": "Ogin"
+    }
+  ],
+  "950732": [
+    {
+      "code": "9507322001",
+      "name": "Ayafofa"
+    },
+    {
+      "code": "9507322002",
+      "name": "Salemo"
+    },
+    {
+      "code": "9507322003",
+      "name": "Yudani"
+    },
+    {
+      "code": "9507322004",
+      "name": "Towoluk"
+    },
+    {
+      "code": "9507322005",
+      "name": "Tunume"
+    },
+    {
+      "code": "9507322006",
+      "name": "Delegari"
+    },
+    {
+      "code": "9507322007",
+      "name": "Igimbua"
+    },
+    {
+      "code": "9507322008",
+      "name": "Yilokdu"
+    }
+  ],
+  "950733": [
+    {
+      "code": "9507332001",
+      "name": "Odika"
+    },
+    {
+      "code": "9507332002",
+      "name": "Yubumabur"
+    },
+    {
+      "code": "9507332003",
+      "name": "Ekapame"
+    },
+    {
+      "code": "9507332004",
+      "name": "Papani"
+    },
+    {
+      "code": "9507332005",
+      "name": "Kubagalo"
+    },
+    {
+      "code": "9507332006",
+      "name": "Jilekme"
+    },
+    {
+      "code": "9507332007",
+      "name": "Wanome"
+    },
+    {
+      "code": "9507332008",
+      "name": "Yiluweneri"
+    }
+  ],
+  "950734": [
+    {
+      "code": "9507342001",
+      "name": "Guna"
+    },
+    {
+      "code": "9507342002",
+      "name": "Gukopi"
+    },
+    {
+      "code": "9507342003",
+      "name": "Kori"
+    },
+    {
+      "code": "9507342004",
+      "name": "Keyagalo"
+    },
+    {
+      "code": "9507342005",
+      "name": "Nondinime"
+    },
+    {
+      "code": "9507342006",
+      "name": "Wigume"
+    },
+    {
+      "code": "9507342007",
+      "name": "Piwugun"
+    }
+  ],
+  "950735": [
+    {
+      "code": "9507352001",
+      "name": "Kelulome"
+    },
+    {
+      "code": "9507352002",
+      "name": "Wiyagi"
+    },
+    {
+      "code": "9507352003",
+      "name": "Talogi"
+    },
+    {
+      "code": "9507352004",
+      "name": "Wiringgame"
+    },
+    {
+      "code": "9507352005",
+      "name": "Wegenpura"
+    },
+    {
+      "code": "9507352006",
+      "name": "Ilunggijime"
+    },
+    {
+      "code": "9507352007",
+      "name": "Juyiga"
+    },
+    {
+      "code": "9507352008",
+      "name": "Peragime"
+    },
+    {
+      "code": "9507352009",
+      "name": "Muluneri"
+    },
+    {
+      "code": "9507352010",
+      "name": "Lewinagi"
+    }
+  ],
+  "950736": [
+    {
+      "code": "9507362001",
+      "name": "Wanggagome"
+    },
+    {
+      "code": "9507362002",
+      "name": "Langgime"
+    },
+    {
+      "code": "9507362003",
+      "name": "Wulawa"
+    },
+    {
+      "code": "9507362004",
+      "name": "Pindalo"
+    },
+    {
+      "code": "9507362005",
+      "name": "Kotorambur"
+    },
+    {
+      "code": "9507362006",
+      "name": "Ambime"
+    },
+    {
+      "code": "9507362007",
+      "name": "Wumbanakme"
+    },
+    {
+      "code": "9507362008",
+      "name": "Yimiribaga"
+    },
+    {
+      "code": "9507362009",
+      "name": "Elubaga"
+    }
+  ],
+  "950737": [
+    {
+      "code": "9507372001",
+      "name": "Muara"
+    },
+    {
+      "code": "9507372002",
+      "name": "Lualo"
+    },
+    {
+      "code": "9507372003",
+      "name": "Abua"
+    },
+    {
+      "code": "9507372004",
+      "name": "Gikur"
+    },
+    {
+      "code": "9507372005",
+      "name": "Gipura"
+    },
+    {
+      "code": "9507372006",
+      "name": "Gulu"
+    },
+    {
+      "code": "9507372007",
+      "name": "Bogangi"
+    },
+    {
+      "code": "9507372008",
+      "name": "Golome"
+    },
+    {
+      "code": "9507372009",
+      "name": "Wiyapur"
+    },
+    {
+      "code": "9507372010",
+      "name": "Kuruguneri"
+    }
+  ],
+  "950738": [
+    {
+      "code": "9507382001",
+      "name": "Kabiga"
+    },
+    {
+      "code": "9507382002",
+      "name": "Tekul"
+    },
+    {
+      "code": "9507382003",
+      "name": "Melendik"
+    },
+    {
+      "code": "9507382004",
+      "name": "Pirime"
+    },
+    {
+      "code": "9507382005",
+      "name": "Karunggame"
+    },
+    {
+      "code": "9507382006",
+      "name": "Ilunggime"
+    },
+    {
+      "code": "9507382007",
+      "name": "Timolome"
+    },
+    {
+      "code": "9507382008",
+      "name": "Wunime"
+    },
+    {
+      "code": "9507382009",
+      "name": "Genena"
+    },
+    {
+      "code": "9507382010",
+      "name": "Kulogonggame"
+    },
+    {
+      "code": "9507382011",
+      "name": "Kelonome"
+    },
+    {
+      "code": "9507382012",
+      "name": "Dua Lanny"
+    },
+    {
+      "code": "9507382013",
+      "name": "Dangguni"
+    }
+  ],
+  "950739": [
+    {
+      "code": "9507392001",
+      "name": "Wabiragi"
+    },
+    {
+      "code": "9507392002",
+      "name": "Yigemili"
+    },
+    {
+      "code": "9507392003",
+      "name": "Gilo"
+    },
+    {
+      "code": "9507392004",
+      "name": "Kewagi"
+    },
+    {
+      "code": "9507392005",
+      "name": "Nombome"
+    },
+    {
+      "code": "9507392006",
+      "name": "Numbokawi"
+    },
+    {
+      "code": "9507392007",
+      "name": "Mbu"
+    },
+    {
+      "code": "9507392008",
+      "name": "Wunabunggu"
+    }
+  ]
 }

@@ -1,72 +1,130 @@
 {
-    "617101": [
-        {
-            "code": "6171011002",
-            "name": "Benuamelayu Laut"
-        },
-        {
-            "code": "6171011003",
-            "name": "Benuamelayu Darat"
-        },
-        {
-            "code": "6171011004",
-            "name": "Parittokaya"
-        },
-        {
-            "code": "6171011005",
-            "name": "Kotabaru"
-        },
-        {
-            "code": "6171011006",
-            "name": "Akcaya"
-        }
-    ],
-    "617102": [
-        {
-            "code": "6171021001",
-            "name": "Paritmayor"
-        },
-        {
-            "code": "6171021002",
-            "name": "Banjar Serasan"
-        },
-        {
-            "code": "6171021003",
-            "name": "Saigon"
-        },
-        {
-            "code": "6171021004",
-            "name": "Tanjung Hulu"
-        },
-        {
-            "code": "6171021005",
-            "name": "Tanjung Hilir"
-        },
-        {
-            "code": "6171021006",
-            "name": "Dalambugis"
-        },
-        {
-            "code": "6171021007",
-            "name": "Tambelansampit"
-        }
-    ],
-    "617103": [
-        {
-            "code": "6171031001",
-            "name": "Pallima"
-        },
-        {
-            "code": "6171031002",
-            "name": "Sungaijawi Dalam"
-        },
-        {
-            "code": "6171031003",
-            "name": "Sungaijawi Luar"
-        },
-        {
-            "code": "6171031004",
-            "name": "Sungaibeliung"
-        }
-    ]
+  "617101": [
+    {
+      "code": "6171011002",
+      "name": "Benuamelayu Laut"
+    },
+    {
+      "code": "6171011003",
+      "name": "Benuamelayu Darat"
+    },
+    {
+      "code": "6171011004",
+      "name": "Parittokaya"
+    },
+    {
+      "code": "6171011005",
+      "name": "Kotabaru"
+    },
+    {
+      "code": "6171011006",
+      "name": "Akcaya"
+    }
+  ],
+  "617102": [
+    {
+      "code": "6171021001",
+      "name": "Paritmayor"
+    },
+    {
+      "code": "6171021002",
+      "name": "Banjar Serasan"
+    },
+    {
+      "code": "6171021003",
+      "name": "Saigon"
+    },
+    {
+      "code": "6171021004",
+      "name": "Tanjung Hulu"
+    },
+    {
+      "code": "6171021005",
+      "name": "Tanjung Hilir"
+    },
+    {
+      "code": "6171021006",
+      "name": "Dalambugis"
+    },
+    {
+      "code": "6171021007",
+      "name": "Tambelansampit"
+    }
+  ],
+  "617103": [
+    {
+      "code": "6171031001",
+      "name": "Pallima"
+    },
+    {
+      "code": "6171031002",
+      "name": "Sungaijawi Dalam"
+    },
+    {
+      "code": "6171031003",
+      "name": "Sungaijawi Luar"
+    },
+    {
+      "code": "6171031004",
+      "name": "Sungaibeliung"
+    }
+  ],
+  "617104": [
+    {
+      "code": "6171041001",
+      "name": "Siantan Hulu"
+    },
+    {
+      "code": "6171041002",
+      "name": "Siantan Tengah"
+    },
+    {
+      "code": "6171041003",
+      "name": "Siantan Hilir"
+    },
+    {
+      "code": "6171041004",
+      "name": "Batulayang"
+    }
+  ],
+  "617105": [
+    {
+      "code": "6171051001",
+      "name": "Sungaibangkong"
+    },
+    {
+      "code": "6171051002",
+      "name": "Daratsekip"
+    },
+    {
+      "code": "6171051003",
+      "name": "Tengah"
+    },
+    {
+      "code": "6171051004",
+      "name": "Mariana"
+    },
+    {
+      "code": "6171051005",
+      "name": "Sungaijawi"
+    }
+  ],
+  "617106": [
+    {
+      "code": "6171061001",
+      "name": "Bansir Laut"
+    },
+    {
+      "code": "6171061002",
+      "name": "Bansir Darat"
+    },
+    {
+      "code": "6171061003",
+      "name": "Bangkabelitung Laut"
+    },
+    {
+      "code": "6171061004",
+      "name": "Bangkabelitung Darat"
+    }
+  ]
 }

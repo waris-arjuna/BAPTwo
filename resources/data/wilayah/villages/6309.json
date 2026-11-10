@@ -1,0 +1,550 @@
+{
+  "630901": [
+    {
+      "code": "6309012001",
+      "name": "Hapalah"
+    },
+    {
+      "code": "6309012002",
+      "name": "Bangkiling"
+    },
+    {
+      "code": "6309012003",
+      "name": "Sungai Durian"
+    },
+    {
+      "code": "6309012004",
+      "name": "Pematang"
+    },
+    {
+      "code": "6309012005",
+      "name": "Hariang"
+    },
+    {
+      "code": "6309012006",
+      "name": "Banua Lawas"
+    },
+    {
+      "code": "6309012007",
+      "name": "Habau"
+    },
+    {
+      "code": "6309012008",
+      "name": "Banua Rantau"
+    },
+    {
+      "code": "6309012009",
+      "name": "Purai"
+    },
+    {
+      "code": "6309012010",
+      "name": "Batang Banyu"
+    },
+    {
+      "code": "6309012011",
+      "name": "Habau Hulu"
+    },
+    {
+      "code": "6309012012",
+      "name": "Bungin"
+    },
+    {
+      "code": "6309012013",
+      "name": "Bangkiling Raya"
+    },
+    {
+      "code": "6309012014",
+      "name": "Talan"
+    },
+    {
+      "code": "6309012015",
+      "name": "Sungai Anyar"
+    }
+  ],
+  "630902": [
+    {
+      "code": "6309021001",
+      "name": "Pulau"
+    },
+    {
+      "code": "6309022002",
+      "name": "Ampukung"
+    },
+    {
+      "code": "6309022003",
+      "name": "Telaga Itar"
+    },
+    {
+      "code": "6309022004",
+      "name": "Sungai Buluh"
+    },
+    {
+      "code": "6309022005",
+      "name": "Binturu"
+    },
+    {
+      "code": "6309022006",
+      "name": "Pudak Setegal"
+    },
+    {
+      "code": "6309022007",
+      "name": "Pasar Panas"
+    },
+    {
+      "code": "6309022008",
+      "name": "Masintan"
+    },
+    {
+      "code": "6309022009",
+      "name": "Takulat"
+    },
+    {
+      "code": "6309022010",
+      "name": "Paliat"
+    },
+    {
+      "code": "6309022011",
+      "name": "Karangan Putih"
+    },
+    {
+      "code": "6309022012",
+      "name": "Bahungin"
+    }
+  ],
+  "630903": [
+    {
+      "code": "6309032001",
+      "name": "Murung Baru"
+    },
+    {
+      "code": "6309032002",
+      "name": "Lukbayur"
+    },
+    {
+      "code": "6309032003",
+      "name": "Walangkir"
+    },
+    {
+      "code": "6309032004",
+      "name": "Warukin"
+    },
+    {
+      "code": "6309032005",
+      "name": "Barimbun"
+    },
+    {
+      "code": "6309032006",
+      "name": "Mangkusip"
+    },
+    {
+      "code": "6309032007",
+      "name": "Pamarangan Kanan"
+    },
+    {
+      "code": "6309032008",
+      "name": "\"Pulau Ku\"\"u\""
+    },
+    {
+      "code": "6309032009",
+      "name": "Tanta"
+    },
+    {
+      "code": "6309032010",
+      "name": "Padang Panjang"
+    },
+    {
+      "code": "6309032011",
+      "name": "Puain Kanan"
+    },
+    {
+      "code": "6309032012",
+      "name": "Padangin"
+    },
+    {
+      "code": "6309032013",
+      "name": "Tamiyang"
+    },
+    {
+      "code": "6309032014",
+      "name": "Tanta Hulu"
+    }
+  ],
+  "630904": [
+    {
+      "code": "6309041001",
+      "name": "Jangkung"
+    },
+    {
+      "code": "6309041002",
+      "name": "Tanjung"
+    },
+    {
+      "code": "6309041003",
+      "name": "Agung"
+    },
+    {
+      "code": "6309041004",
+      "name": "Hikun"
+    },
+    {
+      "code": "6309042005",
+      "name": "Banyu Tajun"
+    },
+    {
+      "code": "6309042006",
+      "name": "Pamarangan Kiwa"
+    },
+    {
+      "code": "6309042007",
+      "name": "Puain Kiwa"
+    },
+    {
+      "code": "6309042008",
+      "name": "Juai"
+    },
+    {
+      "code": "6309042009",
+      "name": "Mahe Seberang"
+    },
+    {
+      "code": "6309042010",
+      "name": "Kambitin"
+    },
+    {
+      "code": "6309042011",
+      "name": "Wayau"
+    },
+    {
+      "code": "6309042012",
+      "name": "Garunggung"
+    },
+    {
+      "code": "6309042013",
+      "name": "Kitang"
+    },
+    {
+      "code": "6309042014",
+      "name": "Sungai Pimping"
+    },
+    {
+      "code": "6309042015",
+      "name": "Kambitin Raya"
+    }
+  ],
+  "630905": [
+    {
+      "code": "6309052001",
+      "name": "Marindi"
+    },
+    {
+      "code": "6309052002",
+      "name": "Wirang"
+    },
+    {
+      "code": "6309052003",
+      "name": "Bongkang"
+    },
+    {
+      "code": "6309052004",
+      "name": "Nawin"
+    },
+    {
+      "code": "6309052005",
+      "name": "Halong"
+    },
+    {
+      "code": "6309052007",
+      "name": "Hayup"
+    },
+    {
+      "code": "6309052011",
+      "name": "Kembang Kuning"
+    },
+    {
+      "code": "6309052012",
+      "name": "Seradang"
+    },
+    {
+      "code": "6309052013",
+      "name": "Mahe Pasar"
+    },
+    {
+      "code": "6309052014",
+      "name": "Lok Batu"
+    },
+    {
+      "code": "6309052015",
+      "name": "Suput"
+    },
+    {
+      "code": "6309052018",
+      "name": "Surian"
+    },
+    {
+      "code": "6309052021",
+      "name": "Catur Karya"
+    }
+  ],
+  "630906": [
+    {
+      "code": "6309061001",
+      "name": "Belimbing Raya"
+    },
+    {
+      "code": "6309061002",
+      "name": "Belimbing"
+    },
+    {
+      "code": "6309061003",
+      "name": "Sulingan"
+    },
+    {
+      "code": "6309061006",
+      "name": "Mabu'un"
+    },
+    {
+      "code": "6309061009",
+      "name": "Pembataan"
+    },
+    {
+      "code": "6309062004",
+      "name": "Maburai"
+    },
+    {
+      "code": "6309062005",
+      "name": "Kasiau"
+    },
+    {
+      "code": "6309062007",
+      "name": "Kapar"
+    },
+    {
+      "code": "6309062008",
+      "name": "Masukau"
+    },
+    {
+      "code": "6309062010",
+      "name": "Kasiau Raya"
+    }
+  ],
+  "630907": [
+    {
+      "code": "6309072001",
+      "name": "Kupang Nunding"
+    },
+    {
+      "code": "6309072002",
+      "name": "Mangkupum"
+    },
+    {
+      "code": "6309072003",
+      "name": "Pasar Batu"
+    },
+    {
+      "code": "6309072004",
+      "name": "Uwie"
+    },
+    {
+      "code": "6309072005",
+      "name": "Muara Uya"
+    },
+    {
+      "code": "6309072006",
+      "name": "Lumbang"
+    },
+    {
+      "code": "6309072007",
+      "name": "Santuun"
+    },
+    {
+      "code": "6309072008",
+      "name": "Simpung Layung"
+    },
+    {
+      "code": "6309072009",
+      "name": "Binjai"
+    },
+    {
+      "code": "6309072010",
+      "name": "Palapi"
+    },
+    {
+      "code": "6309072011",
+      "name": "Kampung Baru"
+    },
+    {
+      "code": "6309072012",
+      "name": "Salikung"
+    },
+    {
+      "code": "6309072013",
+      "name": "Ribang"
+    },
+    {
+      "code": "6309072014",
+      "name": "Sungai Kumap"
+    }
+  ],
+  "630908": [
+    {
+      "code": "6309082001",
+      "name": "Madang"
+    },
+    {
+      "code": "6309082002",
+      "name": "Tantaringin"
+    },
+    {
+      "code": "6309082003",
+      "name": "Murung Karangan"
+    },
+    {
+      "code": "6309082004",
+      "name": "Padangin"
+    },
+    {
+      "code": "6309082005",
+      "name": "Manduin"
+    },
+    {
+      "code": "6309082006",
+      "name": "Mantuil"
+    },
+    {
+      "code": "6309082007",
+      "name": "Harus"
+    }
+  ],
+  "630909": [
+    {
+      "code": "6309092001",
+      "name": "Pugaan"
+    },
+    {
+      "code": "6309092002",
+      "name": "Pampanan"
+    },
+    {
+      "code": "6309092003",
+      "name": "Sungai Rukam II"
+    },
+    {
+      "code": "6309092004",
+      "name": "Sungai Rukam I"
+    },
+    {
+      "code": "6309092005",
+      "name": "Jirak"
+    },
+    {
+      "code": "6309092006",
+      "name": "Halangan"
+    },
+    {
+      "code": "6309092007",
+      "name": "Tamunti"
+    }
+  ],
+  "630910": [
+    {
+      "code": "6309102001",
+      "name": "Bilas"
+    },
+    {
+      "code": "6309102002",
+      "name": "Kaong"
+    },
+    {
+      "code": "6309102003",
+      "name": "Pangelak"
+    },
+    {
+      "code": "6309102004",
+      "name": "Kinarum"
+    },
+    {
+      "code": "6309102005",
+      "name": "Masingai II"
+    },
+    {
+      "code": "6309102006",
+      "name": "Masingai I"
+    }
+  ],
+  "630911": [
+    {
+      "code": "6309112001",
+      "name": "Teratau"
+    },
+    {
+      "code": "6309112002",
+      "name": "Namun"
+    },
+    {
+      "code": "6309112003",
+      "name": "Jaro"
+    },
+    {
+      "code": "6309112004",
+      "name": "Solan"
+    },
+    {
+      "code": "6309112005",
+      "name": "Muang"
+    },
+    {
+      "code": "6309112006",
+      "name": "Lano"
+    },
+    {
+      "code": "6309112007",
+      "name": "Purui"
+    },
+    {
+      "code": "6309112008",
+      "name": "Garagata"
+    },
+    {
+      "code": "6309112009",
+      "name": "Nalui"
+    }
+  ],
+  "630912": [
+    {
+      "code": "6309122001",
+      "name": "Waling"
+    },
+    {
+      "code": "6309122002",
+      "name": "Usih"
+    },
+    {
+      "code": "6309122003",
+      "name": "Bintang Ara"
+    },
+    {
+      "code": "6309122004",
+      "name": "Burum"
+    },
+    {
+      "code": "6309122005",
+      "name": "Panaan"
+    },
+    {
+      "code": "6309122006",
+      "name": "Dambung Raya"
+    },
+    {
+      "code": "6309122007",
+      "name": "Argo Mulyo"
+    },
+    {
+      "code": "6309122008",
+      "name": "Bumi Makmur"
+    },
+    {
+      "code": "6309122009",
+      "name": "Hegarmanah"
+    }
+  ]
+}

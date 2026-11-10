@@ -1,0 +1,652 @@
+{
+  "710401": [
+    {
+      "code": "7104011005",
+      "name": "Lirung"
+    },
+    {
+      "code": "7104011011",
+      "name": "Lirung Satu"
+    },
+    {
+      "code": "7104011024",
+      "name": "Lirung Matane"
+    },
+    {
+      "code": "7104012006",
+      "name": "Sereh"
+    },
+    {
+      "code": "7104012007",
+      "name": "Musi"
+    },
+    {
+      "code": "7104012015",
+      "name": "Talolang"
+    },
+    {
+      "code": "7104012017",
+      "name": "Sereh I"
+    }
+  ],
+  "710402": [
+    {
+      "code": "7104021005",
+      "name": "Beo"
+    },
+    {
+      "code": "7104021017",
+      "name": "Beo Timur"
+    },
+    {
+      "code": "7104021018",
+      "name": "Beo Barat"
+    },
+    {
+      "code": "7104022011",
+      "name": "Bantik"
+    },
+    {
+      "code": "7104022019",
+      "name": "Bengel"
+    },
+    {
+      "code": "7104022020",
+      "name": "Bantik Lama"
+    }
+  ],
+  "710403": [
+    {
+      "code": "7104032003",
+      "name": "Alo"
+    },
+    {
+      "code": "7104032004",
+      "name": "Nunu"
+    },
+    {
+      "code": "7104032005",
+      "name": "Rainis"
+    },
+    {
+      "code": "7104032006",
+      "name": "Bantane"
+    },
+    {
+      "code": "7104032007",
+      "name": "Tabang"
+    },
+    {
+      "code": "7104032014",
+      "name": "Parangen"
+    },
+    {
+      "code": "7104032015",
+      "name": "Bantane Utara"
+    },
+    {
+      "code": "7104032018",
+      "name": "Tabang Barat"
+    },
+    {
+      "code": "7104032020",
+      "name": "Nunu Utara"
+    },
+    {
+      "code": "7104032021",
+      "name": "Rainis Batupenga"
+    },
+    {
+      "code": "7104032022",
+      "name": "Alo Utara"
+    }
+  ],
+  "710404": [
+    {
+      "code": "7104042006",
+      "name": "Essang"
+    },
+    {
+      "code": "7104042007",
+      "name": "Lalue"
+    },
+    {
+      "code": "7104042008",
+      "name": "Bulude"
+    },
+    {
+      "code": "7104042016",
+      "name": "Maririk"
+    },
+    {
+      "code": "7104042018",
+      "name": "Essang Selatan"
+    },
+    {
+      "code": "7104042019",
+      "name": "Bulude Selatan"
+    },
+    {
+      "code": "7104042020",
+      "name": "Lalue Tengah"
+    },
+    {
+      "code": "7104042021",
+      "name": "Lalue Utara"
+    }
+  ],
+  "710405": [
+    {
+      "code": "7104052001",
+      "name": "Kakorotan"
+    },
+    {
+      "code": "7104052002",
+      "name": "Marampit"
+    },
+    {
+      "code": "7104052003",
+      "name": "Laluhe"
+    },
+    {
+      "code": "7104052004",
+      "name": "Dampulis"
+    },
+    {
+      "code": "7104052005",
+      "name": "Karatung"
+    },
+    {
+      "code": "7104052007",
+      "name": "Karatung Tengah"
+    },
+    {
+      "code": "7104052008",
+      "name": "Karatung Selatan"
+    },
+    {
+      "code": "7104052009",
+      "name": "Dampulis Selatan"
+    },
+    {
+      "code": "7104052010",
+      "name": "Marampit Timur"
+    }
+  ],
+  "710406": [
+    {
+      "code": "7104062001",
+      "name": "Pangeran"
+    },
+    {
+      "code": "7104062007",
+      "name": "Bulude"
+    },
+    {
+      "code": "7104062008",
+      "name": "Pantuge"
+    },
+    {
+      "code": "7104062009",
+      "name": "Kabaruan"
+    },
+    {
+      "code": "7104062010",
+      "name": "Mangaran"
+    },
+    {
+      "code": "7104062011",
+      "name": "Kordakel"
+    },
+    {
+      "code": "7104062012",
+      "name": "Rarange"
+    },
+    {
+      "code": "7104062013",
+      "name": "Taduna"
+    },
+    {
+      "code": "7104062017",
+      "name": "Kabaruan Timur"
+    },
+    {
+      "code": "7104062018",
+      "name": "Pantuge Timur"
+    },
+    {
+      "code": "7104062019",
+      "name": "Pannulan"
+    },
+    {
+      "code": "7104062020",
+      "name": "Bulude Selatan"
+    }
+  ],
+  "710407": [
+    {
+      "code": "7104071001",
+      "name": "Melonguane"
+    },
+    {
+      "code": "7104071009",
+      "name": "Melonguane Timur"
+    },
+    {
+      "code": "7104071010",
+      "name": "Melonguane Barat"
+    },
+    {
+      "code": "7104072002",
+      "name": "Mala"
+    },
+    {
+      "code": "7104072003",
+      "name": "Kiama"
+    },
+    {
+      "code": "7104072006",
+      "name": "Tarun"
+    },
+    {
+      "code": "7104072007",
+      "name": "Sawang"
+    },
+    {
+      "code": "7104072008",
+      "name": "Ambela"
+    },
+    {
+      "code": "7104072011",
+      "name": "Tarun Selatan"
+    },
+    {
+      "code": "7104072012",
+      "name": "Kiama Barat"
+    },
+    {
+      "code": "7104072015",
+      "name": "Maredaren Kiama"
+    },
+    {
+      "code": "7104072016",
+      "name": "Sawang Utara"
+    },
+    {
+      "code": "7104072017",
+      "name": "Mala Timur"
+    }
+  ],
+  "710408": [
+    {
+      "code": "7104082001",
+      "name": "Mamahan"
+    },
+    {
+      "code": "7104082002",
+      "name": "Bambung"
+    },
+    {
+      "code": "7104082003",
+      "name": "Taturan"
+    },
+    {
+      "code": "7104082004",
+      "name": "Gemeh"
+    },
+    {
+      "code": "7104082005",
+      "name": "Arangkaa"
+    },
+    {
+      "code": "7104082006",
+      "name": "Malat"
+    },
+    {
+      "code": "7104082007",
+      "name": "Apan"
+    },
+    {
+      "code": "7104082008",
+      "name": "Taruan"
+    },
+    {
+      "code": "7104082009",
+      "name": "Bannada"
+    },
+    {
+      "code": "7104082010",
+      "name": "Gemeh Raamata"
+    },
+    {
+      "code": "7104082011",
+      "name": "Gemeh Wantane"
+    },
+    {
+      "code": "7104082012",
+      "name": "Bambung Timur"
+    },
+    {
+      "code": "7104082013",
+      "name": "Malat Utara"
+    },
+    {
+      "code": "7104082014",
+      "name": "Mamahan Barat"
+    },
+    {
+      "code": "7104082015",
+      "name": "Lahu"
+    }
+  ],
+  "710409": [
+    {
+      "code": "7104092001",
+      "name": "Peret"
+    },
+    {
+      "code": "7104092002",
+      "name": "Ighik"
+    },
+    {
+      "code": "7104092003",
+      "name": "Birang"
+    },
+    {
+      "code": "7104092004",
+      "name": "Akas"
+    },
+    {
+      "code": "7104092005",
+      "name": "Damau"
+    },
+    {
+      "code": "7104092006",
+      "name": "Damau Bowone"
+    },
+    {
+      "code": "7104092007",
+      "name": "Taduwale"
+    },
+    {
+      "code": "7104092008",
+      "name": "Akas Balane"
+    }
+  ],
+  "710410": [
+    {
+      "code": "7104102001",
+      "name": "Tuabatu"
+    },
+    {
+      "code": "7104102002",
+      "name": "Dapalan"
+    },
+    {
+      "code": "7104102003",
+      "name": "Riung"
+    },
+    {
+      "code": "7104102004",
+      "name": "Ammat"
+    },
+    {
+      "code": "7104102005",
+      "name": "Binalang"
+    },
+    {
+      "code": "7104102006",
+      "name": "Ganalo"
+    },
+    {
+      "code": "7104102007",
+      "name": "Dapihe"
+    },
+    {
+      "code": "7104102008",
+      "name": "Tuabatu Barat"
+    },
+    {
+      "code": "7104102009",
+      "name": "Ammat Selatan"
+    },
+    {
+      "code": "7104102010",
+      "name": "Binalang Timur"
+    },
+    {
+      "code": "7104102011",
+      "name": "Riung Utara"
+    }
+  ],
+  "710411": [
+    {
+      "code": "7104112001",
+      "name": "Bitunuris"
+    },
+    {
+      "code": "7104112002",
+      "name": "Bitunuris Selatan"
+    },
+    {
+      "code": "7104112003",
+      "name": "Salibabu"
+    },
+    {
+      "code": "7104112004",
+      "name": "Salibabu Utara"
+    },
+    {
+      "code": "7104112005",
+      "name": "Dalum"
+    },
+    {
+      "code": "7104112006",
+      "name": "Balang"
+    }
+  ],
+  "710412": [
+    {
+      "code": "7104122001",
+      "name": "Kalongan"
+    },
+    {
+      "code": "7104122002",
+      "name": "Kalongan Utara"
+    },
+    {
+      "code": "7104122003",
+      "name": "Kalongan Selatan"
+    },
+    {
+      "code": "7104122004",
+      "name": "Alude"
+    },
+    {
+      "code": "7104122005",
+      "name": "Musi I"
+    }
+  ],
+  "710413": [
+    {
+      "code": "7104132001",
+      "name": "Pulau Miangas"
+    }
+  ],
+  "710414": [
+    {
+      "code": "7104141001",
+      "name": "Makatara"
+    },
+    {
+      "code": "7104141002",
+      "name": "Makatara Timur"
+    },
+    {
+      "code": "7104142003",
+      "name": "Awit"
+    },
+    {
+      "code": "7104142004",
+      "name": "Awit Selatan"
+    },
+    {
+      "code": "7104142005",
+      "name": "Rae"
+    },
+    {
+      "code": "7104142006",
+      "name": "Rae Selatan"
+    },
+    {
+      "code": "7104142007",
+      "name": "Lobbo"
+    },
+    {
+      "code": "7104142008",
+      "name": "Lobbo I"
+    }
+  ],
+  "710415": [
+    {
+      "code": "7104152001",
+      "name": "Pulutan"
+    },
+    {
+      "code": "7104152002",
+      "name": "Pulutan Utara"
+    },
+    {
+      "code": "7104152003",
+      "name": "Pulutan Selatan"
+    },
+    {
+      "code": "7104152004",
+      "name": "Daran"
+    },
+    {
+      "code": "7104152005",
+      "name": "Daran Utara"
+    }
+  ],
+  "710416": [
+    {
+      "code": "7104162001",
+      "name": "Tule"
+    },
+    {
+      "code": "7104162002",
+      "name": "Tule Tengah"
+    },
+    {
+      "code": "7104162003",
+      "name": "Tule Utara"
+    },
+    {
+      "code": "7104162004",
+      "name": "Bowombaru"
+    },
+    {
+      "code": "7104162005",
+      "name": "Bowombaru Tengah"
+    },
+    {
+      "code": "7104162006",
+      "name": "Bowombaru Utara"
+    }
+  ],
+  "710417": [
+    {
+      "code": "7104172001",
+      "name": "Moronge"
+    },
+    {
+      "code": "7104172002",
+      "name": "Moronge I"
+    },
+    {
+      "code": "7104172003",
+      "name": "Moronge II"
+    },
+    {
+      "code": "7104172004",
+      "name": "Moronge Selatan"
+    },
+    {
+      "code": "7104172005",
+      "name": "Moronge Selatan II"
+    },
+    {
+      "code": "7104172006",
+      "name": "Moronge Selatan I"
+    }
+  ],
+  "710418": [
+    {
+      "code": "7104182001",
+      "name": "Pampalu"
+    },
+    {
+      "code": "7104182002",
+      "name": "Ruso"
+    },
+    {
+      "code": "7104182003",
+      "name": "Niampak"
+    },
+    {
+      "code": "7104182004",
+      "name": "Niampak Utara"
+    },
+    {
+      "code": "7104182005",
+      "name": "Tarohan"
+    },
+    {
+      "code": "7104182006",
+      "name": "Tarohan Selatan"
+    },
+    {
+      "code": "7104182007",
+      "name": "Matahit"
+    }
+  ],
+  "710419": [
+    {
+      "code": "7104192001",
+      "name": "Sambuara Satu"
+    },
+    {
+      "code": "7104192002",
+      "name": "Sambuara"
+    },
+    {
+      "code": "7104192003",
+      "name": "Ensem"
+    },
+    {
+      "code": "7104192004",
+      "name": "Ensem Timur"
+    },
+    {
+      "code": "7104192005",
+      "name": "Batumbalango"
+    },
+    {
+      "code": "7104192006",
+      "name": "Ambia"
+    },
+    {
+      "code": "7104192007",
+      "name": "Ambia Utara"
+    },
+    {
+      "code": "7104192008",
+      "name": "Kuma"
+    },
+    {
+      "code": "7104192009",
+      "name": "Kuma Selatan"
+    }
+  ]
+}

@@ -1,44 +1,616 @@
 {
-    "910301": [
-        {
-            "code": "9103011001",
-            "name": "Sentani Kota"
-        },
-        {
-            "code": "9103011002",
-            "name": "Dobonsolo"
-        },
-        {
-            "code": "9103011003",
-            "name": "Hinekombe"
-        },
-        {
-            "code": "9103012004",
-            "name": "Sereh"
-        },
-        {
-            "code": "9103012005",
-            "name": "Yobeh"
-        },
-        {
-            "code": "9103012006",
-            "name": "Ilfele"
-        },
-        {
-            "code": "9103012011",
-            "name": "Hobong"
-        },
-        {
-            "code": "9103012017",
-            "name": "Yahim"
-        },
-        {
-            "code": "9103013007",
-            "name": "Desa Adat Yoboi"
-        },
-        {
-            "code": "9103013010",
-            "name": "Desa Adat Heaiseai Yomo Heai"
-        }
-    ]
+  "910301": [
+    {
+      "code": "9103011001",
+      "name": "Sentani Kota"
+    },
+    {
+      "code": "9103011002",
+      "name": "Dobonsolo"
+    },
+    {
+      "code": "9103011003",
+      "name": "Hinekombe"
+    },
+    {
+      "code": "9103012004",
+      "name": "Sereh"
+    },
+    {
+      "code": "9103012005",
+      "name": "Yobeh"
+    },
+    {
+      "code": "9103012006",
+      "name": "Ilfele"
+    },
+    {
+      "code": "9103012011",
+      "name": "Hobong"
+    },
+    {
+      "code": "9103012017",
+      "name": "Yahim"
+    },
+    {
+      "code": "9103013007",
+      "name": "Desa Adat Yoboi"
+    },
+    {
+      "code": "9103013010",
+      "name": "Desa Adat Heaiseai Yomo Heai"
+    }
+  ],
+  "910302": [
+    {
+      "code": "9103022001",
+      "name": "Nolokla"
+    },
+    {
+      "code": "9103022002",
+      "name": "Puai"
+    },
+    {
+      "code": "9103022004",
+      "name": "Asei Besar"
+    },
+    {
+      "code": "9103022006",
+      "name": "Nendali"
+    },
+    {
+      "code": "9103023003",
+      "name": "Desa Adat Ayapo"
+    },
+    {
+      "code": "9103023005",
+      "name": "Desa Adat Kleuwblou"
+    },
+    {
+      "code": "9103023007",
+      "name": "Desa Adat Yokiwa"
+    }
+  ],
+  "910303": [
+    {
+      "code": "9103032001",
+      "name": "Waiya"
+    },
+    {
+      "code": "9103032002",
+      "name": "Entiyebo"
+    },
+    {
+      "code": "9103032003",
+      "name": "Kendate"
+    },
+    {
+      "code": "9103032004",
+      "name": "Tablasupa"
+    },
+    {
+      "code": "9103032005",
+      "name": "Yepase"
+    },
+    {
+      "code": "9103032006",
+      "name": "Wambena"
+    },
+    {
+      "code": "9103032007",
+      "name": "Yewena"
+    },
+    {
+      "code": "9103032012",
+      "name": "Doromena"
+    }
+  ],
+  "910304": [
+    {
+      "code": "9103042001",
+      "name": "Dosay"
+    },
+    {
+      "code": "9103042005",
+      "name": "Maribu"
+    },
+    {
+      "code": "9103042008",
+      "name": "Sabron Sari"
+    },
+    {
+      "code": "9103042011",
+      "name": "Sabro Yaru"
+    },
+    {
+      "code": "9103043006",
+      "name": "Desa Adat Waibron Bano"
+    }
+  ],
+  "910305": [
+    {
+      "code": "9103052001",
+      "name": "Sama"
+    },
+    {
+      "code": "9103052002",
+      "name": "Manda Yawan"
+    },
+    {
+      "code": "9103052003",
+      "name": "Mamda"
+    },
+    {
+      "code": "9103052004",
+      "name": "Mamei"
+    },
+    {
+      "code": "9103052005",
+      "name": "Nambom"
+    },
+    {
+      "code": "9103052006",
+      "name": "Kwansu"
+    },
+    {
+      "code": "9103052007",
+      "name": "Soaib"
+    },
+    {
+      "code": "9103052008",
+      "name": "Sabeab Kecil"
+    },
+    {
+      "code": "9103052009",
+      "name": "Sekori"
+    },
+    {
+      "code": "9103052010",
+      "name": "Skoaim"
+    },
+    {
+      "code": "9103052011",
+      "name": "Benggwin Progo"
+    },
+    {
+      "code": "9103052012",
+      "name": "Aib"
+    }
+  ],
+  "910306": [
+    {
+      "code": "9103061015",
+      "name": "Hatib"
+    },
+    {
+      "code": "9103062001",
+      "name": "Domoikati"
+    },
+    {
+      "code": "9103062002",
+      "name": "Dementin"
+    },
+    {
+      "code": "9103062003",
+      "name": "Yanbra"
+    },
+    {
+      "code": "9103062004",
+      "name": "Braso"
+    },
+    {
+      "code": "9103062005",
+      "name": "Pupehabu"
+    },
+    {
+      "code": "9103062006",
+      "name": "Bring"
+    },
+    {
+      "code": "9103062007",
+      "name": "Nembu Gresi"
+    },
+    {
+      "code": "9103062009",
+      "name": "Ibub"
+    },
+    {
+      "code": "9103062013",
+      "name": "Swentab"
+    },
+    {
+      "code": "9103062014",
+      "name": "Jagrang"
+    },
+    {
+      "code": "9103062016",
+      "name": "Hyansip"
+    }
+  ],
+  "910307": [
+    {
+      "code": "9103071021",
+      "name": "Tabri"
+    },
+    {
+      "code": "9103072001",
+      "name": "Gemebs"
+    },
+    {
+      "code": "9103072002",
+      "name": "Singgri"
+    },
+    {
+      "code": "9103072003",
+      "name": "Meyu"
+    },
+    {
+      "code": "9103072004",
+      "name": "Benyom"
+    },
+    {
+      "code": "9103072005",
+      "name": "Oyengsi"
+    },
+    {
+      "code": "9103072006",
+      "name": "Singgriway"
+    },
+    {
+      "code": "9103072009",
+      "name": "Imsar"
+    },
+    {
+      "code": "9103072010",
+      "name": "Kuipons"
+    },
+    {
+      "code": "9103072014",
+      "name": "Yenggu Baru"
+    },
+    {
+      "code": "9103072015",
+      "name": "Yenggu Lama"
+    },
+    {
+      "code": "9103072017",
+      "name": "Kuwase"
+    },
+    {
+      "code": "9103072019",
+      "name": "Pobaim"
+    },
+    {
+      "code": "9103073018",
+      "name": "Desa Adat Ketemung"
+    }
+  ],
+  "910308": [
+    {
+      "code": "9103082001",
+      "name": "Nimbokrang"
+    },
+    {
+      "code": "9103082002",
+      "name": "Benyom Jaya I"
+    },
+    {
+      "code": "9103082003",
+      "name": "Benyom Jaya II"
+    },
+    {
+      "code": "9103082004",
+      "name": "Berab"
+    },
+    {
+      "code": "9103082005",
+      "name": "Hamonggrang"
+    },
+    {
+      "code": "9103082006",
+      "name": "Wahab"
+    },
+    {
+      "code": "9103082007",
+      "name": "Nombukrang Sari"
+    },
+    {
+      "code": "9103082008",
+      "name": "Rhepang Muaf"
+    },
+    {
+      "code": "9103082009",
+      "name": "Bunyom"
+    }
+  ],
+  "910309": [
+    {
+      "code": "9103092001",
+      "name": "Beneik"
+    },
+    {
+      "code": "9103092002",
+      "name": "Ganusa"
+    },
+    {
+      "code": "9103092003",
+      "name": "Guryard"
+    },
+    {
+      "code": "9103092004",
+      "name": "Santosa"
+    },
+    {
+      "code": "9103092005",
+      "name": "Sawa Suma"
+    },
+    {
+      "code": "9103092006",
+      "name": "Nandaizi"
+    }
+  ],
+  "910310": [
+    {
+      "code": "9103102001",
+      "name": "Demta"
+    },
+    {
+      "code": "9103102002",
+      "name": "Ambora"
+    },
+    {
+      "code": "9103102003",
+      "name": "Yougapsa"
+    },
+    {
+      "code": "9103102004",
+      "name": "Muris Kecil"
+    },
+    {
+      "code": "9103102005",
+      "name": "Yakore"
+    },
+    {
+      "code": "9103102006",
+      "name": "Kamdera"
+    },
+    {
+      "code": "9103102007",
+      "name": "Muaif"
+    }
+  ],
+  "910311": [
+    {
+      "code": "9103112001",
+      "name": "Lapua"
+    },
+    {
+      "code": "9103112002",
+      "name": "Sebum"
+    },
+    {
+      "code": "9103112003",
+      "name": "Soskotek"
+    },
+    {
+      "code": "9103112004",
+      "name": "Yadauw"
+    },
+    {
+      "code": "9103112006",
+      "name": "Umbron"
+    }
+  ],
+  "910312": [
+    {
+      "code": "9103122001",
+      "name": "Ebungfa"
+    },
+    {
+      "code": "9103122002",
+      "name": "Atabar"
+    },
+    {
+      "code": "9103122004",
+      "name": "Khameyoka"
+    },
+    {
+      "code": "9103123003",
+      "name": "Desa Adat Bobrongko"
+    },
+    {
+      "code": "9103123005",
+      "name": "Desa Adat Homfolo"
+    }
+  ],
+  "910313": [
+    {
+      "code": "9103132002",
+      "name": "Doyo Lama"
+    },
+    {
+      "code": "9103132003",
+      "name": "Kwadeware"
+    },
+    {
+      "code": "9103132004",
+      "name": "Yakonde"
+    },
+    {
+      "code": "9103132005",
+      "name": "Sosiri"
+    },
+    {
+      "code": "9103132006",
+      "name": "Doyo Baru"
+    },
+    {
+      "code": "9103133001",
+      "name": "Desa Adat Dondai"
+    },
+    {
+      "code": "9103133007",
+      "name": "Desa Adat Bambar"
+    }
+  ],
+  "910314": [
+    {
+      "code": "9103142001",
+      "name": "Sarmai Atas"
+    },
+    {
+      "code": "9103142002",
+      "name": "Sarmai Bawah"
+    },
+    {
+      "code": "9103142003",
+      "name": "Sanggai"
+    },
+    {
+      "code": "9103142004",
+      "name": "Yakasib"
+    },
+    {
+      "code": "9103142005",
+      "name": "Besum"
+    },
+    {
+      "code": "9103142007",
+      "name": "Imestum"
+    },
+    {
+      "code": "9103142008",
+      "name": "Karya Bumi"
+    },
+    {
+      "code": "9103142009",
+      "name": "Hanggaiy Hamong"
+    },
+    {
+      "code": "9103142010",
+      "name": "Sumbe"
+    }
+  ],
+  "910315": [
+    {
+      "code": "9103152001",
+      "name": "Tabbeyan"
+    },
+    {
+      "code": "9103152002",
+      "name": "Kwarja"
+    },
+    {
+      "code": "9103152003",
+      "name": "Ongan Jaya"
+    },
+    {
+      "code": "9103152004",
+      "name": "Bumi Sahaja"
+    },
+    {
+      "code": "9103152005",
+      "name": "Nawa Mulya"
+    },
+    {
+      "code": "9103152006",
+      "name": "Nawa Mukti"
+    },
+    {
+      "code": "9103152007",
+      "name": "Taqwa Bangun"
+    },
+    {
+      "code": "9103152008",
+      "name": "Purnama Jati"
+    },
+    {
+      "code": "9103153009",
+      "name": "Desa Adat Bundru"
+    }
+  ],
+  "910316": [
+    {
+      "code": "9103162001",
+      "name": "Hulu Atas"
+    },
+    {
+      "code": "9103162002",
+      "name": "Pagai"
+    },
+    {
+      "code": "9103162003",
+      "name": "Aurina"
+    },
+    {
+      "code": "9103162004",
+      "name": "Muara Nawa"
+    },
+    {
+      "code": "9103162005",
+      "name": "Kamikaru"
+    },
+    {
+      "code": "9103162006",
+      "name": "Naira"
+    }
+  ],
+  "910317": [
+    {
+      "code": "9103172001",
+      "name": "Yongsu Sapari"
+    },
+    {
+      "code": "9103172002",
+      "name": "Yongsu Dosoyo"
+    },
+    {
+      "code": "9103172003",
+      "name": "Newa"
+    },
+    {
+      "code": "9103173004",
+      "name": "Desa Adat Nechive"
+    }
+  ],
+  "910318": [
+    {
+      "code": "9103182001",
+      "name": "Omon"
+    },
+    {
+      "code": "9103182003",
+      "name": "Klaisu"
+    },
+    {
+      "code": "9103182004",
+      "name": "Bangai"
+    },
+    {
+      "code": "9103183002",
+      "name": "Desa Adat Iwon"
+    }
+  ],
+  "910319": [
+    {
+      "code": "9103192001",
+      "name": "Maruwai"
+    },
+    {
+      "code": "9103192002",
+      "name": "Meukisi"
+    },
+    {
+      "code": "9103192003",
+      "name": "Endokisi"
+    },
+    {
+      "code": "9103192005",
+      "name": "Buseryo"
+    },
+    {
+      "code": "9103192006",
+      "name": "Senamay"
+    }
+  ]
 }

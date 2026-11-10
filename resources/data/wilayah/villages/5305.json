@@ -1,584 +1,738 @@
 {
-    "530501": [
-        {
-            "code": "5305011001",
-            "name": "Kalabahi Barat"
-        },
-        {
-            "code": "5305011002",
-            "name": "Kalabahi Kota"
-        },
-        {
-            "code": "5305011003",
-            "name": "Kalabahi Tengah"
-        },
-        {
-            "code": "5305011004",
-            "name": "Kalabahi Timur"
-        },
-        {
-            "code": "5305011005",
-            "name": "Binongko"
-        },
-        {
-            "code": "5305011006",
-            "name": "Nusa Kenari"
-        },
-        {
-            "code": "5305011008",
-            "name": "Welai Barat"
-        },
-        {
-            "code": "5305011009",
-            "name": "Welai Timur"
-        },
-        {
-            "code": "5305011010",
-            "name": "Mutiara"
-        },
-        {
-            "code": "5305011011",
-            "name": "Wetabua"
-        },
-        {
-            "code": "5305012012",
-            "name": "Lendola"
-        },
-        {
-            "code": "5305012013",
-            "name": "Fanating"
-        },
-        {
-            "code": "5305012014",
-            "name": "Motongbang"
-        },
-        {
-            "code": "5305012015",
-            "name": "Air Kenari"
-        },
-        {
-            "code": "5305012018",
-            "name": "Teluk Kenari"
-        },
-        {
-            "code": "5305012019",
-            "name": "Adang Buom"
-        }
-    ],
-    "530502": [
-        {
-            "code": "5305021002",
-            "name": "Adang"
-        },
-        {
-            "code": "5305022003",
-            "name": "Alor Kecil"
-        },
-        {
-            "code": "5305022004",
-            "name": "Alor Besar"
-        },
-        {
-            "code": "5305022005",
-            "name": "Ampera"
-        },
-        {
-            "code": "5305022006",
-            "name": "Dulolong"
-        },
-        {
-            "code": "5305022007",
-            "name": "Aimoli"
-        },
-        {
-            "code": "5305022008",
-            "name": "Alila"
-        },
-        {
-            "code": "5305022009",
-            "name": "Otvai"
-        },
-        {
-            "code": "5305022012",
-            "name": "Ternate"
-        },
-        {
-            "code": "5305022013",
-            "name": "Ternate Selatan"
-        },
-        {
-            "code": "5305022014",
-            "name": "Alila Selatan"
-        },
-        {
-            "code": "5305022019",
-            "name": "Pulau Buaya"
-        },
-        {
-            "code": "5305022020",
-            "name": "Hulnani"
-        },
-        {
-            "code": "5305022022",
-            "name": "O'a Mate"
-        },
-        {
-            "code": "5305022023",
-            "name": "\"Ala\"\"ang\""
-        },
-        {
-            "code": "5305022024",
-            "name": "Lefokisu"
-        },
-        {
-            "code": "5305022025",
-            "name": "Bampalola"
-        },
-        {
-            "code": "5305022026",
-            "name": "Lewalu"
-        },
-        {
-            "code": "5305022027",
-            "name": "Dulolong Barat"
-        }
-    ],
-    "530506": [
-        {
-            "code": "5305061001",
-            "name": "Kabir"
-        },
-        {
-            "code": "5305062005",
-            "name": "Pandai"
-        },
-        {
-            "code": "5305062009",
-            "name": "Bandar"
-        },
-        {
-            "code": "5305062010",
-            "name": "Baolang"
-        },
-        {
-            "code": "5305062011",
-            "name": "Munaseli"
-        },
-        {
-            "code": "5305062012",
-            "name": "Helangdohi"
-        },
-        {
-            "code": "5305062013",
-            "name": "Wailawar"
-        },
-        {
-            "code": "5305062014",
-            "name": "Bana"
-        },
-        {
-            "code": "5305062016",
-            "name": "Bouweli"
-        },
-        {
-            "code": "5305062017",
-            "name": "Bukit Mas"
-        },
-        {
-            "code": "5305062019",
-            "name": "Madar"
-        }
-    ],
-    "530507": [
-        {
-            "code": "5305072001",
-            "name": "Lembur Barat"
-        },
-        {
-            "code": "5305072002",
-            "name": "Lembur Tengah"
-        },
-        {
-            "code": "5305072004",
-            "name": "Likwatang"
-        },
-        {
-            "code": "5305072007",
-            "name": "Fungafeng"
-        },
-        {
-            "code": "5305072008",
-            "name": "Fuisama"
-        },
-        {
-            "code": "5305072009",
-            "name": "Nur Benlelang"
-        },
-        {
-            "code": "5305072010",
-            "name": "Kafakbeka"
-        },
-        {
-            "code": "5305072011",
-            "name": "Manetwati"
-        },
-        {
-            "code": "5305072012",
-            "name": "Lakwati"
-        },
-        {
-            "code": "5305072014",
-            "name": "Dapitau"
-        },
-        {
-            "code": "5305072017",
-            "name": "Alim Mebung"
-        },
-        {
-            "code": "5305072018",
-            "name": "Petleng"
-        },
-        {
-            "code": "5305072019",
-            "name": "Welai Selatan"
-        },
-        {
-            "code": "5305072020",
-            "name": "Tominuku"
-        }
-    ],
-    "530508": [
-        {
-            "code": "5305082001",
-            "name": "Pido"
-        },
-        {
-            "code": "5305082002",
-            "name": "Waisika"
-        },
-        {
-            "code": "5305082003",
-            "name": "Kamot"
-        },
-        {
-            "code": "5305082004",
-            "name": "Taramana"
-        },
-        {
-            "code": "5305082005",
-            "name": "Nailang"
-        },
-        {
-            "code": "5305082006",
-            "name": "Lippang"
-        },
-        {
-            "code": "5305082007",
-            "name": "Kenarimbala"
-        },
-        {
-            "code": "5305082008",
-            "name": "Air Mancur"
-        }
-    ],
-    "530509": [
-        {
-            "code": "5305092002",
-            "name": "Baraler"
-        },
-        {
-            "code": "5305092003",
-            "name": "Kalondama"
-        },
-        {
-            "code": "5305092007",
-            "name": "Leer"
-        },
-        {
-            "code": "5305092018",
-            "name": "Baranusa"
-        },
-        {
-            "code": "5305092019",
-            "name": "Blang Merang"
-        },
-        {
-            "code": "5305092020",
-            "name": "Illu"
-        },
-        {
-            "code": "5305092024",
-            "name": "Piringsina"
-        }
-    ],
-    "530510": [
-        {
-            "code": "5305101001",
-            "name": "Kabola"
-        },
-        {
-            "code": "5305102002",
-            "name": "Kopidil"
-        },
-        {
-            "code": "5305102003",
-            "name": "Pante Deere"
-        },
-        {
-            "code": "5305102004",
-            "name": "Lawahing"
-        },
-        {
-            "code": "5305102005",
-            "name": "Alila Timur"
-        }
-    ],
-    "530511": [
-        {
-            "code": "5305111001",
-            "name": "Pura"
-        },
-        {
-            "code": "5305112002",
-            "name": "Maru"
-        },
-        {
-            "code": "5305112003",
-            "name": "Pura Utara"
-        },
-        {
-            "code": "5305112004",
-            "name": "Pura Selatan"
-        },
-        {
-            "code": "5305112005",
-            "name": "Pura Timur"
-        },
-        {
-            "code": "5305112006",
-            "name": "Pura Barat"
-        }
-    ],
-    "530512": [
-        {
-            "code": "5305122001",
-            "name": "Mataru Selatan"
-        },
-        {
-            "code": "5305122002",
-            "name": "Mataru Utara"
-        },
-        {
-            "code": "5305122003",
-            "name": "Lakatuli"
-        },
-        {
-            "code": "5305122004",
-            "name": "Mataru Timur"
-        },
-        {
-            "code": "5305122005",
-            "name": "Kamaifui"
-        },
-        {
-            "code": "5305122006",
-            "name": "Mataru Barat"
-        },
-        {
-            "code": "5305122007",
-            "name": "Taman Mataru"
-        }
-    ],
-    "530513": [
-        {
-            "code": "5305132001",
-            "name": "Langkuru"
-        },
-        {
-            "code": "5305132002",
-            "name": "Purnama"
-        },
-        {
-            "code": "5305132003",
-            "name": "Kailesa"
-        },
-        {
-            "code": "5305132004",
-            "name": "Langkuru Utara"
-        }
-    ],
-    "530514": [
-        {
-            "code": "5305142001",
-            "name": "Nule"
-        },
-        {
-            "code": "5305142002",
-            "name": "Kaleb"
-        },
-        {
-            "code": "5305142003",
-            "name": "Batu"
-        },
-        {
-            "code": "5305142004",
-            "name": "Kaera"
-        },
-        {
-            "code": "5305142005",
-            "name": "Mawar"
-        },
-        {
-            "code": "5305142006",
-            "name": "Merdeka"
-        },
-        {
-            "code": "5305142007",
-            "name": "Ombay"
-        },
-        {
-            "code": "5305142008",
-            "name": "Lekom"
-        },
-        {
-            "code": "5305142009",
-            "name": "Bungabali"
-        },
-        {
-            "code": "5305142010",
-            "name": "Tereweng"
-        },
-        {
-            "code": "5305142011",
-            "name": "Lalafang"
-        }
-    ],
-    "530515": [
-        {
-            "code": "5305152001",
-            "name": "Lembur Timur"
-        },
-        {
-            "code": "5305152002",
-            "name": "Luba"
-        },
-        {
-            "code": "5305152003",
-            "name": "Talwai"
-        },
-        {
-            "code": "5305152004",
-            "name": "Tulleng"
-        },
-        {
-            "code": "5305152005",
-            "name": "Waimi"
-        },
-        {
-            "code": "5305152006",
-            "name": "Tasi"
-        }
-    ],
-    "530516": [
-        {
-            "code": "5305162001",
-            "name": "Tude"
-        },
-        {
-            "code": "5305162002",
-            "name": "Mauta"
-        },
-        {
-            "code": "5305162003",
-            "name": "Muriabang"
-        },
-        {
-            "code": "5305162004",
-            "name": "Tubbe"
-        },
-        {
-            "code": "5305162005",
-            "name": "Tamakh"
-        },
-        {
-            "code": "5305162006",
-            "name": "Bagang"
-        },
-        {
-            "code": "5305162007",
-            "name": "Toang"
-        },
-        {
-            "code": "5305162008",
-            "name": "Eka Jaya"
-        },
-        {
-            "code": "5305162009",
-            "name": "Aramaba"
-        },
-        {
-            "code": "5305162010",
-            "name": "Delaki"
-        }
-    ],
-    "530517": [
-        {
-            "code": "5305172001",
-            "name": "Kayang"
-        },
-        {
-            "code": "5305172002",
-            "name": "Marisa"
-        },
-        {
-            "code": "5305172003",
-            "name": "Lamma"
-        },
-        {
-            "code": "5305172004",
-            "name": "Allumang"
-        },
-        {
-            "code": "5305172005",
-            "name": "Beangonong"
-        },
-        {
-            "code": "5305172006",
-            "name": "Kalondama Barat"
-        },
-        {
-            "code": "5305172007",
-            "name": "Kalondama Tengah"
-        }
-    ],
-    "530518": [
-        {
-            "code": "5305182001",
-            "name": "Tribur"
-        },
-        {
-            "code": "5305182002",
-            "name": "Wakapsir"
-        },
-        {
-            "code": "5305182003",
-            "name": "Manatang"
-        },
-        {
-            "code": "5305182004",
-            "name": "Orgen"
-        },
-        {
-            "code": "5305182005",
-            "name": "Wakapsir Timur"
-        },
-        {
-            "code": "5305182006",
-            "name": "Kuifana"
-        },
-        {
-            "code": "5305182007",
-            "name": "Margeta"
-        }
-    ]
+  "530501": [
+    {
+      "code": "5305011001",
+      "name": "Kalabahi Barat"
+    },
+    {
+      "code": "5305011002",
+      "name": "Kalabahi Kota"
+    },
+    {
+      "code": "5305011003",
+      "name": "Kalabahi Tengah"
+    },
+    {
+      "code": "5305011004",
+      "name": "Kalabahi Timur"
+    },
+    {
+      "code": "5305011005",
+      "name": "Binongko"
+    },
+    {
+      "code": "5305011006",
+      "name": "Nusa Kenari"
+    },
+    {
+      "code": "5305011008",
+      "name": "Welai Barat"
+    },
+    {
+      "code": "5305011009",
+      "name": "Welai Timur"
+    },
+    {
+      "code": "5305011010",
+      "name": "Mutiara"
+    },
+    {
+      "code": "5305011011",
+      "name": "Wetabua"
+    },
+    {
+      "code": "5305012012",
+      "name": "Lendola"
+    },
+    {
+      "code": "5305012013",
+      "name": "Fanating"
+    },
+    {
+      "code": "5305012014",
+      "name": "Motongbang"
+    },
+    {
+      "code": "5305012015",
+      "name": "Air Kenari"
+    },
+    {
+      "code": "5305012018",
+      "name": "Teluk Kenari"
+    },
+    {
+      "code": "5305012019",
+      "name": "Adang Buom"
+    }
+  ],
+  "530502": [
+    {
+      "code": "5305021002",
+      "name": "Adang"
+    },
+    {
+      "code": "5305022003",
+      "name": "Alor Kecil"
+    },
+    {
+      "code": "5305022004",
+      "name": "Alor Besar"
+    },
+    {
+      "code": "5305022005",
+      "name": "Ampera"
+    },
+    {
+      "code": "5305022006",
+      "name": "Dulolong"
+    },
+    {
+      "code": "5305022007",
+      "name": "Aimoli"
+    },
+    {
+      "code": "5305022008",
+      "name": "Alila"
+    },
+    {
+      "code": "5305022009",
+      "name": "Otvai"
+    },
+    {
+      "code": "5305022012",
+      "name": "Ternate"
+    },
+    {
+      "code": "5305022013",
+      "name": "Ternate Selatan"
+    },
+    {
+      "code": "5305022014",
+      "name": "Alila Selatan"
+    },
+    {
+      "code": "5305022019",
+      "name": "Pulau Buaya"
+    },
+    {
+      "code": "5305022020",
+      "name": "Hulnani"
+    },
+    {
+      "code": "5305022022",
+      "name": "O'a Mate"
+    },
+    {
+      "code": "5305022023",
+      "name": "\"Ala\"\"ang\""
+    },
+    {
+      "code": "5305022024",
+      "name": "Lefokisu"
+    },
+    {
+      "code": "5305022025",
+      "name": "Bampalola"
+    },
+    {
+      "code": "5305022026",
+      "name": "Lewalu"
+    },
+    {
+      "code": "5305022027",
+      "name": "Dulolong Barat"
+    }
+  ],
+  "530503": [
+    {
+      "code": "5305031001",
+      "name": "Moru"
+    },
+    {
+      "code": "5305032002",
+      "name": "Probur"
+    },
+    {
+      "code": "5305032007",
+      "name": "Morba"
+    },
+    {
+      "code": "5305032008",
+      "name": "Pintumas"
+    },
+    {
+      "code": "5305032009",
+      "name": "Wolwal"
+    },
+    {
+      "code": "5305032010",
+      "name": "Halerman"
+    },
+    {
+      "code": "5305032013",
+      "name": "Kafelulang"
+    },
+    {
+      "code": "5305032014",
+      "name": "Moramam"
+    },
+    {
+      "code": "5305032015",
+      "name": "Pailelang"
+    },
+    {
+      "code": "5305032016",
+      "name": "Wolwal Barat"
+    },
+    {
+      "code": "5305032017",
+      "name": "Wolwal Tengah"
+    },
+    {
+      "code": "5305032018",
+      "name": "Wolwal Selatan"
+    },
+    {
+      "code": "5305032019",
+      "name": "Probur Utara"
+    }
+  ],
+  "530504": [
+    {
+      "code": "5305041001",
+      "name": "Kelaisi Timur"
+    },
+    {
+      "code": "5305042002",
+      "name": "Kelaisi Barat"
+    },
+    {
+      "code": "5305042003",
+      "name": "Sidabui"
+    },
+    {
+      "code": "5305042004",
+      "name": "Padang Alang"
+    },
+    {
+      "code": "5305042005",
+      "name": "Kuneman"
+    },
+    {
+      "code": "5305042006",
+      "name": "Silaipui"
+    },
+    {
+      "code": "5305042007",
+      "name": "Kelaisi Tengah"
+    },
+    {
+      "code": "5305042008",
+      "name": "Kiraman"
+    },
+    {
+      "code": "5305042009",
+      "name": "Maikang"
+    },
+    {
+      "code": "5305042010",
+      "name": "Malaipea"
+    },
+    {
+      "code": "5305042011",
+      "name": "Tamanapui"
+    },
+    {
+      "code": "5305042012",
+      "name": "Lella"
+    },
+    {
+      "code": "5305042013",
+      "name": "Manmas"
+    },
+    {
+      "code": "5305042014",
+      "name": "Subo"
+    }
+  ],
+  "530505": [
+    {
+      "code": "5305051001",
+      "name": "Kolana Utara"
+    },
+    {
+      "code": "5305052004",
+      "name": "Tanglapui"
+    },
+    {
+      "code": "5305052005",
+      "name": "Kolana Selatan"
+    },
+    {
+      "code": "5305052007",
+      "name": "Padang Panjang"
+    },
+    {
+      "code": "5305052008",
+      "name": "Maritaing"
+    },
+    {
+      "code": "5305052010",
+      "name": "Elok"
+    },
+    {
+      "code": "5305052011",
+      "name": "Tanglapui Timur"
+    },
+    {
+      "code": "5305052012",
+      "name": "Mausamang"
+    },
+    {
+      "code": "5305052013",
+      "name": "Belemana"
+    },
+    {
+      "code": "5305052014",
+      "name": "Maukuru"
+    }
+  ],
+  "530506": [
+    {
+      "code": "5305061001",
+      "name": "Kabir"
+    },
+    {
+      "code": "5305062005",
+      "name": "Pandai"
+    },
+    {
+      "code": "5305062009",
+      "name": "Bandar"
+    },
+    {
+      "code": "5305062010",
+      "name": "Baolang"
+    },
+    {
+      "code": "5305062011",
+      "name": "Munaseli"
+    },
+    {
+      "code": "5305062012",
+      "name": "Helangdohi"
+    },
+    {
+      "code": "5305062013",
+      "name": "Wailawar"
+    },
+    {
+      "code": "5305062014",
+      "name": "Bana"
+    },
+    {
+      "code": "5305062016",
+      "name": "Bouweli"
+    },
+    {
+      "code": "5305062017",
+      "name": "Bukit Mas"
+    },
+    {
+      "code": "5305062019",
+      "name": "Madar"
+    }
+  ],
+  "530507": [
+    {
+      "code": "5305072001",
+      "name": "Lembur Barat"
+    },
+    {
+      "code": "5305072002",
+      "name": "Lembur Tengah"
+    },
+    {
+      "code": "5305072004",
+      "name": "Likwatang"
+    },
+    {
+      "code": "5305072007",
+      "name": "Fungafeng"
+    },
+    {
+      "code": "5305072008",
+      "name": "Fuisama"
+    },
+    {
+      "code": "5305072009",
+      "name": "Nur Benlelang"
+    },
+    {
+      "code": "5305072010",
+      "name": "Kafakbeka"
+    },
+    {
+      "code": "5305072011",
+      "name": "Manetwati"
+    },
+    {
+      "code": "5305072012",
+      "name": "Lakwati"
+    },
+    {
+      "code": "5305072014",
+      "name": "Dapitau"
+    },
+    {
+      "code": "5305072017",
+      "name": "Alim Mebung"
+    },
+    {
+      "code": "5305072018",
+      "name": "Petleng"
+    },
+    {
+      "code": "5305072019",
+      "name": "Welai Selatan"
+    },
+    {
+      "code": "5305072020",
+      "name": "Tominuku"
+    }
+  ],
+  "530508": [
+    {
+      "code": "5305082001",
+      "name": "Pido"
+    },
+    {
+      "code": "5305082002",
+      "name": "Waisika"
+    },
+    {
+      "code": "5305082003",
+      "name": "Kamot"
+    },
+    {
+      "code": "5305082004",
+      "name": "Taramana"
+    },
+    {
+      "code": "5305082005",
+      "name": "Nailang"
+    },
+    {
+      "code": "5305082006",
+      "name": "Lippang"
+    },
+    {
+      "code": "5305082007",
+      "name": "Kenarimbala"
+    },
+    {
+      "code": "5305082008",
+      "name": "Air Mancur"
+    }
+  ],
+  "530509": [
+    {
+      "code": "5305092002",
+      "name": "Baraler"
+    },
+    {
+      "code": "5305092003",
+      "name": "Kalondama"
+    },
+    {
+      "code": "5305092007",
+      "name": "Leer"
+    },
+    {
+      "code": "5305092018",
+      "name": "Baranusa"
+    },
+    {
+      "code": "5305092019",
+      "name": "Blang Merang"
+    },
+    {
+      "code": "5305092020",
+      "name": "Illu"
+    },
+    {
+      "code": "5305092024",
+      "name": "Piringsina"
+    }
+  ],
+  "530510": [
+    {
+      "code": "5305101001",
+      "name": "Kabola"
+    },
+    {
+      "code": "5305102002",
+      "name": "Kopidil"
+    },
+    {
+      "code": "5305102003",
+      "name": "Pante Deere"
+    },
+    {
+      "code": "5305102004",
+      "name": "Lawahing"
+    },
+    {
+      "code": "5305102005",
+      "name": "Alila Timur"
+    }
+  ],
+  "530511": [
+    {
+      "code": "5305111001",
+      "name": "Pura"
+    },
+    {
+      "code": "5305112002",
+      "name": "Maru"
+    },
+    {
+      "code": "5305112003",
+      "name": "Pura Utara"
+    },
+    {
+      "code": "5305112004",
+      "name": "Pura Selatan"
+    },
+    {
+      "code": "5305112005",
+      "name": "Pura Timur"
+    },
+    {
+      "code": "5305112006",
+      "name": "Pura Barat"
+    }
+  ],
+  "530512": [
+    {
+      "code": "5305122001",
+      "name": "Mataru Selatan"
+    },
+    {
+      "code": "5305122002",
+      "name": "Mataru Utara"
+    },
+    {
+      "code": "5305122003",
+      "name": "Lakatuli"
+    },
+    {
+      "code": "5305122004",
+      "name": "Mataru Timur"
+    },
+    {
+      "code": "5305122005",
+      "name": "Kamaifui"
+    },
+    {
+      "code": "5305122006",
+      "name": "Mataru Barat"
+    },
+    {
+      "code": "5305122007",
+      "name": "Taman Mataru"
+    }
+  ],
+  "530513": [
+    {
+      "code": "5305132001",
+      "name": "Langkuru"
+    },
+    {
+      "code": "5305132002",
+      "name": "Purnama"
+    },
+    {
+      "code": "5305132003",
+      "name": "Kailesa"
+    },
+    {
+      "code": "5305132004",
+      "name": "Langkuru Utara"
+    }
+  ],
+  "530514": [
+    {
+      "code": "5305142001",
+      "name": "Nule"
+    },
+    {
+      "code": "5305142002",
+      "name": "Kaleb"
+    },
+    {
+      "code": "5305142003",
+      "name": "Batu"
+    },
+    {
+      "code": "5305142004",
+      "name": "Kaera"
+    },
+    {
+      "code": "5305142005",
+      "name": "Mawar"
+    },
+    {
+      "code": "5305142006",
+      "name": "Merdeka"
+    },
+    {
+      "code": "5305142007",
+      "name": "Ombay"
+    },
+    {
+      "code": "5305142008",
+      "name": "Lekom"
+    },
+    {
+      "code": "5305142009",
+      "name": "Bungabali"
+    },
+    {
+      "code": "5305142010",
+      "name": "Tereweng"
+    },
+    {
+      "code": "5305142011",
+      "name": "Lalafang"
+    }
+  ],
+  "530515": [
+    {
+      "code": "5305152001",
+      "name": "Lembur Timur"
+    },
+    {
+      "code": "5305152002",
+      "name": "Luba"
+    },
+    {
+      "code": "5305152003",
+      "name": "Talwai"
+    },
+    {
+      "code": "5305152004",
+      "name": "Tulleng"
+    },
+    {
+      "code": "5305152005",
+      "name": "Waimi"
+    },
+    {
+      "code": "5305152006",
+      "name": "Tasi"
+    }
+  ],
+  "530516": [
+    {
+      "code": "5305162001",
+      "name": "Tude"
+    },
+    {
+      "code": "5305162002",
+      "name": "Mauta"
+    },
+    {
+      "code": "5305162003",
+      "name": "Muriabang"
+    },
+    {
+      "code": "5305162004",
+      "name": "Tubbe"
+    },
+    {
+      "code": "5305162005",
+      "name": "Tamakh"
+    },
+    {
+      "code": "5305162006",
+      "name": "Bagang"
+    },
+    {
+      "code": "5305162007",
+      "name": "Toang"
+    },
+    {
+      "code": "5305162008",
+      "name": "Eka Jaya"
+    },
+    {
+      "code": "5305162009",
+      "name": "Aramaba"
+    },
+    {
+      "code": "5305162010",
+      "name": "Delaki"
+    }
+  ],
+  "530517": [
+    {
+      "code": "5305172001",
+      "name": "Kayang"
+    },
+    {
+      "code": "5305172002",
+      "name": "Marisa"
+    },
+    {
+      "code": "5305172003",
+      "name": "Lamma"
+    },
+    {
+      "code": "5305172004",
+      "name": "Allumang"
+    },
+    {
+      "code": "5305172005",
+      "name": "Beangonong"
+    },
+    {
+      "code": "5305172006",
+      "name": "Kalondama Barat"
+    },
+    {
+      "code": "5305172007",
+      "name": "Kalondama Tengah"
+    }
+  ],
+  "530518": [
+    {
+      "code": "5305182001",
+      "name": "Tribur"
+    },
+    {
+      "code": "5305182002",
+      "name": "Wakapsir"
+    },
+    {
+      "code": "5305182003",
+      "name": "Manatang"
+    },
+    {
+      "code": "5305182004",
+      "name": "Orgen"
+    },
+    {
+      "code": "5305182005",
+      "name": "Wakapsir Timur"
+    },
+    {
+      "code": "5305182006",
+      "name": "Kuifana"
+    },
+    {
+      "code": "5305182007",
+      "name": "Margeta"
+    }
+  ]
 }

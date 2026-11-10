@@ -1,266 +1,1180 @@
 {
-    "720818": [
-        {
-            "code": "7208182001",
-            "name": "Bobalo"
-        },
-        {
-            "code": "7208182002",
-            "name": "Dongkalan"
-        },
-        {
-            "code": "7208182003",
-            "name": "Eeya"
-        },
-        {
-            "code": "7208182004",
-            "name": "Ulatan"
-        },
-        {
-            "code": "7208182005",
-            "name": "Palasa Tangki"
-        },
-        {
-            "code": "7208182006",
-            "name": "Palasa Tengah"
-        },
-        {
-            "code": "7208182007",
-            "name": "Palasa Lambori"
-        },
-        {
-            "code": "7208182008",
-            "name": "Pebounang"
-        },
-        {
-            "code": "7208182009",
-            "name": "Bambasiang"
-        },
-        {
-            "code": "7208182010",
-            "name": "Beau"
-        },
-        {
-            "code": "7208182011",
-            "name": "Ogoansam"
-        }
-    ],
-    "720819": [
-        {
-            "code": "7208192001",
-            "name": "Avolua"
-        },
-        {
-            "code": "7208192002",
-            "name": "Toboli"
-        },
-        {
-            "code": "7208192003",
-            "name": "Toboli Barat"
-        },
-        {
-            "code": "7208192004",
-            "name": "Pangi"
-        },
-        {
-            "code": "7208192005",
-            "name": "Sakinah Jaya"
-        }
-    ],
-    "720820": [
-        {
-            "code": "7208202001",
-            "name": "Pelawa Baru"
-        },
-        {
-            "code": "7208202002",
-            "name": "Pelawa"
-        },
-        {
-            "code": "7208202003",
-            "name": "Binangga"
-        },
-        {
-            "code": "7208202004",
-            "name": "Jononunu"
-        },
-        {
-            "code": "7208202005",
-            "name": "Matolele"
-        },
-        {
-            "code": "7208202006",
-            "name": "Petapa"
-        }
-    ],
-    "720821": [
-        {
-            "code": "7208212001",
-            "name": "Bolano"
-        },
-        {
-            "code": "7208212002",
-            "name": "Bolano Tengah"
-        },
-        {
-            "code": "7208212003",
-            "name": "Bolano Barat"
-        },
-        {
-            "code": "7208212004",
-            "name": "Bolano Utara"
-        },
-        {
-            "code": "7208212005",
-            "name": "Bajo"
-        },
-        {
-            "code": "7208212006",
-            "name": "Sritabaang"
-        },
-        {
-            "code": "7208212007",
-            "name": "Beringin Jaya"
-        },
-        {
-            "code": "7208212008",
-            "name": "Wanamukti"
-        },
-        {
-            "code": "7208212009",
-            "name": "Wanamukti Utara"
-        },
-        {
-            "code": "7208212010",
-            "name": "Lembah Bomban"
-        },
-        {
-            "code": "7208212011",
-            "name": "Sidomukti"
-        },
-        {
-            "code": "7208212012",
-            "name": "Wanamukti Barat"
-        },
-        {
-            "code": "7208212013",
-            "name": "Sama Bahari"
-        }
-    ],
-    "720822": [
-        {
-            "code": "7208222001",
-            "name": "Ongka"
-        },
-        {
-            "code": "7208222002",
-            "name": "Malino"
-        },
-        {
-            "code": "7208222003",
-            "name": "Santigi"
-        },
-        {
-            "code": "7208222004",
-            "name": "Persatuan Sejati"
-        },
-        {
-            "code": "7208222005",
-            "name": "Tabolobolo"
-        },
-        {
-            "code": "7208222006",
-            "name": "Tinombala"
-        },
-        {
-            "code": "7208222007",
-            "name": "Karya Mandiri"
-        },
-        {
-            "code": "7208222008",
-            "name": "Kayu Jati"
-        },
-        {
-            "code": "7208222009",
-            "name": "Lambanau"
-        },
-        {
-            "code": "7208222010",
-            "name": "Bosagon Jaya"
-        },
-        {
-            "code": "7208222011",
-            "name": "Persatuan Utara"
-        },
-        {
-            "code": "7208222012",
-            "name": "Tinombala Jaya"
-        },
-        {
-            "code": "7208222013",
-            "name": "Ongka Trimuspasari"
-        },
-        {
-            "code": "7208222014",
-            "name": "Tinombala Sejati"
-        },
-        {
-            "code": "7208222015",
-            "name": "Tinombala Barat"
-        },
-        {
-            "code": "7208222016",
-            "name": "Padaelo"
-        },
-        {
-            "code": "7208222017",
-            "name": "Ongka Persatuan"
-        }
-    ],
-    "720823": [
-        {
-            "code": "7208232001",
-            "name": "Lado"
-        },
-        {
-            "code": "7208232002",
-            "name": "Sipayo"
-        },
-        {
-            "code": "7208232003",
-            "name": "Bondoyong"
-        },
-        {
-            "code": "7208232004",
-            "name": "Sidoan Selatan"
-        },
-        {
-            "code": "7208232005",
-            "name": "Sidoan Timur"
-        },
-        {
-            "code": "7208232006",
-            "name": "Sidoan"
-        },
-        {
-            "code": "7208232007",
-            "name": "Sidoan Barat"
-        },
-        {
-            "code": "7208232008",
-            "name": "Ogobagis"
-        },
-        {
-            "code": "7208232009",
-            "name": "Muara Jaya"
-        },
-        {
-            "code": "7208232010",
-            "name": "Bainaa Selatan"
-        },
-        {
-            "code": "7208232011",
-            "name": "Sintuwu Raya"
-        }
-    ]
+  "720801": [
+    {
+      "code": "7208011017",
+      "name": "Masigi"
+    },
+    {
+      "code": "7208011018",
+      "name": "Maesa"
+    },
+    {
+      "code": "7208011019",
+      "name": "Loji"
+    },
+    {
+      "code": "7208011020",
+      "name": "Bantaya"
+    },
+    {
+      "code": "7208011021",
+      "name": "Kampal"
+    },
+    {
+      "code": "7208012011",
+      "name": "Olaya"
+    },
+    {
+      "code": "7208012012",
+      "name": "Pembalowo"
+    },
+    {
+      "code": "7208012013",
+      "name": "Mertasari"
+    },
+    {
+      "code": "7208012022",
+      "name": "Bambalemo"
+    },
+    {
+      "code": "7208012023",
+      "name": "Lebo"
+    },
+    {
+      "code": "7208012035",
+      "name": "Bambalemo Ranomaisi"
+    }
+  ],
+  "720802": [
+    {
+      "code": "7208022005",
+      "name": "Tolole"
+    },
+    {
+      "code": "7208022006",
+      "name": "Toga"
+    },
+    {
+      "code": "7208022007",
+      "name": "Sidole"
+    },
+    {
+      "code": "7208022008",
+      "name": "Paranggi"
+    },
+    {
+      "code": "7208022009",
+      "name": "Ampibabo"
+    },
+    {
+      "code": "7208022010",
+      "name": "Lemo"
+    },
+    {
+      "code": "7208022011",
+      "name": "Buranga"
+    },
+    {
+      "code": "7208022021",
+      "name": "Tanampedagi"
+    },
+    {
+      "code": "7208022022",
+      "name": "Tombi"
+    },
+    {
+      "code": "7208022024",
+      "name": "Ampibabo Utara"
+    },
+    {
+      "code": "7208022025",
+      "name": "Ogolugus"
+    },
+    {
+      "code": "7208022026",
+      "name": "Lemo Utara"
+    },
+    {
+      "code": "7208022027",
+      "name": "Sidole Barat"
+    },
+    {
+      "code": "7208022028",
+      "name": "Aloo"
+    },
+    {
+      "code": "7208022029",
+      "name": "Ampibabo Timur"
+    },
+    {
+      "code": "7208022030",
+      "name": "Sidole Timur"
+    },
+    {
+      "code": "7208022031",
+      "name": "Pangku"
+    },
+    {
+      "code": "7208022032",
+      "name": "Tolole Raya"
+    },
+    {
+      "code": "7208022033",
+      "name": "Lemo Tengah"
+    }
+  ],
+  "720803": [
+    {
+      "code": "7208032008",
+      "name": "Bainaa"
+    },
+    {
+      "code": "7208032009",
+      "name": "Dongkas"
+    },
+    {
+      "code": "7208032010",
+      "name": "Tinombo"
+    },
+    {
+      "code": "7208032011",
+      "name": "Lombok"
+    },
+    {
+      "code": "7208032012",
+      "name": "Dusunan"
+    },
+    {
+      "code": "7208032013",
+      "name": "Tibu"
+    },
+    {
+      "code": "7208032019",
+      "name": "Bainaa Barat"
+    },
+    {
+      "code": "7208032021",
+      "name": "Ogoalas"
+    },
+    {
+      "code": "7208032022",
+      "name": "Lombok Barat"
+    },
+    {
+      "code": "7208032027",
+      "name": "Silabia"
+    },
+    {
+      "code": "7208032028",
+      "name": "Siavu"
+    },
+    {
+      "code": "7208032029",
+      "name": "Ambason Mekar"
+    },
+    {
+      "code": "7208032030",
+      "name": "Dusunan Barat"
+    },
+    {
+      "code": "7208032031",
+      "name": "Patingke"
+    },
+    {
+      "code": "7208032033",
+      "name": "Taipaobal"
+    }
+  ],
+  "720804": [
+    {
+      "code": "7208042001",
+      "name": "Moutong Timur"
+    },
+    {
+      "code": "7208042002",
+      "name": "Moutong Barat"
+    },
+    {
+      "code": "7208042003",
+      "name": "Moutong Tengah"
+    },
+    {
+      "code": "7208042004",
+      "name": "Tuladenggi Pantai"
+    },
+    {
+      "code": "7208042006",
+      "name": "Gio"
+    },
+    {
+      "code": "7208042024",
+      "name": "Lobu"
+    },
+    {
+      "code": "7208042025",
+      "name": "Pendelalap"
+    },
+    {
+      "code": "7208042026",
+      "name": "Sejoli"
+    },
+    {
+      "code": "7208042028",
+      "name": "Aedan Raya"
+    },
+    {
+      "code": "7208042029",
+      "name": "Salumpengut"
+    },
+    {
+      "code": "7208042030",
+      "name": "Boloung Olonggata"
+    },
+    {
+      "code": "7208042031",
+      "name": "Labuan"
+    },
+    {
+      "code": "7208042032",
+      "name": "Mbelang Mbelang"
+    },
+    {
+      "code": "7208042033",
+      "name": "Pande"
+    },
+    {
+      "code": "7208042034",
+      "name": "Moutong Utara"
+    },
+    {
+      "code": "7208042035",
+      "name": "Salepae"
+    },
+    {
+      "code": "7208042036",
+      "name": "Olonggata"
+    },
+    {
+      "code": "7208042037",
+      "name": "Gio Timur"
+    },
+    {
+      "code": "7208042038",
+      "name": "Gio Barat"
+    },
+    {
+      "code": "7208042039",
+      "name": "Sialopa"
+    }
+  ],
+  "720805": [
+    {
+      "code": "7208052005",
+      "name": "Tingkulang"
+    },
+    {
+      "code": "7208052006",
+      "name": "Tomini"
+    },
+    {
+      "code": "7208052007",
+      "name": "Ogotumubu"
+    },
+    {
+      "code": "7208052008",
+      "name": "Ambesia"
+    },
+    {
+      "code": "7208052009",
+      "name": "Tilung"
+    },
+    {
+      "code": "7208052022",
+      "name": "Ambesia Selatan"
+    },
+    {
+      "code": "7208052023",
+      "name": "Biga"
+    },
+    {
+      "code": "7208052024",
+      "name": "Tomini Utara"
+    },
+    {
+      "code": "7208052025",
+      "name": "Tomini Barat"
+    },
+    {
+      "code": "7208052026",
+      "name": "Supilopong"
+    },
+    {
+      "code": "7208052027",
+      "name": "Ambesia Barat"
+    },
+    {
+      "code": "7208052028",
+      "name": "Sipontan"
+    },
+    {
+      "code": "7208052029",
+      "name": "Ta'aniuge"
+    },
+    {
+      "code": "7208052030",
+      "name": "Ogotumubu Barat"
+    }
+  ],
+  "720806": [
+    {
+      "code": "7208062009",
+      "name": "Sausu Peore"
+    },
+    {
+      "code": "7208062010",
+      "name": "Maleali"
+    },
+    {
+      "code": "7208062011",
+      "name": "Sausu Trans"
+    },
+    {
+      "code": "7208062012",
+      "name": "Sausu Torono"
+    },
+    {
+      "code": "7208062013",
+      "name": "Sausu Pakareme"
+    },
+    {
+      "code": "7208062015",
+      "name": "Sausu Gandasari"
+    },
+    {
+      "code": "7208062016",
+      "name": "Sausu Salubanga"
+    },
+    {
+      "code": "7208062017",
+      "name": "Taliabo"
+    },
+    {
+      "code": "7208062018",
+      "name": "Sausu Tambu"
+    },
+    {
+      "code": "7208062019",
+      "name": "Sausu Auma"
+    }
+  ],
+  "720807": [
+    {
+      "code": "7208072001",
+      "name": "Lambunu"
+    },
+    {
+      "code": "7208072004",
+      "name": "Wanagading"
+    },
+    {
+      "code": "7208072005",
+      "name": "Kotanagaya"
+    },
+    {
+      "code": "7208072006",
+      "name": "Margapura"
+    },
+    {
+      "code": "7208072007",
+      "name": "Petunasugi"
+    },
+    {
+      "code": "7208072016",
+      "name": "Siendeng"
+    },
+    {
+      "code": "7208072017",
+      "name": "Lambunu Utara"
+    },
+    {
+      "code": "7208072021",
+      "name": "Gunungsari"
+    },
+    {
+      "code": "7208072031",
+      "name": "Tirtanagaya"
+    },
+    {
+      "code": "7208072033",
+      "name": "Anutapura"
+    },
+    {
+      "code": "7208072035",
+      "name": "Lambunu Timur"
+    },
+    {
+      "code": "7208072036",
+      "name": "Bukit Makmur"
+    },
+    {
+      "code": "7208072037",
+      "name": "Ogorandu"
+    },
+    {
+      "code": "7208072038",
+      "name": "Ganongol Sari"
+    }
+  ],
+  "720808": [
+    {
+      "code": "7208082001",
+      "name": "Kasimbar"
+    },
+    {
+      "code": "7208082002",
+      "name": "Posona"
+    },
+    {
+      "code": "7208082003",
+      "name": "Laemanta"
+    },
+    {
+      "code": "7208082004",
+      "name": "Donggulu"
+    },
+    {
+      "code": "7208082005",
+      "name": "Kasimbar Selatan"
+    },
+    {
+      "code": "7208082006",
+      "name": "Kasimbar Barat"
+    },
+    {
+      "code": "7208082007",
+      "name": "Silampayang"
+    },
+    {
+      "code": "7208082008",
+      "name": "Tovalo"
+    },
+    {
+      "code": "7208082009",
+      "name": "Donggulu Selatan"
+    },
+    {
+      "code": "7208082010",
+      "name": "Labuan Donggulu"
+    },
+    {
+      "code": "7208082011",
+      "name": "Kasimbar Palapi"
+    },
+    {
+      "code": "7208082012",
+      "name": "Peningka"
+    },
+    {
+      "code": "7208082013",
+      "name": "Laemanta Utara"
+    },
+    {
+      "code": "7208082014",
+      "name": "Ogodopi Kasimbar"
+    },
+    {
+      "code": "7208082015",
+      "name": "Sendana"
+    },
+    {
+      "code": "7208082016",
+      "name": "Kasimbar Utara"
+    },
+    {
+      "code": "7208082017",
+      "name": "Posona Atas"
+    },
+    {
+      "code": "7208082018",
+      "name": "Sumber Tani"
+    }
+  ],
+  "720809": [
+    {
+      "code": "7208092001",
+      "name": "Tanalanto"
+    },
+    {
+      "code": "7208092002",
+      "name": "Torue"
+    },
+    {
+      "code": "7208092003",
+      "name": "Astina"
+    },
+    {
+      "code": "7208092004",
+      "name": "Purwosari"
+    },
+    {
+      "code": "7208092005",
+      "name": "Tolai"
+    },
+    {
+      "code": "7208092006",
+      "name": "Tolai Barat"
+    },
+    {
+      "code": "7208092007",
+      "name": "Tolai Timur"
+    }
+  ],
+  "720810": [
+    {
+      "code": "7208102001",
+      "name": "Tada"
+    },
+    {
+      "code": "7208102002",
+      "name": "Sinei"
+    },
+    {
+      "code": "7208102003",
+      "name": "Maninili"
+    },
+    {
+      "code": "7208102004",
+      "name": "Sigenti"
+    },
+    {
+      "code": "7208102005",
+      "name": "Malanggo"
+    },
+    {
+      "code": "7208102006",
+      "name": "Silutung"
+    },
+    {
+      "code": "7208102007",
+      "name": "Tada Selatan"
+    },
+    {
+      "code": "7208102008",
+      "name": "Sigega Bersehati"
+    },
+    {
+      "code": "7208102009",
+      "name": "Siaga"
+    },
+    {
+      "code": "7208102010",
+      "name": "Khatulistiwa"
+    },
+    {
+      "code": "7208102011",
+      "name": "Poly"
+    },
+    {
+      "code": "7208102012",
+      "name": "Sigenti Selatan"
+    },
+    {
+      "code": "7208102013",
+      "name": "Tada Timur"
+    },
+    {
+      "code": "7208102014",
+      "name": "Sigenti Barat"
+    },
+    {
+      "code": "7208102015",
+      "name": "Malanggo Pesisir"
+    },
+    {
+      "code": "7208102016",
+      "name": "Maninili Barat"
+    },
+    {
+      "code": "7208102017",
+      "name": "Maninili Utara"
+    },
+    {
+      "code": "7208102018",
+      "name": "Siney Tengah"
+    },
+    {
+      "code": "7208102019",
+      "name": "Tada Utara"
+    },
+    {
+      "code": "7208102020",
+      "name": "Oncone Raya"
+    }
+  ],
+  "720811": [
+    {
+      "code": "7208112001",
+      "name": "Lemusa"
+    },
+    {
+      "code": "7208112002",
+      "name": "Olobaru"
+    },
+    {
+      "code": "7208112003",
+      "name": "Boyantongo"
+    },
+    {
+      "code": "7208112004",
+      "name": "Dolago"
+    },
+    {
+      "code": "7208112005",
+      "name": "Masari"
+    },
+    {
+      "code": "7208112006",
+      "name": "Sumbersari"
+    },
+    {
+      "code": "7208112007",
+      "name": "Nambaru"
+    },
+    {
+      "code": "7208112008",
+      "name": "Tindaki"
+    },
+    {
+      "code": "7208112009",
+      "name": "Gangga"
+    },
+    {
+      "code": "7208112010",
+      "name": "Dolago Padang"
+    }
+  ],
+  "720812": [
+    {
+      "code": "7208122001",
+      "name": "Kayu Agung"
+    },
+    {
+      "code": "7208122002",
+      "name": "Sumber Agung"
+    },
+    {
+      "code": "7208122003",
+      "name": "Kotaraya"
+    },
+    {
+      "code": "7208122004",
+      "name": "Mepanga"
+    },
+    {
+      "code": "7208122005",
+      "name": "Ogotion"
+    },
+    {
+      "code": "7208122006",
+      "name": "Mensung"
+    },
+    {
+      "code": "7208122007",
+      "name": "Bugis"
+    },
+    {
+      "code": "7208122008",
+      "name": "Moubang"
+    },
+    {
+      "code": "7208122009",
+      "name": "Ogobayas"
+    },
+    {
+      "code": "7208122010",
+      "name": "Kota Raya Timur"
+    },
+    {
+      "code": "7208122011",
+      "name": "Malalan"
+    },
+    {
+      "code": "7208122012",
+      "name": "Kota Raya Selatan"
+    },
+    {
+      "code": "7208122013",
+      "name": "Maranti"
+    },
+    {
+      "code": "7208122014",
+      "name": "Ogomolos"
+    },
+    {
+      "code": "7208122015",
+      "name": "Kotaraya Barat"
+    },
+    {
+      "code": "7208122016",
+      "name": "Bugis Utara"
+    },
+    {
+      "code": "7208122017",
+      "name": "Gurinda"
+    },
+    {
+      "code": "7208122018",
+      "name": "Kotaraya Tenggara"
+    }
+  ],
+  "720813": [
+    {
+      "code": "7208132001",
+      "name": "Tomoli"
+    },
+    {
+      "code": "7208132002",
+      "name": "Toribulu"
+    },
+    {
+      "code": "7208132003",
+      "name": "Sienjo"
+    },
+    {
+      "code": "7208132004",
+      "name": "Pinotu"
+    },
+    {
+      "code": "7208132005",
+      "name": "Singura"
+    },
+    {
+      "code": "7208132006",
+      "name": "Tomoli Selatan"
+    },
+    {
+      "code": "7208132007",
+      "name": "Sibalago"
+    },
+    {
+      "code": "7208132008",
+      "name": "Toribulu Selatan"
+    },
+    {
+      "code": "7208132009",
+      "name": "Tomoli Utara"
+    }
+  ],
+  "720814": [
+    {
+      "code": "7208142001",
+      "name": "Karya Agung"
+    },
+    {
+      "code": "7208142002",
+      "name": "Nunurantai"
+    },
+    {
+      "code": "7208142003",
+      "name": "Palapi"
+    },
+    {
+      "code": "7208142004",
+      "name": "Taopa"
+    },
+    {
+      "code": "7208142005",
+      "name": "Tuladenggi Sibatang"
+    },
+    {
+      "code": "7208142006",
+      "name": "Tompo"
+    },
+    {
+      "code": "7208142007",
+      "name": "Taopa Utara"
+    },
+    {
+      "code": "7208142008",
+      "name": "Bilalea"
+    },
+    {
+      "code": "7208142009",
+      "name": "Taopa Barat"
+    },
+    {
+      "code": "7208142010",
+      "name": "Paria"
+    },
+    {
+      "code": "7208142011",
+      "name": "Karya Abadi"
+    }
+  ],
+  "720815": [
+    {
+      "code": "7208152001",
+      "name": "Malakosa"
+    },
+    {
+      "code": "7208152002",
+      "name": "Balinggi Jati"
+    },
+    {
+      "code": "7208152003",
+      "name": "Balinggi"
+    },
+    {
+      "code": "7208152004",
+      "name": "Suli"
+    },
+    {
+      "code": "7208152005",
+      "name": "Suli Indah"
+    },
+    {
+      "code": "7208152006",
+      "name": "Beraban"
+    },
+    {
+      "code": "7208152007",
+      "name": "Lebagu"
+    },
+    {
+      "code": "7208152008",
+      "name": "Tumpapa Indah"
+    },
+    {
+      "code": "7208152009",
+      "name": "Catur Karya"
+    }
+  ],
+  "720816": [
+    {
+      "code": "7208162001",
+      "name": "Parigimpu'u"
+    },
+    {
+      "code": "7208162002",
+      "name": "Baliara"
+    },
+    {
+      "code": "7208162003",
+      "name": "Kayuboko"
+    },
+    {
+      "code": "7208162004",
+      "name": "Jono Kalora"
+    },
+    {
+      "code": "7208162005",
+      "name": "Air Panas"
+    },
+    {
+      "code": "7208162006",
+      "name": "Lobu Mandiri"
+    }
+  ],
+  "720817": [
+    {
+      "code": "7208172001",
+      "name": "Marantale"
+    },
+    {
+      "code": "7208172002",
+      "name": "Tandaigi"
+    },
+    {
+      "code": "7208172003",
+      "name": "Silanga"
+    },
+    {
+      "code": "7208172004",
+      "name": "Siniu"
+    },
+    {
+      "code": "7208172005",
+      "name": "Towera"
+    },
+    {
+      "code": "7208172006",
+      "name": "Toraranga"
+    },
+    {
+      "code": "7208172007",
+      "name": "Uevolo"
+    },
+    {
+      "code": "7208172008",
+      "name": "Siniu Sayogindano"
+    },
+    {
+      "code": "7208172009",
+      "name": "Silanga Barat"
+    }
+  ],
+  "720818": [
+    {
+      "code": "7208182001",
+      "name": "Bobalo"
+    },
+    {
+      "code": "7208182002",
+      "name": "Dongkalan"
+    },
+    {
+      "code": "7208182003",
+      "name": "Eeya"
+    },
+    {
+      "code": "7208182004",
+      "name": "Ulatan"
+    },
+    {
+      "code": "7208182005",
+      "name": "Palasa Tangki"
+    },
+    {
+      "code": "7208182006",
+      "name": "Palasa Tengah"
+    },
+    {
+      "code": "7208182007",
+      "name": "Palasa Lambori"
+    },
+    {
+      "code": "7208182008",
+      "name": "Pebounang"
+    },
+    {
+      "code": "7208182009",
+      "name": "Bambasiang"
+    },
+    {
+      "code": "7208182010",
+      "name": "Beau"
+    },
+    {
+      "code": "7208182011",
+      "name": "Ogoansam"
+    }
+  ],
+  "720819": [
+    {
+      "code": "7208192001",
+      "name": "Avolua"
+    },
+    {
+      "code": "7208192002",
+      "name": "Toboli"
+    },
+    {
+      "code": "7208192003",
+      "name": "Toboli Barat"
+    },
+    {
+      "code": "7208192004",
+      "name": "Pangi"
+    },
+    {
+      "code": "7208192005",
+      "name": "Sakinah Jaya"
+    }
+  ],
+  "720820": [
+    {
+      "code": "7208202001",
+      "name": "Pelawa Baru"
+    },
+    {
+      "code": "7208202002",
+      "name": "Pelawa"
+    },
+    {
+      "code": "7208202003",
+      "name": "Binangga"
+    },
+    {
+      "code": "7208202004",
+      "name": "Jononunu"
+    },
+    {
+      "code": "7208202005",
+      "name": "Matolele"
+    },
+    {
+      "code": "7208202006",
+      "name": "Petapa"
+    }
+  ],
+  "720821": [
+    {
+      "code": "7208212001",
+      "name": "Bolano"
+    },
+    {
+      "code": "7208212002",
+      "name": "Bolano Tengah"
+    },
+    {
+      "code": "7208212003",
+      "name": "Bolano Barat"
+    },
+    {
+      "code": "7208212004",
+      "name": "Bolano Utara"
+    },
+    {
+      "code": "7208212005",
+      "name": "Bajo"
+    },
+    {
+      "code": "7208212006",
+      "name": "Sritabaang"
+    },
+    {
+      "code": "7208212007",
+      "name": "Beringin Jaya"
+    },
+    {
+      "code": "7208212008",
+      "name": "Wanamukti"
+    },
+    {
+      "code": "7208212009",
+      "name": "Wanamukti Utara"
+    },
+    {
+      "code": "7208212010",
+      "name": "Lembah Bomban"
+    },
+    {
+      "code": "7208212011",
+      "name": "Sidomukti"
+    },
+    {
+      "code": "7208212012",
+      "name": "Wanamukti Barat"
+    },
+    {
+      "code": "7208212013",
+      "name": "Sama Bahari"
+    }
+  ],
+  "720822": [
+    {
+      "code": "7208222001",
+      "name": "Ongka"
+    },
+    {
+      "code": "7208222002",
+      "name": "Malino"
+    },
+    {
+      "code": "7208222003",
+      "name": "Santigi"
+    },
+    {
+      "code": "7208222004",
+      "name": "Persatuan Sejati"
+    },
+    {
+      "code": "7208222005",
+      "name": "Tabolobolo"
+    },
+    {
+      "code": "7208222006",
+      "name": "Tinombala"
+    },
+    {
+      "code": "7208222007",
+      "name": "Karya Mandiri"
+    },
+    {
+      "code": "7208222008",
+      "name": "Kayu Jati"
+    },
+    {
+      "code": "7208222009",
+      "name": "Lambanau"
+    },
+    {
+      "code": "7208222010",
+      "name": "Bosagon Jaya"
+    },
+    {
+      "code": "7208222011",
+      "name": "Persatuan Utara"
+    },
+    {
+      "code": "7208222012",
+      "name": "Tinombala Jaya"
+    },
+    {
+      "code": "7208222013",
+      "name": "Ongka Trimuspasari"
+    },
+    {
+      "code": "7208222014",
+      "name": "Tinombala Sejati"
+    },
+    {
+      "code": "7208222015",
+      "name": "Tinombala Barat"
+    },
+    {
+      "code": "7208222016",
+      "name": "Padaelo"
+    },
+    {
+      "code": "7208222017",
+      "name": "Ongka Persatuan"
+    }
+  ],
+  "720823": [
+    {
+      "code": "7208232001",
+      "name": "Lado"
+    },
+    {
+      "code": "7208232002",
+      "name": "Sipayo"
+    },
+    {
+      "code": "7208232003",
+      "name": "Bondoyong"
+    },
+    {
+      "code": "7208232004",
+      "name": "Sidoan Selatan"
+    },
+    {
+      "code": "7208232005",
+      "name": "Sidoan Timur"
+    },
+    {
+      "code": "7208232006",
+      "name": "Sidoan"
+    },
+    {
+      "code": "7208232007",
+      "name": "Sidoan Barat"
+    },
+    {
+      "code": "7208232008",
+      "name": "Ogobagis"
+    },
+    {
+      "code": "7208232009",
+      "name": "Muara Jaya"
+    },
+    {
+      "code": "7208232010",
+      "name": "Bainaa Selatan"
+    },
+    {
+      "code": "7208232011",
+      "name": "Sintuwu Raya"
+    }
+  ]
 }

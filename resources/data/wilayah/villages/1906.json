@@ -1,172 +1,172 @@
 {
-    "190601": [
-        {
-            "code": "1906012001",
-            "name": "Lalang Jaya"
-        },
-        {
-            "code": "1906012002",
-            "name": "Kurnia Jaya"
-        },
-        {
-            "code": "1906012003",
-            "name": "Padang"
-        },
-        {
-            "code": "1906012004",
-            "name": "Kelubi"
-        },
-        {
-            "code": "1906012006",
-            "name": "Lalang"
-        },
-        {
-            "code": "1906012007",
-            "name": "Baru"
-        },
-        {
-            "code": "1906012010",
-            "name": "Buku Limau"
-        },
-        {
-            "code": "1906012012",
-            "name": "Mekar Jaya"
-        },
-        {
-            "code": "1906012013",
-            "name": "Bentaian Jaya"
-        }
-    ],
-    "190602": [
-        {
-            "code": "1906022001",
-            "name": "Gantung"
-        },
-        {
-            "code": "1906022002",
-            "name": "Selingsing"
-        },
-        {
-            "code": "1906022003",
-            "name": "Jangkar Asam"
-        },
-        {
-            "code": "1906022004",
-            "name": "Lilangan"
-        },
-        {
-            "code": "1906022009",
-            "name": "Lenggang"
-        },
-        {
-            "code": "1906022010",
-            "name": "Batu Penyu"
-        },
-        {
-            "code": "1906022011",
-            "name": "Limbongan"
-        }
-    ],
-    "190603": [
-        {
-            "code": "1906032001",
-            "name": "Dendang"
-        },
-        {
-            "code": "1906032002",
-            "name": "Jangkang"
-        },
-        {
-            "code": "1906032005",
-            "name": "Nyuruk"
-        },
-        {
-            "code": "1906032008",
-            "name": "Balok"
-        }
-    ],
-    "190604": [
-        {
-            "code": "1906042001",
-            "name": "Mentawak"
-        },
-        {
-            "code": "1906042002",
-            "name": "Senyubuk"
-        },
-        {
-            "code": "1906042003",
-            "name": "Cendil"
-        },
-        {
-            "code": "1906042005",
-            "name": "Buding"
-        },
-        {
-            "code": "1906042006",
-            "name": "Mayang"
-        },
-        {
-            "code": "1906042007",
-            "name": "Pembaharuan"
-        }
-    ],
-    "190605": [
-        {
-            "code": "1906052001",
-            "name": "Air Kelik"
-        },
-        {
-            "code": "1906052002",
-            "name": "Mempaya"
-        },
-        {
-            "code": "1906052003",
-            "name": "Burong Mandi"
-        },
-        {
-            "code": "1906052004",
-            "name": "Mengkubang"
-        },
-        {
-            "code": "1906052005",
-            "name": "Sukamandi"
-        }
-    ],
-    "190606": [
-        {
-            "code": "1906062001",
-            "name": "Simpang Tiga"
-        },
-        {
-            "code": "1906062002",
-            "name": "Renggiang"
-        },
-        {
-            "code": "1906062003",
-            "name": "Aik Madu"
-        },
-        {
-            "code": "1906062004",
-            "name": "Lintang"
-        }
-    ],
-    "190607": [
-        {
-            "code": "1906072001",
-            "name": "Simpang Pesak"
-        },
-        {
-            "code": "1906072002",
-            "name": "Tanjung Batu Itam"
-        },
-        {
-            "code": "1906072003",
-            "name": "Tanjung Kelumpang"
-        },
-        {
-            "code": "1906072004",
-            "name": "Dukong"
-        }
-    ]
+  "190601": [
+    {
+      "code": "1906012001",
+      "name": "Lalang Jaya"
+    },
+    {
+      "code": "1906012002",
+      "name": "Kurnia Jaya"
+    },
+    {
+      "code": "1906012003",
+      "name": "Padang"
+    },
+    {
+      "code": "1906012004",
+      "name": "Kelubi"
+    },
+    {
+      "code": "1906012006",
+      "name": "Lalang"
+    },
+    {
+      "code": "1906012007",
+      "name": "Baru"
+    },
+    {
+      "code": "1906012010",
+      "name": "Buku Limau"
+    },
+    {
+      "code": "1906012012",
+      "name": "Mekar Jaya"
+    },
+    {
+      "code": "1906012013",
+      "name": "Bentaian Jaya"
+    }
+  ],
+  "190602": [
+    {
+      "code": "1906022001",
+      "name": "Gantung"
+    },
+    {
+      "code": "1906022002",
+      "name": "Selingsing"
+    },
+    {
+      "code": "1906022003",
+      "name": "Jangkar Asam"
+    },
+    {
+      "code": "1906022004",
+      "name": "Lilangan"
+    },
+    {
+      "code": "1906022009",
+      "name": "Lenggang"
+    },
+    {
+      "code": "1906022010",
+      "name": "Batu Penyu"
+    },
+    {
+      "code": "1906022011",
+      "name": "Limbongan"
+    }
+  ],
+  "190603": [
+    {
+      "code": "1906032001",
+      "name": "Dendang"
+    },
+    {
+      "code": "1906032002",
+      "name": "Jangkang"
+    },
+    {
+      "code": "1906032005",
+      "name": "Nyuruk"
+    },
+    {
+      "code": "1906032008",
+      "name": "Balok"
+    }
+  ],
+  "190604": [
+    {
+      "code": "1906042001",
+      "name": "Mentawak"
+    },
+    {
+      "code": "1906042002",
+      "name": "Senyubuk"
+    },
+    {
+      "code": "1906042003",
+      "name": "Cendil"
+    },
+    {
+      "code": "1906042005",
+      "name": "Buding"
+    },
+    {
+      "code": "1906042006",
+      "name": "Mayang"
+    },
+    {
+      "code": "1906042007",
+      "name": "Pembaharuan"
+    }
+  ],
+  "190605": [
+    {
+      "code": "1906052001",
+      "name": "Air Kelik"
+    },
+    {
+      "code": "1906052002",
+      "name": "Mempaya"
+    },
+    {
+      "code": "1906052003",
+      "name": "Burong Mandi"
+    },
+    {
+      "code": "1906052004",
+      "name": "Mengkubang"
+    },
+    {
+      "code": "1906052005",
+      "name": "Sukamandi"
+    }
+  ],
+  "190606": [
+    {
+      "code": "1906062001",
+      "name": "Simpang Tiga"
+    },
+    {
+      "code": "1906062002",
+      "name": "Renggiang"
+    },
+    {
+      "code": "1906062003",
+      "name": "Aik Madu"
+    },
+    {
+      "code": "1906062004",
+      "name": "Lintang"
+    }
+  ],
+  "190607": [
+    {
+      "code": "1906072001",
+      "name": "Simpang Pesak"
+    },
+    {
+      "code": "1906072002",
+      "name": "Tanjung Batu Itam"
+    },
+    {
+      "code": "1906072003",
+      "name": "Tanjung Kelumpang"
+    },
+    {
+      "code": "1906072004",
+      "name": "Dukong"
+    }
+  ]
 }

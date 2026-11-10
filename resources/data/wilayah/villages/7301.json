@@ -1,0 +1,376 @@
+{
+  "730101": [
+    {
+      "code": "7301011001",
+      "name": "Benteng Utara"
+    },
+    {
+      "code": "7301011002",
+      "name": "Benteng"
+    },
+    {
+      "code": "7301011003",
+      "name": "Benteng Selatan"
+    }
+  ],
+  "730102": [
+    {
+      "code": "7301021001",
+      "name": "Putabangun"
+    },
+    {
+      "code": "7301021002",
+      "name": "Bontobangun"
+    },
+    {
+      "code": "7301022003",
+      "name": "Bontosunggu"
+    },
+    {
+      "code": "7301022004",
+      "name": "Bontoborusu"
+    },
+    {
+      "code": "7301022005",
+      "name": "Bontolebang"
+    },
+    {
+      "code": "7301022006",
+      "name": "Bontotangnga"
+    },
+    {
+      "code": "7301022007",
+      "name": "Kahu-Kahu"
+    },
+    {
+      "code": "7301022008",
+      "name": "Kalepadang"
+    }
+  ],
+  "730103": [
+    {
+      "code": "7301031001",
+      "name": "Batangmata"
+    },
+    {
+      "code": "7301031002",
+      "name": "Batangmata Sapo"
+    },
+    {
+      "code": "7301032003",
+      "name": "Pamatata"
+    },
+    {
+      "code": "7301032004",
+      "name": "Tanete"
+    },
+    {
+      "code": "7301032005",
+      "name": "Bungaiya"
+    },
+    {
+      "code": "7301032006",
+      "name": "Kayu Bauk"
+    },
+    {
+      "code": "7301032007",
+      "name": "Barat Lambongan"
+    },
+    {
+      "code": "7301032008",
+      "name": "Bontona Saluk"
+    },
+    {
+      "code": "7301032009",
+      "name": "Onto"
+    },
+    {
+      "code": "7301032010",
+      "name": "Maharayya"
+    },
+    {
+      "code": "7301032011",
+      "name": "Menara Indah"
+    },
+    {
+      "code": "7301032015",
+      "name": "Tamalanrea"
+    }
+  ],
+  "730104": [
+    {
+      "code": "7301042001",
+      "name": "Parak"
+    },
+    {
+      "code": "7301042002",
+      "name": "Barugaiya"
+    },
+    {
+      "code": "7301042003",
+      "name": "Jambuiya"
+    },
+    {
+      "code": "7301042004",
+      "name": "Mare-Mare"
+    },
+    {
+      "code": "7301042005",
+      "name": "Polebunging"
+    },
+    {
+      "code": "7301042006",
+      "name": "Bonea Makmur"
+    },
+    {
+      "code": "7301042008",
+      "name": "Bontomarannu"
+    },
+    {
+      "code": "7301042010",
+      "name": "Bonea Timur"
+    },
+    {
+      "code": "7301042011",
+      "name": "Bontokoraang"
+    },
+    {
+      "code": "7301042012",
+      "name": "Kaburu"
+    }
+  ],
+  "730105": [
+    {
+      "code": "7301052001",
+      "name": "Harapan"
+    },
+    {
+      "code": "7301052002",
+      "name": "Patikarya"
+    },
+    {
+      "code": "7301052003",
+      "name": "Patilereng"
+    },
+    {
+      "code": "7301052004",
+      "name": "Laiyolo Baru"
+    },
+    {
+      "code": "7301052005",
+      "name": "Laiyolo"
+    },
+    {
+      "code": "7301052006",
+      "name": "Lantibongan"
+    },
+    {
+      "code": "7301052007",
+      "name": "Binanga Sombaiya"
+    },
+    {
+      "code": "7301052008",
+      "name": "Lowa"
+    },
+    {
+      "code": "7301052009",
+      "name": "Appatanah"
+    },
+    {
+      "code": "7301052010",
+      "name": "Tambolongan"
+    },
+    {
+      "code": "7301052011",
+      "name": "Polassi"
+    },
+    {
+      "code": "7301052012",
+      "name": "Khusus Bahuluang"
+    }
+  ],
+  "730106": [
+    {
+      "code": "7301062001",
+      "name": "Kembang Ragi"
+    },
+    {
+      "code": "7301062003",
+      "name": "Ma'minasa"
+    },
+    {
+      "code": "7301062005",
+      "name": "Tanamalala"
+    },
+    {
+      "code": "7301062006",
+      "name": "Labuang Pamajang"
+    },
+    {
+      "code": "7301062007",
+      "name": "Massungke"
+    },
+    {
+      "code": "7301062009",
+      "name": "Bontosaile"
+    },
+    {
+      "code": "7301062011",
+      "name": "Teluk Kampe"
+    }
+  ],
+  "730107": [
+    {
+      "code": "7301072001",
+      "name": "Bonerate"
+    },
+    {
+      "code": "7301072002",
+      "name": "Majapahit"
+    },
+    {
+      "code": "7301072003",
+      "name": "Batu Bingkung"
+    },
+    {
+      "code": "7301072004",
+      "name": "Bonea"
+    },
+    {
+      "code": "7301072005",
+      "name": "Lambego"
+    },
+    {
+      "code": "7301072006",
+      "name": "Komba-Komba"
+    },
+    {
+      "code": "7301072007",
+      "name": "Sambali"
+    },
+    {
+      "code": "7301072008",
+      "name": "Lamantu"
+    }
+  ],
+  "730108": [
+    {
+      "code": "7301082001",
+      "name": "Kayuadi"
+    },
+    {
+      "code": "7301082002",
+      "name": "Batang"
+    },
+    {
+      "code": "7301082003",
+      "name": "Nyiur Indah"
+    },
+    {
+      "code": "7301082004",
+      "name": "Tambuna"
+    },
+    {
+      "code": "7301082005",
+      "name": "Jinato"
+    },
+    {
+      "code": "7301082006",
+      "name": "Rajuni"
+    },
+    {
+      "code": "7301082007",
+      "name": "Latondu"
+    },
+    {
+      "code": "7301082008",
+      "name": "Tarupa"
+    },
+    {
+      "code": "7301082009",
+      "name": "Khusus Pasitallu"
+    }
+  ],
+  "730109": [
+    {
+      "code": "7301092001",
+      "name": "Kalaotoa"
+    },
+    {
+      "code": "7301092002",
+      "name": "Garaupa"
+    },
+    {
+      "code": "7301092003",
+      "name": "Lembang Matene"
+    },
+    {
+      "code": "7301092004",
+      "name": "Pulo Madu"
+    },
+    {
+      "code": "7301092005",
+      "name": "Karumpa"
+    },
+    {
+      "code": "7301092006",
+      "name": "Garaupa Raya"
+    }
+  ],
+  "730110": [
+    {
+      "code": "7301102001",
+      "name": "Bontobulaeng"
+    },
+    {
+      "code": "7301102002",
+      "name": "Bontobaru"
+    },
+    {
+      "code": "7301102003",
+      "name": "Bontomalling"
+    },
+    {
+      "code": "7301102004",
+      "name": "Lembang Baji"
+    },
+    {
+      "code": "7301102005",
+      "name": "Bontojati"
+    },
+    {
+      "code": "7301102006",
+      "name": "Ujung"
+    }
+  ],
+  "730111": [
+    {
+      "code": "7301112001",
+      "name": "Buki"
+    },
+    {
+      "code": "7301112002",
+      "name": "Lalang Bata"
+    },
+    {
+      "code": "7301112003",
+      "name": "Balang Butung"
+    },
+    {
+      "code": "7301112004",
+      "name": "Kohala"
+    },
+    {
+      "code": "7301112005",
+      "name": "Bontolempangan"
+    },
+    {
+      "code": "7301112006",
+      "name": "Mekar Indah"
+    },
+    {
+      "code": "7301112007",
+      "name": "Buki Timur"
+    }
+  ]
+}

@@ -1,116 +1,116 @@
 {
-    "617201": [
-        {
-            "code": "6172011001",
-            "name": "Roban"
-        },
-        {
-            "code": "6172011002",
-            "name": "Condong"
-        },
-        {
-            "code": "6172011003",
-            "name": "Sekip Lama"
-        },
-        {
-            "code": "6172011004",
-            "name": "Jawa"
-        },
-        {
-            "code": "6172011005",
-            "name": "Bukit Batu"
-        },
-        {
-            "code": "6172011006",
-            "name": "Sungai Wie"
-        }
-    ],
-    "617202": [
-        {
-            "code": "6172021001",
-            "name": "Pasiran"
-        },
-        {
-            "code": "6172021002",
-            "name": "Melayu"
-        },
-        {
-            "code": "6172021003",
-            "name": "Tengah"
-        },
-        {
-            "code": "6172021004",
-            "name": "Kuala"
-        }
-    ],
-    "617203": [
-        {
-            "code": "6172031001",
-            "name": "Pajintan"
-        },
-        {
-            "code": "6172031002",
-            "name": "Nyarumkop"
-        },
-        {
-            "code": "6172031003",
-            "name": "Maya Sopa"
-        },
-        {
-            "code": "6172031004",
-            "name": "Bagak Sahwa"
-        },
-        {
-            "code": "6172031005",
-            "name": "Sanggau Kulor"
-        }
-    ],
-    "617204": [
-        {
-            "code": "6172041001",
-            "name": "Sungai Garam Hilir"
-        },
-        {
-            "code": "6172041002",
-            "name": "Naram"
-        },
-        {
-            "code": "6172041003",
-            "name": "Sungai Bulan"
-        },
-        {
-            "code": "6172041004",
-            "name": "Sungai Rasau"
-        },
-        {
-            "code": "6172041005",
-            "name": "Setapuk Kecil"
-        },
-        {
-            "code": "6172041006",
-            "name": "Setapuk Besar"
-        },
-        {
-            "code": "6172041007",
-            "name": "Semelagi Kecil"
-        }
-    ],
-    "617205": [
-        {
-            "code": "6172051001",
-            "name": "Sedau"
-        },
-        {
-            "code": "6172051002",
-            "name": "Sagatani"
-        },
-        {
-            "code": "6172051003",
-            "name": "Sijangkung"
-        },
-        {
-            "code": "6172051004",
-            "name": "Pangmilang"
-        }
-    ]
+  "617201": [
+    {
+      "code": "6172011001",
+      "name": "Roban"
+    },
+    {
+      "code": "6172011002",
+      "name": "Condong"
+    },
+    {
+      "code": "6172011003",
+      "name": "Sekip Lama"
+    },
+    {
+      "code": "6172011004",
+      "name": "Jawa"
+    },
+    {
+      "code": "6172011005",
+      "name": "Bukit Batu"
+    },
+    {
+      "code": "6172011006",
+      "name": "Sungai Wie"
+    }
+  ],
+  "617202": [
+    {
+      "code": "6172021001",
+      "name": "Pasiran"
+    },
+    {
+      "code": "6172021002",
+      "name": "Melayu"
+    },
+    {
+      "code": "6172021003",
+      "name": "Tengah"
+    },
+    {
+      "code": "6172021004",
+      "name": "Kuala"
+    }
+  ],
+  "617203": [
+    {
+      "code": "6172031001",
+      "name": "Pajintan"
+    },
+    {
+      "code": "6172031002",
+      "name": "Nyarumkop"
+    },
+    {
+      "code": "6172031003",
+      "name": "Maya Sopa"
+    },
+    {
+      "code": "6172031004",
+      "name": "Bagak Sahwa"
+    },
+    {
+      "code": "6172031005",
+      "name": "Sanggau Kulor"
+    }
+  ],
+  "617204": [
+    {
+      "code": "6172041001",
+      "name": "Sungai Garam Hilir"
+    },
+    {
+      "code": "6172041002",
+      "name": "Naram"
+    },
+    {
+      "code": "6172041003",
+      "name": "Sungai Bulan"
+    },
+    {
+      "code": "6172041004",
+      "name": "Sungai Rasau"
+    },
+    {
+      "code": "6172041005",
+      "name": "Setapuk Kecil"
+    },
+    {
+      "code": "6172041006",
+      "name": "Setapuk Besar"
+    },
+    {
+      "code": "6172041007",
+      "name": "Semelagi Kecil"
+    }
+  ],
+  "617205": [
+    {
+      "code": "6172051001",
+      "name": "Sedau"
+    },
+    {
+      "code": "6172051002",
+      "name": "Sagatani"
+    },
+    {
+      "code": "6172051003",
+      "name": "Sijangkung"
+    },
+    {
+      "code": "6172051004",
+      "name": "Pangmilang"
+    }
+  ]
 }

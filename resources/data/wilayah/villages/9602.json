@@ -1,174 +1,520 @@
 {
-    "960210": [
-        {
-            "code": "9602102001",
-            "name": "Mugim"
-        },
-        {
-            "code": "9602102002",
-            "name": "Nusa"
-        },
-        {
-            "code": "9602102003",
-            "name": "Saga"
-        },
-        {
-            "code": "9602102004",
-            "name": "Puragi"
-        },
-        {
-            "code": "9602102005",
-            "name": "Tawanggire"
-        },
-        {
-            "code": "9602102006",
-            "name": "Bedare"
-        }
-    ],
-    "960211": [
-        {
-            "code": "9602112001",
-            "name": "Udagaga"
-        },
-        {
-            "code": "9602112002",
-            "name": "Kayubiro"
-        },
-        {
-            "code": "9602112003",
-            "name": "Adona"
-        },
-        {
-            "code": "9602112004",
-            "name": "Benawa II"
-        },
-        {
-            "code": "9602112005",
-            "name": "Atori"
-        },
-        {
-            "code": "9602112006",
-            "name": "Kamundan Satu"
-        },
-        {
-            "code": "9602112007",
-            "name": "Karirif"
-        },
-        {
-            "code": "9602112008",
-            "name": "Bubuko"
-        },
-        {
-            "code": "9602112009",
-            "name": "Kamundan Dua"
-        }
-    ],
-    "960212": [
-        {
-            "code": "9602122001",
-            "name": "Manggroholo"
-        },
-        {
-            "code": "9602122002",
-            "name": "Komanggaret"
-        },
-        {
-            "code": "9602122003",
-            "name": "Sayal"
-        },
-        {
-            "code": "9602122004",
-            "name": "Kayabo"
-        },
-        {
-            "code": "9602122005",
-            "name": "Sisir"
-        },
-        {
-            "code": "9602122006",
-            "name": "Mlaswat"
-        },
-        {
-            "code": "9602122007",
-            "name": "Kwowok"
-        },
-        {
-            "code": "9602122008",
-            "name": "Sira"
-        },
-        {
-            "code": "9602122009",
-            "name": "Kenaya"
-        }
-    ],
-    "960213": [
-        {
-            "code": "9602132001",
-            "name": "Pasir Putih"
-        },
-        {
-            "code": "9602132002",
-            "name": "Wandum"
-        },
-        {
-            "code": "9602132003",
-            "name": "Bemus"
-        },
-        {
-            "code": "9602132004",
-            "name": "Welek"
-        }
-    ],
-    "960214": [
-        {
-            "code": "9602142001",
-            "name": "Wenslolo"
-        },
-        {
-            "code": "9602142002",
-            "name": "Klamit"
-        },
-        {
-            "code": "9602142003",
-            "name": "Mlabolo"
-        },
-        {
-            "code": "9602142004",
-            "name": "Kofalit"
-        },
-        {
-            "code": "9602142005",
-            "name": "Alma"
-        }
-    ],
-    "960215": [
-        {
-            "code": "9602152001",
-            "name": "Mukamat"
-        },
-        {
-            "code": "9602152002",
-            "name": "Ikana"
-        },
-        {
-            "code": "9602152003",
-            "name": "Haemaran"
-        },
-        {
-            "code": "9602152004",
-            "name": "Siranggo"
-        },
-        {
-            "code": "9602152005",
-            "name": "Mogatemin"
-        },
-        {
-            "code": "9602152006",
-            "name": "Onimsefa"
-        },
-        {
-            "code": "9602152007",
-            "name": "Makaroro"
-        }
-    ]
+  "960201": [
+    {
+      "code": "9602011002",
+      "name": "Kaibus"
+    },
+    {
+      "code": "9602011003",
+      "name": "Kohoin"
+    },
+    {
+      "code": "9602012001",
+      "name": "Wersar"
+    },
+    {
+      "code": "9602012004",
+      "name": "Wehali"
+    },
+    {
+      "code": "9602012005",
+      "name": "Aibobor"
+    },
+    {
+      "code": "9602012006",
+      "name": "Wermit"
+    },
+    {
+      "code": "9602012007",
+      "name": "Keyen"
+    },
+    {
+      "code": "9602012008",
+      "name": "Siribau"
+    },
+    {
+      "code": "9602012009",
+      "name": "Magis"
+    },
+    {
+      "code": "9602012010",
+      "name": "Tegirolo"
+    },
+    {
+      "code": "9602012011",
+      "name": "Wernas"
+    },
+    {
+      "code": "9602012012",
+      "name": "Tapiri"
+    },
+    {
+      "code": "9602012013",
+      "name": "Gorolo"
+    },
+    {
+      "code": "9602012014",
+      "name": "Nambro"
+    },
+    {
+      "code": "9602012015",
+      "name": "Seyolo"
+    },
+    {
+      "code": "9602012016",
+      "name": "Ani Sesna"
+    }
+  ],
+  "960202": [
+    {
+      "code": "9602022001",
+      "name": "Mate"
+    },
+    {
+      "code": "9602022002",
+      "name": "Serkos"
+    },
+    {
+      "code": "9602022003",
+      "name": "Solta Baru"
+    },
+    {
+      "code": "9602022004",
+      "name": "Wadoi"
+    },
+    {
+      "code": "9602022005",
+      "name": "Isogo"
+    },
+    {
+      "code": "9602022006",
+      "name": "Sibae"
+    },
+    {
+      "code": "9602022007",
+      "name": "Mogibi"
+    },
+    {
+      "code": "9602022008",
+      "name": "Odeare"
+    },
+    {
+      "code": "9602022009",
+      "name": "Siri-siri"
+    }
+  ],
+  "960203": [
+    {
+      "code": "9602032001",
+      "name": "Sawiat"
+    },
+    {
+      "code": "9602032002",
+      "name": "Sasnek"
+    },
+    {
+      "code": "9602032003",
+      "name": "Elles"
+    },
+    {
+      "code": "9602032004",
+      "name": "Sodrofoyo"
+    },
+    {
+      "code": "9602032005",
+      "name": "Sfakyo"
+    },
+    {
+      "code": "9602032006",
+      "name": "Wensough"
+    },
+    {
+      "code": "9602032007",
+      "name": "Ween"
+    },
+    {
+      "code": "9602032008",
+      "name": "Wendi"
+    }
+  ],
+  "960204": [
+    {
+      "code": "9602042001",
+      "name": "Tarof"
+    },
+    {
+      "code": "9602042002",
+      "name": "Negeri Besar"
+    },
+    {
+      "code": "9602042003",
+      "name": "Siwatori"
+    },
+    {
+      "code": "9602042004",
+      "name": "Kasuweri"
+    },
+    {
+      "code": "9602042005",
+      "name": "Migori"
+    },
+    {
+      "code": "9602042006",
+      "name": "Tambani"
+    },
+    {
+      "code": "9602042007",
+      "name": "Daubak"
+    },
+    {
+      "code": "9602042008",
+      "name": "Totona"
+    },
+    {
+      "code": "9602042009",
+      "name": "Nayakore"
+    },
+    {
+      "code": "9602042010",
+      "name": "Arbasina"
+    },
+    {
+      "code": "9602042011",
+      "name": "Birawaku"
+    },
+    {
+      "code": "9602042012",
+      "name": "Korewatara"
+    },
+    {
+      "code": "9602042013",
+      "name": "Tapas"
+    },
+    {
+      "code": "9602042014",
+      "name": "Topdan"
+    },
+    {
+      "code": "9602042015",
+      "name": "Migrito"
+    },
+    {
+      "code": "9602042016",
+      "name": "Daimar"
+    }
+  ],
+  "960205": [
+    {
+      "code": "9602052001",
+      "name": "Moswaren"
+    },
+    {
+      "code": "9602052002",
+      "name": "Johsiro"
+    },
+    {
+      "code": "9602052003",
+      "name": "Hararo"
+    },
+    {
+      "code": "9602052004",
+      "name": "Bumi Ajo"
+    },
+    {
+      "code": "9602052005",
+      "name": "Hasik Jaya"
+    },
+    {
+      "code": "9602052006",
+      "name": "Kamisabe"
+    },
+    {
+      "code": "9602052007",
+      "name": "Tokass"
+    }
+  ],
+  "960206": [
+    {
+      "code": "9602062001",
+      "name": "Haha"
+    },
+    {
+      "code": "9602062002",
+      "name": "Klaogin"
+    },
+    {
+      "code": "9602062003",
+      "name": "Tofot"
+    },
+    {
+      "code": "9602062004",
+      "name": "Sbir"
+    },
+    {
+      "code": "9602062005",
+      "name": "Srer"
+    },
+    {
+      "code": "9602062006",
+      "name": "Woloin"
+    },
+    {
+      "code": "9602062007",
+      "name": "Kamaro"
+    },
+    {
+      "code": "9602062008",
+      "name": "Kakas"
+    }
+  ],
+  "960207": [
+    {
+      "code": "9602072001",
+      "name": "Sungguer"
+    },
+    {
+      "code": "9602072002",
+      "name": "Unggi"
+    },
+    {
+      "code": "9602072003",
+      "name": "Boldon"
+    },
+    {
+      "code": "9602072004",
+      "name": "Sesor"
+    },
+    {
+      "code": "9602072005",
+      "name": "Waigo"
+    },
+    {
+      "code": "9602072006",
+      "name": "Bagaraga"
+    },
+    {
+      "code": "9602072007",
+      "name": "Wardik"
+    },
+    {
+      "code": "9602072008",
+      "name": "Wayer"
+    }
+  ],
+  "960208": [
+    {
+      "code": "9602082001",
+      "name": "Kais"
+    },
+    {
+      "code": "9602082002",
+      "name": "Tapuri"
+    },
+    {
+      "code": "9602082003",
+      "name": "Yahadian"
+    },
+    {
+      "code": "9602082004",
+      "name": "Benawa I"
+    },
+    {
+      "code": "9602082005",
+      "name": "Sumano"
+    }
+  ],
+  "960209": [
+    {
+      "code": "9602092001",
+      "name": "Konda"
+    },
+    {
+      "code": "9602092002",
+      "name": "Wamargege"
+    },
+    {
+      "code": "9602092003",
+      "name": "Bariat"
+    },
+    {
+      "code": "9602092004",
+      "name": "Manelek"
+    },
+    {
+      "code": "9602092005",
+      "name": "Nagna"
+    }
+  ],
+  "960210": [
+    {
+      "code": "9602102001",
+      "name": "Mugim"
+    },
+    {
+      "code": "9602102002",
+      "name": "Nusa"
+    },
+    {
+      "code": "9602102003",
+      "name": "Saga"
+    },
+    {
+      "code": "9602102004",
+      "name": "Puragi"
+    },
+    {
+      "code": "9602102005",
+      "name": "Tawanggire"
+    },
+    {
+      "code": "9602102006",
+      "name": "Bedare"
+    }
+  ],
+  "960211": [
+    {
+      "code": "9602112001",
+      "name": "Udagaga"
+    },
+    {
+      "code": "9602112002",
+      "name": "Kayubiro"
+    },
+    {
+      "code": "9602112003",
+      "name": "Adona"
+    },
+    {
+      "code": "9602112004",
+      "name": "Benawa II"
+    },
+    {
+      "code": "9602112005",
+      "name": "Atori"
+    },
+    {
+      "code": "9602112006",
+      "name": "Kamundan Satu"
+    },
+    {
+      "code": "9602112007",
+      "name": "Karirif"
+    },
+    {
+      "code": "9602112008",
+      "name": "Bubuko"
+    },
+    {
+      "code": "9602112009",
+      "name": "Kamundan Dua"
+    }
+  ],
+  "960212": [
+    {
+      "code": "9602122001",
+      "name": "Manggroholo"
+    },
+    {
+      "code": "9602122002",
+      "name": "Komanggaret"
+    },
+    {
+      "code": "9602122003",
+      "name": "Sayal"
+    },
+    {
+      "code": "9602122004",
+      "name": "Kayabo"
+    },
+    {
+      "code": "9602122005",
+      "name": "Sisir"
+    },
+    {
+      "code": "9602122006",
+      "name": "Mlaswat"
+    },
+    {
+      "code": "9602122007",
+      "name": "Kwowok"
+    },
+    {
+      "code": "9602122008",
+      "name": "Sira"
+    },
+    {
+      "code": "9602122009",
+      "name": "Kenaya"
+    }
+  ],
+  "960213": [
+    {
+      "code": "9602132001",
+      "name": "Pasir Putih"
+    },
+    {
+      "code": "9602132002",
+      "name": "Wandum"
+    },
+    {
+      "code": "9602132003",
+      "name": "Bemus"
+    },
+    {
+      "code": "9602132004",
+      "name": "Welek"
+    }
+  ],
+  "960214": [
+    {
+      "code": "9602142001",
+      "name": "Wenslolo"
+    },
+    {
+      "code": "9602142002",
+      "name": "Klamit"
+    },
+    {
+      "code": "9602142003",
+      "name": "Mlabolo"
+    },
+    {
+      "code": "9602142004",
+      "name": "Kofalit"
+    },
+    {
+      "code": "9602142005",
+      "name": "Alma"
+    }
+  ],
+  "960215": [
+    {
+      "code": "9602152001",
+      "name": "Mukamat"
+    },
+    {
+      "code": "9602152002",
+      "name": "Ikana"
+    },
+    {
+      "code": "9602152003",
+      "name": "Haemaran"
+    },
+    {
+      "code": "9602152004",
+      "name": "Siranggo"
+    },
+    {
+      "code": "9602152005",
+      "name": "Mogatemin"
+    },
+    {
+      "code": "9602152006",
+      "name": "Onimsefa"
+    },
+    {
+      "code": "9602152007",
+      "name": "Makaroro"
+    }
+  ]
 }

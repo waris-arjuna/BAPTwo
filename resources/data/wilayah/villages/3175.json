@@ -1,0 +1,282 @@
+{
+  "317501": [
+    {
+      "code": "3175011001",
+      "name": "Pisangan Baru"
+    },
+    {
+      "code": "3175011002",
+      "name": "Utan Kayu Utara"
+    },
+    {
+      "code": "3175011003",
+      "name": "Kayu Manis"
+    },
+    {
+      "code": "3175011004",
+      "name": "Palmeriam"
+    },
+    {
+      "code": "3175011005",
+      "name": "Kebon Manggis"
+    },
+    {
+      "code": "3175011006",
+      "name": "Utan Kayu Selatan"
+    }
+  ],
+  "317502": [
+    {
+      "code": "3175021001",
+      "name": "Pulo Gadung"
+    },
+    {
+      "code": "3175021002",
+      "name": "Pisangan Timur"
+    },
+    {
+      "code": "3175021003",
+      "name": "Cipinang"
+    },
+    {
+      "code": "3175021004",
+      "name": "Jatinegara Kaum"
+    },
+    {
+      "code": "3175021005",
+      "name": "Rawamangun"
+    },
+    {
+      "code": "3175021006",
+      "name": "Kayu Putih"
+    },
+    {
+      "code": "3175021007",
+      "name": "Jati"
+    }
+  ],
+  "317503": [
+    {
+      "code": "3175031001",
+      "name": "Kampung Melayu"
+    },
+    {
+      "code": "3175031002",
+      "name": "Bidara Cina"
+    },
+    {
+      "code": "3175031003",
+      "name": "Bali Mester"
+    },
+    {
+      "code": "3175031004",
+      "name": "Rawa Bunga"
+    },
+    {
+      "code": "3175031005",
+      "name": "Cipinang Cempedak"
+    },
+    {
+      "code": "3175031006",
+      "name": "Cipinang Muara"
+    },
+    {
+      "code": "3175031007",
+      "name": "Cipinang Besar Selatan"
+    },
+    {
+      "code": "3175031008",
+      "name": "Cipinang Besar Utara"
+    }
+  ],
+  "317504": [
+    {
+      "code": "3175041001",
+      "name": "Kramatjati"
+    },
+    {
+      "code": "3175041002",
+      "name": "Tengah"
+    },
+    {
+      "code": "3175041003",
+      "name": "Dukuh"
+    },
+    {
+      "code": "3175041004",
+      "name": "Batu Ampar"
+    },
+    {
+      "code": "3175041005",
+      "name": "Balekambang"
+    },
+    {
+      "code": "3175041006",
+      "name": "Cililitan"
+    },
+    {
+      "code": "3175041007",
+      "name": "Cawang"
+    }
+  ],
+  "317505": [
+    {
+      "code": "3175051001",
+      "name": "Gedong"
+    },
+    {
+      "code": "3175051002",
+      "name": "Baru"
+    },
+    {
+      "code": "3175051003",
+      "name": "Cijantung"
+    },
+    {
+      "code": "3175051004",
+      "name": "Kalisari"
+    },
+    {
+      "code": "3175051005",
+      "name": "Pekayon"
+    }
+  ],
+  "317506": [
+    {
+      "code": "3175061001",
+      "name": "Jatinegara"
+    },
+    {
+      "code": "3175061002",
+      "name": "Rawa Terate"
+    },
+    {
+      "code": "3175061003",
+      "name": "Penggilingan"
+    },
+    {
+      "code": "3175061004",
+      "name": "Cakung Timur"
+    },
+    {
+      "code": "3175061005",
+      "name": "Pulo Gebang"
+    },
+    {
+      "code": "3175061006",
+      "name": "Ujung Menteng"
+    },
+    {
+      "code": "3175061007",
+      "name": "Cakung Barat"
+    }
+  ],
+  "317507": [
+    {
+      "code": "3175071001",
+      "name": "Duren Sawit"
+    },
+    {
+      "code": "3175071002",
+      "name": "Pondok Bambu"
+    },
+    {
+      "code": "3175071003",
+      "name": "Klender"
+    },
+    {
+      "code": "3175071004",
+      "name": "Pondok Kelapa"
+    },
+    {
+      "code": "3175071005",
+      "name": "Malaka Sari"
+    },
+    {
+      "code": "3175071006",
+      "name": "Malaka Jaya"
+    },
+    {
+      "code": "3175071007",
+      "name": "Pondok Kopi"
+    }
+  ],
+  "317508": [
+    {
+      "code": "3175081001",
+      "name": "Makasar"
+    },
+    {
+      "code": "3175081002",
+      "name": "Pinangranti"
+    },
+    {
+      "code": "3175081003",
+      "name": "Kebon Pala"
+    },
+    {
+      "code": "3175081004",
+      "name": "Halim Perdana Kusuma"
+    },
+    {
+      "code": "3175081005",
+      "name": "Cipinang Melayu"
+    }
+  ],
+  "317509": [
+    {
+      "code": "3175091001",
+      "name": "Ciracas"
+    },
+    {
+      "code": "3175091002",
+      "name": "Cibubur"
+    },
+    {
+      "code": "3175091003",
+      "name": "Kelapa Dua Wetan"
+    },
+    {
+      "code": "3175091004",
+      "name": "Susukan"
+    },
+    {
+      "code": "3175091005",
+      "name": "Rambutan"
+    }
+  ],
+  "317510": [
+    {
+      "code": "3175101001",
+      "name": "Cipayung"
+    },
+    {
+      "code": "3175101002",
+      "name": "Cilangkap"
+    },
+    {
+      "code": "3175101003",
+      "name": "Pondok Ranggon"
+    },
+    {
+      "code": "3175101004",
+      "name": "Munjul"
+    },
+    {
+      "code": "3175101005",
+      "name": "Setu"
+    },
+    {
+      "code": "3175101006",
+      "name": "Bambu Apus"
+    },
+    {
+      "code": "3175101007",
+      "name": "Lubang Buaya"
+    },
+    {
+      "code": "3175101008",
+      "name": "Ceger"
+    }
+  ]
+}

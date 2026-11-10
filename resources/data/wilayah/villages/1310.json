@@ -1,32 +1,232 @@
 {
-    "131011": [
-        {
-            "code": "1310112001",
-            "name": "Koto Besar"
-        },
-        {
-            "code": "1310112002",
-            "name": "Koto Tinggi"
-        },
-        {
-            "code": "1310112003",
-            "name": "Koto Gadang"
-        },
-        {
-            "code": "1310112004",
-            "name": "Bonjol"
-        },
-        {
-            "code": "1310112005",
-            "name": "Abai Siat"
-        },
-        {
-            "code": "1310112006",
-            "name": "Koto Laweh"
-        },
-        {
-            "code": "1310112007",
-            "name": "Koto Ranah"
-        }
-    ]
+  "131001": [
+    {
+      "code": "1310012002",
+      "name": "Koto Baru"
+    },
+    {
+      "code": "1310012003",
+      "name": "Sialang Gaung"
+    },
+    {
+      "code": "1310012005",
+      "name": "Ampang Kuranji"
+    },
+    {
+      "code": "1310012008",
+      "name": "Koto Padang"
+    }
+  ],
+  "131002": [
+    {
+      "code": "1310022001",
+      "name": "Sungai Dareh"
+    },
+    {
+      "code": "1310022002",
+      "name": "Tebing Tinggi"
+    },
+    {
+      "code": "1310022006",
+      "name": "Empat Koto Pulau Punjung"
+    },
+    {
+      "code": "1310022007",
+      "name": "Sungai Kambut"
+    },
+    {
+      "code": "1310022008",
+      "name": "Gunung Selasih"
+    },
+    {
+      "code": "1310022009",
+      "name": "Sikabau"
+    }
+  ],
+  "131003": [
+    {
+      "code": "1310032003",
+      "name": "Sungai Rumbai"
+    },
+    {
+      "code": "1310032004",
+      "name": "Kurnia Koto Salak"
+    },
+    {
+      "code": "1310032007",
+      "name": "Sungai Rumbai Timur"
+    },
+    {
+      "code": "1310032008",
+      "name": "Kurnia Selatan"
+    }
+  ],
+  "131004": [
+    {
+      "code": "1310042001",
+      "name": "Sitiung"
+    },
+    {
+      "code": "1310042002",
+      "name": "Siguntur"
+    },
+    {
+      "code": "1310042004",
+      "name": "Gunung Medan"
+    },
+    {
+      "code": "1310042005",
+      "name": "Sungai Duo"
+    }
+  ],
+  "131005": [
+    {
+      "code": "1310052001",
+      "name": "Silago"
+    },
+    {
+      "code": "1310052002",
+      "name": "Lubuak Karak"
+    },
+    {
+      "code": "1310052003",
+      "name": "Koto Nan Empat Dibawuh"
+    },
+    {
+      "code": "1310052004",
+      "name": "Banai"
+    }
+  ],
+  "131006": [
+    {
+      "code": "1310062001",
+      "name": "Timpeh"
+    },
+    {
+      "code": "1310062002",
+      "name": "Taratak Tinggi"
+    },
+    {
+      "code": "1310062003",
+      "name": "Tabek"
+    },
+    {
+      "code": "1310062004",
+      "name": "Panyubarangan"
+    },
+    {
+      "code": "1310062005",
+      "name": "Ranah Palabi"
+    }
+  ],
+  "131007": [
+    {
+      "code": "1310072001",
+      "name": "Koto Salak"
+    },
+    {
+      "code": "1310072002",
+      "name": "Ampalu"
+    },
+    {
+      "code": "1310072003",
+      "name": "Padukuan"
+    },
+    {
+      "code": "1310072004",
+      "name": "Pulau Mainan"
+    },
+    {
+      "code": "1310072005",
+      "name": "Simalidu"
+    }
+  ],
+  "131008": [
+    {
+      "code": "1310082001",
+      "name": "Tiumang"
+    },
+    {
+      "code": "1310082002",
+      "name": "Sungai Langkok"
+    },
+    {
+      "code": "1310082003",
+      "name": "Koto Beringin"
+    },
+    {
+      "code": "1310082004",
+      "name": "Sipangkur"
+    }
+  ],
+  "131009": [
+    {
+      "code": "1310092001",
+      "name": "Padang Laweh"
+    },
+    {
+      "code": "1310092002",
+      "name": "Batu Rijal"
+    },
+    {
+      "code": "1310092003",
+      "name": "Muaro Sopan"
+    },
+    {
+      "code": "1310092004",
+      "name": "Sopan Jaya"
+    }
+  ],
+  "131010": [
+    {
+      "code": "1310102001",
+      "name": "Sungai Limau"
+    },
+    {
+      "code": "1310102002",
+      "name": "Alahan Nan Tigo"
+    },
+    {
+      "code": "1310102003",
+      "name": "Lubuk Besar"
+    },
+    {
+      "code": "1310102004",
+      "name": "Tanjung Alam"
+    },
+    {
+      "code": "1310102005",
+      "name": "Sinamar"
+    }
+  ],
+  "131011": [
+    {
+      "code": "1310112001",
+      "name": "Koto Besar"
+    },
+    {
+      "code": "1310112002",
+      "name": "Koto Tinggi"
+    },
+    {
+      "code": "1310112003",
+      "name": "Koto Gadang"
+    },
+    {
+      "code": "1310112004",
+      "name": "Bonjol"
+    },
+    {
+      "code": "1310112005",
+      "name": "Abai Siat"
+    },
+    {
+      "code": "1310112006",
+      "name": "Koto Laweh"
+    },
+    {
+      "code": "1310112007",
+      "name": "Koto Ranah"
+    }
+  ]
 }

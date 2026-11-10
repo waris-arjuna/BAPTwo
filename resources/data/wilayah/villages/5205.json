@@ -1,186 +1,342 @@
 {
-    "520505": [
-        {
-            "code": "5205051001",
-            "name": "Monta Baru"
-        },
-        {
-            "code": "5205051002",
-            "name": "Kandai II"
-        },
-        {
-            "code": "5205051003",
-            "name": "Simpasai"
-        },
-        {
-            "code": "5205052004",
-            "name": "Saneo"
-        },
-        {
-            "code": "5205052005",
-            "name": "Wawonduru"
-        },
-        {
-            "code": "5205052006",
-            "name": "Matua"
-        },
-        {
-            "code": "5205052007",
-            "name": "Nowa"
-        },
-        {
-            "code": "5205052008",
-            "name": "Bara"
-        },
-        {
-            "code": "5205052009",
-            "name": "Mada Prama"
-        },
-        {
-            "code": "5205052010",
-            "name": "Riwo"
-        },
-        {
-            "code": "5205052011",
-            "name": "Mumbu"
-        },
-        {
-            "code": "5205052012",
-            "name": "Sera Kapi"
-        },
-        {
-            "code": "5205052013",
-            "name": "Raba Baka"
-        },
-        {
-            "code": "5205052014",
-            "name": "Baka Jaya"
-        }
-    ],
-    "520506": [
-        {
-            "code": "5205062001",
-            "name": "Pekat"
-        },
-        {
-            "code": "5205062002",
-            "name": "Nangamiro"
-        },
-        {
-            "code": "5205062003",
-            "name": "Kadindi"
-        },
-        {
-            "code": "5205062004",
-            "name": "Beringin Jaya"
-        },
-        {
-            "code": "5205062005",
-            "name": "Sori Nomo"
-        },
-        {
-            "code": "5205062006",
-            "name": "Tambora"
-        },
-        {
-            "code": "5205062007",
-            "name": "Doro Peti"
-        },
-        {
-            "code": "5205062008",
-            "name": "Karombo"
-        },
-        {
-            "code": "5205062009",
-            "name": "Kadindi Barat"
-        },
-        {
-            "code": "5205062010",
-            "name": "Nangakara"
-        },
-        {
-            "code": "5205062011",
-            "name": "Sori Tatanga"
-        },
-        {
-            "code": "5205062012",
-            "name": "Calabai"
-        }
-    ],
-    "520507": [
-        {
-            "code": "5205072001",
-            "name": "Soriutu"
-        },
-        {
-            "code": "5205072002",
-            "name": "Banggo"
-        },
-        {
-            "code": "5205072003",
-            "name": "Kwangko"
-        },
-        {
-            "code": "5205072004",
-            "name": "Lanci Jaya"
-        },
-        {
-            "code": "5205072005",
-            "name": "Suka Damai"
-        },
-        {
-            "code": "5205072006",
-            "name": "Nusa Jaya"
-        },
-        {
-            "code": "5205072007",
-            "name": "Doromelo"
-        },
-        {
-            "code": "5205072008",
-            "name": "Nangatumpu"
-        },
-        {
-            "code": "5205072009",
-            "name": "Kampasi Meci"
-        },
-        {
-            "code": "5205072010",
-            "name": "Teka Sire"
-        },
-        {
-            "code": "5205072011",
-            "name": "Anamina"
-        },
-        {
-            "code": "5205072012",
-            "name": "Tanju"
-        }
-    ],
-    "520508": [
-        {
-            "code": "5205082001",
-            "name": "Ranggo"
-        },
-        {
-            "code": "5205082002",
-            "name": "Jambu"
-        },
-        {
-            "code": "5205082003",
-            "name": "Lepadi"
-        },
-        {
-            "code": "5205082004",
-            "name": "Lune"
-        },
-        {
-            "code": "5205082005",
-            "name": "Woko"
-        },
-        {
-            "code": "5205082006",
-            "name": "Tembal Lae"
-        }
-    ]
+  "520501": [
+    {
+      "code": "5205011001",
+      "name": "Bada"
+    },
+    {
+      "code": "5205011002",
+      "name": "Bali"
+    },
+    {
+      "code": "5205011003",
+      "name": "Potu"
+    },
+    {
+      "code": "5205011004",
+      "name": "Karijawa"
+    },
+    {
+      "code": "5205011005",
+      "name": "Dora Tangga"
+    },
+    {
+      "code": "5205011006",
+      "name": "Kandai I"
+    },
+    {
+      "code": "5205012007",
+      "name": "O'o"
+    },
+    {
+      "code": "5205012008",
+      "name": "Katua"
+    },
+    {
+      "code": "5205012009",
+      "name": "Karamabura"
+    },
+    {
+      "code": "5205012010",
+      "name": "Mbawi"
+    },
+    {
+      "code": "5205012011",
+      "name": "Dore Bara"
+    },
+    {
+      "code": "5205012012",
+      "name": "Kareke"
+    },
+    {
+      "code": "5205012013",
+      "name": "Mangge Nae"
+    },
+    {
+      "code": "5205012014",
+      "name": "Manggeasi"
+    },
+    {
+      "code": "5205012015",
+      "name": "Sori Sakolo"
+    }
+  ],
+  "520502": [
+    {
+      "code": "5205022001",
+      "name": "Kempo"
+    },
+    {
+      "code": "5205022002",
+      "name": "Ta'a"
+    },
+    {
+      "code": "5205022003",
+      "name": "Soro"
+    },
+    {
+      "code": "5205022004",
+      "name": "Konte"
+    },
+    {
+      "code": "5205022005",
+      "name": "Tolo Kalo"
+    },
+    {
+      "code": "5205022006",
+      "name": "Songgaja"
+    },
+    {
+      "code": "5205022007",
+      "name": "Doro Kobo"
+    },
+    {
+      "code": "5205022008",
+      "name": "Soro Barat"
+    }
+  ],
+  "520503": [
+    {
+      "code": "5205032001",
+      "name": "Rasa Bou"
+    },
+    {
+      "code": "5205032002",
+      "name": "Daha"
+    },
+    {
+      "code": "5205032003",
+      "name": "Hu'u"
+    },
+    {
+      "code": "5205032004",
+      "name": "Adu"
+    },
+    {
+      "code": "5205032005",
+      "name": "Cempi Jaya"
+    },
+    {
+      "code": "5205032006",
+      "name": "Merada"
+    },
+    {
+      "code": "5205032007",
+      "name": "Jala"
+    },
+    {
+      "code": "5205032008",
+      "name": "Sawe"
+    }
+  ],
+  "520504": [
+    {
+      "code": "5205042001",
+      "name": "Malaju"
+    },
+    {
+      "code": "5205042002",
+      "name": "Lasi"
+    },
+    {
+      "code": "5205042003",
+      "name": "Mbuju"
+    },
+    {
+      "code": "5205042004",
+      "name": "Kiwu"
+    },
+    {
+      "code": "5205042005",
+      "name": "Taropo"
+    },
+    {
+      "code": "5205042006",
+      "name": "Karama"
+    }
+  ],
+  "520505": [
+    {
+      "code": "5205051001",
+      "name": "Monta Baru"
+    },
+    {
+      "code": "5205051002",
+      "name": "Kandai II"
+    },
+    {
+      "code": "5205051003",
+      "name": "Simpasai"
+    },
+    {
+      "code": "5205052004",
+      "name": "Saneo"
+    },
+    {
+      "code": "5205052005",
+      "name": "Wawonduru"
+    },
+    {
+      "code": "5205052006",
+      "name": "Matua"
+    },
+    {
+      "code": "5205052007",
+      "name": "Nowa"
+    },
+    {
+      "code": "5205052008",
+      "name": "Bara"
+    },
+    {
+      "code": "5205052009",
+      "name": "Mada Prama"
+    },
+    {
+      "code": "5205052010",
+      "name": "Riwo"
+    },
+    {
+      "code": "5205052011",
+      "name": "Mumbu"
+    },
+    {
+      "code": "5205052012",
+      "name": "Sera Kapi"
+    },
+    {
+      "code": "5205052013",
+      "name": "Raba Baka"
+    },
+    {
+      "code": "5205052014",
+      "name": "Baka Jaya"
+    }
+  ],
+  "520506": [
+    {
+      "code": "5205062001",
+      "name": "Pekat"
+    },
+    {
+      "code": "5205062002",
+      "name": "Nangamiro"
+    },
+    {
+      "code": "5205062003",
+      "name": "Kadindi"
+    },
+    {
+      "code": "5205062004",
+      "name": "Beringin Jaya"
+    },
+    {
+      "code": "5205062005",
+      "name": "Sori Nomo"
+    },
+    {
+      "code": "5205062006",
+      "name": "Tambora"
+    },
+    {
+      "code": "5205062007",
+      "name": "Doro Peti"
+    },
+    {
+      "code": "5205062008",
+      "name": "Karombo"
+    },
+    {
+      "code": "5205062009",
+      "name": "Kadindi Barat"
+    },
+    {
+      "code": "5205062010",
+      "name": "Nangakara"
+    },
+    {
+      "code": "5205062011",
+      "name": "Sori Tatanga"
+    },
+    {
+      "code": "5205062012",
+      "name": "Calabai"
+    }
+  ],
+  "520507": [
+    {
+      "code": "5205072001",
+      "name": "Soriutu"
+    },
+    {
+      "code": "5205072002",
+      "name": "Banggo"
+    },
+    {
+      "code": "5205072003",
+      "name": "Kwangko"
+    },
+    {
+      "code": "5205072004",
+      "name": "Lanci Jaya"
+    },
+    {
+      "code": "5205072005",
+      "name": "Suka Damai"
+    },
+    {
+      "code": "5205072006",
+      "name": "Nusa Jaya"
+    },
+    {
+      "code": "5205072007",
+      "name": "Doromelo"
+    },
+    {
+      "code": "5205072008",
+      "name": "Nangatumpu"
+    },
+    {
+      "code": "5205072009",
+      "name": "Kampasi Meci"
+    },
+    {
+      "code": "5205072010",
+      "name": "Teka Sire"
+    },
+    {
+      "code": "5205072011",
+      "name": "Anamina"
+    },
+    {
+      "code": "5205072012",
+      "name": "Tanju"
+    }
+  ],
+  "520508": [
+    {
+      "code": "5205082001",
+      "name": "Ranggo"
+    },
+    {
+      "code": "5205082002",
+      "name": "Jambu"
+    },
+    {
+      "code": "5205082003",
+      "name": "Lepadi"
+    },
+    {
+      "code": "5205082004",
+      "name": "Lune"
+    },
+    {
+      "code": "5205082005",
+      "name": "Woko"
+    },
+    {
+      "code": "5205082006",
+      "name": "Tembal Lae"
+    }
+  ]
 }

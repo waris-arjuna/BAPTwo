@@ -1,154 +1,744 @@
 {
-    "710519": [
-        {
-            "code": "7105192001",
-            "name": "Paslaten"
-        },
-        {
-            "code": "7105192002",
-            "name": "Sulu"
-        },
-        {
-            "code": "7105192003",
-            "name": "Bajo"
-        },
-        {
-            "code": "7105192004",
-            "name": "Wawona"
-        },
-        {
-            "code": "7105192005",
-            "name": "Popareng"
-        },
-        {
-            "code": "7105192006",
-            "name": "Wawontulap"
-        },
-        {
-            "code": "7105192007",
-            "name": "Sondaken"
-        },
-        {
-            "code": "7105192008",
-            "name": "Pungkol"
-        },
-        {
-            "code": "7105192009",
-            "name": "Raprap"
-        },
-        {
-            "code": "7105192010",
-            "name": "Paslaten Satu"
-        },
-        {
-            "code": "7105192011",
-            "name": "Arakan"
-        }
-    ],
-    "710521": [
-        {
-            "code": "7105212001",
-            "name": "Tondei"
-        },
-        {
-            "code": "7105212002",
-            "name": "Tondei Satu"
-        },
-        {
-            "code": "7105212003",
-            "name": "Tondei Dua"
-        },
-        {
-            "code": "7105212004",
-            "name": "Raanan Baru"
-        },
-        {
-            "code": "7105212005",
-            "name": "Ranaan Baru Satu"
-        },
-        {
-            "code": "7105212006",
-            "name": "Ranaan Baru Dua"
-        },
-        {
-            "code": "7105212007",
-            "name": "Toyopon"
-        },
-        {
-            "code": "7105212008",
-            "name": "Keroit"
-        }
-    ],
-    "710522": [
-        {
-            "code": "7105222001",
-            "name": "Karimbow"
-        },
-        {
-            "code": "7105222002",
-            "name": "Karimbow Talikuran"
-        },
-        {
-            "code": "7105222003",
-            "name": "Tokin"
-        },
-        {
-            "code": "7105222004",
-            "name": "Tokin Baru"
-        },
-        {
-            "code": "7105222005",
-            "name": "Wanga Amongena"
-        },
-        {
-            "code": "7105222006",
-            "name": "Wanga"
-        },
-        {
-            "code": "7105222007",
-            "name": "Picuan"
-        },
-        {
-            "code": "7105222008",
-            "name": "Picuan Satu"
-        }
-    ],
-    "710523": [
-        {
-            "code": "7105232001",
-            "name": "Talaitad"
-        },
-        {
-            "code": "7105232002",
-            "name": "Suluun Satu"
-        },
-        {
-            "code": "7105232003",
-            "name": "Suluun Dua"
-        },
-        {
-            "code": "7105232004",
-            "name": "Suluun Tiga"
-        },
-        {
-            "code": "7105232005",
-            "name": "Suluun Empat"
-        },
-        {
-            "code": "7105232006",
-            "name": "Pinapalangkow"
-        },
-        {
-            "code": "7105232007",
-            "name": "Kapoya"
-        },
-        {
-            "code": "7105232008",
-            "name": "Talaitad Utara"
-        },
-        {
-            "code": "7105232009",
-            "name": "Kapoya Satu"
-        }
-    ]
+  "710501": [
+    {
+      "code": "7105012001",
+      "name": "Sinisir"
+    },
+    {
+      "code": "7105012002",
+      "name": "Kakenturan"
+    },
+    {
+      "code": "7105012003",
+      "name": "Palelon"
+    },
+    {
+      "code": "7105012004",
+      "name": "Pinasungkulan"
+    },
+    {
+      "code": "7105012005",
+      "name": "Wulurmaatus"
+    },
+    {
+      "code": "7105012006",
+      "name": "Makaaruyen"
+    },
+    {
+      "code": "7105012007",
+      "name": "Linelean"
+    },
+    {
+      "code": "7105012008",
+      "name": "Mokobang"
+    },
+    {
+      "code": "7105012009",
+      "name": "Kakenturan Barat"
+    },
+    {
+      "code": "7105012010",
+      "name": "Pinasungkulan Utara"
+    }
+  ],
+  "710502": [
+    {
+      "code": "7105022009",
+      "name": "Raraatean"
+    },
+    {
+      "code": "7105022010",
+      "name": "Sion"
+    },
+    {
+      "code": "7105022011",
+      "name": "Tompaso Baru I"
+    },
+    {
+      "code": "7105022012",
+      "name": "Kinalawiran"
+    },
+    {
+      "code": "7105022013",
+      "name": "Tompaso Baru II"
+    },
+    {
+      "code": "7105022014",
+      "name": "Pinaesaan"
+    },
+    {
+      "code": "7105022015",
+      "name": "Torout"
+    },
+    {
+      "code": "7105022016",
+      "name": "Lindangan"
+    },
+    {
+      "code": "7105022017",
+      "name": "Karowa"
+    },
+    {
+      "code": "7105022018",
+      "name": "Liandok"
+    }
+  ],
+  "710503": [
+    {
+      "code": "7105032002",
+      "name": "Poopo"
+    },
+    {
+      "code": "7105032003",
+      "name": "Ranoyapo"
+    },
+    {
+      "code": "7105032004",
+      "name": "Mopolo"
+    },
+    {
+      "code": "7105032005",
+      "name": "Beringin"
+    },
+    {
+      "code": "7105032006",
+      "name": "Powalutan"
+    },
+    {
+      "code": "7105032008",
+      "name": "Lompad"
+    },
+    {
+      "code": "7105032009",
+      "name": "Lompad Baru"
+    },
+    {
+      "code": "7105032010",
+      "name": "Pontak"
+    },
+    {
+      "code": "7105032012",
+      "name": "Poopo Utara"
+    },
+    {
+      "code": "7105032013",
+      "name": "Poopo Barat"
+    },
+    {
+      "code": "7105032014",
+      "name": "Pontak Satu"
+    },
+    {
+      "code": "7105032015",
+      "name": "Mopolo Esa"
+    }
+  ],
+  "710507": [
+    {
+      "code": "7105072001",
+      "name": "Motoling"
+    },
+    {
+      "code": "7105072002",
+      "name": "Motoling Mawale"
+    },
+    {
+      "code": "7105072003",
+      "name": "Motoling I"
+    },
+    {
+      "code": "7105072004",
+      "name": "Motoling II"
+    },
+    {
+      "code": "7105072005",
+      "name": "Picuan Baru"
+    },
+    {
+      "code": "7105072015",
+      "name": "Lalumpe"
+    },
+    {
+      "code": "7105072021",
+      "name": "Raanan Lama"
+    }
+  ],
+  "710508": [
+    {
+      "code": "7105082001",
+      "name": "Blongko"
+    },
+    {
+      "code": "7105082002",
+      "name": "Boyongpante"
+    },
+    {
+      "code": "7105082003",
+      "name": "Tiniawangko"
+    },
+    {
+      "code": "7105082004",
+      "name": "Ongkaw I"
+    },
+    {
+      "code": "7105082005",
+      "name": "Ongkaw II"
+    },
+    {
+      "code": "7105082006",
+      "name": "Aergale"
+    },
+    {
+      "code": "7105082007",
+      "name": "Poigar I"
+    },
+    {
+      "code": "7105082008",
+      "name": "Poigar II"
+    },
+    {
+      "code": "7105082009",
+      "name": "Durian"
+    },
+    {
+      "code": "7105082010",
+      "name": "Tanamon"
+    },
+    {
+      "code": "7105082011",
+      "name": "Ongkaw Tiga"
+    },
+    {
+      "code": "7105082012",
+      "name": "Boyongpante Dua"
+    },
+    {
+      "code": "7105082013",
+      "name": "Tanamon Utara"
+    }
+  ],
+  "710509": [
+    {
+      "code": "7105092001",
+      "name": "Boyong Atas"
+    },
+    {
+      "code": "7105092002",
+      "name": "Paku Ure II"
+    },
+    {
+      "code": "7105092003",
+      "name": "Tenga"
+    },
+    {
+      "code": "7105092004",
+      "name": "Radey"
+    },
+    {
+      "code": "7105092005",
+      "name": "Tawaang"
+    },
+    {
+      "code": "7105092009",
+      "name": "Pakuweru"
+    },
+    {
+      "code": "7105092010",
+      "name": "Sapa"
+    },
+    {
+      "code": "7105092011",
+      "name": "Pakuure Satu"
+    },
+    {
+      "code": "7105092012",
+      "name": "Pakuure Tiga"
+    },
+    {
+      "code": "7105092014",
+      "name": "Molinow"
+    },
+    {
+      "code": "7105092015",
+      "name": "Paku Ure"
+    },
+    {
+      "code": "7105092016",
+      "name": "Paku Ure Tinanian"
+    },
+    {
+      "code": "7105092017",
+      "name": "Paku Ure Kinamang"
+    },
+    {
+      "code": "7105092018",
+      "name": "Pakuweru Utara"
+    },
+    {
+      "code": "7105092019",
+      "name": "Sapa Barat"
+    },
+    {
+      "code": "7105092020",
+      "name": "Sapa Timur"
+    },
+    {
+      "code": "7105092021",
+      "name": "Tawaang Timur"
+    },
+    {
+      "code": "7105092022",
+      "name": "Tawaang Barat"
+    }
+  ],
+  "710510": [
+    {
+      "code": "7105101004",
+      "name": "Buyungon"
+    },
+    {
+      "code": "7105101005",
+      "name": "Ranoyapo"
+    },
+    {
+      "code": "7105101006",
+      "name": "Uwuran I"
+    },
+    {
+      "code": "7105101007",
+      "name": "Uwuran II"
+    },
+    {
+      "code": "7105101008",
+      "name": "Lewet"
+    },
+    {
+      "code": "7105101010",
+      "name": "Bitung"
+    },
+    {
+      "code": "7105102009",
+      "name": "Ranoketang Tua"
+    },
+    {
+      "code": "7105102018",
+      "name": "Kilometer 3"
+    }
+  ],
+  "710512": [
+    {
+      "code": "7105122001",
+      "name": "Tumpaan Satu"
+    },
+    {
+      "code": "7105122002",
+      "name": "Tumpaan"
+    },
+    {
+      "code": "7105122003",
+      "name": "Matani"
+    },
+    {
+      "code": "7105122004",
+      "name": "Popontolen"
+    },
+    {
+      "code": "7105122005",
+      "name": "Lelema"
+    },
+    {
+      "code": "7105122006",
+      "name": "Tangkunei"
+    },
+    {
+      "code": "7105122007",
+      "name": "Munte"
+    },
+    {
+      "code": "7105122016",
+      "name": "Tumpaan Baru"
+    },
+    {
+      "code": "7105122017",
+      "name": "Matani Satu"
+    },
+    {
+      "code": "7105122018",
+      "name": "Tumpan Dua"
+    }
+  ],
+  "710513": [
+    {
+      "code": "7105132001",
+      "name": "Pinamorongan"
+    },
+    {
+      "code": "7105132002",
+      "name": "Kaneyan"
+    },
+    {
+      "code": "7105132003",
+      "name": "Koreng"
+    },
+    {
+      "code": "7105132004",
+      "name": "Tumaluntung"
+    },
+    {
+      "code": "7105132005",
+      "name": "Rumoong Atas"
+    },
+    {
+      "code": "7105132006",
+      "name": "Lansot"
+    },
+    {
+      "code": "7105132007",
+      "name": "Wiau Lapi"
+    },
+    {
+      "code": "7105132008",
+      "name": "Wuwuk"
+    },
+    {
+      "code": "7105132014",
+      "name": "Rumoong Atas Dua"
+    },
+    {
+      "code": "7105132017",
+      "name": "Lansot Timur"
+    },
+    {
+      "code": "7105132018",
+      "name": "Wuwuk Barat"
+    },
+    {
+      "code": "7105132019",
+      "name": "Tumaluntung Satu"
+    },
+    {
+      "code": "7105132020",
+      "name": "Wiau Lapi Barat"
+    }
+  ],
+  "710515": [
+    {
+      "code": "7105152002",
+      "name": "Kumelembuai"
+    },
+    {
+      "code": "7105152003",
+      "name": "Kumelembuai Atas"
+    },
+    {
+      "code": "7105152004",
+      "name": "Kumelembuai Satu"
+    },
+    {
+      "code": "7105152005",
+      "name": "Malola"
+    },
+    {
+      "code": "7105152006",
+      "name": "Malola I"
+    },
+    {
+      "code": "7105152007",
+      "name": "Makasili"
+    },
+    {
+      "code": "7105152011",
+      "name": "Kumelembuai Dua"
+    },
+    {
+      "code": "7105152015",
+      "name": "Lolombulan Makasili"
+    }
+  ],
+  "710516": [
+    {
+      "code": "7105162001",
+      "name": "Tumani"
+    },
+    {
+      "code": "7105162002",
+      "name": "Lowian"
+    },
+    {
+      "code": "7105162003",
+      "name": "Kinaweruan"
+    },
+    {
+      "code": "7105162004",
+      "name": "Liningaan"
+    },
+    {
+      "code": "7105162005",
+      "name": "Bojonegoro"
+    },
+    {
+      "code": "7105162006",
+      "name": "Tambelang"
+    },
+    {
+      "code": "7105162007",
+      "name": "Kinamang"
+    },
+    {
+      "code": "7105162008",
+      "name": "Temboan"
+    },
+    {
+      "code": "7105162009",
+      "name": "Kinamang Satu"
+    },
+    {
+      "code": "7105162010",
+      "name": "Lowian Satu"
+    },
+    {
+      "code": "7105162011",
+      "name": "Tumani Utara"
+    },
+    {
+      "code": "7105162012",
+      "name": "Tumani Selatan"
+    }
+  ],
+  "710517": [
+    {
+      "code": "7105171002",
+      "name": "Kawangkoan Bawah"
+    },
+    {
+      "code": "7105171003",
+      "name": "Rumoong Bawah"
+    },
+    {
+      "code": "7105172001",
+      "name": "Kapitu"
+    },
+    {
+      "code": "7105172004",
+      "name": "Rumoong Bawah"
+    },
+    {
+      "code": "7105172005",
+      "name": "Tewasen"
+    },
+    {
+      "code": "7105172006",
+      "name": "Pondos"
+    },
+    {
+      "code": "7105172007",
+      "name": "Elusan"
+    },
+    {
+      "code": "7105172008",
+      "name": "Teep"
+    },
+    {
+      "code": "7105172009",
+      "name": "Wakan"
+    },
+    {
+      "code": "7105172010",
+      "name": "Teep Trans"
+    }
+  ],
+  "710518": [
+    {
+      "code": "7105181002",
+      "name": "Pondang"
+    },
+    {
+      "code": "7105181003",
+      "name": "Ranomea"
+    },
+    {
+      "code": "7105182001",
+      "name": "Lopana"
+    },
+    {
+      "code": "7105182004",
+      "name": "Pinaling"
+    },
+    {
+      "code": "7105182005",
+      "name": "Kota Menara"
+    },
+    {
+      "code": "7105182006",
+      "name": "Maliku"
+    },
+    {
+      "code": "7105182007",
+      "name": "Ritey"
+    },
+    {
+      "code": "7105182008",
+      "name": "Malenos Baru"
+    },
+    {
+      "code": "7105182009",
+      "name": "Maliku Satu"
+    },
+    {
+      "code": "7105182010",
+      "name": "Lopana Satu"
+    }
+  ],
+  "710519": [
+    {
+      "code": "7105192001",
+      "name": "Paslaten"
+    },
+    {
+      "code": "7105192002",
+      "name": "Sulu"
+    },
+    {
+      "code": "7105192003",
+      "name": "Bajo"
+    },
+    {
+      "code": "7105192004",
+      "name": "Wawona"
+    },
+    {
+      "code": "7105192005",
+      "name": "Popareng"
+    },
+    {
+      "code": "7105192006",
+      "name": "Wawontulap"
+    },
+    {
+      "code": "7105192007",
+      "name": "Sondaken"
+    },
+    {
+      "code": "7105192008",
+      "name": "Pungkol"
+    },
+    {
+      "code": "7105192009",
+      "name": "Raprap"
+    },
+    {
+      "code": "7105192010",
+      "name": "Paslaten Satu"
+    },
+    {
+      "code": "7105192011",
+      "name": "Arakan"
+    }
+  ],
+  "710521": [
+    {
+      "code": "7105212001",
+      "name": "Tondei"
+    },
+    {
+      "code": "7105212002",
+      "name": "Tondei Satu"
+    },
+    {
+      "code": "7105212003",
+      "name": "Tondei Dua"
+    },
+    {
+      "code": "7105212004",
+      "name": "Raanan Baru"
+    },
+    {
+      "code": "7105212005",
+      "name": "Ranaan Baru Satu"
+    },
+    {
+      "code": "7105212006",
+      "name": "Ranaan Baru Dua"
+    },
+    {
+      "code": "7105212007",
+      "name": "Toyopon"
+    },
+    {
+      "code": "7105212008",
+      "name": "Keroit"
+    }
+  ],
+  "710522": [
+    {
+      "code": "7105222001",
+      "name": "Karimbow"
+    },
+    {
+      "code": "7105222002",
+      "name": "Karimbow Talikuran"
+    },
+    {
+      "code": "7105222003",
+      "name": "Tokin"
+    },
+    {
+      "code": "7105222004",
+      "name": "Tokin Baru"
+    },
+    {
+      "code": "7105222005",
+      "name": "Wanga Amongena"
+    },
+    {
+      "code": "7105222006",
+      "name": "Wanga"
+    },
+    {
+      "code": "7105222007",
+      "name": "Picuan"
+    },
+    {
+      "code": "7105222008",
+      "name": "Picuan Satu"
+    }
+  ],
+  "710523": [
+    {
+      "code": "7105232001",
+      "name": "Talaitad"
+    },
+    {
+      "code": "7105232002",
+      "name": "Suluun Satu"
+    },
+    {
+      "code": "7105232003",
+      "name": "Suluun Dua"
+    },
+    {
+      "code": "7105232004",
+      "name": "Suluun Tiga"
+    },
+    {
+      "code": "7105232005",
+      "name": "Suluun Empat"
+    },
+    {
+      "code": "7105232006",
+      "name": "Pinapalangkow"
+    },
+    {
+      "code": "7105232007",
+      "name": "Kapoya"
+    },
+    {
+      "code": "7105232008",
+      "name": "Talaitad Utara"
+    },
+    {
+      "code": "7105232009",
+      "name": "Kapoya Satu"
+    }
+  ]
 }

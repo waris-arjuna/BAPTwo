@@ -1,0 +1,296 @@
+{
+  "161201": [
+    {
+      "code": "1612011003",
+      "name": "Talang Ubi Timur"
+    },
+    {
+      "code": "1612011010",
+      "name": "Talang Ubi Barat"
+    },
+    {
+      "code": "1612011011",
+      "name": "Talang Ubi Utara"
+    },
+    {
+      "code": "1612011012",
+      "name": "Talang Ubi Selatan"
+    },
+    {
+      "code": "1612011017",
+      "name": "Pasar Bhayangkara"
+    },
+    {
+      "code": "1612011018",
+      "name": "Handayani Mulya"
+    },
+    {
+      "code": "1612012001",
+      "name": "Talang Bulang"
+    },
+    {
+      "code": "1612012002",
+      "name": "Benuang"
+    },
+    {
+      "code": "1612012004",
+      "name": "Talang Akar"
+    },
+    {
+      "code": "1612012005",
+      "name": "Sungai Ibul"
+    },
+    {
+      "code": "1612012006",
+      "name": "Karta Dewa"
+    },
+    {
+      "code": "1612012007",
+      "name": "Panta Dewa"
+    },
+    {
+      "code": "1612012008",
+      "name": "Sungai Baung"
+    },
+    {
+      "code": "1612012009",
+      "name": "Semangus"
+    },
+    {
+      "code": "1612012013",
+      "name": "Sinar Dewa"
+    },
+    {
+      "code": "1612012014",
+      "name": "Benakat Minyak"
+    },
+    {
+      "code": "1612012015",
+      "name": "Suka Maju"
+    },
+    {
+      "code": "1612012016",
+      "name": "Suka Damai"
+    },
+    {
+      "code": "1612012019",
+      "name": "Beruge Darat"
+    },
+    {
+      "code": "1612012020",
+      "name": "Simpang Tais"
+    }
+  ],
+  "161202": [
+    {
+      "code": "1612022001",
+      "name": "Sukarami"
+    },
+    {
+      "code": "1612022002",
+      "name": "Tanjung Baru"
+    },
+    {
+      "code": "1612022003",
+      "name": "Prabu Menang"
+    },
+    {
+      "code": "1612022004",
+      "name": "Tanding Marga"
+    },
+    {
+      "code": "1612022005",
+      "name": "Karang Tanding"
+    },
+    {
+      "code": "1612022006",
+      "name": "Lubuk Tampui"
+    },
+    {
+      "code": "1612022007",
+      "name": "Tempirai"
+    },
+    {
+      "code": "1612022008",
+      "name": "Tempirai Selatan"
+    },
+    {
+      "code": "1612022009",
+      "name": "Kota Baru"
+    },
+    {
+      "code": "1612022010",
+      "name": "Tempirai Utara"
+    },
+    {
+      "code": "1612022011",
+      "name": "Tempirai Timur"
+    },
+    {
+      "code": "1612022012",
+      "name": "Tambak"
+    },
+    {
+      "code": "1612022013",
+      "name": "Muara Ikan"
+    }
+  ],
+  "161203": [
+    {
+      "code": "1612032001",
+      "name": "Purun"
+    },
+    {
+      "code": "1612032002",
+      "name": "Gunung Menang"
+    },
+    {
+      "code": "1612032003",
+      "name": "Mangkunegara"
+    },
+    {
+      "code": "1612032004",
+      "name": "Raja Jaya"
+    },
+    {
+      "code": "1612032005",
+      "name": "Air Itam"
+    },
+    {
+      "code": "1612032006",
+      "name": "Gunung Raja"
+    },
+    {
+      "code": "1612032007",
+      "name": "Air Itam Timur"
+    },
+    {
+      "code": "1612032008",
+      "name": "Sungai Langan"
+    },
+    {
+      "code": "1612032009",
+      "name": "Spantan Jaya"
+    },
+    {
+      "code": "1612032010",
+      "name": "Babat"
+    },
+    {
+      "code": "1612032011",
+      "name": "Suka Raja"
+    },
+    {
+      "code": "1612032012",
+      "name": "Purun Timur"
+    },
+    {
+      "code": "1612032013",
+      "name": "Mangkunegara Timur"
+    }
+  ],
+  "161204": [
+    {
+      "code": "1612042001",
+      "name": "Betung"
+    },
+    {
+      "code": "1612042002",
+      "name": "Betung Barat"
+    },
+    {
+      "code": "1612042003",
+      "name": "Karang Agung"
+    },
+    {
+      "code": "1612042004",
+      "name": "Tanjung Kurung"
+    },
+    {
+      "code": "1612042005",
+      "name": "Pengabuan"
+    },
+    {
+      "code": "1612042006",
+      "name": "Prambatan"
+    },
+    {
+      "code": "1612042007",
+      "name": "Pengabuan Timur"
+    },
+    {
+      "code": "1612042008",
+      "name": "Betung Selatan"
+    }
+  ],
+  "161205": [
+    {
+      "code": "1612052001",
+      "name": "Bumi Ayu"
+    },
+    {
+      "code": "1612052002",
+      "name": "Muara Sungai"
+    },
+    {
+      "code": "1612052003",
+      "name": "Tanah Abang Utara"
+    },
+    {
+      "code": "1612052004",
+      "name": "Sedupi"
+    },
+    {
+      "code": "1612052005",
+      "name": "Sukaraja"
+    },
+    {
+      "code": "1612052006",
+      "name": "Curup"
+    },
+    {
+      "code": "1612052007",
+      "name": "Raja"
+    },
+    {
+      "code": "1612052008",
+      "name": "Pandan"
+    },
+    {
+      "code": "1612052009",
+      "name": "Modong"
+    },
+    {
+      "code": "1612052010",
+      "name": "Tanah Abang Selatan"
+    },
+    {
+      "code": "1612052011",
+      "name": "Harapan Jaya"
+    },
+    {
+      "code": "1612052012",
+      "name": "Tanjung Dalam"
+    },
+    {
+      "code": "1612052013",
+      "name": "Lunas Jaya"
+    },
+    {
+      "code": "1612052014",
+      "name": "Raja Barat"
+    },
+    {
+      "code": "1612052015",
+      "name": "Tanah Abang Jaya"
+    },
+    {
+      "code": "1612052016",
+      "name": "Muara Dua"
+    },
+    {
+      "code": "1612052017",
+      "name": "Sukamanis"
+    }
+  ]
+}

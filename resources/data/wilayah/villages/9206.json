@@ -1,40 +1,518 @@
 {
-    "920602": [
-        {
-            "code": "9206022001",
-            "name": "Merdey"
-        },
-        {
-            "code": "9206022002",
-            "name": "Meryeb"
-        },
-        {
-            "code": "9206022004",
-            "name": "Meyom"
-        },
-        {
-            "code": "9206022007",
-            "name": "Menggerba"
-        },
-        {
-            "code": "9206022008",
-            "name": "Anajero"
-        },
-        {
-            "code": "9206022010",
-            "name": "Mogromus"
-        },
-        {
-            "code": "9206022011",
-            "name": "Morombuy"
-        },
-        {
-            "code": "9206022014",
-            "name": "Mekiesefeb"
-        },
-        {
-            "code": "9206022020",
-            "name": "Meyetga"
-        }
-    ]
+  "920601": [
+    {
+      "code": "9206011001",
+      "name": "Bintuni Timur"
+    },
+    {
+      "code": "9206011002",
+      "name": "Bintuni Barat"
+    },
+    {
+      "code": "9206012004",
+      "name": "Tuasai"
+    },
+    {
+      "code": "9206012005",
+      "name": "Argosigemerai"
+    },
+    {
+      "code": "9206012009",
+      "name": "Beimes"
+    },
+    {
+      "code": "9206012010",
+      "name": "Iguriji"
+    },
+    {
+      "code": "9206012022",
+      "name": "Masina"
+    },
+    {
+      "code": "9206012026",
+      "name": "Wesiri"
+    }
+  ],
+  "920602": [
+    {
+      "code": "9206022001",
+      "name": "Merdey"
+    },
+    {
+      "code": "9206022002",
+      "name": "Meryeb"
+    },
+    {
+      "code": "9206022004",
+      "name": "Meyom"
+    },
+    {
+      "code": "9206022007",
+      "name": "Menggerba"
+    },
+    {
+      "code": "9206022008",
+      "name": "Anajero"
+    },
+    {
+      "code": "9206022010",
+      "name": "Mogromus"
+    },
+    {
+      "code": "9206022011",
+      "name": "Morombuy"
+    },
+    {
+      "code": "9206022014",
+      "name": "Mekiesefeb"
+    },
+    {
+      "code": "9206022020",
+      "name": "Meyetga"
+    }
+  ],
+  "920603": [
+    {
+      "code": "9206032020",
+      "name": "Irarutu III"
+    },
+    {
+      "code": "9206032021",
+      "name": "Amutu"
+    },
+    {
+      "code": "9206032022",
+      "name": "Nusei"
+    },
+    {
+      "code": "9206032023",
+      "name": "Kasira"
+    }
+  ],
+  "920604": [
+    {
+      "code": "9206042001",
+      "name": "Aranday"
+    },
+    {
+      "code": "9206042007",
+      "name": "Kampung Baru"
+    },
+    {
+      "code": "9206042008",
+      "name": "Kecap"
+    },
+    {
+      "code": "9206042009",
+      "name": "Manunggal Karya"
+    }
+  ],
+  "920605": [
+    {
+      "code": "9206052001",
+      "name": "Jagiro"
+    },
+    {
+      "code": "9206052004",
+      "name": "Meyenda"
+    },
+    {
+      "code": "9206052005",
+      "name": "Rawara"
+    },
+    {
+      "code": "9206052006",
+      "name": "Barma Barat"
+    },
+    {
+      "code": "9206052011",
+      "name": "Inggof"
+    }
+  ],
+  "920606": [
+    {
+      "code": "9206062001",
+      "name": "Moyeba"
+    },
+    {
+      "code": "9206062004",
+      "name": "Merestim"
+    },
+    {
+      "code": "9206062005",
+      "name": "Inofina"
+    },
+    {
+      "code": "9206062006",
+      "name": "Mosum"
+    }
+  ],
+  "920607": [
+    {
+      "code": "9206072001",
+      "name": "Wamesa I / Idoor"
+    },
+    {
+      "code": "9206072002",
+      "name": "Wamesa II / Yakati"
+    },
+    {
+      "code": "9206072003",
+      "name": "Yansei"
+    },
+    {
+      "code": "9206072004",
+      "name": "Mamuranu"
+    }
+  ],
+  "920608": [
+    {
+      "code": "9206082001",
+      "name": "Fruata/Irowutu II"
+    },
+    {
+      "code": "9206082002",
+      "name": "Meryedi"
+    },
+    {
+      "code": "9206082003",
+      "name": "Riendo"
+    }
+  ],
+  "920609": [
+    {
+      "code": "9206092001",
+      "name": "Tembuni"
+    },
+    {
+      "code": "9206092002",
+      "name": "Mogoi Baru"
+    },
+    {
+      "code": "9206092003",
+      "name": "Araisum"
+    },
+    {
+      "code": "9206092004",
+      "name": "Bangun Mulya"
+    }
+  ],
+  "920610": [
+    {
+      "code": "9206102001",
+      "name": "Sarbe"
+    },
+    {
+      "code": "9206102002",
+      "name": "Wagura"
+    },
+    {
+      "code": "9206102003",
+      "name": "Refideso"
+    },
+    {
+      "code": "9206102004",
+      "name": "Naramasa"
+    },
+    {
+      "code": "9206102005",
+      "name": "Obo"
+    }
+  ],
+  "920611": [
+    {
+      "code": "9206112001",
+      "name": "Bumi Saniari"
+    },
+    {
+      "code": "9206112002",
+      "name": "Banjar Ausoy"
+    },
+    {
+      "code": "9206112003",
+      "name": "Waraitama"
+    },
+    {
+      "code": "9206112004",
+      "name": "Atibo Manimeri"
+    },
+    {
+      "code": "9206112005",
+      "name": "Pasamai"
+    },
+    {
+      "code": "9206112006",
+      "name": "Korano Jaya"
+    }
+  ],
+  "920612": [
+    {
+      "code": "9206122001",
+      "name": "Tuhiba"
+    },
+    {
+      "code": "9206122002",
+      "name": "Tisaida"
+    },
+    {
+      "code": "9206122003",
+      "name": "Kucir"
+    },
+    {
+      "code": "9206122004",
+      "name": "Sibena Raya"
+    },
+    {
+      "code": "9206122005",
+      "name": "Sibena Permai"
+    }
+  ],
+  "920613": [
+    {
+      "code": "9206132001",
+      "name": "Horna"
+    },
+    {
+      "code": "9206132002",
+      "name": "Cumnaji"
+    },
+    {
+      "code": "9206132003",
+      "name": "Menci"
+    },
+    {
+      "code": "9206132004",
+      "name": "Sir"
+    },
+    {
+      "code": "9206132005",
+      "name": "Huss"
+    },
+    {
+      "code": "9206132006",
+      "name": "Ugdohop"
+    }
+  ],
+  "920614": [
+    {
+      "code": "9206142001",
+      "name": "Tofoi"
+    },
+    {
+      "code": "9206142002",
+      "name": "Tanah Merah"
+    },
+    {
+      "code": "9206142003",
+      "name": "Saengga"
+    },
+    {
+      "code": "9206142004",
+      "name": "Forada"
+    },
+    {
+      "code": "9206142005",
+      "name": "Materabu Jaya"
+    }
+  ],
+  "920615": [
+    {
+      "code": "9206152001",
+      "name": "Sara"
+    },
+    {
+      "code": "9206152002",
+      "name": "Warga Nusa I"
+    },
+    {
+      "code": "9206152003",
+      "name": "Warga Nusa II"
+    },
+    {
+      "code": "9206152004",
+      "name": "Tugarama"
+    },
+    {
+      "code": "9206152005",
+      "name": "Suga"
+    }
+  ],
+  "920616": [
+    {
+      "code": "9206162001",
+      "name": "Aroba"
+    },
+    {
+      "code": "9206162002",
+      "name": "Yaru"
+    },
+    {
+      "code": "9206162003",
+      "name": "Sido Makmur"
+    },
+    {
+      "code": "9206162004",
+      "name": "Wimbro"
+    },
+    {
+      "code": "9206162005",
+      "name": "Sangguar"
+    }
+  ],
+  "920617": [
+    {
+      "code": "9206172001",
+      "name": "Masyeta"
+    },
+    {
+      "code": "9206172002",
+      "name": "Mestofu"
+    },
+    {
+      "code": "9206172003",
+      "name": "Kalibiru"
+    },
+    {
+      "code": "9206172004",
+      "name": "Mesomda"
+    }
+  ],
+  "920618": [
+    {
+      "code": "9206182001",
+      "name": "Jahabra"
+    },
+    {
+      "code": "9206182002",
+      "name": "Ibori"
+    },
+    {
+      "code": "9206182003",
+      "name": "Menyembru"
+    },
+    {
+      "code": "9206182004",
+      "name": "Meyorga"
+    },
+    {
+      "code": "9206182005",
+      "name": "Laudoho"
+    },
+    {
+      "code": "9206182006",
+      "name": "Eniba"
+    },
+    {
+      "code": "9206182007",
+      "name": "Mowitka"
+    }
+  ],
+  "920619": [
+    {
+      "code": "9206192001",
+      "name": "Sebyar Rejosasi"
+    },
+    {
+      "code": "9206192002",
+      "name": "Tomu"
+    },
+    {
+      "code": "9206192003",
+      "name": "Taroy"
+    },
+    {
+      "code": "9206192004",
+      "name": "Ekam"
+    }
+  ],
+  "920620": [
+    {
+      "code": "9206202001",
+      "name": "Kalitami I"
+    },
+    {
+      "code": "9206202002",
+      "name": "Kalitami II"
+    },
+    {
+      "code": "9206202003",
+      "name": "Kenara"
+    },
+    {
+      "code": "9206202004",
+      "name": "Bibiram"
+    }
+  ],
+  "920621": [
+    {
+      "code": "9206212001",
+      "name": "Weriagar"
+    },
+    {
+      "code": "9206212002",
+      "name": "Mogotira"
+    },
+    {
+      "code": "9206212003",
+      "name": "Weriagar Baru"
+    },
+    {
+      "code": "9206212004",
+      "name": "Weriagar Utara"
+    },
+    {
+      "code": "9206212005",
+      "name": "Tuanaikin"
+    }
+  ],
+  "920622": [
+    {
+      "code": "9206222001",
+      "name": "Meyerga"
+    },
+    {
+      "code": "9206222002",
+      "name": "Macok"
+    },
+    {
+      "code": "9206222003",
+      "name": "Istiwkem"
+    },
+    {
+      "code": "9206222004",
+      "name": "Majnic"
+    }
+  ],
+  "920623": [
+    {
+      "code": "9206232001",
+      "name": "Meyado"
+    },
+    {
+      "code": "9206232002",
+      "name": "Barma"
+    },
+    {
+      "code": "9206232003",
+      "name": "Barma Baru"
+    },
+    {
+      "code": "9206232004",
+      "name": "Vasco Damneen"
+    }
+  ],
+  "920624": [
+    {
+      "code": "9206242001",
+      "name": "Igomu"
+    },
+    {
+      "code": "9206242002",
+      "name": "Mesna"
+    },
+    {
+      "code": "9206242003",
+      "name": "Sumuy"
+    }
+  ]
 }

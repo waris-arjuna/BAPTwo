@@ -1,72 +1,350 @@
 {
-    "530418": [
-        {
-            "code": "5304182001",
-            "name": "Ekin"
-        },
-        {
-            "code": "5304182002",
-            "name": "Loonuna"
-        },
-        {
-            "code": "5304182003",
-            "name": "Nualain"
-        },
-        {
-            "code": "5304182004",
-            "name": "Lakmaras"
-        },
-        {
-            "code": "5304182005",
-            "name": "Henes"
-        },
-        {
-            "code": "5304182006",
-            "name": "Debululik"
-        },
-        {
-            "code": "5304182007",
-            "name": "Sisi Fatuberal"
-        },
-        {
-            "code": "5304182008",
-            "name": "Lutha Rato"
-        }
-    ],
-    "530421": [
-        {
-            "code": "5304211001",
-            "name": "Bardao"
-        },
-        {
-            "code": "5304211002",
-            "name": "Tulamalae"
-        },
-        {
-            "code": "5304211003",
-            "name": "Umanen"
-        },
-        {
-            "code": "5304211004",
-            "name": "Beirafu"
-        }
-    ],
-    "530423": [
-        {
-            "code": "5304232001",
-            "name": "Dubesi"
-        },
-        {
-            "code": "5304232002",
-            "name": "Nanaet"
-        },
-        {
-            "code": "5304232003",
-            "name": "Fohoeka"
-        },
-        {
-            "code": "5304232004",
-            "name": "Nanaenoe"
-        }
-    ]
+  "530401": [
+    {
+      "code": "5304012001",
+      "name": "Kewar"
+    },
+    {
+      "code": "5304012002",
+      "name": "Fulur"
+    },
+    {
+      "code": "5304012004",
+      "name": "Duarato"
+    },
+    {
+      "code": "5304012005",
+      "name": "Makir"
+    },
+    {
+      "code": "5304012006",
+      "name": "Lamaksenulu"
+    },
+    {
+      "code": "5304012008",
+      "name": "Dirun"
+    },
+    {
+      "code": "5304012009",
+      "name": "Leowalu"
+    },
+    {
+      "code": "5304012014",
+      "name": "Maudemu"
+    },
+    {
+      "code": "5304012015",
+      "name": "Mahuitas"
+    }
+  ],
+  "530402": [
+    {
+      "code": "5304022001",
+      "name": "Silawan"
+    },
+    {
+      "code": "5304022002",
+      "name": "Tulakadi"
+    },
+    {
+      "code": "5304022003",
+      "name": "Sadi"
+    },
+    {
+      "code": "5304022004",
+      "name": "Umaklaran"
+    },
+    {
+      "code": "5304022005",
+      "name": "Manleten"
+    },
+    {
+      "code": "5304022006",
+      "name": "Fatuba'a"
+    },
+    {
+      "code": "5304022007",
+      "name": "Dafala"
+    },
+    {
+      "code": "5304022008",
+      "name": "Takirin"
+    },
+    {
+      "code": "5304022009",
+      "name": "Bauho"
+    },
+    {
+      "code": "5304022010",
+      "name": "Sarabau"
+    },
+    {
+      "code": "5304022018",
+      "name": "Tialai"
+    },
+    {
+      "code": "5304022019",
+      "name": "Halimodok"
+    }
+  ],
+  "530403": [
+    {
+      "code": "5304032001",
+      "name": "Asumanu"
+    },
+    {
+      "code": "5304032002",
+      "name": "Tohe"
+    },
+    {
+      "code": "5304032003",
+      "name": "Maumutin"
+    },
+    {
+      "code": "5304032004",
+      "name": "Raifatus"
+    },
+    {
+      "code": "5304032005",
+      "name": "Aitoun"
+    },
+    {
+      "code": "5304032006",
+      "name": "Tohe Leten"
+    }
+  ],
+  "530404": [
+    {
+      "code": "5304042001",
+      "name": "Tukuneno"
+    },
+    {
+      "code": "5304042002",
+      "name": "Naekasa"
+    },
+    {
+      "code": "5304042003",
+      "name": "Lookeu"
+    },
+    {
+      "code": "5304042004",
+      "name": "Derokfaturene"
+    },
+    {
+      "code": "5304042005",
+      "name": "Bakustulama"
+    },
+    {
+      "code": "5304042006",
+      "name": "Rinbesihat"
+    },
+    {
+      "code": "5304042007",
+      "name": "Naitimu"
+    },
+    {
+      "code": "5304042009",
+      "name": "Lawalutolus"
+    }
+  ],
+  "530405": [
+    {
+      "code": "5304052001",
+      "name": "Fatuketi"
+    },
+    {
+      "code": "5304052002",
+      "name": "Dualaus"
+    },
+    {
+      "code": "5304052003",
+      "name": "Jenilu"
+    },
+    {
+      "code": "5304052004",
+      "name": "Kenebibi"
+    },
+    {
+      "code": "5304052005",
+      "name": "Leosama"
+    },
+    {
+      "code": "5304052006",
+      "name": "Kabuna"
+    }
+  ],
+  "530412": [
+    {
+      "code": "5304121001",
+      "name": "Kota Atambua"
+    },
+    {
+      "code": "5304121002",
+      "name": "Tenukiik"
+    },
+    {
+      "code": "5304121003",
+      "name": "Manumutin"
+    },
+    {
+      "code": "5304121010",
+      "name": "Fatubenao"
+    }
+  ],
+  "530413": [
+    {
+      "code": "5304132001",
+      "name": "Mandeu Raimanus"
+    },
+    {
+      "code": "5304132002",
+      "name": "Renrua"
+    },
+    {
+      "code": "5304132003",
+      "name": "Dua Koran"
+    },
+    {
+      "code": "5304132004",
+      "name": "Mandeu"
+    },
+    {
+      "code": "5304132005",
+      "name": "Rafae"
+    },
+    {
+      "code": "5304132006",
+      "name": "Faturika"
+    },
+    {
+      "code": "5304132007",
+      "name": "Leuntolu"
+    },
+    {
+      "code": "5304132008",
+      "name": "Teun"
+    },
+    {
+      "code": "5304132009",
+      "name": "Tasain"
+    }
+  ],
+  "530417": [
+    {
+      "code": "5304172001",
+      "name": "Lasiolat"
+    },
+    {
+      "code": "5304172002",
+      "name": "Maneikun"
+    },
+    {
+      "code": "5304172003",
+      "name": "Lakan Mau"
+    },
+    {
+      "code": "5304172004",
+      "name": "Dualasi Raiulun"
+    },
+    {
+      "code": "5304172005",
+      "name": "Dualasi"
+    },
+    {
+      "code": "5304172006",
+      "name": "Fatulotu"
+    },
+    {
+      "code": "5304172007",
+      "name": "Baudaok"
+    }
+  ],
+  "530418": [
+    {
+      "code": "5304182001",
+      "name": "Ekin"
+    },
+    {
+      "code": "5304182002",
+      "name": "Loonuna"
+    },
+    {
+      "code": "5304182003",
+      "name": "Nualain"
+    },
+    {
+      "code": "5304182004",
+      "name": "Lakmaras"
+    },
+    {
+      "code": "5304182005",
+      "name": "Henes"
+    },
+    {
+      "code": "5304182006",
+      "name": "Debululik"
+    },
+    {
+      "code": "5304182007",
+      "name": "Sisi Fatuberal"
+    },
+    {
+      "code": "5304182008",
+      "name": "Lutha Rato"
+    }
+  ],
+  "530421": [
+    {
+      "code": "5304211001",
+      "name": "Bardao"
+    },
+    {
+      "code": "5304211002",
+      "name": "Tulamalae"
+    },
+    {
+      "code": "5304211003",
+      "name": "Umanen"
+    },
+    {
+      "code": "5304211004",
+      "name": "Beirafu"
+    }
+  ],
+  "530422": [
+    {
+      "code": "5304221001",
+      "name": "Manuaman"
+    },
+    {
+      "code": "5304221002",
+      "name": "Rinbesi"
+    },
+    {
+      "code": "5304221003",
+      "name": "Lidak"
+    },
+    {
+      "code": "5304221004",
+      "name": "Fatukbot"
+    }
+  ],
+  "530423": [
+    {
+      "code": "5304232001",
+      "name": "Dubesi"
+    },
+    {
+      "code": "5304232002",
+      "name": "Nanaet"
+    },
+    {
+      "code": "5304232003",
+      "name": "Fohoeka"
+    },
+    {
+      "code": "5304232004",
+      "name": "Nanaenoe"
+    }
+  ]
 }

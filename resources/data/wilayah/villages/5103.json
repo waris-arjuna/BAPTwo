@@ -1,262 +1,262 @@
 {
-    "510301": [
-        {
-            "code": "5103011001",
-            "name": "Tuban"
-        },
-        {
-            "code": "5103011002",
-            "name": "Kuta"
-        },
-        {
-            "code": "5103011003",
-            "name": "Kedonganan"
-        },
-        {
-            "code": "5103011004",
-            "name": "Legian"
-        },
-        {
-            "code": "5103011005",
-            "name": "Seminyak"
-        }
-    ],
-    "510302": [
-        {
-            "code": "5103021004",
-            "name": "Kapal"
-        },
-        {
-            "code": "5103021005",
-            "name": "Sempidi"
-        },
-        {
-            "code": "5103021014",
-            "name": "Abianbase"
-        },
-        {
-            "code": "5103021015",
-            "name": "Sading"
-        },
-        {
-            "code": "5103021016",
-            "name": "Lukluk"
-        },
-        {
-            "code": "5103022001",
-            "name": "Munggu"
-        },
-        {
-            "code": "5103022002",
-            "name": "Buduk"
-        },
-        {
-            "code": "5103022003",
-            "name": "Mengwitani"
-        },
-        {
-            "code": "5103022006",
-            "name": "Penarungan"
-        },
-        {
-            "code": "5103022007",
-            "name": "Sembung"
-        },
-        {
-            "code": "5103022008",
-            "name": "Baha"
-        },
-        {
-            "code": "5103022009",
-            "name": "Mengwi"
-        },
-        {
-            "code": "5103022010",
-            "name": "Kekeran"
-        },
-        {
-            "code": "5103022011",
-            "name": "Sobangan"
-        },
-        {
-            "code": "5103022012",
-            "name": "Gulingan"
-        },
-        {
-            "code": "5103022013",
-            "name": "Werdi Bhuwana"
-        },
-        {
-            "code": "5103022017",
-            "name": "Cemagi"
-        },
-        {
-            "code": "5103022018",
-            "name": "Pererenan"
-        },
-        {
-            "code": "5103022019",
-            "name": "Tumbakbayuh"
-        },
-        {
-            "code": "5103022020",
-            "name": "Kuwum"
-        }
-    ],
-    "510303": [
-        {
-            "code": "5103032001",
-            "name": "Darmasaba"
-        },
-        {
-            "code": "5103032002",
-            "name": "Sibangkaja"
-        },
-        {
-            "code": "5103032003",
-            "name": "Sibanggede"
-        },
-        {
-            "code": "5103032004",
-            "name": "Jagapati"
-        },
-        {
-            "code": "5103032005",
-            "name": "Angantaka"
-        },
-        {
-            "code": "5103032006",
-            "name": "Sedang"
-        },
-        {
-            "code": "5103032007",
-            "name": "Mambal"
-        },
-        {
-            "code": "5103032008",
-            "name": "Abiansemal"
-        },
-        {
-            "code": "5103032009",
-            "name": "Bongkasa"
-        },
-        {
-            "code": "5103032010",
-            "name": "Taman"
-        },
-        {
-            "code": "5103032011",
-            "name": "Blahkiuh"
-        },
-        {
-            "code": "5103032012",
-            "name": "Ayunan"
-        },
-        {
-            "code": "5103032013",
-            "name": "Sangeh"
-        },
-        {
-            "code": "5103032014",
-            "name": "Punggul"
-        },
-        {
-            "code": "5103032015",
-            "name": "Mekar Bhuwana"
-        },
-        {
-            "code": "5103032016",
-            "name": "Abiansemal Dauh Yeh Cani"
-        },
-        {
-            "code": "5103032017",
-            "name": "Selat"
-        },
-        {
-            "code": "5103032018",
-            "name": "Bongkasa Pertiwi"
-        }
-    ],
-    "510304": [
-        {
-            "code": "5103042001",
-            "name": "Carangsari"
-        },
-        {
-            "code": "5103042002",
-            "name": "Petang"
-        },
-        {
-            "code": "5103042003",
-            "name": "Belok\/Sidan"
-        },
-        {
-            "code": "5103042004",
-            "name": "Pelaga"
-        },
-        {
-            "code": "5103042005",
-            "name": "Getasan"
-        },
-        {
-            "code": "5103042006",
-            "name": "Pangsan"
-        },
-        {
-            "code": "5103042007",
-            "name": "Sulangai"
-        }
-    ],
-    "510305": [
-        {
-            "code": "5103051004",
-            "name": "Benoa"
-        },
-        {
-            "code": "5103051005",
-            "name": "Tanjung Benoa"
-        },
-        {
-            "code": "5103051006",
-            "name": "Jimbaran"
-        },
-        {
-            "code": "5103052001",
-            "name": "Pecatu"
-        },
-        {
-            "code": "5103052002",
-            "name": "Ungasan"
-        },
-        {
-            "code": "5103052003",
-            "name": "Kutuh"
-        }
-    ],
-    "510306": [
-        {
-            "code": "5103061001",
-            "name": "Kerobokan Kelod"
-        },
-        {
-            "code": "5103061002",
-            "name": "Kerobokan"
-        },
-        {
-            "code": "5103061003",
-            "name": "Kerobokan Kaja"
-        },
-        {
-            "code": "5103062004",
-            "name": "Tibubeneng"
-        },
-        {
-            "code": "5103062005",
-            "name": "Canggu"
-        },
-        {
-            "code": "5103062006",
-            "name": "Dalung"
-        }
-    ]
+  "510301": [
+    {
+      "code": "5103011001",
+      "name": "Tuban"
+    },
+    {
+      "code": "5103011002",
+      "name": "Kuta"
+    },
+    {
+      "code": "5103011003",
+      "name": "Kedonganan"
+    },
+    {
+      "code": "5103011004",
+      "name": "Legian"
+    },
+    {
+      "code": "5103011005",
+      "name": "Seminyak"
+    }
+  ],
+  "510302": [
+    {
+      "code": "5103021004",
+      "name": "Kapal"
+    },
+    {
+      "code": "5103021005",
+      "name": "Sempidi"
+    },
+    {
+      "code": "5103021014",
+      "name": "Abianbase"
+    },
+    {
+      "code": "5103021015",
+      "name": "Sading"
+    },
+    {
+      "code": "5103021016",
+      "name": "Lukluk"
+    },
+    {
+      "code": "5103022001",
+      "name": "Munggu"
+    },
+    {
+      "code": "5103022002",
+      "name": "Buduk"
+    },
+    {
+      "code": "5103022003",
+      "name": "Mengwitani"
+    },
+    {
+      "code": "5103022006",
+      "name": "Penarungan"
+    },
+    {
+      "code": "5103022007",
+      "name": "Sembung"
+    },
+    {
+      "code": "5103022008",
+      "name": "Baha"
+    },
+    {
+      "code": "5103022009",
+      "name": "Mengwi"
+    },
+    {
+      "code": "5103022010",
+      "name": "Kekeran"
+    },
+    {
+      "code": "5103022011",
+      "name": "Sobangan"
+    },
+    {
+      "code": "5103022012",
+      "name": "Gulingan"
+    },
+    {
+      "code": "5103022013",
+      "name": "Werdi Bhuwana"
+    },
+    {
+      "code": "5103022017",
+      "name": "Cemagi"
+    },
+    {
+      "code": "5103022018",
+      "name": "Pererenan"
+    },
+    {
+      "code": "5103022019",
+      "name": "Tumbakbayuh"
+    },
+    {
+      "code": "5103022020",
+      "name": "Kuwum"
+    }
+  ],
+  "510303": [
+    {
+      "code": "5103032001",
+      "name": "Darmasaba"
+    },
+    {
+      "code": "5103032002",
+      "name": "Sibangkaja"
+    },
+    {
+      "code": "5103032003",
+      "name": "Sibanggede"
+    },
+    {
+      "code": "5103032004",
+      "name": "Jagapati"
+    },
+    {
+      "code": "5103032005",
+      "name": "Angantaka"
+    },
+    {
+      "code": "5103032006",
+      "name": "Sedang"
+    },
+    {
+      "code": "5103032007",
+      "name": "Mambal"
+    },
+    {
+      "code": "5103032008",
+      "name": "Abiansemal"
+    },
+    {
+      "code": "5103032009",
+      "name": "Bongkasa"
+    },
+    {
+      "code": "5103032010",
+      "name": "Taman"
+    },
+    {
+      "code": "5103032011",
+      "name": "Blahkiuh"
+    },
+    {
+      "code": "5103032012",
+      "name": "Ayunan"
+    },
+    {
+      "code": "5103032013",
+      "name": "Sangeh"
+    },
+    {
+      "code": "5103032014",
+      "name": "Punggul"
+    },
+    {
+      "code": "5103032015",
+      "name": "Mekar Bhuwana"
+    },
+    {
+      "code": "5103032016",
+      "name": "Abiansemal Dauh Yeh Cani"
+    },
+    {
+      "code": "5103032017",
+      "name": "Selat"
+    },
+    {
+      "code": "5103032018",
+      "name": "Bongkasa Pertiwi"
+    }
+  ],
+  "510304": [
+    {
+      "code": "5103042001",
+      "name": "Carangsari"
+    },
+    {
+      "code": "5103042002",
+      "name": "Petang"
+    },
+    {
+      "code": "5103042003",
+      "name": "Belok/Sidan"
+    },
+    {
+      "code": "5103042004",
+      "name": "Pelaga"
+    },
+    {
+      "code": "5103042005",
+      "name": "Getasan"
+    },
+    {
+      "code": "5103042006",
+      "name": "Pangsan"
+    },
+    {
+      "code": "5103042007",
+      "name": "Sulangai"
+    }
+  ],
+  "510305": [
+    {
+      "code": "5103051004",
+      "name": "Benoa"
+    },
+    {
+      "code": "5103051005",
+      "name": "Tanjung Benoa"
+    },
+    {
+      "code": "5103051006",
+      "name": "Jimbaran"
+    },
+    {
+      "code": "5103052001",
+      "name": "Pecatu"
+    },
+    {
+      "code": "5103052002",
+      "name": "Ungasan"
+    },
+    {
+      "code": "5103052003",
+      "name": "Kutuh"
+    }
+  ],
+  "510306": [
+    {
+      "code": "5103061001",
+      "name": "Kerobokan Kelod"
+    },
+    {
+      "code": "5103061002",
+      "name": "Kerobokan"
+    },
+    {
+      "code": "5103061003",
+      "name": "Kerobokan Kaja"
+    },
+    {
+      "code": "5103062004",
+      "name": "Tibubeneng"
+    },
+    {
+      "code": "5103062005",
+      "name": "Canggu"
+    },
+    {
+      "code": "5103062006",
+      "name": "Dalung"
+    }
+  ]
 }

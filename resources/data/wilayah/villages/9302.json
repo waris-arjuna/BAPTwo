@@ -1,78 +1,490 @@
 {
-    "930201": [
-        {
-            "code": "9302012001",
-            "name": "Ampera"
-        },
-        {
-            "code": "9302012002",
-            "name": "Sokanggo"
-        },
-        {
-            "code": "9302012003",
-            "name": "Persatuan"
-        },
-        {
-            "code": "9302012004",
-            "name": "Mariam"
-        },
-        {
-            "code": "9302012005",
-            "name": "Mawan"
-        }
-    ],
-    "930202": [
-        {
-            "code": "9302022001",
-            "name": "Mindiptana"
-        },
-        {
-            "code": "9302022002",
-            "name": "Umap"
-        },
-        {
-            "code": "9302022003",
-            "name": "Awayanka"
-        },
-        {
-            "code": "9302022004",
-            "name": "Wanggatkibi"
-        },
-        {
-            "code": "9302022005",
-            "name": "Epsembit"
-        },
-        {
-            "code": "9302022006",
-            "name": "Andobit"
-        },
-        {
-            "code": "9302022007",
-            "name": "Niyimbang"
-        },
-        {
-            "code": "9302022008",
-            "name": "Anggumbit"
-        },
-        {
-            "code": "9302022009",
-            "name": "Imko"
-        },
-        {
-            "code": "9302022010",
-            "name": "Kamka"
-        },
-        {
-            "code": "9302022011",
-            "name": "Osso"
-        },
-        {
-            "code": "9302022012",
-            "name": "Tinggam"
-        },
-        {
-            "code": "9302022013",
-            "name": "Kakuna"
-        }
-    ]
+  "930201": [
+    {
+      "code": "9302012001",
+      "name": "Ampera"
+    },
+    {
+      "code": "9302012002",
+      "name": "Sokanggo"
+    },
+    {
+      "code": "9302012003",
+      "name": "Persatuan"
+    },
+    {
+      "code": "9302012004",
+      "name": "Mariam"
+    },
+    {
+      "code": "9302012005",
+      "name": "Mawan"
+    }
+  ],
+  "930202": [
+    {
+      "code": "9302022001",
+      "name": "Mindiptana"
+    },
+    {
+      "code": "9302022002",
+      "name": "Umap"
+    },
+    {
+      "code": "9302022003",
+      "name": "Awayanka"
+    },
+    {
+      "code": "9302022004",
+      "name": "Wanggatkibi"
+    },
+    {
+      "code": "9302022005",
+      "name": "Epsembit"
+    },
+    {
+      "code": "9302022006",
+      "name": "Andobit"
+    },
+    {
+      "code": "9302022007",
+      "name": "Niyimbang"
+    },
+    {
+      "code": "9302022008",
+      "name": "Anggumbit"
+    },
+    {
+      "code": "9302022009",
+      "name": "Imko"
+    },
+    {
+      "code": "9302022010",
+      "name": "Kamka"
+    },
+    {
+      "code": "9302022011",
+      "name": "Osso"
+    },
+    {
+      "code": "9302022012",
+      "name": "Tinggam"
+    },
+    {
+      "code": "9302022013",
+      "name": "Kakuna"
+    }
+  ],
+  "930203": [
+    {
+      "code": "9302032001",
+      "name": "Woropko"
+    },
+    {
+      "code": "9302032002",
+      "name": "Winiktit"
+    },
+    {
+      "code": "9302032003",
+      "name": "Kanggewot"
+    },
+    {
+      "code": "9302032005",
+      "name": "Inggembit"
+    },
+    {
+      "code": "9302032006",
+      "name": "Wametkapa"
+    },
+    {
+      "code": "9302032007",
+      "name": "Wombon"
+    },
+    {
+      "code": "9302032008",
+      "name": "Upkim"
+    },
+    {
+      "code": "9302032009",
+      "name": "Ikcan"
+    },
+    {
+      "code": "9302032010",
+      "name": "Upyetetko"
+    }
+  ],
+  "930204": [
+    {
+      "code": "9302042001",
+      "name": "Kouh"
+    },
+    {
+      "code": "9302042002",
+      "name": "Jair"
+    },
+    {
+      "code": "9302042003",
+      "name": "Mandobo"
+    }
+  ],
+  "930205": [
+    {
+      "code": "9302052001",
+      "name": "Getentiri"
+    },
+    {
+      "code": "9302052002",
+      "name": "Anggai"
+    },
+    {
+      "code": "9302052003",
+      "name": "Butiptiri"
+    },
+    {
+      "code": "9302052004",
+      "name": "Asiki"
+    },
+    {
+      "code": "9302052005",
+      "name": "Kapogu"
+    },
+    {
+      "code": "9302052006",
+      "name": "Miri"
+    }
+  ],
+  "930206": [
+    {
+      "code": "9302062001",
+      "name": "Bomakia I"
+    },
+    {
+      "code": "9302062002",
+      "name": "Bomakia II"
+    },
+    {
+      "code": "9302062003",
+      "name": "Somi"
+    },
+    {
+      "code": "9302062004",
+      "name": "Aifa"
+    },
+    {
+      "code": "9302062005",
+      "name": "Uni"
+    }
+  ],
+  "930207": [
+    {
+      "code": "9302072001",
+      "name": "Kombut"
+    },
+    {
+      "code": "9302072002",
+      "name": "Moukbiran"
+    },
+    {
+      "code": "9302072003",
+      "name": "Kawangtet"
+    },
+    {
+      "code": "9302072004",
+      "name": "Amuan"
+    }
+  ],
+  "930208": [
+    {
+      "code": "9302082001",
+      "name": "Langgoan"
+    },
+    {
+      "code": "9302082002",
+      "name": "Tetop"
+    },
+    {
+      "code": "9302082003",
+      "name": "Wariktop"
+    },
+    {
+      "code": "9302082004",
+      "name": "Autriop"
+    },
+    {
+      "code": "9302082005",
+      "name": "Ogenetan"
+    }
+  ],
+  "930209": [
+    {
+      "code": "9302092001",
+      "name": "Maju"
+    },
+    {
+      "code": "9302092002",
+      "name": "Bukit"
+    },
+    {
+      "code": "9302092003",
+      "name": "Ujung"
+    },
+    {
+      "code": "9302092004",
+      "name": "Ginggimop"
+    },
+    {
+      "code": "9302092005",
+      "name": "Patriot"
+    },
+    {
+      "code": "9302092006",
+      "name": "Arimbet"
+    },
+    {
+      "code": "9302092007",
+      "name": "Aroa"
+    }
+  ],
+  "930210": [
+    {
+      "code": "9302102001",
+      "name": "Sadar"
+    },
+    {
+      "code": "9302102002",
+      "name": "Bangun"
+    },
+    {
+      "code": "9302102003",
+      "name": "Makmur"
+    },
+    {
+      "code": "9302102004",
+      "name": "Sohokanggo"
+    },
+    {
+      "code": "9302102005",
+      "name": "Domo"
+    },
+    {
+      "code": "9302102006",
+      "name": "Hamkhu"
+    },
+    {
+      "code": "9302102007",
+      "name": "Hello"
+    },
+    {
+      "code": "9302102008",
+      "name": "Navini"
+    }
+  ],
+  "930211": [
+    {
+      "code": "9302112001",
+      "name": "Kuken"
+    },
+    {
+      "code": "9302112002",
+      "name": "Kolopkam"
+    },
+    {
+      "code": "9302112003",
+      "name": "Awaken"
+    },
+    {
+      "code": "9302112004",
+      "name": "Arimbit"
+    },
+    {
+      "code": "9302112005",
+      "name": "Anyumka"
+    }
+  ],
+  "930212": [
+    {
+      "code": "9302122001",
+      "name": "Manggelum"
+    },
+    {
+      "code": "9302122002",
+      "name": "Burunggop"
+    },
+    {
+      "code": "9302122003",
+      "name": "Bayanggop"
+    },
+    {
+      "code": "9302122004",
+      "name": "Gaguop"
+    },
+    {
+      "code": "9302122005",
+      "name": "Kewam"
+    },
+    {
+      "code": "9302122006",
+      "name": "Mangga Tiga"
+    }
+  ],
+  "930213": [
+    {
+      "code": "9302132001",
+      "name": "Firiwage"
+    },
+    {
+      "code": "9302132002",
+      "name": "Karuwage"
+    },
+    {
+      "code": "9302132003",
+      "name": "Waliburu"
+    },
+    {
+      "code": "9302132004",
+      "name": "Kabuwage"
+    }
+  ],
+  "930214": [
+    {
+      "code": "9302142001",
+      "name": "Yaniruma"
+    },
+    {
+      "code": "9302142002",
+      "name": "Manggemahe"
+    },
+    {
+      "code": "9302142003",
+      "name": "Fefero"
+    }
+  ],
+  "930215": [
+    {
+      "code": "9302152001",
+      "name": "Subur"
+    },
+    {
+      "code": "9302152002",
+      "name": "Kaisa"
+    },
+    {
+      "code": "9302152003",
+      "name": "Wagai"
+    },
+    {
+      "code": "9302152004",
+      "name": "Aiwat"
+    }
+  ],
+  "930216": [
+    {
+      "code": "9302162001",
+      "name": "Wanggemalo"
+    },
+    {
+      "code": "9302162002",
+      "name": "Sinimburu"
+    },
+    {
+      "code": "9302162003",
+      "name": "Yafufla"
+    },
+    {
+      "code": "9302162004",
+      "name": "Ugo"
+    },
+    {
+      "code": "9302162005",
+      "name": "Dema"
+    }
+  ],
+  "930217": [
+    {
+      "code": "9302172001",
+      "name": "Ninati"
+    },
+    {
+      "code": "9302172003",
+      "name": "Kawaktembut"
+    },
+    {
+      "code": "9302172004",
+      "name": "Tembutka"
+    },
+    {
+      "code": "9302172005",
+      "name": "Timka"
+    },
+    {
+      "code": "9302172006",
+      "name": "Yetetko"
+    }
+  ],
+  "930218": [
+    {
+      "code": "9302182001",
+      "name": "Sesnuk"
+    },
+    {
+      "code": "9302182002",
+      "name": "Anggamburan"
+    },
+    {
+      "code": "9302182003",
+      "name": "Kanggup"
+    },
+    {
+      "code": "9302182004",
+      "name": "Yomkondo"
+    },
+    {
+      "code": "9302182005",
+      "name": "Amboran"
+    }
+  ],
+  "930219": [
+    {
+      "code": "9302192001",
+      "name": "Meto"
+    },
+    {
+      "code": "9302192002",
+      "name": "Obinangge"
+    },
+    {
+      "code": "9302192003",
+      "name": "Watemu"
+    },
+    {
+      "code": "9302192004",
+      "name": "Ujung Kia"
+    }
+  ],
+  "930220": [
+    {
+      "code": "9302202001",
+      "name": "Wanggom"
+    },
+    {
+      "code": "9302202002",
+      "name": "Kawagit"
+    },
+    {
+      "code": "9302202003",
+      "name": "Kombay"
+    },
+    {
+      "code": "9302202004",
+      "name": "Biwage 1"
+    },
+    {
+      "code": "9302202005",
+      "name": "Biwage 2"
+    },
+    {
+      "code": "9302202006",
+      "name": "Niop"
+    }
+  ]
 }

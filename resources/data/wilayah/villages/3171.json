@@ -1,194 +1,194 @@
 {
-    "317101": [
-        {
-            "code": "3171011001",
-            "name": "Gambir"
-        },
-        {
-            "code": "3171011002",
-            "name": "Cideng"
-        },
-        {
-            "code": "3171011003",
-            "name": "Petojo Utara"
-        },
-        {
-            "code": "3171011004",
-            "name": "Petojo Selatan"
-        },
-        {
-            "code": "3171011005",
-            "name": "Kebon Kelapa"
-        },
-        {
-            "code": "3171011006",
-            "name": "Duri Pulo"
-        }
-    ],
-    "317102": [
-        {
-            "code": "3171021001",
-            "name": "Pasar Baru"
-        },
-        {
-            "code": "3171021002",
-            "name": "Karang Anyar"
-        },
-        {
-            "code": "3171021003",
-            "name": "Kartini"
-        },
-        {
-            "code": "3171021004",
-            "name": "Gunung Sahari Utara"
-        },
-        {
-            "code": "3171021005",
-            "name": "Mangga Dua Selatan"
-        }
-    ],
-    "317103": [
-        {
-            "code": "3171031001",
-            "name": "Kemayoran"
-        },
-        {
-            "code": "3171031002",
-            "name": "Kebon Kosong"
-        },
-        {
-            "code": "3171031003",
-            "name": "Harapan Mulia"
-        },
-        {
-            "code": "3171031004",
-            "name": "Serdang"
-        },
-        {
-            "code": "3171031005",
-            "name": "Gunung Sahari Selatan"
-        },
-        {
-            "code": "3171031006",
-            "name": "Cempaka Baru"
-        },
-        {
-            "code": "3171031007",
-            "name": "Sumur Batu"
-        },
-        {
-            "code": "3171031008",
-            "name": "Utan Panjang"
-        }
-    ],
-    "317104": [
-        {
-            "code": "3171041001",
-            "name": "Senen"
-        },
-        {
-            "code": "3171041002",
-            "name": "Kenari"
-        },
-        {
-            "code": "3171041003",
-            "name": "Paseban"
-        },
-        {
-            "code": "3171041004",
-            "name": "Kramat"
-        },
-        {
-            "code": "3171041005",
-            "name": "Kwitang"
-        },
-        {
-            "code": "3171041006",
-            "name": "Bungur"
-        }
-    ],
-    "317105": [
-        {
-            "code": "3171051001",
-            "name": "Cempaka Putih Timur"
-        },
-        {
-            "code": "3171051002",
-            "name": "Cempaka Putih Barat"
-        },
-        {
-            "code": "3171051003",
-            "name": "Rawasari"
-        }
-    ],
-    "317106": [
-        {
-            "code": "3171061001",
-            "name": "Menteng"
-        },
-        {
-            "code": "3171061002",
-            "name": "Pegangsaan"
-        },
-        {
-            "code": "3171061003",
-            "name": "Cikini"
-        },
-        {
-            "code": "3171061004",
-            "name": "Gondangdia"
-        },
-        {
-            "code": "3171061005",
-            "name": "Kebon Sirih"
-        }
-    ],
-    "317107": [
-        {
-            "code": "3171071001",
-            "name": "Gelora"
-        },
-        {
-            "code": "3171071002",
-            "name": "Bendungan Hilir"
-        },
-        {
-            "code": "3171071003",
-            "name": "Karet Tengsin"
-        },
-        {
-            "code": "3171071004",
-            "name": "Petamburan"
-        },
-        {
-            "code": "3171071005",
-            "name": "Kebon Melati"
-        },
-        {
-            "code": "3171071006",
-            "name": "Kebon Kacang"
-        },
-        {
-            "code": "3171071007",
-            "name": "Kampung Bali"
-        }
-    ],
-    "317108": [
-        {
-            "code": "3171081001",
-            "name": "Johar Baru"
-        },
-        {
-            "code": "3171081002",
-            "name": "Kampung Rawa"
-        },
-        {
-            "code": "3171081003",
-            "name": "Galur"
-        },
-        {
-            "code": "3171081004",
-            "name": "Tanah Tinggi"
-        }
-    ]
+  "317101": [
+    {
+      "code": "3171011001",
+      "name": "Gambir"
+    },
+    {
+      "code": "3171011002",
+      "name": "Cideng"
+    },
+    {
+      "code": "3171011003",
+      "name": "Petojo Utara"
+    },
+    {
+      "code": "3171011004",
+      "name": "Petojo Selatan"
+    },
+    {
+      "code": "3171011005",
+      "name": "Kebon Kelapa"
+    },
+    {
+      "code": "3171011006",
+      "name": "Duri Pulo"
+    }
+  ],
+  "317102": [
+    {
+      "code": "3171021001",
+      "name": "Pasar Baru"
+    },
+    {
+      "code": "3171021002",
+      "name": "Karang Anyar"
+    },
+    {
+      "code": "3171021003",
+      "name": "Kartini"
+    },
+    {
+      "code": "3171021004",
+      "name": "Gunung Sahari Utara"
+    },
+    {
+      "code": "3171021005",
+      "name": "Mangga Dua Selatan"
+    }
+  ],
+  "317103": [
+    {
+      "code": "3171031001",
+      "name": "Kemayoran"
+    },
+    {
+      "code": "3171031002",
+      "name": "Kebon Kosong"
+    },
+    {
+      "code": "3171031003",
+      "name": "Harapan Mulia"
+    },
+    {
+      "code": "3171031004",
+      "name": "Serdang"
+    },
+    {
+      "code": "3171031005",
+      "name": "Gunung Sahari Selatan"
+    },
+    {
+      "code": "3171031006",
+      "name": "Cempaka Baru"
+    },
+    {
+      "code": "3171031007",
+      "name": "Sumur Batu"
+    },
+    {
+      "code": "3171031008",
+      "name": "Utan Panjang"
+    }
+  ],
+  "317104": [
+    {
+      "code": "3171041001",
+      "name": "Senen"
+    },
+    {
+      "code": "3171041002",
+      "name": "Kenari"
+    },
+    {
+      "code": "3171041003",
+      "name": "Paseban"
+    },
+    {
+      "code": "3171041004",
+      "name": "Kramat"
+    },
+    {
+      "code": "3171041005",
+      "name": "Kwitang"
+    },
+    {
+      "code": "3171041006",
+      "name": "Bungur"
+    }
+  ],
+  "317105": [
+    {
+      "code": "3171051001",
+      "name": "Cempaka Putih Timur"
+    },
+    {
+      "code": "3171051002",
+      "name": "Cempaka Putih Barat"
+    },
+    {
+      "code": "3171051003",
+      "name": "Rawasari"
+    }
+  ],
+  "317106": [
+    {
+      "code": "3171061001",
+      "name": "Menteng"
+    },
+    {
+      "code": "3171061002",
+      "name": "Pegangsaan"
+    },
+    {
+      "code": "3171061003",
+      "name": "Cikini"
+    },
+    {
+      "code": "3171061004",
+      "name": "Gondangdia"
+    },
+    {
+      "code": "3171061005",
+      "name": "Kebon Sirih"
+    }
+  ],
+  "317107": [
+    {
+      "code": "3171071001",
+      "name": "Gelora"
+    },
+    {
+      "code": "3171071002",
+      "name": "Bendungan Hilir"
+    },
+    {
+      "code": "3171071003",
+      "name": "Karet Tengsin"
+    },
+    {
+      "code": "3171071004",
+      "name": "Petamburan"
+    },
+    {
+      "code": "3171071005",
+      "name": "Kebon Melati"
+    },
+    {
+      "code": "3171071006",
+      "name": "Kebon Kacang"
+    },
+    {
+      "code": "3171071007",
+      "name": "Kampung Bali"
+    }
+  ],
+  "317108": [
+    {
+      "code": "3171081001",
+      "name": "Johar Baru"
+    },
+    {
+      "code": "3171081002",
+      "name": "Kampung Rawa"
+    },
+    {
+      "code": "3171081003",
+      "name": "Galur"
+    },
+    {
+      "code": "3171081004",
+      "name": "Tanah Tinggi"
+    }
+  ]
 }

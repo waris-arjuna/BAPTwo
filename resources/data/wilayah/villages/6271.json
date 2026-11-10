@@ -1,84 +1,132 @@
 {
-    "627101": [
-        {
-            "code": "6271011001",
-            "name": "Pahandut"
-        },
-        {
-            "code": "6271011002",
-            "name": "Panarung"
-        },
-        {
-            "code": "6271011003",
-            "name": "Langkai"
-        },
-        {
-            "code": "6271011004",
-            "name": "Tumbang Rungan"
-        },
-        {
-            "code": "6271011005",
-            "name": "Pahandut Seberang"
-        },
-        {
-            "code": "6271011006",
-            "name": "Tanjung Pinang"
-        }
-    ],
-    "627104": [
-        {
-            "code": "6271041001",
-            "name": "Bereng Bengkel"
-        },
-        {
-            "code": "6271041002",
-            "name": "Kalampangan"
-        },
-        {
-            "code": "6271041003",
-            "name": "Kereng Bangkirai"
-        },
-        {
-            "code": "6271041004",
-            "name": "Kameloh Baru"
-        },
-        {
-            "code": "6271041005",
-            "name": "Danau Tundai"
-        },
-        {
-            "code": "6271041006",
-            "name": "Sabaru"
-        }
-    ],
-    "627105": [
-        {
-            "code": "6271051001",
-            "name": "Petuk Bukit"
-        },
-        {
-            "code": "6271051002",
-            "name": "Panjehang"
-        },
-        {
-            "code": "6271051003",
-            "name": "Petuk Barunai"
-        },
-        {
-            "code": "6271051004",
-            "name": "Mungku Baru"
-        },
-        {
-            "code": "6271051005",
-            "name": "Pager"
-        },
-        {
-            "code": "6271051006",
-            "name": "Gaung Baru"
-        },
-        {
-            "code": "6271051007",
-            "name": "Bukit Sua"
-        }
-    ]
+  "627101": [
+    {
+      "code": "6271011001",
+      "name": "Pahandut"
+    },
+    {
+      "code": "6271011002",
+      "name": "Panarung"
+    },
+    {
+      "code": "6271011003",
+      "name": "Langkai"
+    },
+    {
+      "code": "6271011004",
+      "name": "Tumbang Rungan"
+    },
+    {
+      "code": "6271011005",
+      "name": "Pahandut Seberang"
+    },
+    {
+      "code": "6271011006",
+      "name": "Tanjung Pinang"
+    }
+  ],
+  "627102": [
+    {
+      "code": "6271021001",
+      "name": "Marang"
+    },
+    {
+      "code": "6271021002",
+      "name": "Tumbang Tahai"
+    },
+    {
+      "code": "6271021003",
+      "name": "Banturung"
+    },
+    {
+      "code": "6271021004",
+      "name": "Tangkiling"
+    },
+    {
+      "code": "6271021005",
+      "name": "Sei Gohong"
+    },
+    {
+      "code": "6271021006",
+      "name": "Kanarakan"
+    },
+    {
+      "code": "6271021007",
+      "name": "Habaring Hurung"
+    }
+  ],
+  "627103": [
+    {
+      "code": "6271031001",
+      "name": "Palangka"
+    },
+    {
+      "code": "6271031002",
+      "name": "Menteng"
+    },
+    {
+      "code": "6271031003",
+      "name": "Bukit Tunggal"
+    },
+    {
+      "code": "6271031004",
+      "name": "Petuk Katimpun"
+    }
+  ],
+  "627104": [
+    {
+      "code": "6271041001",
+      "name": "Bereng Bengkel"
+    },
+    {
+      "code": "6271041002",
+      "name": "Kalampangan"
+    },
+    {
+      "code": "6271041003",
+      "name": "Kereng Bangkirai"
+    },
+    {
+      "code": "6271041004",
+      "name": "Kameloh Baru"
+    },
+    {
+      "code": "6271041005",
+      "name": "Danau Tundai"
+    },
+    {
+      "code": "6271041006",
+      "name": "Sabaru"
+    }
+  ],
+  "627105": [
+    {
+      "code": "6271051001",
+      "name": "Petuk Bukit"
+    },
+    {
+      "code": "6271051002",
+      "name": "Panjehang"
+    },
+    {
+      "code": "6271051003",
+      "name": "Petuk Barunai"
+    },
+    {
+      "code": "6271051004",
+      "name": "Mungku Baru"
+    },
+    {
+      "code": "6271051005",
+      "name": "Pager"
+    },
+    {
+      "code": "6271051006",
+      "name": "Gaung Baru"
+    },
+    {
+      "code": "6271051007",
+      "name": "Bukit Sua"
+    }
+  ]
 }

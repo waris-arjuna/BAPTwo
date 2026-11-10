@@ -1,288 +1,458 @@
 {
-    "720404": [
-        {
-            "code": "7204042001",
-            "name": "Sibaluton"
-        },
-        {
-            "code": "7204042002",
-            "name": "Kayu Lompa"
-        },
-        {
-            "code": "7204042003",
-            "name": "Labonu"
-        },
-        {
-            "code": "7204042004",
-            "name": "Silondou"
-        },
-        {
-            "code": "7204042005",
-            "name": "Kinapasan"
-        },
-        {
-            "code": "7204042006",
-            "name": "Kongkomos"
-        },
-        {
-            "code": "7204042007",
-            "name": "Ogosipat"
-        },
-        {
-            "code": "7204042008",
-            "name": "Galandau"
-        },
-        {
-            "code": "7204042009",
-            "name": "Marisa"
-        },
-        {
-            "code": "7204042010",
-            "name": "Basi"
-        }
-    ],
-    "720405": [
-        {
-            "code": "7204052001",
-            "name": "Buga"
-        },
-        {
-            "code": "7204052002",
-            "name": "Batuilo"
-        },
-        {
-            "code": "7204052003",
-            "name": "Kamalu"
-        },
-        {
-            "code": "7204052004",
-            "name": "Muara Besar"
-        },
-        {
-            "code": "7204052005",
-            "name": "Bilo"
-        },
-        {
-            "code": "7204052006",
-            "name": "Labuan Lobo"
-        },
-        {
-            "code": "7204052007",
-            "name": "Sambujan"
-        },
-        {
-            "code": "7204052008",
-            "name": "Pulias"
-        },
-        {
-            "code": "7204052009",
-            "name": "Kabetan"
-        },
-        {
-            "code": "7204052010",
-            "name": "Pagaitan"
-        },
-        {
-            "code": "7204052011",
-            "name": "Bambalaga"
-        }
-    ],
-    "720406": [
-        {
-            "code": "7204062001",
-            "name": "Janja"
-        },
-        {
-            "code": "7204062002",
-            "name": "Oyom"
-        },
-        {
-            "code": "7204062003",
-            "name": "Salugan"
-        },
-        {
-            "code": "7204062004",
-            "name": "Lampasio"
-        },
-        {
-            "code": "7204062005",
-            "name": "Tinading"
-        },
-        {
-            "code": "7204062006",
-            "name": "Sibea"
-        },
-        {
-            "code": "7204062007",
-            "name": "Maibua"
-        },
-        {
-            "code": "7204062008",
-            "name": "Mulya Sari"
-        },
-        {
-            "code": "7204062009",
-            "name": "Ogomatanang"
-        }
-    ],
-    "720407": [
-        {
-            "code": "7204071001",
-            "name": "Tambun"
-        },
-        {
-            "code": "7204071003",
-            "name": "Tuweley"
-        },
-        {
-            "code": "7204071004",
-            "name": "Nalu"
-        },
-        {
-            "code": "7204071005",
-            "name": "Baru"
-        },
-        {
-            "code": "7204071006",
-            "name": "Panasakan"
-        },
-        {
-            "code": "7204071007",
-            "name": "Sidoarjo"
-        },
-        {
-            "code": "7204072002",
-            "name": "Dadakitan"
-        },
-        {
-            "code": "7204072008",
-            "name": "Buntuna"
-        },
-        {
-            "code": "7204072009",
-            "name": "Lelean Nono"
-        },
-        {
-            "code": "7204072010",
-            "name": "Pangi"
-        }
-    ],
-    "720408": [
-        {
-            "code": "7204082001",
-            "name": "Ogomoli"
-        },
-        {
-            "code": "7204082002",
-            "name": "Sandana"
-        },
-        {
-            "code": "7204082003",
-            "name": "Kalangkangan"
-        },
-        {
-            "code": "7204082004",
-            "name": "Lantapan"
-        },
-        {
-            "code": "7204082005",
-            "name": "Lakatan"
-        },
-        {
-            "code": "7204082006",
-            "name": "Tinigi"
-        },
-        {
-            "code": "7204082007",
-            "name": "Ginunggung"
-        },
-        {
-            "code": "7204082008",
-            "name": "Lalos"
-        },
-        {
-            "code": "7204082009",
-            "name": "Tende"
-        },
-        {
-            "code": "7204082010",
-            "name": "Sabang"
-        },
-        {
-            "code": "7204082011",
-            "name": "Bajugan"
-        },
-        {
-            "code": "7204082012",
-            "name": "Aung"
-        },
-        {
-            "code": "7204082013",
-            "name": "Malangga"
-        },
-        {
-            "code": "7204082014",
-            "name": "Kinopasan"
-        }
-    ],
-    "720409": [
-        {
-            "code": "7204092005",
-            "name": "Santigi"
-        },
-        {
-            "code": "7204092006",
-            "name": "Laulalang"
-        },
-        {
-            "code": "7204092007",
-            "name": "Salumpaga"
-        },
-        {
-            "code": "7204092008",
-            "name": "Diule"
-        },
-        {
-            "code": "7204092009",
-            "name": "Pinjan"
-        },
-        {
-            "code": "7204092010",
-            "name": "Binontoan"
-        },
-        {
-            "code": "7204092011",
-            "name": "Lakuan Tolitoli"
-        },
-        {
-            "code": "7204092012",
-            "name": "Timbolo"
-        },
-        {
-            "code": "7204092013",
-            "name": "Teluk Jaya"
-        },
-        {
-            "code": "7204092014",
-            "name": "Gio"
-        }
-    ],
-    "720410": [
-        {
-            "code": "7204102001",
-            "name": "Galumpang"
-        },
-        {
-            "code": "7204102002",
-            "name": "Dungingis"
-        },
-        {
-            "code": "7204102003",
-            "name": "Kapas"
-        },
-        {
-            "code": "7204102004",
-            "name": "Lingadan"
-        }
-    ]
+  "720401": [
+    {
+      "code": "7204012001",
+      "name": "Kombo"
+    },
+    {
+      "code": "7204012002",
+      "name": "Tampiala"
+    },
+    {
+      "code": "7204012003",
+      "name": "Soni"
+    },
+    {
+      "code": "7204012004",
+      "name": "Bangkir"
+    },
+    {
+      "code": "7204012005",
+      "name": "Dongko"
+    },
+    {
+      "code": "7204012006",
+      "name": "Mimbala"
+    },
+    {
+      "code": "7204012007",
+      "name": "Lempe"
+    },
+    {
+      "code": "7204012008",
+      "name": "Paddumpu"
+    },
+    {
+      "code": "7204012009",
+      "name": "Abbajareng"
+    },
+    {
+      "code": "7204012010",
+      "name": "Puse"
+    },
+    {
+      "code": "7204012011",
+      "name": "Pallakawe"
+    },
+    {
+      "code": "7204012012",
+      "name": "Simuntu"
+    },
+    {
+      "code": "7204012013",
+      "name": "Lemba Harapan"
+    }
+  ],
+  "720402": [
+    {
+      "code": "7204022001",
+      "name": "Banagan"
+    },
+    {
+      "code": "7204022002",
+      "name": "Kabinuang"
+    },
+    {
+      "code": "7204022003",
+      "name": "Ogotua"
+    },
+    {
+      "code": "7204022004",
+      "name": "Tompoh"
+    },
+    {
+      "code": "7204022005",
+      "name": "Bambapula"
+    },
+    {
+      "code": "7204022006",
+      "name": "Malambigu"
+    },
+    {
+      "code": "7204022007",
+      "name": "Simatang Tanjung"
+    },
+    {
+      "code": "7204022008",
+      "name": "Simatang Utara"
+    },
+    {
+      "code": "7204022009",
+      "name": "Sese"
+    },
+    {
+      "code": "7204022010",
+      "name": "Ogolali"
+    },
+    {
+      "code": "7204022011",
+      "name": "Balaroa"
+    },
+    {
+      "code": "7204022012",
+      "name": "Stadong"
+    }
+  ],
+  "720403": [
+    {
+      "code": "7204032001",
+      "name": "Luok Manipi"
+    },
+    {
+      "code": "7204032002",
+      "name": "Salumbia"
+    },
+    {
+      "code": "7204032003",
+      "name": "Bambapun"
+    },
+    {
+      "code": "7204032004",
+      "name": "Ogowele"
+    },
+    {
+      "code": "7204032005",
+      "name": "Lais"
+    },
+    {
+      "code": "7204032006",
+      "name": "Ogogasang"
+    },
+    {
+      "code": "7204032007",
+      "name": "Malomba"
+    },
+    {
+      "code": "7204032008",
+      "name": "Ogogili"
+    },
+    {
+      "code": "7204032009",
+      "name": "Tinabogan"
+    },
+    {
+      "code": "7204032010",
+      "name": "Malulu"
+    },
+    {
+      "code": "7204032011",
+      "name": "Malala"
+    },
+    {
+      "code": "7204032012",
+      "name": "Anggasan"
+    },
+    {
+      "code": "7204032013",
+      "name": "Betengon"
+    },
+    {
+      "code": "7204032014",
+      "name": "Pangkung"
+    },
+    {
+      "code": "7204032015",
+      "name": "Ogowele Buga"
+    },
+    {
+      "code": "7204032016",
+      "name": "Lobuo"
+    }
+  ],
+  "720404": [
+    {
+      "code": "7204042001",
+      "name": "Sibaluton"
+    },
+    {
+      "code": "7204042002",
+      "name": "Kayu Lompa"
+    },
+    {
+      "code": "7204042003",
+      "name": "Labonu"
+    },
+    {
+      "code": "7204042004",
+      "name": "Silondou"
+    },
+    {
+      "code": "7204042005",
+      "name": "Kinapasan"
+    },
+    {
+      "code": "7204042006",
+      "name": "Kongkomos"
+    },
+    {
+      "code": "7204042007",
+      "name": "Ogosipat"
+    },
+    {
+      "code": "7204042008",
+      "name": "Galandau"
+    },
+    {
+      "code": "7204042009",
+      "name": "Marisa"
+    },
+    {
+      "code": "7204042010",
+      "name": "Basi"
+    }
+  ],
+  "720405": [
+    {
+      "code": "7204052001",
+      "name": "Buga"
+    },
+    {
+      "code": "7204052002",
+      "name": "Batuilo"
+    },
+    {
+      "code": "7204052003",
+      "name": "Kamalu"
+    },
+    {
+      "code": "7204052004",
+      "name": "Muara Besar"
+    },
+    {
+      "code": "7204052005",
+      "name": "Bilo"
+    },
+    {
+      "code": "7204052006",
+      "name": "Labuan Lobo"
+    },
+    {
+      "code": "7204052007",
+      "name": "Sambujan"
+    },
+    {
+      "code": "7204052008",
+      "name": "Pulias"
+    },
+    {
+      "code": "7204052009",
+      "name": "Kabetan"
+    },
+    {
+      "code": "7204052010",
+      "name": "Pagaitan"
+    },
+    {
+      "code": "7204052011",
+      "name": "Bambalaga"
+    }
+  ],
+  "720406": [
+    {
+      "code": "7204062001",
+      "name": "Janja"
+    },
+    {
+      "code": "7204062002",
+      "name": "Oyom"
+    },
+    {
+      "code": "7204062003",
+      "name": "Salugan"
+    },
+    {
+      "code": "7204062004",
+      "name": "Lampasio"
+    },
+    {
+      "code": "7204062005",
+      "name": "Tinading"
+    },
+    {
+      "code": "7204062006",
+      "name": "Sibea"
+    },
+    {
+      "code": "7204062007",
+      "name": "Maibua"
+    },
+    {
+      "code": "7204062008",
+      "name": "Mulya Sari"
+    },
+    {
+      "code": "7204062009",
+      "name": "Ogomatanang"
+    }
+  ],
+  "720407": [
+    {
+      "code": "7204071001",
+      "name": "Tambun"
+    },
+    {
+      "code": "7204071003",
+      "name": "Tuweley"
+    },
+    {
+      "code": "7204071004",
+      "name": "Nalu"
+    },
+    {
+      "code": "7204071005",
+      "name": "Baru"
+    },
+    {
+      "code": "7204071006",
+      "name": "Panasakan"
+    },
+    {
+      "code": "7204071007",
+      "name": "Sidoarjo"
+    },
+    {
+      "code": "7204072002",
+      "name": "Dadakitan"
+    },
+    {
+      "code": "7204072008",
+      "name": "Buntuna"
+    },
+    {
+      "code": "7204072009",
+      "name": "Lelean Nono"
+    },
+    {
+      "code": "7204072010",
+      "name": "Pangi"
+    }
+  ],
+  "720408": [
+    {
+      "code": "7204082001",
+      "name": "Ogomoli"
+    },
+    {
+      "code": "7204082002",
+      "name": "Sandana"
+    },
+    {
+      "code": "7204082003",
+      "name": "Kalangkangan"
+    },
+    {
+      "code": "7204082004",
+      "name": "Lantapan"
+    },
+    {
+      "code": "7204082005",
+      "name": "Lakatan"
+    },
+    {
+      "code": "7204082006",
+      "name": "Tinigi"
+    },
+    {
+      "code": "7204082007",
+      "name": "Ginunggung"
+    },
+    {
+      "code": "7204082008",
+      "name": "Lalos"
+    },
+    {
+      "code": "7204082009",
+      "name": "Tende"
+    },
+    {
+      "code": "7204082010",
+      "name": "Sabang"
+    },
+    {
+      "code": "7204082011",
+      "name": "Bajugan"
+    },
+    {
+      "code": "7204082012",
+      "name": "Aung"
+    },
+    {
+      "code": "7204082013",
+      "name": "Malangga"
+    },
+    {
+      "code": "7204082014",
+      "name": "Kinopasan"
+    }
+  ],
+  "720409": [
+    {
+      "code": "7204092005",
+      "name": "Santigi"
+    },
+    {
+      "code": "7204092006",
+      "name": "Laulalang"
+    },
+    {
+      "code": "7204092007",
+      "name": "Salumpaga"
+    },
+    {
+      "code": "7204092008",
+      "name": "Diule"
+    },
+    {
+      "code": "7204092009",
+      "name": "Pinjan"
+    },
+    {
+      "code": "7204092010",
+      "name": "Binontoan"
+    },
+    {
+      "code": "7204092011",
+      "name": "Lakuan Tolitoli"
+    },
+    {
+      "code": "7204092012",
+      "name": "Timbolo"
+    },
+    {
+      "code": "7204092013",
+      "name": "Teluk Jaya"
+    },
+    {
+      "code": "7204092014",
+      "name": "Gio"
+    }
+  ],
+  "720410": [
+    {
+      "code": "7204102001",
+      "name": "Galumpang"
+    },
+    {
+      "code": "7204102002",
+      "name": "Dungingis"
+    },
+    {
+      "code": "7204102003",
+      "name": "Kapas"
+    },
+    {
+      "code": "7204102004",
+      "name": "Lingadan"
+    }
+  ]
 }

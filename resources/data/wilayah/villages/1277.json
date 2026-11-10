@@ -1,152 +1,330 @@
 {
-    "127704": [
-        {
-            "code": "1277041001",
-            "name": "Hutaimbaru"
-        },
-        {
-            "code": "1277041002",
-            "name": "Lubuk Raya"
-        },
-        {
-            "code": "1277041003",
-            "name": "Sabungan Jae"
-        },
-        {
-            "code": "1277041004",
-            "name": "Lembah Lubuk Manik"
-        },
-        {
-            "code": "1277041005",
-            "name": "Palopat Maria"
-        },
-        {
-            "code": "1277042006",
-            "name": "Sabungan Sipabangun"
-        },
-        {
-            "code": "1277042007",
-            "name": "Singali"
-        },
-        {
-            "code": "1277042008",
-            "name": "Huta Padang"
-        },
-        {
-            "code": "1277042009",
-            "name": "Partihaman Saroha"
-        },
-        {
-            "code": "1277042010",
-            "name": "Tinjoman Lama"
-        }
-    ],
-    "127705": [
-        {
-            "code": "1277051001",
-            "name": "Sihitang"
-        },
-        {
-            "code": "1277051002",
-            "name": "Pijor Koling"
-        },
-        {
-            "code": "1277052003",
-            "name": "Palopat Pijor Koling"
-        },
-        {
-            "code": "1277052004",
-            "name": "Salambue"
-        },
-        {
-            "code": "1277052005",
-            "name": "Purbatua Pijor Koling"
-        },
-        {
-            "code": "1277052006",
-            "name": "Sigulang"
-        },
-        {
-            "code": "1277052007",
-            "name": "Manunggang Julu"
-        },
-        {
-            "code": "1277052008",
-            "name": "Goti"
-        },
-        {
-            "code": "1277052009",
-            "name": "Manegen"
-        },
-        {
-            "code": "1277052010",
-            "name": "Huta Koje"
-        },
-        {
-            "code": "1277052011",
-            "name": "Hutalimbong"
-        },
-        {
-            "code": "1277052012",
-            "name": "Huta Padang"
-        },
-        {
-            "code": "1277052013",
-            "name": "Perkebunan Pijor Koling"
-        },
-        {
-            "code": "1277052014",
-            "name": "Labuhan Labo"
-        },
-        {
-            "code": "1277052015",
-            "name": "Huta Lombang"
-        },
-        {
-            "code": "1277052016",
-            "name": "Manunggang Jae"
-        },
-        {
-            "code": "1277052017",
-            "name": "Labuhan Rasoki"
-        },
-        {
-            "code": "1277052018",
-            "name": "Tarutung Baru"
-        }
-    ],
-    "127706": [
-        {
-            "code": "1277062001",
-            "name": "Joring Lombang"
-        },
-        {
-            "code": "1277062002",
-            "name": "Batu Layan"
-        },
-        {
-            "code": "1277062003",
-            "name": "Simasom"
-        },
-        {
-            "code": "1277062004",
-            "name": "Pintu Langit Jae"
-        },
-        {
-            "code": "1277062005",
-            "name": "Mompang"
-        },
-        {
-            "code": "1277062006",
-            "name": "Rimba Soping"
-        },
-        {
-            "code": "1277062007",
-            "name": "Simatohir"
-        },
-        {
-            "code": "1277062008",
-            "name": "Joring Natobang"
-        }
-    ]
+  "127701": [
+    {
+      "code": "1277011001",
+      "name": "Wek I"
+    },
+    {
+      "code": "1277011002",
+      "name": "Wek II"
+    },
+    {
+      "code": "1277011003",
+      "name": "Wek III"
+    },
+    {
+      "code": "1277011004",
+      "name": "Wek IV"
+    },
+    {
+      "code": "1277011005",
+      "name": "Tanobato"
+    },
+    {
+      "code": "1277011006",
+      "name": "Tobat"
+    },
+    {
+      "code": "1277011007",
+      "name": "Batang Ayumi Jae"
+    },
+    {
+      "code": "1277011008",
+      "name": "Batang Ayumi Julu"
+    },
+    {
+      "code": "1277011009",
+      "name": "Sadabuan"
+    },
+    {
+      "code": "1277011010",
+      "name": "Panyanggar"
+    },
+    {
+      "code": "1277011011",
+      "name": "Bonan Dolok"
+    },
+    {
+      "code": "1277011012",
+      "name": "Losung Batu."
+    },
+    {
+      "code": "1277011013",
+      "name": "Timbangan"
+    },
+    {
+      "code": "1277011014",
+      "name": "Bincar"
+    },
+    {
+      "code": "1277011015",
+      "name": "Kantin"
+    },
+    {
+      "code": "1277011016",
+      "name": "Kayu Ombun"
+    }
+  ],
+  "127702": [
+    {
+      "code": "1277021001",
+      "name": "Wek V"
+    },
+    {
+      "code": "1277021002",
+      "name": "Wek VI"
+    },
+    {
+      "code": "1277021003",
+      "name": "Losung"
+    },
+    {
+      "code": "1277021004",
+      "name": "Sitamiang"
+    },
+    {
+      "code": "1277021005",
+      "name": "Ujung Padang"
+    },
+    {
+      "code": "1277021006",
+      "name": "Aek Tampang"
+    },
+    {
+      "code": "1277021007",
+      "name": "Padang Matinggi"
+    },
+    {
+      "code": "1277021008",
+      "name": "Silandit"
+    },
+    {
+      "code": "1277021009",
+      "name": "Sidangkal"
+    },
+    {
+      "code": "1277021010",
+      "name": "Hanopan"
+    },
+    {
+      "code": "1277021011",
+      "name": "Padang Matinggi Lestari"
+    },
+    {
+      "code": "1277021012",
+      "name": "Sitamiang Baru"
+    }
+  ],
+  "127703": [
+    {
+      "code": "1277031001",
+      "name": "Batunadua Jae"
+    },
+    {
+      "code": "1277031002",
+      "name": "Batunadua Julu"
+    },
+    {
+      "code": "1277032003",
+      "name": "Purwodadi"
+    },
+    {
+      "code": "1277032004",
+      "name": "Gunung Hasahatan"
+    },
+    {
+      "code": "1277032005",
+      "name": "Ujunggurap"
+    },
+    {
+      "code": "1277032006",
+      "name": "Aek Tuhul"
+    },
+    {
+      "code": "1277032007",
+      "name": "Baruas"
+    },
+    {
+      "code": "1277032008",
+      "name": "Siloting"
+    },
+    {
+      "code": "1277032009",
+      "name": "Aek Bayur"
+    },
+    {
+      "code": "1277032010",
+      "name": "Pudun Jae"
+    },
+    {
+      "code": "1277032011",
+      "name": "Pudun Julu"
+    },
+    {
+      "code": "1277032012",
+      "name": "Batang Bahal"
+    },
+    {
+      "code": "1277032013",
+      "name": "Aek Najaji"
+    },
+    {
+      "code": "1277032014",
+      "name": "Simirik"
+    },
+    {
+      "code": "1277032015",
+      "name": "Bargottopong"
+    }
+  ],
+  "127704": [
+    {
+      "code": "1277041001",
+      "name": "Hutaimbaru"
+    },
+    {
+      "code": "1277041002",
+      "name": "Lubuk Raya"
+    },
+    {
+      "code": "1277041003",
+      "name": "Sabungan Jae"
+    },
+    {
+      "code": "1277041004",
+      "name": "Lembah Lubuk Manik"
+    },
+    {
+      "code": "1277041005",
+      "name": "Palopat Maria"
+    },
+    {
+      "code": "1277042006",
+      "name": "Sabungan Sipabangun"
+    },
+    {
+      "code": "1277042007",
+      "name": "Singali"
+    },
+    {
+      "code": "1277042008",
+      "name": "Huta Padang"
+    },
+    {
+      "code": "1277042009",
+      "name": "Partihaman Saroha"
+    },
+    {
+      "code": "1277042010",
+      "name": "Tinjoman Lama"
+    }
+  ],
+  "127705": [
+    {
+      "code": "1277051001",
+      "name": "Sihitang"
+    },
+    {
+      "code": "1277051002",
+      "name": "Pijor Koling"
+    },
+    {
+      "code": "1277052003",
+      "name": "Palopat Pijor Koling"
+    },
+    {
+      "code": "1277052004",
+      "name": "Salambue"
+    },
+    {
+      "code": "1277052005",
+      "name": "Purbatua Pijor Koling"
+    },
+    {
+      "code": "1277052006",
+      "name": "Sigulang"
+    },
+    {
+      "code": "1277052007",
+      "name": "Manunggang Julu"
+    },
+    {
+      "code": "1277052008",
+      "name": "Goti"
+    },
+    {
+      "code": "1277052009",
+      "name": "Manegen"
+    },
+    {
+      "code": "1277052010",
+      "name": "Huta Koje"
+    },
+    {
+      "code": "1277052011",
+      "name": "Hutalimbong"
+    },
+    {
+      "code": "1277052012",
+      "name": "Huta Padang"
+    },
+    {
+      "code": "1277052013",
+      "name": "Perkebunan Pijor Koling"
+    },
+    {
+      "code": "1277052014",
+      "name": "Labuhan Labo"
+    },
+    {
+      "code": "1277052015",
+      "name": "Huta Lombang"
+    },
+    {
+      "code": "1277052016",
+      "name": "Manunggang Jae"
+    },
+    {
+      "code": "1277052017",
+      "name": "Labuhan Rasoki"
+    },
+    {
+      "code": "1277052018",
+      "name": "Tarutung Baru"
+    }
+  ],
+  "127706": [
+    {
+      "code": "1277062001",
+      "name": "Joring Lombang"
+    },
+    {
+      "code": "1277062002",
+      "name": "Batu Layan"
+    },
+    {
+      "code": "1277062003",
+      "name": "Simasom"
+    },
+    {
+      "code": "1277062004",
+      "name": "Pintu Langit Jae"
+    },
+    {
+      "code": "1277062005",
+      "name": "Mompang"
+    },
+    {
+      "code": "1277062006",
+      "name": "Rimba Soping"
+    },
+    {
+      "code": "1277062007",
+      "name": "Simatohir"
+    },
+    {
+      "code": "1277062008",
+      "name": "Joring Natobang"
+    }
+  ]
 }

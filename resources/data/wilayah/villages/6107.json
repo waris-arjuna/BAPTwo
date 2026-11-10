@@ -1,372 +1,532 @@
 {
-    "610701": [
-        {
-            "code": "6107012001",
-            "name": "Sungai Duri"
-        },
-        {
-            "code": "6107012004",
-            "name": "Sungai Jaga A"
-        },
-        {
-            "code": "6107012005",
-            "name": "Sungai Jaga B"
-        },
-        {
-            "code": "6107012006",
-            "name": "Sungai Pangkalan I"
-        },
-        {
-            "code": "6107012007",
-            "name": "Sungai Pangkalan II"
-        }
-    ],
-    "610702": [
-        {
-            "code": "6107022001",
-            "name": "Samalantan"
-        },
-        {
-            "code": "6107022002",
-            "name": "Saba'u"
-        },
-        {
-            "code": "6107022003",
-            "name": "Tumiang"
-        },
-        {
-            "code": "6107022004",
-            "name": "Babane"
-        },
-        {
-            "code": "6107022005",
-            "name": "Pasti Jaya"
-        },
-        {
-            "code": "6107022006",
-            "name": "Bukit Serayan"
-        },
-        {
-            "code": "6107022007",
-            "name": "Marunsu"
-        }
-    ],
-    "610706": [
-        {
-            "code": "6107062001",
-            "name": "Lembang"
-        },
-        {
-            "code": "6107062002",
-            "name": "Gua"
-        },
-        {
-            "code": "6107062003",
-            "name": "Bange"
-        },
-        {
-            "code": "6107062004",
-            "name": "Danti"
-        },
-        {
-            "code": "6107062005",
-            "name": "Sango"
-        }
-    ],
-    "610707": [
-        {
-            "code": "6107072001",
-            "name": "Jagoi"
-        },
-        {
-            "code": "6107072002",
-            "name": "Kumba"
-        },
-        {
-            "code": "6107072006",
-            "name": "Sekida"
-        },
-        {
-            "code": "6107072007",
-            "name": "Gersik"
-        },
-        {
-            "code": "6107072008",
-            "name": "Semunying Jaya"
-        },
-        {
-            "code": "6107072009",
-            "name": "Sinar Baru"
-        }
-    ],
-    "610708": [
-        {
-            "code": "6107082002",
-            "name": "Gerantung"
-        },
-        {
-            "code": "6107082003",
-            "name": "Monterado"
-        },
-        {
-            "code": "6107082004",
-            "name": "Goa Boma"
-        },
-        {
-            "code": "6107082006",
-            "name": "Nek Ginap"
-        },
-        {
-            "code": "6107082007",
-            "name": "Beringin Baru"
-        },
-        {
-            "code": "6107082008",
-            "name": "Sendoreng"
-        },
-        {
-            "code": "6107082009",
-            "name": "Rantau"
-        },
-        {
-            "code": "6107082010",
-            "name": "Mekar Baru"
-        },
-        {
-            "code": "6107082011",
-            "name": "Jahandung"
-        },
-        {
-            "code": "6107082012",
-            "name": "Serindu"
-        },
-        {
-            "code": "6107082013",
-            "name": "Siaga"
-        }
-    ],
-    "610709": [
-        {
-            "code": "6107092001",
-            "name": "Dharma Bhakti"
-        },
-        {
-            "code": "6107092002",
-            "name": "Sumber Karya"
-        },
-        {
-            "code": "6107092003",
-            "name": "Setia Jaya"
-        },
-        {
-            "code": "6107092004",
-            "name": "Bangun Sari"
-        },
-        {
-            "code": "6107092005",
-            "name": "Sebetung Menyala"
-        },
-        {
-            "code": "6107092006",
-            "name": "Malo Jelayan"
-        },
-        {
-            "code": "6107092007",
-            "name": "Ampar Benteng"
-        },
-        {
-            "code": "6107092008",
-            "name": "Tanjung"
-        },
-        {
-            "code": "6107092009",
-            "name": "Telidik"
-        },
-        {
-            "code": "6107092010",
-            "name": "Puteng"
-        },
-        {
-            "code": "6107092011",
-            "name": "Sekaruh"
-        },
-        {
-            "code": "6107092012",
-            "name": "Tubajur"
-        },
-        {
-            "code": "6107092013",
-            "name": "Lulang"
-        },
-        {
-            "code": "6107092014",
-            "name": "Benteng"
-        },
-        {
-            "code": "6107092015",
-            "name": "Sebente"
-        },
-        {
-            "code": "6107092016",
-            "name": "Teriak"
-        },
-        {
-            "code": "6107092017",
-            "name": "Temia Sio"
-        },
-        {
-            "code": "6107092018",
-            "name": "Bana"
-        }
-    ],
-    "610710": [
-        {
-            "code": "6107102001",
-            "name": "Nangka"
-        },
-        {
-            "code": "6107102002",
-            "name": "Muhi Bersatu"
-        },
-        {
-            "code": "6107102003",
-            "name": "Suka Maju"
-        },
-        {
-            "code": "6107102004",
-            "name": "Cempaka Putih"
-        },
-        {
-            "code": "6107102005",
-            "name": "Kiung"
-        },
-        {
-            "code": "6107102006",
-            "name": "Kelayuk"
-        },
-        {
-            "code": "6107102007",
-            "name": "Suti Semarang"
-        },
-        {
-            "code": "6107102008",
-            "name": "Tapen"
-        }
-    ],
-    "610711": [
-        {
-            "code": "6107112001",
-            "name": "Capkala"
-        },
-        {
-            "code": "6107112002",
-            "name": "Mandor"
-        },
-        {
-            "code": "6107112003",
-            "name": "Setanduk"
-        },
-        {
-            "code": "6107112004",
-            "name": "Aris"
-        },
-        {
-            "code": "6107112005",
-            "name": "Sebandut"
-        },
-        {
-            "code": "6107112006",
-            "name": "Pawangi"
-        }
-    ],
-    "610712": [
-        {
-            "code": "6107122002",
-            "name": "Sungkung I"
-        },
-        {
-            "code": "6107122004",
-            "name": "Siding"
-        },
-        {
-            "code": "6107122005",
-            "name": "Hli Buei"
-        },
-        {
-            "code": "6107122006",
-            "name": "Tangguh"
-        },
-        {
-            "code": "6107122007",
-            "name": "Sungkung II"
-        },
-        {
-            "code": "6107122008",
-            "name": "Sungkung III"
-        },
-        {
-            "code": "6107122009",
-            "name": "Tamong"
-        },
-        {
-            "code": "6107122010",
-            "name": "Tawang"
-        }
-    ],
-    "610713": [
-        {
-            "code": "6107132001",
-            "name": "Magmagan Karya"
-        },
-        {
-            "code": "6107132002",
-            "name": "Tiga Berkat"
-        },
-        {
-            "code": "6107132003",
-            "name": "Seren Selimbau"
-        },
-        {
-            "code": "6107132004",
-            "name": "Belimbing"
-        },
-        {
-            "code": "6107132005",
-            "name": "Lamolda"
-        }
-    ],
-    "610716": [
-        {
-            "code": "6107162001",
-            "name": "Saka Taru"
-        },
-        {
-            "code": "6107162002",
-            "name": "Lembah Bawang"
-        },
-        {
-            "code": "6107162003",
-            "name": "Janyat"
-        },
-        {
-            "code": "6107162004",
-            "name": "Tempapan"
-        },
-        {
-            "code": "6107162005",
-            "name": "Papan Uduk"
-        },
-        {
-            "code": "6107162006",
-            "name": "Papan Tembawang"
-        },
-        {
-            "code": "6107162007",
-            "name": "Godang Damar"
-        },
-        {
-            "code": "6107162008",
-            "name": "Kinande"
-        }
-    ]
+  "610701": [
+    {
+      "code": "6107012001",
+      "name": "Sungai Duri"
+    },
+    {
+      "code": "6107012004",
+      "name": "Sungai Jaga A"
+    },
+    {
+      "code": "6107012005",
+      "name": "Sungai Jaga B"
+    },
+    {
+      "code": "6107012006",
+      "name": "Sungai Pangkalan I"
+    },
+    {
+      "code": "6107012007",
+      "name": "Sungai Pangkalan II"
+    }
+  ],
+  "610702": [
+    {
+      "code": "6107022001",
+      "name": "Samalantan"
+    },
+    {
+      "code": "6107022002",
+      "name": "Saba'u"
+    },
+    {
+      "code": "6107022003",
+      "name": "Tumiang"
+    },
+    {
+      "code": "6107022004",
+      "name": "Babane"
+    },
+    {
+      "code": "6107022005",
+      "name": "Pasti Jaya"
+    },
+    {
+      "code": "6107022006",
+      "name": "Bukit Serayan"
+    },
+    {
+      "code": "6107022007",
+      "name": "Marunsu"
+    }
+  ],
+  "610703": [
+    {
+      "code": "6107032001",
+      "name": "Lesabela"
+    },
+    {
+      "code": "6107032002",
+      "name": "Semangat"
+    },
+    {
+      "code": "6107032003",
+      "name": "Serangkat"
+    },
+    {
+      "code": "6107032004",
+      "name": "Rodaya"
+    },
+    {
+      "code": "6107032005",
+      "name": "Dayung"
+    },
+    {
+      "code": "6107032007",
+      "name": "Jesape"
+    },
+    {
+      "code": "6107032011",
+      "name": "Lomba Karya"
+    },
+    {
+      "code": "6107032012",
+      "name": "Sidai"
+    },
+    {
+      "code": "6107032013",
+      "name": "Seles"
+    },
+    {
+      "code": "6107032018",
+      "name": "Tebuah Marong"
+    },
+    {
+      "code": "6107032019",
+      "name": "Suka Damai"
+    },
+    {
+      "code": "6107032021",
+      "name": "Suka Jaya"
+    }
+  ],
+  "610704": [
+    {
+      "code": "6107041001",
+      "name": "Bumi Emas"
+    },
+    {
+      "code": "6107041010",
+      "name": "Sebalo"
+    },
+    {
+      "code": "6107042003",
+      "name": "Tirta Kencana"
+    },
+    {
+      "code": "6107042004",
+      "name": "Bhakti Mulya"
+    },
+    {
+      "code": "6107042006",
+      "name": "Bani Amas"
+    },
+    {
+      "code": "6107042009",
+      "name": "Setia Budi"
+    }
+  ],
+  "610705": [
+    {
+      "code": "6107052001",
+      "name": "Seluas"
+    },
+    {
+      "code": "6107052002",
+      "name": "Bengkawan"
+    },
+    {
+      "code": "6107052003",
+      "name": "Sahan"
+    },
+    {
+      "code": "6107052004",
+      "name": "Mayak"
+    },
+    {
+      "code": "6107052005",
+      "name": "Kalon"
+    },
+    {
+      "code": "6107052006",
+      "name": "Sentangau Jaya"
+    }
+  ],
+  "610706": [
+    {
+      "code": "6107062001",
+      "name": "Lembang"
+    },
+    {
+      "code": "6107062002",
+      "name": "Gua"
+    },
+    {
+      "code": "6107062003",
+      "name": "Bange"
+    },
+    {
+      "code": "6107062004",
+      "name": "Danti"
+    },
+    {
+      "code": "6107062005",
+      "name": "Sango"
+    }
+  ],
+  "610707": [
+    {
+      "code": "6107072001",
+      "name": "Jagoi"
+    },
+    {
+      "code": "6107072002",
+      "name": "Kumba"
+    },
+    {
+      "code": "6107072006",
+      "name": "Sekida"
+    },
+    {
+      "code": "6107072007",
+      "name": "Gersik"
+    },
+    {
+      "code": "6107072008",
+      "name": "Semunying Jaya"
+    },
+    {
+      "code": "6107072009",
+      "name": "Sinar Baru"
+    }
+  ],
+  "610708": [
+    {
+      "code": "6107082002",
+      "name": "Gerantung"
+    },
+    {
+      "code": "6107082003",
+      "name": "Monterado"
+    },
+    {
+      "code": "6107082004",
+      "name": "Goa Boma"
+    },
+    {
+      "code": "6107082006",
+      "name": "Nek Ginap"
+    },
+    {
+      "code": "6107082007",
+      "name": "Beringin Baru"
+    },
+    {
+      "code": "6107082008",
+      "name": "Sendoreng"
+    },
+    {
+      "code": "6107082009",
+      "name": "Rantau"
+    },
+    {
+      "code": "6107082010",
+      "name": "Mekar Baru"
+    },
+    {
+      "code": "6107082011",
+      "name": "Jahandung"
+    },
+    {
+      "code": "6107082012",
+      "name": "Serindu"
+    },
+    {
+      "code": "6107082013",
+      "name": "Siaga"
+    }
+  ],
+  "610709": [
+    {
+      "code": "6107092001",
+      "name": "Dharma Bhakti"
+    },
+    {
+      "code": "6107092002",
+      "name": "Sumber Karya"
+    },
+    {
+      "code": "6107092003",
+      "name": "Setia Jaya"
+    },
+    {
+      "code": "6107092004",
+      "name": "Bangun Sari"
+    },
+    {
+      "code": "6107092005",
+      "name": "Sebetung Menyala"
+    },
+    {
+      "code": "6107092006",
+      "name": "Malo Jelayan"
+    },
+    {
+      "code": "6107092007",
+      "name": "Ampar Benteng"
+    },
+    {
+      "code": "6107092008",
+      "name": "Tanjung"
+    },
+    {
+      "code": "6107092009",
+      "name": "Telidik"
+    },
+    {
+      "code": "6107092010",
+      "name": "Puteng"
+    },
+    {
+      "code": "6107092011",
+      "name": "Sekaruh"
+    },
+    {
+      "code": "6107092012",
+      "name": "Tubajur"
+    },
+    {
+      "code": "6107092013",
+      "name": "Lulang"
+    },
+    {
+      "code": "6107092014",
+      "name": "Benteng"
+    },
+    {
+      "code": "6107092015",
+      "name": "Sebente"
+    },
+    {
+      "code": "6107092016",
+      "name": "Teriak"
+    },
+    {
+      "code": "6107092017",
+      "name": "Temia Sio"
+    },
+    {
+      "code": "6107092018",
+      "name": "Bana"
+    }
+  ],
+  "610710": [
+    {
+      "code": "6107102001",
+      "name": "Nangka"
+    },
+    {
+      "code": "6107102002",
+      "name": "Muhi Bersatu"
+    },
+    {
+      "code": "6107102003",
+      "name": "Suka Maju"
+    },
+    {
+      "code": "6107102004",
+      "name": "Cempaka Putih"
+    },
+    {
+      "code": "6107102005",
+      "name": "Kiung"
+    },
+    {
+      "code": "6107102006",
+      "name": "Kelayuk"
+    },
+    {
+      "code": "6107102007",
+      "name": "Suti Semarang"
+    },
+    {
+      "code": "6107102008",
+      "name": "Tapen"
+    }
+  ],
+  "610711": [
+    {
+      "code": "6107112001",
+      "name": "Capkala"
+    },
+    {
+      "code": "6107112002",
+      "name": "Mandor"
+    },
+    {
+      "code": "6107112003",
+      "name": "Setanduk"
+    },
+    {
+      "code": "6107112004",
+      "name": "Aris"
+    },
+    {
+      "code": "6107112005",
+      "name": "Sebandut"
+    },
+    {
+      "code": "6107112006",
+      "name": "Pawangi"
+    }
+  ],
+  "610712": [
+    {
+      "code": "6107122002",
+      "name": "Sungkung I"
+    },
+    {
+      "code": "6107122004",
+      "name": "Siding"
+    },
+    {
+      "code": "6107122005",
+      "name": "Hli Buei"
+    },
+    {
+      "code": "6107122006",
+      "name": "Tangguh"
+    },
+    {
+      "code": "6107122007",
+      "name": "Sungkung II"
+    },
+    {
+      "code": "6107122008",
+      "name": "Sungkung III"
+    },
+    {
+      "code": "6107122009",
+      "name": "Tamong"
+    },
+    {
+      "code": "6107122010",
+      "name": "Tawang"
+    }
+  ],
+  "610713": [
+    {
+      "code": "6107132001",
+      "name": "Magmagan Karya"
+    },
+    {
+      "code": "6107132002",
+      "name": "Tiga Berkat"
+    },
+    {
+      "code": "6107132003",
+      "name": "Seren Selimbau"
+    },
+    {
+      "code": "6107132004",
+      "name": "Belimbing"
+    },
+    {
+      "code": "6107132005",
+      "name": "Lamolda"
+    }
+  ],
+  "610714": [
+    {
+      "code": "6107142001",
+      "name": "Cipta Karya"
+    },
+    {
+      "code": "6107142002",
+      "name": "Suka Bangun"
+    },
+    {
+      "code": "6107142003",
+      "name": "Karya Bhakti"
+    },
+    {
+      "code": "6107142004",
+      "name": "Suka Maju"
+    }
+  ],
+  "610715": [
+    {
+      "code": "6107152001",
+      "name": "Rukma Jaya"
+    },
+    {
+      "code": "6107152002",
+      "name": "Sungai Keran"
+    },
+    {
+      "code": "6107152003",
+      "name": "Sungai Raya"
+    },
+    {
+      "code": "6107152004",
+      "name": "Karimunting"
+    },
+    {
+      "code": "6107152005",
+      "name": "Pulau Lemukutan"
+    }
+  ],
+  "610716": [
+    {
+      "code": "6107162001",
+      "name": "Saka Taru"
+    },
+    {
+      "code": "6107162002",
+      "name": "Lembah Bawang"
+    },
+    {
+      "code": "6107162003",
+      "name": "Janyat"
+    },
+    {
+      "code": "6107162004",
+      "name": "Tempapan"
+    },
+    {
+      "code": "6107162005",
+      "name": "Papan Uduk"
+    },
+    {
+      "code": "6107162006",
+      "name": "Papan Tembawang"
+    },
+    {
+      "code": "6107162007",
+      "name": "Godang Damar"
+    },
+    {
+      "code": "6107162008",
+      "name": "Kinande"
+    }
+  ],
+  "610717": [
+    {
+      "code": "6107172001",
+      "name": "Sinar Tebudak"
+    },
+    {
+      "code": "6107172002",
+      "name": "Kamuh"
+    },
+    {
+      "code": "6107172003",
+      "name": "Bengkilu"
+    },
+    {
+      "code": "6107172004",
+      "name": "Pisak"
+    }
+  ]
 }

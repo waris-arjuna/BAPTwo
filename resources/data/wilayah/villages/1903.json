@@ -1,184 +1,230 @@
 {
-    "190302": [
-        {
-            "code": "1903022001",
-            "name": "Tanjung Labu"
-        },
-        {
-            "code": "1903022002",
-            "name": "Tanjung Sangkar"
-        },
-        {
-            "code": "1903022004",
-            "name": "Kumbung"
-        },
-        {
-            "code": "1903022005",
-            "name": "Penutuk"
-        }
-    ],
-    "190303": [
-        {
-            "code": "1903032001",
-            "name": "Airgegas"
-        },
-        {
-            "code": "1903032002",
-            "name": "Delas"
-        },
-        {
-            "code": "1903032003",
-            "name": "Pergam"
-        },
-        {
-            "code": "1903032004",
-            "name": "Bencah"
-        },
-        {
-            "code": "1903032005",
-            "name": "Nyelanding"
-        },
-        {
-            "code": "1903032006",
-            "name": "Nangka"
-        },
-        {
-            "code": "1903032007",
-            "name": "Ranggas"
-        },
-        {
-            "code": "1903032008",
-            "name": "Airbara"
-        },
-        {
-            "code": "1903032009",
-            "name": "Sidoharjo"
-        },
-        {
-            "code": "1903032010",
-            "name": "Tepus"
-        }
-    ],
-    "190304": [
-        {
-            "code": "1903042001",
-            "name": "Jelutung II"
-        },
-        {
-            "code": "1903042002",
-            "name": "Gudang"
-        },
-        {
-            "code": "1903042003",
-            "name": "Bangka Kota"
-        },
-        {
-            "code": "1903042004",
-            "name": "Rajik"
-        },
-        {
-            "code": "1903042005",
-            "name": "Sebagin"
-        },
-        {
-            "code": "1903042006",
-            "name": "Simpang Rimba"
-        },
-        {
-            "code": "1903042007",
-            "name": "Permis"
-        }
-    ],
-    "190305": [
-        {
-            "code": "1903052001",
-            "name": "Payung"
-        },
-        {
-            "code": "1903052002",
-            "name": "Malik"
-        },
-        {
-            "code": "1903052003",
-            "name": "Sengir"
-        },
-        {
-            "code": "1903052004",
-            "name": "Pangkal Buluh"
-        },
-        {
-            "code": "1903052005",
-            "name": "Irat"
-        },
-        {
-            "code": "1903052006",
-            "name": "Bedengung"
-        },
-        {
-            "code": "1903052008",
-            "name": "Nadung"
-        },
-        {
-            "code": "1903052009",
-            "name": "Ranggung"
-        },
-        {
-            "code": "1903052012",
-            "name": "Paku"
-        }
-    ],
-    "190306": [
-        {
-            "code": "1903062001",
-            "name": "Sadai"
-        },
-        {
-            "code": "1903062002",
-            "name": "Tukak"
-        },
-        {
-            "code": "1903062003",
-            "name": "Pasir Putih"
-        },
-        {
-            "code": "1903062004",
-            "name": "Tiram"
-        },
-        {
-            "code": "1903062005",
-            "name": "Bukit Terap"
-        }
-    ],
-    "190307": [
-        {
-            "code": "1903072001",
-            "name": "Batu Betumpang"
-        },
-        {
-            "code": "1903072002",
-            "name": "Sukajaya"
-        },
-        {
-            "code": "1903072003",
-            "name": "Panca Tunggal"
-        },
-        {
-            "code": "1903072004",
-            "name": "Sumber Jaya Permai"
-        },
-        {
-            "code": "1903072005",
-            "name": "Fajar Indah"
-        }
-    ],
-    "190308": [
-        {
-            "code": "1903082001",
-            "name": "Pongok"
-        },
-        {
-            "code": "1903082002",
-            "name": "Celagen"
-        }
-    ]
+  "190301": [
+    {
+      "code": "1903011001",
+      "name": "Toboali"
+    },
+    {
+      "code": "1903011002",
+      "name": "Teladan"
+    },
+    {
+      "code": "1903011003",
+      "name": "Tanjung Ketapang"
+    },
+    {
+      "code": "1903012004",
+      "name": "Serdang"
+    },
+    {
+      "code": "1903012005",
+      "name": "Jeriji"
+    },
+    {
+      "code": "1903012006",
+      "name": "Bikang"
+    },
+    {
+      "code": "1903012007",
+      "name": "Gadung"
+    },
+    {
+      "code": "1903012008",
+      "name": "Rias"
+    },
+    {
+      "code": "1903012010",
+      "name": "Kepoh"
+    },
+    {
+      "code": "1903012012",
+      "name": "Keposang"
+    },
+    {
+      "code": "1903012013",
+      "name": "Rindik"
+    }
+  ],
+  "190302": [
+    {
+      "code": "1903022001",
+      "name": "Tanjung Labu"
+    },
+    {
+      "code": "1903022002",
+      "name": "Tanjung Sangkar"
+    },
+    {
+      "code": "1903022004",
+      "name": "Kumbung"
+    },
+    {
+      "code": "1903022005",
+      "name": "Penutuk"
+    }
+  ],
+  "190303": [
+    {
+      "code": "1903032001",
+      "name": "Airgegas"
+    },
+    {
+      "code": "1903032002",
+      "name": "Delas"
+    },
+    {
+      "code": "1903032003",
+      "name": "Pergam"
+    },
+    {
+      "code": "1903032004",
+      "name": "Bencah"
+    },
+    {
+      "code": "1903032005",
+      "name": "Nyelanding"
+    },
+    {
+      "code": "1903032006",
+      "name": "Nangka"
+    },
+    {
+      "code": "1903032007",
+      "name": "Ranggas"
+    },
+    {
+      "code": "1903032008",
+      "name": "Airbara"
+    },
+    {
+      "code": "1903032009",
+      "name": "Sidoharjo"
+    },
+    {
+      "code": "1903032010",
+      "name": "Tepus"
+    }
+  ],
+  "190304": [
+    {
+      "code": "1903042001",
+      "name": "Jelutung II"
+    },
+    {
+      "code": "1903042002",
+      "name": "Gudang"
+    },
+    {
+      "code": "1903042003",
+      "name": "Bangka Kota"
+    },
+    {
+      "code": "1903042004",
+      "name": "Rajik"
+    },
+    {
+      "code": "1903042005",
+      "name": "Sebagin"
+    },
+    {
+      "code": "1903042006",
+      "name": "Simpang Rimba"
+    },
+    {
+      "code": "1903042007",
+      "name": "Permis"
+    }
+  ],
+  "190305": [
+    {
+      "code": "1903052001",
+      "name": "Payung"
+    },
+    {
+      "code": "1903052002",
+      "name": "Malik"
+    },
+    {
+      "code": "1903052003",
+      "name": "Sengir"
+    },
+    {
+      "code": "1903052004",
+      "name": "Pangkal Buluh"
+    },
+    {
+      "code": "1903052005",
+      "name": "Irat"
+    },
+    {
+      "code": "1903052006",
+      "name": "Bedengung"
+    },
+    {
+      "code": "1903052008",
+      "name": "Nadung"
+    },
+    {
+      "code": "1903052009",
+      "name": "Ranggung"
+    },
+    {
+      "code": "1903052012",
+      "name": "Paku"
+    }
+  ],
+  "190306": [
+    {
+      "code": "1903062001",
+      "name": "Sadai"
+    },
+    {
+      "code": "1903062002",
+      "name": "Tukak"
+    },
+    {
+      "code": "1903062003",
+      "name": "Pasir Putih"
+    },
+    {
+      "code": "1903062004",
+      "name": "Tiram"
+    },
+    {
+      "code": "1903062005",
+      "name": "Bukit Terap"
+    }
+  ],
+  "190307": [
+    {
+      "code": "1903072001",
+      "name": "Batu Betumpang"
+    },
+    {
+      "code": "1903072002",
+      "name": "Sukajaya"
+    },
+    {
+      "code": "1903072003",
+      "name": "Panca Tunggal"
+    },
+    {
+      "code": "1903072004",
+      "name": "Sumber Jaya Permai"
+    },
+    {
+      "code": "1903072005",
+      "name": "Fajar Indah"
+    }
+  ],
+  "190308": [
+    {
+      "code": "1903082001",
+      "name": "Pongok"
+    },
+    {
+      "code": "1903082002",
+      "name": "Celagen"
+    }
+  ]
 }

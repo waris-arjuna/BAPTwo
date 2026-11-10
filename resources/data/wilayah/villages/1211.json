@@ -1,0 +1,708 @@
+{
+  "121101": [
+    {
+      "code": "1211011005",
+      "name": "Kuta Gambir"
+    },
+    {
+      "code": "1211011007",
+      "name": "Sidiangkat"
+    },
+    {
+      "code": "1211011009",
+      "name": "Batang Beruh"
+    },
+    {
+      "code": "1211011010",
+      "name": "Sidikalang"
+    },
+    {
+      "code": "1211011015",
+      "name": "Bintang Hulu"
+    },
+    {
+      "code": "1211012008",
+      "name": "Belang Malum"
+    },
+    {
+      "code": "1211012011",
+      "name": "Huta Rakyat"
+    },
+    {
+      "code": "1211012012",
+      "name": "Kalang"
+    },
+    {
+      "code": "1211012013",
+      "name": "Bintang"
+    },
+    {
+      "code": "1211012014",
+      "name": "Kalang Simbara"
+    },
+    {
+      "code": "1211012017",
+      "name": "Bintang Mersada"
+    }
+  ],
+  "121102": [
+    {
+      "code": "1211021007",
+      "name": "Pegagan Julu I"
+    },
+    {
+      "code": "1211022001",
+      "name": "Pegagan Julu X"
+    },
+    {
+      "code": "1211022002",
+      "name": "Pegagan Julu IX"
+    },
+    {
+      "code": "1211022003",
+      "name": "Pegagan Julu VIII"
+    },
+    {
+      "code": "1211022004",
+      "name": "Pegagan Julu VII"
+    },
+    {
+      "code": "1211022005",
+      "name": "Pegagan Julu VI"
+    },
+    {
+      "code": "1211022006",
+      "name": "Pegagan Julu V"
+    },
+    {
+      "code": "1211022008",
+      "name": "Pegagan Julu IV"
+    },
+    {
+      "code": "1211022009",
+      "name": "Pegagan Julu III"
+    },
+    {
+      "code": "1211022010",
+      "name": "Pegagan Julu II"
+    },
+    {
+      "code": "1211022014",
+      "name": "Tanjung Beringin"
+    },
+    {
+      "code": "1211022015",
+      "name": "Dolok Tolong"
+    },
+    {
+      "code": "1211022017",
+      "name": "Pargambiran"
+    },
+    {
+      "code": "1211022018",
+      "name": "Perjuangan"
+    },
+    {
+      "code": "1211022020",
+      "name": "Kuta Gugung"
+    },
+    {
+      "code": "1211022024",
+      "name": "Sileuh-leuh Parsaoran"
+    },
+    {
+      "code": "1211022025",
+      "name": "Barisan Nauli"
+    },
+    {
+      "code": "1211022026",
+      "name": "Pangguruan"
+    },
+    {
+      "code": "1211022027",
+      "name": "Tanjung Beringin I"
+    }
+  ],
+  "121103": [
+    {
+      "code": "1211032001",
+      "name": "Sumbul Tengah"
+    },
+    {
+      "code": "1211032002",
+      "name": "Ujung Teran"
+    },
+    {
+      "code": "1211032003",
+      "name": "Juma Gerat"
+    },
+    {
+      "code": "1211032004",
+      "name": "Sarintonu"
+    },
+    {
+      "code": "1211032005",
+      "name": "Tigalingga"
+    },
+    {
+      "code": "1211032006",
+      "name": "Palding"
+    },
+    {
+      "code": "1211032007",
+      "name": "Lau Bagot"
+    },
+    {
+      "code": "1211032008",
+      "name": "Bertungen Julu"
+    },
+    {
+      "code": "1211032009",
+      "name": "Lau Molgap"
+    },
+    {
+      "code": "1211032010",
+      "name": "Lau Pak-Pak"
+    },
+    {
+      "code": "1211032012",
+      "name": "Sukandebi"
+    },
+    {
+      "code": "1211032013",
+      "name": "Lau Mil"
+    },
+    {
+      "code": "1211032014",
+      "name": "Lau Sireme"
+    },
+    {
+      "code": "1211032019",
+      "name": "Palding Jaya Sumbul"
+    }
+  ],
+  "121104": [
+    {
+      "code": "1211042001",
+      "name": "Sinampang"
+    },
+    {
+      "code": "1211042002",
+      "name": "Sihorbo"
+    },
+    {
+      "code": "1211042003",
+      "name": "Soban"
+    },
+    {
+      "code": "1211042004",
+      "name": "Adian Nangka"
+    },
+    {
+      "code": "1211042005",
+      "name": "Bunturaja"
+    },
+    {
+      "code": "1211042006",
+      "name": "Juma Siulok"
+    },
+    {
+      "code": "1211042007",
+      "name": "Juma Teguh"
+    },
+    {
+      "code": "1211042008",
+      "name": "Sosor Lontung"
+    },
+    {
+      "code": "1211042009",
+      "name": "Huta Imbaru"
+    },
+    {
+      "code": "1211042010",
+      "name": "Jumantuang"
+    },
+    {
+      "code": "1211042011",
+      "name": "Gomit"
+    },
+    {
+      "code": "1211042012",
+      "name": "Adian Gupa"
+    },
+    {
+      "code": "1211042013",
+      "name": "Maju"
+    }
+  ],
+  "121105": [
+    {
+      "code": "1211051014",
+      "name": "Parongil"
+    },
+    {
+      "code": "1211052008",
+      "name": "Palipi"
+    },
+    {
+      "code": "1211052010",
+      "name": "Longkotan"
+    },
+    {
+      "code": "1211052011",
+      "name": "Bongkaras"
+    },
+    {
+      "code": "1211052012",
+      "name": "Tungtung Batu"
+    },
+    {
+      "code": "1211052013",
+      "name": "Polling Anak-Anak"
+    },
+    {
+      "code": "1211052015",
+      "name": "Siratah"
+    },
+    {
+      "code": "1211052016",
+      "name": "Uruk Mblin"
+    },
+    {
+      "code": "1211052017",
+      "name": "Siboras"
+    },
+    {
+      "code": "1211052018",
+      "name": "Bonian"
+    },
+    {
+      "code": "1211052019",
+      "name": "Sumbari"
+    },
+    {
+      "code": "1211052020",
+      "name": "Bakal Gajah"
+    },
+    {
+      "code": "1211052021",
+      "name": "Lae Panginuman"
+    },
+    {
+      "code": "1211052022",
+      "name": "Lae Ambat"
+    },
+    {
+      "code": "1211052023",
+      "name": "Lae Rambong"
+    },
+    {
+      "code": "1211052024",
+      "name": "Lae Pangaroan"
+    }
+  ],
+  "121106": [
+    {
+      "code": "1211062001",
+      "name": "Sukadame"
+    },
+    {
+      "code": "1211062002",
+      "name": "Gunung Tua"
+    },
+    {
+      "code": "1211062003",
+      "name": "Harapan"
+    },
+    {
+      "code": "1211062004",
+      "name": "Lau Primbon"
+    },
+    {
+      "code": "1211062005",
+      "name": "Kuta Gamber"
+    },
+    {
+      "code": "1211062006",
+      "name": "Kempawa"
+    },
+    {
+      "code": "1211062007",
+      "name": "Tanah Pinem"
+    },
+    {
+      "code": "1211062008",
+      "name": "Pamah"
+    },
+    {
+      "code": "1211062009",
+      "name": "Kuta Buluh"
+    },
+    {
+      "code": "1211062010",
+      "name": "Pasir Tengah"
+    },
+    {
+      "code": "1211062011",
+      "name": "Renun"
+    },
+    {
+      "code": "1211062012",
+      "name": "Lau Tawar"
+    },
+    {
+      "code": "1211062013",
+      "name": "Balandua"
+    },
+    {
+      "code": "1211062014",
+      "name": "Mangan Molih"
+    },
+    {
+      "code": "1211062015",
+      "name": "Liang Jering"
+    },
+    {
+      "code": "1211062016",
+      "name": "Alur Subur"
+    },
+    {
+      "code": "1211062017",
+      "name": "Lau Njuhar I"
+    },
+    {
+      "code": "1211062018",
+      "name": "Pasir Mbelang"
+    },
+    {
+      "code": "1211062019",
+      "name": "Sinar Pagi"
+    }
+  ],
+  "121107": [
+    {
+      "code": "1211072001",
+      "name": "Tambahan"
+    },
+    {
+      "code": "1211072002",
+      "name": "Kuta Tengah"
+    },
+    {
+      "code": "1211072003",
+      "name": "Lae Nuaha"
+    },
+    {
+      "code": "1211072004",
+      "name": "Sungai Raya"
+    },
+    {
+      "code": "1211072005",
+      "name": "Gunung Meriah"
+    },
+    {
+      "code": "1211072006",
+      "name": "Silumboyah"
+    },
+    {
+      "code": "1211072007",
+      "name": "Pandan"
+    },
+    {
+      "code": "1211072008",
+      "name": "Tualang"
+    },
+    {
+      "code": "1211072009",
+      "name": "Pangaribuan"
+    },
+    {
+      "code": "1211072010",
+      "name": "Sigambir-gambir"
+    },
+    {
+      "code": "1211072011",
+      "name": "Bakal Julu"
+    },
+    {
+      "code": "1211072012",
+      "name": "Sipoltong"
+    }
+  ],
+  "121108": [
+    {
+      "code": "1211082001",
+      "name": "Lae Itam"
+    },
+    {
+      "code": "1211082002",
+      "name": "Lae Luhung"
+    },
+    {
+      "code": "1211082003",
+      "name": "Pardomuan"
+    },
+    {
+      "code": "1211082004",
+      "name": "Lae Markelang"
+    },
+    {
+      "code": "1211082005",
+      "name": "Jambur Indonesia"
+    },
+    {
+      "code": "1211082006",
+      "name": "Simungun"
+    },
+    {
+      "code": "1211082007",
+      "name": "Janji"
+    },
+    {
+      "code": "1211082008",
+      "name": "Sopo Butar"
+    },
+    {
+      "code": "1211082009",
+      "name": "Lae Sering"
+    },
+    {
+      "code": "1211082010",
+      "name": "Lae Haporas"
+    }
+  ],
+  "121109": [
+    {
+      "code": "1211092001",
+      "name": "Simanduma"
+    },
+    {
+      "code": "1211092002",
+      "name": "Bandar Huta Usang"
+    },
+    {
+      "code": "1211092003",
+      "name": "Onan Lama"
+    },
+    {
+      "code": "1211092004",
+      "name": "Lingga Raja"
+    },
+    {
+      "code": "1211092005",
+      "name": "Laksa"
+    },
+    {
+      "code": "1211092006",
+      "name": "Tanjung Saluksuk"
+    },
+    {
+      "code": "1211092007",
+      "name": "Bukit Tinggi"
+    },
+    {
+      "code": "1211092008",
+      "name": "Simartugan"
+    },
+    {
+      "code": "1211092009",
+      "name": "Kuta Usang"
+    },
+    {
+      "code": "1211092010",
+      "name": "Lingga Raja II"
+    },
+    {
+      "code": "1211092011",
+      "name": "Mbinanga"
+    },
+    {
+      "code": "1211092012",
+      "name": "Bukit Baru"
+    },
+    {
+      "code": "1211092013",
+      "name": "Perrik Mbue"
+    }
+  ],
+  "121110": [
+    {
+      "code": "1211102001",
+      "name": "Bangun"
+    },
+    {
+      "code": "1211102002",
+      "name": "Lae Hole"
+    },
+    {
+      "code": "1211102003",
+      "name": "Parbuluan IV"
+    },
+    {
+      "code": "1211102004",
+      "name": "Parbuluan III"
+    },
+    {
+      "code": "1211102005",
+      "name": "Parbuluan II"
+    },
+    {
+      "code": "1211102006",
+      "name": "Parbuluan I"
+    },
+    {
+      "code": "1211102007",
+      "name": "Parbuluan V"
+    },
+    {
+      "code": "1211102008",
+      "name": "Parbuluan VI"
+    },
+    {
+      "code": "1211102009",
+      "name": "Lae Hole I"
+    },
+    {
+      "code": "1211102010",
+      "name": "Lae Hole II"
+    },
+    {
+      "code": "1211102011",
+      "name": "Bangun I"
+    }
+  ],
+  "121111": [
+    {
+      "code": "1211112001",
+      "name": "Sumbul"
+    },
+    {
+      "code": "1211112002",
+      "name": "Kentara"
+    },
+    {
+      "code": "1211112003",
+      "name": "Lae Parira"
+    },
+    {
+      "code": "1211112004",
+      "name": "Buluduri"
+    },
+    {
+      "code": "1211112005",
+      "name": "Sempung Polling"
+    },
+    {
+      "code": "1211112006",
+      "name": "Lumban Sihite"
+    },
+    {
+      "code": "1211112007",
+      "name": "Lumban Toruan"
+    },
+    {
+      "code": "1211112008",
+      "name": "Pandiangan"
+    },
+    {
+      "code": "1211112009",
+      "name": "Kaban Julu"
+    }
+  ],
+  "121112": [
+    {
+      "code": "1211122001",
+      "name": "Bukit Lau Kersik"
+    },
+    {
+      "code": "1211122002",
+      "name": "Gunung Sitember"
+    },
+    {
+      "code": "1211122003",
+      "name": "Batu Gun Gun"
+    },
+    {
+      "code": "1211122004",
+      "name": "Rante Besi"
+    },
+    {
+      "code": "1211122005",
+      "name": "Gundaling"
+    },
+    {
+      "code": "1211122006",
+      "name": "Kendit Liang"
+    },
+    {
+      "code": "1211122007",
+      "name": "Lau Lebah"
+    },
+    {
+      "code": "1211122008",
+      "name": "Tupak Raja"
+    }
+  ],
+  "121113": [
+    {
+      "code": "1211132001",
+      "name": "Sambaliang"
+    },
+    {
+      "code": "1211132002",
+      "name": "Pasi"
+    },
+    {
+      "code": "1211132003",
+      "name": "Banjar Toba"
+    },
+    {
+      "code": "1211132004",
+      "name": "Berampu"
+    },
+    {
+      "code": "1211132005",
+      "name": "Karing"
+    }
+  ],
+  "121114": [
+    {
+      "code": "1211142001",
+      "name": "Silalahi II"
+    },
+    {
+      "code": "1211142002",
+      "name": "Silalahi I"
+    },
+    {
+      "code": "1211142003",
+      "name": "Paropo"
+    },
+    {
+      "code": "1211142004",
+      "name": "Silalahi III"
+    },
+    {
+      "code": "1211142005",
+      "name": "Paropo I"
+    }
+  ],
+  "121115": [
+    {
+      "code": "1211151004",
+      "name": "Panji Dabutar"
+    },
+    {
+      "code": "1211152001",
+      "name": "Sitinjo"
+    },
+    {
+      "code": "1211152002",
+      "name": "Sitinjo I"
+    },
+    {
+      "code": "1211152003",
+      "name": "Sitinjo II"
+    }
+  ]
+}

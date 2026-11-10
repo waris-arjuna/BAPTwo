@@ -1,24 +1,924 @@
 {
-    "960402": [
-        {
-            "code": "9604022001",
-            "name": "Siakwa"
-        },
-        {
-            "code": "9604022002",
-            "name": "Aibogiar"
-        },
-        {
-            "code": "9604022003",
-            "name": "Ayae"
-        },
-        {
-            "code": "9604022004",
-            "name": "Ayawit"
-        },
-        {
-            "code": "9604022005",
-            "name": "Aifair"
-        }
-    ]
+  "960401": [
+    {
+      "code": "9604012001",
+      "name": "Fef"
+    },
+    {
+      "code": "9604012002",
+      "name": "Wayo"
+    },
+    {
+      "code": "9604012003",
+      "name": "Syubun"
+    },
+    {
+      "code": "9604012004",
+      "name": "Sikor"
+    },
+    {
+      "code": "9604012005",
+      "name": "Ibe"
+    },
+    {
+      "code": "9604012006",
+      "name": "Syunam"
+    },
+    {
+      "code": "9604012007",
+      "name": "Banfot"
+    },
+    {
+      "code": "9604012008",
+      "name": "Iwin"
+    },
+    {
+      "code": "9604012009",
+      "name": "Esyum"
+    },
+    {
+      "code": "9604012010",
+      "name": "Imor"
+    }
+  ],
+  "960402": [
+    {
+      "code": "9604022001",
+      "name": "Siakwa"
+    },
+    {
+      "code": "9604022002",
+      "name": "Aibogiar"
+    },
+    {
+      "code": "9604022003",
+      "name": "Ayae"
+    },
+    {
+      "code": "9604022004",
+      "name": "Ayawit"
+    },
+    {
+      "code": "9604022005",
+      "name": "Aifair"
+    }
+  ],
+  "960403": [
+    {
+      "code": "9604032001",
+      "name": "Baun"
+    },
+    {
+      "code": "9604032002",
+      "name": "Sumbekas"
+    },
+    {
+      "code": "9604032003",
+      "name": "Metnayam"
+    },
+    {
+      "code": "9604032004",
+      "name": "Metbelum"
+    },
+    {
+      "code": "9604032005",
+      "name": "Salem"
+    },
+    {
+      "code": "9604032006",
+      "name": "Metbesa"
+    }
+  ],
+  "960404": [
+    {
+      "code": "9604042001",
+      "name": "Kwoor"
+    },
+    {
+      "code": "9604042002",
+      "name": "Hopmare"
+    },
+    {
+      "code": "9604042003",
+      "name": "Orwen"
+    },
+    {
+      "code": "9604042004",
+      "name": "Barar"
+    },
+    {
+      "code": "9604042005",
+      "name": "Esmambo"
+    }
+  ],
+  "960405": [
+    {
+      "code": "9604052001",
+      "name": "Sausapor"
+    },
+    {
+      "code": "9604052002",
+      "name": "Emaos"
+    },
+    {
+      "code": "9604052003",
+      "name": "Jokte"
+    },
+    {
+      "code": "9604052004",
+      "name": "Uigwem"
+    },
+    {
+      "code": "9604052005",
+      "name": "Sungguwan"
+    },
+    {
+      "code": "9604052006",
+      "name": "Sau Uram"
+    },
+    {
+      "code": "9604052007",
+      "name": "Nanggou"
+    },
+    {
+      "code": "9604052008",
+      "name": "Bondek"
+    },
+    {
+      "code": "9604052009",
+      "name": "Bondonggwan"
+    },
+    {
+      "code": "9604052010",
+      "name": "Syurauw"
+    }
+  ],
+  "960406": [
+    {
+      "code": "9604062001",
+      "name": "Wau"
+    },
+    {
+      "code": "9604062002",
+      "name": "Syukwo"
+    },
+    {
+      "code": "9604062003",
+      "name": "Waibem"
+    },
+    {
+      "code": "9604062004",
+      "name": "Weyaf"
+    },
+    {
+      "code": "9604062005",
+      "name": "Weprari"
+    }
+  ],
+  "960407": [
+    {
+      "code": "9604072001",
+      "name": "Syujak"
+    },
+    {
+      "code": "9604072002",
+      "name": "Banso"
+    },
+    {
+      "code": "9604072003",
+      "name": "Iof"
+    },
+    {
+      "code": "9604072004",
+      "name": "Frafane"
+    }
+  ],
+  "960408": [
+    {
+      "code": "9604082001",
+      "name": "Mega"
+    },
+    {
+      "code": "9604082002",
+      "name": "Selewok"
+    },
+    {
+      "code": "9604082003",
+      "name": "Malaworsai"
+    },
+    {
+      "code": "9604082004",
+      "name": "Kwade"
+    },
+    {
+      "code": "9604082005",
+      "name": "Bonem"
+    },
+    {
+      "code": "9604082006",
+      "name": "Warafor"
+    },
+    {
+      "code": "9604082007",
+      "name": "Warmasi"
+    },
+    {
+      "code": "9604082008",
+      "name": "Warmanen"
+    },
+    {
+      "code": "9604082009",
+      "name": "Namuas"
+    }
+  ],
+  "960409": [
+    {
+      "code": "9604092001",
+      "name": "Injai"
+    },
+    {
+      "code": "9604092002",
+      "name": "Apoki"
+    },
+    {
+      "code": "9604092003",
+      "name": "Matatun"
+    },
+    {
+      "code": "9604092004",
+      "name": "Jafai"
+    },
+    {
+      "code": "9604092005",
+      "name": "Jambuani"
+    },
+    {
+      "code": "9604092006",
+      "name": "Manaria"
+    },
+    {
+      "code": "9604092007",
+      "name": "Anarum"
+    },
+    {
+      "code": "9604092008",
+      "name": "Wasanggon"
+    },
+    {
+      "code": "9604092009",
+      "name": "Wabanek"
+    }
+  ],
+  "960410": [
+    {
+      "code": "9604102001",
+      "name": "Saukorem"
+    },
+    {
+      "code": "9604102002",
+      "name": "Wefiani"
+    },
+    {
+      "code": "9604102003",
+      "name": "Wasarak"
+    },
+    {
+      "code": "9604102004",
+      "name": "Binasi"
+    },
+    {
+      "code": "9604102005",
+      "name": "Kabibwan"
+    },
+    {
+      "code": "9604102006",
+      "name": "Binmaks"
+    },
+    {
+      "code": "9604102007",
+      "name": "Manggapnut"
+    },
+    {
+      "code": "9604102008",
+      "name": "Waramui"
+    },
+    {
+      "code": "9604102009",
+      "name": "Warpaperi"
+    }
+  ],
+  "960411": [
+    {
+      "code": "9604112001",
+      "name": "Senopi"
+    },
+    {
+      "code": "9604112002",
+      "name": "Arapi"
+    },
+    {
+      "code": "9604112003",
+      "name": "Srurem"
+    },
+    {
+      "code": "9604112004",
+      "name": "Sumo"
+    },
+    {
+      "code": "9604112005",
+      "name": "Ifat Mitu"
+    },
+    {
+      "code": "9604112006",
+      "name": "Povokek Ania"
+    },
+    {
+      "code": "9604112007",
+      "name": "Thomas"
+    },
+    {
+      "code": "9604112008",
+      "name": "Tintum Araw"
+    },
+    {
+      "code": "9604112009",
+      "name": "Hobiah"
+    }
+  ],
+  "960412": [
+    {
+      "code": "9604122001",
+      "name": "Arfu"
+    },
+    {
+      "code": "9604122002",
+      "name": "Bawey"
+    },
+    {
+      "code": "9604122003",
+      "name": "Wasnembri"
+    },
+    {
+      "code": "9604122004",
+      "name": "Waru"
+    },
+    {
+      "code": "9604122005",
+      "name": "Atori"
+    },
+    {
+      "code": "9604122006",
+      "name": "Meriambeker"
+    },
+    {
+      "code": "9604122007",
+      "name": "Warokon"
+    },
+    {
+      "code": "9604122008",
+      "name": "Arekon"
+    },
+    {
+      "code": "9604122009",
+      "name": "Bonpaya"
+    },
+    {
+      "code": "9604122010",
+      "name": "Marbuan"
+    }
+  ],
+  "960413": [
+    {
+      "code": "9604132001",
+      "name": "Werur"
+    },
+    {
+      "code": "9604132002",
+      "name": "Bukit"
+    },
+    {
+      "code": "9604132003",
+      "name": "Wertam"
+    },
+    {
+      "code": "9604132004",
+      "name": "Werwaf"
+    },
+    {
+      "code": "9604132005",
+      "name": "Werbes"
+    },
+    {
+      "code": "9604132006",
+      "name": "Nombrak"
+    },
+    {
+      "code": "9604132007",
+      "name": "Bikar"
+    },
+    {
+      "code": "9604132008",
+      "name": "Syunai"
+    },
+    {
+      "code": "9604132009",
+      "name": "Suyam"
+    },
+    {
+      "code": "9604132010",
+      "name": "Wertim"
+    }
+  ],
+  "960414": [
+    {
+      "code": "9604142001",
+      "name": "Bamusbama"
+    },
+    {
+      "code": "9604142002",
+      "name": "Bamuswaiman"
+    },
+    {
+      "code": "9604142003",
+      "name": "Syarwom"
+    },
+    {
+      "code": "9604142004",
+      "name": "Babak"
+    },
+    {
+      "code": "9604142005",
+      "name": "Bano"
+    },
+    {
+      "code": "9604142006",
+      "name": "Wormon"
+    }
+  ],
+  "960415": [
+    {
+      "code": "9604152001",
+      "name": "Ases"
+    },
+    {
+      "code": "9604152002",
+      "name": "Asuon"
+    },
+    {
+      "code": "9604152003",
+      "name": "Safotiek"
+    },
+    {
+      "code": "9604152004",
+      "name": "Frasayoah"
+    }
+  ],
+  "960416": [
+    {
+      "code": "9604162001",
+      "name": "Mawor"
+    },
+    {
+      "code": "9604162002",
+      "name": "Ruf"
+    },
+    {
+      "code": "9604162003",
+      "name": "Ayamane"
+    },
+    {
+      "code": "9604162004",
+      "name": "Whismer"
+    },
+    {
+      "code": "9604162005",
+      "name": "Sahae"
+    },
+    {
+      "code": "9604162006",
+      "name": "Hewi"
+    },
+    {
+      "code": "9604162007",
+      "name": "Sisu"
+    },
+    {
+      "code": "9604162008",
+      "name": "Ruvewes"
+    },
+    {
+      "code": "9604162009",
+      "name": "Yabuow"
+    }
+  ],
+  "960417": [
+    {
+      "code": "9604172001",
+      "name": "Miri"
+    },
+    {
+      "code": "9604172002",
+      "name": "Meis"
+    },
+    {
+      "code": "9604172003",
+      "name": "Aifamas"
+    },
+    {
+      "code": "9604172004",
+      "name": "Meinad"
+    },
+    {
+      "code": "9604172005",
+      "name": "Atafrumek"
+    },
+    {
+      "code": "9604172006",
+      "name": "Ifiam"
+    },
+    {
+      "code": "9604172007",
+      "name": "Wufmana"
+    }
+  ],
+  "960418": [
+    {
+      "code": "9604182001",
+      "name": "Syumbab"
+    },
+    {
+      "code": "9604182002",
+      "name": "Krisnos"
+    },
+    {
+      "code": "9604182003",
+      "name": "Syukwes"
+    },
+    {
+      "code": "9604182004",
+      "name": "Sunggak"
+    },
+    {
+      "code": "9604182005",
+      "name": "Wowom"
+    },
+    {
+      "code": "9604182006",
+      "name": "Resye"
+    }
+  ],
+  "960419": [
+    {
+      "code": "9604192001",
+      "name": "Tabamsere"
+    },
+    {
+      "code": "9604192002",
+      "name": "Sayam"
+    },
+    {
+      "code": "9604192003",
+      "name": "Araf Mafat"
+    },
+    {
+      "code": "9604192004",
+      "name": "Esyuom"
+    }
+  ],
+  "960420": [
+    {
+      "code": "9604202001",
+      "name": "Tinggouw"
+    },
+    {
+      "code": "9604202002",
+      "name": "Hohair"
+    },
+    {
+      "code": "9604202003",
+      "name": "Ruriai"
+    },
+    {
+      "code": "9604202004",
+      "name": "Soon"
+    },
+    {
+      "code": "9604202005",
+      "name": "Ifatkan"
+    }
+  ],
+  "960421": [
+    {
+      "code": "9604212001",
+      "name": "Jokbujoker"
+    },
+    {
+      "code": "9604212002",
+      "name": "Kranfotsu"
+    },
+    {
+      "code": "9604212003",
+      "name": "Syuau"
+    },
+    {
+      "code": "9604212004",
+      "name": "Kwesefo"
+    },
+    {
+      "code": "9604212005",
+      "name": "Batdey"
+    },
+    {
+      "code": "9604212006",
+      "name": "Syumbi"
+    },
+    {
+      "code": "9604212007",
+      "name": "Bao"
+    },
+    {
+      "code": "9604212008",
+      "name": "Donan"
+    },
+    {
+      "code": "9604212009",
+      "name": "Dombron"
+    }
+  ],
+  "960422": [
+    {
+      "code": "9604222001",
+      "name": "Wausin"
+    },
+    {
+      "code": "9604222002",
+      "name": "Asiti"
+    },
+    {
+      "code": "9604222003",
+      "name": "Bisaud"
+    },
+    {
+      "code": "9604222004",
+      "name": "Nisandauw"
+    },
+    {
+      "code": "9604222005",
+      "name": "Afrawi"
+    },
+    {
+      "code": "9604222006",
+      "name": "Ajokwapi"
+    }
+  ],
+  "960423": [
+    {
+      "code": "9604232001",
+      "name": "Inam"
+    },
+    {
+      "code": "9604232002",
+      "name": "Jandurauw"
+    },
+    {
+      "code": "9604232003",
+      "name": "Inambuari"
+    },
+    {
+      "code": "9604232004",
+      "name": "Sitori"
+    },
+    {
+      "code": "9604232005",
+      "name": "Untorey"
+    },
+    {
+      "code": "9604232006",
+      "name": "Nabisai"
+    },
+    {
+      "code": "9604232007",
+      "name": "Arumi"
+    },
+    {
+      "code": "9604232008",
+      "name": "Karawi"
+    },
+    {
+      "code": "9604232009",
+      "name": "Arampak"
+    },
+    {
+      "code": "9604232010",
+      "name": "Barona"
+    }
+  ],
+  "960424": [
+    {
+      "code": "9604242001",
+      "name": "Nekori"
+    },
+    {
+      "code": "9604242002",
+      "name": "Ajami"
+    },
+    {
+      "code": "9604242003",
+      "name": "Aniti"
+    },
+    {
+      "code": "9604242004",
+      "name": "Akari"
+    },
+    {
+      "code": "9604242005",
+      "name": "Amnan"
+    },
+    {
+      "code": "9604242006",
+      "name": "Atiki"
+    },
+    {
+      "code": "9604242007",
+      "name": "Arwani"
+    },
+    {
+      "code": "9604242008",
+      "name": "Aritowi"
+    },
+    {
+      "code": "9604242009",
+      "name": "Umpay"
+    },
+    {
+      "code": "9604242010",
+      "name": "Meiwar"
+    }
+  ],
+  "960425": [
+    {
+      "code": "9604252001",
+      "name": "Atai"
+    },
+    {
+      "code": "9604252002",
+      "name": "Akmuri"
+    },
+    {
+      "code": "9604252003",
+      "name": "Awori"
+    },
+    {
+      "code": "9604252004",
+      "name": "Itafiti"
+    },
+    {
+      "code": "9604252005",
+      "name": "Atunari"
+    },
+    {
+      "code": "9604252006",
+      "name": "Ajami Waripi"
+    },
+    {
+      "code": "9604252007",
+      "name": "Narai"
+    },
+    {
+      "code": "9604252008",
+      "name": "Aranari"
+    },
+    {
+      "code": "9604252009",
+      "name": "Waumi"
+    },
+    {
+      "code": "9604252010",
+      "name": "Aneti"
+    }
+  ],
+  "960426": [
+    {
+      "code": "9604262001",
+      "name": "Arupi"
+    },
+    {
+      "code": "9604262002",
+      "name": "Mangganek"
+    },
+    {
+      "code": "9604262003",
+      "name": "Wajarek"
+    },
+    {
+      "code": "9604262004",
+      "name": "Kali An"
+    },
+    {
+      "code": "9604262005",
+      "name": "Araro"
+    },
+    {
+      "code": "9604262006",
+      "name": "Wekari"
+    },
+    {
+      "code": "9604262007",
+      "name": "Serayo"
+    }
+  ],
+  "960427": [
+    {
+      "code": "9604272001",
+      "name": "Sasui"
+    },
+    {
+      "code": "9604272002",
+      "name": "Imbuan"
+    },
+    {
+      "code": "9604272003",
+      "name": "Manggaew"
+    },
+    {
+      "code": "9604272004",
+      "name": "Saurabon"
+    },
+    {
+      "code": "9604272005",
+      "name": "Wasawmontem"
+    }
+  ],
+  "960428": [
+    {
+      "code": "9604282001",
+      "name": "Meserikweda"
+    },
+    {
+      "code": "9604282002",
+      "name": "Kasi Baru"
+    },
+    {
+      "code": "9604282003",
+      "name": "Kasi Jaya"
+    },
+    {
+      "code": "9604282004",
+      "name": "Meimorufof"
+    },
+    {
+      "code": "9604282005",
+      "name": "Kasi Indah"
+    },
+    {
+      "code": "9604282006",
+      "name": "Wacam"
+    },
+    {
+      "code": "9604282007",
+      "name": "Irumfei"
+    },
+    {
+      "code": "9604282008",
+      "name": "Pubuan"
+    },
+    {
+      "code": "9604282009",
+      "name": "Ireji"
+    },
+    {
+      "code": "9604282010",
+      "name": "Kasi Inom"
+    },
+    {
+      "code": "9604282011",
+      "name": "Meycocforga"
+    },
+    {
+      "code": "9604282012",
+      "name": "Meyomnar"
+    }
+  ],
+  "960429": [
+    {
+      "code": "9604292001",
+      "name": "Della"
+    },
+    {
+      "code": "9604292002",
+      "name": "Malayauw"
+    },
+    {
+      "code": "9604292003",
+      "name": "Klasbon"
+    },
+    {
+      "code": "9604292004",
+      "name": "Klasei"
+    },
+    {
+      "code": "9604292005",
+      "name": "Klabili"
+    }
+  ]
 }

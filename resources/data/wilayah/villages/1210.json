@@ -1,0 +1,412 @@
+{
+  "121001": [
+    {
+      "code": "1210011001",
+      "name": "Padang Matinggi"
+    },
+    {
+      "code": "1210011002",
+      "name": "Siringo-Ringo"
+    },
+    {
+      "code": "1210011003",
+      "name": "Sirandorung"
+    },
+    {
+      "code": "1210011004",
+      "name": "Rantauprapat"
+    },
+    {
+      "code": "1210011005",
+      "name": "Kartini"
+    },
+    {
+      "code": "1210011006",
+      "name": "Cendana"
+    },
+    {
+      "code": "1210011007",
+      "name": "Binaraga"
+    },
+    {
+      "code": "1210011008",
+      "name": "Pulo Padang"
+    },
+    {
+      "code": "1210011009",
+      "name": "Padang Bulan"
+    },
+    {
+      "code": "1210011010",
+      "name": "Aek Paing"
+    }
+  ],
+  "121002": [
+    {
+      "code": "1210021001",
+      "name": "Bakaran Batu"
+    },
+    {
+      "code": "1210021002",
+      "name": "Sioldengan"
+    },
+    {
+      "code": "1210021003",
+      "name": "Urung Kompas"
+    },
+    {
+      "code": "1210021004",
+      "name": "Ujung Bandar"
+    },
+    {
+      "code": "1210021005",
+      "name": "Sigambal"
+    },
+    {
+      "code": "1210021006",
+      "name": "Lobusona"
+    },
+    {
+      "code": "1210021007",
+      "name": "Pardamean"
+    },
+    {
+      "code": "1210021008",
+      "name": "Danau Bale"
+    },
+    {
+      "code": "1210021009",
+      "name": "Sidorejo"
+    }
+  ],
+  "121007": [
+    {
+      "code": "1210072001",
+      "name": "Sibargot"
+    },
+    {
+      "code": "1210072002",
+      "name": "Bandar Kumbul"
+    },
+    {
+      "code": "1210072003",
+      "name": "Tanjung Medan"
+    },
+    {
+      "code": "1210072004",
+      "name": "Janji"
+    },
+    {
+      "code": "1210072005",
+      "name": "Tebing Linggahara"
+    },
+    {
+      "code": "1210072006",
+      "name": "AFD.I Rantauprapat"
+    },
+    {
+      "code": "1210072007",
+      "name": "AFD.II Rantauprapat"
+    },
+    {
+      "code": "1210072008",
+      "name": "Aek Buru Selatan"
+    },
+    {
+      "code": "1210072009",
+      "name": "Kampung Baru"
+    },
+    {
+      "code": "1210072010",
+      "name": "Tebing Linggahara Baru"
+    }
+  ],
+  "121008": [
+    {
+      "code": "1210081001",
+      "name": "Negeri Lama"
+    },
+    {
+      "code": "1210081002",
+      "name": "Negeri Baru"
+    },
+    {
+      "code": "1210082003",
+      "name": "Perkebunan Sennah"
+    },
+    {
+      "code": "1210082004",
+      "name": "Perkebunan Negeri Lama"
+    },
+    {
+      "code": "1210082005",
+      "name": "Perkebunan Bilah"
+    },
+    {
+      "code": "1210082006",
+      "name": "Kampung Bilah"
+    },
+    {
+      "code": "1210082007",
+      "name": "Negeri Lama Seberang"
+    },
+    {
+      "code": "1210082008",
+      "name": "Sei Tampang"
+    },
+    {
+      "code": "1210082009",
+      "name": "Selat Besar"
+    },
+    {
+      "code": "1210082010",
+      "name": "Tanjung Haloban"
+    },
+    {
+      "code": "1210082011",
+      "name": "Sidomulyo"
+    },
+    {
+      "code": "1210082012",
+      "name": "Sei Tarolat"
+    },
+    {
+      "code": "1210082013",
+      "name": "Sei Kasih"
+    }
+  ],
+  "121009": [
+    {
+      "code": "1210092001",
+      "name": "Lingga Tiga"
+    },
+    {
+      "code": "1210092002",
+      "name": "Tanjung Siram"
+    },
+    {
+      "code": "1210092003",
+      "name": "Pematang Seleng"
+    },
+    {
+      "code": "1210092004",
+      "name": "Perbaungan"
+    },
+    {
+      "code": "1210092005",
+      "name": "Gunung Selamat"
+    },
+    {
+      "code": "1210092006",
+      "name": "Emplasemen Aek Nabara"
+    },
+    {
+      "code": "1210092007",
+      "name": "Bandar Tinggi"
+    },
+    {
+      "code": "1210092008",
+      "name": "Kampung Dalam"
+    },
+    {
+      "code": "1210092009",
+      "name": "Pondok Batu"
+    },
+    {
+      "code": "1210092010",
+      "name": "Meranti"
+    },
+    {
+      "code": "1210092011",
+      "name": "N-1 Aek Nabara"
+    },
+    {
+      "code": "1210092012",
+      "name": "N-2 Aek Nabara"
+    },
+    {
+      "code": "1210092013",
+      "name": "N-3 Aek Nabara"
+    },
+    {
+      "code": "1210092014",
+      "name": "N-4 Aek Nabara"
+    },
+    {
+      "code": "1210092015",
+      "name": "N-5 Aek Nabara"
+    },
+    {
+      "code": "1210092016",
+      "name": "N-6 Aek Nabara"
+    },
+    {
+      "code": "1210092017",
+      "name": "N-7 Aek Nabara"
+    },
+    {
+      "code": "1210092018",
+      "name": "N-8 Aek Nabara"
+    },
+    {
+      "code": "1210092019",
+      "name": "S-1 Aek Nabara"
+    },
+    {
+      "code": "1210092020",
+      "name": "S-2 Aek Nabara"
+    },
+    {
+      "code": "1210092021",
+      "name": "S-3 Aek Nabara"
+    },
+    {
+      "code": "1210092022",
+      "name": "S-4 Aek Nabara"
+    },
+    {
+      "code": "1210092023",
+      "name": "S-5 Aek Nabara"
+    },
+    {
+      "code": "1210092024",
+      "name": "S-6 Aek Nabara"
+    }
+  ],
+  "121014": [
+    {
+      "code": "1210142001",
+      "name": "Sidorukun"
+    },
+    {
+      "code": "1210142002",
+      "name": "Tebing Tinggi Pangkatan"
+    },
+    {
+      "code": "1210142003",
+      "name": "Perkebunan Pangkatan"
+    },
+    {
+      "code": "1210142004",
+      "name": "Kampung Padang"
+    },
+    {
+      "code": "1210142005",
+      "name": "Pangkatan"
+    },
+    {
+      "code": "1210142006",
+      "name": "Sennah"
+    },
+    {
+      "code": "1210142007",
+      "name": "Tanjung Harapan"
+    }
+  ],
+  "121018": [
+    {
+      "code": "1210181001",
+      "name": "Labuhan Bilik"
+    },
+    {
+      "code": "1210182002",
+      "name": "Sei Pelancang"
+    },
+    {
+      "code": "1210182003",
+      "name": "Sei Siarti"
+    },
+    {
+      "code": "1210182004",
+      "name": "Sei Nahodaris"
+    },
+    {
+      "code": "1210182005",
+      "name": "Sei Merdeka"
+    },
+    {
+      "code": "1210182006",
+      "name": "Sei Rakyat"
+    },
+    {
+      "code": "1210182007",
+      "name": "Selat Beting"
+    },
+    {
+      "code": "1210182008",
+      "name": "Bagan Bilah"
+    },
+    {
+      "code": "1210182009",
+      "name": "Telaga Suka"
+    },
+    {
+      "code": "1210182010",
+      "name": "Pasar Tiga"
+    }
+  ],
+  "121019": [
+    {
+      "code": "1210191001",
+      "name": "Sei Berombang"
+    },
+    {
+      "code": "1210192002",
+      "name": "Sei Penggantungan"
+    },
+    {
+      "code": "1210192003",
+      "name": "Sei Lumut"
+    },
+    {
+      "code": "1210192004",
+      "name": "Sei Tawar"
+    },
+    {
+      "code": "1210192005",
+      "name": "Sei Sanggul"
+    },
+    {
+      "code": "1210192006",
+      "name": "Sei Sakat"
+    },
+    {
+      "code": "1210192007",
+      "name": "Sei Baru"
+    },
+    {
+      "code": "1210192008",
+      "name": "Wonosari"
+    }
+  ],
+  "121020": [
+    {
+      "code": "1210202001",
+      "name": "Tanjung Sarang Elang"
+    },
+    {
+      "code": "1210202002",
+      "name": "Perkebunan Ajamu"
+    },
+    {
+      "code": "1210202003",
+      "name": "Teluk Sentosa"
+    },
+    {
+      "code": "1210202004",
+      "name": "Cinta Makmur"
+    },
+    {
+      "code": "1210202005",
+      "name": "Sei Sentosa"
+    },
+    {
+      "code": "1210202006",
+      "name": "Meranti Paham"
+    },
+    {
+      "code": "1210202007",
+      "name": "Sei Jawi-Jawi"
+    }
+  ]
+}

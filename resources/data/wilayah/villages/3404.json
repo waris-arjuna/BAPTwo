@@ -1,86 +1,380 @@
 {
-    "340407": [
-        {
-            "code": "3404072001",
-            "name": "Caturtunggal"
-        },
-        {
-            "code": "3404072002",
-            "name": "Maguwoharjo"
-        },
-        {
-            "code": "3404072003",
-            "name": "Condongcatur"
-        }
-    ],
-    "340408": [
-        {
-            "code": "3404082001",
-            "name": "Sendangtirto"
-        },
-        {
-            "code": "3404082002",
-            "name": "Tegaltirto"
-        },
-        {
-            "code": "3404082003",
-            "name": "Kalitirto"
-        },
-        {
-            "code": "3404082004",
-            "name": "Jogotirto"
-        }
-    ],
-    "340409": [
-        {
-            "code": "3404092001",
-            "name": "Sumberharjo"
-        },
-        {
-            "code": "3404092002",
-            "name": "Wukirharjo"
-        },
-        {
-            "code": "3404092003",
-            "name": "Gayamharjo"
-        },
-        {
-            "code": "3404092004",
-            "name": "Sambirejo"
-        },
-        {
-            "code": "3404092005",
-            "name": "Madurejo"
-        },
-        {
-            "code": "3404092006",
-            "name": "Bokoharjo"
-        }
-    ],
-    "340412": [
-        {
-            "code": "3404122001",
-            "name": "Sariharjo"
-        },
-        {
-            "code": "3404122002",
-            "name": "Minomartani"
-        },
-        {
-            "code": "3404122003",
-            "name": "Sinduharjo"
-        },
-        {
-            "code": "3404122004",
-            "name": "Sukoharjo"
-        },
-        {
-            "code": "3404122005",
-            "name": "Sardonoharjo"
-        },
-        {
-            "code": "3404122006",
-            "name": "Donoharjo"
-        }
-    ]
+  "340401": [
+    {
+      "code": "3404012001",
+      "name": "Balecatur"
+    },
+    {
+      "code": "3404012002",
+      "name": "Ambarketawang"
+    },
+    {
+      "code": "3404012003",
+      "name": "Banyuraden"
+    },
+    {
+      "code": "3404012004",
+      "name": "Nogotirto"
+    },
+    {
+      "code": "3404012005",
+      "name": "Trihanggo"
+    }
+  ],
+  "340402": [
+    {
+      "code": "3404022001",
+      "name": "Sidorejo"
+    },
+    {
+      "code": "3404022002",
+      "name": "Sidoluhur"
+    },
+    {
+      "code": "3404022003",
+      "name": "Sidomulyo"
+    },
+    {
+      "code": "3404022004",
+      "name": "Sidoagung"
+    },
+    {
+      "code": "3404022005",
+      "name": "Sidokarto"
+    },
+    {
+      "code": "3404022006",
+      "name": "Sidoarum"
+    },
+    {
+      "code": "3404022007",
+      "name": "Sidomoyo"
+    }
+  ],
+  "340403": [
+    {
+      "code": "3404032001",
+      "name": "Sumberrahayu"
+    },
+    {
+      "code": "3404032002",
+      "name": "Sumbersari"
+    },
+    {
+      "code": "3404032003",
+      "name": "Sumberagung"
+    },
+    {
+      "code": "3404032004",
+      "name": "Sumberarum"
+    }
+  ],
+  "340404": [
+    {
+      "code": "3404042001",
+      "name": "Sendangarum"
+    },
+    {
+      "code": "3404042002",
+      "name": "Sendangmulyo"
+    },
+    {
+      "code": "3404042003",
+      "name": "Sendangagung"
+    },
+    {
+      "code": "3404042004",
+      "name": "Sendangsari"
+    },
+    {
+      "code": "3404042005",
+      "name": "Sendangrejo"
+    }
+  ],
+  "340405": [
+    {
+      "code": "3404052001",
+      "name": "Margoluwih"
+    },
+    {
+      "code": "3404052002",
+      "name": "Margodadi"
+    },
+    {
+      "code": "3404052003",
+      "name": "Margokaton"
+    },
+    {
+      "code": "3404052004",
+      "name": "Margomulyo"
+    },
+    {
+      "code": "3404052005",
+      "name": "Margoagung"
+    }
+  ],
+  "340406": [
+    {
+      "code": "3404062001",
+      "name": "Sinduadi"
+    },
+    {
+      "code": "3404062002",
+      "name": "Sendangadi"
+    },
+    {
+      "code": "3404062003",
+      "name": "Tlogoadi"
+    },
+    {
+      "code": "3404062004",
+      "name": "Tirtoadi"
+    },
+    {
+      "code": "3404062005",
+      "name": "Sumberadi"
+    }
+  ],
+  "340407": [
+    {
+      "code": "3404072001",
+      "name": "Caturtunggal"
+    },
+    {
+      "code": "3404072002",
+      "name": "Maguwoharjo"
+    },
+    {
+      "code": "3404072003",
+      "name": "Condongcatur"
+    }
+  ],
+  "340408": [
+    {
+      "code": "3404082001",
+      "name": "Sendangtirto"
+    },
+    {
+      "code": "3404082002",
+      "name": "Tegaltirto"
+    },
+    {
+      "code": "3404082003",
+      "name": "Kalitirto"
+    },
+    {
+      "code": "3404082004",
+      "name": "Jogotirto"
+    }
+  ],
+  "340409": [
+    {
+      "code": "3404092001",
+      "name": "Sumberharjo"
+    },
+    {
+      "code": "3404092002",
+      "name": "Wukirharjo"
+    },
+    {
+      "code": "3404092003",
+      "name": "Gayamharjo"
+    },
+    {
+      "code": "3404092004",
+      "name": "Sambirejo"
+    },
+    {
+      "code": "3404092005",
+      "name": "Madurejo"
+    },
+    {
+      "code": "3404092006",
+      "name": "Bokoharjo"
+    }
+  ],
+  "340410": [
+    {
+      "code": "3404102001",
+      "name": "Purwomartani"
+    },
+    {
+      "code": "3404102002",
+      "name": "Tirtomartani"
+    },
+    {
+      "code": "3404102003",
+      "name": "Tamanmartani"
+    },
+    {
+      "code": "3404102004",
+      "name": "Selomartani"
+    }
+  ],
+  "340411": [
+    {
+      "code": "3404112001",
+      "name": "Sindumartani"
+    },
+    {
+      "code": "3404112002",
+      "name": "Bimomartani"
+    },
+    {
+      "code": "3404112003",
+      "name": "Widodomartani"
+    },
+    {
+      "code": "3404112004",
+      "name": "Wedomartani"
+    },
+    {
+      "code": "3404112005",
+      "name": "Umbulmartani"
+    }
+  ],
+  "340412": [
+    {
+      "code": "3404122001",
+      "name": "Sariharjo"
+    },
+    {
+      "code": "3404122002",
+      "name": "Minomartani"
+    },
+    {
+      "code": "3404122003",
+      "name": "Sinduharjo"
+    },
+    {
+      "code": "3404122004",
+      "name": "Sukoharjo"
+    },
+    {
+      "code": "3404122005",
+      "name": "Sardonoharjo"
+    },
+    {
+      "code": "3404122006",
+      "name": "Donoharjo"
+    }
+  ],
+  "340413": [
+    {
+      "code": "3404132001",
+      "name": "Caturharjo"
+    },
+    {
+      "code": "3404132002",
+      "name": "Triharjo"
+    },
+    {
+      "code": "3404132003",
+      "name": "Tridadi"
+    },
+    {
+      "code": "3404132004",
+      "name": "Pandowoharjo"
+    },
+    {
+      "code": "3404132005",
+      "name": "Trimulyo"
+    }
+  ],
+  "340414": [
+    {
+      "code": "3404142001",
+      "name": "Banyurejo"
+    },
+    {
+      "code": "3404142002",
+      "name": "Tambakrejo"
+    },
+    {
+      "code": "3404142003",
+      "name": "Sumberrejo"
+    },
+    {
+      "code": "3404142004",
+      "name": "Pondokrejo"
+    },
+    {
+      "code": "3404142005",
+      "name": "Mororejo"
+    },
+    {
+      "code": "3404142006",
+      "name": "Margorejo"
+    },
+    {
+      "code": "3404142007",
+      "name": "Lumbungrejo"
+    },
+    {
+      "code": "3404142008",
+      "name": "Merdikorejo"
+    }
+  ],
+  "340415": [
+    {
+      "code": "3404152001",
+      "name": "Bangunkerto"
+    },
+    {
+      "code": "3404152002",
+      "name": "Donokerto"
+    },
+    {
+      "code": "3404152003",
+      "name": "Girikerto"
+    },
+    {
+      "code": "3404152004",
+      "name": "Wonokerto"
+    }
+  ],
+  "340416": [
+    {
+      "code": "3404162001",
+      "name": "Purwobinangun"
+    },
+    {
+      "code": "3404162002",
+      "name": "Candibinangun"
+    },
+    {
+      "code": "3404162003",
+      "name": "Harjobinangun"
+    },
+    {
+      "code": "3404162004",
+      "name": "Pakembinangun"
+    },
+    {
+      "code": "3404162005",
+      "name": "Hargobinangun"
+    }
+  ],
+  "340417": [
+    {
+      "code": "3404172001",
+      "name": "Argomulyo"
+    },
+    {
+      "code": "3404172002",
+      "name": "Wukirsari"
+    },
+    {
+      "code": "3404172003",
+      "name": "Glagaharjo"
+    },
+    {
+      "code": "3404172004",
+      "name": "Kepuharjo"
+    },
+    {
+      "code": "3404172005",
+      "name": "Umbulharjo"
+    }
+  ]
 }

@@ -1,674 +1,1178 @@
 {
-    "530201": [
-        {
-            "code": "5302011001",
-            "name": "SoE"
-        },
-        {
-            "code": "5302011002",
-            "name": "Cendana"
-        },
-        {
-            "code": "5302011003",
-            "name": "Oebesa"
-        },
-        {
-            "code": "5302011004",
-            "name": "Taubneno"
-        },
-        {
-            "code": "5302011005",
-            "name": "Nonohonis"
-        },
-        {
-            "code": "5302011006",
-            "name": "Karang Sirih"
-        },
-        {
-            "code": "5302011007",
-            "name": "Nunumeu"
-        },
-        {
-            "code": "5302011008",
-            "name": "Kobekamusa"
-        },
-        {
-            "code": "5302011009",
-            "name": "Oe Kefan"
-        },
-        {
-            "code": "5302011010",
-            "name": "Kota Baru"
-        },
-        {
-            "code": "5302011011",
-            "name": "Kampung Baru"
-        },
-        {
-            "code": "5302012012",
-            "name": "Kuatae"
-        },
-        {
-            "code": "5302012013",
-            "name": "Noemeto"
-        }
-    ],
-    "530203": [
-        {
-            "code": "5302032001",
-            "name": "O'besi"
-        },
-        {
-            "code": "5302032002",
-            "name": "Eonbesi"
-        },
-        {
-            "code": "5302032003",
-            "name": "Bosen"
-        },
-        {
-            "code": "5302032004",
-            "name": "Sebot"
-        },
-        {
-            "code": "5302032007",
-            "name": "Ajaobaki"
-        },
-        {
-            "code": "5302032008",
-            "name": "Netpala"
-        },
-        {
-            "code": "5302032009",
-            "name": "Tunua"
-        },
-        {
-            "code": "5302032010",
-            "name": "Bijaepunu"
-        },
-        {
-            "code": "5302032011",
-            "name": "Nefokoko"
-        },
-        {
-            "code": "5302032012",
-            "name": "Leloboko"
-        },
-        {
-            "code": "5302032013",
-            "name": "Lelobatan"
-        },
-        {
-            "code": "5302032014",
-            "name": "Halmei"
-        },
-        {
-            "code": "5302032015",
-            "name": "Fatukoto"
-        },
-        {
-            "code": "5302032016",
-            "name": "Kokfe'u"
-        },
-        {
-            "code": "5302032017",
-            "name": "To'fen"
-        },
-        {
-            "code": "5302032018",
-            "name": "Taiftob"
-        },
-        {
-            "code": "5302032019",
-            "name": "Iusmolo"
-        },
-        {
-            "code": "5302032020",
-            "name": "To'manat"
-        }
-    ],
-    "530204": [
-        {
-            "code": "5302042001",
-            "name": "Billa"
-        },
-        {
-            "code": "5302042002",
-            "name": "Oelet"
-        },
-        {
-            "code": "5302042004",
-            "name": "Pisan"
-        },
-        {
-            "code": "5302042005",
-            "name": "Mauleum"
-        },
-        {
-            "code": "5302042007",
-            "name": "Nifukiu"
-        },
-        {
-            "code": "5302042008",
-            "name": "Mnelaanen"
-        },
-        {
-            "code": "5302042009",
-            "name": "Teluk"
-        },
-        {
-            "code": "5302042012",
-            "name": "Oe'Ekam"
-        },
-        {
-            "code": "5302042016",
-            "name": "Sini"
-        },
-        {
-            "code": "5302042017",
-            "name": "Tliu"
-        }
-    ],
-    "530205": [
-        {
-            "code": "5302051010",
-            "name": "Niki-Niki"
-        },
-        {
-            "code": "5302052001",
-            "name": "Taebesa"
-        },
-        {
-            "code": "5302052002",
-            "name": "Nakfunu"
-        },
-        {
-            "code": "5302052003",
-            "name": "Oe'ekam"
-        },
-        {
-            "code": "5302052004",
-            "name": "Baki"
-        },
-        {
-            "code": "5302052005",
-            "name": "Tumu"
-        },
-        {
-            "code": "5302052006",
-            "name": "Noebesa"
-        },
-        {
-            "code": "5302052007",
-            "name": "Nobi-Nobi"
-        },
-        {
-            "code": "5302052008",
-            "name": "Sopo"
-        },
-        {
-            "code": "5302052009",
-            "name": "Bone"
-        },
-        {
-            "code": "5302052011",
-            "name": "Maunum Niki-Niki"
-        }
-    ],
-    "530206": [
-        {
-            "code": "5302062001",
-            "name": "Pollo"
-        },
-        {
-            "code": "5302062002",
-            "name": "Oekiu"
-        },
-        {
-            "code": "5302062003",
-            "name": "Oebelo"
-        },
-        {
-            "code": "5302062004",
-            "name": "Noemuke"
-        },
-        {
-            "code": "5302062010",
-            "name": "Kiubaat"
-        },
-        {
-            "code": "5302062011",
-            "name": "Linamnutu"
-        },
-        {
-            "code": "5302062014",
-            "name": "Mio"
-        },
-        {
-            "code": "5302062015",
-            "name": "Batnun"
-        },
-        {
-            "code": "5302062018",
-            "name": "Bena"
-        },
-        {
-            "code": "5302062019",
-            "name": "Eno Neten"
-        }
-    ],
-    "530208": [
-        {
-            "code": "5302082001",
-            "name": "Oinlasi"
-        },
-        {
-            "code": "5302082002",
-            "name": "\"Nunle\"\"u\""
-        },
-        {
-            "code": "5302082003",
-            "name": "Kokoi"
-        },
-        {
-            "code": "5302082004",
-            "name": "Fenun"
-        },
-        {
-            "code": "5302082005",
-            "name": "\"Kuale\"\"u\""
-        },
-        {
-            "code": "5302082006",
-            "name": "Lanu"
-        },
-        {
-            "code": "5302082007",
-            "name": "Sunu"
-        },
-        {
-            "code": "5302082008",
-            "name": "Anin"
-        },
-        {
-            "code": "5302082009",
-            "name": "To'i"
-        },
-        {
-            "code": "5302082010",
-            "name": "Nifuleo"
-        },
-        {
-            "code": "5302082011",
-            "name": "Fatulunu"
-        },
-        {
-            "code": "5302082012",
-            "name": "Fae"
-        },
-        {
-            "code": "5302082013",
-            "name": "Netutnana"
-        }
-    ],
-    "530210": [
-        {
-            "code": "5302102001",
-            "name": "Pilli"
-        },
-        {
-            "code": "5302102002",
-            "name": "Falas"
-        },
-        {
-            "code": "5302102003",
-            "name": "Oenai"
-        },
-        {
-            "code": "5302102004",
-            "name": "Belle"
-        },
-        {
-            "code": "5302102005",
-            "name": "Napi"
-        },
-        {
-            "code": "5302102006",
-            "name": "Boti"
-        },
-        {
-            "code": "5302102007",
-            "name": "Fatuulan"
-        },
-        {
-            "code": "5302102008",
-            "name": "Tesiayofanu"
-        },
-        {
-            "code": "5302102009",
-            "name": "Oinlasi"
-        },
-        {
-            "code": "5302102010",
-            "name": "Nekmese"
-        },
-        {
-            "code": "5302102011",
-            "name": "Eno Napi"
-        },
-        {
-            "code": "5302102012",
-            "name": "Fatukusi"
-        },
-        {
-            "code": "5302102013",
-            "name": "Naile'u"
-        }
-    ],
-    "530214": [
-        {
-            "code": "5302142001",
-            "name": "Benlutu"
-        },
-        {
-            "code": "5302142002",
-            "name": "Boentuka"
-        },
-        {
-            "code": "5302142003",
-            "name": "Hane"
-        },
-        {
-            "code": "5302142004",
-            "name": "Oebobo"
-        },
-        {
-            "code": "5302142005",
-            "name": "Tupan"
-        },
-        {
-            "code": "5302142006",
-            "name": "Tuakole"
-        },
-        {
-            "code": "5302142007",
-            "name": "Oehela"
-        }
-    ],
-    "530215": [
-        {
-            "code": "5302152006",
-            "name": "Sabun"
-        },
-        {
-            "code": "5302152007",
-            "name": "Nano"
-        },
-        {
-            "code": "5302152009",
-            "name": "Boking"
-        },
-        {
-            "code": "5302152010",
-            "name": "Baus"
-        },
-        {
-            "code": "5302152011",
-            "name": "Meusin"
-        },
-        {
-            "code": "5302152013",
-            "name": "Leonmeni"
-        },
-        {
-            "code": "5302152014",
-            "name": "Fatu Manufui"
-        }
-    ],
-    "530216": [
-        {
-            "code": "5302162001",
-            "name": "Toianas"
-        },
-        {
-            "code": "5302162002",
-            "name": "Skinu"
-        },
-        {
-            "code": "5302162003",
-            "name": "Oeleu"
-        },
-        {
-            "code": "5302162004",
-            "name": "Sanbet"
-        },
-        {
-            "code": "5302162005",
-            "name": "Bokong"
-        },
-        {
-            "code": "5302162006",
-            "name": "Tuataum"
-        },
-        {
-            "code": "5302162007",
-            "name": "Lobus"
-        },
-        {
-            "code": "5302162008",
-            "name": "Noeolin"
-        },
-        {
-            "code": "5302162009",
-            "name": "Milli"
-        }
-    ],
-    "530217": [
-        {
-            "code": "5302172001",
-            "name": "OP"
-        },
-        {
-            "code": "5302172002",
-            "name": "Sahan"
-        },
-        {
-            "code": "5302172003",
-            "name": "Nenoat"
-        },
-        {
-            "code": "5302172004",
-            "name": "Haineno"
-        },
-        {
-            "code": "5302172005",
-            "name": "Nunkolo"
-        },
-        {
-            "code": "5302172006",
-            "name": "Saenam"
-        },
-        {
-            "code": "5302172007",
-            "name": "Fat"
-        },
-        {
-            "code": "5302172008",
-            "name": "Haumeni"
-        },
-        {
-            "code": "5302172009",
-            "name": "Putun"
-        }
-    ],
-    "530218": [
-        {
-            "code": "5302182001",
-            "name": "Neke"
-        },
-        {
-            "code": "5302182002",
-            "name": "Pene Utara"
-        },
-        {
-            "code": "5302182003",
-            "name": "Noenoni"
-        },
-        {
-            "code": "5302182004",
-            "name": "Hoi"
-        },
-        {
-            "code": "5302182005",
-            "name": "Niki Niki Un"
-        },
-        {
-            "code": "5302182006",
-            "name": "Oenino"
-        },
-        {
-            "code": "5302182007",
-            "name": "Abi"
-        }
-    ],
-    "530219": [
-        {
-            "code": "5302192001",
-            "name": "Kolbano"
-        },
-        {
-            "code": "5302192002",
-            "name": "Noesiu"
-        },
-        {
-            "code": "5302192003",
-            "name": "Pene Selatan"
-        },
-        {
-            "code": "5302192004",
-            "name": "Oetuke"
-        },
-        {
-            "code": "5302192005",
-            "name": "Babuin"
-        },
-        {
-            "code": "5302192006",
-            "name": "Oeleu"
-        },
-        {
-            "code": "5302192007",
-            "name": "Se'i"
-        },
-        {
-            "code": "5302192008",
-            "name": "Nununamat"
-        },
-        {
-            "code": "5302192009",
-            "name": "Pana"
-        },
-        {
-            "code": "5302192010",
-            "name": "Haunobenak"
-        },
-        {
-            "code": "5302192011",
-            "name": "Ofu"
-        },
-        {
-            "code": "5302192012",
-            "name": "Spaha"
-        }
-    ],
-    "530220": [
-        {
-            "code": "5302202001",
-            "name": "Kot'olin"
-        },
-        {
-            "code": "5302202002",
-            "name": "Nunbena"
-        },
-        {
-            "code": "5302202003",
-            "name": "Fatuat"
-        },
-        {
-            "code": "5302202004",
-            "name": "Hoibeti"
-        },
-        {
-            "code": "5302202005",
-            "name": "Nualunat"
-        },
-        {
-            "code": "5302202006",
-            "name": "Binenok"
-        },
-        {
-            "code": "5302202007",
-            "name": "Ponite"
-        },
-        {
-            "code": "5302202008",
-            "name": "O'obibi"
-        }
-    ],
-    "530221": [
-        {
-            "code": "5302212001",
-            "name": "Kualin"
-        },
-        {
-            "code": "5302212002",
-            "name": "Oni"
-        },
-        {
-            "code": "5302212003",
-            "name": "Nunusunu"
-        },
-        {
-            "code": "5302212004",
-            "name": "Tuapakas"
-        },
-        {
-            "code": "5302212005",
-            "name": "Toineke"
-        },
-        {
-            "code": "5302212006",
-            "name": "Tuafanu"
-        },
-        {
-            "code": "5302212007",
-            "name": "Kiufatu"
-        },
-        {
-            "code": "5302212008",
-            "name": "Oemaman"
-        }
-    ],
-    "530222": [
-        {
-            "code": "5302222001",
-            "name": "Besana"
-        },
-        {
-            "code": "5302222002",
-            "name": "Fatukoko"
-        },
-        {
-            "code": "5302222003",
-            "name": "Koa"
-        },
-        {
-            "code": "5302222004",
-            "name": "Oel Uban"
-        },
-        {
-            "code": "5302222005",
-            "name": "Salbait"
-        }
-    ]
+  "530201": [
+    {
+      "code": "5302011001",
+      "name": "SoE"
+    },
+    {
+      "code": "5302011002",
+      "name": "Cendana"
+    },
+    {
+      "code": "5302011003",
+      "name": "Oebesa"
+    },
+    {
+      "code": "5302011004",
+      "name": "Taubneno"
+    },
+    {
+      "code": "5302011005",
+      "name": "Nonohonis"
+    },
+    {
+      "code": "5302011006",
+      "name": "Karang Sirih"
+    },
+    {
+      "code": "5302011007",
+      "name": "Nunumeu"
+    },
+    {
+      "code": "5302011008",
+      "name": "Kobekamusa"
+    },
+    {
+      "code": "5302011009",
+      "name": "Oe Kefan"
+    },
+    {
+      "code": "5302011010",
+      "name": "Kota Baru"
+    },
+    {
+      "code": "5302011011",
+      "name": "Kampung Baru"
+    },
+    {
+      "code": "5302012012",
+      "name": "Kuatae"
+    },
+    {
+      "code": "5302012013",
+      "name": "Noemeto"
+    }
+  ],
+  "530202": [
+    {
+      "code": "5302022001",
+      "name": "Biloto"
+    },
+    {
+      "code": "5302022003",
+      "name": "Kesetnana"
+    },
+    {
+      "code": "5302022006",
+      "name": "Tuasene"
+    },
+    {
+      "code": "5302022008",
+      "name": "Oinlasi"
+    },
+    {
+      "code": "5302022010",
+      "name": "Bisene"
+    },
+    {
+      "code": "5302022012",
+      "name": "Noinbila"
+    },
+    {
+      "code": "5302022013",
+      "name": "Bikekneno"
+    }
+  ],
+  "530203": [
+    {
+      "code": "5302032001",
+      "name": "O'besi"
+    },
+    {
+      "code": "5302032002",
+      "name": "Eonbesi"
+    },
+    {
+      "code": "5302032003",
+      "name": "Bosen"
+    },
+    {
+      "code": "5302032004",
+      "name": "Sebot"
+    },
+    {
+      "code": "5302032007",
+      "name": "Ajaobaki"
+    },
+    {
+      "code": "5302032008",
+      "name": "Netpala"
+    },
+    {
+      "code": "5302032009",
+      "name": "Tunua"
+    },
+    {
+      "code": "5302032010",
+      "name": "Bijaepunu"
+    },
+    {
+      "code": "5302032011",
+      "name": "Nefokoko"
+    },
+    {
+      "code": "5302032012",
+      "name": "Leloboko"
+    },
+    {
+      "code": "5302032013",
+      "name": "Lelobatan"
+    },
+    {
+      "code": "5302032014",
+      "name": "Halmei"
+    },
+    {
+      "code": "5302032015",
+      "name": "Fatukoto"
+    },
+    {
+      "code": "5302032016",
+      "name": "Kokfe'u"
+    },
+    {
+      "code": "5302032017",
+      "name": "To'fen"
+    },
+    {
+      "code": "5302032018",
+      "name": "Taiftob"
+    },
+    {
+      "code": "5302032019",
+      "name": "Iusmolo"
+    },
+    {
+      "code": "5302032020",
+      "name": "To'manat"
+    }
+  ],
+  "530204": [
+    {
+      "code": "5302042001",
+      "name": "Billa"
+    },
+    {
+      "code": "5302042002",
+      "name": "Oelet"
+    },
+    {
+      "code": "5302042004",
+      "name": "Pisan"
+    },
+    {
+      "code": "5302042005",
+      "name": "Mauleum"
+    },
+    {
+      "code": "5302042007",
+      "name": "Nifukiu"
+    },
+    {
+      "code": "5302042008",
+      "name": "Mnelaanen"
+    },
+    {
+      "code": "5302042009",
+      "name": "Teluk"
+    },
+    {
+      "code": "5302042012",
+      "name": "Oe'Ekam"
+    },
+    {
+      "code": "5302042016",
+      "name": "Sini"
+    },
+    {
+      "code": "5302042017",
+      "name": "Tliu"
+    }
+  ],
+  "530205": [
+    {
+      "code": "5302051010",
+      "name": "Niki-Niki"
+    },
+    {
+      "code": "5302052001",
+      "name": "Taebesa"
+    },
+    {
+      "code": "5302052002",
+      "name": "Nakfunu"
+    },
+    {
+      "code": "5302052003",
+      "name": "Oe'ekam"
+    },
+    {
+      "code": "5302052004",
+      "name": "Baki"
+    },
+    {
+      "code": "5302052005",
+      "name": "Tumu"
+    },
+    {
+      "code": "5302052006",
+      "name": "Noebesa"
+    },
+    {
+      "code": "5302052007",
+      "name": "Nobi-Nobi"
+    },
+    {
+      "code": "5302052008",
+      "name": "Sopo"
+    },
+    {
+      "code": "5302052009",
+      "name": "Bone"
+    },
+    {
+      "code": "5302052011",
+      "name": "Maunum Niki-Niki"
+    }
+  ],
+  "530206": [
+    {
+      "code": "5302062001",
+      "name": "Pollo"
+    },
+    {
+      "code": "5302062002",
+      "name": "Oekiu"
+    },
+    {
+      "code": "5302062003",
+      "name": "Oebelo"
+    },
+    {
+      "code": "5302062004",
+      "name": "Noemuke"
+    },
+    {
+      "code": "5302062010",
+      "name": "Kiubaat"
+    },
+    {
+      "code": "5302062011",
+      "name": "Linamnutu"
+    },
+    {
+      "code": "5302062014",
+      "name": "Mio"
+    },
+    {
+      "code": "5302062015",
+      "name": "Batnun"
+    },
+    {
+      "code": "5302062018",
+      "name": "Bena"
+    },
+    {
+      "code": "5302062019",
+      "name": "Eno Neten"
+    }
+  ],
+  "530207": [
+    {
+      "code": "5302072007",
+      "name": "Tublopo"
+    },
+    {
+      "code": "5302072008",
+      "name": "Nule"
+    },
+    {
+      "code": "5302072009",
+      "name": "Nusa"
+    },
+    {
+      "code": "5302072010",
+      "name": "Mnelalete"
+    },
+    {
+      "code": "5302072011",
+      "name": "Pusu"
+    },
+    {
+      "code": "5302072012",
+      "name": "Tubuhue"
+    },
+    {
+      "code": "5302072013",
+      "name": "Haumeni Baki"
+    },
+    {
+      "code": "5302072015",
+      "name": "Nifukani"
+    }
+  ],
+  "530208": [
+    {
+      "code": "5302082001",
+      "name": "Oinlasi"
+    },
+    {
+      "code": "5302082002",
+      "name": "\"Nunle\"\"u\""
+    },
+    {
+      "code": "5302082003",
+      "name": "Kokoi"
+    },
+    {
+      "code": "5302082004",
+      "name": "Fenun"
+    },
+    {
+      "code": "5302082005",
+      "name": "\"Kuale\"\"u\""
+    },
+    {
+      "code": "5302082006",
+      "name": "Lanu"
+    },
+    {
+      "code": "5302082007",
+      "name": "Sunu"
+    },
+    {
+      "code": "5302082008",
+      "name": "Anin"
+    },
+    {
+      "code": "5302082009",
+      "name": "To'i"
+    },
+    {
+      "code": "5302082010",
+      "name": "Nifuleo"
+    },
+    {
+      "code": "5302082011",
+      "name": "Fatulunu"
+    },
+    {
+      "code": "5302082012",
+      "name": "Fae"
+    },
+    {
+      "code": "5302082013",
+      "name": "Netutnana"
+    }
+  ],
+  "530209": [
+    {
+      "code": "5302092001",
+      "name": "Lilo"
+    },
+    {
+      "code": "5302092002",
+      "name": "Fotilo"
+    },
+    {
+      "code": "5302092003",
+      "name": "Nasi"
+    },
+    {
+      "code": "5302092004",
+      "name": "Snok"
+    },
+    {
+      "code": "5302092005",
+      "name": "Tumu"
+    },
+    {
+      "code": "5302092006",
+      "name": "Fatu Oni"
+    },
+    {
+      "code": "5302092007",
+      "name": "Sono"
+    },
+    {
+      "code": "5302092009",
+      "name": "Tauanas"
+    },
+    {
+      "code": "5302092015",
+      "name": "Muna"
+    }
+  ],
+  "530210": [
+    {
+      "code": "5302102001",
+      "name": "Pilli"
+    },
+    {
+      "code": "5302102002",
+      "name": "Falas"
+    },
+    {
+      "code": "5302102003",
+      "name": "Oenai"
+    },
+    {
+      "code": "5302102004",
+      "name": "Belle"
+    },
+    {
+      "code": "5302102005",
+      "name": "Napi"
+    },
+    {
+      "code": "5302102006",
+      "name": "Boti"
+    },
+    {
+      "code": "5302102007",
+      "name": "Fatuulan"
+    },
+    {
+      "code": "5302102008",
+      "name": "Tesiayofanu"
+    },
+    {
+      "code": "5302102009",
+      "name": "Oinlasi"
+    },
+    {
+      "code": "5302102010",
+      "name": "Nekmese"
+    },
+    {
+      "code": "5302102011",
+      "name": "Eno Napi"
+    },
+    {
+      "code": "5302102012",
+      "name": "Fatukusi"
+    },
+    {
+      "code": "5302102013",
+      "name": "Naile'u"
+    }
+  ],
+  "530211": [
+    {
+      "code": "5302112001",
+      "name": "Olais"
+    },
+    {
+      "code": "5302112002",
+      "name": "Lasi"
+    },
+    {
+      "code": "5302112003",
+      "name": "Kakan"
+    },
+    {
+      "code": "5302112005",
+      "name": "Basmuti"
+    },
+    {
+      "code": "5302112006",
+      "name": "Kusi"
+    },
+    {
+      "code": "5302112007",
+      "name": "Kuanfatu"
+    },
+    {
+      "code": "5302112008",
+      "name": "Kelle"
+    },
+    {
+      "code": "5302112009",
+      "name": "Taupi"
+    },
+    {
+      "code": "5302112010",
+      "name": "Oebo"
+    },
+    {
+      "code": "5302112011",
+      "name": "Kusi Utara"
+    },
+    {
+      "code": "5302112012",
+      "name": "Kelle Tunan"
+    },
+    {
+      "code": "5302112013",
+      "name": "Noebeba"
+    },
+    {
+      "code": "5302112014",
+      "name": "Oehan"
+    }
+  ],
+  "530212": [
+    {
+      "code": "5302122001",
+      "name": "Nenas"
+    },
+    {
+      "code": "5302122004",
+      "name": "Fatumnasi"
+    },
+    {
+      "code": "5302122005",
+      "name": "Nuapin"
+    },
+    {
+      "code": "5302122009",
+      "name": "Kuanoel"
+    },
+    {
+      "code": "5302122010",
+      "name": "Mutis"
+    }
+  ],
+  "530213": [
+    {
+      "code": "5302132001",
+      "name": "Konbaki"
+    },
+    {
+      "code": "5302132002",
+      "name": "Fatumnutu"
+    },
+    {
+      "code": "5302132003",
+      "name": "Bijeli"
+    },
+    {
+      "code": "5302132004",
+      "name": "Loli"
+    },
+    {
+      "code": "5302132005",
+      "name": "Usapimnasi"
+    },
+    {
+      "code": "5302132006",
+      "name": "Mnesatbubuk"
+    },
+    {
+      "code": "5302132007",
+      "name": "Puna"
+    },
+    {
+      "code": "5302132008",
+      "name": "Laob"
+    },
+    {
+      "code": "5302132009",
+      "name": "Oelnunuh"
+    },
+    {
+      "code": "5302132010",
+      "name": "Balu"
+    },
+    {
+      "code": "5302132011",
+      "name": "Sainoni"
+    }
+  ],
+  "530214": [
+    {
+      "code": "5302142001",
+      "name": "Benlutu"
+    },
+    {
+      "code": "5302142002",
+      "name": "Boentuka"
+    },
+    {
+      "code": "5302142003",
+      "name": "Hane"
+    },
+    {
+      "code": "5302142004",
+      "name": "Oebobo"
+    },
+    {
+      "code": "5302142005",
+      "name": "Tupan"
+    },
+    {
+      "code": "5302142006",
+      "name": "Tuakole"
+    },
+    {
+      "code": "5302142007",
+      "name": "Oehela"
+    }
+  ],
+  "530215": [
+    {
+      "code": "5302152006",
+      "name": "Sabun"
+    },
+    {
+      "code": "5302152007",
+      "name": "Nano"
+    },
+    {
+      "code": "5302152009",
+      "name": "Boking"
+    },
+    {
+      "code": "5302152010",
+      "name": "Baus"
+    },
+    {
+      "code": "5302152011",
+      "name": "Meusin"
+    },
+    {
+      "code": "5302152013",
+      "name": "Leonmeni"
+    },
+    {
+      "code": "5302152014",
+      "name": "Fatu Manufui"
+    }
+  ],
+  "530216": [
+    {
+      "code": "5302162001",
+      "name": "Toianas"
+    },
+    {
+      "code": "5302162002",
+      "name": "Skinu"
+    },
+    {
+      "code": "5302162003",
+      "name": "Oeleu"
+    },
+    {
+      "code": "5302162004",
+      "name": "Sanbet"
+    },
+    {
+      "code": "5302162005",
+      "name": "Bokong"
+    },
+    {
+      "code": "5302162006",
+      "name": "Tuataum"
+    },
+    {
+      "code": "5302162007",
+      "name": "Lobus"
+    },
+    {
+      "code": "5302162008",
+      "name": "Noeolin"
+    },
+    {
+      "code": "5302162009",
+      "name": "Milli"
+    }
+  ],
+  "530217": [
+    {
+      "code": "5302172001",
+      "name": "OP"
+    },
+    {
+      "code": "5302172002",
+      "name": "Sahan"
+    },
+    {
+      "code": "5302172003",
+      "name": "Nenoat"
+    },
+    {
+      "code": "5302172004",
+      "name": "Haineno"
+    },
+    {
+      "code": "5302172005",
+      "name": "Nunkolo"
+    },
+    {
+      "code": "5302172006",
+      "name": "Saenam"
+    },
+    {
+      "code": "5302172007",
+      "name": "Fat"
+    },
+    {
+      "code": "5302172008",
+      "name": "Haumeni"
+    },
+    {
+      "code": "5302172009",
+      "name": "Putun"
+    }
+  ],
+  "530218": [
+    {
+      "code": "5302182001",
+      "name": "Neke"
+    },
+    {
+      "code": "5302182002",
+      "name": "Pene Utara"
+    },
+    {
+      "code": "5302182003",
+      "name": "Noenoni"
+    },
+    {
+      "code": "5302182004",
+      "name": "Hoi"
+    },
+    {
+      "code": "5302182005",
+      "name": "Niki Niki Un"
+    },
+    {
+      "code": "5302182006",
+      "name": "Oenino"
+    },
+    {
+      "code": "5302182007",
+      "name": "Abi"
+    }
+  ],
+  "530219": [
+    {
+      "code": "5302192001",
+      "name": "Kolbano"
+    },
+    {
+      "code": "5302192002",
+      "name": "Noesiu"
+    },
+    {
+      "code": "5302192003",
+      "name": "Pene Selatan"
+    },
+    {
+      "code": "5302192004",
+      "name": "Oetuke"
+    },
+    {
+      "code": "5302192005",
+      "name": "Babuin"
+    },
+    {
+      "code": "5302192006",
+      "name": "Oeleu"
+    },
+    {
+      "code": "5302192007",
+      "name": "Se'i"
+    },
+    {
+      "code": "5302192008",
+      "name": "Nununamat"
+    },
+    {
+      "code": "5302192009",
+      "name": "Pana"
+    },
+    {
+      "code": "5302192010",
+      "name": "Haunobenak"
+    },
+    {
+      "code": "5302192011",
+      "name": "Ofu"
+    },
+    {
+      "code": "5302192012",
+      "name": "Spaha"
+    }
+  ],
+  "530220": [
+    {
+      "code": "5302202001",
+      "name": "Kot'olin"
+    },
+    {
+      "code": "5302202002",
+      "name": "Nunbena"
+    },
+    {
+      "code": "5302202003",
+      "name": "Fatuat"
+    },
+    {
+      "code": "5302202004",
+      "name": "Hoibeti"
+    },
+    {
+      "code": "5302202005",
+      "name": "Nualunat"
+    },
+    {
+      "code": "5302202006",
+      "name": "Binenok"
+    },
+    {
+      "code": "5302202007",
+      "name": "Ponite"
+    },
+    {
+      "code": "5302202008",
+      "name": "O'obibi"
+    }
+  ],
+  "530221": [
+    {
+      "code": "5302212001",
+      "name": "Kualin"
+    },
+    {
+      "code": "5302212002",
+      "name": "Oni"
+    },
+    {
+      "code": "5302212003",
+      "name": "Nunusunu"
+    },
+    {
+      "code": "5302212004",
+      "name": "Tuapakas"
+    },
+    {
+      "code": "5302212005",
+      "name": "Toineke"
+    },
+    {
+      "code": "5302212006",
+      "name": "Tuafanu"
+    },
+    {
+      "code": "5302212007",
+      "name": "Kiufatu"
+    },
+    {
+      "code": "5302212008",
+      "name": "Oemaman"
+    }
+  ],
+  "530222": [
+    {
+      "code": "5302222001",
+      "name": "Besana"
+    },
+    {
+      "code": "5302222002",
+      "name": "Fatukoko"
+    },
+    {
+      "code": "5302222003",
+      "name": "Koa"
+    },
+    {
+      "code": "5302222004",
+      "name": "Oel Uban"
+    },
+    {
+      "code": "5302222005",
+      "name": "Salbait"
+    }
+  ],
+  "530223": [
+    {
+      "code": "5302232001",
+      "name": "Lotas"
+    },
+    {
+      "code": "5302232002",
+      "name": "Sabnala"
+    },
+    {
+      "code": "5302232003",
+      "name": "Koloto"
+    },
+    {
+      "code": "5302232004",
+      "name": "Niti"
+    },
+    {
+      "code": "5302232005",
+      "name": "Obaki"
+    },
+    {
+      "code": "5302232006",
+      "name": "Benehe"
+    }
+  ],
+  "530224": [
+    {
+      "code": "5302242001",
+      "name": "Noebana"
+    },
+    {
+      "code": "5302242002",
+      "name": "Fatumnasi"
+    },
+    {
+      "code": "5302242003",
+      "name": "Suni"
+    },
+    {
+      "code": "5302242004",
+      "name": "Mella"
+    },
+    {
+      "code": "5302242005",
+      "name": "Mnelapetu"
+    }
+  ],
+  "530225": [
+    {
+      "code": "5302252001",
+      "name": "Santian"
+    },
+    {
+      "code": "5302252002",
+      "name": "Poli"
+    },
+    {
+      "code": "5302252003",
+      "name": "Manufui"
+    },
+    {
+      "code": "5302252004",
+      "name": "Nenotes"
+    },
+    {
+      "code": "5302252005",
+      "name": "Naifatu"
+    }
+  ],
+  "530226": [
+    {
+      "code": "5302262001",
+      "name": "Naip"
+    },
+    {
+      "code": "5302262002",
+      "name": "Fatutnana"
+    },
+    {
+      "code": "5302262003",
+      "name": "Oepliki"
+    },
+    {
+      "code": "5302262004",
+      "name": "Oe'ekam"
+    },
+    {
+      "code": "5302262005",
+      "name": "Teas"
+    },
+    {
+      "code": "5302262006",
+      "name": "Oebaki"
+    },
+    {
+      "code": "5302262007",
+      "name": "Eno Nabuasa"
+    }
+  ],
+  "530227": [
+    {
+      "code": "5302272001",
+      "name": "Tetaf"
+    },
+    {
+      "code": "5302272002",
+      "name": "Naukae"
+    },
+    {
+      "code": "5302272003",
+      "name": "Supul"
+    },
+    {
+      "code": "5302272004",
+      "name": "Lakat"
+    },
+    {
+      "code": "5302272005",
+      "name": "Enoneontes"
+    },
+    {
+      "code": "5302272006",
+      "name": "O'of"
+    },
+    {
+      "code": "5302272007",
+      "name": "Tubmonas"
+    },
+    {
+      "code": "5302272008",
+      "name": "Oe Oe"
+    }
+  ],
+  "530228": [
+    {
+      "code": "5302282001",
+      "name": "Sillu"
+    },
+    {
+      "code": "5302282002",
+      "name": "Nunukhniti"
+    },
+    {
+      "code": "5302282003",
+      "name": "Kaeneno"
+    },
+    {
+      "code": "5302282004",
+      "name": "Oeleon"
+    },
+    {
+      "code": "5302282005",
+      "name": "Tunis"
+    },
+    {
+      "code": "5302282006",
+      "name": "Bileon"
+    },
+    {
+      "code": "5302282007",
+      "name": "Besle'u"
+    }
+  ],
+  "530229": [
+    {
+      "code": "5302292001",
+      "name": "Fatukopa"
+    },
+    {
+      "code": "5302292002",
+      "name": "Besnam"
+    },
+    {
+      "code": "5302292003",
+      "name": "Taebone"
+    },
+    {
+      "code": "5302292004",
+      "name": "Nunfutu"
+    },
+    {
+      "code": "5302292005",
+      "name": "Kiki"
+    },
+    {
+      "code": "5302292006",
+      "name": "Ello"
+    },
+    {
+      "code": "5302292007",
+      "name": "Nifulinah"
+    }
+  ],
+  "530230": [
+    {
+      "code": "5302302001",
+      "name": "Oelbubuk"
+    },
+    {
+      "code": "5302302002",
+      "name": "Nekemunifeto"
+    },
+    {
+      "code": "5302302003",
+      "name": "Binaus"
+    },
+    {
+      "code": "5302302004",
+      "name": "Oel'Ekam"
+    },
+    {
+      "code": "5302302005",
+      "name": "Kualeu"
+    },
+    {
+      "code": "5302302006",
+      "name": "Pika"
+    }
+  ],
+  "530231": [
+    {
+      "code": "5302312001",
+      "name": "Tobu"
+    },
+    {
+      "code": "5302312002",
+      "name": "Tutem"
+    },
+    {
+      "code": "5302312003",
+      "name": "Tune"
+    },
+    {
+      "code": "5302312004",
+      "name": "Bonleu"
+    },
+    {
+      "code": "5302312005",
+      "name": "Pubasu"
+    },
+    {
+      "code": "5302312006",
+      "name": "Huetalan"
+    },
+    {
+      "code": "5302312007",
+      "name": "Saubalan"
+    },
+    {
+      "code": "5302312008",
+      "name": "Bestobe"
+    }
+  ],
+  "530232": [
+    {
+      "code": "5302322001",
+      "name": "Lill ana"
+    },
+    {
+      "code": "5302322002",
+      "name": "Nunbena"
+    },
+    {
+      "code": "5302322003",
+      "name": "Noebesi"
+    },
+    {
+      "code": "5302322004",
+      "name": "Taneotob"
+    },
+    {
+      "code": "5302322005",
+      "name": "Feto Mone"
+    },
+    {
+      "code": "5302322006",
+      "name": "Tunbes"
+    }
+  ]
 }

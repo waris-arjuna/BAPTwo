@@ -1,296 +1,296 @@
 {
-    "510401": [
-        {
-            "code": "5104012001",
-            "name": "Batubulan"
-        },
-        {
-            "code": "5104012002",
-            "name": "Ketewel"
-        },
-        {
-            "code": "5104012003",
-            "name": "Guwang"
-        },
-        {
-            "code": "5104012004",
-            "name": "Sukawati"
-        },
-        {
-            "code": "5104012005",
-            "name": "Celuk"
-        },
-        {
-            "code": "5104012006",
-            "name": "Singapadu"
-        },
-        {
-            "code": "5104012007",
-            "name": "Batuan"
-        },
-        {
-            "code": "5104012008",
-            "name": "Kemenuh"
-        },
-        {
-            "code": "5104012009",
-            "name": "Batubulan Kangin"
-        },
-        {
-            "code": "5104012010",
-            "name": "Singapadu Tengah"
-        },
-        {
-            "code": "5104012011",
-            "name": "Singapadu Kaler"
-        },
-        {
-            "code": "5104012012",
-            "name": "Batuan Kaler"
-        }
-    ],
-    "510402": [
-        {
-            "code": "5104022001",
-            "name": "Saba"
-        },
-        {
-            "code": "5104022002",
-            "name": "Pering"
-        },
-        {
-            "code": "5104022003",
-            "name": "Keramas"
-        },
-        {
-            "code": "5104022004",
-            "name": "Belega"
-        },
-        {
-            "code": "5104022005",
-            "name": "Blahbatuh"
-        },
-        {
-            "code": "5104022006",
-            "name": "Buruan"
-        },
-        {
-            "code": "5104022007",
-            "name": "Bedulu"
-        },
-        {
-            "code": "5104022008",
-            "name": "Medahan"
-        },
-        {
-            "code": "5104022009",
-            "name": "Bona"
-        }
-    ],
-    "510403": [
-        {
-            "code": "5104031003",
-            "name": "Samplangan"
-        },
-        {
-            "code": "5104031005",
-            "name": "Abianbase"
-        },
-        {
-            "code": "5104031006",
-            "name": "Gianyar"
-        },
-        {
-            "code": "5104031007",
-            "name": "Bitera"
-        },
-        {
-            "code": "5104031008",
-            "name": "Beng"
-        },
-        {
-            "code": "5104032001",
-            "name": "Tulikup"
-        },
-        {
-            "code": "5104032002",
-            "name": "Sidan"
-        },
-        {
-            "code": "5104032004",
-            "name": "Lebih"
-        },
-        {
-            "code": "5104032009",
-            "name": "Bakbakan"
-        },
-        {
-            "code": "5104032010",
-            "name": "Siangan"
-        },
-        {
-            "code": "5104032011",
-            "name": "Suwat"
-        },
-        {
-            "code": "5104032012",
-            "name": "Petak"
-        },
-        {
-            "code": "5104032013",
-            "name": "Serongga"
-        },
-        {
-            "code": "5104032014",
-            "name": "Petak Kaja"
-        },
-        {
-            "code": "5104032015",
-            "name": "Temesi"
-        },
-        {
-            "code": "5104032016",
-            "name": "Sumita"
-        },
-        {
-            "code": "5104032017",
-            "name": "Tegal Tugu"
-        }
-    ],
-    "510404": [
-        {
-            "code": "5104042001",
-            "name": "Pejeng"
-        },
-        {
-            "code": "5104042002",
-            "name": "Sanding"
-        },
-        {
-            "code": "5104042003",
-            "name": "Tampaksiring"
-        },
-        {
-            "code": "5104042004",
-            "name": "Manukaya"
-        },
-        {
-            "code": "5104042005",
-            "name": "Pejeng Kawan"
-        },
-        {
-            "code": "5104042006",
-            "name": "Pejeng Kaja"
-        },
-        {
-            "code": "5104042007",
-            "name": "Pejeng Kangin"
-        },
-        {
-            "code": "5104042008",
-            "name": "Pejeng Kelod"
-        }
-    ],
-    "510405": [
-        {
-            "code": "5104051005",
-            "name": "Ubud"
-        },
-        {
-            "code": "5104052001",
-            "name": "Lodtunduh"
-        },
-        {
-            "code": "5104052002",
-            "name": "Mas"
-        },
-        {
-            "code": "5104052003",
-            "name": "Singakerta"
-        },
-        {
-            "code": "5104052004",
-            "name": "Kedewatan"
-        },
-        {
-            "code": "5104052006",
-            "name": "Peliatan"
-        },
-        {
-            "code": "5104052007",
-            "name": "Petulu"
-        },
-        {
-            "code": "5104052008",
-            "name": "Sayan"
-        }
-    ],
-    "510406": [
-        {
-            "code": "5104062001",
-            "name": "Keliki"
-        },
-        {
-            "code": "5104062002",
-            "name": "Tegallalang"
-        },
-        {
-            "code": "5104062003",
-            "name": "Kenderan"
-        },
-        {
-            "code": "5104062004",
-            "name": "Kedisan"
-        },
-        {
-            "code": "5104062005",
-            "name": "Pupuan"
-        },
-        {
-            "code": "5104062006",
-            "name": "Sebatu"
-        },
-        {
-            "code": "5104062007",
-            "name": "Taro"
-        }
-    ],
-    "510407": [
-        {
-            "code": "5104072001",
-            "name": "Melinggih"
-        },
-        {
-            "code": "5104072002",
-            "name": "Kelusa"
-        },
-        {
-            "code": "5104072003",
-            "name": "Bukian"
-        },
-        {
-            "code": "5104072004",
-            "name": "Puhu"
-        },
-        {
-            "code": "5104072005",
-            "name": "Buahan"
-        },
-        {
-            "code": "5104072006",
-            "name": "Kerta"
-        },
-        {
-            "code": "5104072007",
-            "name": "Melinggih Kelod"
-        },
-        {
-            "code": "5104072008",
-            "name": "Buahan Kaja"
-        },
-        {
-            "code": "5104072009",
-            "name": "Bresela"
-        }
-    ]
+  "510401": [
+    {
+      "code": "5104012001",
+      "name": "Batubulan"
+    },
+    {
+      "code": "5104012002",
+      "name": "Ketewel"
+    },
+    {
+      "code": "5104012003",
+      "name": "Guwang"
+    },
+    {
+      "code": "5104012004",
+      "name": "Sukawati"
+    },
+    {
+      "code": "5104012005",
+      "name": "Celuk"
+    },
+    {
+      "code": "5104012006",
+      "name": "Singapadu"
+    },
+    {
+      "code": "5104012007",
+      "name": "Batuan"
+    },
+    {
+      "code": "5104012008",
+      "name": "Kemenuh"
+    },
+    {
+      "code": "5104012009",
+      "name": "Batubulan Kangin"
+    },
+    {
+      "code": "5104012010",
+      "name": "Singapadu Tengah"
+    },
+    {
+      "code": "5104012011",
+      "name": "Singapadu Kaler"
+    },
+    {
+      "code": "5104012012",
+      "name": "Batuan Kaler"
+    }
+  ],
+  "510402": [
+    {
+      "code": "5104022001",
+      "name": "Saba"
+    },
+    {
+      "code": "5104022002",
+      "name": "Pering"
+    },
+    {
+      "code": "5104022003",
+      "name": "Keramas"
+    },
+    {
+      "code": "5104022004",
+      "name": "Belega"
+    },
+    {
+      "code": "5104022005",
+      "name": "Blahbatuh"
+    },
+    {
+      "code": "5104022006",
+      "name": "Buruan"
+    },
+    {
+      "code": "5104022007",
+      "name": "Bedulu"
+    },
+    {
+      "code": "5104022008",
+      "name": "Medahan"
+    },
+    {
+      "code": "5104022009",
+      "name": "Bona"
+    }
+  ],
+  "510403": [
+    {
+      "code": "5104031003",
+      "name": "Samplangan"
+    },
+    {
+      "code": "5104031005",
+      "name": "Abianbase"
+    },
+    {
+      "code": "5104031006",
+      "name": "Gianyar"
+    },
+    {
+      "code": "5104031007",
+      "name": "Bitera"
+    },
+    {
+      "code": "5104031008",
+      "name": "Beng"
+    },
+    {
+      "code": "5104032001",
+      "name": "Tulikup"
+    },
+    {
+      "code": "5104032002",
+      "name": "Sidan"
+    },
+    {
+      "code": "5104032004",
+      "name": "Lebih"
+    },
+    {
+      "code": "5104032009",
+      "name": "Bakbakan"
+    },
+    {
+      "code": "5104032010",
+      "name": "Siangan"
+    },
+    {
+      "code": "5104032011",
+      "name": "Suwat"
+    },
+    {
+      "code": "5104032012",
+      "name": "Petak"
+    },
+    {
+      "code": "5104032013",
+      "name": "Serongga"
+    },
+    {
+      "code": "5104032014",
+      "name": "Petak Kaja"
+    },
+    {
+      "code": "5104032015",
+      "name": "Temesi"
+    },
+    {
+      "code": "5104032016",
+      "name": "Sumita"
+    },
+    {
+      "code": "5104032017",
+      "name": "Tegal Tugu"
+    }
+  ],
+  "510404": [
+    {
+      "code": "5104042001",
+      "name": "Pejeng"
+    },
+    {
+      "code": "5104042002",
+      "name": "Sanding"
+    },
+    {
+      "code": "5104042003",
+      "name": "Tampaksiring"
+    },
+    {
+      "code": "5104042004",
+      "name": "Manukaya"
+    },
+    {
+      "code": "5104042005",
+      "name": "Pejeng Kawan"
+    },
+    {
+      "code": "5104042006",
+      "name": "Pejeng Kaja"
+    },
+    {
+      "code": "5104042007",
+      "name": "Pejeng Kangin"
+    },
+    {
+      "code": "5104042008",
+      "name": "Pejeng Kelod"
+    }
+  ],
+  "510405": [
+    {
+      "code": "5104051005",
+      "name": "Ubud"
+    },
+    {
+      "code": "5104052001",
+      "name": "Lodtunduh"
+    },
+    {
+      "code": "5104052002",
+      "name": "Mas"
+    },
+    {
+      "code": "5104052003",
+      "name": "Singakerta"
+    },
+    {
+      "code": "5104052004",
+      "name": "Kedewatan"
+    },
+    {
+      "code": "5104052006",
+      "name": "Peliatan"
+    },
+    {
+      "code": "5104052007",
+      "name": "Petulu"
+    },
+    {
+      "code": "5104052008",
+      "name": "Sayan"
+    }
+  ],
+  "510406": [
+    {
+      "code": "5104062001",
+      "name": "Keliki"
+    },
+    {
+      "code": "5104062002",
+      "name": "Tegallalang"
+    },
+    {
+      "code": "5104062003",
+      "name": "Kenderan"
+    },
+    {
+      "code": "5104062004",
+      "name": "Kedisan"
+    },
+    {
+      "code": "5104062005",
+      "name": "Pupuan"
+    },
+    {
+      "code": "5104062006",
+      "name": "Sebatu"
+    },
+    {
+      "code": "5104062007",
+      "name": "Taro"
+    }
+  ],
+  "510407": [
+    {
+      "code": "5104072001",
+      "name": "Melinggih"
+    },
+    {
+      "code": "5104072002",
+      "name": "Kelusa"
+    },
+    {
+      "code": "5104072003",
+      "name": "Bukian"
+    },
+    {
+      "code": "5104072004",
+      "name": "Puhu"
+    },
+    {
+      "code": "5104072005",
+      "name": "Buahan"
+    },
+    {
+      "code": "5104072006",
+      "name": "Kerta"
+    },
+    {
+      "code": "5104072007",
+      "name": "Melinggih Kelod"
+    },
+    {
+      "code": "5104072008",
+      "name": "Buahan Kaja"
+    },
+    {
+      "code": "5104072009",
+      "name": "Bresela"
+    }
+  ]
 }

@@ -1,510 +1,510 @@
 {
-    "520101": [
-        {
-            "code": "5201011001",
-            "name": "Gerung Utara"
-        },
-        {
-            "code": "5201011004",
-            "name": "Dasan Geres"
-        },
-        {
-            "code": "5201011011",
-            "name": "Gerung Selatan"
-        },
-        {
-            "code": "5201012002",
-            "name": "Kebon Ayu"
-        },
-        {
-            "code": "5201012003",
-            "name": "Gapuk"
-        },
-        {
-            "code": "5201012005",
-            "name": "Suka Makmur"
-        },
-        {
-            "code": "5201012006",
-            "name": "Banyu Urip"
-        },
-        {
-            "code": "5201012007",
-            "name": "Babussalam"
-        },
-        {
-            "code": "5201012008",
-            "name": "Dasan Tapen"
-        },
-        {
-            "code": "5201012009",
-            "name": "Beleka"
-        },
-        {
-            "code": "5201012010",
-            "name": "Tempos"
-        },
-        {
-            "code": "5201012012",
-            "name": "Mesanggok"
-        },
-        {
-            "code": "5201012013",
-            "name": "Taman Ayu"
-        },
-        {
-            "code": "5201012014",
-            "name": "Giri Tembesi"
-        }
-    ],
-    "520102": [
-        {
-            "code": "5201022001",
-            "name": "Kediri"
-        },
-        {
-            "code": "5201022002",
-            "name": "Montong Are"
-        },
-        {
-            "code": "5201022003",
-            "name": "Jagaraga Indah"
-        },
-        {
-            "code": "5201022004",
-            "name": "Gelogor"
-        },
-        {
-            "code": "5201022005",
-            "name": "Rumak"
-        },
-        {
-            "code": "5201022006",
-            "name": "Banyumulek"
-        },
-        {
-            "code": "5201022007",
-            "name": "Ombe Baru"
-        },
-        {
-            "code": "5201022008",
-            "name": "Dasan Baru"
-        },
-        {
-            "code": "5201022009",
-            "name": "Kediri Selatan"
-        },
-        {
-            "code": "5201022010",
-            "name": "Lelede"
-        }
-    ],
-    "520103": [
-        {
-            "code": "5201032001",
-            "name": "Lembuak"
-        },
-        {
-            "code": "5201032002",
-            "name": "Nyur Lembang"
-        },
-        {
-            "code": "5201032003",
-            "name": "Peresak"
-        },
-        {
-            "code": "5201032004",
-            "name": "Keru"
-        },
-        {
-            "code": "5201032005",
-            "name": "Batu Kuta"
-        },
-        {
-            "code": "5201032006",
-            "name": "Tanak Beak"
-        },
-        {
-            "code": "5201032007",
-            "name": "Sedau"
-        },
-        {
-            "code": "5201032008",
-            "name": "Suranadi"
-        },
-        {
-            "code": "5201032009",
-            "name": "Selat"
-        },
-        {
-            "code": "5201032010",
-            "name": "Lebah Sempage"
-        },
-        {
-            "code": "5201032011",
-            "name": "Sesaot"
-        },
-        {
-            "code": "5201032012",
-            "name": "Dasan Tereng"
-        },
-        {
-            "code": "5201032013",
-            "name": "Badrain"
-        },
-        {
-            "code": "5201032014",
-            "name": "Sembung"
-        },
-        {
-            "code": "5201032015",
-            "name": "Krama Jaya"
-        },
-        {
-            "code": "5201032016",
-            "name": "Gerimax Indah"
-        },
-        {
-            "code": "5201032017",
-            "name": "Pakuan"
-        },
-        {
-            "code": "5201032018",
-            "name": "Golong"
-        },
-        {
-            "code": "5201032019",
-            "name": "Mekarsari"
-        },
-        {
-            "code": "5201032020",
-            "name": "Buwun Sejati"
-        },
-        {
-            "code": "5201032021",
-            "name": "Narmada"
-        }
-    ],
-    "520107": [
-        {
-            "code": "5201072001",
-            "name": "Sekotong Tengah"
-        },
-        {
-            "code": "5201072002",
-            "name": "Sekotong Barat"
-        },
-        {
-            "code": "5201072003",
-            "name": "Pelangan"
-        },
-        {
-            "code": "5201072004",
-            "name": "Buwun Mas"
-        },
-        {
-            "code": "5201072005",
-            "name": "Kedaro"
-        },
-        {
-            "code": "5201072006",
-            "name": "Batu Putih"
-        },
-        {
-            "code": "5201072007",
-            "name": "Gili Gede Indah"
-        },
-        {
-            "code": "5201072008",
-            "name": "Cendi Manik"
-        },
-        {
-            "code": "5201072009",
-            "name": "Taman Baru"
-        }
-    ],
-    "520108": [
-        {
-            "code": "5201082001",
-            "name": "Bengkel"
-        },
-        {
-            "code": "5201082002",
-            "name": "Merembu"
-        },
-        {
-            "code": "5201082003",
-            "name": "Bagik Polak"
-        },
-        {
-            "code": "5201082004",
-            "name": "Telagawaru"
-        },
-        {
-            "code": "5201082005",
-            "name": "Perampuan"
-        },
-        {
-            "code": "5201082006",
-            "name": "Bajur"
-        },
-        {
-            "code": "5201082007",
-            "name": "Terong Tawah"
-        },
-        {
-            "code": "5201082008",
-            "name": "Kuranji"
-        },
-        {
-            "code": "5201082009",
-            "name": "Karang Bongkot"
-        },
-        {
-            "code": "5201082010",
-            "name": "Labuapi"
-        },
-        {
-            "code": "5201082011",
-            "name": "Bagik Polak Barat"
-        },
-        {
-            "code": "5201082012",
-            "name": "Kuranji Dalang"
-        }
-    ],
-    "520109": [
-        {
-            "code": "5201092001",
-            "name": "Gunungsari"
-        },
-        {
-            "code": "5201092002",
-            "name": "Midang"
-        },
-        {
-            "code": "5201092003",
-            "name": "Sesela"
-        },
-        {
-            "code": "5201092004",
-            "name": "Kekait"
-        },
-        {
-            "code": "5201092005",
-            "name": "Kekeri"
-        },
-        {
-            "code": "5201092006",
-            "name": "Mambalan"
-        },
-        {
-            "code": "5201092007",
-            "name": "Dopang"
-        },
-        {
-            "code": "5201092008",
-            "name": "Penimbung"
-        },
-        {
-            "code": "5201092009",
-            "name": "Taman Sari"
-        },
-        {
-            "code": "5201092010",
-            "name": "Jatisela"
-        },
-        {
-            "code": "5201092011",
-            "name": "Guntur Macan"
-        },
-        {
-            "code": "5201092012",
-            "name": "Mekar Sari"
-        },
-        {
-            "code": "5201092013",
-            "name": "Ranjok"
-        },
-        {
-            "code": "5201092014",
-            "name": "Gelangsar"
-        },
-        {
-            "code": "5201092015",
-            "name": "Jeringo"
-        },
-        {
-            "code": "5201092016",
-            "name": "Bukittinggi"
-        }
-    ],
-    "520112": [
-        {
-            "code": "5201122001",
-            "name": "Lingsar"
-        },
-        {
-            "code": "5201122002",
-            "name": "Batu Kumbung"
-        },
-        {
-            "code": "5201122003",
-            "name": "Sigerongan"
-        },
-        {
-            "code": "5201122004",
-            "name": "Duman"
-        },
-        {
-            "code": "5201122005",
-            "name": "Karang Bayan"
-        },
-        {
-            "code": "5201122006",
-            "name": "Langko"
-        },
-        {
-            "code": "5201122007",
-            "name": "Dasan Geria"
-        },
-        {
-            "code": "5201122008",
-            "name": "Peteluan Indah"
-        },
-        {
-            "code": "5201122009",
-            "name": "Gegerung"
-        },
-        {
-            "code": "5201122010",
-            "name": "Batu Mekar"
-        },
-        {
-            "code": "5201122011",
-            "name": "Giri Madia"
-        },
-        {
-            "code": "5201122012",
-            "name": "Bug-Bug"
-        },
-        {
-            "code": "5201122013",
-            "name": "Gegelang"
-        },
-        {
-            "code": "5201122014",
-            "name": "Saribaye"
-        },
-        {
-            "code": "5201122015",
-            "name": "Gontoran"
-        }
-    ],
-    "520113": [
-        {
-            "code": "5201132001",
-            "name": "Lembar"
-        },
-        {
-            "code": "5201132002",
-            "name": "Jembatan Kembar"
-        },
-        {
-            "code": "5201132003",
-            "name": "Mareje"
-        },
-        {
-            "code": "5201132004",
-            "name": "Sekotong Timur"
-        },
-        {
-            "code": "5201132005",
-            "name": "Labuan Tereng"
-        },
-        {
-            "code": "5201132006",
-            "name": "Jembatan Gantung"
-        },
-        {
-            "code": "5201132007",
-            "name": "Lembar Selatan"
-        },
-        {
-            "code": "5201132008",
-            "name": "Mareje Timur"
-        },
-        {
-            "code": "5201132009",
-            "name": "Jembatan Kembar Timur"
-        },
-        {
-            "code": "5201132010",
-            "name": "Eyat Mayang"
-        }
-    ],
-    "520114": [
-        {
-            "code": "5201142001",
-            "name": "Batulayar"
-        },
-        {
-            "code": "5201142002",
-            "name": "Meninting"
-        },
-        {
-            "code": "5201142003",
-            "name": "Sandik"
-        },
-        {
-            "code": "5201142004",
-            "name": "Lembah Sari"
-        },
-        {
-            "code": "5201142005",
-            "name": "Senteluk"
-        },
-        {
-            "code": "5201142006",
-            "name": "Senggigi"
-        },
-        {
-            "code": "5201142007",
-            "name": "Bengkaung"
-        },
-        {
-            "code": "5201142008",
-            "name": "Pusuk Lestari"
-        },
-        {
-            "code": "5201142009",
-            "name": "Batu Layar Barat"
-        }
-    ],
-    "520115": [
-        {
-            "code": "5201152001",
-            "name": "Kuripan"
-        },
-        {
-            "code": "5201152002",
-            "name": "Jagaraga"
-        },
-        {
-            "code": "5201152003",
-            "name": "Kuripan Utara"
-        },
-        {
-            "code": "5201152004",
-            "name": "Kuripan Selatan"
-        },
-        {
-            "code": "5201152005",
-            "name": "Kuripan Timur"
-        },
-        {
-            "code": "5201152006",
-            "name": "Giri Sasak"
-        }
-    ]
+  "520101": [
+    {
+      "code": "5201011001",
+      "name": "Gerung Utara"
+    },
+    {
+      "code": "5201011004",
+      "name": "Dasan Geres"
+    },
+    {
+      "code": "5201011011",
+      "name": "Gerung Selatan"
+    },
+    {
+      "code": "5201012002",
+      "name": "Kebon Ayu"
+    },
+    {
+      "code": "5201012003",
+      "name": "Gapuk"
+    },
+    {
+      "code": "5201012005",
+      "name": "Suka Makmur"
+    },
+    {
+      "code": "5201012006",
+      "name": "Banyu Urip"
+    },
+    {
+      "code": "5201012007",
+      "name": "Babussalam"
+    },
+    {
+      "code": "5201012008",
+      "name": "Dasan Tapen"
+    },
+    {
+      "code": "5201012009",
+      "name": "Beleka"
+    },
+    {
+      "code": "5201012010",
+      "name": "Tempos"
+    },
+    {
+      "code": "5201012012",
+      "name": "Mesanggok"
+    },
+    {
+      "code": "5201012013",
+      "name": "Taman Ayu"
+    },
+    {
+      "code": "5201012014",
+      "name": "Giri Tembesi"
+    }
+  ],
+  "520102": [
+    {
+      "code": "5201022001",
+      "name": "Kediri"
+    },
+    {
+      "code": "5201022002",
+      "name": "Montong Are"
+    },
+    {
+      "code": "5201022003",
+      "name": "Jagaraga Indah"
+    },
+    {
+      "code": "5201022004",
+      "name": "Gelogor"
+    },
+    {
+      "code": "5201022005",
+      "name": "Rumak"
+    },
+    {
+      "code": "5201022006",
+      "name": "Banyumulek"
+    },
+    {
+      "code": "5201022007",
+      "name": "Ombe Baru"
+    },
+    {
+      "code": "5201022008",
+      "name": "Dasan Baru"
+    },
+    {
+      "code": "5201022009",
+      "name": "Kediri Selatan"
+    },
+    {
+      "code": "5201022010",
+      "name": "Lelede"
+    }
+  ],
+  "520103": [
+    {
+      "code": "5201032001",
+      "name": "Lembuak"
+    },
+    {
+      "code": "5201032002",
+      "name": "Nyur Lembang"
+    },
+    {
+      "code": "5201032003",
+      "name": "Peresak"
+    },
+    {
+      "code": "5201032004",
+      "name": "Keru"
+    },
+    {
+      "code": "5201032005",
+      "name": "Batu Kuta"
+    },
+    {
+      "code": "5201032006",
+      "name": "Tanak Beak"
+    },
+    {
+      "code": "5201032007",
+      "name": "Sedau"
+    },
+    {
+      "code": "5201032008",
+      "name": "Suranadi"
+    },
+    {
+      "code": "5201032009",
+      "name": "Selat"
+    },
+    {
+      "code": "5201032010",
+      "name": "Lebah Sempage"
+    },
+    {
+      "code": "5201032011",
+      "name": "Sesaot"
+    },
+    {
+      "code": "5201032012",
+      "name": "Dasan Tereng"
+    },
+    {
+      "code": "5201032013",
+      "name": "Badrain"
+    },
+    {
+      "code": "5201032014",
+      "name": "Sembung"
+    },
+    {
+      "code": "5201032015",
+      "name": "Krama Jaya"
+    },
+    {
+      "code": "5201032016",
+      "name": "Gerimax Indah"
+    },
+    {
+      "code": "5201032017",
+      "name": "Pakuan"
+    },
+    {
+      "code": "5201032018",
+      "name": "Golong"
+    },
+    {
+      "code": "5201032019",
+      "name": "Mekarsari"
+    },
+    {
+      "code": "5201032020",
+      "name": "Buwun Sejati"
+    },
+    {
+      "code": "5201032021",
+      "name": "Narmada"
+    }
+  ],
+  "520107": [
+    {
+      "code": "5201072001",
+      "name": "Sekotong Tengah"
+    },
+    {
+      "code": "5201072002",
+      "name": "Sekotong Barat"
+    },
+    {
+      "code": "5201072003",
+      "name": "Pelangan"
+    },
+    {
+      "code": "5201072004",
+      "name": "Buwun Mas"
+    },
+    {
+      "code": "5201072005",
+      "name": "Kedaro"
+    },
+    {
+      "code": "5201072006",
+      "name": "Batu Putih"
+    },
+    {
+      "code": "5201072007",
+      "name": "Gili Gede Indah"
+    },
+    {
+      "code": "5201072008",
+      "name": "Cendi Manik"
+    },
+    {
+      "code": "5201072009",
+      "name": "Taman Baru"
+    }
+  ],
+  "520108": [
+    {
+      "code": "5201082001",
+      "name": "Bengkel"
+    },
+    {
+      "code": "5201082002",
+      "name": "Merembu"
+    },
+    {
+      "code": "5201082003",
+      "name": "Bagik Polak"
+    },
+    {
+      "code": "5201082004",
+      "name": "Telagawaru"
+    },
+    {
+      "code": "5201082005",
+      "name": "Perampuan"
+    },
+    {
+      "code": "5201082006",
+      "name": "Bajur"
+    },
+    {
+      "code": "5201082007",
+      "name": "Terong Tawah"
+    },
+    {
+      "code": "5201082008",
+      "name": "Kuranji"
+    },
+    {
+      "code": "5201082009",
+      "name": "Karang Bongkot"
+    },
+    {
+      "code": "5201082010",
+      "name": "Labuapi"
+    },
+    {
+      "code": "5201082011",
+      "name": "Bagik Polak Barat"
+    },
+    {
+      "code": "5201082012",
+      "name": "Kuranji Dalang"
+    }
+  ],
+  "520109": [
+    {
+      "code": "5201092001",
+      "name": "Gunungsari"
+    },
+    {
+      "code": "5201092002",
+      "name": "Midang"
+    },
+    {
+      "code": "5201092003",
+      "name": "Sesela"
+    },
+    {
+      "code": "5201092004",
+      "name": "Kekait"
+    },
+    {
+      "code": "5201092005",
+      "name": "Kekeri"
+    },
+    {
+      "code": "5201092006",
+      "name": "Mambalan"
+    },
+    {
+      "code": "5201092007",
+      "name": "Dopang"
+    },
+    {
+      "code": "5201092008",
+      "name": "Penimbung"
+    },
+    {
+      "code": "5201092009",
+      "name": "Taman Sari"
+    },
+    {
+      "code": "5201092010",
+      "name": "Jatisela"
+    },
+    {
+      "code": "5201092011",
+      "name": "Guntur Macan"
+    },
+    {
+      "code": "5201092012",
+      "name": "Mekar Sari"
+    },
+    {
+      "code": "5201092013",
+      "name": "Ranjok"
+    },
+    {
+      "code": "5201092014",
+      "name": "Gelangsar"
+    },
+    {
+      "code": "5201092015",
+      "name": "Jeringo"
+    },
+    {
+      "code": "5201092016",
+      "name": "Bukittinggi"
+    }
+  ],
+  "520112": [
+    {
+      "code": "5201122001",
+      "name": "Lingsar"
+    },
+    {
+      "code": "5201122002",
+      "name": "Batu Kumbung"
+    },
+    {
+      "code": "5201122003",
+      "name": "Sigerongan"
+    },
+    {
+      "code": "5201122004",
+      "name": "Duman"
+    },
+    {
+      "code": "5201122005",
+      "name": "Karang Bayan"
+    },
+    {
+      "code": "5201122006",
+      "name": "Langko"
+    },
+    {
+      "code": "5201122007",
+      "name": "Dasan Geria"
+    },
+    {
+      "code": "5201122008",
+      "name": "Peteluan Indah"
+    },
+    {
+      "code": "5201122009",
+      "name": "Gegerung"
+    },
+    {
+      "code": "5201122010",
+      "name": "Batu Mekar"
+    },
+    {
+      "code": "5201122011",
+      "name": "Giri Madia"
+    },
+    {
+      "code": "5201122012",
+      "name": "Bug-Bug"
+    },
+    {
+      "code": "5201122013",
+      "name": "Gegelang"
+    },
+    {
+      "code": "5201122014",
+      "name": "Saribaye"
+    },
+    {
+      "code": "5201122015",
+      "name": "Gontoran"
+    }
+  ],
+  "520113": [
+    {
+      "code": "5201132001",
+      "name": "Lembar"
+    },
+    {
+      "code": "5201132002",
+      "name": "Jembatan Kembar"
+    },
+    {
+      "code": "5201132003",
+      "name": "Mareje"
+    },
+    {
+      "code": "5201132004",
+      "name": "Sekotong Timur"
+    },
+    {
+      "code": "5201132005",
+      "name": "Labuan Tereng"
+    },
+    {
+      "code": "5201132006",
+      "name": "Jembatan Gantung"
+    },
+    {
+      "code": "5201132007",
+      "name": "Lembar Selatan"
+    },
+    {
+      "code": "5201132008",
+      "name": "Mareje Timur"
+    },
+    {
+      "code": "5201132009",
+      "name": "Jembatan Kembar Timur"
+    },
+    {
+      "code": "5201132010",
+      "name": "Eyat Mayang"
+    }
+  ],
+  "520114": [
+    {
+      "code": "5201142001",
+      "name": "Batulayar"
+    },
+    {
+      "code": "5201142002",
+      "name": "Meninting"
+    },
+    {
+      "code": "5201142003",
+      "name": "Sandik"
+    },
+    {
+      "code": "5201142004",
+      "name": "Lembah Sari"
+    },
+    {
+      "code": "5201142005",
+      "name": "Senteluk"
+    },
+    {
+      "code": "5201142006",
+      "name": "Senggigi"
+    },
+    {
+      "code": "5201142007",
+      "name": "Bengkaung"
+    },
+    {
+      "code": "5201142008",
+      "name": "Pusuk Lestari"
+    },
+    {
+      "code": "5201142009",
+      "name": "Batu Layar Barat"
+    }
+  ],
+  "520115": [
+    {
+      "code": "5201152001",
+      "name": "Kuripan"
+    },
+    {
+      "code": "5201152002",
+      "name": "Jagaraga"
+    },
+    {
+      "code": "5201152003",
+      "name": "Kuripan Utara"
+    },
+    {
+      "code": "5201152004",
+      "name": "Kuripan Selatan"
+    },
+    {
+      "code": "5201152005",
+      "name": "Kuripan Timur"
+    },
+    {
+      "code": "5201152006",
+      "name": "Giri Sasak"
+    }
+  ]
 }

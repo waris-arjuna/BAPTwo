@@ -1,0 +1,700 @@
+{
+  "611001": [
+    {
+      "code": "6110012001",
+      "name": "Pemuar"
+    },
+    {
+      "code": "6110012002",
+      "name": "Nusa Kenyikap"
+    },
+    {
+      "code": "6110012003",
+      "name": "Batu Ampar"
+    },
+    {
+      "code": "6110012007",
+      "name": "Balai Lagas"
+    },
+    {
+      "code": "6110012008",
+      "name": "Upit"
+    },
+    {
+      "code": "6110012009",
+      "name": "Langan"
+    },
+    {
+      "code": "6110012010",
+      "name": "Batu Buil"
+    },
+    {
+      "code": "6110012011",
+      "name": "Guhung"
+    },
+    {
+      "code": "6110012013",
+      "name": "Batu Nanta"
+    },
+    {
+      "code": "6110012014",
+      "name": "Belonsat"
+    },
+    {
+      "code": "6110012016",
+      "name": "Laman Bukit"
+    },
+    {
+      "code": "6110012017",
+      "name": "Tekaban"
+    },
+    {
+      "code": "6110012019",
+      "name": "Labang"
+    },
+    {
+      "code": "6110012020",
+      "name": "Nanga Pau"
+    },
+    {
+      "code": "6110012021",
+      "name": "Nanga Entebah"
+    },
+    {
+      "code": "6110012023",
+      "name": "Nanga Menunuk"
+    },
+    {
+      "code": "6110012024",
+      "name": "Sepan Tonak"
+    }
+  ],
+  "611002": [
+    {
+      "code": "6110022001",
+      "name": "Tanjung Niaga"
+    },
+    {
+      "code": "6110022002",
+      "name": "Paal"
+    },
+    {
+      "code": "6110022003",
+      "name": "Sidomulyo"
+    },
+    {
+      "code": "6110022004",
+      "name": "Tembawang Panjang"
+    },
+    {
+      "code": "6110022005",
+      "name": "Poring"
+    },
+    {
+      "code": "6110022007",
+      "name": "Nanga Kebebu"
+    },
+    {
+      "code": "6110022008",
+      "name": "Nanga Kayan"
+    },
+    {
+      "code": "6110022013",
+      "name": "Baru"
+    },
+    {
+      "code": "6110022021",
+      "name": "Tanjung Sari"
+    },
+    {
+      "code": "6110022023",
+      "name": "Tanjung Lay"
+    },
+    {
+      "code": "6110022024",
+      "name": "Labai Mandiri"
+    },
+    {
+      "code": "6110022026",
+      "name": "Nusa Pandau"
+    },
+    {
+      "code": "6110022032",
+      "name": "Kelakik"
+    },
+    {
+      "code": "6110022033",
+      "name": "Semadin Lengkong"
+    },
+    {
+      "code": "6110022038",
+      "name": "Tebing Karangan"
+    },
+    {
+      "code": "6110022040",
+      "name": "Kenual"
+    },
+    {
+      "code": "6110022042",
+      "name": "Tanjung Tengang"
+    }
+  ],
+  "611003": [
+    {
+      "code": "6110032001",
+      "name": "Nanga Ella Hilir"
+    },
+    {
+      "code": "6110032002",
+      "name": "Lengkong Nyadom"
+    },
+    {
+      "code": "6110032003",
+      "name": "Nanga Nuak"
+    },
+    {
+      "code": "6110032004",
+      "name": "Nanga Kalan"
+    },
+    {
+      "code": "6110032005",
+      "name": "Nanga Nyuruh"
+    },
+    {
+      "code": "6110032006",
+      "name": "Nanga Kempangai"
+    },
+    {
+      "code": "6110032007",
+      "name": "Kerangan Kora"
+    },
+    {
+      "code": "6110032008",
+      "name": "Penyuguk"
+    },
+    {
+      "code": "6110032009",
+      "name": "Popai"
+    },
+    {
+      "code": "6110032010",
+      "name": "Kahiya"
+    },
+    {
+      "code": "6110032011",
+      "name": "Bemban Permai"
+    },
+    {
+      "code": "6110032012",
+      "name": "Perembang Nyuruh"
+    },
+    {
+      "code": "6110032013",
+      "name": "Sungai Labuk"
+    },
+    {
+      "code": "6110032014",
+      "name": "Sungai Mentoba"
+    },
+    {
+      "code": "6110032015",
+      "name": "Natai Compa"
+    },
+    {
+      "code": "6110032016",
+      "name": "Pelempai Jaya"
+    },
+    {
+      "code": "6110032017",
+      "name": "Domet Permai"
+    },
+    {
+      "code": "6110032018",
+      "name": "Nyangau"
+    },
+    {
+      "code": "6110032019",
+      "name": "Jabai"
+    }
+  ],
+  "611004": [
+    {
+      "code": "6110042001",
+      "name": "Menukung Kota"
+    },
+    {
+      "code": "6110042002",
+      "name": "Nanga Ella Hulu"
+    },
+    {
+      "code": "6110042003",
+      "name": "Sungai Sampuk"
+    },
+    {
+      "code": "6110042004",
+      "name": "Landau Leban"
+    },
+    {
+      "code": "6110042005",
+      "name": "Tanjung Beringin"
+    },
+    {
+      "code": "6110042006",
+      "name": "Nanga Melona Satu"
+    },
+    {
+      "code": "6110042007",
+      "name": "Nanga Siyai"
+    },
+    {
+      "code": "6110042008",
+      "name": "Nanga Mawang Mentatai"
+    },
+    {
+      "code": "6110042009",
+      "name": "Laman Mumbung"
+    },
+    {
+      "code": "6110042010",
+      "name": "Belaban Ella"
+    },
+    {
+      "code": "6110042011",
+      "name": "Pelaik Keruap"
+    },
+    {
+      "code": "6110042012",
+      "name": "Nanga Keruap"
+    },
+    {
+      "code": "6110042013",
+      "name": "Batas Nangka"
+    },
+    {
+      "code": "6110042014",
+      "name": "Nusa Poring"
+    },
+    {
+      "code": "6110042015",
+      "name": "Batu Onap"
+    },
+    {
+      "code": "6110042016",
+      "name": "Batu Badak"
+    },
+    {
+      "code": "6110042017",
+      "name": "Oyah"
+    },
+    {
+      "code": "6110042018",
+      "name": "Lihai"
+    },
+    {
+      "code": "6110042019",
+      "name": "Sampak"
+    }
+  ],
+  "611005": [
+    {
+      "code": "6110052001",
+      "name": "Nanga Sayan"
+    },
+    {
+      "code": "6110052002",
+      "name": "Pekawai"
+    },
+    {
+      "code": "6110052003",
+      "name": "Landau Sandak"
+    },
+    {
+      "code": "6110052004",
+      "name": "Madya Raya"
+    },
+    {
+      "code": "6110052005",
+      "name": "Karangan Purun"
+    },
+    {
+      "code": "6110052006",
+      "name": "Mekar Pelita"
+    },
+    {
+      "code": "6110052007",
+      "name": "Bora"
+    },
+    {
+      "code": "6110052008",
+      "name": "Meta Bersatu"
+    },
+    {
+      "code": "6110052009",
+      "name": "Nanga Kasai"
+    },
+    {
+      "code": "6110052010",
+      "name": "Nanga Kompi"
+    },
+    {
+      "code": "6110052011",
+      "name": "Nanga Mancur"
+    },
+    {
+      "code": "6110052012",
+      "name": "Siling Permai"
+    },
+    {
+      "code": "6110052013",
+      "name": "Lingkar Indah"
+    },
+    {
+      "code": "6110052014",
+      "name": "Sayan Jaya"
+    },
+    {
+      "code": "6110052015",
+      "name": "Nanga Pak"
+    },
+    {
+      "code": "6110052016",
+      "name": "Tumbak Raya"
+    },
+    {
+      "code": "6110052017",
+      "name": "Berobai Permai"
+    },
+    {
+      "code": "6110052018",
+      "name": "Nanga Raku"
+    }
+  ],
+  "611006": [
+    {
+      "code": "6110062001",
+      "name": "Batu Begigi"
+    },
+    {
+      "code": "6110062002",
+      "name": "Loka Jaya"
+    },
+    {
+      "code": "6110062003",
+      "name": "Suka Maju"
+    },
+    {
+      "code": "6110062004",
+      "name": "Bina Jaya"
+    },
+    {
+      "code": "6110062005",
+      "name": "Bina Karya"
+    },
+    {
+      "code": "6110062006",
+      "name": "Madong Jaya"
+    },
+    {
+      "code": "6110062016",
+      "name": "Bata Luar"
+    },
+    {
+      "code": "6110062017",
+      "name": "Maris Permai"
+    },
+    {
+      "code": "6110062019",
+      "name": "Pelita Kenaya"
+    },
+    {
+      "code": "6110062020",
+      "name": "Tanjung Beringin Raya"
+    },
+    {
+      "code": "6110062021",
+      "name": "Tanjung Gunung"
+    },
+    {
+      "code": "6110062022",
+      "name": "Keranjik"
+    }
+  ],
+  "611007": [
+    {
+      "code": "6110072001",
+      "name": "Nanga Sokan"
+    },
+    {
+      "code": "6110072002",
+      "name": "Tanjung Sokan"
+    },
+    {
+      "code": "6110072003",
+      "name": "Sijau"
+    },
+    {
+      "code": "6110072004",
+      "name": "Keluing Taja"
+    },
+    {
+      "code": "6110072005",
+      "name": "Nanga Betangai"
+    },
+    {
+      "code": "6110072006",
+      "name": "Gelata"
+    },
+    {
+      "code": "6110072007",
+      "name": "Nanga Ora"
+    },
+    {
+      "code": "6110072008",
+      "name": "Nanga Libas"
+    },
+    {
+      "code": "6110072009",
+      "name": "Telaga Raya"
+    },
+    {
+      "code": "6110072010",
+      "name": "Teluk Pongkal"
+    },
+    {
+      "code": "6110072011",
+      "name": "Nanga Tangkit"
+    },
+    {
+      "code": "6110072012",
+      "name": "Penyengkuang"
+    },
+    {
+      "code": "6110072013",
+      "name": "Melana"
+    },
+    {
+      "code": "6110072014",
+      "name": "Nanga Potai"
+    },
+    {
+      "code": "6110072015",
+      "name": "Sepakat"
+    },
+    {
+      "code": "6110072016",
+      "name": "Muara Tanjung"
+    },
+    {
+      "code": "6110072017",
+      "name": "Landau Kabu"
+    },
+    {
+      "code": "6110072018",
+      "name": "Tanjung Mahung"
+    }
+  ],
+  "611008": [
+    {
+      "code": "6110082001",
+      "name": "Tekelak"
+    },
+    {
+      "code": "6110082002",
+      "name": "Manding"
+    },
+    {
+      "code": "6110082003",
+      "name": "Nanga Belimbing"
+    },
+    {
+      "code": "6110082004",
+      "name": "Tengkajau"
+    },
+    {
+      "code": "6110082005",
+      "name": "Tanjung Paoh"
+    },
+    {
+      "code": "6110082006",
+      "name": "Nanga Man"
+    },
+    {
+      "code": "6110082007",
+      "name": "Sungai Pinang"
+    },
+    {
+      "code": "6110082008",
+      "name": "Engkurai"
+    },
+    {
+      "code": "6110082009",
+      "name": "Merpak"
+    },
+    {
+      "code": "6110082010",
+      "name": "Senibung"
+    },
+    {
+      "code": "6110082011",
+      "name": "Melamut Bersatu"
+    },
+    {
+      "code": "6110082012",
+      "name": "Natai Panjang"
+    },
+    {
+      "code": "6110082013",
+      "name": "Sungai Raya"
+    },
+    {
+      "code": "6110082014",
+      "name": "Merah Arai"
+    },
+    {
+      "code": "6110082015",
+      "name": "Suka Damai"
+    },
+    {
+      "code": "6110082016",
+      "name": "Tanjung Arak"
+    },
+    {
+      "code": "6110082017",
+      "name": "Melawi Kiri Hilir"
+    },
+    {
+      "code": "6110082018",
+      "name": "Kompas Raya"
+    },
+    {
+      "code": "6110082019",
+      "name": "Kayan Semapau"
+    }
+  ],
+  "611009": [
+    {
+      "code": "6110092001",
+      "name": "Manggala"
+    },
+    {
+      "code": "6110092002",
+      "name": "Senempak"
+    },
+    {
+      "code": "6110092003",
+      "name": "Nanga Pintas"
+    },
+    {
+      "code": "6110092004",
+      "name": "Landau Garong"
+    },
+    {
+      "code": "6110092005",
+      "name": "Bina Jaya"
+    },
+    {
+      "code": "6110092006",
+      "name": "Mandau Baru"
+    },
+    {
+      "code": "6110092007",
+      "name": "Pelinggang"
+    },
+    {
+      "code": "6110092008",
+      "name": "Nyanggai"
+    },
+    {
+      "code": "6110092009",
+      "name": "Sungai Bakah"
+    },
+    {
+      "code": "6110092010",
+      "name": "Bayur Raya"
+    },
+    {
+      "code": "6110092011",
+      "name": "Landau Tubun"
+    },
+    {
+      "code": "6110092012",
+      "name": "Nanga Kelawai"
+    }
+  ],
+  "611010": [
+    {
+      "code": "6110102001",
+      "name": "Tiong Keranjik"
+    },
+    {
+      "code": "6110102002",
+      "name": "Nanga Tikan"
+    },
+    {
+      "code": "6110102003",
+      "name": "Beloyang"
+    },
+    {
+      "code": "6110102004",
+      "name": "Nanga Raya"
+    },
+    {
+      "code": "6110102005",
+      "name": "Junjung Permai"
+    },
+    {
+      "code": "6110102006",
+      "name": "Nanga Keberak"
+    },
+    {
+      "code": "6110102007",
+      "name": "Piawas"
+    },
+    {
+      "code": "6110102008",
+      "name": "Kayu Bunga"
+    }
+  ],
+  "611011": [
+    {
+      "code": "6110112001",
+      "name": "Ulak Muid"
+    },
+    {
+      "code": "6110112002",
+      "name": "Harapan Jaya"
+    },
+    {
+      "code": "6110112003",
+      "name": "Durian Jaya"
+    },
+    {
+      "code": "6110112004",
+      "name": "Togan Baru"
+    },
+    {
+      "code": "6110112005",
+      "name": "Pelita Jaya"
+    },
+    {
+      "code": "6110112006",
+      "name": "Bukit Raya"
+    },
+    {
+      "code": "6110112007",
+      "name": "Lintah Taum"
+    },
+    {
+      "code": "6110112008",
+      "name": "Laja"
+    },
+    {
+      "code": "6110112009",
+      "name": "Keluas Hulu"
+    },
+    {
+      "code": "6110112010",
+      "name": "Ganjang"
+    }
+  ]
+}

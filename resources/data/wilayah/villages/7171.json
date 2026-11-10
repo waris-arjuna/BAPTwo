@@ -1,0 +1,372 @@
+{
+  "717101": [
+    {
+      "code": "7171011001",
+      "name": "Molas"
+    },
+    {
+      "code": "7171011006",
+      "name": "Tongkaina"
+    },
+    {
+      "code": "7171011007",
+      "name": "Meras"
+    },
+    {
+      "code": "7171011008",
+      "name": "Bailang"
+    },
+    {
+      "code": "7171011009",
+      "name": "Pandu"
+    }
+  ],
+  "717102": [
+    {
+      "code": "7171021001",
+      "name": "Bitung Karangria"
+    },
+    {
+      "code": "7171021002",
+      "name": "Tuminting"
+    },
+    {
+      "code": "7171021003",
+      "name": "Tumumpa Satu"
+    },
+    {
+      "code": "7171021004",
+      "name": "Maasing"
+    },
+    {
+      "code": "7171021005",
+      "name": "Sindulang Satu"
+    },
+    {
+      "code": "7171021006",
+      "name": "Sindulang Dua"
+    },
+    {
+      "code": "7171021007",
+      "name": "Islam"
+    },
+    {
+      "code": "7171021008",
+      "name": "Tumumpa Dua"
+    },
+    {
+      "code": "7171021009",
+      "name": "Sumompo"
+    },
+    {
+      "code": "7171021010",
+      "name": "Mahawu"
+    }
+  ],
+  "717103": [
+    {
+      "code": "7171031001",
+      "name": "Singkil Satu"
+    },
+    {
+      "code": "7171031002",
+      "name": "Singkil Dua"
+    },
+    {
+      "code": "7171031003",
+      "name": "Wawonasa"
+    },
+    {
+      "code": "7171031004",
+      "name": "Karame"
+    },
+    {
+      "code": "7171031005",
+      "name": "Ketang Baru"
+    },
+    {
+      "code": "7171031006",
+      "name": "Ternate Baru"
+    },
+    {
+      "code": "7171031007",
+      "name": "Kombos Barat"
+    },
+    {
+      "code": "7171031008",
+      "name": "Kombos Timur"
+    },
+    {
+      "code": "7171031009",
+      "name": "Ternate Tanjung"
+    }
+  ],
+  "717104": [
+    {
+      "code": "7171041001",
+      "name": "Tikala Kumaraka"
+    },
+    {
+      "code": "7171041002",
+      "name": "Mahakeret Timur"
+    },
+    {
+      "code": "7171041003",
+      "name": "Mahakeret Barat"
+    },
+    {
+      "code": "7171041004",
+      "name": "Teling Bawah"
+    },
+    {
+      "code": "7171041005",
+      "name": "Wenang Utara"
+    },
+    {
+      "code": "7171041006",
+      "name": "Wenang Selatan"
+    },
+    {
+      "code": "7171041007",
+      "name": "Pinaesaan"
+    },
+    {
+      "code": "7171041008",
+      "name": "Calaca"
+    },
+    {
+      "code": "7171041009",
+      "name": "Istiqlal"
+    },
+    {
+      "code": "7171041010",
+      "name": "Lawangirung"
+    },
+    {
+      "code": "7171041011",
+      "name": "Komo Luar"
+    },
+    {
+      "code": "7171041012",
+      "name": "Bumi Beringin"
+    }
+  ],
+  "717105": [
+    {
+      "code": "7171051008",
+      "name": "Tikala Baru"
+    },
+    {
+      "code": "7171051009",
+      "name": "Taas"
+    },
+    {
+      "code": "7171051010",
+      "name": "Paal IV"
+    },
+    {
+      "code": "7171051011",
+      "name": "Banjer"
+    },
+    {
+      "code": "7171051012",
+      "name": "Tikala Ares"
+    }
+  ],
+  "717106": [
+    {
+      "code": "7171061001",
+      "name": "Sario Utara"
+    },
+    {
+      "code": "7171061002",
+      "name": "Sario Kotabaru"
+    },
+    {
+      "code": "7171061003",
+      "name": "Sario Tumpaan"
+    },
+    {
+      "code": "7171061004",
+      "name": "Sario"
+    },
+    {
+      "code": "7171061005",
+      "name": "Titiwungan Utara"
+    },
+    {
+      "code": "7171061006",
+      "name": "Titiwungan Selatan"
+    },
+    {
+      "code": "7171061007",
+      "name": "Ranotana"
+    }
+  ],
+  "717107": [
+    {
+      "code": "7171071001",
+      "name": "Wanea"
+    },
+    {
+      "code": "7171071002",
+      "name": "Tanjung Batu"
+    },
+    {
+      "code": "7171071003",
+      "name": "Pakowa"
+    },
+    {
+      "code": "7171071004",
+      "name": "Bumi Nyiur"
+    },
+    {
+      "code": "7171071005",
+      "name": "Ranotana Weru"
+    },
+    {
+      "code": "7171071006",
+      "name": "Teling Atas"
+    },
+    {
+      "code": "7171071007",
+      "name": "Tingkulu"
+    },
+    {
+      "code": "7171071008",
+      "name": "Karombasan Utara"
+    },
+    {
+      "code": "7171071009",
+      "name": "Karombasan Selatan"
+    }
+  ],
+  "717108": [
+    {
+      "code": "7171081001",
+      "name": "Paniki Bawah"
+    },
+    {
+      "code": "7171081002",
+      "name": "Lapangan"
+    },
+    {
+      "code": "7171081003",
+      "name": "Mapanget Barat"
+    },
+    {
+      "code": "7171081004",
+      "name": "Kima Atas"
+    },
+    {
+      "code": "7171081005",
+      "name": "Buha"
+    },
+    {
+      "code": "7171081006",
+      "name": "Bengkol"
+    },
+    {
+      "code": "7171081008",
+      "name": "Kairagi Satu"
+    },
+    {
+      "code": "7171081009",
+      "name": "Kairagi Dua"
+    },
+    {
+      "code": "7171081010",
+      "name": "Paniki Satu"
+    },
+    {
+      "code": "7171081011",
+      "name": "Paniki Dua"
+    }
+  ],
+  "717109": [
+    {
+      "code": "7171091001",
+      "name": "Malalayang Satu"
+    },
+    {
+      "code": "7171091002",
+      "name": "Bahu"
+    },
+    {
+      "code": "7171091003",
+      "name": "Kleak"
+    },
+    {
+      "code": "7171091004",
+      "name": "Batu Kota"
+    },
+    {
+      "code": "7171091005",
+      "name": "Malalayang Satu Timur"
+    },
+    {
+      "code": "7171091006",
+      "name": "Malalayang Satu Barat"
+    },
+    {
+      "code": "7171091007",
+      "name": "Malalayang Dua"
+    },
+    {
+      "code": "7171091008",
+      "name": "Winangun Satu"
+    },
+    {
+      "code": "7171091009",
+      "name": "Winangun Dua"
+    }
+  ],
+  "717110": [
+    {
+      "code": "7171101001",
+      "name": "Bunaken"
+    },
+    {
+      "code": "7171101002",
+      "name": "Manado Tua Satu"
+    },
+    {
+      "code": "7171101003",
+      "name": "Manado Tua Dua"
+    },
+    {
+      "code": "7171101004",
+      "name": "Alung Banua"
+    }
+  ],
+  "717111": [
+    {
+      "code": "7171111001",
+      "name": "Ranomuut"
+    },
+    {
+      "code": "7171111002",
+      "name": "Kairagi Weru"
+    },
+    {
+      "code": "7171111003",
+      "name": "Paal Dua"
+    },
+    {
+      "code": "7171111004",
+      "name": "Perkamil"
+    },
+    {
+      "code": "7171111005",
+      "name": "Malendeng"
+    },
+    {
+      "code": "7171111006",
+      "name": "Dendengan Dalam"
+    },
+    {
+      "code": "7171111007",
+      "name": "Dendengan Luar"
+    }
+  ]
+}

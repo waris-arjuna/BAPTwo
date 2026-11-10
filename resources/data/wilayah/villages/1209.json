@@ -1,206 +1,868 @@
 {
-    "120908": [
-        {
-            "code": "1209082002",
-            "name": "Meranti"
-        },
-        {
-            "code": "1209082004",
-            "name": "Perkebunan Sei Balai"
-        },
-        {
-            "code": "1209082011",
-            "name": "Sei Beluru"
-        },
-        {
-            "code": "1209082012",
-            "name": "Serdang"
-        },
-        {
-            "code": "1209082019",
-            "name": "Gajah"
-        },
-        {
-            "code": "1209082021",
-            "name": "Air Putih"
-        },
-        {
-            "code": "1209082022",
-            "name": "Sukajadi"
-        }
-    ],
-    "120909": [
-        {
-            "code": "1209091001",
-            "name": "Binjai Serbangan"
-        },
-        {
-            "code": "1209092002",
-            "name": "Air Joman"
-        },
-        {
-            "code": "1209092003",
-            "name": "Air Joman Baru"
-        },
-        {
-            "code": "1209092005",
-            "name": "Banjar"
-        },
-        {
-            "code": "1209092007",
-            "name": "Pasar Lembu"
-        },
-        {
-            "code": "1209092008",
-            "name": "Punggulan"
-        },
-        {
-            "code": "1209092012",
-            "name": "Subur"
-        }
-    ],
-    "120910": [
-        {
-            "code": "1209102001",
-            "name": "Asahan Mati"
-        },
-        {
-            "code": "1209102002",
-            "name": "Bagan Asahan"
-        },
-        {
-            "code": "1209102003",
-            "name": "Bagan Asahan Baru"
-        },
-        {
-            "code": "1209102004",
-            "name": "Bagan Asahan Pekan"
-        },
-        {
-            "code": "1209102005",
-            "name": "Kapias Batu VIII"
-        },
-        {
-            "code": "1209102006",
-            "name": "Pematang Sei Baru"
-        },
-        {
-            "code": "1209102007",
-            "name": "Sei Apung"
-        },
-        {
-            "code": "1209102008",
-            "name": "Sei Apung Jaya"
-        }
-    ],
-    "120911": [
-        {
-            "code": "1209112008",
-            "name": "Sei Kepayang Tengah"
-        },
-        {
-            "code": "1209112010",
-            "name": "Sei Kepayang Kanan"
-        },
-        {
-            "code": "1209112011",
-            "name": "Sei Paham"
-        },
-        {
-            "code": "1209112014",
-            "name": "Pertahanan"
-        },
-        {
-            "code": "1209112015",
-            "name": "Perbangunan"
-        },
-        {
-            "code": "1209112016",
-            "name": "Bangun Baru"
-        }
-    ],
-    "120912": [
-        {
-            "code": "1209122002",
-            "name": "Perkebunan Suka Raja"
-        },
-        {
-            "code": "1209122004",
-            "name": "Perkebunan Hessa"
-        },
-        {
-            "code": "1209122006",
-            "name": "Sei Dua Hulu"
-        },
-        {
-            "code": "1209122007",
-            "name": "Sei Lama"
-        },
-        {
-            "code": "1209122008",
-            "name": "Silomlom"
-        },
-        {
-            "code": "1209122009",
-            "name": "Simpang Empat"
-        },
-        {
-            "code": "1209122012",
-            "name": "Sipaku Area"
-        },
-        {
-            "code": "1209122013",
-            "name": "Anjung Ganjang"
-        }
-    ],
-    "120913": [
-        {
-            "code": "1209132001",
-            "name": "Sei Alim Ulu"
-        },
-        {
-            "code": "1209132003",
-            "name": "Pinanggiripan"
-        },
-        {
-            "code": "1209132006",
-            "name": "Perkebunan Pulahan"
-        },
-        {
-            "code": "1209132007",
-            "name": "Hessa Perlompongan"
-        },
-        {
-            "code": "1209132008",
-            "name": "Perkebunan Air Batu I\/II"
-        },
-        {
-            "code": "1209132009",
-            "name": "Perkebunan Air Batu III\/IX"
-        },
-        {
-            "code": "1209132010",
-            "name": "Danau Sijabut"
-        },
-        {
-            "code": "1209132012",
-            "name": "Air Teluk Hessa"
-        },
-        {
-            "code": "1209132013",
-            "name": "Air Genting"
-        },
-        {
-            "code": "1209132014",
-            "name": "Hessa Air Genting"
-        },
-        {
-            "code": "1209132018",
-            "name": "Sijabut Teratai"
-        },
-        {
-            "code": "1209132019",
-            "name": "Pulau Pule"
-        }
-    ]
+  "120908": [
+    {
+      "code": "1209082002",
+      "name": "Meranti"
+    },
+    {
+      "code": "1209082004",
+      "name": "Perkebunan Sei Balai"
+    },
+    {
+      "code": "1209082011",
+      "name": "Sei Beluru"
+    },
+    {
+      "code": "1209082012",
+      "name": "Serdang"
+    },
+    {
+      "code": "1209082019",
+      "name": "Gajah"
+    },
+    {
+      "code": "1209082021",
+      "name": "Air Putih"
+    },
+    {
+      "code": "1209082022",
+      "name": "Sukajadi"
+    }
+  ],
+  "120909": [
+    {
+      "code": "1209091001",
+      "name": "Binjai Serbangan"
+    },
+    {
+      "code": "1209092002",
+      "name": "Air Joman"
+    },
+    {
+      "code": "1209092003",
+      "name": "Air Joman Baru"
+    },
+    {
+      "code": "1209092005",
+      "name": "Banjar"
+    },
+    {
+      "code": "1209092007",
+      "name": "Pasar Lembu"
+    },
+    {
+      "code": "1209092008",
+      "name": "Punggulan"
+    },
+    {
+      "code": "1209092012",
+      "name": "Subur"
+    }
+  ],
+  "120910": [
+    {
+      "code": "1209102001",
+      "name": "Asahan Mati"
+    },
+    {
+      "code": "1209102002",
+      "name": "Bagan Asahan"
+    },
+    {
+      "code": "1209102003",
+      "name": "Bagan Asahan Baru"
+    },
+    {
+      "code": "1209102004",
+      "name": "Bagan Asahan Pekan"
+    },
+    {
+      "code": "1209102005",
+      "name": "Kapias Batu VIII"
+    },
+    {
+      "code": "1209102006",
+      "name": "Pematang Sei Baru"
+    },
+    {
+      "code": "1209102007",
+      "name": "Sei Apung"
+    },
+    {
+      "code": "1209102008",
+      "name": "Sei Apung Jaya"
+    }
+  ],
+  "120911": [
+    {
+      "code": "1209112008",
+      "name": "Sei Kepayang Tengah"
+    },
+    {
+      "code": "1209112010",
+      "name": "Sei Kepayang Kanan"
+    },
+    {
+      "code": "1209112011",
+      "name": "Sei Paham"
+    },
+    {
+      "code": "1209112014",
+      "name": "Pertahanan"
+    },
+    {
+      "code": "1209112015",
+      "name": "Perbangunan"
+    },
+    {
+      "code": "1209112016",
+      "name": "Bangun Baru"
+    }
+  ],
+  "120912": [
+    {
+      "code": "1209122002",
+      "name": "Perkebunan Suka Raja"
+    },
+    {
+      "code": "1209122004",
+      "name": "Perkebunan Hessa"
+    },
+    {
+      "code": "1209122006",
+      "name": "Sei Dua Hulu"
+    },
+    {
+      "code": "1209122007",
+      "name": "Sei Lama"
+    },
+    {
+      "code": "1209122008",
+      "name": "Silomlom"
+    },
+    {
+      "code": "1209122009",
+      "name": "Simpang Empat"
+    },
+    {
+      "code": "1209122012",
+      "name": "Sipaku Area"
+    },
+    {
+      "code": "1209122013",
+      "name": "Anjung Ganjang"
+    }
+  ],
+  "120913": [
+    {
+      "code": "1209132001",
+      "name": "Sei Alim Ulu"
+    },
+    {
+      "code": "1209132003",
+      "name": "Pinanggiripan"
+    },
+    {
+      "code": "1209132006",
+      "name": "Perkebunan Pulahan"
+    },
+    {
+      "code": "1209132007",
+      "name": "Hessa Perlompongan"
+    },
+    {
+      "code": "1209132008",
+      "name": "Perkebunan Air Batu I/II"
+    },
+    {
+      "code": "1209132009",
+      "name": "Perkebunan Air Batu III/IX"
+    },
+    {
+      "code": "1209132010",
+      "name": "Danau Sijabut"
+    },
+    {
+      "code": "1209132012",
+      "name": "Air Teluk Hessa"
+    },
+    {
+      "code": "1209132013",
+      "name": "Air Genting"
+    },
+    {
+      "code": "1209132014",
+      "name": "Hessa Air Genting"
+    },
+    {
+      "code": "1209132018",
+      "name": "Sijabut Teratai"
+    },
+    {
+      "code": "1209132019",
+      "name": "Pulau Pule"
+    }
+  ],
+  "120914": [
+    {
+      "code": "1209142001",
+      "name": "Sei Piring"
+    },
+    {
+      "code": "1209142002",
+      "name": "Pulau Rakyat Tua"
+    },
+    {
+      "code": "1209142003",
+      "name": "Pulau Rakyat Pekan"
+    },
+    {
+      "code": "1209142004",
+      "name": "Orika"
+    },
+    {
+      "code": "1209142005",
+      "name": "Manis"
+    },
+    {
+      "code": "1209142006",
+      "name": "Tunggul 45"
+    },
+    {
+      "code": "1209142007",
+      "name": "Bangun"
+    },
+    {
+      "code": "1209142008",
+      "name": "Persatuan"
+    },
+    {
+      "code": "1209142009",
+      "name": "Padang Mahondang"
+    },
+    {
+      "code": "1209142010",
+      "name": "Ofa Padang Mahondang"
+    },
+    {
+      "code": "1209142011",
+      "name": "Baru"
+    },
+    {
+      "code": "1209142012",
+      "name": "Mekar Sari"
+    }
+  ],
+  "120915": [
+    {
+      "code": "1209152003",
+      "name": "Bandar Pulau Pekan"
+    },
+    {
+      "code": "1209152005",
+      "name": "Buntu Maraja"
+    },
+    {
+      "code": "1209152006",
+      "name": "Gonting Malaha"
+    },
+    {
+      "code": "1209152010",
+      "name": "Padang Pulau"
+    },
+    {
+      "code": "1209152012",
+      "name": "Perkebunan Aek Tarum"
+    },
+    {
+      "code": "1209152016",
+      "name": "Perkebunan Padang Pulau"
+    },
+    {
+      "code": "1209152019",
+      "name": "Huta Rao"
+    },
+    {
+      "code": "1209152020",
+      "name": "Aek Nagali"
+    },
+    {
+      "code": "1209152021",
+      "name": "Gajah Sakti"
+    },
+    {
+      "code": "1209152022",
+      "name": "Gunung Berkat"
+    }
+  ],
+  "120916": [
+    {
+      "code": "1209162001",
+      "name": "Ambalutu"
+    },
+    {
+      "code": "1209162002",
+      "name": "Buntu Pane"
+    },
+    {
+      "code": "1209162003",
+      "name": "Lestari"
+    },
+    {
+      "code": "1209162005",
+      "name": "Prapat Janji"
+    },
+    {
+      "code": "1209162007",
+      "name": "Sei Silau Timur"
+    },
+    {
+      "code": "1209162016",
+      "name": "Sionggang"
+    },
+    {
+      "code": "1209162017",
+      "name": "Mekar Sari"
+    },
+    {
+      "code": "1209162018",
+      "name": "Perkebunan Sei Silau"
+    },
+    {
+      "code": "1209162019",
+      "name": "Karya Ambalutu"
+    }
+  ],
+  "120917": [
+    {
+      "code": "1209172001",
+      "name": "Bandar Pasir Mandoge"
+    },
+    {
+      "code": "1209172002",
+      "name": "Huta Bagasan"
+    },
+    {
+      "code": "1209172003",
+      "name": "Sei Nadoras"
+    },
+    {
+      "code": "1209172004",
+      "name": "Silau Jawa"
+    },
+    {
+      "code": "1209172005",
+      "name": "Suka Makmur"
+    },
+    {
+      "code": "1209172006",
+      "name": "Sei Kopas"
+    },
+    {
+      "code": "1209172007",
+      "name": "Huta Padang"
+    },
+    {
+      "code": "1209172008",
+      "name": "Tomuan Holbung"
+    },
+    {
+      "code": "1209172009",
+      "name": "Gotting Sidodadi"
+    }
+  ],
+  "120918": [
+    {
+      "code": "1209181001",
+      "name": "Aek Loba Pekan"
+    },
+    {
+      "code": "1209182002",
+      "name": "Aek Loba Afd I"
+    },
+    {
+      "code": "1209182003",
+      "name": "Alang Bonbon"
+    },
+    {
+      "code": "1209182009",
+      "name": "Sengon Sari"
+    },
+    {
+      "code": "1209182010",
+      "name": "Lobu Jiur"
+    },
+    {
+      "code": "1209182011",
+      "name": "Rawa Sari"
+    },
+    {
+      "code": "1209182013",
+      "name": "Aek Loba"
+    }
+  ],
+  "120919": [
+    {
+      "code": "1209191001",
+      "name": "Bunut"
+    },
+    {
+      "code": "1209191002",
+      "name": "Bunut Barat"
+    },
+    {
+      "code": "1209191003",
+      "name": "Dadimulyo"
+    },
+    {
+      "code": "1209191004",
+      "name": "Kisaran Barat"
+    },
+    {
+      "code": "1209191005",
+      "name": "Kisaran Baru"
+    },
+    {
+      "code": "1209191006",
+      "name": "Kisaran Kota"
+    },
+    {
+      "code": "1209191007",
+      "name": "Mekar Baru"
+    },
+    {
+      "code": "1209191008",
+      "name": "Sei Renggas"
+    },
+    {
+      "code": "1209191009",
+      "name": "Sendang Sari"
+    },
+    {
+      "code": "1209191010",
+      "name": "Sidodadi"
+    },
+    {
+      "code": "1209191011",
+      "name": "Sidomukti"
+    },
+    {
+      "code": "1209191012",
+      "name": "Tebing Kisaran"
+    },
+    {
+      "code": "1209191013",
+      "name": "Tegal Sari"
+    }
+  ],
+  "120920": [
+    {
+      "code": "1209201001",
+      "name": "Teladan"
+    },
+    {
+      "code": "1209201002",
+      "name": "Siumbut Umbut"
+    },
+    {
+      "code": "1209201003",
+      "name": "Siumbut Baru"
+    },
+    {
+      "code": "1209201004",
+      "name": "Sentang"
+    },
+    {
+      "code": "1209201005",
+      "name": "Selawan"
+    },
+    {
+      "code": "1209201006",
+      "name": "Mutiara"
+    },
+    {
+      "code": "1209201007",
+      "name": "Lestari"
+    },
+    {
+      "code": "1209201008",
+      "name": "Kisaran Timur"
+    },
+    {
+      "code": "1209201009",
+      "name": "Kisaran Naga"
+    },
+    {
+      "code": "1209201010",
+      "name": "Kedai Ledang"
+    },
+    {
+      "code": "1209201011",
+      "name": "Karang Anyer"
+    },
+    {
+      "code": "1209201012",
+      "name": "Gambir Baru"
+    }
+  ],
+  "120921": [
+    {
+      "code": "1209212001",
+      "name": "Aek Songsongan"
+    },
+    {
+      "code": "1209212002",
+      "name": "Perkebunan Bandar Selamat"
+    },
+    {
+      "code": "1209212003",
+      "name": "Perkebunan Bandar Pulau"
+    },
+    {
+      "code": "1209212004",
+      "name": "Aek Bamban"
+    },
+    {
+      "code": "1209212005",
+      "name": "Marjanji Aceh"
+    },
+    {
+      "code": "1209212006",
+      "name": "Lobu Rappa"
+    },
+    {
+      "code": "1209212007",
+      "name": "Tangga"
+    },
+    {
+      "code": "1209212008",
+      "name": "Situnjak"
+    },
+    {
+      "code": "1209212009",
+      "name": "Mekar Marjanji"
+    }
+  ],
+  "120922": [
+    {
+      "code": "1209222001",
+      "name": "Rahuning"
+    },
+    {
+      "code": "1209222002",
+      "name": "Perkebunan Gunung Melayu"
+    },
+    {
+      "code": "1209222003",
+      "name": "Gunung Melayu"
+    },
+    {
+      "code": "1209222004",
+      "name": "Batu Anam"
+    },
+    {
+      "code": "1209222005",
+      "name": "Perkebunan Aek Nagaga"
+    },
+    {
+      "code": "1209222006",
+      "name": "Rahuning I"
+    },
+    {
+      "code": "1209222007",
+      "name": "Rahuning II"
+    }
+  ],
+  "120923": [
+    {
+      "code": "1209232001",
+      "name": "Tanjung Alam"
+    },
+    {
+      "code": "1209232002",
+      "name": "Perkebunan Sei Dadap I/II"
+    },
+    {
+      "code": "1209232003",
+      "name": "Perkebunan Sei Dadap III/IV"
+    },
+    {
+      "code": "1209232004",
+      "name": "Sei Kamah I"
+    },
+    {
+      "code": "1209232005",
+      "name": "Sei Kamah II"
+    },
+    {
+      "code": "1209232006",
+      "name": "Bahung Sibatu-batu"
+    },
+    {
+      "code": "1209232007",
+      "name": "Sei Alim Hasak"
+    },
+    {
+      "code": "1209232008",
+      "name": "Tanjung Asri"
+    },
+    {
+      "code": "1209232009",
+      "name": "Sei Kamah Baru"
+    },
+    {
+      "code": "1209232010",
+      "name": "Pasiran"
+    }
+  ],
+  "120924": [
+    {
+      "code": "1209242001",
+      "name": "Sei Nangka"
+    },
+    {
+      "code": "1209242002",
+      "name": "Sei Jawi-Jawi"
+    },
+    {
+      "code": "1209242003",
+      "name": "Sei Serindan"
+    },
+    {
+      "code": "1209242004",
+      "name": "Sei Tualang Pandau"
+    },
+    {
+      "code": "1209242005",
+      "name": "Sei Lendir"
+    },
+    {
+      "code": "1209242006",
+      "name": "Sei Kepayang Kiri"
+    }
+  ],
+  "120925": [
+    {
+      "code": "1209252001",
+      "name": "Sei Lunang"
+    },
+    {
+      "code": "1209252002",
+      "name": "Sei Pasir"
+    },
+    {
+      "code": "1209252003",
+      "name": "Sei Tempurung"
+    },
+    {
+      "code": "1209252004",
+      "name": "Sarang Helang"
+    },
+    {
+      "code": "1209252005",
+      "name": "Sei Sembilang"
+    }
+  ],
+  "120926": [
+    {
+      "code": "1209262001",
+      "name": "Tinggi Raja"
+    },
+    {
+      "code": "1209262002",
+      "name": "Sumber Harapan"
+    },
+    {
+      "code": "1209262003",
+      "name": "Terusan Tengah"
+    },
+    {
+      "code": "1209262004",
+      "name": "Piasa Ulu"
+    },
+    {
+      "code": "1209262005",
+      "name": "Sidomulyo"
+    },
+    {
+      "code": "1209262006",
+      "name": "Teladan"
+    },
+    {
+      "code": "1209262007",
+      "name": "Padang Sari"
+    }
+  ],
+  "120927": [
+    {
+      "code": "1209272001",
+      "name": "Urung Pane"
+    },
+    {
+      "code": "1209272002",
+      "name": "Sei Silau Tua"
+    },
+    {
+      "code": "1209272003",
+      "name": "Sei Silau Barat"
+    },
+    {
+      "code": "1209272004",
+      "name": "Silau Maraja"
+    },
+    {
+      "code": "1209272005",
+      "name": "Bangun Sari"
+    }
+  ],
+  "120928": [
+    {
+      "code": "1209282001",
+      "name": "Silo Baru"
+    },
+    {
+      "code": "1209282002",
+      "name": "Silo Lama"
+    },
+    {
+      "code": "1209282003",
+      "name": "Silo Bonto"
+    },
+    {
+      "code": "1209282004",
+      "name": "Lubuk Palas"
+    },
+    {
+      "code": "1209282005",
+      "name": "Bangun Sari"
+    }
+  ],
+  "120929": [
+    {
+      "code": "1209292001",
+      "name": "Rawang Lama"
+    },
+    {
+      "code": "1209292002",
+      "name": "Rawang Baru"
+    },
+    {
+      "code": "1209292003",
+      "name": "Rawang Pasar IV"
+    },
+    {
+      "code": "1209292004",
+      "name": "Rawang Pasar V"
+    },
+    {
+      "code": "1209292005",
+      "name": "Pondok Bungur"
+    },
+    {
+      "code": "1209292006",
+      "name": "Panca Arga"
+    },
+    {
+      "code": "1209292007",
+      "name": "Rawang Pasar VI"
+    }
+  ],
+  "120930": [
+    {
+      "code": "1209302001",
+      "name": "Suka Damai"
+    },
+    {
+      "code": "1209302002",
+      "name": "Perhutaan Silau"
+    },
+    {
+      "code": "1209302003",
+      "name": "Tanah Rakyat"
+    },
+    {
+      "code": "1209302004",
+      "name": "Taman Sari"
+    },
+    {
+      "code": "1209302005",
+      "name": "Gedangan"
+    },
+    {
+      "code": "1209302006",
+      "name": "Suka Makmur"
+    },
+    {
+      "code": "1209302007",
+      "name": "Pulo Bandring"
+    },
+    {
+      "code": "1209302008",
+      "name": "Sidomulyo"
+    },
+    {
+      "code": "1209302009",
+      "name": "Suka Damai Barat"
+    },
+    {
+      "code": "1209302010",
+      "name": "Bunut Seberang"
+    }
+  ],
+  "120931": [
+    {
+      "code": "1209312001",
+      "name": "Air Teluk Kiri"
+    },
+    {
+      "code": "1209312002",
+      "name": "Teluk Dalam"
+    },
+    {
+      "code": "1209312003",
+      "name": "Perkebunan Teluk Dalam"
+    },
+    {
+      "code": "1209312004",
+      "name": "Pulau Maria"
+    },
+    {
+      "code": "1209312005",
+      "name": "Pulau Tanjung"
+    },
+    {
+      "code": "1209312006",
+      "name": "Mekar Tanjung"
+    }
+  ],
+  "120932": [
+    {
+      "code": "1209322001",
+      "name": "Aek Bange"
+    },
+    {
+      "code": "1209322002",
+      "name": "Aek Korsik"
+    },
+    {
+      "code": "1209322003",
+      "name": "Aek Ledong"
+    },
+    {
+      "code": "1209322004",
+      "name": "Ledong Barat"
+    },
+    {
+      "code": "1209322005",
+      "name": "Aek Nabuntu"
+    },
+    {
+      "code": "1209322006",
+      "name": "Ledong Timur"
+    },
+    {
+      "code": "1209322007",
+      "name": "Padang Sipirok"
+    }
+  ]
 }

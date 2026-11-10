@@ -1,102 +1,314 @@
 {
-    "210201": [
-        {
-            "code": "2102011003",
-            "name": "Moro"
-        },
-        {
-            "code": "2102011010",
-            "name": "Moro Timur"
-        },
-        {
-            "code": "2102012004",
-            "name": "Pauh"
-        },
-        {
-            "code": "2102012009",
-            "name": "Jang"
-        },
-        {
-            "code": "2102012014",
-            "name": "Pulau Moro"
-        }
-    ],
-    "210202": [
-        {
-            "code": "2102021001",
-            "name": "Tanjung Batu Barat"
-        },
-        {
-            "code": "2102021002",
-            "name": "Tanjung Batu Kota"
-        },
-        {
-            "code": "2102021009",
-            "name": "Gading Sari"
-        },
-        {
-            "code": "2102022004",
-            "name": "Sungai Sebesi"
-        },
-        {
-            "code": "2102022005",
-            "name": "Sungai Ungar"
-        },
-        {
-            "code": "2102022006",
-            "name": "Lubuk"
-        }
-    ],
-    "210203": [
-        {
-            "code": "2102031001",
-            "name": "Tanjung Balai"
-        },
-        {
-            "code": "2102031002",
-            "name": "Teluk Air"
-        },
-        {
-            "code": "2102031003",
-            "name": "Sungai Lakam Timur"
-        },
-        {
-            "code": "2102031006",
-            "name": "Lubuk Semut"
-        },
-        {
-            "code": "2102031007",
-            "name": "Tanjung Balai Kota"
-        },
-        {
-            "code": "2102031008",
-            "name": "Sungai Lakam Barat"
-        }
-    ],
-    "210205": [
-        {
-            "code": "2102051001",
-            "name": "Tebing"
-        },
-        {
-            "code": "2102051002",
-            "name": "Teluk Uma"
-        },
-        {
-            "code": "2102051003",
-            "name": "Kapling"
-        },
-        {
-            "code": "2102051004",
-            "name": "Pamak"
-        },
-        {
-            "code": "2102051008",
-            "name": "Harjosari"
-        },
-        {
-            "code": "2102052007",
-            "name": "Pongkar"
-        }
-    ]
+  "210201": [
+    {
+      "code": "2102011003",
+      "name": "Moro"
+    },
+    {
+      "code": "2102011010",
+      "name": "Moro Timur"
+    },
+    {
+      "code": "2102012004",
+      "name": "Pauh"
+    },
+    {
+      "code": "2102012009",
+      "name": "Jang"
+    },
+    {
+      "code": "2102012014",
+      "name": "Pulau Moro"
+    }
+  ],
+  "210202": [
+    {
+      "code": "2102021001",
+      "name": "Tanjung Batu Barat"
+    },
+    {
+      "code": "2102021002",
+      "name": "Tanjung Batu Kota"
+    },
+    {
+      "code": "2102021009",
+      "name": "Gading Sari"
+    },
+    {
+      "code": "2102022004",
+      "name": "Sungai Sebesi"
+    },
+    {
+      "code": "2102022005",
+      "name": "Sungai Ungar"
+    },
+    {
+      "code": "2102022006",
+      "name": "Lubuk"
+    }
+  ],
+  "210203": [
+    {
+      "code": "2102031001",
+      "name": "Tanjung Balai"
+    },
+    {
+      "code": "2102031002",
+      "name": "Teluk Air"
+    },
+    {
+      "code": "2102031003",
+      "name": "Sungai Lakam Timur"
+    },
+    {
+      "code": "2102031006",
+      "name": "Lubuk Semut"
+    },
+    {
+      "code": "2102031007",
+      "name": "Tanjung Balai Kota"
+    },
+    {
+      "code": "2102031008",
+      "name": "Sungai Lakam Barat"
+    }
+  ],
+  "210204": [
+    {
+      "code": "2102041001",
+      "name": "Meral Kota"
+    },
+    {
+      "code": "2102041002",
+      "name": "Baran Barat"
+    },
+    {
+      "code": "2102041003",
+      "name": "Sungai Raya"
+    },
+    {
+      "code": "2102041006",
+      "name": "Baran Timur"
+    },
+    {
+      "code": "2102041007",
+      "name": "Sungai Pasir"
+    },
+    {
+      "code": "2102041008",
+      "name": "Parit Benut"
+    }
+  ],
+  "210205": [
+    {
+      "code": "2102051001",
+      "name": "Tebing"
+    },
+    {
+      "code": "2102051002",
+      "name": "Teluk Uma"
+    },
+    {
+      "code": "2102051003",
+      "name": "Kapling"
+    },
+    {
+      "code": "2102051004",
+      "name": "Pamak"
+    },
+    {
+      "code": "2102051008",
+      "name": "Harjosari"
+    },
+    {
+      "code": "2102052007",
+      "name": "Pongkar"
+    }
+  ],
+  "210206": [
+    {
+      "code": "2102061001",
+      "name": "Buru"
+    },
+    {
+      "code": "2102061002",
+      "name": "Lubuk Puding"
+    },
+    {
+      "code": "2102062003",
+      "name": "Tanjung Hutan"
+    },
+    {
+      "code": "2102062004",
+      "name": "Tanjung Batu Kecil"
+    }
+  ],
+  "210207": [
+    {
+      "code": "2102071012",
+      "name": "Tanjung Berlian Kota"
+    },
+    {
+      "code": "2102072003",
+      "name": "Sungai Ungar Utara"
+    },
+    {
+      "code": "2102072004",
+      "name": "Teluk Radang"
+    },
+    {
+      "code": "2102072010",
+      "name": "Perayun"
+    },
+    {
+      "code": "2102072013",
+      "name": "Tanjung Berlian Barat"
+    }
+  ],
+  "210208": [
+    {
+      "code": "2102081001",
+      "name": "Sawang"
+    },
+    {
+      "code": "2102082002",
+      "name": "Sawang Selatan"
+    },
+    {
+      "code": "2102082003",
+      "name": "Sawang Laut"
+    },
+    {
+      "code": "2102082004",
+      "name": "Kundur"
+    },
+    {
+      "code": "2102082005",
+      "name": "Gemuruh"
+    }
+  ],
+  "210209": [
+    {
+      "code": "2102092002",
+      "name": "Sanglar"
+    },
+    {
+      "code": "2102092003",
+      "name": "Tanjung Kilang"
+    },
+    {
+      "code": "2102092004",
+      "name": "Semembang"
+    },
+    {
+      "code": "2102092005",
+      "name": "Telaga Tujuh"
+    }
+  ],
+  "210210": [
+    {
+      "code": "2102101001",
+      "name": "Pasir Panjang"
+    },
+    {
+      "code": "2102101002",
+      "name": "Darussalam"
+    },
+    {
+      "code": "2102102003",
+      "name": "Pangke"
+    },
+    {
+      "code": "2102102004",
+      "name": "Pangke Barat"
+    }
+  ],
+  "210211": [
+    {
+      "code": "2102111001",
+      "name": "Alai"
+    },
+    {
+      "code": "2102112002",
+      "name": "Batu Limau"
+    },
+    {
+      "code": "2102112003",
+      "name": "Ngal"
+    },
+    {
+      "code": "2102112004",
+      "name": "Sungai Buluh"
+    }
+  ],
+  "210212": [
+    {
+      "code": "2102122001",
+      "name": "Sebele"
+    },
+    {
+      "code": "2102122002",
+      "name": "Lebuh"
+    },
+    {
+      "code": "2102122003",
+      "name": "Penarah"
+    },
+    {
+      "code": "2102122004",
+      "name": "Sungai Asam"
+    },
+    {
+      "code": "2102122005",
+      "name": "Tebias"
+    },
+    {
+      "code": "2102122006",
+      "name": "Degong"
+    }
+  ],
+  "210213": [
+    {
+      "code": "2102132001",
+      "name": "Parit"
+    },
+    {
+      "code": "2102132002",
+      "name": "Tulang"
+    },
+    {
+      "code": "2102132003",
+      "name": "Selat Mendaun"
+    }
+  ],
+  "210214": [
+    {
+      "code": "2102142001",
+      "name": "Sugie"
+    },
+    {
+      "code": "2102142002",
+      "name": "Niur Permai"
+    },
+    {
+      "code": "2102142003",
+      "name": "Keban"
+    },
+    {
+      "code": "2102142004",
+      "name": "Rawa Jaya"
+    },
+    {
+      "code": "2102142005",
+      "name": "Tanjung Pelanduk"
+    },
+    {
+      "code": "2102142006",
+      "name": "Buluh Patah"
+    },
+    {
+      "code": "2102142007",
+      "name": "Selat Mie"
+    }
+  ]
 }

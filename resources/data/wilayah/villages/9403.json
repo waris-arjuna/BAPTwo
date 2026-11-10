@@ -1,118 +1,934 @@
 {
-    "940320": [
-        {
-            "code": "9403202001",
-            "name": "Uwebutu"
-        },
-        {
-            "code": "9403202002",
-            "name": "Epouto"
-        },
-        {
-            "code": "9403202003",
-            "name": "Tugumo"
-        },
-        {
-            "code": "9403202004",
-            "name": "Tugu Kagomoma"
-        },
-        {
-            "code": "9403202005",
-            "name": "Deiyamo"
-        },
-        {
-            "code": "9403202006",
-            "name": "Miyamo"
-        }
-    ],
-    "940321": [
-        {
-            "code": "9403212001",
-            "name": "Dogomo"
-        },
-        {
-            "code": "9403212002",
-            "name": "Bomong Bugopa"
-        },
-        {
-            "code": "9403212003",
-            "name": "Dangipa"
-        },
-        {
-            "code": "9403212004",
-            "name": "Ondegapa"
-        },
-        {
-            "code": "9403212005",
-            "name": "Sogomo"
-        }
-    ],
-    "940322": [
-        {
-            "code": "9403222001",
-            "name": "Deta"
-        },
-        {
-            "code": "9403222002",
-            "name": "Tuguwai"
-        },
-        {
-            "code": "9403222003",
-            "name": "Tuguwai Moma"
-        },
-        {
-            "code": "9403222004",
-            "name": "Bumaida"
-        },
-        {
-            "code": "9403222005",
-            "name": "Debaiye"
-        },
-        {
-            "code": "9403222007",
-            "name": "Komopa"
-        }
-    ],
-    "940323": [
-        {
-            "code": "9403232001",
-            "name": "Obaipugaida"
-        },
-        {
-            "code": "9403232002",
-            "name": "Eyagitaida"
-        },
-        {
-            "code": "9403232003",
-            "name": "Momageida"
-        },
-        {
-            "code": "9403232004",
-            "name": "Ekauwiya"
-        },
-        {
-            "code": "9403232005",
-            "name": "DebaKebouda"
-        },
-        {
-            "code": "9403232006",
-            "name": "Kaidoutadi"
-        },
-        {
-            "code": "9403232007",
-            "name": "Pogeidimi"
-        },
-        {
-            "code": "9403232008",
-            "name": "Okonobaida"
-        },
-        {
-            "code": "9403232009",
-            "name": "Gakokotu"
-        },
-        {
-            "code": "9403232010",
-            "name": "Kegama"
-        }
-    ]
+  "940301": [
+    {
+      "code": "9403011001",
+      "name": "Enarotali"
+    },
+    {
+      "code": "9403011006",
+      "name": "Timida"
+    },
+    {
+      "code": "9403012002",
+      "name": "Madi"
+    },
+    {
+      "code": "9403012003",
+      "name": "Aikai"
+    },
+    {
+      "code": "9403012004",
+      "name": "Ipakiye"
+    },
+    {
+      "code": "9403012005",
+      "name": "Papato"
+    },
+    {
+      "code": "9403012007",
+      "name": "Kopo"
+    },
+    {
+      "code": "9403012008",
+      "name": "Wage"
+    },
+    {
+      "code": "9403012009",
+      "name": "Kagupago"
+    },
+    {
+      "code": "9403012010",
+      "name": "Oyaigo"
+    },
+    {
+      "code": "9403012011",
+      "name": "Kogekotu"
+    },
+    {
+      "code": "9403012012",
+      "name": "Awabutu"
+    },
+    {
+      "code": "9403012013",
+      "name": "Geko"
+    },
+    {
+      "code": "9403012014",
+      "name": "Mugimeketago"
+    },
+    {
+      "code": "9403012015",
+      "name": "Tuamakida"
+    },
+    {
+      "code": "9403012016",
+      "name": "Geibu"
+    },
+    {
+      "code": "9403012017",
+      "name": "Pudotadi"
+    },
+    {
+      "code": "9403012018",
+      "name": "Kogekotu"
+    },
+    {
+      "code": "9403012019",
+      "name": "Iyaitaka"
+    },
+    {
+      "code": "9403012020",
+      "name": "Ugibutu"
+    },
+    {
+      "code": "9403012021",
+      "name": "Wouyebutu"
+    },
+    {
+      "code": "9403012022",
+      "name": "Amougibutu"
+    },
+    {
+      "code": "9403012023",
+      "name": "Dapaiba"
+    },
+    {
+      "code": "9403012024",
+      "name": "Yukekebo"
+    },
+    {
+      "code": "9403012025",
+      "name": "Agumaida"
+    },
+    {
+      "code": "9403012026",
+      "name": "Yagiyo Butu"
+    }
+  ],
+  "940302": [
+    {
+      "code": "9403021001",
+      "name": "Obano"
+    },
+    {
+      "code": "9403022002",
+      "name": "Kegouda"
+    },
+    {
+      "code": "9403022003",
+      "name": "Totiyo"
+    },
+    {
+      "code": "9403022004",
+      "name": "Beko"
+    },
+    {
+      "code": "9403022005",
+      "name": "Tipakotu"
+    },
+    {
+      "code": "9403022006",
+      "name": "Epo Obano"
+    },
+    {
+      "code": "9403022007",
+      "name": "Towauwo"
+    },
+    {
+      "code": "9403022008",
+      "name": "Wiyogei"
+    },
+    {
+      "code": "9403022009",
+      "name": "Ekinauwo"
+    },
+    {
+      "code": "9403022010",
+      "name": "Kigodide"
+    },
+    {
+      "code": "9403022011",
+      "name": "Putakogopa"
+    },
+    {
+      "code": "9403022012",
+      "name": "Waukotopa"
+    },
+    {
+      "code": "9403022013",
+      "name": "Digiugii"
+    }
+  ],
+  "940303": [
+    {
+      "code": "9403032001",
+      "name": "Toyaimoti"
+    },
+    {
+      "code": "9403032002",
+      "name": "Agapo"
+    },
+    {
+      "code": "9403032003",
+      "name": "Abatadi"
+    },
+    {
+      "code": "9403032005",
+      "name": "Baguwo"
+    },
+    {
+      "code": "9403032006",
+      "name": "Makidini"
+    },
+    {
+      "code": "9403032007",
+      "name": "Tagiya"
+    },
+    {
+      "code": "9403032008",
+      "name": "Emai"
+    },
+    {
+      "code": "9403032009",
+      "name": "Dinubutu"
+    },
+    {
+      "code": "9403032013",
+      "name": "Duwadide"
+    }
+  ],
+  "940304": [
+    {
+      "code": "9403042001",
+      "name": "Bogobaida"
+    },
+    {
+      "code": "9403042002",
+      "name": "Nawipauwo"
+    },
+    {
+      "code": "9403042003",
+      "name": "Madou"
+    },
+    {
+      "code": "9403042004",
+      "name": "Jibudide II"
+    },
+    {
+      "code": "9403042005",
+      "name": "Yumauwo"
+    },
+    {
+      "code": "9403042006",
+      "name": "Kagoudide"
+    },
+    {
+      "code": "9403042007",
+      "name": "Eyapouda"
+    },
+    {
+      "code": "9403042008",
+      "name": "Miyokepi"
+    },
+    {
+      "code": "9403042009",
+      "name": "Obaya Dimi"
+    }
+  ],
+  "940305": [
+    {
+      "code": "9403051001",
+      "name": "Bibida"
+    },
+    {
+      "code": "9403052002",
+      "name": "Ugidimi"
+    },
+    {
+      "code": "9403052003",
+      "name": "Odiyai"
+    },
+    {
+      "code": "9403052004",
+      "name": "Tuwaktu"
+    },
+    {
+      "code": "9403052005",
+      "name": "Kugaisiga"
+    },
+    {
+      "code": "9403052006",
+      "name": "Kolaitaga"
+    },
+    {
+      "code": "9403052007",
+      "name": "Dama-dama"
+    }
+  ],
+  "940306": [
+    {
+      "code": "9403062001",
+      "name": "Duma"
+    },
+    {
+      "code": "9403062002",
+      "name": "Bomosiga"
+    },
+    {
+      "code": "9403062003",
+      "name": "Japesigaiwaka"
+    },
+    {
+      "code": "9403062004",
+      "name": "Waitapa"
+    },
+    {
+      "code": "9403062005",
+      "name": "Duma II"
+    }
+  ],
+  "940307": [
+    {
+      "code": "9403072001",
+      "name": "Todia"
+    },
+    {
+      "code": "9403072002",
+      "name": "Dadou"
+    },
+    {
+      "code": "9403072003",
+      "name": "Bua"
+    },
+    {
+      "code": "9403072004",
+      "name": "Kepi"
+    },
+    {
+      "code": "9403072005",
+      "name": "Wageme"
+    },
+    {
+      "code": "9403072006",
+      "name": "Bugubutu"
+    },
+    {
+      "code": "9403072007",
+      "name": "Dogomouto"
+    },
+    {
+      "code": "9403072008",
+      "name": "Giwo"
+    },
+    {
+      "code": "9403072009",
+      "name": "Nomokepota"
+    },
+    {
+      "code": "9403072010",
+      "name": "Eguai"
+    },
+    {
+      "code": "9403072011",
+      "name": "Degatadi"
+    },
+    {
+      "code": "9403072012",
+      "name": "Uwoyupi"
+    },
+    {
+      "code": "9403072013",
+      "name": "Wegekebo"
+    },
+    {
+      "code": "9403072014",
+      "name": "Yinotadi"
+    }
+  ],
+  "940308": [
+    {
+      "code": "9403082001",
+      "name": "Kebo II"
+    },
+    {
+      "code": "9403082002",
+      "name": "Togowa"
+    },
+    {
+      "code": "9403082003",
+      "name": "Ibumaida"
+    },
+    {
+      "code": "9403082004",
+      "name": "Kagupagu"
+    },
+    {
+      "code": "9403082005",
+      "name": "Ayaigo"
+    },
+    {
+      "code": "9403082006",
+      "name": "Geibu"
+    },
+    {
+      "code": "9403082007",
+      "name": "Yokadagi"
+    },
+    {
+      "code": "9403082008",
+      "name": "Bunaida"
+    },
+    {
+      "code": "9403082009",
+      "name": "Kedege"
+    },
+    {
+      "code": "9403082010",
+      "name": "Uwaiye"
+    },
+    {
+      "code": "9403082011",
+      "name": "Dawawa"
+    },
+    {
+      "code": "9403082012",
+      "name": "Mugime Ketago"
+    },
+    {
+      "code": "9403082013",
+      "name": "Tuwamakida"
+    }
+  ],
+  "940309": [
+    {
+      "code": "9403092001",
+      "name": "Wotai"
+    },
+    {
+      "code": "9403092002",
+      "name": "Keniapa"
+    },
+    {
+      "code": "9403092003",
+      "name": "Memiyaibutu"
+    },
+    {
+      "code": "9403092004",
+      "name": "Dimiya"
+    },
+    {
+      "code": "9403092005",
+      "name": "Udaugi"
+    }
+  ],
+  "940310": [
+    {
+      "code": "9403102001",
+      "name": "Pasir Putih"
+    },
+    {
+      "code": "9403102002",
+      "name": "Geida"
+    },
+    {
+      "code": "9403102003",
+      "name": "Widimeida"
+    },
+    {
+      "code": "9403102004",
+      "name": "Makidimi"
+    },
+    {
+      "code": "9403102005",
+      "name": "Iteuwo"
+    },
+    {
+      "code": "9403102006",
+      "name": "Ogeida"
+    },
+    {
+      "code": "9403102007",
+      "name": "Teguogi Pugaida"
+    },
+    {
+      "code": "9403102008",
+      "name": "Dabamomaida"
+    },
+    {
+      "code": "9403102009",
+      "name": "Baguwo"
+    },
+    {
+      "code": "9403102010",
+      "name": "Keneugi"
+    },
+    {
+      "code": "9403102011",
+      "name": "Debamomaida"
+    },
+    {
+      "code": "9403102012",
+      "name": "Tegougi Pugaida"
+    }
+  ],
+  "940311": [
+    {
+      "code": "9403111006",
+      "name": "Badawo"
+    },
+    {
+      "code": "9403112001",
+      "name": "Uwamani"
+    },
+    {
+      "code": "9403112002",
+      "name": "Muyadebe"
+    },
+    {
+      "code": "9403112003",
+      "name": "Woubutu"
+    },
+    {
+      "code": "9403112004",
+      "name": "Kugitadi"
+    },
+    {
+      "code": "9403112005",
+      "name": "Kobouyagapa"
+    },
+    {
+      "code": "9403112007",
+      "name": "Geko"
+    },
+    {
+      "code": "9403112008",
+      "name": "Kinou"
+    },
+    {
+      "code": "9403112009",
+      "name": "Toko"
+    },
+    {
+      "code": "9403112010",
+      "name": "Yagiyo Butu"
+    },
+    {
+      "code": "9403112011",
+      "name": "Obaidagi"
+    }
+  ],
+  "940312": [
+    {
+      "code": "9403122001",
+      "name": "Dei"
+    },
+    {
+      "code": "9403122002",
+      "name": "Obaiyoweta"
+    },
+    {
+      "code": "9403122003",
+      "name": "Bubugiwo"
+    },
+    {
+      "code": "9403122004",
+      "name": "Yimouto"
+    },
+    {
+      "code": "9403122005",
+      "name": "Tamugauwo"
+    },
+    {
+      "code": "9403122006",
+      "name": "Dagouto"
+    },
+    {
+      "code": "9403122007",
+      "name": "Kopabutu"
+    },
+    {
+      "code": "9403122008",
+      "name": "Boutai"
+    },
+    {
+      "code": "9403122009",
+      "name": "Buka Duwata"
+    }
+  ],
+  "940313": [
+    {
+      "code": "9403132001",
+      "name": "Pugo"
+    },
+    {
+      "code": "9403132002",
+      "name": "Waidide"
+    },
+    {
+      "code": "9403132003",
+      "name": "Kopaidagi"
+    },
+    {
+      "code": "9403132004",
+      "name": "Uwibutu"
+    },
+    {
+      "code": "9403132005",
+      "name": "Tipago"
+    },
+    {
+      "code": "9403132006",
+      "name": "Boba"
+    },
+    {
+      "code": "9403132007",
+      "name": "Iyaidagi"
+    },
+    {
+      "code": "9403132008",
+      "name": "Iyaitadi"
+    },
+    {
+      "code": "9403132009",
+      "name": "Waiepo"
+    }
+  ],
+  "940314": [
+    {
+      "code": "9403142001",
+      "name": "Muyetadi"
+    },
+    {
+      "code": "9403142002",
+      "name": "Mogeya"
+    },
+    {
+      "code": "9403142003",
+      "name": "Epabutu"
+    },
+    {
+      "code": "9403142004",
+      "name": "Tiga Damuto"
+    },
+    {
+      "code": "9403142005",
+      "name": "Bebiyai"
+    },
+    {
+      "code": "9403142006",
+      "name": "Idaiyo"
+    },
+    {
+      "code": "9403142007",
+      "name": "Tinou"
+    },
+    {
+      "code": "9403142008",
+      "name": "Damuto"
+    },
+    {
+      "code": "9403142009",
+      "name": "Obaiyodimi"
+    },
+    {
+      "code": "9403142010",
+      "name": "Amopa"
+    }
+  ],
+  "940315": [
+    {
+      "code": "9403152001",
+      "name": "Okaitadi"
+    },
+    {
+      "code": "9403152002",
+      "name": "Kito"
+    },
+    {
+      "code": "9403152003",
+      "name": "Geiketago"
+    },
+    {
+      "code": "9403152004",
+      "name": "Kadiyai"
+    },
+    {
+      "code": "9403152005",
+      "name": "Uwodege"
+    },
+    {
+      "code": "9403152006",
+      "name": "Digiyo Tuwataida"
+    },
+    {
+      "code": "9403152007",
+      "name": "Itoka"
+    }
+  ],
+  "940316": [
+    {
+      "code": "9403162001",
+      "name": "Ukauwo"
+    },
+    {
+      "code": "9403162002",
+      "name": "Waipa"
+    },
+    {
+      "code": "9403162003",
+      "name": "Ukago"
+    },
+    {
+      "code": "9403162004",
+      "name": "Totiyo"
+    },
+    {
+      "code": "9403162005",
+      "name": "Biyadide"
+    },
+    {
+      "code": "9403162006",
+      "name": "Pekege"
+    }
+  ],
+  "940317": [
+    {
+      "code": "9403172001",
+      "name": "Panibagata"
+    },
+    {
+      "code": "9403172002",
+      "name": "Pugaida"
+    },
+    {
+      "code": "9403172003",
+      "name": "Aweubutu"
+    },
+    {
+      "code": "9403172004",
+      "name": "Ipuwa"
+    },
+    {
+      "code": "9403172005",
+      "name": "Munaiyepa"
+    },
+    {
+      "code": "9403172006",
+      "name": "Kebo I"
+    },
+    {
+      "code": "9403172007",
+      "name": "Payogei"
+    },
+    {
+      "code": "9403172008",
+      "name": "Detauwo"
+    },
+    {
+      "code": "9403172009",
+      "name": "Yaibu"
+    },
+    {
+      "code": "9403172010",
+      "name": "Woyouto"
+    }
+  ],
+  "940318": [
+    {
+      "code": "9403182001",
+      "name": "Youtadi"
+    },
+    {
+      "code": "9403182002",
+      "name": "Uwagi"
+    },
+    {
+      "code": "9403182003",
+      "name": "Ipouwa"
+    },
+    {
+      "code": "9403182004",
+      "name": "Munaiyepa"
+    },
+    {
+      "code": "9403182005",
+      "name": "Dokoneida"
+    },
+    {
+      "code": "9403182006",
+      "name": "Namutadi"
+    }
+  ],
+  "940319": [
+    {
+      "code": "9403192001",
+      "name": "Nomouwodide"
+    },
+    {
+      "code": "9403192002",
+      "name": "Pikokebo"
+    },
+    {
+      "code": "9403192003",
+      "name": "Baya Biru"
+    },
+    {
+      "code": "9403192004",
+      "name": "Jigitopa Timur"
+    },
+    {
+      "code": "9403192005",
+      "name": "Maatadi"
+    },
+    {
+      "code": "9403192006",
+      "name": "Pupekebo"
+    }
+  ],
+  "940320": [
+    {
+      "code": "9403202001",
+      "name": "Uwebutu"
+    },
+    {
+      "code": "9403202002",
+      "name": "Epouto"
+    },
+    {
+      "code": "9403202003",
+      "name": "Tugumo"
+    },
+    {
+      "code": "9403202004",
+      "name": "Tugu Kagomoma"
+    },
+    {
+      "code": "9403202005",
+      "name": "Deiyamo"
+    },
+    {
+      "code": "9403202006",
+      "name": "Miyamo"
+    }
+  ],
+  "940321": [
+    {
+      "code": "9403212001",
+      "name": "Dogomo"
+    },
+    {
+      "code": "9403212002",
+      "name": "Bomong Bugopa"
+    },
+    {
+      "code": "9403212003",
+      "name": "Dangipa"
+    },
+    {
+      "code": "9403212004",
+      "name": "Ondegapa"
+    },
+    {
+      "code": "9403212005",
+      "name": "Sogomo"
+    }
+  ],
+  "940322": [
+    {
+      "code": "9403222001",
+      "name": "Deta"
+    },
+    {
+      "code": "9403222002",
+      "name": "Tuguwai"
+    },
+    {
+      "code": "9403222003",
+      "name": "Tuguwai Moma"
+    },
+    {
+      "code": "9403222004",
+      "name": "Bumaida"
+    },
+    {
+      "code": "9403222005",
+      "name": "Debaiye"
+    },
+    {
+      "code": "9403222007",
+      "name": "Komopa"
+    }
+  ],
+  "940323": [
+    {
+      "code": "9403232001",
+      "name": "Obaipugaida"
+    },
+    {
+      "code": "9403232002",
+      "name": "Eyagitaida"
+    },
+    {
+      "code": "9403232003",
+      "name": "Momageida"
+    },
+    {
+      "code": "9403232004",
+      "name": "Ekauwiya"
+    },
+    {
+      "code": "9403232005",
+      "name": "DebaKebouda"
+    },
+    {
+      "code": "9403232006",
+      "name": "Kaidoutadi"
+    },
+    {
+      "code": "9403232007",
+      "name": "Pogeidimi"
+    },
+    {
+      "code": "9403232008",
+      "name": "Okonobaida"
+    },
+    {
+      "code": "9403232009",
+      "name": "Gakokotu"
+    },
+    {
+      "code": "9403232010",
+      "name": "Kegama"
+    }
+  ],
+  "940324": [
+    {
+      "code": "9403242001",
+      "name": "Yabomaida"
+    },
+    {
+      "code": "9403242002",
+      "name": "Akoubaida"
+    },
+    {
+      "code": "9403242003",
+      "name": "Dauwagu"
+    },
+    {
+      "code": "9403242004",
+      "name": "Ganeyetaka"
+    },
+    {
+      "code": "9403242005",
+      "name": "Yabomaida II"
+    },
+    {
+      "code": "9403242006",
+      "name": "Bodatadi"
+    },
+    {
+      "code": "9403242007",
+      "name": "Ibouwagu"
+    }
+  ]
 }

@@ -1,724 +1,724 @@
 {
-    "531801": [
-        {
-            "code": "5318012001",
-            "name": "Bondo Boghila"
-        },
-        {
-            "code": "5318012002",
-            "name": "Lete Konda"
-        },
-        {
-            "code": "5318012003",
-            "name": "Karuni"
-        },
-        {
-            "code": "5318012004",
-            "name": "Totok"
-        },
-        {
-            "code": "5318012009",
-            "name": "Rama Dana"
-        },
-        {
-            "code": "5318012010",
-            "name": "Wee Mananda"
-        },
-        {
-            "code": "5318012013",
-            "name": "Pogo Tena"
-        },
-        {
-            "code": "5318012014",
-            "name": "Payola Umbu"
-        },
-        {
-            "code": "5318012015",
-            "name": "Wee Kambala"
-        },
-        {
-            "code": "5318012016",
-            "name": "Loko Kalada"
-        },
-        {
-            "code": "5318012017",
-            "name": "Lete Konda Selatan"
-        }
-    ],
-    "531802": [
-        {
-            "code": "5318022001",
-            "name": "Mali Mada"
-        },
-        {
-            "code": "5318022002",
-            "name": "Wano Talla"
-        },
-        {
-            "code": "5318022003",
-            "name": "Wee Paboba"
-        },
-        {
-            "code": "5318022004",
-            "name": "Mata Loko"
-        },
-        {
-            "code": "5318022005",
-            "name": "Wee Namba"
-        },
-        {
-            "code": "5318022006",
-            "name": "Puu Potto"
-        },
-        {
-            "code": "5318022007",
-            "name": "Bodo Ponda"
-        },
-        {
-            "code": "5318022008",
-            "name": "Reda Wano"
-        },
-        {
-            "code": "5318022009",
-            "name": "Odi Paurata"
-        },
-        {
-            "code": "5318022010",
-            "name": "Pandua Tana"
-        },
-        {
-            "code": "5318022011",
-            "name": "Djela Manu"
-        },
-        {
-            "code": "5318022012",
-            "name": "Mawo Maliti"
-        }
-    ],
-    "531803": [
-        {
-            "code": "5318032001",
-            "name": "Kalembu Ndara Mane"
-        },
-        {
-            "code": "5318032002",
-            "name": "Tema Tana"
-        },
-        {
-            "code": "5318032005",
-            "name": "Mareda Kalada"
-        },
-        {
-            "code": "5318032006",
-            "name": "Pada Eweta"
-        },
-        {
-            "code": "5318032012",
-            "name": "Wee Limbu"
-        },
-        {
-            "code": "5318032013",
-            "name": "Lete Kamouna"
-        },
-        {
-            "code": "5318032014",
-            "name": "Mata Pyawu"
-        },
-        {
-            "code": "5318032015",
-            "name": "Wee Lima"
-        },
-        {
-            "code": "5318032018",
-            "name": "Dikira"
-        },
-        {
-            "code": "5318032020",
-            "name": "Dangga Mangu"
-        },
-        {
-            "code": "5318032021",
-            "name": "Mainda Ole"
-        },
-        {
-            "code": "5318032022",
-            "name": "Kadi Wano"
-        },
-        {
-            "code": "5318032023",
-            "name": "Nyura Lele"
-        },
-        {
-            "code": "5318032024",
-            "name": "Lele Maya"
-        },
-        {
-            "code": "5318032025",
-            "name": "Maliti Dari"
-        },
-        {
-            "code": "5318032026",
-            "name": "Mawo Dana"
-        },
-        {
-            "code": "5318032027",
-            "name": "Dede Pada"
-        },
-        {
-            "code": "5318032028",
-            "name": "Mata Wee Lima"
-        },
-        {
-            "code": "5318032029",
-            "name": "Kadi Wone"
-        }
-    ],
-    "531804": [
-        {
-            "code": "5318042001",
-            "name": "Waimangura"
-        },
-        {
-            "code": "5318042002",
-            "name": "Kalembu Weri"
-        },
-        {
-            "code": "5318042003",
-            "name": "Wali Ate"
-        },
-        {
-            "code": "5318042004",
-            "name": "Kabali Dana"
-        },
-        {
-            "code": "5318042005",
-            "name": "Wee Kombaka"
-        },
-        {
-            "code": "5318042006",
-            "name": "Marokota"
-        },
-        {
-            "code": "5318042007",
-            "name": "Watu Labara"
-        },
-        {
-            "code": "5318042008",
-            "name": "Kalimbu Tillu"
-        },
-        {
-            "code": "5318042011",
-            "name": "Menne Ate"
-        },
-        {
-            "code": "5318042012",
-            "name": "Reda Pada"
-        },
-        {
-            "code": "5318042013",
-            "name": "Raba Ege"
-        },
-        {
-            "code": "5318042015",
-            "name": "Kalaki Kambe"
-        },
-        {
-            "code": "5318042016",
-            "name": "Kalembu Kanaika"
-        },
-        {
-            "code": "5318042017",
-            "name": "Laga Lete"
-        },
-        {
-            "code": "5318042018",
-            "name": "Wee Kura"
-        },
-        {
-            "code": "5318042019",
-            "name": "Lua Koba"
-        },
-        {
-            "code": "5318042020",
-            "name": "Tawo Rara"
-        },
-        {
-            "code": "5318042021",
-            "name": "Sangu Ate"
-        },
-        {
-            "code": "5318042022",
-            "name": "Lolo Ole"
-        },
-        {
-            "code": "5318042023",
-            "name": "Pero"
-        }
-    ],
-    "531805": [
-        {
-            "code": "5318052001",
-            "name": "Buru Deilo"
-        },
-        {
-            "code": "5318052002",
-            "name": "Weri Lolo"
-        },
-        {
-            "code": "5318052003",
-            "name": "Buru Kaghu"
-        },
-        {
-            "code": "5318052004",
-            "name": "Denduka"
-        },
-        {
-            "code": "5318052005",
-            "name": "Bondo Bela"
-        },
-        {
-            "code": "5318052006",
-            "name": "Delo"
-        },
-        {
-            "code": "5318052007",
-            "name": "Tena Teke"
-        },
-        {
-            "code": "5318052008",
-            "name": "Bondo Ukka"
-        },
-        {
-            "code": "5318052009",
-            "name": "Umbu Wangu"
-        },
-        {
-            "code": "5318052010",
-            "name": "Milla Ate"
-        },
-        {
-            "code": "5318052011",
-            "name": "Rita Baru"
-        },
-        {
-            "code": "5318052012",
-            "name": "Mandungo"
-        },
-        {
-            "code": "5318052013",
-            "name": "Wee Wulla"
-        },
-        {
-            "code": "5318052014",
-            "name": "Wee Baghe"
-        }
-    ],
-    "531806": [
-        {
-            "code": "5318062001",
-            "name": "Dinjo"
-        },
-        {
-            "code": "5318062002",
-            "name": "Lete Loko"
-        },
-        {
-            "code": "5318062003",
-            "name": "Walla Ndimu"
-        },
-        {
-            "code": "5318062006",
-            "name": "Waikadada"
-        },
-        {
-            "code": "5318062010",
-            "name": "Rada Loko"
-        },
-        {
-            "code": "5318062011",
-            "name": "Mata Kapore"
-        },
-        {
-            "code": "5318062012",
-            "name": "Umbu Ngedo"
-        },
-        {
-            "code": "5318062014",
-            "name": "Waimakaha"
-        },
-        {
-            "code": "5318062015",
-            "name": "Waimaringi"
-        },
-        {
-            "code": "5318062016",
-            "name": "Tana Mete"
-        },
-        {
-            "code": "5318062017",
-            "name": "Waipaddi"
-        },
-        {
-            "code": "5318062018",
-            "name": "Manu Toghi"
-        },
-        {
-            "code": "5318062019",
-            "name": "Karang Indah"
-        },
-        {
-            "code": "5318062020",
-            "name": "Rada Malando"
-        },
-        {
-            "code": "5318062021",
-            "name": "Waikaninyo"
-        },
-        {
-            "code": "5318062022",
-            "name": "Ana Goka"
-        },
-        {
-            "code": "5318062023",
-            "name": "Delu Depa"
-        },
-        {
-            "code": "5318062024",
-            "name": "Mere Kehe"
-        },
-        {
-            "code": "5318062025",
-            "name": "Bondo Balla"
-        },
-        {
-            "code": "5318062026",
-            "name": "Maliti Bondo Ate"
-        },
-        {
-            "code": "5318062027",
-            "name": "Ana Lewe"
-        }
-    ],
-    "531807": [
-        {
-            "code": "5318072001",
-            "name": "Bondo Kodi"
-        },
-        {
-            "code": "5318072002",
-            "name": "Ate Dalo"
-        },
-        {
-            "code": "5318072003",
-            "name": "Hamonggo Lele"
-        },
-        {
-            "code": "5318072004",
-            "name": "Homba Rande"
-        },
-        {
-            "code": "5318072005",
-            "name": "Pero Batang"
-        },
-        {
-            "code": "5318072006",
-            "name": "Wura Homba"
-        },
-        {
-            "code": "5318072007",
-            "name": "Koki"
-        },
-        {
-            "code": "5318072008",
-            "name": "Kapaka Madeta"
-        },
-        {
-            "code": "5318072009",
-            "name": "Kawango Hari"
-        },
-        {
-            "code": "5318072010",
-            "name": "Onggol"
-        },
-        {
-            "code": "5318072011",
-            "name": "Mali lha"
-        },
-        {
-            "code": "5318072012",
-            "name": "Watu Wona"
-        },
-        {
-            "code": "5318072013",
-            "name": "Tanjung Karoso"
-        },
-        {
-            "code": "5318072014",
-            "name": "Pero Konda"
-        },
-        {
-            "code": "5318072015",
-            "name": "Homba Rica"
-        },
-        {
-            "code": "5318072016",
-            "name": "Ana Kaka"
-        },
-        {
-            "code": "5318072017",
-            "name": "Ole Ate"
-        },
-        {
-            "code": "5318072018",
-            "name": "Kadoki Horo"
-        },
-        {
-            "code": "5318072019",
-            "name": "Ana Engge"
-        }
-    ],
-    "531808": [
-        {
-            "code": "5318082001",
-            "name": "Hoha Wungo"
-        },
-        {
-            "code": "5318082002",
-            "name": "Homba Karipit"
-        },
-        {
-            "code": "5318082003",
-            "name": "Wailabubur"
-        },
-        {
-            "code": "5318082004",
-            "name": "Kori"
-        },
-        {
-            "code": "5318082005",
-            "name": "Kalena Rongo"
-        },
-        {
-            "code": "5318082006",
-            "name": "Waiholo"
-        },
-        {
-            "code": "5318082007",
-            "name": "Noha"
-        },
-        {
-            "code": "5318082008",
-            "name": "Mangganipi"
-        },
-        {
-            "code": "5318082009",
-            "name": "Kendu Wela"
-        },
-        {
-            "code": "5318082010",
-            "name": "Bila Cenge"
-        },
-        {
-            "code": "5318082011",
-            "name": "Bukambero"
-        },
-        {
-            "code": "5318082013",
-            "name": "Homba Pare"
-        },
-        {
-            "code": "5318082014",
-            "name": "Magho Linyo"
-        },
-        {
-            "code": "5318082015",
-            "name": "Wee Wella"
-        },
-        {
-            "code": "5318082016",
-            "name": "Kadu Eta"
-        },
-        {
-            "code": "5318082017",
-            "name": "Kadaghu Tana"
-        },
-        {
-            "code": "5318082018",
-            "name": "Hameli Ate"
-        },
-        {
-            "code": "5318082019",
-            "name": "Waitaru"
-        },
-        {
-            "code": "5318082020",
-            "name": "Nangga Mutu"
-        },
-        {
-            "code": "5318082021",
-            "name": "Limbu Kembe"
-        },
-        {
-            "code": "5318082022",
-            "name": "Moro Manduyo"
-        }
-    ],
-    "531809": [
-        {
-            "code": "5318091003",
-            "name": "Langga Lero"
-        },
-        {
-            "code": "5318091004",
-            "name": "Waitabula"
-        },
-        {
-            "code": "5318092001",
-            "name": "Rada Mata"
-        },
-        {
-            "code": "5318092002",
-            "name": "Kalena Wano"
-        },
-        {
-            "code": "5318092005",
-            "name": "Wee Londa"
-        },
-        {
-            "code": "5318092006",
-            "name": "Wee Pangali"
-        },
-        {
-            "code": "5318092007",
-            "name": "Kadi Pada"
-        },
-        {
-            "code": "5318092008",
-            "name": "Watu Kawula"
-        },
-        {
-            "code": "5318092009",
-            "name": "Wee Rena"
-        },
-        {
-            "code": "5318092010",
-            "name": "Kalembu Kaha"
-        }
-    ],
-    "531810": [
-        {
-            "code": "5318102001",
-            "name": "Kanelu"
-        },
-        {
-            "code": "5318102002",
-            "name": "Tanggaba"
-        },
-        {
-            "code": "5318102003",
-            "name": "Wee Kokora"
-        },
-        {
-            "code": "5318102004",
-            "name": "Wee Rame"
-        },
-        {
-            "code": "5318102005",
-            "name": "Lombu"
-        },
-        {
-            "code": "5318102006",
-            "name": "Eka Pata"
-        },
-        {
-            "code": "5318102007",
-            "name": "Bolora"
-        },
-        {
-            "code": "5318102008",
-            "name": "Omba Rade"
-        },
-        {
-            "code": "5318102009",
-            "name": "Kalingara"
-        },
-        {
-            "code": "5318102010",
-            "name": "Wee Patando"
-        },
-        {
-            "code": "5318102011",
-            "name": "Mereda Wuni"
-        },
-        {
-            "code": "5318102012",
-            "name": "Mata Wee Karoro"
-        },
-        {
-            "code": "5318102013",
-            "name": "Gollu Sapi"
-        },
-        {
-            "code": "5318102014",
-            "name": "Mata Lombu"
-        },
-        {
-            "code": "5318102015",
-            "name": "Kadi Roma"
-        },
-        {
-            "code": "5318102016",
-            "name": "Bondo Delo"
-        },
-        {
-            "code": "5318102017",
-            "name": "Lete Wungana"
-        },
-        {
-            "code": "5318102018",
-            "name": "Limbu Watu"
-        },
-        {
-            "code": "5318102019",
-            "name": "Kiku Booko"
-        },
-        {
-            "code": "5318102020",
-            "name": "Tarra Mata"
-        }
-    ],
-    "531811": [
-        {
-            "code": "5318112001",
-            "name": "Wailangira"
-        },
-        {
-            "code": "5318112002",
-            "name": "Kahale"
-        },
-        {
-            "code": "5318112003",
-            "name": "Waikarara"
-        },
-        {
-            "code": "5318112004",
-            "name": "Panenggo Ede"
-        },
-        {
-            "code": "5318112005",
-            "name": "Waiha"
-        },
-        {
-            "code": "5318112006",
-            "name": "Wainyapu"
-        },
-        {
-            "code": "5318112007",
-            "name": "Loko Tali"
-        },
-        {
-            "code": "5318112008",
-            "name": "Waipakolo"
-        }
-    ]
+  "531801": [
+    {
+      "code": "5318012001",
+      "name": "Bondo Boghila"
+    },
+    {
+      "code": "5318012002",
+      "name": "Lete Konda"
+    },
+    {
+      "code": "5318012003",
+      "name": "Karuni"
+    },
+    {
+      "code": "5318012004",
+      "name": "Totok"
+    },
+    {
+      "code": "5318012009",
+      "name": "Rama Dana"
+    },
+    {
+      "code": "5318012010",
+      "name": "Wee Mananda"
+    },
+    {
+      "code": "5318012013",
+      "name": "Pogo Tena"
+    },
+    {
+      "code": "5318012014",
+      "name": "Payola Umbu"
+    },
+    {
+      "code": "5318012015",
+      "name": "Wee Kambala"
+    },
+    {
+      "code": "5318012016",
+      "name": "Loko Kalada"
+    },
+    {
+      "code": "5318012017",
+      "name": "Lete Konda Selatan"
+    }
+  ],
+  "531802": [
+    {
+      "code": "5318022001",
+      "name": "Mali Mada"
+    },
+    {
+      "code": "5318022002",
+      "name": "Wano Talla"
+    },
+    {
+      "code": "5318022003",
+      "name": "Wee Paboba"
+    },
+    {
+      "code": "5318022004",
+      "name": "Mata Loko"
+    },
+    {
+      "code": "5318022005",
+      "name": "Wee Namba"
+    },
+    {
+      "code": "5318022006",
+      "name": "Puu Potto"
+    },
+    {
+      "code": "5318022007",
+      "name": "Bodo Ponda"
+    },
+    {
+      "code": "5318022008",
+      "name": "Reda Wano"
+    },
+    {
+      "code": "5318022009",
+      "name": "Odi Paurata"
+    },
+    {
+      "code": "5318022010",
+      "name": "Pandua Tana"
+    },
+    {
+      "code": "5318022011",
+      "name": "Djela Manu"
+    },
+    {
+      "code": "5318022012",
+      "name": "Mawo Maliti"
+    }
+  ],
+  "531803": [
+    {
+      "code": "5318032001",
+      "name": "Kalembu Ndara Mane"
+    },
+    {
+      "code": "5318032002",
+      "name": "Tema Tana"
+    },
+    {
+      "code": "5318032005",
+      "name": "Mareda Kalada"
+    },
+    {
+      "code": "5318032006",
+      "name": "Pada Eweta"
+    },
+    {
+      "code": "5318032012",
+      "name": "Wee Limbu"
+    },
+    {
+      "code": "5318032013",
+      "name": "Lete Kamouna"
+    },
+    {
+      "code": "5318032014",
+      "name": "Mata Pyawu"
+    },
+    {
+      "code": "5318032015",
+      "name": "Wee Lima"
+    },
+    {
+      "code": "5318032018",
+      "name": "Dikira"
+    },
+    {
+      "code": "5318032020",
+      "name": "Dangga Mangu"
+    },
+    {
+      "code": "5318032021",
+      "name": "Mainda Ole"
+    },
+    {
+      "code": "5318032022",
+      "name": "Kadi Wano"
+    },
+    {
+      "code": "5318032023",
+      "name": "Nyura Lele"
+    },
+    {
+      "code": "5318032024",
+      "name": "Lele Maya"
+    },
+    {
+      "code": "5318032025",
+      "name": "Maliti Dari"
+    },
+    {
+      "code": "5318032026",
+      "name": "Mawo Dana"
+    },
+    {
+      "code": "5318032027",
+      "name": "Dede Pada"
+    },
+    {
+      "code": "5318032028",
+      "name": "Mata Wee Lima"
+    },
+    {
+      "code": "5318032029",
+      "name": "Kadi Wone"
+    }
+  ],
+  "531804": [
+    {
+      "code": "5318042001",
+      "name": "Waimangura"
+    },
+    {
+      "code": "5318042002",
+      "name": "Kalembu Weri"
+    },
+    {
+      "code": "5318042003",
+      "name": "Wali Ate"
+    },
+    {
+      "code": "5318042004",
+      "name": "Kabali Dana"
+    },
+    {
+      "code": "5318042005",
+      "name": "Wee Kombaka"
+    },
+    {
+      "code": "5318042006",
+      "name": "Marokota"
+    },
+    {
+      "code": "5318042007",
+      "name": "Watu Labara"
+    },
+    {
+      "code": "5318042008",
+      "name": "Kalimbu Tillu"
+    },
+    {
+      "code": "5318042011",
+      "name": "Menne Ate"
+    },
+    {
+      "code": "5318042012",
+      "name": "Reda Pada"
+    },
+    {
+      "code": "5318042013",
+      "name": "Raba Ege"
+    },
+    {
+      "code": "5318042015",
+      "name": "Kalaki Kambe"
+    },
+    {
+      "code": "5318042016",
+      "name": "Kalembu Kanaika"
+    },
+    {
+      "code": "5318042017",
+      "name": "Laga Lete"
+    },
+    {
+      "code": "5318042018",
+      "name": "Wee Kura"
+    },
+    {
+      "code": "5318042019",
+      "name": "Lua Koba"
+    },
+    {
+      "code": "5318042020",
+      "name": "Tawo Rara"
+    },
+    {
+      "code": "5318042021",
+      "name": "Sangu Ate"
+    },
+    {
+      "code": "5318042022",
+      "name": "Lolo Ole"
+    },
+    {
+      "code": "5318042023",
+      "name": "Pero"
+    }
+  ],
+  "531805": [
+    {
+      "code": "5318052001",
+      "name": "Buru Deilo"
+    },
+    {
+      "code": "5318052002",
+      "name": "Weri Lolo"
+    },
+    {
+      "code": "5318052003",
+      "name": "Buru Kaghu"
+    },
+    {
+      "code": "5318052004",
+      "name": "Denduka"
+    },
+    {
+      "code": "5318052005",
+      "name": "Bondo Bela"
+    },
+    {
+      "code": "5318052006",
+      "name": "Delo"
+    },
+    {
+      "code": "5318052007",
+      "name": "Tena Teke"
+    },
+    {
+      "code": "5318052008",
+      "name": "Bondo Ukka"
+    },
+    {
+      "code": "5318052009",
+      "name": "Umbu Wangu"
+    },
+    {
+      "code": "5318052010",
+      "name": "Milla Ate"
+    },
+    {
+      "code": "5318052011",
+      "name": "Rita Baru"
+    },
+    {
+      "code": "5318052012",
+      "name": "Mandungo"
+    },
+    {
+      "code": "5318052013",
+      "name": "Wee Wulla"
+    },
+    {
+      "code": "5318052014",
+      "name": "Wee Baghe"
+    }
+  ],
+  "531806": [
+    {
+      "code": "5318062001",
+      "name": "Dinjo"
+    },
+    {
+      "code": "5318062002",
+      "name": "Lete Loko"
+    },
+    {
+      "code": "5318062003",
+      "name": "Walla Ndimu"
+    },
+    {
+      "code": "5318062006",
+      "name": "Waikadada"
+    },
+    {
+      "code": "5318062010",
+      "name": "Rada Loko"
+    },
+    {
+      "code": "5318062011",
+      "name": "Mata Kapore"
+    },
+    {
+      "code": "5318062012",
+      "name": "Umbu Ngedo"
+    },
+    {
+      "code": "5318062014",
+      "name": "Waimakaha"
+    },
+    {
+      "code": "5318062015",
+      "name": "Waimaringi"
+    },
+    {
+      "code": "5318062016",
+      "name": "Tana Mete"
+    },
+    {
+      "code": "5318062017",
+      "name": "Waipaddi"
+    },
+    {
+      "code": "5318062018",
+      "name": "Manu Toghi"
+    },
+    {
+      "code": "5318062019",
+      "name": "Karang Indah"
+    },
+    {
+      "code": "5318062020",
+      "name": "Rada Malando"
+    },
+    {
+      "code": "5318062021",
+      "name": "Waikaninyo"
+    },
+    {
+      "code": "5318062022",
+      "name": "Ana Goka"
+    },
+    {
+      "code": "5318062023",
+      "name": "Delu Depa"
+    },
+    {
+      "code": "5318062024",
+      "name": "Mere Kehe"
+    },
+    {
+      "code": "5318062025",
+      "name": "Bondo Balla"
+    },
+    {
+      "code": "5318062026",
+      "name": "Maliti Bondo Ate"
+    },
+    {
+      "code": "5318062027",
+      "name": "Ana Lewe"
+    }
+  ],
+  "531807": [
+    {
+      "code": "5318072001",
+      "name": "Bondo Kodi"
+    },
+    {
+      "code": "5318072002",
+      "name": "Ate Dalo"
+    },
+    {
+      "code": "5318072003",
+      "name": "Hamonggo Lele"
+    },
+    {
+      "code": "5318072004",
+      "name": "Homba Rande"
+    },
+    {
+      "code": "5318072005",
+      "name": "Pero Batang"
+    },
+    {
+      "code": "5318072006",
+      "name": "Wura Homba"
+    },
+    {
+      "code": "5318072007",
+      "name": "Koki"
+    },
+    {
+      "code": "5318072008",
+      "name": "Kapaka Madeta"
+    },
+    {
+      "code": "5318072009",
+      "name": "Kawango Hari"
+    },
+    {
+      "code": "5318072010",
+      "name": "Onggol"
+    },
+    {
+      "code": "5318072011",
+      "name": "Mali lha"
+    },
+    {
+      "code": "5318072012",
+      "name": "Watu Wona"
+    },
+    {
+      "code": "5318072013",
+      "name": "Tanjung Karoso"
+    },
+    {
+      "code": "5318072014",
+      "name": "Pero Konda"
+    },
+    {
+      "code": "5318072015",
+      "name": "Homba Rica"
+    },
+    {
+      "code": "5318072016",
+      "name": "Ana Kaka"
+    },
+    {
+      "code": "5318072017",
+      "name": "Ole Ate"
+    },
+    {
+      "code": "5318072018",
+      "name": "Kadoki Horo"
+    },
+    {
+      "code": "5318072019",
+      "name": "Ana Engge"
+    }
+  ],
+  "531808": [
+    {
+      "code": "5318082001",
+      "name": "Hoha Wungo"
+    },
+    {
+      "code": "5318082002",
+      "name": "Homba Karipit"
+    },
+    {
+      "code": "5318082003",
+      "name": "Wailabubur"
+    },
+    {
+      "code": "5318082004",
+      "name": "Kori"
+    },
+    {
+      "code": "5318082005",
+      "name": "Kalena Rongo"
+    },
+    {
+      "code": "5318082006",
+      "name": "Waiholo"
+    },
+    {
+      "code": "5318082007",
+      "name": "Noha"
+    },
+    {
+      "code": "5318082008",
+      "name": "Mangganipi"
+    },
+    {
+      "code": "5318082009",
+      "name": "Kendu Wela"
+    },
+    {
+      "code": "5318082010",
+      "name": "Bila Cenge"
+    },
+    {
+      "code": "5318082011",
+      "name": "Bukambero"
+    },
+    {
+      "code": "5318082013",
+      "name": "Homba Pare"
+    },
+    {
+      "code": "5318082014",
+      "name": "Magho Linyo"
+    },
+    {
+      "code": "5318082015",
+      "name": "Wee Wella"
+    },
+    {
+      "code": "5318082016",
+      "name": "Kadu Eta"
+    },
+    {
+      "code": "5318082017",
+      "name": "Kadaghu Tana"
+    },
+    {
+      "code": "5318082018",
+      "name": "Hameli Ate"
+    },
+    {
+      "code": "5318082019",
+      "name": "Waitaru"
+    },
+    {
+      "code": "5318082020",
+      "name": "Nangga Mutu"
+    },
+    {
+      "code": "5318082021",
+      "name": "Limbu Kembe"
+    },
+    {
+      "code": "5318082022",
+      "name": "Moro Manduyo"
+    }
+  ],
+  "531809": [
+    {
+      "code": "5318091003",
+      "name": "Langga Lero"
+    },
+    {
+      "code": "5318091004",
+      "name": "Waitabula"
+    },
+    {
+      "code": "5318092001",
+      "name": "Rada Mata"
+    },
+    {
+      "code": "5318092002",
+      "name": "Kalena Wano"
+    },
+    {
+      "code": "5318092005",
+      "name": "Wee Londa"
+    },
+    {
+      "code": "5318092006",
+      "name": "Wee Pangali"
+    },
+    {
+      "code": "5318092007",
+      "name": "Kadi Pada"
+    },
+    {
+      "code": "5318092008",
+      "name": "Watu Kawula"
+    },
+    {
+      "code": "5318092009",
+      "name": "Wee Rena"
+    },
+    {
+      "code": "5318092010",
+      "name": "Kalembu Kaha"
+    }
+  ],
+  "531810": [
+    {
+      "code": "5318102001",
+      "name": "Kanelu"
+    },
+    {
+      "code": "5318102002",
+      "name": "Tanggaba"
+    },
+    {
+      "code": "5318102003",
+      "name": "Wee Kokora"
+    },
+    {
+      "code": "5318102004",
+      "name": "Wee Rame"
+    },
+    {
+      "code": "5318102005",
+      "name": "Lombu"
+    },
+    {
+      "code": "5318102006",
+      "name": "Eka Pata"
+    },
+    {
+      "code": "5318102007",
+      "name": "Bolora"
+    },
+    {
+      "code": "5318102008",
+      "name": "Omba Rade"
+    },
+    {
+      "code": "5318102009",
+      "name": "Kalingara"
+    },
+    {
+      "code": "5318102010",
+      "name": "Wee Patando"
+    },
+    {
+      "code": "5318102011",
+      "name": "Mereda Wuni"
+    },
+    {
+      "code": "5318102012",
+      "name": "Mata Wee Karoro"
+    },
+    {
+      "code": "5318102013",
+      "name": "Gollu Sapi"
+    },
+    {
+      "code": "5318102014",
+      "name": "Mata Lombu"
+    },
+    {
+      "code": "5318102015",
+      "name": "Kadi Roma"
+    },
+    {
+      "code": "5318102016",
+      "name": "Bondo Delo"
+    },
+    {
+      "code": "5318102017",
+      "name": "Lete Wungana"
+    },
+    {
+      "code": "5318102018",
+      "name": "Limbu Watu"
+    },
+    {
+      "code": "5318102019",
+      "name": "Kiku Booko"
+    },
+    {
+      "code": "5318102020",
+      "name": "Tarra Mata"
+    }
+  ],
+  "531811": [
+    {
+      "code": "5318112001",
+      "name": "Wailangira"
+    },
+    {
+      "code": "5318112002",
+      "name": "Kahale"
+    },
+    {
+      "code": "5318112003",
+      "name": "Waikarara"
+    },
+    {
+      "code": "5318112004",
+      "name": "Panenggo Ede"
+    },
+    {
+      "code": "5318112005",
+      "name": "Waiha"
+    },
+    {
+      "code": "5318112006",
+      "name": "Wainyapu"
+    },
+    {
+      "code": "5318112007",
+      "name": "Loko Tali"
+    },
+    {
+      "code": "5318112008",
+      "name": "Waipakolo"
+    }
+  ]
 }

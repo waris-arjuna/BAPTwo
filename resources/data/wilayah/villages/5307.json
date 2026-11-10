@@ -1,0 +1,820 @@
+{
+  "530701": [
+    {
+      "code": "5307012001",
+      "name": "Masabewa"
+    },
+    {
+      "code": "5307012003",
+      "name": "Wolowiro"
+    },
+    {
+      "code": "5307012004",
+      "name": "Mbengu"
+    },
+    {
+      "code": "5307012005",
+      "name": "Paga"
+    },
+    {
+      "code": "5307012008",
+      "name": "Lenandareta"
+    },
+    {
+      "code": "5307012012",
+      "name": "Mauloo"
+    },
+    {
+      "code": "5307012013",
+      "name": "Wolorega"
+    },
+    {
+      "code": "5307012015",
+      "name": "Wolowona"
+    },
+    {
+      "code": "5307012017",
+      "name": "Begu"
+    },
+    {
+      "code": "5307012018",
+      "name": "Kotandelu"
+    },
+    {
+      "code": "5307012019",
+      "name": "Lowolabo"
+    },
+    {
+      "code": "5307012020",
+      "name": "Aebubu"
+    },
+    {
+      "code": "5307012021",
+      "name": "Regapu’u"
+    },
+    {
+      "code": "5307012022",
+      "name": "Rejo"
+    }
+  ],
+  "530702": [
+    {
+      "code": "5307022001",
+      "name": "Bhera"
+    },
+    {
+      "code": "5307022002",
+      "name": "Dobo"
+    },
+    {
+      "code": "5307022003",
+      "name": "Gera"
+    },
+    {
+      "code": "5307022004",
+      "name": "Liakutu"
+    },
+    {
+      "code": "5307022005",
+      "name": "Parabubu"
+    },
+    {
+      "code": "5307022006",
+      "name": "Wolodhesa"
+    },
+    {
+      "code": "5307022007",
+      "name": "Korobhera"
+    },
+    {
+      "code": "5307022008",
+      "name": "Napugera"
+    },
+    {
+      "code": "5307022009",
+      "name": "Kowi"
+    },
+    {
+      "code": "5307022010",
+      "name": "Dobo Nuapuu"
+    },
+    {
+      "code": "5307022011",
+      "name": "Ratekalo"
+    },
+    {
+      "code": "5307022012",
+      "name": "Ndaimbere"
+    }
+  ],
+  "530703": [
+    {
+      "code": "5307032001",
+      "name": "Lela"
+    },
+    {
+      "code": "5307032002",
+      "name": "Watutedang"
+    },
+    {
+      "code": "5307032003",
+      "name": "Korowuwu"
+    },
+    {
+      "code": "5307032004",
+      "name": "Kolidetung"
+    },
+    {
+      "code": "5307032005",
+      "name": "Sikka"
+    },
+    {
+      "code": "5307032006",
+      "name": "Iligai"
+    },
+    {
+      "code": "5307032007",
+      "name": "Hepang"
+    },
+    {
+      "code": "5307032008",
+      "name": "Baopaat"
+    },
+    {
+      "code": "5307032009",
+      "name": "Du"
+    }
+  ],
+  "530704": [
+    {
+      "code": "5307042001",
+      "name": "Nita"
+    },
+    {
+      "code": "5307042002",
+      "name": "Takaplager"
+    },
+    {
+      "code": "5307042003",
+      "name": "Tebuk"
+    },
+    {
+      "code": "5307042004",
+      "name": "Ladogahar"
+    },
+    {
+      "code": "5307042005",
+      "name": "Nitakloang"
+    },
+    {
+      "code": "5307042006",
+      "name": "Wuliwutik"
+    },
+    {
+      "code": "5307042007",
+      "name": "Lusitada"
+    },
+    {
+      "code": "5307042008",
+      "name": "Bloro"
+    },
+    {
+      "code": "5307042009",
+      "name": "Riit"
+    },
+    {
+      "code": "5307042010",
+      "name": "Tilang"
+    },
+    {
+      "code": "5307042011",
+      "name": "Nirangkliung"
+    },
+    {
+      "code": "5307042017",
+      "name": "Mahebora"
+    },
+    {
+      "code": "5307042018",
+      "name": "Nangablo"
+    },
+    {
+      "code": "5307042019",
+      "name": "Kara Kabu"
+    },
+    {
+      "code": "5307042020",
+      "name": "Tada Lado"
+    }
+  ],
+  "530705": [
+    {
+      "code": "5307051006",
+      "name": "Madawat"
+    },
+    {
+      "code": "5307051007",
+      "name": "Nangalimang"
+    },
+    {
+      "code": "5307051008",
+      "name": "Kabor"
+    },
+    {
+      "code": "5307051009",
+      "name": "Kota Uneng"
+    },
+    {
+      "code": "5307052014",
+      "name": "Pemana"
+    },
+    {
+      "code": "5307052015",
+      "name": "Samparong"
+    },
+    {
+      "code": "5307052016",
+      "name": "Gunung Sari"
+    }
+  ],
+  "530706": [
+    {
+      "code": "5307062001",
+      "name": "Maluriwu"
+    },
+    {
+      "code": "5307062002",
+      "name": "Reruwairere"
+    },
+    {
+      "code": "5307062003",
+      "name": "Tuanggeo"
+    },
+    {
+      "code": "5307062004",
+      "name": "Ladolaka"
+    },
+    {
+      "code": "5307062005",
+      "name": "Nitunglea"
+    },
+    {
+      "code": "5307062006",
+      "name": "Rokirole"
+    },
+    {
+      "code": "5307062007",
+      "name": "Kesokoja"
+    },
+    {
+      "code": "5307062008",
+      "name": "Lidi"
+    }
+  ],
+  "530707": [
+    {
+      "code": "5307072002",
+      "name": "Nelle Urung"
+    },
+    {
+      "code": "5307072003",
+      "name": "Nelle Wutung"
+    },
+    {
+      "code": "5307072004",
+      "name": "Nelle Barat"
+    },
+    {
+      "code": "5307072005",
+      "name": "Nella Lorang"
+    },
+    {
+      "code": "5307072006",
+      "name": "Manubura"
+    }
+  ],
+  "530708": [
+    {
+      "code": "5307082001",
+      "name": "Darat Gunung"
+    },
+    {
+      "code": "5307082002",
+      "name": "Ojang"
+    },
+    {
+      "code": "5307082003",
+      "name": "Hikong"
+    },
+    {
+      "code": "5307082006",
+      "name": "Nebe"
+    },
+    {
+      "code": "5307082007",
+      "name": "Wailamung"
+    },
+    {
+      "code": "5307082008",
+      "name": "Lewomada"
+    },
+    {
+      "code": "5307082010",
+      "name": "Nangahale"
+    },
+    {
+      "code": "5307082011",
+      "name": "Darat Pantai"
+    },
+    {
+      "code": "5307082013",
+      "name": "Talibura"
+    },
+    {
+      "code": "5307082014",
+      "name": "Kringa"
+    },
+    {
+      "code": "5307082015",
+      "name": "Bangkoor"
+    },
+    {
+      "code": "5307082017",
+      "name": "Timutawa"
+    },
+    {
+      "code": "5307082019",
+      "name": "Udek Du’en"
+    },
+    {
+      "code": "5307082020",
+      "name": "Watu Omok"
+    },
+    {
+      "code": "5307082021",
+      "name": "Waipaar"
+    },
+    {
+      "code": "5307082022",
+      "name": "Baokremot"
+    },
+    {
+      "code": "5307082023",
+      "name": "Henga"
+    },
+    {
+      "code": "5307082024",
+      "name": "Likonggete"
+    },
+    {
+      "code": "5307082025",
+      "name": "Watubaing"
+    },
+    {
+      "code": "5307082026",
+      "name": "Mamai"
+    }
+  ],
+  "530709": [
+    {
+      "code": "5307092001",
+      "name": "Runut"
+    },
+    {
+      "code": "5307092002",
+      "name": "Egon"
+    },
+    {
+      "code": "5307092003",
+      "name": "Pogon"
+    },
+    {
+      "code": "5307092004",
+      "name": "Aibura"
+    },
+    {
+      "code": "5307092005",
+      "name": "Wairbleler"
+    },
+    {
+      "code": "5307092006",
+      "name": "Hoder"
+    },
+    {
+      "code": "5307092007",
+      "name": "Wairterang"
+    },
+    {
+      "code": "5307092008",
+      "name": "Nangatobong"
+    },
+    {
+      "code": "5307092009",
+      "name": "Watudiran"
+    },
+    {
+      "code": "5307092010",
+      "name": "Mahe Kelan"
+    },
+    {
+      "code": "5307092011",
+      "name": "Egon Buluk"
+    }
+  ],
+  "530710": [
+    {
+      "code": "5307102005",
+      "name": "Seusina"
+    },
+    {
+      "code": "5307102007",
+      "name": "Kopong"
+    },
+    {
+      "code": "5307102008",
+      "name": "Namangkewa"
+    },
+    {
+      "code": "5307102009",
+      "name": "Iantena"
+    },
+    {
+      "code": "5307102016",
+      "name": "Umagera"
+    },
+    {
+      "code": "5307102020",
+      "name": "Geliting"
+    },
+    {
+      "code": "5307102021",
+      "name": "Waiara"
+    },
+    {
+      "code": "5307102024",
+      "name": "Wairkoja"
+    },
+    {
+      "code": "5307102026",
+      "name": "Watukobu"
+    }
+  ],
+  "530711": [
+    {
+      "code": "5307112001",
+      "name": "Hokor"
+    },
+    {
+      "code": "5307112002",
+      "name": "Wolonwalu"
+    },
+    {
+      "code": "5307112003",
+      "name": "Wolokoli"
+    },
+    {
+      "code": "5307112004",
+      "name": "Bola"
+    },
+    {
+      "code": "5307112005",
+      "name": "Umauta"
+    },
+    {
+      "code": "5307112006",
+      "name": "Ipir"
+    },
+    {
+      "code": "5307112018",
+      "name": "Bura Bekor"
+    },
+    {
+      "code": "5307112019",
+      "name": "Watukrus"
+    }
+  ],
+  "530712": [
+    {
+      "code": "5307122001",
+      "name": "Magepanda"
+    },
+    {
+      "code": "5307122002",
+      "name": "Reroroja"
+    },
+    {
+      "code": "5307122003",
+      "name": "Done"
+    },
+    {
+      "code": "5307122004",
+      "name": "Kolisia"
+    },
+    {
+      "code": "5307122005",
+      "name": "Kolisia B"
+    },
+    {
+      "code": "5307122006",
+      "name": "Woda Mude"
+    },
+    {
+      "code": "5307122007",
+      "name": "Legu Woda"
+    },
+    {
+      "code": "5307122008",
+      "name": "Waturia"
+    }
+  ],
+  "530713": [
+    {
+      "code": "5307132001",
+      "name": "Natarmage"
+    },
+    {
+      "code": "5307132002",
+      "name": "Tanarawa"
+    },
+    {
+      "code": "5307132003",
+      "name": "Pruda"
+    },
+    {
+      "code": "5307132004",
+      "name": "Werang"
+    },
+    {
+      "code": "5307132005",
+      "name": "Tua Bao"
+    },
+    {
+      "code": "5307132006",
+      "name": "Ilinmedo"
+    },
+    {
+      "code": "5307132007",
+      "name": "Watu Moning"
+    }
+  ],
+  "530714": [
+    {
+      "code": "5307141001",
+      "name": "Hewuli"
+    },
+    {
+      "code": "5307141002",
+      "name": "Wailiti"
+    },
+    {
+      "code": "5307141003",
+      "name": "Wolomarang"
+    },
+    {
+      "code": "5307141004",
+      "name": "Wuring"
+    }
+  ],
+  "530715": [
+    {
+      "code": "5307151001",
+      "name": "Beru"
+    },
+    {
+      "code": "5307151002",
+      "name": "Kota Baru"
+    },
+    {
+      "code": "5307151003",
+      "name": "Nangameting"
+    },
+    {
+      "code": "5307151004",
+      "name": "Waioti"
+    },
+    {
+      "code": "5307151005",
+      "name": "Wairotang"
+    },
+    {
+      "code": "5307152006",
+      "name": "Koja Doi"
+    },
+    {
+      "code": "5307152007",
+      "name": "Kojagete"
+    },
+    {
+      "code": "5307152008",
+      "name": "Lepo Lima"
+    },
+    {
+      "code": "5307152009",
+      "name": "Perumaan"
+    },
+    {
+      "code": "5307152010",
+      "name": "Watugong"
+    },
+    {
+      "code": "5307152011",
+      "name": "Gong Bekor"
+    }
+  ],
+  "530716": [
+    {
+      "code": "5307162001",
+      "name": "Koting A"
+    },
+    {
+      "code": "5307162002",
+      "name": "Koting B"
+    },
+    {
+      "code": "5307162003",
+      "name": "Koting C"
+    },
+    {
+      "code": "5307162004",
+      "name": "Koting D"
+    },
+    {
+      "code": "5307162005",
+      "name": "Paubekor"
+    },
+    {
+      "code": "5307162006",
+      "name": "Ribang"
+    },
+    {
+      "code": "5307162007",
+      "name": "Watu Repa"
+    }
+  ],
+  "530717": [
+    {
+      "code": "5307172001",
+      "name": "Bu Selatan"
+    },
+    {
+      "code": "5307172002",
+      "name": "Bu Utara"
+    },
+    {
+      "code": "5307172003",
+      "name": "Bu Watuweti"
+    },
+    {
+      "code": "5307172004",
+      "name": "Loke"
+    },
+    {
+      "code": "5307172005",
+      "name": "Renggarasi"
+    },
+    {
+      "code": "5307172006",
+      "name": "Detubinga"
+    },
+    {
+      "code": "5307172007",
+      "name": "Tuwa"
+    },
+    {
+      "code": "5307172008",
+      "name": "Poma"
+    },
+    {
+      "code": "5307172009",
+      "name": "Bu Barat"
+    },
+    {
+      "code": "5307172010",
+      "name": "Bu Nuapu’u"
+    }
+  ],
+  "530718": [
+    {
+      "code": "5307182001",
+      "name": "Rubit"
+    },
+    {
+      "code": "5307182002",
+      "name": "Wolomapa"
+    },
+    {
+      "code": "5307182003",
+      "name": "Baomekot"
+    },
+    {
+      "code": "5307182004",
+      "name": "Kajowair"
+    },
+    {
+      "code": "5307182005",
+      "name": "Hewokloang"
+    },
+    {
+      "code": "5307182006",
+      "name": "Heopuat"
+    },
+    {
+      "code": "5307182007",
+      "name": "Munerana"
+    }
+  ],
+  "530719": [
+    {
+      "code": "5307192001",
+      "name": "Teka Iku"
+    },
+    {
+      "code": "5307192002",
+      "name": "Mekendetung"
+    },
+    {
+      "code": "5307192003",
+      "name": "Kokowahor"
+    },
+    {
+      "code": "5307192004",
+      "name": "Balatatatin"
+    },
+    {
+      "code": "5307192005",
+      "name": "Watuliwung"
+    },
+    {
+      "code": "5307192006",
+      "name": "Tana Duen"
+    },
+    {
+      "code": "5307192007",
+      "name": "Watumilok"
+    },
+    {
+      "code": "5307192008",
+      "name": "Habi"
+    },
+    {
+      "code": "5307192009",
+      "name": "Langir"
+    }
+  ],
+  "530720": [
+    {
+      "code": "5307202001",
+      "name": "Waihawa"
+    },
+    {
+      "code": "5307202002",
+      "name": "Nenbura"
+    },
+    {
+      "code": "5307202003",
+      "name": "Wogalirit"
+    },
+    {
+      "code": "5307202004",
+      "name": "Watumerak"
+    },
+    {
+      "code": "5307202005",
+      "name": "Wolonterang"
+    },
+    {
+      "code": "5307202006",
+      "name": "Kloangpopot"
+    },
+    {
+      "code": "5307202007",
+      "name": "Wolomotong"
+    },
+    {
+      "code": "5307202008",
+      "name": "Mahe Tanah"
+    },
+    {
+      "code": "5307202009",
+      "name": "Pelibaler"
+    }
+  ],
+  "530721": [
+    {
+      "code": "5307212001",
+      "name": "Hale"
+    },
+    {
+      "code": "5307212002",
+      "name": "Hebing"
+    },
+    {
+      "code": "5307212003",
+      "name": "Natakoli"
+    },
+    {
+      "code": "5307212004",
+      "name": "Egon Gahar"
+    }
+  ]
+}

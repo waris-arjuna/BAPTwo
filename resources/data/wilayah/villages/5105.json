@@ -1,246 +1,246 @@
 {
-    "510501": [
-        {
-            "code": "5105012001",
-            "name": "Sakti"
-        },
-        {
-            "code": "5105012002",
-            "name": "Batumadeg"
-        },
-        {
-            "code": "5105012003",
-            "name": "Klumpu"
-        },
-        {
-            "code": "5105012004",
-            "name": "Batukandik"
-        },
-        {
-            "code": "5105012005",
-            "name": "Sekartaji"
-        },
-        {
-            "code": "5105012006",
-            "name": "Tanglad"
-        },
-        {
-            "code": "5105012007",
-            "name": "Suana"
-        },
-        {
-            "code": "5105012008",
-            "name": "Batununggul"
-        },
-        {
-            "code": "5105012009",
-            "name": "Kutampi"
-        },
-        {
-            "code": "5105012010",
-            "name": "Ped"
-        },
-        {
-            "code": "5105012011",
-            "name": "Kampung Toyapakeh"
-        },
-        {
-            "code": "5105012012",
-            "name": "Lembongan"
-        },
-        {
-            "code": "5105012013",
-            "name": "Jungutbatu"
-        },
-        {
-            "code": "5105012014",
-            "name": "Pejukutan"
-        },
-        {
-            "code": "5105012015",
-            "name": "Kutampi Kaler"
-        },
-        {
-            "code": "5105012016",
-            "name": "Bunga Mekar"
-        }
-    ],
-    "510502": [
-        {
-            "code": "5105022001",
-            "name": "Negari"
-        },
-        {
-            "code": "5105022002",
-            "name": "Takmung"
-        },
-        {
-            "code": "5105022003",
-            "name": "Banjarangkan"
-        },
-        {
-            "code": "5105022004",
-            "name": "Tusan"
-        },
-        {
-            "code": "5105022005",
-            "name": "Bakas"
-        },
-        {
-            "code": "5105022006",
-            "name": "Getakan"
-        },
-        {
-            "code": "5105022007",
-            "name": "Tihingan"
-        },
-        {
-            "code": "5105022008",
-            "name": "Aan"
-        },
-        {
-            "code": "5105022009",
-            "name": "Nyalian"
-        },
-        {
-            "code": "5105022010",
-            "name": "Bungbungan"
-        },
-        {
-            "code": "5105022011",
-            "name": "Timuhun"
-        },
-        {
-            "code": "5105022012",
-            "name": "Nyanglan"
-        },
-        {
-            "code": "5105022013",
-            "name": "Tohpati"
-        }
-    ],
-    "510503": [
-        {
-            "code": "5105031008",
-            "name": "Semarapura Kaja"
-        },
-        {
-            "code": "5105031009",
-            "name": "Semarapura Kauh"
-        },
-        {
-            "code": "5105031010",
-            "name": "Semarapura Tengah"
-        },
-        {
-            "code": "5105031011",
-            "name": "Semarapura Kangin"
-        },
-        {
-            "code": "5105031012",
-            "name": "Semarapura Klod Kangin"
-        },
-        {
-            "code": "5105031013",
-            "name": "Semarapura Klod"
-        },
-        {
-            "code": "5105032001",
-            "name": "Satra"
-        },
-        {
-            "code": "5105032002",
-            "name": "Tojan"
-        },
-        {
-            "code": "5105032003",
-            "name": "Gelgel"
-        },
-        {
-            "code": "5105032004",
-            "name": "Kampung Gelgel"
-        },
-        {
-            "code": "5105032005",
-            "name": "Jumpai"
-        },
-        {
-            "code": "5105032006",
-            "name": "Tangkas"
-        },
-        {
-            "code": "5105032007",
-            "name": "Kamasan"
-        },
-        {
-            "code": "5105032014",
-            "name": "Akah"
-        },
-        {
-            "code": "5105032015",
-            "name": "Manduang"
-        },
-        {
-            "code": "5105032016",
-            "name": "Selat"
-        },
-        {
-            "code": "5105032017",
-            "name": "Tegak"
-        },
-        {
-            "code": "5105032018",
-            "name": "Selisihan"
-        }
-    ],
-    "510504": [
-        {
-            "code": "5105042001",
-            "name": "Paksebali"
-        },
-        {
-            "code": "5105042002",
-            "name": "Sampalan Tengah"
-        },
-        {
-            "code": "5105042003",
-            "name": "Sampalan Klod"
-        },
-        {
-            "code": "5105042004",
-            "name": "Sulang"
-        },
-        {
-            "code": "5105042005",
-            "name": "Gunaksa"
-        },
-        {
-            "code": "5105042006",
-            "name": "Kusamba"
-        },
-        {
-            "code": "5105042007",
-            "name": "Kampung Kusamba"
-        },
-        {
-            "code": "5105042008",
-            "name": "Pesinggahan"
-        },
-        {
-            "code": "5105042009",
-            "name": "Dawan Klod"
-        },
-        {
-            "code": "5105042010",
-            "name": "Pikat"
-        },
-        {
-            "code": "5105042011",
-            "name": "Dawan Kaler"
-        },
-        {
-            "code": "5105042012",
-            "name": "Besan"
-        }
-    ]
+  "510501": [
+    {
+      "code": "5105012001",
+      "name": "Sakti"
+    },
+    {
+      "code": "5105012002",
+      "name": "Batumadeg"
+    },
+    {
+      "code": "5105012003",
+      "name": "Klumpu"
+    },
+    {
+      "code": "5105012004",
+      "name": "Batukandik"
+    },
+    {
+      "code": "5105012005",
+      "name": "Sekartaji"
+    },
+    {
+      "code": "5105012006",
+      "name": "Tanglad"
+    },
+    {
+      "code": "5105012007",
+      "name": "Suana"
+    },
+    {
+      "code": "5105012008",
+      "name": "Batununggul"
+    },
+    {
+      "code": "5105012009",
+      "name": "Kutampi"
+    },
+    {
+      "code": "5105012010",
+      "name": "Ped"
+    },
+    {
+      "code": "5105012011",
+      "name": "Kampung Toyapakeh"
+    },
+    {
+      "code": "5105012012",
+      "name": "Lembongan"
+    },
+    {
+      "code": "5105012013",
+      "name": "Jungutbatu"
+    },
+    {
+      "code": "5105012014",
+      "name": "Pejukutan"
+    },
+    {
+      "code": "5105012015",
+      "name": "Kutampi Kaler"
+    },
+    {
+      "code": "5105012016",
+      "name": "Bunga Mekar"
+    }
+  ],
+  "510502": [
+    {
+      "code": "5105022001",
+      "name": "Negari"
+    },
+    {
+      "code": "5105022002",
+      "name": "Takmung"
+    },
+    {
+      "code": "5105022003",
+      "name": "Banjarangkan"
+    },
+    {
+      "code": "5105022004",
+      "name": "Tusan"
+    },
+    {
+      "code": "5105022005",
+      "name": "Bakas"
+    },
+    {
+      "code": "5105022006",
+      "name": "Getakan"
+    },
+    {
+      "code": "5105022007",
+      "name": "Tihingan"
+    },
+    {
+      "code": "5105022008",
+      "name": "Aan"
+    },
+    {
+      "code": "5105022009",
+      "name": "Nyalian"
+    },
+    {
+      "code": "5105022010",
+      "name": "Bungbungan"
+    },
+    {
+      "code": "5105022011",
+      "name": "Timuhun"
+    },
+    {
+      "code": "5105022012",
+      "name": "Nyanglan"
+    },
+    {
+      "code": "5105022013",
+      "name": "Tohpati"
+    }
+  ],
+  "510503": [
+    {
+      "code": "5105031008",
+      "name": "Semarapura Kaja"
+    },
+    {
+      "code": "5105031009",
+      "name": "Semarapura Kauh"
+    },
+    {
+      "code": "5105031010",
+      "name": "Semarapura Tengah"
+    },
+    {
+      "code": "5105031011",
+      "name": "Semarapura Kangin"
+    },
+    {
+      "code": "5105031012",
+      "name": "Semarapura Klod Kangin"
+    },
+    {
+      "code": "5105031013",
+      "name": "Semarapura Klod"
+    },
+    {
+      "code": "5105032001",
+      "name": "Satra"
+    },
+    {
+      "code": "5105032002",
+      "name": "Tojan"
+    },
+    {
+      "code": "5105032003",
+      "name": "Gelgel"
+    },
+    {
+      "code": "5105032004",
+      "name": "Kampung Gelgel"
+    },
+    {
+      "code": "5105032005",
+      "name": "Jumpai"
+    },
+    {
+      "code": "5105032006",
+      "name": "Tangkas"
+    },
+    {
+      "code": "5105032007",
+      "name": "Kamasan"
+    },
+    {
+      "code": "5105032014",
+      "name": "Akah"
+    },
+    {
+      "code": "5105032015",
+      "name": "Manduang"
+    },
+    {
+      "code": "5105032016",
+      "name": "Selat"
+    },
+    {
+      "code": "5105032017",
+      "name": "Tegak"
+    },
+    {
+      "code": "5105032018",
+      "name": "Selisihan"
+    }
+  ],
+  "510504": [
+    {
+      "code": "5105042001",
+      "name": "Paksebali"
+    },
+    {
+      "code": "5105042002",
+      "name": "Sampalan Tengah"
+    },
+    {
+      "code": "5105042003",
+      "name": "Sampalan Klod"
+    },
+    {
+      "code": "5105042004",
+      "name": "Sulang"
+    },
+    {
+      "code": "5105042005",
+      "name": "Gunaksa"
+    },
+    {
+      "code": "5105042006",
+      "name": "Kusamba"
+    },
+    {
+      "code": "5105042007",
+      "name": "Kampung Kusamba"
+    },
+    {
+      "code": "5105042008",
+      "name": "Pesinggahan"
+    },
+    {
+      "code": "5105042009",
+      "name": "Dawan Klod"
+    },
+    {
+      "code": "5105042010",
+      "name": "Pikat"
+    },
+    {
+      "code": "5105042011",
+      "name": "Dawan Kaler"
+    },
+    {
+      "code": "5105042012",
+      "name": "Besan"
+    }
+  ]
 }

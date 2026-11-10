@@ -1,102 +1,1916 @@
 {
-    "121401": [
-        {
-            "code": "1214012002",
-            "name": "Hilisangowola"
-        },
-        {
-            "code": "1214012005",
-            "name": "Hiliotalua"
-        },
-        {
-            "code": "1214012006",
-            "name": "Koendrafo"
-        },
-        {
-            "code": "1214012008",
-            "name": "Lawa-lawa Luo"
-        },
-        {
-            "code": "1214012016",
-            "name": "Tuhemberua"
-        },
-        {
-            "code": "1214012017",
-            "name": "Tesikhori"
-        },
-        {
-            "code": "1214012021",
-            "name": "Tumari"
-        },
-        {
-            "code": "1214012023",
-            "name": "Ewo"
-        },
-        {
-            "code": "1214012024",
-            "name": "Ko'olotano"
-        },
-        {
-            "code": "1214012026",
-            "name": "Botohilindruria"
-        },
-        {
-            "code": "1214012027",
-            "name": "Caritas Sogawunasi"
-        },
-        {
-            "code": "1214012028",
-            "name": "Orudua Lawa-lawa Luo"
-        },
-        {
-            "code": "1214012029",
-            "name": "Hilifaondrato"
-        }
-    ],
-    "121402": [
-        {
-            "code": "1214022005",
-            "name": "Doli-doli Idanotae"
-        },
-        {
-            "code": "1214022007",
-            "name": "Hiliana'a Gomo"
-        },
-        {
-            "code": "1214022015",
-            "name": "Lawa-lawa Luo Gomo"
-        },
-        {
-            "code": "1214022017",
-            "name": "Lolosoni"
-        },
-        {
-            "code": "1214022023",
-            "name": "Orahili Gomo"
-        },
-        {
-            "code": "1214022024",
-            "name": "Sifaoro'asi Gomo"
-        },
-        {
-            "code": "1214022035",
-            "name": "Tanoniko'o"
-        },
-        {
-            "code": "1214022040",
-            "name": "Suka Maju Mohili"
-        },
-        {
-            "code": "1214022041",
-            "name": "Orahili Sibohou"
-        },
-        {
-            "code": "1214022042",
-            "name": "Gunung Gabungan"
-        },
-        {
-            "code": "1214022043",
-            "name": "Umbu Orahua"
-        }
-    ]
+  "121401": [
+    {
+      "code": "1214012002",
+      "name": "Hilisangowola"
+    },
+    {
+      "code": "1214012005",
+      "name": "Hiliotalua"
+    },
+    {
+      "code": "1214012006",
+      "name": "Koendrafo"
+    },
+    {
+      "code": "1214012008",
+      "name": "Lawa-lawa Luo"
+    },
+    {
+      "code": "1214012016",
+      "name": "Tuhemberua"
+    },
+    {
+      "code": "1214012017",
+      "name": "Tesikhori"
+    },
+    {
+      "code": "1214012021",
+      "name": "Tumari"
+    },
+    {
+      "code": "1214012023",
+      "name": "Ewo"
+    },
+    {
+      "code": "1214012024",
+      "name": "Ko'olotano"
+    },
+    {
+      "code": "1214012026",
+      "name": "Botohilindruria"
+    },
+    {
+      "code": "1214012027",
+      "name": "Caritas Sogawunasi"
+    },
+    {
+      "code": "1214012028",
+      "name": "Orudua Lawa-lawa Luo"
+    },
+    {
+      "code": "1214012029",
+      "name": "Hilifaondrato"
+    }
+  ],
+  "121402": [
+    {
+      "code": "1214022005",
+      "name": "Doli-doli Idanotae"
+    },
+    {
+      "code": "1214022007",
+      "name": "Hiliana'a Gomo"
+    },
+    {
+      "code": "1214022015",
+      "name": "Lawa-lawa Luo Gomo"
+    },
+    {
+      "code": "1214022017",
+      "name": "Lolosoni"
+    },
+    {
+      "code": "1214022023",
+      "name": "Orahili Gomo"
+    },
+    {
+      "code": "1214022024",
+      "name": "Sifaoro'asi Gomo"
+    },
+    {
+      "code": "1214022035",
+      "name": "Tanoniko'o"
+    },
+    {
+      "code": "1214022040",
+      "name": "Suka Maju Mohili"
+    },
+    {
+      "code": "1214022041",
+      "name": "Orahili Sibohou"
+    },
+    {
+      "code": "1214022042",
+      "name": "Gunung Gabungan"
+    },
+    {
+      "code": "1214022043",
+      "name": "Umbu Orahua"
+    }
+  ],
+  "121403": [
+    {
+      "code": "1214032001",
+      "name": "Bawolato"
+    },
+    {
+      "code": "1214032002",
+      "name": "Bawozihono"
+    },
+    {
+      "code": "1214032003",
+      "name": "Bawo'otalua"
+    },
+    {
+      "code": "1214032004",
+      "name": "Golambanua I"
+    },
+    {
+      "code": "1214032007",
+      "name": "Hilisimaetano Balaekha"
+    },
+    {
+      "code": "1214032009",
+      "name": "Lahusa"
+    },
+    {
+      "code": "1214032014",
+      "name": "Tetezou"
+    },
+    {
+      "code": "1214032016",
+      "name": "Orahili Balaekha"
+    },
+    {
+      "code": "1214032017",
+      "name": "Harenoro"
+    },
+    {
+      "code": "1214032018",
+      "name": "Sarahililaza"
+    },
+    {
+      "code": "1214032024",
+      "name": "Hiliabolata"
+    },
+    {
+      "code": "1214032025",
+      "name": "Hiligambukha"
+    },
+    {
+      "code": "1214032026",
+      "name": "Sinar Baru Darodaro"
+    },
+    {
+      "code": "1214032027",
+      "name": "Hiliorudua"
+    },
+    {
+      "code": "1214032032",
+      "name": "Hilizomboi"
+    },
+    {
+      "code": "1214032036",
+      "name": "Oikhoda Balaekha"
+    },
+    {
+      "code": "1214032037",
+      "name": "Angorudua Balaekha"
+    },
+    {
+      "code": "1214032038",
+      "name": "Hilinawalo Balaekha"
+    },
+    {
+      "code": "1214032039",
+      "name": "Sobawagoli"
+    },
+    {
+      "code": "1214032040",
+      "name": "Lahusa I"
+    },
+    {
+      "code": "1214032041",
+      "name": "Hiliwatema"
+    },
+    {
+      "code": "1214032042",
+      "name": "Mogae"
+    },
+    {
+      "code": "1214032043",
+      "name": "Sinar Baho"
+    }
+  ],
+  "121404": [
+    {
+      "code": "1214042001",
+      "name": "Duru"
+    },
+    {
+      "code": "1214042002",
+      "name": "Tuwaso"
+    },
+    {
+      "code": "1214042003",
+      "name": "Hilioromao"
+    },
+    {
+      "code": "1214042004",
+      "name": "Eho"
+    },
+    {
+      "code": "1214042005",
+      "name": "Sialema"
+    },
+    {
+      "code": "1214042006",
+      "name": "Bowonifaoso"
+    },
+    {
+      "code": "1214042007",
+      "name": "Hilianombasela"
+    },
+    {
+      "code": "1214042008",
+      "name": "Lumbui Melayu"
+    },
+    {
+      "code": "1214042009",
+      "name": "Hiliorodua Tebolo"
+    },
+    {
+      "code": "1214042010",
+      "name": "Tebolo Melayu"
+    },
+    {
+      "code": "1214042021",
+      "name": "Lumbui Nias"
+    },
+    {
+      "code": "1214042022",
+      "name": "Baruyu Sibohou"
+    },
+    {
+      "code": "1214042023",
+      "name": "Sepakat"
+    },
+    {
+      "code": "1214042024",
+      "name": "Tano Mokinu"
+    },
+    {
+      "code": "1214042025",
+      "name": "Hilikana"
+    },
+    {
+      "code": "1214042026",
+      "name": "Hilinifaese"
+    },
+    {
+      "code": "1214042027",
+      "name": "Omega"
+    }
+  ],
+  "121405": [
+    {
+      "code": "1214051046",
+      "name": "Pasar Pulau Tello"
+    },
+    {
+      "code": "1214052001",
+      "name": "Hiliotalua"
+    },
+    {
+      "code": "1214052002",
+      "name": "Bawodobara"
+    },
+    {
+      "code": "1214052003",
+      "name": "Bawo'amahelato"
+    },
+    {
+      "code": "1214052004",
+      "name": "Bawo'omasio"
+    },
+    {
+      "code": "1214052005",
+      "name": "Loboi"
+    },
+    {
+      "code": "1214052006",
+      "name": "Hiliamaodula"
+    },
+    {
+      "code": "1214052007",
+      "name": "Baruyu Lasara"
+    },
+    {
+      "code": "1214052008",
+      "name": "Sifitu Ewali"
+    },
+    {
+      "code": "1214052009",
+      "name": "Rapa-rapa Melayu"
+    },
+    {
+      "code": "1214052010",
+      "name": "Sinauru"
+    },
+    {
+      "code": "1214052011",
+      "name": "Siofa Ewali"
+    },
+    {
+      "code": "1214052012",
+      "name": "Simaluaya"
+    },
+    {
+      "code": "1214052013",
+      "name": "Silima Ewali"
+    },
+    {
+      "code": "1214052014",
+      "name": "Sidua Ewali"
+    },
+    {
+      "code": "1214052027",
+      "name": "Balogia"
+    },
+    {
+      "code": "1214052029",
+      "name": "Lasonde"
+    },
+    {
+      "code": "1214052041",
+      "name": "Koto"
+    },
+    {
+      "code": "1214052048",
+      "name": "Onaya"
+    },
+    {
+      "code": "1214052049",
+      "name": "Sisarahili"
+    },
+    {
+      "code": "1214052051",
+      "name": "Sebuasi"
+    },
+    {
+      "code": "1214052054",
+      "name": "Orahili"
+    }
+  ],
+  "121406": [
+    {
+      "code": "1214061008",
+      "name": "Pasar Teluk Dalam"
+    },
+    {
+      "code": "1214062006",
+      "name": "Hiligeho"
+    },
+    {
+      "code": "1214062007",
+      "name": "Hilitobara"
+    },
+    {
+      "code": "1214062009",
+      "name": "Bawonifaoso"
+    },
+    {
+      "code": "1214062010",
+      "name": "Bawozaua"
+    },
+    {
+      "code": "1214062011",
+      "name": "Hiliganowo"
+    },
+    {
+      "code": "1214062023",
+      "name": "Bawodobara"
+    },
+    {
+      "code": "1214062024",
+      "name": "Bawolowalani"
+    },
+    {
+      "code": "1214062025",
+      "name": "Hilisao'otoniha"
+    },
+    {
+      "code": "1214062026",
+      "name": "Hilisondrekha"
+    },
+    {
+      "code": "1214062040",
+      "name": "Hiliamuri"
+    },
+    {
+      "code": "1214062042",
+      "name": "Hiliana'a"
+    },
+    {
+      "code": "1214062043",
+      "name": "Hiliganowo Salo'o"
+    },
+    {
+      "code": "1214062044",
+      "name": "Ganowo Saua"
+    },
+    {
+      "code": "1214062045",
+      "name": "Nanowa"
+    },
+    {
+      "code": "1214062046",
+      "name": "Hililaza"
+    }
+  ],
+  "121407": [
+    {
+      "code": "1214072004",
+      "name": "Sifaoroasi"
+    },
+    {
+      "code": "1214072005",
+      "name": "Hilihoru"
+    },
+    {
+      "code": "1214072006",
+      "name": "Hilimbulawa"
+    },
+    {
+      "code": "1214072008",
+      "name": "Tuindrao"
+    },
+    {
+      "code": "1214072009",
+      "name": "Hilimbowo"
+    },
+    {
+      "code": "1214072011",
+      "name": "Mohili"
+    },
+    {
+      "code": "1214072012",
+      "name": "Lolozaria"
+    },
+    {
+      "code": "1214072013",
+      "name": "Lolomoyo"
+    },
+    {
+      "code": "1214072014",
+      "name": "Hilifadolo"
+    },
+    {
+      "code": "1214072015",
+      "name": "Orahili Eho"
+    },
+    {
+      "code": "1214072016",
+      "name": "Sisobahili"
+    },
+    {
+      "code": "1214072023",
+      "name": "Loloabolo"
+    },
+    {
+      "code": "1214072024",
+      "name": "Hilisalo'o"
+    },
+    {
+      "code": "1214072026",
+      "name": "Sirofi"
+    },
+    {
+      "code": "1214072027",
+      "name": "Hilindraso"
+    },
+    {
+      "code": "1214072028",
+      "name": "Hilimaera"
+    },
+    {
+      "code": "1214072029",
+      "name": "Boholu"
+    },
+    {
+      "code": "1214072030",
+      "name": "Amandraya"
+    },
+    {
+      "code": "1214072031",
+      "name": "Sinar Ino'o"
+    },
+    {
+      "code": "1214072032",
+      "name": "Tuindrao I"
+    },
+    {
+      "code": "1214072033",
+      "name": "Tuhemberua Amandraya"
+    }
+  ],
+  "121408": [
+    {
+      "code": "1214082001",
+      "name": "Amuri"
+    },
+    {
+      "code": "1214082004",
+      "name": "Bawosalo'o Siwalawa"
+    },
+    {
+      "code": "1214082009",
+      "name": "Hilifadolo"
+    },
+    {
+      "code": "1214082014",
+      "name": "Lolofaoso"
+    },
+    {
+      "code": "1214082015",
+      "name": "Lolomoyo"
+    },
+    {
+      "code": "1214082016",
+      "name": "Lolowau"
+    },
+    {
+      "code": "1214082017",
+      "name": "Lolohowa"
+    },
+    {
+      "code": "1214082022",
+      "name": "Sisarahili Ekholo"
+    },
+    {
+      "code": "1214082030",
+      "name": "Tuhegafoa"
+    },
+    {
+      "code": "1214082033",
+      "name": "Botohili"
+    },
+    {
+      "code": "1214082035",
+      "name": "Hilikara"
+    },
+    {
+      "code": "1214082044",
+      "name": "Samiri"
+    },
+    {
+      "code": "1214082047",
+      "name": "Hilimbowo Siwalawa"
+    },
+    {
+      "code": "1214082048",
+      "name": "Nituwu Boho"
+    }
+  ],
+  "121409": [
+    {
+      "code": "1214092001",
+      "name": "Sifalago Susua"
+    },
+    {
+      "code": "1214092002",
+      "name": "Orahili Susua"
+    },
+    {
+      "code": "1214092003",
+      "name": "Hiliana'a Susua"
+    },
+    {
+      "code": "1214092004",
+      "name": "Hiliorahua"
+    },
+    {
+      "code": "1214092005",
+      "name": "Hilimboe"
+    },
+    {
+      "code": "1214092006",
+      "name": "Hilimboho"
+    },
+    {
+      "code": "1214092008",
+      "name": "Hiliwaebu"
+    },
+    {
+      "code": "1214092009",
+      "name": "Hilidanayao"
+    },
+    {
+      "code": "1214092010",
+      "name": "Hilizamurugo"
+    },
+    {
+      "code": "1214092011",
+      "name": "Sisobahili"
+    },
+    {
+      "code": "1214092012",
+      "name": "Dao-dao Zanuwo"
+    },
+    {
+      "code": "1214092013",
+      "name": "Hiliorudua"
+    },
+    {
+      "code": "1214092014",
+      "name": "Bintang Baru"
+    },
+    {
+      "code": "1214092015",
+      "name": "Hilitobara Susua"
+    },
+    {
+      "code": "1214092016",
+      "name": "Orahua Uluzoi"
+    },
+    {
+      "code": "1214092017",
+      "name": "Hilisibohou"
+    },
+    {
+      "code": "1214092018",
+      "name": "Hiliadulosoi"
+    },
+    {
+      "code": "1214092019",
+      "name": "Orahili Bo'e"
+    }
+  ],
+  "121410": [
+    {
+      "code": "1214102001",
+      "name": "Hilisimaetano"
+    },
+    {
+      "code": "1214102002",
+      "name": "Bawogosali"
+    },
+    {
+      "code": "1214102003",
+      "name": "Hilifalawu"
+    },
+    {
+      "code": "1214102005",
+      "name": "Samadaya Hilisimaetano"
+    },
+    {
+      "code": "1214102006",
+      "name": "Idala Jaya Hilisimaetano"
+    },
+    {
+      "code": "1214102007",
+      "name": "Pekan Hilisimaetano"
+    },
+    {
+      "code": "1214102008",
+      "name": "Bonia Hilisimaetano"
+    },
+    {
+      "code": "1214102009",
+      "name": "Ndraso Hilisimaetano"
+    },
+    {
+      "code": "1214102010",
+      "name": "Faomasi Hilisimaetano"
+    },
+    {
+      "code": "1214102011",
+      "name": "Eho Hilisimaetano"
+    },
+    {
+      "code": "1214102012",
+      "name": "Soto'o Hilisimaetano"
+    },
+    {
+      "code": "1214102013",
+      "name": "Hiliaurifa Hilisimaetano"
+    },
+    {
+      "code": "1214102015",
+      "name": "Bawohosi Maniamolo"
+    },
+    {
+      "code": "1214102016",
+      "name": "Bawosaodano"
+    }
+  ],
+  "121411": [
+    {
+      "code": "1214112001",
+      "name": "Togizita"
+    },
+    {
+      "code": "1214112002",
+      "name": "Soledua"
+    },
+    {
+      "code": "1214112003",
+      "name": "Bawosalo'o Dao-dao"
+    },
+    {
+      "code": "1214112004",
+      "name": "Tuho'owo"
+    },
+    {
+      "code": "1214112005",
+      "name": "Togizita I"
+    },
+    {
+      "code": "1214112007",
+      "name": "Hilitoese"
+    },
+    {
+      "code": "1214112008",
+      "name": "Dao-dao Sowo"
+    },
+    {
+      "code": "1214112009",
+      "name": "Hiliadulo"
+    },
+    {
+      "code": "1214112010",
+      "name": "Soledua I"
+    },
+    {
+      "code": "1214112011",
+      "name": "Soledua II"
+    }
+  ],
+  "121412": [
+    {
+      "code": "1214122001",
+      "name": "Hilisataro"
+    },
+    {
+      "code": "1214122002",
+      "name": "Hilinamoniha"
+    },
+    {
+      "code": "1214122003",
+      "name": "Hiliamaetaluo"
+    },
+    {
+      "code": "1214122004",
+      "name": "Bawoganowo"
+    },
+    {
+      "code": "1214122005",
+      "name": "Hili'alawa"
+    },
+    {
+      "code": "1214122006",
+      "name": "Hilindrasoniha"
+    },
+    {
+      "code": "1214122007",
+      "name": "Hilimagari"
+    },
+    {
+      "code": "1214122008",
+      "name": "Hilisataro Raya"
+    },
+    {
+      "code": "1214122009",
+      "name": "Hilisataro Gewa"
+    },
+    {
+      "code": "1214122010",
+      "name": "Hilisoromi"
+    },
+    {
+      "code": "1214122011",
+      "name": "Hiliasi"
+    },
+    {
+      "code": "1214122012",
+      "name": "Hilindraso Raya"
+    },
+    {
+      "code": "1214122013",
+      "name": "Hilisataro Nandisa"
+    },
+    {
+      "code": "1214122014",
+      "name": "Hilisataro Eho Sofayo"
+    }
+  ],
+  "121413": [
+    {
+      "code": "1214132001",
+      "name": "Hilizalo'otano"
+    },
+    {
+      "code": "1214132002",
+      "name": "Hilinawalo Mazino"
+    },
+    {
+      "code": "1214132003",
+      "name": "Lawindra"
+    },
+    {
+      "code": "1214132004",
+      "name": "Bawolahusa"
+    },
+    {
+      "code": "1214132005",
+      "name": "Hilizoroi Lawa"
+    },
+    {
+      "code": "1214132006",
+      "name": "Hilizalo'otano Laowo"
+    },
+    {
+      "code": "1214132007",
+      "name": "Hilizalo'otano Larono"
+    },
+    {
+      "code": "1214132008",
+      "name": "Hililaza Hilinawalo Mazino"
+    },
+    {
+      "code": "1214132009",
+      "name": "Hilifondege Hilizoroilawa"
+    },
+    {
+      "code": "1214132010",
+      "name": "Lolomboli"
+    },
+    {
+      "code": "1214132011",
+      "name": "Bawolahusa Doli-doli"
+    }
+  ],
+  "121414": [
+    {
+      "code": "1214142001",
+      "name": "Lawindra"
+    },
+    {
+      "code": "1214142003",
+      "name": "Sifaoro'asi Mola"
+    },
+    {
+      "code": "1214142004",
+      "name": "Hiliuso"
+    },
+    {
+      "code": "1214142005",
+      "name": "Balohili Mola"
+    },
+    {
+      "code": "1214142006",
+      "name": "Ambukha"
+    },
+    {
+      "code": "1214142007",
+      "name": "Tobualo"
+    },
+    {
+      "code": "1214142008",
+      "name": "Hilibadalu"
+    },
+    {
+      "code": "1214142009",
+      "name": "Foikhugaga"
+    },
+    {
+      "code": "1214142010",
+      "name": "Orlin"
+    },
+    {
+      "code": "1214142011",
+      "name": "Orahili Mola"
+    },
+    {
+      "code": "1214142012",
+      "name": "Umbunasi"
+    }
+  ],
+  "121415": [
+    {
+      "code": "1214152001",
+      "name": "Hilitotao"
+    },
+    {
+      "code": "1214152002",
+      "name": "Hiliorudua"
+    },
+    {
+      "code": "1214152003",
+      "name": "Sisobambowo"
+    },
+    {
+      "code": "1214152004",
+      "name": "Hiliamauzula"
+    },
+    {
+      "code": "1214152005",
+      "name": "Aramo"
+    },
+    {
+      "code": "1214152006",
+      "name": "Sikhorilafau"
+    },
+    {
+      "code": "1214152007",
+      "name": "Hilifadolo"
+    },
+    {
+      "code": "1214152008",
+      "name": "Hume"
+    },
+    {
+      "code": "1214152009",
+      "name": "Dao-dao"
+    },
+    {
+      "code": "1214152010",
+      "name": "Hilimagiao"
+    },
+    {
+      "code": "1214152011",
+      "name": "Hilisawato"
+    },
+    {
+      "code": "1214152012",
+      "name": "Balohao"
+    },
+    {
+      "code": "1214152013",
+      "name": "Hiligafoa"
+    },
+    {
+      "code": "1214152014",
+      "name": "Hilimbowo"
+    },
+    {
+      "code": "1214152015",
+      "name": "Hilimezaya"
+    },
+    {
+      "code": "1214152016",
+      "name": "Hiliadolowa"
+    },
+    {
+      "code": "1214152017",
+      "name": "Hiligumbu"
+    },
+    {
+      "code": "1214152018",
+      "name": "Bagoa"
+    }
+  ],
+  "121416": [
+    {
+      "code": "1214162001",
+      "name": "Labuhan Hiu"
+    },
+    {
+      "code": "1214162002",
+      "name": "Labuhan Bazau"
+    },
+    {
+      "code": "1214162003",
+      "name": "Labuan Rima"
+    },
+    {
+      "code": "1214162004",
+      "name": "Lambak"
+    },
+    {
+      "code": "1214162005",
+      "name": "Bais"
+    },
+    {
+      "code": "1214162006",
+      "name": "Mahang Labara"
+    },
+    {
+      "code": "1214162007",
+      "name": "Adam"
+    },
+    {
+      "code": "1214162008",
+      "name": "Labara"
+    },
+    {
+      "code": "1214162009",
+      "name": "Bais Baru"
+    },
+    {
+      "code": "1214162010",
+      "name": "Labuan Rima Baru"
+    }
+  ],
+  "121417": [
+    {
+      "code": "1214172001",
+      "name": "Tetegawa'ai"
+    },
+    {
+      "code": "1214172002",
+      "name": "Hilimbaruzo"
+    },
+    {
+      "code": "1214172003",
+      "name": "Luahandroito"
+    },
+    {
+      "code": "1214172005",
+      "name": "Orahuahili"
+    },
+    {
+      "code": "1214172006",
+      "name": "Ulu Mazo"
+    },
+    {
+      "code": "1214172007",
+      "name": "Guigui"
+    },
+    {
+      "code": "1214172009",
+      "name": "Hilimaufa"
+    },
+    {
+      "code": "1214172010",
+      "name": "Siofabanua"
+    },
+    {
+      "code": "1214172011",
+      "name": "Tetegawa'ai Ehomo"
+    },
+    {
+      "code": "1214172013",
+      "name": "Tafulu"
+    }
+  ],
+  "121418": [
+    {
+      "code": "1214182001",
+      "name": "Bawomataluo"
+    },
+    {
+      "code": "1214182002",
+      "name": "Orahili Fau"
+    },
+    {
+      "code": "1214182003",
+      "name": "Bawonahono"
+    },
+    {
+      "code": "1214182005",
+      "name": "Siwalawa"
+    },
+    {
+      "code": "1214182006",
+      "name": "Onohondro"
+    },
+    {
+      "code": "1214182007",
+      "name": "Hilinawalo Fau"
+    },
+    {
+      "code": "1214182008",
+      "name": "Lahusa Fau"
+    },
+    {
+      "code": "1214182011",
+      "name": "Hilizihono"
+    },
+    {
+      "code": "1214182012",
+      "name": "Hiliofonaluo"
+    },
+    {
+      "code": "1214182015",
+      "name": "Bawofanayama"
+    },
+    {
+      "code": "1214182017",
+      "name": "Hilikara Maha"
+    },
+    {
+      "code": "1214182018",
+      "name": "Hilisalawa"
+    },
+    {
+      "code": "1214182019",
+      "name": "Hiligito"
+    },
+    {
+      "code": "1214182020",
+      "name": "Siliwulawa"
+    },
+    {
+      "code": "1214182021",
+      "name": "Hilifarokha Lawa"
+    },
+    {
+      "code": "1214182022",
+      "name": "Eho Orahili"
+    },
+    {
+      "code": "1214182023",
+      "name": "Ete Batu"
+    }
+  ],
+  "121419": [
+    {
+      "code": "1214192001",
+      "name": "Sambulu"
+    },
+    {
+      "code": "1214192002",
+      "name": "Orahili Ulunoyo"
+    },
+    {
+      "code": "1214192003",
+      "name": "Hiliwaebu"
+    },
+    {
+      "code": "1214192004",
+      "name": "Amorosa"
+    },
+    {
+      "code": "1214192005",
+      "name": "Marao"
+    },
+    {
+      "code": "1214192006",
+      "name": "Borowosi"
+    },
+    {
+      "code": "1214192007",
+      "name": "Hilimaera"
+    },
+    {
+      "code": "1214192008",
+      "name": "Suka Maju"
+    },
+    {
+      "code": "1214192009",
+      "name": "Loloana'a"
+    },
+    {
+      "code": "1214192010",
+      "name": "Hilifakhe"
+    },
+    {
+      "code": "1214192011",
+      "name": "Bawo Lolomatua"
+    },
+    {
+      "code": "1214192012",
+      "name": "Ambukha I"
+    },
+    {
+      "code": "1214192013",
+      "name": "Puncak Lolomatua"
+    }
+  ],
+  "121420": [
+    {
+      "code": "1214202001",
+      "name": "Ehosakhozi"
+    },
+    {
+      "code": "1214202002",
+      "name": "Bawohosi"
+    },
+    {
+      "code": "1214202003",
+      "name": "Hilizoliga"
+    },
+    {
+      "code": "1214202004",
+      "name": "Olayama"
+    },
+    {
+      "code": "1214202005",
+      "name": "Sifaoroasi"
+    },
+    {
+      "code": "1214202006",
+      "name": "Sifalago"
+    },
+    {
+      "code": "1214202007",
+      "name": "Lalimanawa"
+    },
+    {
+      "code": "1214202008",
+      "name": "Tundrumbaho"
+    },
+    {
+      "code": "1214202009",
+      "name": "Hiliuso"
+    },
+    {
+      "code": "1214202010",
+      "name": "Sisarahili Huruna"
+    },
+    {
+      "code": "1214202011",
+      "name": "Tarewe"
+    },
+    {
+      "code": "1214202012",
+      "name": "Fadoro Tuhemberua"
+    },
+    {
+      "code": "1214202013",
+      "name": "Hilifalawu"
+    },
+    {
+      "code": "1214202014",
+      "name": "Luahamofakhe"
+    },
+    {
+      "code": "1214202015",
+      "name": "Sifaoroasi Huruna"
+    },
+    {
+      "code": "1214202016",
+      "name": "Hilimanawa"
+    },
+    {
+      "code": "1214202017",
+      "name": "Mombawa Oladano"
+    }
+  ],
+  "121421": [
+    {
+      "code": "1214212001",
+      "name": "Hilinamazihono"
+    },
+    {
+      "code": "1214212002",
+      "name": "Hilimbowo"
+    },
+    {
+      "code": "1214212003",
+      "name": "Simandraolo"
+    },
+    {
+      "code": "1214212004",
+      "name": "Bawosalo'o Bawoluo"
+    },
+    {
+      "code": "1214212005",
+      "name": "Hilimbuasi"
+    },
+    {
+      "code": "1214212006",
+      "name": "Simandraolo O'o'u"
+    },
+    {
+      "code": "1214212007",
+      "name": "Lolomaya"
+    },
+    {
+      "code": "1214212008",
+      "name": "Suka Maju"
+    },
+    {
+      "code": "1214212009",
+      "name": "Hiliorudua"
+    },
+    {
+      "code": "1214212010",
+      "name": "Hilinamazihono Moale"
+    },
+    {
+      "code": "1214212011",
+      "name": "Balohili O'o'u"
+    }
+  ],
+  "121422": [
+    {
+      "code": "1214222001",
+      "name": "Fadoro Ewo"
+    },
+    {
+      "code": "1214222002",
+      "name": "Soroma'asi"
+    },
+    {
+      "code": "1214222003",
+      "name": "Lauso"
+    },
+    {
+      "code": "1214222004",
+      "name": "Sisarahili Oyo"
+    },
+    {
+      "code": "1214222005",
+      "name": "Sisobahili Huruna"
+    },
+    {
+      "code": "1214222006",
+      "name": "Onohazumba"
+    },
+    {
+      "code": "1214222007",
+      "name": "Hiliweto"
+    },
+    {
+      "code": "1214222008",
+      "name": "Orahili Huruna"
+    },
+    {
+      "code": "1214222009",
+      "name": "Tetehosi"
+    },
+    {
+      "code": "1214222010",
+      "name": "Helefanikha"
+    }
+  ],
+  "121423": [
+    {
+      "code": "1214232001",
+      "name": "Maluo"
+    },
+    {
+      "code": "1214232002",
+      "name": "Hiliadulo"
+    },
+    {
+      "code": "1214232003",
+      "name": "Umbuasi"
+    },
+    {
+      "code": "1214232004",
+      "name": "Sisobahili Siwalawa"
+    },
+    {
+      "code": "1214232005",
+      "name": "Manawadano"
+    },
+    {
+      "code": "1214232006",
+      "name": "Talio"
+    },
+    {
+      "code": "1214232007",
+      "name": "Anaoma"
+    },
+    {
+      "code": "1214232008",
+      "name": "Berua Siwalawa"
+    },
+    {
+      "code": "1214232009",
+      "name": "Umbuasi Barat"
+    },
+    {
+      "code": "1214232010",
+      "name": "Hiligodu"
+    },
+    {
+      "code": "1214232011",
+      "name": "Bukit Burasi"
+    }
+  ],
+  "121424": [
+    {
+      "code": "1214242001",
+      "name": "Fondrakoraya"
+    },
+    {
+      "code": "1214242002",
+      "name": "Orudua Sibohou"
+    },
+    {
+      "code": "1214242003",
+      "name": "Sisarahili Susua"
+    },
+    {
+      "code": "1214242004",
+      "name": "Susua"
+    },
+    {
+      "code": "1214242005",
+      "name": "Lahusa Susua"
+    },
+    {
+      "code": "1214242006",
+      "name": "Ramba-ramba"
+    },
+    {
+      "code": "1214242007",
+      "name": "Hilinifaoso"
+    },
+    {
+      "code": "1214242008",
+      "name": "Sifaoroasi"
+    },
+    {
+      "code": "1214242009",
+      "name": "Amandraya"
+    },
+    {
+      "code": "1214242010",
+      "name": "Foikhu Fondrako"
+    },
+    {
+      "code": "1214242011",
+      "name": "Hiliwosi"
+    },
+    {
+      "code": "1214242012",
+      "name": "Orahili Fondrako"
+    }
+  ],
+  "121425": [
+    {
+      "code": "1214252001",
+      "name": "Mondrowe"
+    },
+    {
+      "code": "1214252002",
+      "name": "Hilidohona"
+    },
+    {
+      "code": "1214252003",
+      "name": "Hililaora"
+    },
+    {
+      "code": "1214252004",
+      "name": "Uluidanoduo"
+    },
+    {
+      "code": "1214252005",
+      "name": "Umbu Sohahau"
+    },
+    {
+      "code": "1214252006",
+      "name": "Hilisao'oto"
+    },
+    {
+      "code": "1214252007",
+      "name": "Taluzusua"
+    },
+    {
+      "code": "1214252008",
+      "name": "Hilizanuwo"
+    },
+    {
+      "code": "1214252009",
+      "name": "Hoya"
+    },
+    {
+      "code": "1214252010",
+      "name": "Na'ai"
+    },
+    {
+      "code": "1214252011",
+      "name": "Olanori"
+    }
+  ],
+  "121426": [
+    {
+      "code": "1214262001",
+      "name": "Sifitubanua"
+    },
+    {
+      "code": "1214262002",
+      "name": "Siwalu Banua"
+    },
+    {
+      "code": "1214262003",
+      "name": "Sitolu Banua"
+    },
+    {
+      "code": "1214262004",
+      "name": "Silima Banua"
+    },
+    {
+      "code": "1214262005",
+      "name": "Mehaga"
+    },
+    {
+      "code": "1214262006",
+      "name": "Sihare'o"
+    },
+    {
+      "code": "1214262007",
+      "name": "Golambanua II"
+    },
+    {
+      "code": "1214262008",
+      "name": "Oladano"
+    },
+    {
+      "code": "1214262009",
+      "name": "Fanedanu"
+    },
+    {
+      "code": "1214262010",
+      "name": "Hiliorahua Tasua"
+    },
+    {
+      "code": "1214262011",
+      "name": "Somambawa"
+    },
+    {
+      "code": "1214262012",
+      "name": "Gabungan Tasua"
+    },
+    {
+      "code": "1214262013",
+      "name": "Hilialawa"
+    },
+    {
+      "code": "1214262014",
+      "name": "Sinar Susua"
+    }
+  ],
+  "121427": [
+    {
+      "code": "1214272001",
+      "name": "Sifalago Gomo"
+    },
+    {
+      "code": "1214272002",
+      "name": "Balohili Gomo"
+    },
+    {
+      "code": "1214272003",
+      "name": "Bohalu"
+    },
+    {
+      "code": "1214272004",
+      "name": "Orsedes"
+    },
+    {
+      "code": "1214272005",
+      "name": "Sinar Helaowo"
+    },
+    {
+      "code": "1214272006",
+      "name": "Siholi"
+    },
+    {
+      "code": "1214272007",
+      "name": "Tuhegafoa"
+    },
+    {
+      "code": "1214272008",
+      "name": "Perjuangan"
+    },
+    {
+      "code": "1214272009",
+      "name": "Lewa-lewa"
+    },
+    {
+      "code": "1214272010",
+      "name": "Siraha"
+    }
+  ],
+  "121428": [
+    {
+      "code": "1214282001",
+      "name": "Gobo"
+    },
+    {
+      "code": "1214282002",
+      "name": "Silina"
+    },
+    {
+      "code": "1214282003",
+      "name": "Maufa"
+    },
+    {
+      "code": "1214282004",
+      "name": "Gondia"
+    },
+    {
+      "code": "1214282005",
+      "name": "Gobo Baru"
+    },
+    {
+      "code": "1214282006",
+      "name": "Silina Baru"
+    }
+  ],
+  "121429": [
+    {
+      "code": "1214292001",
+      "name": "Fuge"
+    },
+    {
+      "code": "1214292002",
+      "name": "Luaha Idano Pono"
+    },
+    {
+      "code": "1214292003",
+      "name": "Sigese"
+    },
+    {
+      "code": "1214292004",
+      "name": "Bawositora"
+    },
+    {
+      "code": "1214292005",
+      "name": "Bintuang"
+    },
+    {
+      "code": "1214292006",
+      "name": "Sibaranun"
+    },
+    {
+      "code": "1214292007",
+      "name": "Bawolawindra"
+    },
+    {
+      "code": "1214292008",
+      "name": "Hayo"
+    },
+    {
+      "code": "1214292009",
+      "name": "Hilizamorogotano"
+    }
+  ],
+  "121430": [
+    {
+      "code": "1214302001",
+      "name": "Siofa Banua Lorang"
+    },
+    {
+      "code": "1214302002",
+      "name": "Silima Banua Marit"
+    },
+    {
+      "code": "1214302003",
+      "name": "Zia Biang"
+    },
+    {
+      "code": "1214302004",
+      "name": "Limo Biang"
+    },
+    {
+      "code": "1214302005",
+      "name": "Memong"
+    },
+    {
+      "code": "1214302006",
+      "name": "Bale-bale"
+    },
+    {
+      "code": "1214302007",
+      "name": "Teluk Limo"
+    },
+    {
+      "code": "1214302008",
+      "name": "Wawa"
+    },
+    {
+      "code": "1214302009",
+      "name": "Marit Baru"
+    },
+    {
+      "code": "1214302010",
+      "name": "Majino Lorang"
+    },
+    {
+      "code": "1214302011",
+      "name": "Afore Gobo"
+    },
+    {
+      "code": "1214302012",
+      "name": "Bale-bale Sibohou"
+    }
+  ],
+  "121431": [
+    {
+      "code": "1214312001",
+      "name": "Baluta"
+    },
+    {
+      "code": "1214312002",
+      "name": "Eho Baluta"
+    },
+    {
+      "code": "1214312003",
+      "name": "Bawo Ofuloa"
+    },
+    {
+      "code": "1214312004",
+      "name": "Hale Baluta"
+    },
+    {
+      "code": "1214312005",
+      "name": "Bawo Orudua"
+    },
+    {
+      "code": "1214312006",
+      "name": "Jeke"
+    },
+    {
+      "code": "1214312007",
+      "name": "Makole"
+    },
+    {
+      "code": "1214312008",
+      "name": "Sifauruasi"
+    },
+    {
+      "code": "1214312009",
+      "name": "Bawo Analita Saeru"
+    },
+    {
+      "code": "1214312010",
+      "name": "Saeru Melayu"
+    },
+    {
+      "code": "1214312011",
+      "name": "Hiligeho Sogawu"
+    },
+    {
+      "code": "1214312012",
+      "name": "Hiliomasio"
+    }
+  ],
+  "121432": [
+    {
+      "code": "1214322001",
+      "name": "Botohilitano"
+    },
+    {
+      "code": "1214322002",
+      "name": "Botohilisalo'o"
+    },
+    {
+      "code": "1214322003",
+      "name": "Lagundri"
+    },
+    {
+      "code": "1214322004",
+      "name": "Orahili Faomasi"
+    },
+    {
+      "code": "1214322005",
+      "name": "Hiliamaetaniha"
+    },
+    {
+      "code": "1214322006",
+      "name": "Sondregeasi"
+    },
+    {
+      "code": "1214322007",
+      "name": "Botohili Silambo"
+    },
+    {
+      "code": "1214322008",
+      "name": "Botohili Sorake"
+    },
+    {
+      "code": "1214322009",
+      "name": "Hilimaenamolo"
+    },
+    {
+      "code": "1214322010",
+      "name": "Bawomaenamolo"
+    }
+  ],
+  "121433": [
+    {
+      "code": "1214332001",
+      "name": "Hilifalago"
+    },
+    {
+      "code": "1214332002",
+      "name": "Hilimondregeraya"
+    },
+    {
+      "code": "1214332003",
+      "name": "Hilinamozaua"
+    },
+    {
+      "code": "1214332004",
+      "name": "Hilifarono"
+    },
+    {
+      "code": "1214332005",
+      "name": "Hilionaha"
+    },
+    {
+      "code": "1214332006",
+      "name": "Hilikara"
+    },
+    {
+      "code": "1214332007",
+      "name": "Hilialito Saua"
+    },
+    {
+      "code": "1214332008",
+      "name": "Hilinamozaua Raya"
+    },
+    {
+      "code": "1214332009",
+      "name": "Hilifalago Raya"
+    },
+    {
+      "code": "1214332010",
+      "name": "Hilisanekhehosi"
+    }
+  ],
+  "121434": [
+    {
+      "code": "1214342001",
+      "name": "Fanedanu"
+    },
+    {
+      "code": "1214342002",
+      "name": "Fanedanu Sibohou"
+    },
+    {
+      "code": "1214342003",
+      "name": "Lawa-lawa Luo Idanotae"
+    },
+    {
+      "code": "1214342004",
+      "name": "Dao-dao Zanuwo Idano Tae"
+    },
+    {
+      "code": "1214342005",
+      "name": "Sisiwa Ewali"
+    },
+    {
+      "code": "1214342006",
+      "name": "Sisarahili Ewo"
+    },
+    {
+      "code": "1214342007",
+      "name": "Hilialo'oa"
+    },
+    {
+      "code": "1214342008",
+      "name": "Damai"
+    },
+    {
+      "code": "1214342009",
+      "name": "Lolozukhu"
+    },
+    {
+      "code": "1214342010",
+      "name": "Silima Banua Umbunasi"
+    },
+    {
+      "code": "1214342011",
+      "name": "Sindrolo"
+    }
+  ],
+  "121435": [
+    {
+      "code": "1214352001",
+      "name": "Lahusa Idanotae"
+    },
+    {
+      "code": "1214352002",
+      "name": "Hiliserangkai"
+    },
+    {
+      "code": "1214352003",
+      "name": "Orahua"
+    },
+    {
+      "code": "1214352004",
+      "name": "Hilimbowo Idanotae"
+    },
+    {
+      "code": "1214352005",
+      "name": "Sirahia"
+    },
+    {
+      "code": "1214352006",
+      "name": "Umbu Idanotae"
+    },
+    {
+      "code": "1214352007",
+      "name": "Awoni"
+    },
+    {
+      "code": "1214352008",
+      "name": "Hilisalo'o"
+    },
+    {
+      "code": "1214352009",
+      "name": "Balombaruzo Orahua"
+    },
+    {
+      "code": "1214352010",
+      "name": "Harefa Orahua"
+    },
+    {
+      "code": "1214352011",
+      "name": "Hiligabungan"
+    },
+    {
+      "code": "1214352012",
+      "name": "Buhawa"
+    }
+  ]
 }

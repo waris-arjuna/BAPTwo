@@ -1,560 +1,802 @@
 {
-    "520602": [
-        {
-            "code": "5206022001",
-            "name": "Tambe"
-        },
-        {
-            "code": "5206022002",
-            "name": "Rasabou"
-        },
-        {
-            "code": "5206022003",
-            "name": "Rato"
-        },
-        {
-            "code": "5206022004",
-            "name": "Kananga"
-        },
-        {
-            "code": "5206022005",
-            "name": "Leu"
-        },
-        {
-            "code": "5206022006",
-            "name": "Timu"
-        },
-        {
-            "code": "5206022007",
-            "name": "Bontokape"
-        },
-        {
-            "code": "5206022008",
-            "name": "Sondosia"
-        },
-        {
-            "code": "5206022009",
-            "name": "Nggembe"
-        },
-        {
-            "code": "5206022010",
-            "name": "Sanolo"
-        },
-        {
-            "code": "5206022011",
-            "name": "Tumpu"
-        },
-        {
-            "code": "5206022012",
-            "name": "Rada"
-        },
-        {
-            "code": "5206022013",
-            "name": "Kara"
-        },
-        {
-            "code": "5206022014",
-            "name": "Darussalam"
-        }
-    ],
-    "520604": [
-        {
-            "code": "5206042001",
-            "name": "Ncera"
-        },
-        {
-            "code": "5206042002",
-            "name": "Lido"
-        },
-        {
-            "code": "5206042003",
-            "name": "Ngali"
-        },
-        {
-            "code": "5206042004",
-            "name": "Renda"
-        },
-        {
-            "code": "5206042005",
-            "name": "Cenggu"
-        },
-        {
-            "code": "5206042006",
-            "name": "Runggu"
-        },
-        {
-            "code": "5206042014",
-            "name": "Soki"
-        },
-        {
-            "code": "5206042015",
-            "name": "Roka"
-        },
-        {
-            "code": "5206042016",
-            "name": "Diha"
-        }
-    ],
-    "520605": [
-        {
-            "code": "5206052001",
-            "name": "Tarlawi"
-        },
-        {
-            "code": "5206052005",
-            "name": "Ntori"
-        },
-        {
-            "code": "5206052006",
-            "name": "Maria"
-        },
-        {
-            "code": "5206052007",
-            "name": "Pesa"
-        },
-        {
-            "code": "5206052008",
-            "name": "Raba"
-        },
-        {
-            "code": "5206052011",
-            "name": "Kambilo"
-        },
-        {
-            "code": "5206052012",
-            "name": "Maria Utara"
-        },
-        {
-            "code": "5206052013",
-            "name": "Kombo"
-        },
-        {
-            "code": "5206052014",
-            "name": "Riamau"
-        }
-    ],
-    "520606": [
-        {
-            "code": "5206062001",
-            "name": "Sari"
-        },
-        {
-            "code": "5206062002",
-            "name": "Boke"
-        },
-        {
-            "code": "5206062003",
-            "name": "Jia"
-        },
-        {
-            "code": "5206062004",
-            "name": "Bugis"
-        },
-        {
-            "code": "5206062005",
-            "name": "Naru"
-        },
-        {
-            "code": "5206062006",
-            "name": "Rasabou"
-        },
-        {
-            "code": "5206062007",
-            "name": "Sangia"
-        },
-        {
-            "code": "5206062008",
-            "name": "Na'e"
-        },
-        {
-            "code": "5206062009",
-            "name": "Rai Oi"
-        },
-        {
-            "code": "5206062010",
-            "name": "Parangina"
-        },
-        {
-            "code": "5206062011",
-            "name": "Kowo"
-        },
-        {
-            "code": "5206062012",
-            "name": "Buncu"
-        },
-        {
-            "code": "5206062013",
-            "name": "Poja"
-        },
-        {
-            "code": "5206062014",
-            "name": "Bajo Pulau"
-        },
-        {
-            "code": "5206062015",
-            "name": "Naru Barat"
-        },
-        {
-            "code": "5206062016",
-            "name": "Tanah Putih"
-        },
-        {
-            "code": "5206062017",
-            "name": "Lamere"
-        },
-        {
-            "code": "5206062018",
-            "name": "Oi Maci"
-        }
-    ],
-    "520610": [
-        {
-            "code": "5206102001",
-            "name": "Nipa"
-        },
-        {
-            "code": "5206102002",
-            "name": "Tolowata"
-        },
-        {
-            "code": "5206102003",
-            "name": "Rite"
-        },
-        {
-            "code": "5206102004",
-            "name": "Mawu"
-        },
-        {
-            "code": "5206102005",
-            "name": "Talapiti"
-        },
-        {
-            "code": "5206102006",
-            "name": "Kole"
-        }
-    ],
-    "520611": [
-        {
-            "code": "5206112001",
-            "name": "Waworada"
-        },
-        {
-            "code": "5206112002",
-            "name": "Karumbu"
-        },
-        {
-            "code": "5206112003",
-            "name": "Rupe"
-        },
-        {
-            "code": "5206112004",
-            "name": "Kalodu"
-        },
-        {
-            "code": "5206112005",
-            "name": "Kawuwu"
-        },
-        {
-            "code": "5206112006",
-            "name": "Doro O'o"
-        },
-        {
-            "code": "5206112007",
-            "name": "Laju"
-        },
-        {
-            "code": "5206112008",
-            "name": "Kangga"
-        },
-        {
-            "code": "5206112009",
-            "name": "Karampi"
-        },
-        {
-            "code": "5206112010",
-            "name": "Waduruka"
-        },
-        {
-            "code": "5206112011",
-            "name": "Dumu"
-        },
-        {
-            "code": "5206112012",
-            "name": "Rompo"
-        },
-        {
-            "code": "5206112013",
-            "name": "Sarae Ruma"
-        },
-        {
-            "code": "5206112014",
-            "name": "Pusu"
-        },
-        {
-            "code": "5206112015",
-            "name": "Sambane"
-        }
-    ],
-    "520612": [
-        {
-            "code": "5206122001",
-            "name": "Kaleo"
-        },
-        {
-            "code": "5206122002",
-            "name": "Simpasai"
-        },
-        {
-            "code": "5206122003",
-            "name": "Mangge"
-        },
-        {
-            "code": "5206122004",
-            "name": "Lanta"
-        },
-        {
-            "code": "5206122005",
-            "name": "Nggelu"
-        },
-        {
-            "code": "5206122006",
-            "name": "Rato"
-        },
-        {
-            "code": "5206122007",
-            "name": "Sumi"
-        },
-        {
-            "code": "5206122008",
-            "name": "Soro"
-        },
-        {
-            "code": "5206122009",
-            "name": "Lambu"
-        },
-        {
-            "code": "5206122010",
-            "name": "Hidirasa"
-        },
-        {
-            "code": "5206122011",
-            "name": "Lanta Barat"
-        },
-        {
-            "code": "5206122012",
-            "name": "Melayu"
-        },
-        {
-            "code": "5206122013",
-            "name": "Sangga"
-        },
-        {
-            "code": "5206122014",
-            "name": "Monta Baru"
-        }
-    ],
-    "520613": [
-        {
-            "code": "5206132001",
-            "name": "Woro"
-        },
-        {
-            "code": "5206132002",
-            "name": "Campa"
-        },
-        {
-            "code": "5206132003",
-            "name": "Mpuri"
-        },
-        {
-            "code": "5206132004",
-            "name": "Ndano"
-        },
-        {
-            "code": "5206132005",
-            "name": "Monggo"
-        },
-        {
-            "code": "5206132006",
-            "name": "Dena"
-        },
-        {
-            "code": "5206132007",
-            "name": "Rade"
-        },
-        {
-            "code": "5206132008",
-            "name": "Tonda"
-        },
-        {
-            "code": "5206132009",
-            "name": "Bolo"
-        },
-        {
-            "code": "5206132010",
-            "name": "Madawau"
-        },
-        {
-            "code": "5206132011",
-            "name": "Ncandi"
-        }
-    ],
-    "520614": [
-        {
-            "code": "5206142001",
-            "name": "Labuan Kananga"
-        },
-        {
-            "code": "5206142002",
-            "name": "Kawinda Nae"
-        },
-        {
-            "code": "5206142003",
-            "name": "Kawinda Toi"
-        },
-        {
-            "code": "5206142004",
-            "name": "Oi Panihi"
-        },
-        {
-            "code": "5206142005",
-            "name": "Oi Bura"
-        },
-        {
-            "code": "5206142006",
-            "name": "Oi Katupa"
-        },
-        {
-            "code": "5206142007",
-            "name": "Rasabou"
-        }
-    ],
-    "520615": [
-        {
-            "code": "5206152001",
-            "name": "Bajo"
-        },
-        {
-            "code": "5206152002",
-            "name": "Punti"
-        },
-        {
-            "code": "5206152003",
-            "name": "Wadukopa"
-        },
-        {
-            "code": "5206152004",
-            "name": "Kananta"
-        },
-        {
-            "code": "5206152005",
-            "name": "Sai"
-        },
-        {
-            "code": "5206152006",
-            "name": "Sampungu"
-        },
-        {
-            "code": "5206152007",
-            "name": "Lewintana"
-        }
-    ],
-    "520616": [
-        {
-            "code": "5206162001",
-            "name": "Paradowane"
-        },
-        {
-            "code": "5206162002",
-            "name": "Paradorato"
-        },
-        {
-            "code": "5206162003",
-            "name": "Kuta"
-        },
-        {
-            "code": "5206162004",
-            "name": "Kanca"
-        },
-        {
-            "code": "5206162005",
-            "name": "Lere"
-        }
-    ],
-    "520617": [
-        {
-            "code": "5206172001",
-            "name": "Kaboro"
-        },
-        {
-            "code": "5206172002",
-            "name": "Kuta"
-        },
-        {
-            "code": "5206172003",
-            "name": "Sambori"
-        },
-        {
-            "code": "5206172004",
-            "name": "Teta"
-        },
-        {
-            "code": "5206172005",
-            "name": "Kaowa"
-        },
-        {
-            "code": "5206172006",
-            "name": "Londu"
-        }
-    ],
-    "520618": [
-        {
-            "code": "5206182001",
-            "name": "Panda"
-        },
-        {
-            "code": "5206182002",
-            "name": "Belo"
-        },
-        {
-            "code": "5206182003",
-            "name": "Tonggondoa"
-        },
-        {
-            "code": "5206182004",
-            "name": "Tonggorisa"
-        },
-        {
-            "code": "5206182005",
-            "name": "Teke"
-        },
-        {
-            "code": "5206182006",
-            "name": "Ntonggu"
-        },
-        {
-            "code": "5206182007",
-            "name": "Nata"
-        },
-        {
-            "code": "5206182008",
-            "name": "Dore"
-        },
-        {
-            "code": "5206182009",
-            "name": "Roi"
-        },
-        {
-            "code": "5206182011",
-            "name": "Ragi"
-        },
-        {
-            "code": "5206182012",
-            "name": "Padolo"
-        },
-        {
-            "code": "5206182013",
-            "name": "Bre"
-        }
-    ]
+  "520601": [
+    {
+      "code": "5206012005",
+      "name": "Tolotangga"
+    },
+    {
+      "code": "5206012006",
+      "name": "Sondo"
+    },
+    {
+      "code": "5206012007",
+      "name": "Simpasai"
+    },
+    {
+      "code": "5206012008",
+      "name": "Sie"
+    },
+    {
+      "code": "5206012009",
+      "name": "Tangga"
+    },
+    {
+      "code": "5206012010",
+      "name": "Monta"
+    },
+    {
+      "code": "5206012011",
+      "name": "Sakuru"
+    },
+    {
+      "code": "5206012012",
+      "name": "Baralau"
+    },
+    {
+      "code": "5206012014",
+      "name": "Tolouwi"
+    },
+    {
+      "code": "5206012015",
+      "name": "Wilamaci"
+    },
+    {
+      "code": "5206012016",
+      "name": "Pela"
+    },
+    {
+      "code": "5206012017",
+      "name": "Tangga Baru"
+    },
+    {
+      "code": "5206012018",
+      "name": "Nontotera"
+    },
+    {
+      "code": "5206012019",
+      "name": "Waro"
+    }
+  ],
+  "520602": [
+    {
+      "code": "5206022001",
+      "name": "Tambe"
+    },
+    {
+      "code": "5206022002",
+      "name": "Rasabou"
+    },
+    {
+      "code": "5206022003",
+      "name": "Rato"
+    },
+    {
+      "code": "5206022004",
+      "name": "Kananga"
+    },
+    {
+      "code": "5206022005",
+      "name": "Leu"
+    },
+    {
+      "code": "5206022006",
+      "name": "Timu"
+    },
+    {
+      "code": "5206022007",
+      "name": "Bontokape"
+    },
+    {
+      "code": "5206022008",
+      "name": "Sondosia"
+    },
+    {
+      "code": "5206022009",
+      "name": "Nggembe"
+    },
+    {
+      "code": "5206022010",
+      "name": "Sanolo"
+    },
+    {
+      "code": "5206022011",
+      "name": "Tumpu"
+    },
+    {
+      "code": "5206022012",
+      "name": "Rada"
+    },
+    {
+      "code": "5206022013",
+      "name": "Kara"
+    },
+    {
+      "code": "5206022014",
+      "name": "Darussalam"
+    }
+  ],
+  "520603": [
+    {
+      "code": "5206032001",
+      "name": "Keli"
+    },
+    {
+      "code": "5206032002",
+      "name": "Tenga"
+    },
+    {
+      "code": "5206032003",
+      "name": "Tente"
+    },
+    {
+      "code": "5206032004",
+      "name": "Rabakodo"
+    },
+    {
+      "code": "5206032005",
+      "name": "Samili"
+    },
+    {
+      "code": "5206032006",
+      "name": "Kalampa"
+    },
+    {
+      "code": "5206032007",
+      "name": "Risa"
+    },
+    {
+      "code": "5206032008",
+      "name": "Pandai"
+    },
+    {
+      "code": "5206032009",
+      "name": "Donggobolo"
+    },
+    {
+      "code": "5206032010",
+      "name": "Dadibou"
+    },
+    {
+      "code": "5206032011",
+      "name": "Talabiu"
+    },
+    {
+      "code": "5206032012",
+      "name": "Naru"
+    },
+    {
+      "code": "5206032013",
+      "name": "Nisa"
+    },
+    {
+      "code": "5206032014",
+      "name": "Waduwani"
+    },
+    {
+      "code": "5206032015",
+      "name": "Penapali"
+    }
+  ],
+  "520604": [
+    {
+      "code": "5206042001",
+      "name": "Ncera"
+    },
+    {
+      "code": "5206042002",
+      "name": "Lido"
+    },
+    {
+      "code": "5206042003",
+      "name": "Ngali"
+    },
+    {
+      "code": "5206042004",
+      "name": "Renda"
+    },
+    {
+      "code": "5206042005",
+      "name": "Cenggu"
+    },
+    {
+      "code": "5206042006",
+      "name": "Runggu"
+    },
+    {
+      "code": "5206042014",
+      "name": "Soki"
+    },
+    {
+      "code": "5206042015",
+      "name": "Roka"
+    },
+    {
+      "code": "5206042016",
+      "name": "Diha"
+    }
+  ],
+  "520605": [
+    {
+      "code": "5206052001",
+      "name": "Tarlawi"
+    },
+    {
+      "code": "5206052005",
+      "name": "Ntori"
+    },
+    {
+      "code": "5206052006",
+      "name": "Maria"
+    },
+    {
+      "code": "5206052007",
+      "name": "Pesa"
+    },
+    {
+      "code": "5206052008",
+      "name": "Raba"
+    },
+    {
+      "code": "5206052011",
+      "name": "Kambilo"
+    },
+    {
+      "code": "5206052012",
+      "name": "Maria Utara"
+    },
+    {
+      "code": "5206052013",
+      "name": "Kombo"
+    },
+    {
+      "code": "5206052014",
+      "name": "Riamau"
+    }
+  ],
+  "520606": [
+    {
+      "code": "5206062001",
+      "name": "Sari"
+    },
+    {
+      "code": "5206062002",
+      "name": "Boke"
+    },
+    {
+      "code": "5206062003",
+      "name": "Jia"
+    },
+    {
+      "code": "5206062004",
+      "name": "Bugis"
+    },
+    {
+      "code": "5206062005",
+      "name": "Naru"
+    },
+    {
+      "code": "5206062006",
+      "name": "Rasabou"
+    },
+    {
+      "code": "5206062007",
+      "name": "Sangia"
+    },
+    {
+      "code": "5206062008",
+      "name": "Na'e"
+    },
+    {
+      "code": "5206062009",
+      "name": "Rai Oi"
+    },
+    {
+      "code": "5206062010",
+      "name": "Parangina"
+    },
+    {
+      "code": "5206062011",
+      "name": "Kowo"
+    },
+    {
+      "code": "5206062012",
+      "name": "Buncu"
+    },
+    {
+      "code": "5206062013",
+      "name": "Poja"
+    },
+    {
+      "code": "5206062014",
+      "name": "Bajo Pulau"
+    },
+    {
+      "code": "5206062015",
+      "name": "Naru Barat"
+    },
+    {
+      "code": "5206062016",
+      "name": "Tanah Putih"
+    },
+    {
+      "code": "5206062017",
+      "name": "Lamere"
+    },
+    {
+      "code": "5206062018",
+      "name": "Oi Maci"
+    }
+  ],
+  "520607": [
+    {
+      "code": "5206072001",
+      "name": "Ntoke"
+    },
+    {
+      "code": "5206072002",
+      "name": "Pai"
+    },
+    {
+      "code": "5206072003",
+      "name": "Nunggi"
+    },
+    {
+      "code": "5206072004",
+      "name": "Tawali"
+    },
+    {
+      "code": "5206072005",
+      "name": "Hidirasa"
+    },
+    {
+      "code": "5206072006",
+      "name": "Wora"
+    },
+    {
+      "code": "5206072007",
+      "name": "Sangiang"
+    },
+    {
+      "code": "5206072008",
+      "name": "Bala"
+    },
+    {
+      "code": "5206072009",
+      "name": "Oi Tui"
+    },
+    {
+      "code": "5206072010",
+      "name": "Tadewa"
+    },
+    {
+      "code": "5206072011",
+      "name": "Nanga Wera"
+    },
+    {
+      "code": "5206072012",
+      "name": "Ranggasolo"
+    },
+    {
+      "code": "5206072013",
+      "name": "Kalajena"
+    },
+    {
+      "code": "5206072014",
+      "name": "Mandala"
+    }
+  ],
+  "520608": [
+    {
+      "code": "5206082005",
+      "name": "Doridungga"
+    },
+    {
+      "code": "5206082006",
+      "name": "Kala"
+    },
+    {
+      "code": "5206082007",
+      "name": "O'o"
+    },
+    {
+      "code": "5206082008",
+      "name": "Mbawa"
+    },
+    {
+      "code": "5206082009",
+      "name": "Palama"
+    },
+    {
+      "code": "5206082010",
+      "name": "Rora"
+    },
+    {
+      "code": "5206082012",
+      "name": "Mpili"
+    },
+    {
+      "code": "5206082013",
+      "name": "Bumi Pajo"
+    },
+    {
+      "code": "5206082014",
+      "name": "Ndano Na'e"
+    }
+  ],
+  "520609": [
+    {
+      "code": "5206092001",
+      "name": "Piong"
+    },
+    {
+      "code": "5206092002",
+      "name": "Boro"
+    },
+    {
+      "code": "5206092003",
+      "name": "Kore"
+    },
+    {
+      "code": "5206092004",
+      "name": "Taloko"
+    },
+    {
+      "code": "5206092005",
+      "name": "Oi Saro"
+    },
+    {
+      "code": "5206092006",
+      "name": "Sandue"
+    }
+  ],
+  "520610": [
+    {
+      "code": "5206102001",
+      "name": "Nipa"
+    },
+    {
+      "code": "5206102002",
+      "name": "Tolowata"
+    },
+    {
+      "code": "5206102003",
+      "name": "Rite"
+    },
+    {
+      "code": "5206102004",
+      "name": "Mawu"
+    },
+    {
+      "code": "5206102005",
+      "name": "Talapiti"
+    },
+    {
+      "code": "5206102006",
+      "name": "Kole"
+    }
+  ],
+  "520611": [
+    {
+      "code": "5206112001",
+      "name": "Waworada"
+    },
+    {
+      "code": "5206112002",
+      "name": "Karumbu"
+    },
+    {
+      "code": "5206112003",
+      "name": "Rupe"
+    },
+    {
+      "code": "5206112004",
+      "name": "Kalodu"
+    },
+    {
+      "code": "5206112005",
+      "name": "Kawuwu"
+    },
+    {
+      "code": "5206112006",
+      "name": "Doro O'o"
+    },
+    {
+      "code": "5206112007",
+      "name": "Laju"
+    },
+    {
+      "code": "5206112008",
+      "name": "Kangga"
+    },
+    {
+      "code": "5206112009",
+      "name": "Karampi"
+    },
+    {
+      "code": "5206112010",
+      "name": "Waduruka"
+    },
+    {
+      "code": "5206112011",
+      "name": "Dumu"
+    },
+    {
+      "code": "5206112012",
+      "name": "Rompo"
+    },
+    {
+      "code": "5206112013",
+      "name": "Sarae Ruma"
+    },
+    {
+      "code": "5206112014",
+      "name": "Pusu"
+    },
+    {
+      "code": "5206112015",
+      "name": "Sambane"
+    }
+  ],
+  "520612": [
+    {
+      "code": "5206122001",
+      "name": "Kaleo"
+    },
+    {
+      "code": "5206122002",
+      "name": "Simpasai"
+    },
+    {
+      "code": "5206122003",
+      "name": "Mangge"
+    },
+    {
+      "code": "5206122004",
+      "name": "Lanta"
+    },
+    {
+      "code": "5206122005",
+      "name": "Nggelu"
+    },
+    {
+      "code": "5206122006",
+      "name": "Rato"
+    },
+    {
+      "code": "5206122007",
+      "name": "Sumi"
+    },
+    {
+      "code": "5206122008",
+      "name": "Soro"
+    },
+    {
+      "code": "5206122009",
+      "name": "Lambu"
+    },
+    {
+      "code": "5206122010",
+      "name": "Hidirasa"
+    },
+    {
+      "code": "5206122011",
+      "name": "Lanta Barat"
+    },
+    {
+      "code": "5206122012",
+      "name": "Melayu"
+    },
+    {
+      "code": "5206122013",
+      "name": "Sangga"
+    },
+    {
+      "code": "5206122014",
+      "name": "Monta Baru"
+    }
+  ],
+  "520613": [
+    {
+      "code": "5206132001",
+      "name": "Woro"
+    },
+    {
+      "code": "5206132002",
+      "name": "Campa"
+    },
+    {
+      "code": "5206132003",
+      "name": "Mpuri"
+    },
+    {
+      "code": "5206132004",
+      "name": "Ndano"
+    },
+    {
+      "code": "5206132005",
+      "name": "Monggo"
+    },
+    {
+      "code": "5206132006",
+      "name": "Dena"
+    },
+    {
+      "code": "5206132007",
+      "name": "Rade"
+    },
+    {
+      "code": "5206132008",
+      "name": "Tonda"
+    },
+    {
+      "code": "5206132009",
+      "name": "Bolo"
+    },
+    {
+      "code": "5206132010",
+      "name": "Madawau"
+    },
+    {
+      "code": "5206132011",
+      "name": "Ncandi"
+    }
+  ],
+  "520614": [
+    {
+      "code": "5206142001",
+      "name": "Labuan Kananga"
+    },
+    {
+      "code": "5206142002",
+      "name": "Kawinda Nae"
+    },
+    {
+      "code": "5206142003",
+      "name": "Kawinda Toi"
+    },
+    {
+      "code": "5206142004",
+      "name": "Oi Panihi"
+    },
+    {
+      "code": "5206142005",
+      "name": "Oi Bura"
+    },
+    {
+      "code": "5206142006",
+      "name": "Oi Katupa"
+    },
+    {
+      "code": "5206142007",
+      "name": "Rasabou"
+    }
+  ],
+  "520615": [
+    {
+      "code": "5206152001",
+      "name": "Bajo"
+    },
+    {
+      "code": "5206152002",
+      "name": "Punti"
+    },
+    {
+      "code": "5206152003",
+      "name": "Wadukopa"
+    },
+    {
+      "code": "5206152004",
+      "name": "Kananta"
+    },
+    {
+      "code": "5206152005",
+      "name": "Sai"
+    },
+    {
+      "code": "5206152006",
+      "name": "Sampungu"
+    },
+    {
+      "code": "5206152007",
+      "name": "Lewintana"
+    }
+  ],
+  "520616": [
+    {
+      "code": "5206162001",
+      "name": "Paradowane"
+    },
+    {
+      "code": "5206162002",
+      "name": "Paradorato"
+    },
+    {
+      "code": "5206162003",
+      "name": "Kuta"
+    },
+    {
+      "code": "5206162004",
+      "name": "Kanca"
+    },
+    {
+      "code": "5206162005",
+      "name": "Lere"
+    }
+  ],
+  "520617": [
+    {
+      "code": "5206172001",
+      "name": "Kaboro"
+    },
+    {
+      "code": "5206172002",
+      "name": "Kuta"
+    },
+    {
+      "code": "5206172003",
+      "name": "Sambori"
+    },
+    {
+      "code": "5206172004",
+      "name": "Teta"
+    },
+    {
+      "code": "5206172005",
+      "name": "Kaowa"
+    },
+    {
+      "code": "5206172006",
+      "name": "Londu"
+    }
+  ],
+  "520618": [
+    {
+      "code": "5206182001",
+      "name": "Panda"
+    },
+    {
+      "code": "5206182002",
+      "name": "Belo"
+    },
+    {
+      "code": "5206182003",
+      "name": "Tonggondoa"
+    },
+    {
+      "code": "5206182004",
+      "name": "Tonggorisa"
+    },
+    {
+      "code": "5206182005",
+      "name": "Teke"
+    },
+    {
+      "code": "5206182006",
+      "name": "Ntonggu"
+    },
+    {
+      "code": "5206182007",
+      "name": "Nata"
+    },
+    {
+      "code": "5206182008",
+      "name": "Dore"
+    },
+    {
+      "code": "5206182009",
+      "name": "Roi"
+    },
+    {
+      "code": "5206182011",
+      "name": "Ragi"
+    },
+    {
+      "code": "5206182012",
+      "name": "Padolo"
+    },
+    {
+      "code": "5206182013",
+      "name": "Bre"
+    }
+  ]
 }

@@ -1,324 +1,820 @@
 {
-    "820310": [
-        {
-            "code": "8203102001",
-            "name": "Gorua"
-        },
-        {
-            "code": "8203102002",
-            "name": "Popilo"
-        },
-        {
-            "code": "8203102003",
-            "name": "Luari"
-        },
-        {
-            "code": "8203102004",
-            "name": "Popilo Utara"
-        },
-        {
-            "code": "8203102005",
-            "name": "Tolonuo"
-        },
-        {
-            "code": "8203102006",
-            "name": "Gorua Selatan"
-        },
-        {
-            "code": "8203102007",
-            "name": "Gorua Utara"
-        },
-        {
-            "code": "8203102008",
-            "name": "Kokota Jaya"
-        },
-        {
-            "code": "8203102009",
-            "name": "Ruko"
-        },
-        {
-            "code": "8203102010",
-            "name": "Tolonua Selatan"
-        }
-    ],
-    "820311": [
-        {
-            "code": "8203112001",
-            "name": "Upa"
-        },
-        {
-            "code": "8203112002",
-            "name": "Pitu"
-        },
-        {
-            "code": "8203112003",
-            "name": "Wosia"
-        },
-        {
-            "code": "8203112004",
-            "name": "WKO"
-        },
-        {
-            "code": "8203112005",
-            "name": "Kalipitu"
-        },
-        {
-            "code": "8203112006",
-            "name": "Kali Upa"
-        },
-        {
-            "code": "8203112007",
-            "name": "Lina Ino"
-        },
-        {
-            "code": "8203112008",
-            "name": "Mahia (Wosia Tengah)"
-        },
-        {
-            "code": "8203112009",
-            "name": "Tanjung Niara (Wosia Selatan)"
-        }
-    ],
-    "820313": [
-        {
-            "code": "8203132001",
-            "name": "Kusuri"
-        },
-        {
-            "code": "8203132002",
-            "name": "Sukamaju"
-        },
-        {
-            "code": "8203132003",
-            "name": "Togoliua"
-        },
-        {
-            "code": "8203132004",
-            "name": "Birinoa"
-        },
-        {
-            "code": "8203132005",
-            "name": "Wangongira"
-        }
-    ],
-    "820314": [
-        {
-            "code": "8203142001",
-            "name": "Soatobaru"
-        },
-        {
-            "code": "8203142002",
-            "name": "Dokulamo"
-        },
-        {
-            "code": "8203142003",
-            "name": "Duma"
-        },
-        {
-            "code": "8203142004",
-            "name": "Gotalamo"
-        },
-        {
-            "code": "8203142005",
-            "name": "Makete"
-        },
-        {
-            "code": "8203142006",
-            "name": "Ngidiho"
-        },
-        {
-            "code": "8203142007",
-            "name": "Roko"
-        },
-        {
-            "code": "8203142008",
-            "name": "Samuda"
-        },
-        {
-            "code": "8203142009",
-            "name": "Kira"
-        }
-    ],
-    "820315": [
-        {
-            "code": "8203152001",
-            "name": "Limau"
-        },
-        {
-            "code": "8203152002",
-            "name": "Lalonga"
-        },
-        {
-            "code": "8203152003",
-            "name": "Bobisingo"
-        },
-        {
-            "code": "8203152004",
-            "name": "Salimuli"
-        },
-        {
-            "code": "8203152005",
-            "name": "Tutumaloleo"
-        },
-        {
-            "code": "8203152006",
-            "name": "Saluta"
-        },
-        {
-            "code": "8203152007",
-            "name": "Jere"
-        },
-        {
-            "code": "8203152008",
-            "name": "Dodowo"
-        },
-        {
-            "code": "8203152009",
-            "name": "Togasa"
-        },
-        {
-            "code": "8203152010",
-            "name": "Beringin Jaya"
-        },
-        {
-            "code": "8203152011",
-            "name": "Pelita"
-        },
-        {
-            "code": "8203152012",
-            "name": "Jere Tua"
-        }
-    ],
-    "820321": [
-        {
-            "code": "8203212001",
-            "name": "Gaga Apok"
-        },
-        {
-            "code": "8203212002",
-            "name": "Ngoali"
-        },
-        {
-            "code": "8203212003",
-            "name": "Momoda"
-        },
-        {
-            "code": "8203212004",
-            "name": "Toliwang"
-        },
-        {
-            "code": "8203212005",
-            "name": "Tolabit"
-        },
-        {
-            "code": "8203212006",
-            "name": "Leleseng"
-        },
-        {
-            "code": "8203212007",
-            "name": "Soa Hukum"
-        },
-        {
-            "code": "8203212008",
-            "name": "Soa Maetek"
-        },
-        {
-            "code": "8203212009",
-            "name": "Bailengit"
-        },
-        {
-            "code": "8203212010",
-            "name": "Tuguis"
-        },
-        {
-            "code": "8203212011",
-            "name": "Parseba"
-        },
-        {
-            "code": "8203212012",
-            "name": "Pitago"
-        },
-        {
-            "code": "8203212013",
-            "name": "Kai"
-        },
-        {
-            "code": "8203212014",
-            "name": "Toboulamo"
-        },
-        {
-            "code": "8203212015",
-            "name": "Makarti"
-        },
-        {
-            "code": "8203212016",
-            "name": "Sangaji Jaya"
-        },
-        {
-            "code": "8203212017",
-            "name": "Takimo"
-        },
-        {
-            "code": "8203212018",
-            "name": "Torawat"
-        },
-        {
-            "code": "8203212019",
-            "name": "Wonosari"
-        },
-        {
-            "code": "8203212020",
-            "name": "Beringin Agung"
-        },
-        {
-            "code": "8203212021",
-            "name": "Margomolyo"
-        }
-    ],
-    "820322": [
-        {
-            "code": "8203222001",
-            "name": "Tiowor"
-        },
-        {
-            "code": "8203222002",
-            "name": "Makaeling"
-        },
-        {
-            "code": "8203222003",
-            "name": "Tobanoma"
-        },
-        {
-            "code": "8203222004",
-            "name": "Barumadehe"
-        },
-        {
-            "code": "8203222005",
-            "name": "Kuntum Mekar"
-        },
-        {
-            "code": "8203222006",
-            "name": "Pasir Putih"
-        },
-        {
-            "code": "8203222007",
-            "name": "Bobaneigo"
-        },
-        {
-            "code": "8203222008",
-            "name": "Tetewang"
-        },
-        {
-            "code": "8203222009",
-            "name": "Akelamo Kao"
-        },
-        {
-            "code": "8203222010",
-            "name": "Gamsungi"
-        },
-        {
-            "code": "8203222011",
-            "name": "Dum-Dum"
-        }
-    ]
+  "820304": [
+    {
+      "code": "8203042001",
+      "name": "Soa-Sio"
+    },
+    {
+      "code": "8203042002",
+      "name": "Pune"
+    },
+    {
+      "code": "8203042003",
+      "name": "Mamuya"
+    },
+    {
+      "code": "8203042016",
+      "name": "Toweka"
+    },
+    {
+      "code": "8203042024",
+      "name": "Simau"
+    },
+    {
+      "code": "8203042031",
+      "name": "Barataku"
+    },
+    {
+      "code": "8203042032",
+      "name": "Towara"
+    }
+  ],
+  "820305": [
+    {
+      "code": "8203052004",
+      "name": "Gamsungi"
+    },
+    {
+      "code": "8203052005",
+      "name": "Gura"
+    },
+    {
+      "code": "8203052006",
+      "name": "Wari"
+    },
+    {
+      "code": "8203052012",
+      "name": "Kakara"
+    },
+    {
+      "code": "8203052013",
+      "name": "Kumo"
+    },
+    {
+      "code": "8203052014",
+      "name": "Gosoma"
+    },
+    {
+      "code": "8203052015",
+      "name": "Rawajaya"
+    },
+    {
+      "code": "8203052018",
+      "name": "MKCM"
+    },
+    {
+      "code": "8203052024",
+      "name": "Tagalaya"
+    },
+    {
+      "code": "8203052025",
+      "name": "Wari Ino"
+    }
+  ],
+  "820306": [
+    {
+      "code": "8203062001",
+      "name": "Kupa Kupa"
+    },
+    {
+      "code": "8203062002",
+      "name": "Gamhoku"
+    },
+    {
+      "code": "8203062003",
+      "name": "Efi Efi"
+    },
+    {
+      "code": "8203062004",
+      "name": "Tomahalu"
+    },
+    {
+      "code": "8203062005",
+      "name": "Paca"
+    },
+    {
+      "code": "8203062006",
+      "name": "Leleoto"
+    },
+    {
+      "code": "8203062009",
+      "name": "Tobe"
+    },
+    {
+      "code": "8203062015",
+      "name": "Kakara B"
+    },
+    {
+      "code": "8203062018",
+      "name": "Talaga Paca"
+    },
+    {
+      "code": "8203062020",
+      "name": "Tioua"
+    },
+    {
+      "code": "8203062021",
+      "name": "Pale"
+    },
+    {
+      "code": "8203062022",
+      "name": "Kupa-kupa Selatan (Halehe)"
+    },
+    {
+      "code": "8203062024",
+      "name": "Lemah Ino"
+    }
+  ],
+  "820307": [
+    {
+      "code": "8203072001",
+      "name": "Kao"
+    },
+    {
+      "code": "8203072002",
+      "name": "Jati"
+    },
+    {
+      "code": "8203072003",
+      "name": "Kusu"
+    },
+    {
+      "code": "8203072009",
+      "name": "Waringin Lelewi"
+    },
+    {
+      "code": "8203072010",
+      "name": "Soa Sangaji Dim-Dim"
+    },
+    {
+      "code": "8203072011",
+      "name": "Sasur"
+    },
+    {
+      "code": "8203072012",
+      "name": "Popon"
+    },
+    {
+      "code": "8203072036",
+      "name": "Biang"
+    },
+    {
+      "code": "8203072037",
+      "name": "Patang"
+    },
+    {
+      "code": "8203072038",
+      "name": "Kukumutuk"
+    },
+    {
+      "code": "8203072039",
+      "name": "Waringin Lamo"
+    },
+    {
+      "code": "8203072050",
+      "name": "Goruang"
+    },
+    {
+      "code": "8203072051",
+      "name": "Kusu Lofra"
+    },
+    {
+      "code": "8203072052",
+      "name": "Sumber Agung"
+    }
+  ],
+  "820308": [
+    {
+      "code": "8203082001",
+      "name": "Ngofa Kiaha"
+    },
+    {
+      "code": "8203082002",
+      "name": "Ngofa Gita"
+    },
+    {
+      "code": "8203082003",
+      "name": "Samsuma"
+    },
+    {
+      "code": "8203082004",
+      "name": "Tahane"
+    },
+    {
+      "code": "8203082005",
+      "name": "Matsa"
+    },
+    {
+      "code": "8203082007",
+      "name": "Bobawa"
+    },
+    {
+      "code": "8203082008",
+      "name": "Talapao"
+    },
+    {
+      "code": "8203082009",
+      "name": "Tafasoho"
+    },
+    {
+      "code": "8203082010",
+      "name": "Sabaleh"
+    },
+    {
+      "code": "8203082011",
+      "name": "Tagono"
+    },
+    {
+      "code": "8203082012",
+      "name": "Soma"
+    },
+    {
+      "code": "8203082013",
+      "name": "Ngofa Bobawa"
+    },
+    {
+      "code": "8203082014",
+      "name": "Malapa"
+    },
+    {
+      "code": "8203082015",
+      "name": "Mailoa"
+    },
+    {
+      "code": "8203082016",
+      "name": "Peleri"
+    },
+    {
+      "code": "8203082019",
+      "name": "Bukit Tinggi"
+    },
+    {
+      "code": "8203082022",
+      "name": "Terpadu"
+    },
+    {
+      "code": "8203082023",
+      "name": "Tabobo"
+    },
+    {
+      "code": "8203082024",
+      "name": "Balisosang"
+    },
+    {
+      "code": "8203082025",
+      "name": "Sosol/Malifut"
+    },
+    {
+      "code": "8203082026",
+      "name": "Wangeotek"
+    },
+    {
+      "code": "8203082027",
+      "name": "Gayok"
+    }
+  ],
+  "820309": [
+    {
+      "code": "8203092001",
+      "name": "Dorume"
+    },
+    {
+      "code": "8203092002",
+      "name": "Apule"
+    },
+    {
+      "code": "8203092003",
+      "name": "Asimiro"
+    },
+    {
+      "code": "8203092004",
+      "name": "Doitia"
+    },
+    {
+      "code": "8203092005",
+      "name": "Ngajam"
+    },
+    {
+      "code": "8203092006",
+      "name": "Kailupa"
+    },
+    {
+      "code": "8203092007",
+      "name": "Gisik"
+    },
+    {
+      "code": "8203092008",
+      "name": "Kapa Kapa"
+    },
+    {
+      "code": "8203092009",
+      "name": "Pacao"
+    },
+    {
+      "code": "8203092010",
+      "name": "Tate"
+    },
+    {
+      "code": "8203092011",
+      "name": "Posi- Posi"
+    },
+    {
+      "code": "8203092012",
+      "name": "Supu"
+    },
+    {
+      "code": "8203092022",
+      "name": "Igo"
+    },
+    {
+      "code": "8203092023",
+      "name": "Galao"
+    },
+    {
+      "code": "8203092024",
+      "name": "Teru-Teru"
+    },
+    {
+      "code": "8203092026",
+      "name": "Wori Moi"
+    },
+    {
+      "code": "8203092027",
+      "name": "Podol"
+    },
+    {
+      "code": "8203092028",
+      "name": "Momojiu"
+    }
+  ],
+  "820310": [
+    {
+      "code": "8203102001",
+      "name": "Gorua"
+    },
+    {
+      "code": "8203102002",
+      "name": "Popilo"
+    },
+    {
+      "code": "8203102003",
+      "name": "Luari"
+    },
+    {
+      "code": "8203102004",
+      "name": "Popilo Utara"
+    },
+    {
+      "code": "8203102005",
+      "name": "Tolonuo"
+    },
+    {
+      "code": "8203102006",
+      "name": "Gorua Selatan"
+    },
+    {
+      "code": "8203102007",
+      "name": "Gorua Utara"
+    },
+    {
+      "code": "8203102008",
+      "name": "Kokota Jaya"
+    },
+    {
+      "code": "8203102009",
+      "name": "Ruko"
+    },
+    {
+      "code": "8203102010",
+      "name": "Tolonua Selatan"
+    }
+  ],
+  "820311": [
+    {
+      "code": "8203112001",
+      "name": "Upa"
+    },
+    {
+      "code": "8203112002",
+      "name": "Pitu"
+    },
+    {
+      "code": "8203112003",
+      "name": "Wosia"
+    },
+    {
+      "code": "8203112004",
+      "name": "WKO"
+    },
+    {
+      "code": "8203112005",
+      "name": "Kalipitu"
+    },
+    {
+      "code": "8203112006",
+      "name": "Kali Upa"
+    },
+    {
+      "code": "8203112007",
+      "name": "Lina Ino"
+    },
+    {
+      "code": "8203112008",
+      "name": "Mahia (Wosia Tengah)"
+    },
+    {
+      "code": "8203112009",
+      "name": "Tanjung Niara (Wosia Selatan)"
+    }
+  ],
+  "820312": [
+    {
+      "code": "8203122001",
+      "name": "Yaro"
+    },
+    {
+      "code": "8203122002",
+      "name": "Mawea"
+    },
+    {
+      "code": "8203122003",
+      "name": "Meti"
+    },
+    {
+      "code": "8203122004",
+      "name": "Katana"
+    },
+    {
+      "code": "8203122005",
+      "name": "Gonga"
+    },
+    {
+      "code": "8203122006",
+      "name": "Todokuiha"
+    }
+  ],
+  "820313": [
+    {
+      "code": "8203132001",
+      "name": "Kusuri"
+    },
+    {
+      "code": "8203132002",
+      "name": "Sukamaju"
+    },
+    {
+      "code": "8203132003",
+      "name": "Togoliua"
+    },
+    {
+      "code": "8203132004",
+      "name": "Birinoa"
+    },
+    {
+      "code": "8203132005",
+      "name": "Wangongira"
+    }
+  ],
+  "820314": [
+    {
+      "code": "8203142001",
+      "name": "Soatobaru"
+    },
+    {
+      "code": "8203142002",
+      "name": "Dokulamo"
+    },
+    {
+      "code": "8203142003",
+      "name": "Duma"
+    },
+    {
+      "code": "8203142004",
+      "name": "Gotalamo"
+    },
+    {
+      "code": "8203142005",
+      "name": "Makete"
+    },
+    {
+      "code": "8203142006",
+      "name": "Ngidiho"
+    },
+    {
+      "code": "8203142007",
+      "name": "Roko"
+    },
+    {
+      "code": "8203142008",
+      "name": "Samuda"
+    },
+    {
+      "code": "8203142009",
+      "name": "Kira"
+    }
+  ],
+  "820315": [
+    {
+      "code": "8203152001",
+      "name": "Limau"
+    },
+    {
+      "code": "8203152002",
+      "name": "Lalonga"
+    },
+    {
+      "code": "8203152003",
+      "name": "Bobisingo"
+    },
+    {
+      "code": "8203152004",
+      "name": "Salimuli"
+    },
+    {
+      "code": "8203152005",
+      "name": "Tutumaloleo"
+    },
+    {
+      "code": "8203152006",
+      "name": "Saluta"
+    },
+    {
+      "code": "8203152007",
+      "name": "Jere"
+    },
+    {
+      "code": "8203152008",
+      "name": "Dodowo"
+    },
+    {
+      "code": "8203152009",
+      "name": "Togasa"
+    },
+    {
+      "code": "8203152010",
+      "name": "Beringin Jaya"
+    },
+    {
+      "code": "8203152011",
+      "name": "Pelita"
+    },
+    {
+      "code": "8203152012",
+      "name": "Jere Tua"
+    }
+  ],
+  "820316": [
+    {
+      "code": "8203162001",
+      "name": "Seki"
+    },
+    {
+      "code": "8203162002",
+      "name": "Togawa"
+    },
+    {
+      "code": "8203162003",
+      "name": "Soakonora"
+    },
+    {
+      "code": "8203162004",
+      "name": "Igobula"
+    },
+    {
+      "code": "8203162005",
+      "name": "Bale"
+    },
+    {
+      "code": "8203162006",
+      "name": "Togawabesi"
+    },
+    {
+      "code": "8203162007",
+      "name": "Ori"
+    }
+  ],
+  "820319": [
+    {
+      "code": "8203192001",
+      "name": "Salube"
+    },
+    {
+      "code": "8203192002",
+      "name": "Dama"
+    },
+    {
+      "code": "8203192003",
+      "name": "Dowonggila"
+    },
+    {
+      "code": "8203192004",
+      "name": "Tuakara"
+    },
+    {
+      "code": "8203192005",
+      "name": "Jikolamo"
+    },
+    {
+      "code": "8203192006",
+      "name": "Dagasuli"
+    },
+    {
+      "code": "8203192007",
+      "name": "Dedeta"
+    },
+    {
+      "code": "8203192008",
+      "name": "Fitako"
+    },
+    {
+      "code": "8203192009",
+      "name": "Tobo Tobo"
+    },
+    {
+      "code": "8203192010",
+      "name": "Cera"
+    }
+  ],
+  "820320": [
+    {
+      "code": "8203202001",
+      "name": "Wateto"
+    },
+    {
+      "code": "8203202002",
+      "name": "Gulo"
+    },
+    {
+      "code": "8203202003",
+      "name": "Tunuo"
+    },
+    {
+      "code": "8203202004",
+      "name": "Pediwang"
+    },
+    {
+      "code": "8203202005",
+      "name": "Bori"
+    },
+    {
+      "code": "8203202006",
+      "name": "Doro"
+    },
+    {
+      "code": "8203202007",
+      "name": "Daru"
+    },
+    {
+      "code": "8203202008",
+      "name": "Bobale"
+    },
+    {
+      "code": "8203202009",
+      "name": "Gamlaha"
+    },
+    {
+      "code": "8203202010",
+      "name": "Boulamo"
+    },
+    {
+      "code": "8203202011",
+      "name": "Warudu"
+    },
+    {
+      "code": "8203202012",
+      "name": "Dowongimaiti"
+    }
+  ],
+  "820321": [
+    {
+      "code": "8203212001",
+      "name": "Gaga Apok"
+    },
+    {
+      "code": "8203212002",
+      "name": "Ngoali"
+    },
+    {
+      "code": "8203212003",
+      "name": "Momoda"
+    },
+    {
+      "code": "8203212004",
+      "name": "Toliwang"
+    },
+    {
+      "code": "8203212005",
+      "name": "Tolabit"
+    },
+    {
+      "code": "8203212006",
+      "name": "Leleseng"
+    },
+    {
+      "code": "8203212007",
+      "name": "Soa Hukum"
+    },
+    {
+      "code": "8203212008",
+      "name": "Soa Maetek"
+    },
+    {
+      "code": "8203212009",
+      "name": "Bailengit"
+    },
+    {
+      "code": "8203212010",
+      "name": "Tuguis"
+    },
+    {
+      "code": "8203212011",
+      "name": "Parseba"
+    },
+    {
+      "code": "8203212012",
+      "name": "Pitago"
+    },
+    {
+      "code": "8203212013",
+      "name": "Kai"
+    },
+    {
+      "code": "8203212014",
+      "name": "Toboulamo"
+    },
+    {
+      "code": "8203212015",
+      "name": "Makarti"
+    },
+    {
+      "code": "8203212016",
+      "name": "Sangaji Jaya"
+    },
+    {
+      "code": "8203212017",
+      "name": "Takimo"
+    },
+    {
+      "code": "8203212018",
+      "name": "Torawat"
+    },
+    {
+      "code": "8203212019",
+      "name": "Wonosari"
+    },
+    {
+      "code": "8203212020",
+      "name": "Beringin Agung"
+    },
+    {
+      "code": "8203212021",
+      "name": "Margomolyo"
+    }
+  ],
+  "820322": [
+    {
+      "code": "8203222001",
+      "name": "Tiowor"
+    },
+    {
+      "code": "8203222002",
+      "name": "Makaeling"
+    },
+    {
+      "code": "8203222003",
+      "name": "Tobanoma"
+    },
+    {
+      "code": "8203222004",
+      "name": "Barumadehe"
+    },
+    {
+      "code": "8203222005",
+      "name": "Kuntum Mekar"
+    },
+    {
+      "code": "8203222006",
+      "name": "Pasir Putih"
+    },
+    {
+      "code": "8203222007",
+      "name": "Bobaneigo"
+    },
+    {
+      "code": "8203222008",
+      "name": "Tetewang"
+    },
+    {
+      "code": "8203222009",
+      "name": "Akelamo Kao"
+    },
+    {
+      "code": "8203222010",
+      "name": "Gamsungi"
+    },
+    {
+      "code": "8203222011",
+      "name": "Dum-Dum"
+    }
+  ]
 }

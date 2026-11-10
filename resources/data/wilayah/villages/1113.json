@@ -1,568 +1,568 @@
 {
-    "111301": [
-        {
-            "code": "1113012001",
-            "name": "Blangkejeren"
-        },
-        {
-            "code": "1113012002",
-            "name": "Penampaan"
-        },
-        {
-            "code": "1113012003",
-            "name": "Bukit"
-        },
-        {
-            "code": "1113012004",
-            "name": "Bacang"
-        },
-        {
-            "code": "1113012005",
-            "name": "Durin"
-        },
-        {
-            "code": "1113012007",
-            "name": "Kampung Jawa"
-        },
-        {
-            "code": "1113012008",
-            "name": "Porang"
-        },
-        {
-            "code": "1113012011",
-            "name": "Kute Lintang"
-        },
-        {
-            "code": "1113012014",
-            "name": "Leme"
-        },
-        {
-            "code": "1113012016",
-            "name": "Gele"
-        },
-        {
-            "code": "1113012017",
-            "name": "Sere"
-        },
-        {
-            "code": "1113012018",
-            "name": "Cempa"
-        },
-        {
-            "code": "1113012019",
-            "name": "Lempuh"
-        },
-        {
-            "code": "1113012021",
-            "name": "Palok"
-        },
-        {
-            "code": "1113012022",
-            "name": "Penggalangan"
-        },
-        {
-            "code": "1113012027",
-            "name": "Agusen"
-        },
-        {
-            "code": "1113012031",
-            "name": "Bustanussalam"
-        },
-        {
-            "code": "1113012032",
-            "name": "Penampaan Uken"
-        },
-        {
-            "code": "1113012033",
-            "name": "Raklunung"
-        },
-        {
-            "code": "1113012034",
-            "name": "Sepang"
-        }
-    ],
-    "111302": [
-        {
-            "code": "1113022002",
-            "name": "Tampeng"
-        },
-        {
-            "code": "1113022004",
-            "name": "Bener"
-        },
-        {
-            "code": "1113022005",
-            "name": "Ulun Tanoh"
-        },
-        {
-            "code": "1113022006",
-            "name": "Kuta Ujung"
-        },
-        {
-            "code": "1113022008",
-            "name": "Beranang"
-        },
-        {
-            "code": "1113022010",
-            "name": "Rikit Dekat"
-        },
-        {
-            "code": "1113022011",
-            "name": "Rema"
-        },
-        {
-            "code": "1113022014",
-            "name": "Rema Baru"
-        },
-        {
-            "code": "1113022015",
-            "name": "Cike"
-        },
-        {
-            "code": "1113022016",
-            "name": "Kerukunan Kuta Panjang"
-        },
-        {
-            "code": "1113022020",
-            "name": "Tampeng Musara"
-        },
-        {
-            "code": "1113022021",
-            "name": "Kong Paluh"
-        }
-    ],
-    "111303": [
-        {
-            "code": "1113032001",
-            "name": "Ampa Kolak"
-        },
-        {
-            "code": "1113032002",
-            "name": "Cane Toa"
-        },
-        {
-            "code": "1113032003",
-            "name": "Padang Pasir"
-        },
-        {
-            "code": "1113032005",
-            "name": "Pinang Rugub"
-        },
-        {
-            "code": "1113032006",
-            "name": "Kuning"
-        },
-        {
-            "code": "1113032008",
-            "name": "Mangang"
-        },
-        {
-            "code": "1113032011",
-            "name": "Rempelam"
-        },
-        {
-            "code": "1113032012",
-            "name": "Cane Uken"
-        },
-        {
-            "code": "1113032013",
-            "name": "Tungel"
-        },
-        {
-            "code": "1113032014",
-            "name": "Kota Rikit Gaib"
-        },
-        {
-            "code": "1113032016",
-            "name": "Lukup Baru"
-        },
-        {
-            "code": "1113032017",
-            "name": "Penomon Jaya"
-        },
-        {
-            "code": "1113032018",
-            "name": "Tungel Baru"
-        }
-    ],
-    "111304": [
-        {
-            "code": "1113042001",
-            "name": "Jabo"
-        },
-        {
-            "code": "1113042002",
-            "name": "Kutesange"
-        },
-        {
-            "code": "1113042003",
-            "name": "Padang"
-        },
-        {
-            "code": "1113042006",
-            "name": "Rumpi"
-        },
-        {
-            "code": "1113042007",
-            "name": "Bukut"
-        },
-        {
-            "code": "1113042008",
-            "name": "Terangun"
-        },
-        {
-            "code": "1113042010",
-            "name": "Rempelam Pinang"
-        },
-        {
-            "code": "1113042011",
-            "name": "Soyo"
-        },
-        {
-            "code": "1113042012",
-            "name": "Terlis"
-        },
-        {
-            "code": "1113042013",
-            "name": "Kutereje"
-        },
-        {
-            "code": "1113042014",
-            "name": "Persada Tongra"
-        },
-        {
-            "code": "1113042015",
-            "name": "Berhut"
-        },
-        {
-            "code": "1113042016",
-            "name": "Gewat"
-        },
-        {
-            "code": "1113042017",
-            "name": "Pantan Lues"
-        },
-        {
-            "code": "1113042018",
-            "name": "Makmur Jaya"
-        },
-        {
-            "code": "1113042020",
-            "name": "Blang Kuncir"
-        },
-        {
-            "code": "1113042023",
-            "name": "Reje Pudung"
-        },
-        {
-            "code": "1113042024",
-            "name": "Garut"
-        },
-        {
-            "code": "1113042025",
-            "name": "Telege Jernih"
-        },
-        {
-            "code": "1113042026",
-            "name": "Rime Raya"
-        },
-        {
-            "code": "1113042027",
-            "name": "Lestari"
-        },
-        {
-            "code": "1113042028",
-            "name": "Gawar Belangi"
-        },
-        {
-            "code": "1113042029",
-            "name": "Blang Kala"
-        }
-    ],
-    "111305": [
-        {
-            "code": "1113052001",
-            "name": "Pining"
-        },
-        {
-            "code": "1113052002",
-            "name": "Pertik"
-        },
-        {
-            "code": "1113052003",
-            "name": "Ekan"
-        },
-        {
-            "code": "1113052004",
-            "name": "Uring"
-        },
-        {
-            "code": "1113052005",
-            "name": "Gajah"
-        },
-        {
-            "code": "1113052006",
-            "name": "Pintu Rime"
-        },
-        {
-            "code": "1113052007",
-            "name": "Pepelah"
-        },
-        {
-            "code": "1113052008",
-            "name": "Pasir Putih"
-        },
-        {
-            "code": "1113052009",
-            "name": "Lesten"
-        }
-    ],
-    "111306": [
-        {
-            "code": "1113062001",
-            "name": "Gantung Geluni"
-        },
-        {
-            "code": "1113062002",
-            "name": "Kutabukit"
-        },
-        {
-            "code": "1113062003",
-            "name": "Bener Baru"
-        },
-        {
-            "code": "1113062004",
-            "name": "Blangbengkik"
-        },
-        {
-            "code": "1113062005",
-            "name": "Kong"
-        },
-        {
-            "code": "1113062006",
-            "name": "Ume Lah"
-        },
-        {
-            "code": "1113062007",
-            "name": "Cinta Maju"
-        },
-        {
-            "code": "1113062008",
-            "name": "Porang Ayu"
-        },
-        {
-            "code": "1113062009",
-            "name": "Tetingi"
-        },
-        {
-            "code": "1113062010",
-            "name": "Anak Reje"
-        },
-        {
-            "code": "1113062011",
-            "name": "Bemem Buntul Pegayon"
-        },
-        {
-            "code": "1113062012",
-            "name": "Akang Siwah"
-        }
-    ],
-    "111307": [
-        {
-            "code": "1113072001",
-            "name": "Gumpang"
-        },
-        {
-            "code": "1113072002",
-            "name": "Marpunge"
-        },
-        {
-            "code": "1113072003",
-            "name": "Ramung Musara"
-        },
-        {
-            "code": "1113072004",
-            "name": "Meloak Sepakat"
-        },
-        {
-            "code": "1113072005",
-            "name": "Kutelengat Sepakat"
-        },
-        {
-            "code": "1113072006",
-            "name": "Singah Mulo"
-        },
-        {
-            "code": "1113072007",
-            "name": "Uning Pune"
-        },
-        {
-            "code": "1113072008",
-            "name": "Gumpang Lempuh"
-        },
-        {
-            "code": "1113072009",
-            "name": "Putri Betung"
-        }
-    ],
-    "111308": [
-        {
-            "code": "1113082001",
-            "name": "Pangur"
-        },
-        {
-            "code": "1113082002",
-            "name": "Badak"
-        },
-        {
-            "code": "1113082003",
-            "name": "Kendawi"
-        },
-        {
-            "code": "1113082004",
-            "name": "Sangir"
-        },
-        {
-            "code": "1113082005",
-            "name": "Panglima Linting"
-        },
-        {
-            "code": "1113082006",
-            "name": "Blangtemung"
-        },
-        {
-            "code": "1113082007",
-            "name": "Rerebe"
-        },
-        {
-            "code": "1113082008",
-            "name": "Uning Gelung"
-        },
-        {
-            "code": "1113082009",
-            "name": "Uning Sepakat"
-        }
-    ],
-    "111309": [
-        {
-            "code": "1113092001",
-            "name": "Penosan"
-        },
-        {
-            "code": "1113092002",
-            "name": "Sekuelen"
-        },
-        {
-            "code": "1113092003",
-            "name": "Akul"
-        },
-        {
-            "code": "1113092004",
-            "name": "Gegarang"
-        },
-        {
-            "code": "1113092005",
-            "name": "Peparik Gaib"
-        },
-        {
-            "code": "1113092006",
-            "name": "Penosan Sepakat"
-        },
-        {
-            "code": "1113092007",
-            "name": "Tingkem"
-        },
-        {
-            "code": "1113092008",
-            "name": "Ketukah"
-        },
-        {
-            "code": "1113092009",
-            "name": "Peparik Dekat"
-        },
-        {
-            "code": "1113092010",
-            "name": "Blangjerango"
-        }
-    ],
-    "111310": [
-        {
-            "code": "1113102001",
-            "name": "Perlak"
-        },
-        {
-            "code": "1113102002",
-            "name": "Rerebe"
-        },
-        {
-            "code": "1113102003",
-            "name": "Pasir"
-        },
-        {
-            "code": "1113102004",
-            "name": "Setul"
-        },
-        {
-            "code": "1113102005",
-            "name": "UPT Paya Kumer"
-        },
-        {
-            "code": "1113102006",
-            "name": "UPT Pantan Kela"
-        },
-        {
-            "code": "1113102007",
-            "name": "Buntul Musara"
-        },
-        {
-            "code": "1113102008",
-            "name": "Kuala Jernih"
-        },
-        {
-            "code": "1113102009",
-            "name": "Uyem Beriring"
-        },
-        {
-            "code": "1113102010",
-            "name": "Pulo Gelime"
-        }
-    ],
-    "111311": [
-        {
-            "code": "1113112001",
-            "name": "Seneren"
-        },
-        {
-            "code": "1113112002",
-            "name": "Remukut"
-        },
-        {
-            "code": "1113112003",
-            "name": "Kenyaran"
-        },
-        {
-            "code": "1113112004",
-            "name": "Tetingi"
-        },
-        {
-            "code": "1113112005",
-            "name": "Atu Kapur"
-        },
-        {
-            "code": "1113112006",
-            "name": "Suri Musara"
-        },
-        {
-            "code": "1113112007",
-            "name": "UPT Aih Selah"
-        },
-        {
-            "code": "1113112008",
-            "name": "Cane Baru"
-        },
-        {
-            "code": "1113112009",
-            "name": "Kurnia"
-        }
-    ]
+  "111301": [
+    {
+      "code": "1113012001",
+      "name": "Blangkejeren"
+    },
+    {
+      "code": "1113012002",
+      "name": "Penampaan"
+    },
+    {
+      "code": "1113012003",
+      "name": "Bukit"
+    },
+    {
+      "code": "1113012004",
+      "name": "Bacang"
+    },
+    {
+      "code": "1113012005",
+      "name": "Durin"
+    },
+    {
+      "code": "1113012007",
+      "name": "Kampung Jawa"
+    },
+    {
+      "code": "1113012008",
+      "name": "Porang"
+    },
+    {
+      "code": "1113012011",
+      "name": "Kute Lintang"
+    },
+    {
+      "code": "1113012014",
+      "name": "Leme"
+    },
+    {
+      "code": "1113012016",
+      "name": "Gele"
+    },
+    {
+      "code": "1113012017",
+      "name": "Sere"
+    },
+    {
+      "code": "1113012018",
+      "name": "Cempa"
+    },
+    {
+      "code": "1113012019",
+      "name": "Lempuh"
+    },
+    {
+      "code": "1113012021",
+      "name": "Palok"
+    },
+    {
+      "code": "1113012022",
+      "name": "Penggalangan"
+    },
+    {
+      "code": "1113012027",
+      "name": "Agusen"
+    },
+    {
+      "code": "1113012031",
+      "name": "Bustanussalam"
+    },
+    {
+      "code": "1113012032",
+      "name": "Penampaan Uken"
+    },
+    {
+      "code": "1113012033",
+      "name": "Raklunung"
+    },
+    {
+      "code": "1113012034",
+      "name": "Sepang"
+    }
+  ],
+  "111302": [
+    {
+      "code": "1113022002",
+      "name": "Tampeng"
+    },
+    {
+      "code": "1113022004",
+      "name": "Bener"
+    },
+    {
+      "code": "1113022005",
+      "name": "Ulun Tanoh"
+    },
+    {
+      "code": "1113022006",
+      "name": "Kuta Ujung"
+    },
+    {
+      "code": "1113022008",
+      "name": "Beranang"
+    },
+    {
+      "code": "1113022010",
+      "name": "Rikit Dekat"
+    },
+    {
+      "code": "1113022011",
+      "name": "Rema"
+    },
+    {
+      "code": "1113022014",
+      "name": "Rema Baru"
+    },
+    {
+      "code": "1113022015",
+      "name": "Cike"
+    },
+    {
+      "code": "1113022016",
+      "name": "Kerukunan Kuta Panjang"
+    },
+    {
+      "code": "1113022020",
+      "name": "Tampeng Musara"
+    },
+    {
+      "code": "1113022021",
+      "name": "Kong Paluh"
+    }
+  ],
+  "111303": [
+    {
+      "code": "1113032001",
+      "name": "Ampa Kolak"
+    },
+    {
+      "code": "1113032002",
+      "name": "Cane Toa"
+    },
+    {
+      "code": "1113032003",
+      "name": "Padang Pasir"
+    },
+    {
+      "code": "1113032005",
+      "name": "Pinang Rugub"
+    },
+    {
+      "code": "1113032006",
+      "name": "Kuning"
+    },
+    {
+      "code": "1113032008",
+      "name": "Mangang"
+    },
+    {
+      "code": "1113032011",
+      "name": "Rempelam"
+    },
+    {
+      "code": "1113032012",
+      "name": "Cane Uken"
+    },
+    {
+      "code": "1113032013",
+      "name": "Tungel"
+    },
+    {
+      "code": "1113032014",
+      "name": "Kota Rikit Gaib"
+    },
+    {
+      "code": "1113032016",
+      "name": "Lukup Baru"
+    },
+    {
+      "code": "1113032017",
+      "name": "Penomon Jaya"
+    },
+    {
+      "code": "1113032018",
+      "name": "Tungel Baru"
+    }
+  ],
+  "111304": [
+    {
+      "code": "1113042001",
+      "name": "Jabo"
+    },
+    {
+      "code": "1113042002",
+      "name": "Kutesange"
+    },
+    {
+      "code": "1113042003",
+      "name": "Padang"
+    },
+    {
+      "code": "1113042006",
+      "name": "Rumpi"
+    },
+    {
+      "code": "1113042007",
+      "name": "Bukut"
+    },
+    {
+      "code": "1113042008",
+      "name": "Terangun"
+    },
+    {
+      "code": "1113042010",
+      "name": "Rempelam Pinang"
+    },
+    {
+      "code": "1113042011",
+      "name": "Soyo"
+    },
+    {
+      "code": "1113042012",
+      "name": "Terlis"
+    },
+    {
+      "code": "1113042013",
+      "name": "Kutereje"
+    },
+    {
+      "code": "1113042014",
+      "name": "Persada Tongra"
+    },
+    {
+      "code": "1113042015",
+      "name": "Berhut"
+    },
+    {
+      "code": "1113042016",
+      "name": "Gewat"
+    },
+    {
+      "code": "1113042017",
+      "name": "Pantan Lues"
+    },
+    {
+      "code": "1113042018",
+      "name": "Makmur Jaya"
+    },
+    {
+      "code": "1113042020",
+      "name": "Blang Kuncir"
+    },
+    {
+      "code": "1113042023",
+      "name": "Reje Pudung"
+    },
+    {
+      "code": "1113042024",
+      "name": "Garut"
+    },
+    {
+      "code": "1113042025",
+      "name": "Telege Jernih"
+    },
+    {
+      "code": "1113042026",
+      "name": "Rime Raya"
+    },
+    {
+      "code": "1113042027",
+      "name": "Lestari"
+    },
+    {
+      "code": "1113042028",
+      "name": "Gawar Belangi"
+    },
+    {
+      "code": "1113042029",
+      "name": "Blang Kala"
+    }
+  ],
+  "111305": [
+    {
+      "code": "1113052001",
+      "name": "Pining"
+    },
+    {
+      "code": "1113052002",
+      "name": "Pertik"
+    },
+    {
+      "code": "1113052003",
+      "name": "Ekan"
+    },
+    {
+      "code": "1113052004",
+      "name": "Uring"
+    },
+    {
+      "code": "1113052005",
+      "name": "Gajah"
+    },
+    {
+      "code": "1113052006",
+      "name": "Pintu Rime"
+    },
+    {
+      "code": "1113052007",
+      "name": "Pepelah"
+    },
+    {
+      "code": "1113052008",
+      "name": "Pasir Putih"
+    },
+    {
+      "code": "1113052009",
+      "name": "Lesten"
+    }
+  ],
+  "111306": [
+    {
+      "code": "1113062001",
+      "name": "Gantung Geluni"
+    },
+    {
+      "code": "1113062002",
+      "name": "Kutabukit"
+    },
+    {
+      "code": "1113062003",
+      "name": "Bener Baru"
+    },
+    {
+      "code": "1113062004",
+      "name": "Blangbengkik"
+    },
+    {
+      "code": "1113062005",
+      "name": "Kong"
+    },
+    {
+      "code": "1113062006",
+      "name": "Ume Lah"
+    },
+    {
+      "code": "1113062007",
+      "name": "Cinta Maju"
+    },
+    {
+      "code": "1113062008",
+      "name": "Porang Ayu"
+    },
+    {
+      "code": "1113062009",
+      "name": "Tetingi"
+    },
+    {
+      "code": "1113062010",
+      "name": "Anak Reje"
+    },
+    {
+      "code": "1113062011",
+      "name": "Bemem Buntul Pegayon"
+    },
+    {
+      "code": "1113062012",
+      "name": "Akang Siwah"
+    }
+  ],
+  "111307": [
+    {
+      "code": "1113072001",
+      "name": "Gumpang"
+    },
+    {
+      "code": "1113072002",
+      "name": "Marpunge"
+    },
+    {
+      "code": "1113072003",
+      "name": "Ramung Musara"
+    },
+    {
+      "code": "1113072004",
+      "name": "Meloak Sepakat"
+    },
+    {
+      "code": "1113072005",
+      "name": "Kutelengat Sepakat"
+    },
+    {
+      "code": "1113072006",
+      "name": "Singah Mulo"
+    },
+    {
+      "code": "1113072007",
+      "name": "Uning Pune"
+    },
+    {
+      "code": "1113072008",
+      "name": "Gumpang Lempuh"
+    },
+    {
+      "code": "1113072009",
+      "name": "Putri Betung"
+    }
+  ],
+  "111308": [
+    {
+      "code": "1113082001",
+      "name": "Pangur"
+    },
+    {
+      "code": "1113082002",
+      "name": "Badak"
+    },
+    {
+      "code": "1113082003",
+      "name": "Kendawi"
+    },
+    {
+      "code": "1113082004",
+      "name": "Sangir"
+    },
+    {
+      "code": "1113082005",
+      "name": "Panglima Linting"
+    },
+    {
+      "code": "1113082006",
+      "name": "Blangtemung"
+    },
+    {
+      "code": "1113082007",
+      "name": "Rerebe"
+    },
+    {
+      "code": "1113082008",
+      "name": "Uning Gelung"
+    },
+    {
+      "code": "1113082009",
+      "name": "Uning Sepakat"
+    }
+  ],
+  "111309": [
+    {
+      "code": "1113092001",
+      "name": "Penosan"
+    },
+    {
+      "code": "1113092002",
+      "name": "Sekuelen"
+    },
+    {
+      "code": "1113092003",
+      "name": "Akul"
+    },
+    {
+      "code": "1113092004",
+      "name": "Gegarang"
+    },
+    {
+      "code": "1113092005",
+      "name": "Peparik Gaib"
+    },
+    {
+      "code": "1113092006",
+      "name": "Penosan Sepakat"
+    },
+    {
+      "code": "1113092007",
+      "name": "Tingkem"
+    },
+    {
+      "code": "1113092008",
+      "name": "Ketukah"
+    },
+    {
+      "code": "1113092009",
+      "name": "Peparik Dekat"
+    },
+    {
+      "code": "1113092010",
+      "name": "Blangjerango"
+    }
+  ],
+  "111310": [
+    {
+      "code": "1113102001",
+      "name": "Perlak"
+    },
+    {
+      "code": "1113102002",
+      "name": "Rerebe"
+    },
+    {
+      "code": "1113102003",
+      "name": "Pasir"
+    },
+    {
+      "code": "1113102004",
+      "name": "Setul"
+    },
+    {
+      "code": "1113102005",
+      "name": "UPT Paya Kumer"
+    },
+    {
+      "code": "1113102006",
+      "name": "UPT Pantan Kela"
+    },
+    {
+      "code": "1113102007",
+      "name": "Buntul Musara"
+    },
+    {
+      "code": "1113102008",
+      "name": "Kuala Jernih"
+    },
+    {
+      "code": "1113102009",
+      "name": "Uyem Beriring"
+    },
+    {
+      "code": "1113102010",
+      "name": "Pulo Gelime"
+    }
+  ],
+  "111311": [
+    {
+      "code": "1113112001",
+      "name": "Seneren"
+    },
+    {
+      "code": "1113112002",
+      "name": "Remukut"
+    },
+    {
+      "code": "1113112003",
+      "name": "Kenyaran"
+    },
+    {
+      "code": "1113112004",
+      "name": "Tetingi"
+    },
+    {
+      "code": "1113112005",
+      "name": "Atu Kapur"
+    },
+    {
+      "code": "1113112006",
+      "name": "Suri Musara"
+    },
+    {
+      "code": "1113112007",
+      "name": "UPT Aih Selah"
+    },
+    {
+      "code": "1113112008",
+      "name": "Cane Baru"
+    },
+    {
+      "code": "1113112009",
+      "name": "Kurnia"
+    }
+  ]
 }

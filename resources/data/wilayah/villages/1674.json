@@ -1,146 +1,194 @@
 {
-    "167402": [
-        {
-            "code": "1674021003",
-            "name": "Karang Raja"
-        },
-        {
-            "code": "1674021004",
-            "name": "Tugu Kecil"
-        },
-        {
-            "code": "1674021005",
-            "name": "Prabu Jaya"
-        },
-        {
-            "code": "1674021006",
-            "name": "Muara Dua"
-        },
-        {
-            "code": "1674021007",
-            "name": "Gunung Ibul"
-        },
-        {
-            "code": "1674021008",
-            "name": "Gunung Ibul Barat"
-        },
-        {
-            "code": "1674021009",
-            "name": "Sukajadi"
-        },
-        {
-            "code": "1674021010",
-            "name": "Karang Jaya"
-        },
-        {
-            "code": "1674021011",
-            "name": "Muara Dua Barat"
-        },
-        {
-            "code": "1674021012",
-            "name": "Gunung Ibul Timur"
-        },
-        {
-            "code": "1674021013",
-            "name": "Gunung Ibul Selatan"
-        },
-        {
-            "code": "1674021014",
-            "name": "Gunung Ibul Utara"
-        },
-        {
-            "code": "1674021015",
-            "name": "Arimbi Jaya"
-        }
-    ],
-    "167403": [
-        {
-            "code": "1674031001",
-            "name": "Cambai"
-        },
-        {
-            "code": "1674031002",
-            "name": "Sindur"
-        },
-        {
-            "code": "1674031005",
-            "name": "Sungai Medang"
-        },
-        {
-            "code": "1674032003",
-            "name": "Pangkul"
-        },
-        {
-            "code": "1674032004",
-            "name": "Muara Sungai"
-        }
-    ],
-    "167404": [
-        {
-            "code": "1674041001",
-            "name": "Tanjung Rambang"
-        },
-        {
-            "code": "1674042003",
-            "name": "Karya Mulya"
-        },
-        {
-            "code": "1674042005",
-            "name": "Rambang Senuling"
-        },
-        {
-            "code": "1674042006",
-            "name": "Jungai"
-        },
-        {
-            "code": "1674042007",
-            "name": "Talang Batu"
-        },
-        {
-            "code": "1674042008",
-            "name": "Karangan"
-        },
-        {
-            "code": "1674042009",
-            "name": "Karang Bindu"
-        },
-        {
-            "code": "1674042010",
-            "name": "Sinar Rambang"
-        },
-        {
-            "code": "1674042011",
-            "name": "Kemang Tanduk"
-        }
-    ],
-    "167405": [
-        {
-            "code": "1674051001",
-            "name": "Pasar Prabumulih I"
-        },
-        {
-            "code": "1674051002",
-            "name": "Pasar Prabumulih II"
-        },
-        {
-            "code": "1674051003",
-            "name": "Wonosari"
-        },
-        {
-            "code": "1674051004",
-            "name": "Mangga Besar"
-        },
-        {
-            "code": "1674051005",
-            "name": "Anak Petai"
-        },
-        {
-            "code": "1674051006",
-            "name": "Sidomulyo"
-        },
-        {
-            "code": "1674051007",
-            "name": "Sidogede"
-        }
-    ]
+  "167401": [
+    {
+      "code": "1674011001",
+      "name": "Prabumulih"
+    },
+    {
+      "code": "1674011007",
+      "name": "Patih Galung"
+    },
+    {
+      "code": "1674011009",
+      "name": "Muntang Tapus"
+    },
+    {
+      "code": "1674011011",
+      "name": "Gunung Kemala"
+    },
+    {
+      "code": "1674011012",
+      "name": "Payuputat"
+    },
+    {
+      "code": "1674011014",
+      "name": "Tebing Tanah Puteh"
+    },
+    {
+      "code": "1674012013",
+      "name": "Tanjung Telang"
+    }
+  ],
+  "167402": [
+    {
+      "code": "1674021003",
+      "name": "Karang Raja"
+    },
+    {
+      "code": "1674021004",
+      "name": "Tugu Kecil"
+    },
+    {
+      "code": "1674021005",
+      "name": "Prabu Jaya"
+    },
+    {
+      "code": "1674021006",
+      "name": "Muara Dua"
+    },
+    {
+      "code": "1674021007",
+      "name": "Gunung Ibul"
+    },
+    {
+      "code": "1674021008",
+      "name": "Gunung Ibul Barat"
+    },
+    {
+      "code": "1674021009",
+      "name": "Sukajadi"
+    },
+    {
+      "code": "1674021010",
+      "name": "Karang Jaya"
+    },
+    {
+      "code": "1674021011",
+      "name": "Muara Dua Barat"
+    },
+    {
+      "code": "1674021012",
+      "name": "Gunung Ibul Timur"
+    },
+    {
+      "code": "1674021013",
+      "name": "Gunung Ibul Selatan"
+    },
+    {
+      "code": "1674021014",
+      "name": "Gunung Ibul Utara"
+    },
+    {
+      "code": "1674021015",
+      "name": "Arimbi Jaya"
+    }
+  ],
+  "167403": [
+    {
+      "code": "1674031001",
+      "name": "Cambai"
+    },
+    {
+      "code": "1674031002",
+      "name": "Sindur"
+    },
+    {
+      "code": "1674031005",
+      "name": "Sungai Medang"
+    },
+    {
+      "code": "1674032003",
+      "name": "Pangkul"
+    },
+    {
+      "code": "1674032004",
+      "name": "Muara Sungai"
+    }
+  ],
+  "167404": [
+    {
+      "code": "1674041001",
+      "name": "Tanjung Rambang"
+    },
+    {
+      "code": "1674042003",
+      "name": "Karya Mulya"
+    },
+    {
+      "code": "1674042005",
+      "name": "Rambang Senuling"
+    },
+    {
+      "code": "1674042006",
+      "name": "Jungai"
+    },
+    {
+      "code": "1674042007",
+      "name": "Talang Batu"
+    },
+    {
+      "code": "1674042008",
+      "name": "Karangan"
+    },
+    {
+      "code": "1674042009",
+      "name": "Karang Bindu"
+    },
+    {
+      "code": "1674042010",
+      "name": "Sinar Rambang"
+    },
+    {
+      "code": "1674042011",
+      "name": "Kemang Tanduk"
+    }
+  ],
+  "167405": [
+    {
+      "code": "1674051001",
+      "name": "Pasar Prabumulih I"
+    },
+    {
+      "code": "1674051002",
+      "name": "Pasar Prabumulih II"
+    },
+    {
+      "code": "1674051003",
+      "name": "Wonosari"
+    },
+    {
+      "code": "1674051004",
+      "name": "Mangga Besar"
+    },
+    {
+      "code": "1674051005",
+      "name": "Anak Petai"
+    },
+    {
+      "code": "1674051006",
+      "name": "Sidomulyo"
+    },
+    {
+      "code": "1674051007",
+      "name": "Sidogede"
+    }
+  ],
+  "167406": [
+    {
+      "code": "1674061001",
+      "name": "Majasari"
+    },
+    {
+      "code": "1674061002",
+      "name": "Tanjung Raman"
+    },
+    {
+      "code": "1674061003",
+      "name": "Sukaraja"
+    },
+    {
+      "code": "1674062004",
+      "name": "Tanjung Menang"
+    }
+  ]
 }

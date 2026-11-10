@@ -1,358 +1,616 @@
 {
-    "630601": [
-        {
-            "code": "6306012001",
-            "name": "Hamalau"
-        },
-        {
-            "code": "6306012002",
-            "name": "Telaga Bidadari"
-        },
-        {
-            "code": "6306012003",
-            "name": "Karasikan"
-        },
-        {
-            "code": "6306012004",
-            "name": "Sungai Raya Utara"
-        },
-        {
-            "code": "6306012005",
-            "name": "Sungai Raya Selatan"
-        },
-        {
-            "code": "6306012006",
-            "name": "Hariti"
-        },
-        {
-            "code": "6306012007",
-            "name": "Ida Manggala"
-        },
-        {
-            "code": "6306012008",
-            "name": "Bumi Berkat"
-        },
-        {
-            "code": "6306012009",
-            "name": "Batang Kulur Kiri"
-        },
-        {
-            "code": "6306012010",
-            "name": "Batang Kulur Tengah"
-        },
-        {
-            "code": "6306012011",
-            "name": "Batang Kulur Kanan"
-        },
-        {
-            "code": "6306012012",
-            "name": "Baru"
-        },
-        {
-            "code": "6306012013",
-            "name": "Tamiyang"
-        },
-        {
-            "code": "6306012014",
-            "name": "Asam"
-        },
-        {
-            "code": "6306012015",
-            "name": "Sungai Kali"
-        },
-        {
-            "code": "6306012016",
-            "name": "Sarang Halang"
-        },
-        {
-            "code": "6306012017",
-            "name": "Paring Agung"
-        },
-        {
-            "code": "6306012018",
-            "name": "Tanah Bangkang"
-        }
-    ],
-    "630602": [
-        {
-            "code": "6306022001",
-            "name": "Karang Jawa Muka"
-        },
-        {
-            "code": "6306022002",
-            "name": "Karang Jawa"
-        },
-        {
-            "code": "6306022003",
-            "name": "Tabihi"
-        },
-        {
-            "code": "6306022004",
-            "name": "Pandulangan"
-        },
-        {
-            "code": "6306022005",
-            "name": "Kaliring"
-        },
-        {
-            "code": "6306022006",
-            "name": "Jambu Hulu"
-        },
-        {
-            "code": "6306022007",
-            "name": "Pahampangan"
-        },
-        {
-            "code": "6306022008",
-            "name": "Padang Batung"
-        },
-        {
-            "code": "6306022009",
-            "name": "Jembatan Merah"
-        },
-        {
-            "code": "6306022010",
-            "name": "Batu Bini"
-        },
-        {
-            "code": "6306022011",
-            "name": "Mawangi"
-        },
-        {
-            "code": "6306022012",
-            "name": "Madang"
-        },
-        {
-            "code": "6306022013",
-            "name": "Durian Rabung"
-        },
-        {
-            "code": "6306022014",
-            "name": "Jelatang"
-        },
-        {
-            "code": "6306022015",
-            "name": "Batu Laki"
-        },
-        {
-            "code": "6306022016",
-            "name": "Malutu"
-        },
-        {
-            "code": "6306022017",
-            "name": "Malilingin"
-        }
-    ],
-    "630603": [
-        {
-            "code": "6306032001",
-            "name": "Lok Binuang"
-        },
-        {
-            "code": "6306032002",
-            "name": "Telaga Langsat"
-        },
-        {
-            "code": "6306032003",
-            "name": "Mandala"
-        },
-        {
-            "code": "6306032004",
-            "name": "Ambutun"
-        },
-        {
-            "code": "6306032005",
-            "name": "Hamak"
-        },
-        {
-            "code": "6306032006",
-            "name": "Hamak Timur"
-        },
-        {
-            "code": "6306032007",
-            "name": "Hamak Utara"
-        },
-        {
-            "code": "6306032008",
-            "name": "Pakuan Timur"
-        },
-        {
-            "code": "6306032009",
-            "name": "Gumbil"
-        },
-        {
-            "code": "6306032010",
-            "name": "Longawang"
-        },
-        {
-            "code": "6306032011",
-            "name": "Pandulangan"
-        }
-    ],
-    "630604": [
-        {
-            "code": "6306042001",
-            "name": "Bamban Utara"
-        },
-        {
-            "code": "6306042002",
-            "name": "Bamban"
-        },
-        {
-            "code": "6306042003",
-            "name": "Bamban Selatan"
-        },
-        {
-            "code": "6306042004",
-            "name": "Kayu Abang"
-        },
-        {
-            "code": "6306042005",
-            "name": "Angkinang"
-        },
-        {
-            "code": "6306042006",
-            "name": "Telaga Sili-Sili"
-        },
-        {
-            "code": "6306042007",
-            "name": "Angkinang Selatan"
-        },
-        {
-            "code": "6306042008",
-            "name": "Tawia"
-        },
-        {
-            "code": "6306042009",
-            "name": "Taniran Kubah"
-        },
-        {
-            "code": "6306042010",
-            "name": "Taniran Selatan"
-        },
-        {
-            "code": "6306042011",
-            "name": "Bakarung"
-        }
-    ],
-    "630605": [
-        {
-            "code": "6306051001",
-            "name": "Kandangan Kota"
-        },
-        {
-            "code": "6306051002",
-            "name": "Kandangan Utara"
-        },
-        {
-            "code": "6306051003",
-            "name": "Kandangan Barat"
-        },
-        {
-            "code": "6306051004",
-            "name": "Jambu Hilir"
-        },
-        {
-            "code": "6306052005",
-            "name": "Gambah Luar"
-        },
-        {
-            "code": "6306052006",
-            "name": "Gambah Luar Muka"
-        },
-        {
-            "code": "6306052007",
-            "name": "Gambah Dalam"
-        },
-        {
-            "code": "6306052008",
-            "name": "Gambah Dalam Barat"
-        },
-        {
-            "code": "6306052009",
-            "name": "Sungai Kupang"
-        },
-        {
-            "code": "6306052010",
-            "name": "Bangkau"
-        },
-        {
-            "code": "6306052011",
-            "name": "Lungau"
-        },
-        {
-            "code": "6306052012",
-            "name": "Sungai Paring"
-        },
-        {
-            "code": "6306052013",
-            "name": "Bariang"
-        },
-        {
-            "code": "6306052014",
-            "name": "Amawang Kiri"
-        },
-        {
-            "code": "6306052015",
-            "name": "Amawang Kiri Muka"
-        },
-        {
-            "code": "6306052016",
-            "name": "Amawang Kanan"
-        },
-        {
-            "code": "6306052017",
-            "name": "Tibung Raya"
-        },
-        {
-            "code": "6306052018",
-            "name": "Baluti"
-        }
-    ],
-    "630606": [
-        {
-            "code": "6306062001",
-            "name": "Tebing Tinggi"
-        },
-        {
-            "code": "6306062002",
-            "name": "Simpur"
-        },
-        {
-            "code": "6306062003",
-            "name": "Garunggang"
-        },
-        {
-            "code": "6306062004",
-            "name": "Amparaya"
-        },
-        {
-            "code": "6306062005",
-            "name": "Panjampang Bahagia"
-        },
-        {
-            "code": "6306062006",
-            "name": "Ulin"
-        },
-        {
-            "code": "6306062007",
-            "name": "Pantai Ulin"
-        },
-        {
-            "code": "6306062008",
-            "name": "Wasah Hulu"
-        },
-        {
-            "code": "6306062009",
-            "name": "Wasah Tengah"
-        },
-        {
-            "code": "6306062010",
-            "name": "Wasah Hilir"
-        },
-        {
-            "code": "6306062011",
-            "name": "Kapuh"
-        }
-    ]
+  "630601": [
+    {
+      "code": "6306012001",
+      "name": "Hamalau"
+    },
+    {
+      "code": "6306012002",
+      "name": "Telaga Bidadari"
+    },
+    {
+      "code": "6306012003",
+      "name": "Karasikan"
+    },
+    {
+      "code": "6306012004",
+      "name": "Sungai Raya Utara"
+    },
+    {
+      "code": "6306012005",
+      "name": "Sungai Raya Selatan"
+    },
+    {
+      "code": "6306012006",
+      "name": "Hariti"
+    },
+    {
+      "code": "6306012007",
+      "name": "Ida Manggala"
+    },
+    {
+      "code": "6306012008",
+      "name": "Bumi Berkat"
+    },
+    {
+      "code": "6306012009",
+      "name": "Batang Kulur Kiri"
+    },
+    {
+      "code": "6306012010",
+      "name": "Batang Kulur Tengah"
+    },
+    {
+      "code": "6306012011",
+      "name": "Batang Kulur Kanan"
+    },
+    {
+      "code": "6306012012",
+      "name": "Baru"
+    },
+    {
+      "code": "6306012013",
+      "name": "Tamiyang"
+    },
+    {
+      "code": "6306012014",
+      "name": "Asam"
+    },
+    {
+      "code": "6306012015",
+      "name": "Sungai Kali"
+    },
+    {
+      "code": "6306012016",
+      "name": "Sarang Halang"
+    },
+    {
+      "code": "6306012017",
+      "name": "Paring Agung"
+    },
+    {
+      "code": "6306012018",
+      "name": "Tanah Bangkang"
+    }
+  ],
+  "630602": [
+    {
+      "code": "6306022001",
+      "name": "Karang Jawa Muka"
+    },
+    {
+      "code": "6306022002",
+      "name": "Karang Jawa"
+    },
+    {
+      "code": "6306022003",
+      "name": "Tabihi"
+    },
+    {
+      "code": "6306022004",
+      "name": "Pandulangan"
+    },
+    {
+      "code": "6306022005",
+      "name": "Kaliring"
+    },
+    {
+      "code": "6306022006",
+      "name": "Jambu Hulu"
+    },
+    {
+      "code": "6306022007",
+      "name": "Pahampangan"
+    },
+    {
+      "code": "6306022008",
+      "name": "Padang Batung"
+    },
+    {
+      "code": "6306022009",
+      "name": "Jembatan Merah"
+    },
+    {
+      "code": "6306022010",
+      "name": "Batu Bini"
+    },
+    {
+      "code": "6306022011",
+      "name": "Mawangi"
+    },
+    {
+      "code": "6306022012",
+      "name": "Madang"
+    },
+    {
+      "code": "6306022013",
+      "name": "Durian Rabung"
+    },
+    {
+      "code": "6306022014",
+      "name": "Jelatang"
+    },
+    {
+      "code": "6306022015",
+      "name": "Batu Laki"
+    },
+    {
+      "code": "6306022016",
+      "name": "Malutu"
+    },
+    {
+      "code": "6306022017",
+      "name": "Malilingin"
+    }
+  ],
+  "630603": [
+    {
+      "code": "6306032001",
+      "name": "Lok Binuang"
+    },
+    {
+      "code": "6306032002",
+      "name": "Telaga Langsat"
+    },
+    {
+      "code": "6306032003",
+      "name": "Mandala"
+    },
+    {
+      "code": "6306032004",
+      "name": "Ambutun"
+    },
+    {
+      "code": "6306032005",
+      "name": "Hamak"
+    },
+    {
+      "code": "6306032006",
+      "name": "Hamak Timur"
+    },
+    {
+      "code": "6306032007",
+      "name": "Hamak Utara"
+    },
+    {
+      "code": "6306032008",
+      "name": "Pakuan Timur"
+    },
+    {
+      "code": "6306032009",
+      "name": "Gumbil"
+    },
+    {
+      "code": "6306032010",
+      "name": "Longawang"
+    },
+    {
+      "code": "6306032011",
+      "name": "Pandulangan"
+    }
+  ],
+  "630604": [
+    {
+      "code": "6306042001",
+      "name": "Bamban Utara"
+    },
+    {
+      "code": "6306042002",
+      "name": "Bamban"
+    },
+    {
+      "code": "6306042003",
+      "name": "Bamban Selatan"
+    },
+    {
+      "code": "6306042004",
+      "name": "Kayu Abang"
+    },
+    {
+      "code": "6306042005",
+      "name": "Angkinang"
+    },
+    {
+      "code": "6306042006",
+      "name": "Telaga Sili-Sili"
+    },
+    {
+      "code": "6306042007",
+      "name": "Angkinang Selatan"
+    },
+    {
+      "code": "6306042008",
+      "name": "Tawia"
+    },
+    {
+      "code": "6306042009",
+      "name": "Taniran Kubah"
+    },
+    {
+      "code": "6306042010",
+      "name": "Taniran Selatan"
+    },
+    {
+      "code": "6306042011",
+      "name": "Bakarung"
+    }
+  ],
+  "630605": [
+    {
+      "code": "6306051001",
+      "name": "Kandangan Kota"
+    },
+    {
+      "code": "6306051002",
+      "name": "Kandangan Utara"
+    },
+    {
+      "code": "6306051003",
+      "name": "Kandangan Barat"
+    },
+    {
+      "code": "6306051004",
+      "name": "Jambu Hilir"
+    },
+    {
+      "code": "6306052005",
+      "name": "Gambah Luar"
+    },
+    {
+      "code": "6306052006",
+      "name": "Gambah Luar Muka"
+    },
+    {
+      "code": "6306052007",
+      "name": "Gambah Dalam"
+    },
+    {
+      "code": "6306052008",
+      "name": "Gambah Dalam Barat"
+    },
+    {
+      "code": "6306052009",
+      "name": "Sungai Kupang"
+    },
+    {
+      "code": "6306052010",
+      "name": "Bangkau"
+    },
+    {
+      "code": "6306052011",
+      "name": "Lungau"
+    },
+    {
+      "code": "6306052012",
+      "name": "Sungai Paring"
+    },
+    {
+      "code": "6306052013",
+      "name": "Bariang"
+    },
+    {
+      "code": "6306052014",
+      "name": "Amawang Kiri"
+    },
+    {
+      "code": "6306052015",
+      "name": "Amawang Kiri Muka"
+    },
+    {
+      "code": "6306052016",
+      "name": "Amawang Kanan"
+    },
+    {
+      "code": "6306052017",
+      "name": "Tibung Raya"
+    },
+    {
+      "code": "6306052018",
+      "name": "Baluti"
+    }
+  ],
+  "630606": [
+    {
+      "code": "6306062001",
+      "name": "Tebing Tinggi"
+    },
+    {
+      "code": "6306062002",
+      "name": "Simpur"
+    },
+    {
+      "code": "6306062003",
+      "name": "Garunggang"
+    },
+    {
+      "code": "6306062004",
+      "name": "Amparaya"
+    },
+    {
+      "code": "6306062005",
+      "name": "Panjampang Bahagia"
+    },
+    {
+      "code": "6306062006",
+      "name": "Ulin"
+    },
+    {
+      "code": "6306062007",
+      "name": "Pantai Ulin"
+    },
+    {
+      "code": "6306062008",
+      "name": "Wasah Hulu"
+    },
+    {
+      "code": "6306062009",
+      "name": "Wasah Tengah"
+    },
+    {
+      "code": "6306062010",
+      "name": "Wasah Hilir"
+    },
+    {
+      "code": "6306062011",
+      "name": "Kapuh"
+    }
+  ],
+  "630607": [
+    {
+      "code": "6306072001",
+      "name": "Muning Baru"
+    },
+    {
+      "code": "6306072002",
+      "name": "Muning Dalam"
+    },
+    {
+      "code": "6306072003",
+      "name": "Muning Tengah"
+    },
+    {
+      "code": "6306072004",
+      "name": "Banjarbaru"
+    },
+    {
+      "code": "6306072005",
+      "name": "Bayanan"
+    },
+    {
+      "code": "6306072006",
+      "name": "Pandan Sari"
+    },
+    {
+      "code": "6306072007",
+      "name": "Pihanin Raya"
+    },
+    {
+      "code": "6306072008",
+      "name": "Tumbukan Banyu"
+    },
+    {
+      "code": "6306072009",
+      "name": "Sungai Pinang"
+    },
+    {
+      "code": "6306072010",
+      "name": "Habirau"
+    },
+    {
+      "code": "6306072011",
+      "name": "Habirau Tengah"
+    },
+    {
+      "code": "6306072012",
+      "name": "Parigi"
+    },
+    {
+      "code": "6306072013",
+      "name": "Banua Hanyar"
+    },
+    {
+      "code": "6306072014",
+      "name": "Tambangan"
+    },
+    {
+      "code": "6306072015",
+      "name": "Baruh Jaya"
+    },
+    {
+      "code": "6306072016",
+      "name": "Samuda"
+    }
+  ],
+  "630608": [
+    {
+      "code": "6306082001",
+      "name": "Pakapuran Kecil"
+    },
+    {
+      "code": "6306082002",
+      "name": "Panggandingan"
+    },
+    {
+      "code": "6306082003",
+      "name": "Tambak Bitin"
+    },
+    {
+      "code": "6306082004",
+      "name": "Pakan Dalam"
+    },
+    {
+      "code": "6306082005",
+      "name": "Paramaian"
+    },
+    {
+      "code": "6306082006",
+      "name": "Pandak Daun"
+    },
+    {
+      "code": "6306082007",
+      "name": "Murung Raya"
+    },
+    {
+      "code": "6306082008",
+      "name": "Balah Paikat"
+    },
+    {
+      "code": "6306082009",
+      "name": "Sungai Garuda"
+    },
+    {
+      "code": "6306082010",
+      "name": "Sungai Mandala"
+    },
+    {
+      "code": "6306082011",
+      "name": "Mdl. Murung Mesjid"
+    },
+    {
+      "code": "6306082012",
+      "name": "Baruh Kembang"
+    },
+    {
+      "code": "6306082013",
+      "name": "Teluk Haur"
+    },
+    {
+      "code": "6306082014",
+      "name": "Pasungkan"
+    },
+    {
+      "code": "6306082015",
+      "name": "Teluk Labak"
+    },
+    {
+      "code": "6306082016",
+      "name": "Hamayung"
+    },
+    {
+      "code": "6306082017",
+      "name": "Hamayung Utara"
+    },
+    {
+      "code": "6306082018",
+      "name": "Paharangan"
+    },
+    {
+      "code": "6306082019",
+      "name": "Hakurung"
+    }
+  ],
+  "630609": [
+    {
+      "code": "6306092001",
+      "name": "Balimau"
+    },
+    {
+      "code": "6306092002",
+      "name": "Karang Paci"
+    },
+    {
+      "code": "6306092003",
+      "name": "Bago Tanggul"
+    },
+    {
+      "code": "6306092004",
+      "name": "Karang Bulan"
+    },
+    {
+      "code": "6306092005",
+      "name": "Balanti"
+    },
+    {
+      "code": "6306092006",
+      "name": "Kalumpang"
+    },
+    {
+      "code": "6306092007",
+      "name": "Tambingkar"
+    },
+    {
+      "code": "6306092008",
+      "name": "Sirih"
+    },
+    {
+      "code": "6306092009",
+      "name": "Sirih Hulu"
+    }
+  ],
+  "630610": [
+    {
+      "code": "6306102001",
+      "name": "Halunuk"
+    },
+    {
+      "code": "6306102002",
+      "name": "Panggungan"
+    },
+    {
+      "code": "6306102003",
+      "name": "Lumpangi"
+    },
+    {
+      "code": "6306102004",
+      "name": "Malinau"
+    },
+    {
+      "code": "6306102005",
+      "name": "Hulu Banyu"
+    },
+    {
+      "code": "6306102006",
+      "name": "Tumingki"
+    },
+    {
+      "code": "6306102007",
+      "name": "Kamawakan"
+    },
+    {
+      "code": "6306102008",
+      "name": "Lok Lahung"
+    },
+    {
+      "code": "6306102009",
+      "name": "Loksado"
+    },
+    {
+      "code": "6306102010",
+      "name": "Haratai"
+    },
+    {
+      "code": "6306102011",
+      "name": "Ulang"
+    }
+  ],
+  "630611": [
+    {
+      "code": "6306112001",
+      "name": "Siang Gantung"
+    },
+    {
+      "code": "6306112002",
+      "name": "Baru"
+    },
+    {
+      "code": "6306112003",
+      "name": "Tanjung Selor"
+    },
+    {
+      "code": "6306112004",
+      "name": "Badaun"
+    },
+    {
+      "code": "6306112005",
+      "name": "Bajayau"
+    },
+    {
+      "code": "6306112006",
+      "name": "Bajayau Tengah"
+    },
+    {
+      "code": "6306112007",
+      "name": "Bajayau Lama"
+    }
+  ]
 }

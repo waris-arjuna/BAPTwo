@@ -1,0 +1,424 @@
+{
+  "911501": [
+    {
+      "code": "9115012003",
+      "name": "Waren I"
+    },
+    {
+      "code": "9115012004",
+      "name": "Waren II"
+    },
+    {
+      "code": "9115012011",
+      "name": "Nonomi"
+    },
+    {
+      "code": "9115012020",
+      "name": "Sarafambai"
+    },
+    {
+      "code": "9115012025",
+      "name": "Uri"
+    },
+    {
+      "code": "9115012027",
+      "name": "Batu Zaman"
+    },
+    {
+      "code": "9115012029",
+      "name": "Sawara Jaya"
+    }
+  ],
+  "911503": [
+    {
+      "code": "9115032006",
+      "name": "Saurisirami"
+    },
+    {
+      "code": "9115032009",
+      "name": "Sinonde"
+    },
+    {
+      "code": "9115032013",
+      "name": "Kali Baru"
+    },
+    {
+      "code": "9115032014",
+      "name": "Sirami"
+    },
+    {
+      "code": "9115032015",
+      "name": "Bunggu"
+    },
+    {
+      "code": "9115032016",
+      "name": "Kowogi"
+    },
+    {
+      "code": "9115032017",
+      "name": "Emauri"
+    },
+    {
+      "code": "9115032018",
+      "name": "Obutay"
+    },
+    {
+      "code": "9115032019",
+      "name": "Wairo"
+    }
+  ],
+  "911507": [
+    {
+      "code": "9115072002",
+      "name": "Fafado"
+    },
+    {
+      "code": "9115072003",
+      "name": "Wobari"
+    },
+    {
+      "code": "9115072013",
+      "name": "Aimasi"
+    },
+    {
+      "code": "9115072014",
+      "name": "Mui"
+    },
+    {
+      "code": "9115072015",
+      "name": "Waghare"
+    },
+    {
+      "code": "9115072016",
+      "name": "Ghaiwando"
+    },
+    {
+      "code": "9115072017",
+      "name": "Womorisi"
+    },
+    {
+      "code": "9115072018",
+      "name": "Orambin"
+    },
+    {
+      "code": "9115072019",
+      "name": "Unareu"
+    },
+    {
+      "code": "9115072020",
+      "name": "Ghaiwaru"
+    }
+  ],
+  "911508": [
+    {
+      "code": "9115082001",
+      "name": "Ureifaisei I/Sanggae"
+    },
+    {
+      "code": "9115082002",
+      "name": "Urfas II"
+    },
+    {
+      "code": "9115082003",
+      "name": "Nubuai"
+    },
+    {
+      "code": "9115082004",
+      "name": "Ureifaisei III/ Paradoi"
+    },
+    {
+      "code": "9115082005",
+      "name": "Apainabo"
+    },
+    {
+      "code": "9115082006",
+      "name": "Mambui"
+    },
+    {
+      "code": "9115082007",
+      "name": "Khemoon Jaya"
+    },
+    {
+      "code": "9115082008",
+      "name": "Usaiwa"
+    },
+    {
+      "code": "9115082009",
+      "name": "Paradoi"
+    },
+    {
+      "code": "9115082010",
+      "name": "Ghoyui"
+    },
+    {
+      "code": "9115082011",
+      "name": "Rorisi"
+    },
+    {
+      "code": "9115082012",
+      "name": "Ronggaiwa"
+    }
+  ],
+  "911509": [
+    {
+      "code": "9115092002",
+      "name": "Somiangga"
+    },
+    {
+      "code": "9115092004",
+      "name": "Toire"
+    },
+    {
+      "code": "9115092005",
+      "name": "Harapan Jaya"
+    },
+    {
+      "code": "9115092006",
+      "name": "Demisa"
+    },
+    {
+      "code": "9115092008",
+      "name": "Otodemo"
+    },
+    {
+      "code": "9115092011",
+      "name": "Awaso"
+    },
+    {
+      "code": "9115092012",
+      "name": "Firo"
+    }
+  ],
+  "911510": [
+    {
+      "code": "9115102001",
+      "name": "Dairi"
+    },
+    {
+      "code": "9115102002",
+      "name": "Spoiri"
+    },
+    {
+      "code": "9115102003",
+      "name": "Sooh"
+    },
+    {
+      "code": "9115102004",
+      "name": "Dirou"
+    },
+    {
+      "code": "9115102005",
+      "name": "Diwah"
+    },
+    {
+      "code": "9115102006",
+      "name": "Kuaisa"
+    },
+    {
+      "code": "9115102007",
+      "name": "Aru Antu"
+    },
+    {
+      "code": "9115102008",
+      "name": "Foira"
+    },
+    {
+      "code": "9115102009",
+      "name": "Kawari"
+    },
+    {
+      "code": "9115102010",
+      "name": "Wafuka"
+    }
+  ],
+  "911511": [
+    {
+      "code": "9115112001",
+      "name": "Botawa"
+    },
+    {
+      "code": "9115112002",
+      "name": "Sowiwa"
+    },
+    {
+      "code": "9115112003",
+      "name": "Baino Jaya"
+    },
+    {
+      "code": "9115112004",
+      "name": "Nau"
+    },
+    {
+      "code": "9115112005",
+      "name": "Rasawa"
+    },
+    {
+      "code": "9115112006",
+      "name": "Ruambak Jaya"
+    },
+    {
+      "code": "9115112007",
+      "name": "Moroa"
+    },
+    {
+      "code": "9115112008",
+      "name": "Oiboa"
+    }
+  ],
+  "911512": [
+    {
+      "code": "9115122001",
+      "name": "Wapoga"
+    },
+    {
+      "code": "9115122002",
+      "name": "Pirare"
+    },
+    {
+      "code": "9115122003",
+      "name": "Awera"
+    },
+    {
+      "code": "9115122004",
+      "name": "Syewa Merare"
+    },
+    {
+      "code": "9115122005",
+      "name": "Kamarisano"
+    },
+    {
+      "code": "9115122006",
+      "name": "Waweri"
+    },
+    {
+      "code": "9115122007",
+      "name": "Dokis"
+    }
+  ],
+  "911513": [
+    {
+      "code": "9115132001",
+      "name": "Urato"
+    },
+    {
+      "code": "9115132002",
+      "name": "Mayaghaido"
+    },
+    {
+      "code": "9115132003",
+      "name": "Aniboi"
+    },
+    {
+      "code": "9115132007",
+      "name": "Tetui"
+    },
+    {
+      "code": "9115132008",
+      "name": "Demba"
+    },
+    {
+      "code": "9115132009",
+      "name": "Fafai"
+    },
+    {
+      "code": "9115132017",
+      "name": "Wudokuri"
+    },
+    {
+      "code": "9115132018",
+      "name": "Aiwa"
+    },
+    {
+      "code": "9115132019",
+      "name": "Biati"
+    },
+    {
+      "code": "9115132020",
+      "name": "Ronarai"
+    }
+  ],
+  "911514": [
+    {
+      "code": "9115142001",
+      "name": "Odase"
+    },
+    {
+      "code": "9115142002",
+      "name": "Wanda"
+    },
+    {
+      "code": "9115142003",
+      "name": "Bakadaro"
+    },
+    {
+      "code": "9115142004",
+      "name": "Moyufuri"
+    },
+    {
+      "code": "9115142005",
+      "name": "Wonti Kai"
+    },
+    {
+      "code": "9115142006",
+      "name": "Ghoiwi Samberi"
+    },
+    {
+      "code": "9115142007",
+      "name": "Gheroi"
+    },
+    {
+      "code": "9115142008",
+      "name": "Fimore"
+    },
+    {
+      "code": "9115142009",
+      "name": "Sifuisera"
+    },
+    {
+      "code": "9115142010",
+      "name": "Borumei"
+    }
+  ],
+  "911515": [
+    {
+      "code": "9115152001",
+      "name": "Mambai"
+    },
+    {
+      "code": "9115152002",
+      "name": "Soyoi"
+    },
+    {
+      "code": "9115152003",
+      "name": "Daimboa"
+    },
+    {
+      "code": "9115152004",
+      "name": "Napani"
+    },
+    {
+      "code": "9115152005",
+      "name": "Segha"
+    },
+    {
+      "code": "9115152006",
+      "name": "Wainarisi"
+    },
+    {
+      "code": "9115152007",
+      "name": "Fafarui"
+    },
+    {
+      "code": "9115152008",
+      "name": "Dawoa"
+    },
+    {
+      "code": "9115152009",
+      "name": "Sinabo"
+    },
+    {
+      "code": "9115152010",
+      "name": "Woinui"
+    }
+  ]
+}

@@ -1,178 +1,238 @@
 {
-    "210503": [
-        {
-            "code": "2105032001",
-            "name": "Nyamuk"
-        },
-        {
-            "code": "2105032002",
-            "name": "Batu Belah"
-        },
-        {
-            "code": "2105032003",
-            "name": "Munjan"
-        },
-        {
-            "code": "2105032004",
-            "name": "Serat"
-        },
-        {
-            "code": "2105032005",
-            "name": "Air Putih"
-        },
-        {
-            "code": "2105032006",
-            "name": "Temburun"
-        }
-    ],
-    "210504": [
-        {
-            "code": "2105042001",
-            "name": "Kiabu"
-        },
-        {
-            "code": "2105042002",
-            "name": "Telaga"
-        },
-        {
-            "code": "2105042003",
-            "name": "Mengkait"
-        },
-        {
-            "code": "2105042004",
-            "name": "Tiangau"
-        },
-        {
-            "code": "2105042005",
-            "name": "Telaga Kecil"
-        },
-        {
-            "code": "2105042006",
-            "name": "Lingai"
-        },
-        {
-            "code": "2105042007",
-            "name": "Air Bini"
-        }
-    ],
-    "210505": [
-        {
-            "code": "2105052001",
-            "name": "Kuala Maras"
-        },
-        {
-            "code": "2105052002",
-            "name": "Ulu Maras"
-        },
-        {
-            "code": "2105052003",
-            "name": "Bukit Padi"
-        },
-        {
-            "code": "2105052004",
-            "name": "Genting Pulur"
-        }
-    ],
-    "210506": [
-        {
-            "code": "2105061005",
-            "name": "Letung"
-        },
-        {
-            "code": "2105062001",
-            "name": "Mampok"
-        },
-        {
-            "code": "2105062002",
-            "name": "Rewak"
-        },
-        {
-            "code": "2105062006",
-            "name": "Air Biru"
-        },
-        {
-            "code": "2105062008",
-            "name": "Batu Berapit"
-        },
-        {
-            "code": "2105062009",
-            "name": "Landak"
-        }
-    ],
-    "210507": [
-        {
-            "code": "2105072001",
-            "name": "Air Asuk"
-        },
-        {
-            "code": "2105072002",
-            "name": "Air Sena"
-        },
-        {
-            "code": "2105072003",
-            "name": "Teluk Siantan"
-        },
-        {
-            "code": "2105072004",
-            "name": "Lidi"
-        },
-        {
-            "code": "2105072005",
-            "name": "Liuk"
-        },
-        {
-            "code": "2105072006",
-            "name": "Teluk Sunting"
-        }
-    ],
-    "210508": [
-        {
-            "code": "2105082001",
-            "name": "Mubur"
-        },
-        {
-            "code": "2105082002",
-            "name": "Piasan"
-        },
-        {
-            "code": "2105082003",
-            "name": "Bayat"
-        }
-    ],
-    "210509": [
-        {
-            "code": "2105092001",
-            "name": "Impol"
-        },
-        {
-            "code": "2105092002",
-            "name": "Keramut"
-        },
-        {
-            "code": "2105092003",
-            "name": "Sunggak"
-        }
-    ],
-    "210510": [
-        {
-            "code": "2105102001",
-            "name": "Payalaman"
-        },
-        {
-            "code": "2105102002",
-            "name": "Payamaram"
-        },
-        {
-            "code": "2105102003",
-            "name": "Batu Ampar"
-        },
-        {
-            "code": "2105102004",
-            "name": "Matak"
-        },
-        {
-            "code": "2105102005",
-            "name": "Teluk Bayur"
-        }
-    ]
+  "210501": [
+    {
+      "code": "2105011001",
+      "name": "Terempa"
+    },
+    {
+      "code": "2105012002",
+      "name": "Terempa Barat"
+    },
+    {
+      "code": "2105012003",
+      "name": "Tarempa Selatan"
+    },
+    {
+      "code": "2105012004",
+      "name": "Tarempa Timur"
+    },
+    {
+      "code": "2105012005",
+      "name": "Pesisir Timur"
+    },
+    {
+      "code": "2105012006",
+      "name": "Sri Tanjung"
+    },
+    {
+      "code": "2105012007",
+      "name": "Tarempa Barat Daya"
+    }
+  ],
+  "210502": [
+    {
+      "code": "2105022002",
+      "name": "Tebang"
+    },
+    {
+      "code": "2105022003",
+      "name": "Ladan"
+    },
+    {
+      "code": "2105022005",
+      "name": "Piabung"
+    },
+    {
+      "code": "2105022006",
+      "name": "Langir"
+    },
+    {
+      "code": "2105022007",
+      "name": "Candi"
+    },
+    {
+      "code": "2105022008",
+      "name": "Putik"
+    },
+    {
+      "code": "2105022015",
+      "name": "Belibak"
+    }
+  ],
+  "210503": [
+    {
+      "code": "2105032001",
+      "name": "Nyamuk"
+    },
+    {
+      "code": "2105032002",
+      "name": "Batu Belah"
+    },
+    {
+      "code": "2105032003",
+      "name": "Munjan"
+    },
+    {
+      "code": "2105032004",
+      "name": "Serat"
+    },
+    {
+      "code": "2105032005",
+      "name": "Air Putih"
+    },
+    {
+      "code": "2105032006",
+      "name": "Temburun"
+    }
+  ],
+  "210504": [
+    {
+      "code": "2105042001",
+      "name": "Kiabu"
+    },
+    {
+      "code": "2105042002",
+      "name": "Telaga"
+    },
+    {
+      "code": "2105042003",
+      "name": "Mengkait"
+    },
+    {
+      "code": "2105042004",
+      "name": "Tiangau"
+    },
+    {
+      "code": "2105042005",
+      "name": "Telaga Kecil"
+    },
+    {
+      "code": "2105042006",
+      "name": "Lingai"
+    },
+    {
+      "code": "2105042007",
+      "name": "Air Bini"
+    }
+  ],
+  "210505": [
+    {
+      "code": "2105052001",
+      "name": "Kuala Maras"
+    },
+    {
+      "code": "2105052002",
+      "name": "Ulu Maras"
+    },
+    {
+      "code": "2105052003",
+      "name": "Bukit Padi"
+    },
+    {
+      "code": "2105052004",
+      "name": "Genting Pulur"
+    }
+  ],
+  "210506": [
+    {
+      "code": "2105061005",
+      "name": "Letung"
+    },
+    {
+      "code": "2105062001",
+      "name": "Mampok"
+    },
+    {
+      "code": "2105062002",
+      "name": "Rewak"
+    },
+    {
+      "code": "2105062006",
+      "name": "Air Biru"
+    },
+    {
+      "code": "2105062008",
+      "name": "Batu Berapit"
+    },
+    {
+      "code": "2105062009",
+      "name": "Landak"
+    }
+  ],
+  "210507": [
+    {
+      "code": "2105072001",
+      "name": "Air Asuk"
+    },
+    {
+      "code": "2105072002",
+      "name": "Air Sena"
+    },
+    {
+      "code": "2105072003",
+      "name": "Teluk Siantan"
+    },
+    {
+      "code": "2105072004",
+      "name": "Lidi"
+    },
+    {
+      "code": "2105072005",
+      "name": "Liuk"
+    },
+    {
+      "code": "2105072006",
+      "name": "Teluk Sunting"
+    }
+  ],
+  "210508": [
+    {
+      "code": "2105082001",
+      "name": "Mubur"
+    },
+    {
+      "code": "2105082002",
+      "name": "Piasan"
+    },
+    {
+      "code": "2105082003",
+      "name": "Bayat"
+    }
+  ],
+  "210509": [
+    {
+      "code": "2105092001",
+      "name": "Impol"
+    },
+    {
+      "code": "2105092002",
+      "name": "Keramut"
+    },
+    {
+      "code": "2105092003",
+      "name": "Sunggak"
+    }
+  ],
+  "210510": [
+    {
+      "code": "2105102001",
+      "name": "Payalaman"
+    },
+    {
+      "code": "2105102002",
+      "name": "Payamaram"
+    },
+    {
+      "code": "2105102003",
+      "name": "Batu Ampar"
+    },
+    {
+      "code": "2105102004",
+      "name": "Matak"
+    },
+    {
+      "code": "2105102005",
+      "name": "Teluk Bayur"
+    }
+  ]
 }

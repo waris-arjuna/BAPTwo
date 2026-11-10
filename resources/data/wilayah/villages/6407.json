@@ -1,480 +1,810 @@
 {
-    "640708": [
-        {
-            "code": "6407082001",
-            "name": "Besiq"
-        },
-        {
-            "code": "6407082002",
-            "name": "Bermai"
-        },
-        {
-            "code": "6407082003",
-            "name": "Muara Niliq"
-        },
-        {
-            "code": "6407082004",
-            "name": "Mantar"
-        },
-        {
-            "code": "6407082005",
-            "name": "Muara Bomboy"
-        },
-        {
-            "code": "6407082006",
-            "name": "Damai Seberang"
-        },
-        {
-            "code": "6407082007",
-            "name": "Mendika"
-        },
-        {
-            "code": "6407082008",
-            "name": "Damai Kota"
-        },
-        {
-            "code": "6407082009",
-            "name": "Lumpat Dahuq"
-        },
-        {
-            "code": "6407082010",
-            "name": "Muara Tokong"
-        },
-        {
-            "code": "6407082011",
-            "name": "Jengan Danum"
-        },
-        {
-            "code": "6407082012",
-            "name": "Keay"
-        },
-        {
-            "code": "6407082013",
-            "name": "Tepulang"
-        },
-        {
-            "code": "6407082014",
-            "name": "Benung"
-        },
-        {
-            "code": "6407082020",
-            "name": "Muara Nyahing"
-        },
-        {
-            "code": "6407082021",
-            "name": "Sempatn"
-        },
-        {
-            "code": "6407082022",
-            "name": "Kelian"
-        }
-    ],
-    "640709": [
-        {
-            "code": "6407092001",
-            "name": "Muara Begai"
-        },
-        {
-            "code": "6407092002",
-            "name": "Lotaq"
-        },
-        {
-            "code": "6407092003",
-            "name": "Payang"
-        },
-        {
-            "code": "6407092004",
-            "name": "Dingin"
-        },
-        {
-            "code": "6407092005",
-            "name": "Muara Lawa"
-        },
-        {
-            "code": "6407092006",
-            "name": "Lambing"
-        },
-        {
-            "code": "6407092007",
-            "name": "Benggeris"
-        },
-        {
-            "code": "6407092008",
-            "name": "Cempedas"
-        }
-    ],
-    "640710": [
-        {
-            "code": "6407102015",
-            "name": "Jerang Dayak"
-        },
-        {
-            "code": "6407102016",
-            "name": "Mendung"
-        },
-        {
-            "code": "6407102017",
-            "name": "Jerang Melayu"
-        },
-        {
-            "code": "6407102018",
-            "name": "Dasaq"
-        },
-        {
-            "code": "6407102020",
-            "name": "Tepian Ulaq"
-        },
-        {
-            "code": "6407102021",
-            "name": "Sebelang"
-        },
-        {
-            "code": "6407102022",
-            "name": "Muara Baroh"
-        },
-        {
-            "code": "6407102023",
-            "name": "Teluk Tempudau"
-        },
-        {
-            "code": "6407102024",
-            "name": "Tanjung Laong"
-        },
-        {
-            "code": "6407102025",
-            "name": "Tanjung Pagar"
-        },
-        {
-            "code": "6407102029",
-            "name": "Gunung Bayan"
-        },
-        {
-            "code": "6407102030",
-            "name": "Muara Beloan"
-        }
-    ],
-    "640711": [
-        {
-            "code": "6407112001",
-            "name": "Pentat"
-        },
-        {
-            "code": "6407112002",
-            "name": "Lembonah"
-        },
-        {
-            "code": "6407112003",
-            "name": "Muara Nayan"
-        },
-        {
-            "code": "6407112004",
-            "name": "Mancong"
-        },
-        {
-            "code": "6407112005",
-            "name": "Perigiq"
-        },
-        {
-            "code": "6407112006",
-            "name": "Muara Ohong"
-        },
-        {
-            "code": "6407112007",
-            "name": "Tanjung Jone"
-        },
-        {
-            "code": "6407112008",
-            "name": "Tanjung Isuy"
-        },
-        {
-            "code": "6407112009",
-            "name": "Tanjung Jan"
-        },
-        {
-            "code": "6407112010",
-            "name": "Pulau Lanting"
-        },
-        {
-            "code": "6407112011",
-            "name": "Muara Tae"
-        },
-        {
-            "code": "6407112012",
-            "name": "Bekokong Makmur"
-        }
-    ],
-    "640712": [
-        {
-            "code": "6407122001",
-            "name": "Gerunggung"
-        },
-        {
-            "code": "6407122002",
-            "name": "Pereng Taliq"
-        },
-        {
-            "code": "6407122003",
-            "name": "Tanjung Soke"
-        },
-        {
-            "code": "6407122004",
-            "name": "Deraya"
-        },
-        {
-            "code": "6407122005",
-            "name": "Lemper"
-        },
-        {
-            "code": "6407122006",
-            "name": "Muara Siram"
-        },
-        {
-            "code": "6407122007",
-            "name": "Resak"
-        },
-        {
-            "code": "6407122008",
-            "name": "Jambuk"
-        },
-        {
-            "code": "6407122009",
-            "name": "Muara Gusik"
-        },
-        {
-            "code": "6407122010",
-            "name": "Penawai"
-        },
-        {
-            "code": "6407122011",
-            "name": "Muara Kedang"
-        },
-        {
-            "code": "6407122012",
-            "name": "Jambuk Makmur"
-        },
-        {
-            "code": "6407122014",
-            "name": "Siram Makmur"
-        },
-        {
-            "code": "6407122015",
-            "name": "Siram Jaya"
-        },
-        {
-            "code": "6407122016",
-            "name": "Bukit Harapan"
-        },
-        {
-            "code": "6407122019",
-            "name": "Tanjung Sari"
-        }
-    ],
-    "640715": [
-        {
-            "code": "6407152001",
-            "name": "Linggang Melapeh Baru"
-        },
-        {
-            "code": "6407152002",
-            "name": "Linggang Bigung Baru"
-        },
-        {
-            "code": "6407152003",
-            "name": "Linggang Tutung"
-        },
-        {
-            "code": "6407152004",
-            "name": "Linggang Melapeh"
-        },
-        {
-            "code": "6407152005",
-            "name": "Linggang Mapan"
-        },
-        {
-            "code": "6407152006",
-            "name": "Linggang Bigung"
-        },
-        {
-            "code": "6407152007",
-            "name": "Linggang Amer"
-        },
-        {
-            "code": "6407152008",
-            "name": "Linggang Bangunsari"
-        },
-        {
-            "code": "6407152009",
-            "name": "Linggang Purwodadi"
-        },
-        {
-            "code": "6407152010",
-            "name": "Linggang Mencelew"
-        },
-        {
-            "code": "6407152011",
-            "name": "Linggang Kebut"
-        }
-    ],
-    "640718": [
-        {
-            "code": "6407182001",
-            "name": "Sakaq Lotoq"
-        },
-        {
-            "code": "6407182002",
-            "name": "Sakaq Tada"
-        },
-        {
-            "code": "6407182003",
-            "name": "Gemuruh"
-        },
-        {
-            "code": "6407182004",
-            "name": "Karangan"
-        },
-        {
-            "code": "6407182005",
-            "name": "Merayaq"
-        },
-        {
-            "code": "6407182006",
-            "name": "Linggang Marimun"
-        },
-        {
-            "code": "6407182007",
-            "name": "Kelumpang"
-        },
-        {
-            "code": "6407182008",
-            "name": "Gadur"
-        },
-        {
-            "code": "6407182009",
-            "name": "Linggang Muara Batuq"
-        },
-        {
-            "code": "6407182010",
-            "name": "Muara Jawaq"
-        },
-        {
-            "code": "6407182011",
-            "name": "Abit"
-        },
-        {
-            "code": "6407182012",
-            "name": "Rembayan"
-        },
-        {
-            "code": "6407182014",
-            "name": "Gunung Rampah"
-        },
-        {
-            "code": "6407182015",
-            "name": "Jengan"
-        },
-        {
-            "code": "6407182016",
-            "name": "Muara Kalaq"
-        },
-        {
-            "code": "6407182017",
-            "name": "Tondoh"
-        }
-    ],
-    "640719": [
-        {
-            "code": "6407192001",
-            "name": "Tering Baru"
-        },
-        {
-            "code": "6407192002",
-            "name": "Tering Lama"
-        },
-        {
-            "code": "6407192003",
-            "name": "Linggang Tering Seberang"
-        },
-        {
-            "code": "6407192004",
-            "name": "Tukul"
-        },
-        {
-            "code": "6407192005",
-            "name": "Linggang Kelubaq"
-        },
-        {
-            "code": "6407192006",
-            "name": "Linggang Purworejo"
-        },
-        {
-            "code": "6407192007",
-            "name": "Linggang Jelemuq"
-        },
-        {
-            "code": "6407192008",
-            "name": "Kelian Dalam"
-        },
-        {
-            "code": "6407192009",
-            "name": "Linggang Muara Mujan"
-        },
-        {
-            "code": "6407192010",
-            "name": "Muyub Ulu"
-        },
-        {
-            "code": "6407192011",
-            "name": "Muyub Aket"
-        },
-        {
-            "code": "6407192013",
-            "name": "Linggang Muyub Ilir"
-        },
-        {
-            "code": "6407192014",
-            "name": "Gabung Baru"
-        },
-        {
-            "code": "6407192015",
-            "name": "Linggang Banjarejo"
-        },
-        {
-            "code": "6407192016",
-            "name": "Tering Lama Ulu"
-        }
-    ],
-    "640720": [
-        {
-            "code": "6407202001",
-            "name": "Sekolaq Joleq"
-        },
-        {
-            "code": "6407202002",
-            "name": "Sekolaq Muliaq"
-        },
-        {
-            "code": "6407202003",
-            "name": "Sekolaq Oday"
-        },
-        {
-            "code": "6407202004",
-            "name": "Srimulyo"
-        },
-        {
-            "code": "6407202005",
-            "name": "Sumber Bangun"
-        },
-        {
-            "code": "6407202006",
-            "name": "Sumber Rejo"
-        },
-        {
-            "code": "6407202007",
-            "name": "Sekolaq Darat"
-        },
-        {
-            "code": "6407202008",
-            "name": "Leleng"
-        }
-    ]
+  "640705": [
+    {
+      "code": "6407052008",
+      "name": "Linggang Muara Leban"
+    },
+    {
+      "code": "6407052009",
+      "name": "Long Iram Seberang"
+    },
+    {
+      "code": "6407052010",
+      "name": "Long Iram Ilir"
+    },
+    {
+      "code": "6407052011",
+      "name": "Anah"
+    },
+    {
+      "code": "6407052015",
+      "name": "Long Daliq"
+    },
+    {
+      "code": "6407052016",
+      "name": "Long Iram Kota"
+    },
+    {
+      "code": "6407052017",
+      "name": "Long Iram Bayan"
+    },
+    {
+      "code": "6407052018",
+      "name": "Keliwai"
+    },
+    {
+      "code": "6407052019",
+      "name": "Ujoh Halang"
+    },
+    {
+      "code": "6407052021",
+      "name": "Kelian Luar"
+    },
+    {
+      "code": "6407052022",
+      "name": "Sukomulyo"
+    }
+  ],
+  "640706": [
+    {
+      "code": "6407061006",
+      "name": "Melak Ilir"
+    },
+    {
+      "code": "6407061011",
+      "name": "Melak Ulu"
+    },
+    {
+      "code": "6407062001",
+      "name": "Empas"
+    },
+    {
+      "code": "6407062002",
+      "name": "Empakuq"
+    },
+    {
+      "code": "6407062003",
+      "name": "Muara Bunyut"
+    },
+    {
+      "code": "6407062012",
+      "name": "Muara Benangaq"
+    }
+  ],
+  "640707": [
+    {
+      "code": "6407071001",
+      "name": "Barong Tongkok"
+    },
+    {
+      "code": "6407071021",
+      "name": "Simpang Raya"
+    },
+    {
+      "code": "6407072002",
+      "name": "Mencimai"
+    },
+    {
+      "code": "6407072003",
+      "name": "Engkuni Pasek"
+    },
+    {
+      "code": "6407072004",
+      "name": "Pepas Eheng"
+    },
+    {
+      "code": "6407072006",
+      "name": "Juhan Asa"
+    },
+    {
+      "code": "6407072007",
+      "name": "Asa"
+    },
+    {
+      "code": "6407072008",
+      "name": "Pepas Asa"
+    },
+    {
+      "code": "6407072009",
+      "name": "Muara Asa"
+    },
+    {
+      "code": "6407072010",
+      "name": "Ongko Asa"
+    },
+    {
+      "code": "6407072011",
+      "name": "Juaq Asa"
+    },
+    {
+      "code": "6407072012",
+      "name": "Ombau Asa"
+    },
+    {
+      "code": "6407072013",
+      "name": "Ngenyan Asa"
+    },
+    {
+      "code": "6407072014",
+      "name": "Gemuhan Asa"
+    },
+    {
+      "code": "6407072015",
+      "name": "Geleo Baru"
+    },
+    {
+      "code": "6407072016",
+      "name": "Geleo Asa"
+    },
+    {
+      "code": "6407072017",
+      "name": "Rejo Basuki"
+    },
+    {
+      "code": "6407072018",
+      "name": "Sumber Sari"
+    },
+    {
+      "code": "6407072019",
+      "name": "Sendawar"
+    },
+    {
+      "code": "6407072020",
+      "name": "Balok Asa"
+    },
+    {
+      "code": "6407072022",
+      "name": "Belempung Ulaq"
+    }
+  ],
+  "640708": [
+    {
+      "code": "6407082001",
+      "name": "Besiq"
+    },
+    {
+      "code": "6407082002",
+      "name": "Bermai"
+    },
+    {
+      "code": "6407082003",
+      "name": "Muara Niliq"
+    },
+    {
+      "code": "6407082004",
+      "name": "Mantar"
+    },
+    {
+      "code": "6407082005",
+      "name": "Muara Bomboy"
+    },
+    {
+      "code": "6407082006",
+      "name": "Damai Seberang"
+    },
+    {
+      "code": "6407082007",
+      "name": "Mendika"
+    },
+    {
+      "code": "6407082008",
+      "name": "Damai Kota"
+    },
+    {
+      "code": "6407082009",
+      "name": "Lumpat Dahuq"
+    },
+    {
+      "code": "6407082010",
+      "name": "Muara Tokong"
+    },
+    {
+      "code": "6407082011",
+      "name": "Jengan Danum"
+    },
+    {
+      "code": "6407082012",
+      "name": "Keay"
+    },
+    {
+      "code": "6407082013",
+      "name": "Tepulang"
+    },
+    {
+      "code": "6407082014",
+      "name": "Benung"
+    },
+    {
+      "code": "6407082020",
+      "name": "Muara Nyahing"
+    },
+    {
+      "code": "6407082021",
+      "name": "Sempatn"
+    },
+    {
+      "code": "6407082022",
+      "name": "Kelian"
+    }
+  ],
+  "640709": [
+    {
+      "code": "6407092001",
+      "name": "Muara Begai"
+    },
+    {
+      "code": "6407092002",
+      "name": "Lotaq"
+    },
+    {
+      "code": "6407092003",
+      "name": "Payang"
+    },
+    {
+      "code": "6407092004",
+      "name": "Dingin"
+    },
+    {
+      "code": "6407092005",
+      "name": "Muara Lawa"
+    },
+    {
+      "code": "6407092006",
+      "name": "Lambing"
+    },
+    {
+      "code": "6407092007",
+      "name": "Benggeris"
+    },
+    {
+      "code": "6407092008",
+      "name": "Cempedas"
+    }
+  ],
+  "640710": [
+    {
+      "code": "6407102015",
+      "name": "Jerang Dayak"
+    },
+    {
+      "code": "6407102016",
+      "name": "Mendung"
+    },
+    {
+      "code": "6407102017",
+      "name": "Jerang Melayu"
+    },
+    {
+      "code": "6407102018",
+      "name": "Dasaq"
+    },
+    {
+      "code": "6407102020",
+      "name": "Tepian Ulaq"
+    },
+    {
+      "code": "6407102021",
+      "name": "Sebelang"
+    },
+    {
+      "code": "6407102022",
+      "name": "Muara Baroh"
+    },
+    {
+      "code": "6407102023",
+      "name": "Teluk Tempudau"
+    },
+    {
+      "code": "6407102024",
+      "name": "Tanjung Laong"
+    },
+    {
+      "code": "6407102025",
+      "name": "Tanjung Pagar"
+    },
+    {
+      "code": "6407102029",
+      "name": "Gunung Bayan"
+    },
+    {
+      "code": "6407102030",
+      "name": "Muara Beloan"
+    }
+  ],
+  "640711": [
+    {
+      "code": "6407112001",
+      "name": "Pentat"
+    },
+    {
+      "code": "6407112002",
+      "name": "Lembonah"
+    },
+    {
+      "code": "6407112003",
+      "name": "Muara Nayan"
+    },
+    {
+      "code": "6407112004",
+      "name": "Mancong"
+    },
+    {
+      "code": "6407112005",
+      "name": "Perigiq"
+    },
+    {
+      "code": "6407112006",
+      "name": "Muara Ohong"
+    },
+    {
+      "code": "6407112007",
+      "name": "Tanjung Jone"
+    },
+    {
+      "code": "6407112008",
+      "name": "Tanjung Isuy"
+    },
+    {
+      "code": "6407112009",
+      "name": "Tanjung Jan"
+    },
+    {
+      "code": "6407112010",
+      "name": "Pulau Lanting"
+    },
+    {
+      "code": "6407112011",
+      "name": "Muara Tae"
+    },
+    {
+      "code": "6407112012",
+      "name": "Bekokong Makmur"
+    }
+  ],
+  "640712": [
+    {
+      "code": "6407122001",
+      "name": "Gerunggung"
+    },
+    {
+      "code": "6407122002",
+      "name": "Pereng Taliq"
+    },
+    {
+      "code": "6407122003",
+      "name": "Tanjung Soke"
+    },
+    {
+      "code": "6407122004",
+      "name": "Deraya"
+    },
+    {
+      "code": "6407122005",
+      "name": "Lemper"
+    },
+    {
+      "code": "6407122006",
+      "name": "Muara Siram"
+    },
+    {
+      "code": "6407122007",
+      "name": "Resak"
+    },
+    {
+      "code": "6407122008",
+      "name": "Jambuk"
+    },
+    {
+      "code": "6407122009",
+      "name": "Muara Gusik"
+    },
+    {
+      "code": "6407122010",
+      "name": "Penawai"
+    },
+    {
+      "code": "6407122011",
+      "name": "Muara Kedang"
+    },
+    {
+      "code": "6407122012",
+      "name": "Jambuk Makmur"
+    },
+    {
+      "code": "6407122014",
+      "name": "Siram Makmur"
+    },
+    {
+      "code": "6407122015",
+      "name": "Siram Jaya"
+    },
+    {
+      "code": "6407122016",
+      "name": "Bukit Harapan"
+    },
+    {
+      "code": "6407122019",
+      "name": "Tanjung Sari"
+    }
+  ],
+  "640713": [
+    {
+      "code": "6407132001",
+      "name": "Loa Deras"
+    },
+    {
+      "code": "6407132002",
+      "name": "Minta"
+    },
+    {
+      "code": "6407132003",
+      "name": "Tanjung Haur"
+    },
+    {
+      "code": "6407132004",
+      "name": "Penyinggahan Ilir"
+    },
+    {
+      "code": "6407132005",
+      "name": "Penyinggahan Ulu"
+    },
+    {
+      "code": "6407132006",
+      "name": "Bakung"
+    }
+  ],
+  "640714": [
+    {
+      "code": "6407142001",
+      "name": "Randa Empas"
+    },
+    {
+      "code": "6407142002",
+      "name": "Tukuq"
+    },
+    {
+      "code": "6407142003",
+      "name": "Tende"
+    },
+    {
+      "code": "6407142004",
+      "name": "Sambung"
+    },
+    {
+      "code": "6407142005",
+      "name": "Anan Jaya"
+    },
+    {
+      "code": "6407142006",
+      "name": "Jelmu Sibak"
+    },
+    {
+      "code": "6407142007",
+      "name": "Suakong"
+    },
+    {
+      "code": "6407142008",
+      "name": "Penarung"
+    },
+    {
+      "code": "6407142009",
+      "name": "Dilang Puti"
+    }
+  ],
+  "640715": [
+    {
+      "code": "6407152001",
+      "name": "Linggang Melapeh Baru"
+    },
+    {
+      "code": "6407152002",
+      "name": "Linggang Bigung Baru"
+    },
+    {
+      "code": "6407152003",
+      "name": "Linggang Tutung"
+    },
+    {
+      "code": "6407152004",
+      "name": "Linggang Melapeh"
+    },
+    {
+      "code": "6407152005",
+      "name": "Linggang Mapan"
+    },
+    {
+      "code": "6407152006",
+      "name": "Linggang Bigung"
+    },
+    {
+      "code": "6407152007",
+      "name": "Linggang Amer"
+    },
+    {
+      "code": "6407152008",
+      "name": "Linggang Bangunsari"
+    },
+    {
+      "code": "6407152009",
+      "name": "Linggang Purwodadi"
+    },
+    {
+      "code": "6407152010",
+      "name": "Linggang Mencelew"
+    },
+    {
+      "code": "6407152011",
+      "name": "Linggang Kebut"
+    }
+  ],
+  "640716": [
+    {
+      "code": "6407162001",
+      "name": "Dempar"
+    },
+    {
+      "code": "6407162002",
+      "name": "Temula"
+    },
+    {
+      "code": "6407162003",
+      "name": "Jontai"
+    },
+    {
+      "code": "6407162004",
+      "name": "Sembuan"
+    },
+    {
+      "code": "6407162005",
+      "name": "Intu Lingau"
+    },
+    {
+      "code": "6407162006",
+      "name": "Mu'ut"
+    },
+    {
+      "code": "6407162007",
+      "name": "Terajuk"
+    },
+    {
+      "code": "6407162008",
+      "name": "Lakan Bilem"
+    },
+    {
+      "code": "6407162009",
+      "name": "Sentalar"
+    },
+    {
+      "code": "6407162010",
+      "name": "Awai"
+    }
+  ],
+  "640717": [
+    {
+      "code": "6407172001",
+      "name": "Tebisaq"
+    },
+    {
+      "code": "6407172002",
+      "name": "Kaliq"
+    },
+    {
+      "code": "6407172003",
+      "name": "Tanah Mea"
+    },
+    {
+      "code": "6407172004",
+      "name": "Sang-Sang"
+    },
+    {
+      "code": "6407172005",
+      "name": "Muhur"
+    },
+    {
+      "code": "6407172006",
+      "name": "Muara Kelawit"
+    },
+    {
+      "code": "6407172007",
+      "name": "Bentas"
+    },
+    {
+      "code": "6407172008",
+      "name": "Betung"
+    },
+    {
+      "code": "6407172009",
+      "name": "Kiaq"
+    },
+    {
+      "code": "6407172010",
+      "name": "Tendiq"
+    },
+    {
+      "code": "6407172011",
+      "name": "Penawang"
+    },
+    {
+      "code": "6407172012",
+      "name": "Lendian Liang Nayuq"
+    },
+    {
+      "code": "6407172013",
+      "name": "Kenyanyan"
+    },
+    {
+      "code": "6407172014",
+      "name": "Rikong"
+    },
+    {
+      "code": "6407172015",
+      "name": "Kendesiq"
+    },
+    {
+      "code": "6407172016",
+      "name": "Muara Ponaq"
+    }
+  ],
+  "640718": [
+    {
+      "code": "6407182001",
+      "name": "Sakaq Lotoq"
+    },
+    {
+      "code": "6407182002",
+      "name": "Sakaq Tada"
+    },
+    {
+      "code": "6407182003",
+      "name": "Gemuruh"
+    },
+    {
+      "code": "6407182004",
+      "name": "Karangan"
+    },
+    {
+      "code": "6407182005",
+      "name": "Merayaq"
+    },
+    {
+      "code": "6407182006",
+      "name": "Linggang Marimun"
+    },
+    {
+      "code": "6407182007",
+      "name": "Kelumpang"
+    },
+    {
+      "code": "6407182008",
+      "name": "Gadur"
+    },
+    {
+      "code": "6407182009",
+      "name": "Linggang Muara Batuq"
+    },
+    {
+      "code": "6407182010",
+      "name": "Muara Jawaq"
+    },
+    {
+      "code": "6407182011",
+      "name": "Abit"
+    },
+    {
+      "code": "6407182012",
+      "name": "Rembayan"
+    },
+    {
+      "code": "6407182014",
+      "name": "Gunung Rampah"
+    },
+    {
+      "code": "6407182015",
+      "name": "Jengan"
+    },
+    {
+      "code": "6407182016",
+      "name": "Muara Kalaq"
+    },
+    {
+      "code": "6407182017",
+      "name": "Tondoh"
+    }
+  ],
+  "640719": [
+    {
+      "code": "6407192001",
+      "name": "Tering Baru"
+    },
+    {
+      "code": "6407192002",
+      "name": "Tering Lama"
+    },
+    {
+      "code": "6407192003",
+      "name": "Linggang Tering Seberang"
+    },
+    {
+      "code": "6407192004",
+      "name": "Tukul"
+    },
+    {
+      "code": "6407192005",
+      "name": "Linggang Kelubaq"
+    },
+    {
+      "code": "6407192006",
+      "name": "Linggang Purworejo"
+    },
+    {
+      "code": "6407192007",
+      "name": "Linggang Jelemuq"
+    },
+    {
+      "code": "6407192008",
+      "name": "Kelian Dalam"
+    },
+    {
+      "code": "6407192009",
+      "name": "Linggang Muara Mujan"
+    },
+    {
+      "code": "6407192010",
+      "name": "Muyub Ulu"
+    },
+    {
+      "code": "6407192011",
+      "name": "Muyub Aket"
+    },
+    {
+      "code": "6407192013",
+      "name": "Linggang Muyub Ilir"
+    },
+    {
+      "code": "6407192014",
+      "name": "Gabung Baru"
+    },
+    {
+      "code": "6407192015",
+      "name": "Linggang Banjarejo"
+    },
+    {
+      "code": "6407192016",
+      "name": "Tering Lama Ulu"
+    }
+  ],
+  "640720": [
+    {
+      "code": "6407202001",
+      "name": "Sekolaq Joleq"
+    },
+    {
+      "code": "6407202002",
+      "name": "Sekolaq Muliaq"
+    },
+    {
+      "code": "6407202003",
+      "name": "Sekolaq Oday"
+    },
+    {
+      "code": "6407202004",
+      "name": "Srimulyo"
+    },
+    {
+      "code": "6407202005",
+      "name": "Sumber Bangun"
+    },
+    {
+      "code": "6407202006",
+      "name": "Sumber Rejo"
+    },
+    {
+      "code": "6407202007",
+      "name": "Sekolaq Darat"
+    },
+    {
+      "code": "6407202008",
+      "name": "Leleng"
+    }
+  ]
 }

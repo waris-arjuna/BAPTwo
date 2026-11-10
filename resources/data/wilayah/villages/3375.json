@@ -1,118 +1,118 @@
 {
-    "337501": [
-        {
-            "code": "3375011002",
-            "name": "Medono"
-        },
-        {
-            "code": "3375011003",
-            "name": "Podosugih"
-        },
-        {
-            "code": "3375011004",
-            "name": "Sapuro Kebulen"
-        },
-        {
-            "code": "3375011006",
-            "name": "Bendan Kergon"
-        },
-        {
-            "code": "3375011008",
-            "name": "Pasirkratonkramat"
-        },
-        {
-            "code": "3375011009",
-            "name": "Tirto"
-        },
-        {
-            "code": "3375011012",
-            "name": "Pringrejo"
-        }
-    ],
-    "337502": [
-        {
-            "code": "3375021002",
-            "name": "Noyontaansari"
-        },
-        {
-            "code": "3375021004",
-            "name": "Kauman"
-        },
-        {
-            "code": "3375021007",
-            "name": "Poncol"
-        },
-        {
-            "code": "3375021008",
-            "name": "Klego"
-        },
-        {
-            "code": "3375021009",
-            "name": "Gamer"
-        },
-        {
-            "code": "3375021010",
-            "name": "Setono"
-        },
-        {
-            "code": "3375021012",
-            "name": "Kali Baros"
-        }
-    ],
-    "337503": [
-        {
-            "code": "3375031002",
-            "name": "Krapyak"
-        },
-        {
-            "code": "3375031003",
-            "name": "Kandang Panjang"
-        },
-        {
-            "code": "3375031004",
-            "name": "Panjang Wetan"
-        },
-        {
-            "code": "3375031006",
-            "name": "Padukuhan Kraton"
-        },
-        {
-            "code": "3375031007",
-            "name": "Degayu"
-        },
-        {
-            "code": "3375031009",
-            "name": "Bandengan"
-        },
-        {
-            "code": "3375031010",
-            "name": "Panjang Baru"
-        }
-    ],
-    "337504": [
-        {
-            "code": "3375041002",
-            "name": "Banyurip"
-        },
-        {
-            "code": "3375041003",
-            "name": "Buaran Kradenan"
-        },
-        {
-            "code": "3375041004",
-            "name": "Jenggot"
-        },
-        {
-            "code": "3375041006",
-            "name": "Kuripan Kertoharjo"
-        },
-        {
-            "code": "3375041008",
-            "name": "Kuripan Yosorejo"
-        },
-        {
-            "code": "3375041010",
-            "name": "Sokoduwet"
-        }
-    ]
+  "337501": [
+    {
+      "code": "3375011002",
+      "name": "Medono"
+    },
+    {
+      "code": "3375011003",
+      "name": "Podosugih"
+    },
+    {
+      "code": "3375011004",
+      "name": "Sapuro Kebulen"
+    },
+    {
+      "code": "3375011006",
+      "name": "Bendan Kergon"
+    },
+    {
+      "code": "3375011008",
+      "name": "Pasirkratonkramat"
+    },
+    {
+      "code": "3375011009",
+      "name": "Tirto"
+    },
+    {
+      "code": "3375011012",
+      "name": "Pringrejo"
+    }
+  ],
+  "337502": [
+    {
+      "code": "3375021002",
+      "name": "Noyontaansari"
+    },
+    {
+      "code": "3375021004",
+      "name": "Kauman"
+    },
+    {
+      "code": "3375021007",
+      "name": "Poncol"
+    },
+    {
+      "code": "3375021008",
+      "name": "Klego"
+    },
+    {
+      "code": "3375021009",
+      "name": "Gamer"
+    },
+    {
+      "code": "3375021010",
+      "name": "Setono"
+    },
+    {
+      "code": "3375021012",
+      "name": "Kali Baros"
+    }
+  ],
+  "337503": [
+    {
+      "code": "3375031002",
+      "name": "Krapyak"
+    },
+    {
+      "code": "3375031003",
+      "name": "Kandang Panjang"
+    },
+    {
+      "code": "3375031004",
+      "name": "Panjang Wetan"
+    },
+    {
+      "code": "3375031006",
+      "name": "Padukuhan Kraton"
+    },
+    {
+      "code": "3375031007",
+      "name": "Degayu"
+    },
+    {
+      "code": "3375031009",
+      "name": "Bandengan"
+    },
+    {
+      "code": "3375031010",
+      "name": "Panjang Baru"
+    }
+  ],
+  "337504": [
+    {
+      "code": "3375041002",
+      "name": "Banyurip"
+    },
+    {
+      "code": "3375041003",
+      "name": "Buaran Kradenan"
+    },
+    {
+      "code": "3375041004",
+      "name": "Jenggot"
+    },
+    {
+      "code": "3375041006",
+      "name": "Kuripan Kertoharjo"
+    },
+    {
+      "code": "3375041008",
+      "name": "Kuripan Yosorejo"
+    },
+    {
+      "code": "3375041010",
+      "name": "Sokoduwet"
+    }
+  ]
 }

@@ -1,28 +1,288 @@
 {
-    "177109": [
-        {
-            "code": "1771091001",
-            "name": "Panorama"
-        },
-        {
-            "code": "1771091002",
-            "name": "Jembatan Kecil"
-        },
-        {
-            "code": "1771091003",
-            "name": "Dusun Besar"
-        },
-        {
-            "code": "1771091004",
-            "name": "Padang Nangka"
-        },
-        {
-            "code": "1771091005",
-            "name": "Timur Indah"
-        },
-        {
-            "code": "1771091006",
-            "name": "Lingkar Timur"
-        }
-    ]
+  "177101": [
+    {
+      "code": "1771011001",
+      "name": "Pagar Dewa"
+    },
+    {
+      "code": "1771011002",
+      "name": "Sukarami"
+    },
+    {
+      "code": "1771011003",
+      "name": "Pekan Sabtu"
+    },
+    {
+      "code": "1771011004",
+      "name": "Bumu Ayu"
+    },
+    {
+      "code": "1771011005",
+      "name": "Betungan"
+    },
+    {
+      "code": "1771011006",
+      "name": "Sumur Dewa"
+    }
+  ],
+  "177102": [
+    {
+      "code": "1771021001",
+      "name": "Padang Harapan"
+    },
+    {
+      "code": "1771021002",
+      "name": "Jalan Gedang"
+    },
+    {
+      "code": "1771021021",
+      "name": "Sidomulyo"
+    },
+    {
+      "code": "1771021024",
+      "name": "Lingkar Barat"
+    },
+    {
+      "code": "1771021027",
+      "name": "Cempaka Permai"
+    }
+  ],
+  "177103": [
+    {
+      "code": "1771031001",
+      "name": "Berkas"
+    },
+    {
+      "code": "1771031002",
+      "name": "Pasar Baru"
+    },
+    {
+      "code": "1771031003",
+      "name": "Jitra"
+    },
+    {
+      "code": "1771031004",
+      "name": "Pasar Melintang"
+    },
+    {
+      "code": "1771031005",
+      "name": "Kebun Roos"
+    },
+    {
+      "code": "1771031007",
+      "name": "Tengah Padang"
+    },
+    {
+      "code": "1771031008",
+      "name": "Bajak"
+    },
+    {
+      "code": "1771031010",
+      "name": "Pondok Besi"
+    },
+    {
+      "code": "1771031011",
+      "name": "Kebun Keling"
+    },
+    {
+      "code": "1771031013",
+      "name": "Sumur Meleleh"
+    },
+    {
+      "code": "1771031014",
+      "name": "Malabero"
+    },
+    {
+      "code": "1771031018",
+      "name": "Pintu Batu"
+    },
+    {
+      "code": "1771031019",
+      "name": "Kampung Bali"
+    }
+  ],
+  "177104": [
+    {
+      "code": "1771041001",
+      "name": "Kandang Limun"
+    },
+    {
+      "code": "1771041002",
+      "name": "Bentiring"
+    },
+    {
+      "code": "1771041003",
+      "name": "Pematang Gubernur"
+    },
+    {
+      "code": "1771041004",
+      "name": "Rawa Makmur"
+    },
+    {
+      "code": "1771041005",
+      "name": "Beringin Raya"
+    },
+    {
+      "code": "1771041006",
+      "name": "Bentiring Permai"
+    },
+    {
+      "code": "1771041007",
+      "name": "Rawa Makmur Permai"
+    }
+  ],
+  "177105": [
+    {
+      "code": "1771051001",
+      "name": "Kandang"
+    },
+    {
+      "code": "1771051002",
+      "name": "Kandang Mas"
+    },
+    {
+      "code": "1771051003",
+      "name": "Teluk Sepang"
+    },
+    {
+      "code": "1771051004",
+      "name": "Sumber Jaya"
+    },
+    {
+      "code": "1771051005",
+      "name": "Padang Serai"
+    },
+    {
+      "code": "1771051006",
+      "name": "Muara Dua"
+    }
+  ],
+  "177106": [
+    {
+      "code": "1771061001",
+      "name": "Kebun Tebeng"
+    },
+    {
+      "code": "1771061002",
+      "name": "Tanah Patah"
+    },
+    {
+      "code": "1771061003",
+      "name": "Nusa Indah"
+    },
+    {
+      "code": "1771061004",
+      "name": "Kebun Beler"
+    },
+    {
+      "code": "1771061005",
+      "name": "Kebun Kenanga"
+    },
+    {
+      "code": "1771061006",
+      "name": "Sawah Lebar"
+    },
+    {
+      "code": "1771061007",
+      "name": "Sawah Lebar Baru"
+    },
+    {
+      "code": "1771061008",
+      "name": "Lempuing"
+    }
+  ],
+  "177107": [
+    {
+      "code": "1771071001",
+      "name": "Padang Jati"
+    },
+    {
+      "code": "1771071002",
+      "name": "Kebun Dahri"
+    },
+    {
+      "code": "1771071003",
+      "name": "Belakang Pondok"
+    },
+    {
+      "code": "1771071004",
+      "name": "Penurunan"
+    },
+    {
+      "code": "1771071005",
+      "name": "Anggut Bawah"
+    },
+    {
+      "code": "1771071006",
+      "name": "Anggut Atas"
+    },
+    {
+      "code": "1771071007",
+      "name": "Anggut Dalam"
+    },
+    {
+      "code": "1771071008",
+      "name": "Kebun Geran"
+    },
+    {
+      "code": "1771071009",
+      "name": "Pengantungan"
+    }
+  ],
+  "177108": [
+    {
+      "code": "1771081001",
+      "name": "Kampung Kelawi"
+    },
+    {
+      "code": "1771081002",
+      "name": "Sukamerindu"
+    },
+    {
+      "code": "1771081003",
+      "name": "Semarang"
+    },
+    {
+      "code": "1771081004",
+      "name": "Tanjung Agung"
+    },
+    {
+      "code": "1771081005",
+      "name": "Tanjung Jaya"
+    },
+    {
+      "code": "1771081006",
+      "name": "Surabaya"
+    },
+    {
+      "code": "1771081007",
+      "name": "Pasar Bengkulu"
+    }
+  ],
+  "177109": [
+    {
+      "code": "1771091001",
+      "name": "Panorama"
+    },
+    {
+      "code": "1771091002",
+      "name": "Jembatan Kecil"
+    },
+    {
+      "code": "1771091003",
+      "name": "Dusun Besar"
+    },
+    {
+      "code": "1771091004",
+      "name": "Padang Nangka"
+    },
+    {
+      "code": "1771091005",
+      "name": "Timur Indah"
+    },
+    {
+      "code": "1771091006",
+      "name": "Lingkar Timur"
+    }
+  ]
 }

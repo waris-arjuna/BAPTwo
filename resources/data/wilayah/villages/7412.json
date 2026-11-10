@@ -1,338 +1,400 @@
 {
-    "741201": [
-        {
-            "code": "7412011001",
-            "name": "Langara Laut"
-        },
-        {
-            "code": "7412012002",
-            "name": "Langara Iwawo"
-        },
-        {
-            "code": "7412012003",
-            "name": "Wawolaa"
-        },
-        {
-            "code": "7412012004",
-            "name": "Langara Indah"
-        },
-        {
-            "code": "7412012005",
-            "name": "Lamoluo"
-        },
-        {
-            "code": "7412012006",
-            "name": "Bukit Permai"
-        },
-        {
-            "code": "7412012007",
-            "name": "Wawobili"
-        },
-        {
-            "code": "7412012008",
-            "name": "Langaro Bajo"
-        },
-        {
-            "code": "7412012009",
-            "name": "Mata Langara"
-        },
-        {
-            "code": "7412012010",
-            "name": "Mata Baho"
-        },
-        {
-            "code": "7412012011",
-            "name": "Lanowatu"
-        },
-        {
-            "code": "7412012012",
-            "name": "Lantula"
-        },
-        {
-            "code": "7412012013",
-            "name": "Pasir Putih"
-        },
-        {
-            "code": "7412012014",
-            "name": "langkowala"
-        },
-        {
-            "code": "7412012015",
-            "name": "Kawa-Kawali"
-        },
-        {
-            "code": "7412012016",
-            "name": "Langara Tanjung Batu"
-        }
-    ],
-    "741202": [
-        {
-            "code": "7412021008",
-            "name": "Lansilowo"
-        },
-        {
-            "code": "7412022001",
-            "name": "Waworope"
-        },
-        {
-            "code": "7412022002",
-            "name": "Dongkalaea"
-        },
-        {
-            "code": "7412022003",
-            "name": "Labeau"
-        },
-        {
-            "code": "7412022004",
-            "name": "Tambaone"
-        },
-        {
-            "code": "7412022005",
-            "name": "Palingi"
-        },
-        {
-            "code": "7412022006",
-            "name": "Mawa"
-        },
-        {
-            "code": "7412022007",
-            "name": "Mata Buranga"
-        },
-        {
-            "code": "7412022009",
-            "name": "Tambaone Utama"
-        },
-        {
-            "code": "7412022010",
-            "name": "Wawoea"
-        },
-        {
-            "code": "7412022011",
-            "name": "Palingi Barat"
-        },
-        {
-            "code": "7412022012",
-            "name": "Tumburano"
-        },
-        {
-            "code": "7412022013",
-            "name": "Mataiwoi"
-        },
-        {
-            "code": "7412022014",
-            "name": "Labisa"
-        },
-        {
-            "code": "7412022015",
-            "name": "Mata Bubu"
-        },
-        {
-            "code": "7412022016",
-            "name": "Wawobeau"
-        },
-        {
-            "code": "7412022017",
-            "name": "Tapum Batu"
-        },
-        {
-            "code": "7412022018",
-            "name": "Palingi Timur"
-        },
-        {
-            "code": "7412022019",
-            "name": "Tongalere"
-        },
-        {
-            "code": "7412022020",
-            "name": "Tepolawa"
-        },
-        {
-            "code": "7412022021",
-            "name": "Sawa Indah"
-        }
-    ],
-    "741203": [
-        {
-            "code": "7412031004",
-            "name": "Ladianta"
-        },
-        {
-            "code": "7412032001",
-            "name": "Bangun Mekar"
-        },
-        {
-            "code": "7412032002",
-            "name": "Noko"
-        },
-        {
-            "code": "7412032003",
-            "name": "Tangkombuno"
-        },
-        {
-            "code": "7412032005",
-            "name": "Dimba"
-        },
-        {
-            "code": "7412032006",
-            "name": "Mata Dimba"
-        },
-        {
-            "code": "7412032007",
-            "name": "Puurau"
-        },
-        {
-            "code": "7412032008",
-            "name": "Watuondo"
-        },
-        {
-            "code": "7412032009",
-            "name": "Patande"
-        },
-        {
-            "code": "7412032010",
-            "name": "Baho Bubu"
-        }
-    ],
-    "741204": [
-        {
-            "code": "7412041001",
-            "name": "Munse"
-        },
-        {
-            "code": "7412042002",
-            "name": "Lebo"
-        },
-        {
-            "code": "7412042003",
-            "name": "Tekonea"
-        },
-        {
-            "code": "7412042004",
-            "name": "Wakadawu"
-        },
-        {
-            "code": "7412042005",
-            "name": "Munse Indah"
-        },
-        {
-            "code": "7412042006",
-            "name": "Lapulu"
-        },
-        {
-            "code": "7412042007",
-            "name": "Laywo Jaya"
-        },
-        {
-            "code": "7412042008",
-            "name": "Nanga"
-        },
-        {
-            "code": "7412042009",
-            "name": "Butuea"
-        },
-        {
-            "code": "7412042010",
-            "name": "Lembono"
-        },
-        {
-            "code": "7412042011",
-            "name": "Saburano"
-        }
-    ],
-    "741206": [
-        {
-            "code": "7412061006",
-            "name": "Sawaea"
-        },
-        {
-            "code": "7412062001",
-            "name": "Wungkolo"
-        },
-        {
-            "code": "7412062002",
-            "name": "Bobolio"
-        },
-        {
-            "code": "7412062003",
-            "name": "Wawosou"
-        },
-        {
-            "code": "7412062004",
-            "name": "Lawey"
-        },
-        {
-            "code": "7412062005",
-            "name": "Baku-baku"
-        },
-        {
-            "code": "7412062007",
-            "name": "Sawapatani"
-        },
-        {
-            "code": "7412062008",
-            "name": "Wawouso Baru"
-        },
-        {
-            "code": "7412062009",
-            "name": "Puuwatu"
-        },
-        {
-            "code": "7412062010",
-            "name": "Wawoone"
-        },
-        {
-            "code": "7412062011",
-            "name": "Langgara Jaya"
-        }
-    ],
-    "741207": [
-        {
-            "code": "7412071003",
-            "name": "Lampeapi"
-        },
-        {
-            "code": "7412072001",
-            "name": "Batumea"
-        },
-        {
-            "code": "7412072002",
-            "name": "Wawo Indah"
-        },
-        {
-            "code": "7412072004",
-            "name": "Lamongupa"
-        },
-        {
-            "code": "7412072005",
-            "name": "Tumbu Tumbu Jaya"
-        },
-        {
-            "code": "7412072006",
-            "name": "Morobea"
-        },
-        {
-            "code": "7412072007",
-            "name": "Mekar Sari"
-        },
-        {
-            "code": "7412072008",
-            "name": "Rawa Indah"
-        },
-        {
-            "code": "7412072009",
-            "name": "Lampeapi Baru"
-        },
-        {
-            "code": "7412072010",
-            "name": "Pesue"
-        },
-        {
-            "code": "7412072011",
-            "name": "Puurau"
-        },
-        {
-            "code": "7412072012",
-            "name": "Baho Puu Wulu"
-        }
-    ]
+  "741201": [
+    {
+      "code": "7412011001",
+      "name": "Langara Laut"
+    },
+    {
+      "code": "7412012002",
+      "name": "Langara Iwawo"
+    },
+    {
+      "code": "7412012003",
+      "name": "Wawolaa"
+    },
+    {
+      "code": "7412012004",
+      "name": "Langara Indah"
+    },
+    {
+      "code": "7412012005",
+      "name": "Lamoluo"
+    },
+    {
+      "code": "7412012006",
+      "name": "Bukit Permai"
+    },
+    {
+      "code": "7412012007",
+      "name": "Wawobili"
+    },
+    {
+      "code": "7412012008",
+      "name": "Langaro Bajo"
+    },
+    {
+      "code": "7412012009",
+      "name": "Mata Langara"
+    },
+    {
+      "code": "7412012010",
+      "name": "Mata Baho"
+    },
+    {
+      "code": "7412012011",
+      "name": "Lanowatu"
+    },
+    {
+      "code": "7412012012",
+      "name": "Lantula"
+    },
+    {
+      "code": "7412012013",
+      "name": "Pasir Putih"
+    },
+    {
+      "code": "7412012014",
+      "name": "langkowala"
+    },
+    {
+      "code": "7412012015",
+      "name": "Kawa-Kawali"
+    },
+    {
+      "code": "7412012016",
+      "name": "Langara Tanjung Batu"
+    }
+  ],
+  "741202": [
+    {
+      "code": "7412021008",
+      "name": "Lansilowo"
+    },
+    {
+      "code": "7412022001",
+      "name": "Waworope"
+    },
+    {
+      "code": "7412022002",
+      "name": "Dongkalaea"
+    },
+    {
+      "code": "7412022003",
+      "name": "Labeau"
+    },
+    {
+      "code": "7412022004",
+      "name": "Tambaone"
+    },
+    {
+      "code": "7412022005",
+      "name": "Palingi"
+    },
+    {
+      "code": "7412022006",
+      "name": "Mawa"
+    },
+    {
+      "code": "7412022007",
+      "name": "Mata Buranga"
+    },
+    {
+      "code": "7412022009",
+      "name": "Tambaone Utama"
+    },
+    {
+      "code": "7412022010",
+      "name": "Wawoea"
+    },
+    {
+      "code": "7412022011",
+      "name": "Palingi Barat"
+    },
+    {
+      "code": "7412022012",
+      "name": "Tumburano"
+    },
+    {
+      "code": "7412022013",
+      "name": "Mataiwoi"
+    },
+    {
+      "code": "7412022014",
+      "name": "Labisa"
+    },
+    {
+      "code": "7412022015",
+      "name": "Mata Bubu"
+    },
+    {
+      "code": "7412022016",
+      "name": "Wawobeau"
+    },
+    {
+      "code": "7412022017",
+      "name": "Tapum Batu"
+    },
+    {
+      "code": "7412022018",
+      "name": "Palingi Timur"
+    },
+    {
+      "code": "7412022019",
+      "name": "Tongalere"
+    },
+    {
+      "code": "7412022020",
+      "name": "Tepolawa"
+    },
+    {
+      "code": "7412022021",
+      "name": "Sawa Indah"
+    }
+  ],
+  "741203": [
+    {
+      "code": "7412031004",
+      "name": "Ladianta"
+    },
+    {
+      "code": "7412032001",
+      "name": "Bangun Mekar"
+    },
+    {
+      "code": "7412032002",
+      "name": "Noko"
+    },
+    {
+      "code": "7412032003",
+      "name": "Tangkombuno"
+    },
+    {
+      "code": "7412032005",
+      "name": "Dimba"
+    },
+    {
+      "code": "7412032006",
+      "name": "Mata Dimba"
+    },
+    {
+      "code": "7412032007",
+      "name": "Puurau"
+    },
+    {
+      "code": "7412032008",
+      "name": "Watuondo"
+    },
+    {
+      "code": "7412032009",
+      "name": "Patande"
+    },
+    {
+      "code": "7412032010",
+      "name": "Baho Bubu"
+    }
+  ],
+  "741204": [
+    {
+      "code": "7412041001",
+      "name": "Munse"
+    },
+    {
+      "code": "7412042002",
+      "name": "Lebo"
+    },
+    {
+      "code": "7412042003",
+      "name": "Tekonea"
+    },
+    {
+      "code": "7412042004",
+      "name": "Wakadawu"
+    },
+    {
+      "code": "7412042005",
+      "name": "Munse Indah"
+    },
+    {
+      "code": "7412042006",
+      "name": "Lapulu"
+    },
+    {
+      "code": "7412042007",
+      "name": "Laywo Jaya"
+    },
+    {
+      "code": "7412042008",
+      "name": "Nanga"
+    },
+    {
+      "code": "7412042009",
+      "name": "Butuea"
+    },
+    {
+      "code": "7412042010",
+      "name": "Lembono"
+    },
+    {
+      "code": "7412042011",
+      "name": "Saburano"
+    }
+  ],
+  "741205": [
+    {
+      "code": "7412051005",
+      "name": "Polara"
+    },
+    {
+      "code": "7412052001",
+      "name": "Nambo Jaya"
+    },
+    {
+      "code": "7412052002",
+      "name": "Masolo"
+    },
+    {
+      "code": "7412052003",
+      "name": "Sinaulu Jaya"
+    },
+    {
+      "code": "7412052004",
+      "name": "Tondonggito"
+    },
+    {
+      "code": "7412052006",
+      "name": "Roko Roko"
+    },
+    {
+      "code": "7412052007",
+      "name": "Dompo-dompo Jaya"
+    },
+    {
+      "code": "7412052008",
+      "name": "Teparoko"
+    },
+    {
+      "code": "7412052009",
+      "name": "Sukarela Jaya"
+    },
+    {
+      "code": "7412052011",
+      "name": "Sainoa Indah"
+    },
+    {
+      "code": "7412052012",
+      "name": "Wunse Jaya"
+    },
+    {
+      "code": "7412052013",
+      "name": "Sinar Masolo"
+    },
+    {
+      "code": "7412052014",
+      "name": "Waturai"
+    },
+    {
+      "code": "7412052015",
+      "name": "Bahaba"
+    },
+    {
+      "code": "7412052016",
+      "name": "Kekea"
+    }
+  ],
+  "741206": [
+    {
+      "code": "7412061006",
+      "name": "Sawaea"
+    },
+    {
+      "code": "7412062001",
+      "name": "Wungkolo"
+    },
+    {
+      "code": "7412062002",
+      "name": "Bobolio"
+    },
+    {
+      "code": "7412062003",
+      "name": "Wawosou"
+    },
+    {
+      "code": "7412062004",
+      "name": "Lawey"
+    },
+    {
+      "code": "7412062005",
+      "name": "Baku-baku"
+    },
+    {
+      "code": "7412062007",
+      "name": "Sawapatani"
+    },
+    {
+      "code": "7412062008",
+      "name": "Wawouso Baru"
+    },
+    {
+      "code": "7412062009",
+      "name": "Puuwatu"
+    },
+    {
+      "code": "7412062010",
+      "name": "Wawoone"
+    },
+    {
+      "code": "7412062011",
+      "name": "Langgara Jaya"
+    }
+  ],
+  "741207": [
+    {
+      "code": "7412071003",
+      "name": "Lampeapi"
+    },
+    {
+      "code": "7412072001",
+      "name": "Batumea"
+    },
+    {
+      "code": "7412072002",
+      "name": "Wawo Indah"
+    },
+    {
+      "code": "7412072004",
+      "name": "Lamongupa"
+    },
+    {
+      "code": "7412072005",
+      "name": "Tumbu Tumbu Jaya"
+    },
+    {
+      "code": "7412072006",
+      "name": "Morobea"
+    },
+    {
+      "code": "7412072007",
+      "name": "Mekar Sari"
+    },
+    {
+      "code": "7412072008",
+      "name": "Rawa Indah"
+    },
+    {
+      "code": "7412072009",
+      "name": "Lampeapi Baru"
+    },
+    {
+      "code": "7412072010",
+      "name": "Pesue"
+    },
+    {
+      "code": "7412072011",
+      "name": "Puurau"
+    },
+    {
+      "code": "7412072012",
+      "name": "Baho Puu Wulu"
+    }
+  ]
 }

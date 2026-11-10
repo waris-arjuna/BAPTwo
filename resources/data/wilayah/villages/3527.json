@@ -1,0 +1,774 @@
+{
+  "352701": [
+    {
+      "code": "3527012001",
+      "name": "Noreh"
+    },
+    {
+      "code": "3527012002",
+      "name": "Labuhan"
+    },
+    {
+      "code": "3527012003",
+      "name": "Taman"
+    },
+    {
+      "code": "3527012004",
+      "name": "Sreseh"
+    },
+    {
+      "code": "3527012005",
+      "name": "Disanah"
+    },
+    {
+      "code": "3527012006",
+      "name": "Marparan"
+    },
+    {
+      "code": "3527012007",
+      "name": "Klobur"
+    },
+    {
+      "code": "3527012008",
+      "name": "Labang"
+    },
+    {
+      "code": "3527012009",
+      "name": "Bundah"
+    },
+    {
+      "code": "3527012010",
+      "name": "Bangsah"
+    },
+    {
+      "code": "3527012011",
+      "name": "Plasah"
+    },
+    {
+      "code": "3527012012",
+      "name": "Junok"
+    }
+  ],
+  "352702": [
+    {
+      "code": "3527022007",
+      "name": "Dulang"
+    },
+    {
+      "code": "3527022008",
+      "name": "Patarongan"
+    },
+    {
+      "code": "3527022009",
+      "name": "Pangongsean"
+    },
+    {
+      "code": "3527022010",
+      "name": "Krampon"
+    },
+    {
+      "code": "3527022011",
+      "name": "Bringinnonggal"
+    },
+    {
+      "code": "3527022012",
+      "name": "Torjun"
+    },
+    {
+      "code": "3527022013",
+      "name": "Patapan"
+    },
+    {
+      "code": "3527022014",
+      "name": "Jeruk Porot"
+    },
+    {
+      "code": "3527022015",
+      "name": "Kodak"
+    },
+    {
+      "code": "3527022016",
+      "name": "Kanjar"
+    },
+    {
+      "code": "3527022017",
+      "name": "Kara"
+    },
+    {
+      "code": "3527022018",
+      "name": "Tanah Merah"
+    }
+  ],
+  "352703": [
+    {
+      "code": "3527031003",
+      "name": "Polagan"
+    },
+    {
+      "code": "3527031004",
+      "name": "Banyuanyar"
+    },
+    {
+      "code": "3527031006",
+      "name": "Rongtengah"
+    },
+    {
+      "code": "3527031007",
+      "name": "Karang Dalam"
+    },
+    {
+      "code": "3527031008",
+      "name": "Gunung Sekar"
+    },
+    {
+      "code": "3527031009",
+      "name": "Dalpenang"
+    },
+    {
+      "code": "3527032001",
+      "name": "P. Mandangin"
+    },
+    {
+      "code": "3527032002",
+      "name": "Aengsareh"
+    },
+    {
+      "code": "3527032005",
+      "name": "Gunung Maddah"
+    },
+    {
+      "code": "3527032010",
+      "name": "Panggung"
+    },
+    {
+      "code": "3527032011",
+      "name": "Taman Sareh"
+    },
+    {
+      "code": "3527032012",
+      "name": "Pakalongan"
+    },
+    {
+      "code": "3527032013",
+      "name": "Tanggumong"
+    },
+    {
+      "code": "3527032014",
+      "name": "Kamuning"
+    },
+    {
+      "code": "3527032015",
+      "name": "Banyumas"
+    },
+    {
+      "code": "3527032016",
+      "name": "Pangelen"
+    },
+    {
+      "code": "3527032017",
+      "name": "Paseyan"
+    },
+    {
+      "code": "3527032018",
+      "name": "Baruh"
+    }
+  ],
+  "352704": [
+    {
+      "code": "3527042001",
+      "name": "Taddan"
+    },
+    {
+      "code": "3527042002",
+      "name": "Banjar Talela"
+    },
+    {
+      "code": "3527042003",
+      "name": "\"Tamba\"\"an\""
+    },
+    {
+      "code": "3527042004",
+      "name": "Prajjan"
+    },
+    {
+      "code": "3527042005",
+      "name": "Dharma Camplong"
+    },
+    {
+      "code": "3527042006",
+      "name": "Batukarang"
+    },
+    {
+      "code": "3527042007",
+      "name": "Sejati"
+    },
+    {
+      "code": "3527042008",
+      "name": "Dharma Tanjung"
+    },
+    {
+      "code": "3527042009",
+      "name": "Rabasan"
+    },
+    {
+      "code": "3527042010",
+      "name": "Banjartabulu"
+    },
+    {
+      "code": "3527042011",
+      "name": "Anggersek"
+    },
+    {
+      "code": "3527042012",
+      "name": "Madupat"
+    },
+    {
+      "code": "3527042013",
+      "name": "\"Pamola\"\"an\""
+    },
+    {
+      "code": "3527042014",
+      "name": "\"Plampa\"\"an\""
+    }
+  ],
+  "352705": [
+    {
+      "code": "3527052001",
+      "name": "Kebun Sareh"
+    },
+    {
+      "code": "3527052002",
+      "name": "Karangnangger"
+    },
+    {
+      "code": "3527052003",
+      "name": "Rapa Laok"
+    },
+    {
+      "code": "3527052004",
+      "name": "Rapa Daya"
+    },
+    {
+      "code": "3527052005",
+      "name": "Astapah"
+    },
+    {
+      "code": "3527052006",
+      "name": "Sogian"
+    },
+    {
+      "code": "3527052007",
+      "name": "Gersempal"
+    },
+    {
+      "code": "3527052008",
+      "name": "Temoran"
+    },
+    {
+      "code": "3527052009",
+      "name": "Meteng"
+    },
+    {
+      "code": "3527052010",
+      "name": "Madulang"
+    },
+    {
+      "code": "3527052011",
+      "name": "Kamondung"
+    },
+    {
+      "code": "3527052012",
+      "name": "Omben"
+    },
+    {
+      "code": "3527052013",
+      "name": "Tambak"
+    },
+    {
+      "code": "3527052014",
+      "name": "Angsokah"
+    },
+    {
+      "code": "3527052015",
+      "name": "Jranguan"
+    },
+    {
+      "code": "3527052016",
+      "name": "Rongdalam"
+    },
+    {
+      "code": "3527052017",
+      "name": "Napo Laok"
+    },
+    {
+      "code": "3527052018",
+      "name": "Napo Daya"
+    },
+    {
+      "code": "3527052019",
+      "name": "Karanggayam"
+    },
+    {
+      "code": "3527052020",
+      "name": "Pandan"
+    }
+  ],
+  "352706": [
+    {
+      "code": "3527062001",
+      "name": "Banyukapah"
+    },
+    {
+      "code": "3527062002",
+      "name": "Rabasan"
+    },
+    {
+      "code": "3527062003",
+      "name": "Rohayu"
+    },
+    {
+      "code": "3527062004",
+      "name": "Kedungdung"
+    },
+    {
+      "code": "3527062005",
+      "name": "Komis"
+    },
+    {
+      "code": "3527062006",
+      "name": "Bajrasoka"
+    },
+    {
+      "code": "3527062007",
+      "name": "Kramat"
+    },
+    {
+      "code": "3527062008",
+      "name": "Nyeloh"
+    },
+    {
+      "code": "3527062009",
+      "name": "Banjar"
+    },
+    {
+      "code": "3527062010",
+      "name": "Ombul"
+    },
+    {
+      "code": "3527062011",
+      "name": "Pajeruan"
+    },
+    {
+      "code": "3527062012",
+      "name": "Moktesareh"
+    },
+    {
+      "code": "3527062013",
+      "name": "Batoporo Barat"
+    },
+    {
+      "code": "3527062014",
+      "name": "Batoporo Timur"
+    },
+    {
+      "code": "3527062015",
+      "name": "Gunungeleh"
+    },
+    {
+      "code": "3527062016",
+      "name": "Daleman"
+    },
+    {
+      "code": "3527062017",
+      "name": "Pasarenan"
+    },
+    {
+      "code": "3527062018",
+      "name": "Palenggian"
+    }
+  ],
+  "352707": [
+    {
+      "code": "3527072001",
+      "name": "Asemraja"
+    },
+    {
+      "code": "3527072002",
+      "name": "Plakaran"
+    },
+    {
+      "code": "3527072003",
+      "name": "Asemnonggal"
+    },
+    {
+      "code": "3527072004",
+      "name": "Majangan"
+    },
+    {
+      "code": "3527072005",
+      "name": "Margantoko"
+    },
+    {
+      "code": "3527072006",
+      "name": "Penyepen"
+    },
+    {
+      "code": "3527072007",
+      "name": "Taman"
+    },
+    {
+      "code": "3527072008",
+      "name": "Jrengik"
+    },
+    {
+      "code": "3527072009",
+      "name": "Kalangan Prao"
+    },
+    {
+      "code": "3527072010",
+      "name": "Kotah"
+    },
+    {
+      "code": "3527072011",
+      "name": "Jungkarang"
+    },
+    {
+      "code": "3527072012",
+      "name": "Mlakah"
+    },
+    {
+      "code": "3527072013",
+      "name": "Bancelok"
+    },
+    {
+      "code": "3527072014",
+      "name": "Buker"
+    }
+  ],
+  "352708": [
+    {
+      "code": "3527082001",
+      "name": "Karanganyar"
+    },
+    {
+      "code": "3527082002",
+      "name": "Baturasang"
+    },
+    {
+      "code": "3527082003",
+      "name": "Mambulu Barat"
+    },
+    {
+      "code": "3527082004",
+      "name": "Bringin"
+    },
+    {
+      "code": "3527082005",
+      "name": "Samaran"
+    },
+    {
+      "code": "3527082006",
+      "name": "Tambelangan"
+    },
+    {
+      "code": "3527082007",
+      "name": "Barunggagah"
+    },
+    {
+      "code": "3527082008",
+      "name": "Banjarbillah"
+    },
+    {
+      "code": "3527082009",
+      "name": "Somber"
+    },
+    {
+      "code": "3527082010",
+      "name": "Birem"
+    }
+  ],
+  "352709": [
+    {
+      "code": "3527092001",
+      "name": "Olor"
+    },
+    {
+      "code": "3527092002",
+      "name": "Planggaran Barat"
+    },
+    {
+      "code": "3527092003",
+      "name": "Planggaran Timur"
+    },
+    {
+      "code": "3527092004",
+      "name": "Tolang"
+    },
+    {
+      "code": "3527092005",
+      "name": "Lar Lar"
+    },
+    {
+      "code": "3527092006",
+      "name": "Tlagah"
+    },
+    {
+      "code": "3527092007",
+      "name": "Nagasareh"
+    },
+    {
+      "code": "3527092008",
+      "name": "Trapang"
+    },
+    {
+      "code": "3527092009",
+      "name": "Terosan"
+    },
+    {
+      "code": "3527092010",
+      "name": "Asem Jaran"
+    },
+    {
+      "code": "3527092011",
+      "name": "Kembang Jeruk"
+    },
+    {
+      "code": "3527092012",
+      "name": "Morbatoh"
+    },
+    {
+      "code": "3527092013",
+      "name": "Montor"
+    },
+    {
+      "code": "3527092014",
+      "name": "Tebanah"
+    },
+    {
+      "code": "3527092015",
+      "name": "Nepa"
+    },
+    {
+      "code": "3527092016",
+      "name": "Batioh"
+    },
+    {
+      "code": "3527092017",
+      "name": "Masaran"
+    },
+    {
+      "code": "3527092018",
+      "name": "Banyuates"
+    },
+    {
+      "code": "3527092019",
+      "name": "Jatra Timur"
+    },
+    {
+      "code": "3527092020",
+      "name": "\"Tapa\"\"an\""
+    }
+  ],
+  "352710": [
+    {
+      "code": "3527102008",
+      "name": "Lepelle"
+    },
+    {
+      "code": "3527102009",
+      "name": "Bapelle"
+    },
+    {
+      "code": "3527102010",
+      "name": "Sawah Tengah"
+    },
+    {
+      "code": "3527102011",
+      "name": "Torjunan"
+    },
+    {
+      "code": "3527102012",
+      "name": "Tragih"
+    },
+    {
+      "code": "3527102013",
+      "name": "Jelgung"
+    },
+    {
+      "code": "3527102014",
+      "name": "Robatal"
+    },
+    {
+      "code": "3527102015",
+      "name": "Gunung Rancak"
+    },
+    {
+      "code": "3527102016",
+      "name": "Pandiyangan"
+    }
+  ],
+  "352711": [
+    {
+      "code": "3527112001",
+      "name": "Tobai Barat"
+    },
+    {
+      "code": "3527112002",
+      "name": "Tobai Tengah"
+    },
+    {
+      "code": "3527112003",
+      "name": "Tobai Timur"
+    },
+    {
+      "code": "3527112004",
+      "name": "Bira Tengah"
+    },
+    {
+      "code": "3527112005",
+      "name": "Bira Timur"
+    },
+    {
+      "code": "3527112006",
+      "name": "Sokobanah Laok"
+    },
+    {
+      "code": "3527112007",
+      "name": "Tamberu Laok"
+    },
+    {
+      "code": "3527112008",
+      "name": "Tamberu Daya"
+    },
+    {
+      "code": "3527112009",
+      "name": "Sokobanah Tengah"
+    },
+    {
+      "code": "3527112010",
+      "name": "Sokobanah Daya"
+    },
+    {
+      "code": "3527112011",
+      "name": "Tamberu Barat"
+    },
+    {
+      "code": "3527112012",
+      "name": "Tamberu Timur"
+    }
+  ],
+  "352712": [
+    {
+      "code": "3527122001",
+      "name": "Paopale Laok"
+    },
+    {
+      "code": "3527122002",
+      "name": "Bunten Barat"
+    },
+    {
+      "code": "3527122003",
+      "name": "Bunten Timur"
+    },
+    {
+      "code": "3527122004",
+      "name": "Pancor"
+    },
+    {
+      "code": "3527122005",
+      "name": "Karanganyar"
+    },
+    {
+      "code": "3527122006",
+      "name": "Pangereman"
+    },
+    {
+      "code": "3527122007",
+      "name": "Bira Barat"
+    },
+    {
+      "code": "3527122008",
+      "name": "Ketapang Timur"
+    },
+    {
+      "code": "3527122009",
+      "name": "Ketapang Daya"
+    },
+    {
+      "code": "3527122010",
+      "name": "Ketapang Laok"
+    },
+    {
+      "code": "3527122011",
+      "name": "Ketapang Barat"
+    },
+    {
+      "code": "3527122012",
+      "name": "Paopale Daya"
+    },
+    {
+      "code": "3527122013",
+      "name": "Rabiyan"
+    },
+    {
+      "code": "3527122014",
+      "name": "Banyusokah"
+    }
+  ],
+  "352713": [
+    {
+      "code": "3527132001",
+      "name": "Pangarengan"
+    },
+    {
+      "code": "3527132002",
+      "name": "Apa an"
+    },
+    {
+      "code": "3527132003",
+      "name": "Gulbung"
+    },
+    {
+      "code": "3527132004",
+      "name": "Panyirangan"
+    },
+    {
+      "code": "3527132005",
+      "name": "Pacangga an"
+    },
+    {
+      "code": "3527132006",
+      "name": "Ragung"
+    }
+  ],
+  "352714": [
+    {
+      "code": "3527142001",
+      "name": "Blu uran"
+    },
+    {
+      "code": "3527142002",
+      "name": "Tlambah"
+    },
+    {
+      "code": "3527142003",
+      "name": "Bulmatet"
+    },
+    {
+      "code": "3527142004",
+      "name": "Poreh"
+    },
+    {
+      "code": "3527142005",
+      "name": "Karangpenang Oloh"
+    },
+    {
+      "code": "3527142006",
+      "name": "Karangpenang Onjur"
+    },
+    {
+      "code": "3527142007",
+      "name": "Gunung Kesan"
+    }
+  ]
+}

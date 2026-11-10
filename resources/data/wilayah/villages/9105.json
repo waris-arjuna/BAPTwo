@@ -1,0 +1,696 @@
+{
+  "910501": [
+    {
+      "code": "9105011004",
+      "name": "Tarau"
+    },
+    {
+      "code": "9105011005",
+      "name": "Serui Kota"
+    },
+    {
+      "code": "9105011006",
+      "name": "Serui Jaya"
+    },
+    {
+      "code": "9105012014",
+      "name": "Serui Laut"
+    },
+    {
+      "code": "9105012015",
+      "name": "Banawa"
+    },
+    {
+      "code": "9105012017",
+      "name": "Turu"
+    },
+    {
+      "code": "9105012019",
+      "name": "Pasir Hitam"
+    },
+    {
+      "code": "9105012020",
+      "name": "Pasir Putih"
+    },
+    {
+      "code": "9105012023",
+      "name": "Manaini"
+    },
+    {
+      "code": "9105012024",
+      "name": "Imandoa"
+    },
+    {
+      "code": "9105012026",
+      "name": "Barawaikap"
+    },
+    {
+      "code": "9105012027",
+      "name": "Bawai"
+    },
+    {
+      "code": "9105012028",
+      "name": "Nundawipi"
+    }
+  ],
+  "910502": [
+    {
+      "code": "9105021003",
+      "name": "Ansus"
+    },
+    {
+      "code": "9105022002",
+      "name": "Webi"
+    },
+    {
+      "code": "9105022004",
+      "name": "Papuama"
+    },
+    {
+      "code": "9105022007",
+      "name": "Kairawi"
+    },
+    {
+      "code": "9105022008",
+      "name": "Natabui"
+    },
+    {
+      "code": "9105022010",
+      "name": "Warabori"
+    },
+    {
+      "code": "9105022012",
+      "name": "Wimoni"
+    },
+    {
+      "code": "9105022013",
+      "name": "Sasawa"
+    },
+    {
+      "code": "9105022015",
+      "name": "Inowa"
+    },
+    {
+      "code": "9105022016",
+      "name": "Maniri"
+    },
+    {
+      "code": "9105022017",
+      "name": "Nuiwiora"
+    },
+    {
+      "code": "9105022018",
+      "name": "Yenusi Marau"
+    },
+    {
+      "code": "9105022019",
+      "name": "Marau"
+    },
+    {
+      "code": "9105022020",
+      "name": "Toweta"
+    },
+    {
+      "code": "9105022021",
+      "name": "Woiwani"
+    },
+    {
+      "code": "9105022022",
+      "name": "Yarori"
+    },
+    {
+      "code": "9105022023",
+      "name": "Narei"
+    }
+  ],
+  "910503": [
+    {
+      "code": "9105032004",
+      "name": "Korombobi"
+    },
+    {
+      "code": "9105032005",
+      "name": "Dawai"
+    },
+    {
+      "code": "9105032010",
+      "name": "Wabo"
+    },
+    {
+      "code": "9105032014",
+      "name": "Nunsembai"
+    },
+    {
+      "code": "9105032015",
+      "name": "Nunsiari"
+    },
+    {
+      "code": "9105032023",
+      "name": "Woinsupi"
+    },
+    {
+      "code": "9105032024",
+      "name": "Awunawai"
+    },
+    {
+      "code": "9105032025",
+      "name": "Mareruni"
+    },
+    {
+      "code": "9105032031",
+      "name": "Wabompi"
+    },
+    {
+      "code": "9105032036",
+      "name": "Duai"
+    },
+    {
+      "code": "9105032037",
+      "name": "Sere Sere"
+    }
+  ],
+  "910504": [
+    {
+      "code": "9105042003",
+      "name": "Menawi"
+    },
+    {
+      "code": "9105042004",
+      "name": "Wadapi"
+    },
+    {
+      "code": "9105042009",
+      "name": "Kainui I"
+    },
+    {
+      "code": "9105042010",
+      "name": "Aitiri"
+    },
+    {
+      "code": "9105042011",
+      "name": "Wawuti"
+    },
+    {
+      "code": "9105042015",
+      "name": "Roipi"
+    },
+    {
+      "code": "9105042016",
+      "name": "Ransarnoni"
+    },
+    {
+      "code": "9105042021",
+      "name": "Kainui II"
+    },
+    {
+      "code": "9105042024",
+      "name": "Wanampompi"
+    },
+    {
+      "code": "9105042028",
+      "name": "Mananayam"
+    },
+    {
+      "code": "9105042030",
+      "name": "Roipi Dua"
+    }
+  ],
+  "910505": [
+    {
+      "code": "9105052001",
+      "name": "Poom I"
+    },
+    {
+      "code": "9105052003",
+      "name": "Serewen"
+    },
+    {
+      "code": "9105052006",
+      "name": "Poom II"
+    },
+    {
+      "code": "9105052007",
+      "name": "Mokiroan"
+    },
+    {
+      "code": "9105052011",
+      "name": "Rarisi"
+    },
+    {
+      "code": "9105052012",
+      "name": "Warioi"
+    },
+    {
+      "code": "9105052015",
+      "name": "Humbe Awai"
+    },
+    {
+      "code": "9105052016",
+      "name": "Nurawi"
+    }
+  ],
+  "910506": [
+    {
+      "code": "9105062001",
+      "name": "Kamanap"
+    },
+    {
+      "code": "9105062002",
+      "name": "Aromarea"
+    },
+    {
+      "code": "9105062003",
+      "name": "Maria Rotu"
+    },
+    {
+      "code": "9105062004",
+      "name": "Kanawa"
+    },
+    {
+      "code": "9105062005",
+      "name": "Tatui"
+    },
+    {
+      "code": "9105062006",
+      "name": "Ariepi"
+    },
+    {
+      "code": "9105062007",
+      "name": "Sarawandori"
+    },
+    {
+      "code": "9105062008",
+      "name": "Ambaidiru"
+    },
+    {
+      "code": "9105062009",
+      "name": "Mambo"
+    },
+    {
+      "code": "9105062010",
+      "name": "Manainin"
+    },
+    {
+      "code": "9105062011",
+      "name": "Numaman"
+    },
+    {
+      "code": "9105062012",
+      "name": "Ramangkurani"
+    },
+    {
+      "code": "9105062013",
+      "name": "Sarawandori Dua"
+    },
+    {
+      "code": "9105062014",
+      "name": "Ariepi Dua"
+    },
+    {
+      "code": "9105062015",
+      "name": "Panduami"
+    }
+  ],
+  "910507": [
+    {
+      "code": "9105072001",
+      "name": "Tindaret"
+    },
+    {
+      "code": "9105072002",
+      "name": "Yobi"
+    },
+    {
+      "code": "9105072003",
+      "name": "Sambrawai"
+    },
+    {
+      "code": "9105072006",
+      "name": "Kiriyou"
+    },
+    {
+      "code": "9105072007",
+      "name": "Soromasen"
+    },
+    {
+      "code": "9105072009",
+      "name": "Roswari"
+    },
+    {
+      "code": "9105072010",
+      "name": "Doreimanona"
+    }
+  ],
+  "910508": [
+    {
+      "code": "9105082001",
+      "name": "Waindu"
+    },
+    {
+      "code": "9105082008",
+      "name": "Barawai"
+    },
+    {
+      "code": "9105082009",
+      "name": "Woda"
+    },
+    {
+      "code": "9105082010",
+      "name": "Kororompui"
+    },
+    {
+      "code": "9105082011",
+      "name": "Aisau"
+    },
+    {
+      "code": "9105082012",
+      "name": "Sewenui"
+    },
+    {
+      "code": "9105082013",
+      "name": "Sawendui"
+    }
+  ],
+  "910509": [
+    {
+      "code": "9105092001",
+      "name": "Randawaya"
+    },
+    {
+      "code": "9105092002",
+      "name": "Warironi"
+    },
+    {
+      "code": "9105092003",
+      "name": "Ampimoi"
+    },
+    {
+      "code": "9105092004",
+      "name": "Waita"
+    },
+    {
+      "code": "9105092005",
+      "name": "Ayari"
+    },
+    {
+      "code": "9105092006",
+      "name": "Koroapi"
+    },
+    {
+      "code": "9105092007",
+      "name": "Wabuayar"
+    },
+    {
+      "code": "9105092008",
+      "name": "Tarei"
+    },
+    {
+      "code": "9105092009",
+      "name": "Bareraif"
+    },
+    {
+      "code": "9105092010",
+      "name": "Arareni"
+    },
+    {
+      "code": "9105092011",
+      "name": "Siromi"
+    }
+  ],
+  "910510": [
+    {
+      "code": "9105102001",
+      "name": "Ambai I"
+    },
+    {
+      "code": "9105102004",
+      "name": "Kawipi"
+    },
+    {
+      "code": "9105102005",
+      "name": "Wamori"
+    },
+    {
+      "code": "9105102006",
+      "name": "Adiwipi"
+    },
+    {
+      "code": "9105102008",
+      "name": "Ambai II"
+    },
+    {
+      "code": "9105102009",
+      "name": "Mambawi"
+    },
+    {
+      "code": "9105102010",
+      "name": "Baisore"
+    },
+    {
+      "code": "9105102011",
+      "name": "Rondepi"
+    },
+    {
+      "code": "9105102014",
+      "name": "Imboriawa"
+    },
+    {
+      "code": "9105102015",
+      "name": "Bairei"
+    },
+    {
+      "code": "9105102016",
+      "name": "Aiwaraggani"
+    },
+    {
+      "code": "9105102017",
+      "name": "Toroa"
+    },
+    {
+      "code": "9105102019",
+      "name": "Marawi"
+    }
+  ],
+  "910511": [
+    {
+      "code": "9105112001",
+      "name": "Wooi"
+    },
+    {
+      "code": "9105112002",
+      "name": "Woinap"
+    },
+    {
+      "code": "9105112003",
+      "name": "Aibondeni"
+    },
+    {
+      "code": "9105112004",
+      "name": "Kanaki"
+    },
+    {
+      "code": "9105112005",
+      "name": "Dumani"
+    },
+    {
+      "code": "9105112007",
+      "name": "Karemoni"
+    },
+    {
+      "code": "9105112008",
+      "name": "Haihorei"
+    },
+    {
+      "code": "9105112009",
+      "name": "Rembai"
+    },
+    {
+      "code": "9105112010",
+      "name": "Jaimaria"
+    },
+    {
+      "code": "9105112011",
+      "name": "Awado"
+    }
+  ],
+  "910512": [
+    {
+      "code": "9105122001",
+      "name": "Kaonda"
+    },
+    {
+      "code": "9105122002",
+      "name": "Windesi"
+    },
+    {
+      "code": "9105122003",
+      "name": "Munggui"
+    },
+    {
+      "code": "9105122004",
+      "name": "Karawi"
+    },
+    {
+      "code": "9105122005",
+      "name": "Asai"
+    },
+    {
+      "code": "9105122006",
+      "name": "Rosbori"
+    },
+    {
+      "code": "9105122007",
+      "name": "Waisani"
+    },
+    {
+      "code": "9105122008",
+      "name": "Saruman"
+    },
+    {
+      "code": "9105122009",
+      "name": "Aryobu"
+    }
+  ],
+  "910513": [
+    {
+      "code": "9105132001",
+      "name": "Kaipuri"
+    },
+    {
+      "code": "9105132002",
+      "name": "Doreianmini"
+    },
+    {
+      "code": "9105132003",
+      "name": "Andersaria"
+    },
+    {
+      "code": "9105132004",
+      "name": "Kurudu"
+    },
+    {
+      "code": "9105132005",
+      "name": "Kirimbri"
+    },
+    {
+      "code": "9105132006",
+      "name": "Manusundu"
+    },
+    {
+      "code": "9105132007",
+      "name": "Mnukwar"
+    },
+    {
+      "code": "9105132008",
+      "name": "Mansesi"
+    }
+  ],
+  "910514": [
+    {
+      "code": "9105142001",
+      "name": "Miosnum"
+    },
+    {
+      "code": "9105142002",
+      "name": "Jeniari"
+    },
+    {
+      "code": "9105142003",
+      "name": "Umpeki"
+    },
+    {
+      "code": "9105142004",
+      "name": "Ausem"
+    },
+    {
+      "code": "9105142005",
+      "name": "Yeituarau"
+    }
+  ],
+  "910515": [
+    {
+      "code": "9105151001",
+      "name": "Anatorei"
+    },
+    {
+      "code": "9105152001",
+      "name": "Ketu Api"
+    },
+    {
+      "code": "9105152002",
+      "name": "Mariaderi"
+    },
+    {
+      "code": "9105152003",
+      "name": "Yapan"
+    },
+    {
+      "code": "9105152004",
+      "name": "Mantembu"
+    },
+    {
+      "code": "9105152005",
+      "name": "Famboaman"
+    },
+    {
+      "code": "9105152006",
+      "name": "Kandowarira"
+    },
+    {
+      "code": "9105152007",
+      "name": "Warari"
+    }
+  ],
+  "910516": [
+    {
+      "code": "9105162001",
+      "name": "Kontinuai"
+    },
+    {
+      "code": "9105162002",
+      "name": "Woniwon"
+    },
+    {
+      "code": "9105162003",
+      "name": "Sanayoka"
+    },
+    {
+      "code": "9105162004",
+      "name": "Rambai"
+    },
+    {
+      "code": "9105162005",
+      "name": "Yafanani"
+    },
+    {
+      "code": "9105162006",
+      "name": "Borai"
+    },
+    {
+      "code": "9105162007",
+      "name": "Kabuaena"
+    }
+  ],
+  "910517": [
+    {
+      "code": "9105172001",
+      "name": "Saweru"
+    },
+    {
+      "code": "9105172002",
+      "name": "Umani"
+    },
+    {
+      "code": "9105172003",
+      "name": "Perea"
+    },
+    {
+      "code": "9105172004",
+      "name": "Nuniandei"
+    },
+    {
+      "code": "9105172005",
+      "name": "Dorau"
+    }
+  ]
+}

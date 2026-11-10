@@ -1,0 +1,826 @@
+{
+  "810501": [
+    {
+      "code": "8105012003",
+      "name": "Bula"
+    },
+    {
+      "code": "8105012004",
+      "name": "Salas"
+    },
+    {
+      "code": "8105012010",
+      "name": "Englas"
+    },
+    {
+      "code": "8105012011",
+      "name": "Bula Air Fatolo"
+    },
+    {
+      "code": "8105012012",
+      "name": "Sesar"
+    },
+    {
+      "code": "8105012022",
+      "name": "Tansi Ambon"
+    },
+    {
+      "code": "8105012023",
+      "name": "Kampung Wailola"
+    },
+    {
+      "code": "8105012024",
+      "name": "Kampung Gorom"
+    },
+    {
+      "code": "8105012025",
+      "name": "Limumir"
+    },
+    {
+      "code": "8105012026",
+      "name": "Fattolo"
+    }
+  ],
+  "810502": [
+    {
+      "code": "8105022001",
+      "name": "Geser"
+    },
+    {
+      "code": "8105022002",
+      "name": "Kiltay"
+    },
+    {
+      "code": "8105022003",
+      "name": "Kilwaru"
+    },
+    {
+      "code": "8105022004",
+      "name": "Kellu"
+    },
+    {
+      "code": "8105022005",
+      "name": "Keffing"
+    },
+    {
+      "code": "8105022028",
+      "name": "Kilfura"
+    }
+  ],
+  "810503": [
+    {
+      "code": "8105032001",
+      "name": "Batuasa"
+    },
+    {
+      "code": "8105032002",
+      "name": "Hatuimeten"
+    },
+    {
+      "code": "8105032003",
+      "name": "Werinama"
+    },
+    {
+      "code": "8105032004",
+      "name": "Bemo"
+    },
+    {
+      "code": "8105032015",
+      "name": "Tum"
+    },
+    {
+      "code": "8105032016",
+      "name": "Gusalaut"
+    },
+    {
+      "code": "8105032017",
+      "name": "Osong"
+    },
+    {
+      "code": "8105032018",
+      "name": "Tobo"
+    },
+    {
+      "code": "8105032021",
+      "name": "Bemo Perak"
+    },
+    {
+      "code": "8105032022",
+      "name": "Funa Naibaya"
+    }
+  ],
+  "810504": [
+    {
+      "code": "8105042001",
+      "name": "Kataloka"
+    },
+    {
+      "code": "8105042003",
+      "name": "Amarsekaru"
+    },
+    {
+      "code": "8105042004",
+      "name": "Ondor"
+    },
+    {
+      "code": "8105042005",
+      "name": "Day"
+    },
+    {
+      "code": "8105042006",
+      "name": "Mida"
+    },
+    {
+      "code": "8105042021",
+      "name": "Loko"
+    },
+    {
+      "code": "8105042022",
+      "name": "Sera"
+    },
+    {
+      "code": "8105042023",
+      "name": "Kulugowa"
+    },
+    {
+      "code": "8105042024",
+      "name": "Rumeon"
+    },
+    {
+      "code": "8105042031",
+      "name": "Kelibingan"
+    },
+    {
+      "code": "8105042032",
+      "name": "Ilili"
+    },
+    {
+      "code": "8105042042",
+      "name": "Namalean"
+    },
+    {
+      "code": "8105042043",
+      "name": "Dulak"
+    },
+    {
+      "code": "8105042044",
+      "name": "Kilalir Kilwouw"
+    },
+    {
+      "code": "8105042045",
+      "name": "Kilotak"
+    },
+    {
+      "code": "8105042046",
+      "name": "Kilean"
+    },
+    {
+      "code": "8105042047",
+      "name": "Kaforing"
+    },
+    {
+      "code": "8105042048",
+      "name": "Arewang"
+    },
+    {
+      "code": "8105042049",
+      "name": "Usun Kataloka"
+    },
+    {
+      "code": "8105042050",
+      "name": "Buan Kataloka"
+    },
+    {
+      "code": "8105042051",
+      "name": "Rumanama Kotawouw Kataloka"
+    },
+    {
+      "code": "8105042052",
+      "name": "Sikaro Kataloka"
+    },
+    {
+      "code": "8105042053",
+      "name": "Aroa Kataloka"
+    },
+    {
+      "code": "8105042054",
+      "name": "Dada Kataloka"
+    }
+  ],
+  "810505": [
+    {
+      "code": "8105052001",
+      "name": "Ilili"
+    },
+    {
+      "code": "8105052002",
+      "name": "Effa"
+    },
+    {
+      "code": "8105052003",
+      "name": "Lahema"
+    },
+    {
+      "code": "8105052004",
+      "name": "Utta"
+    },
+    {
+      "code": "8105052005",
+      "name": "Kelangan"
+    },
+    {
+      "code": "8105052006",
+      "name": "Amarlaut"
+    },
+    {
+      "code": "8105052007",
+      "name": "Tamher Warat"
+    },
+    {
+      "code": "8105052008",
+      "name": "Tamher Timur"
+    },
+    {
+      "code": "8105052010",
+      "name": "Wunin Eldedora"
+    },
+    {
+      "code": "8105052011",
+      "name": "Keldor"
+    },
+    {
+      "code": "8105052021",
+      "name": "Tanah Baru"
+    },
+    {
+      "code": "8105052022",
+      "name": "Guliar"
+    },
+    {
+      "code": "8105052023",
+      "name": "Karlomin"
+    },
+    {
+      "code": "8105052024",
+      "name": "Otademan"
+    },
+    {
+      "code": "8105052025",
+      "name": "Kurwara"
+    },
+    {
+      "code": "8105052026",
+      "name": "Kilbutak"
+    },
+    {
+      "code": "8105052027",
+      "name": "Ruma Durun"
+    },
+    {
+      "code": "8105052028",
+      "name": "Tana Soa"
+    }
+  ],
+  "810506": [
+    {
+      "code": "8105062001",
+      "name": "Danama"
+    },
+    {
+      "code": "8105062002",
+      "name": "Kilmoy"
+    },
+    {
+      "code": "8105062003",
+      "name": "Kilbat"
+    },
+    {
+      "code": "8105062004",
+      "name": "Sesar"
+    },
+    {
+      "code": "8105062005",
+      "name": "Airkasar"
+    },
+    {
+      "code": "8105062006",
+      "name": "Waras-Waras"
+    },
+    {
+      "code": "8105062007",
+      "name": "Gah"
+    },
+    {
+      "code": "8105062008",
+      "name": "Walang Tenga"
+    },
+    {
+      "code": "8105062009",
+      "name": "Bati Kilwouw"
+    },
+    {
+      "code": "8105062010",
+      "name": "Taruy"
+    },
+    {
+      "code": "8105062011",
+      "name": "Kufar"
+    }
+  ],
+  "810507": [
+    {
+      "code": "8105072001",
+      "name": "Dihil"
+    },
+    {
+      "code": "8105072002",
+      "name": "Liliama"
+    },
+    {
+      "code": "8105072003",
+      "name": "Naiwel Ahinulin"
+    },
+    {
+      "code": "8105072004",
+      "name": "Polin"
+    },
+    {
+      "code": "8105072005",
+      "name": "Tunsai"
+    },
+    {
+      "code": "8105072006",
+      "name": "Lapela"
+    },
+    {
+      "code": "8105072007",
+      "name": "Nayet"
+    },
+    {
+      "code": "8105072008",
+      "name": "Elnusa"
+    },
+    {
+      "code": "8105072009",
+      "name": "Atiahu"
+    },
+    {
+      "code": "8105072010",
+      "name": "Sabuai"
+    },
+    {
+      "code": "8105072011",
+      "name": "Abulate"
+    },
+    {
+      "code": "8105072012",
+      "name": "Adabai"
+    }
+  ],
+  "810508": [
+    {
+      "code": "8105082001",
+      "name": "Selor"
+    },
+    {
+      "code": "8105082002",
+      "name": "Nekan"
+    },
+    {
+      "code": "8105082003",
+      "name": "Afang Kota"
+    },
+    {
+      "code": "8105082004",
+      "name": "Afang Defol"
+    },
+    {
+      "code": "8105082005",
+      "name": "Kumelang"
+    },
+    {
+      "code": "8105082006",
+      "name": "Undur"
+    },
+    {
+      "code": "8105082007",
+      "name": "Kamar"
+    },
+    {
+      "code": "8105082008",
+      "name": "Gunak"
+    },
+    {
+      "code": "8105082009",
+      "name": "Sumbawa"
+    },
+    {
+      "code": "8105082010",
+      "name": "Kilmury"
+    },
+    {
+      "code": "8105082011",
+      "name": "Kilbon Kway"
+    },
+    {
+      "code": "8105082012",
+      "name": "Mising"
+    },
+    {
+      "code": "8105082013",
+      "name": "Bitorik"
+    },
+    {
+      "code": "8105082014",
+      "name": "Taa"
+    }
+  ],
+  "810509": [
+    {
+      "code": "8105092001",
+      "name": "Pulau Panjang"
+    },
+    {
+      "code": "8105092002",
+      "name": "Argam"
+    },
+    {
+      "code": "8105092003",
+      "name": "Lalasa"
+    },
+    {
+      "code": "8105092004",
+      "name": "Magat"
+    },
+    {
+      "code": "8105092005",
+      "name": "Ruku Ruku"
+    },
+    {
+      "code": "8105092006",
+      "name": "Perik Basaranggi"
+    }
+  ],
+  "810510": [
+    {
+      "code": "8105102001",
+      "name": "Teor"
+    },
+    {
+      "code": "8105102002",
+      "name": "Kartutin Kartenga"
+    },
+    {
+      "code": "8105102003",
+      "name": "Ker Ker"
+    },
+    {
+      "code": "8105102004",
+      "name": "Duryar Rumoy"
+    },
+    {
+      "code": "8105102005",
+      "name": "Lapang Kampung Jawa"
+    },
+    {
+      "code": "8105102006",
+      "name": "Kampung Tengah Wermaf"
+    },
+    {
+      "code": "8105102007",
+      "name": "Kampung Baru"
+    },
+    {
+      "code": "8105102008",
+      "name": "Mamur"
+    },
+    {
+      "code": "8105102009",
+      "name": "Kiliwouw"
+    },
+    {
+      "code": "8105102010",
+      "name": "Karlokin"
+    }
+  ],
+  "810511": [
+    {
+      "code": "8105112001",
+      "name": "Kilkoda"
+    },
+    {
+      "code": "8105112002",
+      "name": "Miran"
+    },
+    {
+      "code": "8105112003",
+      "name": "Kota Sirih"
+    },
+    {
+      "code": "8105112004",
+      "name": "Amarwatu"
+    },
+    {
+      "code": "8105112005",
+      "name": "Aran"
+    },
+    {
+      "code": "8105112006",
+      "name": "Tuha"
+    },
+    {
+      "code": "8105112007",
+      "name": "Bas"
+    },
+    {
+      "code": "8105112008",
+      "name": "Tunas Ilur"
+    },
+    {
+      "code": "8105112009",
+      "name": "Sagey"
+    },
+    {
+      "code": "8105112010",
+      "name": "Armada"
+    },
+    {
+      "code": "8105112011",
+      "name": "Waisalan"
+    },
+    {
+      "code": "8105112012",
+      "name": "Basarin"
+    },
+    {
+      "code": "8105112013",
+      "name": "Goha"
+    },
+    {
+      "code": "8105112014",
+      "name": "Rarat"
+    },
+    {
+      "code": "8105112015",
+      "name": "Miran Gota"
+    },
+    {
+      "code": "8105112016",
+      "name": "Adar"
+    },
+    {
+      "code": "8105112017",
+      "name": "Tinarin"
+    },
+    {
+      "code": "8105112018",
+      "name": "Etaralu"
+    },
+    {
+      "code": "8105112019",
+      "name": "Kiltufa"
+    },
+    {
+      "code": "8105112020",
+      "name": "Miran Kilian"
+    },
+    {
+      "code": "8105112021",
+      "name": "Miran Keledar"
+    },
+    {
+      "code": "8105112022",
+      "name": "Miran Manaban"
+    },
+    {
+      "code": "8105112023",
+      "name": "Miran Rumuar"
+    }
+  ],
+  "810512": [
+    {
+      "code": "8105122001",
+      "name": "Hote"
+    },
+    {
+      "code": "8105122002",
+      "name": "Banggoi"
+    },
+    {
+      "code": "8105122003",
+      "name": "Waematakabo"
+    },
+    {
+      "code": "8105122004",
+      "name": "Waiketam Baru"
+    },
+    {
+      "code": "8105122005",
+      "name": "Waisamet"
+    },
+    {
+      "code": "8105122006",
+      "name": "Aki Jaya"
+    },
+    {
+      "code": "8105122007",
+      "name": "Jakarta Baru"
+    },
+    {
+      "code": "8105122008",
+      "name": "Silohan"
+    },
+    {
+      "code": "8105122009",
+      "name": "Sumber Agung"
+    },
+    {
+      "code": "8105122010",
+      "name": "Rukun Jaya"
+    },
+    {
+      "code": "8105122011",
+      "name": "Jembatan Basah"
+    },
+    {
+      "code": "8105122012",
+      "name": "Dreamland Hills"
+    },
+    {
+      "code": "8105122013",
+      "name": "Banggoi Pancorang"
+    }
+  ],
+  "810513": [
+    {
+      "code": "8105132001",
+      "name": "Kian Darat"
+    },
+    {
+      "code": "8105132002",
+      "name": "Artafela"
+    },
+    {
+      "code": "8105132003",
+      "name": "Angar"
+    },
+    {
+      "code": "8105132004",
+      "name": "Watu Watu"
+    },
+    {
+      "code": "8105132005",
+      "name": "Kelaba"
+    },
+    {
+      "code": "8105132006",
+      "name": "Kilga Kilwouw"
+    },
+    {
+      "code": "8105132007",
+      "name": "Kilga Watubau"
+    },
+    {
+      "code": "8105132008",
+      "name": "Rumfakar"
+    },
+    {
+      "code": "8105132009",
+      "name": "Kileser"
+    },
+    {
+      "code": "8105132010",
+      "name": "Rumoga"
+    }
+  ],
+  "810514": [
+    {
+      "code": "8105142001",
+      "name": "Kian Laut"
+    },
+    {
+      "code": "8105142002",
+      "name": "Kuwaos"
+    },
+    {
+      "code": "8105142003",
+      "name": "Salagor Air"
+    },
+    {
+      "code": "8105142004",
+      "name": "Salagor Kota"
+    },
+    {
+      "code": "8105142005",
+      "name": "Aruan Gaur"
+    },
+    {
+      "code": "8105142006",
+      "name": "Keta Rumadan"
+    },
+    {
+      "code": "8105142007",
+      "name": "Lian Tasik"
+    },
+    {
+      "code": "8105142008",
+      "name": "Keta"
+    },
+    {
+      "code": "8105142009",
+      "name": "Air Nanang"
+    },
+    {
+      "code": "8105142010",
+      "name": "Suru"
+    }
+  ],
+  "810515": [
+    {
+      "code": "8105152001",
+      "name": "Waru"
+    },
+    {
+      "code": "8105152002",
+      "name": "Bellis"
+    },
+    {
+      "code": "8105152003",
+      "name": "Dawang"
+    },
+    {
+      "code": "8105152004",
+      "name": "Solang"
+    },
+    {
+      "code": "8105152005",
+      "name": "Karay"
+    },
+    {
+      "code": "8105152006",
+      "name": "Nama Lena"
+    },
+    {
+      "code": "8105152007",
+      "name": "Nama Andan"
+    },
+    {
+      "code": "8105152008",
+      "name": "Tubir Wasiwang"
+    },
+    {
+      "code": "8105152009",
+      "name": "Kampung Baru"
+    },
+    {
+      "code": "8105152010",
+      "name": "Boinfia"
+    },
+    {
+      "code": "8105152011",
+      "name": "Madak"
+    }
+  ],
+  "810516": [
+    {
+      "code": "8105162001",
+      "name": "Urung"
+    },
+    {
+      "code": "8105162002",
+      "name": "Kwamor Kecil Mata Ata"
+    },
+    {
+      "code": "8105162003",
+      "name": "Kwamor Kecil Mata Wawa"
+    },
+    {
+      "code": "8105162004",
+      "name": "Kwamor Besar Ena"
+    },
+    {
+      "code": "8105162005",
+      "name": "Kwamor Besar Witau"
+    },
+    {
+      "code": "8105162006",
+      "name": "Guli-Guli"
+    },
+    {
+      "code": "8105162007",
+      "name": "Manggis"
+    },
+    {
+      "code": "8105162008",
+      "name": "Ainena"
+    },
+    {
+      "code": "8105162009",
+      "name": "Mugusinis"
+    },
+    {
+      "code": "8105162010",
+      "name": "Akat Fadedo"
+    }
+  ]
+}

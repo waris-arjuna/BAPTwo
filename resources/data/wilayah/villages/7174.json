@@ -1,142 +1,142 @@
 {
-    "717401": [
-        {
-            "code": "7174011005",
-            "name": "Biga"
-        },
-        {
-            "code": "7174011006",
-            "name": "Upai"
-        },
-        {
-            "code": "7174011007",
-            "name": "Genggulang"
-        },
-        {
-            "code": "7174012001",
-            "name": "Bilalang Satu"
-        },
-        {
-            "code": "7174012002",
-            "name": "Bilalang Dua"
-        },
-        {
-            "code": "7174012003",
-            "name": "Pontodon"
-        },
-        {
-            "code": "7174012004",
-            "name": "Sia"
-        },
-        {
-            "code": "7174012008",
-            "name": "Pontodon Timur"
-        }
-    ],
-    "717402": [
-        {
-            "code": "7174021003",
-            "name": "Kotobangun"
-        },
-        {
-            "code": "7174021004",
-            "name": "Tumubui"
-        },
-        {
-            "code": "7174021005",
-            "name": "Sinindian"
-        },
-        {
-            "code": "7174021006",
-            "name": "Matali"
-        },
-        {
-            "code": "7174021007",
-            "name": "Motoboi Besar"
-        },
-        {
-            "code": "7174021008",
-            "name": "Kobo Besar"
-        },
-        {
-            "code": "7174022001",
-            "name": "Moyag"
-        },
-        {
-            "code": "7174022002",
-            "name": "Kobo Kecil"
-        },
-        {
-            "code": "7174022009",
-            "name": "Moyag Tampoan"
-        },
-        {
-            "code": "7174022010",
-            "name": "Moyag Todulan"
-        }
-    ],
-    "717403": [
-        {
-            "code": "7174031007",
-            "name": "Motoboi Kecil"
-        },
-        {
-            "code": "7174031008",
-            "name": "Mongondow"
-        },
-        {
-            "code": "7174031009",
-            "name": "Pobundayan"
-        },
-        {
-            "code": "7174032001",
-            "name": "Poyowa Besar Satu"
-        },
-        {
-            "code": "7174032002",
-            "name": "Poyowa Besar Dua"
-        },
-        {
-            "code": "7174032003",
-            "name": "Tabang"
-        },
-        {
-            "code": "7174032004",
-            "name": "Bungko"
-        },
-        {
-            "code": "7174032005",
-            "name": "Kopandakan Satu"
-        },
-        {
-            "code": "7174032006",
-            "name": "Poyowa Kecil"
-        }
-    ],
-    "717404": [
-        {
-            "code": "7174041001",
-            "name": "Mongkonai"
-        },
-        {
-            "code": "7174041002",
-            "name": "Molinow"
-        },
-        {
-            "code": "7174041003",
-            "name": "Mogolaing"
-        },
-        {
-            "code": "7174041004",
-            "name": "Gogagoman"
-        },
-        {
-            "code": "7174041005",
-            "name": "Kotamobagu"
-        },
-        {
-            "code": "7174041006",
-            "name": "Mongkonai Barat"
-        }
-    ]
+  "717401": [
+    {
+      "code": "7174011005",
+      "name": "Biga"
+    },
+    {
+      "code": "7174011006",
+      "name": "Upai"
+    },
+    {
+      "code": "7174011007",
+      "name": "Genggulang"
+    },
+    {
+      "code": "7174012001",
+      "name": "Bilalang Satu"
+    },
+    {
+      "code": "7174012002",
+      "name": "Bilalang Dua"
+    },
+    {
+      "code": "7174012003",
+      "name": "Pontodon"
+    },
+    {
+      "code": "7174012004",
+      "name": "Sia"
+    },
+    {
+      "code": "7174012008",
+      "name": "Pontodon Timur"
+    }
+  ],
+  "717402": [
+    {
+      "code": "7174021003",
+      "name": "Kotobangun"
+    },
+    {
+      "code": "7174021004",
+      "name": "Tumubui"
+    },
+    {
+      "code": "7174021005",
+      "name": "Sinindian"
+    },
+    {
+      "code": "7174021006",
+      "name": "Matali"
+    },
+    {
+      "code": "7174021007",
+      "name": "Motoboi Besar"
+    },
+    {
+      "code": "7174021008",
+      "name": "Kobo Besar"
+    },
+    {
+      "code": "7174022001",
+      "name": "Moyag"
+    },
+    {
+      "code": "7174022002",
+      "name": "Kobo Kecil"
+    },
+    {
+      "code": "7174022009",
+      "name": "Moyag Tampoan"
+    },
+    {
+      "code": "7174022010",
+      "name": "Moyag Todulan"
+    }
+  ],
+  "717403": [
+    {
+      "code": "7174031007",
+      "name": "Motoboi Kecil"
+    },
+    {
+      "code": "7174031008",
+      "name": "Mongondow"
+    },
+    {
+      "code": "7174031009",
+      "name": "Pobundayan"
+    },
+    {
+      "code": "7174032001",
+      "name": "Poyowa Besar Satu"
+    },
+    {
+      "code": "7174032002",
+      "name": "Poyowa Besar Dua"
+    },
+    {
+      "code": "7174032003",
+      "name": "Tabang"
+    },
+    {
+      "code": "7174032004",
+      "name": "Bungko"
+    },
+    {
+      "code": "7174032005",
+      "name": "Kopandakan Satu"
+    },
+    {
+      "code": "7174032006",
+      "name": "Poyowa Kecil"
+    }
+  ],
+  "717404": [
+    {
+      "code": "7174041001",
+      "name": "Mongkonai"
+    },
+    {
+      "code": "7174041002",
+      "name": "Molinow"
+    },
+    {
+      "code": "7174041003",
+      "name": "Mogolaing"
+    },
+    {
+      "code": "7174041004",
+      "name": "Gogagoman"
+    },
+    {
+      "code": "7174041005",
+      "name": "Kotamobagu"
+    },
+    {
+      "code": "7174041006",
+      "name": "Mongkonai Barat"
+    }
+  ]
 }

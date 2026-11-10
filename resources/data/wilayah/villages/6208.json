@@ -1,36 +1,140 @@
 {
-    "620801": [
-        {
-            "code": "6208011003",
-            "name": "Mendawai"
-        },
-        {
-            "code": "6208011004",
-            "name": "Padang"
-        },
-        {
-            "code": "6208012001",
-            "name": "Natai Sedawak"
-        },
-        {
-            "code": "6208012002",
-            "name": "Pudu"
-        },
-        {
-            "code": "6208012005",
-            "name": "Kartamulia"
-        },
-        {
-            "code": "6208012006",
-            "name": "Sukaraja"
-        },
-        {
-            "code": "6208012007",
-            "name": "Pangkalan Muntai"
-        },
-        {
-            "code": "6208012008",
-            "name": "Petarikan"
-        }
-    ]
+  "620801": [
+    {
+      "code": "6208011003",
+      "name": "Mendawai"
+    },
+    {
+      "code": "6208011004",
+      "name": "Padang"
+    },
+    {
+      "code": "6208012001",
+      "name": "Natai Sedawak"
+    },
+    {
+      "code": "6208012002",
+      "name": "Pudu"
+    },
+    {
+      "code": "6208012005",
+      "name": "Kartamulia"
+    },
+    {
+      "code": "6208012006",
+      "name": "Sukaraja"
+    },
+    {
+      "code": "6208012007",
+      "name": "Pangkalan Muntai"
+    },
+    {
+      "code": "6208012008",
+      "name": "Petarikan"
+    }
+  ],
+  "620802": [
+    {
+      "code": "6208021001",
+      "name": "Kuala Jelai"
+    },
+    {
+      "code": "6208022002",
+      "name": "Pulau Nibung"
+    },
+    {
+      "code": "6208022003",
+      "name": "Sungai Baru"
+    },
+    {
+      "code": "6208022004",
+      "name": "Sungai Bundung"
+    },
+    {
+      "code": "6208022005",
+      "name": "Sungai Raja"
+    }
+  ],
+  "620803": [
+    {
+      "code": "6208032001",
+      "name": "Jihing"
+    },
+    {
+      "code": "6208032002",
+      "name": "Air Dua"
+    },
+    {
+      "code": "6208032005",
+      "name": "Lupu Peruca"
+    },
+    {
+      "code": "6208032006",
+      "name": "Balai Riam"
+    },
+    {
+      "code": "6208032007",
+      "name": "Pempaning"
+    },
+    {
+      "code": "6208032011",
+      "name": "Sekuningan Baru"
+    },
+    {
+      "code": "6208032012",
+      "name": "Bangun Jaya"
+    },
+    {
+      "code": "6208032013",
+      "name": "Bukit Sungkai"
+    }
+  ],
+  "620804": [
+    {
+      "code": "6208042001",
+      "name": "Sungai Damar"
+    },
+    {
+      "code": "6208042002",
+      "name": "Sungai Tabuk"
+    },
+    {
+      "code": "6208042003",
+      "name": "Sungai Cabang Barat"
+    },
+    {
+      "code": "6208042004",
+      "name": "Sungai Pasir"
+    }
+  ],
+  "620805": [
+    {
+      "code": "6208052001",
+      "name": "Kenawan"
+    },
+    {
+      "code": "6208052002",
+      "name": "Laman Baru"
+    },
+    {
+      "code": "6208052003",
+      "name": "Ajang"
+    },
+    {
+      "code": "6208052004",
+      "name": "Semantun"
+    },
+    {
+      "code": "6208052005",
+      "name": "Nibung Terjun"
+    },
+    {
+      "code": "6208052006",
+      "name": "Natai Kondang"
+    },
+    {
+      "code": "6208052007",
+      "name": "Sembikuan"
+    }
+  ]
 }

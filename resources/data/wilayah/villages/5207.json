@@ -1,230 +1,278 @@
 {
-    "520701": [
-        {
-            "code": "5207012001",
-            "name": "Goa"
-        },
-        {
-            "code": "5207012002",
-            "name": "Belo"
-        },
-        {
-            "code": "5207012003",
-            "name": "Beru"
-        },
-        {
-            "code": "5207012009",
-            "name": "Dasan Anyar"
-        }
-    ],
-    "520702": [
-        {
-            "code": "5207021004",
-            "name": "Menala"
-        },
-        {
-            "code": "5207021005",
-            "name": "Kuang"
-        },
-        {
-            "code": "5207021006",
-            "name": "Bugis"
-        },
-        {
-            "code": "5207021007",
-            "name": "Dalam"
-        },
-        {
-            "code": "5207021008",
-            "name": "Sampir"
-        },
-        {
-            "code": "5207021012",
-            "name": "Telaga Bertong"
-        },
-        {
-            "code": "5207021019",
-            "name": "Arab Kenangan"
-        },
-        {
-            "code": "5207022001",
-            "name": "Labuhan Lalar"
-        },
-        {
-            "code": "5207022009",
-            "name": "Lalar Liang"
-        },
-        {
-            "code": "5207022010",
-            "name": "Labuhan Kertasari"
-        },
-        {
-            "code": "5207022011",
-            "name": "Seloto"
-        },
-        {
-            "code": "5207022013",
-            "name": "Tamekan"
-        },
-        {
-            "code": "5207022014",
-            "name": "Banjar"
-        },
-        {
-            "code": "5207022015",
-            "name": "Batu Putih"
-        },
-        {
-            "code": "5207022020",
-            "name": "Sermong"
-        },
-        {
-            "code": "5207022021",
-            "name": "Lamunga"
-        }
-    ],
-    "520703": [
-        {
-            "code": "5207032001",
-            "name": "Meraran"
-        },
-        {
-            "code": "5207032002",
-            "name": "Air Suning"
-        },
-        {
-            "code": "5207032003",
-            "name": "Rempe"
-        },
-        {
-            "code": "5207032004",
-            "name": "Seteluk Atas"
-        },
-        {
-            "code": "5207032005",
-            "name": "Seteluk Tengah"
-        },
-        {
-            "code": "5207032008",
-            "name": "Kelanir"
-        },
-        {
-            "code": "5207032011",
-            "name": "Tapir"
-        },
-        {
-            "code": "5207032013",
-            "name": "Lamusung"
-        },
-        {
-            "code": "5207032014",
-            "name": "Seran"
-        },
-        {
-            "code": "5207032015",
-            "name": "Desaloka"
-        }
-    ],
-    "520704": [
-        {
-            "code": "5207042001",
-            "name": "Sekongkang Atas"
-        },
-        {
-            "code": "5207042002",
-            "name": "Sekongkang Bawah"
-        },
-        {
-            "code": "5207042003",
-            "name": "Tongo"
-        },
-        {
-            "code": "5207042004",
-            "name": "Ai Kangkung"
-        },
-        {
-            "code": "5207042005",
-            "name": "Tatar"
-        },
-        {
-            "code": "5207042006",
-            "name": "Talonang Baru"
-        },
-        {
-            "code": "5207042007",
-            "name": "Kemuning"
-        }
-    ],
-    "520705": [
-        {
-            "code": "5207052001",
-            "name": "Desa Beru"
-        },
-        {
-            "code": "5207052002",
-            "name": "Tepas"
-        },
-        {
-            "code": "5207052003",
-            "name": "Bangkat Monteh"
-        },
-        {
-            "code": "5207052004",
-            "name": "Sapugara Bree"
-        },
-        {
-            "code": "5207052005",
-            "name": "Tepas Sepakat"
-        },
-        {
-            "code": "5207052006",
-            "name": "Lamuntet"
-        },
-        {
-            "code": "5207052007",
-            "name": "Rarak Ronges"
-        },
-        {
-            "code": "5207052008",
-            "name": "Moteng"
-        },
-        {
-            "code": "5207052009",
-            "name": "Seminar Salit"
-        }
-    ],
-    "520706": [
-        {
-            "code": "5207062001",
-            "name": "Senayan"
-        },
-        {
-            "code": "5207062002",
-            "name": "Mantar"
-        },
-        {
-            "code": "5207062003",
-            "name": "Kiantar"
-        },
-        {
-            "code": "5207062004",
-            "name": "Poto Tano"
-        },
-        {
-            "code": "5207062005",
-            "name": "UPT Tambak Sari"
-        },
-        {
-            "code": "5207062006",
-            "name": "Kokarlian"
-        },
-        {
-            "code": "5207062007",
-            "name": "Tebo"
-        },
-        {
-            "code": "5207062008",
-            "name": "Tuananga"
-        }
-    ]
+  "520701": [
+    {
+      "code": "5207012001",
+      "name": "Goa"
+    },
+    {
+      "code": "5207012002",
+      "name": "Belo"
+    },
+    {
+      "code": "5207012003",
+      "name": "Beru"
+    },
+    {
+      "code": "5207012009",
+      "name": "Dasan Anyar"
+    }
+  ],
+  "520702": [
+    {
+      "code": "5207021004",
+      "name": "Menala"
+    },
+    {
+      "code": "5207021005",
+      "name": "Kuang"
+    },
+    {
+      "code": "5207021006",
+      "name": "Bugis"
+    },
+    {
+      "code": "5207021007",
+      "name": "Dalam"
+    },
+    {
+      "code": "5207021008",
+      "name": "Sampir"
+    },
+    {
+      "code": "5207021012",
+      "name": "Telaga Bertong"
+    },
+    {
+      "code": "5207021019",
+      "name": "Arab Kenangan"
+    },
+    {
+      "code": "5207022001",
+      "name": "Labuhan Lalar"
+    },
+    {
+      "code": "5207022009",
+      "name": "Lalar Liang"
+    },
+    {
+      "code": "5207022010",
+      "name": "Labuhan Kertasari"
+    },
+    {
+      "code": "5207022011",
+      "name": "Seloto"
+    },
+    {
+      "code": "5207022013",
+      "name": "Tamekan"
+    },
+    {
+      "code": "5207022014",
+      "name": "Banjar"
+    },
+    {
+      "code": "5207022015",
+      "name": "Batu Putih"
+    },
+    {
+      "code": "5207022020",
+      "name": "Sermong"
+    },
+    {
+      "code": "5207022021",
+      "name": "Lamunga"
+    }
+  ],
+  "520703": [
+    {
+      "code": "5207032001",
+      "name": "Meraran"
+    },
+    {
+      "code": "5207032002",
+      "name": "Air Suning"
+    },
+    {
+      "code": "5207032003",
+      "name": "Rempe"
+    },
+    {
+      "code": "5207032004",
+      "name": "Seteluk Atas"
+    },
+    {
+      "code": "5207032005",
+      "name": "Seteluk Tengah"
+    },
+    {
+      "code": "5207032008",
+      "name": "Kelanir"
+    },
+    {
+      "code": "5207032011",
+      "name": "Tapir"
+    },
+    {
+      "code": "5207032013",
+      "name": "Lamusung"
+    },
+    {
+      "code": "5207032014",
+      "name": "Seran"
+    },
+    {
+      "code": "5207032015",
+      "name": "Desaloka"
+    }
+  ],
+  "520704": [
+    {
+      "code": "5207042001",
+      "name": "Sekongkang Atas"
+    },
+    {
+      "code": "5207042002",
+      "name": "Sekongkang Bawah"
+    },
+    {
+      "code": "5207042003",
+      "name": "Tongo"
+    },
+    {
+      "code": "5207042004",
+      "name": "Ai Kangkung"
+    },
+    {
+      "code": "5207042005",
+      "name": "Tatar"
+    },
+    {
+      "code": "5207042006",
+      "name": "Talonang Baru"
+    },
+    {
+      "code": "5207042007",
+      "name": "Kemuning"
+    }
+  ],
+  "520705": [
+    {
+      "code": "5207052001",
+      "name": "Desa Beru"
+    },
+    {
+      "code": "5207052002",
+      "name": "Tepas"
+    },
+    {
+      "code": "5207052003",
+      "name": "Bangkat Monteh"
+    },
+    {
+      "code": "5207052004",
+      "name": "Sapugara Bree"
+    },
+    {
+      "code": "5207052005",
+      "name": "Tepas Sepakat"
+    },
+    {
+      "code": "5207052006",
+      "name": "Lamuntet"
+    },
+    {
+      "code": "5207052007",
+      "name": "Rarak Ronges"
+    },
+    {
+      "code": "5207052008",
+      "name": "Moteng"
+    },
+    {
+      "code": "5207052009",
+      "name": "Seminar Salit"
+    }
+  ],
+  "520706": [
+    {
+      "code": "5207062001",
+      "name": "Senayan"
+    },
+    {
+      "code": "5207062002",
+      "name": "Mantar"
+    },
+    {
+      "code": "5207062003",
+      "name": "Kiantar"
+    },
+    {
+      "code": "5207062004",
+      "name": "Poto Tano"
+    },
+    {
+      "code": "5207062005",
+      "name": "UPT Tambak Sari"
+    },
+    {
+      "code": "5207062006",
+      "name": "Kokarlian"
+    },
+    {
+      "code": "5207062007",
+      "name": "Tebo"
+    },
+    {
+      "code": "5207062008",
+      "name": "Tuananga"
+    }
+  ],
+  "520707": [
+    {
+      "code": "5207072001",
+      "name": "Mura"
+    },
+    {
+      "code": "5207072002",
+      "name": "Kalimantong"
+    },
+    {
+      "code": "5207072003",
+      "name": "Lampok"
+    },
+    {
+      "code": "5207072004",
+      "name": "Manemeng"
+    },
+    {
+      "code": "5207072005",
+      "name": "Mujahiddin"
+    },
+    {
+      "code": "5207072006",
+      "name": "Mataiyang"
+    }
+  ],
+  "520708": [
+    {
+      "code": "5207082001",
+      "name": "Maluk"
+    },
+    {
+      "code": "5207082002",
+      "name": "Benete"
+    },
+    {
+      "code": "5207082003",
+      "name": "Bukit Damai"
+    },
+    {
+      "code": "5207082004",
+      "name": "Mantun"
+    },
+    {
+      "code": "5207082005",
+      "name": "Pasir Putih"
+    }
+  ]
 }

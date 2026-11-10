@@ -1,494 +1,508 @@
 {
-    "810801": [
-        {
-            "code": "8108011001",
-            "name": "Tiakur"
-        },
-        {
-            "code": "8108012001",
-            "name": "Klis"
-        },
-        {
-            "code": "8108012002",
-            "name": "Patti"
-        },
-        {
-            "code": "8108012003",
-            "name": "Wakarleli"
-        },
-        {
-            "code": "8108012004",
-            "name": "Kaiwatu"
-        },
-        {
-            "code": "8108012005",
-            "name": "Werwaru"
-        },
-        {
-            "code": "8108012006",
-            "name": "Tounwawan"
-        },
-        {
-            "code": "8108012007",
-            "name": "Moain"
-        }
-    ],
-    "810802": [
-        {
-            "code": "8108022001",
-            "name": "Wulur"
-        },
-        {
-            "code": "8108022002",
-            "name": "Batu Merah"
-        },
-        {
-            "code": "8108022003",
-            "name": "Kuaimelu"
-        },
-        {
-            "code": "8108022004",
-            "name": "Kumur"
-        },
-        {
-            "code": "8108022005",
-            "name": "Bebar Timur"
-        },
-        {
-            "code": "8108022006",
-            "name": "Ilih"
-        },
-        {
-            "code": "8108022007",
-            "name": "Kehli"
-        }
-    ],
-    "810803": [
-        {
-            "code": "8108032001",
-            "name": "Luang Barat"
-        },
-        {
-            "code": "8108032002",
-            "name": "Luang Timur"
-        },
-        {
-            "code": "8108032003",
-            "name": "Elo"
-        },
-        {
-            "code": "8108032004",
-            "name": "Rumkisar"
-        },
-        {
-            "code": "8108032005",
-            "name": "Lelang"
-        },
-        {
-            "code": "8108032006",
-            "name": "Mahaleta"
-        },
-        {
-            "code": "8108032007",
-            "name": "Romdara"
-        },
-        {
-            "code": "8108032008",
-            "name": "Rotnama"
-        },
-        {
-            "code": "8108032009",
-            "name": "Batugajah"
-        },
-        {
-            "code": "8108032010",
-            "name": "Pupliora"
-        },
-        {
-            "code": "8108032011",
-            "name": "Regoha"
-        }
-    ],
-    "810804": [
-        {
-            "code": "8108042001",
-            "name": "Tepa"
-        },
-        {
-            "code": "8108042002",
-            "name": "Imroing"
-        },
-        {
-            "code": "8108042003",
-            "name": "Tela"
-        },
-        {
-            "code": "8108042004",
-            "name": "Yaltubung"
-        },
-        {
-            "code": "8108042005",
-            "name": "Wanuwui"
-        },
-        {
-            "code": "8108042006",
-            "name": "Letsiara"
-        },
-        {
-            "code": "8108042015",
-            "name": "Lewah"
-        },
-        {
-            "code": "8108042016",
-            "name": "Hertuti"
-        },
-        {
-            "code": "8108042017",
-            "name": "Sinairusi"
-        }
-    ],
-    "810805": [
-        {
-            "code": "8108052001",
-            "name": "Letwurung"
-        },
-        {
-            "code": "8108052002",
-            "name": "Yatoke"
-        },
-        {
-            "code": "8108052003",
-            "name": "Kroing"
-        },
-        {
-            "code": "8108052004",
-            "name": "Nakarhamto"
-        },
-        {
-            "code": "8108052005",
-            "name": "Emplawas"
-        },
-        {
-            "code": "8108052006",
-            "name": "Kokwari"
-        },
-        {
-            "code": "8108052007",
-            "name": "Ahanari"
-        },
-        {
-            "code": "8108052008",
-            "name": "Wakpapapi"
-        },
-        {
-            "code": "8108052009",
-            "name": "Analutur"
-        },
-        {
-            "code": "8108052010",
-            "name": "Manuweri"
-        },
-        {
-            "code": "8108052011",
-            "name": "Tutuwawang"
-        }
-    ],
-    "810806": [
-        {
-            "code": "8108062001",
-            "name": "Ilwaki"
-        },
-        {
-            "code": "8108062002",
-            "name": "Ilputih"
-        },
-        {
-            "code": "8108062003",
-            "name": "Mahuan"
-        },
-        {
-            "code": "8108062004",
-            "name": "Masapun"
-        },
-        {
-            "code": "8108062021",
-            "name": "Arnau"
-        },
-        {
-            "code": "8108062023",
-            "name": "Hiay"
-        }
-    ],
-    "810807": [
-        {
-            "code": "8108072001",
-            "name": "Wonreli"
-        },
-        {
-            "code": "8108072002",
-            "name": "Lekloor"
-        },
-        {
-            "code": "8108072003",
-            "name": "Kota Lama"
-        },
-        {
-            "code": "8108072004",
-            "name": "Abusur"
-        },
-        {
-            "code": "8108072005",
-            "name": "Oirata Timur"
-        },
-        {
-            "code": "8108072006",
-            "name": "Oirata Barat"
-        }
-    ],
-    "810808": [
-        {
-            "code": "8108082001",
-            "name": "Laitutun"
-        },
-        {
-            "code": "8108082002",
-            "name": "Batumiau"
-        },
-        {
-            "code": "8108082003",
-            "name": "Tutukey"
-        },
-        {
-            "code": "8108082004",
-            "name": "Tomra"
-        },
-        {
-            "code": "8108082005",
-            "name": "Nuwewang"
-        },
-        {
-            "code": "8108082006",
-            "name": "Tutuwaru"
-        },
-        {
-            "code": "8108082007",
-            "name": "Luhuely"
-        }
-    ],
-    "810809": [
-        {
-            "code": "8108092001",
-            "name": "Latalola Besar"
-        },
-        {
-            "code": "8108092002",
-            "name": "Serili"
-        },
-        {
-            "code": "8108092003",
-            "name": "Latalola Kecil"
-        },
-        {
-            "code": "8108092004",
-            "name": "Telalora"
-        },
-        {
-            "code": "8108092005",
-            "name": "Marsela"
-        },
-        {
-            "code": "8108092006",
-            "name": "Babiotang"
-        },
-        {
-            "code": "8108092007",
-            "name": "Iblatmuntah"
-        },
-        {
-            "code": "8108092008",
-            "name": "Ilbutung"
-        },
-        {
-            "code": "8108092009",
-            "name": "Lawawang"
-        },
-        {
-            "code": "8108092010",
-            "name": "Nura"
-        },
-        {
-            "code": "8108092011",
-            "name": "Bululora"
-        }
-    ],
-    "810810": [
-        {
-            "code": "8108102001",
-            "name": "Watuwei"
-        },
-        {
-            "code": "8108102002",
-            "name": "Ilmarang"
-        },
-        {
-            "code": "8108102003",
-            "name": "Letmasa"
-        },
-        {
-            "code": "8108102004",
-            "name": "Welora"
-        },
-        {
-            "code": "8108102005",
-            "name": "Wiratan"
-        },
-        {
-            "code": "8108102006",
-            "name": "Nurnyaman"
-        }
-    ],
-    "810811": [
-        {
-            "code": "8108112001",
-            "name": "Herley"
-        },
-        {
-            "code": "8108112002",
-            "name": "Upuhupun"
-        },
-        {
-            "code": "8108112003",
-            "name": "Pota Besar"
-        },
-        {
-            "code": "8108112004",
-            "name": "Pota Kecil"
-        },
-        {
-            "code": "8108112005",
-            "name": "Wasarili"
-        },
-        {
-            "code": "8108112006",
-            "name": "Rumahlewang Kecil"
-        },
-        {
-            "code": "8108112007",
-            "name": "Rumahlewang Besar"
-        },
-        {
-            "code": "8108112008",
-            "name": "Nusiata"
-        }
-    ],
-    "810812": [
-        {
-            "code": "8108122001",
-            "name": "Ketty"
-        },
-        {
-            "code": "8108122002",
-            "name": "Letoda"
-        },
-        {
-            "code": "8108122003",
-            "name": "Sera"
-        },
-        {
-            "code": "8108122004",
-            "name": "Yamluli"
-        },
-        {
-            "code": "8108122005",
-            "name": "Lolotuara"
-        }
-    ],
-    "810813": [
-        {
-            "code": "8108132001",
-            "name": "Nabar"
-        },
-        {
-            "code": "8108132002",
-            "name": "Elsulith"
-        },
-        {
-            "code": "8108132003",
-            "name": "Naumatang"
-        },
-        {
-            "code": "8108132004",
-            "name": "Lurang"
-        },
-        {
-            "code": "8108132005",
-            "name": "Uhak"
-        },
-        {
-            "code": "8108132006",
-            "name": "Eray"
-        }
-    ],
-    "810814": [
-        {
-            "code": "8108142001",
-            "name": "Telemar"
-        },
-        {
-            "code": "8108142002",
-            "name": "Karbubu"
-        },
-        {
-            "code": "8108142003",
-            "name": "Ustutun"
-        },
-        {
-            "code": "8108142004",
-            "name": "Klishatu"
-        },
-        {
-            "code": "8108142005",
-            "name": "Ilmamau"
-        }
-    ],
-    "810815": [
-        {
-            "code": "8108152001",
-            "name": "Moning"
-        },
-        {
-            "code": "8108152002",
-            "name": "Arwala"
-        },
-        {
-            "code": "8108152003",
-            "name": "Ilway"
-        },
-        {
-            "code": "8108152004",
-            "name": "Kahilin"
-        },
-        {
-            "code": "8108152005",
-            "name": "Ilpokil"
-        },
-        {
-            "code": "8108152006",
-            "name": "Tomliapat"
-        }
-    ],
-    "810816": [
-        {
-            "code": "8108162001",
-            "name": "Hila"
-        },
-        {
-            "code": "8108162002",
-            "name": "Jerusu"
-        },
-        {
-            "code": "8108162003",
-            "name": "Solath"
-        }
-    ]
+  "810801": [
+    {
+      "code": "8108011001",
+      "name": "Tiakur"
+    },
+    {
+      "code": "8108012001",
+      "name": "Klis"
+    },
+    {
+      "code": "8108012002",
+      "name": "Patti"
+    },
+    {
+      "code": "8108012003",
+      "name": "Wakarleli"
+    },
+    {
+      "code": "8108012004",
+      "name": "Kaiwatu"
+    },
+    {
+      "code": "8108012005",
+      "name": "Werwaru"
+    },
+    {
+      "code": "8108012006",
+      "name": "Tounwawan"
+    },
+    {
+      "code": "8108012007",
+      "name": "Moain"
+    }
+  ],
+  "810802": [
+    {
+      "code": "8108022001",
+      "name": "Wulur"
+    },
+    {
+      "code": "8108022002",
+      "name": "Batu Merah"
+    },
+    {
+      "code": "8108022003",
+      "name": "Kuaimelu"
+    },
+    {
+      "code": "8108022004",
+      "name": "Kumur"
+    },
+    {
+      "code": "8108022005",
+      "name": "Bebar Timur"
+    },
+    {
+      "code": "8108022006",
+      "name": "Ilih"
+    },
+    {
+      "code": "8108022007",
+      "name": "Kehli"
+    }
+  ],
+  "810803": [
+    {
+      "code": "8108032001",
+      "name": "Luang Barat"
+    },
+    {
+      "code": "8108032002",
+      "name": "Luang Timur"
+    },
+    {
+      "code": "8108032003",
+      "name": "Elo"
+    },
+    {
+      "code": "8108032004",
+      "name": "Rumkisar"
+    },
+    {
+      "code": "8108032005",
+      "name": "Lelang"
+    },
+    {
+      "code": "8108032006",
+      "name": "Mahaleta"
+    },
+    {
+      "code": "8108032007",
+      "name": "Romdara"
+    },
+    {
+      "code": "8108032008",
+      "name": "Rotnama"
+    },
+    {
+      "code": "8108032009",
+      "name": "Batugajah"
+    },
+    {
+      "code": "8108032010",
+      "name": "Pupliora"
+    },
+    {
+      "code": "8108032011",
+      "name": "Regoha"
+    }
+  ],
+  "810804": [
+    {
+      "code": "8108042001",
+      "name": "Tepa"
+    },
+    {
+      "code": "8108042002",
+      "name": "Imroing"
+    },
+    {
+      "code": "8108042003",
+      "name": "Tela"
+    },
+    {
+      "code": "8108042004",
+      "name": "Yaltubung"
+    },
+    {
+      "code": "8108042005",
+      "name": "Wanuwui"
+    },
+    {
+      "code": "8108042006",
+      "name": "Letsiara"
+    },
+    {
+      "code": "8108042015",
+      "name": "Lewah"
+    },
+    {
+      "code": "8108042016",
+      "name": "Hertuti"
+    },
+    {
+      "code": "8108042017",
+      "name": "Sinairusi"
+    }
+  ],
+  "810805": [
+    {
+      "code": "8108052001",
+      "name": "Letwurung"
+    },
+    {
+      "code": "8108052002",
+      "name": "Yatoke"
+    },
+    {
+      "code": "8108052003",
+      "name": "Kroing"
+    },
+    {
+      "code": "8108052004",
+      "name": "Nakarhamto"
+    },
+    {
+      "code": "8108052005",
+      "name": "Emplawas"
+    },
+    {
+      "code": "8108052006",
+      "name": "Kokwari"
+    },
+    {
+      "code": "8108052007",
+      "name": "Ahanari"
+    },
+    {
+      "code": "8108052008",
+      "name": "Wakpapapi"
+    },
+    {
+      "code": "8108052009",
+      "name": "Analutur"
+    },
+    {
+      "code": "8108052010",
+      "name": "Manuweri"
+    },
+    {
+      "code": "8108052011",
+      "name": "Tutuwawang"
+    }
+  ],
+  "810806": [
+    {
+      "code": "8108062001",
+      "name": "Ilwaki"
+    },
+    {
+      "code": "8108062002",
+      "name": "Ilputih"
+    },
+    {
+      "code": "8108062003",
+      "name": "Mahuan"
+    },
+    {
+      "code": "8108062004",
+      "name": "Masapun"
+    },
+    {
+      "code": "8108062021",
+      "name": "Arnau"
+    },
+    {
+      "code": "8108062023",
+      "name": "Hiay"
+    }
+  ],
+  "810807": [
+    {
+      "code": "8108072001",
+      "name": "Wonreli"
+    },
+    {
+      "code": "8108072002",
+      "name": "Lekloor"
+    },
+    {
+      "code": "8108072003",
+      "name": "Kota Lama"
+    },
+    {
+      "code": "8108072004",
+      "name": "Abusur"
+    },
+    {
+      "code": "8108072005",
+      "name": "Oirata Timur"
+    },
+    {
+      "code": "8108072006",
+      "name": "Oirata Barat"
+    }
+  ],
+  "810808": [
+    {
+      "code": "8108082001",
+      "name": "Laitutun"
+    },
+    {
+      "code": "8108082002",
+      "name": "Batumiau"
+    },
+    {
+      "code": "8108082003",
+      "name": "Tutukey"
+    },
+    {
+      "code": "8108082004",
+      "name": "Tomra"
+    },
+    {
+      "code": "8108082005",
+      "name": "Nuwewang"
+    },
+    {
+      "code": "8108082006",
+      "name": "Tutuwaru"
+    },
+    {
+      "code": "8108082007",
+      "name": "Luhuely"
+    }
+  ],
+  "810809": [
+    {
+      "code": "8108092001",
+      "name": "Latalola Besar"
+    },
+    {
+      "code": "8108092002",
+      "name": "Serili"
+    },
+    {
+      "code": "8108092003",
+      "name": "Latalola Kecil"
+    },
+    {
+      "code": "8108092004",
+      "name": "Telalora"
+    },
+    {
+      "code": "8108092005",
+      "name": "Marsela"
+    },
+    {
+      "code": "8108092006",
+      "name": "Babiotang"
+    },
+    {
+      "code": "8108092007",
+      "name": "Iblatmuntah"
+    },
+    {
+      "code": "8108092008",
+      "name": "Ilbutung"
+    },
+    {
+      "code": "8108092009",
+      "name": "Lawawang"
+    },
+    {
+      "code": "8108092010",
+      "name": "Nura"
+    },
+    {
+      "code": "8108092011",
+      "name": "Bululora"
+    }
+  ],
+  "810810": [
+    {
+      "code": "8108102001",
+      "name": "Watuwei"
+    },
+    {
+      "code": "8108102002",
+      "name": "Ilmarang"
+    },
+    {
+      "code": "8108102003",
+      "name": "Letmasa"
+    },
+    {
+      "code": "8108102004",
+      "name": "Welora"
+    },
+    {
+      "code": "8108102005",
+      "name": "Wiratan"
+    },
+    {
+      "code": "8108102006",
+      "name": "Nurnyaman"
+    }
+  ],
+  "810811": [
+    {
+      "code": "8108112001",
+      "name": "Herley"
+    },
+    {
+      "code": "8108112002",
+      "name": "Upuhupun"
+    },
+    {
+      "code": "8108112003",
+      "name": "Pota Besar"
+    },
+    {
+      "code": "8108112004",
+      "name": "Pota Kecil"
+    },
+    {
+      "code": "8108112005",
+      "name": "Wasarili"
+    },
+    {
+      "code": "8108112006",
+      "name": "Rumahlewang Kecil"
+    },
+    {
+      "code": "8108112007",
+      "name": "Rumahlewang Besar"
+    },
+    {
+      "code": "8108112008",
+      "name": "Nusiata"
+    }
+  ],
+  "810812": [
+    {
+      "code": "8108122001",
+      "name": "Ketty"
+    },
+    {
+      "code": "8108122002",
+      "name": "Letoda"
+    },
+    {
+      "code": "8108122003",
+      "name": "Sera"
+    },
+    {
+      "code": "8108122004",
+      "name": "Yamluli"
+    },
+    {
+      "code": "8108122005",
+      "name": "Lolotuara"
+    }
+  ],
+  "810813": [
+    {
+      "code": "8108132001",
+      "name": "Nabar"
+    },
+    {
+      "code": "8108132002",
+      "name": "Elsulith"
+    },
+    {
+      "code": "8108132003",
+      "name": "Naumatang"
+    },
+    {
+      "code": "8108132004",
+      "name": "Lurang"
+    },
+    {
+      "code": "8108132005",
+      "name": "Uhak"
+    },
+    {
+      "code": "8108132006",
+      "name": "Eray"
+    }
+  ],
+  "810814": [
+    {
+      "code": "8108142001",
+      "name": "Telemar"
+    },
+    {
+      "code": "8108142002",
+      "name": "Karbubu"
+    },
+    {
+      "code": "8108142003",
+      "name": "Ustutun"
+    },
+    {
+      "code": "8108142004",
+      "name": "Klishatu"
+    },
+    {
+      "code": "8108142005",
+      "name": "Ilmamau"
+    }
+  ],
+  "810815": [
+    {
+      "code": "8108152001",
+      "name": "Moning"
+    },
+    {
+      "code": "8108152002",
+      "name": "Arwala"
+    },
+    {
+      "code": "8108152003",
+      "name": "Ilway"
+    },
+    {
+      "code": "8108152004",
+      "name": "Kahilin"
+    },
+    {
+      "code": "8108152005",
+      "name": "Ilpokil"
+    },
+    {
+      "code": "8108152006",
+      "name": "Tomliapat"
+    }
+  ],
+  "810816": [
+    {
+      "code": "8108162001",
+      "name": "Hila"
+    },
+    {
+      "code": "8108162002",
+      "name": "Jerusu"
+    },
+    {
+      "code": "8108162003",
+      "name": "Solath"
+    }
+  ],
+  "810817": [
+    {
+      "code": "8108172001",
+      "name": "Purpura"
+    },
+    {
+      "code": "8108172002",
+      "name": "Nomaha"
+    },
+    {
+      "code": "8108172003",
+      "name": "Labelau"
+    }
+  ]
 }

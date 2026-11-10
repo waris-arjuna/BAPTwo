@@ -1,230 +1,512 @@
 {
-    "611206": [
-        {
-            "code": "6112062001",
-            "name": "Kubu"
-        },
-        {
-            "code": "6112062002",
-            "name": "Olak-Olak Kubu"
-        },
-        {
-            "code": "6112062003",
-            "name": "Sungai Selamat"
-        },
-        {
-            "code": "6112062004",
-            "name": "Sungai Bemban"
-        },
-        {
-            "code": "6112062005",
-            "name": "Pinang Luar"
-        },
-        {
-            "code": "6112062006",
-            "name": "Seruat Dua"
-        },
-        {
-            "code": "6112062007",
-            "name": "Seruat Tiga"
-        },
-        {
-            "code": "6112062008",
-            "name": "Dabong"
-        },
-        {
-            "code": "6112062009",
-            "name": "Ambawang"
-        },
-        {
-            "code": "6112062010",
-            "name": "Sepakat Baru"
-        },
-        {
-            "code": "6112062011",
-            "name": "Kampung Baru"
-        },
-        {
-            "code": "6112062012",
-            "name": "Air Putih"
-        },
-        {
-            "code": "6112062013",
-            "name": "Teluk Nangka"
-        },
-        {
-            "code": "6112062014",
-            "name": "Jangkang Satu"
-        },
-        {
-            "code": "6112062015",
-            "name": "Jangkang Dua"
-        },
-        {
-            "code": "6112062016",
-            "name": "Pinang Dalam"
-        },
-        {
-            "code": "6112062017",
-            "name": "Sungai Terus"
-        },
-        {
-            "code": "6112062018",
-            "name": "Pelita Jaya"
-        },
-        {
-            "code": "6112062019",
-            "name": "Mengkalang"
-        },
-        {
-            "code": "6112062020",
-            "name": "Mengkalang Jambu"
-        }
-    ],
-    "611207": [
-        {
-            "code": "6112072001",
-            "name": "Rasau Jaya Umum"
-        },
-        {
-            "code": "6112072002",
-            "name": "Rasau Jaya Satu"
-        },
-        {
-            "code": "6112072003",
-            "name": "Rasau Jaya Dua"
-        },
-        {
-            "code": "6112072004",
-            "name": "Rasau Jaya Tiga"
-        },
-        {
-            "code": "6112072005",
-            "name": "Bintang Mas"
-        },
-        {
-            "code": "6112072006",
-            "name": "Pematang Tujuh"
-        }
-    ],
-    "611208": [
-        {
-            "code": "6112082001",
-            "name": "Teluk Pakedai Hulu"
-        },
-        {
-            "code": "6112082002",
-            "name": "Teluk Pakedai Satu"
-        },
-        {
-            "code": "6112082003",
-            "name": "Teluk Pakedai Dua"
-        },
-        {
-            "code": "6112082004",
-            "name": "Kuala Karang"
-        },
-        {
-            "code": "6112082005",
-            "name": "Seruat Satu"
-        },
-        {
-            "code": "6112082006",
-            "name": "Sungai Deras"
-        },
-        {
-            "code": "6112082007",
-            "name": "Selat Remis"
-        },
-        {
-            "code": "6112082008",
-            "name": "Madura"
-        },
-        {
-            "code": "6112082009",
-            "name": "Pasir Putih"
-        },
-        {
-            "code": "6112082010",
-            "name": "Teluk Gelam"
-        },
-        {
-            "code": "6112082011",
-            "name": "Tanjung Bunga"
-        },
-        {
-            "code": "6112082012",
-            "name": "Sungai Nibung"
-        },
-        {
-            "code": "6112082013",
-            "name": "Arus Deras"
-        },
-        {
-            "code": "6112082014",
-            "name": "Sungai Nipah"
-        }
-    ],
-    "611209": [
-        {
-            "code": "6112092001",
-            "name": "Sungai Kakap"
-        },
-        {
-            "code": "6112092002",
-            "name": "Sungai Itik"
-        },
-        {
-            "code": "6112092003",
-            "name": "Jeruju Besar"
-        },
-        {
-            "code": "6112092004",
-            "name": "Sungai Kupah"
-        },
-        {
-            "code": "6112092005",
-            "name": "Sungai Rengas"
-        },
-        {
-            "code": "6112092006",
-            "name": "Pal Sembilan"
-        },
-        {
-            "code": "6112092007",
-            "name": "Sungai Belidak"
-        },
-        {
-            "code": "6112092008",
-            "name": "Kalimas"
-        },
-        {
-            "code": "6112092009",
-            "name": "Punggur Kecil"
-        },
-        {
-            "code": "6112092010",
-            "name": "Punggur Besar"
-        },
-        {
-            "code": "6112092011",
-            "name": "Tanjung Saleh"
-        },
-        {
-            "code": "6112092012",
-            "name": "Sepuk Laut"
-        },
-        {
-            "code": "6112092013",
-            "name": "Punggur Kapuas"
-        },
-        {
-            "code": "6112092014",
-            "name": "Rengas Kapuas"
-        },
-        {
-            "code": "6112092015",
-            "name": "Parit Keladi"
-        }
-    ]
+  "611201": [
+    {
+      "code": "6112012001",
+      "name": "Sungai Raya"
+    },
+    {
+      "code": "6112012002",
+      "name": "Sungai Ambangah"
+    },
+    {
+      "code": "6112012003",
+      "name": "Arang Limbung"
+    },
+    {
+      "code": "6112012004",
+      "name": "Kuala Dua"
+    },
+    {
+      "code": "6112012005",
+      "name": "Tebang Kacang"
+    },
+    {
+      "code": "6112012006",
+      "name": "Sungai Asam"
+    },
+    {
+      "code": "6112012007",
+      "name": "Pulau Limbung"
+    },
+    {
+      "code": "6112012008",
+      "name": "Kapur"
+    },
+    {
+      "code": "6112012009",
+      "name": "Gunung Tamang"
+    },
+    {
+      "code": "6112012010",
+      "name": "Sungai Bulan"
+    },
+    {
+      "code": "6112012011",
+      "name": "Limbung"
+    },
+    {
+      "code": "6112012012",
+      "name": "Teluk Kapuas"
+    },
+    {
+      "code": "6112012013",
+      "name": "Madu Sari"
+    },
+    {
+      "code": "6112012014",
+      "name": "Mekar Sari"
+    },
+    {
+      "code": "6112012015",
+      "name": "Mekar Baru"
+    },
+    {
+      "code": "6112012016",
+      "name": "Sungai Raya Dalam"
+    },
+    {
+      "code": "6112012017",
+      "name": "Parit Baru"
+    },
+    {
+      "code": "6112012018",
+      "name": "Pulau Jambu"
+    },
+    {
+      "code": "6112012019",
+      "name": "Kalibandung"
+    },
+    {
+      "code": "6112012020",
+      "name": "Muara Baru"
+    },
+    {
+      "code": "6112012021",
+      "name": "Sukulanting"
+    },
+    {
+      "code": "6112012022",
+      "name": "Permata Jaya"
+    }
+  ],
+  "611202": [
+    {
+      "code": "6112022001",
+      "name": "Kuala Mandor B"
+    },
+    {
+      "code": "6112022002",
+      "name": "Kubu Padi"
+    },
+    {
+      "code": "6112022003",
+      "name": "Kuala Mandor A"
+    },
+    {
+      "code": "6112022004",
+      "name": "Retok"
+    },
+    {
+      "code": "6112022005",
+      "name": "Sungai Enau"
+    },
+    {
+      "code": "6112022006",
+      "name": "Padi Jaya"
+    }
+  ],
+  "611203": [
+    {
+      "code": "6112032001",
+      "name": "Simpang Kanan"
+    },
+    {
+      "code": "6112032002",
+      "name": "Mega Timur"
+    },
+    {
+      "code": "6112032003",
+      "name": "Bengkarek"
+    },
+    {
+      "code": "6112032004",
+      "name": "Lingga"
+    },
+    {
+      "code": "6112032005",
+      "name": "Sungai Ambawang Kuala"
+    },
+    {
+      "code": "6112032006",
+      "name": "Jawa Tengah"
+    },
+    {
+      "code": "6112032007",
+      "name": "Durian"
+    },
+    {
+      "code": "6112032008",
+      "name": "Pancaroba"
+    },
+    {
+      "code": "6112032009",
+      "name": "Puguk"
+    },
+    {
+      "code": "6112032010",
+      "name": "Korek"
+    },
+    {
+      "code": "6112032011",
+      "name": "Pasak"
+    },
+    {
+      "code": "6112032012",
+      "name": "Pasak Piang"
+    },
+    {
+      "code": "6112032013",
+      "name": "Teluk Bakung"
+    },
+    {
+      "code": "6112032014",
+      "name": "Ampera Raya"
+    },
+    {
+      "code": "6112032015",
+      "name": "Sungai Malaya"
+    }
+  ],
+  "611204": [
+    {
+      "code": "6112042002",
+      "name": "Teluk Empening"
+    },
+    {
+      "code": "6112042003",
+      "name": "Terentang Hilir"
+    },
+    {
+      "code": "6112042004",
+      "name": "Terentang Hulu"
+    },
+    {
+      "code": "6112042005",
+      "name": "Permata"
+    },
+    {
+      "code": "6112042006",
+      "name": "Betuah"
+    },
+    {
+      "code": "6112042007",
+      "name": "Sungai Radak Satu"
+    },
+    {
+      "code": "6112042008",
+      "name": "Sungai Radak Dua"
+    },
+    {
+      "code": "6112042009",
+      "name": "Sungai Dungun"
+    },
+    {
+      "code": "6112042010",
+      "name": "Teluk Bayur"
+    },
+    {
+      "code": "6112042011",
+      "name": "Radak Baru"
+    }
+  ],
+  "611205": [
+    {
+      "code": "6112052001",
+      "name": "Tanjung Beringin"
+    },
+    {
+      "code": "6112052002",
+      "name": "Batu Ampar"
+    },
+    {
+      "code": "6112052003",
+      "name": "Teluk Nibung"
+    },
+    {
+      "code": "6112052004",
+      "name": "Padang Tikar Satu"
+    },
+    {
+      "code": "6112052005",
+      "name": "Padang Tikar Dua"
+    },
+    {
+      "code": "6112052006",
+      "name": "Tasik Malaya"
+    },
+    {
+      "code": "6112052007",
+      "name": "Sungai Besar"
+    },
+    {
+      "code": "6112052008",
+      "name": "Sungai Jawi"
+    },
+    {
+      "code": "6112052009",
+      "name": "Nipah Panjang"
+    },
+    {
+      "code": "6112052010",
+      "name": "Ambarawa"
+    },
+    {
+      "code": "6112052011",
+      "name": "Tanjung Harapan"
+    },
+    {
+      "code": "6112052012",
+      "name": "Sungai Kerawang"
+    },
+    {
+      "code": "6112052013",
+      "name": "Sumber Agung"
+    },
+    {
+      "code": "6112052014",
+      "name": "Muara Tiga"
+    },
+    {
+      "code": "6112052015",
+      "name": "Medan Mas"
+    }
+  ],
+  "611206": [
+    {
+      "code": "6112062001",
+      "name": "Kubu"
+    },
+    {
+      "code": "6112062002",
+      "name": "Olak-Olak Kubu"
+    },
+    {
+      "code": "6112062003",
+      "name": "Sungai Selamat"
+    },
+    {
+      "code": "6112062004",
+      "name": "Sungai Bemban"
+    },
+    {
+      "code": "6112062005",
+      "name": "Pinang Luar"
+    },
+    {
+      "code": "6112062006",
+      "name": "Seruat Dua"
+    },
+    {
+      "code": "6112062007",
+      "name": "Seruat Tiga"
+    },
+    {
+      "code": "6112062008",
+      "name": "Dabong"
+    },
+    {
+      "code": "6112062009",
+      "name": "Ambawang"
+    },
+    {
+      "code": "6112062010",
+      "name": "Sepakat Baru"
+    },
+    {
+      "code": "6112062011",
+      "name": "Kampung Baru"
+    },
+    {
+      "code": "6112062012",
+      "name": "Air Putih"
+    },
+    {
+      "code": "6112062013",
+      "name": "Teluk Nangka"
+    },
+    {
+      "code": "6112062014",
+      "name": "Jangkang Satu"
+    },
+    {
+      "code": "6112062015",
+      "name": "Jangkang Dua"
+    },
+    {
+      "code": "6112062016",
+      "name": "Pinang Dalam"
+    },
+    {
+      "code": "6112062017",
+      "name": "Sungai Terus"
+    },
+    {
+      "code": "6112062018",
+      "name": "Pelita Jaya"
+    },
+    {
+      "code": "6112062019",
+      "name": "Mengkalang"
+    },
+    {
+      "code": "6112062020",
+      "name": "Mengkalang Jambu"
+    }
+  ],
+  "611207": [
+    {
+      "code": "6112072001",
+      "name": "Rasau Jaya Umum"
+    },
+    {
+      "code": "6112072002",
+      "name": "Rasau Jaya Satu"
+    },
+    {
+      "code": "6112072003",
+      "name": "Rasau Jaya Dua"
+    },
+    {
+      "code": "6112072004",
+      "name": "Rasau Jaya Tiga"
+    },
+    {
+      "code": "6112072005",
+      "name": "Bintang Mas"
+    },
+    {
+      "code": "6112072006",
+      "name": "Pematang Tujuh"
+    }
+  ],
+  "611208": [
+    {
+      "code": "6112082001",
+      "name": "Teluk Pakedai Hulu"
+    },
+    {
+      "code": "6112082002",
+      "name": "Teluk Pakedai Satu"
+    },
+    {
+      "code": "6112082003",
+      "name": "Teluk Pakedai Dua"
+    },
+    {
+      "code": "6112082004",
+      "name": "Kuala Karang"
+    },
+    {
+      "code": "6112082005",
+      "name": "Seruat Satu"
+    },
+    {
+      "code": "6112082006",
+      "name": "Sungai Deras"
+    },
+    {
+      "code": "6112082007",
+      "name": "Selat Remis"
+    },
+    {
+      "code": "6112082008",
+      "name": "Madura"
+    },
+    {
+      "code": "6112082009",
+      "name": "Pasir Putih"
+    },
+    {
+      "code": "6112082010",
+      "name": "Teluk Gelam"
+    },
+    {
+      "code": "6112082011",
+      "name": "Tanjung Bunga"
+    },
+    {
+      "code": "6112082012",
+      "name": "Sungai Nibung"
+    },
+    {
+      "code": "6112082013",
+      "name": "Arus Deras"
+    },
+    {
+      "code": "6112082014",
+      "name": "Sungai Nipah"
+    }
+  ],
+  "611209": [
+    {
+      "code": "6112092001",
+      "name": "Sungai Kakap"
+    },
+    {
+      "code": "6112092002",
+      "name": "Sungai Itik"
+    },
+    {
+      "code": "6112092003",
+      "name": "Jeruju Besar"
+    },
+    {
+      "code": "6112092004",
+      "name": "Sungai Kupah"
+    },
+    {
+      "code": "6112092005",
+      "name": "Sungai Rengas"
+    },
+    {
+      "code": "6112092006",
+      "name": "Pal Sembilan"
+    },
+    {
+      "code": "6112092007",
+      "name": "Sungai Belidak"
+    },
+    {
+      "code": "6112092008",
+      "name": "Kalimas"
+    },
+    {
+      "code": "6112092009",
+      "name": "Punggur Kecil"
+    },
+    {
+      "code": "6112092010",
+      "name": "Punggur Besar"
+    },
+    {
+      "code": "6112092011",
+      "name": "Tanjung Saleh"
+    },
+    {
+      "code": "6112092012",
+      "name": "Sepuk Laut"
+    },
+    {
+      "code": "6112092013",
+      "name": "Punggur Kapuas"
+    },
+    {
+      "code": "6112092014",
+      "name": "Rengas Kapuas"
+    },
+    {
+      "code": "6112092015",
+      "name": "Parit Keladi"
+    }
+  ]
 }

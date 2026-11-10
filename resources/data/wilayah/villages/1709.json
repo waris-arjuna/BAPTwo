@@ -1,0 +1,596 @@
+{
+  "170901": [
+    {
+      "code": "1709012001",
+      "name": "Taba Terunjam"
+    },
+    {
+      "code": "1709012002",
+      "name": "Talang Empat"
+    },
+    {
+      "code": "1709012003",
+      "name": "Padang Tambak"
+    },
+    {
+      "code": "1709012004",
+      "name": "Durian Demang"
+    },
+    {
+      "code": "1709012005",
+      "name": "Pelajau"
+    },
+    {
+      "code": "1709012007",
+      "name": "Dusun Baru II"
+    },
+    {
+      "code": "1709012008",
+      "name": "Penanding"
+    },
+    {
+      "code": "1709012009",
+      "name": "Karang Tinggi"
+    },
+    {
+      "code": "1709012010",
+      "name": "Renah Lebar"
+    },
+    {
+      "code": "1709012011",
+      "name": "Kancing"
+    },
+    {
+      "code": "1709012012",
+      "name": "Ujung Karang"
+    },
+    {
+      "code": "1709012013",
+      "name": "Taba Mutung"
+    },
+    {
+      "code": "1709012015",
+      "name": "Renah Semanek"
+    }
+  ],
+  "170902": [
+    {
+      "code": "1709022001",
+      "name": "Air Sebakul"
+    },
+    {
+      "code": "1709022004",
+      "name": "Taba Pasmah"
+    },
+    {
+      "code": "1709022005",
+      "name": "Kembang Seri"
+    },
+    {
+      "code": "1709022006",
+      "name": "Tengah Padang"
+    },
+    {
+      "code": "1709022007",
+      "name": "Jayakarta"
+    },
+    {
+      "code": "1709022008",
+      "name": "Nakau"
+    },
+    {
+      "code": "1709022009",
+      "name": "Pulau Panggung"
+    },
+    {
+      "code": "1709022014",
+      "name": "Jum'at"
+    },
+    {
+      "code": "1709022015",
+      "name": "Padang Ulak Tanjung"
+    },
+    {
+      "code": "1709022017",
+      "name": "Air Putih"
+    }
+  ],
+  "170903": [
+    {
+      "code": "1709032009",
+      "name": "Talang Pauh"
+    },
+    {
+      "code": "1709032010",
+      "name": "Srikaton"
+    },
+    {
+      "code": "1709032011",
+      "name": "Pekik Nyaring"
+    },
+    {
+      "code": "1709032012",
+      "name": "Pasar Pedati"
+    },
+    {
+      "code": "1709032013",
+      "name": "Sunda Kelapa"
+    },
+    {
+      "code": "1709032014",
+      "name": "Pondok Kelapa"
+    },
+    {
+      "code": "1709032015",
+      "name": "Padang Betuah"
+    },
+    {
+      "code": "1709032016",
+      "name": "Sidorejo"
+    },
+    {
+      "code": "1709032017",
+      "name": "Sidodadi"
+    },
+    {
+      "code": "1709032018",
+      "name": "Talang Boseng"
+    },
+    {
+      "code": "1709032019",
+      "name": "Pagar Dewa"
+    },
+    {
+      "code": "1709032020",
+      "name": "Kembang Ayun"
+    },
+    {
+      "code": "1709032021",
+      "name": "Panca Mukti"
+    },
+    {
+      "code": "1709032022",
+      "name": "Sri Kuncoro"
+    },
+    {
+      "code": "1709032023",
+      "name": "Bintang Selatan"
+    },
+    {
+      "code": "1709032024",
+      "name": "Abu Sakim"
+    },
+    {
+      "code": "1709032025",
+      "name": "Harapan"
+    }
+  ],
+  "170904": [
+    {
+      "code": "1709042002",
+      "name": "Aturan Mumpo"
+    },
+    {
+      "code": "1709042003",
+      "name": "Talang Tengah II"
+    },
+    {
+      "code": "1709042004",
+      "name": "Kota Titik"
+    },
+    {
+      "code": "1709042007",
+      "name": "Senabah"
+    },
+    {
+      "code": "1709042015",
+      "name": "Air Kotok"
+    },
+    {
+      "code": "1709042016",
+      "name": "Batu Beriang"
+    },
+    {
+      "code": "1709042017",
+      "name": "Pematang Tiga"
+    },
+    {
+      "code": "1709042018",
+      "name": "Tiambang"
+    },
+    {
+      "code": "1709042019",
+      "name": "Kebun Lebar"
+    },
+    {
+      "code": "1709042020",
+      "name": "Tanjung Kepahyang"
+    },
+    {
+      "code": "1709042021",
+      "name": "Pematang Tiga Lama"
+    },
+    {
+      "code": "1709042022",
+      "name": "Aturan Mumpo II"
+    },
+    {
+      "code": "1709042023",
+      "name": "Genting Dabuk"
+    }
+  ],
+  "170905": [
+    {
+      "code": "1709052006",
+      "name": "Temiang"
+    },
+    {
+      "code": "1709052008",
+      "name": "Taba Renah"
+    },
+    {
+      "code": "1709052009",
+      "name": "Kerta Pati"
+    },
+    {
+      "code": "1709052010",
+      "name": "Pagar Jati"
+    },
+    {
+      "code": "1709052012",
+      "name": "Karang Are"
+    },
+    {
+      "code": "1709052013",
+      "name": "Datar Penokat"
+    },
+    {
+      "code": "1709052014",
+      "name": "Layang Lekat"
+    },
+    {
+      "code": "1709052015",
+      "name": "Tumbuk"
+    },
+    {
+      "code": "1709052016",
+      "name": "Talang Curup"
+    },
+    {
+      "code": "1709052017",
+      "name": "Rena Kandis"
+    },
+    {
+      "code": "1709052018",
+      "name": "Arga Indah I"
+    },
+    {
+      "code": "1709052022",
+      "name": "Keroya"
+    },
+    {
+      "code": "1709052023",
+      "name": "Kertapati Mudik"
+    },
+    {
+      "code": "1709052024",
+      "name": "Rena Jaya"
+    }
+  ],
+  "170906": [
+    {
+      "code": "1709061007",
+      "name": "Taba Penanjung"
+    },
+    {
+      "code": "1709062002",
+      "name": "Tanjung Raman"
+    },
+    {
+      "code": "1709062003",
+      "name": "Sukarami"
+    },
+    {
+      "code": "1709062004",
+      "name": "Karang Tengah"
+    },
+    {
+      "code": "1709062005",
+      "name": "Lubuk Sini"
+    },
+    {
+      "code": "1709062008",
+      "name": "Taba Teret"
+    },
+    {
+      "code": "1709062009",
+      "name": "Surau"
+    },
+    {
+      "code": "1709062010",
+      "name": "Rindu Hati"
+    },
+    {
+      "code": "1709062011",
+      "name": "Tanjung Heran"
+    },
+    {
+      "code": "1709062012",
+      "name": "Datar Lebar"
+    },
+    {
+      "code": "1709062013",
+      "name": "Penum"
+    },
+    {
+      "code": "1709062023",
+      "name": "Bajak I"
+    },
+    {
+      "code": "1709062024",
+      "name": "Taba Baru"
+    }
+  ],
+  "170907": [
+    {
+      "code": "1709072001",
+      "name": "Jambu"
+    },
+    {
+      "code": "1709072002",
+      "name": "Penembang"
+    },
+    {
+      "code": "1709072003",
+      "name": "Talang Ambung"
+    },
+    {
+      "code": "1709072004",
+      "name": "Taba Durian Sebakul"
+    },
+    {
+      "code": "1709072005",
+      "name": "Lubuk Unen"
+    },
+    {
+      "code": "1709072006",
+      "name": "Pungguk Ketupak"
+    },
+    {
+      "code": "1709072007",
+      "name": "Pungguk Beringin"
+    },
+    {
+      "code": "1709072008",
+      "name": "Ulak Lebar"
+    },
+    {
+      "code": "1709072009",
+      "name": "Kelindang"
+    },
+    {
+      "code": "1709072010",
+      "name": "Bajak II"
+    },
+    {
+      "code": "1709072011",
+      "name": "Lubuk Unen Baru"
+    },
+    {
+      "code": "1709072012",
+      "name": "Padang Kedeper"
+    },
+    {
+      "code": "1709072013",
+      "name": "Kelindang Atas"
+    }
+  ],
+  "170908": [
+    {
+      "code": "1709082001",
+      "name": "Komering"
+    },
+    {
+      "code": "1709082002",
+      "name": "Bajak Tiga"
+    },
+    {
+      "code": "1709082003",
+      "name": "Rajak Besi"
+    },
+    {
+      "code": "1709082004",
+      "name": "Punjung"
+    },
+    {
+      "code": "1709082005",
+      "name": "Susup"
+    },
+    {
+      "code": "1709082006",
+      "name": "Arga Indah II"
+    },
+    {
+      "code": "1709082007",
+      "name": "Curup"
+    },
+    {
+      "code": "1709082008",
+      "name": "Karang Panggung"
+    },
+    {
+      "code": "1709082009",
+      "name": "Lubuk Pendam"
+    },
+    {
+      "code": "1709082010",
+      "name": "Lubuk Puar"
+    },
+    {
+      "code": "1709082011",
+      "name": "Durian Lebar"
+    },
+    {
+      "code": "1709082012",
+      "name": "Pagar Agung"
+    },
+    {
+      "code": "1709082013",
+      "name": "Pungguk Jaya"
+    },
+    {
+      "code": "1709082014",
+      "name": "Taba Gemantung"
+    },
+    {
+      "code": "1709082015",
+      "name": "Pagar Besi"
+    }
+  ],
+  "170909": [
+    {
+      "code": "1709092001",
+      "name": "Pondok Kubang"
+    },
+    {
+      "code": "1709092002",
+      "name": "Batu Raja"
+    },
+    {
+      "code": "1709092003",
+      "name": "Dusun Anyar"
+    },
+    {
+      "code": "1709092004",
+      "name": "Tanjung Dalam"
+    },
+    {
+      "code": "1709092005",
+      "name": "Talang Tengah I"
+    },
+    {
+      "code": "1709092006",
+      "name": "Paku Haji"
+    },
+    {
+      "code": "1709092007",
+      "name": "Tanjung Terdana"
+    },
+    {
+      "code": "1709092008",
+      "name": "Linggar Galing"
+    },
+    {
+      "code": "1709092009",
+      "name": "Dusun Baru I"
+    },
+    {
+      "code": "1709092010",
+      "name": "Harapan Makmur"
+    },
+    {
+      "code": "1709092011",
+      "name": "Margo Mulyo"
+    },
+    {
+      "code": "1709092012",
+      "name": "Taba Jambu"
+    }
+  ],
+  "170910": [
+    {
+      "code": "1709102001",
+      "name": "Sekayun"
+    },
+    {
+      "code": "1709102002",
+      "name": "Sekayun Mudik"
+    },
+    {
+      "code": "1709102003",
+      "name": "Sekayun Hilir"
+    },
+    {
+      "code": "1709102004",
+      "name": "Talang Donok"
+    },
+    {
+      "code": "1709102005",
+      "name": "Taba Tengah"
+    },
+    {
+      "code": "1709102006",
+      "name": "Padang Berunai"
+    },
+    {
+      "code": "1709102007",
+      "name": "Lubuk Langkap"
+    },
+    {
+      "code": "1709102008",
+      "name": "Air Napal"
+    },
+    {
+      "code": "1709102009",
+      "name": "Genting"
+    },
+    {
+      "code": "1709102010",
+      "name": "Talang Panjang"
+    },
+    {
+      "code": "1709102011",
+      "name": "Bang Haji"
+    },
+    {
+      "code": "1709102012",
+      "name": "Sungkai Berayun"
+    }
+  ],
+  "170911": [
+    {
+      "code": "1709112001",
+      "name": "Pagar Gunung"
+    },
+    {
+      "code": "1709112002",
+      "name": "Karang Nanding"
+    },
+    {
+      "code": "1709112003",
+      "name": "Semidang"
+    },
+    {
+      "code": "1709112004",
+      "name": "Gajah Mati"
+    },
+    {
+      "code": "1709112005",
+      "name": "Padang Siring"
+    },
+    {
+      "code": "1709112006",
+      "name": "Lagan Bungin"
+    },
+    {
+      "code": "1709112007",
+      "name": "Pagar Jati"
+    },
+    {
+      "code": "1709112008",
+      "name": "Taba Lagan"
+    },
+    {
+      "code": "1709112009",
+      "name": "Lagan"
+    },
+    {
+      "code": "1709112010",
+      "name": "Bukit"
+    },
+    {
+      "code": "1709112011",
+      "name": "Kota Niur"
+    }
+  ]
+}

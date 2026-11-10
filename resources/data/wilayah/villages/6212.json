@@ -1,0 +1,522 @@
+{
+  "621201": [
+    {
+      "code": "6212011012",
+      "name": "Puruk Cahu"
+    },
+    {
+      "code": "6212011013",
+      "name": "Beriwit"
+    },
+    {
+      "code": "6212012001",
+      "name": "Dirung"
+    },
+    {
+      "code": "6212012002",
+      "name": "Malasan"
+    },
+    {
+      "code": "6212012003",
+      "name": "Batu Putih"
+    },
+    {
+      "code": "6212012004",
+      "name": "Mangkahui"
+    },
+    {
+      "code": "6212012005",
+      "name": "Panu'ut"
+    },
+    {
+      "code": "6212012006",
+      "name": "Muara Untu"
+    },
+    {
+      "code": "6212012007",
+      "name": "Muara Ja'an"
+    },
+    {
+      "code": "6212012008",
+      "name": "Bahitom"
+    },
+    {
+      "code": "6212012009",
+      "name": "Danau Usung"
+    },
+    {
+      "code": "6212012010",
+      "name": "Juking Pajang"
+    },
+    {
+      "code": "6212012011",
+      "name": "Muara Sumpoi"
+    },
+    {
+      "code": "6212012014",
+      "name": "Muara Bumban"
+    },
+    {
+      "code": "6212012015",
+      "name": "Penyang"
+    }
+  ],
+  "621202": [
+    {
+      "code": "6212021014",
+      "name": "Saripoi"
+    },
+    {
+      "code": "6212022007",
+      "name": "Sungai Lunuk"
+    },
+    {
+      "code": "6212022008",
+      "name": "Konut"
+    },
+    {
+      "code": "6212022009",
+      "name": "Belawan"
+    },
+    {
+      "code": "6212022010",
+      "name": "Mangkolisoi"
+    },
+    {
+      "code": "6212022011",
+      "name": "Kalang Kaluh"
+    },
+    {
+      "code": "6212022012",
+      "name": "Mantiat Pari"
+    },
+    {
+      "code": "6212022013",
+      "name": "Olung Ulu"
+    },
+    {
+      "code": "6212022015",
+      "name": "Puruk Batu"
+    },
+    {
+      "code": "6212022016",
+      "name": "Olung Siron"
+    },
+    {
+      "code": "6212022017",
+      "name": "Tino Talih"
+    },
+    {
+      "code": "6212022018",
+      "name": "Olung Nango"
+    },
+    {
+      "code": "6212022019",
+      "name": "Mahanyan"
+    },
+    {
+      "code": "6212022020",
+      "name": "Dirung Bakung"
+    },
+    {
+      "code": "6212022021",
+      "name": "Tabulang"
+    },
+    {
+      "code": "6212022022",
+      "name": "Cangkang"
+    },
+    {
+      "code": "6212022023",
+      "name": "Olung Dojou"
+    },
+    {
+      "code": "6212022024",
+      "name": "Doan Arung"
+    },
+    {
+      "code": "6212022025",
+      "name": "Muwun"
+    },
+    {
+      "code": "6212022026",
+      "name": "Nono Kliwon"
+    },
+    {
+      "code": "6212022027",
+      "name": "Kolam"
+    },
+    {
+      "code": "6212022028",
+      "name": "Saruhung"
+    },
+    {
+      "code": "6212022029",
+      "name": "Olung Soloi"
+    },
+    {
+      "code": "6212022030",
+      "name": "Tokung"
+    },
+    {
+      "code": "6212022031",
+      "name": "Olung Balo"
+    },
+    {
+      "code": "6212022032",
+      "name": "Karali"
+    },
+    {
+      "code": "6212022033",
+      "name": "Osom Tompok"
+    }
+  ],
+  "621203": [
+    {
+      "code": "6212031003",
+      "name": "Muara Laung I"
+    },
+    {
+      "code": "6212031006",
+      "name": "Muara Tuhup"
+    },
+    {
+      "code": "6212031031",
+      "name": "Batu Bua I"
+    },
+    {
+      "code": "6212032001",
+      "name": "Batu Tuhup"
+    },
+    {
+      "code": "6212032002",
+      "name": "Tumbang Bahan"
+    },
+    {
+      "code": "6212032004",
+      "name": "Muara Laung II"
+    },
+    {
+      "code": "6212032005",
+      "name": "Beras Balange"
+    },
+    {
+      "code": "6212032010",
+      "name": "Pelaci"
+    },
+    {
+      "code": "6212032011",
+      "name": "Biha"
+    },
+    {
+      "code": "6212032012",
+      "name": "Dirung Pundu"
+    },
+    {
+      "code": "6212032013",
+      "name": "Dirung Pinang"
+    },
+    {
+      "code": "6212032014",
+      "name": "Muara Tupuh"
+    },
+    {
+      "code": "6212032015",
+      "name": "Narui"
+    },
+    {
+      "code": "6212032016",
+      "name": "Tumbang Bana"
+    },
+    {
+      "code": "6212032017",
+      "name": "Lakutan"
+    },
+    {
+      "code": "6212032018",
+      "name": "Tawai Haui"
+    },
+    {
+      "code": "6212032026",
+      "name": "Penda Siron"
+    },
+    {
+      "code": "6212032027",
+      "name": "Muara Maruwei I"
+    },
+    {
+      "code": "6212032028",
+      "name": "Muara Maruwei II"
+    },
+    {
+      "code": "6212032029",
+      "name": "Beralang"
+    },
+    {
+      "code": "6212032030",
+      "name": "Kalang Dohong"
+    },
+    {
+      "code": "6212032032",
+      "name": "Batu Bua II"
+    },
+    {
+      "code": "6212032033",
+      "name": "Tahujan Laung"
+    },
+    {
+      "code": "6212032034",
+      "name": "Tumbang Bondang"
+    },
+    {
+      "code": "6212032035",
+      "name": "Tumbang Tonduk"
+    },
+    {
+      "code": "6212032037",
+      "name": "Batu Karang"
+    }
+  ],
+  "621204": [
+    {
+      "code": "6212041004",
+      "name": "Muara Bakanon"
+    },
+    {
+      "code": "6212041006",
+      "name": "Tumbang Lahung"
+    },
+    {
+      "code": "6212042001",
+      "name": "Sungai Gula"
+    },
+    {
+      "code": "6212042002",
+      "name": "Sungai Batang"
+    },
+    {
+      "code": "6212042003",
+      "name": "Tumbang Salio"
+    },
+    {
+      "code": "6212042005",
+      "name": "Purnama"
+    },
+    {
+      "code": "6212042007",
+      "name": "Sungai Lobang"
+    },
+    {
+      "code": "6212042008",
+      "name": "Pantai Laga"
+    },
+    {
+      "code": "6212042009",
+      "name": "Baratu"
+    },
+    {
+      "code": "6212042010",
+      "name": "Juking Sopan"
+    },
+    {
+      "code": "6212042011",
+      "name": "Muara Babuat"
+    },
+    {
+      "code": "6212042018",
+      "name": "Sungai Bakanon"
+    }
+  ],
+  "621205": [
+    {
+      "code": "6212051004",
+      "name": "Tumbang Kunyi"
+    },
+    {
+      "code": "6212052001",
+      "name": "Kalapeh Baru"
+    },
+    {
+      "code": "6212052002",
+      "name": "Tumbang Masao"
+    },
+    {
+      "code": "6212052003",
+      "name": "Batu Makap"
+    },
+    {
+      "code": "6212052005",
+      "name": "Olong Liko"
+    },
+    {
+      "code": "6212052006",
+      "name": "Teluk Jolo"
+    },
+    {
+      "code": "6212052007",
+      "name": "Laas Baru"
+    },
+    {
+      "code": "6212052018",
+      "name": "Tumbang Molut"
+    },
+    {
+      "code": "6212052020",
+      "name": "Tumbang Tuan"
+    }
+  ],
+  "621206": [
+    {
+      "code": "6212062001",
+      "name": "Bumban Tuhup"
+    },
+    {
+      "code": "6212062002",
+      "name": "Makunjung"
+    },
+    {
+      "code": "6212062003",
+      "name": "Dirung Sararong"
+    },
+    {
+      "code": "6212062004",
+      "name": "Kohong"
+    },
+    {
+      "code": "6212062005",
+      "name": "Hingan Tokung"
+    },
+    {
+      "code": "6212062006",
+      "name": "Liang Nyaling"
+    },
+    {
+      "code": "6212062007",
+      "name": "Tumbang Bauh"
+    },
+    {
+      "code": "6212062008",
+      "name": "Tumbang Masalo"
+    },
+    {
+      "code": "6212062009",
+      "name": "Batu Tojah"
+    },
+    {
+      "code": "6212062010",
+      "name": "Tumbang Baloi"
+    },
+    {
+      "code": "6212062011",
+      "name": "Cinta Budiman"
+    }
+  ],
+  "621207": [
+    {
+      "code": "6212072001",
+      "name": "Oreng"
+    },
+    {
+      "code": "6212072002",
+      "name": "Olung Muro"
+    },
+    {
+      "code": "6212072003",
+      "name": "Olung Hanangan"
+    },
+    {
+      "code": "6212072004",
+      "name": "Dirung Lingkin"
+    },
+    {
+      "code": "6212072005",
+      "name": "Datah Kotou"
+    },
+    {
+      "code": "6212072006",
+      "name": "Tahujan Ontu"
+    },
+    {
+      "code": "6212072007",
+      "name": "Puruk Kambang"
+    }
+  ],
+  "621208": [
+    {
+      "code": "6212082001",
+      "name": "Batu Mirau"
+    },
+    {
+      "code": "6212082002",
+      "name": "Tambelum"
+    },
+    {
+      "code": "6212082003",
+      "name": "Tumbang Bantian"
+    },
+    {
+      "code": "6212082004",
+      "name": "Tumbang Saan"
+    },
+    {
+      "code": "6212082005",
+      "name": "Tumbang Kolon"
+    },
+    {
+      "code": "6212082006",
+      "name": "Tumbang Apat"
+    }
+  ],
+  "621209": [
+    {
+      "code": "6212092001",
+      "name": "Tumbang Tohan"
+    },
+    {
+      "code": "6212092002",
+      "name": "Tumbang Naan"
+    },
+    {
+      "code": "6212092003",
+      "name": "Muara Joloi I"
+    },
+    {
+      "code": "6212092004",
+      "name": "Muara Joloi II"
+    },
+    {
+      "code": "6212092005",
+      "name": "Parahau"
+    },
+    {
+      "code": "6212092006",
+      "name": "Tumbang Jojang"
+    },
+    {
+      "code": "6212092007",
+      "name": "Takajung"
+    }
+  ],
+  "621210": [
+    {
+      "code": "6212102001",
+      "name": "Tumbang Tujang"
+    },
+    {
+      "code": "6212102002",
+      "name": "Tumbang Olong I"
+    },
+    {
+      "code": "6212102003",
+      "name": "Kalasin"
+    },
+    {
+      "code": "6212102004",
+      "name": "Tumbang Topus"
+    },
+    {
+      "code": "6212102005",
+      "name": "Tumbang Olong II"
+    }
+  ]
+}

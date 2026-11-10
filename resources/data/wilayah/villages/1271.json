@@ -1,224 +1,648 @@
 {
-    "127101": [
-        {
-            "code": "1271011001",
-            "name": "Pasar Baru"
-        },
-        {
-            "code": "1271011002",
-            "name": "Pusat Pasar"
-        },
-        {
-            "code": "1271011003",
-            "name": "Sei Rengas I"
-        },
-        {
-            "code": "1271011004",
-            "name": "Mesjid"
-        },
-        {
-            "code": "1271011005",
-            "name": "Pandau Hulu I"
-        },
-        {
-            "code": "1271011006",
-            "name": "Kotamatsum III"
-        },
-        {
-            "code": "1271011007",
-            "name": "Pasar Merah Barat"
-        },
-        {
-            "code": "1271011008",
-            "name": "Teladan Timur"
-        },
-        {
-            "code": "1271011009",
-            "name": "Teladan Barat"
-        },
-        {
-            "code": "1271011010",
-            "name": "Sudirejo 1"
-        },
-        {
-            "code": "1271011011",
-            "name": "Sudirejo II"
-        },
-        {
-            "code": "1271011012",
-            "name": "Sitirejo I"
-        }
-    ],
-    "127102": [
-        {
-            "code": "1271021001",
-            "name": "Lalang"
-        },
-        {
-            "code": "1271021002",
-            "name": "Sei Sikambing B"
-        },
-        {
-            "code": "1271021003",
-            "name": "Sunggal"
-        },
-        {
-            "code": "1271021004",
-            "name": "Babura Sunggal"
-        },
-        {
-            "code": "1271021005",
-            "name": "Tanjung Rejo"
-        },
-        {
-            "code": "1271021006",
-            "name": "Simpang Tanjung"
-        }
-    ],
-    "127103": [
-        {
-            "code": "1271031001",
-            "name": "Helvetia"
-        },
-        {
-            "code": "1271031002",
-            "name": "Helvetia Tengah"
-        },
-        {
-            "code": "1271031003",
-            "name": "Helvetia Timur"
-        },
-        {
-            "code": "1271031004",
-            "name": "Tanjung Gusta"
-        },
-        {
-            "code": "1271031005",
-            "name": "Cinta Damai"
-        },
-        {
-            "code": "1271031006",
-            "name": "Dwi Kora"
-        },
-        {
-            "code": "1271031007",
-            "name": "Sei Sikambing C II"
-        }
-    ],
-    "127104": [
-        {
-            "code": "1271041001",
-            "name": "Tegal S Mandala I"
-        },
-        {
-            "code": "1271041002",
-            "name": "Tegal S Mandala II"
-        },
-        {
-            "code": "1271041003",
-            "name": "Tegal S Mandala III"
-        },
-        {
-            "code": "1271041004",
-            "name": "Denai"
-        },
-        {
-            "code": "1271041005",
-            "name": "Binjai"
-        },
-        {
-            "code": "1271041006",
-            "name": "Medan Tenggara"
-        }
-    ],
-    "127105": [
-        {
-            "code": "1271051001",
-            "name": "Kesawan"
-        },
-        {
-            "code": "1271051002",
-            "name": "Silalas"
-        },
-        {
-            "code": "1271051003",
-            "name": "Glugur Kota"
-        },
-        {
-            "code": "1271051004",
-            "name": "Pulo Berayan Kota"
-        },
-        {
-            "code": "1271051005",
-            "name": "Sei Agul"
-        },
-        {
-            "code": "1271051006",
-            "name": "Karang Berombak"
-        }
-    ],
-    "127106": [
-        {
-            "code": "1271061001",
-            "name": "Titipapan"
-        },
-        {
-            "code": "1271061002",
-            "name": "Tanjung Mulia Hilir"
-        },
-        {
-            "code": "1271061003",
-            "name": "Tanjung Mulya"
-        },
-        {
-            "code": "1271061004",
-            "name": "Kota Bangun"
-        },
-        {
-            "code": "1271061005",
-            "name": "Mabar"
-        },
-        {
-            "code": "1271061006",
-            "name": "Mabar Hilir"
-        }
-    ],
-    "127107": [
-        {
-            "code": "1271071001",
-            "name": "Tanjung Selamat"
-        },
-        {
-            "code": "1271071002",
-            "name": "Simpang Selayang"
-        },
-        {
-            "code": "1271071003",
-            "name": "Namo Gajah"
-        },
-        {
-            "code": "1271071004",
-            "name": "Kemenangan Tani"
-        },
-        {
-            "code": "1271071005",
-            "name": "Laucih"
-        },
-        {
-            "code": "1271071006",
-            "name": "Sidomulyo"
-        },
-        {
-            "code": "1271071007",
-            "name": "Ladang Bambu"
-        },
-        {
-            "code": "1271071008",
-            "name": "Simalingkar B"
-        },
-        {
-            "code": "1271071009",
-            "name": "Mangga"
-        }
-    ]
+  "127101": [
+    {
+      "code": "1271011001",
+      "name": "Pasar Baru"
+    },
+    {
+      "code": "1271011002",
+      "name": "Pusat Pasar"
+    },
+    {
+      "code": "1271011003",
+      "name": "Sei Rengas I"
+    },
+    {
+      "code": "1271011004",
+      "name": "Mesjid"
+    },
+    {
+      "code": "1271011005",
+      "name": "Pandau Hulu I"
+    },
+    {
+      "code": "1271011006",
+      "name": "Kotamatsum III"
+    },
+    {
+      "code": "1271011007",
+      "name": "Pasar Merah Barat"
+    },
+    {
+      "code": "1271011008",
+      "name": "Teladan Timur"
+    },
+    {
+      "code": "1271011009",
+      "name": "Teladan Barat"
+    },
+    {
+      "code": "1271011010",
+      "name": "Sudirejo 1"
+    },
+    {
+      "code": "1271011011",
+      "name": "Sudirejo II"
+    },
+    {
+      "code": "1271011012",
+      "name": "Sitirejo I"
+    }
+  ],
+  "127102": [
+    {
+      "code": "1271021001",
+      "name": "Lalang"
+    },
+    {
+      "code": "1271021002",
+      "name": "Sei Sikambing B"
+    },
+    {
+      "code": "1271021003",
+      "name": "Sunggal"
+    },
+    {
+      "code": "1271021004",
+      "name": "Babura Sunggal"
+    },
+    {
+      "code": "1271021005",
+      "name": "Tanjung Rejo"
+    },
+    {
+      "code": "1271021006",
+      "name": "Simpang Tanjung"
+    }
+  ],
+  "127103": [
+    {
+      "code": "1271031001",
+      "name": "Helvetia"
+    },
+    {
+      "code": "1271031002",
+      "name": "Helvetia Tengah"
+    },
+    {
+      "code": "1271031003",
+      "name": "Helvetia Timur"
+    },
+    {
+      "code": "1271031004",
+      "name": "Tanjung Gusta"
+    },
+    {
+      "code": "1271031005",
+      "name": "Cinta Damai"
+    },
+    {
+      "code": "1271031006",
+      "name": "Dwi Kora"
+    },
+    {
+      "code": "1271031007",
+      "name": "Sei Sikambing C II"
+    }
+  ],
+  "127104": [
+    {
+      "code": "1271041001",
+      "name": "Tegal S Mandala I"
+    },
+    {
+      "code": "1271041002",
+      "name": "Tegal S Mandala II"
+    },
+    {
+      "code": "1271041003",
+      "name": "Tegal S Mandala III"
+    },
+    {
+      "code": "1271041004",
+      "name": "Denai"
+    },
+    {
+      "code": "1271041005",
+      "name": "Binjai"
+    },
+    {
+      "code": "1271041006",
+      "name": "Medan Tenggara"
+    }
+  ],
+  "127105": [
+    {
+      "code": "1271051001",
+      "name": "Kesawan"
+    },
+    {
+      "code": "1271051002",
+      "name": "Silalas"
+    },
+    {
+      "code": "1271051003",
+      "name": "Glugur Kota"
+    },
+    {
+      "code": "1271051004",
+      "name": "Pulo Berayan Kota"
+    },
+    {
+      "code": "1271051005",
+      "name": "Sei Agul"
+    },
+    {
+      "code": "1271051006",
+      "name": "Karang Berombak"
+    }
+  ],
+  "127106": [
+    {
+      "code": "1271061001",
+      "name": "Titipapan"
+    },
+    {
+      "code": "1271061002",
+      "name": "Tanjung Mulia Hilir"
+    },
+    {
+      "code": "1271061003",
+      "name": "Tanjung Mulya"
+    },
+    {
+      "code": "1271061004",
+      "name": "Kota Bangun"
+    },
+    {
+      "code": "1271061005",
+      "name": "Mabar"
+    },
+    {
+      "code": "1271061006",
+      "name": "Mabar Hilir"
+    }
+  ],
+  "127107": [
+    {
+      "code": "1271071001",
+      "name": "Tanjung Selamat"
+    },
+    {
+      "code": "1271071002",
+      "name": "Simpang Selayang"
+    },
+    {
+      "code": "1271071003",
+      "name": "Namo Gajah"
+    },
+    {
+      "code": "1271071004",
+      "name": "Kemenangan Tani"
+    },
+    {
+      "code": "1271071005",
+      "name": "Laucih"
+    },
+    {
+      "code": "1271071006",
+      "name": "Sidomulyo"
+    },
+    {
+      "code": "1271071007",
+      "name": "Ladang Bambu"
+    },
+    {
+      "code": "1271071008",
+      "name": "Simalingkar B"
+    },
+    {
+      "code": "1271071009",
+      "name": "Mangga"
+    }
+  ],
+  "127108": [
+    {
+      "code": "1271081001",
+      "name": "Belawan I"
+    },
+    {
+      "code": "1271081002",
+      "name": "Belawan II"
+    },
+    {
+      "code": "1271081003",
+      "name": "Belawan Bahagia"
+    },
+    {
+      "code": "1271081004",
+      "name": "Belawan Bahari"
+    },
+    {
+      "code": "1271081005",
+      "name": "Belawan Sicanang"
+    },
+    {
+      "code": "1271081006",
+      "name": "Bagan Deli"
+    }
+  ],
+  "127109": [
+    {
+      "code": "1271091001",
+      "name": "Amplas"
+    },
+    {
+      "code": "1271091002",
+      "name": "Sitirejo II"
+    },
+    {
+      "code": "1271091003",
+      "name": "Sitirejo III"
+    },
+    {
+      "code": "1271091004",
+      "name": "Harjosari I"
+    },
+    {
+      "code": "1271091005",
+      "name": "Harjosari II"
+    },
+    {
+      "code": "1271091006",
+      "name": "Timbang Deli"
+    },
+    {
+      "code": "1271091007",
+      "name": "Bangun Mulia"
+    }
+  ],
+  "127110": [
+    {
+      "code": "1271101001",
+      "name": "Sukaramai I"
+    },
+    {
+      "code": "1271101002",
+      "name": "Sukaramai II"
+    },
+    {
+      "code": "1271101003",
+      "name": "Sei Rengas II"
+    },
+    {
+      "code": "1271101004",
+      "name": "S. Rengas Permata"
+    },
+    {
+      "code": "1271101005",
+      "name": "Pandau Hulu II"
+    },
+    {
+      "code": "1271101006",
+      "name": "Kota Matsum I"
+    },
+    {
+      "code": "1271101007",
+      "name": "Kota Matsum II"
+    },
+    {
+      "code": "1271101008",
+      "name": "Kota Matsum IV"
+    },
+    {
+      "code": "1271101009",
+      "name": "Pasar Merah Timur"
+    },
+    {
+      "code": "1271101010",
+      "name": "Tegal Sari I"
+    },
+    {
+      "code": "1271101011",
+      "name": "Tegal Sari II"
+    },
+    {
+      "code": "1271101012",
+      "name": "Tegal Sari III"
+    }
+  ],
+  "127111": [
+    {
+      "code": "1271111001",
+      "name": "Suka Maju"
+    },
+    {
+      "code": "1271111002",
+      "name": "Titi Kuning"
+    },
+    {
+      "code": "1271111003",
+      "name": "Kedai Durian"
+    },
+    {
+      "code": "1271111004",
+      "name": "Pangkalan Mansur"
+    },
+    {
+      "code": "1271111005",
+      "name": "Gedung Johor"
+    },
+    {
+      "code": "1271111006",
+      "name": "Kwala Bekala"
+    }
+  ],
+  "127112": [
+    {
+      "code": "1271121001",
+      "name": "Labuhan Deli"
+    },
+    {
+      "code": "1271121002",
+      "name": "Rengas Pulau"
+    },
+    {
+      "code": "1271121003",
+      "name": "Terjun"
+    },
+    {
+      "code": "1271121004",
+      "name": "Tanah Enam Ratus"
+    },
+    {
+      "code": "1271121005",
+      "name": "Paya Pasir"
+    }
+  ],
+  "127113": [
+    {
+      "code": "1271131001",
+      "name": "Pekan Labuhan"
+    },
+    {
+      "code": "1271131002",
+      "name": "Sei Mati"
+    },
+    {
+      "code": "1271131003",
+      "name": "Besar"
+    },
+    {
+      "code": "1271131004",
+      "name": "Martubung"
+    },
+    {
+      "code": "1271131005",
+      "name": "Nelayan Indah"
+    },
+    {
+      "code": "1271131006",
+      "name": "Tangkahan"
+    }
+  ],
+  "127114": [
+    {
+      "code": "1271141001",
+      "name": "Indra Kasih"
+    },
+    {
+      "code": "1271141002",
+      "name": "Sidorejo Hilir"
+    },
+    {
+      "code": "1271141003",
+      "name": "Sidorejo"
+    },
+    {
+      "code": "1271141004",
+      "name": "Bantan"
+    },
+    {
+      "code": "1271141005",
+      "name": "Tembung"
+    },
+    {
+      "code": "1271141006",
+      "name": "Bandar Selamat"
+    },
+    {
+      "code": "1271141007",
+      "name": "Bantan Timur"
+    }
+  ],
+  "127115": [
+    {
+      "code": "1271151001",
+      "name": "Aur"
+    },
+    {
+      "code": "1271151002",
+      "name": "Hamdan"
+    },
+    {
+      "code": "1271151003",
+      "name": "Jati"
+    },
+    {
+      "code": "1271151004",
+      "name": "Sukaraja"
+    },
+    {
+      "code": "1271151005",
+      "name": "Sei Mati"
+    },
+    {
+      "code": "1271151006",
+      "name": "Kampung Baru"
+    }
+  ],
+  "127116": [
+    {
+      "code": "1271161001",
+      "name": "Madras Hulu"
+    },
+    {
+      "code": "1271161002",
+      "name": "Polonia"
+    },
+    {
+      "code": "1271161003",
+      "name": "Sari Rejo"
+    },
+    {
+      "code": "1271161004",
+      "name": "Suka Damai"
+    },
+    {
+      "code": "1271161005",
+      "name": "Anggrung"
+    }
+  ],
+  "127117": [
+    {
+      "code": "1271171001",
+      "name": "Petisah Hulu"
+    },
+    {
+      "code": "1271171002",
+      "name": "Babura"
+    },
+    {
+      "code": "1271171003",
+      "name": "Merdeka"
+    },
+    {
+      "code": "1271171004",
+      "name": "Darat"
+    },
+    {
+      "code": "1271171005",
+      "name": "Padang Bulan"
+    },
+    {
+      "code": "1271171006",
+      "name": "Titi Rante"
+    }
+  ],
+  "127118": [
+    {
+      "code": "1271181001",
+      "name": "Pandau Hilir"
+    },
+    {
+      "code": "1271181002",
+      "name": "Pahlawan"
+    },
+    {
+      "code": "1271181003",
+      "name": "Sei Kera Hilir I"
+    },
+    {
+      "code": "1271181004",
+      "name": "Sei Kera Hilir II"
+    },
+    {
+      "code": "1271181005",
+      "name": "Sei Kera Hulu"
+    },
+    {
+      "code": "1271181006",
+      "name": "Sidorame Timur"
+    },
+    {
+      "code": "1271181007",
+      "name": "Sidorame Barat I"
+    },
+    {
+      "code": "1271181008",
+      "name": "Sidorame Barat II"
+    },
+    {
+      "code": "1271181009",
+      "name": "Tegalrejo"
+    }
+  ],
+  "127119": [
+    {
+      "code": "1271191001",
+      "name": "Petisah Tengah"
+    },
+    {
+      "code": "1271191002",
+      "name": "Sekip"
+    },
+    {
+      "code": "1271191003",
+      "name": "Sei Sikambing D"
+    },
+    {
+      "code": "1271191004",
+      "name": "Sei Putih Barat"
+    },
+    {
+      "code": "1271191005",
+      "name": "Sei Putih Tengah"
+    },
+    {
+      "code": "1271191006",
+      "name": "Sei Putih Timur I"
+    },
+    {
+      "code": "1271191007",
+      "name": "Sei Putih Timur II"
+    }
+  ],
+  "127120": [
+    {
+      "code": "1271201001",
+      "name": "Gang Buntu"
+    },
+    {
+      "code": "1271201002",
+      "name": "Sidodadi"
+    },
+    {
+      "code": "1271201003",
+      "name": "Durian"
+    },
+    {
+      "code": "1271201004",
+      "name": "Glugur Darat I"
+    },
+    {
+      "code": "1271201005",
+      "name": "Glugur Darat II"
+    },
+    {
+      "code": "1271201006",
+      "name": "P Berayan Darat I"
+    },
+    {
+      "code": "1271201007",
+      "name": "P Berayan Darat II"
+    },
+    {
+      "code": "1271201008",
+      "name": "P Berayan Bengkel"
+    },
+    {
+      "code": "1271201009",
+      "name": "PB Bengkel Baru"
+    },
+    {
+      "code": "1271201010",
+      "name": "Perintis"
+    },
+    {
+      "code": "1271201011",
+      "name": "Gaharu"
+    }
+  ],
+  "127121": [
+    {
+      "code": "1271211001",
+      "name": "Asam Kumbang"
+    },
+    {
+      "code": "1271211002",
+      "name": "Tanjungsari"
+    },
+    {
+      "code": "1271211003",
+      "name": "P Bulan Selayang II"
+    },
+    {
+      "code": "1271211004",
+      "name": "Beringin"
+    },
+    {
+      "code": "1271211005",
+      "name": "P Bulan Selayang I"
+    },
+    {
+      "code": "1271211006",
+      "name": "Sempakata"
+    }
+  ]
 }

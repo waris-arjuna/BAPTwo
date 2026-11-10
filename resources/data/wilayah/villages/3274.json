@@ -1,24 +1,100 @@
 {
-    "327405": [
-        {
-            "code": "3274051001",
-            "name": "Pekiringan"
-        },
-        {
-            "code": "3274051002",
-            "name": "Sunyaragi"
-        },
-        {
-            "code": "3274051003",
-            "name": "Kesambi"
-        },
-        {
-            "code": "3274051004",
-            "name": "Drajat"
-        },
-        {
-            "code": "3274051005",
-            "name": "Karyamulya"
-        }
-    ]
+  "327401": [
+    {
+      "code": "3274011001",
+      "name": "Kejaksan"
+    },
+    {
+      "code": "3274011002",
+      "name": "Sukapura"
+    },
+    {
+      "code": "3274011003",
+      "name": "Kesenden"
+    },
+    {
+      "code": "3274011004",
+      "name": "Kebonbaru"
+    }
+  ],
+  "327402": [
+    {
+      "code": "3274021001",
+      "name": "Pegambiran"
+    },
+    {
+      "code": "3274021002",
+      "name": "Lemahwungkuk"
+    },
+    {
+      "code": "3274021003",
+      "name": "Kesepuhan"
+    },
+    {
+      "code": "3274021004",
+      "name": "Panjunan"
+    }
+  ],
+  "327403": [
+    {
+      "code": "3274031001",
+      "name": "Kalijaga"
+    },
+    {
+      "code": "3274031002",
+      "name": "Harjamukti"
+    },
+    {
+      "code": "3274031003",
+      "name": "Kecapi"
+    },
+    {
+      "code": "3274031004",
+      "name": "Larangan"
+    },
+    {
+      "code": "3274031005",
+      "name": "Argasunya"
+    }
+  ],
+  "327404": [
+    {
+      "code": "3274041001",
+      "name": "Jagasatru"
+    },
+    {
+      "code": "3274041002",
+      "name": "Pekalipan"
+    },
+    {
+      "code": "3274041003",
+      "name": "Pulasaren"
+    },
+    {
+      "code": "3274041004",
+      "name": "Pekalangan"
+    }
+  ],
+  "327405": [
+    {
+      "code": "3274051001",
+      "name": "Pekiringan"
+    },
+    {
+      "code": "3274051002",
+      "name": "Sunyaragi"
+    },
+    {
+      "code": "3274051003",
+      "name": "Kesambi"
+    },
+    {
+      "code": "3274051004",
+      "name": "Drajat"
+    },
+    {
+      "code": "3274051005",
+      "name": "Karyamulya"
+    }
+  ]
 }

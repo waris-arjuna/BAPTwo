@@ -1,0 +1,498 @@
+{
+  "140501": [
+    {
+      "code": "1405011010",
+      "name": "Ukui I"
+    },
+    {
+      "code": "1405012001",
+      "name": "Air Hitam"
+    },
+    {
+      "code": "1405012002",
+      "name": "Air Emas"
+    },
+    {
+      "code": "1405012003",
+      "name": "Bukit Gajah"
+    },
+    {
+      "code": "1405012004",
+      "name": "Bukit Jaya"
+    },
+    {
+      "code": "1405012005",
+      "name": "Kampung Baru"
+    },
+    {
+      "code": "1405012006",
+      "name": "Lubuk Kembang Bunga"
+    },
+    {
+      "code": "1405012007",
+      "name": "Lubuk Kembang Sari"
+    },
+    {
+      "code": "1405012008",
+      "name": "Silikuan Hulu"
+    },
+    {
+      "code": "1405012009",
+      "name": "Tri Mulya Jaya"
+    },
+    {
+      "code": "1405012011",
+      "name": "Ukui Dua"
+    },
+    {
+      "code": "1405012012",
+      "name": "Bagan Limau"
+    }
+  ],
+  "140502": [
+    {
+      "code": "1405021007",
+      "name": "Pangkalan Kerinci Barat"
+    },
+    {
+      "code": "1405021008",
+      "name": "Pangkalan Kerinci Kota"
+    },
+    {
+      "code": "1405021009",
+      "name": "Pangkalan Kerinci Timur"
+    },
+    {
+      "code": "1405022001",
+      "name": "Mekar Jaya"
+    },
+    {
+      "code": "1405022002",
+      "name": "Kuala Terusan"
+    },
+    {
+      "code": "1405022003",
+      "name": "Makmur"
+    },
+    {
+      "code": "1405022005",
+      "name": "Rantau Baru"
+    }
+  ],
+  "140503": [
+    {
+      "code": "1405031001",
+      "name": "Sorek I"
+    },
+    {
+      "code": "1405032002",
+      "name": "Sorek II"
+    },
+    {
+      "code": "1405032003",
+      "name": "Dundangan"
+    },
+    {
+      "code": "1405032004",
+      "name": "Palas"
+    },
+    {
+      "code": "1405032005",
+      "name": "Terantang Manuk"
+    },
+    {
+      "code": "1405032006",
+      "name": "Kemang"
+    },
+    {
+      "code": "1405032007",
+      "name": "Talau"
+    },
+    {
+      "code": "1405032008",
+      "name": "Tanjung Beringin"
+    },
+    {
+      "code": "1405032009",
+      "name": "Betung"
+    },
+    {
+      "code": "1405032010",
+      "name": "Kesuma"
+    },
+    {
+      "code": "1405032011",
+      "name": "Surya Indah"
+    },
+    {
+      "code": "1405032012",
+      "name": "Sialang Indah"
+    },
+    {
+      "code": "1405032013",
+      "name": "Beringin Indah"
+    },
+    {
+      "code": "1405032014",
+      "name": "Meranti"
+    },
+    {
+      "code": "1405032015",
+      "name": "Harapan Jaya"
+    },
+    {
+      "code": "1405032016",
+      "name": "Batang Kulim"
+    },
+    {
+      "code": "1405032017",
+      "name": "Sidomukti"
+    }
+  ],
+  "140504": [
+    {
+      "code": "1405041001",
+      "name": "Pangkalan Lesung"
+    },
+    {
+      "code": "1405042002",
+      "name": "Dusun Tua"
+    },
+    {
+      "code": "1405042003",
+      "name": "Genduang"
+    },
+    {
+      "code": "1405042004",
+      "name": "Mayang Sari"
+    },
+    {
+      "code": "1405042005",
+      "name": "Rawang Sari"
+    },
+    {
+      "code": "1405042006",
+      "name": "Mulya Subur"
+    },
+    {
+      "code": "1405042007",
+      "name": "Sari Mulya"
+    },
+    {
+      "code": "1405042008",
+      "name": "Sari Makmur"
+    },
+    {
+      "code": "1405042009",
+      "name": "Tanjung Kuyo"
+    },
+    {
+      "code": "1405042010",
+      "name": "Pesaguan"
+    }
+  ],
+  "140505": [
+    {
+      "code": "1405051001",
+      "name": "Langgam"
+    },
+    {
+      "code": "1405052002",
+      "name": "Tambak"
+    },
+    {
+      "code": "1405052003",
+      "name": "Penarikan"
+    },
+    {
+      "code": "1405052004",
+      "name": "Segati"
+    },
+    {
+      "code": "1405052005",
+      "name": "Sotol"
+    },
+    {
+      "code": "1405052006",
+      "name": "Pangkalan Gondai"
+    },
+    {
+      "code": "1405052007",
+      "name": "Langkan"
+    },
+    {
+      "code": "1405052008",
+      "name": "Padang Luas"
+    }
+  ],
+  "140506": [
+    {
+      "code": "1405061001",
+      "name": "Pelalawan"
+    },
+    {
+      "code": "1405062002",
+      "name": "Sungai Ara"
+    },
+    {
+      "code": "1405062003",
+      "name": "Ransang"
+    },
+    {
+      "code": "1405062004",
+      "name": "Kuala Tolam"
+    },
+    {
+      "code": "1405062005",
+      "name": "Sering"
+    },
+    {
+      "code": "1405062006",
+      "name": "Telayap"
+    },
+    {
+      "code": "1405062007",
+      "name": "Batang Nilo Kecil"
+    },
+    {
+      "code": "1405062008",
+      "name": "Delik"
+    },
+    {
+      "code": "1405062010",
+      "name": "Lalang Kabung"
+    }
+  ],
+  "140507": [
+    {
+      "code": "1405071001",
+      "name": "Kerumutan"
+    },
+    {
+      "code": "1405072002",
+      "name": "Pangkalan Panduk"
+    },
+    {
+      "code": "1405072003",
+      "name": "Pangkalan Tampui"
+    },
+    {
+      "code": "1405072004",
+      "name": "Bukit Lembah Subur"
+    },
+    {
+      "code": "1405072005",
+      "name": "Banjar Panjang"
+    },
+    {
+      "code": "1405072006",
+      "name": "Beringin Makmur"
+    },
+    {
+      "code": "1405072007",
+      "name": "Pematang Tinggi"
+    },
+    {
+      "code": "1405072008",
+      "name": "Tanjung Air Hitam"
+    },
+    {
+      "code": "1405072009",
+      "name": "Mak Teduh"
+    },
+    {
+      "code": "1405072010",
+      "name": "Lipai Bulan"
+    }
+  ],
+  "140508": [
+    {
+      "code": "1405081011",
+      "name": "Pangkalan Bunut"
+    },
+    {
+      "code": "1405082001",
+      "name": "Petani"
+    },
+    {
+      "code": "1405082002",
+      "name": "Merbau"
+    },
+    {
+      "code": "1405082003",
+      "name": "Sungai Buluh"
+    },
+    {
+      "code": "1405082008",
+      "name": "Lubuk Mas"
+    },
+    {
+      "code": "1405082009",
+      "name": "Balam Merah"
+    },
+    {
+      "code": "1405082010",
+      "name": "Bagan Laguh"
+    },
+    {
+      "code": "1405082013",
+      "name": "Lubuk Mandian Gajah"
+    },
+    {
+      "code": "1405082017",
+      "name": "Keriung"
+    },
+    {
+      "code": "1405082018",
+      "name": "Sialang Kayu Batu"
+    }
+  ],
+  "140509": [
+    {
+      "code": "1405091001",
+      "name": "Teluk Meranti"
+    },
+    {
+      "code": "1405092002",
+      "name": "Kuala Panduk"
+    },
+    {
+      "code": "1405092003",
+      "name": "Petodaan"
+    },
+    {
+      "code": "1405092004",
+      "name": "Teluk Binjai"
+    },
+    {
+      "code": "1405092005",
+      "name": "Pulau Muda"
+    },
+    {
+      "code": "1405092006",
+      "name": "Gambut Mutiara"
+    },
+    {
+      "code": "1405092007",
+      "name": "Labuhan Bilik"
+    },
+    {
+      "code": "1405092008",
+      "name": "Pangkalan Terap"
+    },
+    {
+      "code": "1405092009",
+      "name": "Segamai"
+    }
+  ],
+  "140510": [
+    {
+      "code": "1405101001",
+      "name": "Teluk Dalam"
+    },
+    {
+      "code": "1405102002",
+      "name": "Tanjung Sum"
+    },
+    {
+      "code": "1405102003",
+      "name": "Sungai Solok"
+    },
+    {
+      "code": "1405102004",
+      "name": "Sungai Upih"
+    },
+    {
+      "code": "1405102005",
+      "name": "Teluk"
+    },
+    {
+      "code": "1405102006",
+      "name": "Serapung"
+    },
+    {
+      "code": "1405102007",
+      "name": "Teluk Beringin"
+    },
+    {
+      "code": "1405102008",
+      "name": "Sokoi"
+    },
+    {
+      "code": "1405102009",
+      "name": "Sungai Mas"
+    },
+    {
+      "code": "1405102010",
+      "name": "Teluk Bakau"
+    }
+  ],
+  "140511": [
+    {
+      "code": "1405111001",
+      "name": "Sei Kijang"
+    },
+    {
+      "code": "1405112002",
+      "name": "Lubuk Ogung"
+    },
+    {
+      "code": "1405112003",
+      "name": "Simpang Beringin"
+    },
+    {
+      "code": "1405112004",
+      "name": "Muda Setia"
+    },
+    {
+      "code": "1405112005",
+      "name": "Kiab Jaya"
+    }
+  ],
+  "140512": [
+    {
+      "code": "1405121002",
+      "name": "Rawang Empat"
+    },
+    {
+      "code": "1405122001",
+      "name": "Kuala Semundam"
+    },
+    {
+      "code": "1405122003",
+      "name": "Tambun"
+    },
+    {
+      "code": "1405122004",
+      "name": "Terbangiang"
+    },
+    {
+      "code": "1405122005",
+      "name": "Lubuk Terap"
+    },
+    {
+      "code": "1405122006",
+      "name": "Angkasa"
+    },
+    {
+      "code": "1405122007",
+      "name": "Sialang Godang"
+    },
+    {
+      "code": "1405122008",
+      "name": "Lubuk Raja"
+    },
+    {
+      "code": "1405122009",
+      "name": "Lubuk Keranji Timur"
+    },
+    {
+      "code": "1405122010",
+      "name": "Airterjun"
+    },
+    {
+      "code": "1405122011",
+      "name": "Sialang Bungkuk"
+    }
+  ]
+}

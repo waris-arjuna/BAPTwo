@@ -1,190 +1,282 @@
 {
-    "217105": [
-        {
-            "code": "2171051001",
-            "name": "Bulang Lintang"
-        },
-        {
-            "code": "2171051002",
-            "name": "Pulau Buluh"
-        },
-        {
-            "code": "2171051003",
-            "name": "Temoyong"
-        },
-        {
-            "code": "2171051004",
-            "name": "Batu Legong"
-        },
-        {
-            "code": "2171051005",
-            "name": "Pantai Gelam"
-        },
-        {
-            "code": "2171051006",
-            "name": "Pulau Setokok"
-        }
-    ],
-    "217106": [
-        {
-            "code": "2171061001",
-            "name": "Kampung Pelita"
-        },
-        {
-            "code": "2171061003",
-            "name": "Lubuk Baja Kota"
-        },
-        {
-            "code": "2171061004",
-            "name": "Batu Selicin"
-        },
-        {
-            "code": "2171061005",
-            "name": "Tanjung Uma"
-        },
-        {
-            "code": "2171061006",
-            "name": "Baloi Indah"
-        }
-    ],
-    "217107": [
-        {
-            "code": "2171071001",
-            "name": "Muka Kuning"
-        },
-        {
-            "code": "2171071002",
-            "name": "Duriangkang"
-        },
-        {
-            "code": "2171071003",
-            "name": "Mangsang"
-        },
-        {
-            "code": "2171071004",
-            "name": "Tanjung Piayu"
-        }
-    ],
-    "217108": [
-        {
-            "code": "2171081001",
-            "name": "Sijantung"
-        },
-        {
-            "code": "2171081002",
-            "name": "Karas"
-        },
-        {
-            "code": "2171081003",
-            "name": "Galang Baru"
-        },
-        {
-            "code": "2171081004",
-            "name": "Sembulang"
-        },
-        {
-            "code": "2171081005",
-            "name": "Rempang Cate"
-        },
-        {
-            "code": "2171081006",
-            "name": "Subang Mas"
-        },
-        {
-            "code": "2171081007",
-            "name": "Pulau Abang"
-        },
-        {
-            "code": "2171081008",
-            "name": "Air Raja"
-        }
-    ],
-    "217109": [
-        {
-            "code": "2171091001",
-            "name": "Bengkong Indah"
-        },
-        {
-            "code": "2171091002",
-            "name": "Bengkong Laut"
-        },
-        {
-            "code": "2171091003",
-            "name": "Sadai"
-        },
-        {
-            "code": "2171091004",
-            "name": "Tanjung Buntung"
-        }
-    ],
-    "217110": [
-        {
-            "code": "2171101001",
-            "name": "Baloi Permai"
-        },
-        {
-            "code": "2171101002",
-            "name": "Taman Baloi"
-        },
-        {
-            "code": "2171101003",
-            "name": "Teluk Tering"
-        },
-        {
-            "code": "2171101004",
-            "name": "Belian"
-        },
-        {
-            "code": "2171101005",
-            "name": "Sukajadi"
-        },
-        {
-            "code": "2171101006",
-            "name": "Sungai Panas"
-        }
-    ],
-    "217111": [
-        {
-            "code": "2171111001",
-            "name": "Tembesi"
-        },
-        {
-            "code": "2171111002",
-            "name": "Sungai Binti"
-        },
-        {
-            "code": "2171111003",
-            "name": "Sungai Lekop"
-        },
-        {
-            "code": "2171111004",
-            "name": "Sagulung Kota"
-        },
-        {
-            "code": "2171111005",
-            "name": "Sungai Langkai"
-        },
-        {
-            "code": "2171111006",
-            "name": "Sungai Pelunggut"
-        }
-    ],
-    "217112": [
-        {
-            "code": "2171121001",
-            "name": "Tanjung Uncang"
-        },
-        {
-            "code": "2171121002",
-            "name": "Buliang"
-        },
-        {
-            "code": "2171121003",
-            "name": "Kibing"
-        },
-        {
-            "code": "2171121004",
-            "name": "Bukit Tempayan"
-        }
-    ]
+  "217101": [
+    {
+      "code": "2171011002",
+      "name": "Pemping"
+    },
+    {
+      "code": "2171011003",
+      "name": "Kasu"
+    },
+    {
+      "code": "2171011004",
+      "name": "Pulau Terung"
+    },
+    {
+      "code": "2171011005",
+      "name": "Pecong"
+    },
+    {
+      "code": "2171011006",
+      "name": "Tanjung Sari"
+    },
+    {
+      "code": "2171011007",
+      "name": "Sekanak Raya"
+    }
+  ],
+  "217102": [
+    {
+      "code": "2171021001",
+      "name": "Tanjung Sengkuang"
+    },
+    {
+      "code": "2171021002",
+      "name": "Sungai Jodoh"
+    },
+    {
+      "code": "2171021003",
+      "name": "Batu Merah"
+    },
+    {
+      "code": "2171021004",
+      "name": "Kampung Seraya"
+    }
+  ],
+  "217103": [
+    {
+      "code": "2171031001",
+      "name": "Sungai Harapan"
+    },
+    {
+      "code": "2171031002",
+      "name": "Tanjung Pinggir"
+    },
+    {
+      "code": "2171031003",
+      "name": "Tanjung Riau"
+    },
+    {
+      "code": "2171031005",
+      "name": "Tiban Indah"
+    },
+    {
+      "code": "2171031006",
+      "name": "Tiban Baru"
+    },
+    {
+      "code": "2171031007",
+      "name": "Tiban Lama"
+    },
+    {
+      "code": "2171031008",
+      "name": "Patam Lestari"
+    }
+  ],
+  "217104": [
+    {
+      "code": "2171041001",
+      "name": "Sambau"
+    },
+    {
+      "code": "2171041002",
+      "name": "Batu Besar"
+    },
+    {
+      "code": "2171041003",
+      "name": "Kabil"
+    },
+    {
+      "code": "2171041004",
+      "name": "Ngenang"
+    }
+  ],
+  "217105": [
+    {
+      "code": "2171051001",
+      "name": "Bulang Lintang"
+    },
+    {
+      "code": "2171051002",
+      "name": "Pulau Buluh"
+    },
+    {
+      "code": "2171051003",
+      "name": "Temoyong"
+    },
+    {
+      "code": "2171051004",
+      "name": "Batu Legong"
+    },
+    {
+      "code": "2171051005",
+      "name": "Pantai Gelam"
+    },
+    {
+      "code": "2171051006",
+      "name": "Pulau Setokok"
+    }
+  ],
+  "217106": [
+    {
+      "code": "2171061001",
+      "name": "Kampung Pelita"
+    },
+    {
+      "code": "2171061003",
+      "name": "Lubuk Baja Kota"
+    },
+    {
+      "code": "2171061004",
+      "name": "Batu Selicin"
+    },
+    {
+      "code": "2171061005",
+      "name": "Tanjung Uma"
+    },
+    {
+      "code": "2171061006",
+      "name": "Baloi Indah"
+    }
+  ],
+  "217107": [
+    {
+      "code": "2171071001",
+      "name": "Muka Kuning"
+    },
+    {
+      "code": "2171071002",
+      "name": "Duriangkang"
+    },
+    {
+      "code": "2171071003",
+      "name": "Mangsang"
+    },
+    {
+      "code": "2171071004",
+      "name": "Tanjung Piayu"
+    }
+  ],
+  "217108": [
+    {
+      "code": "2171081001",
+      "name": "Sijantung"
+    },
+    {
+      "code": "2171081002",
+      "name": "Karas"
+    },
+    {
+      "code": "2171081003",
+      "name": "Galang Baru"
+    },
+    {
+      "code": "2171081004",
+      "name": "Sembulang"
+    },
+    {
+      "code": "2171081005",
+      "name": "Rempang Cate"
+    },
+    {
+      "code": "2171081006",
+      "name": "Subang Mas"
+    },
+    {
+      "code": "2171081007",
+      "name": "Pulau Abang"
+    },
+    {
+      "code": "2171081008",
+      "name": "Air Raja"
+    }
+  ],
+  "217109": [
+    {
+      "code": "2171091001",
+      "name": "Bengkong Indah"
+    },
+    {
+      "code": "2171091002",
+      "name": "Bengkong Laut"
+    },
+    {
+      "code": "2171091003",
+      "name": "Sadai"
+    },
+    {
+      "code": "2171091004",
+      "name": "Tanjung Buntung"
+    }
+  ],
+  "217110": [
+    {
+      "code": "2171101001",
+      "name": "Baloi Permai"
+    },
+    {
+      "code": "2171101002",
+      "name": "Taman Baloi"
+    },
+    {
+      "code": "2171101003",
+      "name": "Teluk Tering"
+    },
+    {
+      "code": "2171101004",
+      "name": "Belian"
+    },
+    {
+      "code": "2171101005",
+      "name": "Sukajadi"
+    },
+    {
+      "code": "2171101006",
+      "name": "Sungai Panas"
+    }
+  ],
+  "217111": [
+    {
+      "code": "2171111001",
+      "name": "Tembesi"
+    },
+    {
+      "code": "2171111002",
+      "name": "Sungai Binti"
+    },
+    {
+      "code": "2171111003",
+      "name": "Sungai Lekop"
+    },
+    {
+      "code": "2171111004",
+      "name": "Sagulung Kota"
+    },
+    {
+      "code": "2171111005",
+      "name": "Sungai Langkai"
+    },
+    {
+      "code": "2171111006",
+      "name": "Sungai Pelunggut"
+    }
+  ],
+  "217112": [
+    {
+      "code": "2171121001",
+      "name": "Tanjung Uncang"
+    },
+    {
+      "code": "2171121002",
+      "name": "Buliang"
+    },
+    {
+      "code": "2171121003",
+      "name": "Kibing"
+    },
+    {
+      "code": "2171121004",
+      "name": "Bukit Tempayan"
+    }
+  ]
 }

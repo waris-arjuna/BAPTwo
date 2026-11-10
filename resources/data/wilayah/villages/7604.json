@@ -1,0 +1,702 @@
+{
+  "760401": [
+    {
+      "code": "7604011001",
+      "name": "Tinambung"
+    },
+    {
+      "code": "7604012002",
+      "name": "Karama"
+    },
+    {
+      "code": "7604012003",
+      "name": "Tangnga Tangnga"
+    },
+    {
+      "code": "7604012004",
+      "name": "Lekopadis"
+    },
+    {
+      "code": "7604012005",
+      "name": "Galung Lombok"
+    },
+    {
+      "code": "7604012006",
+      "name": "Tandung"
+    },
+    {
+      "code": "7604012007",
+      "name": "Batulaya"
+    },
+    {
+      "code": "7604012008",
+      "name": "Sepabatu"
+    }
+  ],
+  "760402": [
+    {
+      "code": "7604021001",
+      "name": "Pappang"
+    },
+    {
+      "code": "7604022002",
+      "name": "Laliko"
+    },
+    {
+      "code": "7604022003",
+      "name": "Bonde"
+    },
+    {
+      "code": "7604022004",
+      "name": "Katumbangan Lemo"
+    },
+    {
+      "code": "7604022005",
+      "name": "Panyampa"
+    },
+    {
+      "code": "7604022006",
+      "name": "Suruang"
+    },
+    {
+      "code": "7604022007",
+      "name": "Lampoko"
+    },
+    {
+      "code": "7604022008",
+      "name": "Katumbangan"
+    },
+    {
+      "code": "7604022009",
+      "name": "Lapeo"
+    },
+    {
+      "code": "7604022010",
+      "name": "Parappe"
+    },
+    {
+      "code": "7604022011",
+      "name": "Ongko"
+    },
+    {
+      "code": "7604022012",
+      "name": "Kenje"
+    },
+    {
+      "code": "7604022013",
+      "name": "Sumarrang"
+    },
+    {
+      "code": "7604022014",
+      "name": "Botto"
+    },
+    {
+      "code": "7604022015",
+      "name": "Gattungan"
+    },
+    {
+      "code": "7604022016",
+      "name": "Padang Timur"
+    },
+    {
+      "code": "7604022017",
+      "name": "Padang"
+    },
+    {
+      "code": "7604022018",
+      "name": "Lagi-Agi"
+    }
+  ],
+  "760403": [
+    {
+      "code": "7604031001",
+      "name": "Sidodadi"
+    },
+    {
+      "code": "7604032002",
+      "name": "Sidorejo"
+    },
+    {
+      "code": "7604032003",
+      "name": "Sumberjo"
+    },
+    {
+      "code": "7604032004",
+      "name": "Bumiayu"
+    },
+    {
+      "code": "7604032005",
+      "name": "Kebunsari"
+    },
+    {
+      "code": "7604032006",
+      "name": "Banua Baru"
+    },
+    {
+      "code": "7604032007",
+      "name": "Nepo"
+    },
+    {
+      "code": "7604032008",
+      "name": "Sugihwaras"
+    },
+    {
+      "code": "7604032009",
+      "name": "Campurjo"
+    },
+    {
+      "code": "7604032010",
+      "name": "Bumimulyo"
+    },
+    {
+      "code": "7604032011",
+      "name": "Tumpiling"
+    },
+    {
+      "code": "7604032012",
+      "name": "Bakka-Bakka"
+    },
+    {
+      "code": "7604032013",
+      "name": "Arjosari"
+    },
+    {
+      "code": "7604032014",
+      "name": "Galeso"
+    }
+  ],
+  "760404": [
+    {
+      "code": "7604041001",
+      "name": "Polewali"
+    },
+    {
+      "code": "7604041002",
+      "name": "Wattang"
+    },
+    {
+      "code": "7604041003",
+      "name": "Sulewatang"
+    },
+    {
+      "code": "7604041004",
+      "name": "Lantora"
+    },
+    {
+      "code": "7604041005",
+      "name": "Takatidung"
+    },
+    {
+      "code": "7604041006",
+      "name": "Pekkabata"
+    },
+    {
+      "code": "7604041007",
+      "name": "Madatte"
+    },
+    {
+      "code": "7604041008",
+      "name": "Manding"
+    },
+    {
+      "code": "7604041009",
+      "name": "Darma"
+    }
+  ],
+  "760405": [
+    {
+      "code": "7604051001",
+      "name": "Taramanu"
+    },
+    {
+      "code": "7604052002",
+      "name": "Ambopadang"
+    },
+    {
+      "code": "7604052003",
+      "name": "Tubbi"
+    },
+    {
+      "code": "7604052004",
+      "name": "Ratte"
+    },
+    {
+      "code": "7604052005",
+      "name": "Besoangin"
+    },
+    {
+      "code": "7604052006",
+      "name": "Piriang Tapiko"
+    },
+    {
+      "code": "7604052007",
+      "name": "Peburru"
+    },
+    {
+      "code": "7604052008",
+      "name": "Taloba"
+    },
+    {
+      "code": "7604052009",
+      "name": "Pollewani"
+    },
+    {
+      "code": "7604052010",
+      "name": "Arabua"
+    },
+    {
+      "code": "7604052011",
+      "name": "Besoangin Utara"
+    },
+    {
+      "code": "7604052012",
+      "name": "Poda-Poda"
+    },
+    {
+      "code": "7604052013",
+      "name": "Taramanu Tua"
+    }
+  ],
+  "760406": [
+    {
+      "code": "7604061005",
+      "name": "Amassangan"
+    },
+    {
+      "code": "7604062001",
+      "name": "Tonyaman"
+    },
+    {
+      "code": "7604062002",
+      "name": "Kuajang"
+    },
+    {
+      "code": "7604062003",
+      "name": "Paku"
+    },
+    {
+      "code": "7604062004",
+      "name": "Mirring"
+    },
+    {
+      "code": "7604062006",
+      "name": "Batetangnga"
+    },
+    {
+      "code": "7604062007",
+      "name": "Mammi"
+    },
+    {
+      "code": "7604062008",
+      "name": "Kaleok"
+    },
+    {
+      "code": "7604062009",
+      "name": "Amola"
+    },
+    {
+      "code": "7604062010",
+      "name": "Rea"
+    }
+  ],
+  "760407": [
+    {
+      "code": "7604071001",
+      "name": "Pelitakan"
+    },
+    {
+      "code": "7604072002",
+      "name": "Tapango"
+    },
+    {
+      "code": "7604072003",
+      "name": "Rappang"
+    },
+    {
+      "code": "7604072004",
+      "name": "Dakka"
+    },
+    {
+      "code": "7604072005",
+      "name": "Batu"
+    },
+    {
+      "code": "7604072006",
+      "name": "Riso"
+    },
+    {
+      "code": "7604072007",
+      "name": "Palatta"
+    },
+    {
+      "code": "7604072008",
+      "name": "Tapango Barat"
+    },
+    {
+      "code": "7604072009",
+      "name": "Kurrak"
+    },
+    {
+      "code": "7604072010",
+      "name": "Bussu"
+    },
+    {
+      "code": "7604072011",
+      "name": "Tuttula"
+    },
+    {
+      "code": "7604072012",
+      "name": "Jambu Malea"
+    },
+    {
+      "code": "7604072013",
+      "name": "Kalimbua"
+    },
+    {
+      "code": "7604072014",
+      "name": "Banato Rejo"
+    }
+  ],
+  "760408": [
+    {
+      "code": "7604081001",
+      "name": "Mapilli"
+    },
+    {
+      "code": "7604082002",
+      "name": "Ugibaru"
+    },
+    {
+      "code": "7604082003",
+      "name": "Rumpa"
+    },
+    {
+      "code": "7604082005",
+      "name": "Kurma"
+    },
+    {
+      "code": "7604082007",
+      "name": "Buku"
+    },
+    {
+      "code": "7604082009",
+      "name": "Bonne Bonne"
+    },
+    {
+      "code": "7604082011",
+      "name": "Beroangin"
+    },
+    {
+      "code": "7604082015",
+      "name": "Segerang"
+    },
+    {
+      "code": "7604082016",
+      "name": "Bonra"
+    },
+    {
+      "code": "7604082017",
+      "name": "Sattoko"
+    },
+    {
+      "code": "7604082018",
+      "name": "Rappang Barat"
+    },
+    {
+      "code": "7604082019",
+      "name": "Landi Kanusuang"
+    }
+  ],
+  "760409": [
+    {
+      "code": "7604091001",
+      "name": "Matangnga"
+    },
+    {
+      "code": "7604092002",
+      "name": "Lilli"
+    },
+    {
+      "code": "7604092003",
+      "name": "Rangoan"
+    },
+    {
+      "code": "7604092004",
+      "name": "Tapua"
+    },
+    {
+      "code": "7604092005",
+      "name": "Mambu Tapua"
+    },
+    {
+      "code": "7604092006",
+      "name": "Ba'ba Tapua"
+    },
+    {
+      "code": "7604092007",
+      "name": "Katimbang"
+    }
+  ],
+  "760410": [
+    {
+      "code": "7604101004",
+      "name": "Batupanga"
+    },
+    {
+      "code": "7604102001",
+      "name": "Mambu"
+    },
+    {
+      "code": "7604102002",
+      "name": "Tenggelang"
+    },
+    {
+      "code": "7604102003",
+      "name": "Baru"
+    },
+    {
+      "code": "7604102005",
+      "name": "Pussui"
+    },
+    {
+      "code": "7604102006",
+      "name": "Mapilli Barat"
+    },
+    {
+      "code": "7604102007",
+      "name": "Sambali Wali"
+    },
+    {
+      "code": "7604102008",
+      "name": "Batupanga Daala"
+    },
+    {
+      "code": "7604102009",
+      "name": "Luyo"
+    },
+    {
+      "code": "7604102010",
+      "name": "Pussui Barat"
+    },
+    {
+      "code": "7604102011",
+      "name": "Puccadi"
+    }
+  ],
+  "760411": [
+    {
+      "code": "7604111001",
+      "name": "Limboro"
+    },
+    {
+      "code": "7604112002",
+      "name": "Lembang Lembang"
+    },
+    {
+      "code": "7604112003",
+      "name": "Tandassura"
+    },
+    {
+      "code": "7604112004",
+      "name": "Samasundu"
+    },
+    {
+      "code": "7604112005",
+      "name": "Napo"
+    },
+    {
+      "code": "7604112006",
+      "name": "Todang Todang"
+    },
+    {
+      "code": "7604112007",
+      "name": "Pendulangan"
+    },
+    {
+      "code": "7604112008",
+      "name": "Renggeang"
+    },
+    {
+      "code": "7604112009",
+      "name": "Salarri"
+    },
+    {
+      "code": "7604112010",
+      "name": "Tangan Baru"
+    },
+    {
+      "code": "7604112011",
+      "name": "Palece"
+    }
+  ],
+  "760412": [
+    {
+      "code": "7604121002",
+      "name": "Balanipa"
+    },
+    {
+      "code": "7604122001",
+      "name": "Tammajarra"
+    },
+    {
+      "code": "7604122003",
+      "name": "Tammangalle"
+    },
+    {
+      "code": "7604122004",
+      "name": "Mosso"
+    },
+    {
+      "code": "7604122005",
+      "name": "Galung Tuluk"
+    },
+    {
+      "code": "7604122006",
+      "name": "Sabang Subik"
+    },
+    {
+      "code": "7604122007",
+      "name": "Pambusuang"
+    },
+    {
+      "code": "7604122008",
+      "name": "Bala"
+    },
+    {
+      "code": "7604122009",
+      "name": "Lambanan"
+    },
+    {
+      "code": "7604122010",
+      "name": "Lego"
+    },
+    {
+      "code": "7604122011",
+      "name": "Pallis"
+    }
+  ],
+  "760413": [
+    {
+      "code": "7604131001",
+      "name": "Anreapi"
+    },
+    {
+      "code": "7604132002",
+      "name": "Duampanua"
+    },
+    {
+      "code": "7604132003",
+      "name": "Kelapa Dua"
+    },
+    {
+      "code": "7604132004",
+      "name": "Pappandangan"
+    },
+    {
+      "code": "7604132005",
+      "name": "Kunyi"
+    }
+  ],
+  "760414": [
+    {
+      "code": "7604141001",
+      "name": "Matakali"
+    },
+    {
+      "code": "7604142002",
+      "name": "Petampanua"
+    },
+    {
+      "code": "7604142003",
+      "name": "Barumbung"
+    },
+    {
+      "code": "7604142004",
+      "name": "Pasiang"
+    },
+    {
+      "code": "7604142005",
+      "name": "Tonrolima"
+    },
+    {
+      "code": "7604142006",
+      "name": "Indomakkombong"
+    },
+    {
+      "code": "7604142007",
+      "name": "Bunga-Bunga"
+    }
+  ],
+  "760415": [
+    {
+      "code": "7604151009",
+      "name": "Petoosang"
+    },
+    {
+      "code": "7604152002",
+      "name": "Mombi"
+    },
+    {
+      "code": "7604152003",
+      "name": "Kalumammang"
+    },
+    {
+      "code": "7604152004",
+      "name": "Pao-pao"
+    },
+    {
+      "code": "7604152005",
+      "name": "Puppuuring"
+    },
+    {
+      "code": "7604152006",
+      "name": "Saragian"
+    },
+    {
+      "code": "7604152007",
+      "name": "Sayoang"
+    },
+    {
+      "code": "7604152008",
+      "name": "Allu"
+    }
+  ],
+  "760416": [
+    {
+      "code": "7604162001",
+      "name": "Bulo"
+    },
+    {
+      "code": "7604162002",
+      "name": "Pulliwa"
+    },
+    {
+      "code": "7604162003",
+      "name": "Patambanua"
+    },
+    {
+      "code": "7604162004",
+      "name": "Karombang"
+    },
+    {
+      "code": "7604162005",
+      "name": "Daala Timur"
+    },
+    {
+      "code": "7604162006",
+      "name": "Lenggo"
+    },
+    {
+      "code": "7604162007",
+      "name": "Sabura"
+    },
+    {
+      "code": "7604162008",
+      "name": "Sepporakki"
+    },
+    {
+      "code": "7604162009",
+      "name": "Ihing"
+    }
+  ]
+}

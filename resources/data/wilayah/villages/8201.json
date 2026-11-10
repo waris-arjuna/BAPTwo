@@ -1,0 +1,712 @@
+{
+  "820101": [
+    {
+      "code": "8201012001",
+      "name": "Gufasa"
+    },
+    {
+      "code": "8201012002",
+      "name": "Guaimaadu"
+    },
+    {
+      "code": "8201012003",
+      "name": "Jalan Baru"
+    },
+    {
+      "code": "8201012004",
+      "name": "Gam Lamo"
+    },
+    {
+      "code": "8201012005",
+      "name": "Soakonora"
+    },
+    {
+      "code": "8201012006",
+      "name": "Galala"
+    },
+    {
+      "code": "8201012007",
+      "name": "Bobanehena"
+    },
+    {
+      "code": "8201012008",
+      "name": "Payo"
+    },
+    {
+      "code": "8201012009",
+      "name": "Bobo"
+    },
+    {
+      "code": "8201012010",
+      "name": "Saria"
+    },
+    {
+      "code": "8201012011",
+      "name": "Idam Dehe"
+    },
+    {
+      "code": "8201012012",
+      "name": "Idamdehe Gamsungi"
+    },
+    {
+      "code": "8201012013",
+      "name": "Marmabati"
+    },
+    {
+      "code": "8201012014",
+      "name": "Gamtala"
+    },
+    {
+      "code": "8201012015",
+      "name": "Lolory"
+    },
+    {
+      "code": "8201012016",
+      "name": "Toboso"
+    },
+    {
+      "code": "8201012017",
+      "name": "Huku-Huku Kie"
+    },
+    {
+      "code": "8201012018",
+      "name": "Acango"
+    },
+    {
+      "code": "8201012019",
+      "name": "Tedeng"
+    },
+    {
+      "code": "8201012020",
+      "name": "Akediri"
+    },
+    {
+      "code": "8201012021",
+      "name": "Pornity"
+    },
+    {
+      "code": "8201012022",
+      "name": "Buku Matiti"
+    },
+    {
+      "code": "8201012023",
+      "name": "Todowongi"
+    },
+    {
+      "code": "8201012024",
+      "name": "Tuada"
+    },
+    {
+      "code": "8201012025",
+      "name": "Matui"
+    },
+    {
+      "code": "8201012026",
+      "name": "Buku Bualawa"
+    },
+    {
+      "code": "8201012027",
+      "name": "Tauro"
+    },
+    {
+      "code": "8201012034",
+      "name": "Hate Bicara"
+    },
+    {
+      "code": "8201012035",
+      "name": "Guaria"
+    },
+    {
+      "code": "8201012036",
+      "name": "Pateng"
+    },
+    {
+      "code": "8201012037",
+      "name": "Bobo Jiko"
+    },
+    {
+      "code": "8201012038",
+      "name": "Ulo"
+    },
+    {
+      "code": "8201012039",
+      "name": "Kuripasai"
+    },
+    {
+      "code": "8201012040",
+      "name": "Buku Maadu"
+    }
+  ],
+  "820102": [
+    {
+      "code": "8201022001",
+      "name": "Kedi"
+    },
+    {
+      "code": "8201022002",
+      "name": "Soasio"
+    },
+    {
+      "code": "8201022003",
+      "name": "Totala"
+    },
+    {
+      "code": "8201022004",
+      "name": "Tolofuo"
+    },
+    {
+      "code": "8201022005",
+      "name": "Tuguis"
+    },
+    {
+      "code": "8201022006",
+      "name": "Tasye"
+    },
+    {
+      "code": "8201022007",
+      "name": "Laba Besar"
+    },
+    {
+      "code": "8201022008",
+      "name": "Laba Kecil"
+    },
+    {
+      "code": "8201022010",
+      "name": "Bakun"
+    },
+    {
+      "code": "8201022011",
+      "name": "Buo"
+    },
+    {
+      "code": "8201022018",
+      "name": "Kahatola"
+    },
+    {
+      "code": "8201022019",
+      "name": "Bosala"
+    },
+    {
+      "code": "8201022020",
+      "name": "Salu"
+    },
+    {
+      "code": "8201022023",
+      "name": "Bantoli"
+    },
+    {
+      "code": "8201022024",
+      "name": "Linggua"
+    },
+    {
+      "code": "8201022025",
+      "name": "Tomodo"
+    },
+    {
+      "code": "8201022026",
+      "name": "Totala Jaya"
+    }
+  ],
+  "820103": [
+    {
+      "code": "8201032012",
+      "name": "Togola Wayoli"
+    },
+    {
+      "code": "8201032013",
+      "name": "Togola Sangir"
+    },
+    {
+      "code": "8201032014",
+      "name": "Tahafo"
+    },
+    {
+      "code": "8201032015",
+      "name": "Tongute Ternate"
+    },
+    {
+      "code": "8201032016",
+      "name": "Akesibu"
+    },
+    {
+      "code": "8201032017",
+      "name": "Maritango"
+    },
+    {
+      "code": "8201032018",
+      "name": "Kie Ici"
+    },
+    {
+      "code": "8201032019",
+      "name": "Tongute Goin"
+    },
+    {
+      "code": "8201032020",
+      "name": "Tungute Sungi"
+    },
+    {
+      "code": "8201032021",
+      "name": "Gam Ici"
+    },
+    {
+      "code": "8201032022",
+      "name": "Tobaol"
+    },
+    {
+      "code": "8201032023",
+      "name": "Gamlamo"
+    },
+    {
+      "code": "8201032037",
+      "name": "Naga"
+    },
+    {
+      "code": "8201032040",
+      "name": "Soana Masungi"
+    },
+    {
+      "code": "8201032041",
+      "name": "Tongute Ternate Selatan"
+    },
+    {
+      "code": "8201032042",
+      "name": "Ake Boso"
+    },
+    {
+      "code": "8201032043",
+      "name": "Kampung Baru"
+    }
+  ],
+  "820104": [
+    {
+      "code": "8201042001",
+      "name": "Susupu"
+    },
+    {
+      "code": "8201042002",
+      "name": "Lako Akelamo"
+    },
+    {
+      "code": "8201042003",
+      "name": "Taruba"
+    },
+    {
+      "code": "8201042004",
+      "name": "Todahe"
+    },
+    {
+      "code": "8201042005",
+      "name": "Peot"
+    },
+    {
+      "code": "8201042006",
+      "name": "Sasur"
+    },
+    {
+      "code": "8201042007",
+      "name": "Goro goro"
+    },
+    {
+      "code": "8201042008",
+      "name": "Tacim"
+    },
+    {
+      "code": "8201042009",
+      "name": "Balisoang"
+    },
+    {
+      "code": "8201042010",
+      "name": "Worat-worat"
+    },
+    {
+      "code": "8201042011",
+      "name": "Tacici"
+    },
+    {
+      "code": "8201042012",
+      "name": "Taraudu"
+    },
+    {
+      "code": "8201042013",
+      "name": "Golo"
+    },
+    {
+      "code": "8201042028",
+      "name": "Lako Akederi"
+    },
+    {
+      "code": "8201042029",
+      "name": "Jara Kore"
+    },
+    {
+      "code": "8201042030",
+      "name": "Ropu Tengah Balu"
+    },
+    {
+      "code": "8201042033",
+      "name": "Dere"
+    },
+    {
+      "code": "8201042034",
+      "name": "Balisoan Utara"
+    },
+    {
+      "code": "8201042035",
+      "name": "Sasur Pantai"
+    }
+  ],
+  "820105": [
+    {
+      "code": "8201052001",
+      "name": "Sidangoli Gam"
+    },
+    {
+      "code": "8201052002",
+      "name": "Sidongoli Dehe"
+    },
+    {
+      "code": "8201052003",
+      "name": "Domato"
+    },
+    {
+      "code": "8201052004",
+      "name": "Tataleka"
+    },
+    {
+      "code": "8201052005",
+      "name": "Gamlenge"
+    },
+    {
+      "code": "8201052006",
+      "name": "Akejailolo"
+    },
+    {
+      "code": "8201052007",
+      "name": "Biamaahi"
+    },
+    {
+      "code": "8201052008",
+      "name": "Tuguraci"
+    },
+    {
+      "code": "8201052009",
+      "name": "Akeara"
+    },
+    {
+      "code": "8201052010",
+      "name": "Akelaha"
+    },
+    {
+      "code": "8201052011",
+      "name": "Dodinga"
+    },
+    {
+      "code": "8201052012",
+      "name": "Tewe"
+    },
+    {
+      "code": "8201052013",
+      "name": "Toniku"
+    },
+    {
+      "code": "8201052014",
+      "name": "Rioribati"
+    },
+    {
+      "code": "8201052021",
+      "name": "Taba Damai (DB)"
+    },
+    {
+      "code": "8201052022",
+      "name": "Moiso"
+    },
+    {
+      "code": "8201052023",
+      "name": "Braha"
+    },
+    {
+      "code": "8201052024",
+      "name": "Bangkit Rahmat"
+    },
+    {
+      "code": "8201052025",
+      "name": "Bobane Dano"
+    },
+    {
+      "code": "8201052026",
+      "name": "Suka Damai"
+    },
+    {
+      "code": "8201052027",
+      "name": "Hijrah"
+    },
+    {
+      "code": "8201052028",
+      "name": "Ratem"
+    },
+    {
+      "code": "8201052029",
+      "name": "Bobaneigo Madihutu"
+    },
+    {
+      "code": "8201052030",
+      "name": "Tetewang Joronga"
+    },
+    {
+      "code": "8201052031",
+      "name": "Akelamo Cinga-Cinga"
+    },
+    {
+      "code": "8201052032",
+      "name": "Akesahu Madutu"
+    }
+  ],
+  "820107": [
+    {
+      "code": "8201072001",
+      "name": "Podol"
+    },
+    {
+      "code": "8201072002",
+      "name": "Tengowango"
+    },
+    {
+      "code": "8201072003",
+      "name": "Togowo"
+    },
+    {
+      "code": "8201072004",
+      "name": "Duono"
+    },
+    {
+      "code": "8201072005",
+      "name": "Goin"
+    },
+    {
+      "code": "8201072006",
+      "name": "Sangaji Nyeku"
+    },
+    {
+      "code": "8201072007",
+      "name": "Tuguis"
+    },
+    {
+      "code": "8201072008",
+      "name": "Togoreba Sungi"
+    },
+    {
+      "code": "8201072009",
+      "name": "Barona"
+    },
+    {
+      "code": "8201072010",
+      "name": "Todoke"
+    },
+    {
+      "code": "8201072011",
+      "name": "Tolisaor"
+    },
+    {
+      "code": "8201072012",
+      "name": "Pasalulu"
+    },
+    {
+      "code": "8201072013",
+      "name": "Togoreba Tua"
+    },
+    {
+      "code": "8201072014",
+      "name": "Tukuoku"
+    },
+    {
+      "code": "8201072015",
+      "name": "Soasangaji"
+    },
+    {
+      "code": "8201072016",
+      "name": "Aru Jaya"
+    }
+  ],
+  "820108": [
+    {
+      "code": "8201082001",
+      "name": "Tosoa"
+    },
+    {
+      "code": "8201082002",
+      "name": "Tobobol"
+    },
+    {
+      "code": "8201082003",
+      "name": "Baru"
+    },
+    {
+      "code": "8201082004",
+      "name": "Nanas"
+    },
+    {
+      "code": "8201082005",
+      "name": "Jere"
+    },
+    {
+      "code": "8201082006",
+      "name": "Gamsungi"
+    },
+    {
+      "code": "8201082007",
+      "name": "Bataka"
+    },
+    {
+      "code": "8201082008",
+      "name": "Talaga"
+    },
+    {
+      "code": "8201082009",
+      "name": "Tobelos"
+    },
+    {
+      "code": "8201082010",
+      "name": "Gamkonora"
+    },
+    {
+      "code": "8201082011",
+      "name": "Sarau"
+    },
+    {
+      "code": "8201082012",
+      "name": "Ngawet"
+    },
+    {
+      "code": "8201082013",
+      "name": "Adu"
+    },
+    {
+      "code": "8201082014",
+      "name": "Gamsida"
+    },
+    {
+      "code": "8201082015",
+      "name": "Ngalo Ngalo"
+    },
+    {
+      "code": "8201082016",
+      "name": "Tuguaer"
+    }
+  ],
+  "820109": [
+    {
+      "code": "8201092001",
+      "name": "Loce"
+    },
+    {
+      "code": "8201092002",
+      "name": "Idam Gamlamo"
+    },
+    {
+      "code": "8201092003",
+      "name": "Gamomeng"
+    },
+    {
+      "code": "8201092004",
+      "name": "Akelamo"
+    },
+    {
+      "code": "8201092005",
+      "name": "Taraudu Kusu"
+    },
+    {
+      "code": "8201092006",
+      "name": "Awer"
+    },
+    {
+      "code": "8201092007",
+      "name": "Aketola"
+    },
+    {
+      "code": "8201092008",
+      "name": "Tibobo"
+    },
+    {
+      "code": "8201092009",
+      "name": "Hoku- hoku Gam"
+    },
+    {
+      "code": "8201092010",
+      "name": "Gamiyel"
+    },
+    {
+      "code": "8201092011",
+      "name": "Golago Kusuma"
+    },
+    {
+      "code": "8201092012",
+      "name": "Ngaon"
+    },
+    {
+      "code": "8201092013",
+      "name": "Gamsugi"
+    },
+    {
+      "code": "8201092014",
+      "name": "Taba Campaka"
+    },
+    {
+      "code": "8201092015",
+      "name": "Campaka"
+    },
+    {
+      "code": "8201092016",
+      "name": "Goal"
+    },
+    {
+      "code": "8201092017",
+      "name": "Sidodadi"
+    },
+    {
+      "code": "8201092018",
+      "name": "Air Panas"
+    }
+  ],
+  "820110": [
+    {
+      "code": "8201102001",
+      "name": "Jano"
+    },
+    {
+      "code": "8201102002",
+      "name": "Jangailulu"
+    },
+    {
+      "code": "8201102003",
+      "name": "Baja"
+    },
+    {
+      "code": "8201102004",
+      "name": "Gam Kahe"
+    },
+    {
+      "code": "8201102005",
+      "name": "Barataku"
+    },
+    {
+      "code": "8201102006",
+      "name": "Pumadada"
+    },
+    {
+      "code": "8201102007",
+      "name": "Tosomolo"
+    },
+    {
+      "code": "8201102008",
+      "name": "Bilote"
+    },
+    {
+      "code": "8201102009",
+      "name": "Bakun Pantai"
+    },
+    {
+      "code": "8201102010",
+      "name": "Aruku"
+    }
+  ]
+}

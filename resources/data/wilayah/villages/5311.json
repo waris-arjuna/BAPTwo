@@ -1,270 +1,670 @@
 {
-    "531101": [
-        {
-            "code": "5311011001",
-            "name": "Kambajawa"
-        },
-        {
-            "code": "5311011002",
-            "name": "Hambala"
-        },
-        {
-            "code": "5311011003",
-            "name": "Matawai"
-        },
-        {
-            "code": "5311011004",
-            "name": "Kamalaputi"
-        },
-        {
-            "code": "5311012012",
-            "name": "Lukukamaru"
-        },
-        {
-            "code": "5311012013",
-            "name": "Mbatakapidu"
-        },
-        {
-            "code": "5311012014",
-            "name": "Pambotandjara"
-        }
-    ],
-    "531102": [
-        {
-            "code": "5311022003",
-            "name": "Rambangaru"
-        },
-        {
-            "code": "5311022006",
-            "name": "Praibakul"
-        },
-        {
-            "code": "5311022007",
-            "name": "Wunga"
-        },
-        {
-            "code": "5311022008",
-            "name": "Kadahang"
-        },
-        {
-            "code": "5311022009",
-            "name": "Napu"
-        },
-        {
-            "code": "5311022010",
-            "name": "Mbatapuhu"
-        },
-        {
-            "code": "5311022012",
-            "name": "Kalamba"
-        }
-    ],
-    "531103": [
-        {
-            "code": "5311031001",
-            "name": "Lewa Paku"
-        },
-        {
-            "code": "5311032002",
-            "name": "Kambuhapang"
-        },
-        {
-            "code": "5311032003",
-            "name": "Kambata Wundut"
-        },
-        {
-            "code": "5311032004",
-            "name": "Kondamara"
-        },
-        {
-            "code": "5311032005",
-            "name": "Matawai Pawali"
-        },
-        {
-            "code": "5311032006",
-            "name": "Rakawatu"
-        },
-        {
-            "code": "5311032007",
-            "name": "Tana Rara"
-        },
-        {
-            "code": "5311032013",
-            "name": "Bidi Hunga"
-        }
-    ],
-    "531104": [
-        {
-            "code": "5311042001",
-            "name": "Makamenggit"
-        },
-        {
-            "code": "5311042002",
-            "name": "Tandula Jangga"
-        },
-        {
-            "code": "5311042003",
-            "name": "Praipaha"
-        },
-        {
-            "code": "5311042004",
-            "name": "Praihambuli"
-        },
-        {
-            "code": "5311042005",
-            "name": "Pulu Panjang"
-        },
-        {
-            "code": "5311042010",
-            "name": "Praikarang"
-        },
-        {
-            "code": "5311042011",
-            "name": "Tanatuku"
-        },
-        {
-            "code": "5311042012",
-            "name": "Ngadulanggi"
-        }
-    ],
-    "531105": [
-        {
-            "code": "5311052001",
-            "name": "Billa"
-        },
-        {
-            "code": "5311052002",
-            "name": "Karita"
-        },
-        {
-            "code": "5311052003",
-            "name": "Kuki Talu"
-        },
-        {
-            "code": "5311052004",
-            "name": "Tapil"
-        },
-        {
-            "code": "5311052005",
-            "name": "Tarimbang"
-        },
-        {
-            "code": "5311052006",
-            "name": "Waikanabu"
-        },
-        {
-            "code": "5311052007",
-            "name": "Pindu Hurani"
-        },
-        {
-            "code": "5311052008",
-            "name": "Praing Kareha"
-        },
-        {
-            "code": "5311052009",
-            "name": "Wudi Pandak"
-        },
-        {
-            "code": "5311052011",
-            "name": "Bangga Watu"
-        }
-    ],
-    "531106": [
-        {
-            "code": "5311062001",
-            "name": "Ramuk"
-        },
-        {
-            "code": "5311062002",
-            "name": "Wangga Mbewa"
-        },
-        {
-            "code": "5311062003",
-            "name": "Lailunggi"
-        },
-        {
-            "code": "5311062004",
-            "name": "Tawui"
-        },
-        {
-            "code": "5311062005",
-            "name": "Wahang"
-        },
-        {
-            "code": "5311062006",
-            "name": "Mahaniwa"
-        }
-    ],
-    "531107": [
-        {
-            "code": "5311071001",
-            "name": "Kawangu"
-        },
-        {
-            "code": "5311071002",
-            "name": "Watumbaka"
-        },
-        {
-            "code": "5311072003",
-            "name": "Kambatatana"
-        },
-        {
-            "code": "5311072007",
-            "name": "Palaka Hembi"
-        },
-        {
-            "code": "5311072008",
-            "name": "Kadumbul"
-        },
-        {
-            "code": "5311072009",
-            "name": "Maubokul"
-        },
-        {
-            "code": "5311072012",
-            "name": "Laindeha"
-        }
-    ],
-    "531108": [
-        {
-            "code": "5311081001",
-            "name": "Lumbukore"
-        },
-        {
-            "code": "5311082002",
-            "name": "Umalulu"
-        },
-        {
-            "code": "5311082003",
-            "name": "Patawang"
-        },
-        {
-            "code": "5311082004",
-            "name": "Wanga"
-        },
-        {
-            "code": "5311082005",
-            "name": "Matawai Atu"
-        },
-        {
-            "code": "5311082006",
-            "name": "Mutunggeding"
-        },
-        {
-            "code": "5311082007",
-            "name": "Lairuru"
-        },
-        {
-            "code": "5311082008",
-            "name": "Watuhadang"
-        },
-        {
-            "code": "5311082009",
-            "name": "Watupuda"
-        },
-        {
-            "code": "5311082010",
-            "name": "Ngaru Kanoru"
-        }
-    ]
+  "531101": [
+    {
+      "code": "5311011001",
+      "name": "Kambajawa"
+    },
+    {
+      "code": "5311011002",
+      "name": "Hambala"
+    },
+    {
+      "code": "5311011003",
+      "name": "Matawai"
+    },
+    {
+      "code": "5311011004",
+      "name": "Kamalaputi"
+    },
+    {
+      "code": "5311012012",
+      "name": "Lukukamaru"
+    },
+    {
+      "code": "5311012013",
+      "name": "Mbatakapidu"
+    },
+    {
+      "code": "5311012014",
+      "name": "Pambotandjara"
+    }
+  ],
+  "531102": [
+    {
+      "code": "5311022003",
+      "name": "Rambangaru"
+    },
+    {
+      "code": "5311022006",
+      "name": "Praibakul"
+    },
+    {
+      "code": "5311022007",
+      "name": "Wunga"
+    },
+    {
+      "code": "5311022008",
+      "name": "Kadahang"
+    },
+    {
+      "code": "5311022009",
+      "name": "Napu"
+    },
+    {
+      "code": "5311022010",
+      "name": "Mbatapuhu"
+    },
+    {
+      "code": "5311022012",
+      "name": "Kalamba"
+    }
+  ],
+  "531103": [
+    {
+      "code": "5311031001",
+      "name": "Lewa Paku"
+    },
+    {
+      "code": "5311032002",
+      "name": "Kambuhapang"
+    },
+    {
+      "code": "5311032003",
+      "name": "Kambata Wundut"
+    },
+    {
+      "code": "5311032004",
+      "name": "Kondamara"
+    },
+    {
+      "code": "5311032005",
+      "name": "Matawai Pawali"
+    },
+    {
+      "code": "5311032006",
+      "name": "Rakawatu"
+    },
+    {
+      "code": "5311032007",
+      "name": "Tana Rara"
+    },
+    {
+      "code": "5311032013",
+      "name": "Bidi Hunga"
+    }
+  ],
+  "531104": [
+    {
+      "code": "5311042001",
+      "name": "Makamenggit"
+    },
+    {
+      "code": "5311042002",
+      "name": "Tandula Jangga"
+    },
+    {
+      "code": "5311042003",
+      "name": "Praipaha"
+    },
+    {
+      "code": "5311042004",
+      "name": "Praihambuli"
+    },
+    {
+      "code": "5311042005",
+      "name": "Pulu Panjang"
+    },
+    {
+      "code": "5311042010",
+      "name": "Praikarang"
+    },
+    {
+      "code": "5311042011",
+      "name": "Tanatuku"
+    },
+    {
+      "code": "5311042012",
+      "name": "Ngadulanggi"
+    }
+  ],
+  "531105": [
+    {
+      "code": "5311052001",
+      "name": "Billa"
+    },
+    {
+      "code": "5311052002",
+      "name": "Karita"
+    },
+    {
+      "code": "5311052003",
+      "name": "Kuki Talu"
+    },
+    {
+      "code": "5311052004",
+      "name": "Tapil"
+    },
+    {
+      "code": "5311052005",
+      "name": "Tarimbang"
+    },
+    {
+      "code": "5311052006",
+      "name": "Waikanabu"
+    },
+    {
+      "code": "5311052007",
+      "name": "Pindu Hurani"
+    },
+    {
+      "code": "5311052008",
+      "name": "Praing Kareha"
+    },
+    {
+      "code": "5311052009",
+      "name": "Wudi Pandak"
+    },
+    {
+      "code": "5311052011",
+      "name": "Bangga Watu"
+    }
+  ],
+  "531106": [
+    {
+      "code": "5311062001",
+      "name": "Ramuk"
+    },
+    {
+      "code": "5311062002",
+      "name": "Wangga Mbewa"
+    },
+    {
+      "code": "5311062003",
+      "name": "Lailunggi"
+    },
+    {
+      "code": "5311062004",
+      "name": "Tawui"
+    },
+    {
+      "code": "5311062005",
+      "name": "Wahang"
+    },
+    {
+      "code": "5311062006",
+      "name": "Mahaniwa"
+    }
+  ],
+  "531107": [
+    {
+      "code": "5311071001",
+      "name": "Kawangu"
+    },
+    {
+      "code": "5311071002",
+      "name": "Watumbaka"
+    },
+    {
+      "code": "5311072003",
+      "name": "Kambatatana"
+    },
+    {
+      "code": "5311072007",
+      "name": "Palaka Hembi"
+    },
+    {
+      "code": "5311072008",
+      "name": "Kadumbul"
+    },
+    {
+      "code": "5311072009",
+      "name": "Maubokul"
+    },
+    {
+      "code": "5311072012",
+      "name": "Laindeha"
+    }
+  ],
+  "531108": [
+    {
+      "code": "5311081001",
+      "name": "Lumbukore"
+    },
+    {
+      "code": "5311082002",
+      "name": "Umalulu"
+    },
+    {
+      "code": "5311082003",
+      "name": "Patawang"
+    },
+    {
+      "code": "5311082004",
+      "name": "Wanga"
+    },
+    {
+      "code": "5311082005",
+      "name": "Matawai Atu"
+    },
+    {
+      "code": "5311082006",
+      "name": "Mutunggeding"
+    },
+    {
+      "code": "5311082007",
+      "name": "Lairuru"
+    },
+    {
+      "code": "5311082008",
+      "name": "Watuhadang"
+    },
+    {
+      "code": "5311082009",
+      "name": "Watupuda"
+    },
+    {
+      "code": "5311082010",
+      "name": "Ngaru Kanoru"
+    }
+  ],
+  "531109": [
+    {
+      "code": "5311092001",
+      "name": "Rindi"
+    },
+    {
+      "code": "5311092002",
+      "name": "Tanaraing"
+    },
+    {
+      "code": "5311092003",
+      "name": "Haikatapu"
+    },
+    {
+      "code": "5311092004",
+      "name": "Kabaru"
+    },
+    {
+      "code": "5311092005",
+      "name": "Hanggaroru"
+    },
+    {
+      "code": "5311092006",
+      "name": "Lailanjang"
+    },
+    {
+      "code": "5311092007",
+      "name": "Tamburi"
+    },
+    {
+      "code": "5311092008",
+      "name": "Kayuri"
+    }
+  ],
+  "531110": [
+    {
+      "code": "5311102001",
+      "name": "Kaliuda"
+    },
+    {
+      "code": "5311102002",
+      "name": "Kuruwaki"
+    },
+    {
+      "code": "5311102003",
+      "name": "Tana Manang"
+    },
+    {
+      "code": "5311102004",
+      "name": "Mburukulu"
+    },
+    {
+      "code": "5311102005",
+      "name": "Pamburu"
+    },
+    {
+      "code": "5311102006",
+      "name": "Lambakara"
+    },
+    {
+      "code": "5311102007",
+      "name": "Tamma"
+    },
+    {
+      "code": "5311102009",
+      "name": "Palanggai"
+    }
+  ],
+  "531111": [
+    {
+      "code": "5311112001",
+      "name": "Wulla"
+    },
+    {
+      "code": "5311112002",
+      "name": "Hadakamali"
+    },
+    {
+      "code": "5311112003",
+      "name": "Lumbu Manggit"
+    },
+    {
+      "code": "5311112004",
+      "name": "Latena"
+    },
+    {
+      "code": "5311112005",
+      "name": "Lainjanji"
+    },
+    {
+      "code": "5311112006",
+      "name": "Laipandak"
+    },
+    {
+      "code": "5311112008",
+      "name": "Paranda"
+    }
+  ],
+  "531112": [
+    {
+      "code": "5311122001",
+      "name": "Kananggar"
+    },
+    {
+      "code": "5311122002",
+      "name": "Mehang Mata"
+    },
+    {
+      "code": "5311122003",
+      "name": "Karera Jangga"
+    },
+    {
+      "code": "5311122004",
+      "name": "Praimbana"
+    },
+    {
+      "code": "5311122005",
+      "name": "Pabera Manera"
+    },
+    {
+      "code": "5311122010",
+      "name": "Winumuru"
+    },
+    {
+      "code": "5311122011",
+      "name": "Laitaku"
+    }
+  ],
+  "531113": [
+    {
+      "code": "5311132001",
+      "name": "Nggongi"
+    },
+    {
+      "code": "5311132002",
+      "name": "Praimadita"
+    },
+    {
+      "code": "5311132003",
+      "name": "Praisalura"
+    },
+    {
+      "code": "5311132004",
+      "name": "Tandula Jangga"
+    },
+    {
+      "code": "5311132005",
+      "name": "Nangga"
+    },
+    {
+      "code": "5311132006",
+      "name": "Janggamangu"
+    },
+    {
+      "code": "5311132011",
+      "name": "Ananjaki"
+    }
+  ],
+  "531114": [
+    {
+      "code": "5311142001",
+      "name": "Kamanggih"
+    },
+    {
+      "code": "5311142002",
+      "name": "Kambatabundung"
+    },
+    {
+      "code": "5311142003",
+      "name": "Meurumba"
+    },
+    {
+      "code": "5311142004",
+      "name": "Laimbonga"
+    },
+    {
+      "code": "5311142005",
+      "name": "Kota Kawau"
+    },
+    {
+      "code": "5311142006",
+      "name": "Matawai Katingga"
+    },
+    {
+      "code": "5311142007",
+      "name": "Kataka"
+    },
+    {
+      "code": "5311142008",
+      "name": "Matawai Maringgu"
+    },
+    {
+      "code": "5311142009",
+      "name": "Mauramba"
+    }
+  ],
+  "531115": [
+    {
+      "code": "5311152001",
+      "name": "Prai Bakul"
+    },
+    {
+      "code": "5311152002",
+      "name": "Katikutana"
+    },
+    {
+      "code": "5311152003",
+      "name": "Karipi"
+    },
+    {
+      "code": "5311152004",
+      "name": "Wangga Meti"
+    },
+    {
+      "code": "5311152005",
+      "name": "Katiku Wai"
+    },
+    {
+      "code": "5311152006",
+      "name": "Katiku Luku"
+    }
+  ],
+  "531116": [
+    {
+      "code": "5311161001",
+      "name": "Wangga"
+    },
+    {
+      "code": "5311161002",
+      "name": "Prailiu"
+    },
+    {
+      "code": "5311161003",
+      "name": "Kambaniru"
+    },
+    {
+      "code": "5311161004",
+      "name": "Mauliru"
+    },
+    {
+      "code": "5311161005",
+      "name": "Mau Hau"
+    },
+    {
+      "code": "5311161006",
+      "name": "Malumbi"
+    },
+    {
+      "code": "5311161007",
+      "name": "Lambanapu"
+    },
+    {
+      "code": "5311162008",
+      "name": "Kiritana"
+    }
+  ],
+  "531117": [
+    {
+      "code": "5311172001",
+      "name": "Lukuwingir"
+    },
+    {
+      "code": "5311172002",
+      "name": "Waimbidi"
+    },
+    {
+      "code": "5311172003",
+      "name": "Laimeta"
+    },
+    {
+      "code": "5311172004",
+      "name": "Mahubokul"
+    },
+    {
+      "code": "5311172005",
+      "name": "Marada Mundi"
+    },
+    {
+      "code": "5311172006",
+      "name": "Maidang"
+    }
+  ],
+  "531118": [
+    {
+      "code": "5311182001",
+      "name": "Watumbelar"
+    },
+    {
+      "code": "5311182002",
+      "name": "Bidipraing"
+    },
+    {
+      "code": "5311182003",
+      "name": "Umamanu"
+    },
+    {
+      "code": "5311182004",
+      "name": "Mondulambi"
+    },
+    {
+      "code": "5311182005",
+      "name": "Kangeli"
+    },
+    {
+      "code": "5311182006",
+      "name": "Laihau"
+    }
+  ],
+  "531119": [
+    {
+      "code": "5311192001",
+      "name": "Kompa Pari"
+    },
+    {
+      "code": "5311192002",
+      "name": "Matawai Amahu"
+    },
+    {
+      "code": "5311192003",
+      "name": "Mandahu"
+    },
+    {
+      "code": "5311192004",
+      "name": "Lailara"
+    },
+    {
+      "code": "5311192005",
+      "name": "Praibakul"
+    }
+  ],
+  "531120": [
+    {
+      "code": "5311201001",
+      "name": "Temu"
+    },
+    {
+      "code": "5311202002",
+      "name": "Kuta"
+    },
+    {
+      "code": "5311202003",
+      "name": "Hambapraing"
+    },
+    {
+      "code": "5311202004",
+      "name": "Mondu"
+    },
+    {
+      "code": "5311202005",
+      "name": "Ndapayami"
+    }
+  ],
+  "531121": [
+    {
+      "code": "5311212001",
+      "name": "Praiwitu"
+    },
+    {
+      "code": "5311212002",
+      "name": "Kakaha"
+    },
+    {
+      "code": "5311212003",
+      "name": "Hambawutang"
+    },
+    {
+      "code": "5311212004",
+      "name": "Kabanda"
+    },
+    {
+      "code": "5311212005",
+      "name": "Prauraming"
+    }
+  ],
+  "531122": [
+    {
+      "code": "5311222001",
+      "name": "Lahiru"
+    },
+    {
+      "code": "5311222002",
+      "name": "Patamawai"
+    },
+    {
+      "code": "5311222003",
+      "name": "Wairara"
+    },
+    {
+      "code": "5311222004",
+      "name": "Praikalala"
+    },
+    {
+      "code": "5311222005",
+      "name": "Lulundilu"
+    },
+    {
+      "code": "5311222006",
+      "name": "Haray"
+    }
+  ]
 }

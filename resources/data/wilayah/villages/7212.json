@@ -1,0 +1,522 @@
+{
+  "721201": [
+    {
+      "code": "7212011001",
+      "name": "Kolonodale"
+    },
+    {
+      "code": "7212011002",
+      "name": "Bahontula"
+    },
+    {
+      "code": "7212011003",
+      "name": "Bahoue"
+    },
+    {
+      "code": "7212012004",
+      "name": "Ganda-Ganda"
+    },
+    {
+      "code": "7212012005",
+      "name": "Koya"
+    },
+    {
+      "code": "7212012006",
+      "name": "Gililana"
+    },
+    {
+      "code": "7212012007",
+      "name": "Tanauge"
+    },
+    {
+      "code": "7212012008",
+      "name": "Korololaki"
+    },
+    {
+      "code": "7212012009",
+      "name": "Korololama"
+    },
+    {
+      "code": "7212012010",
+      "name": "Koromatantu"
+    }
+  ],
+  "721202": [
+    {
+      "code": "7212022001",
+      "name": "Bunta"
+    },
+    {
+      "code": "7212022002",
+      "name": "Tompira"
+    },
+    {
+      "code": "7212022003",
+      "name": "Bungintimbe"
+    },
+    {
+      "code": "7212022004",
+      "name": "Towara"
+    },
+    {
+      "code": "7212022005",
+      "name": "Molino"
+    },
+    {
+      "code": "7212022006",
+      "name": "Mohoni"
+    },
+    {
+      "code": "7212022007",
+      "name": "Ungkea"
+    },
+    {
+      "code": "7212022008",
+      "name": "Bimor Jaya"
+    },
+    {
+      "code": "7212022009",
+      "name": "Molores"
+    },
+    {
+      "code": "7212022010",
+      "name": "Keuno"
+    },
+    {
+      "code": "7212022011",
+      "name": "Towara Pantai"
+    },
+    {
+      "code": "7212022012",
+      "name": "Peboa"
+    }
+  ],
+  "721203": [
+    {
+      "code": "7212032001",
+      "name": "Dolupo Karya"
+    },
+    {
+      "code": "7212032002",
+      "name": "Po'ona"
+    },
+    {
+      "code": "7212032003",
+      "name": "Petumbea"
+    },
+    {
+      "code": "7212032004",
+      "name": "Ronta"
+    },
+    {
+      "code": "7212032005",
+      "name": "Pontangoa"
+    },
+    {
+      "code": "7212032006",
+      "name": "Jamor Jaya"
+    },
+    {
+      "code": "7212032007",
+      "name": "Pa'awaru"
+    },
+    {
+      "code": "7212032008",
+      "name": "Lembobelala"
+    },
+    {
+      "code": "7212032009",
+      "name": "Bintangor Mukti"
+    },
+    {
+      "code": "7212032010",
+      "name": "Mandula"
+    }
+  ],
+  "721204": [
+    {
+      "code": "7212042001",
+      "name": "Beteleme"
+    },
+    {
+      "code": "7212042002",
+      "name": "Uluanso"
+    },
+    {
+      "code": "7212042003",
+      "name": "Mora"
+    },
+    {
+      "code": "7212042004",
+      "name": "Waraa"
+    },
+    {
+      "code": "7212042005",
+      "name": "Tingkeao"
+    },
+    {
+      "code": "7212042006",
+      "name": "Wawopada"
+    },
+    {
+      "code": "7212042007",
+      "name": "Korowalelo"
+    },
+    {
+      "code": "7212042008",
+      "name": "Tinompo"
+    },
+    {
+      "code": "7212042009",
+      "name": "Kumpi"
+    },
+    {
+      "code": "7212042010",
+      "name": "Korompeeli"
+    },
+    {
+      "code": "7212042011",
+      "name": "Lemboroma"
+    },
+    {
+      "code": "7212042012",
+      "name": "Korowou"
+    },
+    {
+      "code": "7212042013",
+      "name": "Lembobaru"
+    },
+    {
+      "code": "7212042014",
+      "name": "Korobonde"
+    }
+  ],
+  "721205": [
+    {
+      "code": "7212052001",
+      "name": "Tomata"
+    },
+    {
+      "code": "7212052002",
+      "name": "Londi"
+    },
+    {
+      "code": "7212052003",
+      "name": "Taende"
+    },
+    {
+      "code": "7212052004",
+      "name": "Ensa"
+    },
+    {
+      "code": "7212052005",
+      "name": "Kolaka"
+    },
+    {
+      "code": "7212052006",
+      "name": "Peonea"
+    },
+    {
+      "code": "7212052007",
+      "name": "Lanumor"
+    },
+    {
+      "code": "7212052008",
+      "name": "Gontara"
+    },
+    {
+      "code": "7212052009",
+      "name": "Lee"
+    },
+    {
+      "code": "7212052010",
+      "name": "Saemba"
+    },
+    {
+      "code": "7212052011",
+      "name": "Kasingoli"
+    },
+    {
+      "code": "7212052012",
+      "name": "Tomui Karya"
+    },
+    {
+      "code": "7212052013",
+      "name": "Saemba Walati"
+    },
+    {
+      "code": "7212052014",
+      "name": "Pambarea"
+    }
+  ],
+  "721206": [
+    {
+      "code": "7212062001",
+      "name": "Era"
+    },
+    {
+      "code": "7212062002",
+      "name": "Peleru"
+    },
+    {
+      "code": "7212062003",
+      "name": "Tamonjengi"
+    },
+    {
+      "code": "7212062004",
+      "name": "Mayumba"
+    },
+    {
+      "code": "7212062005",
+      "name": "Tiwa'a"
+    },
+    {
+      "code": "7212062006",
+      "name": "Lembontonara"
+    },
+    {
+      "code": "7212062007",
+      "name": "Tabarano"
+    },
+    {
+      "code": "7212062008",
+      "name": "Wawondula"
+    }
+  ],
+  "721207": [
+    {
+      "code": "7212072001",
+      "name": "Lembah Sumara"
+    },
+    {
+      "code": "7212072002",
+      "name": "Sumara Jaya"
+    },
+    {
+      "code": "7212072003",
+      "name": "Tambayoli"
+    },
+    {
+      "code": "7212072004",
+      "name": "Malino"
+    },
+    {
+      "code": "7212072005",
+      "name": "Panca Makmur"
+    },
+    {
+      "code": "7212072006",
+      "name": "Tamainusi"
+    },
+    {
+      "code": "7212072007",
+      "name": "Bau"
+    },
+    {
+      "code": "7212072008",
+      "name": "Malino Jaya"
+    },
+    {
+      "code": "7212072009",
+      "name": "Toddopoli Uebangke"
+    },
+    {
+      "code": "7212072010",
+      "name": "Tandoyondo"
+    }
+  ],
+  "721208": [
+    {
+      "code": "7212082001",
+      "name": "Baturube"
+    },
+    {
+      "code": "7212082002",
+      "name": "Posangke"
+    },
+    {
+      "code": "7212082003",
+      "name": "Taronggo"
+    },
+    {
+      "code": "7212082004",
+      "name": "Ueruru"
+    },
+    {
+      "code": "7212082005",
+      "name": "Uewajo"
+    },
+    {
+      "code": "7212082006",
+      "name": "Tirongan Bawah"
+    },
+    {
+      "code": "7212082007",
+      "name": "Tirongan Atas"
+    },
+    {
+      "code": "7212082008",
+      "name": "Siliti"
+    },
+    {
+      "code": "7212082009",
+      "name": "Lemo"
+    },
+    {
+      "code": "7212082010",
+      "name": "Salubiro"
+    },
+    {
+      "code": "7212082011",
+      "name": "Uemasi"
+    },
+    {
+      "code": "7212082012",
+      "name": "Opo"
+    },
+    {
+      "code": "7212082013",
+      "name": "Tanakuraya"
+    },
+    {
+      "code": "7212082014",
+      "name": "Tambarobone"
+    },
+    {
+      "code": "7212082015",
+      "name": "Woomparigi"
+    },
+    {
+      "code": "7212082016",
+      "name": "Boba"
+    },
+    {
+      "code": "7212082017",
+      "name": "Kalombang"
+    },
+    {
+      "code": "7212082018",
+      "name": "Tokonanaka"
+    },
+    {
+      "code": "7212082019",
+      "name": "Matube"
+    },
+    {
+      "code": "7212082020",
+      "name": "Lemowalia"
+    },
+    {
+      "code": "7212082021",
+      "name": "Uempanapa"
+    },
+    {
+      "code": "7212082022",
+      "name": "Tokala Atas"
+    },
+    {
+      "code": "7212082023",
+      "name": "Pokeang"
+    }
+  ],
+  "721209": [
+    {
+      "code": "7212092001",
+      "name": "Pandauke"
+    },
+    {
+      "code": "7212092002",
+      "name": "Kolo Bawah"
+    },
+    {
+      "code": "7212092003",
+      "name": "Kolo Atas"
+    },
+    {
+      "code": "7212092004",
+      "name": "Momo"
+    },
+    {
+      "code": "7212092005",
+      "name": "Tananagaya"
+    },
+    {
+      "code": "7212092006",
+      "name": "Uepakatu"
+    },
+    {
+      "code": "7212092007",
+      "name": "Lijo"
+    },
+    {
+      "code": "7212092008",
+      "name": "Tanasumpu"
+    },
+    {
+      "code": "7212092009",
+      "name": "Parangisi"
+    },
+    {
+      "code": "7212092010",
+      "name": "Girimulya"
+    },
+    {
+      "code": "7212092011",
+      "name": "Winangobino"
+    },
+    {
+      "code": "7212092012",
+      "name": "Tambale"
+    },
+    {
+      "code": "7212092013",
+      "name": "Sea"
+    },
+    {
+      "code": "7212092014",
+      "name": "Menyo'e"
+    }
+  ],
+  "721210": [
+    {
+      "code": "7212102001",
+      "name": "Tiu"
+    },
+    {
+      "code": "7212102002",
+      "name": "Tontowea"
+    },
+    {
+      "code": "7212102003",
+      "name": "Togo Mulyo"
+    },
+    {
+      "code": "7212102004",
+      "name": "Maralee"
+    },
+    {
+      "code": "7212102005",
+      "name": "Mondowe"
+    },
+    {
+      "code": "7212102006",
+      "name": "Sampalowo"
+    },
+    {
+      "code": "7212102007",
+      "name": "Moleono"
+    },
+    {
+      "code": "7212102008",
+      "name": "Onepute"
+    },
+    {
+      "code": "7212102009",
+      "name": "Ulu Laa"
+    },
+    {
+      "code": "7212102010",
+      "name": "Tadaku Jaya"
+    }
+  ]
+}

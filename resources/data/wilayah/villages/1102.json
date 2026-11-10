@@ -1,1574 +1,1574 @@
 {
-    "110201": [
-        {
-            "code": "1102012001",
-            "name": "Engkeran"
-        },
-        {
-            "code": "1102012002",
-            "name": "Rumah Kampung"
-        },
-        {
-            "code": "1102012004",
-            "name": "Pasir Bangun"
-        },
-        {
-            "code": "1102012006",
-            "name": "Kubu"
-        },
-        {
-            "code": "1102012007",
-            "name": "Lawe Kongker"
-        },
-        {
-            "code": "1102012008",
-            "name": "Kuta Cingkam II"
-        },
-        {
-            "code": "1102012009",
-            "name": "Muara Baru"
-        },
-        {
-            "code": "1102012011",
-            "name": "Kuta Batu I"
-        },
-        {
-            "code": "1102012012",
-            "name": "Kuta Cingkam I"
-        },
-        {
-            "code": "1102012013",
-            "name": "Kuta Batu II"
-        },
-        {
-            "code": "1102012014",
-            "name": "Lawe Sempilang"
-        },
-        {
-            "code": "1102012015",
-            "name": "Prapat Batu Nunggul"
-        },
-        {
-            "code": "1102012016",
-            "name": "Pulo Sepang"
-        },
-        {
-            "code": "1102012017",
-            "name": "Rih Mbelang"
-        },
-        {
-            "code": "1102012018",
-            "name": "Kute Batu Baru"
-        },
-        {
-            "code": "1102012019",
-            "name": "Darul Amin"
-        },
-        {
-            "code": "1102012020",
-            "name": "Lawe Lubang Indah"
-        },
-        {
-            "code": "1102012021",
-            "name": "Batu Hamparan"
-        },
-        {
-            "code": "1102012022",
-            "name": "Paye Munje"
-        },
-        {
-            "code": "1102012023",
-            "name": "Pulo Ndadap"
-        },
-        {
-            "code": "1102012024",
-            "name": "Pasir Nunggul"
-        },
-        {
-            "code": "1102012025",
-            "name": "Cingkham Mekhanggun"
-        },
-        {
-            "code": "1102012026",
-            "name": "Pintu Khimbe"
-        },
-        {
-            "code": "1102012027",
-            "name": "Lawe Kongker Hilir"
-        },
-        {
-            "code": "1102012028",
-            "name": "Pulo Gadung"
-        },
-        {
-            "code": "1102012029",
-            "name": "Pasikh Pehkmate"
-        },
-        {
-            "code": "1102012030",
-            "name": "Pasikh Nunang"
-        },
-        {
-            "code": "1102012031",
-            "name": "Deleng Kukusen"
-        }
-    ],
-    "110202": [
-        {
-            "code": "1102022001",
-            "name": "Bukit Merdeka"
-        },
-        {
-            "code": "1102022002",
-            "name": "Darul Aman"
-        },
-        {
-            "code": "1102022003",
-            "name": "Lawe Kesumpat"
-        },
-        {
-            "code": "1102022004",
-            "name": "Lawe Tua Gabungan"
-        },
-        {
-            "code": "1102022005",
-            "name": "Lawe Sigala II"
-        },
-        {
-            "code": "1102022006",
-            "name": "Lawe Sigala Timur"
-        },
-        {
-            "code": "1102022007",
-            "name": "Lawe Sigala Barat"
-        },
-        {
-            "code": "1102022008",
-            "name": "Suka Damai"
-        },
-        {
-            "code": "1102022009",
-            "name": "Kute Tengah"
-        },
-        {
-            "code": "1102022010",
-            "name": "Tanah Baru"
-        },
-        {
-            "code": "1102022011",
-            "name": "Kedataran Gabungan"
-        },
-        {
-            "code": "1102022012",
-            "name": "Gabungan Parsaroan"
-        },
-        {
-            "code": "1102022013",
-            "name": "Lawe Loning Gabungan"
-        },
-        {
-            "code": "1102022014",
-            "name": "Lawe Loning Aman"
-        },
-        {
-            "code": "1102022015",
-            "name": "Suka Maju"
-        },
-        {
-            "code": "1102022016",
-            "name": "Lawe Tua Makmur"
-        },
-        {
-            "code": "1102022017",
-            "name": "Lawe Tua Persatuan"
-        },
-        {
-            "code": "1102022018",
-            "name": "Lawe Serke"
-        },
-        {
-            "code": "1102022019",
-            "name": "Lawe Rakat"
-        },
-        {
-            "code": "1102022020",
-            "name": "Suka Jaya"
-        },
-        {
-            "code": "1102022021",
-            "name": "Enmiya Batu Dua Ratus"
-        },
-        {
-            "code": "1102022022",
-            "name": "Sebungke"
-        },
-        {
-            "code": "1102022023",
-            "name": "Bukit Sepakat"
-        },
-        {
-            "code": "1102022024",
-            "name": "Lawe Loning Sepakat"
-        },
-        {
-            "code": "1102022025",
-            "name": "Lawe Loning I"
-        },
-        {
-            "code": "1102022026",
-            "name": "Gaya Jaya"
-        },
-        {
-            "code": "1102022027",
-            "name": "Gelah Musara"
-        },
-        {
-            "code": "1102022028",
-            "name": "Mulie Dame"
-        },
-        {
-            "code": "1102022029",
-            "name": "Lawe Loning Hakhapen"
-        },
-        {
-            "code": "1102022030",
-            "name": "Karya Indah"
-        },
-        {
-            "code": "1102022031",
-            "name": "Kayu Mbelin"
-        },
-        {
-            "code": "1102022032",
-            "name": "Lawe Sigala Barat Jaya"
-        },
-        {
-            "code": "1102022033",
-            "name": "Lawe Pekhidinen"
-        },
-        {
-            "code": "1102022034",
-            "name": "Kertimbang"
-        },
-        {
-            "code": "1102022035",
-            "name": "Ndauh Nitenggo"
-        }
-    ],
-    "110203": [
-        {
-            "code": "1102032001",
-            "name": "Bambel Gabungan"
-        },
-        {
-            "code": "1102032002",
-            "name": "Kuta Buluh"
-        },
-        {
-            "code": "1102032005",
-            "name": "Lawe Hijo"
-        },
-        {
-            "code": "1102032006",
-            "name": "Pinding"
-        },
-        {
-            "code": "1102032009",
-            "name": "Terutung Megara Asli"
-        },
-        {
-            "code": "1102032011",
-            "name": "Biak Muli"
-        },
-        {
-            "code": "1102032012",
-            "name": "Kute Lang-Lang"
-        },
-        {
-            "code": "1102032013",
-            "name": "Pedesi"
-        },
-        {
-            "code": "1102032014",
-            "name": "Terutung Payung Hulu"
-        },
-        {
-            "code": "1102032015",
-            "name": "Terutung Payung Hilir"
-        },
-        {
-            "code": "1102032016",
-            "name": "Tualang Sembilar"
-        },
-        {
-            "code": "1102032017",
-            "name": "Kuning I"
-        },
-        {
-            "code": "1102032018",
-            "name": "Kuning II"
-        },
-        {
-            "code": "1102032019",
-            "name": "Cinta Damai"
-        },
-        {
-            "code": "1102032020",
-            "name": "Likat"
-        },
-        {
-            "code": "1102032021",
-            "name": "Rikit"
-        },
-        {
-            "code": "1102032023",
-            "name": "Bambel"
-        },
-        {
-            "code": "1102032025",
-            "name": "Lawe Kihing"
-        },
-        {
-            "code": "1102032026",
-            "name": "Terutung Seperai"
-        },
-        {
-            "code": "1102032027",
-            "name": "Kute Seri"
-        },
-        {
-            "code": "1102032028",
-            "name": "Kuta Antara"
-        },
-        {
-            "code": "1102032029",
-            "name": "Pulo Perengge"
-        },
-        {
-            "code": "1102032031",
-            "name": "Pulo Kendondong"
-        },
-        {
-            "code": "1102032033",
-            "name": "Pancakh Iman"
-        },
-        {
-            "code": "1102032034",
-            "name": "Biak Muli Baru"
-        },
-        {
-            "code": "1102032035",
-            "name": "Biak Muli Pantai Raja"
-        },
-        {
-            "code": "1102032036",
-            "name": "Biak Muli Sejahtera"
-        },
-        {
-            "code": "1102032037",
-            "name": "Lembah Haji"
-        },
-        {
-            "code": "1102032038",
-            "name": "Terutung Payung Gabungan"
-        },
-        {
-            "code": "1102032039",
-            "name": "Lawe Hijo Metuah"
-        },
-        {
-            "code": "1102032040",
-            "name": "Ampera"
-        },
-        {
-            "code": "1102032041",
-            "name": "Tembilakh Mbakhu"
-        },
-        {
-            "code": "1102032042",
-            "name": "Kute Lang-Lang Bakhu"
-        }
-    ],
-    "110204": [
-        {
-            "code": "1102042001",
-            "name": "Kota Kutacane"
-        },
-        {
-            "code": "1102042002",
-            "name": "Perapat Hilir"
-        },
-        {
-            "code": "1102042003",
-            "name": "Perapat Hulu"
-        },
-        {
-            "code": "1102042004",
-            "name": "Muara Lawe Bulan"
-        },
-        {
-            "code": "1102042005",
-            "name": "Mbarung"
-        },
-        {
-            "code": "1102042006",
-            "name": "Batu Mbulan Asli"
-        },
-        {
-            "code": "1102042007",
-            "name": "Batu Mbulan I"
-        },
-        {
-            "code": "1102042008",
-            "name": "Batu Mbulan II"
-        },
-        {
-            "code": "1102042009",
-            "name": "Kampung Raja"
-        },
-        {
-            "code": "1102042010",
-            "name": "Pulonas"
-        },
-        {
-            "code": "1102042011",
-            "name": "Kampung Melayu Gabungan"
-        },
-        {
-            "code": "1102042012",
-            "name": "Terutung Pedi"
-        },
-        {
-            "code": "1102042013",
-            "name": "Kute Rih"
-        },
-        {
-            "code": "1102042014",
-            "name": "Gumpang Jaya"
-        },
-        {
-            "code": "1102042015",
-            "name": "Pulo Latong"
-        },
-        {
-            "code": "1102042016",
-            "name": "Kutacane Lama"
-        },
-        {
-            "code": "1102042017",
-            "name": "Batu Mbulan Mbaru"
-        },
-        {
-            "code": "1102042018",
-            "name": "Pulo Peding"
-        },
-        {
-            "code": "1102042019",
-            "name": "Mendabe"
-        },
-        {
-            "code": "1102042020",
-            "name": "Ujung Barat"
-        },
-        {
-            "code": "1102042021",
-            "name": "Pekhapat Titi Panjang"
-        },
-        {
-            "code": "1102042022",
-            "name": "Pekhapat Sepakat"
-        },
-        {
-            "code": "1102042023",
-            "name": "Alas Marancar"
-        },
-        {
-            "code": "1102042024",
-            "name": "Batu Mbulan Sepakat"
-        },
-        {
-            "code": "1102042025",
-            "name": "Pulo Sanggakh"
-        },
-        {
-            "code": "1102042026",
-            "name": "Melayu I"
-        },
-        {
-            "code": "1102042027",
-            "name": "Mbarung Datuk Saudane"
-        }
-    ],
-    "110205": [
-        {
-            "code": "1102052005",
-            "name": "Salang Alas"
-        },
-        {
-            "code": "1102052009",
-            "name": "Kuta Pasir"
-        },
-        {
-            "code": "1102052011",
-            "name": "Purwodadi"
-        },
-        {
-            "code": "1102052012",
-            "name": "Kuta Tinggi"
-        },
-        {
-            "code": "1102052013",
-            "name": "Kampung Baru"
-        },
-        {
-            "code": "1102052014",
-            "name": "Peranginan"
-        },
-        {
-            "code": "1102052015",
-            "name": "Natam"
-        },
-        {
-            "code": "1102052025",
-            "name": "Kumbang Jaya"
-        },
-        {
-            "code": "1102052026",
-            "name": "Kumbang Indah"
-        },
-        {
-            "code": "1102052027",
-            "name": "Natam Baru"
-        },
-        {
-            "code": "1102052029",
-            "name": "Deleng Megakhe"
-        },
-        {
-            "code": "1102052030",
-            "name": "Lawe Bekung"
-        },
-        {
-            "code": "1102052031",
-            "name": "Lawe Bekung Tampahan"
-        },
-        {
-            "code": "1102052032",
-            "name": "Badar Indah"
-        },
-        {
-            "code": "1102052033",
-            "name": "Batu Mbekhong"
-        },
-        {
-            "code": "1102052034",
-            "name": "Tanah Merah"
-        },
-        {
-            "code": "1102052035",
-            "name": "Tanoh Megakhe"
-        },
-        {
-            "code": "1102052036",
-            "name": "Lawe Sekerah"
-        }
-    ],
-    "110206": [
-        {
-            "code": "1102062001",
-            "name": "Pardomuan II"
-        },
-        {
-            "code": "1102062002",
-            "name": "Lawe Desky I"
-        },
-        {
-            "code": "1102062003",
-            "name": "Lawe Desky Sabas"
-        },
-        {
-            "code": "1102062004",
-            "name": "Pardomuan I"
-        },
-        {
-            "code": "1102062005",
-            "name": "Cinta Damai"
-        },
-        {
-            "code": "1102062006",
-            "name": "Lawe Perbunga"
-        },
-        {
-            "code": "1102062007",
-            "name": "Lawe Desky Tongah"
-        },
-        {
-            "code": "1102062008",
-            "name": "Kute Bakti"
-        },
-        {
-            "code": "1102062010",
-            "name": "Muara Situlen"
-        },
-        {
-            "code": "1102062011",
-            "name": "Sejahtera"
-        },
-        {
-            "code": "1102062012",
-            "name": "Kute Makmur"
-        },
-        {
-            "code": "1102062013",
-            "name": "Pardamean"
-        },
-        {
-            "code": "1102062014",
-            "name": "Lawe Mantik"
-        },
-        {
-            "code": "1102062015",
-            "name": "Cinta Makmur"
-        },
-        {
-            "code": "1102062016",
-            "name": "Muara Setia"
-        },
-        {
-            "code": "1102062017",
-            "name": "Tanoh Alas"
-        },
-        {
-            "code": "1102062018",
-            "name": "Sejahtera Baru"
-        },
-        {
-            "code": "1102062024",
-            "name": "Lawe Tawakh"
-        },
-        {
-            "code": "1102062025",
-            "name": "Sabilussalam"
-        },
-        {
-            "code": "1102062026",
-            "name": "Lawe Desky Jaya"
-        },
-        {
-            "code": "1102062027",
-            "name": "Pintu Alas"
-        }
-    ],
-    "110207": [
-        {
-            "code": "1102072001",
-            "name": "Gulo"
-        },
-        {
-            "code": "1102072002",
-            "name": "Pulo Piku"
-        },
-        {
-            "code": "1102072003",
-            "name": "Terutung Kute"
-        },
-        {
-            "code": "1102072004",
-            "name": "Kute Ujung"
-        },
-        {
-            "code": "1102072005",
-            "name": "Lawe Stul"
-        },
-        {
-            "code": "1102072006",
-            "name": "Kite Merangun"
-        },
-        {
-            "code": "1102072007",
-            "name": "Mamas"
-        },
-        {
-            "code": "1102072008",
-            "name": "Tanjung Lama"
-        },
-        {
-            "code": "1102072009",
-            "name": "Tanjung Muda"
-        },
-        {
-            "code": "1102072010",
-            "name": "Rambung Teldak"
-        },
-        {
-            "code": "1102072011",
-            "name": "Tanjung Aman"
-        },
-        {
-            "code": "1102072012",
-            "name": "Sri Muda"
-        },
-        {
-            "code": "1102072013",
-            "name": "Ujung Baru"
-        },
-        {
-            "code": "1102072014",
-            "name": "Kute Rambe"
-        },
-        {
-            "code": "1102072015",
-            "name": "Mamas Baru"
-        },
-        {
-            "code": "1102072016",
-            "name": "Rambung Jaya"
-        },
-        {
-            "code": "1102072017",
-            "name": "Makmur Jaya"
-        },
-        {
-            "code": "1102072018",
-            "name": "Darul Makmur"
-        },
-        {
-            "code": "1102072019",
-            "name": "Tanjung Bakhu"
-        },
-        {
-            "code": "1102072020",
-            "name": "Pulo Gabung"
-        },
-        {
-            "code": "1102072021",
-            "name": "Kokhtan Jaya"
-        },
-        {
-            "code": "1102072022",
-            "name": "Istiqamah"
-        },
-        {
-            "code": "1102072023",
-            "name": "Lawe Mamas Indah"
-        },
-        {
-            "code": "1102072024",
-            "name": "Tanjung Leuser"
-        },
-        {
-            "code": "1102072025",
-            "name": "Simpang IV Tanjung"
-        },
-        {
-            "code": "1102072026",
-            "name": "Lawe Pinis"
-        },
-        {
-            "code": "1102072027",
-            "name": "Buntul Kendawi"
-        },
-        {
-            "code": "1102072028",
-            "name": "Kuning Abadi"
-        }
-    ],
-    "110208": [
-        {
-            "code": "1102082001",
-            "name": "Pasir Gala"
-        },
-        {
-            "code": "1102082002",
-            "name": "Pasir Penjengakan"
-        },
-        {
-            "code": "1102082003",
-            "name": "Kutambaru"
-        },
-        {
-            "code": "1102082004",
-            "name": "Lawe Sagu Hulu"
-        },
-        {
-            "code": "1102082005",
-            "name": "Lawe Sagu Hilir"
-        },
-        {
-            "code": "1102082006",
-            "name": "Kute Bantil"
-        },
-        {
-            "code": "1102082011",
-            "name": "Lawe Kolok"
-        },
-        {
-            "code": "1102082012",
-            "name": "Lawe Rutung"
-        },
-        {
-            "code": "1102082013",
-            "name": "Kampung Nangka"
-        },
-        {
-            "code": "1102082014",
-            "name": "Tenembak Juhar"
-        },
-        {
-            "code": "1102082015",
-            "name": "Simpang Empat"
-        },
-        {
-            "code": "1102082016",
-            "name": "Kuta Buluh Botong"
-        },
-        {
-            "code": "1102082017",
-            "name": "Katambaru Becawan"
-        },
-        {
-            "code": "1102082018",
-            "name": "Lawe Kinge"
-        },
-        {
-            "code": "1102082019",
-            "name": "Kandang Mbelang Mandiri"
-        },
-        {
-            "code": "1102082020",
-            "name": "Mbacang Racun"
-        },
-        {
-            "code": "1102082021",
-            "name": "Telaga Mekar"
-        },
-        {
-            "code": "1102082023",
-            "name": "Pulonas Baru"
-        },
-        {
-            "code": "1102082025",
-            "name": "Kuta Genting"
-        },
-        {
-            "code": "1102082026",
-            "name": "Pangguh"
-        },
-        {
-            "code": "1102082027",
-            "name": "Lawe Sagu"
-        },
-        {
-            "code": "1102082028",
-            "name": "Pekhapet Timur"
-        },
-        {
-            "code": "1102082029",
-            "name": "Bahagia"
-        },
-        {
-            "code": "1102082030",
-            "name": "Kute Galuh Asli"
-        }
-    ],
-    "110209": [
-        {
-            "code": "1102092001",
-            "name": "Kute Lengat Pangan"
-        },
-        {
-            "code": "1102092002",
-            "name": "Kute Lengat Selian"
-        },
-        {
-            "code": "1102092003",
-            "name": "Tualang Baru"
-        },
-        {
-            "code": "1102092004",
-            "name": "Alur Buluh"
-        },
-        {
-            "code": "1102092005",
-            "name": "Maha Singkil"
-        },
-        {
-            "code": "1102092006",
-            "name": "Tenembak Bintang"
-        },
-        {
-            "code": "1102092007",
-            "name": "Kute Lingga"
-        },
-        {
-            "code": "1102092008",
-            "name": "Rikit Bur"
-        },
-        {
-            "code": "1102092010",
-            "name": "Kerukunan"
-        },
-        {
-            "code": "1102092011",
-            "name": "Lawe Dua"
-        },
-        {
-            "code": "1102092012",
-            "name": "Rema"
-        },
-        {
-            "code": "1102092013",
-            "name": "Bambel Baru"
-        },
-        {
-            "code": "1102092014",
-            "name": "Pejuang"
-        },
-        {
-            "code": "1102092015",
-            "name": "Darussalam"
-        },
-        {
-            "code": "1102092016",
-            "name": "Amaliah"
-        },
-        {
-            "code": "1102092017",
-            "name": "Sebudi Jaya"
-        },
-        {
-            "code": "1102092018",
-            "name": "Gumpang"
-        },
-        {
-            "code": "1102092019",
-            "name": "Kute Gekhat"
-        },
-        {
-            "code": "1102092020",
-            "name": "Paye Khambung"
-        },
-        {
-            "code": "1102092021",
-            "name": "Mbak Sako"
-        },
-        {
-            "code": "1102092022",
-            "name": "Darul Imami"
-        },
-        {
-            "code": "1102092023",
-            "name": "Rikit Bur II"
-        },
-        {
-            "code": "1102092024",
-            "name": "Kute Empat Lima"
-        }
-    ],
-    "110210": [
-        {
-            "code": "1102102001",
-            "name": "Simpang Semadam"
-        },
-        {
-            "code": "1102102002",
-            "name": "Semadam Awal"
-        },
-        {
-            "code": "1102102003",
-            "name": "Semadam Asal"
-        },
-        {
-            "code": "1102102004",
-            "name": "Lawe Kinga Gabungan"
-        },
-        {
-            "code": "1102102005",
-            "name": "Lawe Kinga Tebing Tinggi"
-        },
-        {
-            "code": "1102102006",
-            "name": "Kebun Sere"
-        },
-        {
-            "code": "1102102007",
-            "name": "Lawe Beringin Horas"
-        },
-        {
-            "code": "1102102008",
-            "name": "Lawe. Berigin Gayo"
-        },
-        {
-            "code": "1102102009",
-            "name": "Suka Makmur"
-        },
-        {
-            "code": "1102102010",
-            "name": "Pasar Puntung"
-        },
-        {
-            "code": "1102102011",
-            "name": "Titi Pasir"
-        },
-        {
-            "code": "1102102012",
-            "name": "Lawe Petanduk I"
-        },
-        {
-            "code": "1102102013",
-            "name": "Ngkeran Alur Buluh"
-        },
-        {
-            "code": "1102102014",
-            "name": "Kampung Baru"
-        },
-        {
-            "code": "1102102015",
-            "name": "Sepakat Segenap"
-        },
-        {
-            "code": "1102102016",
-            "name": "Selamat Indah"
-        },
-        {
-            "code": "1102102017",
-            "name": "Lawe Kinge Lapter"
-        },
-        {
-            "code": "1102102018",
-            "name": "Lawe Mejile"
-        },
-        {
-            "code": "1102102019",
-            "name": "Lawe Petanduk-II"
-        }
-    ],
-    "110211": [
-        {
-            "code": "1102112004",
-            "name": "Titi Mas"
-        },
-        {
-            "code": "1102112005",
-            "name": "Meranti"
-        },
-        {
-            "code": "1102112006",
-            "name": "Kute Lang-Lang"
-        },
-        {
-            "code": "1102112007",
-            "name": "Lawe Sumur"
-        },
-        {
-            "code": "1102112008",
-            "name": "Pardamaian"
-        },
-        {
-            "code": "1102112009",
-            "name": "Salim Pipit"
-        },
-        {
-            "code": "1102112010",
-            "name": "Penguhapan"
-        },
-        {
-            "code": "1102112011",
-            "name": "Lumban Tua"
-        },
-        {
-            "code": "1102112012",
-            "name": "Mutiara Damai"
-        },
-        {
-            "code": "1102112013",
-            "name": "Dolok Nauli"
-        },
-        {
-            "code": "1102112014",
-            "name": "Tuhi Jongkat"
-        },
-        {
-            "code": "1102112015",
-            "name": "Uning Sigugur"
-        },
-        {
-            "code": "1102112016",
-            "name": "Lumban Sitio-tio"
-        },
-        {
-            "code": "1102112017",
-            "name": "Lawe Malum"
-        },
-        {
-            "code": "1102112018",
-            "name": "Alur Baning"
-        },
-        {
-            "code": "1102112019",
-            "name": "Lingga Alas"
-        },
-        {
-            "code": "1102112020",
-            "name": "Khambung Tumbung"
-        },
-        {
-            "code": "1102112021",
-            "name": "Tuah Mesade"
-        },
-        {
-            "code": "1102112022",
-            "name": "Sumukh Alas"
-        },
-        {
-            "code": "1102112023",
-            "name": "Alukh Bakhu"
-        },
-        {
-            "code": "1102112024",
-            "name": "Sepekhinding"
-        },
-        {
-            "code": "1102112025",
-            "name": "Tanoh Subukh"
-        },
-        {
-            "code": "1102112026",
-            "name": "Pinggan Mbelang"
-        },
-        {
-            "code": "1102112027",
-            "name": "Sigai Indah"
-        },
-        {
-            "code": "1102112028",
-            "name": "Ukekh Deleng"
-        },
-        {
-            "code": "1102112029",
-            "name": "Alas Mesikhat"
-        },
-        {
-            "code": "1102112030",
-            "name": "Titi Hakhapen"
-        }
-    ],
-    "110212": [
-        {
-            "code": "1102122001",
-            "name": "Aunan Sepakat"
-        },
-        {
-            "code": "1102122002",
-            "name": "Lawe Penanggalan"
-        },
-        {
-            "code": "1102122003",
-            "name": "Lawe Mengkudu"
-        },
-        {
-            "code": "1102122004",
-            "name": "Jambur Lak-lak"
-        },
-        {
-            "code": "1102122005",
-            "name": "Simpang Tiga Jongar"
-        },
-        {
-            "code": "1102122006",
-            "name": "Jongar Asli"
-        },
-        {
-            "code": "1102122007",
-            "name": "Ketambe"
-        },
-        {
-            "code": "1102122008",
-            "name": "Rumah Bundar"
-        },
-        {
-            "code": "1102122009",
-            "name": "Penyeberangan Cingkam"
-        },
-        {
-            "code": "1102122010",
-            "name": "Deleng Damar"
-        },
-        {
-            "code": "1102122011",
-            "name": "Bintang Bener"
-        },
-        {
-            "code": "1102122012",
-            "name": "Suka Rimbun"
-        },
-        {
-            "code": "1102122013",
-            "name": "Lawe Aunan"
-        },
-        {
-            "code": "1102122014",
-            "name": "Bener Bepapah"
-        },
-        {
-            "code": "1102122015",
-            "name": "Penungkunen"
-        },
-        {
-            "code": "1102122016",
-            "name": "Datok Pining"
-        },
-        {
-            "code": "1102122017",
-            "name": "Kati Maju"
-        },
-        {
-            "code": "1102122018",
-            "name": "Leuser"
-        },
-        {
-            "code": "1102122019",
-            "name": "Jati Sara"
-        },
-        {
-            "code": "1102122020",
-            "name": "Bukit Mbakhu"
-        },
-        {
-            "code": "1102122021",
-            "name": "Kayu Metangur"
-        },
-        {
-            "code": "1102122022",
-            "name": "Lawe Sembekan"
-        },
-        {
-            "code": "1102122023",
-            "name": "Lawe Beringin"
-        },
-        {
-            "code": "1102122024",
-            "name": "Lawe Ger-Ger"
-        },
-        {
-            "code": "1102122025",
-            "name": "Simpur Jaya"
-        }
-    ],
-    "110213": [
-        {
-            "code": "1102132001",
-            "name": "Salang Baru"
-        },
-        {
-            "code": "1102132002",
-            "name": "Ranto Dior"
-        },
-        {
-            "code": "1102132003",
-            "name": "Lembah Alas"
-        },
-        {
-            "code": "1102132004",
-            "name": "Tenembak Lang-Lang"
-        },
-        {
-            "code": "1102132005",
-            "name": "Salang Sigotom"
-        },
-        {
-            "code": "1102132006",
-            "name": "Tualang Lama"
-        },
-        {
-            "code": "1102132007",
-            "name": "Gusung Batu"
-        },
-        {
-            "code": "1102132008",
-            "name": "Kaya Pangur"
-        },
-        {
-            "code": "1102132009",
-            "name": "Sepakat"
-        },
-        {
-            "code": "1102132010",
-            "name": "Lawe Pangkat"
-        },
-        {
-            "code": "1102132011",
-            "name": "Bunga Melur"
-        },
-        {
-            "code": "1102132012",
-            "name": "Penampaan"
-        },
-        {
-            "code": "1102132013",
-            "name": "Terutung Mbelang"
-        },
-        {
-            "code": "1102132014",
-            "name": "Salang Muara"
-        },
-        {
-            "code": "1102132015",
-            "name": "Lawe Hakhum"
-        },
-        {
-            "code": "1102132016",
-            "name": "Tanoh Khukahen"
-        },
-        {
-            "code": "1102132017",
-            "name": "Tading Ni Ulihi"
-        },
-        {
-            "code": "1102132018",
-            "name": "Peseluk Pesimbe"
-        },
-        {
-            "code": "1102132019",
-            "name": "Kane Lot"
-        },
-        {
-            "code": "1102132020",
-            "name": "Muhajirin"
-        },
-        {
-            "code": "1102132021",
-            "name": "Beriring Naru"
-        },
-        {
-            "code": "1102132022",
-            "name": "Kati Jeroh"
-        }
-    ],
-    "110214": [
-        {
-            "code": "1102142001",
-            "name": "Terutung Megara Lawe Pasaran"
-        },
-        {
-            "code": "1102142002",
-            "name": "Kisam Gabungan"
-        },
-        {
-            "code": "1102142003",
-            "name": "Kisam Kute Pasir"
-        },
-        {
-            "code": "1102142004",
-            "name": "Lawe Sumur"
-        },
-        {
-            "code": "1102142005",
-            "name": "Lawe Sumur Baru"
-        },
-        {
-            "code": "1102142006",
-            "name": "Kute Lesung"
-        },
-        {
-            "code": "1102142007",
-            "name": "Berandang"
-        },
-        {
-            "code": "1102142008",
-            "name": "Kute Bunin"
-        },
-        {
-            "code": "1102142009",
-            "name": "Buah Pala"
-        },
-        {
-            "code": "1102142010",
-            "name": "Panosan"
-        },
-        {
-            "code": "1102142011",
-            "name": "Lawe Pasaran Tengku Mbelin"
-        },
-        {
-            "code": "1102142012",
-            "name": "Terutung Megahke MBakhu"
-        },
-        {
-            "code": "1102142013",
-            "name": "Kisam Lestari"
-        },
-        {
-            "code": "1102142014",
-            "name": "Kisam Kute Rambe"
-        },
-        {
-            "code": "1102142015",
-            "name": "Lawe Polak"
-        },
-        {
-            "code": "1102142016",
-            "name": "Lawes Sumur Sepakat"
-        },
-        {
-            "code": "1102142017",
-            "name": "Setia Baru"
-        },
-        {
-            "code": "1102142018",
-            "name": "Teger Miko"
-        }
-    ],
-    "110215": [
-        {
-            "code": "1102152001",
-            "name": "Salim Pinim I"
-        },
-        {
-            "code": "1102152002",
-            "name": "Jambur Damar"
-        },
-        {
-            "code": "1102152003",
-            "name": "Alur Langsat"
-        },
-        {
-            "code": "1102152004",
-            "name": "Rambah Sayang"
-        },
-        {
-            "code": "1102152006",
-            "name": "Rumah Luar"
-        },
-        {
-            "code": "1102152007",
-            "name": "Tenembak Alas"
-        },
-        {
-            "code": "1102152008",
-            "name": "Lawe Tungkal"
-        },
-        {
-            "code": "1102152009",
-            "name": "Salim Pinim II"
-        },
-        {
-            "code": "1102152010",
-            "name": "Jambukh Pekhmate"
-        },
-        {
-            "code": "1102152011",
-            "name": "Khutung Mbelang"
-        },
-        {
-            "code": "1102152012",
-            "name": "Timang Rasa"
-        },
-        {
-            "code": "1102152013",
-            "name": "Stambul Jaya"
-        },
-        {
-            "code": "1102152014",
-            "name": "Alur Nangke"
-        },
-        {
-            "code": "1102152015",
-            "name": "Kute Mejile"
-        }
-    ],
-    "110216": [
-        {
-            "code": "1102162001",
-            "name": "Bintang Alga Musara"
-        },
-        {
-            "code": "1102162002",
-            "name": "Bintang Bukit Indah"
-        },
-        {
-            "code": "1102162003",
-            "name": "Tanjung Sari"
-        },
-        {
-            "code": "1102162004",
-            "name": "Bun-bun Alas"
-        },
-        {
-            "code": "1102162005",
-            "name": "Naga Timbul"
-        },
-        {
-            "code": "1102162006",
-            "name": "Gunung Pak-Pak"
-        },
-        {
-            "code": "1102162007",
-            "name": "Bukit Meriah"
-        },
-        {
-            "code": "1102162008",
-            "name": "Permata Musara"
-        },
-        {
-            "code": "1102162009",
-            "name": "Laut Tawar"
-        },
-        {
-            "code": "1102162010",
-            "name": "Kane Mende"
-        },
-        {
-            "code": "1102162011",
-            "name": "Lawe Sekhakut"
-        },
-        {
-            "code": "1102162012",
-            "name": "Bunbun Indah"
-        },
-        {
-            "code": "1102162013",
-            "name": "Suka Damai"
-        },
-        {
-            "code": "1102162014",
-            "name": "Tuah Kekhine"
-        },
-        {
-            "code": "1102162015",
-            "name": "Punce Nali"
-        },
-        {
-            "code": "1102162016",
-            "name": "Sade Ate"
-        },
-        {
-            "code": "1102162017",
-            "name": "Akhih Majile"
-        },
-        {
-            "code": "1102162018",
-            "name": "Ukhat Peseluk"
-        },
-        {
-            "code": "1102162019",
-            "name": "Tunas Mude"
-        },
-        {
-            "code": "1102162020",
-            "name": "Gaye Sendah"
-        },
-        {
-            "code": "1102162021",
-            "name": "Kute Hakhapen"
-        },
-        {
-            "code": "1102162022",
-            "name": "Kompas"
-        },
-        {
-            "code": "1102162023",
-            "name": "Sepakat"
-        }
-    ]
+  "110201": [
+    {
+      "code": "1102012001",
+      "name": "Engkeran"
+    },
+    {
+      "code": "1102012002",
+      "name": "Rumah Kampung"
+    },
+    {
+      "code": "1102012004",
+      "name": "Pasir Bangun"
+    },
+    {
+      "code": "1102012006",
+      "name": "Kubu"
+    },
+    {
+      "code": "1102012007",
+      "name": "Lawe Kongker"
+    },
+    {
+      "code": "1102012008",
+      "name": "Kuta Cingkam II"
+    },
+    {
+      "code": "1102012009",
+      "name": "Muara Baru"
+    },
+    {
+      "code": "1102012011",
+      "name": "Kuta Batu I"
+    },
+    {
+      "code": "1102012012",
+      "name": "Kuta Cingkam I"
+    },
+    {
+      "code": "1102012013",
+      "name": "Kuta Batu II"
+    },
+    {
+      "code": "1102012014",
+      "name": "Lawe Sempilang"
+    },
+    {
+      "code": "1102012015",
+      "name": "Prapat Batu Nunggul"
+    },
+    {
+      "code": "1102012016",
+      "name": "Pulo Sepang"
+    },
+    {
+      "code": "1102012017",
+      "name": "Rih Mbelang"
+    },
+    {
+      "code": "1102012018",
+      "name": "Kute Batu Baru"
+    },
+    {
+      "code": "1102012019",
+      "name": "Darul Amin"
+    },
+    {
+      "code": "1102012020",
+      "name": "Lawe Lubang Indah"
+    },
+    {
+      "code": "1102012021",
+      "name": "Batu Hamparan"
+    },
+    {
+      "code": "1102012022",
+      "name": "Paye Munje"
+    },
+    {
+      "code": "1102012023",
+      "name": "Pulo Ndadap"
+    },
+    {
+      "code": "1102012024",
+      "name": "Pasir Nunggul"
+    },
+    {
+      "code": "1102012025",
+      "name": "Cingkham Mekhanggun"
+    },
+    {
+      "code": "1102012026",
+      "name": "Pintu Khimbe"
+    },
+    {
+      "code": "1102012027",
+      "name": "Lawe Kongker Hilir"
+    },
+    {
+      "code": "1102012028",
+      "name": "Pulo Gadung"
+    },
+    {
+      "code": "1102012029",
+      "name": "Pasikh Pehkmate"
+    },
+    {
+      "code": "1102012030",
+      "name": "Pasikh Nunang"
+    },
+    {
+      "code": "1102012031",
+      "name": "Deleng Kukusen"
+    }
+  ],
+  "110202": [
+    {
+      "code": "1102022001",
+      "name": "Bukit Merdeka"
+    },
+    {
+      "code": "1102022002",
+      "name": "Darul Aman"
+    },
+    {
+      "code": "1102022003",
+      "name": "Lawe Kesumpat"
+    },
+    {
+      "code": "1102022004",
+      "name": "Lawe Tua Gabungan"
+    },
+    {
+      "code": "1102022005",
+      "name": "Lawe Sigala II"
+    },
+    {
+      "code": "1102022006",
+      "name": "Lawe Sigala Timur"
+    },
+    {
+      "code": "1102022007",
+      "name": "Lawe Sigala Barat"
+    },
+    {
+      "code": "1102022008",
+      "name": "Suka Damai"
+    },
+    {
+      "code": "1102022009",
+      "name": "Kute Tengah"
+    },
+    {
+      "code": "1102022010",
+      "name": "Tanah Baru"
+    },
+    {
+      "code": "1102022011",
+      "name": "Kedataran Gabungan"
+    },
+    {
+      "code": "1102022012",
+      "name": "Gabungan Parsaroan"
+    },
+    {
+      "code": "1102022013",
+      "name": "Lawe Loning Gabungan"
+    },
+    {
+      "code": "1102022014",
+      "name": "Lawe Loning Aman"
+    },
+    {
+      "code": "1102022015",
+      "name": "Suka Maju"
+    },
+    {
+      "code": "1102022016",
+      "name": "Lawe Tua Makmur"
+    },
+    {
+      "code": "1102022017",
+      "name": "Lawe Tua Persatuan"
+    },
+    {
+      "code": "1102022018",
+      "name": "Lawe Serke"
+    },
+    {
+      "code": "1102022019",
+      "name": "Lawe Rakat"
+    },
+    {
+      "code": "1102022020",
+      "name": "Suka Jaya"
+    },
+    {
+      "code": "1102022021",
+      "name": "Enmiya Batu Dua Ratus"
+    },
+    {
+      "code": "1102022022",
+      "name": "Sebungke"
+    },
+    {
+      "code": "1102022023",
+      "name": "Bukit Sepakat"
+    },
+    {
+      "code": "1102022024",
+      "name": "Lawe Loning Sepakat"
+    },
+    {
+      "code": "1102022025",
+      "name": "Lawe Loning I"
+    },
+    {
+      "code": "1102022026",
+      "name": "Gaya Jaya"
+    },
+    {
+      "code": "1102022027",
+      "name": "Gelah Musara"
+    },
+    {
+      "code": "1102022028",
+      "name": "Mulie Dame"
+    },
+    {
+      "code": "1102022029",
+      "name": "Lawe Loning Hakhapen"
+    },
+    {
+      "code": "1102022030",
+      "name": "Karya Indah"
+    },
+    {
+      "code": "1102022031",
+      "name": "Kayu Mbelin"
+    },
+    {
+      "code": "1102022032",
+      "name": "Lawe Sigala Barat Jaya"
+    },
+    {
+      "code": "1102022033",
+      "name": "Lawe Pekhidinen"
+    },
+    {
+      "code": "1102022034",
+      "name": "Kertimbang"
+    },
+    {
+      "code": "1102022035",
+      "name": "Ndauh Nitenggo"
+    }
+  ],
+  "110203": [
+    {
+      "code": "1102032001",
+      "name": "Bambel Gabungan"
+    },
+    {
+      "code": "1102032002",
+      "name": "Kuta Buluh"
+    },
+    {
+      "code": "1102032005",
+      "name": "Lawe Hijo"
+    },
+    {
+      "code": "1102032006",
+      "name": "Pinding"
+    },
+    {
+      "code": "1102032009",
+      "name": "Terutung Megara Asli"
+    },
+    {
+      "code": "1102032011",
+      "name": "Biak Muli"
+    },
+    {
+      "code": "1102032012",
+      "name": "Kute Lang-Lang"
+    },
+    {
+      "code": "1102032013",
+      "name": "Pedesi"
+    },
+    {
+      "code": "1102032014",
+      "name": "Terutung Payung Hulu"
+    },
+    {
+      "code": "1102032015",
+      "name": "Terutung Payung Hilir"
+    },
+    {
+      "code": "1102032016",
+      "name": "Tualang Sembilar"
+    },
+    {
+      "code": "1102032017",
+      "name": "Kuning I"
+    },
+    {
+      "code": "1102032018",
+      "name": "Kuning II"
+    },
+    {
+      "code": "1102032019",
+      "name": "Cinta Damai"
+    },
+    {
+      "code": "1102032020",
+      "name": "Likat"
+    },
+    {
+      "code": "1102032021",
+      "name": "Rikit"
+    },
+    {
+      "code": "1102032023",
+      "name": "Bambel"
+    },
+    {
+      "code": "1102032025",
+      "name": "Lawe Kihing"
+    },
+    {
+      "code": "1102032026",
+      "name": "Terutung Seperai"
+    },
+    {
+      "code": "1102032027",
+      "name": "Kute Seri"
+    },
+    {
+      "code": "1102032028",
+      "name": "Kuta Antara"
+    },
+    {
+      "code": "1102032029",
+      "name": "Pulo Perengge"
+    },
+    {
+      "code": "1102032031",
+      "name": "Pulo Kendondong"
+    },
+    {
+      "code": "1102032033",
+      "name": "Pancakh Iman"
+    },
+    {
+      "code": "1102032034",
+      "name": "Biak Muli Baru"
+    },
+    {
+      "code": "1102032035",
+      "name": "Biak Muli Pantai Raja"
+    },
+    {
+      "code": "1102032036",
+      "name": "Biak Muli Sejahtera"
+    },
+    {
+      "code": "1102032037",
+      "name": "Lembah Haji"
+    },
+    {
+      "code": "1102032038",
+      "name": "Terutung Payung Gabungan"
+    },
+    {
+      "code": "1102032039",
+      "name": "Lawe Hijo Metuah"
+    },
+    {
+      "code": "1102032040",
+      "name": "Ampera"
+    },
+    {
+      "code": "1102032041",
+      "name": "Tembilakh Mbakhu"
+    },
+    {
+      "code": "1102032042",
+      "name": "Kute Lang-Lang Bakhu"
+    }
+  ],
+  "110204": [
+    {
+      "code": "1102042001",
+      "name": "Kota Kutacane"
+    },
+    {
+      "code": "1102042002",
+      "name": "Perapat Hilir"
+    },
+    {
+      "code": "1102042003",
+      "name": "Perapat Hulu"
+    },
+    {
+      "code": "1102042004",
+      "name": "Muara Lawe Bulan"
+    },
+    {
+      "code": "1102042005",
+      "name": "Mbarung"
+    },
+    {
+      "code": "1102042006",
+      "name": "Batu Mbulan Asli"
+    },
+    {
+      "code": "1102042007",
+      "name": "Batu Mbulan I"
+    },
+    {
+      "code": "1102042008",
+      "name": "Batu Mbulan II"
+    },
+    {
+      "code": "1102042009",
+      "name": "Kampung Raja"
+    },
+    {
+      "code": "1102042010",
+      "name": "Pulonas"
+    },
+    {
+      "code": "1102042011",
+      "name": "Kampung Melayu Gabungan"
+    },
+    {
+      "code": "1102042012",
+      "name": "Terutung Pedi"
+    },
+    {
+      "code": "1102042013",
+      "name": "Kute Rih"
+    },
+    {
+      "code": "1102042014",
+      "name": "Gumpang Jaya"
+    },
+    {
+      "code": "1102042015",
+      "name": "Pulo Latong"
+    },
+    {
+      "code": "1102042016",
+      "name": "Kutacane Lama"
+    },
+    {
+      "code": "1102042017",
+      "name": "Batu Mbulan Mbaru"
+    },
+    {
+      "code": "1102042018",
+      "name": "Pulo Peding"
+    },
+    {
+      "code": "1102042019",
+      "name": "Mendabe"
+    },
+    {
+      "code": "1102042020",
+      "name": "Ujung Barat"
+    },
+    {
+      "code": "1102042021",
+      "name": "Pekhapat Titi Panjang"
+    },
+    {
+      "code": "1102042022",
+      "name": "Pekhapat Sepakat"
+    },
+    {
+      "code": "1102042023",
+      "name": "Alas Marancar"
+    },
+    {
+      "code": "1102042024",
+      "name": "Batu Mbulan Sepakat"
+    },
+    {
+      "code": "1102042025",
+      "name": "Pulo Sanggakh"
+    },
+    {
+      "code": "1102042026",
+      "name": "Melayu I"
+    },
+    {
+      "code": "1102042027",
+      "name": "Mbarung Datuk Saudane"
+    }
+  ],
+  "110205": [
+    {
+      "code": "1102052005",
+      "name": "Salang Alas"
+    },
+    {
+      "code": "1102052009",
+      "name": "Kuta Pasir"
+    },
+    {
+      "code": "1102052011",
+      "name": "Purwodadi"
+    },
+    {
+      "code": "1102052012",
+      "name": "Kuta Tinggi"
+    },
+    {
+      "code": "1102052013",
+      "name": "Kampung Baru"
+    },
+    {
+      "code": "1102052014",
+      "name": "Peranginan"
+    },
+    {
+      "code": "1102052015",
+      "name": "Natam"
+    },
+    {
+      "code": "1102052025",
+      "name": "Kumbang Jaya"
+    },
+    {
+      "code": "1102052026",
+      "name": "Kumbang Indah"
+    },
+    {
+      "code": "1102052027",
+      "name": "Natam Baru"
+    },
+    {
+      "code": "1102052029",
+      "name": "Deleng Megakhe"
+    },
+    {
+      "code": "1102052030",
+      "name": "Lawe Bekung"
+    },
+    {
+      "code": "1102052031",
+      "name": "Lawe Bekung Tampahan"
+    },
+    {
+      "code": "1102052032",
+      "name": "Badar Indah"
+    },
+    {
+      "code": "1102052033",
+      "name": "Batu Mbekhong"
+    },
+    {
+      "code": "1102052034",
+      "name": "Tanah Merah"
+    },
+    {
+      "code": "1102052035",
+      "name": "Tanoh Megakhe"
+    },
+    {
+      "code": "1102052036",
+      "name": "Lawe Sekerah"
+    }
+  ],
+  "110206": [
+    {
+      "code": "1102062001",
+      "name": "Pardomuan II"
+    },
+    {
+      "code": "1102062002",
+      "name": "Lawe Desky I"
+    },
+    {
+      "code": "1102062003",
+      "name": "Lawe Desky Sabas"
+    },
+    {
+      "code": "1102062004",
+      "name": "Pardomuan I"
+    },
+    {
+      "code": "1102062005",
+      "name": "Cinta Damai"
+    },
+    {
+      "code": "1102062006",
+      "name": "Lawe Perbunga"
+    },
+    {
+      "code": "1102062007",
+      "name": "Lawe Desky Tongah"
+    },
+    {
+      "code": "1102062008",
+      "name": "Kute Bakti"
+    },
+    {
+      "code": "1102062010",
+      "name": "Muara Situlen"
+    },
+    {
+      "code": "1102062011",
+      "name": "Sejahtera"
+    },
+    {
+      "code": "1102062012",
+      "name": "Kute Makmur"
+    },
+    {
+      "code": "1102062013",
+      "name": "Pardamean"
+    },
+    {
+      "code": "1102062014",
+      "name": "Lawe Mantik"
+    },
+    {
+      "code": "1102062015",
+      "name": "Cinta Makmur"
+    },
+    {
+      "code": "1102062016",
+      "name": "Muara Setia"
+    },
+    {
+      "code": "1102062017",
+      "name": "Tanoh Alas"
+    },
+    {
+      "code": "1102062018",
+      "name": "Sejahtera Baru"
+    },
+    {
+      "code": "1102062024",
+      "name": "Lawe Tawakh"
+    },
+    {
+      "code": "1102062025",
+      "name": "Sabilussalam"
+    },
+    {
+      "code": "1102062026",
+      "name": "Lawe Desky Jaya"
+    },
+    {
+      "code": "1102062027",
+      "name": "Pintu Alas"
+    }
+  ],
+  "110207": [
+    {
+      "code": "1102072001",
+      "name": "Gulo"
+    },
+    {
+      "code": "1102072002",
+      "name": "Pulo Piku"
+    },
+    {
+      "code": "1102072003",
+      "name": "Terutung Kute"
+    },
+    {
+      "code": "1102072004",
+      "name": "Kute Ujung"
+    },
+    {
+      "code": "1102072005",
+      "name": "Lawe Stul"
+    },
+    {
+      "code": "1102072006",
+      "name": "Kite Merangun"
+    },
+    {
+      "code": "1102072007",
+      "name": "Mamas"
+    },
+    {
+      "code": "1102072008",
+      "name": "Tanjung Lama"
+    },
+    {
+      "code": "1102072009",
+      "name": "Tanjung Muda"
+    },
+    {
+      "code": "1102072010",
+      "name": "Rambung Teldak"
+    },
+    {
+      "code": "1102072011",
+      "name": "Tanjung Aman"
+    },
+    {
+      "code": "1102072012",
+      "name": "Sri Muda"
+    },
+    {
+      "code": "1102072013",
+      "name": "Ujung Baru"
+    },
+    {
+      "code": "1102072014",
+      "name": "Kute Rambe"
+    },
+    {
+      "code": "1102072015",
+      "name": "Mamas Baru"
+    },
+    {
+      "code": "1102072016",
+      "name": "Rambung Jaya"
+    },
+    {
+      "code": "1102072017",
+      "name": "Makmur Jaya"
+    },
+    {
+      "code": "1102072018",
+      "name": "Darul Makmur"
+    },
+    {
+      "code": "1102072019",
+      "name": "Tanjung Bakhu"
+    },
+    {
+      "code": "1102072020",
+      "name": "Pulo Gabung"
+    },
+    {
+      "code": "1102072021",
+      "name": "Kokhtan Jaya"
+    },
+    {
+      "code": "1102072022",
+      "name": "Istiqamah"
+    },
+    {
+      "code": "1102072023",
+      "name": "Lawe Mamas Indah"
+    },
+    {
+      "code": "1102072024",
+      "name": "Tanjung Leuser"
+    },
+    {
+      "code": "1102072025",
+      "name": "Simpang IV Tanjung"
+    },
+    {
+      "code": "1102072026",
+      "name": "Lawe Pinis"
+    },
+    {
+      "code": "1102072027",
+      "name": "Buntul Kendawi"
+    },
+    {
+      "code": "1102072028",
+      "name": "Kuning Abadi"
+    }
+  ],
+  "110208": [
+    {
+      "code": "1102082001",
+      "name": "Pasir Gala"
+    },
+    {
+      "code": "1102082002",
+      "name": "Pasir Penjengakan"
+    },
+    {
+      "code": "1102082003",
+      "name": "Kutambaru"
+    },
+    {
+      "code": "1102082004",
+      "name": "Lawe Sagu Hulu"
+    },
+    {
+      "code": "1102082005",
+      "name": "Lawe Sagu Hilir"
+    },
+    {
+      "code": "1102082006",
+      "name": "Kute Bantil"
+    },
+    {
+      "code": "1102082011",
+      "name": "Lawe Kolok"
+    },
+    {
+      "code": "1102082012",
+      "name": "Lawe Rutung"
+    },
+    {
+      "code": "1102082013",
+      "name": "Kampung Nangka"
+    },
+    {
+      "code": "1102082014",
+      "name": "Tenembak Juhar"
+    },
+    {
+      "code": "1102082015",
+      "name": "Simpang Empat"
+    },
+    {
+      "code": "1102082016",
+      "name": "Kuta Buluh Botong"
+    },
+    {
+      "code": "1102082017",
+      "name": "Katambaru Becawan"
+    },
+    {
+      "code": "1102082018",
+      "name": "Lawe Kinge"
+    },
+    {
+      "code": "1102082019",
+      "name": "Kandang Mbelang Mandiri"
+    },
+    {
+      "code": "1102082020",
+      "name": "Mbacang Racun"
+    },
+    {
+      "code": "1102082021",
+      "name": "Telaga Mekar"
+    },
+    {
+      "code": "1102082023",
+      "name": "Pulonas Baru"
+    },
+    {
+      "code": "1102082025",
+      "name": "Kuta Genting"
+    },
+    {
+      "code": "1102082026",
+      "name": "Pangguh"
+    },
+    {
+      "code": "1102082027",
+      "name": "Lawe Sagu"
+    },
+    {
+      "code": "1102082028",
+      "name": "Pekhapet Timur"
+    },
+    {
+      "code": "1102082029",
+      "name": "Bahagia"
+    },
+    {
+      "code": "1102082030",
+      "name": "Kute Galuh Asli"
+    }
+  ],
+  "110209": [
+    {
+      "code": "1102092001",
+      "name": "Kute Lengat Pangan"
+    },
+    {
+      "code": "1102092002",
+      "name": "Kute Lengat Selian"
+    },
+    {
+      "code": "1102092003",
+      "name": "Tualang Baru"
+    },
+    {
+      "code": "1102092004",
+      "name": "Alur Buluh"
+    },
+    {
+      "code": "1102092005",
+      "name": "Maha Singkil"
+    },
+    {
+      "code": "1102092006",
+      "name": "Tenembak Bintang"
+    },
+    {
+      "code": "1102092007",
+      "name": "Kute Lingga"
+    },
+    {
+      "code": "1102092008",
+      "name": "Rikit Bur"
+    },
+    {
+      "code": "1102092010",
+      "name": "Kerukunan"
+    },
+    {
+      "code": "1102092011",
+      "name": "Lawe Dua"
+    },
+    {
+      "code": "1102092012",
+      "name": "Rema"
+    },
+    {
+      "code": "1102092013",
+      "name": "Bambel Baru"
+    },
+    {
+      "code": "1102092014",
+      "name": "Pejuang"
+    },
+    {
+      "code": "1102092015",
+      "name": "Darussalam"
+    },
+    {
+      "code": "1102092016",
+      "name": "Amaliah"
+    },
+    {
+      "code": "1102092017",
+      "name": "Sebudi Jaya"
+    },
+    {
+      "code": "1102092018",
+      "name": "Gumpang"
+    },
+    {
+      "code": "1102092019",
+      "name": "Kute Gekhat"
+    },
+    {
+      "code": "1102092020",
+      "name": "Paye Khambung"
+    },
+    {
+      "code": "1102092021",
+      "name": "Mbak Sako"
+    },
+    {
+      "code": "1102092022",
+      "name": "Darul Imami"
+    },
+    {
+      "code": "1102092023",
+      "name": "Rikit Bur II"
+    },
+    {
+      "code": "1102092024",
+      "name": "Kute Empat Lima"
+    }
+  ],
+  "110210": [
+    {
+      "code": "1102102001",
+      "name": "Simpang Semadam"
+    },
+    {
+      "code": "1102102002",
+      "name": "Semadam Awal"
+    },
+    {
+      "code": "1102102003",
+      "name": "Semadam Asal"
+    },
+    {
+      "code": "1102102004",
+      "name": "Lawe Kinga Gabungan"
+    },
+    {
+      "code": "1102102005",
+      "name": "Lawe Kinga Tebing Tinggi"
+    },
+    {
+      "code": "1102102006",
+      "name": "Kebun Sere"
+    },
+    {
+      "code": "1102102007",
+      "name": "Lawe Beringin Horas"
+    },
+    {
+      "code": "1102102008",
+      "name": "Lawe. Berigin Gayo"
+    },
+    {
+      "code": "1102102009",
+      "name": "Suka Makmur"
+    },
+    {
+      "code": "1102102010",
+      "name": "Pasar Puntung"
+    },
+    {
+      "code": "1102102011",
+      "name": "Titi Pasir"
+    },
+    {
+      "code": "1102102012",
+      "name": "Lawe Petanduk I"
+    },
+    {
+      "code": "1102102013",
+      "name": "Ngkeran Alur Buluh"
+    },
+    {
+      "code": "1102102014",
+      "name": "Kampung Baru"
+    },
+    {
+      "code": "1102102015",
+      "name": "Sepakat Segenap"
+    },
+    {
+      "code": "1102102016",
+      "name": "Selamat Indah"
+    },
+    {
+      "code": "1102102017",
+      "name": "Lawe Kinge Lapter"
+    },
+    {
+      "code": "1102102018",
+      "name": "Lawe Mejile"
+    },
+    {
+      "code": "1102102019",
+      "name": "Lawe Petanduk-II"
+    }
+  ],
+  "110211": [
+    {
+      "code": "1102112004",
+      "name": "Titi Mas"
+    },
+    {
+      "code": "1102112005",
+      "name": "Meranti"
+    },
+    {
+      "code": "1102112006",
+      "name": "Kute Lang-Lang"
+    },
+    {
+      "code": "1102112007",
+      "name": "Lawe Sumur"
+    },
+    {
+      "code": "1102112008",
+      "name": "Pardamaian"
+    },
+    {
+      "code": "1102112009",
+      "name": "Salim Pipit"
+    },
+    {
+      "code": "1102112010",
+      "name": "Penguhapan"
+    },
+    {
+      "code": "1102112011",
+      "name": "Lumban Tua"
+    },
+    {
+      "code": "1102112012",
+      "name": "Mutiara Damai"
+    },
+    {
+      "code": "1102112013",
+      "name": "Dolok Nauli"
+    },
+    {
+      "code": "1102112014",
+      "name": "Tuhi Jongkat"
+    },
+    {
+      "code": "1102112015",
+      "name": "Uning Sigugur"
+    },
+    {
+      "code": "1102112016",
+      "name": "Lumban Sitio-tio"
+    },
+    {
+      "code": "1102112017",
+      "name": "Lawe Malum"
+    },
+    {
+      "code": "1102112018",
+      "name": "Alur Baning"
+    },
+    {
+      "code": "1102112019",
+      "name": "Lingga Alas"
+    },
+    {
+      "code": "1102112020",
+      "name": "Khambung Tumbung"
+    },
+    {
+      "code": "1102112021",
+      "name": "Tuah Mesade"
+    },
+    {
+      "code": "1102112022",
+      "name": "Sumukh Alas"
+    },
+    {
+      "code": "1102112023",
+      "name": "Alukh Bakhu"
+    },
+    {
+      "code": "1102112024",
+      "name": "Sepekhinding"
+    },
+    {
+      "code": "1102112025",
+      "name": "Tanoh Subukh"
+    },
+    {
+      "code": "1102112026",
+      "name": "Pinggan Mbelang"
+    },
+    {
+      "code": "1102112027",
+      "name": "Sigai Indah"
+    },
+    {
+      "code": "1102112028",
+      "name": "Ukekh Deleng"
+    },
+    {
+      "code": "1102112029",
+      "name": "Alas Mesikhat"
+    },
+    {
+      "code": "1102112030",
+      "name": "Titi Hakhapen"
+    }
+  ],
+  "110212": [
+    {
+      "code": "1102122001",
+      "name": "Aunan Sepakat"
+    },
+    {
+      "code": "1102122002",
+      "name": "Lawe Penanggalan"
+    },
+    {
+      "code": "1102122003",
+      "name": "Lawe Mengkudu"
+    },
+    {
+      "code": "1102122004",
+      "name": "Jambur Lak-lak"
+    },
+    {
+      "code": "1102122005",
+      "name": "Simpang Tiga Jongar"
+    },
+    {
+      "code": "1102122006",
+      "name": "Jongar Asli"
+    },
+    {
+      "code": "1102122007",
+      "name": "Ketambe"
+    },
+    {
+      "code": "1102122008",
+      "name": "Rumah Bundar"
+    },
+    {
+      "code": "1102122009",
+      "name": "Penyeberangan Cingkam"
+    },
+    {
+      "code": "1102122010",
+      "name": "Deleng Damar"
+    },
+    {
+      "code": "1102122011",
+      "name": "Bintang Bener"
+    },
+    {
+      "code": "1102122012",
+      "name": "Suka Rimbun"
+    },
+    {
+      "code": "1102122013",
+      "name": "Lawe Aunan"
+    },
+    {
+      "code": "1102122014",
+      "name": "Bener Bepapah"
+    },
+    {
+      "code": "1102122015",
+      "name": "Penungkunen"
+    },
+    {
+      "code": "1102122016",
+      "name": "Datok Pining"
+    },
+    {
+      "code": "1102122017",
+      "name": "Kati Maju"
+    },
+    {
+      "code": "1102122018",
+      "name": "Leuser"
+    },
+    {
+      "code": "1102122019",
+      "name": "Jati Sara"
+    },
+    {
+      "code": "1102122020",
+      "name": "Bukit Mbakhu"
+    },
+    {
+      "code": "1102122021",
+      "name": "Kayu Metangur"
+    },
+    {
+      "code": "1102122022",
+      "name": "Lawe Sembekan"
+    },
+    {
+      "code": "1102122023",
+      "name": "Lawe Beringin"
+    },
+    {
+      "code": "1102122024",
+      "name": "Lawe Ger-Ger"
+    },
+    {
+      "code": "1102122025",
+      "name": "Simpur Jaya"
+    }
+  ],
+  "110213": [
+    {
+      "code": "1102132001",
+      "name": "Salang Baru"
+    },
+    {
+      "code": "1102132002",
+      "name": "Ranto Dior"
+    },
+    {
+      "code": "1102132003",
+      "name": "Lembah Alas"
+    },
+    {
+      "code": "1102132004",
+      "name": "Tenembak Lang-Lang"
+    },
+    {
+      "code": "1102132005",
+      "name": "Salang Sigotom"
+    },
+    {
+      "code": "1102132006",
+      "name": "Tualang Lama"
+    },
+    {
+      "code": "1102132007",
+      "name": "Gusung Batu"
+    },
+    {
+      "code": "1102132008",
+      "name": "Kaya Pangur"
+    },
+    {
+      "code": "1102132009",
+      "name": "Sepakat"
+    },
+    {
+      "code": "1102132010",
+      "name": "Lawe Pangkat"
+    },
+    {
+      "code": "1102132011",
+      "name": "Bunga Melur"
+    },
+    {
+      "code": "1102132012",
+      "name": "Penampaan"
+    },
+    {
+      "code": "1102132013",
+      "name": "Terutung Mbelang"
+    },
+    {
+      "code": "1102132014",
+      "name": "Salang Muara"
+    },
+    {
+      "code": "1102132015",
+      "name": "Lawe Hakhum"
+    },
+    {
+      "code": "1102132016",
+      "name": "Tanoh Khukahen"
+    },
+    {
+      "code": "1102132017",
+      "name": "Tading Ni Ulihi"
+    },
+    {
+      "code": "1102132018",
+      "name": "Peseluk Pesimbe"
+    },
+    {
+      "code": "1102132019",
+      "name": "Kane Lot"
+    },
+    {
+      "code": "1102132020",
+      "name": "Muhajirin"
+    },
+    {
+      "code": "1102132021",
+      "name": "Beriring Naru"
+    },
+    {
+      "code": "1102132022",
+      "name": "Kati Jeroh"
+    }
+  ],
+  "110214": [
+    {
+      "code": "1102142001",
+      "name": "Terutung Megara Lawe Pasaran"
+    },
+    {
+      "code": "1102142002",
+      "name": "Kisam Gabungan"
+    },
+    {
+      "code": "1102142003",
+      "name": "Kisam Kute Pasir"
+    },
+    {
+      "code": "1102142004",
+      "name": "Lawe Sumur"
+    },
+    {
+      "code": "1102142005",
+      "name": "Lawe Sumur Baru"
+    },
+    {
+      "code": "1102142006",
+      "name": "Kute Lesung"
+    },
+    {
+      "code": "1102142007",
+      "name": "Berandang"
+    },
+    {
+      "code": "1102142008",
+      "name": "Kute Bunin"
+    },
+    {
+      "code": "1102142009",
+      "name": "Buah Pala"
+    },
+    {
+      "code": "1102142010",
+      "name": "Panosan"
+    },
+    {
+      "code": "1102142011",
+      "name": "Lawe Pasaran Tengku Mbelin"
+    },
+    {
+      "code": "1102142012",
+      "name": "Terutung Megahke MBakhu"
+    },
+    {
+      "code": "1102142013",
+      "name": "Kisam Lestari"
+    },
+    {
+      "code": "1102142014",
+      "name": "Kisam Kute Rambe"
+    },
+    {
+      "code": "1102142015",
+      "name": "Lawe Polak"
+    },
+    {
+      "code": "1102142016",
+      "name": "Lawes Sumur Sepakat"
+    },
+    {
+      "code": "1102142017",
+      "name": "Setia Baru"
+    },
+    {
+      "code": "1102142018",
+      "name": "Teger Miko"
+    }
+  ],
+  "110215": [
+    {
+      "code": "1102152001",
+      "name": "Salim Pinim I"
+    },
+    {
+      "code": "1102152002",
+      "name": "Jambur Damar"
+    },
+    {
+      "code": "1102152003",
+      "name": "Alur Langsat"
+    },
+    {
+      "code": "1102152004",
+      "name": "Rambah Sayang"
+    },
+    {
+      "code": "1102152006",
+      "name": "Rumah Luar"
+    },
+    {
+      "code": "1102152007",
+      "name": "Tenembak Alas"
+    },
+    {
+      "code": "1102152008",
+      "name": "Lawe Tungkal"
+    },
+    {
+      "code": "1102152009",
+      "name": "Salim Pinim II"
+    },
+    {
+      "code": "1102152010",
+      "name": "Jambukh Pekhmate"
+    },
+    {
+      "code": "1102152011",
+      "name": "Khutung Mbelang"
+    },
+    {
+      "code": "1102152012",
+      "name": "Timang Rasa"
+    },
+    {
+      "code": "1102152013",
+      "name": "Stambul Jaya"
+    },
+    {
+      "code": "1102152014",
+      "name": "Alur Nangke"
+    },
+    {
+      "code": "1102152015",
+      "name": "Kute Mejile"
+    }
+  ],
+  "110216": [
+    {
+      "code": "1102162001",
+      "name": "Bintang Alga Musara"
+    },
+    {
+      "code": "1102162002",
+      "name": "Bintang Bukit Indah"
+    },
+    {
+      "code": "1102162003",
+      "name": "Tanjung Sari"
+    },
+    {
+      "code": "1102162004",
+      "name": "Bun-bun Alas"
+    },
+    {
+      "code": "1102162005",
+      "name": "Naga Timbul"
+    },
+    {
+      "code": "1102162006",
+      "name": "Gunung Pak-Pak"
+    },
+    {
+      "code": "1102162007",
+      "name": "Bukit Meriah"
+    },
+    {
+      "code": "1102162008",
+      "name": "Permata Musara"
+    },
+    {
+      "code": "1102162009",
+      "name": "Laut Tawar"
+    },
+    {
+      "code": "1102162010",
+      "name": "Kane Mende"
+    },
+    {
+      "code": "1102162011",
+      "name": "Lawe Sekhakut"
+    },
+    {
+      "code": "1102162012",
+      "name": "Bunbun Indah"
+    },
+    {
+      "code": "1102162013",
+      "name": "Suka Damai"
+    },
+    {
+      "code": "1102162014",
+      "name": "Tuah Kekhine"
+    },
+    {
+      "code": "1102162015",
+      "name": "Punce Nali"
+    },
+    {
+      "code": "1102162016",
+      "name": "Sade Ate"
+    },
+    {
+      "code": "1102162017",
+      "name": "Akhih Majile"
+    },
+    {
+      "code": "1102162018",
+      "name": "Ukhat Peseluk"
+    },
+    {
+      "code": "1102162019",
+      "name": "Tunas Mude"
+    },
+    {
+      "code": "1102162020",
+      "name": "Gaye Sendah"
+    },
+    {
+      "code": "1102162021",
+      "name": "Kute Hakhapen"
+    },
+    {
+      "code": "1102162022",
+      "name": "Kompas"
+    },
+    {
+      "code": "1102162023",
+      "name": "Sepakat"
+    }
+  ]
 }

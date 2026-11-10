@@ -1,104 +1,104 @@
 {
-    "357901": [
-        {
-            "code": "3579011001",
-            "name": "Temas"
-        },
-        {
-            "code": "3579011002",
-            "name": "Ngaglik"
-        },
-        {
-            "code": "3579011003",
-            "name": "Songgokerto"
-        },
-        {
-            "code": "3579011004",
-            "name": "Sisir"
-        },
-        {
-            "code": "3579012005",
-            "name": "Sumberejo"
-        },
-        {
-            "code": "3579012006",
-            "name": "Oro-oro Ombo"
-        },
-        {
-            "code": "3579012007",
-            "name": "Sidomulyo"
-        },
-        {
-            "code": "3579012008",
-            "name": "Pesanggrahan"
-        }
-    ],
-    "357902": [
-        {
-            "code": "3579022001",
-            "name": "Punten"
-        },
-        {
-            "code": "3579022002",
-            "name": "Gunungsari"
-        },
-        {
-            "code": "3579022003",
-            "name": "Tulungrejo"
-        },
-        {
-            "code": "3579022004",
-            "name": "Sumbergondo"
-        },
-        {
-            "code": "3579022005",
-            "name": "Pandanrejo"
-        },
-        {
-            "code": "3579022006",
-            "name": "Bumiaji"
-        },
-        {
-            "code": "3579022007",
-            "name": "Giripurno"
-        },
-        {
-            "code": "3579022008",
-            "name": "Bulukerto"
-        },
-        {
-            "code": "3579022009",
-            "name": "Sumberbrantas"
-        }
-    ],
-    "357903": [
-        {
-            "code": "3579031001",
-            "name": "Dadaprejo"
-        },
-        {
-            "code": "3579032002",
-            "name": "Beji"
-        },
-        {
-            "code": "3579032003",
-            "name": "Junrejo"
-        },
-        {
-            "code": "3579032004",
-            "name": "Tlekung"
-        },
-        {
-            "code": "3579032005",
-            "name": "Mojorejo"
-        },
-        {
-            "code": "3579032006",
-            "name": "Pendem"
-        },
-        {
-            "code": "3579032007",
-            "name": "Torongrejo"
-        }
-    ]
+  "357901": [
+    {
+      "code": "3579011001",
+      "name": "Temas"
+    },
+    {
+      "code": "3579011002",
+      "name": "Ngaglik"
+    },
+    {
+      "code": "3579011003",
+      "name": "Songgokerto"
+    },
+    {
+      "code": "3579011004",
+      "name": "Sisir"
+    },
+    {
+      "code": "3579012005",
+      "name": "Sumberejo"
+    },
+    {
+      "code": "3579012006",
+      "name": "Oro-oro Ombo"
+    },
+    {
+      "code": "3579012007",
+      "name": "Sidomulyo"
+    },
+    {
+      "code": "3579012008",
+      "name": "Pesanggrahan"
+    }
+  ],
+  "357902": [
+    {
+      "code": "3579022001",
+      "name": "Punten"
+    },
+    {
+      "code": "3579022002",
+      "name": "Gunungsari"
+    },
+    {
+      "code": "3579022003",
+      "name": "Tulungrejo"
+    },
+    {
+      "code": "3579022004",
+      "name": "Sumbergondo"
+    },
+    {
+      "code": "3579022005",
+      "name": "Pandanrejo"
+    },
+    {
+      "code": "3579022006",
+      "name": "Bumiaji"
+    },
+    {
+      "code": "3579022007",
+      "name": "Giripurno"
+    },
+    {
+      "code": "3579022008",
+      "name": "Bulukerto"
+    },
+    {
+      "code": "3579022009",
+      "name": "Sumberbrantas"
+    }
+  ],
+  "357903": [
+    {
+      "code": "3579031001",
+      "name": "Dadaprejo"
+    },
+    {
+      "code": "3579032002",
+      "name": "Beji"
+    },
+    {
+      "code": "3579032003",
+      "name": "Junrejo"
+    },
+    {
+      "code": "3579032004",
+      "name": "Tlekung"
+    },
+    {
+      "code": "3579032005",
+      "name": "Mojorejo"
+    },
+    {
+      "code": "3579032006",
+      "name": "Pendem"
+    },
+    {
+      "code": "3579032007",
+      "name": "Torongrejo"
+    }
+  ]
 }

@@ -1,92 +1,92 @@
 {
-    "357201": [
-        {
-            "code": "3572011001",
-            "name": "Kepanjenkidul"
-        },
-        {
-            "code": "3572011002",
-            "name": "Ngadirejo"
-        },
-        {
-            "code": "3572011003",
-            "name": "Sentul"
-        },
-        {
-            "code": "3572011004",
-            "name": "Kauman"
-        },
-        {
-            "code": "3572011005",
-            "name": "Tanggung"
-        },
-        {
-            "code": "3572011006",
-            "name": "Bendo"
-        },
-        {
-            "code": "3572011007",
-            "name": "Kepanjenlor"
-        }
-    ],
-    "357202": [
-        {
-            "code": "3572021001",
-            "name": "Pakunden"
-        },
-        {
-            "code": "3572021002",
-            "name": "Blitar"
-        },
-        {
-            "code": "3572021003",
-            "name": "Tlumpu"
-        },
-        {
-            "code": "3572021004",
-            "name": "Turi"
-        },
-        {
-            "code": "3572021005",
-            "name": "Karangsari"
-        },
-        {
-            "code": "3572021006",
-            "name": "Sukorejo"
-        },
-        {
-            "code": "3572021007",
-            "name": "Tanjungsari"
-        }
-    ],
-    "357203": [
-        {
-            "code": "3572031001",
-            "name": "Gedog"
-        },
-        {
-            "code": "3572031002",
-            "name": "Plosokerep"
-        },
-        {
-            "code": "3572031003",
-            "name": "Klampok"
-        },
-        {
-            "code": "3572031004",
-            "name": "Sananwetan"
-        },
-        {
-            "code": "3572031005",
-            "name": "Rembang"
-        },
-        {
-            "code": "3572031006",
-            "name": "Karangtengah"
-        },
-        {
-            "code": "3572031007",
-            "name": "Bendogerit"
-        }
-    ]
+  "357201": [
+    {
+      "code": "3572011001",
+      "name": "Kepanjenkidul"
+    },
+    {
+      "code": "3572011002",
+      "name": "Ngadirejo"
+    },
+    {
+      "code": "3572011003",
+      "name": "Sentul"
+    },
+    {
+      "code": "3572011004",
+      "name": "Kauman"
+    },
+    {
+      "code": "3572011005",
+      "name": "Tanggung"
+    },
+    {
+      "code": "3572011006",
+      "name": "Bendo"
+    },
+    {
+      "code": "3572011007",
+      "name": "Kepanjenlor"
+    }
+  ],
+  "357202": [
+    {
+      "code": "3572021001",
+      "name": "Pakunden"
+    },
+    {
+      "code": "3572021002",
+      "name": "Blitar"
+    },
+    {
+      "code": "3572021003",
+      "name": "Tlumpu"
+    },
+    {
+      "code": "3572021004",
+      "name": "Turi"
+    },
+    {
+      "code": "3572021005",
+      "name": "Karangsari"
+    },
+    {
+      "code": "3572021006",
+      "name": "Sukorejo"
+    },
+    {
+      "code": "3572021007",
+      "name": "Tanjungsari"
+    }
+  ],
+  "357203": [
+    {
+      "code": "3572031001",
+      "name": "Gedog"
+    },
+    {
+      "code": "3572031002",
+      "name": "Plosokerep"
+    },
+    {
+      "code": "3572031003",
+      "name": "Klampok"
+    },
+    {
+      "code": "3572031004",
+      "name": "Sananwetan"
+    },
+    {
+      "code": "3572031005",
+      "name": "Rembang"
+    },
+    {
+      "code": "3572031006",
+      "name": "Karangtengah"
+    },
+    {
+      "code": "3572031007",
+      "name": "Bendogerit"
+    }
+  ]
 }

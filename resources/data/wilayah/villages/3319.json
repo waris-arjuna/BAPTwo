@@ -1,290 +1,548 @@
 {
-    "331901": [
-        {
-            "code": "3319012001",
-            "name": "Bakalankrapyak"
-        },
-        {
-            "code": "3319012002",
-            "name": "Prambatan Kidul"
-        },
-        {
-            "code": "3319012003",
-            "name": "Prambatan Lor"
-        },
-        {
-            "code": "3319012004",
-            "name": "Garung Kidul"
-        },
-        {
-            "code": "3319012005",
-            "name": "Setrokalangan"
-        },
-        {
-            "code": "3319012006",
-            "name": "Banget"
-        },
-        {
-            "code": "3319012007",
-            "name": "Blimbing Kidul"
-        },
-        {
-            "code": "3319012008",
-            "name": "Sidorekso"
-        },
-        {
-            "code": "3319012009",
-            "name": "Gamong"
-        },
-        {
-            "code": "3319012010",
-            "name": "Kedungdowo"
-        },
-        {
-            "code": "3319012011",
-            "name": "Garung Lor"
-        },
-        {
-            "code": "3319012012",
-            "name": "Karangampel"
-        },
-        {
-            "code": "3319012013",
-            "name": "Mijen"
-        },
-        {
-            "code": "3319012014",
-            "name": "Kaliwungu"
-        },
-        {
-            "code": "3319012015",
-            "name": "Papringan"
-        }
-    ],
-    "331902": [
-        {
-            "code": "3319021001",
-            "name": "Purwosari"
-        },
-        {
-            "code": "3319021004",
-            "name": "Sunggingan"
-        },
-        {
-            "code": "3319021005",
-            "name": "Panjunan"
-        },
-        {
-            "code": "3319021006",
-            "name": "Wergu Wetan"
-        },
-        {
-            "code": "3319021007",
-            "name": "Wergu Kulon"
-        },
-        {
-            "code": "3319021008",
-            "name": "Mlati Kidul"
-        },
-        {
-            "code": "3319021009",
-            "name": "Mlatinorowito"
-        },
-        {
-            "code": "3319021017",
-            "name": "Kerjasan"
-        },
-        {
-            "code": "3319021018",
-            "name": "Kajeksan"
-        },
-        {
-            "code": "3319022002",
-            "name": "Janggalan"
-        },
-        {
-            "code": "3319022003",
-            "name": "Demangan"
-        },
-        {
-            "code": "3319022010",
-            "name": "Mlati Lor"
-        },
-        {
-            "code": "3319022011",
-            "name": "Nganguk"
-        },
-        {
-            "code": "3319022012",
-            "name": "Kramat"
-        },
-        {
-            "code": "3319022013",
-            "name": "Demaan"
-        },
-        {
-            "code": "3319022014",
-            "name": "Langgardalem"
-        },
-        {
-            "code": "3319022015",
-            "name": "Kauman"
-        },
-        {
-            "code": "3319022016",
-            "name": "Damaran"
-        },
-        {
-            "code": "3319022019",
-            "name": "Krandon"
-        },
-        {
-            "code": "3319022020",
-            "name": "Singocandi"
-        },
-        {
-            "code": "3319022021",
-            "name": "Glantengan"
-        },
-        {
-            "code": "3319022022",
-            "name": "Kaliputu"
-        },
-        {
-            "code": "3319022023",
-            "name": "Barongan"
-        },
-        {
-            "code": "3319022024",
-            "name": "Burikan"
-        },
-        {
-            "code": "3319022025",
-            "name": "Rendeng"
-        }
-    ],
-    "331903": [
-        {
-            "code": "3319032001",
-            "name": "Jetiskapuan"
-        },
-        {
-            "code": "3319032002",
-            "name": "Tanjungkarang"
-        },
-        {
-            "code": "3319032003",
-            "name": "Jati Wetan"
-        },
-        {
-            "code": "3319032004",
-            "name": "Pasuruhan Kidul"
-        },
-        {
-            "code": "3319032005",
-            "name": "Pasuruhan Lor"
-        },
-        {
-            "code": "3319032006",
-            "name": "Ploso"
-        },
-        {
-            "code": "3319032007",
-            "name": "Jati Kulon"
-        },
-        {
-            "code": "3319032008",
-            "name": "Getaspejaten"
-        },
-        {
-            "code": "3319032009",
-            "name": "Loram Kulon"
-        },
-        {
-            "code": "3319032010",
-            "name": "Loram Wetan"
-        },
-        {
-            "code": "3319032011",
-            "name": "Jepangpakis"
-        },
-        {
-            "code": "3319032012",
-            "name": "Megawon"
-        },
-        {
-            "code": "3319032013",
-            "name": "Ngembal Kulon"
-        },
-        {
-            "code": "3319032014",
-            "name": "Tumpangkrasak"
-        }
-    ],
-    "331904": [
-        {
-            "code": "3319042001",
-            "name": "Wonosoco"
-        },
-        {
-            "code": "3319042002",
-            "name": "Lambangan"
-        },
-        {
-            "code": "3319042003",
-            "name": "Kalirejo"
-        },
-        {
-            "code": "3319042004",
-            "name": "Medini"
-        },
-        {
-            "code": "3319042005",
-            "name": "Sambung"
-        },
-        {
-            "code": "3319042006",
-            "name": "Glagahwaru"
-        },
-        {
-            "code": "3319042007",
-            "name": "Kutuk"
-        },
-        {
-            "code": "3319042008",
-            "name": "Undaan Kidul"
-        },
-        {
-            "code": "3319042009",
-            "name": "Undaan Tengah"
-        },
-        {
-            "code": "3319042010",
-            "name": "Karangrowo"
-        },
-        {
-            "code": "3319042011",
-            "name": "Larikrejo"
-        },
-        {
-            "code": "3319042012",
-            "name": "Undaan Lor"
-        },
-        {
-            "code": "3319042013",
-            "name": "Wates"
-        },
-        {
-            "code": "3319042014",
-            "name": "Ngemplak"
-        },
-        {
-            "code": "3319042015",
-            "name": "Terangmas"
-        },
-        {
-            "code": "3319042016",
-            "name": "Berugenjang"
-        }
-    ]
+  "331901": [
+    {
+      "code": "3319012001",
+      "name": "Bakalankrapyak"
+    },
+    {
+      "code": "3319012002",
+      "name": "Prambatan Kidul"
+    },
+    {
+      "code": "3319012003",
+      "name": "Prambatan Lor"
+    },
+    {
+      "code": "3319012004",
+      "name": "Garung Kidul"
+    },
+    {
+      "code": "3319012005",
+      "name": "Setrokalangan"
+    },
+    {
+      "code": "3319012006",
+      "name": "Banget"
+    },
+    {
+      "code": "3319012007",
+      "name": "Blimbing Kidul"
+    },
+    {
+      "code": "3319012008",
+      "name": "Sidorekso"
+    },
+    {
+      "code": "3319012009",
+      "name": "Gamong"
+    },
+    {
+      "code": "3319012010",
+      "name": "Kedungdowo"
+    },
+    {
+      "code": "3319012011",
+      "name": "Garung Lor"
+    },
+    {
+      "code": "3319012012",
+      "name": "Karangampel"
+    },
+    {
+      "code": "3319012013",
+      "name": "Mijen"
+    },
+    {
+      "code": "3319012014",
+      "name": "Kaliwungu"
+    },
+    {
+      "code": "3319012015",
+      "name": "Papringan"
+    }
+  ],
+  "331902": [
+    {
+      "code": "3319021001",
+      "name": "Purwosari"
+    },
+    {
+      "code": "3319021004",
+      "name": "Sunggingan"
+    },
+    {
+      "code": "3319021005",
+      "name": "Panjunan"
+    },
+    {
+      "code": "3319021006",
+      "name": "Wergu Wetan"
+    },
+    {
+      "code": "3319021007",
+      "name": "Wergu Kulon"
+    },
+    {
+      "code": "3319021008",
+      "name": "Mlati Kidul"
+    },
+    {
+      "code": "3319021009",
+      "name": "Mlatinorowito"
+    },
+    {
+      "code": "3319021017",
+      "name": "Kerjasan"
+    },
+    {
+      "code": "3319021018",
+      "name": "Kajeksan"
+    },
+    {
+      "code": "3319022002",
+      "name": "Janggalan"
+    },
+    {
+      "code": "3319022003",
+      "name": "Demangan"
+    },
+    {
+      "code": "3319022010",
+      "name": "Mlati Lor"
+    },
+    {
+      "code": "3319022011",
+      "name": "Nganguk"
+    },
+    {
+      "code": "3319022012",
+      "name": "Kramat"
+    },
+    {
+      "code": "3319022013",
+      "name": "Demaan"
+    },
+    {
+      "code": "3319022014",
+      "name": "Langgardalem"
+    },
+    {
+      "code": "3319022015",
+      "name": "Kauman"
+    },
+    {
+      "code": "3319022016",
+      "name": "Damaran"
+    },
+    {
+      "code": "3319022019",
+      "name": "Krandon"
+    },
+    {
+      "code": "3319022020",
+      "name": "Singocandi"
+    },
+    {
+      "code": "3319022021",
+      "name": "Glantengan"
+    },
+    {
+      "code": "3319022022",
+      "name": "Kaliputu"
+    },
+    {
+      "code": "3319022023",
+      "name": "Barongan"
+    },
+    {
+      "code": "3319022024",
+      "name": "Burikan"
+    },
+    {
+      "code": "3319022025",
+      "name": "Rendeng"
+    }
+  ],
+  "331903": [
+    {
+      "code": "3319032001",
+      "name": "Jetiskapuan"
+    },
+    {
+      "code": "3319032002",
+      "name": "Tanjungkarang"
+    },
+    {
+      "code": "3319032003",
+      "name": "Jati Wetan"
+    },
+    {
+      "code": "3319032004",
+      "name": "Pasuruhan Kidul"
+    },
+    {
+      "code": "3319032005",
+      "name": "Pasuruhan Lor"
+    },
+    {
+      "code": "3319032006",
+      "name": "Ploso"
+    },
+    {
+      "code": "3319032007",
+      "name": "Jati Kulon"
+    },
+    {
+      "code": "3319032008",
+      "name": "Getaspejaten"
+    },
+    {
+      "code": "3319032009",
+      "name": "Loram Kulon"
+    },
+    {
+      "code": "3319032010",
+      "name": "Loram Wetan"
+    },
+    {
+      "code": "3319032011",
+      "name": "Jepangpakis"
+    },
+    {
+      "code": "3319032012",
+      "name": "Megawon"
+    },
+    {
+      "code": "3319032013",
+      "name": "Ngembal Kulon"
+    },
+    {
+      "code": "3319032014",
+      "name": "Tumpangkrasak"
+    }
+  ],
+  "331904": [
+    {
+      "code": "3319042001",
+      "name": "Wonosoco"
+    },
+    {
+      "code": "3319042002",
+      "name": "Lambangan"
+    },
+    {
+      "code": "3319042003",
+      "name": "Kalirejo"
+    },
+    {
+      "code": "3319042004",
+      "name": "Medini"
+    },
+    {
+      "code": "3319042005",
+      "name": "Sambung"
+    },
+    {
+      "code": "3319042006",
+      "name": "Glagahwaru"
+    },
+    {
+      "code": "3319042007",
+      "name": "Kutuk"
+    },
+    {
+      "code": "3319042008",
+      "name": "Undaan Kidul"
+    },
+    {
+      "code": "3319042009",
+      "name": "Undaan Tengah"
+    },
+    {
+      "code": "3319042010",
+      "name": "Karangrowo"
+    },
+    {
+      "code": "3319042011",
+      "name": "Larikrejo"
+    },
+    {
+      "code": "3319042012",
+      "name": "Undaan Lor"
+    },
+    {
+      "code": "3319042013",
+      "name": "Wates"
+    },
+    {
+      "code": "3319042014",
+      "name": "Ngemplak"
+    },
+    {
+      "code": "3319042015",
+      "name": "Terangmas"
+    },
+    {
+      "code": "3319042016",
+      "name": "Berugenjang"
+    }
+  ],
+  "331905": [
+    {
+      "code": "3319052001",
+      "name": "Gulang"
+    },
+    {
+      "code": "3319052002",
+      "name": "Jepang"
+    },
+    {
+      "code": "3319052003",
+      "name": "Payaman"
+    },
+    {
+      "code": "3319052004",
+      "name": "Kirig"
+    },
+    {
+      "code": "3319052005",
+      "name": "Temulus"
+    },
+    {
+      "code": "3319052006",
+      "name": "Kesambi"
+    },
+    {
+      "code": "3319052007",
+      "name": "Jojo"
+    },
+    {
+      "code": "3319052008",
+      "name": "Hadiwarno"
+    },
+    {
+      "code": "3319052009",
+      "name": "Mejobo"
+    },
+    {
+      "code": "3319052010",
+      "name": "Golantepus"
+    },
+    {
+      "code": "3319052011",
+      "name": "Tenggeles"
+    }
+  ],
+  "331906": [
+    {
+      "code": "3319062001",
+      "name": "Sadang"
+    },
+    {
+      "code": "3319062002",
+      "name": "Bulungcangkring"
+    },
+    {
+      "code": "3319062003",
+      "name": "Bulung Kulon"
+    },
+    {
+      "code": "3319062004",
+      "name": "Sidomulyo"
+    },
+    {
+      "code": "3319062005",
+      "name": "Gondoharum"
+    },
+    {
+      "code": "3319062006",
+      "name": "Terban"
+    },
+    {
+      "code": "3319062007",
+      "name": "Pladen"
+    },
+    {
+      "code": "3319062008",
+      "name": "Klaling"
+    },
+    {
+      "code": "3319062009",
+      "name": "Jekulo"
+    },
+    {
+      "code": "3319062010",
+      "name": "Hadipolo"
+    },
+    {
+      "code": "3319062011",
+      "name": "Honggosoco"
+    },
+    {
+      "code": "3319062012",
+      "name": "Tanjungrejo"
+    }
+  ],
+  "331907": [
+    {
+      "code": "3319072001",
+      "name": "Dersalam"
+    },
+    {
+      "code": "3319072002",
+      "name": "Ngembalrejo"
+    },
+    {
+      "code": "3319072003",
+      "name": "Karangbener"
+    },
+    {
+      "code": "3319072004",
+      "name": "Gondangmanis"
+    },
+    {
+      "code": "3319072005",
+      "name": "Pedawang"
+    },
+    {
+      "code": "3319072006",
+      "name": "Bacin"
+    },
+    {
+      "code": "3319072007",
+      "name": "Panjang"
+    },
+    {
+      "code": "3319072008",
+      "name": "Peganjaran"
+    },
+    {
+      "code": "3319072009",
+      "name": "Purworejo"
+    },
+    {
+      "code": "3319072010",
+      "name": "Bae"
+    }
+  ],
+  "331908": [
+    {
+      "code": "3319082001",
+      "name": "Gribig"
+    },
+    {
+      "code": "3319082002",
+      "name": "Klumpit"
+    },
+    {
+      "code": "3319082003",
+      "name": "Getassrabi"
+    },
+    {
+      "code": "3319082004",
+      "name": "Padurenan"
+    },
+    {
+      "code": "3319082005",
+      "name": "Karangmalang"
+    },
+    {
+      "code": "3319082006",
+      "name": "Besito"
+    },
+    {
+      "code": "3319082007",
+      "name": "Jurang"
+    },
+    {
+      "code": "3319082008",
+      "name": "Gondosari"
+    },
+    {
+      "code": "3319082009",
+      "name": "Kedungsari"
+    },
+    {
+      "code": "3319082010",
+      "name": "Menawan"
+    },
+    {
+      "code": "3319082011",
+      "name": "Rahtawu"
+    }
+  ],
+  "331909": [
+    {
+      "code": "3319092001",
+      "name": "Samirejo"
+    },
+    {
+      "code": "3319092002",
+      "name": "Cendono"
+    },
+    {
+      "code": "3319092003",
+      "name": "Margorejo"
+    },
+    {
+      "code": "3319092004",
+      "name": "Rejosari"
+    },
+    {
+      "code": "3319092005",
+      "name": "Kandangmas"
+    },
+    {
+      "code": "3319092006",
+      "name": "Glagah Kulon"
+    },
+    {
+      "code": "3319092007",
+      "name": "Tergo"
+    },
+    {
+      "code": "3319092008",
+      "name": "Cranggang"
+    },
+    {
+      "code": "3319092009",
+      "name": "Lau"
+    },
+    {
+      "code": "3319092010",
+      "name": "Piji"
+    },
+    {
+      "code": "3319092011",
+      "name": "Puyoh"
+    },
+    {
+      "code": "3319092012",
+      "name": "Soco"
+    },
+    {
+      "code": "3319092013",
+      "name": "Ternadi"
+    },
+    {
+      "code": "3319092014",
+      "name": "Kajar"
+    },
+    {
+      "code": "3319092015",
+      "name": "Kuwukan"
+    },
+    {
+      "code": "3319092016",
+      "name": "Dukuhwaringin"
+    },
+    {
+      "code": "3319092017",
+      "name": "Japan"
+    },
+    {
+      "code": "3319092018",
+      "name": "Colo"
+    }
+  ]
 }

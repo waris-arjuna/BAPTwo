@@ -1,436 +1,436 @@
 {
-    "181101": [
-        {
-            "code": "1811012001",
-            "name": "Wiralaga I"
-        },
-        {
-            "code": "1811012002",
-            "name": "Wiralaga II"
-        },
-        {
-            "code": "1811012003",
-            "name": "Sungai Badak"
-        },
-        {
-            "code": "1811012004",
-            "name": "Nipah Kuning"
-        },
-        {
-            "code": "1811012005",
-            "name": "Sido Mulyo"
-        },
-        {
-            "code": "1811012006",
-            "name": "Tirta Laga"
-        },
-        {
-            "code": "1811012007",
-            "name": "Tanjung Serayan"
-        },
-        {
-            "code": "1811012008",
-            "name": "Sumber Makmur"
-        },
-        {
-            "code": "1811012009",
-            "name": "Mulya Sari"
-        },
-        {
-            "code": "1811012010",
-            "name": "Wiralaga Mulya"
-        },
-        {
-            "code": "1811012011",
-            "name": "Suka Maju"
-        }
-    ],
-    "181102": [
-        {
-            "code": "1811022001",
-            "name": "Talang Batu"
-        },
-        {
-            "code": "1811022002",
-            "name": "Sungai Cambai"
-        },
-        {
-            "code": "1811022003",
-            "name": "Tanjung Mas Makmur"
-        },
-        {
-            "code": "1811022004",
-            "name": "Margo Jadi"
-        },
-        {
-            "code": "1811022005",
-            "name": "Tanjung Menang"
-        },
-        {
-            "code": "1811022006",
-            "name": "Eka Mulya"
-        },
-        {
-            "code": "1811022007",
-            "name": "Wono Sari"
-        },
-        {
-            "code": "1811022008",
-            "name": "Dwi Karya Mustika"
-        },
-        {
-            "code": "1811022009",
-            "name": "Pangkal Mas Jaya"
-        },
-        {
-            "code": "1811022010",
-            "name": "Pangkal Mas Mulya"
-        },
-        {
-            "code": "1811022011",
-            "name": "Tanjung Mas Mulya"
-        },
-        {
-            "code": "1811022012",
-            "name": "Muara Mas"
-        },
-        {
-            "code": "1811022013",
-            "name": "Tanjung Mas Jaya"
-        },
-        {
-            "code": "1811022014",
-            "name": "Margo Jaya"
-        },
-        {
-            "code": "1811022015",
-            "name": "Pangkal Mas"
-        },
-        {
-            "code": "1811022016",
-            "name": "Tanjung Menang Raya"
-        },
-        {
-            "code": "1811022017",
-            "name": "Tebing Karya Mandiri"
-        },
-        {
-            "code": "1811022018",
-            "name": "Tanjung Mas Rejo"
-        },
-        {
-            "code": "1811022019",
-            "name": "Margo Mulyo"
-        },
-        {
-            "code": "1811022020",
-            "name": "Muara Asri"
-        }
-    ],
-    "181103": [
-        {
-            "code": "1811032001",
-            "name": "Sungai Buaya"
-        },
-        {
-            "code": "1811032002",
-            "name": "Panggung Jaya"
-        },
-        {
-            "code": "1811032003",
-            "name": "Sungai Sidang"
-        },
-        {
-            "code": "1811032004",
-            "name": "Sidang Sido Rahayu"
-        },
-        {
-            "code": "1811032005",
-            "name": "Sidang Way Puji"
-        },
-        {
-            "code": "1811032006",
-            "name": "Sidang Bandar Anom"
-        },
-        {
-            "code": "1811032007",
-            "name": "Panggung Rejo"
-        },
-        {
-            "code": "1811032008",
-            "name": "Sidang Iso Mukti"
-        },
-        {
-            "code": "1811032009",
-            "name": "Sidang Kurnia Agung"
-        },
-        {
-            "code": "1811032010",
-            "name": "Telogo Rejo"
-        },
-        {
-            "code": "1811032011",
-            "name": "Sidang Gunung Tiga"
-        },
-        {
-            "code": "1811032012",
-            "name": "Sidang Muara Jaya"
-        },
-        {
-            "code": "1811032013",
-            "name": "Sidang Makmur"
-        }
-    ],
-    "181104": [
-        {
-            "code": "1811042001",
-            "name": "Buko Poso"
-        },
-        {
-            "code": "1811042002",
-            "name": "Kejadian"
-        },
-        {
-            "code": "1811042003",
-            "name": "Bumi Harapan"
-        },
-        {
-            "code": "1811042004",
-            "name": "Kebun Dalam"
-        },
-        {
-            "code": "1811042005",
-            "name": "Panca Warna"
-        },
-        {
-            "code": "1811042006",
-            "name": "Gedung Boga"
-        },
-        {
-            "code": "1811042007",
-            "name": "Suka Agung"
-        },
-        {
-            "code": "1811042008",
-            "name": "Rejo Mulyo"
-        },
-        {
-            "code": "1811042009",
-            "name": "Hadi Mulyo"
-        },
-        {
-            "code": "1811042010",
-            "name": "Labuhan Batin"
-        },
-        {
-            "code": "1811042011",
-            "name": "Labuhan Baru"
-        },
-        {
-            "code": "1811042012",
-            "name": "Labuhan Makmur"
-        },
-        {
-            "code": "1811042013",
-            "name": "Gedung Sri Mulyo"
-        },
-        {
-            "code": "1811042014",
-            "name": "Labuhan Permai"
-        },
-        {
-            "code": "1811042015",
-            "name": "Sumber Rejo"
-        },
-        {
-            "code": "1811042016",
-            "name": "Margo Bhakti"
-        },
-        {
-            "code": "1811042017",
-            "name": "Labuhan Mulya"
-        },
-        {
-            "code": "1811042018",
-            "name": "Karang Mulya"
-        },
-        {
-            "code": "1811042019",
-            "name": "Tri Tunggal Jaya"
-        },
-        {
-            "code": "1811042020",
-            "name": "Suka Mandiri"
-        }
-    ],
-    "181105": [
-        {
-            "code": "1811052001",
-            "name": "Simpang Pematang"
-        },
-        {
-            "code": "1811052002",
-            "name": "Budi Aji"
-        },
-        {
-            "code": "1811052003",
-            "name": "Margo Rahayu"
-        },
-        {
-            "code": "1811052004",
-            "name": "Harapan Jaya"
-        },
-        {
-            "code": "1811052005",
-            "name": "Wira Bangun"
-        },
-        {
-            "code": "1811052006",
-            "name": "Agung Batin"
-        },
-        {
-            "code": "1811052007",
-            "name": "Bangun Mulyo"
-        },
-        {
-            "code": "1811052008",
-            "name": "Jaya Sakti"
-        },
-        {
-            "code": "1811052009",
-            "name": "Rejo Binangun"
-        },
-        {
-            "code": "1811052010",
-            "name": "Simpang Mesuji"
-        },
-        {
-            "code": "1811052011",
-            "name": "Margo Makmur"
-        },
-        {
-            "code": "1811052012",
-            "name": "Aji Jaya"
-        },
-        {
-            "code": "1811052013",
-            "name": "Mulya Agung"
-        }
-    ],
-    "181106": [
-        {
-            "code": "1811062001",
-            "name": "Adi Luhur"
-        },
-        {
-            "code": "1811062002",
-            "name": "Mukti Karya"
-        },
-        {
-            "code": "1811062003",
-            "name": "Fajar Baru"
-        },
-        {
-            "code": "1811062004",
-            "name": "Adi Mulyo"
-        },
-        {
-            "code": "1811062005",
-            "name": "Fajar Asri"
-        },
-        {
-            "code": "1811062006",
-            "name": "Fajar Indah"
-        },
-        {
-            "code": "1811062007",
-            "name": "Adi Karya Mulya"
-        }
-    ],
-    "181107": [
-        {
-            "code": "1811072001",
-            "name": "Brabasan"
-        },
-        {
-            "code": "1811072002",
-            "name": "Gedung Ram"
-        },
-        {
-            "code": "1811072003",
-            "name": "Mekar Sari"
-        },
-        {
-            "code": "1811072004",
-            "name": "Bujung Buring"
-        },
-        {
-            "code": "1811072005",
-            "name": "Kagungan Dalam"
-        },
-        {
-            "code": "1811072006",
-            "name": "Tanjung Sari"
-        },
-        {
-            "code": "1811072007",
-            "name": "Harapan Mukti"
-        },
-        {
-            "code": "1811072008",
-            "name": "Sri Tanjung"
-        },
-        {
-            "code": "1811072009",
-            "name": "Bangun Jaya"
-        },
-        {
-            "code": "1811072010",
-            "name": "Muara Tenang"
-        },
-        {
-            "code": "1811072011",
-            "name": "Wira Jaya"
-        },
-        {
-            "code": "1811072012",
-            "name": "Sinar Laga"
-        },
-        {
-            "code": "1811072013",
-            "name": "Tri Karya Mulya"
-        },
-        {
-            "code": "1811072014",
-            "name": "Berasan Makmur"
-        },
-        {
-            "code": "1811072015",
-            "name": "Mekar Jaya"
-        },
-        {
-            "code": "1811072016",
-            "name": "Gedung Mulya"
-        },
-        {
-            "code": "1811072017",
-            "name": "Tanjung Harapan"
-        },
-        {
-            "code": "1811072018",
-            "name": "Muara Tenang Timur"
-        },
-        {
-            "code": "1811072019",
-            "name": "Sriwijaya"
-        },
-        {
-            "code": "1811072020",
-            "name": "Mukti Jaya"
-        },
-        {
-            "code": "1811072021",
-            "name": "Bujung Buring Baru"
-        }
-    ]
+  "181101": [
+    {
+      "code": "1811012001",
+      "name": "Wiralaga I"
+    },
+    {
+      "code": "1811012002",
+      "name": "Wiralaga II"
+    },
+    {
+      "code": "1811012003",
+      "name": "Sungai Badak"
+    },
+    {
+      "code": "1811012004",
+      "name": "Nipah Kuning"
+    },
+    {
+      "code": "1811012005",
+      "name": "Sido Mulyo"
+    },
+    {
+      "code": "1811012006",
+      "name": "Tirta Laga"
+    },
+    {
+      "code": "1811012007",
+      "name": "Tanjung Serayan"
+    },
+    {
+      "code": "1811012008",
+      "name": "Sumber Makmur"
+    },
+    {
+      "code": "1811012009",
+      "name": "Mulya Sari"
+    },
+    {
+      "code": "1811012010",
+      "name": "Wiralaga Mulya"
+    },
+    {
+      "code": "1811012011",
+      "name": "Suka Maju"
+    }
+  ],
+  "181102": [
+    {
+      "code": "1811022001",
+      "name": "Talang Batu"
+    },
+    {
+      "code": "1811022002",
+      "name": "Sungai Cambai"
+    },
+    {
+      "code": "1811022003",
+      "name": "Tanjung Mas Makmur"
+    },
+    {
+      "code": "1811022004",
+      "name": "Margo Jadi"
+    },
+    {
+      "code": "1811022005",
+      "name": "Tanjung Menang"
+    },
+    {
+      "code": "1811022006",
+      "name": "Eka Mulya"
+    },
+    {
+      "code": "1811022007",
+      "name": "Wono Sari"
+    },
+    {
+      "code": "1811022008",
+      "name": "Dwi Karya Mustika"
+    },
+    {
+      "code": "1811022009",
+      "name": "Pangkal Mas Jaya"
+    },
+    {
+      "code": "1811022010",
+      "name": "Pangkal Mas Mulya"
+    },
+    {
+      "code": "1811022011",
+      "name": "Tanjung Mas Mulya"
+    },
+    {
+      "code": "1811022012",
+      "name": "Muara Mas"
+    },
+    {
+      "code": "1811022013",
+      "name": "Tanjung Mas Jaya"
+    },
+    {
+      "code": "1811022014",
+      "name": "Margo Jaya"
+    },
+    {
+      "code": "1811022015",
+      "name": "Pangkal Mas"
+    },
+    {
+      "code": "1811022016",
+      "name": "Tanjung Menang Raya"
+    },
+    {
+      "code": "1811022017",
+      "name": "Tebing Karya Mandiri"
+    },
+    {
+      "code": "1811022018",
+      "name": "Tanjung Mas Rejo"
+    },
+    {
+      "code": "1811022019",
+      "name": "Margo Mulyo"
+    },
+    {
+      "code": "1811022020",
+      "name": "Muara Asri"
+    }
+  ],
+  "181103": [
+    {
+      "code": "1811032001",
+      "name": "Sungai Buaya"
+    },
+    {
+      "code": "1811032002",
+      "name": "Panggung Jaya"
+    },
+    {
+      "code": "1811032003",
+      "name": "Sungai Sidang"
+    },
+    {
+      "code": "1811032004",
+      "name": "Sidang Sido Rahayu"
+    },
+    {
+      "code": "1811032005",
+      "name": "Sidang Way Puji"
+    },
+    {
+      "code": "1811032006",
+      "name": "Sidang Bandar Anom"
+    },
+    {
+      "code": "1811032007",
+      "name": "Panggung Rejo"
+    },
+    {
+      "code": "1811032008",
+      "name": "Sidang Iso Mukti"
+    },
+    {
+      "code": "1811032009",
+      "name": "Sidang Kurnia Agung"
+    },
+    {
+      "code": "1811032010",
+      "name": "Telogo Rejo"
+    },
+    {
+      "code": "1811032011",
+      "name": "Sidang Gunung Tiga"
+    },
+    {
+      "code": "1811032012",
+      "name": "Sidang Muara Jaya"
+    },
+    {
+      "code": "1811032013",
+      "name": "Sidang Makmur"
+    }
+  ],
+  "181104": [
+    {
+      "code": "1811042001",
+      "name": "Buko Poso"
+    },
+    {
+      "code": "1811042002",
+      "name": "Kejadian"
+    },
+    {
+      "code": "1811042003",
+      "name": "Bumi Harapan"
+    },
+    {
+      "code": "1811042004",
+      "name": "Kebun Dalam"
+    },
+    {
+      "code": "1811042005",
+      "name": "Panca Warna"
+    },
+    {
+      "code": "1811042006",
+      "name": "Gedung Boga"
+    },
+    {
+      "code": "1811042007",
+      "name": "Suka Agung"
+    },
+    {
+      "code": "1811042008",
+      "name": "Rejo Mulyo"
+    },
+    {
+      "code": "1811042009",
+      "name": "Hadi Mulyo"
+    },
+    {
+      "code": "1811042010",
+      "name": "Labuhan Batin"
+    },
+    {
+      "code": "1811042011",
+      "name": "Labuhan Baru"
+    },
+    {
+      "code": "1811042012",
+      "name": "Labuhan Makmur"
+    },
+    {
+      "code": "1811042013",
+      "name": "Gedung Sri Mulyo"
+    },
+    {
+      "code": "1811042014",
+      "name": "Labuhan Permai"
+    },
+    {
+      "code": "1811042015",
+      "name": "Sumber Rejo"
+    },
+    {
+      "code": "1811042016",
+      "name": "Margo Bhakti"
+    },
+    {
+      "code": "1811042017",
+      "name": "Labuhan Mulya"
+    },
+    {
+      "code": "1811042018",
+      "name": "Karang Mulya"
+    },
+    {
+      "code": "1811042019",
+      "name": "Tri Tunggal Jaya"
+    },
+    {
+      "code": "1811042020",
+      "name": "Suka Mandiri"
+    }
+  ],
+  "181105": [
+    {
+      "code": "1811052001",
+      "name": "Simpang Pematang"
+    },
+    {
+      "code": "1811052002",
+      "name": "Budi Aji"
+    },
+    {
+      "code": "1811052003",
+      "name": "Margo Rahayu"
+    },
+    {
+      "code": "1811052004",
+      "name": "Harapan Jaya"
+    },
+    {
+      "code": "1811052005",
+      "name": "Wira Bangun"
+    },
+    {
+      "code": "1811052006",
+      "name": "Agung Batin"
+    },
+    {
+      "code": "1811052007",
+      "name": "Bangun Mulyo"
+    },
+    {
+      "code": "1811052008",
+      "name": "Jaya Sakti"
+    },
+    {
+      "code": "1811052009",
+      "name": "Rejo Binangun"
+    },
+    {
+      "code": "1811052010",
+      "name": "Simpang Mesuji"
+    },
+    {
+      "code": "1811052011",
+      "name": "Margo Makmur"
+    },
+    {
+      "code": "1811052012",
+      "name": "Aji Jaya"
+    },
+    {
+      "code": "1811052013",
+      "name": "Mulya Agung"
+    }
+  ],
+  "181106": [
+    {
+      "code": "1811062001",
+      "name": "Adi Luhur"
+    },
+    {
+      "code": "1811062002",
+      "name": "Mukti Karya"
+    },
+    {
+      "code": "1811062003",
+      "name": "Fajar Baru"
+    },
+    {
+      "code": "1811062004",
+      "name": "Adi Mulyo"
+    },
+    {
+      "code": "1811062005",
+      "name": "Fajar Asri"
+    },
+    {
+      "code": "1811062006",
+      "name": "Fajar Indah"
+    },
+    {
+      "code": "1811062007",
+      "name": "Adi Karya Mulya"
+    }
+  ],
+  "181107": [
+    {
+      "code": "1811072001",
+      "name": "Brabasan"
+    },
+    {
+      "code": "1811072002",
+      "name": "Gedung Ram"
+    },
+    {
+      "code": "1811072003",
+      "name": "Mekar Sari"
+    },
+    {
+      "code": "1811072004",
+      "name": "Bujung Buring"
+    },
+    {
+      "code": "1811072005",
+      "name": "Kagungan Dalam"
+    },
+    {
+      "code": "1811072006",
+      "name": "Tanjung Sari"
+    },
+    {
+      "code": "1811072007",
+      "name": "Harapan Mukti"
+    },
+    {
+      "code": "1811072008",
+      "name": "Sri Tanjung"
+    },
+    {
+      "code": "1811072009",
+      "name": "Bangun Jaya"
+    },
+    {
+      "code": "1811072010",
+      "name": "Muara Tenang"
+    },
+    {
+      "code": "1811072011",
+      "name": "Wira Jaya"
+    },
+    {
+      "code": "1811072012",
+      "name": "Sinar Laga"
+    },
+    {
+      "code": "1811072013",
+      "name": "Tri Karya Mulya"
+    },
+    {
+      "code": "1811072014",
+      "name": "Berasan Makmur"
+    },
+    {
+      "code": "1811072015",
+      "name": "Mekar Jaya"
+    },
+    {
+      "code": "1811072016",
+      "name": "Gedung Mulya"
+    },
+    {
+      "code": "1811072017",
+      "name": "Tanjung Harapan"
+    },
+    {
+      "code": "1811072018",
+      "name": "Muara Tenang Timur"
+    },
+    {
+      "code": "1811072019",
+      "name": "Sriwijaya"
+    },
+    {
+      "code": "1811072020",
+      "name": "Mukti Jaya"
+    },
+    {
+      "code": "1811072021",
+      "name": "Bujung Buring Baru"
+    }
+  ]
 }

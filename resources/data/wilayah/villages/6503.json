@@ -1,388 +1,1004 @@
 {
-    "650301": [
-        {
-            "code": "6503012001",
-            "name": "Tanjungkarang"
-        },
-        {
-            "code": "6503012002",
-            "name": "Balansiku"
-        },
-        {
-            "code": "6503012003",
-            "name": "Sungai Manurung"
-        },
-        {
-            "code": "6503012004",
-            "name": "Padaidi"
-        }
-    ],
-    "650302": [
-        {
-            "code": "6503021001",
-            "name": "Nunukan Timur"
-        },
-        {
-            "code": "6503021002",
-            "name": "Nunukan Barat"
-        },
-        {
-            "code": "6503021003",
-            "name": "Nunukan Utara"
-        },
-        {
-            "code": "6503021005",
-            "name": "Nunukan Tengah"
-        },
-        {
-            "code": "6503022004",
-            "name": "Binusan"
-        }
-    ],
-    "650303": [
-        {
-            "code": "6503032001",
-            "name": "Tagul"
-        },
-        {
-            "code": "6503032002",
-            "name": "Lubakan"
-        },
-        {
-            "code": "6503032003",
-            "name": "Atap"
-        },
-        {
-            "code": "6503032004",
-            "name": "Manuk Bungkul"
-        },
-        {
-            "code": "6503032005",
-            "name": "Tujung"
-        },
-        {
-            "code": "6503032006",
-            "name": "Pagar"
-        },
-        {
-            "code": "6503032007",
-            "name": "Labuk"
-        },
-        {
-            "code": "6503032008",
-            "name": "Butas Bagu"
-        },
-        {
-            "code": "6503032009",
-            "name": "Pelaju"
-        },
-        {
-            "code": "6503032010",
-            "name": "Tepian"
-        }
-    ],
-    "650304": [
-        {
-            "code": "6503042001",
-            "name": "Deralon"
-        },
-        {
-            "code": "6503042002",
-            "name": "Liang"
-        },
-        {
-            "code": "6503042003",
-            "name": "Dabulon"
-        },
-        {
-            "code": "6503042004",
-            "name": "Taluan"
-        },
-        {
-            "code": "6503042005",
-            "name": "Podong"
-        },
-        {
-            "code": "6503042006",
-            "name": "Patal I"
-        },
-        {
-            "code": "6503042007",
-            "name": "Siawang"
-        },
-        {
-            "code": "6503042008",
-            "name": "Sapuyan"
-        },
-        {
-            "code": "6503042009",
-            "name": "Nainsid"
-        },
-        {
-            "code": "6503042010",
-            "name": "Sasibu"
-        },
-        {
-            "code": "6503042011",
-            "name": "Saludan"
-        },
-        {
-            "code": "6503042012",
-            "name": "Semalat"
-        },
-        {
-            "code": "6503042013",
-            "name": "Libang"
-        },
-        {
-            "code": "6503042014",
-            "name": "Sedongon"
-        },
-        {
-            "code": "6503042015",
-            "name": "Tanjung Hilir"
-        },
-        {
-            "code": "6503042016",
-            "name": "Sumalumung"
-        },
-        {
-            "code": "6503042017",
-            "name": "Lintong"
-        },
-        {
-            "code": "6503042018",
-            "name": "Pulu Bulawan"
-        },
-        {
-            "code": "6503042019",
-            "name": "Tanjung Hulu"
-        },
-        {
-            "code": "6503042020",
-            "name": "Patal II"
-        },
-        {
-            "code": "6503042021",
-            "name": "Pa'loo"
-        },
-        {
-            "code": "6503042022",
-            "name": "Sangkub"
-        },
-        {
-            "code": "6503042023",
-            "name": "Tubus"
-        },
-        {
-            "code": "6503042024",
-            "name": "Likos"
-        },
-        {
-            "code": "6503042025",
-            "name": "Bulan-Bulan"
-        },
-        {
-            "code": "6503042026",
-            "name": "Kalampising"
-        },
-        {
-            "code": "6503042027",
-            "name": "Pa'lemumut"
-        },
-        {
-            "code": "6503042028",
-            "name": "Mansalong"
-        }
-    ],
-    "650305": [
-        {
-            "code": "6503052002",
-            "name": "Pa' Padi"
-        },
-        {
-            "code": "6503052003",
-            "name": "Cinglat"
-        },
-        {
-            "code": "6503052022",
-            "name": "Liang Butan"
-        },
-        {
-            "code": "6503052029",
-            "name": "Pa' Rupai"
-        },
-        {
-            "code": "6503052030",
-            "name": "Ba Sikor"
-        },
-        {
-            "code": "6503052031",
-            "name": "Pa' Nado"
-        },
-        {
-            "code": "6503052032",
-            "name": "Buduk Kinangan"
-        },
-        {
-            "code": "6503052033",
-            "name": "Liang Tuer"
-        },
-        {
-            "code": "6503052034",
-            "name": "Buduk Tumu"
-        },
-        {
-            "code": "6503052035",
-            "name": "Long Berayang"
-        },
-        {
-            "code": "6503052036",
-            "name": "Pa' Api"
-        },
-        {
-            "code": "6503052037",
-            "name": "Pa' Sire"
-        },
-        {
-            "code": "6503052038",
-            "name": "Wa' Yanud"
-        },
-        {
-            "code": "6503052039",
-            "name": "Long Nawang"
-        },
-        {
-            "code": "6503052040",
-            "name": "Long Katung"
-        },
-        {
-            "code": "6503052041",
-            "name": "Long Bawan"
-        },
-        {
-            "code": "6503052044",
-            "name": "Long Matung"
-        },
-        {
-            "code": "6503052045",
-            "name": "Long Rupan"
-        },
-        {
-            "code": "6503052046",
-            "name": "Liang Biadung"
-        },
-        {
-            "code": "6503052047",
-            "name": "Wa' Laya"
-        },
-        {
-            "code": "6503052048",
-            "name": "Pa' Matung"
-        },
-        {
-            "code": "6503052049",
-            "name": "Pa' Terutun"
-        },
-        {
-            "code": "6503052065",
-            "name": "Pa' Putuk"
-        }
-    ],
-    "650306": [
-        {
-            "code": "6503062001",
-            "name": "Pembeliangan"
-        },
-        {
-            "code": "6503062002",
-            "name": "Apas"
-        },
-        {
-            "code": "6503062003",
-            "name": "Kunyit"
-        },
-        {
-            "code": "6503062004",
-            "name": "Tetaban"
-        },
-        {
-            "code": "6503062005",
-            "name": "Kekayap"
-        },
-        {
-            "code": "6503062006",
-            "name": "Bebanas"
-        },
-        {
-            "code": "6503062007",
-            "name": "Lulu"
-        },
-        {
-            "code": "6503062008",
-            "name": "Sujau"
-        },
-        {
-            "code": "6503062009",
-            "name": "Melasu Baru"
-        },
-        {
-            "code": "6503062010",
-            "name": "Harapan"
-        }
-    ],
-    "650307": [
-        {
-            "code": "6503072001",
-            "name": "Long Pasia"
-        },
-        {
-            "code": "6503072002",
-            "name": "Liang Lunuk"
-        },
-        {
-            "code": "6503072003",
-            "name": "Pa' Ibang"
-        },
-        {
-            "code": "6503072004",
-            "name": "Pa' Amai"
-        },
-        {
-            "code": "6503072005",
-            "name": "Pa' Kaber"
-        },
-        {
-            "code": "6503072006",
-            "name": "Pa' Tera"
-        },
-        {
-            "code": "6503072007",
-            "name": "Pa' Sing"
-        },
-        {
-            "code": "6503072009",
-            "name": "Pa' Dalan"
-        },
-        {
-            "code": "6503072010",
-            "name": "Long Birar"
-        },
-        {
-            "code": "6503072011",
-            "name": "Pa' Upan"
-        },
-        {
-            "code": "6503072016",
-            "name": "Long Budung"
-        },
-        {
-            "code": "6503072018",
-            "name": "Long Pupung"
-        },
-        {
-            "code": "6503072020",
-            "name": "Pa' Urang"
-        }
-    ]
+  "650301": [
+    {
+      "code": "6503012001",
+      "name": "Tanjungkarang"
+    },
+    {
+      "code": "6503012002",
+      "name": "Balansiku"
+    },
+    {
+      "code": "6503012003",
+      "name": "Sungai Manurung"
+    },
+    {
+      "code": "6503012004",
+      "name": "Padaidi"
+    }
+  ],
+  "650302": [
+    {
+      "code": "6503021001",
+      "name": "Nunukan Timur"
+    },
+    {
+      "code": "6503021002",
+      "name": "Nunukan Barat"
+    },
+    {
+      "code": "6503021003",
+      "name": "Nunukan Utara"
+    },
+    {
+      "code": "6503021005",
+      "name": "Nunukan Tengah"
+    },
+    {
+      "code": "6503022004",
+      "name": "Binusan"
+    }
+  ],
+  "650303": [
+    {
+      "code": "6503032001",
+      "name": "Tagul"
+    },
+    {
+      "code": "6503032002",
+      "name": "Lubakan"
+    },
+    {
+      "code": "6503032003",
+      "name": "Atap"
+    },
+    {
+      "code": "6503032004",
+      "name": "Manuk Bungkul"
+    },
+    {
+      "code": "6503032005",
+      "name": "Tujung"
+    },
+    {
+      "code": "6503032006",
+      "name": "Pagar"
+    },
+    {
+      "code": "6503032007",
+      "name": "Labuk"
+    },
+    {
+      "code": "6503032008",
+      "name": "Butas Bagu"
+    },
+    {
+      "code": "6503032009",
+      "name": "Pelaju"
+    },
+    {
+      "code": "6503032010",
+      "name": "Tepian"
+    }
+  ],
+  "650304": [
+    {
+      "code": "6503042001",
+      "name": "Deralon"
+    },
+    {
+      "code": "6503042002",
+      "name": "Liang"
+    },
+    {
+      "code": "6503042003",
+      "name": "Dabulon"
+    },
+    {
+      "code": "6503042004",
+      "name": "Taluan"
+    },
+    {
+      "code": "6503042005",
+      "name": "Podong"
+    },
+    {
+      "code": "6503042006",
+      "name": "Patal I"
+    },
+    {
+      "code": "6503042007",
+      "name": "Siawang"
+    },
+    {
+      "code": "6503042008",
+      "name": "Sapuyan"
+    },
+    {
+      "code": "6503042009",
+      "name": "Nainsid"
+    },
+    {
+      "code": "6503042010",
+      "name": "Sasibu"
+    },
+    {
+      "code": "6503042011",
+      "name": "Saludan"
+    },
+    {
+      "code": "6503042012",
+      "name": "Semalat"
+    },
+    {
+      "code": "6503042013",
+      "name": "Libang"
+    },
+    {
+      "code": "6503042014",
+      "name": "Sedongon"
+    },
+    {
+      "code": "6503042015",
+      "name": "Tanjung Hilir"
+    },
+    {
+      "code": "6503042016",
+      "name": "Sumalumung"
+    },
+    {
+      "code": "6503042017",
+      "name": "Lintong"
+    },
+    {
+      "code": "6503042018",
+      "name": "Pulu Bulawan"
+    },
+    {
+      "code": "6503042019",
+      "name": "Tanjung Hulu"
+    },
+    {
+      "code": "6503042020",
+      "name": "Patal II"
+    },
+    {
+      "code": "6503042021",
+      "name": "Pa'loo"
+    },
+    {
+      "code": "6503042022",
+      "name": "Sangkub"
+    },
+    {
+      "code": "6503042023",
+      "name": "Tubus"
+    },
+    {
+      "code": "6503042024",
+      "name": "Likos"
+    },
+    {
+      "code": "6503042025",
+      "name": "Bulan-Bulan"
+    },
+    {
+      "code": "6503042026",
+      "name": "Kalampising"
+    },
+    {
+      "code": "6503042027",
+      "name": "Pa'lemumut"
+    },
+    {
+      "code": "6503042028",
+      "name": "Mansalong"
+    }
+  ],
+  "650305": [
+    {
+      "code": "6503052002",
+      "name": "Pa' Padi"
+    },
+    {
+      "code": "6503052003",
+      "name": "Cinglat"
+    },
+    {
+      "code": "6503052022",
+      "name": "Liang Butan"
+    },
+    {
+      "code": "6503052029",
+      "name": "Pa' Rupai"
+    },
+    {
+      "code": "6503052030",
+      "name": "Ba Sikor"
+    },
+    {
+      "code": "6503052031",
+      "name": "Pa' Nado"
+    },
+    {
+      "code": "6503052032",
+      "name": "Buduk Kinangan"
+    },
+    {
+      "code": "6503052033",
+      "name": "Liang Tuer"
+    },
+    {
+      "code": "6503052034",
+      "name": "Buduk Tumu"
+    },
+    {
+      "code": "6503052035",
+      "name": "Long Berayang"
+    },
+    {
+      "code": "6503052036",
+      "name": "Pa' Api"
+    },
+    {
+      "code": "6503052037",
+      "name": "Pa' Sire"
+    },
+    {
+      "code": "6503052038",
+      "name": "Wa' Yanud"
+    },
+    {
+      "code": "6503052039",
+      "name": "Long Nawang"
+    },
+    {
+      "code": "6503052040",
+      "name": "Long Katung"
+    },
+    {
+      "code": "6503052041",
+      "name": "Long Bawan"
+    },
+    {
+      "code": "6503052044",
+      "name": "Long Matung"
+    },
+    {
+      "code": "6503052045",
+      "name": "Long Rupan"
+    },
+    {
+      "code": "6503052046",
+      "name": "Liang Biadung"
+    },
+    {
+      "code": "6503052047",
+      "name": "Wa' Laya"
+    },
+    {
+      "code": "6503052048",
+      "name": "Pa' Matung"
+    },
+    {
+      "code": "6503052049",
+      "name": "Pa' Terutun"
+    },
+    {
+      "code": "6503052065",
+      "name": "Pa' Putuk"
+    }
+  ],
+  "650306": [
+    {
+      "code": "6503062001",
+      "name": "Pembeliangan"
+    },
+    {
+      "code": "6503062002",
+      "name": "Apas"
+    },
+    {
+      "code": "6503062003",
+      "name": "Kunyit"
+    },
+    {
+      "code": "6503062004",
+      "name": "Tetaban"
+    },
+    {
+      "code": "6503062005",
+      "name": "Kekayap"
+    },
+    {
+      "code": "6503062006",
+      "name": "Bebanas"
+    },
+    {
+      "code": "6503062007",
+      "name": "Lulu"
+    },
+    {
+      "code": "6503062008",
+      "name": "Sujau"
+    },
+    {
+      "code": "6503062009",
+      "name": "Melasu Baru"
+    },
+    {
+      "code": "6503062010",
+      "name": "Harapan"
+    }
+  ],
+  "650307": [
+    {
+      "code": "6503072001",
+      "name": "Long Pasia"
+    },
+    {
+      "code": "6503072002",
+      "name": "Liang Lunuk"
+    },
+    {
+      "code": "6503072003",
+      "name": "Pa' Ibang"
+    },
+    {
+      "code": "6503072004",
+      "name": "Pa' Amai"
+    },
+    {
+      "code": "6503072005",
+      "name": "Pa' Kaber"
+    },
+    {
+      "code": "6503072006",
+      "name": "Pa' Tera"
+    },
+    {
+      "code": "6503072007",
+      "name": "Pa' Sing"
+    },
+    {
+      "code": "6503072009",
+      "name": "Pa' Dalan"
+    },
+    {
+      "code": "6503072010",
+      "name": "Long Birar"
+    },
+    {
+      "code": "6503072011",
+      "name": "Pa' Upan"
+    },
+    {
+      "code": "6503072016",
+      "name": "Long Budung"
+    },
+    {
+      "code": "6503072018",
+      "name": "Long Pupung"
+    },
+    {
+      "code": "6503072020",
+      "name": "Pa' Urang"
+    }
+  ],
+  "650308": [
+    {
+      "code": "6503082001",
+      "name": "Liang Bunyu"
+    },
+    {
+      "code": "6503082002",
+      "name": "Binalawan"
+    },
+    {
+      "code": "6503082003",
+      "name": "Setabu"
+    },
+    {
+      "code": "6503082004",
+      "name": "Bambangan"
+    }
+  ],
+  "650309": [
+    {
+      "code": "6503091001",
+      "name": "Selisun"
+    },
+    {
+      "code": "6503091002",
+      "name": "Nunukan Selatan"
+    },
+    {
+      "code": "6503091003",
+      "name": "Mansapa"
+    },
+    {
+      "code": "6503091004",
+      "name": "Tanjung Harapan"
+    }
+  ],
+  "650310": [
+    {
+      "code": "6503102001",
+      "name": "Sungai Nyamuk"
+    },
+    {
+      "code": "6503102002",
+      "name": "Tanjung Harapan"
+    },
+    {
+      "code": "6503102003",
+      "name": "Bukit Aru Indah"
+    },
+    {
+      "code": "6503102004",
+      "name": "Tanjung Aru"
+    }
+  ],
+  "650311": [
+    {
+      "code": "6503112001",
+      "name": "Sungai Pancang"
+    },
+    {
+      "code": "6503112002",
+      "name": "Lapri"
+    },
+    {
+      "code": "6503112003",
+      "name": "Seberang"
+    }
+  ],
+  "650312": [
+    {
+      "code": "6503122001",
+      "name": "Sungai Limau"
+    },
+    {
+      "code": "6503122002",
+      "name": "Maspul"
+    },
+    {
+      "code": "6503122003",
+      "name": "Aji Kuning"
+    },
+    {
+      "code": "6503122004",
+      "name": "Bukit Harapan"
+    }
+  ],
+  "650313": [
+    {
+      "code": "6503132001",
+      "name": "Srinanti"
+    },
+    {
+      "code": "6503132002",
+      "name": "Tabur Lestari"
+    },
+    {
+      "code": "6503132003",
+      "name": "Samaenre Semaja"
+    },
+    {
+      "code": "6503132004",
+      "name": "Sekaduyan Taka"
+    }
+  ],
+  "650314": [
+    {
+      "code": "6503142001",
+      "name": "Sanur"
+    },
+    {
+      "code": "6503142002",
+      "name": "Makmur"
+    },
+    {
+      "code": "6503142003",
+      "name": "Semunad"
+    },
+    {
+      "code": "6503142004",
+      "name": "Sekikilan"
+    },
+    {
+      "code": "6503142005",
+      "name": "Kalunsayan"
+    },
+    {
+      "code": "6503142006",
+      "name": "Tembalang"
+    },
+    {
+      "code": "6503142007",
+      "name": "Salang"
+    },
+    {
+      "code": "6503142008",
+      "name": "Tinampak I"
+    },
+    {
+      "code": "6503142009",
+      "name": "Tinampak II"
+    },
+    {
+      "code": "6503142010",
+      "name": "Naputi"
+    },
+    {
+      "code": "6503142011",
+      "name": "Tau Baru"
+    },
+    {
+      "code": "6503142012",
+      "name": "Balatikon"
+    }
+  ],
+  "650315": [
+    {
+      "code": "6503152001",
+      "name": "Payang"
+    },
+    {
+      "code": "6503152002",
+      "name": "Suyadon"
+    },
+    {
+      "code": "6503152003",
+      "name": "Bulu Mengolom"
+    },
+    {
+      "code": "6503152004",
+      "name": "Tukulon"
+    },
+    {
+      "code": "6503152005",
+      "name": "Ubol Sulok"
+    },
+    {
+      "code": "6503152006",
+      "name": "Batung"
+    },
+    {
+      "code": "6503152007",
+      "name": "Ubol Alung"
+    },
+    {
+      "code": "6503152008",
+      "name": "Nansapan"
+    },
+    {
+      "code": "6503152009",
+      "name": "Samunti"
+    },
+    {
+      "code": "6503152010",
+      "name": "Semata"
+    },
+    {
+      "code": "6503152011",
+      "name": "Sungoi"
+    },
+    {
+      "code": "6503152012",
+      "name": "Salan"
+    },
+    {
+      "code": "6503152013",
+      "name": "Sinampila I"
+    },
+    {
+      "code": "6503152014",
+      "name": "Paluan"
+    },
+    {
+      "code": "6503152015",
+      "name": "Sedalit"
+    },
+    {
+      "code": "6503152016",
+      "name": "Tambalang Hilir"
+    },
+    {
+      "code": "6503152017",
+      "name": "Tadungus"
+    },
+    {
+      "code": "6503152018",
+      "name": "Sinampila II"
+    },
+    {
+      "code": "6503152019",
+      "name": "Kalambuku"
+    },
+    {
+      "code": "6503152020",
+      "name": "Jukup"
+    },
+    {
+      "code": "6503152021",
+      "name": "Long Bulu"
+    },
+    {
+      "code": "6503152023",
+      "name": "Linsayung"
+    },
+    {
+      "code": "6503152024",
+      "name": "Tumantalas"
+    },
+    {
+      "code": "6503152025",
+      "name": "Sanal"
+    },
+    {
+      "code": "6503152026",
+      "name": "Limpakon"
+    },
+    {
+      "code": "6503152027",
+      "name": "Labuk"
+    }
+  ],
+  "650316": [
+    {
+      "code": "6503162001",
+      "name": "Lubok Buat"
+    },
+    {
+      "code": "6503162002",
+      "name": "Katul"
+    },
+    {
+      "code": "6503162003",
+      "name": "Mambulu"
+    },
+    {
+      "code": "6503162004",
+      "name": "Pagaluyon"
+    },
+    {
+      "code": "6503162005",
+      "name": "Saduman"
+    },
+    {
+      "code": "6503162006",
+      "name": "Tulang"
+    },
+    {
+      "code": "6503162007",
+      "name": "Sabuluan"
+    },
+    {
+      "code": "6503162008",
+      "name": "Pulau Keras"
+    },
+    {
+      "code": "6503162009",
+      "name": "Liuk Bulu"
+    },
+    {
+      "code": "6503162010",
+      "name": "Binanun"
+    }
+  ],
+  "650317": [
+    {
+      "code": "6503172001",
+      "name": "Tang Paye"
+    },
+    {
+      "code": "6503172002",
+      "name": "Long Rungan"
+    },
+    {
+      "code": "6503172003",
+      "name": "Long Kelupan"
+    },
+    {
+      "code": "6503172004",
+      "name": "Long Padi"
+    },
+    {
+      "code": "6503172005",
+      "name": "Tang Badui"
+    },
+    {
+      "code": "6503172006",
+      "name": "Binuang"
+    },
+    {
+      "code": "6503172007",
+      "name": "Long Mutan"
+    },
+    {
+      "code": "6503172008",
+      "name": "Pa' Milau"
+    },
+    {
+      "code": "6503172009",
+      "name": "Ba' Liku"
+    },
+    {
+      "code": "6503172010",
+      "name": "Long Rian"
+    },
+    {
+      "code": "6503172011",
+      "name": "Pa' Yalau"
+    }
+  ],
+  "650318": [
+    {
+      "code": "6503182001",
+      "name": "Pa' Betung"
+    },
+    {
+      "code": "6503182002",
+      "name": "Long Sepayang"
+    },
+    {
+      "code": "6503182003",
+      "name": "Pa' Pawan"
+    },
+    {
+      "code": "6503182004",
+      "name": "Pa' Melade"
+    },
+    {
+      "code": "6503182005",
+      "name": "Pa' Kebuan"
+    },
+    {
+      "code": "6503182006",
+      "name": "Pa' Umung"
+    },
+    {
+      "code": "6503182007",
+      "name": "Pa' Rangeb"
+    },
+    {
+      "code": "6503182008",
+      "name": "Long Umung"
+    },
+    {
+      "code": "6503182009",
+      "name": "Long Tenem"
+    },
+    {
+      "code": "6503182010",
+      "name": "Long Nuat"
+    },
+    {
+      "code": "6503182011",
+      "name": "Pa' Pala"
+    },
+    {
+      "code": "6503182012",
+      "name": "Sinar Baru"
+    },
+    {
+      "code": "6503182013",
+      "name": "Pa' Lidung"
+    },
+    {
+      "code": "6503182014",
+      "name": "Pa' Raye"
+    },
+    {
+      "code": "6503182015",
+      "name": "Bungayan"
+    },
+    {
+      "code": "6503182016",
+      "name": "Wa' Yagung"
+    },
+    {
+      "code": "6503182017",
+      "name": "Kampung Baru"
+    }
+  ],
+  "650319": [
+    {
+      "code": "6503192001",
+      "name": "Pa' Mulak"
+    },
+    {
+      "code": "6503192002",
+      "name": "Long Puak"
+    },
+    {
+      "code": "6503192003",
+      "name": "Long Mangan"
+    },
+    {
+      "code": "6503192004",
+      "name": "Buduk Kubul"
+    },
+    {
+      "code": "6503192005",
+      "name": "Long Kabid"
+    },
+    {
+      "code": "6503192006",
+      "name": "Pa' Inan"
+    },
+    {
+      "code": "6503192007",
+      "name": "Lembudud"
+    },
+    {
+      "code": "6503192008",
+      "name": "Long Tugul"
+    },
+    {
+      "code": "6503192009",
+      "name": "Pa' Butal"
+    },
+    {
+      "code": "6503192010",
+      "name": "Pa' Delung"
+    },
+    {
+      "code": "6503192011",
+      "name": "Pa' Urud"
+    },
+    {
+      "code": "6503192012",
+      "name": "Pa' Kemut"
+    },
+    {
+      "code": "6503192013",
+      "name": "Pa' Kidang"
+    },
+    {
+      "code": "6503192014",
+      "name": "Lembada"
+    },
+    {
+      "code": "6503192015",
+      "name": "Pa' Payak"
+    },
+    {
+      "code": "6503192016",
+      "name": "Pa' Pirit"
+    },
+    {
+      "code": "6503192017",
+      "name": "Liang Aliq"
+    },
+    {
+      "code": "6503192018",
+      "name": "Sembudud"
+    },
+    {
+      "code": "6503192019",
+      "name": "Liang Turan"
+    },
+    {
+      "code": "6503192020",
+      "name": "Liang Bua"
+    },
+    {
+      "code": "6503192021",
+      "name": "Lepatar"
+    },
+    {
+      "code": "6503192022",
+      "name": "Pa' Mering"
+    },
+    {
+      "code": "6503192023",
+      "name": "Pa' Pani"
+    },
+    {
+      "code": "6503192024",
+      "name": "Pa' Lutut"
+    },
+    {
+      "code": "6503192025",
+      "name": "Ma' Libu"
+    }
+  ],
+  "650320": [
+    {
+      "code": "6503202001",
+      "name": "Sumentobol"
+    },
+    {
+      "code": "6503202002",
+      "name": "Nantukidan"
+    },
+    {
+      "code": "6503202003",
+      "name": "Labang"
+    },
+    {
+      "code": "6503202004",
+      "name": "Sumantipal"
+    },
+    {
+      "code": "6503202005",
+      "name": "Ngawol"
+    },
+    {
+      "code": "6503202006",
+      "name": "Bululaun Hilir"
+    },
+    {
+      "code": "6503202007",
+      "name": "Lagas"
+    },
+    {
+      "code": "6503202008",
+      "name": "Panas"
+    },
+    {
+      "code": "6503202009",
+      "name": "Langgason"
+    },
+    {
+      "code": "6503202010",
+      "name": "Tantalujuk"
+    },
+    {
+      "code": "6503202011",
+      "name": "Tambalang Hulu"
+    },
+    {
+      "code": "6503202012",
+      "name": "Kuyo"
+    },
+    {
+      "code": "6503202013",
+      "name": "Bokok"
+    }
+  ],
+  "650321": [
+    {
+      "code": "6503212001",
+      "name": "Tau Lumbis"
+    },
+    {
+      "code": "6503212002",
+      "name": "Lipaga"
+    },
+    {
+      "code": "6503212003",
+      "name": "Bululaun Hulu"
+    },
+    {
+      "code": "6503212004",
+      "name": "Kalisun"
+    },
+    {
+      "code": "6503212005",
+      "name": "Mamasin"
+    },
+    {
+      "code": "6503212006",
+      "name": "Sibalu"
+    },
+    {
+      "code": "6503212007",
+      "name": "Duyan"
+    },
+    {
+      "code": "6503212008",
+      "name": "Tuntulibing"
+    },
+    {
+      "code": "6503212009",
+      "name": "Tetagas"
+    },
+    {
+      "code": "6503212010",
+      "name": "Kabungolor"
+    }
+  ]
 }

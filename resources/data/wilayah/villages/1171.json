@@ -1,380 +1,380 @@
 {
-    "117101": [
-        {
-            "code": "1171012001",
-            "name": "Kampung Baru"
-        },
-        {
-            "code": "1171012002",
-            "name": "Neusu Jaya"
-        },
-        {
-            "code": "1171012003",
-            "name": "Sukaramai"
-        },
-        {
-            "code": "1171012004",
-            "name": "Seutui"
-        },
-        {
-            "code": "1171012005",
-            "name": "Peuniti"
-        },
-        {
-            "code": "1171012006",
-            "name": "Neusu Aceh"
-        },
-        {
-            "code": "1171012007",
-            "name": "Ateuk Pahlawan"
-        },
-        {
-            "code": "1171012008",
-            "name": "Ateuk Jawo"
-        },
-        {
-            "code": "1171012009",
-            "name": "Ateuk Deah Tanoh"
-        },
-        {
-            "code": "1171012010",
-            "name": "Ateuk Munjeng"
-        }
-    ],
-    "117102": [
-        {
-            "code": "1171022001",
-            "name": "Mulia"
-        },
-        {
-            "code": "1171022002",
-            "name": "Peunayong"
-        },
-        {
-            "code": "1171022003",
-            "name": "Laksana"
-        },
-        {
-            "code": "1171022004",
-            "name": "Keuramat"
-        },
-        {
-            "code": "1171022005",
-            "name": "Kota Baru"
-        },
-        {
-            "code": "1171022006",
-            "name": "Beurawe"
-        },
-        {
-            "code": "1171022007",
-            "name": "Kuta Alam"
-        },
-        {
-            "code": "1171022008",
-            "name": "Bandar Baru"
-        },
-        {
-            "code": "1171022009",
-            "name": "Lamdingin"
-        },
-        {
-            "code": "1171022010",
-            "name": "Lampulo"
-        },
-        {
-            "code": "1171022011",
-            "name": "Lambaro Skep"
-        }
-    ],
-    "117103": [
-        {
-            "code": "1171032001",
-            "name": "Punge Jurong"
-        },
-        {
-            "code": "1171032002",
-            "name": "Ulee Lheue"
-        },
-        {
-            "code": "1171032003",
-            "name": "Lambung"
-        },
-        {
-            "code": "1171032004",
-            "name": "Deah Glumpang"
-        },
-        {
-            "code": "1171032005",
-            "name": "Deah Baro"
-        },
-        {
-            "code": "1171032006",
-            "name": "Alue Deah Teungoh"
-        },
-        {
-            "code": "1171032007",
-            "name": "Lampaseh Aceh"
-        },
-        {
-            "code": "1171032008",
-            "name": "Blang Oi"
-        },
-        {
-            "code": "1171032009",
-            "name": "Asoe Nanggroe"
-        },
-        {
-            "code": "1171032010",
-            "name": "Gampong Blang"
-        },
-        {
-            "code": "1171032011",
-            "name": "Gampong Pie"
-        },
-        {
-            "code": "1171032012",
-            "name": "Lamjabat"
-        },
-        {
-            "code": "1171032013",
-            "name": "Cot Lamkuweuh"
-        },
-        {
-            "code": "1171032014",
-            "name": "Surien"
-        },
-        {
-            "code": "1171032015",
-            "name": "Gampong Baro"
-        },
-        {
-            "code": "1171032016",
-            "name": "Punge Ujong"
-        }
-    ],
-    "117104": [
-        {
-            "code": "1171042001",
-            "name": "Jeulingke"
-        },
-        {
-            "code": "1171042002",
-            "name": "Tibang"
-        },
-        {
-            "code": "1171042003",
-            "name": "Deah Raya"
-        },
-        {
-            "code": "1171042004",
-            "name": "Alue Naga"
-        },
-        {
-            "code": "1171042005",
-            "name": "Ie Masen Kayee Adang"
-        },
-        {
-            "code": "1171042006",
-            "name": "Pineung"
-        },
-        {
-            "code": "1171042007",
-            "name": "Lamgugob"
-        },
-        {
-            "code": "1171042008",
-            "name": "Kopelma Darussalam"
-        },
-        {
-            "code": "1171042009",
-            "name": "Rukoh"
-        },
-        {
-            "code": "1171042010",
-            "name": "Peurada"
-        }
-    ],
-    "117105": [
-        {
-            "code": "1171052001",
-            "name": "Lueng Bata"
-        },
-        {
-            "code": "1171052002",
-            "name": "Cot Mesjid"
-        },
-        {
-            "code": "1171052003",
-            "name": "Panteriek"
-        },
-        {
-            "code": "1171052004",
-            "name": "Blang Cut"
-        },
-        {
-            "code": "1171052005",
-            "name": "Lamseupeung"
-        },
-        {
-            "code": "1171052006",
-            "name": "Batoh"
-        },
-        {
-            "code": "1171052007",
-            "name": "Suka Damai"
-        },
-        {
-            "code": "1171052008",
-            "name": "Lamdom"
-        },
-        {
-            "code": "1171052009",
-            "name": "Lampaloh"
-        }
-    ],
-    "117106": [
-        {
-            "code": "1171062001",
-            "name": "Keudah"
-        },
-        {
-            "code": "1171062002",
-            "name": "Peulanggahan"
-        },
-        {
-            "code": "1171062003",
-            "name": "Merduati"
-        },
-        {
-            "code": "1171062004",
-            "name": "Lampaseh Kota"
-        },
-        {
-            "code": "1171062005",
-            "name": "Gampong Pande"
-        },
-        {
-            "code": "1171062006",
-            "name": "Gampong Jawa"
-        }
-    ],
-    "117107": [
-        {
-            "code": "1171072001",
-            "name": "Geuceu Komplek"
-        },
-        {
-            "code": "1171072002",
-            "name": "Lamlagang"
-        },
-        {
-            "code": "1171072003",
-            "name": "Geuceu Iniem"
-        },
-        {
-            "code": "1171072004",
-            "name": "Geuceu Kayee Jato"
-        },
-        {
-            "code": "1171072005",
-            "name": "Lam Ara"
-        },
-        {
-            "code": "1171072006",
-            "name": "Lhong Raya"
-        },
-        {
-            "code": "1171072007",
-            "name": "Mibo"
-        },
-        {
-            "code": "1171072008",
-            "name": "Peunyerat"
-        },
-        {
-            "code": "1171072009",
-            "name": "Lhong Cut"
-        },
-        {
-            "code": "1171072010",
-            "name": "Lampeuot"
-        }
-    ],
-    "117108": [
-        {
-            "code": "1171082001",
-            "name": "Punge Blang Cut"
-        },
-        {
-            "code": "1171082002",
-            "name": "Bitai"
-        },
-        {
-            "code": "1171082003",
-            "name": "Lamjamee"
-        },
-        {
-            "code": "1171082004",
-            "name": "Ulee Pata"
-        },
-        {
-            "code": "1171082005",
-            "name": "Lampoh Daya"
-        },
-        {
-            "code": "1171082006",
-            "name": "Emperom"
-        },
-        {
-            "code": "1171082007",
-            "name": "Geuceu Meunara"
-        },
-        {
-            "code": "1171082008",
-            "name": "Lamteumen Timur"
-        },
-        {
-            "code": "1171082009",
-            "name": "Lamteumen Barat"
-        }
-    ],
-    "117109": [
-        {
-            "code": "1171092001",
-            "name": "Lambhuk"
-        },
-        {
-            "code": "1171092002",
-            "name": "Lamteh"
-        },
-        {
-            "code": "1171092003",
-            "name": "Ilie"
-        },
-        {
-            "code": "1171092004",
-            "name": "Pango Raya"
-        },
-        {
-            "code": "1171092005",
-            "name": "Pango Deah"
-        },
-        {
-            "code": "1171092006",
-            "name": "Ceurih"
-        },
-        {
-            "code": "1171092007",
-            "name": "Doy"
-        },
-        {
-            "code": "1171092008",
-            "name": "Lamglumpang"
-        },
-        {
-            "code": "1171092009",
-            "name": "Ie Masen Ulee Kareng"
-        }
-    ]
+  "117101": [
+    {
+      "code": "1171012001",
+      "name": "Kampung Baru"
+    },
+    {
+      "code": "1171012002",
+      "name": "Neusu Jaya"
+    },
+    {
+      "code": "1171012003",
+      "name": "Sukaramai"
+    },
+    {
+      "code": "1171012004",
+      "name": "Seutui"
+    },
+    {
+      "code": "1171012005",
+      "name": "Peuniti"
+    },
+    {
+      "code": "1171012006",
+      "name": "Neusu Aceh"
+    },
+    {
+      "code": "1171012007",
+      "name": "Ateuk Pahlawan"
+    },
+    {
+      "code": "1171012008",
+      "name": "Ateuk Jawo"
+    },
+    {
+      "code": "1171012009",
+      "name": "Ateuk Deah Tanoh"
+    },
+    {
+      "code": "1171012010",
+      "name": "Ateuk Munjeng"
+    }
+  ],
+  "117102": [
+    {
+      "code": "1171022001",
+      "name": "Mulia"
+    },
+    {
+      "code": "1171022002",
+      "name": "Peunayong"
+    },
+    {
+      "code": "1171022003",
+      "name": "Laksana"
+    },
+    {
+      "code": "1171022004",
+      "name": "Keuramat"
+    },
+    {
+      "code": "1171022005",
+      "name": "Kota Baru"
+    },
+    {
+      "code": "1171022006",
+      "name": "Beurawe"
+    },
+    {
+      "code": "1171022007",
+      "name": "Kuta Alam"
+    },
+    {
+      "code": "1171022008",
+      "name": "Bandar Baru"
+    },
+    {
+      "code": "1171022009",
+      "name": "Lamdingin"
+    },
+    {
+      "code": "1171022010",
+      "name": "Lampulo"
+    },
+    {
+      "code": "1171022011",
+      "name": "Lambaro Skep"
+    }
+  ],
+  "117103": [
+    {
+      "code": "1171032001",
+      "name": "Punge Jurong"
+    },
+    {
+      "code": "1171032002",
+      "name": "Ulee Lheue"
+    },
+    {
+      "code": "1171032003",
+      "name": "Lambung"
+    },
+    {
+      "code": "1171032004",
+      "name": "Deah Glumpang"
+    },
+    {
+      "code": "1171032005",
+      "name": "Deah Baro"
+    },
+    {
+      "code": "1171032006",
+      "name": "Alue Deah Teungoh"
+    },
+    {
+      "code": "1171032007",
+      "name": "Lampaseh Aceh"
+    },
+    {
+      "code": "1171032008",
+      "name": "Blang Oi"
+    },
+    {
+      "code": "1171032009",
+      "name": "Asoe Nanggroe"
+    },
+    {
+      "code": "1171032010",
+      "name": "Gampong Blang"
+    },
+    {
+      "code": "1171032011",
+      "name": "Gampong Pie"
+    },
+    {
+      "code": "1171032012",
+      "name": "Lamjabat"
+    },
+    {
+      "code": "1171032013",
+      "name": "Cot Lamkuweuh"
+    },
+    {
+      "code": "1171032014",
+      "name": "Surien"
+    },
+    {
+      "code": "1171032015",
+      "name": "Gampong Baro"
+    },
+    {
+      "code": "1171032016",
+      "name": "Punge Ujong"
+    }
+  ],
+  "117104": [
+    {
+      "code": "1171042001",
+      "name": "Jeulingke"
+    },
+    {
+      "code": "1171042002",
+      "name": "Tibang"
+    },
+    {
+      "code": "1171042003",
+      "name": "Deah Raya"
+    },
+    {
+      "code": "1171042004",
+      "name": "Alue Naga"
+    },
+    {
+      "code": "1171042005",
+      "name": "Ie Masen Kayee Adang"
+    },
+    {
+      "code": "1171042006",
+      "name": "Pineung"
+    },
+    {
+      "code": "1171042007",
+      "name": "Lamgugob"
+    },
+    {
+      "code": "1171042008",
+      "name": "Kopelma Darussalam"
+    },
+    {
+      "code": "1171042009",
+      "name": "Rukoh"
+    },
+    {
+      "code": "1171042010",
+      "name": "Peurada"
+    }
+  ],
+  "117105": [
+    {
+      "code": "1171052001",
+      "name": "Lueng Bata"
+    },
+    {
+      "code": "1171052002",
+      "name": "Cot Mesjid"
+    },
+    {
+      "code": "1171052003",
+      "name": "Panteriek"
+    },
+    {
+      "code": "1171052004",
+      "name": "Blang Cut"
+    },
+    {
+      "code": "1171052005",
+      "name": "Lamseupeung"
+    },
+    {
+      "code": "1171052006",
+      "name": "Batoh"
+    },
+    {
+      "code": "1171052007",
+      "name": "Suka Damai"
+    },
+    {
+      "code": "1171052008",
+      "name": "Lamdom"
+    },
+    {
+      "code": "1171052009",
+      "name": "Lampaloh"
+    }
+  ],
+  "117106": [
+    {
+      "code": "1171062001",
+      "name": "Keudah"
+    },
+    {
+      "code": "1171062002",
+      "name": "Peulanggahan"
+    },
+    {
+      "code": "1171062003",
+      "name": "Merduati"
+    },
+    {
+      "code": "1171062004",
+      "name": "Lampaseh Kota"
+    },
+    {
+      "code": "1171062005",
+      "name": "Gampong Pande"
+    },
+    {
+      "code": "1171062006",
+      "name": "Gampong Jawa"
+    }
+  ],
+  "117107": [
+    {
+      "code": "1171072001",
+      "name": "Geuceu Komplek"
+    },
+    {
+      "code": "1171072002",
+      "name": "Lamlagang"
+    },
+    {
+      "code": "1171072003",
+      "name": "Geuceu Iniem"
+    },
+    {
+      "code": "1171072004",
+      "name": "Geuceu Kayee Jato"
+    },
+    {
+      "code": "1171072005",
+      "name": "Lam Ara"
+    },
+    {
+      "code": "1171072006",
+      "name": "Lhong Raya"
+    },
+    {
+      "code": "1171072007",
+      "name": "Mibo"
+    },
+    {
+      "code": "1171072008",
+      "name": "Peunyerat"
+    },
+    {
+      "code": "1171072009",
+      "name": "Lhong Cut"
+    },
+    {
+      "code": "1171072010",
+      "name": "Lampeuot"
+    }
+  ],
+  "117108": [
+    {
+      "code": "1171082001",
+      "name": "Punge Blang Cut"
+    },
+    {
+      "code": "1171082002",
+      "name": "Bitai"
+    },
+    {
+      "code": "1171082003",
+      "name": "Lamjamee"
+    },
+    {
+      "code": "1171082004",
+      "name": "Ulee Pata"
+    },
+    {
+      "code": "1171082005",
+      "name": "Lampoh Daya"
+    },
+    {
+      "code": "1171082006",
+      "name": "Emperom"
+    },
+    {
+      "code": "1171082007",
+      "name": "Geuceu Meunara"
+    },
+    {
+      "code": "1171082008",
+      "name": "Lamteumen Timur"
+    },
+    {
+      "code": "1171082009",
+      "name": "Lamteumen Barat"
+    }
+  ],
+  "117109": [
+    {
+      "code": "1171092001",
+      "name": "Lambhuk"
+    },
+    {
+      "code": "1171092002",
+      "name": "Lamteh"
+    },
+    {
+      "code": "1171092003",
+      "name": "Ilie"
+    },
+    {
+      "code": "1171092004",
+      "name": "Pango Raya"
+    },
+    {
+      "code": "1171092005",
+      "name": "Pango Deah"
+    },
+    {
+      "code": "1171092006",
+      "name": "Ceurih"
+    },
+    {
+      "code": "1171092007",
+      "name": "Doy"
+    },
+    {
+      "code": "1171092008",
+      "name": "Lamglumpang"
+    },
+    {
+      "code": "1171092009",
+      "name": "Ie Masen Ulee Kareng"
+    }
+  ]
 }

@@ -1,0 +1,418 @@
+{
+  "740701": [
+    {
+      "code": "7407011002",
+      "name": "Pongo"
+    },
+    {
+      "code": "7407011003",
+      "name": "Wanci"
+    },
+    {
+      "code": "7407011004",
+      "name": "Wandoka"
+    },
+    {
+      "code": "7407011007",
+      "name": "Waetuno"
+    },
+    {
+      "code": "7407011025",
+      "name": "Wandoka Utara"
+    },
+    {
+      "code": "7407011026",
+      "name": "Wandoka Selatan"
+    },
+    {
+      "code": "7407012005",
+      "name": "Sombu"
+    },
+    {
+      "code": "7407012006",
+      "name": "Waha"
+    },
+    {
+      "code": "7407012008",
+      "name": "Tindoi"
+    },
+    {
+      "code": "7407012009",
+      "name": "Maleko"
+    },
+    {
+      "code": "7407012013",
+      "name": "Longa"
+    },
+    {
+      "code": "7407012022",
+      "name": "Pada Raya Makmur"
+    },
+    {
+      "code": "7407012023",
+      "name": "Waelumu"
+    },
+    {
+      "code": "7407012024",
+      "name": "Patuno"
+    },
+    {
+      "code": "7407012027",
+      "name": "Waginopo"
+    },
+    {
+      "code": "7407012028",
+      "name": "Tindoi Timur"
+    },
+    {
+      "code": "7407012029",
+      "name": "Posalu"
+    },
+    {
+      "code": "7407012030",
+      "name": "Koroe Onawa"
+    },
+    {
+      "code": "7407012031",
+      "name": "Wapia-pia"
+    },
+    {
+      "code": "7407012032",
+      "name": "Pookambua"
+    }
+  ],
+  "740702": [
+    {
+      "code": "7407021002",
+      "name": "Laolua"
+    },
+    {
+      "code": "7407021004",
+      "name": "Ambeua"
+    },
+    {
+      "code": "7407021005",
+      "name": "Lagiwae"
+    },
+    {
+      "code": "7407021015",
+      "name": "Buranga"
+    },
+    {
+      "code": "7407022001",
+      "name": "Sombano"
+    },
+    {
+      "code": "7407022003",
+      "name": "Samabahari"
+    },
+    {
+      "code": "7407022006",
+      "name": "Ollo"
+    },
+    {
+      "code": "7407022007",
+      "name": "Haruo"
+    },
+    {
+      "code": "7407022016",
+      "name": "Balasuna"
+    },
+    {
+      "code": "7407022018",
+      "name": "Mantigola Makmur"
+    },
+    {
+      "code": "7407022019",
+      "name": "Balasuna Selatan"
+    },
+    {
+      "code": "7407022020",
+      "name": "Ollo Selatan"
+    },
+    {
+      "code": "7407022021",
+      "name": "Waduri"
+    },
+    {
+      "code": "7407022022",
+      "name": "Lewuto"
+    },
+    {
+      "code": "7407022023",
+      "name": "Ambeua Raya"
+    },
+    {
+      "code": "7407022024",
+      "name": "Kalimas"
+    }
+  ],
+  "740703": [
+    {
+      "code": "7407031001",
+      "name": "Waha"
+    },
+    {
+      "code": "7407031016",
+      "name": "Onemay"
+    },
+    {
+      "code": "7407032002",
+      "name": "Waitii Barat"
+    },
+    {
+      "code": "7407032003",
+      "name": "Lamanggau"
+    },
+    {
+      "code": "7407032004",
+      "name": "Waiti"
+    },
+    {
+      "code": "7407032012",
+      "name": "Runduma"
+    },
+    {
+      "code": "7407032015",
+      "name": "Patua"
+    },
+    {
+      "code": "7407032017",
+      "name": "Teemoane"
+    },
+    {
+      "code": "7407032018",
+      "name": "Kollo Soha"
+    },
+    {
+      "code": "7407032019",
+      "name": "Patua II"
+    }
+  ],
+  "740704": [
+    {
+      "code": "7407041005",
+      "name": "Taipabu"
+    },
+    {
+      "code": "7407041007",
+      "name": "Palahidu"
+    },
+    {
+      "code": "7407041010",
+      "name": "Wali"
+    },
+    {
+      "code": "7407041012",
+      "name": "Rukuwa"
+    },
+    {
+      "code": "7407042006",
+      "name": "Makoro"
+    },
+    {
+      "code": "7407042008",
+      "name": "Kampo Kampo"
+    },
+    {
+      "code": "7407042009",
+      "name": "Lagongga"
+    },
+    {
+      "code": "7407042011",
+      "name": "Palahidu Barat"
+    },
+    {
+      "code": "7407042013",
+      "name": "Jaya Makmur"
+    }
+  ],
+  "740705": [
+    {
+      "code": "7407051016",
+      "name": "Mandati II"
+    },
+    {
+      "code": "7407051017",
+      "name": "Mandati I"
+    },
+    {
+      "code": "7407051025",
+      "name": "Mandati III"
+    },
+    {
+      "code": "7407052011",
+      "name": "Kapota"
+    },
+    {
+      "code": "7407052012",
+      "name": "Komala"
+    },
+    {
+      "code": "7407052013",
+      "name": "Wungka"
+    },
+    {
+      "code": "7407052014",
+      "name": "Matahora"
+    },
+    {
+      "code": "7407052015",
+      "name": "Kabita"
+    },
+    {
+      "code": "7407052018",
+      "name": "Mola Utara"
+    },
+    {
+      "code": "7407052019",
+      "name": "Mola Selatan"
+    },
+    {
+      "code": "7407052020",
+      "name": "Numana"
+    },
+    {
+      "code": "7407052021",
+      "name": "Liya Mawi"
+    },
+    {
+      "code": "7407052022",
+      "name": "Liya Togo"
+    },
+    {
+      "code": "7407052023",
+      "name": "Kapota Utara"
+    },
+    {
+      "code": "7407052024",
+      "name": "Kabita Togo"
+    },
+    {
+      "code": "7407052026",
+      "name": "Liya Onemaelangka"
+    },
+    {
+      "code": "7407052027",
+      "name": "Wisata Kolo"
+    },
+    {
+      "code": "7407052028",
+      "name": "Mola Samaturu"
+    },
+    {
+      "code": "7407052029",
+      "name": "Mola Bahari"
+    },
+    {
+      "code": "7407052030",
+      "name": "Mola Nelayan Bhakti"
+    },
+    {
+      "code": "7407052031",
+      "name": "Liya Bahari Indah"
+    }
+  ],
+  "740706": [
+    {
+      "code": "7407062001",
+      "name": "Tampara"
+    },
+    {
+      "code": "7407062002",
+      "name": "Kaswari"
+    },
+    {
+      "code": "7407062003",
+      "name": "Pajam"
+    },
+    {
+      "code": "7407062004",
+      "name": "Langge"
+    },
+    {
+      "code": "7407062005",
+      "name": "Tanomeha"
+    },
+    {
+      "code": "7407062006",
+      "name": "Lentea"
+    },
+    {
+      "code": "7407062007",
+      "name": "Darawa"
+    },
+    {
+      "code": "7407062008",
+      "name": "Sandi"
+    },
+    {
+      "code": "7407062009",
+      "name": "Peropa"
+    },
+    {
+      "code": "7407062010",
+      "name": "Tanjung"
+    }
+  ],
+  "740707": [
+    {
+      "code": "7407071001",
+      "name": "Patipelong"
+    },
+    {
+      "code": "7407071002",
+      "name": "Tongano Barat"
+    },
+    {
+      "code": "7407071003",
+      "name": "Bahari"
+    },
+    {
+      "code": "7407071004",
+      "name": "Tongano Timur"
+    },
+    {
+      "code": "7407072005",
+      "name": "Timu"
+    },
+    {
+      "code": "7407072006",
+      "name": "Dete"
+    },
+    {
+      "code": "7407072007",
+      "name": "Kulati"
+    },
+    {
+      "code": "7407072008",
+      "name": "Wawaotimu"
+    },
+    {
+      "code": "7407072009",
+      "name": "Kahiyanga"
+    }
+  ],
+  "740708": [
+    {
+      "code": "7407081003",
+      "name": "Sowa"
+    },
+    {
+      "code": "7407081004",
+      "name": "Popalia"
+    },
+    {
+      "code": "7407082001",
+      "name": "Waloindi"
+    },
+    {
+      "code": "7407082002",
+      "name": "Oihu"
+    },
+    {
+      "code": "7407082005",
+      "name": "Haka"
+    }
+  ]
+}

@@ -1,220 +1,220 @@
 {
-    "637101": [
-        {
-            "code": "6371011001",
-            "name": "Mantuil"
-        },
-        {
-            "code": "6371011002",
-            "name": "Kelayan Selatan"
-        },
-        {
-            "code": "6371011003",
-            "name": "Pekauman"
-        },
-        {
-            "code": "6371011004",
-            "name": "Kelayan Barat"
-        },
-        {
-            "code": "6371011005",
-            "name": "Kelayan Tengah"
-        },
-        {
-            "code": "6371011006",
-            "name": "Kelayan Dalam"
-        },
-        {
-            "code": "6371011007",
-            "name": "Murung Raya"
-        },
-        {
-            "code": "6371011008",
-            "name": "Kelayan Timur"
-        },
-        {
-            "code": "6371011009",
-            "name": "Tanjung Pagar"
-        },
-        {
-            "code": "6371011010",
-            "name": "Pemurus Dalam"
-        },
-        {
-            "code": "6371011011",
-            "name": "Pemurus Baru"
-        },
-        {
-            "code": "6371011012",
-            "name": "Basirih Selatan"
-        }
-    ],
-    "637102": [
-        {
-            "code": "6371021001",
-            "name": "Kuripan"
-        },
-        {
-            "code": "6371021002",
-            "name": "Kebun Bunga"
-        },
-        {
-            "code": "6371021003",
-            "name": "Karang Mekar"
-        },
-        {
-            "code": "6371021004",
-            "name": "Sungai Bilu"
-        },
-        {
-            "code": "6371021005",
-            "name": "Sungai Lulut"
-        },
-        {
-            "code": "6371021006",
-            "name": "Banua Anyar"
-        },
-        {
-            "code": "6371021007",
-            "name": "Pengambangan"
-        },
-        {
-            "code": "6371021008",
-            "name": "Pekapuran Raya"
-        },
-        {
-            "code": "6371021009",
-            "name": "Pemurus Luar"
-        }
-    ],
-    "637103": [
-        {
-            "code": "6371031001",
-            "name": "Belitung Utara"
-        },
-        {
-            "code": "6371031002",
-            "name": "Belitung Selatan"
-        },
-        {
-            "code": "6371031003",
-            "name": "Pelambuan"
-        },
-        {
-            "code": "6371031004",
-            "name": "Telaga Biru"
-        },
-        {
-            "code": "6371031005",
-            "name": "Telawang"
-        },
-        {
-            "code": "6371031006",
-            "name": "Teluk Tiram"
-        },
-        {
-            "code": "6371031007",
-            "name": "Kuin Selatan"
-        },
-        {
-            "code": "6371031008",
-            "name": "Kuin Cerucuk"
-        },
-        {
-            "code": "6371031009",
-            "name": "Basirih"
-        }
-    ],
-    "637104": [
-        {
-            "code": "6371041001",
-            "name": "Alalak Tengah"
-        },
-        {
-            "code": "6371041002",
-            "name": "Alalak Utara"
-        },
-        {
-            "code": "6371041003",
-            "name": "Alalak Selatan"
-        },
-        {
-            "code": "6371041004",
-            "name": "Sungai Jingah"
-        },
-        {
-            "code": "6371041005",
-            "name": "Sungai Miai"
-        },
-        {
-            "code": "6371041006",
-            "name": "Surgi Mufti"
-        },
-        {
-            "code": "6371041007",
-            "name": "Pangeran"
-        },
-        {
-            "code": "6371041008",
-            "name": "Antasan Kecil Timur"
-        },
-        {
-            "code": "6371041009",
-            "name": "Kuin Utara"
-        },
-        {
-            "code": "6371041010",
-            "name": "Sungai Andai"
-        }
-    ],
-    "637105": [
-        {
-            "code": "6371051001",
-            "name": "Kertak Baru Ilir"
-        },
-        {
-            "code": "6371051002",
-            "name": "Kertak Baru Ulu"
-        },
-        {
-            "code": "6371051003",
-            "name": "Mawar"
-        },
-        {
-            "code": "6371051004",
-            "name": "Teluk Dalam"
-        },
-        {
-            "code": "6371051005",
-            "name": "Antasan Besar"
-        },
-        {
-            "code": "6371051006",
-            "name": "Pasar Lama"
-        },
-        {
-            "code": "6371051007",
-            "name": "Seberang Mesjid"
-        },
-        {
-            "code": "6371051008",
-            "name": "Gadang"
-        },
-        {
-            "code": "6371051009",
-            "name": "Melayu"
-        },
-        {
-            "code": "6371051010",
-            "name": "Sungai Baru"
-        },
-        {
-            "code": "6371051011",
-            "name": "Pekapuran Laut"
-        },
-        {
-            "code": "6371051012",
-            "name": "Kelayan Luar"
-        }
-    ]
+  "637101": [
+    {
+      "code": "6371011001",
+      "name": "Mantuil"
+    },
+    {
+      "code": "6371011002",
+      "name": "Kelayan Selatan"
+    },
+    {
+      "code": "6371011003",
+      "name": "Pekauman"
+    },
+    {
+      "code": "6371011004",
+      "name": "Kelayan Barat"
+    },
+    {
+      "code": "6371011005",
+      "name": "Kelayan Tengah"
+    },
+    {
+      "code": "6371011006",
+      "name": "Kelayan Dalam"
+    },
+    {
+      "code": "6371011007",
+      "name": "Murung Raya"
+    },
+    {
+      "code": "6371011008",
+      "name": "Kelayan Timur"
+    },
+    {
+      "code": "6371011009",
+      "name": "Tanjung Pagar"
+    },
+    {
+      "code": "6371011010",
+      "name": "Pemurus Dalam"
+    },
+    {
+      "code": "6371011011",
+      "name": "Pemurus Baru"
+    },
+    {
+      "code": "6371011012",
+      "name": "Basirih Selatan"
+    }
+  ],
+  "637102": [
+    {
+      "code": "6371021001",
+      "name": "Kuripan"
+    },
+    {
+      "code": "6371021002",
+      "name": "Kebun Bunga"
+    },
+    {
+      "code": "6371021003",
+      "name": "Karang Mekar"
+    },
+    {
+      "code": "6371021004",
+      "name": "Sungai Bilu"
+    },
+    {
+      "code": "6371021005",
+      "name": "Sungai Lulut"
+    },
+    {
+      "code": "6371021006",
+      "name": "Banua Anyar"
+    },
+    {
+      "code": "6371021007",
+      "name": "Pengambangan"
+    },
+    {
+      "code": "6371021008",
+      "name": "Pekapuran Raya"
+    },
+    {
+      "code": "6371021009",
+      "name": "Pemurus Luar"
+    }
+  ],
+  "637103": [
+    {
+      "code": "6371031001",
+      "name": "Belitung Utara"
+    },
+    {
+      "code": "6371031002",
+      "name": "Belitung Selatan"
+    },
+    {
+      "code": "6371031003",
+      "name": "Pelambuan"
+    },
+    {
+      "code": "6371031004",
+      "name": "Telaga Biru"
+    },
+    {
+      "code": "6371031005",
+      "name": "Telawang"
+    },
+    {
+      "code": "6371031006",
+      "name": "Teluk Tiram"
+    },
+    {
+      "code": "6371031007",
+      "name": "Kuin Selatan"
+    },
+    {
+      "code": "6371031008",
+      "name": "Kuin Cerucuk"
+    },
+    {
+      "code": "6371031009",
+      "name": "Basirih"
+    }
+  ],
+  "637104": [
+    {
+      "code": "6371041001",
+      "name": "Alalak Tengah"
+    },
+    {
+      "code": "6371041002",
+      "name": "Alalak Utara"
+    },
+    {
+      "code": "6371041003",
+      "name": "Alalak Selatan"
+    },
+    {
+      "code": "6371041004",
+      "name": "Sungai Jingah"
+    },
+    {
+      "code": "6371041005",
+      "name": "Sungai Miai"
+    },
+    {
+      "code": "6371041006",
+      "name": "Surgi Mufti"
+    },
+    {
+      "code": "6371041007",
+      "name": "Pangeran"
+    },
+    {
+      "code": "6371041008",
+      "name": "Antasan Kecil Timur"
+    },
+    {
+      "code": "6371041009",
+      "name": "Kuin Utara"
+    },
+    {
+      "code": "6371041010",
+      "name": "Sungai Andai"
+    }
+  ],
+  "637105": [
+    {
+      "code": "6371051001",
+      "name": "Kertak Baru Ilir"
+    },
+    {
+      "code": "6371051002",
+      "name": "Kertak Baru Ulu"
+    },
+    {
+      "code": "6371051003",
+      "name": "Mawar"
+    },
+    {
+      "code": "6371051004",
+      "name": "Teluk Dalam"
+    },
+    {
+      "code": "6371051005",
+      "name": "Antasan Besar"
+    },
+    {
+      "code": "6371051006",
+      "name": "Pasar Lama"
+    },
+    {
+      "code": "6371051007",
+      "name": "Seberang Mesjid"
+    },
+    {
+      "code": "6371051008",
+      "name": "Gadang"
+    },
+    {
+      "code": "6371051009",
+      "name": "Melayu"
+    },
+    {
+      "code": "6371051010",
+      "name": "Sungai Baru"
+    },
+    {
+      "code": "6371051011",
+      "name": "Pekapuran Laut"
+    },
+    {
+      "code": "6371051012",
+      "name": "Kelayan Luar"
+    }
+  ]
 }

@@ -1,0 +1,466 @@
+{
+  "730501": [
+    {
+      "code": "7305011001",
+      "name": "Takalar"
+    },
+    {
+      "code": "7305012003",
+      "name": "Patani"
+    },
+    {
+      "code": "7305012009",
+      "name": "Soreang"
+    },
+    {
+      "code": "7305012010",
+      "name": "Pa'batangang"
+    }
+  ],
+  "730502": [
+    {
+      "code": "7305021002",
+      "name": "Mangadu"
+    },
+    {
+      "code": "7305022001",
+      "name": "Lengkese"
+    },
+    {
+      "code": "7305022003",
+      "name": "Topejawa"
+    },
+    {
+      "code": "7305022004",
+      "name": "Lakatong"
+    },
+    {
+      "code": "7305022007",
+      "name": "Banggae"
+    },
+    {
+      "code": "7305022008",
+      "name": "Bontomanai"
+    }
+  ],
+  "730503": [
+    {
+      "code": "7305031001",
+      "name": "Pa'bundukang"
+    },
+    {
+      "code": "7305031002",
+      "name": "Pattene"
+    },
+    {
+      "code": "7305031003",
+      "name": "Bontokadatto"
+    },
+    {
+      "code": "7305031004",
+      "name": "Canrego"
+    },
+    {
+      "code": "7305031005",
+      "name": "Bulukunyi"
+    },
+    {
+      "code": "7305031010",
+      "name": "Rajaya"
+    },
+    {
+      "code": "7305032006",
+      "name": "Moncongkomba"
+    },
+    {
+      "code": "7305032007",
+      "name": "Cakura"
+    },
+    {
+      "code": "7305032008",
+      "name": "Lantang"
+    },
+    {
+      "code": "7305032009",
+      "name": "Su'rulangi"
+    },
+    {
+      "code": "7305032011",
+      "name": "Kale Lantang"
+    }
+  ],
+  "730504": [
+    {
+      "code": "7305041001",
+      "name": "Panrannuangku"
+    },
+    {
+      "code": "7305041002",
+      "name": "Manongkoki"
+    },
+    {
+      "code": "7305041003",
+      "name": "Malewang"
+    },
+    {
+      "code": "7305041004",
+      "name": "Palleko"
+    },
+    {
+      "code": "7305041005",
+      "name": "Mattompodale"
+    },
+    {
+      "code": "7305041006",
+      "name": "Parang Luara"
+    },
+    {
+      "code": "7305042007",
+      "name": "Lassang"
+    },
+    {
+      "code": "7305042009",
+      "name": "Pa'rappunganta"
+    },
+    {
+      "code": "7305042010",
+      "name": "Towata"
+    },
+    {
+      "code": "7305042016",
+      "name": "Lassang Barat"
+    }
+  ],
+  "730505": [
+    {
+      "code": "7305052006",
+      "name": "Bonto Kanang"
+    },
+    {
+      "code": "7305052007",
+      "name": "Bontomarannu"
+    },
+    {
+      "code": "7305052008",
+      "name": "Mangindara"
+    },
+    {
+      "code": "7305052009",
+      "name": "Bontokassi"
+    },
+    {
+      "code": "7305052011",
+      "name": "Bentang"
+    },
+    {
+      "code": "7305052012",
+      "name": "Barangmamase"
+    },
+    {
+      "code": "7305052013",
+      "name": "Sawakong"
+    },
+    {
+      "code": "7305052015",
+      "name": "Popo"
+    },
+    {
+      "code": "7305052016",
+      "name": "Tarowang"
+    },
+    {
+      "code": "7305052017",
+      "name": "Kalukubodo"
+    },
+    {
+      "code": "7305052018",
+      "name": "Kadatong"
+    },
+    {
+      "code": "7305052019",
+      "name": "Kale Bentang"
+    },
+    {
+      "code": "7305052020",
+      "name": "Kanaeng"
+    }
+  ],
+  "730506": [
+    {
+      "code": "7305061004",
+      "name": "Bontolebang"
+    },
+    {
+      "code": "7305062001",
+      "name": "Pakkabba"
+    },
+    {
+      "code": "7305062002",
+      "name": "Bontolanra"
+    },
+    {
+      "code": "7305062003",
+      "name": "Aeng Batu Batu"
+    },
+    {
+      "code": "7305062005",
+      "name": "Tamalate"
+    },
+    {
+      "code": "7305062006",
+      "name": "Tamasaju"
+    },
+    {
+      "code": "7305062007",
+      "name": "Bontosunggu"
+    },
+    {
+      "code": "7305062010",
+      "name": "Aeng Towa"
+    },
+    {
+      "code": "7305062011",
+      "name": "Bontokaddopepe"
+    },
+    {
+      "code": "7305062012",
+      "name": "Sampulungan"
+    },
+    {
+      "code": "7305062013",
+      "name": "Maccini Sombala"
+    },
+    {
+      "code": "7305062014",
+      "name": "Sawakung Beba"
+    },
+    {
+      "code": "7305062015",
+      "name": "Biring Kassi"
+    },
+    {
+      "code": "7305062016",
+      "name": "Kaballokang Pakkabba"
+    }
+  ],
+  "730507": [
+    {
+      "code": "7305071001",
+      "name": "Pattallassang"
+    },
+    {
+      "code": "7305071002",
+      "name": "Pallantikang"
+    },
+    {
+      "code": "7305071003",
+      "name": "Somba Bella"
+    },
+    {
+      "code": "7305071004",
+      "name": "Kalabbirang"
+    },
+    {
+      "code": "7305071005",
+      "name": "Maradekaya"
+    },
+    {
+      "code": "7305071006",
+      "name": "Pappa"
+    },
+    {
+      "code": "7305071007",
+      "name": "Bajeng"
+    },
+    {
+      "code": "7305071008",
+      "name": "Sabintang"
+    },
+    {
+      "code": "7305071009",
+      "name": "Salaka"
+    }
+  ],
+  "730508": [
+    {
+      "code": "7305082001",
+      "name": "Laguruda"
+    },
+    {
+      "code": "7305082002",
+      "name": "Banyuanyara"
+    },
+    {
+      "code": "7305082003",
+      "name": "Sanrobone"
+    },
+    {
+      "code": "7305082004",
+      "name": "Paddinging"
+    },
+    {
+      "code": "7305082005",
+      "name": "Ujung Baji"
+    },
+    {
+      "code": "7305082006",
+      "name": "Tonasa"
+    }
+  ],
+  "730509": [
+    {
+      "code": "7305092001",
+      "name": "Galesong Baru"
+    },
+    {
+      "code": "7305092002",
+      "name": "Galesong Kota"
+    },
+    {
+      "code": "7305092003",
+      "name": "Bontoloe"
+    },
+    {
+      "code": "7305092004",
+      "name": "Boddia"
+    },
+    {
+      "code": "7305092005",
+      "name": "Bontomangape"
+    },
+    {
+      "code": "7305092006",
+      "name": "Parangmata"
+    },
+    {
+      "code": "7305092007",
+      "name": "Parambambe"
+    },
+    {
+      "code": "7305092008",
+      "name": "Pa'rasangang Beru"
+    },
+    {
+      "code": "7305092009",
+      "name": "Pa'lalakkang"
+    },
+    {
+      "code": "7305092010",
+      "name": "Pattinoang"
+    },
+    {
+      "code": "7305092011",
+      "name": "Kalenna Bontongape"
+    },
+    {
+      "code": "7305092012",
+      "name": "Kalukuang"
+    },
+    {
+      "code": "7305092013",
+      "name": "Mappakalompo"
+    },
+    {
+      "code": "7305092014",
+      "name": "Campagaya"
+    },
+    {
+      "code": "7305092015",
+      "name": "Galesong Timur"
+    },
+    {
+      "code": "7305092016",
+      "name": "Kampung Beru"
+    },
+    {
+      "code": "7305092017",
+      "name": "Tarembang"
+    }
+  ],
+  "730510": [
+    {
+      "code": "7305102001",
+      "name": "Tompotana"
+    },
+    {
+      "code": "7305102002",
+      "name": "Mattiro Baji"
+    },
+    {
+      "code": "7305102003",
+      "name": "Rewataya"
+    },
+    {
+      "code": "7305102004",
+      "name": "Balangdatu"
+    },
+    {
+      "code": "7305102005",
+      "name": "Maccini Baji"
+    },
+    {
+      "code": "7305102006",
+      "name": "Minasa Baji"
+    }
+  ],
+  "730511": [
+    {
+      "code": "7305112001",
+      "name": "Ko'mara"
+    },
+    {
+      "code": "7305112002",
+      "name": "Kale Ko'mara"
+    },
+    {
+      "code": "7305112003",
+      "name": "Barugaya"
+    },
+    {
+      "code": "7305112004",
+      "name": "Parang Baddo"
+    },
+    {
+      "code": "7305112005",
+      "name": "Massamaturu"
+    },
+    {
+      "code": "7305112006",
+      "name": "Timbuseng"
+    },
+    {
+      "code": "7305112007",
+      "name": "Balangtanaya"
+    },
+    {
+      "code": "7305112008",
+      "name": "Kampung Beru"
+    }
+  ],
+  "730512": [
+    {
+      "code": "7305122001",
+      "name": "Panyangkalang"
+    },
+    {
+      "code": "7305122002",
+      "name": "Bontoparang"
+    },
+    {
+      "code": "7305122003",
+      "name": "Pattopakang"
+    },
+    {
+      "code": "7305122004",
+      "name": "Cikoang"
+    },
+    {
+      "code": "7305122005",
+      "name": "Punaga"
+    },
+    {
+      "code": "7305122006",
+      "name": "Laikang"
+    }
+  ]
+}

@@ -1,0 +1,688 @@
+{
+  "930301": [
+    {
+      "code": "9303011013",
+      "name": "Kepi"
+    },
+    {
+      "code": "9303012001",
+      "name": "Obaa"
+    },
+    {
+      "code": "9303012002",
+      "name": "Dagimon"
+    },
+    {
+      "code": "9303012003",
+      "name": "Rep"
+    },
+    {
+      "code": "9303012004",
+      "name": "Mappi Bawah/Yamui"
+    },
+    {
+      "code": "9303012005",
+      "name": "Wanggate"
+    },
+    {
+      "code": "9303012006",
+      "name": "Piai"
+    },
+    {
+      "code": "9303012007",
+      "name": "Muin"
+    },
+    {
+      "code": "9303012008",
+      "name": "Gauda"
+    },
+    {
+      "code": "9303012009",
+      "name": "Soba"
+    },
+    {
+      "code": "9303012010",
+      "name": "Enem"
+    },
+    {
+      "code": "9303012011",
+      "name": "Kogo"
+    },
+    {
+      "code": "9303012012",
+      "name": "Kadam/Oyim"
+    },
+    {
+      "code": "9303012014",
+      "name": "Tokhom"
+    },
+    {
+      "code": "9303012015",
+      "name": "Emete"
+    },
+    {
+      "code": "9303012016",
+      "name": "Wairu"
+    },
+    {
+      "code": "9303012017",
+      "name": "Rayam"
+    },
+    {
+      "code": "9303012018",
+      "name": "Harome"
+    },
+    {
+      "code": "9303012019",
+      "name": "Metim"
+    },
+    {
+      "code": "9303012020",
+      "name": "Masin"
+    },
+    {
+      "code": "9303012021",
+      "name": "Madu"
+    },
+    {
+      "code": "9303012022",
+      "name": "Yangpop"
+    },
+    {
+      "code": "9303012023",
+      "name": "Paedam"
+    },
+    {
+      "code": "9303012024",
+      "name": "Marbin"
+    }
+  ],
+  "930302": [
+    {
+      "code": "9303022001",
+      "name": "Mur"
+    },
+    {
+      "code": "9303022002",
+      "name": "Agham"
+    },
+    {
+      "code": "9303022003",
+      "name": "Waghien/Koba"
+    },
+    {
+      "code": "9303022004",
+      "name": "Khatan"
+    },
+    {
+      "code": "9303022005",
+      "name": "Monana"
+    },
+    {
+      "code": "9303022006",
+      "name": "Wagin"
+    },
+    {
+      "code": "9303022007",
+      "name": "Waman"
+    },
+    {
+      "code": "9303022008",
+      "name": "Ima"
+    },
+    {
+      "code": "9303022009",
+      "name": "Kogoyaman"
+    },
+    {
+      "code": "9303022010",
+      "name": "Magabag"
+    },
+    {
+      "code": "9303022011",
+      "name": "Tereyemu"
+    },
+    {
+      "code": "9303022012",
+      "name": "Yatan"
+    },
+    {
+      "code": "9303022013",
+      "name": "Linggua"
+    },
+    {
+      "code": "9303022014",
+      "name": "Waruwe"
+    },
+    {
+      "code": "9303022015",
+      "name": "Ghanu"
+    }
+  ],
+  "930303": [
+    {
+      "code": "9303032001",
+      "name": "Bidnew"
+    },
+    {
+      "code": "9303032002",
+      "name": "Senggo"
+    },
+    {
+      "code": "9303032003",
+      "name": "Kumasma"
+    },
+    {
+      "code": "9303032004",
+      "name": "Womin"
+    },
+    {
+      "code": "9303032005",
+      "name": "Tamanin"
+    },
+    {
+      "code": "9303032006",
+      "name": "Epem"
+    },
+    {
+      "code": "9303032007",
+      "name": "Abau"
+    }
+  ],
+  "930304": [
+    {
+      "code": "9303041001",
+      "name": "Bade"
+    },
+    {
+      "code": "9303042002",
+      "name": "Geturki"
+    },
+    {
+      "code": "9303042003",
+      "name": "Mememu"
+    },
+    {
+      "code": "9303042004",
+      "name": "Gimikya"
+    },
+    {
+      "code": "9303042005",
+      "name": "Banamepe"
+    },
+    {
+      "code": "9303042006",
+      "name": "Yodom"
+    },
+    {
+      "code": "9303042007",
+      "name": "Isyaman"
+    }
+  ],
+  "930305": [
+    {
+      "code": "9303052001",
+      "name": "Yagatsu"
+    },
+    {
+      "code": "9303052002",
+      "name": "Amagatsu"
+    },
+    {
+      "code": "9303052003",
+      "name": "Katage"
+    },
+    {
+      "code": "9303052004",
+      "name": "Sogope"
+    },
+    {
+      "code": "9303052005",
+      "name": "Wiyage"
+    },
+    {
+      "code": "9303052006",
+      "name": "Kasima"
+    },
+    {
+      "code": "9303052007",
+      "name": "Amenda"
+    },
+    {
+      "code": "9303052008",
+      "name": "Kaibu"
+    },
+    {
+      "code": "9303052009",
+      "name": "Omuro"
+    },
+    {
+      "code": "9303052010",
+      "name": "Okor"
+    },
+    {
+      "code": "9303052011",
+      "name": "Atsipim"
+    },
+    {
+      "code": "9303052012",
+      "name": "Semtaipim"
+    },
+    {
+      "code": "9303052013",
+      "name": "Geiripim"
+    },
+    {
+      "code": "9303052014",
+      "name": "Warogom"
+    },
+    {
+      "code": "9303052015",
+      "name": "Kaibusene"
+    },
+    {
+      "code": "9303052016",
+      "name": "Arare"
+    },
+    {
+      "code": "9303052017",
+      "name": "Paghai"
+    },
+    {
+      "code": "9303052018",
+      "name": "Kerke"
+    },
+    {
+      "code": "9303052019",
+      "name": "Mani"
+    }
+  ],
+  "930306": [
+    {
+      "code": "9303062001",
+      "name": "Sigare"
+    },
+    {
+      "code": "9303062002",
+      "name": "Jufo Besar"
+    },
+    {
+      "code": "9303062003",
+      "name": "Eci"
+    },
+    {
+      "code": "9303062004",
+      "name": "Aboge"
+    },
+    {
+      "code": "9303062005",
+      "name": "Khanami"
+    },
+    {
+      "code": "9303062006",
+      "name": "Yame"
+    },
+    {
+      "code": "9303062007",
+      "name": "Kaitok"
+    },
+    {
+      "code": "9303062008",
+      "name": "Homang"
+    },
+    {
+      "code": "9303062009",
+      "name": "Jufo Kecil"
+    },
+    {
+      "code": "9303062010",
+      "name": "Khabu"
+    },
+    {
+      "code": "9303062011",
+      "name": "Kiki"
+    },
+    {
+      "code": "9303062012",
+      "name": "Isage"
+    },
+    {
+      "code": "9303062013",
+      "name": "Kopi"
+    },
+    {
+      "code": "9303062014",
+      "name": "Asaren"
+    },
+    {
+      "code": "9303062015",
+      "name": "Keru"
+    },
+    {
+      "code": "9303062016",
+      "name": "Girimio"
+    },
+    {
+      "code": "9303062017",
+      "name": "Haffo"
+    },
+    {
+      "code": "9303062018",
+      "name": "Meda"
+    }
+  ],
+  "930307": [
+    {
+      "code": "9303072001",
+      "name": "Amazu"
+    },
+    {
+      "code": "9303072002",
+      "name": "Imembi"
+    },
+    {
+      "code": "9303072003",
+      "name": "Yemu"
+    },
+    {
+      "code": "9303072004",
+      "name": "Fomu"
+    },
+    {
+      "code": "9303072005",
+      "name": "Tiau"
+    },
+    {
+      "code": "9303072006",
+      "name": "Binerbis"
+    },
+    {
+      "code": "9303072007",
+      "name": "Tayau"
+    }
+  ],
+  "930308": [
+    {
+      "code": "9303082001",
+      "name": "Sepoh"
+    },
+    {
+      "code": "9303082002",
+      "name": "Bagaram"
+    },
+    {
+      "code": "9303082003",
+      "name": "Passue/Taim"
+    },
+    {
+      "code": "9303082004",
+      "name": "Nohon"
+    },
+    {
+      "code": "9303082005",
+      "name": "Kotiak"
+    },
+    {
+      "code": "9303082006",
+      "name": "Menya"
+    },
+    {
+      "code": "9303082007",
+      "name": "Tokhompatu"
+    },
+    {
+      "code": "9303082008",
+      "name": "Kotup"
+    },
+    {
+      "code": "9303082009",
+      "name": "Rimba Jaya/Gayu"
+    },
+    {
+      "code": "9303082010",
+      "name": "Kaime"
+    },
+    {
+      "code": "9303082011",
+      "name": "Baitate"
+    },
+    {
+      "code": "9303082012",
+      "name": "Urufu"
+    },
+    {
+      "code": "9303082013",
+      "name": "Afogoma"
+    }
+  ],
+  "930309": [
+    {
+      "code": "9303092001",
+      "name": "Kabe"
+    },
+    {
+      "code": "9303092002",
+      "name": "Kaumi"
+    },
+    {
+      "code": "9303092003",
+      "name": "Kayagai"
+    },
+    {
+      "code": "9303092004",
+      "name": "Ati"
+    },
+    {
+      "code": "9303092005",
+      "name": "Upin"
+    },
+    {
+      "code": "9303092006",
+      "name": "Taragai"
+    },
+    {
+      "code": "9303092007",
+      "name": "Sene"
+    },
+    {
+      "code": "9303092008",
+      "name": "Komru"
+    },
+    {
+      "code": "9303092009",
+      "name": "Kofar"
+    },
+    {
+      "code": "9303092010",
+      "name": "Sumuraman"
+    },
+    {
+      "code": "9303092011",
+      "name": "Pano"
+    },
+    {
+      "code": "9303092012",
+      "name": "Kogir"
+    }
+  ],
+  "930310": [
+    {
+      "code": "9303102001",
+      "name": "Sien"
+    },
+    {
+      "code": "9303102002",
+      "name": "Sahapikya"
+    },
+    {
+      "code": "9303102003",
+      "name": "Harapan"
+    },
+    {
+      "code": "9303102004",
+      "name": "Yibin"
+    },
+    {
+      "code": "9303102005",
+      "name": "Mopio"
+    },
+    {
+      "code": "9303102006",
+      "name": "Pies"
+    },
+    {
+      "code": "9303102007",
+      "name": "Memes"
+    },
+    {
+      "code": "9303102008",
+      "name": "Getiyo"
+    }
+  ],
+  "930311": [
+    {
+      "code": "9303112001",
+      "name": "Homlikia"
+    },
+    {
+      "code": "9303112002",
+      "name": "Kobeta"
+    },
+    {
+      "code": "9303112003",
+      "name": "Asset"
+    },
+    {
+      "code": "9303112004",
+      "name": "Osso"
+    },
+    {
+      "code": "9303112005",
+      "name": "Bosma"
+    },
+    {
+      "code": "9303112006",
+      "name": "Oghoto"
+    }
+  ],
+  "930312": [
+    {
+      "code": "9303122001",
+      "name": "Amk"
+    },
+    {
+      "code": "9303122002",
+      "name": "Yame"
+    },
+    {
+      "code": "9303122003",
+      "name": "Benggo"
+    },
+    {
+      "code": "9303122004",
+      "name": "Kokoya"
+    },
+    {
+      "code": "9303122005",
+      "name": "Borohaba"
+    },
+    {
+      "code": "9303122006",
+      "name": "Ogorito"
+    },
+    {
+      "code": "9303122007",
+      "name": "Hebeske"
+    }
+  ],
+  "930313": [
+    {
+      "code": "9303132001",
+      "name": "Yeloba"
+    },
+    {
+      "code": "9303132002",
+      "name": "Konebi"
+    },
+    {
+      "code": "9303132003",
+      "name": "Sibi"
+    },
+    {
+      "code": "9303132004",
+      "name": "Tagaimon Sino"
+    },
+    {
+      "code": "9303132005",
+      "name": "Tagaimon Karome"
+    }
+  ],
+  "930314": [
+    {
+      "code": "9303142001",
+      "name": "Wonggi"
+    },
+    {
+      "code": "9303142002",
+      "name": "Busiri"
+    },
+    {
+      "code": "9303142003",
+      "name": "Keta"
+    },
+    {
+      "code": "9303142004",
+      "name": "Veta"
+    },
+    {
+      "code": "9303142005",
+      "name": "Honya"
+    },
+    {
+      "code": "9303142006",
+      "name": "Haku"
+    },
+    {
+      "code": "9303142007",
+      "name": "Bifo"
+    },
+    {
+      "code": "9303142008",
+      "name": "Samurukie"
+    }
+  ],
+  "930315": [
+    {
+      "code": "9303152001",
+      "name": "Sagis"
+    },
+    {
+      "code": "9303152002",
+      "name": "Kumaban"
+    },
+    {
+      "code": "9303152003",
+      "name": "Tugumau"
+    },
+    {
+      "code": "9303152004",
+      "name": "Basman"
+    },
+    {
+      "code": "9303152005",
+      "name": "Merokima"
+    },
+    {
+      "code": "9303152006",
+      "name": "Mu"
+    },
+    {
+      "code": "9303152007",
+      "name": "Pier"
+    },
+    {
+      "code": "9303152008",
+      "name": "Tarwa"
+    }
+  ]
+}

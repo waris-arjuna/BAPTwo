@@ -1,262 +1,462 @@
 {
-    "731501": [
-        {
-            "code": "7315011001",
-            "name": "Langnga"
-        },
-        {
-            "code": "7315011002",
-            "name": "Pallameang"
-        },
-        {
-            "code": "7315012003",
-            "name": "Massulowalie"
-        },
-        {
-            "code": "7315012004",
-            "name": "Mattombong"
-        },
-        {
-            "code": "7315012005",
-            "name": "Mattongang Tongang"
-        },
-        {
-            "code": "7315012006",
-            "name": "Patobong"
-        },
-        {
-            "code": "7315012007",
-            "name": "Samaenre"
-        },
-        {
-            "code": "7315012008",
-            "name": "Mattiro Tasi"
-        },
-        {
-            "code": "7315012009",
-            "name": "Siwolong Polong"
-        }
-    ],
-    "731502": [
-        {
-            "code": "7315021001",
-            "name": "Watang Suppa"
-        },
-        {
-            "code": "7315021002",
-            "name": "Tellumpanua"
-        },
-        {
-            "code": "7315022003",
-            "name": "Lero"
-        },
-        {
-            "code": "7315022004",
-            "name": "Watang Pulu"
-        },
-        {
-            "code": "7315022005",
-            "name": "Maritengngae"
-        },
-        {
-            "code": "7315022006",
-            "name": "Tasiwalie"
-        },
-        {
-            "code": "7315022007",
-            "name": "Wiring Tasi"
-        },
-        {
-            "code": "7315022008",
-            "name": "Lotang Salo"
-        },
-        {
-            "code": "7315022009",
-            "name": "Ujung Labuang"
-        },
-        {
-            "code": "7315022010",
-            "name": "Polewali"
-        }
-    ],
-    "731503": [
-        {
-            "code": "7315031001",
-            "name": "Manarang"
-        },
-        {
-            "code": "7315031002",
-            "name": "Padaidi"
-        },
-        {
-            "code": "7315032003",
-            "name": "Pananrang"
-        },
-        {
-            "code": "7315032004",
-            "name": "Padakkalawa"
-        },
-        {
-            "code": "7315032005",
-            "name": "Marannu"
-        },
-        {
-            "code": "7315032006",
-            "name": "Alitta"
-        },
-        {
-            "code": "7315032007",
-            "name": "Padaelo"
-        },
-        {
-            "code": "7315032008",
-            "name": "Bunga"
-        },
-        {
-            "code": "7315032009",
-            "name": "Makkawaru"
-        }
-    ],
-    "731504": [
-        {
-            "code": "7315041001",
-            "name": "Jaya"
-        },
-        {
-            "code": "7315041002",
-            "name": "Sawitto"
-        },
-        {
-            "code": "7315041003",
-            "name": "Macorawalie"
-        },
-        {
-            "code": "7315041004",
-            "name": "Penrang"
-        },
-        {
-            "code": "7315041005",
-            "name": "Salo"
-        },
-        {
-            "code": "7315041006",
-            "name": "Bentengnge"
-        },
-        {
-            "code": "7315041007",
-            "name": "Sipatokkong"
-        },
-        {
-            "code": "7315041008",
-            "name": "Siparappe"
-        }
-    ],
-    "731505": [
-        {
-            "code": "7315051001",
-            "name": "Benteng"
-        },
-        {
-            "code": "7315051002",
-            "name": "Teppo"
-        },
-        {
-            "code": "7315051003",
-            "name": "Tonyamang"
-        },
-        {
-            "code": "7315051004",
-            "name": "Maccirinna"
-        },
-        {
-            "code": "7315052005",
-            "name": "Leppangang"
-        },
-        {
-            "code": "7315052006",
-            "name": "Malimpung"
-        },
-        {
-            "code": "7315052007",
-            "name": "Mattiro Ade"
-        },
-        {
-            "code": "7315052008",
-            "name": "Sipatuo"
-        },
-        {
-            "code": "7315052009",
-            "name": "Padang Loang"
-        },
-        {
-            "code": "7315052010",
-            "name": "Pincara"
-        },
-        {
-            "code": "7315052011",
-            "name": "Masolo"
-        }
-    ],
-    "731506": [
-        {
-            "code": "7315061001",
-            "name": "Pekkabata"
-        },
-        {
-            "code": "7315061002",
-            "name": "Tatae"
-        },
-        {
-            "code": "7315061003",
-            "name": "Lampa"
-        },
-        {
-            "code": "7315061004",
-            "name": "Data"
-        },
-        {
-            "code": "7315061005",
-            "name": "Bittoeng"
-        },
-        {
-            "code": "7315062006",
-            "name": "Kaballangang"
-        },
-        {
-            "code": "7315062007",
-            "name": "Paria"
-        },
-        {
-            "code": "7315062008",
-            "name": "Kaliang"
-        },
-        {
-            "code": "7315062009",
-            "name": "Buttu Sawe"
-        },
-        {
-            "code": "7315062010",
-            "name": "Maroneng"
-        },
-        {
-            "code": "7315062011",
-            "name": "Katomporang"
-        },
-        {
-            "code": "7315062012",
-            "name": "Bungi"
-        },
-        {
-            "code": "7315062013",
-            "name": "Massewae"
-        },
-        {
-            "code": "7315062014",
-            "name": "Bababinanga"
-        },
-        {
-            "code": "7315062015",
-            "name": "Barugae"
-        }
-    ]
+  "731501": [
+    {
+      "code": "7315011001",
+      "name": "Langnga"
+    },
+    {
+      "code": "7315011002",
+      "name": "Pallameang"
+    },
+    {
+      "code": "7315012003",
+      "name": "Massulowalie"
+    },
+    {
+      "code": "7315012004",
+      "name": "Mattombong"
+    },
+    {
+      "code": "7315012005",
+      "name": "Mattongang Tongang"
+    },
+    {
+      "code": "7315012006",
+      "name": "Patobong"
+    },
+    {
+      "code": "7315012007",
+      "name": "Samaenre"
+    },
+    {
+      "code": "7315012008",
+      "name": "Mattiro Tasi"
+    },
+    {
+      "code": "7315012009",
+      "name": "Siwolong Polong"
+    }
+  ],
+  "731502": [
+    {
+      "code": "7315021001",
+      "name": "Watang Suppa"
+    },
+    {
+      "code": "7315021002",
+      "name": "Tellumpanua"
+    },
+    {
+      "code": "7315022003",
+      "name": "Lero"
+    },
+    {
+      "code": "7315022004",
+      "name": "Watang Pulu"
+    },
+    {
+      "code": "7315022005",
+      "name": "Maritengngae"
+    },
+    {
+      "code": "7315022006",
+      "name": "Tasiwalie"
+    },
+    {
+      "code": "7315022007",
+      "name": "Wiring Tasi"
+    },
+    {
+      "code": "7315022008",
+      "name": "Lotang Salo"
+    },
+    {
+      "code": "7315022009",
+      "name": "Ujung Labuang"
+    },
+    {
+      "code": "7315022010",
+      "name": "Polewali"
+    }
+  ],
+  "731503": [
+    {
+      "code": "7315031001",
+      "name": "Manarang"
+    },
+    {
+      "code": "7315031002",
+      "name": "Padaidi"
+    },
+    {
+      "code": "7315032003",
+      "name": "Pananrang"
+    },
+    {
+      "code": "7315032004",
+      "name": "Padakkalawa"
+    },
+    {
+      "code": "7315032005",
+      "name": "Marannu"
+    },
+    {
+      "code": "7315032006",
+      "name": "Alitta"
+    },
+    {
+      "code": "7315032007",
+      "name": "Padaelo"
+    },
+    {
+      "code": "7315032008",
+      "name": "Bunga"
+    },
+    {
+      "code": "7315032009",
+      "name": "Makkawaru"
+    }
+  ],
+  "731504": [
+    {
+      "code": "7315041001",
+      "name": "Jaya"
+    },
+    {
+      "code": "7315041002",
+      "name": "Sawitto"
+    },
+    {
+      "code": "7315041003",
+      "name": "Macorawalie"
+    },
+    {
+      "code": "7315041004",
+      "name": "Penrang"
+    },
+    {
+      "code": "7315041005",
+      "name": "Salo"
+    },
+    {
+      "code": "7315041006",
+      "name": "Bentengnge"
+    },
+    {
+      "code": "7315041007",
+      "name": "Sipatokkong"
+    },
+    {
+      "code": "7315041008",
+      "name": "Siparappe"
+    }
+  ],
+  "731505": [
+    {
+      "code": "7315051001",
+      "name": "Benteng"
+    },
+    {
+      "code": "7315051002",
+      "name": "Teppo"
+    },
+    {
+      "code": "7315051003",
+      "name": "Tonyamang"
+    },
+    {
+      "code": "7315051004",
+      "name": "Maccirinna"
+    },
+    {
+      "code": "7315052005",
+      "name": "Leppangang"
+    },
+    {
+      "code": "7315052006",
+      "name": "Malimpung"
+    },
+    {
+      "code": "7315052007",
+      "name": "Mattiro Ade"
+    },
+    {
+      "code": "7315052008",
+      "name": "Sipatuo"
+    },
+    {
+      "code": "7315052009",
+      "name": "Padang Loang"
+    },
+    {
+      "code": "7315052010",
+      "name": "Pincara"
+    },
+    {
+      "code": "7315052011",
+      "name": "Masolo"
+    }
+  ],
+  "731506": [
+    {
+      "code": "7315061001",
+      "name": "Pekkabata"
+    },
+    {
+      "code": "7315061002",
+      "name": "Tatae"
+    },
+    {
+      "code": "7315061003",
+      "name": "Lampa"
+    },
+    {
+      "code": "7315061004",
+      "name": "Data"
+    },
+    {
+      "code": "7315061005",
+      "name": "Bittoeng"
+    },
+    {
+      "code": "7315062006",
+      "name": "Kaballangang"
+    },
+    {
+      "code": "7315062007",
+      "name": "Paria"
+    },
+    {
+      "code": "7315062008",
+      "name": "Kaliang"
+    },
+    {
+      "code": "7315062009",
+      "name": "Buttu Sawe"
+    },
+    {
+      "code": "7315062010",
+      "name": "Maroneng"
+    },
+    {
+      "code": "7315062011",
+      "name": "Katomporang"
+    },
+    {
+      "code": "7315062012",
+      "name": "Bungi"
+    },
+    {
+      "code": "7315062013",
+      "name": "Massewae"
+    },
+    {
+      "code": "7315062014",
+      "name": "Bababinanga"
+    },
+    {
+      "code": "7315062015",
+      "name": "Barugae"
+    }
+  ],
+  "731507": [
+    {
+      "code": "7315071001",
+      "name": "Tadokkong"
+    },
+    {
+      "code": "7315071002",
+      "name": "Betteng"
+    },
+    {
+      "code": "7315072003",
+      "name": "Binanga Karaeng"
+    },
+    {
+      "code": "7315072004",
+      "name": "Rajang"
+    },
+    {
+      "code": "7315072005",
+      "name": "Letta"
+    },
+    {
+      "code": "7315072006",
+      "name": "Ulu Saddang"
+    },
+    {
+      "code": "7315072007",
+      "name": "Suppirang"
+    },
+    {
+      "code": "7315072008",
+      "name": "Basseang"
+    },
+    {
+      "code": "7315072009",
+      "name": "Kariango"
+    },
+    {
+      "code": "7315072010",
+      "name": "Benteng Paremba"
+    },
+    {
+      "code": "7315072011",
+      "name": "Pakeng"
+    },
+    {
+      "code": "7315072012",
+      "name": "Lembang Mesakada"
+    },
+    {
+      "code": "7315072013",
+      "name": "Sali Sali"
+    },
+    {
+      "code": "7315072014",
+      "name": "Sabbang Paru"
+    },
+    {
+      "code": "7315072015",
+      "name": "Bakaru"
+    },
+    {
+      "code": "7315072016",
+      "name": "Pangaparang"
+    }
+  ],
+  "731508": [
+    {
+      "code": "7315081001",
+      "name": "Cempa"
+    },
+    {
+      "code": "7315082002",
+      "name": "Mangki"
+    },
+    {
+      "code": "7315082003",
+      "name": "Mattunru Tunrue"
+    },
+    {
+      "code": "7315082004",
+      "name": "Sikkuale"
+    },
+    {
+      "code": "7315082005",
+      "name": "Tadang Palie"
+    },
+    {
+      "code": "7315082006",
+      "name": "Salipolo"
+    },
+    {
+      "code": "7315082007",
+      "name": "Tanra Tuo"
+    }
+  ],
+  "731509": [
+    {
+      "code": "7315091001",
+      "name": "Pammase"
+    },
+    {
+      "code": "7315091002",
+      "name": "Marawi"
+    },
+    {
+      "code": "7315091003",
+      "name": "Fakkie"
+    },
+    {
+      "code": "7315091004",
+      "name": "Tiroang"
+    },
+    {
+      "code": "7315091005",
+      "name": "Mattiro Deceng"
+    },
+    {
+      "code": "7315091006",
+      "name": "Samaturue"
+    }
+  ],
+  "731510": [
+    {
+      "code": "7315101001",
+      "name": "Lanrisang"
+    },
+    {
+      "code": "7315102002",
+      "name": "Samaulue"
+    },
+    {
+      "code": "7315102003",
+      "name": "Mallongi-longi"
+    },
+    {
+      "code": "7315102004",
+      "name": "Amassangang"
+    },
+    {
+      "code": "7315102005",
+      "name": "Barang Palie"
+    },
+    {
+      "code": "7315102006",
+      "name": "Waetuoe"
+    },
+    {
+      "code": "7315102007",
+      "name": "Lerang"
+    }
+  ],
+  "731511": [
+    {
+      "code": "7315111001",
+      "name": "Pacongang"
+    },
+    {
+      "code": "7315111002",
+      "name": "Macinnae"
+    },
+    {
+      "code": "7315111003",
+      "name": "Temmassarangnge"
+    },
+    {
+      "code": "7315111004",
+      "name": "Mamminasae"
+    },
+    {
+      "code": "7315111005",
+      "name": "Laleng Bata"
+    },
+    {
+      "code": "7315111006",
+      "name": "Benteng Sawitto"
+    }
+  ],
+  "731512": [
+    {
+      "code": "7315121003",
+      "name": "Kassa"
+    },
+    {
+      "code": "7315122001",
+      "name": "Batulappa"
+    },
+    {
+      "code": "7315122004",
+      "name": "Tapporang"
+    },
+    {
+      "code": "7315122005",
+      "name": "Kaseralau"
+    },
+    {
+      "code": "7315122006",
+      "name": "Watang Kassa"
+    }
+  ]
 }

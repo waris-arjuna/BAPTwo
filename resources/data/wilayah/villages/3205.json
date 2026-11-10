@@ -1,630 +1,1854 @@
 {
-    "320519": [
-        {
-            "code": "3205192001",
-            "name": "Cilawu"
-        },
-        {
-            "code": "3205192002",
-            "name": "Sukamukti"
-        },
-        {
-            "code": "3205192003",
-            "name": "Karyamekar"
-        },
-        {
-            "code": "3205192004",
-            "name": "Dawungsari"
-        },
-        {
-            "code": "3205192005",
-            "name": "Pasanggrahan"
-        },
-        {
-            "code": "3205192006",
-            "name": "Sukahati"
-        },
-        {
-            "code": "3205192007",
-            "name": "Mekarsari"
-        },
-        {
-            "code": "3205192008",
-            "name": "Mekarmukti"
-        },
-        {
-            "code": "3205192009",
-            "name": "Desakolot"
-        },
-        {
-            "code": "3205192010",
-            "name": "Ngamplangsari"
-        },
-        {
-            "code": "3205192011",
-            "name": "Margalaksana"
-        },
-        {
-            "code": "3205192012",
-            "name": "Dangiang"
-        },
-        {
-            "code": "3205192013",
-            "name": "Dayeuhmanggung"
-        },
-        {
-            "code": "3205192014",
-            "name": "Sukamaju"
-        },
-        {
-            "code": "3205192015",
-            "name": "Mangkurakyat"
-        },
-        {
-            "code": "3205192016",
-            "name": "Ngamplang"
-        },
-        {
-            "code": "3205192017",
-            "name": "Sukatani"
-        },
-        {
-            "code": "3205192018",
-            "name": "Sukamurni"
-        }
-    ],
-    "320520": [
-        {
-            "code": "3205202001",
-            "name": "Cisurupan"
-        },
-        {
-            "code": "3205202002",
-            "name": "Cidatar"
-        },
-        {
-            "code": "3205202003",
-            "name": "Sukawangi"
-        },
-        {
-            "code": "3205202004",
-            "name": "Sukatani"
-        },
-        {
-            "code": "3205202005",
-            "name": "Situsari"
-        },
-        {
-            "code": "3205202006",
-            "name": "Pakuwon"
-        },
-        {
-            "code": "3205202007",
-            "name": "Balewangi"
-        },
-        {
-            "code": "3205202008",
-            "name": "Sirnajaya"
-        },
-        {
-            "code": "3205202009",
-            "name": "Cisero"
-        },
-        {
-            "code": "3205202010",
-            "name": "Karamatwangi"
-        },
-        {
-            "code": "3205202011",
-            "name": "Cipaganti"
-        },
-        {
-            "code": "3205202012",
-            "name": "Pamulihan"
-        },
-        {
-            "code": "3205202013",
-            "name": "Tambakbaya"
-        },
-        {
-            "code": "3205202014",
-            "name": "Sirnagalih"
-        },
-        {
-            "code": "3205202015",
-            "name": "Pangauban"
-        },
-        {
-            "code": "3205202016",
-            "name": "Simpangsari"
-        },
-        {
-            "code": "3205202017",
-            "name": "Cintaasih"
-        }
-    ],
-    "320521": [
-        {
-            "code": "3205212001",
-            "name": "Sukaresmi"
-        },
-        {
-            "code": "3205212002",
-            "name": "Cintadamai"
-        },
-        {
-            "code": "3205212003",
-            "name": "Mekarjaya"
-        },
-        {
-            "code": "3205212004",
-            "name": "Sukajaya"
-        },
-        {
-            "code": "3205212005",
-            "name": "Sukamulya"
-        },
-        {
-            "code": "3205212006",
-            "name": "Padamukti"
-        },
-        {
-            "code": "3205212007",
-            "name": "Sukalilah"
-        }
-    ],
-    "320522": [
-        {
-            "code": "3205222001",
-            "name": "Cikajang"
-        },
-        {
-            "code": "3205222002",
-            "name": "Simpang"
-        },
-        {
-            "code": "3205222003",
-            "name": "Mekarsari"
-        },
-        {
-            "code": "3205222004",
-            "name": "Girijaya"
-        },
-        {
-            "code": "3205222005",
-            "name": "Giriawas"
-        },
-        {
-            "code": "3205222006",
-            "name": "Cibodas"
-        },
-        {
-            "code": "3205222007",
-            "name": "Mekarjaya"
-        },
-        {
-            "code": "3205222008",
-            "name": "Cikandang"
-        },
-        {
-            "code": "3205222009",
-            "name": "Padasuka"
-        },
-        {
-            "code": "3205222010",
-            "name": "Margamulya"
-        },
-        {
-            "code": "3205222011",
-            "name": "Cipangramatan"
-        },
-        {
-            "code": "3205222012",
-            "name": "Karamatwangi"
-        }
-    ],
-    "320524": [
-        {
-            "code": "3205242001",
-            "name": "Singajaya"
-        },
-        {
-            "code": "3205242002",
-            "name": "Ciudian"
-        },
-        {
-            "code": "3205242003",
-            "name": "Mekartani"
-        },
-        {
-            "code": "3205242004",
-            "name": "Sukamulya"
-        },
-        {
-            "code": "3205242005",
-            "name": "Sukawangi"
-        },
-        {
-            "code": "3205242006",
-            "name": "Pancasura"
-        },
-        {
-            "code": "3205242007",
-            "name": "Karangagung"
-        },
-        {
-            "code": "3205242008",
-            "name": "Cigintung"
-        },
-        {
-            "code": "3205242009",
-            "name": "Girimukti"
-        }
-    ],
-    "320532": [
-        {
-            "code": "3205322001",
-            "name": "Mekarmukti"
-        },
-        {
-            "code": "3205322002",
-            "name": "Karangwangi"
-        },
-        {
-            "code": "3205322003",
-            "name": "Jagabaya"
-        },
-        {
-            "code": "3205322004",
-            "name": "Cijayana"
-        },
-        {
-            "code": "3205322005",
-            "name": "Mekarsari"
-        }
-    ],
-    "320533": [
-        {
-            "code": "3205332001",
-            "name": "Neglasari"
-        },
-        {
-            "code": "3205332002",
-            "name": "Tanjungjaya"
-        },
-        {
-            "code": "3205332003",
-            "name": "Tanjungmulya"
-        },
-        {
-            "code": "3205332004",
-            "name": "Wangunjaya"
-        },
-        {
-            "code": "3205332005",
-            "name": "Sukamulya"
-        },
-        {
-            "code": "3205332006",
-            "name": "Pasirlangu"
-        },
-        {
-            "code": "3205332007",
-            "name": "Talagawangi"
-        },
-        {
-            "code": "3205332008",
-            "name": "Jatiwangi"
-        },
-        {
-            "code": "3205332009",
-            "name": "Panyindangan"
-        },
-        {
-            "code": "3205332010",
-            "name": "Tegalgede"
-        },
-        {
-            "code": "3205332011",
-            "name": "Depok"
-        },
-        {
-            "code": "3205332012",
-            "name": "Karangsari"
-        },
-        {
-            "code": "3205332013",
-            "name": "Jayamekar"
-        }
-    ],
-    "320534": [
-        {
-            "code": "3205342001",
-            "name": "Pakenjeng"
-        },
-        {
-            "code": "3205342002",
-            "name": "Garumukti"
-        },
-        {
-            "code": "3205342003",
-            "name": "Panawa"
-        },
-        {
-            "code": "3205342004",
-            "name": "Pananjung"
-        },
-        {
-            "code": "3205342005",
-            "name": "Linggarjati"
-        }
-    ],
-    "320535": [
-        {
-            "code": "3205352001",
-            "name": "Cisewu"
-        },
-        {
-            "code": "3205352002",
-            "name": "Girimukti"
-        },
-        {
-            "code": "3205352003",
-            "name": "Pamalayan"
-        },
-        {
-            "code": "3205352004",
-            "name": "Cikarang"
-        },
-        {
-            "code": "3205352005",
-            "name": "Sukajaya"
-        },
-        {
-            "code": "3205352006",
-            "name": "Nyalindung"
-        },
-        {
-            "code": "3205352007",
-            "name": "Karangsewu"
-        },
-        {
-            "code": "3205352008",
-            "name": "Mekarsewu"
-        },
-        {
-            "code": "3205352009",
-            "name": "Panggalih"
-        }
-    ],
-    "320536": [
-        {
-            "code": "3205362001",
-            "name": "Caringin"
-        },
-        {
-            "code": "3205362002",
-            "name": "Indralayang"
-        },
-        {
-            "code": "3205362003",
-            "name": "Cimahi"
-        },
-        {
-            "code": "3205362004",
-            "name": "Sukarame"
-        },
-        {
-            "code": "3205362005",
-            "name": "Purbayani"
-        },
-        {
-            "code": "3205362006",
-            "name": "Samuderajaya"
-        }
-    ],
-    "320537": [
-        {
-            "code": "3205372001",
-            "name": "Sukamaju"
-        },
-        {
-            "code": "3205372002",
-            "name": "Sukamulya"
-        },
-        {
-            "code": "3205372003",
-            "name": "Mekarmukti"
-        },
-        {
-            "code": "3205372004",
-            "name": "Mekarmulya"
-        },
-        {
-            "code": "3205372005",
-            "name": "Sukalaksana"
-        },
-        {
-            "code": "3205372006",
-            "name": "Selaawi"
-        },
-        {
-            "code": "3205372007",
-            "name": "Mekarwangi"
-        }
-    ],
-    "320538": [
-        {
-            "code": "3205382001",
-            "name": "Limbangan Tengah"
-        },
-        {
-            "code": "3205382002",
-            "name": "Limbangan Barat"
-        },
-        {
-            "code": "3205382003",
-            "name": "Galihpakuwon"
-        },
-        {
-            "code": "3205382004",
-            "name": "Surabaya"
-        },
-        {
-            "code": "3205382005",
-            "name": "Cijolang"
-        },
-        {
-            "code": "3205382006",
-            "name": "Neglasari"
-        },
-        {
-            "code": "3205382007",
-            "name": "Simpen Kaler"
-        },
-        {
-            "code": "3205382008",
-            "name": "Pasirwaru"
-        },
-        {
-            "code": "3205382009",
-            "name": "Simpen Kidul"
-        },
-        {
-            "code": "3205382010",
-            "name": "Ciwangi"
-        },
-        {
-            "code": "3205382011",
-            "name": "Cigagade"
-        },
-        {
-            "code": "3205382012",
-            "name": "Limbangan Timur"
-        },
-        {
-            "code": "3205382013",
-            "name": "Dunguswiru"
-        },
-        {
-            "code": "3205382014",
-            "name": "Pangeureunan"
-        }
-    ],
-    "320539": [
-        {
-            "code": "3205392001",
-            "name": "Selaawi"
-        },
-        {
-            "code": "3205392002",
-            "name": "Putrajawa"
-        },
-        {
-            "code": "3205392003",
-            "name": "Cigawir"
-        },
-        {
-            "code": "3205392004",
-            "name": "Pelitaasih"
-        },
-        {
-            "code": "3205392005",
-            "name": "Cirapuhan"
-        },
-        {
-            "code": "3205392006",
-            "name": "Mekarsari"
-        },
-        {
-            "code": "3205392007",
-            "name": "Samida"
-        }
-    ],
-    "320540": [
-        {
-            "code": "3205402001",
-            "name": "Cipareuan"
-        },
-        {
-            "code": "3205402002",
-            "name": "Cibiuk Kaler"
-        },
-        {
-            "code": "3205402003",
-            "name": "Cibiuk Kidul"
-        },
-        {
-            "code": "3205402004",
-            "name": "Majasari"
-        },
-        {
-            "code": "3205402005",
-            "name": "Lingkungpasir"
-        }
-    ],
-    "320541": [
-        {
-            "code": "3205412001",
-            "name": "Citangtu"
-        },
-        {
-            "code": "3205412002",
-            "name": "Cimaragas"
-        },
-        {
-            "code": "3205412003",
-            "name": "Babakan Loa"
-        },
-        {
-            "code": "3205412004",
-            "name": "Sukahurip"
-        },
-        {
-            "code": "3205412005",
-            "name": "Sukamulya"
-        },
-        {
-            "code": "3205412006",
-            "name": "Cihuni"
-        },
-        {
-            "code": "3205412007",
-            "name": "Sukarasa"
-        },
-        {
-            "code": "3205412008",
-            "name": "Karangsari"
-        }
-    ],
-    "320542": [
-        {
-            "code": "3205422001",
-            "name": "Sadang"
-        },
-        {
-            "code": "3205422002",
-            "name": "Sukaratu"
-        },
-        {
-            "code": "3205422003",
-            "name": "Tenjonagara"
-        },
-        {
-            "code": "3205422004",
-            "name": "Tegalpanjang"
-        },
-        {
-            "code": "3205422005",
-            "name": "Cigadog"
-        },
-        {
-            "code": "3205422006",
-            "name": "Linggamukti"
-        },
-        {
-            "code": "3205422007",
-            "name": "Sukalaksana"
-        }
-    ]
+  "320501": [
+    {
+      "code": "3205011001",
+      "name": "Kota Kulon"
+    },
+    {
+      "code": "3205011002",
+      "name": "Kota Wetan"
+    },
+    {
+      "code": "3205011003",
+      "name": "Margawati"
+    },
+    {
+      "code": "3205011004",
+      "name": "Pakuwon"
+    },
+    {
+      "code": "3205011005",
+      "name": "Muara Sanding"
+    },
+    {
+      "code": "3205011006",
+      "name": "Sukamentri"
+    },
+    {
+      "code": "3205011007",
+      "name": "Ciwalen"
+    },
+    {
+      "code": "3205011008",
+      "name": "Paminggir"
+    },
+    {
+      "code": "3205011009",
+      "name": "Regol"
+    },
+    {
+      "code": "3205011010",
+      "name": "Sukanegla"
+    },
+    {
+      "code": "3205011011",
+      "name": "Cimuncang"
+    }
+  ],
+  "320502": [
+    {
+      "code": "3205021001",
+      "name": "Suci Kaler"
+    },
+    {
+      "code": "3205021002",
+      "name": "Lebakjaya"
+    },
+    {
+      "code": "3205021003",
+      "name": "Karangmulya"
+    },
+    {
+      "code": "3205021014",
+      "name": "Lengkongjaya"
+    },
+    {
+      "code": "3205022004",
+      "name": "Karangpawitan"
+    },
+    {
+      "code": "3205022005",
+      "name": "Situgede"
+    },
+    {
+      "code": "3205022006",
+      "name": "Cimurah"
+    },
+    {
+      "code": "3205022007",
+      "name": "Suci"
+    },
+    {
+      "code": "3205022008",
+      "name": "Jatisari"
+    },
+    {
+      "code": "3205022009",
+      "name": "Godog"
+    },
+    {
+      "code": "3205022010",
+      "name": "Situsari"
+    },
+    {
+      "code": "3205022011",
+      "name": "Karangsari"
+    },
+    {
+      "code": "3205022012",
+      "name": "Sindangpalay"
+    },
+    {
+      "code": "3205022013",
+      "name": "Lebakagung"
+    },
+    {
+      "code": "3205022015",
+      "name": "Sindanggalih"
+    },
+    {
+      "code": "3205022016",
+      "name": "Mekarsari"
+    },
+    {
+      "code": "3205022017",
+      "name": "Sindanglaya"
+    },
+    {
+      "code": "3205022018",
+      "name": "Tanjungsari"
+    },
+    {
+      "code": "3205022019",
+      "name": "Situsaeur"
+    },
+    {
+      "code": "3205022020",
+      "name": "Situjaya"
+    }
+  ],
+  "320503": [
+    {
+      "code": "3205032001",
+      "name": "Wanaraja"
+    },
+    {
+      "code": "3205032002",
+      "name": "Wanamekar"
+    },
+    {
+      "code": "3205032003",
+      "name": "Cinunuk"
+    },
+    {
+      "code": "3205032007",
+      "name": "Sukamenak"
+    },
+    {
+      "code": "3205032008",
+      "name": "Sindangratu"
+    },
+    {
+      "code": "3205032011",
+      "name": "Wanajaya"
+    },
+    {
+      "code": "3205032015",
+      "name": "Sindangmekar"
+    },
+    {
+      "code": "3205032019",
+      "name": "Wanasari"
+    },
+    {
+      "code": "3205032024",
+      "name": "Sindangprabu"
+    }
+  ],
+  "320504": [
+    {
+      "code": "3205041012",
+      "name": "Pananjung"
+    },
+    {
+      "code": "3205042001",
+      "name": "Sukajadi"
+    },
+    {
+      "code": "3205042002",
+      "name": "Cimanganten"
+    },
+    {
+      "code": "3205042003",
+      "name": "Jati"
+    },
+    {
+      "code": "3205042004",
+      "name": "Rancabango"
+    },
+    {
+      "code": "3205042005",
+      "name": "Sukawangi"
+    },
+    {
+      "code": "3205042006",
+      "name": "Sirnajaya"
+    },
+    {
+      "code": "3205042007",
+      "name": "Tanjung Kamuning"
+    },
+    {
+      "code": "3205042008",
+      "name": "Mekarjaya"
+    },
+    {
+      "code": "3205042009",
+      "name": "Langensari"
+    },
+    {
+      "code": "3205042010",
+      "name": "Mekarwangi"
+    },
+    {
+      "code": "3205042011",
+      "name": "Pasawahan"
+    },
+    {
+      "code": "3205042013",
+      "name": "Panjiwangi"
+    }
+  ],
+  "320505": [
+    {
+      "code": "3205051001",
+      "name": "Pataruman"
+    },
+    {
+      "code": "3205051002",
+      "name": "Sukagalih"
+    },
+    {
+      "code": "3205051006",
+      "name": "Jayawaras"
+    },
+    {
+      "code": "3205051009",
+      "name": "Sukakarya"
+    },
+    {
+      "code": "3205051012",
+      "name": "Sukajaya"
+    },
+    {
+      "code": "3205052003",
+      "name": "Jayaraga"
+    },
+    {
+      "code": "3205052004",
+      "name": "Haurpanggung"
+    },
+    {
+      "code": "3205052005",
+      "name": "Cibunar"
+    },
+    {
+      "code": "3205052007",
+      "name": "Sukabakti"
+    },
+    {
+      "code": "3205052008",
+      "name": "Tarogong"
+    },
+    {
+      "code": "3205052010",
+      "name": "Mekargalih"
+    },
+    {
+      "code": "3205052011",
+      "name": "Kersamenak"
+    }
+  ],
+  "320506": [
+    {
+      "code": "3205062001",
+      "name": "Banyuresmi"
+    },
+    {
+      "code": "3205062002",
+      "name": "Cimareme"
+    },
+    {
+      "code": "3205062003",
+      "name": "Sukaratu"
+    },
+    {
+      "code": "3205062004",
+      "name": "Sukasenang"
+    },
+    {
+      "code": "3205062005",
+      "name": "Sukaraja"
+    },
+    {
+      "code": "3205062006",
+      "name": "Cipicung"
+    },
+    {
+      "code": "3205062007",
+      "name": "Dangdeur"
+    },
+    {
+      "code": "3205062008",
+      "name": "Sukakarya"
+    },
+    {
+      "code": "3205062009",
+      "name": "Pamekarsari"
+    },
+    {
+      "code": "3205062010",
+      "name": "Binakarya"
+    },
+    {
+      "code": "3205062011",
+      "name": "Bagendit"
+    },
+    {
+      "code": "3205062012",
+      "name": "Karyamukti"
+    },
+    {
+      "code": "3205062013",
+      "name": "Karyasari"
+    },
+    {
+      "code": "3205062014",
+      "name": "Sukamukti"
+    },
+    {
+      "code": "3205062015",
+      "name": "Sukalaksana"
+    }
+  ],
+  "320507": [
+    {
+      "code": "3205072001",
+      "name": "Samarang"
+    },
+    {
+      "code": "3205072002",
+      "name": "Cintarakyat"
+    },
+    {
+      "code": "3205072003",
+      "name": "Sukarasa"
+    },
+    {
+      "code": "3205072004",
+      "name": "Parakan"
+    },
+    {
+      "code": "3205072005",
+      "name": "Sukakarya"
+    },
+    {
+      "code": "3205072006",
+      "name": "Cintakarya"
+    },
+    {
+      "code": "3205072007",
+      "name": "Tanjung Karya"
+    },
+    {
+      "code": "3205072008",
+      "name": "Cisarua"
+    },
+    {
+      "code": "3205072009",
+      "name": "Cintarasa"
+    },
+    {
+      "code": "3205072010",
+      "name": "Cintaasih"
+    },
+    {
+      "code": "3205072011",
+      "name": "Sirnasari"
+    },
+    {
+      "code": "3205072012",
+      "name": "Sukalaksana"
+    },
+    {
+      "code": "3205072013",
+      "name": "Tanjunganom"
+    }
+  ],
+  "320508": [
+    {
+      "code": "3205082001",
+      "name": "Pasirwangi"
+    },
+    {
+      "code": "3205082002",
+      "name": "Pasirkiamis"
+    },
+    {
+      "code": "3205082003",
+      "name": "Padasuka"
+    },
+    {
+      "code": "3205082004",
+      "name": "Karyamekar"
+    },
+    {
+      "code": "3205082005",
+      "name": "Padawaas"
+    },
+    {
+      "code": "3205082006",
+      "name": "Padaasih"
+    },
+    {
+      "code": "3205082007",
+      "name": "Barusari"
+    },
+    {
+      "code": "3205082008",
+      "name": "Talaga"
+    },
+    {
+      "code": "3205082009",
+      "name": "Padamukti"
+    },
+    {
+      "code": "3205082010",
+      "name": "Sinarjaya"
+    },
+    {
+      "code": "3205082011",
+      "name": "Sarimukti"
+    },
+    {
+      "code": "3205082012",
+      "name": "Padamulya"
+    }
+  ],
+  "320509": [
+    {
+      "code": "3205092001",
+      "name": "Leles"
+    },
+    {
+      "code": "3205092002",
+      "name": "Ciburial"
+    },
+    {
+      "code": "3205092003",
+      "name": "Jangkurang"
+    },
+    {
+      "code": "3205092004",
+      "name": "Sukarame"
+    },
+    {
+      "code": "3205092005",
+      "name": "Lembang"
+    },
+    {
+      "code": "3205092006",
+      "name": "Cangkuang"
+    },
+    {
+      "code": "3205092007",
+      "name": "Salamnunggal"
+    },
+    {
+      "code": "3205092008",
+      "name": "Kandangmukti"
+    },
+    {
+      "code": "3205092009",
+      "name": "Margaluyu"
+    },
+    {
+      "code": "3205092010",
+      "name": "Cipancar"
+    },
+    {
+      "code": "3205092011",
+      "name": "Haruman"
+    },
+    {
+      "code": "3205092012",
+      "name": "Dano"
+    }
+  ],
+  "320510": [
+    {
+      "code": "3205102001",
+      "name": "Kadungora"
+    },
+    {
+      "code": "3205102002",
+      "name": "Gandamekar"
+    },
+    {
+      "code": "3205102003",
+      "name": "Cikembulan"
+    },
+    {
+      "code": "3205102004",
+      "name": "Cisaat"
+    },
+    {
+      "code": "3205102005",
+      "name": "Mandalasari"
+    },
+    {
+      "code": "3205102006",
+      "name": "Tanggulun"
+    },
+    {
+      "code": "3205102007",
+      "name": "Mekarbakti"
+    },
+    {
+      "code": "3205102008",
+      "name": "Karangmulya"
+    },
+    {
+      "code": "3205102009",
+      "name": "Harumansari"
+    },
+    {
+      "code": "3205102010",
+      "name": "Talagasari"
+    },
+    {
+      "code": "3205102011",
+      "name": "Hegarsari"
+    },
+    {
+      "code": "3205102012",
+      "name": "Neglasari"
+    },
+    {
+      "code": "3205102013",
+      "name": "Karangtengah"
+    },
+    {
+      "code": "3205102014",
+      "name": "Rancasalak"
+    }
+  ],
+  "320511": [
+    {
+      "code": "3205112001",
+      "name": "Leuwigoong"
+    },
+    {
+      "code": "3205112002",
+      "name": "Karanganyar"
+    },
+    {
+      "code": "3205112003",
+      "name": "Margacinta"
+    },
+    {
+      "code": "3205112004",
+      "name": "Margahayu"
+    },
+    {
+      "code": "3205112005",
+      "name": "Dungusiku"
+    },
+    {
+      "code": "3205112006",
+      "name": "Tambak Sari"
+    },
+    {
+      "code": "3205112007",
+      "name": "Sindangsari"
+    },
+    {
+      "code": "3205112008",
+      "name": "Karangsari"
+    }
+  ],
+  "320512": [
+    {
+      "code": "3205122001",
+      "name": "Cibatu"
+    },
+    {
+      "code": "3205122002",
+      "name": "Mekarsari"
+    },
+    {
+      "code": "3205122003",
+      "name": "Cibunar"
+    },
+    {
+      "code": "3205122004",
+      "name": "Sindangsuka"
+    },
+    {
+      "code": "3205122005",
+      "name": "Kertajaya"
+    },
+    {
+      "code": "3205122006",
+      "name": "Sukalilah"
+    },
+    {
+      "code": "3205122007",
+      "name": "Padasuka"
+    },
+    {
+      "code": "3205122008",
+      "name": "Karyamukti"
+    },
+    {
+      "code": "3205122009",
+      "name": "Girimukti"
+    },
+    {
+      "code": "3205122010",
+      "name": "Keresek"
+    },
+    {
+      "code": "3205122011",
+      "name": "Wanakerta"
+    }
+  ],
+  "320513": [
+    {
+      "code": "3205132001",
+      "name": "Kersamanah"
+    },
+    {
+      "code": "3205132002",
+      "name": "Nanjungjaya"
+    },
+    {
+      "code": "3205132003",
+      "name": "Sukamerang"
+    },
+    {
+      "code": "3205132004",
+      "name": "Girijaya"
+    },
+    {
+      "code": "3205132005",
+      "name": "Sukamaju"
+    },
+    {
+      "code": "3205132006",
+      "name": "Mekarraya"
+    }
+  ],
+  "320514": [
+    {
+      "code": "3205142001",
+      "name": "Malangbong"
+    },
+    {
+      "code": "3205142002",
+      "name": "Karangmulya"
+    },
+    {
+      "code": "3205142003",
+      "name": "Cibunar"
+    },
+    {
+      "code": "3205142004",
+      "name": "Cikarag"
+    },
+    {
+      "code": "3205142005",
+      "name": "Sakawayana"
+    },
+    {
+      "code": "3205142006",
+      "name": "Mekarasih"
+    },
+    {
+      "code": "3205142007",
+      "name": "Cisitu"
+    },
+    {
+      "code": "3205142008",
+      "name": "Campaka"
+    },
+    {
+      "code": "3205142009",
+      "name": "Lewobaru"
+    },
+    {
+      "code": "3205142010",
+      "name": "Sukamanah"
+    },
+    {
+      "code": "3205142011",
+      "name": "Cilampuyang"
+    },
+    {
+      "code": "3205142012",
+      "name": "Cinagara"
+    },
+    {
+      "code": "3205142013",
+      "name": "Sukaratu"
+    },
+    {
+      "code": "3205142014",
+      "name": "Citeras"
+    },
+    {
+      "code": "3205142015",
+      "name": "Sukarasa"
+    },
+    {
+      "code": "3205142016",
+      "name": "Sekarwangi"
+    },
+    {
+      "code": "3205142017",
+      "name": "Kutanagara"
+    },
+    {
+      "code": "3205142018",
+      "name": "Sanding"
+    },
+    {
+      "code": "3205142019",
+      "name": "Cihaurkuning"
+    },
+    {
+      "code": "3205142020",
+      "name": "Baru Dua"
+    },
+    {
+      "code": "3205142021",
+      "name": "Sukajaya"
+    },
+    {
+      "code": "3205142022",
+      "name": "Bunisari"
+    },
+    {
+      "code": "3205142023",
+      "name": "Mekarmulya"
+    },
+    {
+      "code": "3205142024",
+      "name": "Girimakmur"
+    }
+  ],
+  "320515": [
+    {
+      "code": "3205152001",
+      "name": "Sukawening"
+    },
+    {
+      "code": "3205152002",
+      "name": "Sukamukti"
+    },
+    {
+      "code": "3205152003",
+      "name": "Mekarluyu"
+    },
+    {
+      "code": "3205152004",
+      "name": "Sukaluyu"
+    },
+    {
+      "code": "3205152005",
+      "name": "Sudalarang"
+    },
+    {
+      "code": "3205152006",
+      "name": "Sukasono"
+    },
+    {
+      "code": "3205152007",
+      "name": "Sukahaji"
+    },
+    {
+      "code": "3205152008",
+      "name": "Pasanggrahan"
+    },
+    {
+      "code": "3205152009",
+      "name": "Maripari"
+    },
+    {
+      "code": "3205152010",
+      "name": "Mekarwangi"
+    },
+    {
+      "code": "3205152011",
+      "name": "Mekar Hurip"
+    }
+  ],
+  "320516": [
+    {
+      "code": "3205162001",
+      "name": "Caringin"
+    },
+    {
+      "code": "3205162002",
+      "name": "Cintamanik"
+    },
+    {
+      "code": "3205162003",
+      "name": "Cinta"
+    },
+    {
+      "code": "3205162004",
+      "name": "Sindanggalih"
+    }
+  ],
+  "320517": [
+    {
+      "code": "3205172001",
+      "name": "Bayongbong"
+    },
+    {
+      "code": "3205172002",
+      "name": "Panembong"
+    },
+    {
+      "code": "3205172003",
+      "name": "Hegarmanah"
+    },
+    {
+      "code": "3205172004",
+      "name": "Salakuray"
+    },
+    {
+      "code": "3205172005",
+      "name": "Karyajaya"
+    },
+    {
+      "code": "3205172006",
+      "name": "Mulyasari"
+    },
+    {
+      "code": "3205172007",
+      "name": "Pamalayan"
+    },
+    {
+      "code": "3205172008",
+      "name": "Mekarsari"
+    },
+    {
+      "code": "3205172009",
+      "name": "Ciburuy"
+    },
+    {
+      "code": "3205172010",
+      "name": "Ciela"
+    },
+    {
+      "code": "3205172011",
+      "name": "Cikedokan"
+    },
+    {
+      "code": "3205172012",
+      "name": "Banjarsari"
+    },
+    {
+      "code": "3205172013",
+      "name": "Sukasenang"
+    },
+    {
+      "code": "3205172014",
+      "name": "Mekarjaya"
+    },
+    {
+      "code": "3205172015",
+      "name": "Sirnagalih"
+    },
+    {
+      "code": "3205172016",
+      "name": "Sukarame"
+    },
+    {
+      "code": "3205172017",
+      "name": "Cinisti"
+    },
+    {
+      "code": "3205172018",
+      "name": "Sukamanah"
+    }
+  ],
+  "320518": [
+    {
+      "code": "3205182001",
+      "name": "Cigedug"
+    },
+    {
+      "code": "3205182002",
+      "name": "Barusuda"
+    },
+    {
+      "code": "3205182003",
+      "name": "Sukahurip"
+    },
+    {
+      "code": "3205182004",
+      "name": "Sindangsari"
+    },
+    {
+      "code": "3205182005",
+      "name": "Cintanagara"
+    }
+  ],
+  "320519": [
+    {
+      "code": "3205192001",
+      "name": "Cilawu"
+    },
+    {
+      "code": "3205192002",
+      "name": "Sukamukti"
+    },
+    {
+      "code": "3205192003",
+      "name": "Karyamekar"
+    },
+    {
+      "code": "3205192004",
+      "name": "Dawungsari"
+    },
+    {
+      "code": "3205192005",
+      "name": "Pasanggrahan"
+    },
+    {
+      "code": "3205192006",
+      "name": "Sukahati"
+    },
+    {
+      "code": "3205192007",
+      "name": "Mekarsari"
+    },
+    {
+      "code": "3205192008",
+      "name": "Mekarmukti"
+    },
+    {
+      "code": "3205192009",
+      "name": "Desakolot"
+    },
+    {
+      "code": "3205192010",
+      "name": "Ngamplangsari"
+    },
+    {
+      "code": "3205192011",
+      "name": "Margalaksana"
+    },
+    {
+      "code": "3205192012",
+      "name": "Dangiang"
+    },
+    {
+      "code": "3205192013",
+      "name": "Dayeuhmanggung"
+    },
+    {
+      "code": "3205192014",
+      "name": "Sukamaju"
+    },
+    {
+      "code": "3205192015",
+      "name": "Mangkurakyat"
+    },
+    {
+      "code": "3205192016",
+      "name": "Ngamplang"
+    },
+    {
+      "code": "3205192017",
+      "name": "Sukatani"
+    },
+    {
+      "code": "3205192018",
+      "name": "Sukamurni"
+    }
+  ],
+  "320520": [
+    {
+      "code": "3205202001",
+      "name": "Cisurupan"
+    },
+    {
+      "code": "3205202002",
+      "name": "Cidatar"
+    },
+    {
+      "code": "3205202003",
+      "name": "Sukawangi"
+    },
+    {
+      "code": "3205202004",
+      "name": "Sukatani"
+    },
+    {
+      "code": "3205202005",
+      "name": "Situsari"
+    },
+    {
+      "code": "3205202006",
+      "name": "Pakuwon"
+    },
+    {
+      "code": "3205202007",
+      "name": "Balewangi"
+    },
+    {
+      "code": "3205202008",
+      "name": "Sirnajaya"
+    },
+    {
+      "code": "3205202009",
+      "name": "Cisero"
+    },
+    {
+      "code": "3205202010",
+      "name": "Karamatwangi"
+    },
+    {
+      "code": "3205202011",
+      "name": "Cipaganti"
+    },
+    {
+      "code": "3205202012",
+      "name": "Pamulihan"
+    },
+    {
+      "code": "3205202013",
+      "name": "Tambakbaya"
+    },
+    {
+      "code": "3205202014",
+      "name": "Sirnagalih"
+    },
+    {
+      "code": "3205202015",
+      "name": "Pangauban"
+    },
+    {
+      "code": "3205202016",
+      "name": "Simpangsari"
+    },
+    {
+      "code": "3205202017",
+      "name": "Cintaasih"
+    }
+  ],
+  "320521": [
+    {
+      "code": "3205212001",
+      "name": "Sukaresmi"
+    },
+    {
+      "code": "3205212002",
+      "name": "Cintadamai"
+    },
+    {
+      "code": "3205212003",
+      "name": "Mekarjaya"
+    },
+    {
+      "code": "3205212004",
+      "name": "Sukajaya"
+    },
+    {
+      "code": "3205212005",
+      "name": "Sukamulya"
+    },
+    {
+      "code": "3205212006",
+      "name": "Padamukti"
+    },
+    {
+      "code": "3205212007",
+      "name": "Sukalilah"
+    }
+  ],
+  "320522": [
+    {
+      "code": "3205222001",
+      "name": "Cikajang"
+    },
+    {
+      "code": "3205222002",
+      "name": "Simpang"
+    },
+    {
+      "code": "3205222003",
+      "name": "Mekarsari"
+    },
+    {
+      "code": "3205222004",
+      "name": "Girijaya"
+    },
+    {
+      "code": "3205222005",
+      "name": "Giriawas"
+    },
+    {
+      "code": "3205222006",
+      "name": "Cibodas"
+    },
+    {
+      "code": "3205222007",
+      "name": "Mekarjaya"
+    },
+    {
+      "code": "3205222008",
+      "name": "Cikandang"
+    },
+    {
+      "code": "3205222009",
+      "name": "Padasuka"
+    },
+    {
+      "code": "3205222010",
+      "name": "Margamulya"
+    },
+    {
+      "code": "3205222011",
+      "name": "Cipangramatan"
+    },
+    {
+      "code": "3205222012",
+      "name": "Karamatwangi"
+    }
+  ],
+  "320523": [
+    {
+      "code": "3205232001",
+      "name": "Banjarwangi"
+    },
+    {
+      "code": "3205232002",
+      "name": "Talagajaya"
+    },
+    {
+      "code": "3205232003",
+      "name": "Padahurip"
+    },
+    {
+      "code": "3205232004",
+      "name": "Kadongdong"
+    },
+    {
+      "code": "3205232005",
+      "name": "Talagasari"
+    },
+    {
+      "code": "3205232006",
+      "name": "Jayabakti"
+    },
+    {
+      "code": "3205232007",
+      "name": "Mulyajaya"
+    },
+    {
+      "code": "3205232008",
+      "name": "Dangiang"
+    },
+    {
+      "code": "3205232009",
+      "name": "Tanjungjaya"
+    },
+    {
+      "code": "3205232010",
+      "name": "Bojong"
+    },
+    {
+      "code": "3205232011",
+      "name": "Wangunjaya"
+    }
+  ],
+  "320524": [
+    {
+      "code": "3205242001",
+      "name": "Singajaya"
+    },
+    {
+      "code": "3205242002",
+      "name": "Ciudian"
+    },
+    {
+      "code": "3205242003",
+      "name": "Mekartani"
+    },
+    {
+      "code": "3205242004",
+      "name": "Sukamulya"
+    },
+    {
+      "code": "3205242005",
+      "name": "Sukawangi"
+    },
+    {
+      "code": "3205242006",
+      "name": "Pancasura"
+    },
+    {
+      "code": "3205242007",
+      "name": "Karangagung"
+    },
+    {
+      "code": "3205242008",
+      "name": "Cigintung"
+    },
+    {
+      "code": "3205242009",
+      "name": "Girimukti"
+    }
+  ],
+  "320525": [
+    {
+      "code": "3205252001",
+      "name": "Cihurip"
+    },
+    {
+      "code": "3205252002",
+      "name": "Cisangkal"
+    },
+    {
+      "code": "3205252003",
+      "name": "Mekarwangi"
+    },
+    {
+      "code": "3205252004",
+      "name": "Jayamukti"
+    }
+  ],
+  "320526": [
+    {
+      "code": "3205262001",
+      "name": "Peundeuy"
+    },
+    {
+      "code": "3205262002",
+      "name": "Toblong"
+    },
+    {
+      "code": "3205262003",
+      "name": "Saribakti"
+    },
+    {
+      "code": "3205262004",
+      "name": "Pangrumasan"
+    },
+    {
+      "code": "3205262005",
+      "name": "Sukanagara"
+    },
+    {
+      "code": "3205262006",
+      "name": "Purwajaya"
+    }
+  ],
+  "320527": [
+    {
+      "code": "3205272001",
+      "name": "Pameungpeuk"
+    },
+    {
+      "code": "3205272002",
+      "name": "Mancagahar"
+    },
+    {
+      "code": "3205272003",
+      "name": "Paas"
+    },
+    {
+      "code": "3205272004",
+      "name": "Mandalakasih"
+    },
+    {
+      "code": "3205272005",
+      "name": "Jatimulya"
+    },
+    {
+      "code": "3205272006",
+      "name": "Bojong"
+    },
+    {
+      "code": "3205272007",
+      "name": "Sirnabakti"
+    },
+    {
+      "code": "3205272008",
+      "name": "Bojong Kidul"
+    }
+  ],
+  "320528": [
+    {
+      "code": "3205282001",
+      "name": "Cisompet"
+    },
+    {
+      "code": "3205282002",
+      "name": "Cihaurkuning"
+    },
+    {
+      "code": "3205282003",
+      "name": "Margamulya"
+    },
+    {
+      "code": "3205282004",
+      "name": "Sukamukti"
+    },
+    {
+      "code": "3205282005",
+      "name": "Sukanagara"
+    },
+    {
+      "code": "3205282006",
+      "name": "Cikondang"
+    },
+    {
+      "code": "3205282007",
+      "name": "Depok"
+    },
+    {
+      "code": "3205282008",
+      "name": "Panyindangan"
+    },
+    {
+      "code": "3205282009",
+      "name": "Jatisari"
+    },
+    {
+      "code": "3205282010",
+      "name": "Neglasari"
+    },
+    {
+      "code": "3205282011",
+      "name": "Sindangsari"
+    }
+  ],
+  "320529": [
+    {
+      "code": "3205292001",
+      "name": "Karyasari"
+    },
+    {
+      "code": "3205292002",
+      "name": "Maroko"
+    },
+    {
+      "code": "3205292003",
+      "name": "Sancang"
+    },
+    {
+      "code": "3205292004",
+      "name": "Karyamukti"
+    },
+    {
+      "code": "3205292005",
+      "name": "Sagara"
+    },
+    {
+      "code": "3205292006",
+      "name": "Mekarsari"
+    },
+    {
+      "code": "3205292007",
+      "name": "Simpang"
+    },
+    {
+      "code": "3205292008",
+      "name": "Mekar Mukti"
+    },
+    {
+      "code": "3205292009",
+      "name": "Cigaronggong"
+    },
+    {
+      "code": "3205292010",
+      "name": "Mekarwangi"
+    },
+    {
+      "code": "3205292011",
+      "name": "Najaten"
+    }
+  ],
+  "320530": [
+    {
+      "code": "3205302001",
+      "name": "Cikelet"
+    },
+    {
+      "code": "3205302002",
+      "name": "Linggamanik"
+    },
+    {
+      "code": "3205302003",
+      "name": "Kertamukti"
+    },
+    {
+      "code": "3205302004",
+      "name": "Cigadog"
+    },
+    {
+      "code": "3205302005",
+      "name": "Pamalayan"
+    },
+    {
+      "code": "3205302006",
+      "name": "Karangsari"
+    },
+    {
+      "code": "3205302007",
+      "name": "Cijambe"
+    },
+    {
+      "code": "3205302008",
+      "name": "Girimukti"
+    },
+    {
+      "code": "3205302009",
+      "name": "Ciroyom"
+    },
+    {
+      "code": "3205302010",
+      "name": "Awassagara"
+    },
+    {
+      "code": "3205302011",
+      "name": "Tipar"
+    }
+  ],
+  "320531": [
+    {
+      "code": "3205312001",
+      "name": "Bungbulang"
+    },
+    {
+      "code": "3205312002",
+      "name": "Hanjuang"
+    },
+    {
+      "code": "3205312003",
+      "name": "Gunamekar"
+    },
+    {
+      "code": "3205312004",
+      "name": "Tegallega"
+    },
+    {
+      "code": "3205312005",
+      "name": "Mekarbakti"
+    },
+    {
+      "code": "3205312006",
+      "name": "Margalaksana"
+    },
+    {
+      "code": "3205312007",
+      "name": "Bojong"
+    },
+    {
+      "code": "3205312008",
+      "name": "Sinarjaya"
+    },
+    {
+      "code": "3205312009",
+      "name": "Mekarjaya"
+    },
+    {
+      "code": "3205312010",
+      "name": "Cihikeu"
+    },
+    {
+      "code": "3205312011",
+      "name": "Wangunjaya"
+    },
+    {
+      "code": "3205312012",
+      "name": "Gunung Jampang"
+    },
+    {
+      "code": "3205312013",
+      "name": "Hegarmanah"
+    }
+  ],
+  "320532": [
+    {
+      "code": "3205322001",
+      "name": "Mekarmukti"
+    },
+    {
+      "code": "3205322002",
+      "name": "Karangwangi"
+    },
+    {
+      "code": "3205322003",
+      "name": "Jagabaya"
+    },
+    {
+      "code": "3205322004",
+      "name": "Cijayana"
+    },
+    {
+      "code": "3205322005",
+      "name": "Mekarsari"
+    }
+  ],
+  "320533": [
+    {
+      "code": "3205332001",
+      "name": "Neglasari"
+    },
+    {
+      "code": "3205332002",
+      "name": "Tanjungjaya"
+    },
+    {
+      "code": "3205332003",
+      "name": "Tanjungmulya"
+    },
+    {
+      "code": "3205332004",
+      "name": "Wangunjaya"
+    },
+    {
+      "code": "3205332005",
+      "name": "Sukamulya"
+    },
+    {
+      "code": "3205332006",
+      "name": "Pasirlangu"
+    },
+    {
+      "code": "3205332007",
+      "name": "Talagawangi"
+    },
+    {
+      "code": "3205332008",
+      "name": "Jatiwangi"
+    },
+    {
+      "code": "3205332009",
+      "name": "Panyindangan"
+    },
+    {
+      "code": "3205332010",
+      "name": "Tegalgede"
+    },
+    {
+      "code": "3205332011",
+      "name": "Depok"
+    },
+    {
+      "code": "3205332012",
+      "name": "Karangsari"
+    },
+    {
+      "code": "3205332013",
+      "name": "Jayamekar"
+    }
+  ],
+  "320534": [
+    {
+      "code": "3205342001",
+      "name": "Pakenjeng"
+    },
+    {
+      "code": "3205342002",
+      "name": "Garumukti"
+    },
+    {
+      "code": "3205342003",
+      "name": "Panawa"
+    },
+    {
+      "code": "3205342004",
+      "name": "Pananjung"
+    },
+    {
+      "code": "3205342005",
+      "name": "Linggarjati"
+    }
+  ],
+  "320535": [
+    {
+      "code": "3205352001",
+      "name": "Cisewu"
+    },
+    {
+      "code": "3205352002",
+      "name": "Girimukti"
+    },
+    {
+      "code": "3205352003",
+      "name": "Pamalayan"
+    },
+    {
+      "code": "3205352004",
+      "name": "Cikarang"
+    },
+    {
+      "code": "3205352005",
+      "name": "Sukajaya"
+    },
+    {
+      "code": "3205352006",
+      "name": "Nyalindung"
+    },
+    {
+      "code": "3205352007",
+      "name": "Karangsewu"
+    },
+    {
+      "code": "3205352008",
+      "name": "Mekarsewu"
+    },
+    {
+      "code": "3205352009",
+      "name": "Panggalih"
+    }
+  ],
+  "320536": [
+    {
+      "code": "3205362001",
+      "name": "Caringin"
+    },
+    {
+      "code": "3205362002",
+      "name": "Indralayang"
+    },
+    {
+      "code": "3205362003",
+      "name": "Cimahi"
+    },
+    {
+      "code": "3205362004",
+      "name": "Sukarame"
+    },
+    {
+      "code": "3205362005",
+      "name": "Purbayani"
+    },
+    {
+      "code": "3205362006",
+      "name": "Samuderajaya"
+    }
+  ],
+  "320537": [
+    {
+      "code": "3205372001",
+      "name": "Sukamaju"
+    },
+    {
+      "code": "3205372002",
+      "name": "Sukamulya"
+    },
+    {
+      "code": "3205372003",
+      "name": "Mekarmukti"
+    },
+    {
+      "code": "3205372004",
+      "name": "Mekarmulya"
+    },
+    {
+      "code": "3205372005",
+      "name": "Sukalaksana"
+    },
+    {
+      "code": "3205372006",
+      "name": "Selaawi"
+    },
+    {
+      "code": "3205372007",
+      "name": "Mekarwangi"
+    }
+  ],
+  "320538": [
+    {
+      "code": "3205382001",
+      "name": "Limbangan Tengah"
+    },
+    {
+      "code": "3205382002",
+      "name": "Limbangan Barat"
+    },
+    {
+      "code": "3205382003",
+      "name": "Galihpakuwon"
+    },
+    {
+      "code": "3205382004",
+      "name": "Surabaya"
+    },
+    {
+      "code": "3205382005",
+      "name": "Cijolang"
+    },
+    {
+      "code": "3205382006",
+      "name": "Neglasari"
+    },
+    {
+      "code": "3205382007",
+      "name": "Simpen Kaler"
+    },
+    {
+      "code": "3205382008",
+      "name": "Pasirwaru"
+    },
+    {
+      "code": "3205382009",
+      "name": "Simpen Kidul"
+    },
+    {
+      "code": "3205382010",
+      "name": "Ciwangi"
+    },
+    {
+      "code": "3205382011",
+      "name": "Cigagade"
+    },
+    {
+      "code": "3205382012",
+      "name": "Limbangan Timur"
+    },
+    {
+      "code": "3205382013",
+      "name": "Dunguswiru"
+    },
+    {
+      "code": "3205382014",
+      "name": "Pangeureunan"
+    }
+  ],
+  "320539": [
+    {
+      "code": "3205392001",
+      "name": "Selaawi"
+    },
+    {
+      "code": "3205392002",
+      "name": "Putrajawa"
+    },
+    {
+      "code": "3205392003",
+      "name": "Cigawir"
+    },
+    {
+      "code": "3205392004",
+      "name": "Pelitaasih"
+    },
+    {
+      "code": "3205392005",
+      "name": "Cirapuhan"
+    },
+    {
+      "code": "3205392006",
+      "name": "Mekarsari"
+    },
+    {
+      "code": "3205392007",
+      "name": "Samida"
+    }
+  ],
+  "320540": [
+    {
+      "code": "3205402001",
+      "name": "Cipareuan"
+    },
+    {
+      "code": "3205402002",
+      "name": "Cibiuk Kaler"
+    },
+    {
+      "code": "3205402003",
+      "name": "Cibiuk Kidul"
+    },
+    {
+      "code": "3205402004",
+      "name": "Majasari"
+    },
+    {
+      "code": "3205402005",
+      "name": "Lingkungpasir"
+    }
+  ],
+  "320541": [
+    {
+      "code": "3205412001",
+      "name": "Citangtu"
+    },
+    {
+      "code": "3205412002",
+      "name": "Cimaragas"
+    },
+    {
+      "code": "3205412003",
+      "name": "Babakan Loa"
+    },
+    {
+      "code": "3205412004",
+      "name": "Sukahurip"
+    },
+    {
+      "code": "3205412005",
+      "name": "Sukamulya"
+    },
+    {
+      "code": "3205412006",
+      "name": "Cihuni"
+    },
+    {
+      "code": "3205412007",
+      "name": "Sukarasa"
+    },
+    {
+      "code": "3205412008",
+      "name": "Karangsari"
+    }
+  ],
+  "320542": [
+    {
+      "code": "3205422001",
+      "name": "Sadang"
+    },
+    {
+      "code": "3205422002",
+      "name": "Sukaratu"
+    },
+    {
+      "code": "3205422003",
+      "name": "Tenjonagara"
+    },
+    {
+      "code": "3205422004",
+      "name": "Tegalpanjang"
+    },
+    {
+      "code": "3205422005",
+      "name": "Cigadog"
+    },
+    {
+      "code": "3205422006",
+      "name": "Linggamukti"
+    },
+    {
+      "code": "3205422007",
+      "name": "Sukalaksana"
+    }
+  ]
 }

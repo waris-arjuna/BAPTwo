@@ -1,0 +1,730 @@
+{
+  "531901": [
+    {
+      "code": "5319011020",
+      "name": "Kota Ndora"
+    },
+    {
+      "code": "5319011021",
+      "name": "Rana Loba"
+    },
+    {
+      "code": "5319011039",
+      "name": "Satar Peot"
+    },
+    {
+      "code": "5319012001",
+      "name": "Nanga Labang"
+    },
+    {
+      "code": "5319012004",
+      "name": "Gurung Liwut"
+    },
+    {
+      "code": "5319012005",
+      "name": "Benteng Riwu"
+    },
+    {
+      "code": "5319012006",
+      "name": "Ngampang Mas"
+    },
+    {
+      "code": "5319012009",
+      "name": "Rana Masak"
+    },
+    {
+      "code": "5319012010",
+      "name": "Benteng Raja"
+    },
+    {
+      "code": "5319012014",
+      "name": "Golo Lalong"
+    },
+    {
+      "code": "5319012017",
+      "name": "Golo Kantar"
+    },
+    {
+      "code": "5319012018",
+      "name": "Poco Rii"
+    },
+    {
+      "code": "5319012025",
+      "name": "Balus Permai"
+    },
+    {
+      "code": "5319012031",
+      "name": "Waling"
+    },
+    {
+      "code": "5319012032",
+      "name": "Golo Leda"
+    },
+    {
+      "code": "5319012034",
+      "name": "Compang Tenda"
+    },
+    {
+      "code": "5319012035",
+      "name": "Bangka Kantar"
+    },
+    {
+      "code": "5319012038",
+      "name": "Compang Ndejing"
+    }
+  ],
+  "531902": [
+    {
+      "code": "5319021027",
+      "name": "Mandosawu"
+    },
+    {
+      "code": "5319021028",
+      "name": "Nggalak Leleng"
+    },
+    {
+      "code": "5319021042",
+      "name": "Bangka Leleng"
+    },
+    {
+      "code": "5319022001",
+      "name": "Poco Lia"
+    },
+    {
+      "code": "5319022002",
+      "name": "Pocong"
+    },
+    {
+      "code": "5319022003",
+      "name": "Lenang"
+    },
+    {
+      "code": "5319022004",
+      "name": "Melo"
+    },
+    {
+      "code": "5319022005",
+      "name": "Leong"
+    },
+    {
+      "code": "5319022011",
+      "name": "Bea Waek"
+    },
+    {
+      "code": "5319022013",
+      "name": "Golo Lobos"
+    },
+    {
+      "code": "5319022014",
+      "name": "Bangka Kuleng"
+    },
+    {
+      "code": "5319022015",
+      "name": "Bangka Pau"
+    },
+    {
+      "code": "5319022016",
+      "name": "Golo Nderu"
+    },
+    {
+      "code": "5319022017",
+      "name": "Satar Tesem"
+    },
+    {
+      "code": "5319022018",
+      "name": "Gurung Turi"
+    },
+    {
+      "code": "5319022019",
+      "name": "Compang Laho"
+    },
+    {
+      "code": "5319022020",
+      "name": "Watu Lanur"
+    },
+    {
+      "code": "5319022026",
+      "name": "Golo Ndari"
+    },
+    {
+      "code": "5319022029",
+      "name": "Compang Wesang"
+    },
+    {
+      "code": "5319022030",
+      "name": "Golo Wune"
+    },
+    {
+      "code": "5319022031",
+      "name": "Lento"
+    },
+    {
+      "code": "5319022032",
+      "name": "Compang Weluk"
+    },
+    {
+      "code": "5319022033",
+      "name": "Golo Rengket"
+    },
+    {
+      "code": "5319022037",
+      "name": "Deno"
+    }
+  ],
+  "531903": [
+    {
+      "code": "5319032001",
+      "name": "Tengku Leda"
+    },
+    {
+      "code": "5319032002",
+      "name": "Tengku Lawar"
+    },
+    {
+      "code": "5319032003",
+      "name": "Goreng Meni"
+    },
+    {
+      "code": "5319032004",
+      "name": "Golo Munga"
+    },
+    {
+      "code": "5319032009",
+      "name": "Golo Rentung"
+    },
+    {
+      "code": "5319032010",
+      "name": "Golo Lembur"
+    },
+    {
+      "code": "5319032011",
+      "name": "Compang Necak"
+    },
+    {
+      "code": "5319032013",
+      "name": "Compang Mekar"
+    },
+    {
+      "code": "5319032014",
+      "name": "Compang Deru"
+    },
+    {
+      "code": "5319032016",
+      "name": "Golo Nimbung"
+    },
+    {
+      "code": "5319032017",
+      "name": "Lamba Keli"
+    },
+    {
+      "code": "5319032021",
+      "name": "Goreng Meni Utara"
+    },
+    {
+      "code": "5319032023",
+      "name": "Golo Paleng"
+    }
+  ],
+  "531904": [
+    {
+      "code": "5319041009",
+      "name": "Pota"
+    },
+    {
+      "code": "5319041011",
+      "name": "Nanga Baras"
+    },
+    {
+      "code": "5319041018",
+      "name": "Ulung Baras"
+    },
+    {
+      "code": "5319041020",
+      "name": "Golo Wangkung Utara"
+    },
+    {
+      "code": "5319042001",
+      "name": "Nanga Mbaur"
+    },
+    {
+      "code": "5319042002",
+      "name": "Nanga Mbaling"
+    },
+    {
+      "code": "5319042007",
+      "name": "Lada Mese"
+    },
+    {
+      "code": "5319042012",
+      "name": "Nampar Sepang"
+    },
+    {
+      "code": "5319042013",
+      "name": "Kembang Mekar"
+    },
+    {
+      "code": "5319042014",
+      "name": "Wela Lada"
+    }
+  ],
+  "531905": [
+    {
+      "code": "5319051020",
+      "name": "Tiwu Kondo"
+    },
+    {
+      "code": "5319052001",
+      "name": "Lengko Namut"
+    },
+    {
+      "code": "5319052002",
+      "name": "Rana Kulan"
+    },
+    {
+      "code": "5319052003",
+      "name": "Golo Munde"
+    },
+    {
+      "code": "5319052004",
+      "name": "Golo Lebo"
+    },
+    {
+      "code": "5319052005",
+      "name": "Golo Lijun"
+    },
+    {
+      "code": "5319052009",
+      "name": "Sisir"
+    },
+    {
+      "code": "5319052015",
+      "name": "Haju Ngendong"
+    },
+    {
+      "code": "5319052016",
+      "name": "Legur Lai"
+    },
+    {
+      "code": "5319052017",
+      "name": "Rana Gapang"
+    },
+    {
+      "code": "5319052018",
+      "name": "Biting"
+    },
+    {
+      "code": "5319052025",
+      "name": "Compang Soba"
+    },
+    {
+      "code": "5319052026",
+      "name": "Compang Teo"
+    },
+    {
+      "code": "5319052028",
+      "name": "Kaju Wangi"
+    },
+    {
+      "code": "5319052029",
+      "name": "Wae Lokom"
+    }
+  ],
+  "531906": [
+    {
+      "code": "5319061001",
+      "name": "Watu Nggene"
+    },
+    {
+      "code": "5319061002",
+      "name": "Rongga Koe"
+    },
+    {
+      "code": "5319061017",
+      "name": "Tanah Rata"
+    },
+    {
+      "code": "5319062003",
+      "name": "Lembur"
+    },
+    {
+      "code": "5319062004",
+      "name": "Ruan"
+    },
+    {
+      "code": "5319062006",
+      "name": "Mbengan"
+    },
+    {
+      "code": "5319062007",
+      "name": "Rana Kolong"
+    },
+    {
+      "code": "5319062008",
+      "name": "Gunung"
+    },
+    {
+      "code": "5319062013",
+      "name": "Komba"
+    },
+    {
+      "code": "5319062014",
+      "name": "Bamo"
+    },
+    {
+      "code": "5319062015",
+      "name": "Pong Ruan"
+    }
+  ],
+  "531907": [
+    {
+      "code": "5319072001",
+      "name": "Bea Ngencung"
+    },
+    {
+      "code": "5319072002",
+      "name": "Satar Lahing"
+    },
+    {
+      "code": "5319072003",
+      "name": "Torok Golo"
+    },
+    {
+      "code": "5319072004",
+      "name": "Golo Ros"
+    },
+    {
+      "code": "5319072005",
+      "name": "Rondo Woing"
+    },
+    {
+      "code": "5319072006",
+      "name": "Sano Lokom"
+    },
+    {
+      "code": "5319072007",
+      "name": "Golo Loni"
+    },
+    {
+      "code": "5319072008",
+      "name": "Sita"
+    },
+    {
+      "code": "5319072009",
+      "name": "Golo Rutuk"
+    },
+    {
+      "code": "5319072010",
+      "name": "Golo Meleng"
+    },
+    {
+      "code": "5319072011",
+      "name": "Wae Nggori"
+    },
+    {
+      "code": "5319072012",
+      "name": "Compang Kantar"
+    },
+    {
+      "code": "5319072013",
+      "name": "Watu Mori"
+    },
+    {
+      "code": "5319072014",
+      "name": "Bangka Kempo"
+    },
+    {
+      "code": "5319072015",
+      "name": "Compang Teber"
+    },
+    {
+      "code": "5319072016",
+      "name": "Satar Lenda"
+    },
+    {
+      "code": "5319072017",
+      "name": "Lidi"
+    },
+    {
+      "code": "5319072018",
+      "name": "Bangka Masa"
+    },
+    {
+      "code": "5319072019",
+      "name": "Lalang"
+    },
+    {
+      "code": "5319072020",
+      "name": "Compang Loni"
+    },
+    {
+      "code": "5319072021",
+      "name": "Compang Kempo"
+    }
+  ],
+  "531908": [
+    {
+      "code": "5319082001",
+      "name": "Watu Arus"
+    },
+    {
+      "code": "5319082002",
+      "name": "Arus"
+    },
+    {
+      "code": "5319082003",
+      "name": "Golo Lero"
+    },
+    {
+      "code": "5319082004",
+      "name": "Rengkam"
+    },
+    {
+      "code": "5319082005",
+      "name": "Compang Wunis"
+    },
+    {
+      "code": "5319082006",
+      "name": "Benteng Rampas"
+    },
+    {
+      "code": "5319082007",
+      "name": "Ngkiong Dora"
+    },
+    {
+      "code": "5319082008",
+      "name": "Ulu Wae"
+    },
+    {
+      "code": "5319082009",
+      "name": "Rende Nao"
+    },
+    {
+      "code": "5319082010",
+      "name": "Wangkar Weli"
+    },
+    {
+      "code": "5319082011",
+      "name": "Tango Molas"
+    },
+    {
+      "code": "5319082012",
+      "name": "Urung Dora"
+    },
+    {
+      "code": "5319082013",
+      "name": "Compang Raci"
+    },
+    {
+      "code": "5319082014",
+      "name": "Wejang Mawe"
+    },
+    {
+      "code": "5319082015",
+      "name": "Bangka Arus"
+    },
+    {
+      "code": "5319082016",
+      "name": "Colol"
+    },
+    {
+      "code": "5319082017",
+      "name": "Benteng Wunis"
+    },
+    {
+      "code": "5319082018",
+      "name": "Wejang Mali"
+    }
+  ],
+  "531909": [
+    {
+      "code": "5319091001",
+      "name": "Lempang Paji"
+    },
+    {
+      "code": "5319092002",
+      "name": "Sangan Kalo"
+    },
+    {
+      "code": "5319092003",
+      "name": "Sipi"
+    },
+    {
+      "code": "5319092004",
+      "name": "Gising"
+    },
+    {
+      "code": "5319092005",
+      "name": "Langga Sai"
+    },
+    {
+      "code": "5319092006",
+      "name": "Teno Mese"
+    },
+    {
+      "code": "5319092007",
+      "name": "Golo Wuas"
+    },
+    {
+      "code": "5319092008",
+      "name": "Nanga Meje"
+    },
+    {
+      "code": "5319092009",
+      "name": "Paan Waru"
+    },
+    {
+      "code": "5319092010",
+      "name": "Golo Linus"
+    },
+    {
+      "code": "5319092011",
+      "name": "Benteng Pau"
+    },
+    {
+      "code": "5319092012",
+      "name": "Wae Rasan"
+    },
+    {
+      "code": "5319092013",
+      "name": "Mosi Ngaran"
+    },
+    {
+      "code": "5319092014",
+      "name": "Nanga Puun"
+    }
+  ],
+  "531910": [
+    {
+      "code": "5319102001",
+      "name": "Golo Tolang"
+    },
+    {
+      "code": "5319102002",
+      "name": "Mokel"
+    },
+    {
+      "code": "5319102003",
+      "name": "Paan Leleng"
+    },
+    {
+      "code": "5319102004",
+      "name": "Rana Mbeling"
+    },
+    {
+      "code": "5319102005",
+      "name": "Golo Meni"
+    },
+    {
+      "code": "5319102006",
+      "name": "Golo Nderu"
+    },
+    {
+      "code": "5319102007",
+      "name": "Golo Ndele"
+    },
+    {
+      "code": "5319102008",
+      "name": "Rana Mbata"
+    },
+    {
+      "code": "5319102009",
+      "name": "Mokel Morid"
+    },
+    {
+      "code": "5319102010",
+      "name": "Watu Pari"
+    },
+    {
+      "code": "5319102011",
+      "name": "Gunung Baru"
+    }
+  ],
+  "531911": [
+    {
+      "code": "5319112001",
+      "name": "Satar Padut"
+    },
+    {
+      "code": "5319112002",
+      "name": "Satar Punda"
+    },
+    {
+      "code": "5319112003",
+      "name": "Nampar Tabang"
+    },
+    {
+      "code": "5319112004",
+      "name": "Lencur"
+    },
+    {
+      "code": "5319112005",
+      "name": "Liang Deruk"
+    },
+    {
+      "code": "5319112006",
+      "name": "Haju Wangi"
+    },
+    {
+      "code": "5319112007",
+      "name": "Satar Kampas"
+    },
+    {
+      "code": "5319112008",
+      "name": "Golo Mangung"
+    },
+    {
+      "code": "5319112009",
+      "name": "Golo Wontong"
+    },
+    {
+      "code": "5319112010",
+      "name": "Golo Munga Barat"
+    },
+    {
+      "code": "5319112011",
+      "name": "Satar Punda Barat"
+    }
+  ],
+  "531912": [
+    {
+      "code": "5319121001",
+      "name": "Golo Wangkung"
+    },
+    {
+      "code": "5319121007",
+      "name": "Golo Wangkung Barat"
+    },
+    {
+      "code": "5319122002",
+      "name": "Buti"
+    },
+    {
+      "code": "5319122003",
+      "name": "Golo Ngawan"
+    },
+    {
+      "code": "5319122004",
+      "name": "Satar Nawang"
+    },
+    {
+      "code": "5319122005",
+      "name": "Rana Mese"
+    },
+    {
+      "code": "5319122006",
+      "name": "Compang Congkar"
+    },
+    {
+      "code": "5319122008",
+      "name": "Compang Lawi"
+    },
+    {
+      "code": "5319122009",
+      "name": "Golo Pari"
+    },
+    {
+      "code": "5319122010",
+      "name": "Wea"
+    }
+  ]
+}

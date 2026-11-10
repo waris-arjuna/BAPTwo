@@ -1,30 +1,326 @@
 {
-    "130203": [
-        {
-            "code": "1302032001",
-            "name": "Lolo"
-        },
-        {
-            "code": "1302032002",
-            "name": "Surian"
-        }
-    ],
-    "130204": [
-        {
-            "code": "1302042001",
-            "name": "Alahan Panjang"
-        },
-        {
-            "code": "1302042002",
-            "name": "Sungai Nanam"
-        },
-        {
-            "code": "1302042003",
-            "name": "Salimpat"
-        },
-        {
-            "code": "1302042004",
-            "name": "Aie Dingin"
-        }
-    ]
+  "130203": [
+    {
+      "code": "1302032001",
+      "name": "Lolo"
+    },
+    {
+      "code": "1302032002",
+      "name": "Surian"
+    }
+  ],
+  "130204": [
+    {
+      "code": "1302042001",
+      "name": "Alahan Panjang"
+    },
+    {
+      "code": "1302042002",
+      "name": "Sungai Nanam"
+    },
+    {
+      "code": "1302042003",
+      "name": "Salimpat"
+    },
+    {
+      "code": "1302042004",
+      "name": "Aie Dingin"
+    }
+  ],
+  "130205": [
+    {
+      "code": "1302052001",
+      "name": "Supayang"
+    },
+    {
+      "code": "1302052002",
+      "name": "Sirukam"
+    },
+    {
+      "code": "1302052003",
+      "name": "Aie Luo"
+    }
+  ],
+  "130206": [
+    {
+      "code": "1302062001",
+      "name": "Batu Banyak"
+    },
+    {
+      "code": "1302062002",
+      "name": "Batu Bajanjang"
+    },
+    {
+      "code": "1302062003",
+      "name": "Koto Laweh"
+    },
+    {
+      "code": "1302062004",
+      "name": "Limau Lunggo"
+    },
+    {
+      "code": "1302062005",
+      "name": "Koto Gadang Koto Anau"
+    },
+    {
+      "code": "1302062006",
+      "name": "Selayo Tanang B. Sileh"
+    }
+  ],
+  "130207": [
+    {
+      "code": "1302072001",
+      "name": "Cupak"
+    },
+    {
+      "code": "1302072002",
+      "name": "Talang"
+    },
+    {
+      "code": "1302072003",
+      "name": "Koto Gadang Guguak"
+    },
+    {
+      "code": "1302072004",
+      "name": "Jawi Jawi"
+    },
+    {
+      "code": "1302072005",
+      "name": "Sungai Janiah"
+    },
+    {
+      "code": "1302072006",
+      "name": "Batang Barus"
+    },
+    {
+      "code": "1302072007",
+      "name": "Aie Batumbuak"
+    },
+    {
+      "code": "1302072008",
+      "name": "Koto Gaek Guguk"
+    }
+  ],
+  "130208": [
+    {
+      "code": "1302082001",
+      "name": "Muaro Paneh"
+    },
+    {
+      "code": "1302082002",
+      "name": "Kinari"
+    },
+    {
+      "code": "1302082003",
+      "name": "Bukit Tandang"
+    },
+    {
+      "code": "1302082004",
+      "name": "Parambahan"
+    },
+    {
+      "code": "1302082005",
+      "name": "Dilam"
+    }
+  ],
+  "130209": [
+    {
+      "code": "1302092001",
+      "name": "Taruang-Taruang"
+    },
+    {
+      "code": "1302092002",
+      "name": "Siaro-Aro"
+    },
+    {
+      "code": "1302092003",
+      "name": "Pianggu"
+    },
+    {
+      "code": "1302092004",
+      "name": "Sungai Durian"
+    },
+    {
+      "code": "1302092005",
+      "name": "Bukik Bais"
+    },
+    {
+      "code": "1302092006",
+      "name": "Sungai Jambur"
+    },
+    {
+      "code": "1302092007",
+      "name": "Guguak Sarai"
+    },
+    {
+      "code": "1302092008",
+      "name": "Koto Laweh"
+    },
+    {
+      "code": "1302092009",
+      "name": "Indudur"
+    }
+  ],
+  "130210": [
+    {
+      "code": "1302102001",
+      "name": "Koto Baru"
+    },
+    {
+      "code": "1302102002",
+      "name": "Selayo"
+    },
+    {
+      "code": "1302102003",
+      "name": "Panyakalan"
+    },
+    {
+      "code": "1302102004",
+      "name": "Gaung"
+    },
+    {
+      "code": "1302102005",
+      "name": "Gantuang Ciri"
+    },
+    {
+      "code": "1302102006",
+      "name": "Saok Laweh"
+    },
+    {
+      "code": "1302102007",
+      "name": "Koto Hilalang"
+    },
+    {
+      "code": "1302102008",
+      "name": "Tanjung Bingkung"
+    }
+  ],
+  "130211": [
+    {
+      "code": "1302112001",
+      "name": "Sumani"
+    },
+    {
+      "code": "1302112002",
+      "name": "Tikalak"
+    },
+    {
+      "code": "1302112003",
+      "name": "Koto Sani"
+    },
+    {
+      "code": "1302112004",
+      "name": "Singkarak"
+    },
+    {
+      "code": "1302112005",
+      "name": "Aripan"
+    },
+    {
+      "code": "1302112006",
+      "name": "Kacang"
+    },
+    {
+      "code": "1302112007",
+      "name": "Tanjung Alai"
+    },
+    {
+      "code": "1302112008",
+      "name": "Saniangbaka"
+    }
+  ],
+  "130212": [
+    {
+      "code": "1302122001",
+      "name": "Sulit Air"
+    },
+    {
+      "code": "1302122002",
+      "name": "Tanjung Balik"
+    },
+    {
+      "code": "1302122003",
+      "name": "Paninjauan"
+    },
+    {
+      "code": "1302122004",
+      "name": "Kuncir"
+    },
+    {
+      "code": "1302122005",
+      "name": "Katialo"
+    },
+    {
+      "code": "1302122006",
+      "name": "Pasilihan"
+    },
+    {
+      "code": "1302122007",
+      "name": "Bukit Kanduang"
+    },
+    {
+      "code": "1302122008",
+      "name": "Sibarambang"
+    },
+    {
+      "code": "1302122009",
+      "name": "Labuh Panjang"
+    }
+  ],
+  "130213": [
+    {
+      "code": "1302132001",
+      "name": "Paninggahan"
+    },
+    {
+      "code": "1302132002",
+      "name": "Muaro Pingai"
+    }
+  ],
+  "130217": [
+    {
+      "code": "1302172001",
+      "name": "Talang Babungo"
+    },
+    {
+      "code": "1302172002",
+      "name": "Sariak Alahan Tigo"
+    },
+    {
+      "code": "1302172003",
+      "name": "Sungai Abu"
+    }
+  ],
+  "130218": [
+    {
+      "code": "1302182001",
+      "name": "Rangkiang Luluih"
+    },
+    {
+      "code": "1302182002",
+      "name": "Batu Bajanjang"
+    },
+    {
+      "code": "1302182003",
+      "name": "Garabak Data"
+    },
+    {
+      "code": "1302182004",
+      "name": "Tanjung Balik Sumiso"
+    },
+    {
+      "code": "1302182005",
+      "name": "Simanau"
+    }
+  ],
+  "130219": [
+    {
+      "code": "1302192001",
+      "name": "Simpang Tj. Nan IV"
+    },
+    {
+      "code": "1302192002",
+      "name": "Kampung Batu Dalam"
+    }
+  ]
 }

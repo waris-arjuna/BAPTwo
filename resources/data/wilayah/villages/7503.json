@@ -1,216 +1,698 @@
 {
-    "750301": [
-        {
-            "code": "7503012004",
-            "name": "Talumopatu"
-        },
-        {
-            "code": "7503012005",
-            "name": "Talulobutu"
-        },
-        {
-            "code": "7503012006",
-            "name": "Dunggala"
-        },
-        {
-            "code": "7503012007",
-            "name": "Langge"
-        },
-        {
-            "code": "7503012027",
-            "name": "Talulobutu Selatan"
-        },
-        {
-            "code": "7503012028",
-            "name": "Keramat"
-        },
-        {
-            "code": "7503012029",
-            "name": "Meranti"
-        }
-    ],
-    "750302": [
-        {
-            "code": "7503021008",
-            "name": "Padengo"
-        },
-        {
-            "code": "7503021009",
-            "name": "Olohuta"
-        },
-        {
-            "code": "7503021010",
-            "name": "Tumbihe"
-        },
-        {
-            "code": "7503021011",
-            "name": "Pauwo"
-        },
-        {
-            "code": "7503021028",
-            "name": "Olohuta Utara"
-        },
-        {
-            "code": "7503022006",
-            "name": "Dutohe"
-        },
-        {
-            "code": "7503022007",
-            "name": "Tanggilingo"
-        },
-        {
-            "code": "7503022012",
-            "name": "Toto Selatan"
-        },
-        {
-            "code": "7503022013",
-            "name": "Poowo"
-        },
-        {
-            "code": "7503022024",
-            "name": "Talango"
-        },
-        {
-            "code": "7503022026",
-            "name": "Poowo Barat"
-        },
-        {
-            "code": "7503022029",
-            "name": "Dutohe Barat"
-        }
-    ],
-    "750303": [
-        {
-            "code": "7503032011",
-            "name": "Tingkohubu"
-        },
-        {
-            "code": "7503032012",
-            "name": "Boludawa"
-        },
-        {
-            "code": "7503032013",
-            "name": "Bube"
-        },
-        {
-            "code": "7503032014",
-            "name": "Huluduotamo"
-        },
-        {
-            "code": "7503032020",
-            "name": "Ulanta"
-        },
-        {
-            "code": "7503032021",
-            "name": "Tinelo"
-        },
-        {
-            "code": "7503032022",
-            "name": "Bubeya"
-        },
-        {
-            "code": "7503032023",
-            "name": "Bube Baru"
-        },
-        {
-            "code": "7503032027",
-            "name": "Tingkohubu Timur"
-        },
-        {
-            "code": "7503032028",
-            "name": "Helumo"
-        }
-    ],
-    "750304": [
-        {
-            "code": "7503042003",
-            "name": "Tamboo"
-        },
-        {
-            "code": "7503042004",
-            "name": "Bilungala"
-        },
-        {
-            "code": "7503042005",
-            "name": "Uabanga"
-        },
-        {
-            "code": "7503042008",
-            "name": "Tolotio"
-        },
-        {
-            "code": "7503042012",
-            "name": "Tongo"
-        },
-        {
-            "code": "7503042025",
-            "name": "Bilungala Utara"
-        },
-        {
-            "code": "7503042026",
-            "name": "Tihu"
-        },
-        {
-            "code": "7503042027",
-            "name": "Tunas Jaya"
-        },
-        {
-            "code": "7503042028",
-            "name": "Lembah Hijau"
-        },
-        {
-            "code": "7503042029",
-            "name": "Batu Hijau"
-        },
-        {
-            "code": "7503042031",
-            "name": "Ombulo Hijau"
-        },
-        {
-            "code": "7503042032",
-            "name": "Kemiri"
-        },
-        {
-            "code": "7503042033",
-            "name": "Pelita Hijau"
-        }
-    ],
-    "750305": [
-        {
-            "code": "7503052001",
-            "name": "Boidu"
-        },
-        {
-            "code": "7503052002",
-            "name": "Bandungan"
-        },
-        {
-            "code": "7503052003",
-            "name": "Tupa"
-        },
-        {
-            "code": "7503052004",
-            "name": "Longalo"
-        },
-        {
-            "code": "7503052009",
-            "name": "Tuloa"
-        },
-        {
-            "code": "7503052010",
-            "name": "Kopi"
-        },
-        {
-            "code": "7503052011",
-            "name": "Lomaya"
-        },
-        {
-            "code": "7503052012",
-            "name": "Suka Damai"
-        },
-        {
-            "code": "7503052015",
-            "name": "Bunuo"
-        }
-    ]
+  "750301": [
+    {
+      "code": "7503012004",
+      "name": "Talumopatu"
+    },
+    {
+      "code": "7503012005",
+      "name": "Talulobutu"
+    },
+    {
+      "code": "7503012006",
+      "name": "Dunggala"
+    },
+    {
+      "code": "7503012007",
+      "name": "Langge"
+    },
+    {
+      "code": "7503012027",
+      "name": "Talulobutu Selatan"
+    },
+    {
+      "code": "7503012028",
+      "name": "Keramat"
+    },
+    {
+      "code": "7503012029",
+      "name": "Meranti"
+    }
+  ],
+  "750302": [
+    {
+      "code": "7503021008",
+      "name": "Padengo"
+    },
+    {
+      "code": "7503021009",
+      "name": "Olohuta"
+    },
+    {
+      "code": "7503021010",
+      "name": "Tumbihe"
+    },
+    {
+      "code": "7503021011",
+      "name": "Pauwo"
+    },
+    {
+      "code": "7503021028",
+      "name": "Olohuta Utara"
+    },
+    {
+      "code": "7503022006",
+      "name": "Dutohe"
+    },
+    {
+      "code": "7503022007",
+      "name": "Tanggilingo"
+    },
+    {
+      "code": "7503022012",
+      "name": "Toto Selatan"
+    },
+    {
+      "code": "7503022013",
+      "name": "Poowo"
+    },
+    {
+      "code": "7503022024",
+      "name": "Talango"
+    },
+    {
+      "code": "7503022026",
+      "name": "Poowo Barat"
+    },
+    {
+      "code": "7503022029",
+      "name": "Dutohe Barat"
+    }
+  ],
+  "750303": [
+    {
+      "code": "7503032011",
+      "name": "Tingkohubu"
+    },
+    {
+      "code": "7503032012",
+      "name": "Boludawa"
+    },
+    {
+      "code": "7503032013",
+      "name": "Bube"
+    },
+    {
+      "code": "7503032014",
+      "name": "Huluduotamo"
+    },
+    {
+      "code": "7503032020",
+      "name": "Ulanta"
+    },
+    {
+      "code": "7503032021",
+      "name": "Tinelo"
+    },
+    {
+      "code": "7503032022",
+      "name": "Bubeya"
+    },
+    {
+      "code": "7503032023",
+      "name": "Bube Baru"
+    },
+    {
+      "code": "7503032027",
+      "name": "Tingkohubu Timur"
+    },
+    {
+      "code": "7503032028",
+      "name": "Helumo"
+    }
+  ],
+  "750304": [
+    {
+      "code": "7503042003",
+      "name": "Tamboo"
+    },
+    {
+      "code": "7503042004",
+      "name": "Bilungala"
+    },
+    {
+      "code": "7503042005",
+      "name": "Uabanga"
+    },
+    {
+      "code": "7503042008",
+      "name": "Tolotio"
+    },
+    {
+      "code": "7503042012",
+      "name": "Tongo"
+    },
+    {
+      "code": "7503042025",
+      "name": "Bilungala Utara"
+    },
+    {
+      "code": "7503042026",
+      "name": "Tihu"
+    },
+    {
+      "code": "7503042027",
+      "name": "Tunas Jaya"
+    },
+    {
+      "code": "7503042028",
+      "name": "Lembah Hijau"
+    },
+    {
+      "code": "7503042029",
+      "name": "Batu Hijau"
+    },
+    {
+      "code": "7503042031",
+      "name": "Ombulo Hijau"
+    },
+    {
+      "code": "7503042032",
+      "name": "Kemiri"
+    },
+    {
+      "code": "7503042033",
+      "name": "Pelita Hijau"
+    }
+  ],
+  "750305": [
+    {
+      "code": "7503052001",
+      "name": "Boidu"
+    },
+    {
+      "code": "7503052002",
+      "name": "Bandungan"
+    },
+    {
+      "code": "7503052003",
+      "name": "Tupa"
+    },
+    {
+      "code": "7503052004",
+      "name": "Longalo"
+    },
+    {
+      "code": "7503052009",
+      "name": "Tuloa"
+    },
+    {
+      "code": "7503052010",
+      "name": "Kopi"
+    },
+    {
+      "code": "7503052011",
+      "name": "Lomaya"
+    },
+    {
+      "code": "7503052012",
+      "name": "Suka Damai"
+    },
+    {
+      "code": "7503052015",
+      "name": "Bunuo"
+    }
+  ],
+  "750306": [
+    {
+      "code": "7503062001",
+      "name": "Bongoime"
+    },
+    {
+      "code": "7503062002",
+      "name": "Bongopini"
+    },
+    {
+      "code": "7503062003",
+      "name": "Toto Utara"
+    },
+    {
+      "code": "7503062004",
+      "name": "Moutong"
+    },
+    {
+      "code": "7503062005",
+      "name": "Tunggulo"
+    },
+    {
+      "code": "7503062006",
+      "name": "Lonuo"
+    },
+    {
+      "code": "7503062007",
+      "name": "Tamboo"
+    },
+    {
+      "code": "7503062008",
+      "name": "Iloheluma"
+    },
+    {
+      "code": "7503062009",
+      "name": "Motilango"
+    },
+    {
+      "code": "7503062010",
+      "name": "Butu"
+    },
+    {
+      "code": "7503062011",
+      "name": "Permata"
+    },
+    {
+      "code": "7503062012",
+      "name": "Tunggulo Selatan"
+    },
+    {
+      "code": "7503062013",
+      "name": "Bongohulawa"
+    },
+    {
+      "code": "7503062014",
+      "name": "Berlian"
+    }
+  ],
+  "750307": [
+    {
+      "code": "7503072001",
+      "name": "Timbuolo"
+    },
+    {
+      "code": "7503072002",
+      "name": "Panggulo"
+    },
+    {
+      "code": "7503072003",
+      "name": "Luwohu"
+    },
+    {
+      "code": "7503072004",
+      "name": "Buata"
+    },
+    {
+      "code": "7503072005",
+      "name": "Timbuolo Timur"
+    },
+    {
+      "code": "7503072006",
+      "name": "Tanah Putih"
+    },
+    {
+      "code": "7503072007",
+      "name": "Panggulo Barat"
+    },
+    {
+      "code": "7503072008",
+      "name": "Timbuolo Tengah"
+    },
+    {
+      "code": "7503072009",
+      "name": "Sukma"
+    }
+  ],
+  "750308": [
+    {
+      "code": "7503082001",
+      "name": "Huangobotu"
+    },
+    {
+      "code": "7503082002",
+      "name": "Molutabu"
+    },
+    {
+      "code": "7503082003",
+      "name": "Oluhuta"
+    },
+    {
+      "code": "7503082004",
+      "name": "Olele"
+    },
+    {
+      "code": "7503082005",
+      "name": "Botutonuo"
+    },
+    {
+      "code": "7503082006",
+      "name": "Modelomo"
+    },
+    {
+      "code": "7503082007",
+      "name": "Biluango"
+    },
+    {
+      "code": "7503082008",
+      "name": "Botubarani"
+    },
+    {
+      "code": "7503082009",
+      "name": "Bintalahe"
+    }
+  ],
+  "750309": [
+    {
+      "code": "7503092001",
+      "name": "Taludaa"
+    },
+    {
+      "code": "7503092002",
+      "name": "Sogitia"
+    },
+    {
+      "code": "7503092003",
+      "name": "Moodulio"
+    },
+    {
+      "code": "7503092004",
+      "name": "Bilonlantunga"
+    },
+    {
+      "code": "7503092005",
+      "name": "Inogaluma"
+    },
+    {
+      "code": "7503092006",
+      "name": "Monano"
+    },
+    {
+      "code": "7503092007",
+      "name": "Tumbuh Mekar"
+    },
+    {
+      "code": "7503092008",
+      "name": "Molamahu"
+    },
+    {
+      "code": "7503092009",
+      "name": "Masiaga"
+    },
+    {
+      "code": "7503092010",
+      "name": "Ilohuuwa"
+    },
+    {
+      "code": "7503092011",
+      "name": "Muara Bone"
+    },
+    {
+      "code": "7503092012",
+      "name": "Cendana Putih"
+    },
+    {
+      "code": "7503092013",
+      "name": "Waluhu"
+    },
+    {
+      "code": "7503092014",
+      "name": "Permata"
+    }
+  ],
+  "750310": [
+    {
+      "code": "7503102001",
+      "name": "Inomata"
+    },
+    {
+      "code": "7503102003",
+      "name": "Tumbulilato"
+    },
+    {
+      "code": "7503102004",
+      "name": "Mootayu"
+    },
+    {
+      "code": "7503102006",
+      "name": "Mootinelo"
+    },
+    {
+      "code": "7503102009",
+      "name": "Pelita Jaya"
+    },
+    {
+      "code": "7503102010",
+      "name": "Moopiya"
+    },
+    {
+      "code": "7503102011",
+      "name": "Alo"
+    },
+    {
+      "code": "7503102012",
+      "name": "Laut Biru"
+    },
+    {
+      "code": "7503102014",
+      "name": "Bunga"
+    },
+    {
+      "code": "7503102015",
+      "name": "Mootawa"
+    }
+  ],
+  "750311": [
+    {
+      "code": "7503112001",
+      "name": "Tulabolo"
+    },
+    {
+      "code": "7503112003",
+      "name": "Dumbaya Bulan"
+    },
+    {
+      "code": "7503112004",
+      "name": "Tulabolo Timur"
+    },
+    {
+      "code": "7503112005",
+      "name": "Tilangobula"
+    },
+    {
+      "code": "7503112007",
+      "name": "Poduwoma"
+    },
+    {
+      "code": "7503112008",
+      "name": "Panggulo"
+    },
+    {
+      "code": "7503112009",
+      "name": "Tulabolo Barat"
+    },
+    {
+      "code": "7503112010",
+      "name": "Pangi"
+    },
+    {
+      "code": "7503112011",
+      "name": "Tinemba"
+    }
+  ],
+  "750312": [
+    {
+      "code": "7503122001",
+      "name": "Bulontala"
+    },
+    {
+      "code": "7503122002",
+      "name": "Libungo"
+    },
+    {
+      "code": "7503122003",
+      "name": "Molintogupo"
+    },
+    {
+      "code": "7503122004",
+      "name": "Bonedaa"
+    },
+    {
+      "code": "7503122005",
+      "name": "Bondawuna"
+    },
+    {
+      "code": "7503122006",
+      "name": "Bulontala Timur"
+    },
+    {
+      "code": "7503122007",
+      "name": "Pancuran"
+    },
+    {
+      "code": "7503122008",
+      "name": "Bondaraya"
+    }
+  ],
+  "750313": [
+    {
+      "code": "7503132001",
+      "name": "Lompotoo"
+    },
+    {
+      "code": "7503132002",
+      "name": "Lombongo"
+    },
+    {
+      "code": "7503132003",
+      "name": "Duano"
+    },
+    {
+      "code": "7503132004",
+      "name": "Tolomato"
+    },
+    {
+      "code": "7503132005",
+      "name": "Alale"
+    },
+    {
+      "code": "7503132006",
+      "name": "Tapadaa"
+    }
+  ],
+  "750314": [
+    {
+      "code": "7503142001",
+      "name": "Mongiilo"
+    },
+    {
+      "code": "7503142002",
+      "name": "Owata"
+    },
+    {
+      "code": "7503142003",
+      "name": "Mongiilo Utara"
+    },
+    {
+      "code": "7503142004",
+      "name": "Pilolaheya"
+    },
+    {
+      "code": "7503142005",
+      "name": "Ilomata"
+    },
+    {
+      "code": "7503142006",
+      "name": "Suka Makmur"
+    }
+  ],
+  "750315": [
+    {
+      "code": "7503152001",
+      "name": "Ayula Selatan"
+    },
+    {
+      "code": "7503152002",
+      "name": "Huntu Utara"
+    },
+    {
+      "code": "7503152003",
+      "name": "Ayula Utara"
+    },
+    {
+      "code": "7503152004",
+      "name": "Huntu Selatan"
+    },
+    {
+      "code": "7503152006",
+      "name": "Ayula Tilango"
+    },
+    {
+      "code": "7503152007",
+      "name": "Ayula Timur"
+    },
+    {
+      "code": "7503152008",
+      "name": "Lamahu"
+    },
+    {
+      "code": "7503152009",
+      "name": "Tinelo Ayula"
+    },
+    {
+      "code": "7503152010",
+      "name": "Sejahtera"
+    },
+    {
+      "code": "7503152011",
+      "name": "Huntu Barat"
+    }
+  ],
+  "750316": [
+    {
+      "code": "7503162001",
+      "name": "Bulotalangi"
+    },
+    {
+      "code": "7503162002",
+      "name": "Toluwaya"
+    },
+    {
+      "code": "7503162003",
+      "name": "Popodu"
+    },
+    {
+      "code": "7503162004",
+      "name": "Bulotalangi Timur"
+    },
+    {
+      "code": "7503162005",
+      "name": "Bulotalangi Barat"
+    }
+  ],
+  "750317": [
+    {
+      "code": "7503172001",
+      "name": "Mamungaa"
+    },
+    {
+      "code": "7503172002",
+      "name": "Kaidundu Barat"
+    },
+    {
+      "code": "7503172003",
+      "name": "Mopuya"
+    },
+    {
+      "code": "7503172004",
+      "name": "Kaidundu"
+    },
+    {
+      "code": "7503172005",
+      "name": "Bukit Hijau"
+    },
+    {
+      "code": "7503172006",
+      "name": "Mamungaa Timur"
+    },
+    {
+      "code": "7503172007",
+      "name": "Dunggilata"
+    },
+    {
+      "code": "7503172008",
+      "name": "Pinomotiga"
+    },
+    {
+      "code": "7503172009",
+      "name": "Patoa"
+    }
+  ],
+  "750318": [
+    {
+      "code": "7503182001",
+      "name": "Pinogu"
+    },
+    {
+      "code": "7503182002",
+      "name": "Bangio"
+    },
+    {
+      "code": "7503182003",
+      "name": "Dataran Hijau"
+    },
+    {
+      "code": "7503182004",
+      "name": "Pinogu Permai"
+    },
+    {
+      "code": "7503182005",
+      "name": "Tilonggibila"
+    }
+  ]
 }

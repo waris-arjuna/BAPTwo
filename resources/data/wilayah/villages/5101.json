@@ -1,216 +1,216 @@
 {
-    "510101": [
-        {
-            "code": "5101011006",
-            "name": "Baler Bale Agung"
-        },
-        {
-            "code": "5101011008",
-            "name": "Banjar Tengah"
-        },
-        {
-            "code": "5101011013",
-            "name": "Lelateng"
-        },
-        {
-            "code": "5101011014",
-            "name": "Loloan Barat"
-        },
-        {
-            "code": "5101012001",
-            "name": "Cupel"
-        },
-        {
-            "code": "5101012002",
-            "name": "Baluk"
-        },
-        {
-            "code": "5101012003",
-            "name": "Banyubiru"
-        },
-        {
-            "code": "5101012004",
-            "name": "Kaliakah"
-        },
-        {
-            "code": "5101012005",
-            "name": "Berangbang"
-        },
-        {
-            "code": "5101012009",
-            "name": "Tegal Badeng Timur"
-        },
-        {
-            "code": "5101012010",
-            "name": "Tegal Badeng Barat"
-        },
-        {
-            "code": "5101012011",
-            "name": "Pengambengan"
-        }
-    ],
-    "510102": [
-        {
-            "code": "5101021006",
-            "name": "Tegalcangkring"
-        },
-        {
-            "code": "5101022001",
-            "name": "Mendoyo Dauh Tukad"
-        },
-        {
-            "code": "5101022002",
-            "name": "Pohsanten"
-        },
-        {
-            "code": "5101022003",
-            "name": "Mendoyo Dangin Tukad"
-        },
-        {
-            "code": "5101022004",
-            "name": "Pergung"
-        },
-        {
-            "code": "5101022005",
-            "name": "Delodberawah"
-        },
-        {
-            "code": "5101022007",
-            "name": "Penyaringan"
-        },
-        {
-            "code": "5101022008",
-            "name": "Yehembang"
-        },
-        {
-            "code": "5101022009",
-            "name": "Yeh Sumbul"
-        },
-        {
-            "code": "5101022010",
-            "name": "Yehembang Kauh"
-        },
-        {
-            "code": "5101022011",
-            "name": "Yehembang Kangin"
-        }
-    ],
-    "510103": [
-        {
-            "code": "5101032001",
-            "name": "Medewi"
-        },
-        {
-            "code": "5101032002",
-            "name": "Pulukan"
-        },
-        {
-            "code": "5101032003",
-            "name": "Asahduren"
-        },
-        {
-            "code": "5101032004",
-            "name": "Pekutatan"
-        },
-        {
-            "code": "5101032005",
-            "name": "Pangyangan"
-        },
-        {
-            "code": "5101032006",
-            "name": "Gumbrih"
-        },
-        {
-            "code": "5101032007",
-            "name": "Manggissari"
-        },
-        {
-            "code": "5101032008",
-            "name": "Pengeragoan"
-        }
-    ],
-    "510104": [
-        {
-            "code": "5101041001",
-            "name": "Gilimanuk"
-        },
-        {
-            "code": "5101042002",
-            "name": "Melaya"
-        },
-        {
-            "code": "5101042003",
-            "name": "Belimbingsari"
-        },
-        {
-            "code": "5101042004",
-            "name": "Ekasari"
-        },
-        {
-            "code": "5101042005",
-            "name": "Nusasari"
-        },
-        {
-            "code": "5101042006",
-            "name": "Warnasari"
-        },
-        {
-            "code": "5101042007",
-            "name": "Candikusuma"
-        },
-        {
-            "code": "5101042008",
-            "name": "Tuwed"
-        },
-        {
-            "code": "5101042009",
-            "name": "Tukadaya"
-        },
-        {
-            "code": "5101042010",
-            "name": "Manistutu"
-        }
-    ],
-    "510105": [
-        {
-            "code": "5101051001",
-            "name": "Pendem"
-        },
-        {
-            "code": "5101051003",
-            "name": "Loloan Timur"
-        },
-        {
-            "code": "5101051005",
-            "name": "Dauhwaru"
-        },
-        {
-            "code": "5101051009",
-            "name": "Sangkaragung"
-        },
-        {
-            "code": "5101052002",
-            "name": "Perancak"
-        },
-        {
-            "code": "5101052004",
-            "name": "Batu Agung"
-        },
-        {
-            "code": "5101052006",
-            "name": "Budeng"
-        },
-        {
-            "code": "5101052007",
-            "name": "Air Kuning"
-        },
-        {
-            "code": "5101052008",
-            "name": "Yehkuning"
-        },
-        {
-            "code": "5101052010",
-            "name": "Dangintukadaya"
-        }
-    ]
+  "510101": [
+    {
+      "code": "5101011006",
+      "name": "Baler Bale Agung"
+    },
+    {
+      "code": "5101011008",
+      "name": "Banjar Tengah"
+    },
+    {
+      "code": "5101011013",
+      "name": "Lelateng"
+    },
+    {
+      "code": "5101011014",
+      "name": "Loloan Barat"
+    },
+    {
+      "code": "5101012001",
+      "name": "Cupel"
+    },
+    {
+      "code": "5101012002",
+      "name": "Baluk"
+    },
+    {
+      "code": "5101012003",
+      "name": "Banyubiru"
+    },
+    {
+      "code": "5101012004",
+      "name": "Kaliakah"
+    },
+    {
+      "code": "5101012005",
+      "name": "Berangbang"
+    },
+    {
+      "code": "5101012009",
+      "name": "Tegal Badeng Timur"
+    },
+    {
+      "code": "5101012010",
+      "name": "Tegal Badeng Barat"
+    },
+    {
+      "code": "5101012011",
+      "name": "Pengambengan"
+    }
+  ],
+  "510102": [
+    {
+      "code": "5101021006",
+      "name": "Tegalcangkring"
+    },
+    {
+      "code": "5101022001",
+      "name": "Mendoyo Dauh Tukad"
+    },
+    {
+      "code": "5101022002",
+      "name": "Pohsanten"
+    },
+    {
+      "code": "5101022003",
+      "name": "Mendoyo Dangin Tukad"
+    },
+    {
+      "code": "5101022004",
+      "name": "Pergung"
+    },
+    {
+      "code": "5101022005",
+      "name": "Delodberawah"
+    },
+    {
+      "code": "5101022007",
+      "name": "Penyaringan"
+    },
+    {
+      "code": "5101022008",
+      "name": "Yehembang"
+    },
+    {
+      "code": "5101022009",
+      "name": "Yeh Sumbul"
+    },
+    {
+      "code": "5101022010",
+      "name": "Yehembang Kauh"
+    },
+    {
+      "code": "5101022011",
+      "name": "Yehembang Kangin"
+    }
+  ],
+  "510103": [
+    {
+      "code": "5101032001",
+      "name": "Medewi"
+    },
+    {
+      "code": "5101032002",
+      "name": "Pulukan"
+    },
+    {
+      "code": "5101032003",
+      "name": "Asahduren"
+    },
+    {
+      "code": "5101032004",
+      "name": "Pekutatan"
+    },
+    {
+      "code": "5101032005",
+      "name": "Pangyangan"
+    },
+    {
+      "code": "5101032006",
+      "name": "Gumbrih"
+    },
+    {
+      "code": "5101032007",
+      "name": "Manggissari"
+    },
+    {
+      "code": "5101032008",
+      "name": "Pengeragoan"
+    }
+  ],
+  "510104": [
+    {
+      "code": "5101041001",
+      "name": "Gilimanuk"
+    },
+    {
+      "code": "5101042002",
+      "name": "Melaya"
+    },
+    {
+      "code": "5101042003",
+      "name": "Belimbingsari"
+    },
+    {
+      "code": "5101042004",
+      "name": "Ekasari"
+    },
+    {
+      "code": "5101042005",
+      "name": "Nusasari"
+    },
+    {
+      "code": "5101042006",
+      "name": "Warnasari"
+    },
+    {
+      "code": "5101042007",
+      "name": "Candikusuma"
+    },
+    {
+      "code": "5101042008",
+      "name": "Tuwed"
+    },
+    {
+      "code": "5101042009",
+      "name": "Tukadaya"
+    },
+    {
+      "code": "5101042010",
+      "name": "Manistutu"
+    }
+  ],
+  "510105": [
+    {
+      "code": "5101051001",
+      "name": "Pendem"
+    },
+    {
+      "code": "5101051003",
+      "name": "Loloan Timur"
+    },
+    {
+      "code": "5101051005",
+      "name": "Dauhwaru"
+    },
+    {
+      "code": "5101051009",
+      "name": "Sangkaragung"
+    },
+    {
+      "code": "5101052002",
+      "name": "Perancak"
+    },
+    {
+      "code": "5101052004",
+      "name": "Batu Agung"
+    },
+    {
+      "code": "5101052006",
+      "name": "Budeng"
+    },
+    {
+      "code": "5101052007",
+      "name": "Air Kuning"
+    },
+    {
+      "code": "5101052008",
+      "name": "Yehkuning"
+    },
+    {
+      "code": "5101052010",
+      "name": "Dangintukadaya"
+    }
+  ]
 }

@@ -1,666 +1,850 @@
 {
-    "530901": [
-        {
-            "code": "5309011002",
-            "name": "Aimere"
-        },
-        {
-            "code": "5309011003",
-            "name": "Foa"
-        },
-        {
-            "code": "5309012001",
-            "name": "Keligejo"
-        },
-        {
-            "code": "5309012014",
-            "name": "Aimere Timur"
-        },
-        {
-            "code": "5309012018",
-            "name": "Heawea"
-        },
-        {
-            "code": "5309012019",
-            "name": "Legelapu"
-        },
-        {
-            "code": "5309012020",
-            "name": "Lekogoko"
-        },
-        {
-            "code": "5309012021",
-            "name": "Binawali"
-        },
-        {
-            "code": "5309012022",
-            "name": "Kila"
-        },
-        {
-            "code": "5309012023",
-            "name": "Waesae"
-        },
-        {
-            "code": "5309012024",
-            "name": "Mawwo Kisa"
-        }
-    ],
-    "530902": [
-        {
-            "code": "5309021008",
-            "name": "Todabelu"
-        },
-        {
-            "code": "5309021017",
-            "name": "Mataloko"
-        },
-        {
-            "code": "5309022002",
-            "name": "Were I"
-        },
-        {
-            "code": "5309022009",
-            "name": "Sangadeto"
-        },
-        {
-            "code": "5309022010",
-            "name": "Ratogesa"
-        },
-        {
-            "code": "5309022011",
-            "name": "Radabata"
-        },
-        {
-            "code": "5309022018",
-            "name": "Dadawea"
-        },
-        {
-            "code": "5309022019",
-            "name": "Sarasedu"
-        },
-        {
-            "code": "5309022020",
-            "name": "Malanuza"
-        },
-        {
-            "code": "5309022025",
-            "name": "Were"
-        },
-        {
-            "code": "5309022026",
-            "name": "Were IV"
-        },
-        {
-            "code": "5309022031",
-            "name": "Malanuza I"
-        },
-        {
-            "code": "5309022032",
-            "name": "Sarasedu I"
-        },
-        {
-            "code": "5309022036",
-            "name": "Ulu Belu"
-        },
-        {
-            "code": "5309022037",
-            "name": "Eko Roka"
-        },
-        {
-            "code": "5309022038",
-            "name": "Wae Ia"
-        },
-        {
-            "code": "5309022039",
-            "name": "Dolupore"
-        },
-        {
-            "code": "5309022040",
-            "name": "Tiwo Toda"
-        },
-        {
-            "code": "5309022041",
-            "name": "Kelimolo"
-        },
-        {
-            "code": "5309022042",
-            "name": "Wogo"
-        },
-        {
-            "code": "5309022043",
-            "name": "Radabata I"
-        },
-        {
-            "code": "5309022044",
-            "name": "Bodosare"
-        }
-    ],
-    "530906": [
-        {
-            "code": "5309061013",
-            "name": "Bajawa"
-        },
-        {
-            "code": "5309061014",
-            "name": "Tanalodu"
-        },
-        {
-            "code": "5309061015",
-            "name": "Kisanata"
-        },
-        {
-            "code": "5309061016",
-            "name": "Jawameze"
-        },
-        {
-            "code": "5309061017",
-            "name": "Trikora"
-        },
-        {
-            "code": "5309061018",
-            "name": "Ngedukelu"
-        },
-        {
-            "code": "5309061019",
-            "name": "Lebijaga"
-        },
-        {
-            "code": "5309061020",
-            "name": "Faobata"
-        },
-        {
-            "code": "5309061021",
-            "name": "Susu"
-        },
-        {
-            "code": "5309062001",
-            "name": "Beja"
-        },
-        {
-            "code": "5309062002",
-            "name": "Bomari"
-        },
-        {
-            "code": "5309062003",
-            "name": "Wawowae"
-        },
-        {
-            "code": "5309062004",
-            "name": "Ubedolumolo"
-        },
-        {
-            "code": "5309062005",
-            "name": "Naru"
-        },
-        {
-            "code": "5309062009",
-            "name": "Beiwali"
-        },
-        {
-            "code": "5309062022",
-            "name": "Borani"
-        },
-        {
-            "code": "5309062023",
-            "name": "Langagedha"
-        },
-        {
-            "code": "5309062024",
-            "name": "Pape"
-        },
-        {
-            "code": "5309062025",
-            "name": "Bowali"
-        },
-        {
-            "code": "5309062026",
-            "name": "Ngoranale"
-        },
-        {
-            "code": "5309062027",
-            "name": "Ubedolumolo I"
-        },
-        {
-            "code": "5309062028",
-            "name": "Bela"
-        },
-        {
-            "code": "5309062029",
-            "name": "Ngadhamana"
-        },
-        {
-            "code": "5309062030",
-            "name": "Bolonga"
-        },
-        {
-            "code": "5309062031",
-            "name": "Boradho"
-        },
-        {
-            "code": "5309062032",
-            "name": "Mukuvoka"
-        },
-        {
-            "code": "5309062033",
-            "name": "Ubedolumolo II"
-        },
-        {
-            "code": "5309062034",
-            "name": "Langagedha I"
-        }
-    ],
-    "530912": [
-        {
-            "code": "5309122001",
-            "name": "Watumanu"
-        },
-        {
-            "code": "5309122002",
-            "name": "Tiworiwu"
-        },
-        {
-            "code": "5309122003",
-            "name": "Dariwali"
-        },
-        {
-            "code": "5309122004",
-            "name": "Naruwolo"
-        },
-        {
-            "code": "5309122005",
-            "name": "Nenowea"
-        },
-        {
-            "code": "5309122007",
-            "name": "Naruwolo I"
-        },
-        {
-            "code": "5309122008",
-            "name": "Naruwolo II"
-        },
-        {
-            "code": "5309122009",
-            "name": "Dariwali I"
-        },
-        {
-            "code": "5309122010",
-            "name": "Nio Lewa"
-        },
-        {
-            "code": "5309122011",
-            "name": "Tiworiwu I"
-        },
-        {
-            "code": "5309122012",
-            "name": "Tiworiwu II"
-        },
-        {
-            "code": "5309122015",
-            "name": "Batajawa"
-        },
-        {
-            "code": "5309122016",
-            "name": "Wongawea"
-        },
-        {
-            "code": "5309122017",
-            "name": "Bowaru"
-        }
-    ],
-    "530914": [
-        {
-            "code": "5309142001",
-            "name": "Benteng Tawa"
-        },
-        {
-            "code": "5309142002",
-            "name": "Lanamai"
-        },
-        {
-            "code": "5309142003",
-            "name": "Wolomeze"
-        },
-        {
-            "code": "5309142004",
-            "name": "Ria"
-        },
-        {
-            "code": "5309142005",
-            "name": "Ngara"
-        },
-        {
-            "code": "5309142006",
-            "name": "Ria I"
-        },
-        {
-            "code": "5309142007",
-            "name": "Wolomeze I"
-        },
-        {
-            "code": "5309142008",
-            "name": "Benteng Tawa I"
-        },
-        {
-            "code": "5309142009",
-            "name": "Lanamai I"
-        },
-        {
-            "code": "5309142010",
-            "name": "Wolomeze II"
-        },
-        {
-            "code": "5309142011",
-            "name": "Benteng Tawa II"
-        },
-        {
-            "code": "5309142012",
-            "name": "Benteng Tawa III"
-        },
-        {
-            "code": "5309142013",
-            "name": "Lanamai II"
-        },
-        {
-            "code": "5309142014",
-            "name": "Kembang"
-        },
-        {
-            "code": "5309142015",
-            "name": "Wate"
-        },
-        {
-            "code": "5309142016",
-            "name": "Ngara I"
-        },
-        {
-            "code": "5309142017",
-            "name": "Benteng Tawa IV"
-        },
-        {
-            "code": "5309142018",
-            "name": "Benteng Tawa V"
-        },
-        {
-            "code": "5309142019",
-            "name": "Nili Waru Sae"
-        }
-    ],
-    "530915": [
-        {
-            "code": "5309152001",
-            "name": "Uluwae"
-        },
-        {
-            "code": "5309152002",
-            "name": "Inelika"
-        },
-        {
-            "code": "5309152003",
-            "name": "Inegena"
-        },
-        {
-            "code": "5309152004",
-            "name": "Wololika"
-        },
-        {
-            "code": "5309152005",
-            "name": "Watukapu"
-        },
-        {
-            "code": "5309152006",
-            "name": "Waewea"
-        },
-        {
-            "code": "5309152007",
-            "name": "Nabelena"
-        },
-        {
-            "code": "5309152008",
-            "name": "Genamere"
-        },
-        {
-            "code": "5309152009",
-            "name": "Uluwae I"
-        },
-        {
-            "code": "5309152010",
-            "name": "Uluwae II"
-        },
-        {
-            "code": "5309152011",
-            "name": "Tura Muri"
-        },
-        {
-            "code": "5309152012",
-            "name": "Bowado"
-        }
-    ],
-    "530916": [
-        {
-            "code": "5309162001",
-            "name": "Nginamanu"
-        },
-        {
-            "code": "5309162002",
-            "name": "Denatana"
-        },
-        {
-            "code": "5309162003",
-            "name": "Mainai"
-        },
-        {
-            "code": "5309162004",
-            "name": "Turaloa"
-        },
-        {
-            "code": "5309162005",
-            "name": "Nginamanu Selatan"
-        },
-        {
-            "code": "5309162006",
-            "name": "Nginamanu Barat"
-        },
-        {
-            "code": "5309162007",
-            "name": "Wue"
-        },
-        {
-            "code": "5309162008",
-            "name": "Denatana Timur"
-        },
-        {
-            "code": "5309162009",
-            "name": "Larilaki"
-        },
-        {
-            "code": "5309162010",
-            "name": "Mulumese"
-        },
-        {
-            "code": "5309162011",
-            "name": "Turaloa Timur"
-        }
-    ],
-    "530918": [
-        {
-            "code": "5309182001",
-            "name": "Bawarani"
-        },
-        {
-            "code": "5309182002",
-            "name": "Wogowela"
-        },
-        {
-            "code": "5309182003",
-            "name": "Watu Sipi"
-        },
-        {
-            "code": "5309182004",
-            "name": "Boba"
-        },
-        {
-            "code": "5309182005",
-            "name": "Boba I"
-        },
-        {
-            "code": "5309182006",
-            "name": "Were III"
-        },
-        {
-            "code": "5309182007",
-            "name": "Kezewea"
-        },
-        {
-            "code": "5309182008",
-            "name": "Nirmala"
-        },
-        {
-            "code": "5309182009",
-            "name": "Sadha"
-        },
-        {
-            "code": "5309182010",
-            "name": "Takatunga"
-        },
-        {
-            "code": "5309182011",
-            "name": "Radamasa"
-        },
-        {
-            "code": "5309182012",
-            "name": "Were II"
-        },
-        {
-            "code": "5309182013",
-            "name": "Bobawa"
-        },
-        {
-            "code": "5309182014",
-            "name": "Were V"
-        },
-        {
-            "code": "5309182015",
-            "name": "Were VI"
-        },
-        {
-            "code": "5309182016",
-            "name": "Kezewea I"
-        },
-        {
-            "code": "5309182017",
-            "name": "Sadha I"
-        },
-        {
-            "code": "5309182018",
-            "name": "Takatunga I"
-        }
-    ],
-    "530919": [
-        {
-            "code": "5309191001",
-            "name": "Mangulewa"
-        },
-        {
-            "code": "5309192002",
-            "name": "Turekisa"
-        },
-        {
-            "code": "5309192003",
-            "name": "Rakalaba"
-        },
-        {
-            "code": "5309192004",
-            "name": "Sobo"
-        },
-        {
-            "code": "5309192005",
-            "name": "Sobo I"
-        },
-        {
-            "code": "5309192006",
-            "name": "Rakateda I"
-        },
-        {
-            "code": "5309192007",
-            "name": "Rakateda II"
-        },
-        {
-            "code": "5309192008",
-            "name": "Watunay"
-        },
-        {
-            "code": "5309192009",
-            "name": "Dizi Gedha"
-        },
-        {
-            "code": "5309192010",
-            "name": "Bea Pawe"
-        },
-        {
-            "code": "5309192011",
-            "name": "Bopoma"
-        },
-        {
-            "code": "5309192012",
-            "name": "Rakalaba I"
-        },
-        {
-            "code": "5309192013",
-            "name": "Sobo II"
-        }
-    ],
-    "530920": [
-        {
-            "code": "5309202001",
-            "name": "Paupaga"
-        },
-        {
-            "code": "5309202002",
-            "name": "Sebowuli"
-        },
-        {
-            "code": "5309202003",
-            "name": "Inerie"
-        },
-        {
-            "code": "5309202004",
-            "name": "Warupele I"
-        },
-        {
-            "code": "5309202005",
-            "name": "Warupele II"
-        },
-        {
-            "code": "5309202006",
-            "name": "Kelitei"
-        },
-        {
-            "code": "5309202007",
-            "name": "Waebela"
-        },
-        {
-            "code": "5309202008",
-            "name": "Tiwurana"
-        },
-        {
-            "code": "5309202009",
-            "name": "Legeriwu"
-        },
-        {
-            "code": "5309202010",
-            "name": "Manubhara"
-        },
-        {
-            "code": "5309202011",
-            "name": "Ruto"
-        },
-        {
-            "code": "5309202012",
-            "name": "Enabhara"
-        },
-        {
-            "code": "5309202013",
-            "name": "Nagebaru"
-        }
-    ]
+  "530901": [
+    {
+      "code": "5309011002",
+      "name": "Aimere"
+    },
+    {
+      "code": "5309011003",
+      "name": "Foa"
+    },
+    {
+      "code": "5309012001",
+      "name": "Keligejo"
+    },
+    {
+      "code": "5309012014",
+      "name": "Aimere Timur"
+    },
+    {
+      "code": "5309012018",
+      "name": "Heawea"
+    },
+    {
+      "code": "5309012019",
+      "name": "Legelapu"
+    },
+    {
+      "code": "5309012020",
+      "name": "Lekogoko"
+    },
+    {
+      "code": "5309012021",
+      "name": "Binawali"
+    },
+    {
+      "code": "5309012022",
+      "name": "Kila"
+    },
+    {
+      "code": "5309012023",
+      "name": "Waesae"
+    },
+    {
+      "code": "5309012024",
+      "name": "Mawwo Kisa"
+    }
+  ],
+  "530902": [
+    {
+      "code": "5309021008",
+      "name": "Todabelu"
+    },
+    {
+      "code": "5309021017",
+      "name": "Mataloko"
+    },
+    {
+      "code": "5309022002",
+      "name": "Were I"
+    },
+    {
+      "code": "5309022009",
+      "name": "Sangadeto"
+    },
+    {
+      "code": "5309022010",
+      "name": "Ratogesa"
+    },
+    {
+      "code": "5309022011",
+      "name": "Radabata"
+    },
+    {
+      "code": "5309022018",
+      "name": "Dadawea"
+    },
+    {
+      "code": "5309022019",
+      "name": "Sarasedu"
+    },
+    {
+      "code": "5309022020",
+      "name": "Malanuza"
+    },
+    {
+      "code": "5309022025",
+      "name": "Were"
+    },
+    {
+      "code": "5309022026",
+      "name": "Were IV"
+    },
+    {
+      "code": "5309022031",
+      "name": "Malanuza I"
+    },
+    {
+      "code": "5309022032",
+      "name": "Sarasedu I"
+    },
+    {
+      "code": "5309022036",
+      "name": "Ulu Belu"
+    },
+    {
+      "code": "5309022037",
+      "name": "Eko Roka"
+    },
+    {
+      "code": "5309022038",
+      "name": "Wae Ia"
+    },
+    {
+      "code": "5309022039",
+      "name": "Dolupore"
+    },
+    {
+      "code": "5309022040",
+      "name": "Tiwo Toda"
+    },
+    {
+      "code": "5309022041",
+      "name": "Kelimolo"
+    },
+    {
+      "code": "5309022042",
+      "name": "Wogo"
+    },
+    {
+      "code": "5309022043",
+      "name": "Radabata I"
+    },
+    {
+      "code": "5309022044",
+      "name": "Bodosare"
+    }
+  ],
+  "530906": [
+    {
+      "code": "5309061013",
+      "name": "Bajawa"
+    },
+    {
+      "code": "5309061014",
+      "name": "Tanalodu"
+    },
+    {
+      "code": "5309061015",
+      "name": "Kisanata"
+    },
+    {
+      "code": "5309061016",
+      "name": "Jawameze"
+    },
+    {
+      "code": "5309061017",
+      "name": "Trikora"
+    },
+    {
+      "code": "5309061018",
+      "name": "Ngedukelu"
+    },
+    {
+      "code": "5309061019",
+      "name": "Lebijaga"
+    },
+    {
+      "code": "5309061020",
+      "name": "Faobata"
+    },
+    {
+      "code": "5309061021",
+      "name": "Susu"
+    },
+    {
+      "code": "5309062001",
+      "name": "Beja"
+    },
+    {
+      "code": "5309062002",
+      "name": "Bomari"
+    },
+    {
+      "code": "5309062003",
+      "name": "Wawowae"
+    },
+    {
+      "code": "5309062004",
+      "name": "Ubedolumolo"
+    },
+    {
+      "code": "5309062005",
+      "name": "Naru"
+    },
+    {
+      "code": "5309062009",
+      "name": "Beiwali"
+    },
+    {
+      "code": "5309062022",
+      "name": "Borani"
+    },
+    {
+      "code": "5309062023",
+      "name": "Langagedha"
+    },
+    {
+      "code": "5309062024",
+      "name": "Pape"
+    },
+    {
+      "code": "5309062025",
+      "name": "Bowali"
+    },
+    {
+      "code": "5309062026",
+      "name": "Ngoranale"
+    },
+    {
+      "code": "5309062027",
+      "name": "Ubedolumolo I"
+    },
+    {
+      "code": "5309062028",
+      "name": "Bela"
+    },
+    {
+      "code": "5309062029",
+      "name": "Ngadhamana"
+    },
+    {
+      "code": "5309062030",
+      "name": "Bolonga"
+    },
+    {
+      "code": "5309062031",
+      "name": "Boradho"
+    },
+    {
+      "code": "5309062032",
+      "name": "Mukuvoka"
+    },
+    {
+      "code": "5309062033",
+      "name": "Ubedolumolo II"
+    },
+    {
+      "code": "5309062034",
+      "name": "Langagedha I"
+    }
+  ],
+  "530907": [
+    {
+      "code": "5309072001",
+      "name": "Waepana"
+    },
+    {
+      "code": "5309072004",
+      "name": "Masumeli"
+    },
+    {
+      "code": "5309072005",
+      "name": "Piga"
+    },
+    {
+      "code": "5309072006",
+      "name": "Loa"
+    },
+    {
+      "code": "5309072007",
+      "name": "Tarawaja"
+    },
+    {
+      "code": "5309072008",
+      "name": "Seso"
+    },
+    {
+      "code": "5309072010",
+      "name": "Mengeruda"
+    },
+    {
+      "code": "5309072011",
+      "name": "Masu Kedhi"
+    },
+    {
+      "code": "5309072012",
+      "name": "Libunio"
+    },
+    {
+      "code": "5309072013",
+      "name": "Meli Waru"
+    },
+    {
+      "code": "5309072014",
+      "name": "Ngabheo"
+    },
+    {
+      "code": "5309072016",
+      "name": "Bogoboa"
+    },
+    {
+      "code": "5309072017",
+      "name": "Piga I"
+    },
+    {
+      "code": "5309072018",
+      "name": "Tarawali"
+    },
+    {
+      "code": "5309072019",
+      "name": "Waepana I"
+    },
+    {
+      "code": "5309072020",
+      "name": "Lokaweka"
+    }
+  ],
+  "530909": [
+    {
+      "code": "5309091010",
+      "name": "Benteng Tengah"
+    },
+    {
+      "code": "5309091011",
+      "name": "Nangamese"
+    },
+    {
+      "code": "5309092005",
+      "name": "Taenterong"
+    },
+    {
+      "code": "5309092006",
+      "name": "Wangka"
+    },
+    {
+      "code": "5309092008",
+      "name": "Lengkosambi"
+    },
+    {
+      "code": "5309092009",
+      "name": "Tadho"
+    },
+    {
+      "code": "5309092012",
+      "name": "Sambinasi"
+    },
+    {
+      "code": "5309092013",
+      "name": "Latung"
+    },
+    {
+      "code": "5309092014",
+      "name": "Rawangkalo"
+    },
+    {
+      "code": "5309092016",
+      "name": "Wangka Selatan"
+    },
+    {
+      "code": "5309092017",
+      "name": "Lengkosambi Timur"
+    },
+    {
+      "code": "5309092018",
+      "name": "Lengkosambi Barat"
+    },
+    {
+      "code": "5309092019",
+      "name": "Sambinasi Barat"
+    },
+    {
+      "code": "5309092020",
+      "name": "Lengkosambi Utara"
+    },
+    {
+      "code": "5309092021",
+      "name": "Taen Terong I"
+    },
+    {
+      "code": "5309092022",
+      "name": "Taen Terong II"
+    },
+    {
+      "code": "5309092023",
+      "name": "Kota Raja"
+    },
+    {
+      "code": "5309092024",
+      "name": "Ite Jaya"
+    },
+    {
+      "code": "5309092025",
+      "name": "Wangka Barat"
+    },
+    {
+      "code": "5309092026",
+      "name": "Lengkosambi Tengah"
+    },
+    {
+      "code": "5309092027",
+      "name": "Tadho Timur"
+    },
+    {
+      "code": "5309092028",
+      "name": "Tadho Barat"
+    },
+    {
+      "code": "5309092029",
+      "name": "Tadho Tengah"
+    },
+    {
+      "code": "5309092030",
+      "name": "Sambinasi Tengah"
+    },
+    {
+      "code": "5309092031",
+      "name": "Latung Barat"
+    },
+    {
+      "code": "5309092032",
+      "name": "Rawangkalo I"
+    },
+    {
+      "code": "5309092033",
+      "name": "Rawangkalo II"
+    },
+    {
+      "code": "5309092034",
+      "name": "Wakamanga"
+    },
+    {
+      "code": "5309092035",
+      "name": "Lengkosambi Barat Daya"
+    }
+  ],
+  "530912": [
+    {
+      "code": "5309122001",
+      "name": "Watumanu"
+    },
+    {
+      "code": "5309122002",
+      "name": "Tiworiwu"
+    },
+    {
+      "code": "5309122003",
+      "name": "Dariwali"
+    },
+    {
+      "code": "5309122004",
+      "name": "Naruwolo"
+    },
+    {
+      "code": "5309122005",
+      "name": "Nenowea"
+    },
+    {
+      "code": "5309122007",
+      "name": "Naruwolo I"
+    },
+    {
+      "code": "5309122008",
+      "name": "Naruwolo II"
+    },
+    {
+      "code": "5309122009",
+      "name": "Dariwali I"
+    },
+    {
+      "code": "5309122010",
+      "name": "Nio Lewa"
+    },
+    {
+      "code": "5309122011",
+      "name": "Tiworiwu I"
+    },
+    {
+      "code": "5309122012",
+      "name": "Tiworiwu II"
+    },
+    {
+      "code": "5309122015",
+      "name": "Batajawa"
+    },
+    {
+      "code": "5309122016",
+      "name": "Wongawea"
+    },
+    {
+      "code": "5309122017",
+      "name": "Bowaru"
+    }
+  ],
+  "530914": [
+    {
+      "code": "5309142001",
+      "name": "Benteng Tawa"
+    },
+    {
+      "code": "5309142002",
+      "name": "Lanamai"
+    },
+    {
+      "code": "5309142003",
+      "name": "Wolomeze"
+    },
+    {
+      "code": "5309142004",
+      "name": "Ria"
+    },
+    {
+      "code": "5309142005",
+      "name": "Ngara"
+    },
+    {
+      "code": "5309142006",
+      "name": "Ria I"
+    },
+    {
+      "code": "5309142007",
+      "name": "Wolomeze I"
+    },
+    {
+      "code": "5309142008",
+      "name": "Benteng Tawa I"
+    },
+    {
+      "code": "5309142009",
+      "name": "Lanamai I"
+    },
+    {
+      "code": "5309142010",
+      "name": "Wolomeze II"
+    },
+    {
+      "code": "5309142011",
+      "name": "Benteng Tawa II"
+    },
+    {
+      "code": "5309142012",
+      "name": "Benteng Tawa III"
+    },
+    {
+      "code": "5309142013",
+      "name": "Lanamai II"
+    },
+    {
+      "code": "5309142014",
+      "name": "Kembang"
+    },
+    {
+      "code": "5309142015",
+      "name": "Wate"
+    },
+    {
+      "code": "5309142016",
+      "name": "Ngara I"
+    },
+    {
+      "code": "5309142017",
+      "name": "Benteng Tawa IV"
+    },
+    {
+      "code": "5309142018",
+      "name": "Benteng Tawa V"
+    },
+    {
+      "code": "5309142019",
+      "name": "Nili Waru Sae"
+    }
+  ],
+  "530915": [
+    {
+      "code": "5309152001",
+      "name": "Uluwae"
+    },
+    {
+      "code": "5309152002",
+      "name": "Inelika"
+    },
+    {
+      "code": "5309152003",
+      "name": "Inegena"
+    },
+    {
+      "code": "5309152004",
+      "name": "Wololika"
+    },
+    {
+      "code": "5309152005",
+      "name": "Watukapu"
+    },
+    {
+      "code": "5309152006",
+      "name": "Waewea"
+    },
+    {
+      "code": "5309152007",
+      "name": "Nabelena"
+    },
+    {
+      "code": "5309152008",
+      "name": "Genamere"
+    },
+    {
+      "code": "5309152009",
+      "name": "Uluwae I"
+    },
+    {
+      "code": "5309152010",
+      "name": "Uluwae II"
+    },
+    {
+      "code": "5309152011",
+      "name": "Tura Muri"
+    },
+    {
+      "code": "5309152012",
+      "name": "Bowado"
+    }
+  ],
+  "530916": [
+    {
+      "code": "5309162001",
+      "name": "Nginamanu"
+    },
+    {
+      "code": "5309162002",
+      "name": "Denatana"
+    },
+    {
+      "code": "5309162003",
+      "name": "Mainai"
+    },
+    {
+      "code": "5309162004",
+      "name": "Turaloa"
+    },
+    {
+      "code": "5309162005",
+      "name": "Nginamanu Selatan"
+    },
+    {
+      "code": "5309162006",
+      "name": "Nginamanu Barat"
+    },
+    {
+      "code": "5309162007",
+      "name": "Wue"
+    },
+    {
+      "code": "5309162008",
+      "name": "Denatana Timur"
+    },
+    {
+      "code": "5309162009",
+      "name": "Larilaki"
+    },
+    {
+      "code": "5309162010",
+      "name": "Mulumese"
+    },
+    {
+      "code": "5309162011",
+      "name": "Turaloa Timur"
+    }
+  ],
+  "530918": [
+    {
+      "code": "5309182001",
+      "name": "Bawarani"
+    },
+    {
+      "code": "5309182002",
+      "name": "Wogowela"
+    },
+    {
+      "code": "5309182003",
+      "name": "Watu Sipi"
+    },
+    {
+      "code": "5309182004",
+      "name": "Boba"
+    },
+    {
+      "code": "5309182005",
+      "name": "Boba I"
+    },
+    {
+      "code": "5309182006",
+      "name": "Were III"
+    },
+    {
+      "code": "5309182007",
+      "name": "Kezewea"
+    },
+    {
+      "code": "5309182008",
+      "name": "Nirmala"
+    },
+    {
+      "code": "5309182009",
+      "name": "Sadha"
+    },
+    {
+      "code": "5309182010",
+      "name": "Takatunga"
+    },
+    {
+      "code": "5309182011",
+      "name": "Radamasa"
+    },
+    {
+      "code": "5309182012",
+      "name": "Were II"
+    },
+    {
+      "code": "5309182013",
+      "name": "Bobawa"
+    },
+    {
+      "code": "5309182014",
+      "name": "Were V"
+    },
+    {
+      "code": "5309182015",
+      "name": "Were VI"
+    },
+    {
+      "code": "5309182016",
+      "name": "Kezewea I"
+    },
+    {
+      "code": "5309182017",
+      "name": "Sadha I"
+    },
+    {
+      "code": "5309182018",
+      "name": "Takatunga I"
+    }
+  ],
+  "530919": [
+    {
+      "code": "5309191001",
+      "name": "Mangulewa"
+    },
+    {
+      "code": "5309192002",
+      "name": "Turekisa"
+    },
+    {
+      "code": "5309192003",
+      "name": "Rakalaba"
+    },
+    {
+      "code": "5309192004",
+      "name": "Sobo"
+    },
+    {
+      "code": "5309192005",
+      "name": "Sobo I"
+    },
+    {
+      "code": "5309192006",
+      "name": "Rakateda I"
+    },
+    {
+      "code": "5309192007",
+      "name": "Rakateda II"
+    },
+    {
+      "code": "5309192008",
+      "name": "Watunay"
+    },
+    {
+      "code": "5309192009",
+      "name": "Dizi Gedha"
+    },
+    {
+      "code": "5309192010",
+      "name": "Bea Pawe"
+    },
+    {
+      "code": "5309192011",
+      "name": "Bopoma"
+    },
+    {
+      "code": "5309192012",
+      "name": "Rakalaba I"
+    },
+    {
+      "code": "5309192013",
+      "name": "Sobo II"
+    }
+  ],
+  "530920": [
+    {
+      "code": "5309202001",
+      "name": "Paupaga"
+    },
+    {
+      "code": "5309202002",
+      "name": "Sebowuli"
+    },
+    {
+      "code": "5309202003",
+      "name": "Inerie"
+    },
+    {
+      "code": "5309202004",
+      "name": "Warupele I"
+    },
+    {
+      "code": "5309202005",
+      "name": "Warupele II"
+    },
+    {
+      "code": "5309202006",
+      "name": "Kelitei"
+    },
+    {
+      "code": "5309202007",
+      "name": "Waebela"
+    },
+    {
+      "code": "5309202008",
+      "name": "Tiwurana"
+    },
+    {
+      "code": "5309202009",
+      "name": "Legeriwu"
+    },
+    {
+      "code": "5309202010",
+      "name": "Manubhara"
+    },
+    {
+      "code": "5309202011",
+      "name": "Ruto"
+    },
+    {
+      "code": "5309202012",
+      "name": "Enabhara"
+    },
+    {
+      "code": "5309202013",
+      "name": "Nagebaru"
+    }
+  ]
 }

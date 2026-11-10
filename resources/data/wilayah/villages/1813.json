@@ -1,278 +1,496 @@
 {
-    "181301": [
-        {
-            "code": "1813011005",
-            "name": "Pasar Krui"
-        },
-        {
-            "code": "1813011008",
-            "name": "Pasar Kota Krui"
-        },
-        {
-            "code": "1813012001",
-            "name": "Way Redak"
-        },
-        {
-            "code": "1813012002",
-            "name": "Seray"
-        },
-        {
-            "code": "1813012003",
-            "name": "Kampung Jawa"
-        },
-        {
-            "code": "1813012004",
-            "name": "Rawas"
-        },
-        {
-            "code": "1813012006",
-            "name": "Suka Negara"
-        },
-        {
-            "code": "1813012007",
-            "name": "Pahmungan"
-        }
-    ],
-    "181302": [
-        {
-            "code": "1813022001",
-            "name": "Negeri Ratu Tenumbang"
-        },
-        {
-            "code": "1813022002",
-            "name": "Sukarame"
-        },
-        {
-            "code": "1813022003",
-            "name": "Pelita Jaya"
-        },
-        {
-            "code": "1813022004",
-            "name": "Sumur Jaya"
-        },
-        {
-            "code": "1813022005",
-            "name": "Tanjung Jati"
-        },
-        {
-            "code": "1813022006",
-            "name": "Pagar Dalam"
-        },
-        {
-            "code": "1813022007",
-            "name": "Tanjung Setia"
-        },
-        {
-            "code": "1813022008",
-            "name": "Biha"
-        },
-        {
-            "code": "1813022009",
-            "name": "Way Jambu"
-        },
-        {
-            "code": "1813022010",
-            "name": "Marang"
-        },
-        {
-            "code": "1813022011",
-            "name": "Tanjung Raya"
-        },
-        {
-            "code": "1813022012",
-            "name": "Bangun Negara"
-        },
-        {
-            "code": "1813022013",
-            "name": "Ulok Manik"
-        },
-        {
-            "code": "1813022014",
-            "name": "Paku Negara"
-        },
-        {
-            "code": "1813022015",
-            "name": "Tulung Bamban"
-        }
-    ],
-    "181303": [
-        {
-            "code": "1813032001",
-            "name": "Tanjung Jati"
-        },
-        {
-            "code": "1813032002",
-            "name": "Tanjung Sakti"
-        },
-        {
-            "code": "1813032003",
-            "name": "Way Batang"
-        },
-        {
-            "code": "1813032004",
-            "name": "Lemong"
-        },
-        {
-            "code": "1813032005",
-            "name": "Cahya Negeri"
-        },
-        {
-            "code": "1813032006",
-            "name": "Malaya"
-        },
-        {
-            "code": "1813032007",
-            "name": "Bambang"
-        },
-        {
-            "code": "1813032008",
-            "name": "Pagar Dalam"
-        },
-        {
-            "code": "1813032009",
-            "name": "Bandar Pugung"
-        },
-        {
-            "code": "1813032010",
-            "name": "Penengahan"
-        },
-        {
-            "code": "1813032011",
-            "name": "Rata Agung"
-        },
-        {
-            "code": "1813032012",
-            "name": "Sukamulya"
-        },
-        {
-            "code": "1813032013",
-            "name": "Parda Haga"
-        }
-    ],
-    "181304": [
-        {
-            "code": "1813042001",
-            "name": "Kuripan"
-        },
-        {
-            "code": "1813042002",
-            "name": "Padang Rindu"
-        },
-        {
-            "code": "1813042003",
-            "name": "Negeri Ratu"
-        },
-        {
-            "code": "1813042004",
-            "name": "Kerbang Dalam"
-        },
-        {
-            "code": "1813042005",
-            "name": "Kota Karang"
-        },
-        {
-            "code": "1813042006",
-            "name": "Balam"
-        },
-        {
-            "code": "1813042007",
-            "name": "Way Narta"
-        },
-        {
-            "code": "1813042008",
-            "name": "Kerbang Langgar"
-        },
-        {
-            "code": "1813042009",
-            "name": "Walur"
-        },
-        {
-            "code": "1813042010",
-            "name": "Batu Raja"
-        },
-        {
-            "code": "1813042011",
-            "name": "Pemancar"
-        },
-        {
-            "code": "1813042012",
-            "name": "Gedau"
-        }
-    ],
-    "181305": [
-        {
-            "code": "1813052001",
-            "name": "Kebuayan"
-        },
-        {
-            "code": "1813052002",
-            "name": "Way Nukak"
-        },
-        {
-            "code": "1813052003",
-            "name": "Way Sindi"
-        },
-        {
-            "code": "1813052004",
-            "name": "Penengahan"
-        },
-        {
-            "code": "1813052005",
-            "name": "Menyancang"
-        },
-        {
-            "code": "1813052006",
-            "name": "Laay"
-        },
-        {
-            "code": "1813052007",
-            "name": "Penggawa V Ulu"
-        },
-        {
-            "code": "1813052008",
-            "name": "Penggawa V Tengah"
-        },
-        {
-            "code": "1813052009",
-            "name": "Way Sindi Utara"
-        },
-        {
-            "code": "1813052010",
-            "name": "Tembakak Way Sindi"
-        },
-        {
-            "code": "1813052011",
-            "name": "Way Sindi Hanuan"
-        },
-        {
-            "code": "1813052012",
-            "name": "Asahan Way Sindi"
-        }
-    ],
-    "181306": [
-        {
-            "code": "1813062001",
-            "name": "Pasar Pulau Pisang"
-        },
-        {
-            "code": "1813062002",
-            "name": "Labuhan"
-        },
-        {
-            "code": "1813062003",
-            "name": "Bandar Dalam"
-        },
-        {
-            "code": "1813062004",
-            "name": "Pekon Lok"
-        },
-        {
-            "code": "1813062005",
-            "name": "Sukadana"
-        },
-        {
-            "code": "1813062006",
-            "name": "Sukamarga"
-        }
-    ]
+  "181301": [
+    {
+      "code": "1813011005",
+      "name": "Pasar Krui"
+    },
+    {
+      "code": "1813011008",
+      "name": "Pasar Kota Krui"
+    },
+    {
+      "code": "1813012001",
+      "name": "Way Redak"
+    },
+    {
+      "code": "1813012002",
+      "name": "Seray"
+    },
+    {
+      "code": "1813012003",
+      "name": "Kampung Jawa"
+    },
+    {
+      "code": "1813012004",
+      "name": "Rawas"
+    },
+    {
+      "code": "1813012006",
+      "name": "Suka Negara"
+    },
+    {
+      "code": "1813012007",
+      "name": "Pahmungan"
+    }
+  ],
+  "181302": [
+    {
+      "code": "1813022001",
+      "name": "Negeri Ratu Tenumbang"
+    },
+    {
+      "code": "1813022002",
+      "name": "Sukarame"
+    },
+    {
+      "code": "1813022003",
+      "name": "Pelita Jaya"
+    },
+    {
+      "code": "1813022004",
+      "name": "Sumur Jaya"
+    },
+    {
+      "code": "1813022005",
+      "name": "Tanjung Jati"
+    },
+    {
+      "code": "1813022006",
+      "name": "Pagar Dalam"
+    },
+    {
+      "code": "1813022007",
+      "name": "Tanjung Setia"
+    },
+    {
+      "code": "1813022008",
+      "name": "Biha"
+    },
+    {
+      "code": "1813022009",
+      "name": "Way Jambu"
+    },
+    {
+      "code": "1813022010",
+      "name": "Marang"
+    },
+    {
+      "code": "1813022011",
+      "name": "Tanjung Raya"
+    },
+    {
+      "code": "1813022012",
+      "name": "Bangun Negara"
+    },
+    {
+      "code": "1813022013",
+      "name": "Ulok Manik"
+    },
+    {
+      "code": "1813022014",
+      "name": "Paku Negara"
+    },
+    {
+      "code": "1813022015",
+      "name": "Tulung Bamban"
+    }
+  ],
+  "181303": [
+    {
+      "code": "1813032001",
+      "name": "Tanjung Jati"
+    },
+    {
+      "code": "1813032002",
+      "name": "Tanjung Sakti"
+    },
+    {
+      "code": "1813032003",
+      "name": "Way Batang"
+    },
+    {
+      "code": "1813032004",
+      "name": "Lemong"
+    },
+    {
+      "code": "1813032005",
+      "name": "Cahya Negeri"
+    },
+    {
+      "code": "1813032006",
+      "name": "Malaya"
+    },
+    {
+      "code": "1813032007",
+      "name": "Bambang"
+    },
+    {
+      "code": "1813032008",
+      "name": "Pagar Dalam"
+    },
+    {
+      "code": "1813032009",
+      "name": "Bandar Pugung"
+    },
+    {
+      "code": "1813032010",
+      "name": "Penengahan"
+    },
+    {
+      "code": "1813032011",
+      "name": "Rata Agung"
+    },
+    {
+      "code": "1813032012",
+      "name": "Sukamulya"
+    },
+    {
+      "code": "1813032013",
+      "name": "Parda Haga"
+    }
+  ],
+  "181304": [
+    {
+      "code": "1813042001",
+      "name": "Kuripan"
+    },
+    {
+      "code": "1813042002",
+      "name": "Padang Rindu"
+    },
+    {
+      "code": "1813042003",
+      "name": "Negeri Ratu"
+    },
+    {
+      "code": "1813042004",
+      "name": "Kerbang Dalam"
+    },
+    {
+      "code": "1813042005",
+      "name": "Kota Karang"
+    },
+    {
+      "code": "1813042006",
+      "name": "Balam"
+    },
+    {
+      "code": "1813042007",
+      "name": "Way Narta"
+    },
+    {
+      "code": "1813042008",
+      "name": "Kerbang Langgar"
+    },
+    {
+      "code": "1813042009",
+      "name": "Walur"
+    },
+    {
+      "code": "1813042010",
+      "name": "Batu Raja"
+    },
+    {
+      "code": "1813042011",
+      "name": "Pemancar"
+    },
+    {
+      "code": "1813042012",
+      "name": "Gedau"
+    }
+  ],
+  "181305": [
+    {
+      "code": "1813052001",
+      "name": "Kebuayan"
+    },
+    {
+      "code": "1813052002",
+      "name": "Way Nukak"
+    },
+    {
+      "code": "1813052003",
+      "name": "Way Sindi"
+    },
+    {
+      "code": "1813052004",
+      "name": "Penengahan"
+    },
+    {
+      "code": "1813052005",
+      "name": "Menyancang"
+    },
+    {
+      "code": "1813052006",
+      "name": "Laay"
+    },
+    {
+      "code": "1813052007",
+      "name": "Penggawa V Ulu"
+    },
+    {
+      "code": "1813052008",
+      "name": "Penggawa V Tengah"
+    },
+    {
+      "code": "1813052009",
+      "name": "Way Sindi Utara"
+    },
+    {
+      "code": "1813052010",
+      "name": "Tembakak Way Sindi"
+    },
+    {
+      "code": "1813052011",
+      "name": "Way Sindi Hanuan"
+    },
+    {
+      "code": "1813052012",
+      "name": "Asahan Way Sindi"
+    }
+  ],
+  "181306": [
+    {
+      "code": "1813062001",
+      "name": "Pasar Pulau Pisang"
+    },
+    {
+      "code": "1813062002",
+      "name": "Labuhan"
+    },
+    {
+      "code": "1813062003",
+      "name": "Bandar Dalam"
+    },
+    {
+      "code": "1813062004",
+      "name": "Pekon Lok"
+    },
+    {
+      "code": "1813062005",
+      "name": "Sukadana"
+    },
+    {
+      "code": "1813062006",
+      "name": "Sukamarga"
+    }
+  ],
+  "181307": [
+    {
+      "code": "1813072001",
+      "name": "Pajar Bulan"
+    },
+    {
+      "code": "1813072002",
+      "name": "Bumi Waras"
+    },
+    {
+      "code": "1813072003",
+      "name": "Banjar Agung"
+    },
+    {
+      "code": "1813072004",
+      "name": "Penggawa V Ilir"
+    },
+    {
+      "code": "1813072005",
+      "name": "Ulu Krui"
+    },
+    {
+      "code": "1813072006",
+      "name": "Gunung Kemala"
+    },
+    {
+      "code": "1813072007",
+      "name": "Labuhan Mandi"
+    },
+    {
+      "code": "1813072008",
+      "name": "Suka Baru"
+    },
+    {
+      "code": "1813072009",
+      "name": "Penggawa Lima"
+    },
+    {
+      "code": "1813072010",
+      "name": "Gunungkemala Timur"
+    }
+  ],
+  "181308": [
+    {
+      "code": "1813082001",
+      "name": "Balai Kencana"
+    },
+    {
+      "code": "1813082002",
+      "name": "Way Suluh"
+    },
+    {
+      "code": "1813082003",
+      "name": "Way Napal"
+    },
+    {
+      "code": "1813082004",
+      "name": "Padang Haluan"
+    },
+    {
+      "code": "1813082005",
+      "name": "Lintik"
+    },
+    {
+      "code": "1813082006",
+      "name": "Walur"
+    },
+    {
+      "code": "1813082007",
+      "name": "Pemerihan"
+    },
+    {
+      "code": "1813082008",
+      "name": "Mandiri Sejati"
+    },
+    {
+      "code": "1813082009",
+      "name": "Padang Raya"
+    },
+    {
+      "code": "1813082010",
+      "name": "Suka Jadi"
+    }
+  ],
+  "181309": [
+    {
+      "code": "1813092001",
+      "name": "Sumber Agung"
+    },
+    {
+      "code": "1813092002",
+      "name": "Ulok Mukti"
+    },
+    {
+      "code": "1813092003",
+      "name": "Negeri Ratu Ngambur"
+    },
+    {
+      "code": "1813092004",
+      "name": "Pekon Mon"
+    },
+    {
+      "code": "1813092005",
+      "name": "Gedung Cahya Kuningan"
+    },
+    {
+      "code": "1813092006",
+      "name": "Suka Banjar"
+    },
+    {
+      "code": "1813092007",
+      "name": "Suka Negara"
+    },
+    {
+      "code": "1813092008",
+      "name": "Muara Tembulih"
+    },
+    {
+      "code": "1813092009",
+      "name": "Bumi Ratu"
+    }
+  ],
+  "181310": [
+    {
+      "code": "1813102001",
+      "name": "Negeri Ratu Ngaras"
+    },
+    {
+      "code": "1813102003",
+      "name": "Kota Batu"
+    },
+    {
+      "code": "1813102004",
+      "name": "Mulang Maya"
+    },
+    {
+      "code": "1813102005",
+      "name": "Raja Basa"
+    },
+    {
+      "code": "1813102006",
+      "name": "Parda Suka"
+    },
+    {
+      "code": "1813102017",
+      "name": "Padang Dalam"
+    },
+    {
+      "code": "1813102018",
+      "name": "Suka Maju"
+    },
+    {
+      "code": "1813102019",
+      "name": "Sukarame"
+    },
+    {
+      "code": "1813102020",
+      "name": "Bandar Jaya"
+    }
+  ],
+  "181311": [
+    {
+      "code": "1813112001",
+      "name": "Pagar Bukit"
+    },
+    {
+      "code": "1813112002",
+      "name": "Tanjung Kemala"
+    },
+    {
+      "code": "1813112003",
+      "name": "Suka Marga"
+    },
+    {
+      "code": "1813112004",
+      "name": "Kota Jawa"
+    },
+    {
+      "code": "1813112005",
+      "name": "Penyandingan"
+    },
+    {
+      "code": "1813112006",
+      "name": "Bandar Dalam"
+    },
+    {
+      "code": "1813112007",
+      "name": "Way Haru"
+    },
+    {
+      "code": "1813112008",
+      "name": "Pemerihan"
+    },
+    {
+      "code": "1813112009",
+      "name": "Suka Negeri"
+    },
+    {
+      "code": "1813112010",
+      "name": "Sumberejo"
+    },
+    {
+      "code": "1813112011",
+      "name": "Siring Gading"
+    },
+    {
+      "code": "1813112012",
+      "name": "Way Tias"
+    },
+    {
+      "code": "1813112013",
+      "name": "Tanjung Rejo"
+    },
+    {
+      "code": "1813112014",
+      "name": "Pagar Bukit Induk"
+    }
+  ]
 }

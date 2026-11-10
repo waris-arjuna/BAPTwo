@@ -1,212 +1,346 @@
 {
-    "650105": [
-        {
-            "code": "6501051001",
-            "name": "Tanjung Selor Hulu"
-        },
-        {
-            "code": "6501051002",
-            "name": "Tanjung Selor Hilir"
-        },
-        {
-            "code": "6501051008",
-            "name": "Tanjung Selor Timur"
-        },
-        {
-            "code": "6501052003",
-            "name": "Jelarai Selor"
-        },
-        {
-            "code": "6501052004",
-            "name": "Gunung Seriang"
-        },
-        {
-            "code": "6501052005",
-            "name": "Bumi Rahayu"
-        },
-        {
-            "code": "6501052006",
-            "name": "Gunung Sari"
-        },
-        {
-            "code": "6501052007",
-            "name": "Apung"
-        },
-        {
-            "code": "6501052009",
-            "name": "Tengkapak"
-        }
-    ],
-    "650106": [
-        {
-            "code": "6501062001",
-            "name": "Salimbatu"
-        },
-        {
-            "code": "6501062002",
-            "name": "Silva Rahayu"
-        },
-        {
-            "code": "6501062003",
-            "name": "Tanjung Buka"
-        }
-    ],
-    "650107": [
-        {
-            "code": "6501072001",
-            "name": "Lepak Aru"
-        },
-        {
-            "code": "6501072002",
-            "name": "Long Lasan"
-        },
-        {
-            "code": "6501072003",
-            "name": "Long Peso"
-        },
-        {
-            "code": "6501072004",
-            "name": "Long Bia"
-        },
-        {
-            "code": "6501072005",
-            "name": "Muara Pangean"
-        },
-        {
-            "code": "6501072006",
-            "name": "Long Lian"
-        },
-        {
-            "code": "6501072007",
-            "name": "Long Pelaah"
-        },
-        {
-            "code": "6501072008",
-            "name": "Long Lejuh"
-        },
-        {
-            "code": "6501072009",
-            "name": "Long Pelban"
-        },
-        {
-            "code": "6501072010",
-            "name": "Long Buang"
-        }
-    ],
-    "650108": [
-        {
-            "code": "6501082001",
-            "name": "Long Tungu"
-        },
-        {
-            "code": "6501082002",
-            "name": "Long Bang"
-        },
-        {
-            "code": "6501082003",
-            "name": "Long Telenjau"
-        },
-        {
-            "code": "6501082004",
-            "name": "Naha Aya"
-        },
-        {
-            "code": "6501082005",
-            "name": "Long Lembu"
-        },
-        {
-            "code": "6501082006",
-            "name": "Long Bang Hulu"
-        }
-    ],
-    "650109": [
-        {
-            "code": "6501092001",
-            "name": "Sekatak Buji"
-        },
-        {
-            "code": "6501092002",
-            "name": "Paru Abang"
-        },
-        {
-            "code": "6501092003",
-            "name": "Bunau"
-        },
-        {
-            "code": "6501092004",
-            "name": "Ujang"
-        },
-        {
-            "code": "6501092005",
-            "name": "Tenggiling"
-        },
-        {
-            "code": "6501092006",
-            "name": "Kelembunan"
-        },
-        {
-            "code": "6501092007",
-            "name": "Turung"
-        },
-        {
-            "code": "6501092008",
-            "name": "Terindak"
-        },
-        {
-            "code": "6501092009",
-            "name": "Kelising"
-        },
-        {
-            "code": "6501092010",
-            "name": "Ambalat"
-        },
-        {
-            "code": "6501092011",
-            "name": "Keriting"
-        },
-        {
-            "code": "6501092012",
-            "name": "Kendari"
-        },
-        {
-            "code": "6501092013",
-            "name": "Bambang"
-        },
-        {
-            "code": "6501092014",
-            "name": "Maritam"
-        },
-        {
-            "code": "6501092015",
-            "name": "Pentian"
-        },
-        {
-            "code": "6501092016",
-            "name": "Punan Dulau"
-        },
-        {
-            "code": "6501092017",
-            "name": "Kelincauan"
-        },
-        {
-            "code": "6501092018",
-            "name": "Bekiliu"
-        },
-        {
-            "code": "6501092019",
-            "name": "Sekatak Bengara"
-        },
-        {
-            "code": "6501092020",
-            "name": "Pungit"
-        },
-        {
-            "code": "6501092021",
-            "name": "Anjar Arip"
-        },
-        {
-            "code": "6501092022",
-            "name": "Liagu"
-        }
-    ]
+  "650101": [
+    {
+      "code": "6501011001",
+      "name": "Tanjung Palas Hulu"
+    },
+    {
+      "code": "6501011002",
+      "name": "Tanjung Palas Tengah"
+    },
+    {
+      "code": "6501011003",
+      "name": "Tanjung Palas Hilir"
+    },
+    {
+      "code": "6501011004",
+      "name": "Karang Anyar"
+    },
+    {
+      "code": "6501012005",
+      "name": "Gunung Putih"
+    },
+    {
+      "code": "6501012006",
+      "name": "Pejalin"
+    },
+    {
+      "code": "6501012007",
+      "name": "Antutan"
+    },
+    {
+      "code": "6501012008",
+      "name": "Teras Baru"
+    },
+    {
+      "code": "6501012009",
+      "name": "Teras Nawang"
+    }
+  ],
+  "650102": [
+    {
+      "code": "6501022001",
+      "name": "Long Beluah"
+    },
+    {
+      "code": "6501022002",
+      "name": "Long Sam"
+    },
+    {
+      "code": "6501022003",
+      "name": "Mara I"
+    },
+    {
+      "code": "6501022004",
+      "name": "Mara Hilir"
+    },
+    {
+      "code": "6501022005",
+      "name": "Long Pari"
+    }
+  ],
+  "650103": [
+    {
+      "code": "6501032001",
+      "name": "Karang Agung"
+    },
+    {
+      "code": "6501032002",
+      "name": "Pimping"
+    },
+    {
+      "code": "6501032003",
+      "name": "Panca Agung"
+    },
+    {
+      "code": "6501032004",
+      "name": "Ruhui Rahayu"
+    },
+    {
+      "code": "6501032005",
+      "name": "Ardi Mulyo"
+    },
+    {
+      "code": "6501032006",
+      "name": "Kelubir"
+    }
+  ],
+  "650104": [
+    {
+      "code": "6501042001",
+      "name": "Tanah Kuning"
+    },
+    {
+      "code": "6501042002",
+      "name": "Mangkupadi"
+    },
+    {
+      "code": "6501042003",
+      "name": "Sajau"
+    },
+    {
+      "code": "6501042004",
+      "name": "Wonomulyo"
+    },
+    {
+      "code": "6501042005",
+      "name": "Tanjung Agung"
+    },
+    {
+      "code": "6501042006",
+      "name": "Binai"
+    },
+    {
+      "code": "6501042007",
+      "name": "Sajau Hilir"
+    },
+    {
+      "code": "6501042008",
+      "name": "Pura Sajau"
+    }
+  ],
+  "650105": [
+    {
+      "code": "6501051001",
+      "name": "Tanjung Selor Hulu"
+    },
+    {
+      "code": "6501051002",
+      "name": "Tanjung Selor Hilir"
+    },
+    {
+      "code": "6501051008",
+      "name": "Tanjung Selor Timur"
+    },
+    {
+      "code": "6501052003",
+      "name": "Jelarai Selor"
+    },
+    {
+      "code": "6501052004",
+      "name": "Gunung Seriang"
+    },
+    {
+      "code": "6501052005",
+      "name": "Bumi Rahayu"
+    },
+    {
+      "code": "6501052006",
+      "name": "Gunung Sari"
+    },
+    {
+      "code": "6501052007",
+      "name": "Apung"
+    },
+    {
+      "code": "6501052009",
+      "name": "Tengkapak"
+    }
+  ],
+  "650106": [
+    {
+      "code": "6501062001",
+      "name": "Salimbatu"
+    },
+    {
+      "code": "6501062002",
+      "name": "Silva Rahayu"
+    },
+    {
+      "code": "6501062003",
+      "name": "Tanjung Buka"
+    }
+  ],
+  "650107": [
+    {
+      "code": "6501072001",
+      "name": "Lepak Aru"
+    },
+    {
+      "code": "6501072002",
+      "name": "Long Lasan"
+    },
+    {
+      "code": "6501072003",
+      "name": "Long Peso"
+    },
+    {
+      "code": "6501072004",
+      "name": "Long Bia"
+    },
+    {
+      "code": "6501072005",
+      "name": "Muara Pangean"
+    },
+    {
+      "code": "6501072006",
+      "name": "Long Lian"
+    },
+    {
+      "code": "6501072007",
+      "name": "Long Pelaah"
+    },
+    {
+      "code": "6501072008",
+      "name": "Long Lejuh"
+    },
+    {
+      "code": "6501072009",
+      "name": "Long Pelban"
+    },
+    {
+      "code": "6501072010",
+      "name": "Long Buang"
+    }
+  ],
+  "650108": [
+    {
+      "code": "6501082001",
+      "name": "Long Tungu"
+    },
+    {
+      "code": "6501082002",
+      "name": "Long Bang"
+    },
+    {
+      "code": "6501082003",
+      "name": "Long Telenjau"
+    },
+    {
+      "code": "6501082004",
+      "name": "Naha Aya"
+    },
+    {
+      "code": "6501082005",
+      "name": "Long Lembu"
+    },
+    {
+      "code": "6501082006",
+      "name": "Long Bang Hulu"
+    }
+  ],
+  "650109": [
+    {
+      "code": "6501092001",
+      "name": "Sekatak Buji"
+    },
+    {
+      "code": "6501092002",
+      "name": "Paru Abang"
+    },
+    {
+      "code": "6501092003",
+      "name": "Bunau"
+    },
+    {
+      "code": "6501092004",
+      "name": "Ujang"
+    },
+    {
+      "code": "6501092005",
+      "name": "Tenggiling"
+    },
+    {
+      "code": "6501092006",
+      "name": "Kelembunan"
+    },
+    {
+      "code": "6501092007",
+      "name": "Turung"
+    },
+    {
+      "code": "6501092008",
+      "name": "Terindak"
+    },
+    {
+      "code": "6501092009",
+      "name": "Kelising"
+    },
+    {
+      "code": "6501092010",
+      "name": "Ambalat"
+    },
+    {
+      "code": "6501092011",
+      "name": "Keriting"
+    },
+    {
+      "code": "6501092012",
+      "name": "Kendari"
+    },
+    {
+      "code": "6501092013",
+      "name": "Bambang"
+    },
+    {
+      "code": "6501092014",
+      "name": "Maritam"
+    },
+    {
+      "code": "6501092015",
+      "name": "Pentian"
+    },
+    {
+      "code": "6501092016",
+      "name": "Punan Dulau"
+    },
+    {
+      "code": "6501092017",
+      "name": "Kelincauan"
+    },
+    {
+      "code": "6501092018",
+      "name": "Bekiliu"
+    },
+    {
+      "code": "6501092019",
+      "name": "Sekatak Bengara"
+    },
+    {
+      "code": "6501092020",
+      "name": "Pungit"
+    },
+    {
+      "code": "6501092021",
+      "name": "Anjar Arip"
+    },
+    {
+      "code": "6501092022",
+      "name": "Liagu"
+    }
+  ],
+  "650110": [
+    {
+      "code": "6501102001",
+      "name": "Bunyu Barat"
+    },
+    {
+      "code": "6501102002",
+      "name": "Bunyu Selatan"
+    },
+    {
+      "code": "6501102003",
+      "name": "Bunyu Timur"
+    }
+  ]
 }

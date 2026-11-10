@@ -1,266 +1,476 @@
 {
-    "730401": [
-        {
-            "code": "7304011001",
-            "name": "Benteng"
-        },
-        {
-            "code": "7304011002",
-            "name": "Pallengu"
-        },
-        {
-            "code": "7304011003",
-            "name": "Pantai Bahari"
-        },
-        {
-            "code": "7304011004",
-            "name": "Bontorannu"
-        },
-        {
-            "code": "7304012005",
-            "name": "Pallantikang"
-        },
-        {
-            "code": "7304012006",
-            "name": "Kalimporo"
-        },
-        {
-            "code": "7304012007",
-            "name": "Punagaya"
-        },
-        {
-            "code": "7304012008",
-            "name": "Mallasoro"
-        },
-        {
-            "code": "7304012009",
-            "name": "Kapita"
-        },
-        {
-            "code": "7304012010",
-            "name": "Marayoka"
-        },
-        {
-            "code": "7304012011",
-            "name": "Jenetallasa"
-        },
-        {
-            "code": "7304012012",
-            "name": "Tombo Tombolo"
-        },
-        {
-            "code": "7304012013",
-            "name": "Gunung Silanu"
-        },
-        {
-            "code": "7304012014",
-            "name": "Bontomanai"
-        }
-    ],
-    "730402": [
-        {
-            "code": "7304021001",
-            "name": "Bonto Tangnga"
-        },
-        {
-            "code": "7304021002",
-            "name": "Tonro Kassi"
-        },
-        {
-            "code": "7304021003",
-            "name": "Tonro Kassi Barat"
-        },
-        {
-            "code": "7304021004",
-            "name": "Tonro Kassi Timur"
-        },
-        {
-            "code": "7304021005",
-            "name": "Taman Roya"
-        },
-        {
-            "code": "7304021006",
-            "name": "Manjangloe"
-        },
-        {
-            "code": "7304022007",
-            "name": "Borongtala"
-        },
-        {
-            "code": "7304022008",
-            "name": "Bontosunggu"
-        },
-        {
-            "code": "7304022009",
-            "name": "Turatea"
-        },
-        {
-            "code": "7304022010",
-            "name": "Karelayu"
-        },
-        {
-            "code": "7304022011",
-            "name": "Bontojai"
-        },
-        {
-            "code": "7304022012",
-            "name": "Turatea Timur"
-        }
-    ],
-    "730403": [
-        {
-            "code": "7304031001",
-            "name": "Pabiringa"
-        },
-        {
-            "code": "7304031002",
-            "name": "Balang"
-        },
-        {
-            "code": "7304031003",
-            "name": "Empoang"
-        },
-        {
-            "code": "7304031004",
-            "name": "Balang Toa"
-        },
-        {
-            "code": "7304031005",
-            "name": "Balang Beru"
-        },
-        {
-            "code": "7304031006",
-            "name": "Empoang Selatan"
-        },
-        {
-            "code": "7304031007",
-            "name": "Sidenre"
-        },
-        {
-            "code": "7304031008",
-            "name": "Empoang Utara"
-        },
-        {
-            "code": "7304031009",
-            "name": "Monro Monro"
-        },
-        {
-            "code": "7304031010",
-            "name": "Biring Kassi"
-        },
-        {
-            "code": "7304031011",
-            "name": "Panaikang"
-        },
-        {
-            "code": "7304031012",
-            "name": "Bontoa"
-        },
-        {
-            "code": "7304032013",
-            "name": "Sapanang"
-        }
-    ],
-    "730404": [
-        {
-            "code": "7304041001",
-            "name": "Togo Togo"
-        },
-        {
-            "code": "7304041002",
-            "name": "Bonto Raya"
-        },
-        {
-            "code": "7304042003",
-            "name": "Maccinibaji"
-        },
-        {
-            "code": "7304042008",
-            "name": "Camba Camba"
-        },
-        {
-            "code": "7304042009",
-            "name": "Kaluku"
-        },
-        {
-            "code": "7304042014",
-            "name": "Bungeng"
-        }
-    ],
-    "730405": [
-        {
-            "code": "7304051001",
-            "name": "Tolo"
-        },
-        {
-            "code": "7304051002",
-            "name": "Tolo Utara"
-        },
-        {
-            "code": "7304051003",
-            "name": "Tolo Selatan"
-        },
-        {
-            "code": "7304051004",
-            "name": "Tolo Timur"
-        },
-        {
-            "code": "7304051005",
-            "name": "Tolo Barat"
-        },
-        {
-            "code": "7304052006",
-            "name": "Gantarang"
-        },
-        {
-            "code": "7304052009",
-            "name": "Bontolebang"
-        },
-        {
-            "code": "7304052010",
-            "name": "Bontonompo"
-        },
-        {
-            "code": "7304052014",
-            "name": "Samataring"
-        },
-        {
-            "code": "7304052021",
-            "name": "Tombolo"
-        }
-    ],
-    "730406": [
-        {
-            "code": "7304061002",
-            "name": "Bulu Jaya"
-        },
-        {
-            "code": "7304062001",
-            "name": "Banrimanurung"
-        },
-        {
-            "code": "7304062003",
-            "name": "Barana"
-        },
-        {
-            "code": "7304062004",
-            "name": "Beroanging"
-        },
-        {
-            "code": "7304062005",
-            "name": "Tuju"
-        },
-        {
-            "code": "7304062006",
-            "name": "Garassikang"
-        },
-        {
-            "code": "7304062007",
-            "name": "Pattiro"
-        },
-        {
-            "code": "7304062008",
-            "name": "Pappalluang"
-        }
-    ]
+  "730401": [
+    {
+      "code": "7304011001",
+      "name": "Benteng"
+    },
+    {
+      "code": "7304011002",
+      "name": "Pallengu"
+    },
+    {
+      "code": "7304011003",
+      "name": "Pantai Bahari"
+    },
+    {
+      "code": "7304011004",
+      "name": "Bontorannu"
+    },
+    {
+      "code": "7304012005",
+      "name": "Pallantikang"
+    },
+    {
+      "code": "7304012006",
+      "name": "Kalimporo"
+    },
+    {
+      "code": "7304012007",
+      "name": "Punagaya"
+    },
+    {
+      "code": "7304012008",
+      "name": "Mallasoro"
+    },
+    {
+      "code": "7304012009",
+      "name": "Kapita"
+    },
+    {
+      "code": "7304012010",
+      "name": "Marayoka"
+    },
+    {
+      "code": "7304012011",
+      "name": "Jenetallasa"
+    },
+    {
+      "code": "7304012012",
+      "name": "Tombo Tombolo"
+    },
+    {
+      "code": "7304012013",
+      "name": "Gunung Silanu"
+    },
+    {
+      "code": "7304012014",
+      "name": "Bontomanai"
+    }
+  ],
+  "730402": [
+    {
+      "code": "7304021001",
+      "name": "Bonto Tangnga"
+    },
+    {
+      "code": "7304021002",
+      "name": "Tonro Kassi"
+    },
+    {
+      "code": "7304021003",
+      "name": "Tonro Kassi Barat"
+    },
+    {
+      "code": "7304021004",
+      "name": "Tonro Kassi Timur"
+    },
+    {
+      "code": "7304021005",
+      "name": "Taman Roya"
+    },
+    {
+      "code": "7304021006",
+      "name": "Manjangloe"
+    },
+    {
+      "code": "7304022007",
+      "name": "Borongtala"
+    },
+    {
+      "code": "7304022008",
+      "name": "Bontosunggu"
+    },
+    {
+      "code": "7304022009",
+      "name": "Turatea"
+    },
+    {
+      "code": "7304022010",
+      "name": "Karelayu"
+    },
+    {
+      "code": "7304022011",
+      "name": "Bontojai"
+    },
+    {
+      "code": "7304022012",
+      "name": "Turatea Timur"
+    }
+  ],
+  "730403": [
+    {
+      "code": "7304031001",
+      "name": "Pabiringa"
+    },
+    {
+      "code": "7304031002",
+      "name": "Balang"
+    },
+    {
+      "code": "7304031003",
+      "name": "Empoang"
+    },
+    {
+      "code": "7304031004",
+      "name": "Balang Toa"
+    },
+    {
+      "code": "7304031005",
+      "name": "Balang Beru"
+    },
+    {
+      "code": "7304031006",
+      "name": "Empoang Selatan"
+    },
+    {
+      "code": "7304031007",
+      "name": "Sidenre"
+    },
+    {
+      "code": "7304031008",
+      "name": "Empoang Utara"
+    },
+    {
+      "code": "7304031009",
+      "name": "Monro Monro"
+    },
+    {
+      "code": "7304031010",
+      "name": "Biring Kassi"
+    },
+    {
+      "code": "7304031011",
+      "name": "Panaikang"
+    },
+    {
+      "code": "7304031012",
+      "name": "Bontoa"
+    },
+    {
+      "code": "7304032013",
+      "name": "Sapanang"
+    }
+  ],
+  "730404": [
+    {
+      "code": "7304041001",
+      "name": "Togo Togo"
+    },
+    {
+      "code": "7304041002",
+      "name": "Bonto Raya"
+    },
+    {
+      "code": "7304042003",
+      "name": "Maccinibaji"
+    },
+    {
+      "code": "7304042008",
+      "name": "Camba Camba"
+    },
+    {
+      "code": "7304042009",
+      "name": "Kaluku"
+    },
+    {
+      "code": "7304042014",
+      "name": "Bungeng"
+    }
+  ],
+  "730405": [
+    {
+      "code": "7304051001",
+      "name": "Tolo"
+    },
+    {
+      "code": "7304051002",
+      "name": "Tolo Utara"
+    },
+    {
+      "code": "7304051003",
+      "name": "Tolo Selatan"
+    },
+    {
+      "code": "7304051004",
+      "name": "Tolo Timur"
+    },
+    {
+      "code": "7304051005",
+      "name": "Tolo Barat"
+    },
+    {
+      "code": "7304052006",
+      "name": "Gantarang"
+    },
+    {
+      "code": "7304052009",
+      "name": "Bontolebang"
+    },
+    {
+      "code": "7304052010",
+      "name": "Bontonompo"
+    },
+    {
+      "code": "7304052014",
+      "name": "Samataring"
+    },
+    {
+      "code": "7304052021",
+      "name": "Tombolo"
+    }
+  ],
+  "730406": [
+    {
+      "code": "7304061002",
+      "name": "Bulu Jaya"
+    },
+    {
+      "code": "7304062001",
+      "name": "Banrimanurung"
+    },
+    {
+      "code": "7304062003",
+      "name": "Barana"
+    },
+    {
+      "code": "7304062004",
+      "name": "Beroanging"
+    },
+    {
+      "code": "7304062005",
+      "name": "Tuju"
+    },
+    {
+      "code": "7304062006",
+      "name": "Garassikang"
+    },
+    {
+      "code": "7304062007",
+      "name": "Pattiro"
+    },
+    {
+      "code": "7304062008",
+      "name": "Pappalluang"
+    }
+  ],
+  "730407": [
+    {
+      "code": "7304071002",
+      "name": "Bontoramba"
+    },
+    {
+      "code": "7304072001",
+      "name": "Bulusibatang"
+    },
+    {
+      "code": "7304072003",
+      "name": "Balumbungan"
+    },
+    {
+      "code": "7304072004",
+      "name": "Bangkalaloe"
+    },
+    {
+      "code": "7304072005",
+      "name": "Datara"
+    },
+    {
+      "code": "7304072006",
+      "name": "Maero"
+    },
+    {
+      "code": "7304072007",
+      "name": "Kareloe"
+    },
+    {
+      "code": "7304072008",
+      "name": "Batujala"
+    },
+    {
+      "code": "7304072009",
+      "name": "Bulusuka"
+    },
+    {
+      "code": "7304072010",
+      "name": "Tanammawang"
+    },
+    {
+      "code": "7304072011",
+      "name": "Lentu"
+    },
+    {
+      "code": "7304072012",
+      "name": "Baraya"
+    }
+  ],
+  "730408": [
+    {
+      "code": "7304082001",
+      "name": "Paitana"
+    },
+    {
+      "code": "7304082002",
+      "name": "Bonto Mate'ne"
+    },
+    {
+      "code": "7304082003",
+      "name": "Mangepong"
+    },
+    {
+      "code": "7304082004",
+      "name": "Bululoe"
+    },
+    {
+      "code": "7304082005",
+      "name": "Kayuloe Barat"
+    },
+    {
+      "code": "7304082006",
+      "name": "Langkura"
+    },
+    {
+      "code": "7304082007",
+      "name": "Bungungloe"
+    },
+    {
+      "code": "7304082008",
+      "name": "Kayuloe Timur"
+    },
+    {
+      "code": "7304082009",
+      "name": "Jombe"
+    },
+    {
+      "code": "7304082010",
+      "name": "Tanjonga"
+    },
+    {
+      "code": "7304082011",
+      "name": "Parasanganberu"
+    }
+  ],
+  "730409": [
+    {
+      "code": "7304092001",
+      "name": "Bulo Bulo"
+    },
+    {
+      "code": "7304092002",
+      "name": "Arungkeke"
+    },
+    {
+      "code": "7304092003",
+      "name": "Palajau"
+    },
+    {
+      "code": "7304092004",
+      "name": "Boronglamu"
+    },
+    {
+      "code": "7304092005",
+      "name": "Arungkeke Pallantikang"
+    },
+    {
+      "code": "7304092006",
+      "name": "Kalumpangloe"
+    },
+    {
+      "code": "7304092007",
+      "name": "Kampala"
+    }
+  ],
+  "730410": [
+    {
+      "code": "7304102001",
+      "name": "Rumbia"
+    },
+    {
+      "code": "7304102002",
+      "name": "Lebangmanai"
+    },
+    {
+      "code": "7304102003",
+      "name": "Bontomanai"
+    },
+    {
+      "code": "7304102004",
+      "name": "Bontotiro"
+    },
+    {
+      "code": "7304102005",
+      "name": "Loka"
+    },
+    {
+      "code": "7304102006",
+      "name": "Tompobulu"
+    },
+    {
+      "code": "7304102007",
+      "name": "Kassi"
+    },
+    {
+      "code": "7304102008",
+      "name": "Pallantikang"
+    },
+    {
+      "code": "7304102009",
+      "name": "Lebangmanai Utara"
+    },
+    {
+      "code": "7304102010",
+      "name": "Bontocini"
+    },
+    {
+      "code": "7304102011",
+      "name": "Janetallasa"
+    },
+    {
+      "code": "7304102012",
+      "name": "Ujung Bulu"
+    }
+  ],
+  "730411": [
+    {
+      "code": "7304112001",
+      "name": "Pao"
+    },
+    {
+      "code": "7304112002",
+      "name": "Bontorappo"
+    },
+    {
+      "code": "7304112003",
+      "name": "Tarowang"
+    },
+    {
+      "code": "7304112004",
+      "name": "Allu Tarowang"
+    },
+    {
+      "code": "7304112005",
+      "name": "Balangbaru"
+    },
+    {
+      "code": "7304112006",
+      "name": "Balangloe Tarowang"
+    },
+    {
+      "code": "7304112007",
+      "name": "Bonto Ujung"
+    },
+    {
+      "code": "7304112008",
+      "name": "Tino"
+    }
+  ]
 }
