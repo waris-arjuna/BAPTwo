@@ -11,33 +11,19 @@ beforeEach(function () {
     Cache::flush();
 });
 
-test('endpoint wilayah provinsi mengembalikan 38 provinsi dari live api saat api berhasil', function () {
-    Http::fake([
-        'https://api.kodewilayah.web.id/provinces' => Http::response([
-            'success' => true,
-            'data' => [
-                ['code' => 31, 'name' => 'DKI Jakarta'],
-                ['code' => 63, 'name' => 'Kalimantan Selatan'],
-            ],
-        ], 200),
-    ]);
-
+test('endpoint wilayah provinsi mengembalikan 38 provinsi dari JSON lokal', function () {
     $user = User::factory()->create();
 
     $this->actingAs($user)
         ->getJson(route('wilayah.provinsi'))
         ->assertOk()
         ->assertJsonPath('success', true)
-        ->assertJsonCount(2, 'data')
-        ->assertJsonPath('data.0.code', '31')
-        ->assertJsonPath('data.0.name', 'DKI Jakarta');
+        ->assertJsonCount(38, 'data')
+        ->assertJsonPath('data.0.code', '11')
+        ->assertJsonPath('data.0.name', 'Aceh');
 });
 
 test('endpoint wilayah provinsi fallback ke 38 provinsi dari JSON lokal saat api offline atau gagal', function () {
-    Http::fake([
-        'https://api.kodewilayah.web.id/provinces' => Http::response(null, 500),
-    ]);
-
     $user = User::factory()->create();
 
     $response = $this->actingAs($user)
@@ -51,24 +37,14 @@ test('endpoint wilayah provinsi fallback ke 38 provinsi dari JSON lokal saat api
         ->and($data[0]['name'])->toBe('Aceh');
 });
 
-test('endpoint wilayah kabupaten mengembalikan kabupaten DKI Jakarta dari live api', function () {
-    Http::fake([
-        'https://api.kodewilayah.web.id/regencies/31' => Http::response([
-            'success' => true,
-            'data' => [
-                ['code' => 3101, 'name' => 'Kepulauan Seribu'],
-                ['code' => 3171, 'name' => 'Jakarta Pusat'],
-            ],
-        ], 200),
-    ]);
-
+test('endpoint wilayah kabupaten mengembalikan kabupaten DKI Jakarta dari JSON lokal', function () {
     $user = User::factory()->create();
 
     $this->actingAs($user)
         ->getJson(route('wilayah.kabupaten', '31'))
         ->assertOk()
         ->assertJsonPath('success', true)
-        ->assertJsonCount(2, 'data')
+        ->assertJsonCount(6, 'data')
         ->assertJsonPath('data.0.code', '3101');
 });
 

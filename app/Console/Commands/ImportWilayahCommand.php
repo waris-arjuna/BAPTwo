@@ -12,7 +12,7 @@ class ImportWilayahCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'wilayah:import {--source= : Direktori sumber file mentah} {--target= : Direktori target hasil partisi} {--force : Timpa file hasil partisi yang sudah ada}';
+    protected $signature = 'wilayah:import {--force : Timpa file hasil partisi yang sudah ada}';
 
     /**
      * The console command description.
@@ -23,8 +23,8 @@ class ImportWilayahCommand extends Command
 
     public function handle(): int
     {
-        $rawDir = $this->option('source') ? (string) $this->option('source') : resource_path('data/wilayah/raw');
-        $targetDir = $this->option('target') ? (string) $this->option('target') : resource_path('data/wilayah');
+        $rawDir = resource_path('data/wilayah/raw');
+        $targetDir = resource_path('data/wilayah');
         $districtsDir = $targetDir.'/districts';
         $villagesDir = $targetDir.'/villages';
 

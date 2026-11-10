@@ -74,6 +74,11 @@
                             <option :value="item.code" x-text="item.name" :selected="String(item.code) === String(modalWilayah.kabupaten_kode)"></option>
                         </template>
                     </x-form.searchable-select>
+                    <div x-show="errorKabupaten" x-cloak class="mt-1.5 flex items-center gap-1.5 text-xs text-error-600 dark:text-error-400">
+                        <i class="fi fi-rr-info shrink-0"></i>
+                        <span x-text="errorKabupaten"></span>
+                        <button type="button" @click="retryFetchKabupaten()" class="font-medium underline hover:text-error-700 dark:hover:text-error-300">Coba lagi</button>
+                    </div>
                 </div>
 
                 {{-- Dropdown Kecamatan --}}
@@ -94,6 +99,11 @@
                             <option :value="item.code" x-text="item.name" :selected="String(item.code) === String(modalWilayah.kecamatan_kode)"></option>
                         </template>
                     </x-form.searchable-select>
+                    <div x-show="errorKecamatan" x-cloak class="mt-1.5 flex items-center gap-1.5 text-xs text-error-600 dark:text-error-400">
+                        <i class="fi fi-rr-info shrink-0"></i>
+                        <span x-text="errorKecamatan"></span>
+                        <button type="button" @click="retryFetchKecamatan()" class="font-medium underline hover:text-error-700 dark:hover:text-error-300">Coba lagi</button>
+                    </div>
                 </div>
 
                 {{-- Dropdown Desa / Kelurahan --}}
@@ -114,6 +124,11 @@
                             <option :value="item.code" x-text="item.name" :selected="String(item.code) === String(modalWilayah.desa_kode)"></option>
                         </template>
                     </x-form.searchable-select>
+                    <div x-show="errorDesa" x-cloak class="mt-1.5 flex items-center gap-1.5 text-xs text-error-600 dark:text-error-400">
+                        <i class="fi fi-rr-info shrink-0"></i>
+                        <span x-text="errorDesa"></span>
+                        <button type="button" @click="retryFetchDesa()" class="font-medium underline hover:text-error-700 dark:hover:text-error-300">Coba lagi</button>
+                    </div>
                 </div>
 
                 {{-- RT & RW --}}

@@ -127,6 +127,11 @@
                                 <option :value="item.code" x-text="item.name" :selected="item.code === wilayah.kabupaten_kode"></option>
                             </template>
                         </x-form.searchable-select>
+                        <div x-show="errorKabupaten" x-cloak class="mt-1.5 flex items-center gap-1.5 text-xs text-error-600 dark:text-error-400">
+                            <i class="fi fi-rr-info shrink-0"></i>
+                            <span x-text="errorKabupaten"></span>
+                            <button type="button" @click="retryFetchKabupaten()" class="font-medium underline hover:text-error-700 dark:hover:text-error-300">{{ __('Coba lagi') }}</button>
+                        </div>
                         @error('kabupaten_kode')
                             <p class="mt-1 text-theme-xs text-error-600 dark:text-error-400">{{ $message }}</p>
                         @enderror
@@ -151,6 +156,11 @@
                                 <option :value="item.code" x-text="item.name" :selected="item.code === wilayah.kecamatan_kode"></option>
                             </template>
                         </x-form.searchable-select>
+                        <div x-show="errorKecamatan" x-cloak class="mt-1.5 flex items-center gap-1.5 text-xs text-error-600 dark:text-error-400">
+                            <i class="fi fi-rr-info shrink-0"></i>
+                            <span x-text="errorKecamatan"></span>
+                            <button type="button" @click="retryFetchKecamatan()" class="font-medium underline hover:text-error-700 dark:hover:text-error-300">{{ __('Coba lagi') }}</button>
+                        </div>
                         @error('kecamatan_kode')
                             <p class="mt-1 text-theme-xs text-error-600 dark:text-error-400">{{ $message }}</p>
                         @enderror
@@ -175,6 +185,11 @@
                                 <option :value="item.code" x-text="item.name" :selected="item.code === wilayah.desa_kode"></option>
                             </template>
                         </x-form.searchable-select>
+                        <div x-show="errorDesa" x-cloak class="mt-1.5 flex items-center gap-1.5 text-xs text-error-600 dark:text-error-400">
+                            <i class="fi fi-rr-info shrink-0"></i>
+                            <span x-text="errorDesa"></span>
+                            <button type="button" @click="retryFetchDesa()" class="font-medium underline hover:text-error-700 dark:hover:text-error-300">{{ __('Coba lagi') }}</button>
+                        </div>
                         @error('desa_kode')
                             <p class="mt-1 text-theme-xs text-error-600 dark:text-error-400">{{ $message }}</p>
                         @enderror

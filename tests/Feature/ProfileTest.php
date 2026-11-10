@@ -194,12 +194,14 @@ test('endpoint proxy wilayah mengembalikan daftar wilayah berjenjang', function 
 
     $user = User::factory()->create();
 
-    $this->actingAs($user)
+    $res = $this->actingAs($user)
         ->getJson(route('wilayah.provinsi'))
         ->assertOk()
-        ->assertJsonPath('success', true)
-        ->assertJsonPath('data.0.code', '63')
-        ->assertJsonPath('data.0.name', 'Kalimantan Selatan');
+        ->assertJsonPath('success', true);
+
+    $kalsel = collect($res->json('data'))->firstWhere('code', '63');
+    expect($kalsel)->not->toBeNull()
+        ->and($kalsel['name'])->toBe('Kalimantan Selatan');
 });
 
 test('halaman profil merender tombol dan modal pratinjau foto profil', function () {

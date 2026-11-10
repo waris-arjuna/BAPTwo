@@ -23,6 +23,10 @@ export function tkpWilayahForm(config = {}) {
         kecamatanNama: config.kecamatanNama || '',
         desaKode: config.desaKode || '',
         desaNama: config.desaNama || '',
+        prevKabupatenKode: config.kabupatenKode ? String(config.kabupatenKode) : '',
+        prevKecamatanKode: config.kecamatanKode ? String(config.kecamatanKode) : '',
+        errorKecamatan: '',
+        errorDesa: '',
         kecamatanAbortController: null,
         desaAbortController: null,
         isInitializing: false,
@@ -35,6 +39,8 @@ export function tkpWilayahForm(config = {}) {
             if (config.kecamatanNama) this.kecamatanNama = String(config.kecamatanNama);
             if (config.desaKode) this.desaKode = String(config.desaKode);
             if (config.desaNama) this.desaNama = String(config.desaNama);
+            this.prevKabupatenKode = this.kabupatenKode;
+            this.prevKecamatanKode = this.kecamatanKode;
 
             try {
                 await this.loadKabupaten(false);
@@ -64,8 +70,10 @@ export function tkpWilayahForm(config = {}) {
             if (reset) {
                 this.kabupatenKode = '';
                 this.kabupatenNama = '';
+                this.prevKabupatenKode = '';
                 this.kecamatanKode = '';
                 this.kecamatanNama = '';
+                this.prevKecamatanKode = '';
                 this.desaKode = '';
                 this.desaNama = '';
                 this.kecamatanList = [];
@@ -81,12 +89,14 @@ export function tkpWilayahForm(config = {}) {
         },
 
         async loadKecamatan(reset = true, targetKode = null, autoOpen = false) {
+            this.errorKecamatan = '';
             if (targetKode !== null && targetKode !== undefined) {
                 this.kabupatenKode = String(targetKode);
             }
             if (reset) {
                 this.kecamatanKode = '';
                 this.kecamatanNama = '';
+                this.prevKecamatanKode = '';
                 this.kecamatanList = [];
                 this.desaKode = '';
                 this.desaNama = '';
@@ -115,15 +125,22 @@ export function tkpWilayahForm(config = {}) {
                 const res = await fetch(`/wilayah/kecamatan/${currentKab}`, {
                     signal: this.kecamatanAbortController.signal
                 });
+                if (!res.ok) throw new Error('HTTP ' + res.status);
                 const json = await res.json();
                 if (this.kabupatenKode === currentKab) {
                     this.kecamatanList = json.data || [];
                     const foundKec = this.kecamatanList.find(k => String(k.code || k.kode) === String(this.kecamatanKode));
                     if (foundKec) this.kecamatanNama = foundKec.name || foundKec.nama;
+                    if (autoOpen && this.kecamatanList.length > 0) {
+                        this.$nextTick(() => {
+                            this.$dispatch('searchable-select-open', { id: 'tkp_kecamatan_kode' });
+                        });
+                    }
                 }
             } catch (e) {
                 if (e.name !== 'AbortError') {
                     this.kecamatanList = [];
+                    this.errorKecamatan = 'Gagal memuat daftar kecamatan.';
                 }
             } finally {
                 if (this.kabupatenKode === currentKab) {
@@ -133,6 +150,7 @@ export function tkpWilayahForm(config = {}) {
         },
 
         async loadDesa(reset = true, targetKode = null, autoOpen = false) {
+            this.errorDesa = '';
             if (targetKode !== null && targetKode !== undefined) {
                 this.kecamatanKode = String(targetKode);
             }
@@ -163,20 +181,39 @@ export function tkpWilayahForm(config = {}) {
                 const res = await fetch(`/wilayah/desa/${currentKec}`, {
                     signal: this.desaAbortController.signal
                 });
+                if (!res.ok) throw new Error('HTTP ' + res.status);
                 const json = await res.json();
                 if (this.kecamatanKode === currentKec) {
                     this.desaList = json.data || [];
                     const foundDesa = this.desaList.find(d => String(d.code || d.kode) === String(this.desaKode));
                     if (foundDesa) this.desaNama = foundDesa.name || foundDesa.nama;
+                    if (autoOpen && this.desaList.length > 0) {
+                        this.$nextTick(() => {
+                            this.$dispatch('searchable-select-open', { id: 'tkp_desa_kode' });
+                        });
+                    }
                 }
             } catch (e) {
                 if (e.name !== 'AbortError') {
                     this.desaList = [];
+                    this.errorDesa = 'Gagal memuat daftar desa/kelurahan.';
                 }
             } finally {
                 if (this.kecamatanKode === currentKec) {
                     this.$dispatch('searchable-select-loading', { id: 'tkp_desa_kode', loading: false });
                 }
+            }
+        },
+
+        retryLoadKecamatan() {
+            if (this.kabupatenKode) {
+                this.loadKecamatan(false, this.kabupatenKode, true);
+            }
+        },
+
+        retryLoadDesa() {
+            if (this.kecamatanKode) {
+                this.loadDesa(false, this.kecamatanKode, true);
             }
         },
 
@@ -202,15 +239,30 @@ export function tkpWilayahForm(config = {}) {
         onKabupatenChange(event) {
             if (this.isInitializing) return;
             const val = this.extractEventValue(event, this.kabupatenKode);
-            if (val === undefined || val === null || String(val) === String(this.kabupatenKode)) return;
-            this.loadKecamatan(true, val, false);
+            if (val === undefined || val === null) return;
+            const newCode = String(val);
+            if (newCode === this.prevKabupatenKode) return;
+
+            // Jika kecamatan sebelumnya sudah terisi (re-selection), jangan auto open (opsi A3).
+            // Jika kecamatan sebelumnya masih kosong, auto open (opsi A1).
+            const shouldAutoOpen = !this.kecamatanKode;
+            this.prevKabupatenKode = newCode;
+            this.kabupatenKode = newCode;
+            this.loadKecamatan(true, newCode, shouldAutoOpen);
         },
 
         onKecamatanChange(event) {
             if (this.isInitializing) return;
             const val = this.extractEventValue(event, this.kecamatanKode);
-            if (val === undefined || val === null || String(val) === String(this.kecamatanKode)) return;
-            this.loadDesa(true, val, false);
+            if (val === undefined || val === null) return;
+            const newCode = String(val);
+            if (newCode === this.prevKecamatanKode) return;
+
+            // Jika desa sebelumnya sudah terisi, jangan auto open. Jika kosong, auto open.
+            const shouldAutoOpen = !this.desaKode;
+            this.prevKecamatanKode = newCode;
+            this.kecamatanKode = newCode;
+            this.loadDesa(true, newCode, shouldAutoOpen);
         },
 
         onDesaChange(event) {
@@ -334,6 +386,12 @@ export function tersangkaAlamatModalForm(config = {}) {
             desa_kode: '',
             desa_nama: '',
         },
+        prevProvinsiKode: '',
+        prevKabupatenKode: '',
+        prevKecamatanKode: '',
+        errorKabupaten: '',
+        errorKecamatan: '',
+        errorDesa: '',
         modalRt: '',
         modalRw: '',
         modalAlamatDetail: '',
@@ -378,6 +436,12 @@ export function tersangkaAlamatModalForm(config = {}) {
             this.modalWilayah.kecamatan_nama = this.alamat.kecamatan_nama ? String(this.alamat.kecamatan_nama) : '';
             this.modalWilayah.desa_kode = this.alamat.desa_kode ? String(this.alamat.desa_kode) : '';
             this.modalWilayah.desa_nama = this.alamat.desa_nama ? String(this.alamat.desa_nama) : '';
+            this.prevProvinsiKode = this.modalWilayah.provinsi_kode;
+            this.prevKabupatenKode = this.modalWilayah.kabupaten_kode;
+            this.prevKecamatanKode = this.modalWilayah.kecamatan_kode;
+            this.errorKabupaten = '';
+            this.errorKecamatan = '';
+            this.errorDesa = '';
             this.modalRt = this.alamat.rt || '';
             this.modalRw = this.alamat.rw || '';
             this.modalAlamatDetail = this.alamat.alamat_detail || '';
@@ -414,6 +478,7 @@ export function tersangkaAlamatModalForm(config = {}) {
         },
 
         async fetchKabupaten(provKode, autoOpen = false) {
+            this.errorKabupaten = '';
             if (!provKode) {
                 this.listKabupaten = [];
                 this.$dispatch('searchable-select-loading', { id: 'modal_tersangka_kabupaten_kode', loading: false });
@@ -428,13 +493,20 @@ export function tersangkaAlamatModalForm(config = {}) {
                 const res = await fetch(`${this.kabupatenUrlBase}/${provKode}`, {
                     signal: this.kabupatenAbortController.signal
                 });
+                if (!res.ok) throw new Error('HTTP ' + res.status);
                 const json = await res.json();
                 if (String(this.modalWilayah.provinsi_kode) === String(provKode)) {
                     this.listKabupaten = json.data || [];
+                    if (autoOpen && this.listKabupaten.length > 0) {
+                        this.$nextTick(() => {
+                            this.$dispatch('searchable-select-open', { id: 'modal_tersangka_kabupaten_kode' });
+                        });
+                    }
                 }
             } catch (e) {
                 if (e.name !== 'AbortError') {
                     this.listKabupaten = [];
+                    this.errorKabupaten = 'Gagal memuat daftar kabupaten/kota.';
                 }
             } finally {
                 if (String(this.modalWilayah.provinsi_kode) === String(provKode)) {
@@ -444,6 +516,7 @@ export function tersangkaAlamatModalForm(config = {}) {
         },
 
         async fetchKecamatan(kabKode, autoOpen = false) {
+            this.errorKecamatan = '';
             if (!kabKode) {
                 this.listKecamatan = [];
                 this.$dispatch('searchable-select-loading', { id: 'modal_tersangka_kecamatan_kode', loading: false });
@@ -458,13 +531,20 @@ export function tersangkaAlamatModalForm(config = {}) {
                 const res = await fetch(`${this.kecamatanUrlBase}/${kabKode}`, {
                     signal: this.kecamatanAbortController.signal
                 });
+                if (!res.ok) throw new Error('HTTP ' + res.status);
                 const json = await res.json();
                 if (String(this.modalWilayah.kabupaten_kode) === String(kabKode)) {
                     this.listKecamatan = json.data || [];
+                    if (autoOpen && this.listKecamatan.length > 0) {
+                        this.$nextTick(() => {
+                            this.$dispatch('searchable-select-open', { id: 'modal_tersangka_kecamatan_kode' });
+                        });
+                    }
                 }
             } catch (e) {
                 if (e.name !== 'AbortError') {
                     this.listKecamatan = [];
+                    this.errorKecamatan = 'Gagal memuat daftar kecamatan.';
                 }
             } finally {
                 if (String(this.modalWilayah.kabupaten_kode) === String(kabKode)) {
@@ -474,6 +554,7 @@ export function tersangkaAlamatModalForm(config = {}) {
         },
 
         async fetchDesa(kecKode, autoOpen = false) {
+            this.errorDesa = '';
             if (!kecKode) {
                 this.listDesa = [];
                 this.$dispatch('searchable-select-loading', { id: 'modal_tersangka_desa_kode', loading: false });
@@ -488,18 +569,43 @@ export function tersangkaAlamatModalForm(config = {}) {
                 const res = await fetch(`${this.desaUrlBase}/${kecKode}`, {
                     signal: this.desaAbortController.signal
                 });
+                if (!res.ok) throw new Error('HTTP ' + res.status);
                 const json = await res.json();
                 if (String(this.modalWilayah.kecamatan_kode) === String(kecKode)) {
                     this.listDesa = json.data || [];
+                    if (autoOpen && this.listDesa.length > 0) {
+                        this.$nextTick(() => {
+                            this.$dispatch('searchable-select-open', { id: 'modal_tersangka_desa_kode' });
+                        });
+                    }
                 }
             } catch (e) {
                 if (e.name !== 'AbortError') {
                     this.listDesa = [];
+                    this.errorDesa = 'Gagal memuat daftar desa/kelurahan.';
                 }
             } finally {
                 if (String(this.modalWilayah.kecamatan_kode) === String(kecKode)) {
                     this.$dispatch('searchable-select-loading', { id: 'modal_tersangka_desa_kode', loading: false });
                 }
+            }
+        },
+
+        retryFetchKabupaten() {
+            if (this.modalWilayah.provinsi_kode) {
+                this.fetchKabupaten(this.modalWilayah.provinsi_kode, true);
+            }
+        },
+
+        retryFetchKecamatan() {
+            if (this.modalWilayah.kabupaten_kode) {
+                this.fetchKecamatan(this.modalWilayah.kabupaten_kode, true);
+            }
+        },
+
+        retryFetchDesa() {
+            if (this.modalWilayah.kecamatan_kode) {
+                this.fetchDesa(this.modalWilayah.kecamatan_kode, true);
             }
         },
 
@@ -525,60 +631,78 @@ export function tersangkaAlamatModalForm(config = {}) {
         onProvinsiChange(event) {
             if (this.isModalLoading) return;
             const val = this.extractEventValue(event, this.modalWilayah.provinsi_kode);
-            if (val === undefined || val === null || String(val) === String(this.modalWilayah.provinsi_kode)) return;
-            this.modalWilayah.provinsi_kode = String(val);
-            const found = this.listProvinsi.find(p => String(p.code) === String(val));
+            if (val === undefined || val === null) return;
+            const newCode = String(val);
+            if (newCode === this.prevProvinsiKode) return;
+
+            const shouldAutoOpen = !this.modalWilayah.kabupaten_kode;
+            this.prevProvinsiKode = newCode;
+            this.modalWilayah.provinsi_kode = newCode;
+            const found = this.listProvinsi.find(p => String(p.code) === newCode);
             this.modalWilayah.provinsi_nama = found ? (found.name || found.nama) : '';
 
             this.modalWilayah.kabupaten_kode = '';
             this.modalWilayah.kabupaten_nama = '';
+            this.prevKabupatenKode = '';
             this.modalWilayah.kecamatan_kode = '';
             this.modalWilayah.kecamatan_nama = '';
+            this.prevKecamatanKode = '';
             this.modalWilayah.desa_kode = '';
             this.modalWilayah.desa_nama = '';
             this.listKabupaten = [];
             this.listKecamatan = [];
             this.listDesa = [];
 
-            if (val) {
-                this.fetchKabupaten(val, false);
+            if (newCode) {
+                this.fetchKabupaten(newCode, shouldAutoOpen);
             }
         },
 
         onKabupatenChange(event) {
             if (this.isModalLoading) return;
             const val = this.extractEventValue(event, this.modalWilayah.kabupaten_kode);
-            if (val === undefined || val === null || String(val) === String(this.modalWilayah.kabupaten_kode)) return;
-            this.modalWilayah.kabupaten_kode = String(val);
-            const found = this.listKabupaten.find(k => String(k.code) === String(val));
+            if (val === undefined || val === null) return;
+            const newCode = String(val);
+            if (newCode === this.prevKabupatenKode) return;
+
+            const shouldAutoOpen = !this.modalWilayah.kecamatan_kode;
+            this.prevKabupatenKode = newCode;
+            this.modalWilayah.kabupaten_kode = newCode;
+            const found = this.listKabupaten.find(k => String(k.code) === newCode);
             this.modalWilayah.kabupaten_nama = found ? (found.name || found.nama) : '';
 
             this.modalWilayah.kecamatan_kode = '';
             this.modalWilayah.kecamatan_nama = '';
+            this.prevKecamatanKode = '';
             this.modalWilayah.desa_kode = '';
             this.modalWilayah.desa_nama = '';
             this.listKecamatan = [];
             this.listDesa = [];
 
-            if (val) {
-                this.fetchKecamatan(val, false);
+            if (newCode) {
+                this.fetchKecamatan(newCode, shouldAutoOpen);
             }
         },
 
         onKecamatanChange(event) {
             if (this.isModalLoading) return;
             const val = this.extractEventValue(event, this.modalWilayah.kecamatan_kode);
-            if (val === undefined || val === null || String(val) === String(this.modalWilayah.kecamatan_kode)) return;
-            this.modalWilayah.kecamatan_kode = String(val);
-            const found = this.listKecamatan.find(k => String(k.code) === String(val));
+            if (val === undefined || val === null) return;
+            const newCode = String(val);
+            if (newCode === this.prevKecamatanKode) return;
+
+            const shouldAutoOpen = !this.modalWilayah.desa_kode;
+            this.prevKecamatanKode = newCode;
+            this.modalWilayah.kecamatan_kode = newCode;
+            const found = this.listKecamatan.find(k => String(k.code) === newCode);
             this.modalWilayah.kecamatan_nama = found ? (found.name || found.nama) : '';
 
             this.modalWilayah.desa_kode = '';
             this.modalWilayah.desa_nama = '';
             this.listDesa = [];
 
-            if (val) {
-                this.fetchDesa(val, false);
+            if (newCode) {
+                this.fetchDesa(newCode, shouldAutoOpen);
             }
         },
 

@@ -298,6 +298,11 @@
                             </template>
                         </x-form.searchable-select>
                         <input type="hidden" name="tkp_kecamatan_nama" :value="kecamatanNama">
+                        <div x-show="errorKecamatan" x-cloak class="mt-1.5 flex items-center gap-1.5 text-xs text-error-600 dark:text-error-400">
+                            <i class="fi fi-rr-info shrink-0"></i>
+                            <span x-text="errorKecamatan"></span>
+                            <button type="button" @click="retryLoadKecamatan()" class="font-medium underline hover:text-error-700 dark:hover:text-error-300">Coba lagi</button>
+                        </div>
                     </div>
 
                     {{-- Desa / Kelurahan --}}
@@ -319,6 +324,11 @@
                             </template>
                         </x-form.searchable-select>
                         <input type="hidden" name="tkp_desa_nama" :value="desaNama">
+                        <div x-show="errorDesa" x-cloak class="mt-1.5 flex items-center gap-1.5 text-xs text-error-600 dark:text-error-400">
+                            <i class="fi fi-rr-info shrink-0"></i>
+                            <span x-text="errorDesa"></span>
+                            <button type="button" @click="retryLoadDesa()" class="font-medium underline hover:text-error-700 dark:hover:text-error-300">Coba lagi</button>
+                        </div>
                     </div>
 
                     {{-- RT / RW --}}
