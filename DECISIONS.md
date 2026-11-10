@@ -1864,7 +1864,39 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
   4. **Command Artisan Import Mandiri (`php artisan wilayah:import`)**: Disediakan perintah artisan untuk memvalidasi dan mempartisi dataset mentah hasil scraping (provinces, regencies, districts, villages) dari `resources/data/wilayah/raw/` dengan normalisasi skema fleksibel (mendukung variasi key code/kode, name/nama, dll.).
   5. **Strategi Git**: Folder mentah `resources/data/wilayah/raw/` diabaikan dari git (`.gitignore`), sedangkan file hasil partisi dilacak di git agar siap pakai langsung pada berbagai lingkungan deployment.
   6. **Fallback Kompatibilitas Mundur**: Jika file partisi suatu kabupaten belum di-generate di lingkungan tertentu, `WilayahService` secara otomatis menggunakan fallback aman lokal `districts_kalsel.json` tanpa memicu galat runtime.
-- Konsekuensi: Ketergantungan terhadap trafik dan stabilitas API eksternal hilang 100%. Pilihan desa/kelurahan tampil instan seketika dan seluruh pengujian otomatis Pest PHP lulus tanpa regresi.
+
+---
+
+## D-088 : Penyempurnaan Partisi Wilayah Desa/Kelurahan 100% Lengkap (83.762 Desa di 514 Kabupaten)
+
+- Tanggal: 2026-11-10
+- Status: Disepakati & Diimplementasikan
+- Konteks: Data partisi desa/kelurahan sebelumnya di `resources/data/wilayah/villages/` baru mencakup 315 dari 514 kabupaten/kota di Indonesia (akibat rate limit saat proses scraping awal). Wilayah kerja BPOM di Kalimantan Selatan seperti Kabupaten Banjar (6303), Hulu Sungai Tengah (6307), Hulu Sungai Utara (6308), dan Tabalong (6309) belum memiliki file data desa.
+- Keputusan:
+  1. **Perbaikan Dataset Scraping (`repair.js`)**: Mengunduh ulang 4.500 kecamatan yang sebelumnya tersimpan kosong `[]` pada folder scratch menggunakan `repair.js` dengan konkurensi terkontrol (4 worker, delay 150ms, auto-retry) hingga 100% berhasil tanpa error.
+  2. **Perakitan Otomatis ke Struktur BAPTwo (`assemble.js`)**: Mengelompokkan seluruh 83.762 desa dari 7.285 kecamatan menjadi 514 file JSON kabupaten/kota ke dalam direktori `resources/data/wilayah/villages/{kabupaten_code}.json`. Di setiap file, desa dikelompokkan berdasarkan 6 digit kode kecamatan.
+  3. **Zero Code Changes pada Arsitektur Layanan**: Struktur file hasil perakitan 100% kompatibel dengan metode `WilayahService::getDesa($kecamatanKode)`. Tidak ada perubahan kode pada service, controller, maupun komponen UI.
+  4. **Kelengkapan Penuh Kalimantan Selatan**: Seluruh 13 kabupaten/kota di Kalimantan Selatan (6301 s.d. 6311, 6371, 6372) kini 100% memiliki data desa lengkap.
+- Konsekuensi: Seluruh 514 kabupaten/kota se-Indonesia memiliki data desa offline instan (<1ms), query desa di Kalsel dan nasional berfungsi penuh, dan seluruh 375 pengujian otomatis Pest PHP lulus 100%.
+
+---
+
+## D-090 : Auto-Open Cerdas (First Selection vs Re-Selection), Pelacakan Nilai Sebelumnya, dan Penanganan Error Jaringan pada Form Wilayah
+
+- Tanggal: 2026-11-10
+- Status: Disepakati & Diimplementasikan (Menyempurnakan D-089)
+- Konteks: Pada form TKP Perkara, pemilihan Kabupaten Banjar tidak memuat data Kecamatan dan dropdown tidak terbuka. Penyebabnya adalah `x-modelable` pada `<x-form.searchable-select>` mengubah properti induk sebelum event `@change` dieksekusi, sehingga guard `String(val) === String(this.kabupatenKode)` selalu bernilai `true` dan keluar lebih awal (*early return*). Selain itu, hasil wawancara keselarasan (/grill-me) menetapkan dua aturan penting:
+  1. Penggantian pilihan tingkat atas (re-selection saat anak sudah terisi) harus mereset tingkat bawah, tetapi **tidak** membuka dropdown otomatis.
+  2. Saat terjadi kegagalan jaringan (fetch error), sistem wajib menampilkan pesan error singkat dan tombol "Coba lagi".
+- Keputusan:
+  1. **Pelacakan Nilai Sebelumnya (`prev*Kode`)**: Menggunakan variabel pelacak nilai sebelumnya (`prevKabupatenKode`, `prevKecamatanKode`, dll.) di `tkpWilayahForm`, `tersangkaAlamatModalForm`, dan `profilePage`. Evaluasi perubahan didasarkan pada `newCode !== this.prev*Kode`, sehingga kebal terhadap urutan eksekusi `x-modelable`.
+  2. **Auto-Open Cerdas**: Flag `shouldAutoOpen` bernilai `true` hanya saat tingkat di bawahnya masih kosong (`!this.kecamatanKode`). Jika pengguna mengganti kabupaten saat kecamatan sudah terisi, tingkat bawah dikosongkan namun `shouldAutoOpen` bernilai `false`.
+  3. **State Error & Retry Handler**: Menyediakan reactive state `errorKabupaten`, `errorKecamatan`, `errorDesa` di setiap form handler, beserta fungsi retry (`retryLoadKecamatan()`, `retryFetchKabupaten()`, dll.).
+  4. **Komponen UI Feedback**: Menambahkan elemen teks pesan error dan tombol "Coba lagi" di bawah setiap dropdown wilayah pada form TKP, modal tersangka, dan modal profil.
+- Konsekuensi: Form TKP, Modal Alamat Tersangka, dan Modal Profil kini seragam, tahan terhadap kegagalan jaringan, memiliki alur auto-open yang nyaman bagi pengguna, dan seluruh 375 pengujian Pest PHP serta Laravel Pint lulus 100%.
+
+
+
 
 
 

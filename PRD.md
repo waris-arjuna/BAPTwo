@@ -97,7 +97,7 @@ BAPTwo adalah aplikasi web internal BPOM Kalimantan Selatan untuk mencatat, memo
 | F-34 | Catatan/Deskripsi | Must | Menyimpan konteks tambahan | Tahapan dan kondisi khusus dapat memiliki catatan/deskripsi. |
 | F-35 | Data DPO | Must | DPO perlu dapat ditelusuri | Data DPO mencakup nomor, tanggal, dokumen PDF (maks 5 MB), dan keterangan. |
 | F-36 | Data Alamat Terstruktur | Must | Menjaga konsistensi wilayah | Data alamat mendukung pemilihan wilayah berjenjang dengan nama sarana TKP. |
-| F-37 | Sumber Data Wilayah | Must | Mengurangi input manual | Data wilayah menggunakan proxy API Kode Wilayah dengan fallback JSON offline. |
+| F-37 | Sumber Data Wilayah Offline 100% | Must | Efisiensi & ketersediaan data wilayah instan tanpa internet | Data wilayah 100% offline lokal berbasis partisi JSON per-kabupaten (514 file kabupaten & 83.762 desa se-Indonesia), cascading auto-open cerdas bertingkat, dan penanganan kegagalan dengan tombol coba lagi (ref: D-087 s.d. D-090). |
 | F-38 | RBAC dan Permission | Must | Mengendalikan akses | Hak akses fitur mengikuti role: Admin (akses penuh), Penyidik (operasional perkara), dan Pimpinan/Umum (monitoring terbatas: Dashboard, Pencarian, Potensi Terlimpah); Master Data khusus Admin (Penyidik hanya Pasal & Instansi) (ref: D-035, D-053). |
 | F-39 | Pencarian dan Filter | Must | Memudahkan menemukan perkara | Pengguna dapat mencari dan memfilter Berkas Perkara secara live via AJAX table filter. |
 | F-40 | Dashboard Monitoring Perkara | Must | Menyediakan ringkasan monitoring | Penyidik dan Pimpinan dapat melihat ringkasan progress, status perkara sinkron, Donut Chart Largest Remainder, pecahan SLA, rata-rata hari tahapan, dan tabel prioritas berkas aktif (ref: D-048, D-052, D-056). |
@@ -110,6 +110,9 @@ BAPTwo adalah aplikasi web internal BPOM Kalimantan Selatan untuk mencatat, memo
 | F-47 | Proteksi Akun Nonaktif & Force Logout | Must | Keamanan autentikasi dan integritas sesi | Akun nonaktif/terhapus ditolak masuk dengan toast dan banner peringatan setelah password valid; sesi aktif diputus otomatis via middleware EnsureUserIsActive (ref: D-053). |
 | F-48 | Riwayat Perkara Terpadu (Case History) | Must | Transparansi jejak audit di setiap tahapan | Komponen terpadu kronologis aktivitas perkara dan dokumen digital dengan tab filter tahapan di seluruh halaman detail perkara dan tahapan (ref: D-082). |
 | F-49 | Rekomendasi Tindakan Administrasi Perkara | Must | Panduan langkah operasional petugas penanganan perkara | Pil rekomendasi perintah tindakan berikutnya dan sisa hari tenggang waktu (SLA) dengan indikator urgensi bertingkat pada tabel Daftar Perkara (ref: D-083). |
+| F-50 | Penyelesaian DPO Berbasis Sp.Kap / Sp.Han | Must | Akuntabilitas penindakan dan penangkapan tersangka buron | Pencabutan status DPO mewajibkan nomor surat, tanggal surat, dan unggah dokumen PDF resmi Surat Perintah Penangkapan (Sp.Kap) atau Surat Perintah Penahanan (Sp.Han) (ref: D-079, D-080). |
+| F-51 | Banner Penutupan Berkas Tahunan Dashboard | Must | Transparansi monitoring awal tahun bagi penyidik | Banner interaktif di Dashboard selama bulan Januari yang memberitahukan daftar berkas yang ditutup sistem 1 Januari menjadi Tidak Selesai (ref: D-085). |
+| F-52 | Kalkulasi SLA Bebas Overflow Tanggal 31 | Must | Ketepatan tenggat waktu hukum tanpa lompat bulan | Kalkulasi penambahan 1 bulan kalender pada SLA tahapan aktif menggunakan algoritma bebas overflow (addMonthNoOverflow) sehingga tanggal 31 tidak melompati bulan (ref: D-084). |
 
 ### Struktur Perkara dan Berkas Perkara
 
@@ -212,7 +215,7 @@ Kedua trigger bersifat saling eksklusif:
 - Jika Selesai tercapai lebih dulu → trigger Tidak Selesai tidak berlaku.
 - Jika Selesai belum tercapai sampai tahun berganti → berkas menjadi Tidak Selesai otomatis.
 
-### DPO
+### DPO (Daftar Pencarian Orang)
 
 DPO merupakan **toggle/penanda manual**, bukan status formal Berkas Perkara.
 
@@ -223,13 +226,12 @@ Aturan:
 - DPO tidak mengubah tahapan.
 - DPO tidak otomatis mengunci Berkas Perkara.
 - DPO tidak menjadi status formal Selesai atau Tidak Selesai.
-- Data DPO terdiri dari:
-  - Nomor surat/dokumen DPO;
-  - Tanggal;
-  - Dokumen, jika ada.
-- DPO dapat dinonaktifkan ketika tersangka ditemukan kembali.
-- Tanggal penonaktifan dicatat dalam jejak rekam.
-- Setelah DPO dinonaktifkan, berkas dapat dilanjutkan normal.
+- Data aktivasi DPO terdiri dari: nomor surat DPO, tanggal, dokumen PDF (maks 5 MB), dan keterangan.
+- **Pencabutan / Penonaktifan DPO Berbasis Sp.Kap / Sp.Han (ref: D-079, D-080)**:
+  - Pencabutan DPO ketika tersangka ditemukan atau tertangkap mewajibkan pengisian data resmi: jenis surat (Surat Perintah Penangkapan / Sp.Kap atau Surat Perintah Penahanan / Sp.Han), nomor surat, tanggal surat, keterangan ringkas, dan unggah dokumen bukti PDF (maksimal 5 MB).
+  - Validasi ketat diterapkan di server dan antarmuka untuk mencegah pencabutan tanpa dokumen hukum sah.
+  - Tanggal dan berkas penonaktifan dicatat secara permanen dalam jejak rekam (audit trail).
+- Setelah DPO dinonaktifkan, pemblokiran tahapan diangkat dan berkas dapat dilanjutkan normal.
 - Selama DPO aktif, seluruh tombol dan aksi penambahan tahapan berikutnya diblokir di UI dan server (SPDP, Tahap 1, P-21, Tahap 2, Putusan). Berkas tidak dapat dilanjutkan sampai status DPO dicabut (ref: D-053).
 - Pengecualian: SP3 tetap diperbolehkan diterbitkan saat DPO aktif. Penerbitan SP3 otomatis mencabut status DPO dan menghentikan perkara menjadi Tidak Selesai (ref: D-053).
 - Draft pada tahapan yang sedang berjalan tetap dapat disimpan.
@@ -252,9 +254,9 @@ Aturan:
 
 Pada **setiap tahapan**, Penyidik memiliki tiga tombol:
 
-1. **Batal** — keluar tanpa menyimpan.
-2. **Draft** — menyimpan data apa adanya, termasuk data yang belum lengkap, tanpa menaikkan tahap.
-3. **Simpan & Lanjut Tahap Berikutnya** — hanya berhasil jika seluruh field wajib lengkap; setelah berhasil tahap naik dan data tahap tersebut terkunci.
+1. **Batal**: keluar tanpa menyimpan.
+2. **Draft**: menyimpan data apa adanya, termasuk data yang belum lengkap, tanpa menaikkan tahap.
+3. **Simpan & Lanjut Tahap Berikutnya**: hanya berhasil jika seluruh field wajib lengkap; setelah berhasil tahap naik dan data tahap tersebut terkunci.
 
 Aturan:
 
@@ -267,12 +269,25 @@ Aturan:
 ### Batas Waktu (SLA) dan Tahun
 
 - SLA Berkas Perkara (Tenggang Waktu) adalah **1 bulan kalender per tahapan aktif yang sedang berjalan** (SPDP, Tahap I, P-21), dihitung dari tanggal surat tahapan aktif tersebut dan otomatis direset setiap kali tahap aktif difinalkan (ref: D-058).
-- SLA bukan hari kerja.
+- SLA bukan hari kerja, melainkan hari kalender.
+- **Kalkulasi Bebas Overflow Tanggal 31 (ref: D-084)**: Penambahan 1 bulan kalender menggunakan metode bebas overflow (`addMonthNoOverflow()`). Apabila tanggal surat jatuh pada akhir bulan (misalnya 31 Januari), tenggat SLA berakhir pada akhir bulan berikutnya (28 atau 29 Februari), tidak melompati bulan ke tanggal 2 atau 3 Maret.
 - Berkas hanya boleh dikerjakan dalam tahun yang sama dengan tahun SPDP diterbitkan.
 - **Batas tahun bersifat mutlak dan selalu didahulukan daripada SLA 1 bulan per tahap.**
 - Jika batas tenggang waktu 1 bulan jatuh pada tahun berikutnya, batas mutlak 31 Desember tahun berjalan tetap berlaku lebih dahulu.
 - Tidak ada pengecualian untuk tahapan yang diterbitkan mendekati akhir tahun.
 - DPO tidak menghentikan atau menjeda SLA maupun batas tahun.
+- **Banner Penutupan Berkas Tahunan di Dashboard (ref: D-085)**: Pada bulan Januari setiap tahunnya, Dashboard menyajikan banner pemberitahuan bagi peran Penyidik dan Administrator mengenai daftar berkas perkara tahun lalu yang otomatis ditutup sistem menjadi Tidak Selesai pada tanggal 1 Januari pukul 00:00 WITA.
+
+### Sumber Data Wilayah Offline 100% dan Cascading Dropdown Cerdas (ref: D-087 s.d. D-090)
+
+Sistem mengelola data wilayah administratif Republik Indonesia secara mandiri tanpa ketergantungan internet (100% offline lokal):
+- **Cakupan Lengkap**: 38 Provinsi, 514 Kabupaten/Kota, 7.285 Kecamatan, dan 83.762 Desa/Kelurahan se-Indonesia.
+- **Partisi File Lokal**: Data kecamatan dan desa disimpan terpisah per-kabupaten dalam file JSON kecil (~10-30 KB) di `resources/data/wilayah/districts/{kabupaten_kode}.json` dan `resources/data/wilayah/villages/{kabupaten_kode}.json`, memastikan waktu respons instan (<1ms) dan konsumsi memori rendah.
+- **Auto-Open Cerdas (First Selection vs Re-Selection)**:
+  - Pada alur pengisian awal (tingkat bawah masih kosong): saat pengguna memilih Kabupaten, data Kecamatan otomatis dimuat dan dropdown Kecamatan langsung terbuka sendiri dengan kursor terfokus di kolom pencarian.
+  - Pada alur penggantian pilihan (tingkat bawah sebelumnya sudah terisi): jika pengguna mengganti Kabupaten, data pilihan di bawahnya di-reset menjadi kosong, data baru dimuat, tetapi dropdown tidak dibuka otomatis.
+- **Penanganan Error Jaringan & Tombol Coba Lagi**: Jika terjadi kendala pembacaan data, komponen antarmuka menampilkan pesan error singkat dan tombol "Coba lagi" untuk memicu pemanggilan ulang tanpa me-refresh halaman.
+- **Konsistensi di 3 Lokasi Form**: Form TKP Perkara (Kalsel), Modal Alamat Tersangka (Nasional), dan Modal Profil Pengguna.
 
 ### Dashboard Potensi Terlimpah
 
@@ -356,6 +371,9 @@ Aturan tambahan:
 | Pimpinan menggunakan dashboard untuk monitoring | Belum terukur | ≥ 80% | Analisis penggunaan/survei |
 | Berkas berpotensi Tidak Selesai dapat diidentifikasi sebelum akhir tahun | Belum terukur | 100% | Pengujian dashboard |
 | Data rekap perkara dapat diekspor ke Excel template resmi LAPJU 45 kolom multi-sheet | Belum terukur | 100% | Pengujian dokumen Excel (.xlsx) |
+| Data wilayah administratif 100% offline lokal tanpa request remote | Belum terukur | 100% (514 kabupaten & 83.762 desa) | Pengujian fungsional dan kecepatan response < 1ms |
+| Pencabutan DPO akuntabel berbasis Sp.Kap / Sp.Han | Belum terukur | 100% tervalidasi dokumen PDF | Pengujian skenario pencabutan DPO |
+| Keandalan sistem dan test suite otomatis | Belum terukur | 100% (375 tests Pest passing) | CI / composer test |
 
 ## 8. Out of Scope (v1.0)
 

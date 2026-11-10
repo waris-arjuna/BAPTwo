@@ -7,7 +7,7 @@ Sistem Informasi Manajemen dan Pemantauan Penanganan Perkara Balai Besar POM di 
 [![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=flat-square&logo=mysql&logoColor=white)](https://www.mysql.com)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-v4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![Alpine.js](https://img.shields.io/badge/Alpine.js-v3-8BC0D0?style=flat-square&logo=alpinedotjs&logoColor=white)](https://alpinejs.dev)
-[![Pest PHP](https://img.shields.io/badge/Pest%20PHP-354%20Tests%20Passing-00D8A2?style=flat-square)](https://pestphp.com)
+[![Pest PHP](https://img.shields.io/badge/Pest%20PHP-375%20Tests%20Passing-00D8A2?style=flat-square)](https://pestphp.com)
 
 ---
 
@@ -16,19 +16,21 @@ Sistem Informasi Manajemen dan Pemantauan Penanganan Perkara Balai Besar POM di 
 1. [Dokumen Referensi Proyek](#dokumen-referensi-proyek)
 2. [Arsitektur & Aturan Bisnis Inti](#arsitektur--aturan-bisnis-inti)
 3. [Skema Database & Diagram ERD](#skema-database--diagram-erd)
-4. [Panel Perhitungan Kartu Informasi & Analitik](#panel-perhitungan-kartu-informasi--analitik)
+4. [Arsitektur Data Wilayah Offline Lokal & Cascading Cerdas](#arsitektur-data-wilayah-offline-lokal--cascading-cerdas)
+5. [Panel Perhitungan Kartu Informasi & Analitik](#panel-perhitungan-kartu-informasi--analitik)
    - [Panel 1: Metrik Dashboard & Widget Analitik](#panel-1-metrik-dashboard--widget-analitik-dashboardservice)
    - [Panel 2: 5 Kartu Ringkasan Informasi Daftar Perkara](#panel-2-5-kartu-ringkasan-informasi-daftar-perkara-perkaraservice)
    - [Panel 3: 4 Kartu Kesiapan Pelimpahan & Rumus SLA](#panel-3-4-kartu-kesiapan-pelimpahan--rumus-sla)
-5. [Kebutuhan Sistem](#kebutuhan-sistem)
-6. [Instalasi & Setup Lokal](#instalasi--setup-lokal)
-7. [Akun Pengembangan & Seeder Data](#akun-pengembangan--seeder-data)
-8. [Simulasi Waktu & Pengujian Lintas Tahun](#simulasi-waktu--pengujian-lintas-tahun)
-9. [Pengujian Otomatis & Linter](#pengujian-otomatis--linter)
-10. [Scheduler & Otomasi Batas Tahun](#scheduler--otomasi-batas-tahun)
-11. [Build Produksi](#build-produksi)
-12. [Troubleshooting](#troubleshooting)
-13. [Lisensi](#lisensi)
+6. [Kebutuhan Sistem](#kebutuhan-sistem)
+7. [Instalasi & Setup Lokal](#instalasi--setup-lokal)
+8. [Akun Pengembangan & Seeder Data](#akun-pengembangan--seeder-data)
+9. [Simulasi Waktu & Pengujian Lintas Tahun](#simulasi-waktu--pengujian-lintas-tahun)
+10. [Perintah CLI & Pemeliharaan Sistem](#perintah-cli--pemeliharaan-sistem)
+11. [Pengujian Otomatis & Linter](#pengujian-otomatis--linter)
+12. [Scheduler & Otomasi Batas Tahun](#scheduler--otomasi-batas-tahun)
+13. [Build Produksi](#build-produksi)
+14. [Troubleshooting](#troubleshooting)
+15. [Lisensi](#lisensi)
 
 ---
 
@@ -39,9 +41,9 @@ Seluruh implementasi BAPTwo mengacu pada spesifikasi domain dan keputusan teknis
 | Dokumen | Deskripsi & Kegunaan |
 |---|---|
 | [`PRD.md`](PRD.md) | *Product Requirements Document*: Sumber kebenaran domain hukum, batas SLA, hak akses RBAC, dan alur penanganan perkara. |
-| [`ARCHITECTURE.md`](ARCHITECTURE.md) | Arsitektur teknis sistem: Skema 19 tabel singular, lifecycle tahapan, event audit trail, dan integrasi API wilayah. |
-| [`TASKS.md`](TASKS.md) | Daftar pekerjaan aktif dan rekam jejak penyelesaian *task* teknis (T-001 s.d. T-107). |
-| [`DECISIONS.md`](DECISIONS.md) | Log keputusan arsitektur dan teknis resmi (*Architecture Decision Records* D-001 s.d. D-083). |
+| [`ARCHITECTURE.md`](ARCHITECTURE.md) | Arsitektur teknis sistem: Skema 18 tabel singular, lifecycle tahapan, event audit trail, partisi data wilayah offline, dan alur event Alpine.js. |
+| [`TASKS.md`](TASKS.md) | Daftar pekerjaan aktif dan rekam jejak penyelesaian *task* teknis (T-001 s.d. T-114). |
+| [`DECISIONS.md`](DECISIONS.md) | Log keputusan arsitektur dan teknis resmi (*Architecture Decision Records* D-001 s.d. D-090). |
 | [`AGENTS.md`](AGENTS.md) | Pedoman kerja otomatisasi, standar koding bebas *AI-slop*, konvensi Blade, dan aturan kontras aksesibilitas. |
 
 ---
@@ -73,12 +75,19 @@ BAPTwo menerapkan aturan integritas hukum yang ketat untuk menjamin keabsahan da
 * **DPO (Daftar Pencarian Orang)**:
   - Dapat diaktifkan pada tahapan mana pun selama berkas berjalan.
   - Memblokir seluruh tombol dan aksi penambahan tahapan di antarmuka dan server hingga tersangka tertangkap.
-  - Pencabutan DPO dilakukan melalui pencatatan resmi Surat Perintah Penangkapan (Sp.Kap) atau Penahanan (Sp.Han) beserta unggah dokumen PDF.
+  - Pencabutan status DPO mewajibkan pengisian data resmi Surat Perintah Penangkapan (Sp.Kap) atau Surat Perintah Penahanan (Sp.Han) dan unggah dokumen bukti PDF (maks 5 MB) (ref: D-079, D-080).
   - DPO **tidak menjeda** perhitungan hari kalender SLA maupun batas tahun mutlak.
 * **SP3 (Surat Perintah Penghentian Penyidikan)**:
   - Dokumen administratif penutup perkara yang bersifat permanen (*terminal*).
   - Penerbitan SP3 langsung mengubah status proses menjadi `SP3`, status formal menjadi `Tidak Selesai`, dan mengunci seluruh tahapan berkas selamanya.
   - Pejabat penandatangan dipilih dari daftar pegawai aktif instansi, dan tim penyidik otomatis tersinkronisasi dari data perkara.
+  - SP3 diperbolehkan diterbitkan saat tersangka berstatus DPO aktif (otomatis mencabut DPO dan menutup perkara).
+
+### 5. Aturan SLA Bebas Overflow & Batas Tahun Mutlak (D-084, D-085)
+* **SLA 1 Bulan Kalender per Tahap Aktif**: Dihitung dari tanggal surat tahapan aktif yang sedang berjalan dan direset seketika setelah tahap difinalkan.
+* **Bebas Overflow Tanggal 31 (`addMonthNoOverflow`)**: Menjamin kalkulasi akhir bulan (misal 31 Januari) berakhir di akhir bulan berikutnya (28/29 Februari), tidak lompat ke bulan Maret.
+* **Batas Tahun Mutlak 31 Desember**: Mengalahkan perhitungan SLA; berkas hanya boleh berjalan di tahun yang sama dengan tahun SPDP.
+* **Banner Penutupan Berkas Tahunan**: Muncul di Dashboard selama bulan Januari bagi Penyidik & Administrator untuk memberitahukan berkas yang ditutup sistem 1 Januari.
 
 ---
 
@@ -156,6 +165,27 @@ erDiagram
 | | `audit_log` | Catatan jejak audit aktivitas sistem untuk akuntabilitas operasional. |
 
 </details>
+
+---
+
+## Arsitektur Data Wilayah Offline Lokal & Cascading Cerdas
+
+BAPTwo mengelola seluruh data wilayah administratif Republik Indonesia secara 100% offline lokal tanpa ketergantungan internet untuk menjamin kecepatan respon (<1ms) dan ketersediaan data di lapangan:
+
+### 1. Cakupan Data & Partisi File
+* **38 Provinsi**: Tersimpan di `resources/data/wilayah/provinces.json`.
+* **514 Kabupaten/Kota**: Tersimpan di `resources/data/wilayah/regencies.json`.
+* **Kecamatan Mandiri**: Dipartisi per-kabupaten ke dalam `resources/data/wilayah/districts/{kabupaten_kode}.json` (514 file JSON kecil, rata-rata 10–20 KB).
+* **83.762 Desa/Kelurahan**: Dipartisi per-kabupaten ke dalam `resources/data/wilayah/villages/{kabupaten_kode}.json` (514 file JSON, dikelompokkan berdasarkan 6 digit kode kecamatan).
+* **Fallback Kompatibilitas**: Menggunakan `resources/data/wilayah/districts_kalsel.json` untuk menjamin ketersediaan data wilayah lokal Kalimantan Selatan.
+
+### 2. Auto-Open Cerdas (First Selection vs Re-Selection) (ref: D-089, D-090)
+* **First Selection (Pengisian Baru)**: Ketika pengguna memilih tingkat induk (misalnya Kabupaten) dan tingkat bawahnya (Kecamatan) masih kosong, data kecamatan langsung dimuat dan dropdown panel kecamatan otomatis membuka diri dengan kursor fokus di input pencarian.
+* **Re-Selection (Penggantian Pilihan)**: Jika pengguna mengubah pilihan kabupaten setelah kecamatan/desa terisi sebelumnya, pilihan tingkat bawah di-reset kosong, data baru dimuat di latar belakang, namun panel dropdown tidak dibuka otomatis agar tidak mengganggu fokus pengguna.
+* **Inisialisasi Pasif pada Edit Draft**: Saat form perkara draft dibuka kembali, seluruh data wilayah tersimpan dimuat secara pasif tanpa memicu auto-open popup liar dan tanpa mereset pilihan yang tersimpan.
+
+### 3. Penanganan Error & Tombol Coba Lagi
+* Jika terjadi kegagalan pembacaan data atau jaringan lokal, komponen menampilkan pesan kesalahan ramah pengguna dan tombol **Coba lagi** untuk memicu pengambilan ulang data secara aman.
 
 ---
 
@@ -446,16 +476,41 @@ Seluruh kalkulasi Carbon di aplikasi secara otomatis akan mengadopsi waktu simul
 
 ---
 
+## Perintah CLI & Pemeliharaan Sistem
+
+BAPTwo menyediakan perintah *Artisan Command* khusus untuk pemeliharaan data, otomasi, dan sinkronisasi:
+
+### 1. Impor & Partisi Data Wilayah Offline
+Memvalidasi, menormalkan, dan mempartisi dataset mentah hasil scraping ke dalam 514 file per-kabupaten:
+```powershell
+php artisan wilayah:import
+```
+
+### 2. Sinkronisasi Tenggat Waktu SLA
+Melakukan normalisasi perhitungan SLA seluruh berkas perkara aktif menggunakan metode bebas overflow (`addMonthNoOverflow`) dan batas mutlak 31 Desember:
+```powershell
+php artisan perkara:sync-sla
+```
+
+### 3. Penutupan Otomatis Berkas Akhir Tahun
+Menutup seluruh berkas perkara yang belum selesai di tahun sebelumnya menjadi status formal Tidak Selesai:
+```powershell
+php artisan perkara:close-unfinished
+```
+
+---
+
 ## Pengujian Otomatis & Linter
 
 ### 1. Eksekusi Test Suite (Pest PHP)
-Aplikasi memiliki **330 pengujian otomatis** (2.791 assertions) yang mencakup integritas alur tahapan, DPO gate, ekspor multi-sheet, audit trail, dan otorisasi RBAC:
+Aplikasi memiliki **375 pengujian otomatis** (3.006 assertions) yang mencakup integritas alur tahapan, DPO gate, ekspor multi-sheet, audit trail, partisi wilayah offline, dan otorisasi RBAC:
 ```powershell
 C:\laragon\bin\php\php-8.4.25-Win32-vs17-x64\php.exe vendor/bin/pest
 ```
 
 Menjalankan pengujian spesifik per modul:
 ```powershell
+php artisan test tests/Feature/AlamatCascadingEditDraftTest.php
 php artisan test tests/Feature/PerkaraExportTest.php
 php artisan test tests/Feature/DashboardCaseStatusTest.php
 php artisan test tests/Feature/DpoPenangkapanTest.php
@@ -525,6 +580,7 @@ APP_URL=https://nama-domain-resmi.bpom.go.id
 | Tampilan antarmuka berantakan (*unstyled*) | Aset Vite belum dikompilasi | Jalankan `npm run dev` untuk lingkungan lokal, atau `npm run build` untuk produksi. |
 | Perubahan konfigurasi `.env` tidak berefek | Cache konfigurasi Laravel masih aktif | Bersihkan cache aplikasi melalui perintah `php artisan optimize:clear`. |
 | Dropdown wilayah desa/kelurahan lambat atau kosong | Data partisi wilayah belum diimpor dari file mentah | Letakkan file hasil scraping (`provinces.json`, `regencies.json`, `districts.json`, `villages.json`) di `resources/data/wilayah/raw/` lalu jalankan `php artisan wilayah:import`. Sistem beroperasi 100% offline lokal tanpa request internet. |
+| Muncul pesan "Gagal memuat daftar kecamatan/desa" | Gangguan sesaat pada pembacaan file lokal | Klik tombol **Coba lagi** di samping pesan kesalahan untuk memicu pengambilan ulang data tanpa perlu memuat ulang seluruh formulir. |
 
 ---
 

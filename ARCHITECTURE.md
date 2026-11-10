@@ -9,7 +9,7 @@ Arsitektur teknis BAPTwo. Aturan bisnis merujuk ke `PRD.md`; log keputusan tekni
 - Monolit **Laravel 12** server-rendered (Blade + Alpine.js + Tailwind CSS v4) di atas template TailAdmin yang telah dirampingkan bersih (D-036, D-037).
 - Satu database **MySQL 8** di lingkungan Laragon (D-001).
 - Single locale **id** (Bahasa Indonesia) dan tata letak **LTR saja** (D-003, D-004).
-- Tidak ada API publik. Integrasi eksternal hanya proxy **API Kode Wilayah** (`https://api.kodewilayah.web.id`) dengan fallback JSON offline (PRD F-37, D-015).
+- Bebas dari ketergantungan API pihak ketiga eksternal. Seluruh data wilayah administratif 38 provinsi, 514 kabupaten/kota, dan 83.762 desa beroperasi **100% offline lokal** berbasis partisi JSON berkecepatan tinggi (<1ms) (D-087, D-088).
 - Ekspor resmi pelaporan rekap perkara format template resmi LAPJU Excel (.xlsx) 45 kolom terstandarisasi BPOM (D-035, D-055).
 
 ```mermaid
@@ -24,7 +24,7 @@ flowchart TD
         PS["PerkaraService (Pra-SPDP & Berkas)"]
         TS["TahapanService (Workflow & Locking)"]
         DS["DashboardService (Monitoring, SLA & Analitik)"]
-        WS["WilayahService (Cache 30 Hari + Proxy)"]
+        WS["WilayahService (100% Offline JSON Partisi)"]
     end
     
     S --> Services
@@ -32,6 +32,7 @@ flowchart TD
     TS -->|Kunci Mutlak / DPO Gate / SP3| M
     M --> DB[("MySQL 8 (Tabel Singular)")]
     
+    WS -->|Partisi File JSON <1ms| WJ[("resources/data/wilayah/ (514 File JSON)")]
     Services -->|Audit Trail Kronologis| AL["Tabel audit_log"]
     SCH["Laravel Scheduler (00:00 1 Jan WITA)"] -->|Tutup Otomatis Tidak Selesai| TS
     
@@ -233,6 +234,29 @@ stateDiagram-v2
 2. **Draft**: Simpan formulir tanpa menaikkan progress, tanpa mengunci tahap.
 3. **Simpan & Lanjut**: Wajib mengisi field pokok, mengunci tahap permanen (`locked_at`), menaikkan status proses dan persentase progress.
 
+### 4.3 SOP Penanganan DPO & Validasi Pencabutan (D-079, D-080)
+- **Pemblokiran Penuh**: Status DPO aktif memblokir seluruh tombol dan aksi penambahan tahapan berikutnya (SPDP, Tahap I, P-21, Tahap II, Putusan Pengadilan) di server dan antarmuka.
+- **Pengecualian Khusus SP3**: Penerbitan SP3 tetap diizinkan saat DPO aktif. Penerbitan SP3 secara otomatis mencabut status DPO dan menghentikan perkara menjadi Tidak Selesai (ref: D-053).
+- **Validasi Pencabutan Berkas Resmi**: Penonaktifan status DPO wajib mengisi form modal penyelesaian penangkapan/penahanan:
+  - Jenis surat: `sp_kap` (Surat Perintah Penangkapan) atau `sp_han` (Surat Perintah Penahanan).
+  - Nomor surat dan tanggal surat penindakan.
+  - Unggah dokumen bukti penetapan fisik dalam format PDF (maksimal 5 MB).
+  - Teks catatan/keterangan penangkapan.
+- **Pencatatan Audit Trail**: Setiap aktivasi, perpanjangan, dan pencabutan DPO dicatat secara permanen di tabel `audit_log` dengan relasi `berkas_perkara_id` dan atribut dokumen terkait.
+
+### 4.4 Kalkulasi SLA Bebas Overflow & Batas Mutlak 31 Desember (D-058, D-084)
+- **Tenggat Waktu SLA**: 1 bulan kalender per tahapan aktif yang sedang berjalan (SPDP, Tahap I, P-21). Dihitung dari `tanggal_surat` tahapan aktif tersebut dan direset seketika saat tahapan berhasil difinalkan.
+- **Algoritma Bebas Overflow (`addMonthNoOverflow()`)**: Menggantikan penambahan bulan standar Carbon (`addMonth()`) guna mencegah overflow tanggal 31 ke bulan kedua berikutnya. Contoh: tanggal surat 31 Januari menghasilkan tenggat 28/29 Februari (bukan 2 atau 3 Maret).
+- **Batas Tahun Mutlak**: Berkas perkara dibatasi secara ketat hanya boleh berjalan pada tahun yang sama dengan tahun penerbitan SPDP. Jika kalkulasi SLA 1 bulan kalender jatuh pada tahun berikutnya, batas mutlak tanggal `31 Desember` tahun berjalan secara otomatis diprioritaskan (`deadline_keterangan` = "Batas Tahun Mutlak 31 Des").
+- **Accessor Terstandarisasi**: Model `BerkasPerkara` menyediakan accessor `effective_deadline` dan `deadline_keterangan` untuk menjamin keselarasan tampilan sisa hari dan badge SLA di seluruh kartu dashboard, tabel daftar perkara, dan halaman detail perkara.
+
+### 4.5 Banner Pemberitahuan Penutupan Berkas Tahunan di Dashboard (D-085)
+- **Periode Aktif**: Ditampilkan secara otomatis pada `pages/dashboard/ecommerce.blade.php` khusus selama bulan Januari (`01 Januari s.d. 31 Januari`).
+- **Otorisasi Terbatas**: Hanya dapat dilihat oleh pengguna dengan peran **Penyidik** dan **Administrator** yang menangani perkara (peran umum/pimpinan dibebaskan dari banner).
+- **Evaluasi Berkas Sistem**: Muncul hanya jika terdapat berkas perkara tahun lalu yang ditutup otomatis oleh sistem (`aksi = 'sistem_tidak_selesai'`).
+- **Penyimpanan Status Dismissal**: Pengguna dapat menyembunyikan banner melalui tombol tutup; status penutupan disimpan di `localStorage` per tahun penutupan (`baptwo_annual_closure_dismissed_{tahun}`).
+- **Aksi Cepat**: Menyediakan tombol navigasi langsung ke Daftar Perkara dengan filter bawaan `status=tidak_selesai&tahun=:tahun_lalu`.
+
 ---
 
 ## 5. Hak Akses & Keamanan (RBAC)
@@ -280,18 +304,27 @@ stateDiagram-v2
 
 ---
 
-## 8. Scheduler & Pergantian Tahun
+## 8. Scheduler & Perintah CLI Pemeliharaan Sistem
 
+### 8.1 Scheduler Otomasi Pergantian Tahun
 - **Command**: `php artisan perkara:close-unfinished` (`CloseUnfinishedCasesCommand`).
 - **Jadwal Eksekusi**: Tepat tanggal `1 Januari` pukul `00:00:00` WITA (`Asia/Makassar`).
 - **Aturan**: Seluruh berkas perkara yang terdaftar di tahun sebelumnya dan belum berstatus `Selesai` otomatis ditutup permanen dengan status formal **Tidak Selesai**. Audit trail dicatat dengan aktor sistem (`user_id = null`).
+
+### 8.2 Perintah Pemeliharaan Data Wilayah Lokal
+- **Command**: `php artisan wilayah:import` (`ImportWilayahCommand`).
+- **Fungsi**: Memvalidasi, menormalkan, dan mempartisi dataset mentah hasil scraping (provinces, regencies, districts, villages) dari `resources/data/wilayah/raw/` ke dalam file partisi per-kabupaten di `districts/` dan `villages/`. Menghasilkan 514 file JSON kabupaten/kota mandiri dan bebas dari ketergantungan internet.
+
+### 8.3 Perintah Sinkronisasi Tenggat Waktu SLA
+- **Command**: `php artisan perkara:sync-sla` (`SyncSlaDeadlineCommand`).
+- **Fungsi**: Melakukan audit dan sinkronisasi massal seluruh data berkas perkara aktif untuk menormalkan perhitungan tenggat waktu SLA menggunakan algoritma bebas overflow `addMonthNoOverflow()` dan batas mutlak 31 Desember.
 
 ---
 
 ## 9. Testing & Quality Assurance
 
 - Rangkaian pengujian diuji dengan **Pest PHP** (`composer test`) dengan capaian:
-  - **354 Automated Feature & Unit Tests** (2.926 assertions) lulus 100%.
+  - **375 Automated Feature & Unit Tests** (3.006 assertions) lulus 100%.
   - Zero-warning styling via **Laravel Pint** (`php vendor/bin/pint --test`) pada seluruh file PHP.
 - **Seeder Idempoten Komprehensif** (`database/seeders/DummyDataSeeder.php`):
   - 500 Perkara dummy komprehensif mencakup 17 pola tahapan (Pra-SPDP s.d. Putusan Pengadilan, DPO Aktif, DPO Dicabut, SP3 terminal, dan peringatan SLA) di 13 Kabupaten/Kota Kalimantan Selatan, dengan 5 perkara draft (ref: D-080) dan domisili tersangka tersebar di 38 provinsi se-Indonesia (ref: D-081).
@@ -334,3 +367,171 @@ stateDiagram-v2
   - Baris 5: Analitik Lanjutan Grid 12 Kolom rasio 6 : 6 (`lg:col-span-6` Sebaran Wilayah TKP & `lg:col-span-6` Top Pasal).
 - **Strategi Caching & Invalidasi**:
   - Seluruh data analitik di-cache selama 120 detik (`dashboard_stats_{tahun}`, `dashboard_stage_averages_{tahun}`, `dashboard_monthly_cases_{tahun}`) dan di-invalidasi otomatis oleh event mutasi data melalui `DashboardService::clearCache()`.
+
+---
+
+## 11. Arsitektur Wilayah Offline Lokal & Alur Event Alpine.js (D-087 s.d. D-090)
+
+Untuk menjamin ketersediaan data secara instan (<1ms) dan menghindari kegagalan jaringan atau ketergantungan API pihak ketiga di lingkungan penindakan hukum, seluruh data wilayah administratif Indonesia beroperasi 100% offline lokal.
+
+### 11.1 Struktur Direktori Data Wilayah
+
+Dataset tersimpan terstruktur di dalam direktori `resources/data/wilayah/`:
+
+```
+resources/data/wilayah/
+├── provinces.json                      # 38 Provinsi se-Indonesia (array objek)
+├── regencies.json                      # 514 Kabupaten/Kota se-Indonesia (array objek)
+├── districts_kalsel.json               # Fallback kompatibilitas Kalsel (kecamatan & desa)
+├── districts/                          # Folder partisi kecamatan per-kabupaten (514 file)
+│   ├── 1101.json                       # Kecamatan di Kab. Aceh Selatan
+│   ├── 6301.json                       # Kecamatan di Kab. Tanah Laut
+│   ├── 6303.json                       # Kecamatan di Kab. Banjar (20 kecamatan)
+│   ├── 6371.json                       # Kecamatan di Kota Banjarmasin (5 kecamatan)
+│   └── ...                             # (Total 514 file JSON kabupaten/kota)
+└── villages/                           # Folder partisi desa/kelurahan per-kabupaten (514 file)
+    ├── 1101.json                       # Desa di Kab. Aceh Selatan dikelompokkan per-kecamatan
+    ├── 6303.json                       # 290 Desa di Kab. Banjar dikelompokkan per-kecamatan
+    ├── 6371.json                       # 52 Kelurahan di Kota Banjarmasin
+    └── ...                             # (Total 514 file JSON, 83.762 desa se-Indonesia)
+```
+
+### 11.2 Format & Skema Payload JSON Endpoint
+
+Layanan `WilayahService` menyajikan response terstandarisasi untuk konsumsi AJAX oleh komponen frontend:
+
+#### 1. Endpoint Provinsi: `GET /wilayah/provinsi`
+```json
+{
+  "success": true,
+  "data": [
+    { "code": "63", "name": "KALIMANTAN SELATAN" },
+    { "code": "31", "name": "DKI JAKARTA" }
+  ]
+}
+```
+
+#### 2. Endpoint Kabupaten/Kota: `GET /wilayah/kabupaten/{provinsi_kode}`
+Query berdasarkan substring 2 digit kode provinsi (`substr(code, 0, 2)`):
+```json
+{
+  "success": true,
+  "data": [
+    { "code": "6301", "name": "KABUPATEN TANAH LAUT", "province_code": "63" },
+    { "code": "6303", "name": "KABUPATEN BANJAR", "province_code": "63" },
+    { "code": "6371", "name": "KOTA BANJARMASIN", "province_code": "63" }
+  ]
+}
+```
+
+#### 3. Endpoint Kecamatan: `GET /wilayah/kecamatan/{kabupaten_kode}`
+Dibaca langsung dari partisi file `resources/data/wilayah/districts/{kabupaten_kode}.json`:
+```json
+{
+  "success": true,
+  "data": [
+    { "code": "630301", "name": "ALUH-ALUH" },
+    { "code": "630302", "name": "KERTAK HANYAR" },
+    { "code": "630303", "name": "GAMBUT" }
+  ]
+}
+```
+
+#### 4. Endpoint Desa/Kelurahan: `GET /wilayah/desa/{kecamatan_kode}`
+`WilayahService` mengekstrak 4 digit pertama kode kecamatan untuk memuat file partisi kabupaten terkait (`$kabKode = substr($kecamatanKode, 0, 4)`), lalu mengambil array desa untuk key kecamatan tersebut dari `resources/data/wilayah/villages/{kabKode}.json`:
+```json
+{
+  "success": true,
+  "data": [
+    { "code": "6303032001", "name": "GAMBUT" },
+    { "code": "6303032002", "name": "MALINTANG" },
+    { "code": "6303032003", "name": "BANYU HIRANG" }
+  ]
+}
+```
+
+### 11.3 Diagram Siklus Alur Event Alpine.js
+
+Komponen input wilayah memanfaatkan interaksi dua arah antara komponen Blade `<x-form.searchable-select>` dan komponen factory Alpine.js (`tkpWilayahForm`, `tersangkaAlamatModalForm`, atau `profilePage`):
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Pengguna
+    participant SS_Kab as SearchableSelect (Kabupaten)
+    participant Parent as Alpine Component (Parent)
+    participant API as Endpoint Wilayah Lokal
+    participant SS_Kec as SearchableSelect (Kecamatan)
+
+    Pengguna->>SS_Kab: Klik Opsi Kabupaten (mis. Banjar 6303)
+    SS_Kab->>Parent: Alpine x-modelable sync (kabupatenKode = 6303)
+    SS_Kab->>Parent: Event dispatch 'change' (value: '6303')
+    
+    Note over Parent: Evaluasi onKabupatenChange:<br/>1. Cek newCode !== prevKabupatenKode<br/>2. shouldAutoOpen = !kecamatanKode (First Selection vs Re-selection)<br/>3. Update prevKabupatenKode = newCode
+    
+    Parent->>SS_Kec: Event window dispatch 'searchable-select-loading' (id: tkp_kecamatan_kode, loading: true)
+    Parent->>API: HTTP fetch('/wilayah/kecamatan/6303', { signal })
+    
+    alt Fetch Berhasil
+        API-->>Parent: JSON data kecamatan (20 items)
+        Parent->>Parent: Render kecamatanList via template x-for
+        Parent->>SS_Kec: Event window dispatch 'searchable-select-loading' (loading: false)
+        alt shouldAutoOpen == true (First Selection)
+            Parent->>SS_Kec: Event window dispatch 'searchable-select-open' (id: tkp_kecamatan_kode)
+            SS_Kec->>Pengguna: Dropdown panel terbuka & search input auto-focus
+        else shouldAutoOpen == false (Re-Selection)
+            Note over Parent: Reset tingkat bawah (kecamatan & desa = kosong).<br/>Dropdown tetap tertutup (tidak mengagetkan user).
+        end
+    else Fetch Gagal (Abort / Error)
+        Parent->>SS_Kec: Event window dispatch 'searchable-select-loading' (loading: false)
+        Parent->>Parent: Set errorKecamatan = 'Gagal memuat daftar kecamatan.'
+        Parent->>Pengguna: Tampilkan pesan error dan tombol "Coba lagi"
+    end
+```
+
+### 11.4 Mekanisme Pelacakan Nilai Sebelumnya (`prev*Kode`)
+
+Komponen `<x-form.searchable-select>` menggunakan direktif Alpine.js `x-modelable="selectedValue"`. Ketika opsi diklik, Alpine memperbarui properti induk secara instan sebelum event `@change` dieksekusi.
+
+Untuk mencegah bug guard:
+```javascript
+// BUG LAMA (Terblokir oleh x-modelable sinkronisasi instan):
+if (val === undefined || String(val) === String(this.kabupatenKode)) return;
+```
+Diterapkan variabel independen pelacak nilai sebelumnya:
+```javascript
+// SOLUSI RESMI (D-090):
+onKabupatenChange(event) {
+    if (this.isInitializing) return;
+    const val = this.extractEventValue(event, this.kabupatenKode);
+    if (val === undefined || val === null) return;
+    const newCode = String(val);
+    if (newCode === this.prevKabupatenKode) return;
+
+    // Evaluasi aturan auto-open cerdas
+    const shouldAutoOpen = !this.kecamatanKode;
+    this.prevKabupatenKode = newCode;
+    this.kabupatenKode = newCode;
+    this.loadKecamatan(true, newCode, shouldAutoOpen);
+}
+```
+
+### 11.5 Aturan Auto-Open Cerdas (First Selection vs Re-Selection)
+
+1. **Alur Pengisian Baru (*First Selection*)**:
+   - Kondisi: Nilai pada tingkat anak (`kecamatanKode`) masih kosong (`""`).
+   - Perilaku: Setelah data kecamatan selesai dimuat, dropdown kecamatan otomatis membuka panel pilihannya (`searchable-select-open`) dan kursor difokuskan langsung ke input pencarian teks agar pengguna dapat langsung mengetik.
+2. **Alur Penggantian Pilihan (*Re-Selection*)**:
+   - Kondisi: Pengguna mengubah kabupaten padahal kecamatan dan desa sebelumnya sudah memiliki nilai terisi.
+   - Perilaku: Nilai kecamatan dan desa di-reset menjadi kosong (`""`), data kecamatan baru dimuat di latar belakang, tetapi panel dropdown **tidak** dibuka otomatis ke layar pengguna (mencegah gangguan visual).
+3. **Inisialisasi Form Edit Draft**:
+   - Kondisi: Membuka berkas draft tersimpan atau modal profil saat data sudah ada di database.
+   - Perilaku: Flag `isInitializing = true` aktif selama proses pemuatan awal; data dirender pasif tanpa memicu auto-open popup dan tanpa mereset data anak.
+
+### 11.6 Penanganan Error & Retry Handler
+
+Setiap form handler (`tkpWilayahForm`, `tersangkaAlamatModalForm`, dan `profilePage`) menyediakan reactive state error dan tombol penanganan kegagalan mandiri:
+- **State Error**: `errorKabupaten`, `errorKecamatan`, `errorDesa`.
+- **UI Feedback**: Elemen `<div x-show="errorKecamatan" ...>` berikon Flaticon `fi fi-rr-info` yang hanya tampil saat terjadi galat fetch.
+- **Tombol Coba Lagi**: Tombol pemicu metode retry (`retryLoadKecamatan()`, `retryLoadDesa()`, dll.) yang memanggil ulang fungsi muat data dengan aman tanpa me-refresh seluruh halaman formulir.
+

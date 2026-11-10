@@ -26,6 +26,7 @@ tailadmin-laravel-main/
 /.acl-recovery/
 /test
 /public/review_shots/
+/public/videos/
 
 # AI Assistants, Agents & LLM Tooling
 /.agents/
