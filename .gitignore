@@ -27,6 +27,8 @@ tailadmin-laravel-main/
 /test
 /public/review_shots/
 /public/videos/
+/scratch/
+/storage/framework/*.php
 
 # AI Assistants, Agents & LLM Tooling
 /.agents/

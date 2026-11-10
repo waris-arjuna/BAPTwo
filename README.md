@@ -31,7 +31,7 @@ Sistem Informasi Manajemen dan Pemantauan Penanganan Perkara Balai Besar POM di 
 10. [Perintah CLI & Pemeliharaan Sistem](#perintah-cli--pemeliharaan-sistem)
 11. [Pengujian Otomatis & Linter](#pengujian-otomatis--linter)
 12. [Scheduler & Otomasi Batas Tahun](#scheduler--otomasi-batas-tahun)
-13. [Build Produksi](#build-produksi)
+13. [Panduan Rilis Produksi & Checklist Deployment](#panduan-rilis-produksi--checklist-deployment)
 14. [Troubleshooting](#troubleshooting)
 15. [Lisensi](#lisensi)
 
@@ -646,23 +646,79 @@ Pada server produksi berbasis Linux, tambahkan entri Cron berikut:
 
 ---
 
-## Build Produksi
+## Panduan Rilis Produksi & Checklist Deployment
 
-Langkah-langkah kompilasi sebelum rilis ke server produksi:
+Bagian ini merangkum mekanisme isolasi berkas pengembangan, checklist keamanan, dan tahapan deployment aplikasi ke server produksi.
 
-```powershell
-npm run build
+### 1. Pengecualian Berkas Pengembangan (Export-Ignore)
+
+Untuk mencegah berkas pengujian, dokumentasi teknis internal, dan data simulasi masuk ke dalam server produksi, berkas `.gitattributes` telah dikonfigurasi dengan aturan `export-ignore`. Ketika paket rilis dibuat menggunakan perintah pengarsipan git:
+
+```bash
+git archive --format=zip --output=baptwo-release.zip main
+```
+
+Seluruh berkas dan direktori berikut otomatis dikecualikan secara penuh dari arsip produksi:
+* Direktori pengujian otomatis: `/tests` dan `phpunit.xml`.
+* Dokumentasi dan diagram perancangan: `/docs`, `PRD.md`, `ARCHITECTURE.md`, `TASKS.md`, `DECISIONS.md`, `AGENTS.md`, `PANDUAN_ROLLBACK.md`.
+* Seeder data simulasi: `database/seeders/DummyDataSeeder.php`.
+* Konfigurasi linter dan tooling: `pint.json`, `docker-compose.yml`, `.editorconfig`, `.gitattributes`, `.gitignore`.
+* Sumber data wilayah mentah: `resources/data/wilayah/raw`.
+
+### 2. Checklist Pembersihan Lingkungan Lokal
+
+Sebelum membuat rilis atau sinkronisasi ke server, pastikan berkas temporer lokal telah dibersihkan:
+* Hapus cache dan log besar: kosongkan `storage/logs/*.log`.
+* Hapus file kompilasi view usang: bersihkan isi `storage/framework/views/`.
+* Pastikan tidak ada berkas rekaman video atau tangkapan layar pengujian di `public/videos/` atau `public/review_shots/`.
+
+### 3. Tahapan Eksekusi Build Produksi
+
+Jalankan urutan perintah berikut pada server target:
+
+```bash
+# 1. Unduh dependensi produksi murni (tanpa paket testing/dev)
 composer install --optimize-autoloader --no-dev
+
+# 2. Kompilasi aset CSS dan JavaScript produksi
+npm ci
+npm run build
+
+# 3. Jalankan migrasi database
+php artisan migrate --force
+
+# 4. Pastikan symlink storage privat dan publik terhubung
+php artisan storage:link
+
+# 5. Optimalkan cache konfigurasi, rute, dan blade view
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache
 ```
 
-Pastikan variabel `.env` pada server produksi diatur:
+### 4. Konfigurasi Wajib Lingkungan Produksi (`.env`)
+
+Pastikan parameter keamanan dan performa berikut disetel dengan tepat pada server produksi:
+
 ```env
 APP_ENV=production
 APP_DEBUG=false
 APP_URL=https://nama-domain-resmi.bpom.go.id
+
+# Keamanan Sesi & Cookie HTTPS
+SESSION_SECURE_COOKIE=true
+SESSION_LIFETIME=120
+
+# Nonaktifkan simulasi waktu dev
+APP_TEST_NOW=
+```
+
+### 5. Konfigurasi Daemon & Scheduler Produksi
+
+Pastikan daemon cron di server Linux aktif untuk menjalankan tugas terjadwal (SLA monitoring dan penutupan perkara akhir tahun 1 Januari):
+
+```bash
+* * * * * cd /path-to-baptwo && php artisan schedule:run >> /dev/null 2>&1
 ```
 
 ---
