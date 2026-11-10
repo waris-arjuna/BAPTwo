@@ -16,7 +16,10 @@ Sistem Informasi Manajemen dan Pemantauan Penanganan Perkara Balai Besar POM di 
 1. [Dokumen Referensi Proyek](#dokumen-referensi-proyek)
 2. [Arsitektur & Aturan Bisnis Inti](#arsitektur--aturan-bisnis-inti)
 3. [Skema Database & Diagram ERD](#skema-database--diagram-erd)
-4. [Arsitektur Data Wilayah Offline Lokal & Cascading Cerdas](#arsitektur-data-wilayah-offline-lokal--cascading-cerdas)
+4. [Sistem Pengelolaan Alamat & Arsitektur Wilayah Offline Lokal](#sistem-pengelolaan-alamat--arsitektur-wilayah-offline-lokal)
+   - [Spesifikasi Teknis Tabel Database Alamat](#1-spesifikasi-teknis-tabel-database-alamat)
+   - [Arsitektur Partisi File JSON Wilayah (100% Offline)](#2-arsitektur-partisi-file-json-wilayah-100-offline-lokal)
+   - [Cascading Cerdas & Penanganan Interaksi UI](#3-cascading-cerdas--penanganan-interaksi-ui-ref-d-089-d-090)
 5. [Panel Perhitungan Kartu Informasi & Analitik](#panel-perhitungan-kartu-informasi--analitik)
    - [Panel 1: Metrik Dashboard & Widget Analitik](#panel-1-metrik-dashboard--widget-analitik-dashboardservice)
    - [Panel 2: 5 Kartu Ringkasan Informasi Daftar Perkara](#panel-2-5-kartu-ringkasan-informasi-daftar-perkara-perkaraservice)
@@ -168,24 +171,118 @@ erDiagram
 
 ---
 
-## Arsitektur Data Wilayah Offline Lokal & Cascading Cerdas
+## Sistem Pengelolaan Alamat & Arsitektur Wilayah Offline Lokal
 
-BAPTwo mengelola seluruh data wilayah administratif Republik Indonesia secara 100% offline lokal tanpa ketergantungan internet untuk menjamin kecepatan respon (<1ms) dan ketersediaan data di lapangan:
+BAPTwo mengelola seluruh data alamat dan wilayah administratif Republik Indonesia secara terpusat dan 100% offline lokal tanpa ketergantungan internet untuk menjamin integritas hukum berkas perkara, kecepatan respon (<1ms), dan ketersediaan data di lapangan:
 
-### 1. Cakupan Data & Partisi File
-* **38 Provinsi**: Tersimpan di `resources/data/wilayah/provinces.json`.
-* **514 Kabupaten/Kota**: Tersimpan di `resources/data/wilayah/regencies.json`.
-* **Kecamatan Mandiri**: Dipartisi per-kabupaten ke dalam `resources/data/wilayah/districts/{kabupaten_kode}.json` (514 file JSON kecil, rata-rata 10–20 KB).
-* **83.762 Desa/Kelurahan**: Dipartisi per-kabupaten ke dalam `resources/data/wilayah/villages/{kabupaten_kode}.json` (514 file JSON, dikelompokkan berdasarkan 6 digit kode kecamatan).
-* **Fallback Kompatibilitas**: Menggunakan `resources/data/wilayah/districts_kalsel.json` untuk menjamin ketersediaan data wilayah lokal Kalimantan Selatan.
+### 1. Spesifikasi Teknis Tabel Database `alamat`
 
-### 2. Auto-Open Cerdas (First Selection vs Re-Selection) (ref: D-089, D-090)
+Entitas alamat dikelola secara terpusat pada tabel tunggal `alamat` yang digunakan bersama oleh tiga entitas domain melalui foreign key `alamat_id`:
+* **TKP (`tkp.alamat_id`)**: Mencatat lokasi fisik tempat kejadian perkara dengan nama sarana fisik toko/kios/gudang, klasifikasi usaha, dan batasan wilayah yurisdiksi Provinsi Kalimantan Selatan (`63`).
+* **Tersangka (`tersangka.alamat_id`)**: Mencatat alamat domisili identitas tersangka dengan cakupan nasional 38 provinsi di Indonesia.
+* **Pengguna (`user.alamat_id`)**: Mencatat alamat domisili pegawai ASN atau penyidik sistem.
+
+#### Struktur Kolom & Dual-Storage (Kode + Snapshot Nama)
+
+| Nama Kolom | Tipe Data | Keterangan & Karakteristik |
+|---|---|---|
+| `id` | BIGINT UNSIGNED | Primary key auto-increment. |
+| `nama` | VARCHAR(150) NULL | Nama sarana fisik usaha (toko, apotek, ruko, gudang) khusus entitas TKP. |
+| `provinsi_kode` | VARCHAR(15) NULL | Kode wilayah BPS/Kemendagri tingkat provinsi (contoh: `'63'`). |
+| `provinsi_nama` | VARCHAR(100) NULL | Snapshot nama provinsi saat pencatatan (contoh: `'Kalimantan Selatan'`). |
+| `kabupaten_kode` | VARCHAR(15) NULL | Kode wilayah BPS/Kemendagri tingkat kabupaten/kota (contoh: `'6303'`). |
+| `kabupaten_nama` | VARCHAR(100) NULL | Snapshot nama kabupaten/kota saat pencatatan (contoh: `'Kabupaten Banjar'`). |
+| `kecamatan_kode` | VARCHAR(15) NULL | Kode wilayah BPS/Kemendagri tingkat kecamatan (contoh: `'630301'`). |
+| `kecamatan_nama` | VARCHAR(100) NULL | Snapshot nama kecamatan saat pencatatan (contoh: `'Aluh - Aluh'`). |
+| `desa_kode` | VARCHAR(15) NULL | Kode wilayah BPS/Kemendagri tingkat desa/kelurahan (contoh: `'6303012001'`). |
+| `desa_nama` | VARCHAR(100) NULL | Snapshot nama desa/kelurahan saat pencatatan (contoh: `'Aluh - Aluh Besar'`). |
+| `rt` | VARCHAR(5) NULL | Nomor Rukun Tetangga (RT). |
+| `rw` | VARCHAR(5) NULL | Nomor Rukun Warga (RW). |
+| `alamat_detail` | VARCHAR(255) NULL | Rincian nama jalan, nomor bangunan, blok, atau patokan fisik. |
+| `created_at`, `updated_at` | TIMESTAMP | Waktu pembuatan dan pembaruan baris data. |
+
+#### Alasan Arsitektur Snapshot Nama & Accessor `alamat_lengkap`
+1. **Integritas Historis Hukum (*Immutable Legal Record*)**: Perubahan nomenklatur atau pemekaran wilayah administratif di masa depan tidak mengubah teks nama wilayah pada berkas perkara yang telah tercatat dan difinalkan di masa lalu.
+2. **Performa Rendering Instan**: Tampilan ringkasan daftar perkara dan ekspor laporan LAPJU Excel tidak memerlukan join tabel wilayah bertingkat, melainkan membaca langsung snapshot nama.
+3. **Accessor `alamat_lengkap`**: Model `App\Models\Alamat` menyediakan accessor dan method `formatted()` yang merangkai komponen alamat menjadi satu kesatuan teks baku untuk dokumen berita acara dan kartu detail:
+   ```text
+   Format: [alamat_detail], RT [rt]/RW [rw], Desa/Kel. [desa_nama], Kec. [kecamatan_nama], [kabupaten_nama], [provinsi_nama]
+   ```
+
+### 2. Arsitektur Partisi File JSON Wilayah (100% Offline Lokal)
+
+Data referensi wilayah Republik Indonesia bersumber dari data resmi Kemendagri/BPS dan disimpan seluruhnya di direktori `resources/data/wilayah/` tanpa panggilan API jaringan:
+
+```
+resources/data/wilayah/
+├── provinces.json                     # 38 Provinsi di Indonesia
+├── regencies.json                     # 514 Kabupaten/Kota se-Indonesia
+├── districts_kalsel.json              # Fallback kecamatan Kalimantan Selatan
+├── districts/                         # Partisi kecamatan per-kabupaten (514 file)
+│   ├── 6301.json                      # Kabupaten Tanah Laut
+│   ├── 6303.json                      # Kabupaten Banjar
+│   └── {kabupaten_kode}.json
+├── villages/                          # Partisi desa per-kabupaten (514 file)
+│   ├── 6301.json
+│   ├── 6303.json
+│   └── {kabupaten_kode}.json
+└── raw/                               # Sumber data mentah sebelum dipartisi
+    ├── provinces.json
+    ├── regencies.json
+    ├── districts.json
+    └── villages.json
+```
+
+#### Struktur & Skema Data Tiap Partisi
+
+1. **Provinsi (`provinces.json`)**:
+   Daftar 38 provinsi di Indonesia dalam format array datar:
+   ```json
+   [
+     {"code": "63", "name": "Kalimantan Selatan"},
+     {"code": "31", "name": "DKI Jakarta"}
+   ]
+   ```
+2. **Kabupaten/Kota (`regencies.json`)**:
+   Daftar 514 kabupaten/kota se-Indonesia yang memuat relasi kode provinsi:
+   ```json
+   [
+     {"code": "6303", "province_code": "63", "name": "Kabupaten Banjar"},
+     {"code": "6371", "province_code": "63", "name": "Kota Banjarmasin"}
+   ]
+   ```
+3. **Kecamatan (`districts/{kabupaten_kode}.json`)**:
+   Dipartisi menjadi 514 berkas terpisah berdasarkan 4 digit kode kabupaten. Rata-rata ukuran file hanya 10 s.d. 20 KB:
+   ```json
+   [
+     {"code": "630301", "name": "Aluh - Aluh"},
+     {"code": "630302", "name": "Kertak Hanyar"}
+   ]
+   ```
+4. **Desa/Kelurahan (`villages/{kabupaten_kode}.json`)**:
+   Mencakup total 83.762 desa/kelurahan se-Indonesia. Dipartisi ke dalam 514 berkas per-kabupaten dan diindeks langsung dengan key 6 digit kode kecamatan:
+   ```json
+   {
+     "630301": [
+       {"code": "6303012001", "name": "Aluh - Aluh Besar"},
+       {"code": "6303012002", "name": "Aluh - Aluh Kecil"}
+     ]
+   }
+   ```
+
+#### Optimasi Pembacaan Cepat di `WilayahService`
+* **Pencarian Kompleksitas O(1)**: Untuk memuat desa pada kecamatan tertentu, service mengekstrak 4 digit awal kode kecamatan (`substr($kecamatanKode, 0, 4)`) sebagai nama file kabupaten, lalu mengakses array asosiatif pada key `$decoded[$kecamatanKode]`. Sistem tidak pernah memuat 83.762 data desa secara bersamaan ke memori.
+* **Cache Memori Laravel**: Hasil pembacaan file di-cache selama 30 hari via `Cache::remember('wilayah.desa.{kode}', ...)` sehingga operasi baca disk berulang ditiadakan.
+* **Artisan Command Partisi Otomatis**: Jika data mentah diperbarui di folder `resources/data/wilayah/raw/`, partisi dapat dibuat ulang secara otomatis dengan perintah:
+  ```powershell
+  php artisan wilayah:import
+  ```
+
+### 3. Cascading Cerdas & Penanganan Interaksi UI (ref: D-089, D-090)
 * **First Selection (Pengisian Baru)**: Ketika pengguna memilih tingkat induk (misalnya Kabupaten) dan tingkat bawahnya (Kecamatan) masih kosong, data kecamatan langsung dimuat dan dropdown panel kecamatan otomatis membuka diri dengan kursor fokus di input pencarian.
 * **Re-Selection (Penggantian Pilihan)**: Jika pengguna mengubah pilihan kabupaten setelah kecamatan/desa terisi sebelumnya, pilihan tingkat bawah di-reset kosong, data baru dimuat di latar belakang, namun panel dropdown tidak dibuka otomatis agar tidak mengganggu fokus pengguna.
 * **Inisialisasi Pasif pada Edit Draft**: Saat form perkara draft dibuka kembali, seluruh data wilayah tersimpan dimuat secara pasif tanpa memicu auto-open popup liar dan tanpa mereset pilihan yang tersimpan.
-
-### 3. Penanganan Error & Tombol Coba Lagi
-* Jika terjadi kegagalan pembacaan data atau jaringan lokal, komponen menampilkan pesan kesalahan ramah pengguna dan tombol **Coba lagi** untuk memicu pengambilan ulang data secara aman.
+* **Penanganan Error Jaringan/Disk**: Jika terjadi kegagalan pembacaan data, komponen menampilkan pesan peringatan yang jelas dan tombol **Coba lagi** untuk memicu pengambilan ulang data secara aman.
 
 ---
 
