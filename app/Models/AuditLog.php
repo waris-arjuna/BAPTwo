@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\JenisTahap;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -27,6 +28,20 @@ class AuditLog extends Model
         'attach_sprindik',
         'sistem_tidak_selesai',
     ];
+
+    /**
+     * Cache in-memory nama user untuk menghindari N+1 query pada riwayat audit.
+     *
+     * @var array<int, string>
+     */
+    protected static array $userNameCache = [];
+
+    /**
+     * Cache in-memory nama instansi hukum (pengadilan/kejaksaan) untuk menghindari N+1 query.
+     *
+     * @var array<int, string>
+     */
+    protected static array $instansiNameCache = [];
 
     /**
      * @var string
@@ -370,6 +385,10 @@ class AuditLog extends Model
             'tanggal_pencabutan' => 'Tanggal Pencabutan',
             'tanggal_penangkapan' => 'Tanggal Penangkapan',
             'tanggal_penahanan' => 'Tanggal Penahanan',
+            'finalized_at' => 'Waktu Finalisasi',
+            'finalized_by' => 'Difinalkan Oleh',
+            'pengadilan_instansi_id' => 'Instansi Pengadilan',
+            'penuntut_umum_instansi_id' => 'Instansi Kejaksaan',
             'jenis_tahap' => 'Tahapan',
             'penandatangan_nama' => 'Penandatangan',
             'penandatangan_jabatan' => 'Jabatan Penandatangan',
@@ -407,9 +426,34 @@ class AuditLog extends Model
                 }
             } elseif (is_bool($val)) {
                 $valStr = $val ? 'Ya' : 'Tidak';
+            } elseif ($key === 'finalized_by') {
+                $userId = (int) $val;
+                if (! isset(static::$userNameCache[$userId])) {
+                    if ($this->user_id === $userId && $this->relationLoaded('user') && $this->user) {
+                        static::$userNameCache[$userId] = $this->user->nama;
+                    } else {
+                        static::$userNameCache[$userId] = User::withTrashed()->find($userId)?->nama ?? "Pengguna #{$userId}";
+                    }
+                }
+                $valStr = static::$userNameCache[$userId];
+            } elseif ($key === 'pengadilan_instansi_id' || $key === 'penuntut_umum_instansi_id') {
+                $instansiId = (int) $val;
+                if (! isset(static::$instansiNameCache[$instansiId])) {
+                    $prefix = ($key === 'pengadilan_instansi_id') ? 'Pengadilan' : 'Kejaksaan';
+                    static::$instansiNameCache[$instansiId] = InstansiHukum::withTrashed()->find($instansiId)?->nama ?? "{$prefix} #{$instansiId}";
+                }
+                $valStr = static::$instansiNameCache[$instansiId];
+            } elseif ($key === 'jenis_tahap') {
+                $valStr = JenisTahap::tryFrom((string) $val)?->label() ?? ucwords(str_replace('_', ' ', (string) $val));
+            } elseif ($key === 'finalized_at') {
+                try {
+                    $valStr = Carbon::parse((string) $val)->setTimezone('Asia/Makassar')->translatedFormat('d F Y, H:i').' WITA';
+                } catch (\Throwable) {
+                    $valStr = (string) $val;
+                }
             } else {
                 $valStr = (string) $val;
-                if (str_starts_with($key, 'tanggal_') && preg_match('/^\d{4}-\d{2}-\d{2}$/', $valStr)) {
+                if (str_starts_with($key, 'tanggal_') && preg_match('/^\d{4}-\d{2}-\d{2}/', $valStr)) {
                     try {
                         $valStr = Carbon::parse($valStr)->translatedFormat('d F Y');
                     } catch (\Throwable) {

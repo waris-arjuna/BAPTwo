@@ -18,7 +18,33 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="mx-auto max-w-screen-xl">
+    <div
+        class="mx-auto max-w-screen-xl"
+        x-data="{
+            isLightboxOpen: false,
+            lightboxIndex: 0,
+            lightboxImages: {{ Js::from($imageDocs->map(fn($d) => ['url' => route('dokumen.preview', $d), 'title' => $d->nama_file_asli, 'download' => route('dokumen.download', $d)])->toArray()) }},
+            openLightbox(idx) {
+                this.lightboxIndex = idx;
+                this.isLightboxOpen = true;
+            },
+            nextImage() {
+                if (this.lightboxImages.length > 0) {
+                    this.lightboxIndex = (this.lightboxIndex + 1) % this.lightboxImages.length;
+                }
+            },
+            prevImage() {
+                if (this.lightboxImages.length > 0) {
+                    this.lightboxIndex = (this.lightboxIndex - 1 + this.lightboxImages.length) % this.lightboxImages.length;
+                }
+            },
+            get currentImage() {
+                return this.lightboxImages[this.lightboxIndex] || { url: '', title: '', download: '' };
+            }
+        }"
+        @keydown.arrow-right.window="if (isLightboxOpen) nextImage()"
+        @keydown.arrow-left.window="if (isLightboxOpen) prevImage()"
+    >
         {{-- Breadcrumb & Header --}}
         <div class="mb-6">
             <div class="mb-2 flex flex-wrap items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
@@ -84,33 +110,7 @@
             </div>
         </div>
 
-        <div
-            class="space-y-6"
-            x-data="{
-                isLightboxOpen: false,
-                lightboxIndex: 0,
-                lightboxImages: {{ Js::from($imageDocs->map(fn($d) => ['url' => route('dokumen.preview', $d), 'title' => $d->nama_file_asli, 'download' => route('dokumen.download', $d)])->toArray()) }},
-                openLightbox(idx) {
-                    this.lightboxIndex = idx;
-                    this.isLightboxOpen = true;
-                },
-                nextImage() {
-                    if (this.lightboxImages.length > 0) {
-                        this.lightboxIndex = (this.lightboxIndex + 1) % this.lightboxImages.length;
-                    }
-                },
-                prevImage() {
-                    if (this.lightboxImages.length > 0) {
-                        this.lightboxIndex = (this.lightboxIndex - 1 + this.lightboxImages.length) % this.lightboxImages.length;
-                    }
-                },
-                get currentImage() {
-                    return this.lightboxImages[this.lightboxIndex] || { url: '', title: '', download: '' };
-                }
-            }"
-            @keydown.arrow-right.window="if (isLightboxOpen) nextImage()"
-            @keydown.arrow-left.window="if (isLightboxOpen) prevImage()"
-        >
+        <div class="space-y-6">
             {{-- Card Referensi Tahapan Sebelumnya --}}
             @if (!empty($references))
                 <div class="rounded-2xl border border-gray-200 bg-gray-50/70 p-4 dark:border-gray-800 dark:bg-white/[0.02] sm:p-5">
@@ -290,7 +290,7 @@
                                     <button
                                         type="button"
                                         @click="openLightbox({{ $idx }})"
-                                        class="block w-full text-left"
+                                        class="block w-full text-left cursor-pointer"
                                     >
                                         <div class="relative aspect-4/3 w-full overflow-hidden bg-gray-100 dark:bg-gray-800">
                                             <img
@@ -299,7 +299,7 @@
                                                 class="h-full w-full object-cover transition duration-300 group-hover:scale-105"
                                                 loading="lazy"
                                             />
-                                            <div class="absolute inset-0 flex items-center justify-center bg-gray-900/40 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                                            <div class="absolute inset-0 flex items-center justify-center bg-gray-900/40 opacity-0 transition-opacity duration-200 group-hover:opacity-100 pointer-events-none">
                                                 <span class="inline-flex items-center gap-1.5 rounded-lg bg-white/90 px-3 py-1.5 text-xs font-semibold text-gray-900 shadow backdrop-blur-xs">
                                                     <i class="fi fi-rr-search-alt text-xs"></i>
                                                     Perbesar
@@ -633,79 +633,81 @@
         <x-tahapan.modal-subtahap :berkas="$berkas" :subTahapan="$subTahapan" />
 
         {{-- Modal Lightbox Pratinjau Gambar Beresolusi Penuh --}}
-        <div
-            x-show="isLightboxOpen"
-            x-cloak
-            class="fixed inset-0 z-99999 flex items-center justify-center overflow-y-auto p-4 sm:p-6"
-            @keydown.escape.window="isLightboxOpen = false"
-        >
-            <div class="fixed inset-0 h-full w-full bg-gray-900/80 backdrop-blur-xs" @click="isLightboxOpen = false"></div>
-
+        <template x-teleport="body">
             <div
-                class="relative z-10 flex max-h-[92vh] w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white p-4 shadow-theme-xl dark:border-gray-800 dark:bg-gray-900 sm:p-5"
-                @click.stop
+                x-show="isLightboxOpen"
+                x-cloak
+                class="fixed inset-0 z-99999 flex items-center justify-center overflow-y-auto p-4 sm:p-6"
+                @keydown.escape.window="isLightboxOpen = false"
             >
-                {{-- Header Modal --}}
-                <div class="mb-3 flex items-center justify-between gap-2 border-b border-gray-200 pb-3 dark:border-gray-800">
-                    <div class="flex min-w-0 items-center gap-2">
-                        <i class="fi fi-rr-picture text-base text-brand-500"></i>
-                        <h4 class="truncate text-sm font-semibold text-gray-800 dark:text-white/90" x-text="currentImage.title"></h4>
-                        <span
-                            x-show="lightboxImages.length > 1"
-                            class="shrink-0 rounded-md bg-gray-100 px-2 py-0.5 text-[11px] font-medium text-gray-600 dark:bg-gray-800 dark:text-gray-300"
-                            x-text="(lightboxIndex + 1) + ' dari ' + lightboxImages.length"
-                        ></span>
+                <div class="fixed inset-0 h-full w-full bg-gray-900/80 backdrop-blur-xs" @click="isLightboxOpen = false"></div>
+
+                <div
+                    class="relative z-10 flex max-h-[92vh] w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white p-4 shadow-theme-xl dark:border-gray-800 dark:bg-gray-900 sm:p-5"
+                    @click.stop
+                >
+                    {{-- Header Modal --}}
+                    <div class="mb-3 flex items-center justify-between gap-2 border-b border-gray-200 pb-3 dark:border-gray-800">
+                        <div class="flex min-w-0 items-center gap-2">
+                            <i class="fi fi-rr-picture text-base text-brand-500"></i>
+                            <h4 class="truncate text-sm font-semibold text-gray-800 dark:text-white/90" x-text="currentImage.title"></h4>
+                            <span
+                                x-show="lightboxImages.length > 1"
+                                class="shrink-0 rounded-md bg-gray-100 px-2 py-0.5 text-[11px] font-medium text-gray-600 dark:bg-gray-800 dark:text-gray-300"
+                                x-text="(lightboxIndex + 1) + ' dari ' + lightboxImages.length"
+                            ></span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a
+                                :href="currentImage.download"
+                                class="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-gray-200 text-gray-500 transition hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-800"
+                                title="Unduh Gambar"
+                            >
+                                <i class="fi fi-rr-download text-sm"></i>
+                            </a>
+                            <button
+                                type="button"
+                                @click="isLightboxOpen = false"
+                                class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gray-100 text-gray-500 transition hover:bg-gray-200 hover:text-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 cursor-pointer"
+                                aria-label="Tutup pratinjau"
+                            >
+                                <i class="fi fi-rr-cross-small text-lg"></i>
+                            </button>
+                        </div>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <a
-                            :href="currentImage.download"
-                            class="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-gray-200 text-gray-500 transition hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-800"
-                            title="Unduh Gambar"
-                        >
-                            <i class="fi fi-rr-download text-sm"></i>
-                        </a>
+
+                    {{-- Body: Gambar Full Resolusi dengan Tombol Prev / Next --}}
+                    <div class="relative flex min-h-0 flex-1 items-center justify-center overflow-auto rounded-xl bg-gray-100 p-2 dark:bg-gray-950/60">
+                        <img
+                            :src="currentImage.url"
+                            :alt="currentImage.title"
+                            class="max-h-[72vh] w-auto max-w-full rounded-lg object-contain shadow-sm"
+                        />
+
+                        {{-- Tombol Prev --}}
                         <button
                             type="button"
-                            @click="isLightboxOpen = false"
-                            class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gray-100 text-gray-500 transition hover:bg-gray-200 hover:text-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
-                            aria-label="Tutup pratinjau"
+                            x-show="lightboxImages.length > 1"
+                            @click.stop="prevImage()"
+                            class="absolute left-4 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-gray-900/60 text-white shadow transition hover:bg-gray-900/90 focus:outline-none cursor-pointer"
+                            title="Foto Sebelumnya"
                         >
-                            <i class="fi fi-rr-cross-small text-lg"></i>
+                            <i class="fi fi-rr-angle-left text-base"></i>
+                        </button>
+
+                        {{-- Tombol Next --}}
+                        <button
+                            type="button"
+                            x-show="lightboxImages.length > 1"
+                            @click.stop="nextImage()"
+                            class="absolute right-4 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-gray-900/60 text-white shadow transition hover:bg-gray-900/90 focus:outline-none cursor-pointer"
+                            title="Foto Selanjutnya"
+                        >
+                            <i class="fi fi-rr-angle-right text-base"></i>
                         </button>
                     </div>
                 </div>
-
-                {{-- Body: Gambar Full Resolusi dengan Tombol Prev / Next --}}
-                <div class="relative flex min-h-0 flex-1 items-center justify-center overflow-auto rounded-xl bg-gray-100 p-2 dark:bg-gray-950/60">
-                    <img
-                        :src="currentImage.url"
-                        :alt="currentImage.title"
-                        class="max-h-[72vh] w-auto max-w-full rounded-lg object-contain shadow-sm"
-                    />
-
-                    {{-- Tombol Prev --}}
-                    <button
-                        type="button"
-                        x-show="lightboxImages.length > 1"
-                        @click.stop="prevImage()"
-                        class="absolute left-4 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-gray-900/60 text-white shadow transition hover:bg-gray-900/90 focus:outline-none"
-                        title="Foto Sebelumnya"
-                    >
-                        <i class="fi fi-rr-angle-left text-base"></i>
-                    </button>
-
-                    {{-- Tombol Next --}}
-                    <button
-                        type="button"
-                        x-show="lightboxImages.length > 1"
-                        @click.stop="nextImage()"
-                        class="absolute right-4 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-gray-900/60 text-white shadow transition hover:bg-gray-900/90 focus:outline-none"
-                        title="Foto Selanjutnya"
-                    >
-                        <i class="fi fi-rr-angle-right text-base"></i>
-                    </button>
-                </div>
             </div>
-        </div>
+        </template>
     </div>
 @endsection

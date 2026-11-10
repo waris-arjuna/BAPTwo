@@ -2,7 +2,6 @@
 
 use App\Enums\JenisTahap;
 use App\Models\BerkasPerkara;
-use App\Models\Dokumen;
 use App\Models\Dpo;
 use App\Models\Perkara;
 use App\Models\TahapanPerkara;
@@ -58,7 +57,7 @@ beforeEach(function () {
     ]);
 });
 
-test('penyidik dapat mencatat penangkapan saja dengan 1 berkas PDF tanpa penahanan', function () {
+test('validasi penangkapan DPO menolak jika data penahanan tidak diisi', function () {
     $pdf = UploadedFile::fake()->create('sp_kap.pdf', 300, 'application/pdf');
 
     $response = $this->actingAs($this->penyidik)
@@ -69,30 +68,9 @@ test('penyidik dapat mencatat penangkapan saja dengan 1 berkas PDF tanpa penahan
             'keterangan_penangkapan' => 'Tersangka berhasil ditangkap tim gabungan di Banjarmasin.',
         ]);
 
-    $response->assertRedirect(route('perkara.show', $this->perkara));
-    $response->assertSessionHas('success');
-
-    $this->berkas->refresh();
-    expect($this->berkas->is_dpo)->toBeFalse();
-
-    $this->dpo->refresh();
-    expect($this->dpo->status)->toBe('nonaktif')
-        ->and($this->dpo->nomor_surat_penangkapan)->toBe('Sp.Kap/009/X/2026/BPOM')
-        ->and($this->dpo->tanggal_penangkapan?->toDateString())->toBe('2026-10-16')
-        ->and($this->dpo->nomor_surat_penahanan)->toBeNull()
-        ->and($this->dpo->tanggal_penahanan)->toBeNull()
-        ->and($this->dpo->dokumen_penangkapan_id)->not->toBeNull()
-        ->and($this->dpo->dokumenPenangkapanList)->toHaveCount(1);
-
-    // Verifikasi relasi dokumen penangkapan
-    expect($this->dpo->dokumenPenangkapan)->not->toBeNull()
-        ->and($this->dpo->dokumenPenangkapan->nama_file_asli)->toBe('sp_kap.pdf');
-
-    // Verifikasi audit log
-    $this->assertDatabaseHas('audit_log', [
-        'berkas_perkara_id' => $this->berkas->id,
-        'aksi' => 'penangkapan_dpo',
-        'user_id' => $this->penyidik->id,
+    $response->assertSessionHasErrors([
+        'nomor_surat_penahanan',
+        'tanggal_penahanan',
     ]);
 });
 
@@ -195,6 +173,8 @@ test('pencatatan penangkapan DPO membuka kunci tahapan perkara yang sebelumnya t
         ->post(route('berkas-perkara.dpo.penangkapan', $this->berkas), [
             'nomor_surat_penangkapan' => 'Sp.Kap/009/X/2026/BPOM',
             'tanggal_penangkapan' => '2026-10-16',
+            'nomor_surat_penahanan' => 'Sp.Han/009/X/2026/BPOM',
+            'tanggal_penahanan' => '2026-10-16',
             'dokumen_penangkapan' => [$pdf],
         ]);
 
@@ -205,17 +185,21 @@ test('pencatatan penangkapan DPO membuka kunci tahapan perkara yang sebelumnya t
     expect($tahapanService->getNextAvailableStages($this->berkas))->toBe([JenisTahap::TAHAP_1]);
 });
 
-test('validasi penangkapan DPO mewajibkan nomor surat dan tanggal penangkapan serta minimal 1 file PDF', function () {
+test('validasi penangkapan DPO mewajibkan nomor surat dan tanggal penangkapan serta nomor surat dan tanggal penahanan', function () {
     $response = $this->actingAs($this->penyidik)
         ->post(route('berkas-perkara.dpo.penangkapan', $this->berkas), [
             'nomor_surat_penangkapan' => '',
             'tanggal_penangkapan' => '',
+            'nomor_surat_penahanan' => '',
+            'tanggal_penahanan' => '',
             'dokumen_penangkapan' => [],
         ]);
 
     $response->assertSessionHasErrors([
         'nomor_surat_penangkapan',
         'tanggal_penangkapan',
+        'nomor_surat_penahanan',
+        'tanggal_penahanan',
         'dokumen_penangkapan',
     ]);
 });
@@ -227,6 +211,8 @@ test('pengguna role umum diblokir dari aksi mencatat penangkapan DPO (403 Forbid
         ->post(route('berkas-perkara.dpo.penangkapan', $this->berkas), [
             'nomor_surat_penangkapan' => 'Sp.Kap/009/X/2026/BPOM',
             'tanggal_penangkapan' => '2026-10-16',
+            'nomor_surat_penahanan' => 'Sp.Han/009/X/2026/BPOM',
+            'tanggal_penahanan' => '2026-10-16',
             'dokumen_penangkapan' => [$pdf],
         ]);
 

@@ -147,22 +147,23 @@
                     </div>
                 </div>
 
-                {{-- Bagian 2: Data Penahanan (Opsional Berpasangan) --}}
+                {{-- Bagian 2: Data Penahanan (Wajib) --}}
                 <div class="rounded-xl border border-gray-200 bg-gray-50/50 p-4 dark:border-gray-800 dark:bg-white/[0.02]">
                     <div class="mb-1 flex items-center gap-2 text-xs font-semibold text-gray-800 dark:text-white/90">
                         <i class="fi fi-rr-lock text-brand-500"></i>
-                        <span>2. Surat Perintah Penahanan (Sp.Han) <span class="text-xs font-normal text-gray-500 dark:text-gray-400">(Opsional)</span></span>
+                        <span>2. Surat Perintah Penahanan (Sp.Han) <span class="text-red-500">*</span></span>
                     </div>  
 
                     <div class="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
                         <div>
                             <label for="penahanan_nomor_surat" class="mb-1 block text-xs font-medium text-gray-700 dark:text-gray-300">
-                                Nomor Surat Perintah Penahanan
+                                Nomor Surat Perintah Penahanan <span class="text-red-500">*</span>
                             </label>
                             <input
                                 type="text"
                                 id="penahanan_nomor_surat"
                                 name="nomor_surat_penahanan"
+                                required
                                 placeholder="Contoh: Sp.Han/05/X/2026/BPOM"
                                 class="h-10 w-full rounded-lg border border-gray-300 bg-white px-3.5 text-sm text-gray-800 shadow-theme-xs outline-none transition placeholder:text-gray-400 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-gray-500"
                             >
@@ -174,6 +175,8 @@
                                 name="tanggal_penahanan"
                                 label="Tanggal Pelaksanaan Penahanan"
                                 placeholder="Pilih tanggal penahanan..."
+                                required
+                                defaultDate="{{ date('Y-m-d') }}"
                             />
                         </div>
                     </div>

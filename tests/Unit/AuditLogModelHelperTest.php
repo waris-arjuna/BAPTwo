@@ -2,6 +2,7 @@
 
 use App\Enums\UserRole;
 use App\Models\AuditLog;
+use App\Models\InstansiHukum;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -43,4 +44,44 @@ test('formatted_details mengekstrak atribut dokumen dan transisi status dengan r
     expect($details['transitions'][0]['to'])->toBe('Tidak Selesai');
     expect($details['notes'])->toHaveKey('Keterangan');
     expect($details['notes']['Keterangan'])->toBe('Tersangka meninggal dunia');
+});
+
+test('formatted_details mengubah finalized_by dan pengadilan_instansi_id menjadi nama entitas', function () {
+    $user = User::factory()->create(['nama' => 'Administrator BAPTwo']);
+    $pengadilan = InstansiHukum::create([
+        'jenis' => 'pengadilan',
+        'nama' => 'Pengadilan Negeri Banjarmasin',
+        'wilayah' => 'Banjarmasin',
+    ]);
+    $kejaksaan = InstansiHukum::create([
+        'jenis' => 'kejaksaan',
+        'nama' => 'Kejaksaan Negeri Banjarmasin',
+        'wilayah' => 'Banjarmasin',
+    ]);
+
+    $log = new AuditLog([
+        'aksi' => 'finalisasi_tahap',
+        'data_baru' => [
+            'status' => 'final',
+            'jenis_tahap' => 'keputusan_pengadilan',
+            'nomor_surat' => 'B-212/X/2026/PPNS-BPOM',
+            'finalized_by' => $user->id,
+            'pengadilan_instansi_id' => $pengadilan->id,
+            'penuntut_umum_instansi_id' => $kejaksaan->id,
+            'finalized_at' => '2026-11-06T06:16:29.000000Z',
+            'tanggal_surat' => '2026-11-06T00:00:00.000000Z',
+        ],
+    ]);
+
+    $details = $log->formatted_details;
+
+    expect($details['attributes'])->toHaveKey('Difinalkan Oleh');
+    expect($details['attributes']['Difinalkan Oleh'])->toBe('Administrator BAPTwo');
+    expect($details['attributes'])->toHaveKey('Instansi Pengadilan');
+    expect($details['attributes']['Instansi Pengadilan'])->toBe('Pengadilan Negeri Banjarmasin');
+    expect($details['attributes'])->toHaveKey('Instansi Kejaksaan');
+    expect($details['attributes']['Instansi Kejaksaan'])->toBe('Kejaksaan Negeri Banjarmasin');
+    expect($details['attributes']['Waktu Finalisasi'])->toContain('06 November 2026');
+    expect($details['attributes']['Tanggal Surat'])->toBe('06 November 2026');
+    expect($details['attributes']['Tahapan'])->toBe('Keputusan Pengadilan');
 });
