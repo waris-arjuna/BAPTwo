@@ -221,7 +221,7 @@
 
                     <div>
                         <p class="text-xs text-gray-500 dark:text-gray-400">
-                            {{ $isPutusan ? 'Salinan Dokumen Putusan (PDF)' : 'Dokumen Lampiran (PDF)' }}
+                            {{ $isPutusan ? 'Salinan Dokumen Putusan' : 'Dokumen Lampiran (PDF)' }}
                         </p>
                         <div class="mt-1 space-y-1.5">
                             @if ($pdfDocs->isNotEmpty())
@@ -245,7 +245,7 @@
                             @elseif($isPutusan && $pdfDocs->isEmpty() && $imageDocs->isEmpty())
                                 <span class="text-xs italic text-gray-400">Tidak ada dokumen lampiran.</span>
                             @elseif($isPutusan && $pdfDocs->isEmpty())
-                                <span class="text-xs text-gray-400">Hanya melampirkan berkas foto (lihat galeri di bawah).</span>
+                                <span class="text-xs text-gray-400">Melampirkan berkas foto (lihat kartu lampiran di bawah).</span>
                             @endif
                         </div>
                     </div>
@@ -271,19 +271,114 @@
                     </div>
                 @endif
 
-                {{-- Galeri Foto & Dokumentasi Putusan --}}
-                @if ($imageDocs->isNotEmpty())
+                {{-- Dokumentasi & Lampiran Berkas Putusan Terpadu (PDF & Foto) --}}
+                @if ($isPutusan && $tahap->dokumen->isNotEmpty())
                     <div class="mt-6 rounded-xl border border-gray-200 bg-gray-50/70 p-4 dark:border-gray-800 dark:bg-white/[0.02]">
-                        <div class="mb-3 flex items-center justify-between">
+                        <div class="mb-3 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
                             <div class="flex items-center gap-2">
-                                <i class="fi fi-rr-picture text-base text-brand-500"></i>
+                                <i class="fi fi-rr-folders text-base text-brand-500"></i>
                                 <h3 class="text-xs font-semibold uppercase tracking-wider text-gray-700 dark:text-gray-300">
-                                    Galeri Foto &amp; Dokumentasi Putusan ({{ $imageDocs->count() }} Foto)
+                                    Dokumentasi &amp; Lampiran Berkas Putusan ({{ $tahap->dokumen->count() }} Berkas{{ $pdfDocs->isNotEmpty() && $imageDocs->isNotEmpty() ? ': ' . $pdfDocs->count() . ' PDF, ' . $imageDocs->count() . ' Foto' : '' }})
                                 </h3>
                             </div>
-                            <span class="text-[11px] text-gray-500 dark:text-gray-400">Klik foto untuk melihat resolusi penuh</span>
+                            <span class="text-[11px] text-gray-500 dark:text-gray-400">
+                                Klik kartu untuk membuka pratinjau dokumen PDF atau memperbesar foto
+                            </span>
                         </div>
 
+                        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+                            {{-- Kartu Dokumen PDF --}}
+                            @foreach ($pdfDocs as $pdfDoc)
+                                <div class="group relative flex flex-col justify-between overflow-hidden rounded-xl border border-gray-200 bg-white shadow-theme-xs transition hover:shadow-theme-md dark:border-gray-700 dark:bg-gray-900">
+                                    <a
+                                        href="{{ route('dokumen.preview', $pdfDoc) }}"
+                                        data-pdf-preview="{{ route('dokumen.preview', $pdfDoc) }}"
+                                        data-pdf-title="{{ $pdfDoc->nama_file_asli }}"
+                                        data-pdf-download="{{ route('dokumen.download', $pdfDoc) }}"
+                                        target="_blank"
+                                        class="relative aspect-4/3 w-full flex flex-col items-center justify-center bg-red-50/60 p-4 transition group-hover:bg-red-50 dark:bg-red-950/20 dark:group-hover:bg-red-950/30 cursor-pointer text-center"
+                                        title="Klik untuk membuka pratinjau dokumen {{ $pdfDoc->nama_file_asli }}"
+                                    >
+                                        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-white text-red-500 shadow-theme-xs dark:bg-gray-800 dark:text-red-400">
+                                            <i class="fi fi-rr-file-pdf text-2xl"></i>
+                                        </div>
+                                        <span class="mt-2 inline-flex items-center gap-1 rounded-md bg-red-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-red-700 dark:bg-red-900/40 dark:text-red-300">
+                                            Dokumen PDF
+                                        </span>
+                                        @if ($pdfDoc->file_size)
+                                            <span class="mt-1 text-[11px] text-gray-400 dark:text-gray-500">
+                                                {{ $pdfDoc->formatted_file_size }}
+                                            </span>
+                                        @endif
+
+                                        <div class="absolute inset-0 flex items-center justify-center bg-gray-900/40 opacity-0 transition-opacity duration-200 group-hover:opacity-100 pointer-events-none">
+                                            <span class="inline-flex items-center gap-1.5 rounded-lg bg-white/95 px-3 py-1.5 text-xs font-semibold text-gray-900 shadow backdrop-blur-xs">
+                                                <i class="fi fi-rr-eye text-xs text-brand-600"></i>
+                                                Pratinjau PDF
+                                            </span>
+                                        </div>
+                                    </a>
+
+                                    <div class="flex items-center justify-between gap-2 border-t border-gray-100 p-3 dark:border-gray-800">
+                                        <div class="min-w-0 flex-1">
+                                            <p class="truncate text-xs font-medium text-gray-700 dark:text-gray-300" title="{{ $pdfDoc->nama_file_asli }}">
+                                                {{ $pdfDoc->nama_file_asli }}
+                                            </p>
+                                        </div>
+                                        <a
+                                            href="{{ route('dokumen.download', $pdfDoc) }}"
+                                            class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-gray-200 text-gray-500 hover:bg-gray-50 hover:text-brand-600 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-brand-400"
+                                            title="Unduh Berkas"
+                                        >
+                                            <i class="fi fi-rr-download text-xs"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                            {{-- Kartu Foto Putusan --}}
+                            @foreach ($imageDocs as $idx => $imgDoc)
+                                <div class="group relative flex flex-col justify-between overflow-hidden rounded-xl border border-gray-200 bg-white shadow-theme-xs transition hover:shadow-theme-md dark:border-gray-700 dark:bg-gray-900">
+                                    <button
+                                        type="button"
+                                        @click="openLightbox({{ $idx }})"
+                                        class="relative aspect-4/3 w-full overflow-hidden bg-gray-100 dark:bg-gray-800 text-left cursor-pointer"
+                                        title="Klik untuk memperbesar foto {{ $imgDoc->nama_file_asli }}"
+                                    >
+                                        <img
+                                            src="{{ route('dokumen.preview', $imgDoc) }}"
+                                            alt="{{ $imgDoc->nama_file_asli }}"
+                                            class="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                                            loading="lazy"
+                                        />
+                                        <div class="absolute inset-0 flex items-center justify-center bg-gray-900/40 opacity-0 transition-opacity duration-200 group-hover:opacity-100 pointer-events-none">
+                                            <span class="inline-flex items-center gap-1.5 rounded-lg bg-white/95 px-3 py-1.5 text-xs font-semibold text-gray-900 shadow backdrop-blur-xs">
+                                                <i class="fi fi-rr-search-alt text-xs text-brand-600"></i>
+                                                Perbesar
+                                            </span>
+                                        </div>
+                                    </button>
+
+                                    <div class="flex items-center justify-between gap-2 border-t border-gray-100 p-3 dark:border-gray-800">
+                                        <div class="min-w-0 flex-1">
+                                            <p class="truncate text-xs font-medium text-gray-700 dark:text-gray-300" title="{{ $imgDoc->nama_file_asli }}">
+                                                {{ $imgDoc->nama_file_asli }}
+                                            </p>
+                                        </div>
+                                        <a
+                                            href="{{ route('dokumen.download', $imgDoc) }}"
+                                            class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-gray-200 text-gray-500 hover:bg-gray-50 hover:text-brand-600 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-brand-400"
+                                            title="Unduh Berkas"
+                                        >
+                                            <i class="fi fi-rr-download text-xs"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                @elseif (!$isPutusan && $imageDocs->isNotEmpty())
+                    <div class="mt-6 rounded-xl border border-gray-200 bg-gray-50/70 p-4 dark:border-gray-800 dark:bg-white/[0.02]">
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
                             @foreach ($imageDocs as $idx => $imgDoc)
                                 <div class="group relative overflow-hidden rounded-xl border border-gray-200 bg-white shadow-theme-xs transition hover:shadow-theme-md dark:border-gray-700 dark:bg-gray-900">
@@ -314,7 +409,7 @@
                                         <a
                                             href="{{ route('dokumen.download', $imgDoc) }}"
                                             class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-gray-200 text-gray-500 hover:bg-gray-50 hover:text-brand-600 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-brand-400"
-                                            title="Unduh file"
+                                            title="Unduh Berkas"
                                         >
                                             <i class="fi fi-rr-download text-xs"></i>
                                         </a>

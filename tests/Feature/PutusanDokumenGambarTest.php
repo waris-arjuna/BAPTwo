@@ -234,9 +234,66 @@ test('halaman show tahap Keputusan Pengadilan merender pratinjau gambar visual d
         ->get(route('berkas-perkara.tahapan.show', [$this->berkas, $putusan]));
 
     $response->assertOk()
-        ->assertSee('Galeri Foto')
+        ->assertSee('Dokumentasi &amp; Lampiran Berkas Putusan', false)
         ->assertSee('foto_akta_putusan.png')
         ->assertSee('x-show="isLightboxOpen"', false)
-        ->assertSee('Unduh Gambar')
+        ->assertSee('Unduh Berkas')
         ->assertSee('Vonis berkekuatan hukum tetap.');
+});
+
+test('halaman show tahap Keputusan Pengadilan merender kartu pratinjau terpadu saat mengunggah dokumen PDF saja', function () {
+    Storage::fake('local');
+    $pdf = UploadedFile::fake()->create('salinan_resmi_putusan.pdf', 2000, 'application/pdf');
+
+    $this->actingAs($this->penyidik)
+        ->post(route('berkas-perkara.tahapan.store', $this->berkas), [
+            'action_type' => 'lanjut',
+            'jenis_tahap' => JenisTahap::KEPUTUSAN_PENGADILAN->value,
+            'nomor_surat' => '1001/Pid.Sus/2026/PN.Bjm',
+            'tanggal_surat' => '2026-03-25',
+            'pengadilan_instansi_id' => $this->pengadilan->id,
+            'amar_putusan' => 'Vonis berkekuatan hukum tetap.',
+            'dokumen' => $pdf,
+        ]);
+
+    $putusan = $this->berkas->tahapan()->where('jenis_tahap', JenisTahap::KEPUTUSAN_PENGADILAN)->first();
+
+    $response = $this->actingAs($this->penyidik)
+        ->get(route('berkas-perkara.tahapan.show', [$this->berkas, $putusan]));
+
+    $response->assertOk()
+        ->assertSee('Dokumentasi &amp; Lampiran Berkas Putusan', false)
+        ->assertSee('salinan_resmi_putusan.pdf')
+        ->assertSee('data-pdf-preview', false)
+        ->assertSee('Pratinjau PDF')
+        ->assertSee('Unduh Berkas');
+});
+
+test('halaman show tahap Keputusan Pengadilan merender kombinasi kartu PDF dan Foto dalam section terpadu', function () {
+    Storage::fake('local');
+    $pdf = UploadedFile::fake()->create('salinan_putusan.pdf', 1500, 'application/pdf');
+    $foto = UploadedFile::fake()->create('foto_sidang.jpg', 1500, 'image/jpeg');
+
+    $this->actingAs($this->penyidik)
+        ->post(route('berkas-perkara.tahapan.store', $this->berkas), [
+            'action_type' => 'lanjut',
+            'jenis_tahap' => JenisTahap::KEPUTUSAN_PENGADILAN->value,
+            'nomor_surat' => '1002/Pid.Sus/2026/PN.Bjm',
+            'tanggal_surat' => '2026-03-26',
+            'pengadilan_instansi_id' => $this->pengadilan->id,
+            'amar_putusan' => 'Vonis terbukti bersalah.',
+            'dokumen' => [$pdf, $foto],
+        ]);
+
+    $putusan = $this->berkas->tahapan()->where('jenis_tahap', JenisTahap::KEPUTUSAN_PENGADILAN)->first();
+
+    $response = $this->actingAs($this->penyidik)
+        ->get(route('berkas-perkara.tahapan.show', [$this->berkas, $putusan]));
+
+    $response->assertOk()
+        ->assertSee('Dokumentasi &amp; Lampiran Berkas Putusan', false)
+        ->assertSee('salinan_putusan.pdf')
+        ->assertSee('foto_sidang.jpg')
+        ->assertSee('data-pdf-preview', false)
+        ->assertSee('x-show="isLightboxOpen"', false);
 });

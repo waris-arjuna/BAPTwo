@@ -248,9 +248,9 @@ test('halaman show tahap Keputusan Pengadilan merender daftar dokumen PDF dan ga
         ->get(route('berkas-perkara.tahapan.show', [$this->berkas, $tahap]));
 
     $response->assertOk()
-        ->assertSee('Salinan Dokumen Putusan (PDF)')
+        ->assertSee('Salinan Dokumen Putusan')
         ->assertSee('putusan_tercetak.pdf')
-        ->assertSee('Galeri Foto &amp; Dokumentasi Putusan (2 Foto)', false)
+        ->assertSee('Dokumentasi &amp; Lampiran Berkas Putusan', false)
         ->assertSee('foto_sidang_1.jpg')
         ->assertSee('foto_sidang_2.png')
         ->assertSee('prevImage()', false)
