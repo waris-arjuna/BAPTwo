@@ -72,9 +72,9 @@ beforeEach(function () {
 test('penyidik dapat mengunggah multi-file kombinasi PDF dan Foto sekaligus pada Keputusan Pengadilan', function () {
     Storage::fake('local');
 
-    $pdf = UploadedFile::fake()->create('salinan_resmi_putusan.pdf', 3000, 'application/pdf'); // 3 MB
-    $foto1 = UploadedFile::fake()->create('foto_sidang_putusan.jpg', 2000, 'image/jpeg');       // 2 MB
-    $foto2 = UploadedFile::fake()->create('foto_akta_vonis.png', 2500, 'image/png');           // 2.5 MB
+    $pdf = UploadedFile::fake()->create('salinan_resmi_putusan.pdf', 1800, 'application/pdf'); // 1.8 MB
+    $foto1 = UploadedFile::fake()->create('foto_sidang_putusan.jpg', 1200, 'image/jpeg');       // 1.2 MB
+    $foto2 = UploadedFile::fake()->create('foto_akta_vonis.png', 1500, 'image/png');           // 1.5 MB
 
     $response = $this->actingAs($this->penyidik)
         ->post(route('berkas-perkara.tahapan.store', $this->berkas), [
@@ -108,11 +108,11 @@ test('penyidik dapat mengunggah multi-file kombinasi PDF dan Foto sekaligus pada
     ]);
 });
 
-test('validasi menolak jika akumulasi total ukuran seluruh berkas Keputusan Pengadilan melebihi 10 MB', function () {
+test('validasi menolak jika akumulasi total ukuran seluruh berkas Keputusan Pengadilan melebihi 5 MB', function () {
     Storage::fake('local');
 
-    $pdf = UploadedFile::fake()->create('putusan_besar.pdf', 6000, 'application/pdf'); // 6 MB
-    $foto = UploadedFile::fake()->create('foto_besar.jpg', 5000, 'image/jpeg');        // 5 MB (Total = 11 MB > 10 MB)
+    $pdf = UploadedFile::fake()->create('putusan_besar.pdf', 3000, 'application/pdf'); // 3 MB
+    $foto = UploadedFile::fake()->create('foto_besar.jpg', 2500, 'image/jpeg');        // 2.5 MB (Total = 5.5 MB > 5 MB)
 
     $response = $this->actingAs($this->penyidik)
         ->post(route('berkas-perkara.tahapan.store', $this->berkas), [

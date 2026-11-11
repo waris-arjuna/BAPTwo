@@ -326,7 +326,7 @@
                                         name="dokumen"
                                         label="Unggah Salinan Dokumen Putusan (PDF & Foto)"
                                         :existingDocuments="$tahap?->dokumen ?? collect()"
-                                        :maxTotalMb="10"
+                                        :maxTotalMb="5"
                                     />
                                 @else
                                     <x-form.pdf-upload

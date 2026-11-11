@@ -4,7 +4,7 @@
     'label' => 'Unggah Salinan Dokumen Putusan (PDF & Foto)',
     'required' => false,
     'existingDocuments' => collect(),
-    'maxTotalMb' => 10,
+    'maxTotalMb' => 5,
 ])
 
 @php
@@ -97,6 +97,11 @@
                 // Cek apakah file sudah pernah dimasukkan
                 const isDuplicate = this.newFiles.some(f => f.name === file.name && f.size === file.size);
                 if (isDuplicate) {
+                    continue;
+                }
+
+                if (file.size > 5 * 1024 * 1024) {
+                    this.error = 'Ukuran berkas ' + file.name + ' melebihi batas maksimal 5 MB.';
                     continue;
                 }
 

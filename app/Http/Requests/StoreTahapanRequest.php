@@ -103,9 +103,9 @@ class StoreTahapanRequest extends FormRequest
         if ($isKeputusanPengadilan) {
             if ($isMultiDokumen) {
                 $rules['dokumen'] = ['nullable', 'array'];
-                $rules['dokumen.*'] = ['file', 'mimes:pdf,jpg,jpeg,png,webp', 'max:10240'];
+                $rules['dokumen.*'] = ['file', 'mimes:pdf,jpg,jpeg,png,webp', 'max:5120'];
             } else {
-                $rules['dokumen'] = ['nullable', 'file', 'mimes:pdf,jpg,jpeg,png,webp', 'max:10240'];
+                $rules['dokumen'] = ['nullable', 'file', 'mimes:pdf,jpg,jpeg,png,webp', 'max:5120'];
             }
         } else {
             $rules['dokumen'] = [$isDraft || $isOptionalStage ? 'nullable' : 'required', 'file', 'mimes:pdf', 'max:5120'];
@@ -137,8 +137,8 @@ class StoreTahapanRequest extends FormRequest
                 }
             }
 
-            if ($newFilesSize > 10 * 1024 * 1024) {
-                $validator->errors()->add('dokumen', 'Total ukuran gabungan seluruh dokumen dan foto keputusan pengadilan tidak boleh melebihi 10 MB.');
+            if ($newFilesSize > 5 * 1024 * 1024) {
+                $validator->errors()->add('dokumen', 'Total ukuran gabungan seluruh dokumen dan foto keputusan pengadilan tidak boleh melebihi 5 MB.');
             }
 
             $isLanjut = ($this->input('action_type') ?? 'lanjut') === 'lanjut';
@@ -167,10 +167,10 @@ class StoreTahapanRequest extends FormRequest
                 ? 'Dokumen keputusan pengadilan harus berformat PDF atau Gambar (JPG, JPEG, PNG, WEBP).'
                 : 'Dokumen tahapan harus berupa file format PDF.',
             'dokumen.max' => $isKeputusanPengadilan
-                ? 'Ukuran file dokumen keputusan pengadilan tidak boleh melebihi 10 MB.'
+                ? 'Ukuran file dokumen keputusan pengadilan tidak boleh melebihi 5 MB.'
                 : 'Ukuran file dokumen tidak boleh melebihi 5 MB.',
             'dokumen.*.mimes' => 'Setiap berkas keputusan pengadilan harus berformat PDF atau Gambar (JPG, JPEG, PNG, WEBP).',
-            'dokumen.*.max' => 'Ukuran setiap berkas dokumen keputusan pengadilan tidak boleh melebihi 10 MB.',
+            'dokumen.*.max' => 'Ukuran setiap berkas dokumen keputusan pengadilan tidak boleh melebihi 5 MB.',
             'p16_dokumen.mimes' => 'Dokumen P-16 harus berupa file format PDF.',
             'p16_dokumen.max' => 'Ukuran file dokumen tidak boleh melebihi 5 MB.',
             'p17p_dokumen.mimes' => 'Dokumen P-17 harus berupa file format PDF.',

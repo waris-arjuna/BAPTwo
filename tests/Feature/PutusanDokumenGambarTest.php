@@ -69,9 +69,9 @@ beforeEach(function () {
     ]);
 });
 
-test('penyidik dapat menyimpan tahap Keputusan Pengadilan dengan dokumen gambar JPG hingga 10 MB', function () {
+test('penyidik dapat menyimpan tahap Keputusan Pengadilan dengan dokumen gambar JPG hingga 5 MB', function () {
     Storage::fake('local');
-    $imageJpg = UploadedFile::fake()->create('salinan_putusan.jpg', 8000, 'image/jpeg'); // 8 MB
+    $imageJpg = UploadedFile::fake()->create('salinan_putusan.jpg', 4500, 'image/jpeg'); // 4.5 MB
 
     $response = $this->actingAs($this->penyidik)
         ->post(route('berkas-perkara.tahapan.store', $this->berkas), [
@@ -103,7 +103,7 @@ test('penyidik dapat menyimpan tahap Keputusan Pengadilan dengan dokumen gambar 
 
 test('penyidik dapat menyimpan tahap Keputusan Pengadilan dengan dokumen gambar PNG atau WebP', function () {
     Storage::fake('local');
-    $imagePng = UploadedFile::fake()->create('putusan_foto.png', 5000, 'image/png');
+    $imagePng = UploadedFile::fake()->create('putusan_foto.png', 4000, 'image/png'); // 4 MB
 
     $response = $this->actingAs($this->penyidik)
         ->post(route('berkas-perkara.tahapan.store', $this->berkas), [
@@ -125,9 +125,9 @@ test('penyidik dapat menyimpan tahap Keputusan Pengadilan dengan dokumen gambar 
     ]);
 });
 
-test('penyidik dapat menyimpan tahap Keputusan Pengadilan dengan dokumen PDF hingga 10 MB', function () {
+test('penyidik dapat menyimpan tahap Keputusan Pengadilan dengan dokumen PDF hingga 5 MB', function () {
     Storage::fake('local');
-    $pdf = UploadedFile::fake()->create('salinan_resmi_putusan.pdf', 9500, 'application/pdf'); // 9.5 MB
+    $pdf = UploadedFile::fake()->create('salinan_resmi_putusan.pdf', 4800, 'application/pdf'); // 4.8 MB
 
     $response = $this->actingAs($this->penyidik)
         ->post(route('berkas-perkara.tahapan.store', $this->berkas), [
@@ -149,9 +149,9 @@ test('penyidik dapat menyimpan tahap Keputusan Pengadilan dengan dokumen PDF hin
     ]);
 });
 
-test('validasi input Keputusan Pengadilan menolak file gambar lebih dari 10 MB', function () {
+test('validasi input Keputusan Pengadilan menolak file gambar lebih dari 5 MB', function () {
     Storage::fake('local');
-    $largeImage = UploadedFile::fake()->create('putusan_terlalu_besar.jpg', 12000, 'image/jpeg'); // 12 MB
+    $largeImage = UploadedFile::fake()->create('putusan_terlalu_besar.jpg', 6000, 'image/jpeg'); // 6 MB > 5 MB
 
     $response = $this->actingAs($this->penyidik)
         ->post(route('berkas-perkara.tahapan.store', $this->berkas), [
