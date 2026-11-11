@@ -13,7 +13,6 @@ use App\Http\Controllers\PencarianPerkaraController;
 use App\Http\Controllers\PerkaraBerkasController;
 use App\Http\Controllers\PerkaraExportController;
 use App\Http\Controllers\PetugasController;
-use App\Http\Controllers\PotensiTerlimpahController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgressPerkaraController;
 use App\Http\Controllers\PutusanPerkaraController;
@@ -27,6 +26,7 @@ use App\Http\Controllers\Tahap2Controller;
 use App\Http\Controllers\TahapanPerkaraController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WilayahController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 // Captcha
@@ -121,7 +121,7 @@ Route::middleware('auth')->group(function () {
     // Data Perkara & Berkas Perkara Pra-SPDP (TKP, PPNS, Tersangka, Berkas, Pasal Berlapis)
     Route::get('/data-perkara', [DataPerkaraController::class, 'index'])->name('data-perkara.index');
     Route::get('/progress-perkara', [ProgressPerkaraController::class, 'index'])->name('progress-perkara.index');
-    Route::get('/potensi-terlimpah', [PotensiTerlimpahController::class, 'index'])->name('potensi-terlimpah.index');
+    Route::get('/potensi-terlimpah', fn (Request $request) => redirect()->route('data-perkara.index', $request->query()))->name('potensi-terlimpah.index');
     Route::get('/perkara/{perkara}', [PerkaraBerkasController::class, 'show'])->name('perkara.show');
     Route::get('/perkara/{perkara}/buat', [PerkaraBerkasController::class, 'edit'])->middleware('can:edit-draft')->name('perkara.edit');
     Route::put('/perkara/{perkara}/buat', [PerkaraBerkasController::class, 'update'])->middleware('can:edit-draft')->name('perkara.update');
@@ -176,3 +176,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/putusan-perkara/tambah', [PutusanPerkaraController::class, 'create'])->middleware('can:create-cases')->name('putusan-perkara.create');
     Route::get('/putusan-perkara/{id}', [PutusanPerkaraController::class, 'show'])->name('putusan-perkara.show');
 });
+
+// Route simulasi error untuk pengujian browser (hanya aktif di environment local/testing)
+if (app()->environment(['local', 'testing'])) {
+    Route::get('/error/{code}', function (int $code) {
+        abort($code);
+    })->name('dev.error');
+
+    // Alias URL pendek langsung (seperti /403, /500, /505, /419, /503) untuk kenyamanan uji manual di browser
+    Route::get('/{code}', function (int $code) {
+        abort($code);
+    })->where('code', '^(40[0-9]|41[0-9]|42[0-9]|50[0-9]|5[1-9][0-9])$');
+}

@@ -144,6 +144,12 @@ class DummyDataSeeder extends Seeder
      */
     public function run(): void
     {
+        if (! app()->environment(['local', 'testing'])) {
+            $this->command?->warn('DummyDataSeeder hanya dapat dijalankan pada environment local atau testing.');
+
+            return;
+        }
+
         $this->urutanNomor = [];
         $this->urutanTersangka = 0;
         $this->urutanTersangkaNasional = 0;

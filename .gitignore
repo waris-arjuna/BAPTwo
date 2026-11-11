@@ -46,3 +46,5 @@ tailadmin-laravel-main/
 /.superpowers/
 /resources/data/wilayah/raw/*
 !/resources/data/wilayah/raw/.gitkeep
+/public/audio/
+/public/images/505-cover.*

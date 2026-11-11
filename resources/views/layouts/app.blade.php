@@ -15,12 +15,6 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <!-- Theme Store -->
-    <style>
-        [x-cloak] {
-            display: none !important;
-        }
-    </style>
-    <!-- Theme Store -->
     <script>
         document.addEventListener('alpine:init', () => {
             Alpine.store('theme', {

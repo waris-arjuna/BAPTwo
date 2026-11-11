@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Enums\UserRole;
+use App\Http\Requests\Petugas\AssignPetugasRequest;
 use App\Models\User;
 use App\Services\AuditTrailService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
 class PetugasController extends Controller
@@ -55,34 +55,9 @@ class PetugasController extends Controller
     /**
      * Simpan pembaruan role dan status penugasan petugas.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(AssignPetugasRequest $request): RedirectResponse
     {
-        $currentUser = $request->user();
-        abort_unless($currentUser?->isAdmin() || $currentUser?->isPenyidik(), 403);
-
-        $validated = $request->validate([
-            'user_id' => [
-                'required',
-                Rule::exists('user', 'id')->where(function ($q) {
-                    $q->where('role', '!=', UserRole::ADMINISTRATOR->value);
-                }),
-                function ($attribute, $value, $fail) use ($currentUser) {
-                    if ($currentUser?->isPenyidik() && (int) $value === (int) $currentUser->id) {
-                        $fail('Penyidik tidak diizinkan mengubah akun dirinya sendiri.');
-                    }
-                },
-            ],
-            'role' => [
-                'required',
-                Rule::in([UserRole::PENYIDIK->value, UserRole::UMUM->value]),
-            ],
-            'is_active' => ['nullable', 'boolean'],
-        ], [
-            'user_id.required' => 'Pilih petugas yang akan ditugaskan.',
-            'user_id.exists' => 'Petugas yang dipilih tidak valid atau merupakan Administrator.',
-            'role.required' => 'Pilih peran penugasan yang diberikan.',
-            'role.in' => 'Peran yang dipilih tidak valid.',
-        ]);
+        $validated = $request->validated();
 
         $user = User::findOrFail($validated['user_id']);
         $oldRole = $user->role->value;

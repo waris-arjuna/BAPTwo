@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Enums\JenisTahap;
 use App\Http\Requests\StoreTahapanRequest;
+use App\Http\Requests\Tahapan\SaveSubTahapRequest;
 use App\Http\Requests\UpdateTahapanRequest;
 use App\Models\BerkasPerkara;
 use App\Models\InstansiHukum;
@@ -261,10 +262,8 @@ class TahapanPerkaraController extends Controller
     /**
      * Simpan / perbarui sub-tahap mandiri (P-16, P-17P, P-18P, P-19) via modal.
      */
-    public function saveSubTahap(Request $request, BerkasPerkara $berkas): RedirectResponse
+    public function saveSubTahap(SaveSubTahapRequest $request, BerkasPerkara $berkas): RedirectResponse
     {
-        Gate::authorize('create-cases');
-
         if ($berkas->is_dpo) {
             return redirect()
                 ->back()
@@ -283,28 +282,7 @@ class TahapanPerkaraController extends Controller
                 ]);
         }
 
-        $validated = $request->validate([
-            'sub_tahap_group' => ['required', 'in:spdp,tahap_1'],
-            'p16_nomor_surat' => ['nullable', 'string', 'max:150'],
-            'p16_tanggal_surat' => ['nullable', 'date'],
-            'p16_dokumen' => ['nullable', 'file', 'mimes:pdf', 'max:5120'],
-            'p16_catatan' => ['nullable', 'string', 'max:1000'],
-
-            'p17p_nomor_surat' => ['nullable', 'string', 'max:150'],
-            'p17p_tanggal_surat' => ['nullable', 'date'],
-            'p17p_dokumen' => ['nullable', 'file', 'mimes:pdf', 'max:5120'],
-            'p17p_catatan' => ['nullable', 'string', 'max:1000'],
-
-            'p18p_nomor_surat' => ['nullable', 'string', 'max:150'],
-            'p18p_tanggal_surat' => ['nullable', 'date'],
-            'p18p_dokumen' => ['nullable', 'file', 'mimes:pdf', 'max:5120'],
-            'p18p_catatan' => ['nullable', 'string', 'max:1000'],
-
-            'p19_nomor_surat' => ['nullable', 'string', 'max:150'],
-            'p19_tanggal_surat' => ['nullable', 'date'],
-            'p19_dokumen' => ['nullable', 'file', 'mimes:pdf', 'max:5120'],
-            'p19_catatan' => ['nullable', 'string', 'max:1000'],
-        ]);
+        $validated = $request->validated();
 
         $group = $validated['sub_tahap_group'];
 

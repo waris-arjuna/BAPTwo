@@ -1920,3 +1920,100 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
 
 
 
+
+---
+
+## D-092 : Proteksi Environment Guard pada Seluruh Database Seeder
+
+- Tanggal: 2026-11-11
+- Status: Disepakati & Diimplementasikan (Audit Kesiapan Produksi - T-116)
+- Konteks: Audit kesiapan produksi (Production Readiness Review) menemukan bahwa seeder data `DummyDataSeeder.php` dan `AdminPimpinanSeeder.php` belum memiliki pengecekan lingkungan (*environment guard*). Jika operator atau teknisi secara tidak sengaja mengeksekusi `php artisan db:seed --class=DummyDataSeeder` atau `AdminPimpinanSeeder` pada server live produksi (`APP_ENV=production`), ratusan data dummy akan masuk mengotori database nyata, atau akun pengguna dengan password default `password` akan aktif dan mengekspos risiko keamanan otentikasi.
+- Keputusan:
+  1. Menambahkan guard `if (! app()->environment(['local', 'testing']))` di awal method `run()` pada `DummyDataSeeder.php` dan `AdminPimpinanSeeder.php`.
+  2. Jika dijalankan di luar environment `local` atau `testing`, seeder akan langsung membatalkan eksekusi (*early return*) dan mencetak pesan peringatan resmi ke konsol.
+  3. Memastikan panggilan output konsol `$this->command` pada `AdminPimpinanSeeder` menggunakan operator null-safe (`$this->command?->info(...)`) agar aman saat diinstansiasi secara programatik dalam pengujian.
+- Konsekuensi: Seluruh seeder aplikasi kini kebal terhadap eksekusi tidak disengaja di server produksi, dan integritas data perkara serta keamanan akun pengguna BPOM terlindungi 100%.
+
+---
+
+## D-093 : Halaman Error Kustom TailAdmin Berbahasa Indonesia (401, 403, 404, 419, 429, 500, 503, 4xx, 5xx)
+
+- Tanggal: 2026-11-11
+- Status: Disepakati & Diimplementasikan (Audit Kesiapan Produksi - T-117)
+- Konteks: Audit kesiapan produksi menemukan bahwa aplikasi belum memiliki template error kustom di `resources/views/errors/`. Saat `APP_DEBUG=false` di lingkungan produksi, setiap error HTTP (403 Akses Ditolak, 404 Tidak Ditemukan, 419 Sesi Berakhir, 500 Kesalahan Server, 503 Pemeliharaan) akan merender template bawaan Laravel berbahasa Inggris yang kaku dan inkonsisten dengan desain BAPTwo. Selain itu, pengujian di peramban dengan mengetikkan langsung URL seperti `/403` atau `/505` sebelumnya menghasilkan 404 karena belum ada route matching untuk kode status tersebut, dan belum ada penanganan generik untuk status non-standar (seperti 505).
+- Keputusan:
+  1. Menyediakan tata letak dasar `resources/views/errors/layout.blade.php` berbasis `@extends('layouts.fullscreen-layout')` yang memuat logo resmi BAPTwo, badge instansi BPOM Kalsel, kartu error berbayang, badge kode status dinamis, icon Flaticon UIcons tematik, dan footer lembaga.
+  2. Menyediakan template spesifik dan generik:
+     - `401.blade.php`: "Otentikasi Diperlukan" (`fi-rr-key`) dengan tombol masuk.
+     - `403.blade.php`: "Akses Ditolak" (`fi-rr-shield-exclamation`) dengan tombol kembali ke dashboard/masuk.
+     - `404.blade.php`: "Halaman Tidak Ditemukan" (`fi-rr-search-alt`) dengan tombol kembali ke dashboard/masuk.
+     - `419.blade.php`: "Sesi Telah Berakhir" (`fi-rr-time-past`), tombol "Masuk Kembali", dan tombol "Muat Ulang Halaman".
+     - `429.blade.php`: "Terlalu Banyak Permintaan" (`fi-rr-time-past`) dengan tombol kembali dan muat ulang.
+     - `500.blade.php`: "Terjadi Kesalahan Sistem" (`fi-rr-engine-warning`), tombol kembali, dan tombol "Muat Ulang Halaman".
+     - `503.blade.php`: "Sistem Dalam Pemeliharaan" (`fi-rr-settings`) dengan tombol "Muat Ulang Halaman".
+     - `4xx.blade.php` & `5xx.blade.php`: Penanganan generik untuk seluruh kode status 4xx dan 5xx non-standar (termasuk 505) yang mengekstrak kode status asli secara dinamis dari `$exception->getStatusCode()`.
+  3. Menyediakan route simulasi dev/testing di `routes/web.php` (`/{code}`) agar pengetikan langsung URL status di browser memicu HTTP exception yang sesuai tanpa terperangkap sebagai rute 404.
+  4. Seluruh copywriting menggunakan Bahasa Indonesia operasional baku dan didaftarkan di `lang/id.json`.
+- Konsekuensi: Tampilan antarmuka penanganan error kini 100% konsisten dengan tema TailAdmin, ramah pengguna, menangani seluruh ragam kode status secara akurat, dan teruji penuh melalui automated tests.
+
+---
+
+## D-094 : Indeks Database Kolom `sla_deadline` Tabel `berkas_perkara`
+
+- Tanggal: 2026-11-11
+- Status: Disepakati & Diimplementasikan (Audit Kesiapan Produksi - T-118)
+- Konteks: Audit kesiapan produksi menemukan bahwa query tabel prioritas progres di Dashboard (`PriorityProgressQuery.php`) melakukan pengurutan intensif berdasarkan kolom `sla_deadline` (`->orderByRaw('sla_deadline IS NULL')->orderBy('sla_deadline', 'asc')`). Namun pada migrasi awal, kolom `sla_deadline` belum memiliki indeks database terdedikasi. Hal ini berpotensi memicu *filesort* penuh pada MySQL saat jumlah data perkara bertambah banyak seiring waktu operasional di produksi.
+- Keputusan:
+  1. Membuat migrasi baru `database/migrations/2026_11_11_000001_add_index_to_sla_deadline_on_berkas_perkara_table.php` yang menambahkan indeks B-Tree pada kolom `sla_deadline`.
+  2. Menyediakan method `down()` yang dapat menghapus indeks kembali (`$table->dropIndex(['sla_deadline']);`) untuk mendukung siklus rollback migrasi yang aman.
+  3. Memvalidasi ketersediaan indeks melalui automated test yang memverifikasi eksistensi indeks baik pada SQLite in-memory maupun MySQL produksi.
+- Konsekuensi: Operasi sorting dan filtering prioritas tenggat waktu (SLA) pada Dashboard berjalan lebih cepat, optimal, dan efisien secara komputasi database.
+
+---
+
+## D-095 : Optimasi Bundel Frontend (Code Splitting ApexCharts) dan Konsolidasi Aturan CSS `[x-cloak]`
+
+- Tanggal: 2026-11-11
+- Status: Disepakati & Diimplementasikan (Audit Kesiapan Produksi - T-119)
+- Konteks: Audit kesiapan produksi menemukan dua isu pada lapisan frontend:
+  1. Ukuran file JavaScript utama `app.js` saat build produksi mencapai **1.122 kB** (>1 MB) karena library visualisasi `apexcharts` terbundel monolitik ke dalam entry point utama, yang memperlambat LCP (Largest Contentful Paint) dan waktu muat awal pengguna.
+  2. Aturan CSS `[x-cloak] { display: none !important; }` masih diletakkan sebagai tag `<style>` inline lokal di `resources/views/layouts/app.blade.php`, alih-alih berada di stylesheet utama terkompilasi `resources/css/app.css`.
+- Keputusan:
+  1. Mengonfigurasi Rollup manual chunking pada `vite.config.js`:
+     ```javascript
+     build: {
+         chunkSizeWarningLimit: 1000,
+         rollupOptions: {
+             output: {
+                 manualChunks(id) {
+                     if (id.includes("node_modules/apexcharts")) {
+                         return "vendor-apexcharts";
+                     }
+                 },
+             },
+         },
+     },
+     ```
+  2. Memindahkan definisi `[x-cloak] { display: none !important; }` ke `@layer base` pada `resources/css/app.css` agar termuat global di seluruh halaman (termasuk layout auth dan fullscreen) dan menghapus tag inline `<style>` dari `resources/views/layouts/app.blade.php`.
+- Konsekuensi:
+  - Ukuran bundel JavaScript utama `app.js` menyusut drastis sebesar **86%**, dari **1.122 kB** menjadi hanya **158.11 kB** (50.88 kB gzip).
+  - Dependency `apexcharts` terpisah rapi ke `vendor-apexcharts-*.js` (~963 kB) dan dimuat secara terisolasi.
+  - Aturan pencegahan kedipan UI Alpine.js (`x-cloak`) kini 100% konsisten, terpusat, dan bebas inline style.
+
+---
+
+## D-096 : Eliminasi Controller Wrapper Potensi Terlimpah dan Standardisasi Form Request Terdedikasi
+
+- Tanggal: 2026-11-11
+- Status: Disepakati & Diimplementasikan (Audit Kesiapan Produksi - T-120)
+- Konteks: Audit kesiapan produksi menemukan dua area penyederhanaan arsitektur:
+  1. Controller `PotensiTerlimpahController.php` hanya berisi satu baris instruksi redirect `redirect()->route('data-perkara.index', $request->query())`. Ini merupakan *over-engineering* / boilerplate perantara yang tidak perlu dan lebih ringkas dikelola langsung melalui route closure native di `routes/web.php`.
+  2. Masih terdapat 3 controller yang menggunakan validasi *inline* (`$request->validate([...])`), yaitu `PerkaraExportController`, `PetugasController`, dan `TahapanPerkaraController::saveSubTahap`. Hal ini menyalahi prinsip arsitektur proyek di mana seluruh validasi HTTP dan otorisasi level request wajib dipisahkan ke dalam Form Request terdedikasi.
+- Keputusan:
+  1. Mengganti route `potensi-terlimpah.index` di `routes/web.php` menjadi route closure native yang meneruskan query string secara utuh, dan menghapus file controller `app/Http/Controllers/PotensiTerlimpahController.php`.
+  2. Membuat 3 Form Request class terpisah dengan aturan validasi dan otorisasi lengkap:
+     - `app/Http/Requests/Export/PerkaraExportRequest.php`: Validasi filter periode, tahun, bulan, rentang tanggal, serta otorisasi `export-excel`.
+     - `app/Http/Requests/Petugas/AssignPetugasRequest.php`: Validasi penugasan peran non-admin, proteksi akun sendiri oleh Penyidik, dan otorisasi Admin/Penyidik.
+     - `app/Http/Requests/Tahapan/SaveSubTahapRequest.php`: Validasi sub-tahap mandiri (P-16, P-17P, P-18P, P-19), pembatasan dokumen PDF maks 5 MB, dan otorisasi `create-cases`.
+  3. Memperbarui method pada ketiga controller tersebut untuk menginjeksi Form Request terkait dan memanfaatkan `$request->validated()`.
+- Konsekuensi: Seluruh endpoint mutasi dan input pada aplikasi kini 100% menggunakan Form Request terisolasi tanpa ada satupun validasi inline yang tertinggal di controller, controller wrapper kosong berhasil dieliminasi, dan arsitektur kode menjadi jauh lebih bersih, modular, serta mudah diuji.

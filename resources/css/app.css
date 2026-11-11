@@ -3,6 +3,10 @@
 @import 'tailwindcss';
 
 @layer base {
+  [x-cloak] {
+    display: none !important;
+  }
+
   .fi {
     display: inline-flex;
     align-items: center;

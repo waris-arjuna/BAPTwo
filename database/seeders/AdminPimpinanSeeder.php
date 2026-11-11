@@ -18,6 +18,12 @@ class AdminPimpinanSeeder extends Seeder
      */
     public function run(): void
     {
+        if (! app()->environment(['local', 'testing'])) {
+            $this->command?->warn('AdminPimpinanSeeder hanya dapat dijalankan pada environment local atau testing.');
+
+            return;
+        }
+
         $alamat = Alamat::firstOrCreate(
             [
                 'provinsi_kode' => '63',
@@ -122,7 +128,7 @@ class AdminPimpinanSeeder extends Seeder
                 ])
             );
 
-            $this->command->info("User tersimpan: {$user->nama} ({$user->email}) - Role: {$user->role->value}");
+            $this->command?->info("User tersimpan: {$user->nama} ({$user->email}) - Role: {$user->role->value}");
         }
     }
 }

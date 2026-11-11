@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Exports\PerkaraRekapExport;
+use App\Http\Requests\Export\PerkaraExportRequest;
 use App\Services\AuditTrailService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class PerkaraExportController extends Controller
@@ -16,18 +15,9 @@ class PerkaraExportController extends Controller
      * Ekspor data rekap perkara ke format Excel (.xlsx) dengan template LAPJU.
      * Dibatasi hanya untuk peran Administrator dan Penyidik (Poin 10).
      */
-    public function export(Request $request): StreamedResponse|RedirectResponse|JsonResponse
+    public function export(PerkaraExportRequest $request): StreamedResponse|RedirectResponse|JsonResponse
     {
-        Gate::authorize('export-excel');
-
-        $validated = $request->validate([
-            'mode' => ['nullable', 'string', 'in:semua,tahun,bulan,rentang'],
-            'tahun' => ['nullable', 'integer', 'min:2000', 'max:2099'],
-            'bulan' => ['nullable', 'integer', 'min:1', 'max:12'],
-            'tanggal_mulai' => ['nullable', 'date'],
-            'tanggal_selesai' => ['nullable', 'date', 'after_or_equal:tanggal_mulai'],
-            'check' => ['nullable', 'boolean'],
-        ]);
+        $validated = $request->validated();
 
         $mode = $validated['mode'] ?? 'semua';
         $tahun = ! empty($validated['tahun']) ? (int) $validated['tahun'] : (int) now()->year;
