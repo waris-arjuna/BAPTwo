@@ -1895,6 +1895,26 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
   4. **Komponen UI Feedback**: Menambahkan elemen teks pesan error dan tombol "Coba lagi" di bawah setiap dropdown wilayah pada form TKP, modal tersangka, dan modal profil.
 - Konsekuensi: Form TKP, Modal Alamat Tersangka, dan Modal Profil kini seragam, tahan terhadap kegagalan jaringan, memiliki alur auto-open yang nyaman bagi pengguna, dan seluruh 375 pengujian Pest PHP serta Laravel Pint lulus 100%.
 
+---
+
+## D-091 : Penyatuan Pratinjau Kartu Terpadu (PDF & Foto) pada Keputusan Perkara dan Standardisasi Batas Upload Berkas 5 MB
+
+- Tanggal: 2026-11-11
+- Status: Disepakati & Diimplementasikan (via interview /grill-me)
+- Konteks: Pada tahapan Keputusan Perkara, berkas PDF yang diunggah sebelumnya hanya muncul sebagai tautan teks kecil di baris metadata ringkasan atas, sementara bagian bawah didominasi oleh "Galeri Foto" yang hanya memuat file gambar. Hal ini menimbulkan persepsi keliru bahwa file PDF tidak terkirim atau hilang saat penyidik mengunggah berkas salinan putusan berformat PDF. Selain itu, batas upload pada tahapan putusan sebelumnya ditetapkan 10 MB, sementara seluruh berkas perkara lainnya di aplikasi BAPTwo dibatasi 5 MB.
+- Keputusan:
+  1. **Section Pratinjau Kartu Terpadu di Halaman Detail Putusan (`show.blade.php`)**: Mengubah galeri foto khusus Keputusan Pengadilan menjadi section terpadu **"Dokumentasi & Lampiran Berkas Putusan"** yang merender kartu visual untuk semua berkas:
+     - **Kartu Dokumen PDF**: Cover dokumen bernuansa visual dengan ikon Flaticon `fi fi-rr-file-pdf` merah, label badge "Dokumen PDF", ukuran berkas, tombol aksi hover pratinjau yang memicu modal in-app PDF preview bawaan (`data-pdf-preview`), serta tombol unduh berkas (`fi fi-rr-download`).
+     - **Kartu Foto**: Thumbnail foto proporsional, tombol aksi hover perbesar yang membuka modal Lightbox bawaan (dengan navigasi Selanjutnya/Sebelumnya), serta tombol unduh berkas.
+  2. **Tampilan Tetap Muncul untuk PDF Saja**: Section kartu terpadu ini tetap muncul rapi meski penyidik hanya mengunggah file PDF tanpa foto, menghilangkan kesan berkas tidak terkirim.
+  3. **Standardisasi Batas Upload 5 MB**:
+     - Aturan validasi `dokumen.*` dan `dokumen` (single) di `StoreTahapanRequest` dan `UpdateTahapanRequest` disesuaikan dari `max:10240` menjadi `max:5120` (5 MB per berkas).
+     - Batas akumulasi total ukuran seluruh berkas putusan disesuaikan dari 10 MB menjadi 5 MB (`5 * 1024 * 1024` bytes).
+     - Komponen `<x-form.multi-media-upload>` memperbarui kuota kapasitas default menjadi 5 MB (`:maxTotalMb="5"`), validasi client-side 5 MB per file dan 5 MB total, serta teks petunjuk dropzone.
+     - Khusus foto profil pengguna tetap 2 MB sesuai ketetapan pengguna saat penyelarasan.
+- Konsekuensi: Penyidik dapat melihat seluruh berkas putusan (baik PDF maupun foto) dengan visual yang seragam, jelas, dan interaktif pada halaman detail, serta batas upload seluruh berkas perkara konsisten maksimal 5 MB.
+
+
 
 
 
