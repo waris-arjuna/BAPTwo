@@ -7,7 +7,6 @@ use App\Models\Alamat;
 use App\Models\Bidang;
 use App\Models\InstansiHukum;
 use App\Models\Jabatan;
-use App\Models\JaksaPenuntut;
 use App\Models\Panggol;
 use App\Models\Pasal;
 use App\Models\User;
@@ -64,11 +63,6 @@ class DatabaseSeeder extends Seeder
         InstansiHukum::firstOrCreate(
             ['jenis' => 'pengadilan', 'nama' => 'Pengadilan Negeri Banjarmasin'],
             ['wilayah' => 'Kota Banjarmasin']
-        );
-
-        JaksaPenuntut::firstOrCreate(
-            ['instansi_hukum_id' => $kejatiKalsel->id, 'nama_jaksa' => 'Ahmad Fauzi, S.H., M.H.'],
-            ['nip' => '198405122009121002', 'pangkat' => 'Jaksa Madya (IV/a)']
         );
 
         $alamatDefault = Alamat::firstOrCreate(

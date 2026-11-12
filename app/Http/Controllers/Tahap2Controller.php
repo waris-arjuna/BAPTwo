@@ -34,9 +34,9 @@ class Tahap2Controller extends Controller
     }
 
     /**
-     * Tampilkan form tambah Tahap 2 atau redirect jika berkas_id telah ditentukan.
+     * Alihkan ke form tambah Tahap 2 dengan berkas_id atau kembali ke daftar Tahap 2.
      */
-    public function create(Request $request): View|RedirectResponse
+    public function create(Request $request): RedirectResponse
     {
         Gate::authorize('create-cases');
 
@@ -65,9 +65,7 @@ class Tahap2Controller extends Controller
             ]);
         }
 
-        $availableBerkas = $this->tahapanService->getAvailableBerkasForTahap2();
-
-        return view('pages.tahap-2.create', compact('availableBerkas'));
+        return redirect()->route('tahap-2.index');
     }
 
     /**

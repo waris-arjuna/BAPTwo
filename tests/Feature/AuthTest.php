@@ -35,7 +35,7 @@ it('authenticates active user with valid credentials and math captcha', function
     app(MathCaptchaService::class)->generate();
     $answer = session(MathCaptchaService::SESSION_ANSWER_KEY);
 
-    $response = $this->post('/signin', [
+    $response = $this->post('/masuk', [
         'email' => 'penyidik@baptwo.test',
         'password' => 'password',
         'captcha' => (string) $answer,
@@ -55,13 +55,13 @@ it('rejects login with generic error when password is wrong', function () {
     app(MathCaptchaService::class)->generate();
     $answer = session(MathCaptchaService::SESSION_ANSWER_KEY);
 
-    $response = $this->from('/signin')->post('/signin', [
+    $response = $this->from('/masuk')->post('/masuk', [
         'email' => 'penyidik@baptwo.test',
         'password' => 'salah-password',
         'captcha' => (string) $answer,
     ]);
 
-    $response->assertRedirect('/signin');
+    $response->assertRedirect('/masuk');
     $response->assertSessionHasErrors(['email' => __('Email atau kata sandi salah.')]);
     $this->assertGuest();
 });
@@ -70,23 +70,23 @@ it('rejects login with generic error when email is unregistered or captcha is wr
     app(MathCaptchaService::class)->generate();
     $answer = session(MathCaptchaService::SESSION_ANSWER_KEY);
 
-    $unregistered = $this->from('/signin')->post('/signin', [
+    $unregistered = $this->from('/masuk')->post('/masuk', [
         'email' => 'tidakada@baptwo.test',
         'password' => 'password',
         'captcha' => (string) $answer,
     ]);
 
-    $unregistered->assertRedirect('/signin');
+    $unregistered->assertRedirect('/masuk');
     $unregistered->assertSessionHasErrors(['email' => __('Email atau kata sandi salah.')]);
 
     app(MathCaptchaService::class)->generate();
-    $wrongCaptcha = $this->from('/signin')->post('/signin', [
+    $wrongCaptcha = $this->from('/masuk')->post('/masuk', [
         'email' => 'tidakada@baptwo.test',
         'password' => 'password',
         'captcha' => '99999',
     ]);
 
-    $wrongCaptcha->assertRedirect('/signin');
+    $wrongCaptcha->assertRedirect('/masuk');
     $wrongCaptcha->assertSessionHasErrors('captcha');
 });
 
@@ -100,13 +100,13 @@ it('rejects login with generic error when user is inactive but enters wrong pass
     app(MathCaptchaService::class)->generate();
     $answer = session(MathCaptchaService::SESSION_ANSWER_KEY);
 
-    $response = $this->from('/signin')->post('/signin', [
+    $response = $this->from('/masuk')->post('/masuk', [
         'email' => 'nonaktif@baptwo.test',
         'password' => 'wrong-password',
         'captcha' => (string) $answer,
     ]);
 
-    $response->assertRedirect('/signin');
+    $response->assertRedirect('/masuk');
     $response->assertSessionHasErrors(['email' => __('Email atau kata sandi salah.')]);
     $this->assertGuest();
 
@@ -126,13 +126,13 @@ it('rejects login with specific banner and toast when inactive user enters corre
     app(MathCaptchaService::class)->generate();
     $answer = session(MathCaptchaService::SESSION_ANSWER_KEY);
 
-    $response = $this->from('/signin')->post('/signin', [
+    $response = $this->from('/masuk')->post('/masuk', [
         'email' => 'nonaktif@baptwo.test',
         'password' => 'password',
         'captcha' => (string) $answer,
     ]);
 
-    $response->assertRedirect('/signin');
+    $response->assertRedirect('/masuk');
     $response->assertSessionHas('account_inactive');
     $response->assertSessionHas('error');
     $this->assertGuest();
@@ -155,13 +155,13 @@ it('rejects login with specific banner and toast when soft-deleted user enters c
     app(MathCaptchaService::class)->generate();
     $answer = session(MathCaptchaService::SESSION_ANSWER_KEY);
 
-    $response = $this->from('/signin')->post('/signin', [
+    $response = $this->from('/masuk')->post('/masuk', [
         'email' => 'terhapus@baptwo.test',
         'password' => 'password',
         'captcha' => (string) $answer,
     ]);
 
-    $response->assertRedirect('/signin');
+    $response->assertRedirect('/masuk');
     $response->assertSessionHas('account_inactive');
     $response->assertSessionHas('error');
     $this->assertGuest();
@@ -214,7 +214,7 @@ it('throttles login attempts after 5 consecutive failures and writes audit log',
         app(MathCaptchaService::class)->generate();
         $answer = session(MathCaptchaService::SESSION_ANSWER_KEY);
 
-        $this->from('/signin')->post('/signin', [
+        $this->from('/masuk')->post('/masuk', [
             'email' => 'throttle@baptwo.test',
             'password' => 'wrong',
             'captcha' => (string) $answer,
@@ -224,13 +224,13 @@ it('throttles login attempts after 5 consecutive failures and writes audit log',
     app(MathCaptchaService::class)->generate();
     $answer = session(MathCaptchaService::SESSION_ANSWER_KEY);
 
-    $response = $this->from('/signin')->post('/signin', [
+    $response = $this->from('/masuk')->post('/masuk', [
         'email' => 'throttle@baptwo.test',
         'password' => 'wrong',
         'captcha' => (string) $answer,
     ]);
 
-    $response->assertRedirect('/signin');
+    $response->assertRedirect('/masuk');
     $response->assertSessionHasErrors('email');
     expect(session('errors')->first('email'))->toContain('Terlalu banyak percobaan');
 
@@ -238,6 +238,12 @@ it('throttles login attempts after 5 consecutive failures and writes audit log',
         'aksi' => 'login_failed',
         'tabel' => 'user',
     ]);
+});
+
+it('rejects legacy signin and signup routes with 404', function () {
+    $this->get('/signin')->assertNotFound();
+    $this->post('/signin')->assertNotFound();
+    $this->get('/signup')->assertNotFound();
 });
 
 it('logs out authenticated user and invalidates session', function () {

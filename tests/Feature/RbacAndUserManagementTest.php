@@ -49,13 +49,17 @@ it('blocks Pimpinan from accessing create routes while allowing Penyidik and Adm
     $pimpinan = User::factory()->pimpinan()->make();
     $admin = User::factory()->administrator()->make();
 
-    foreach (['/laporan-kejadian/tambah', '/sprindik/tambah', '/spdp/tambah', '/tahap-1/tambah', '/p21/tambah'] as $createRoute) {
-        $this->actingAs($pimpinan)->get($createRoute)->assertForbidden();
-        $this->actingAs($penyidik)->get($createRoute)->assertOk();
-        $this->actingAs($admin)->get($createRoute)->assertOk();
+    foreach (['/laporan-kejadian/tambah', '/sprindik/tambah'] as $formRoute) {
+        $this->actingAs($pimpinan)->get($formRoute)->assertForbidden();
+        $this->actingAs($penyidik)->get($formRoute)->assertOk();
+        $this->actingAs($admin)->get($formRoute)->assertOk();
     }
 
-    $this->actingAs($pimpinan)->get('/tahap-2/tambah')->assertForbidden();
+    foreach (['/spdp/tambah' => '/spdp', '/tahap-1/tambah' => '/tahap-1', '/p21/tambah' => '/p21', '/tahap-2/tambah' => '/tahap-2'] as $stageRoute => $indexRoute) {
+        $this->actingAs($pimpinan)->get($stageRoute)->assertForbidden();
+        $this->actingAs($penyidik)->get($stageRoute)->assertRedirect($indexRoute);
+        $this->actingAs($admin)->get($stageRoute)->assertRedirect($indexRoute);
+    }
 });
 
 it('hides Tambah, Edit, and stage advancement buttons from Pimpinan across index and detail views', function () {

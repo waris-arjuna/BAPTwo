@@ -34,9 +34,9 @@ class PutusanPerkaraController extends Controller
     }
 
     /**
-     * Tampilkan form tambah Putusan Perkara atau redirect jika berkas_id telah ditentukan.
+     * Alihkan ke form tambah Putusan Perkara dengan berkas_id atau kembali ke daftar Putusan Perkara.
      */
-    public function create(Request $request): View|RedirectResponse
+    public function create(Request $request): RedirectResponse
     {
         Gate::authorize('create-cases');
 
@@ -65,9 +65,7 @@ class PutusanPerkaraController extends Controller
             ]);
         }
 
-        $availableBerkas = $this->tahapanService->getAvailableBerkasForPutusan();
-
-        return view('pages.putusan-perkara.create', compact('availableBerkas'));
+        return redirect()->route('putusan-perkara.index');
     }
 
     /**

@@ -12,7 +12,6 @@ use App\Models\Dokumen;
 use App\Models\Dpo;
 use App\Models\InstansiHukum;
 use App\Models\Jabatan;
-use App\Models\JaksaPenuntut;
 use App\Models\Panggol;
 use App\Models\Pasal;
 use App\Models\Perkara;
@@ -403,83 +402,12 @@ class DummyDataSeeder extends Seeder
             );
         }
 
-        // 6. Master 45 Jaksa Penuntut Umum Realistis
-        $jaksaRaw = [
-            ['kejati', 'Ahmad Fauzi, S.H., M.H.', '198405122009121002', 'Jaksa Madya (IV/a)'],
-            ['kejati', 'Eko Prasetyo, S.H., M.H.', '198203152007011002', 'Jaksa Utama Pratama (IV/b)'],
-            ['kejati', 'Maya Lestari, S.H., M.H.', '198608242010122003', 'Jaksa Muda (III/d)'],
-            ['kejati', 'Hendra Pratama, S.H.', '198902112014021001', 'Jaksa Pratama (III/c)'],
-            ['kejati', 'Ratna Dewi, S.H.', '199107192015032002', 'Ajun Jaksa Madya (III/a)'],
-
-            ['kejari_bjm', 'Rian Hidayat, S.H.', '198807202012011003', 'Jaksa Pratama (III/c)'],
-            ['kejari_bjm', 'Linda Kusuma, S.H.', '199105142015022001', 'Jaksa Pratama (III/c)'],
-            ['kejari_bjm', 'Fajar Nugroho, S.H., M.H.', '198504102009121001', 'Jaksa Muda (III/d)'],
-            ['kejari_bjm', 'Siti Aminah, S.H.', '199309082016022003', 'Ajun Jaksa Madya (III/a)'],
-
-            ['kejari_bjb', 'Nurul Hikmah, S.H., M.H.', '198611142010122001', 'Jaksa Muda (III/d)'],
-            ['kejari_bjb', 'Bambang Sutrisno, S.H.', '198703212011011003', 'Jaksa Muda (III/d)'],
-            ['kejari_bjb', 'Aditya Wardana, S.H.', '199008122014031002', 'Jaksa Pratama (III/c)'],
-            ['kejari_bjb', 'Yuni Kartika, S.H.', '199211052016012001', 'Jaksa Pratama (III/c)'],
-
-            ['kejari_banjar', 'Siti Maryam, S.H.', '198904122014022003', 'Jaksa Pratama (III/c)'],
-            ['kejari_banjar', 'Dewi Anggraeni, S.H.', '199302182017012002', 'Ajun Jaksa Madya (III/a)'],
-            ['kejari_banjar', 'Wahyudi Rahman, S.H., M.H.', '198412032008121004', 'Jaksa Madya (IV/a)'],
-            ['kejari_banjar', 'Fitri Handayani, S.H.', '199006202015032004', 'Jaksa Pratama (III/c)'],
-
-            ['kejari_batola', 'Diana Lestari, S.H.', '199003182015032002', 'Jaksa Pratama (III/c)'],
-            ['kejari_batola', 'M. Iqbal Maulana, S.H.', '198801152013021001', 'Jaksa Pratama (III/c)'],
-            ['kejari_batola', 'Sri Mulyani, S.H., M.H.', '198509272010012002', 'Jaksa Muda (III/d)'],
-
-            ['kejari_tanahlaut', 'Hendra Saputra, S.H., M.H.', '198502152010011004', 'Jaksa Muda (III/d)'],
-            ['kejari_tanahlaut', 'Ilham Maulana, S.H.', '198806122013021001', 'Jaksa Pratama (III/c)'],
-            ['kejari_tanahlaut', 'Ratih Puspita, S.H.', '199204092016022001', 'Ajun Jaksa Madya (III/a)'],
-
-            ['kejari_tapin', 'Wahyu Wibowo, S.H.', '198709102011011002', 'Jaksa Pratama (III/c)'],
-            ['kejari_tapin', 'Anisa Triana, S.H.', '199108142015032003', 'Jaksa Pratama (III/c)'],
-            ['kejari_tapin', 'Dodi Ferdiansyah, S.H., M.H.', '198311222008011002', 'Jaksa Muda (III/d)'],
-
-            ['kejari_hst', 'M. Reza Pahlevi, S.H., M.H.', '198304192008121001', 'Jaksa Madya (IV/a)'],
-            ['kejari_hst', 'Danu Syaifullah, S.H.', '198905262014021003', 'Jaksa Pratama (III/c)'],
-            ['kejari_hst', 'Mega Utami, S.H.', '199207302017012004', 'Ajun Jaksa Madya (III/a)'],
-
-            ['kejari_hsu', 'Anisa Rahmawati, S.H.', '199106252015032004', 'Jaksa Pratama (III/c)'],
-            ['kejari_hsu', 'Rahmat Hidayat, S.H., M.H.', '198602182010121002', 'Jaksa Muda (III/d)'],
-            ['kejari_hsu', 'Tri Wahyuningsih, S.H.', '199010122014032002', 'Jaksa Pratama (III/c)'],
-
-            ['kejari_hss', 'Dedi Kurniawan, S.H.', '198812032014031001', 'Jaksa Pratama (III/c)'],
-            ['kejari_hss', 'Cindy Permata, S.H.', '199303152017012001', 'Ajun Jaksa Madya (III/a)'],
-            ['kejari_hss', 'Bima Sakti, S.H., M.H.', '198407072009011003', 'Jaksa Muda (III/d)'],
-
-            ['kejari_tabalong', 'Faisal Akbar, S.H., M.H.', '198411082009121003', 'Jaksa Muda (III/d)'],
-            ['kejari_tabalong', 'Nina Marlina, S.H.', '198909192014022002', 'Jaksa Pratama (III/c)'],
-            ['kejari_tabalong', 'Johan Syahputra, S.H.', '199201282016021001', 'Jaksa Pratama (III/c)'],
-
-            ['kejari_tanbu', 'Tri Wahyuni, S.H.', '198908172014022005', 'Jaksa Pratama (III/c)'],
-            ['kejari_tanbu', 'Rizky Ramadhan, S.H.', '199012052015031002', 'Jaksa Pratama (III/c)'],
-            ['kejari_tanbu', 'Farah Nabila, S.H., M.H.', '198606142010122004', 'Jaksa Muda (III/d)'],
-
-            ['kejari_balangan', 'Bagus Prasetyo, S.H.', '199201102016021002', 'Jaksa Pratama (III/c)'],
-            ['kejari_balangan', 'Ayu Wulandari, S.H.', '199404222018012003', 'Ajun Jaksa Madya (III/a)'],
-
-            ['kejari_kotabaru', 'Arif Rahman, S.H., M.H.', '198510202010121002', 'Jaksa Muda (III/d)'],
-            ['kejari_kotabaru', 'Desi Natalia, S.H.', '199103112015022003', 'Jaksa Pratama (III/c)'],
-        ];
-
-        $jaksaList = [];
-        foreach ($jaksaRaw as $idx => [$instansiKey, $nama, $nip, $pangkat]) {
-            $jaksaList['jaksa_'.($idx + 1)] = JaksaPenuntut::firstOrCreate(
-                ['instansi_hukum_id' => $instansiList[$instansiKey]->id, 'nama_jaksa' => $nama],
-                ['nip' => $nip, 'pangkat' => $pangkat]
-            );
-        }
-
         return array_merge(
             $jabatanList,
             $bidangList,
             $panggolList,
             $pasalList,
-            $instansiList,
-            $jaksaList
+            $instansiList
         );
     }
 

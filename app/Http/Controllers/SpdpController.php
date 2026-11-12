@@ -35,9 +35,9 @@ class SpdpController extends Controller
     }
 
     /**
-     * Tampilkan form tambah SPDP atau redirect jika berkas_id telah ditentukan.
+     * Alihkan ke form tambah SPDP dengan berkas_id atau kembali ke daftar SPDP.
      */
-    public function create(Request $request): View|RedirectResponse
+    public function create(Request $request): RedirectResponse
     {
         Gate::authorize('create-cases');
 
@@ -66,9 +66,7 @@ class SpdpController extends Controller
             ]);
         }
 
-        $availableBerkas = $this->tahapanService->getAvailableBerkasForSpdp();
-
-        return view('pages.spdp.create', compact('availableBerkas'));
+        return redirect()->route('spdp.index');
     }
 
     /**

@@ -34,9 +34,9 @@ class P21Controller extends Controller
     }
 
     /**
-     * Tampilkan form tambah P-21 atau redirect jika berkas_id telah ditentukan.
+     * Alihkan ke form tambah P-21 dengan berkas_id atau kembali ke daftar P-21.
      */
-    public function create(Request $request): View|RedirectResponse
+    public function create(Request $request): RedirectResponse
     {
         Gate::authorize('create-cases');
 
@@ -65,9 +65,7 @@ class P21Controller extends Controller
             ]);
         }
 
-        $availableBerkas = $this->tahapanService->getAvailableBerkasForP21();
-
-        return view('pages.p21.create', compact('availableBerkas'));
+        return redirect()->route('p21.index');
     }
 
     /**

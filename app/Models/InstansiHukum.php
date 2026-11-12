@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class InstansiHukum extends Model
@@ -27,10 +26,5 @@ class InstansiHukum extends Model
             'pengadilan' => __('Pengadilan'),
             default => '-',
         };
-    }
-
-    public function jaksaPenuntut(): HasMany
-    {
-        return $this->hasMany(JaksaPenuntut::class, 'instansi_hukum_id');
     }
 }

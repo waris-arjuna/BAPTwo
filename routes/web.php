@@ -40,11 +40,6 @@ Route::middleware('guest')->group(function () {
     Route::get('/daftar', function () {
         return view('pages.auth.signup', ['title' => __('Daftar')]);
     })->name('daftar');
-
-    // Kompatibilitas rute lama (signin & signup)
-    Route::get('/signin', fn () => redirect()->route('masuk'))->name('signin');
-    Route::post('/signin', [AuthController::class, 'login'])->name('signin.attempt');
-    Route::get('/signup', fn () => redirect()->route('daftar'))->name('signup');
 });
 
 // Authenticated application pages

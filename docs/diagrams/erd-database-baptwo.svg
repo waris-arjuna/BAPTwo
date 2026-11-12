@@ -40,7 +40,7 @@
     
     <!-- Legend item 1 -->
     <rect x="24" y="48" width="16" height="16" rx="3" fill="#1E3A8A" />
-    <text x="48" y="61" fill="#CBD5E1" font-size="12">Master Data &amp; Organisasi (user, jabatan, bidang, panggol, alamat, pasal, instansi, jaksa)</text>
+    <text x="48" y="61" fill="#CBD5E1" font-size="12">Master Data &amp; Organisasi (user, jabatan, bidang, panggol, alamat, pasal, instansi_hukum)</text>
 
     <!-- Legend item 2 -->
     <rect x="24" y="74" width="16" height="16" rx="3" fill="#0284C7" />
@@ -88,8 +88,6 @@
     <path d="M 280 612.5 C 298 612.5, 302 688, 320 688" stroke="#38BDF8" stroke-dasharray="none" opacity="0.75" marker-end="url(#arrow-sky)" />
     <!-- Relasi alamat -> tersangka -->
     <path d="M 232 670 C 232 853.6, 456.4 714, 640 714" stroke="#38BDF8" stroke-dasharray="none" opacity="0.75" marker-end="url(#arrow-sky)" />
-    <!-- Relasi instansi_hukum -> jaksa_penuntut -->
-    <path d="M 160 830 C 160 830, 160 850, 160 850" stroke="#FBBF24" stroke-dasharray="none" opacity="0.75" marker-end="url(#arrow-amber)" />
     <!-- Relasi instansi_hukum -> perkara -->
     <path d="M 280 760 C 442 760, 478 516, 640 516" stroke="#FBBF24" stroke-dasharray="none" opacity="0.75" marker-end="url(#arrow-amber)" />
     <!-- Relasi user -> perkara_ppns -->
@@ -214,29 +212,6 @@
       <text x="230" y="100" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(100)</text>
       <text x="10" y="118" fill="#F8FAFC" font-size="10" font-weight="500">deleted_at</text>
       <text x="230" y="118" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">TIMESTAMP NULL</text>
-    </g>
-    <!-- Tabel jaksa_penuntut -->
-    <g transform="translate(40, 850)" filter="url(#cardShadow)">
-      <rect x="0" y="0" width="240" height="160" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
-      <path d="M 0 6 A 6 6 0 0 1 6 0 L 234 0 A 6 6 0 0 1 240 6 L 240 28 L 0 28 Z" fill="#1E3A8A" />
-      <text x="10" y="19" fill="#FFFFFF" font-size="12" font-weight="700" letter-spacing="0.3">jaksa_penuntut</text>
-      <text x="230" y="18" text-anchor="end" fill="#E2E8F0" font-size="9" font-weight="500" opacity="0.85">Master Jaksa</text>
-      <rect x="8" y="36" width="18" height="13" rx="2" fill="#0284C7" />
-      <text x="10" y="46" fill="#FFFFFF" font-size="8" font-weight="700">PK</text>
-      <text x="30" y="46" fill="#F8FAFC" font-size="10" font-weight="500">id</text>
-      <text x="230" y="46" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
-      <rect x="8" y="54" width="18" height="13" rx="2" fill="#D97706" />
-      <text x="11" y="64" fill="#FFFFFF" font-size="8" font-weight="700">FK</text>
-      <text x="30" y="64" fill="#F8FAFC" font-size="10" font-weight="500">instansi_hukum_id</text>
-      <text x="230" y="64" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">BIGINT UNSIGNED</text>
-      <text x="10" y="82" fill="#F8FAFC" font-size="10" font-weight="500">nama_jaksa</text>
-      <text x="230" y="82" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(150)</text>
-      <text x="10" y="100" fill="#F8FAFC" font-size="10" font-weight="500">nip</text>
-      <text x="230" y="100" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(18) [18 DIGIT]</text>
-      <text x="10" y="118" fill="#F8FAFC" font-size="10" font-weight="500">pangkat</text>
-      <text x="230" y="118" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">VARCHAR(100)</text>
-      <text x="10" y="136" fill="#F8FAFC" font-size="10" font-weight="500">deleted_at</text>
-      <text x="230" y="136" text-anchor="end" fill="#94A3B8" font-size="9" font-weight="400">TIMESTAMP NULL</text>
     </g>
     <!-- Tabel user -->
     <g transform="translate(320, 80)" filter="url(#cardShadow)">

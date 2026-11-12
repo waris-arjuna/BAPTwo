@@ -59,22 +59,22 @@ test('pesan gagal login bersifat generik untuk mencegah pemetaan akun terdaftar'
 
     // 1. Password salah
     app(MathCaptchaService::class)->generate();
-    $resWrongPass = $this->from('/signin')->post('/signin', [
+    $resWrongPass = $this->from('/masuk')->post('/masuk', [
         'email' => 'ada@baptwo.test',
         'password' => 'password-salah',
         'captcha' => (string) session(MathCaptchaService::SESSION_ANSWER_KEY),
     ]);
-    $resWrongPass->assertRedirect('/signin');
+    $resWrongPass->assertRedirect('/masuk');
     $resWrongPass->assertSessionHasErrors(['email' => __('Email atau kata sandi salah.')]);
 
     // 2. Email tidak terdaftar
     app(MathCaptchaService::class)->generate();
-    $resNoEmail = $this->from('/signin')->post('/signin', [
+    $resNoEmail = $this->from('/masuk')->post('/masuk', [
         'email' => 'tidakada@baptwo.test',
         'password' => 'password123',
         'captcha' => (string) session(MathCaptchaService::SESSION_ANSWER_KEY),
     ]);
-    $resNoEmail->assertRedirect('/signin');
+    $resNoEmail->assertRedirect('/masuk');
     $resNoEmail->assertSessionHasErrors(['email' => __('Email atau kata sandi salah.')]);
 
     // 3. Akun non-aktif: password salah tetap generik (mencegah enumerasi)
@@ -84,22 +84,22 @@ test('pesan gagal login bersifat generik untuk mencegah pemetaan akun terdaftar'
         'is_active' => false,
     ]);
     app(MathCaptchaService::class)->generate();
-    $resInactiveWrong = $this->from('/signin')->post('/signin', [
+    $resInactiveWrong = $this->from('/masuk')->post('/masuk', [
         'email' => 'nonaktif@baptwo.test',
         'password' => 'password-salah',
         'captcha' => (string) session(MathCaptchaService::SESSION_ANSWER_KEY),
     ]);
-    $resInactiveWrong->assertRedirect('/signin');
+    $resInactiveWrong->assertRedirect('/masuk');
     $resInactiveWrong->assertSessionHasErrors(['email' => __('Email atau kata sandi salah.')]);
 
     // 4. Akun non-aktif: password benar menampilkan banner & toast penonaktifan (D-053)
     app(MathCaptchaService::class)->generate();
-    $resInactive = $this->from('/signin')->post('/signin', [
+    $resInactive = $this->from('/masuk')->post('/masuk', [
         'email' => 'nonaktif@baptwo.test',
         'password' => 'password123',
         'captcha' => (string) session(MathCaptchaService::SESSION_ANSWER_KEY),
     ]);
-    $resInactive->assertRedirect('/signin');
+    $resInactive->assertRedirect('/masuk');
     $resInactive->assertSessionHas('account_inactive');
     $resInactive->assertSessionHas('error');
 });

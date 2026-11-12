@@ -2017,3 +2017,19 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
      - `app/Http/Requests/Tahapan/SaveSubTahapRequest.php`: Validasi sub-tahap mandiri (P-16, P-17P, P-18P, P-19), pembatasan dokumen PDF maks 5 MB, dan otorisasi `create-cases`.
   3. Memperbarui method pada ketiga controller tersebut untuk menginjeksi Form Request terkait dan memanfaatkan `$request->validated()`.
 - Konsekuensi: Seluruh endpoint mutasi dan input pada aplikasi kini 100% menggunakan Form Request terisolasi tanpa ada satupun validasi inline yang tertinggal di controller, controller wrapper kosong berhasil dieliminasi, dan arsitektur kode menjadi jauh lebih bersih, modular, serta mudah diuji.
+
+---
+
+## D-097 : Pembersihan Kode Mati JaksaPenuntut, Halaman Standalone Pilih Berkas, dan Rute Legacy Auth
+
+- Tanggal: 2026-11-11
+- Status: Disepakati & Diimplementasikan (Audit Ponytail - T-121)
+- Konteks: Audit kode lanjutan menemukan beberapa artefak mati dan inkonsistensi UX:
+  1. Model `JaksaPenuntut.php`, relasi `InstansiHukum::jaksaPenuntut()`, dan tabel database `jaksa_penuntut` masih tersisa dari versi awal, padahal sejak D-065 data penuntut umum telah disederhanakan murni menjadi input teks manual pada perkara dan putusan.
+  2. Halaman standalone pilih berkas `_select-berkas.blade.php` beserta 5 view wrapper `create.blade.php` masih ada di folder tahapan, padahal sejak D-063 seluruh tahapan sudah menggunakan modal pop-up inline `<x-tahapan.select-berkas-modal>` pada halaman index masing-masing.
+  3. Rute legacy `/signin` dan `/signup` bawaan template masih aktif di `routes/web.php`, menimbulkan inkonsistensi bahasa dengan rute resmi `/masuk` dan `/daftar`.
+- Keputusan:
+  1. Membuat migrasi database `2026_11_11_000002_drop_jaksa_penuntut_table.php` untuk men-drop tabel `jaksa_penuntut`, menghapus model `JaksaPenuntut.php`, menghapus relasi di `InstansiHukum.php`, serta membersihkan kode pemanggilan `JaksaPenuntut` pada `DatabaseSeeder.php` dan `DummyDataSeeder.php`.
+  2. Menghapus view `_select-berkas.blade.php` beserta 5 file `create.blade.php` pada folder tahapan. Mengalihkan (redirect 302) akses langsung ke URL tahapan `create` tanpa `berkas_id` ke halaman index masing-masing, serta menghubungkan tombol "Lanjut ke Tahap SPDP" di detail perkara langsung ke form pengisian tahapan.
+  3. Menghapus rute `/signin` dan `/signup` dari `routes/web.php` sehingga akses langsung menghasilkan 404 Not Found, serta menyelaraskan seluruh pengujian otentikasi di `AuthTest.php` dan `SecurityHardeningTest.php` ke rute resmi `/masuk`.
+- Konsekuensi: Codebase menjadi lebih bersih (-397 baris kode mati dan boilerplate dihapus), tidak ada lagi model atau tabel database usang yang membingungkan developer, dan alur UX antarmuka kini 100% konsisten.

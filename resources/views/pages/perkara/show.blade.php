@@ -140,7 +140,7 @@
                             @endphp
                             @if (! $hideSpdpBtn)
                                 <a
-                                    href="{{ route('spdp.create') }}"
+                                    href="{{ $firstBerkas ? route('berkas-perkara.tahapan.create', ['berkas' => $firstBerkas, 'jenis' => 'spdp']) : route('spdp.index') }}"
                                     class="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-brand-500 px-4 text-sm font-medium text-white transition hover:bg-brand-600"
                                 >
                                     <i class="fi fi-rr-arrow-right text-sm"></i>

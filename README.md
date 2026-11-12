@@ -44,9 +44,9 @@ Seluruh implementasi BAPTwo mengacu pada spesifikasi domain dan keputusan teknis
 | Dokumen | Deskripsi & Kegunaan |
 |---|---|
 | [`PRD.md`](PRD.md) | *Product Requirements Document*: Sumber kebenaran domain hukum, batas SLA, hak akses RBAC, dan alur penanganan perkara. |
-| [`ARCHITECTURE.md`](ARCHITECTURE.md) | Arsitektur teknis sistem: Skema 18 tabel singular, lifecycle tahapan, event audit trail, partisi data wilayah offline, dan alur event Alpine.js. |
-| [`TASKS.md`](TASKS.md) | Daftar pekerjaan aktif dan rekam jejak penyelesaian *task* teknis (T-001 s.d. T-114). |
-| [`DECISIONS.md`](DECISIONS.md) | Log keputusan arsitektur dan teknis resmi (*Architecture Decision Records* D-001 s.d. D-090). |
+| [`ARCHITECTURE.md`](ARCHITECTURE.md) | Arsitektur teknis sistem: Skema 19 tabel domain aktif, lifecycle tahapan, event audit trail, partisi data wilayah offline, dan alur event Alpine.js. |
+| [`TASKS.md`](TASKS.md) | Daftar pekerjaan aktif dan rekam jejak penyelesaian *task* teknis (T-001 s.d. T-121). |
+| [`DECISIONS.md`](DECISIONS.md) | Log keputusan arsitektur dan teknis resmi (*Architecture Decision Records* D-001 s.d. D-097). |
 | [`AGENTS.md`](AGENTS.md) | Pedoman kerja otomatisasi, standar koding bebas *AI-slop*, konvensi Blade, dan aturan kontras aksesibilitas. |
 
 ---
@@ -96,12 +96,12 @@ BAPTwo menerapkan aturan integritas hukum yang ketat untuk menjamin keabsahan da
 
 ## Skema Database & Diagram ERD
 
-Skema database BAPTwo terdiri dari **18 tabel domain aktif** (seluruh penamaan tabel menggunakan format singular Bahasa Indonesia tanpa akhiran plural *s*):
+Skema database BAPTwo terdiri dari **19 tabel domain aktif** (seluruh penamaan tabel menggunakan format singular Bahasa Indonesia tanpa akhiran plural *s*):
 
 ![ERD Database BAPTwo](docs/diagrams/erd-database-baptwo.svg)
 
 <details>
-<summary><strong>Klik untuk melihat kode sumber Mermaid ERD (18 Tabel Domain Aktif)</strong></summary>
+<summary><strong>Klik untuk melihat kode sumber Mermaid ERD (19 Tabel Domain Aktif)</strong></summary>
 
 ```mermaid
 erDiagram
@@ -143,7 +143,7 @@ erDiagram
 </details>
 
 <details>
-<summary><strong>Klik untuk melihat ringkasan fungsi 18 tabel domain aktif</strong></summary>
+<summary><strong>Klik untuk melihat ringkasan fungsi 19 tabel domain aktif</strong></summary>
 
 | Kelompok | Nama Tabel | Keterangan & Karakteristik Kunci |
 |---|---|---|

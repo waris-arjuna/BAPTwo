@@ -35,9 +35,9 @@ class Tahap1Controller extends Controller
     }
 
     /**
-     * Tampilkan form tambah Tahap 1 atau redirect jika berkas_id telah ditentukan.
+     * Alihkan ke form tambah Tahap 1 dengan berkas_id atau kembali ke daftar Tahap 1.
      */
-    public function create(Request $request): View|RedirectResponse
+    public function create(Request $request): RedirectResponse
     {
         Gate::authorize('create-cases');
 
@@ -66,9 +66,7 @@ class Tahap1Controller extends Controller
             ]);
         }
 
-        $availableBerkas = $this->tahapanService->getAvailableBerkasForTahap1();
-
-        return view('pages.tahap-1.create', compact('availableBerkas'));
+        return redirect()->route('tahap-1.index');
     }
 
     /**

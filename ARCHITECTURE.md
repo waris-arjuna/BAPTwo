@@ -257,6 +257,11 @@ stateDiagram-v2
 - **Penyimpanan Status Dismissal**: Pengguna dapat menyembunyikan banner melalui tombol tutup; status penutupan disimpan di `localStorage` per tahun penutupan (`baptwo_annual_closure_dismissed_{tahun}`).
 - **Aksi Cepat**: Menyediakan tombol navigasi langsung ke Daftar Perkara dengan filter bawaan `status=tidak_selesai&tahun=:tahun_lalu`.
 
+### 4.6 Inisiasi Form Tahapan & UX Pemilihan Berkas (D-063, D-097)
+- **Modal Pemilihan Berkas**: Penambahan tahapan baru (SPDP s.d. Putusan Pengadilan) diinisiasi melalui modal pop-up inline `<x-tahapan.select-berkas-modal>` pada halaman index masing-masing tahapan.
+- **Redireksi Aman Akses Langsung**: Endpoint URL pembuatan tahapan tanpa parameter berkas (`/spdp/create`, `/tahap-1/create`, `/p-21/create`, `/tahap-2/create`, `/putusan-perkara/create`) dialihkan (redirect 302) kembali ke halaman index tahapan terkait untuk mencegah inkonsistensi UX halaman standalone lama.
+- **Rute Autentikasi Tunggal**: Autentikasi sistem hanya melayani rute resmi `/masuk` dan `/daftar`. Akses rute legacy template (`/signin`, `/signup`) dimatikan menghasilkan respon `404 Not Found`.
+
 ---
 
 ## 5. Hak Akses & Keamanan (RBAC)

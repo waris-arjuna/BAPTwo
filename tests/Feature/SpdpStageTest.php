@@ -143,10 +143,10 @@ test('filter pencarian dan tanggal berfungsi pada daftar spdp', function () {
     $resDate->assertOk()->assertDontSee('B-SEARCH-999/X/2026');
 });
 
-test('route spdp.create menampilkan form tambah jika tanpa berkas_id atau redirect jika ada berkas_id', function () {
-    // Tanpa berkas_id -> tampilkan halaman create SPDP
+test('route spdp.create mengalihkan ke index jika tanpa berkas_id atau redirect ke form jika ada berkas_id', function () {
+    // Tanpa berkas_id -> redirect ke halaman index SPDP
     $resNoBerkas = $this->actingAs($this->user)->get(route('spdp.create'));
-    $resNoBerkas->assertOk();
+    $resNoBerkas->assertRedirect(route('spdp.index'));
 
     // Dengan berkas_id -> redirect ke berkas-perkara.tahapan.create
     $resWithBerkas = $this->actingAs($this->user)->get(route('spdp.create', ['berkas_id' => $this->berkas->id]));
