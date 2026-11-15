@@ -35,4 +35,12 @@ return [
         ],
     ],
 
+    'sibob' => [
+        'base_url' => rtrim((string) env('SIBOB_BASE_URL', 'https://sibob.bbpombanjarmasin.com'), '/'),
+        'service_email' => env('SIBOB_SERVICE_EMAIL', ''),
+        'service_password' => env('SIBOB_SERVICE_PASSWORD', ''),
+        'timeout' => (int) env('SIBOB_TIMEOUT', 10),
+        'verify_ssl' => (bool) env('SIBOB_VERIFY_SSL', false),
+    ],
+
 ];
