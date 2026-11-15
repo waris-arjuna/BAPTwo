@@ -2033,3 +2033,26 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
   2. Menghapus view `_select-berkas.blade.php` beserta 5 file `create.blade.php` pada folder tahapan. Mengalihkan (redirect 302) akses langsung ke URL tahapan `create` tanpa `berkas_id` ke halaman index masing-masing, serta menghubungkan tombol "Lanjut ke Tahap SPDP" di detail perkara langsung ke form pengisian tahapan.
   3. Menghapus rute `/signin` dan `/signup` dari `routes/web.php` sehingga akses langsung menghasilkan 404 Not Found, serta menyelaraskan seluruh pengujian otentikasi di `AuthTest.php` dan `SecurityHardeningTest.php` ke rute resmi `/masuk`.
 - Konsekuensi: Codebase menjadi lebih bersih (-397 baris kode mati dan boilerplate dihapus), tidak ada lagi model atau tabel database usang yang membingungkan developer, dan alur UX antarmuka kini 100% konsisten.
+
+---
+
+## D-098 : Integrasi Hibrida API SIBOB (Login, Profile, dan Sinkronisasi Daftar Pegawai)
+
+- Tanggal: 2026-11-16
+- Status: Disepakati & Diimplementasikan (T-122)
+- Konteks: BAPTwo membutuhkan integrasi ke sistem kepegawaian internal BBPOM di Banjarmasin (**SIBOB** — `https://sibob.bbpombanjarmasin.com`) melalui 3 endpoint REST API v1 (`POST /api/v1/login`, `GET /api/v1/profile`, dan `GET /api/v1/users`) agar pengguna dapat masuk dengan akun SIBOB dan daftar pegawai (PPNS, Penyidik, serta Pejabat Penandatangan SP3) tersinkronisasi otomatis ke tabel `user`, `jabatan`, `bidang`, dan `panggol`.
+- Keputusan:
+  1. **Layanan Terpusat `App\Services\SibobApiService`**:
+     - Mengenkapsulasi seluruh komunikasi HTTP ke API SIBOB menggunakan `Illuminate\Support\Facades\Http` tanpa menambah package eksternal.
+     - Memetakan `no_pegawai` ke kolom `nip` apabila field `nip` pada response `/api/v1/users` kosong.
+     - Menormalisasi kode golongan tidak standar (`"IX/"` menjadi `"IX"`, `"VII/-"` menjadi `"VII"`, dan mengabaikan `"-/-"`), serta otomatis menjalankan `withTrashed()->firstOrCreate()` pada master data `Bidang`, `Jabatan`, dan `Panggol`.
+  2. **Aturan Role Awal & Status Aktif Pegawai**:
+     - Pegawai baru dari SIBOB yang berada pada divisi **`Penindakan`** otomatis mendapatkan role awal `penyidik` (`UserRole::PENYIDIK`), sedangkan divisi lainnya mendapatkan role awal `umum` (`UserRole::UMUM`).
+     - Pegawai dengan `status = "OUT"` atau `aktif = "N"` otomatis diset `is_active = false` dan `status = 'lainnya'`.
+     - Saat sinkronisasi ulang terhadap akun yang sudah ada di BAPTwo, nilai `role` dan `is_active` lokal yang telah diatur tidak ditimpa (kecuali jika pegawai berstatus `OUT` atau `aktif = "N"` di SIBOB).
+  3. **Autentikasi Login Hibrida (`AuthController::login`)**:
+     - Mencoba autentikasi ke `POST /api/v1/login` dan menarik `GET /api/v1/profile` terlebih dahulu, lalu menyinkronkan data pengguna dan menyimpan token di session (`sibob_token`).
+     - Jika server SIBOB tidak terjangkau (timeout/5xx) atau akun merupakan akun lokal, sistem otomatis melakukan fallback ke verifikasi password hash pada tabel `user` lokal.
+  4. **Pemicu Sinkronisasi Daftar Pegawai (`GET /api/v1/users`)**:
+     - Tersedia melalui tombol **"Sinkronisasi SIBOB"** di halaman Manajemen Pengguna (`/pengaturan`) dan Data Petugas (`/data-petugas`), serta melalui command Artisan `php artisan sibob:sync-users` yang dijadwalkan harian setiap pukul `01:00 WITA` di `routes/console.php`.
+- Konsekuensi: Data pegawai instansi selalu mutakhir untuk pemilihan PPNS dan pejabat penandatangan SP3, login tetap tangguh saat jaringan eksternal terganggu berkat fallback lokal, serta seluruh jejak sinkronisasi tercatat di `audit_log` (`sync_sibob_users`).

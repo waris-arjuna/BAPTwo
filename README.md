@@ -595,6 +595,12 @@ Menutup seluruh berkas perkara yang belum selesai di tahun sebelumnya menjadi st
 php artisan perkara:close-unfinished
 ```
 
+### 4. Sinkronisasi Daftar Pegawai SIBOB
+Menarik dan memperbarui daftar seluruh pegawai (PPNS, Penyidik, Pejabat Penandatangan SP3) dari API SIBOB (`GET /api/v1/users`) ke tabel `user`, `jabatan`, `bidang`, dan `panggol`:
+```powershell
+php artisan sibob:sync-users
+```
+
 ---
 
 ## Pengujian Otomatis & Linter

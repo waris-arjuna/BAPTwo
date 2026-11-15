@@ -540,3 +540,20 @@ Setiap form handler (`tkpWilayahForm`, `tersangkaAlamatModalForm`, dan `profileP
 - **UI Feedback**: Elemen `<div x-show="errorKecamatan" ...>` berikon Flaticon `fi fi-rr-info` yang hanya tampil saat terjadi galat fetch.
 - **Tombol Coba Lagi**: Tombol pemicu metode retry (`retryLoadKecamatan()`, `retryLoadDesa()`, dll.) yang memanggil ulang fungsi muat data dengan aman tanpa me-refresh seluruh halaman formulir.
 
+---
+
+## 12. Integrasi API SIBOB (Login Hibrida & Sinkronisasi Pegawai — D-098)
+
+- **Layanan**: `App\Services\SibobApiService` (`config('services.sibob')`).
+- **Endpoint SIBOB (`https://sibob.bbpombanjarmasin.com`)**:
+  1. `POST /api/v1/login`: Autentikasi pengguna menggunakan email & password; mengembalikan token Bearer dan profil dasar pegawai.
+  2. `GET /api/v1/profile`: Mengambil detail divisi, jabatan ASN, dan foto profil menggunakan token Bearer.
+  3. `GET /api/v1/users`: Menarik seluruh daftar pegawai BBPOM di Banjarmasin untuk disinkronkan ke tabel `user`, `jabatan`, `bidang`, dan `panggol`.
+- **Aturan Pemetaan & Ketahanan**:
+  - Kolom `no_pegawai` dipetakan ke `user.nip` apabila `nip` kosong.
+  - Pegawai baru di divisi `Penindakan` otomatis mendapat role `penyidik`; divisi lain mendapat role `umum`. Pegawai berstatus `OUT` otomatis diset `is_active = false`.
+  - Role yang sudah diatur di BAPTwo tidak ditimpa saat sinkronisasi ulang.
+  - Apabila API SIBOB sedang tidak terjangkau saat login, `AuthController` otomatis melakukan *fallback* ke verifikasi password hash pada tabel `user` lokal.
+  - Sinkronisasi daftar pegawai dapat dipicu melalui tombol **Sinkronisasi SIBOB** di `/pengaturan` dan `/data-petugas`, atau command `php artisan sibob:sync-users` (terjadwal harian pukul 01:00 WITA).
+
+
