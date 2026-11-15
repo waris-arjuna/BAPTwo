@@ -9,11 +9,13 @@ use App\Models\Bidang;
 use App\Models\Jabatan;
 use App\Models\Panggol;
 use App\Models\User;
+use App\Services\SibobApiService;
 use App\Services\UserService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\View\View;
+use Throwable;
 
 class UserController extends Controller
 {
@@ -119,5 +121,28 @@ class UserController extends Controller
             'title' => 'Pengguna Dipulihkan',
             'message' => 'Akun pengguna berhasil dipulihkan dari status nonaktif.',
         ]);
+    }
+
+    public function syncSibob(Request $request, SibobApiService $sibobApiService): RedirectResponse
+    {
+        abort_unless($request->user()?->isAdmin() || $request->user()?->isPenyidik(), 403);
+
+        try {
+            $token = $request->session()->get('sibob_token');
+            $result = $sibobApiService->syncAllUsers(
+                is_string($token) ? $token : null,
+                $request->user()?->id
+            );
+
+            return back()->with('success', [
+                'title' => __('Sinkronisasi SIBOB Berhasil'),
+                'message' => "Data pegawai berhasil disinkronkan ({$result['created']} baru, {$result['updated']} diperbarui, {$result['deactivated']} nonaktif).",
+            ]);
+        } catch (Throwable) {
+            return back()->with('error', [
+                'title' => __('Sinkronisasi SIBOB Gagal'),
+                'message' => __('Tidak dapat terhubung ke server SIBOB. Silakan periksa koneksi atau konfigurasi akun layanan SIBOB.'),
+            ]);
+        }
     }
 }

@@ -47,11 +47,23 @@
                 ]"
             />
 
-            <div>
+            <div class="flex flex-wrap items-center gap-2.5">
+                <form method="POST" action="{{ route('users.sync-sibob') }}" x-data="{ isSyncing: false }" @submit="isSyncing = true">
+                    @csrf
+                    <button
+                        type="submit"
+                        :disabled="isSyncing"
+                        class="inline-flex min-h-11 items-center gap-2 rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 shadow-theme-xs transition-colors hover:bg-gray-50 disabled:opacity-60 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
+                    >
+                        <i class="fi fi-rr-refresh text-sm" :class="isSyncing && 'animate-spin'"></i>
+                        <span x-text="isSyncing ? '{{ __('Menyinkronkan...') }}' : '{{ __('Sinkronisasi SIBOB') }}'">{{ __('Sinkronisasi SIBOB') }}</span>
+                    </button>
+                </form>
+
                 <button
                     type="button"
                     @click="openModal()"
-                    class="inline-flex items-center gap-2 rounded-xl bg-brand-500 px-4 py-2.5 text-sm font-semibold text-white shadow-theme-xs transition hover:bg-brand-600 focus:outline-hidden focus:ring-2 focus:ring-brand-500/20"
+                    class="inline-flex min-h-11 items-center gap-2 rounded-xl bg-brand-500 px-4 py-2.5 text-sm font-semibold text-white shadow-theme-xs transition-colors hover:bg-brand-600 focus:outline-hidden focus:ring-2 focus:ring-brand-500/20"
                 >
                     <i class="fi fi-rr-user-add text-base"></i>
                     <span>Tambah Penugasan Petugas</span>

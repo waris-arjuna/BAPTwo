@@ -85,6 +85,7 @@ Route::middleware('auth')->group(function () {
     // Data Petugas (Penyidik & Administrator)
     Route::get('/data-petugas', [PetugasController::class, 'index'])->name('data-petugas.index');
     Route::post('/data-petugas', [PetugasController::class, 'store'])->name('data-petugas.store');
+    Route::post('/pengaturan/sync-sibob', [UserController::class, 'syncSibob'])->name('users.sync-sibob');
 
     // Halaman Sampah / Pemulihan Data Soft Delete (PRD F-44)
     Route::get('/recovery-data', [SampahController::class, 'index'])->middleware('can:manage-users')->name('recovery-data.index');

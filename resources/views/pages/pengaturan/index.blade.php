@@ -79,14 +79,28 @@
                 </p>
             </div>
 
-            <button
-                type="button"
-                @click="openCreateModal()"
-                class="bg-brand-500 hover:bg-brand-600 inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium text-white shadow-theme-xs transition"
-            >
-                <i class="fi fi-rr-plus-small text-lg"></i>
-                <span>{{ __('Tambah Pengguna') }}</span>
-            </button>
+            <div class="flex flex-wrap items-center gap-2.5">
+                <form method="POST" action="{{ route('users.sync-sibob') }}" x-data="{ isSyncing: false }" @submit="isSyncing = true">
+                    @csrf
+                    <button
+                        type="submit"
+                        :disabled="isSyncing"
+                        class="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 shadow-theme-xs transition-colors hover:bg-gray-50 disabled:opacity-60 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
+                    >
+                        <i class="fi fi-rr-refresh text-sm" :class="isSyncing && 'animate-spin'"></i>
+                        <span x-text="isSyncing ? '{{ __('Menyinkronkan...') }}' : '{{ __('Sinkronisasi SIBOB') }}'">{{ __('Sinkronisasi SIBOB') }}</span>
+                    </button>
+                </form>
+
+                <button
+                    type="button"
+                    @click="openCreateModal()"
+                    class="bg-brand-500 hover:bg-brand-600 inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium text-white shadow-theme-xs transition-colors"
+                >
+                    <i class="fi fi-rr-plus-small text-lg"></i>
+                    <span>{{ __('Tambah Pengguna') }}</span>
+                </button>
+            </div>
         </div>
 
         <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
