@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Models\User;
 use App\Services\AuditTrailService;
+use App\Services\SibobApiService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
+use Throwable;
 
 class AuthController extends Controller
 {
@@ -21,7 +23,7 @@ class AuthController extends Controller
         return view('pages.auth.signin', ['title' => __('Masuk')]);
     }
 
-    public function login(LoginRequest $request): RedirectResponse
+    public function login(LoginRequest $request, SibobApiService $sibobApiService): RedirectResponse
     {
         $email = $request->string('email')->trim()->toString();
         $password = $request->string('password')->toString();
@@ -34,21 +36,56 @@ class AuthController extends Controller
             ]);
         }
 
-        $user = User::withTrashed()->where('email', $email)->first();
+        $user = null;
+        $authenticatedViaSibob = false;
+        $sibobToken = null;
 
-        if (! $user || ! Hash::check($password, $user->password)) {
-            RateLimiter::hit($throttleKey, 60);
+        $isLocalTestDomain = str_ends_with(strtolower($email), '.test')
+            || str_ends_with(strtolower($email), '@example.com')
+            || str_ends_with(strtolower($email), '@example.org')
+            || str_ends_with(strtolower($email), '@example.net');
 
-            app(AuditTrailService::class)->log(
-                aksi: 'login_failed',
-                tabel: 'user',
-                recordId: $user?->id ?? 0,
-                dataBaru: ['email' => $email]
-            );
+        if (! $isLocalTestDomain) {
+            try {
+                $sibobAuth = $sibobApiService->login($email, $password);
+                if ($sibobAuth !== null) {
+                    $sibobToken = $sibobAuth['token'];
+                    $profileData = null;
+                    try {
+                        $profileData = $sibobApiService->getProfile($sibobToken);
+                    } catch (Throwable) {
+                        $profileData = null;
+                    }
 
-            throw ValidationException::withMessages([
-                'email' => __('Email atau kata sandi salah.'),
-            ]);
+                    $user = $sibobApiService->syncUserFromSibobData(
+                        $sibobAuth['user'],
+                        $profileData,
+                        $password
+                    );
+                    $authenticatedViaSibob = true;
+                }
+            } catch (Throwable) {
+                $authenticatedViaSibob = false;
+            }
+        }
+
+        if (! $authenticatedViaSibob) {
+            $user = User::withTrashed()->where('email', $email)->first();
+
+            if (! $user || ! Hash::check($password, $user->password)) {
+                RateLimiter::hit($throttleKey, 60);
+
+                app(AuditTrailService::class)->log(
+                    aksi: 'login_failed',
+                    tabel: 'user',
+                    recordId: $user?->id ?? 0,
+                    dataBaru: ['email' => $email]
+                );
+
+                throw ValidationException::withMessages([
+                    'email' => __('Email atau kata sandi salah.'),
+                ]);
+            }
         }
 
         if (! $user->is_active || $user->trashed()) {
@@ -80,6 +117,10 @@ class AuthController extends Controller
 
         $request->session()->regenerate();
 
+        if ($sibobToken !== null) {
+            $request->session()->put('sibob_token', $sibobToken);
+        }
+
         return redirect()
             ->intended(route('dashboard'))
             ->with('login_success', [
@@ -90,6 +131,8 @@ class AuthController extends Controller
 
     public function logout(Request $request): RedirectResponse
     {
+        $request->session()->forget('sibob_token');
+
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
