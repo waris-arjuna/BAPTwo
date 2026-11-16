@@ -95,11 +95,18 @@ class BackupSystemCommand extends Command
     private function buildDatabaseDump(Carbon $timestamp): array
     {
         $connection = DB::getDefaultConnection();
+        $currentSchema = Schema::getCurrentSchemaName();
         $tablesData = [];
 
-        foreach (Schema::getTables() as $tableInfo) {
+        foreach (Schema::getTables($currentSchema) as $tableInfo) {
             $tableName = is_array($tableInfo) ? ($tableInfo['name'] ?? '') : (string) $tableInfo;
-            if ($tableName === '' || str_starts_with($tableName, 'sqlite_')) {
+            $tableSchema = is_array($tableInfo) ? ($tableInfo['schema'] ?? null) : null;
+
+            if (
+                $tableName === ''
+                || str_starts_with($tableName, 'sqlite_')
+                || ($currentSchema !== null && $tableSchema !== null && $tableSchema !== $currentSchema)
+            ) {
                 continue;
             }
 

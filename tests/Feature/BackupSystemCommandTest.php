@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
 
 uses(RefreshDatabase::class);
@@ -60,6 +61,44 @@ test('command baptwo:backup tetap sukses membuat arsip saat storage privat belum
     expect($zip->open($archives[0]))->toBeTrue();
     expect($zip->locateName('database-dump.json'))->not->toBeFalse();
     $zip->close();
+
+    File::cleanDirectory($backupDir);
+});
+
+test('command baptwo:backup hanya mengekspor tabel dari schema aktif dan mengabaikan database lain', function () {
+    Storage::fake('local');
+
+    $backupDir = storage_path('app/backups');
+    File::ensureDirectoryExists($backupDir);
+    File::cleanDirectory($backupDir);
+
+    Schema::partialMock()
+        ->shouldReceive('getCurrentSchemaName')
+        ->once()
+        ->andReturn('baptwo');
+
+    Schema::shouldReceive('getTables')
+        ->once()
+        ->with('baptwo')
+        ->andReturn([
+            ['name' => 'user', 'schema' => 'baptwo'],
+            ['name' => 'ba_perpindahan_items', 'schema' => 'other_db'],
+        ]);
+
+    $this->artisan('baptwo:backup')
+        ->assertExitCode(0);
+
+    $archives = glob($backupDir.DIRECTORY_SEPARATOR.'baptwo-backup-*.zip');
+    expect($archives)->toHaveCount(1);
+
+    $zip = new ZipArchive;
+    expect($zip->open($archives[0]))->toBeTrue();
+    $dump = json_decode((string) $zip->getFromName('database-dump.json'), true);
+    $zip->close();
+
+    expect($dump['tables'])
+        ->toHaveKey('user')
+        ->not->toHaveKey('ba_perpindahan_items');
 
     File::cleanDirectory($backupDir);
 });
