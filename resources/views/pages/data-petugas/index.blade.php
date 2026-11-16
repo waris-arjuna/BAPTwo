@@ -23,7 +23,7 @@
                     this.editPetugasNama = petugas.nama;
                 } else {
                     this.isEdit = false;
-                    this.selectedUserId = '{{ $availableUsers->first()?->id ?? '' }}';
+                    this.selectedUserId = '';
                     this.selectedRole = 'penyidik';
                     this.isActive = true;
                     this.editPetugasNama = '';
@@ -66,7 +66,7 @@
                     class="inline-flex min-h-11 items-center gap-2 rounded-xl bg-brand-500 px-4 py-2.5 text-sm font-semibold text-white shadow-theme-xs transition-colors hover:bg-brand-600 focus:outline-hidden focus:ring-2 focus:ring-brand-500/20"
                 >
                     <i class="fi fi-rr-user-add text-base"></i>
-                    <span>Tambah Penugasan Petugas</span>
+                    <span>Tambah Petugas</span>
                 </button>
             </div>
         </div>
@@ -139,7 +139,7 @@
             >
                 <div class="mb-5 flex items-center justify-between border-b border-gray-100 pb-4 dark:border-gray-800">
                     <div>
-                        <h3 class="text-base font-semibold text-gray-800 dark:text-white/90" x-text="isEdit ? 'Ubah Penugasan Petugas' : 'Tambah Penugasan Petugas'"></h3>
+                        <h3 class="text-base font-semibold text-gray-800 dark:text-white/90" x-text="isEdit ? 'Ubah Penugasan Petugas' : 'Tambah Petugas'"></h3>
                         <p class="text-xs text-gray-500 dark:text-gray-400">Atur peran operasional non-admin untuk petugas kedinasan</p>
                     </div>
                     <button
@@ -154,28 +154,38 @@
                 <form method="POST" action="{{ route('data-petugas.store') }}" class="space-y-4">
                     @csrf
 
-                    {{-- Combobox Pilih Petugas --}}
+                    {{-- Combobox Pilih Petugas (Searchable) --}}
                     <div>
                         <label for="petugas_user_id" class="mb-1.5 block text-xs font-medium text-gray-700 dark:text-gray-300">
                             Pilih Petugas <span class="text-error-500">*</span>
                         </label>
-                        <select
-                            id="petugas_user_id"
-                            name="user_id"
-                            x-model="selectedUserId"
-                            :disabled="isEdit"
-                            required
-                            class="h-10 w-full rounded-lg border border-gray-300 bg-white px-3.5 text-sm text-gray-800 shadow-theme-xs outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/10 disabled:bg-gray-100 disabled:text-gray-500 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:disabled:bg-gray-800"
-                        >
-                            <option value="">-- Pilih Petugas --</option>
-                            @foreach ($availableUsers as $user)
-                                <option value="{{ $user->id }}">
-                                    {{ $user->nama }} @if($user->nip)({{ $user->nip }})@endif - [{{ $user->role->label() }}]
-                                </option>
-                            @endforeach
-                        </select>
+                        <template x-if="!isEdit">
+                            <x-form.searchable-select
+                                name="user_id"
+                                id="petugas_user_id"
+                                placeholder="-- Pilih Petugas --"
+                                searchPlaceholder="Cari nama, NIP, atau role petugas..."
+                                emptyMessage="Petugas tidak ditemukan"
+                                :required="true"
+                            >
+                                <option value="">-- Pilih Petugas --</option>
+                                @foreach ($availableUsers as $user)
+                                    <option value="{{ $user->id }}">
+                                        {{ $user->nama }} @if($user->nip)({{ $user->nip }})@endif - [{{ $user->role->label() }}]
+                                    </option>
+                                @endforeach
+                            </x-form.searchable-select>
+                        </template>
                         <template x-if="isEdit">
-                            <input type="hidden" name="user_id" :value="selectedUserId">
+                            <div>
+                                <input
+                                    type="text"
+                                    :value="editPetugasNama"
+                                    disabled
+                                    class="h-10 w-full rounded-lg border border-gray-300 bg-gray-100 px-3.5 text-sm text-gray-500 shadow-theme-xs dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400"
+                                >
+                                <input type="hidden" name="user_id" :value="selectedUserId">
+                            </div>
                         </template>
                         @error('user_id')
                             <p class="mt-1 text-xs text-error-500">{{ $message }}</p>
