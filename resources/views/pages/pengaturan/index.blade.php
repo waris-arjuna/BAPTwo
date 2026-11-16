@@ -103,13 +103,46 @@
             </div>
         </div>
 
+        @php
+            $pengaturanCards = [
+                [
+                    'title' => __('Total Pengguna'),
+                    'value' => $stats['total'],
+                    'subtitle' => __('+:n baru bulan ini', ['n' => $stats['baru_bulan_ini']]),
+                    'icon' => 'fi-rr-users',
+                    'iconClass' => 'bg-brand-50 text-brand-600 dark:bg-brand-500/15 dark:text-brand-400',
+                ],
+                [
+                    'title' => __('Status Aktif'),
+                    'value' => $stats['aktif'],
+                    'subtitle' => __(':pct% dari total', ['pct' => $stats['aktif_pct']]),
+                    'icon' => 'fi-rr-user-check',
+                    'iconClass' => 'bg-success-50 text-success-600 dark:bg-success-500/15 dark:text-success-400',
+                ],
+                [
+                    'title' => __('Nonaktif'),
+                    'value' => $stats['nonaktif'],
+                    'subtitle' => __(':pct% dari total · Dihapus: :d', ['pct' => $stats['nonaktif_pct'], 'd' => $stats['dihapus']]),
+                    'icon' => 'fi-rr-ban',
+                    'iconClass' => 'bg-warning-50 text-warning-600 dark:bg-warning-500/15 dark:text-warning-400',
+                ],
+            ];
+        @endphp
+
+        <x-common.user-stats-cards
+            :cards="$pengaturanCards"
+            roleTitle="Rincian Peran"
+            :roles="$stats['roles']"
+        />
+
         <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
             {{-- Toolbar Filter --}}
             <x-common.table-filter
                 searchPlaceholder="Cari nama, NIP, atau email..."
                 :statusOptions="[
                     'aktif' => 'Aktif',
-                    'nonaktif' => 'Nonaktif / Dihapus',
+                    'nonaktif' => 'Nonaktif',
+                    'dihapus' => 'Dihapus',
                 ]"
                 :showDate="false"
                 :hasActiveFilter="$search !== '' || $selectedRole !== '' || ($selectedStatus ?? '') !== ''"

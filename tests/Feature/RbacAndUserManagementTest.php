@@ -256,3 +256,37 @@ it('displays Dihapus status without Soft Delete text and supports searching dele
         ->assertSee('User Dihapus Uji')
         ->assertDontSee('User Aktif Uji');
 });
+
+it('orders active users first, inactive second, and deleted last across pagination and separates status filters with summary cards', function () {
+    $admin = User::factory()->administrator()->create(['nama' => 'Zzz Admin Aktif']);
+    $activeUser = User::factory()->penyidik()->create(['nama' => 'Zzz Penyidik Aktif', 'is_active' => true]);
+    $inactiveUser = User::factory()->umum()->create(['nama' => 'Aaa Umum Nonaktif', 'is_active' => false]);
+    $deletedUser = User::factory()->penyidik()->create(['nama' => 'Aaa Penyidik Dihapus']);
+    $deletedUser->delete();
+
+    $response = $this->actingAs($admin)->get('/pengaturan');
+    $response->assertOk()
+        ->assertSee('Total Pengguna')
+        ->assertSee('Status Aktif')
+        ->assertSee('Nonaktif')
+        ->assertSee('Dihapus: 1')
+        ->assertSee('Rincian Peran')
+        ->assertSee('fi-rr-user-police')
+        ->assertSee('dari total')
+        ->assertSee('bulan ini')
+        ->assertSeeInOrder(['Zzz Admin Aktif', 'Zzz Penyidik Aktif', 'Aaa Umum Nonaktif', 'Aaa Penyidik Dihapus']);
+
+    // Filter Nonaktif hanya menampilkan user nonaktif (tidak terhapus)
+    $this->actingAs($admin)->get('/pengaturan?status=nonaktif')
+        ->assertOk()
+        ->assertSee('Aaa Umum Nonaktif')
+        ->assertDontSee('Zzz Penyidik Aktif')
+        ->assertDontSee('Aaa Penyidik Dihapus');
+
+    // Filter Dihapus hanya menampilkan user terhapus
+    $this->actingAs($admin)->get('/pengaturan?status=dihapus')
+        ->assertOk()
+        ->assertSee('Aaa Penyidik Dihapus')
+        ->assertDontSee('Aaa Umum Nonaktif')
+        ->assertDontSee('Zzz Penyidik Aktif');
+});

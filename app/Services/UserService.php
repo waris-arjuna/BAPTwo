@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
+use App\Enums\UserRole;
 use App\Models\User;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 
 class UserService
@@ -77,5 +79,75 @@ class UserService
         ]);
 
         return $user;
+    }
+
+    /**
+     * Ringkasan statistik pengguna untuk halaman Manajemen Pengguna (/pengaturan).
+     *
+     * @return array<string, mixed>
+     */
+    public function getPengaturanStats(): array
+    {
+        $total = User::withTrashed()->count();
+        $aktif = User::query()->where('is_active', true)->count();
+        $nonaktif = User::query()->where('is_active', false)->count();
+        $dihapus = User::onlyTrashed()->count();
+        $baruBulanIni = User::query()->where('created_at', '>=', $this->monthStartUtc())->count();
+
+        $admin = User::query()->where('role', UserRole::ADMINISTRATOR->value)->count();
+        $penyidik = User::query()->where('role', UserRole::PENYIDIK->value)->count();
+        $umum = User::query()->where('role', UserRole::UMUM->value)->count();
+
+        return [
+            'total' => $total,
+            'aktif' => $aktif,
+            'nonaktif' => $nonaktif,
+            'dihapus' => $dihapus,
+            'baru_bulan_ini' => $baruBulanIni,
+            'aktif_pct' => $total > 0 ? (int) round(($aktif / $total) * 100) : 0,
+            'nonaktif_pct' => $total > 0 ? (int) round(($nonaktif / $total) * 100) : 0,
+            'roles' => [
+                ['label' => 'Admin', 'count' => $admin, 'color' => 'bg-brand-500'],
+                ['label' => 'Penyidik', 'count' => $penyidik, 'color' => 'bg-blue-light-500'],
+                ['label' => 'Umum', 'count' => $umum, 'color' => 'bg-orange-500'],
+            ],
+        ];
+    }
+
+    /**
+     * Ringkasan statistik petugas non-admin untuk halaman Data Petugas (/data-petugas).
+     *
+     * @return array<string, mixed>
+     */
+    public function getPetugasStats(): array
+    {
+        $base = User::query()->where('role', '!=', UserRole::ADMINISTRATOR->value);
+
+        $total = (clone $base)->count();
+        $aktif = (clone $base)->where('is_active', true)->count();
+        $nonaktif = (clone $base)->where('is_active', false)->count();
+        $baruBulanIni = (clone $base)->where('created_at', '>=', $this->monthStartUtc())->count();
+        $penyidik = (clone $base)->where('role', UserRole::PENYIDIK->value)->count();
+        $umum = (clone $base)->where('role', UserRole::UMUM->value)->count();
+
+        return [
+            'total' => $total,
+            'aktif' => $aktif,
+            'nonaktif' => $nonaktif,
+            'baru_bulan_ini' => $baruBulanIni,
+            'aktif_pct' => $total > 0 ? (int) round(($aktif / $total) * 100) : 0,
+            'nonaktif_pct' => $total > 0 ? (int) round(($nonaktif / $total) * 100) : 0,
+            'roles' => [
+                ['label' => 'Penyidik', 'count' => $penyidik, 'color' => 'bg-blue-light-500'],
+                ['label' => 'Umum', 'count' => $umum, 'color' => 'bg-orange-500'],
+            ],
+        ];
+    }
+
+    private function monthStartUtc(): Carbon
+    {
+        return Carbon::now(DashboardService::ZONA_WAKTU)
+            ->startOfMonth()
+            ->setTimezone((string) config('app.timezone', 'UTC'));
     }
 }

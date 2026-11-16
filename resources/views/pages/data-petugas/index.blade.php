@@ -71,46 +71,68 @@
             </div>
         </div>
 
+        @php
+            $petugasCards = [
+                [
+                    'title' => __('Total Petugas'),
+                    'value' => $stats['total'],
+                    'subtitle' => __('+:n baru bulan ini', ['n' => $stats['baru_bulan_ini']]),
+                    'icon' => 'fi-rr-users',
+                    'iconClass' => 'bg-brand-50 text-brand-600 dark:bg-brand-500/15 dark:text-brand-400',
+                ],
+                [
+                    'title' => __('Petugas Aktif'),
+                    'value' => $stats['aktif'],
+                    'subtitle' => __(':pct% dari total', ['pct' => $stats['aktif_pct']]),
+                    'icon' => 'fi-rr-user-check',
+                    'iconClass' => 'bg-success-50 text-success-600 dark:bg-success-500/15 dark:text-success-400',
+                ],
+                [
+                    'title' => __('Petugas Nonaktif'),
+                    'value' => $stats['nonaktif'],
+                    'subtitle' => __(':pct% dari total', ['pct' => $stats['nonaktif_pct']]),
+                    'icon' => 'fi-rr-ban',
+                    'iconClass' => 'bg-warning-50 text-warning-600 dark:bg-warning-500/15 dark:text-warning-400',
+                ],
+            ];
+        @endphp
+
+        <x-common.user-stats-cards
+            :cards="$petugasCards"
+            roleTitle="Rincian Peran Petugas"
+            :roles="$stats['roles']"
+        />
+
         {{-- Card Tabel Utama --}}
         <div class="rounded-2xl border border-gray-200 bg-white shadow-theme-xs dark:border-gray-800 dark:bg-gray-900">
             {{-- Toolbar Filter --}}
-            <div class="p-5 sm:p-6 border-b border-gray-100 dark:border-gray-800">
-                <x-common.table-filter
-                    action="{{ route('data-petugas.index') }}"
-                    method="GET"
-                    targetContainerId="data-petugas-table-partial"
-                    searchPlaceholder="Cari nama, NIP, atau email petugas..."
-                    searchName="search"
-                    resetUrl="{{ route('data-petugas.index') }}"
-                >
-                    {{-- Filter Role --}}
-                    <div>
-                        <select
-                            name="role"
-                            class="h-11 w-full rounded-lg border border-gray-300 bg-white px-3 text-xs text-gray-700 shadow-theme-xs outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300"
-                        >
-                            <option value="">Semua Role</option>
-                            <option value="penyidik" {{ request('role') === 'penyidik' ? 'selected' : '' }}>Penyidik</option>
-                            <option value="umum" {{ request('role') === 'umum' ? 'selected' : '' }}>Umum</option>
-                        </select>
-                    </div>
-
-                    {{-- Filter Status --}}
-                    <div>
-                        <select
-                            name="status"
-                            class="h-11 w-full rounded-lg border border-gray-300 bg-white px-3 text-xs text-gray-700 shadow-theme-xs outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300"
-                        >
-                            <option value="">Semua Status</option>
-                            <option value="aktif" {{ request('status') === 'aktif' ? 'selected' : '' }}>Aktif</option>
-                            <option value="nonaktif" {{ request('status') === 'nonaktif' ? 'selected' : '' }}>Nonaktif</option>
-                        </select>
-                    </div>
-                </x-common.table-filter>
-            </div>
+            @php
+                $hasPetugasFilter = request()->filled('search') || request()->filled('role') || request()->filled('status');
+            @endphp
+            <x-common.table-filter
+                searchPlaceholder="Cari nama, NIP, atau email petugas..."
+                :statusOptions="[
+                    'aktif' => 'Aktif',
+                    'nonaktif' => 'Nonaktif',
+                ]"
+                :showDate="false"
+                :hasActiveFilter="$hasPetugasFilter"
+            >
+                {{-- Filter Role --}}
+                <div>
+                    <select
+                        name="role"
+                        class="h-11 w-full rounded-lg border border-gray-300 bg-white px-3 text-sm text-gray-700 shadow-theme-xs outline-none transition-colors focus:border-brand-500 focus:ring-2 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300"
+                    >
+                        <option value="">{{ __('Semua Peran') }}</option>
+                        <option value="penyidik" @selected(request('role') === 'penyidik')>{{ __('Penyidik') }}</option>
+                        <option value="umum" @selected(request('role') === 'umum')>{{ __('Umum') }}</option>
+                    </select>
+                </div>
+            </x-common.table-filter>
 
             {{-- Container Partial Table --}}
-            <div id="data-petugas-table-partial">
+            <div id="table-body-partial">
                 @include('pages.data-petugas._table-partial')
             </div>
         </div>

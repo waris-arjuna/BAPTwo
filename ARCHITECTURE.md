@@ -345,7 +345,7 @@ stateDiagram-v2
 ## 9. Testing & Quality Assurance
 
 - Rangkaian pengujian diuji dengan **Pest PHP** (`composer test`) dengan capaian:
-  - **424 Automated Feature & Unit Tests** (3.250 assertions) lulus 100%.
+  - **427 Automated Feature & Unit Tests** (3.277 assertions) lulus 100%.
   - Zero-warning styling via **Laravel Pint** (`php vendor/bin/pint --test`) pada seluruh file PHP.
 - **Seeder Idempoten Komprehensif** (`database/seeders/DummyDataSeeder.php`):
   - **100 Perkara dummy** (70 perkara tahun berjalan 2026 dan 30 perkara tahun 2025) dengan aturan murni 1 Perkara = 1 Tersangka = 1 Berkas Perkara, mencakup 18 archetype perkara, tahapan Pra-SPDP s.d. Putusan Pengadilan, DPO Aktif, DPO Dicabut, SP3 terminal, berkas draft, dan peringatan SLA di 13 Kabupaten/Kota Kalimantan Selatan serta domisili tersangka di 38 provinsi se-Indonesia (ref: D-080, D-081).

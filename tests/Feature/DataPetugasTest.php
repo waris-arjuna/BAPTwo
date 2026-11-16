@@ -107,3 +107,28 @@ test('sistem hanya menyediakan 3 role resmi (Administrator, Penyidik, Umum) dan 
         ->assertOk()
         ->assertDontSee('Pemimpin');
 });
+
+test('data petugas menampilkan kartu informasi, mengurutkan petugas nonaktif di bawah aktif, dan mendukung filter status AJAX', function () {
+    $admin = User::factory()->administrator()->create();
+    $aktif = User::factory()->penyidik()->create(['nama' => 'Zzz Petugas Aktif', 'is_active' => true]);
+    $nonaktif = User::factory()->umum()->create(['nama' => 'Aaa Petugas Nonaktif', 'is_active' => false]);
+
+    $response = $this->actingAs($admin)->get(route('data-petugas.index'));
+    $response->assertOk()
+        ->assertSee('Total Petugas')
+        ->assertSee('Petugas Aktif')
+        ->assertSee('Petugas Nonaktif')
+        ->assertSee('Rincian Peran Petugas')
+        ->assertSee('fi-rr-user-police')
+        ->assertSee('dari total')
+        ->assertSee('bulan ini')
+        ->assertSeeInOrder(['Zzz Petugas Aktif', 'Aaa Petugas Nonaktif']);
+
+    // Filter AJAX status nonaktif
+    $this->actingAs($admin)
+        ->withHeaders(['X-Filter-Partial' => '1'])
+        ->get(route('data-petugas.index', ['status' => 'nonaktif']))
+        ->assertOk()
+        ->assertSee('Aaa Petugas Nonaktif')
+        ->assertDontSee('Zzz Petugas Aktif');
+});

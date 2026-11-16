@@ -2109,3 +2109,36 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
   2. **Penggantian Istilah UI "Soft Delete"**: Mengubah badge status data terhapus menjadi `Dihapus` (terpisah tegas dari `Nonaktif` milik `is_active = false` atau Pasal nonaktif), mengubah opsi filter menjadi `Nonaktif / Dihapus`, menyederhanakan subjudul `/pengaturan` menjadi `"Kelola akun Penyidik, Umum, dan Administrator BAPTwo. Akun yang dihapus dapat dipulihkan kembali."`, memperbarui toast penghapusan di `UserController` & `MasterDataController` menjadi `"Akun pengguna berhasil dihapus."` dan `":item berhasil dihapus."`, serta menambahkan kata kunci pencarian `"hapus"` pada `UserController::index()`.
   3. **Pelestarian Mekanisme Database**: Penghapusan di database tetap menggunakan `SoftDeletes` (`deleted_at`) tanpa hard delete.
 - Konsekuensi: Navigasi Administrator lebih ringkas, alur pemulihan terpusat langsung di tabel masing-masing, dan seluruh salinan antarmuka bersih dari istilah teknis `Soft Delete`.
+
+---
+
+## D-103 : Pengurutan Status Aktif Teratas, Pemisahan Filter Status, dan Kartu Informasi di Pengguna, Petugas, & Master Data
+
+- Tanggal: 2026-11-16
+- Status: Disepakati & Diimplementasikan (via interview /grill-me, T-127)
+- Konteks: Daftar pengguna (`/pengaturan`), petugas (`/data-petugas`), dan master data (`/master-data/{type}`) sebelumnya hanya mengurutkan secara alfabetis sehingga baris yang dinonaktifkan atau dihapus bercampur di baris awal tabel. Pengguna menghendaki data nonaktif/dihapus otomatis turun ke baris paling akhir, tersedia pemisahan filter status `Aktif` / `Nonaktif` / `Dihapus`, serta 4 kartu informasi ringkas non-clickable di bagian atas halaman Manajemen Pengguna dan Data Petugas.
+- Keputusan:
+  1. **Urutan Query SQL Sebelum Paginasi**:
+     - `/pengaturan` (`UserController::index`): `CASE WHEN deleted_at IS NOT NULL THEN 2 WHEN is_active = 0 THEN 1 ELSE 0 END ASC`, diikuti `orderBy('nama')`.
+     - `/data-petugas` (`PetugasController::index`): `CASE WHEN is_active = 0 THEN 1 ELSE 0 END ASC`, diikuti `orderBy('nama')`.
+     - `/master-data/{type}` (`MasterDataService::list`): data terhapus (`deleted_at IS NOT NULL`) selalu di posisi terakhir, dan khusus `Pasal` menempatkan `status = 'nonaktif'` di antara `status = 'aktif'` dan data terhapus.
+  2. **Pemisahan Filter Status & Live Filter AJAX**:
+     - `/pengaturan` menyediakan opsi filter `Semua Status`, `Aktif`, `Nonaktif`, dan `Dihapus`.
+     - `/data-petugas` menyediakan `Semua Status`, `Aktif`, dan `Nonaktif` serta diselaraskan ke container `#table-body-partial` dan `:showDate="false"` agar live filter AJAX berfungsi utuh.
+     - `/master-data/{type}` mempertahankan `Aktif` dan `Nonaktif / Dihapus`.
+  3. **Kartu Informasi Ringkas Non-Clickable**: `UserService::getPengaturanStats()` dan `getPetugasStats()` memasok 4 kartu ringkas di atas tabel (`Total Pengguna` / `Total Petugas`, `Status Aktif` / `Petugas Aktif`, `Nonaktif & Dihapus` / `Petugas Nonaktif`, serta `Rincian Peran`).
+- Konsekuensi: Baris aktif selalu muncul di halaman awal dengan tampilan lebih rapi, seluruh data nonaktif/dihapus berada di posisi paling akhir lintas paginasi, dan admin/penyidik memperoleh ringkasan komposisi status serta peran secara langsung.
+
+---
+
+## D-104 : Penyempurnaan Hierarki Visual, Kontras, & Proporsi Kartu Statistik Pengguna dan Petugas
+
+- Tanggal: 2026-11-16
+- Status: Disepakati & Diimplementasikan (via interview /grill-me, antislop-ui, ponytail, T-128)
+- Konteks: Tinjauan desain terhadap 4 kartu informasi di `/pengaturan` dan `/data-petugas` mengidentifikasi ketimpangan hierarki kartu ke-4 (hanya teks kecil tanpa visual proporsi), redundansi angka di kartu `Nonaktif & Dihapus`, ruang kosong kanan kartu 1–3, ukuran angka `text-xl` (20px) kurang menonjol, serta kontras teks dan batas permukaan dark mode yang masih redup.
+- Keputusan:
+  1. **Komponen Bersama `<x-common.user-stats-cards>`**: Mengonsolidasikan layout 4 kartu dari dua view ke satu komponen reusable dengan grid `1 -> 2x2 (sm) -> 4 (xl)` kolom.
+  2. **Keseragaman Hierarki & Keterangan**: Menyeragamkan angka utama ke `text-title-sm` (30px) `tabular-nums`, menempatkan ikon di kanan atas (`justify-between`), serta memberi baris keterangan di setiap kartu (`+:n baru bulan ini`, `:pct% dari total`, dan kartu ke-3 fokus `Nonaktif` dengan keterangan `:pct% dari total · Dihapus: :d` di `/pengaturan`).
+  3. **Kartu Ke-4 Proporsional**: Menampilkan jumlah peran resmi (`3` di `/pengaturan`, `2` di `/data-petugas`, tetap tanpa `Pemimpin` sesuai D-071), ikon `fi-rr-user-police` beraksen oranye, stacked proportion bar flexbox, dan badge titik warna.
+  4. **Kontras & Permukaan Dark Mode**: Memakai `dark:bg-gray-800/70`, `dark:border-gray-700/80` (hover `dark:hover:border-gray-600`), dan teks sekunder `text-gray-600 dark:text-gray-300` untuk memenuhi keterbacaan WCAG AA.
+- Konsekuensi: Tampilan kartu di `/pengaturan` dan `/data-petugas` lebih seimbang, bebas duplikasi kode Blade, mudah dipindai sekilas, dan kontras terjaga di mode terang maupun gelap.

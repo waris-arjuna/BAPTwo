@@ -6,12 +6,17 @@ use App\Enums\UserRole;
 use App\Http\Requests\Petugas\AssignPetugasRequest;
 use App\Models\User;
 use App\Services\AuditTrailService;
+use App\Services\UserService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class PetugasController extends Controller
 {
+    public function __construct(
+        private readonly UserService $userService
+    ) {}
+
     /**
      * Tampilkan tabel data petugas (pengguna non-admin).
      */
@@ -36,12 +41,14 @@ class PetugasController extends Controller
             ->when($role !== '', fn ($q) => $q->where('role', $role))
             ->when($status === 'aktif', fn ($q) => $q->where('is_active', true))
             ->when($status === 'nonaktif', fn ($q) => $q->where('is_active', false))
+            ->orderByRaw('CASE WHEN is_active = 0 THEN 1 ELSE 0 END ASC')
             ->orderBy('nama');
 
         $petugasList = $petugasQuery->paginate(15)->withQueryString();
 
         // Daftar pengguna non-admin untuk dropdown pilihan penugasan
         $availableUsers = User::where('role', '!=', UserRole::ADMINISTRATOR)
+            ->orderByRaw('CASE WHEN is_active = 0 THEN 1 ELSE 0 END ASC')
             ->orderBy('nama')
             ->get(['id', 'nama', 'nip', 'role', 'is_active']);
 
@@ -49,7 +56,9 @@ class PetugasController extends Controller
             return view('pages.data-petugas._table-partial', compact('petugasList'));
         }
 
-        return view('pages.data-petugas.index', compact('petugasList', 'availableUsers'));
+        $stats = $this->userService->getPetugasStats();
+
+        return view('pages.data-petugas.index', compact('petugasList', 'availableUsers', 'stats'));
     }
 
     /**

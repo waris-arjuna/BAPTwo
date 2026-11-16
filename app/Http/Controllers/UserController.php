@@ -36,9 +36,10 @@ class UserController extends Controller
             ->when($search !== '', function ($query) use ($search) {
                 $searchLower = strtolower($search);
                 $matchesActive = str_contains($searchLower, 'aktif') && ! str_contains($searchLower, 'non');
-                $matchesInactive = str_contains($searchLower, 'nonaktif') || str_contains($searchLower, 'non') || str_contains($searchLower, 'terhapus') || str_contains($searchLower, 'hapus');
+                $matchesInactive = str_contains($searchLower, 'nonaktif') || str_contains($searchLower, 'non');
+                $matchesDeleted = str_contains($searchLower, 'terhapus') || str_contains($searchLower, 'hapus');
 
-                $query->where(function ($q) use ($search, $matchesActive, $matchesInactive) {
+                $query->where(function ($q) use ($search, $matchesActive, $matchesInactive, $matchesDeleted) {
                     $q->where('nama', 'like', "%{$search}%")
                         ->orWhere('email', 'like', "%{$search}%")
                         ->orWhere('nip', 'like', "%{$search}%");
@@ -47,13 +48,18 @@ class UserController extends Controller
                         $q->orWhere(fn ($sub) => $sub->whereNull('deleted_at')->where('is_active', true));
                     }
                     if ($matchesInactive) {
-                        $q->orWhere(fn ($sub) => $sub->whereNotNull('deleted_at')->orWhere('is_active', false));
+                        $q->orWhere(fn ($sub) => $sub->whereNull('deleted_at')->where('is_active', false));
+                    }
+                    if ($matchesDeleted) {
+                        $q->orWhereNotNull('deleted_at');
                     }
                 });
             })
             ->when($role !== '', fn ($query) => $query->where('role', $role))
             ->when($status === 'aktif', fn ($query) => $query->whereNull('deleted_at')->where('is_active', true))
-            ->when($status === 'nonaktif', fn ($query) => $query->where(fn ($q) => $q->whereNotNull('deleted_at')->orWhere('is_active', false)))
+            ->when($status === 'nonaktif', fn ($query) => $query->whereNull('deleted_at')->where('is_active', false))
+            ->when($status === 'dihapus', fn ($query) => $query->whereNotNull('deleted_at'))
+            ->orderByRaw('CASE WHEN deleted_at IS NOT NULL THEN 2 WHEN is_active = 0 THEN 1 ELSE 0 END ASC')
             ->orderBy('nama')
             ->paginate(10)
             ->withQueryString();
@@ -68,6 +74,7 @@ class UserController extends Controller
         return view('pages.pengaturan.index', [
             'title' => __('Manajemen Pengguna'),
             'users' => $users,
+            'stats' => $this->userService->getPengaturanStats(),
             'roles' => UserRole::cases(),
             'jabatanList' => Jabatan::orderBy('nama_jabatan')->get(),
             'bidangList' => Bidang::orderBy('nama_bidang')->get(),

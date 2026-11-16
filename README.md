@@ -7,7 +7,7 @@ Sistem Informasi Manajemen dan Pemantauan Penanganan Perkara Balai Besar POM di 
 [![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=flat-square&logo=mysql&logoColor=white)](https://www.mysql.com)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-v4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![Alpine.js](https://img.shields.io/badge/Alpine.js-v3-8BC0D0?style=flat-square&logo=alpinedotjs&logoColor=white)](https://alpinejs.dev)
-[![Pest PHP](https://img.shields.io/badge/Pest%20PHP-424%20Tests%20Passing-00D8A2?style=flat-square)](https://pestphp.com)
+[![Pest PHP](https://img.shields.io/badge/Pest%20PHP-427%20Tests%20Passing-00D8A2?style=flat-square)](https://pestphp.com)
 
 ---
 
@@ -46,8 +46,8 @@ Seluruh implementasi BAPTwo mengacu pada spesifikasi domain dan keputusan teknis
 |---|---|
 | [`PRD.md`](PRD.md) | *Product Requirements Document*: Sumber kebenaran domain hukum, batas SLA, hak akses RBAC, dan alur penanganan perkara. |
 | [`ARCHITECTURE.md`](ARCHITECTURE.md) | Arsitektur teknis sistem: Skema 19 tabel domain aktif, lifecycle tahapan, event audit trail, partisi data wilayah offline, dan alur event Alpine.js. |
-| [`TASKS.md`](TASKS.md) | Daftar pekerjaan aktif dan rekam jejak penyelesaian *task* teknis (T-001 s.d. T-126). |
-| [`DECISIONS.md`](DECISIONS.md) | Log keputusan arsitektur dan teknis resmi (*Architecture Decision Records* D-001 s.d. D-102). |
+| [`TASKS.md`](TASKS.md) | Daftar pekerjaan aktif dan rekam jejak penyelesaian *task* teknis (T-001 s.d. T-128). |
+| [`DECISIONS.md`](DECISIONS.md) | Log keputusan arsitektur dan teknis resmi (*Architecture Decision Records* D-001 s.d. D-104). |
 | [`AGENTS.md`](AGENTS.md) | Pedoman kerja otomatisasi, standar koding bebas *AI-slop*, konvensi Blade, dan aturan kontras aksesibilitas. |
 
 ---
@@ -628,7 +628,7 @@ php artisan baptwo:restore baptwo-backup-2026-11-16-111530.zip --force
 ## Pengujian Otomatis & Linter
 
 ### 1. Eksekusi Test Suite (Pest PHP)
-Aplikasi memiliki **424 pengujian otomatis** (3.250 assertions) yang mencakup integritas alur tahapan, DPO gate, ekspor multi-sheet, audit trail & audit log global, keamanan header & CSP, backup & restore sistem, partisi wilayah offline, dan otorisasi RBAC:
+Aplikasi memiliki **427 pengujian otomatis** (3.277 assertions) yang mencakup integritas alur tahapan, DPO gate, ekspor multi-sheet, audit trail & audit log global, keamanan header & CSP, backup & restore sistem, partisi wilayah offline, dan otorisasi RBAC:
 ```powershell
 C:\laragon\bin\php\php-8.4.25-Win32-vs17-x64\php.exe vendor/bin/pest
 ```

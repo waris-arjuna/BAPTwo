@@ -383,3 +383,47 @@ test('tabel master data menampilkan status Dihapus tanpa istilah Soft Delete dan
         ->assertSee('Dihapus')
         ->assertSee('Jabatan Uji Hapus');
 });
+
+test('master data mengurutkan data aktif di atas serta data nonaktif dan dihapus di bagian paling akhir', function () {
+    $admin = User::factory()->create(['role' => UserRole::ADMINISTRATOR]);
+
+    Jabatan::create(['nama_jabatan' => 'Zzz Jabatan Aktif']);
+    $jabatanDihapus = Jabatan::create(['nama_jabatan' => 'Aaa Jabatan Dihapus']);
+    $jabatanDihapus->delete();
+
+    $this->actingAs($admin)
+        ->get(route('master-data.index', ['type' => 'jabatan']))
+        ->assertOk()
+        ->assertSeeInOrder(['Zzz Jabatan Aktif', 'Aaa Jabatan Dihapus']);
+
+    Pasal::create([
+        'nama_pasal' => 'UU Zzz Aktif',
+        'pasal' => 'Pasal 1',
+        'nomor' => '1',
+        'tahun' => '2024',
+        'isi' => 'Aktif',
+        'status' => 'aktif',
+    ]);
+    Pasal::create([
+        'nama_pasal' => 'UU Mmm Nonaktif',
+        'pasal' => 'Pasal 2',
+        'nomor' => '2',
+        'tahun' => '2024',
+        'isi' => 'Nonaktif',
+        'status' => 'nonaktif',
+    ]);
+    $pasalDihapus = Pasal::create([
+        'nama_pasal' => 'UU Aaa Dihapus',
+        'pasal' => 'Pasal 3',
+        'nomor' => '3',
+        'tahun' => '2024',
+        'isi' => 'Dihapus',
+        'status' => 'aktif',
+    ]);
+    $pasalDihapus->delete();
+
+    $this->actingAs($admin)
+        ->get(route('master-data.index', ['type' => 'pasal']))
+        ->assertOk()
+        ->assertSeeInOrder(['UU Zzz Aktif', 'UU Mmm Nonaktif', 'UU Aaa Dihapus']);
+});

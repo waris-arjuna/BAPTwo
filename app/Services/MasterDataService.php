@@ -108,11 +108,11 @@ class MasterDataService
         $paginate = fn ($builder) => $builder->paginate($perPage)->withQueryString();
 
         return match ($type) {
-            'jabatan' => $paginate(Jabatan::withTrashed()->tap(fn ($q) => $applySearch($q, ['nama_jabatan']))->tap($applyStatus)->orderBy('nama_jabatan')),
-            'bidang' => $paginate(Bidang::withTrashed()->tap(fn ($q) => $applySearch($q, ['nama_bidang']))->tap($applyStatus)->orderBy('nama_bidang')),
-            'panggol' => $paginate(Panggol::withTrashed()->tap(fn ($q) => $applySearch($q, ['pangkat', 'golongan']))->tap($applyStatus)->orderBy('golongan')),
-            'pasal' => $paginate(Pasal::withTrashed()->tap(fn ($q) => $applySearch($q, ['nama_pasal', 'pasal', 'isi', 'status']))->tap($applyStatus)->orderBy('nama_pasal')->orderBy('pasal')),
-            'instansi-hukum' => $paginate(InstansiHukum::withTrashed()->tap(fn ($q) => $applySearch($q, ['nama', 'wilayah', 'jenis']))->tap($applyStatus)->orderBy('jenis')->orderBy('nama')),
+            'jabatan' => $paginate(Jabatan::withTrashed()->tap(fn ($q) => $applySearch($q, ['nama_jabatan']))->tap($applyStatus)->orderByRaw('CASE WHEN deleted_at IS NOT NULL THEN 1 ELSE 0 END ASC')->orderBy('nama_jabatan')),
+            'bidang' => $paginate(Bidang::withTrashed()->tap(fn ($q) => $applySearch($q, ['nama_bidang']))->tap($applyStatus)->orderByRaw('CASE WHEN deleted_at IS NOT NULL THEN 1 ELSE 0 END ASC')->orderBy('nama_bidang')),
+            'panggol' => $paginate(Panggol::withTrashed()->tap(fn ($q) => $applySearch($q, ['pangkat', 'golongan']))->tap($applyStatus)->orderByRaw('CASE WHEN deleted_at IS NOT NULL THEN 1 ELSE 0 END ASC')->orderBy('golongan')),
+            'pasal' => $paginate(Pasal::withTrashed()->tap(fn ($q) => $applySearch($q, ['nama_pasal', 'pasal', 'isi', 'status']))->tap($applyStatus)->orderByRaw("CASE WHEN deleted_at IS NOT NULL THEN 2 WHEN status = 'nonaktif' THEN 1 ELSE 0 END ASC")->orderBy('nama_pasal')->orderBy('pasal')),
+            'instansi-hukum' => $paginate(InstansiHukum::withTrashed()->tap(fn ($q) => $applySearch($q, ['nama', 'wilayah', 'jenis']))->tap($applyStatus)->orderByRaw('CASE WHEN deleted_at IS NOT NULL THEN 1 ELSE 0 END ASC')->orderBy('jenis')->orderBy('nama')),
         };
     }
 

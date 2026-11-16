@@ -404,5 +404,19 @@
     "Diproses: :n pegawai": "Diproses: :n pegawai",
     "Detail": "Detail",
     "Belum ada catatan audit log yang sesuai": "Belum ada catatan audit log yang sesuai",
-    "Coba ubah kata kunci pencarian, kategori, atau rentang tanggal filter Anda.": "Coba ubah kata kunci pencarian, kategori, atau rentang tanggal filter Anda."
+    "Coba ubah kata kunci pencarian, kategori, atau rentang tanggal filter Anda.": "Coba ubah kata kunci pencarian, kategori, atau rentang tanggal filter Anda.",
+    "Total Petugas": "Total Petugas",
+    "Petugas Aktif": "Petugas Aktif",
+    "Petugas Nonaktif": "Petugas Nonaktif",
+    "Rincian Peran Petugas": "Rincian Peran Petugas",
+    "Admin": "Admin",
+    "Penyidik": "Penyidik",
+    "Umum": "Umum",
+    "Total Pengguna": "Total Pengguna",
+    "Status Aktif": "Status Aktif",
+    "Rincian Peran": "Rincian Peran",
+    "+:n baru bulan ini": "+:n baru bulan ini",
+    ":pct% dari total": ":pct% dari total",
+    ":pct% dari total · Dihapus: :d": ":pct% dari total · Dihapus: :d",
+    "Cari nama, NIP, atau email petugas...": "Cari nama, NIP, atau email petugas..."
 }
