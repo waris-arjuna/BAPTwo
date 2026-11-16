@@ -8,6 +8,9 @@ use App\Models\Perkara;
 use App\Models\TahapanPerkara;
 use App\Models\Tersangka;
 use App\Models\User;
+use App\Services\DashboardService;
+use App\Services\PerkaraService;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
@@ -109,6 +112,7 @@ it('supports AJAX live filtering on Daftar Perkara table', function () {
 
     $perkara1 = Perkara::create([
         'nomor_laporan_kejadian' => 'LK/SEARCH-1/X/2026',
+        'tanggal_laporan_kejadian' => now()->toDateString(),
         'nomor_surat_perintah' => 'SP/SEARCH-KOSMETIK/X/2026',
         'tanggal_surat_perintah' => '2026-10-10',
         'tahap_sprindik_status' => 'final',
@@ -118,6 +122,7 @@ it('supports AJAX live filtering on Daftar Perkara table', function () {
 
     $perkara2 = Perkara::create([
         'nomor_laporan_kejadian' => 'LK/SEARCH-2/X/2026',
+        'tanggal_laporan_kejadian' => now()->toDateString(),
         'nomor_surat_perintah' => 'SP/SEARCH-FARMASI/X/2026',
         'tanggal_surat_perintah' => '2026-10-11',
         'tahap_sprindik_status' => 'final',
@@ -293,4 +298,137 @@ it('renders standard 8-column Daftar Perkara table with pasal truncation and ver
         ->assertSee('Dalam Proses')
         ->assertSee('SPDP')
         ->assertSee('15%');
+});
+
+test('kartu statistik dashboard dan daftar perkara selaras pada tahun yang sama serta filter tahun dinamis berfungsi', function () {
+    Carbon::setTestNow('2026-08-10 10:00:00');
+    DashboardService::clearCache(2026);
+    DashboardService::clearCache(2025);
+
+    $penyidik = User::factory()->penyidik()->create();
+
+    // 1. Pra-SPDP tahun 2026 (belum masuk Data Perkara) -> tidak boleh dihitung di kartu Total Perkara
+    Perkara::create([
+        'nomor_laporan_kejadian' => 'LK/PRA/2026',
+        'tanggal_laporan_kejadian' => '2026-02-01',
+        'tahap_laporan_status' => 'final',
+        'tahap_sprindik_status' => 'final',
+        'tahap_perkara_status' => null,
+        'created_by' => $penyidik->id,
+    ]);
+
+    // 2. Perkara Dalam Proses tahun 2026
+    $pProses = Perkara::create([
+        'nomor_laporan_kejadian' => 'LK/PROSES/2026',
+        'tanggal_laporan_kejadian' => '2026-03-01',
+        'nomor_surat_perintah' => 'SP/PROSES/2026',
+        'tanggal_surat_perintah' => '2026-03-02',
+        'tahap_laporan_status' => 'final',
+        'tahap_sprindik_status' => 'final',
+        'tahap_perkara_status' => 'final',
+        'created_by' => $penyidik->id,
+    ]);
+    $tProses = Tersangka::create(['perkara_id' => $pProses->id, 'nama' => 'Tersangka Proses', 'created_by' => $penyidik->id]);
+    BerkasPerkara::create([
+        'perkara_id' => $pProses->id,
+        'tersangka_id' => $tProses->id,
+        'nomor_berkas' => 'BP/PROSES/2026',
+        'status_formal' => null,
+        'is_dpo' => false,
+        'progress_persen' => 15,
+        'created_by' => $penyidik->id,
+    ]);
+
+    // 3. Perkara DPO Aktif tahun 2026 -> terpisah dari Dalam Proses
+    $pDpo = Perkara::create([
+        'nomor_laporan_kejadian' => 'LK/DPO/2026',
+        'tanggal_laporan_kejadian' => '2026-04-01',
+        'nomor_surat_perintah' => 'SP/DPO/2026',
+        'tanggal_surat_perintah' => '2026-04-02',
+        'tahap_laporan_status' => 'final',
+        'tahap_sprindik_status' => 'final',
+        'tahap_perkara_status' => 'final',
+        'created_by' => $penyidik->id,
+    ]);
+    $tDpo = Tersangka::create(['perkara_id' => $pDpo->id, 'nama' => 'Tersangka DPO', 'created_by' => $penyidik->id]);
+    BerkasPerkara::create([
+        'perkara_id' => $pDpo->id,
+        'tersangka_id' => $tDpo->id,
+        'nomor_berkas' => 'BP/DPO/2026',
+        'status_formal' => null,
+        'is_dpo' => true,
+        'progress_persen' => 15,
+        'created_by' => $penyidik->id,
+    ]);
+
+    // 4. Perkara Selesai tahun 2026
+    $pSelesai = Perkara::create([
+        'nomor_laporan_kejadian' => 'LK/SELESAI/2026',
+        'tanggal_laporan_kejadian' => '2026-05-01',
+        'nomor_surat_perintah' => 'SP/SELESAI/2026',
+        'tanggal_surat_perintah' => '2026-05-02',
+        'tahap_laporan_status' => 'final',
+        'tahap_sprindik_status' => 'final',
+        'tahap_perkara_status' => 'final',
+        'created_by' => $penyidik->id,
+    ]);
+    $tSelesai = Tersangka::create(['perkara_id' => $pSelesai->id, 'nama' => 'Tersangka Selesai', 'created_by' => $penyidik->id]);
+    BerkasPerkara::create([
+        'perkara_id' => $pSelesai->id,
+        'tersangka_id' => $tSelesai->id,
+        'nomor_berkas' => 'BP/SELESAI/2026',
+        'status_formal' => 'selesai',
+        'is_dpo' => false,
+        'progress_persen' => 100,
+        'created_by' => $penyidik->id,
+    ]);
+
+    // 5. Perkara tahun 2025 -> tidak muncul di default Tahun Berjalan (2026), muncul di ?tahun=2025 & ?tahun=semua
+    $p2025 = Perkara::create([
+        'nomor_laporan_kejadian' => 'LK/LAMA/2025',
+        'tanggal_laporan_kejadian' => '2025-11-01',
+        'nomor_surat_perintah' => 'SP/LAMA/2025',
+        'tanggal_surat_perintah' => '2025-11-02',
+        'tahap_laporan_status' => 'final',
+        'tahap_sprindik_status' => 'final',
+        'tahap_perkara_status' => 'final',
+        'created_by' => $penyidik->id,
+    ]);
+    $t2025 = Tersangka::create(['perkara_id' => $p2025->id, 'nama' => 'Tersangka Lama', 'created_by' => $penyidik->id]);
+    BerkasPerkara::create([
+        'perkara_id' => $p2025->id,
+        'tersangka_id' => $t2025->id,
+        'nomor_berkas' => 'BP/LAMA/2025',
+        'status_formal' => 'tidak_selesai',
+        'is_dpo' => false,
+        'progress_persen' => 15,
+        'created_by' => $penyidik->id,
+    ]);
+
+    $dashboardStats = collect(app(DashboardService::class)->getStatistics(2026));
+    $daftarStats2026 = app(PerkaraService::class)->getDataPerkaraSummaryCards(2026);
+
+    expect((int) $dashboardStats->firstWhere('title', 'Total Perkara')['value'])->toBe(3)
+        ->and($daftarStats2026['total'])->toBe(3)
+        ->and((int) $dashboardStats->firstWhere('title', 'Perkara Berjalan')['value'])->toBe(1)
+        ->and($daftarStats2026['dalam_proses'])->toBe(1)
+        ->and((int) $dashboardStats->firstWhere('title', 'Selesai')['value'])->toBe(1)
+        ->and($daftarStats2026['selesai'])->toBe(1)
+        ->and($daftarStats2026['dpo_aktif'])->toBe(1);
+
+    // Default daftar perkara hanya menampilkan tahun berjalan 2026 dan label "Tahun Berjalan (2026)"
+    $this->actingAs($penyidik)->get(route('data-perkara.index'))
+        ->assertOk()
+        ->assertSee('Tahun Berjalan (2026)')
+        ->assertSee('Semua Tahun')
+        ->assertSee('LK/PROSES/2026')
+        ->assertDontSee('LK/LAMA/2025');
+
+    // Filter tahun=semua menampilkan 2025 & 2026
+    $this->actingAs($penyidik)->get(route('data-perkara.index', ['tahun' => 'semua']))
+        ->assertOk()
+        ->assertSee('LK/PROSES/2026')
+        ->assertSee('LK/LAMA/2025');
+
+    Carbon::setTestNow();
 });

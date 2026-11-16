@@ -374,17 +374,17 @@ class PerkaraService
      *
      * @return array{total: int, dalam_proses: int, dpo_aktif: int, selesai: int, tidak_selesai: int}
      */
-    public function getDataPerkaraSummaryCards(): array
+    public function getDataPerkaraSummaryCards(?int $tahun = null): array
     {
-        return $this->listQuery->getDataPerkaraSummaryCards();
+        return $this->listQuery->getDataPerkaraSummaryCards($tahun);
     }
 
     /**
      * Hitung 4 kartu metrik kesiapan pelimpahan (Poin 10 & 11)
      */
-    public function getPotensiTerlimpahCards(): array
+    public function getPotensiTerlimpahCards(?int $tahun = null): array
     {
-        return $this->listQuery->getPotensiTerlimpahCards();
+        return $this->listQuery->getPotensiTerlimpahCards($tahun);
     }
 
     /**

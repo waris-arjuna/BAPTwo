@@ -15,6 +15,7 @@ test('perkara dengan status formal dpo_aktif tetap menghasilkan badge SLA yang v
     $penyidik = User::factory()->penyidik()->create();
     $perkara = Perkara::create([
         'nomor_laporan_kejadian' => 'LK/DPO/SLA',
+        'tanggal_laporan_kejadian' => now()->toDateString(),
         'nomor_surat_perintah' => 'SP/DPO/SLA',
         'tanggal_surat_perintah' => '2026-04-01',
         'tahap_laporan_status' => 'final',

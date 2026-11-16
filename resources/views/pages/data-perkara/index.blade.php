@@ -33,7 +33,36 @@
                 </p>
             </div>
 
-            <div class="flex items-center gap-3">
+            <div class="flex flex-wrap items-center gap-3">
+                {{-- Filter Tahun --}}
+                <form method="GET" action="{{ route('data-perkara.index', [], false) }}" class="flex items-center gap-2">
+                    @foreach (request()->except(['tahun', 'page']) as $key => $val)
+                        @if (is_scalar($val) && $val !== '')
+                            <input type="hidden" name="{{ $key }}" value="{{ $val }}">
+                        @endif
+                    @endforeach
+                    <label for="filter-tahun-perkara" class="sr-only">Pilih Tahun</label>
+                    <i class="fi fi-rr-calendar text-base text-gray-500 dark:text-gray-400" aria-hidden="true"></i>
+                    <select
+                        id="filter-tahun-perkara"
+                        name="tahun"
+                        onchange="this.form.submit()"
+                        class="h-10 rounded-lg border border-gray-300 bg-white px-3 text-sm font-medium text-gray-700 outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300"
+                    >
+                        @foreach ($availableYears ?? [$currentYear ?? now(\App\Services\DashboardService::ZONA_WAKTU)->year] as $y)
+                            @php
+                                $curY = (int) ($currentYear ?? now(\App\Services\DashboardService::ZONA_WAKTU)->year);
+                            @endphp
+                            <option value="{{ $y }}" @selected((string) ($tahunFilterValue ?? $curY) === (string) $y)>
+                                {{ (int) $y === $curY ? "Tahun Berjalan ({$y})" : $y }}
+                            </option>
+                        @endforeach
+                        <option value="semua" @selected(($tahunFilterValue ?? '') === 'semua')>
+                            Semua Tahun
+                        </option>
+                    </select>
+                </form>
+
                 @can('export-excel')
                     <button
                         type="button"

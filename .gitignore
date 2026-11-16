@@ -48,3 +48,6 @@ tailadmin-laravel-main/
 !/resources/data/wilayah/raw/.gitkeep
 /public/audio/
 /public/images/505-cover.*
+/.postman/
+/postman/
+/storage/app/backups/

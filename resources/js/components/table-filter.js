@@ -29,6 +29,10 @@ export default function tableFilter(targetSelector = '#table-body-partial') {
                 }
             }
             this.hasFilter = params.toString().length > 0;
+            const currentTahun = new URLSearchParams(window.location.search).get('tahun');
+            if (currentTahun && !params.has('tahun')) {
+                params.set('tahun', currentTahun);
+            }
             const queryString = params.toString();
             const baseUrl = form.getAttribute('action') || window.location.pathname;
             const url = queryString ? `${baseUrl}?${queryString}` : baseUrl;
@@ -48,7 +52,9 @@ export default function tableFilter(targetSelector = '#table-body-partial') {
             });
             this.hasFilter = false;
             const baseUrl = form.getAttribute('action') || window.location.pathname;
-            this.fetchPartial(baseUrl, true);
+            const currentTahun = new URLSearchParams(window.location.search).get('tahun');
+            const url = currentTahun ? `${baseUrl}?tahun=${encodeURIComponent(currentTahun)}` : baseUrl;
+            this.fetchPartial(url, true);
         },
 
         async fetchPartial(url, push = true) {

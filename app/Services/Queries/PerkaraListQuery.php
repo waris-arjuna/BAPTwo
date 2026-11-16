@@ -234,14 +234,18 @@ class PerkaraListQuery
      *
      * @return array{total: int, dalam_proses: int, dpo_aktif: int, selesai: int, tidak_selesai: int}
      */
-    public function getDataPerkaraSummaryCards(): array
+    public function getDataPerkaraSummaryCards(?int $tahun = null): array
     {
+        $baseQuery = Perkara::query()
+            ->whereNotNull('tahap_perkara_status')
+            ->when($tahun !== null, fn (Builder $q) => $q->whereYear('tanggal_laporan_kejadian', $tahun));
+
         return [
-            'total' => Perkara::whereNotNull('tahap_perkara_status')->count(),
-            'dalam_proses' => Perkara::whereNotNull('tahap_perkara_status')->filterStatusFormal('dalam_proses')->count(),
-            'dpo_aktif' => Perkara::whereNotNull('tahap_perkara_status')->filterStatusFormal('dpo_aktif')->count(),
-            'selesai' => Perkara::whereNotNull('tahap_perkara_status')->filterStatusFormal('selesai')->count(),
-            'tidak_selesai' => Perkara::whereNotNull('tahap_perkara_status')->filterStatusFormal('tidak_selesai')->count(),
+            'total' => (clone $baseQuery)->count(),
+            'dalam_proses' => (clone $baseQuery)->filterStatusFormal('dalam_proses')->count(),
+            'dpo_aktif' => (clone $baseQuery)->filterStatusFormal('dpo_aktif')->count(),
+            'selesai' => (clone $baseQuery)->filterStatusFormal('selesai')->count(),
+            'tidak_selesai' => (clone $baseQuery)->filterStatusFormal('tidak_selesai')->count(),
         ];
     }
 
@@ -250,10 +254,12 @@ class PerkaraListQuery
      *
      * @return array{siap_tahap_1: int, siap_tahap_2: int, terkendala_dpo: int, melebihi_sla: int}
      */
-    public function getPotensiTerlimpahCards(): array
+    public function getPotensiTerlimpahCards(?int $tahun = null): array
     {
         $today = Carbon::today(DashboardService::ZONA_WAKTU)->toDateString();
-        $basePerkaraQuery = Perkara::query()->whereNotNull('tahap_perkara_status');
+        $basePerkaraQuery = Perkara::query()
+            ->whereNotNull('tahap_perkara_status')
+            ->when($tahun !== null, fn (Builder $q) => $q->whereYear('tanggal_laporan_kejadian', $tahun));
 
         return [
             'siap_tahap_1' => (clone $basePerkaraQuery)->whereHas('berkasPerkaras', function ($q) {
@@ -308,7 +314,8 @@ class PerkaraListQuery
         $kesiapan = trim((string) ($filters['kesiapan'] ?? ''));
         $ppnsId = ! empty($filters['ppns_id']) ? (int) $filters['ppns_id'] : 0;
         $sla = trim((string) ($filters['sla'] ?? ''));
-        $tahun = ! empty($filters['tahun']) ? (int) $filters['tahun'] : 0;
+        $rawTahun = trim((string) ($filters['tahun'] ?? ''));
+        $tahun = ($rawTahun !== '' && strtolower($rawTahun) !== 'semua' && is_numeric($rawTahun)) ? (int) $rawTahun : 0;
         $bulan = ! empty($filters['bulan']) ? (int) $filters['bulan'] : 0;
         $tanggalDari = trim((string) ($filters['tanggal_dari'] ?? $filters['tanggal'] ?? ''));
         $tanggalSampai = trim((string) ($filters['tanggal_sampai'] ?? ''));
