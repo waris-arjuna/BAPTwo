@@ -26,7 +26,7 @@ class SecurityHeadersMiddleware
 
         $response->headers->set(
             'Content-Security-Policy',
-            "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'{$viteHttp}; style-src 'self' 'unsafe-inline' https://cdn-uicons.flaticon.com{$viteHttp}; font-src 'self' data: https://cdn-uicons.flaticon.com; img-src 'self' data: blob:; connect-src 'self'{$viteHttp}{$viteWs}; frame-src 'self'; object-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+            "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'{$viteHttp}; style-src 'self' 'unsafe-inline' https://cdn-uicons.flaticon.com{$viteHttp}; font-src 'self' data: https://cdn-uicons.flaticon.com{$viteHttp}; img-src 'self' data: blob:; connect-src 'self'{$viteHttp}{$viteWs}; frame-src 'self'; object-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
         );
 
         if ($request->isSecure()) {

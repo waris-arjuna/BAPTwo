@@ -36,7 +36,8 @@ test('csp mengizinkan vite dev server saat environment local dan memblokirnya di
         $localCsp = (string) $this->get('/masuk')->headers->get('Content-Security-Policy');
         expect($localCsp)
             ->toContain('http://localhost:5173')
-            ->toContain('ws://localhost:5173');
+            ->toContain('ws://localhost:5173')
+            ->toMatch('/font-src[^;]*http:\/\/localhost:5173/');
 
         app()->detectEnvironment(fn () => 'production');
         $prodCsp = (string) $this->get('/masuk')->headers->get('Content-Security-Policy');

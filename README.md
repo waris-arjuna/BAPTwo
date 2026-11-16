@@ -7,7 +7,7 @@ Sistem Informasi Manajemen dan Pemantauan Penanganan Perkara Balai Besar POM di 
 [![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=flat-square&logo=mysql&logoColor=white)](https://www.mysql.com)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-v4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![Alpine.js](https://img.shields.io/badge/Alpine.js-v3-8BC0D0?style=flat-square&logo=alpinedotjs&logoColor=white)](https://alpinejs.dev)
-[![Pest PHP](https://img.shields.io/badge/Pest%20PHP-424%20Tests%20Passing-00D8A2?style=flat-square)](https://pestphp.com)
+[![Pest PHP](https://img.shields.io/badge/Pest%20PHP-425%20Tests%20Passing-00D8A2?style=flat-square)](https://pestphp.com)
 
 ---
 
@@ -626,7 +626,7 @@ php artisan baptwo:restore baptwo-backup-2026-11-16-111530.zip --force
 ## Pengujian Otomatis & Linter
 
 ### 1. Eksekusi Test Suite (Pest PHP)
-Aplikasi memiliki **424 pengujian otomatis** (3.243 assertions) yang mencakup integritas alur tahapan, DPO gate, ekspor multi-sheet, audit trail, keamanan header & CSP, backup & restore sistem, partisi wilayah offline, dan otorisasi RBAC:
+Aplikasi memiliki **425 pengujian otomatis** (3.247 assertions) yang mencakup integritas alur tahapan, DPO gate, ekspor multi-sheet, audit trail, keamanan header & CSP, backup & restore sistem, partisi wilayah offline, dan otorisasi RBAC:
 ```powershell
 C:\laragon\bin\php\php-8.4.25-Win32-vs17-x64\php.exe vendor/bin/pest
 ```
