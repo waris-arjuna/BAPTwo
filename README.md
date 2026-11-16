@@ -7,7 +7,7 @@ Sistem Informasi Manajemen dan Pemantauan Penanganan Perkara Balai Besar POM di 
 [![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=flat-square&logo=mysql&logoColor=white)](https://www.mysql.com)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-v4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![Alpine.js](https://img.shields.io/badge/Alpine.js-v3-8BC0D0?style=flat-square&logo=alpinedotjs&logoColor=white)](https://alpinejs.dev)
-[![Pest PHP](https://img.shields.io/badge/Pest%20PHP-375%20Tests%20Passing-00D8A2?style=flat-square)](https://pestphp.com)
+[![Pest PHP](https://img.shields.io/badge/Pest%20PHP-419%20Tests%20Passing-00D8A2?style=flat-square)](https://pestphp.com)
 
 ---
 
@@ -31,9 +31,10 @@ Sistem Informasi Manajemen dan Pemantauan Penanganan Perkara Balai Besar POM di 
 10. [Perintah CLI & Pemeliharaan Sistem](#perintah-cli--pemeliharaan-sistem)
 11. [Pengujian Otomatis & Linter](#pengujian-otomatis--linter)
 12. [Scheduler & Otomasi Batas Tahun](#scheduler--otomasi-batas-tahun)
-13. [Panduan Rilis Produksi & Checklist Deployment](#panduan-rilis-produksi--checklist-deployment)
-14. [Troubleshooting](#troubleshooting)
-15. [Lisensi](#lisensi)
+13. [Backup Otomatis & Uji Pemulihan Data](#backup-otomatis--uji-pemulihan-data)
+14. [Panduan Rilis Produksi & Checklist Deployment](#panduan-rilis-produksi--checklist-deployment)
+15. [Troubleshooting](#troubleshooting)
+16. [Lisensi](#lisensi)
 
 ---
 
@@ -601,12 +602,18 @@ Menarik dan memperbarui daftar seluruh pegawai (PPNS, Penyidik, Pejabat Penandat
 php artisan sibob:sync-users
 ```
 
+### 5. Backup Database & Dokumen PDF Privat
+Mengarsipkan seluruh isi tabel database (`database-dump.json`) dan dokumen PDF privat (`storage/app/private`) ke dalam file ZIP di `storage/app/backups/` serta memangkas arsip lama sesuai retensi hari:
+```powershell
+php artisan baptwo:backup --keep-days=30
+```
+
 ---
 
 ## Pengujian Otomatis & Linter
 
 ### 1. Eksekusi Test Suite (Pest PHP)
-Aplikasi memiliki **375 pengujian otomatis** (3.006 assertions) yang mencakup integritas alur tahapan, DPO gate, ekspor multi-sheet, audit trail, partisi wilayah offline, dan otorisasi RBAC:
+Aplikasi memiliki **419 pengujian otomatis** (3.216 assertions) yang mencakup integritas alur tahapan, DPO gate, ekspor multi-sheet, audit trail, keamanan header & CSP, backup sistem, partisi wilayah offline, dan otorisasi RBAC:
 ```powershell
 C:\laragon\bin\php\php-8.4.25-Win32-vs17-x64\php.exe vendor/bin/pest
 ```
@@ -617,6 +624,8 @@ php artisan test tests/Feature/AlamatCascadingEditDraftTest.php
 php artisan test tests/Feature/PerkaraExportTest.php
 php artisan test tests/Feature/DashboardCaseStatusTest.php
 php artisan test tests/Feature/DpoPenangkapanTest.php
+php artisan test tests/Feature/SecurityHardeningTest.php
+php artisan test tests/Feature/BackupSystemCommandTest.php
 ```
 
 ### 2. Pemeriksaan Standar Kode (Laravel Pint)
@@ -627,6 +636,12 @@ php vendor/bin/pint --test
 Perbaikan format otomatis:
 ```powershell
 php vendor/bin/pint
+```
+
+### 3. Audit Keamanan Dependensi
+Memeriksa advisories kerentanan paket Composer sebelum rilis:
+```powershell
+composer audit --format=plain
 ```
 
 ---
