@@ -13,3 +13,9 @@ Schedule::command('sibob:sync-users')
     ->timezone(DashboardService::ZONA_WAKTU)
     ->withoutOverlapping()
     ->description('Sinkronisasi otomatis harian daftar pegawai dari API SIBOB.');
+
+Schedule::command('baptwo:backup')
+    ->dailyAt('02:00')
+    ->timezone(DashboardService::ZONA_WAKTU)
+    ->withoutOverlapping()
+    ->description('Backup otomatis harian database dan dokumen PDF privat dengan retensi 30 hari.');
