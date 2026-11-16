@@ -26,7 +26,26 @@ test('aplikasi menyertakan header keamanan http standar nosniff, strict-origin, 
         ->toContain("default-src 'self'")
         ->toContain('https://cdn-uicons.flaticon.com')
         ->toContain("frame-ancestors 'self'")
-        ->toContain("object-src 'self'");
+        ->toContain("object-src 'self'")
+        ->not->toContain('localhost:5173');
+});
+
+test('csp mengizinkan vite dev server saat environment local dan memblokirnya di production', function () {
+    try {
+        app()->detectEnvironment(fn () => 'local');
+        $localCsp = (string) $this->get('/masuk')->headers->get('Content-Security-Policy');
+        expect($localCsp)
+            ->toContain('http://localhost:5173')
+            ->toContain('ws://localhost:5173');
+
+        app()->detectEnvironment(fn () => 'production');
+        $prodCsp = (string) $this->get('/masuk')->headers->get('Content-Security-Policy');
+        expect($prodCsp)
+            ->not->toContain('localhost:5173')
+            ->not->toContain('ws://localhost:5173');
+    } finally {
+        app()->detectEnvironment(fn () => 'testing');
+    }
 });
 
 test('route registrasi publik /daftar dinonaktifkan dan mengembalikan 404', function () {
