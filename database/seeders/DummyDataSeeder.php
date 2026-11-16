@@ -270,17 +270,17 @@ class DummyDataSeeder extends Seeder
             'pfm_utama' => Jabatan::firstOrCreate(['nama_jabatan' => 'Pengawas Farmasi dan Makanan Ahli Utama']),
             'analis' => Jabatan::firstOrCreate(['nama_jabatan' => 'Analis Intelijen Penindakan']),
             'prakom' => Jabatan::firstOrCreate(['nama_jabatan' => 'Pranata Komputer Ahli Pertama']),
-            'kepala' => Jabatan::firstOrCreate(['nama_jabatan' => 'Kepala Balai Besar POM']),
-            'tu' => Jabatan::firstOrCreate(['nama_jabatan' => 'Kepala Bagian Tata Usaha']),
+            'kepala' => Jabatan::firstOrCreate(['nama_jabatan' => 'Kepala Balai Besar POM di Banjarbaru']),
+            'tu' => Jabatan::firstOrCreate(['nama_jabatan' => 'Kepala Bagian Tata Usaha pada Balai Besar POM di Banjarbaru']),
         ];
 
-        // 2. Bidang
+        // 2. Bidang (selaras dengan format nama divisi SIBOB)
         $bidangList = [
-            'penindakan' => Bidang::firstOrCreate(['nama_bidang' => 'Bidang Penindakan']),
-            'pemeriksaan' => Bidang::firstOrCreate(['nama_bidang' => 'Bidang Pemeriksaan']),
-            'pengujian' => Bidang::firstOrCreate(['nama_bidang' => 'Bidang Pengujian']),
-            'infokom' => Bidang::firstOrCreate(['nama_bidang' => 'Bidang Informasi dan Komunikasi']),
-            'tu' => Bidang::firstOrCreate(['nama_bidang' => 'Bagian Tata Usaha']),
+            'penindakan' => Bidang::firstOrCreate(['nama_bidang' => 'Penindakan']),
+            'pemeriksaan' => Bidang::firstOrCreate(['nama_bidang' => 'Pemeriksaan']),
+            'pengujian' => Bidang::firstOrCreate(['nama_bidang' => 'Pengujian']),
+            'infokom' => Bidang::firstOrCreate(['nama_bidang' => 'Informasi dan Komunikasi']),
+            'tu' => Bidang::firstOrCreate(['nama_bidang' => 'Tata Usaha']),
         ];
 
         // 3. Pangkat & Golongan
@@ -419,6 +419,22 @@ class DummyDataSeeder extends Seeder
      */
     private function seedUsers(array $master): array
     {
+        $sibobPenyidik = User::query()
+            ->where('role', UserRole::PENYIDIK)
+            ->where('is_active', true)
+            ->where('email', 'not like', '%@baptwo.test')
+            ->orderBy('nama')
+            ->get();
+
+        if ($sibobPenyidik->isNotEmpty()) {
+            $users = [];
+            foreach ($sibobPenyidik as $idx => $user) {
+                $users['penyidik_'.($idx + 1)] = $user;
+            }
+
+            return $users;
+        }
+
         $alamat = Alamat::firstOrCreate(
             [
                 'provinsi_kode' => '63',

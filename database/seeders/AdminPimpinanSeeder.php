@@ -42,11 +42,11 @@ class AdminPimpinanSeeder extends Seeder
             ]
         );
 
-        $jabatanKepala = Jabatan::firstOrCreate(['nama_jabatan' => 'Kepala Balai Besar POM']);
-        $jabatanKabagTu = Jabatan::firstOrCreate(['nama_jabatan' => 'Kepala Bagian Tata Usaha']);
+        $jabatanKepala = Jabatan::firstOrCreate(['nama_jabatan' => 'Kepala Balai Besar POM di Banjarbaru']);
+        $jabatanKabagTu = Jabatan::firstOrCreate(['nama_jabatan' => 'Kepala Bagian Tata Usaha pada Balai Besar POM di Banjarbaru']);
         $jabatanPrakom = Jabatan::firstOrCreate(['nama_jabatan' => 'Pranata Komputer Ahli Pertama']);
 
-        $bidangTu = Bidang::firstOrCreate(['nama_bidang' => 'Bagian Tata Usaha']);
+        $bidangTu = Bidang::firstOrCreate(['nama_bidang' => 'Tata Usaha']);
 
         $panggolPembinaUtamaMuda = Panggol::firstOrCreate(['pangkat' => 'Pembina Utama Muda', 'golongan' => 'IV/c']);
         $panggolPembina = Panggol::firstOrCreate(['pangkat' => 'Pembina', 'golongan' => 'IV/a']);

@@ -55,7 +55,8 @@ class UserController extends Controller
             ->when($status === 'aktif', fn ($query) => $query->whereNull('deleted_at')->where('is_active', true))
             ->when($status === 'nonaktif', fn ($query) => $query->where(fn ($q) => $q->whereNotNull('deleted_at')->orWhere('is_active', false)))
             ->orderBy('nama')
-            ->get();
+            ->paginate(10)
+            ->withQueryString();
 
         if ($request->header('X-Filter-Partial')) {
             return view('pages.pengaturan._table-partial', [

@@ -219,3 +219,18 @@ it('allows Administrator to create, update, soft delete, and restore users', fun
         ->and($restored->trashed())->toBeFalse()
         ->and($restored->is_active)->toBeTrue();
 });
+
+it('paginates users by 10 items per page on /pengaturan', function () {
+    $admin = User::factory()->administrator()->create(['nama' => 'Admin Utama']);
+    User::factory()->count(14)->create();
+
+    $responsePage1 = $this->actingAs($admin)->get('/pengaturan');
+    $responsePage1->assertOk();
+    expect($responsePage1->viewData('users')->perPage())->toBe(10)
+        ->and($responsePage1->viewData('users')->count())->toBe(10)
+        ->and($responsePage1->viewData('users')->total())->toBe(15);
+
+    $responsePage2 = $this->actingAs($admin)->get('/pengaturan?page=2');
+    $responsePage2->assertOk();
+    expect($responsePage2->viewData('users')->count())->toBe(5);
+});

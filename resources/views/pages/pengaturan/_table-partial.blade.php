@@ -14,7 +14,7 @@
         @forelse ($users as $item)
             <tr class="hover:bg-gray-50/60 dark:hover:bg-white/[0.02]">
                 <td class="w-12 px-4 py-3.5 text-theme-sm text-gray-500 dark:text-gray-400">
-                    {{ $loop->iteration }}
+                    {{ $loop->iteration + ($users->currentPage() - 1) * $users->perPage() }}
                 </td>
                 <td class="px-4 py-3.5">
                     <div class="font-medium text-theme-sm text-gray-800 dark:text-white/90">{{ $item->nama }}</div>
@@ -107,3 +107,9 @@
         @endforelse
     </tbody>
 </table>
+
+@if ($users->hasPages())
+    <div class="border-t border-gray-100 px-5 py-4 dark:border-gray-800">
+        {{ $users->links() }}
+    </div>
+@endif

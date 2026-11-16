@@ -24,12 +24,16 @@ class DatabaseSeeder extends Seeder
             return;
         }
 
-        $jabatanKepala = Jabatan::firstOrCreate(['nama_jabatan' => 'Kepala Balai Besar POM']);
+        $jabatanKepala = Jabatan::firstOrCreate(['nama_jabatan' => 'Kepala Balai Besar POM di Banjarbaru']);
         $jabatanPenyidik = Jabatan::firstOrCreate(['nama_jabatan' => 'Penyidik Pegawai Negeri Sipil (PPNS)']);
         $jabatanAdmin = Jabatan::firstOrCreate(['nama_jabatan' => 'Pranata Komputer Ahli Pertama']);
 
-        $bidangPenindakan = Bidang::firstOrCreate(['nama_bidang' => 'Bidang Penindakan']);
-        $bidangTu = Bidang::firstOrCreate(['nama_bidang' => 'Bagian Tata Usaha']);
+        $bidangPenindakan = Bidang::firstOrCreate(['nama_bidang' => 'Penindakan']);
+        $bidangTu = Bidang::firstOrCreate(['nama_bidang' => 'Tata Usaha']);
+        Bidang::firstOrCreate(['nama_bidang' => 'Pemeriksaan']);
+        Bidang::firstOrCreate(['nama_bidang' => 'Pengujian']);
+        Bidang::firstOrCreate(['nama_bidang' => 'Informasi dan Komunikasi']);
+        Bidang::firstOrCreate(['nama_bidang' => 'Balai Besar POM di Banjarbaru']);
 
         $panggolPembina = Panggol::firstOrCreate(['pangkat' => 'Pembina', 'golongan' => 'IV/a']);
         $panggolPenata = Panggol::firstOrCreate(['pangkat' => 'Penata Tk. I', 'golongan' => 'III/d']);
@@ -98,7 +102,10 @@ class DatabaseSeeder extends Seeder
                 'status_pernikahan' => 'kawin',
                 'no_telp' => '081251110001',
             ],
-            [
+        ];
+
+        if (app()->environment('testing')) {
+            $devUsers[] = [
                 'nama' => 'Pimpinan BPOM Kalsel',
                 'nip' => '198502022010011002',
                 'email' => 'pimpinan@baptwo.test',
@@ -111,8 +118,8 @@ class DatabaseSeeder extends Seeder
                 'jenis_kelamin' => 'laki-laki',
                 'status_pernikahan' => 'kawin',
                 'no_telp' => '081251110002',
-            ],
-            [
+            ];
+            $devUsers[] = [
                 'nama' => 'Penyidik PPNS',
                 'nip' => '199203032018011003',
                 'email' => 'penyidik@baptwo.test',
@@ -125,8 +132,8 @@ class DatabaseSeeder extends Seeder
                 'jenis_kelamin' => 'perempuan',
                 'status_pernikahan' => 'belum_kawin',
                 'no_telp' => '081251110003',
-            ],
-        ];
+            ];
+        }
 
         foreach ($devUsers as $data) {
             User::updateOrCreate(

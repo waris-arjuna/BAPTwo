@@ -2056,3 +2056,16 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
   4. **Pemicu Sinkronisasi Daftar Pegawai (`GET /api/v1/users`)**:
      - Tersedia melalui tombol **"Sinkronisasi SIBOB"** di halaman Manajemen Pengguna (`/pengaturan`) dan Data Petugas (`/data-petugas`), serta melalui command Artisan `php artisan sibob:sync-users` yang dijadwalkan harian setiap pukul `01:00 WITA` di `routes/console.php`.
 - Konsekuensi: Data pegawai instansi selalu mutakhir untuk pemilihan PPNS dan pejabat penandatangan SP3, login tetap tangguh saat jaringan eksternal terganggu berkat fallback lokal, serta seluruh jejak sinkronisasi tercatat di `audit_log` (`sync_sibob_users`).
+
+---
+
+## D-099 : Paginasi 10 User pada Manajemen Pengguna (`/pengaturan`) dan Penyelarasan Seeder ke Format SIBOB
+
+- Tanggal: 2026-11-16
+- Status: Disepakati & Diimplementasikan (T-123)
+- Konteks: Setelah sinkronisasi 104 pegawai dari API SIBOB, halaman `/pengaturan` menampilkan lebih dari 100 baris user sekaligus tanpa paginasi, sementara master data `bidang` dan `jabatan` dari seeder lama memiliki nama yang berbeda dengan format SIBOB (mis. `Bidang Penindakan` vs `Penindakan`) sehingga memicu duplikasi.
+- Keputusan:
+  1. `UserController::index()` menggunakan `->paginate(10)->withQueryString()` dan `_table-partial.blade.php` menampilkan penomoran baris berbasis offset halaman beserta tautan `{{ $users->links() }}` yang kompatibel dengan live filter AJAX.
+  2. `DatabaseSeeder`, `AdminPimpinanSeeder`, dan `DummyDataSeeder` diselaraskan menggunakan nama `Bidang` dan `Jabatan` sesuai SIBOB (`Penindakan`, `Pemeriksaan`, `Pengujian`, `Informasi dan Komunikasi`, `Tata Usaha`, `Balai Besar POM di Banjarbaru`).
+  3. Di environment `local`, `DatabaseSeeder` hanya membuat 1 akun fallback `admin@baptwo.test` (akun `pimpinan@baptwo.test` dan `penyidik@baptwo.test` hanya dibuat di environment `testing`), dan `DummyDataSeeder` memprioritaskan pegawai asli SIBOB ber-role `penyidik` jika sudah tersedia di database.
+- Konsekuensi: Halaman `/pengaturan` lebih ringan dengan 10 user per halaman, master data kepegawaian bersih tanpa duplikasi antara seeder dan sinkronisasi SIBOB, dan database lokal siap pakai dengan data pegawai SIBOB.
