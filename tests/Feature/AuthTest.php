@@ -270,3 +270,14 @@ it('renders dynamic user profile and popover menu items in sidebar widget', func
         ->assertSee(__('Sign Out'))
         ->assertSee(route('logout'));
 });
+
+it('wraps login page theme toggle inside an active alpine x-data scope', function () {
+    $response = $this->get('/masuk');
+
+    $response->assertOk();
+    $html = $response->getContent();
+
+    expect($html)
+        ->toContain('$store.theme.toggle()')
+        ->toMatch('/<body[^>]*\bx-data\b/');
+});

@@ -35,13 +35,20 @@
                 updateTheme() {
                     const html = document.documentElement;
                     const body = document.body;
-                    if (this.theme === 'dark') {
+                    const isDark = this.theme === 'dark';
+
+                    if (isDark) {
                         html.classList.add('dark');
-                        body.classList.add('dark', 'bg-gray-900');
+                        if (body) body.classList.add('dark', 'bg-gray-900');
                     } else {
                         html.classList.remove('dark');
-                        body.classList.remove('dark', 'bg-gray-900');
+                        if (body) body.classList.remove('dark', 'bg-gray-900');
                     }
+
+                    const resolved = isDark ? 'dark' : 'light';
+                    html.setAttribute('data-color-scheme', resolved);
+                    html.dataset['theme'] = resolved;
+                    html.style.colorScheme = resolved;
                 }
             });
         });
@@ -54,16 +61,18 @@
             const theme = savedTheme === 'dark' ? 'dark' : 'light';
             if (theme === 'dark') {
                 document.documentElement.classList.add('dark');
+                document.documentElement.setAttribute('data-color-scheme', 'dark');
                 if (document.body) document.body.classList.add('dark', 'bg-gray-900');
             } else {
                 document.documentElement.classList.remove('dark');
+                document.documentElement.setAttribute('data-color-scheme', 'light');
                 if (document.body) document.body.classList.remove('dark', 'bg-gray-900');
             }
         })();
     </script>
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased" x-data>
 
     <x-common.toast top="top-5 sm:top-6" />
     @yield('content')

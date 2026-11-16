@@ -7,7 +7,7 @@ Sistem Informasi Manajemen dan Pemantauan Penanganan Perkara Balai Besar POM di 
 [![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=flat-square&logo=mysql&logoColor=white)](https://www.mysql.com)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-v4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![Alpine.js](https://img.shields.io/badge/Alpine.js-v3-8BC0D0?style=flat-square&logo=alpinedotjs&logoColor=white)](https://alpinejs.dev)
-[![Pest PHP](https://img.shields.io/badge/Pest%20PHP-419%20Tests%20Passing-00D8A2?style=flat-square)](https://pestphp.com)
+[![Pest PHP](https://img.shields.io/badge/Pest%20PHP-425%20Tests%20Passing-00D8A2?style=flat-square)](https://pestphp.com)
 
 ---
 
@@ -608,12 +608,25 @@ Mengarsipkan seluruh isi tabel database (`database-dump.json`) dan dokumen PDF p
 php artisan baptwo:backup --keep-days=30
 ```
 
+### 6. Restore Database & Dokumen PDF Privat
+Memulihkan database dan dokumen PDF privat dari file ZIP hasil backup (secara default otomatis memilih arsip terbaru, meminta konfirmasi, dan membuat safety backup terlebih dahulu):
+```powershell
+# Validasi arsip tanpa mengubah data (--dry-run)
+php artisan baptwo:restore --dry-run
+
+# Restore dari backup terbaru (interaktif)
+php artisan baptwo:restore
+
+# Restore dari file tertentu tanpa prompt
+php artisan baptwo:restore baptwo-backup-2026-11-16-111530.zip --force
+```
+
 ---
 
 ## Pengujian Otomatis & Linter
 
 ### 1. Eksekusi Test Suite (Pest PHP)
-Aplikasi memiliki **419 pengujian otomatis** (3.216 assertions) yang mencakup integritas alur tahapan, DPO gate, ekspor multi-sheet, audit trail, keamanan header & CSP, backup sistem, partisi wilayah offline, dan otorisasi RBAC:
+Aplikasi memiliki **425 pengujian otomatis** (3.247 assertions) yang mencakup integritas alur tahapan, DPO gate, ekspor multi-sheet, audit trail, keamanan header & CSP, backup & restore sistem, partisi wilayah offline, dan otorisasi RBAC:
 ```powershell
 C:\laragon\bin\php\php-8.4.25-Win32-vs17-x64\php.exe vendor/bin/pest
 ```
@@ -626,6 +639,7 @@ php artisan test tests/Feature/DashboardCaseStatusTest.php
 php artisan test tests/Feature/DpoPenangkapanTest.php
 php artisan test tests/Feature/SecurityHardeningTest.php
 php artisan test tests/Feature/BackupSystemCommandTest.php
+php artisan test tests/Feature/RestoreSystemCommandTest.php
 ```
 
 ### 2. Pemeriksaan Standar Kode (Laravel Pint)
@@ -682,10 +696,11 @@ Menjalankan backup secara manual:
 php artisan baptwo:backup --keep-days=30
 ```
 
-Prosedur verifikasi & uji pemulihan (uji restore berkala):
+Prosedur verifikasi & pemulihan data (*restore*):
 1. Pastikan file arsip terbaru `storage/app/backups/baptwo-backup-YYYY-MM-DD-His.zip` terbentuk dan ukurannya wajar.
-2. Ekstrak arsip pada folder staging/uji, periksa `database-dump.json` terbaca utuh (tidak korup) dan berkas PDF di folder `private/` dapat dibuka.
-3. Salin arsip terbaru secara berkala ke media penyimpanan terpisah di luar server aplikasi (NAS / server backup internal BPOM).
+2. Validasi isi arsip tanpa mengubah data dengan menjalankan `php artisan baptwo:restore --dry-run`.
+3. Untuk memulihkan data pada server target (pastikan migrasi skema sudah sesuai), jalankan `php artisan baptwo:restore` (otomatis membuat *safety backup* sebelum menimpa data saat ini) atau tentukan nama arsip secara eksplisit: `php artisan baptwo:restore nama-file.zip`.
+4. Salin arsip terbaru secara berkala ke media penyimpanan terpisah di luar server aplikasi (NAS / server backup internal BPOM).
 
 ---
 
