@@ -12,13 +12,30 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 uses(RefreshDatabase::class);
 
-test('aplikasi menyertakan header keamanan http standar nosniff, strict-origin, dan sameorigin', function () {
+test('aplikasi menyertakan header keamanan http standar nosniff, strict-origin, sameorigin, permissions-policy, dan csp', function () {
     $response = $this->get('/masuk');
 
     $response->assertOk();
     $response->assertHeader('X-Content-Type-Options', 'nosniff');
     $response->assertHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
     $response->assertHeader('X-Frame-Options', 'SAMEORIGIN');
+    $response->assertHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+
+    $csp = (string) $response->headers->get('Content-Security-Policy');
+    expect($csp)
+        ->toContain("default-src 'self'")
+        ->toContain('https://cdn-uicons.flaticon.com')
+        ->toContain("frame-ancestors 'self'")
+        ->toContain("object-src 'self'");
+});
+
+test('route registrasi publik /daftar dinonaktifkan dan mengembalikan 404', function () {
+    $this->get('/daftar')->assertNotFound();
+});
+
+test('konfigurasi sibob verify_ssl aktif secara default untuk keamanan produksi', function () {
+    $config = require config_path('services.php');
+    expect($config['sibob']['verify_ssl'])->toBeTrue();
 });
 
 test('dokumen privat dilindungi otorisasi per record dan memblokir idor dari guest', function () {
