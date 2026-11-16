@@ -3,10 +3,8 @@
 namespace App\Services;
 
 use App\Models\Alamat;
-use App\Models\BerkasPerkara;
 use App\Models\Dokumen;
 use App\Models\Perkara;
-use App\Models\Tersangka;
 use App\Models\User;
 use App\Services\Queries\PerkaraListQuery;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
@@ -272,60 +270,6 @@ class PerkaraService
             );
 
             return $perkara;
-        });
-    }
-
-    /**
-     * Pulihkan (restore) Laporan Kejadian & Perkara yang di-soft-delete
-     */
-    public function restorePerkara(int $id, User $user): Perkara
-    {
-        return DB::transaction(function () use ($id, $user) {
-            $perkara = Perkara::onlyTrashed()->findOrFail($id);
-            $perkara->restore();
-            $perkara->dokumen()->restore();
-            $perkara->tersangkas()->restore();
-            $perkara->berkasPerkaras()->restore();
-
-            $this->auditTrail->log(
-                aksi: 'restore_perkara',
-                tabel: 'perkara',
-                recordId: $perkara->id,
-                dataLama: null,
-                dataBaru: $perkara->fresh()?->toArray(),
-                perkaraId: $perkara->id,
-                userId: $user->id
-            );
-
-            return $perkara;
-        });
-    }
-
-    /**
-     * Pulihkan (restore) Berkas Perkara yang di-soft-delete
-     */
-    public function restoreBerkas(int $id, User $user): BerkasPerkara
-    {
-        return DB::transaction(function () use ($id, $user) {
-            $berkas = BerkasPerkara::onlyTrashed()->findOrFail($id);
-            $berkas->restore();
-
-            if ($berkas->tersangka_id) {
-                Tersangka::withTrashed()->find($berkas->tersangka_id)?->restore();
-            }
-
-            $this->auditTrail->log(
-                aksi: 'restore_berkas_perkara',
-                tabel: 'berkas_perkara',
-                recordId: $berkas->id,
-                dataLama: null,
-                dataBaru: $berkas->fresh()?->toArray(),
-                perkaraId: $berkas->perkara_id,
-                berkasPerkaraId: $berkas->id,
-                userId: $user->id
-            );
-
-            return $berkas;
         });
     }
 

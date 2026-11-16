@@ -363,3 +363,23 @@ test('tabel master data menerapkan paginasi 10 baris per halaman dan merender na
     $resPage2->assertSee('Jabatan Khusus 11');
     $resPage2->assertSee('Jabatan Khusus 15');
 });
+
+test('tabel master data menampilkan status Dihapus tanpa istilah Soft Delete dan notifikasi penghapusan bersih', function () {
+    $admin = User::factory()->create(['role' => UserRole::ADMINISTRATOR]);
+    $jabatan = Jabatan::create(['nama_jabatan' => 'Jabatan Uji Hapus']);
+
+    $deleteResponse = $this->actingAs($admin)
+        ->delete(route('master-data.destroy', ['type' => 'jabatan', 'id' => $jabatan->id]));
+
+    $deleteResponse->assertRedirect(route('master-data.index', ['type' => 'jabatan']))
+        ->assertSessionHas('success', fn ($flash) => is_array($flash)
+            && ($flash['message'] ?? '') === 'Jabatan berhasil dihapus.');
+
+    $indexResponse = $this->actingAs($admin)
+        ->get(route('master-data.index', ['type' => 'jabatan']));
+
+    $indexResponse->assertOk()
+        ->assertDontSee('Soft Delete', false)
+        ->assertSee('Dihapus')
+        ->assertSee('Jabatan Uji Hapus');
+});

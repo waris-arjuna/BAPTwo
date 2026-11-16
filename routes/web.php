@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuditLogController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataPerkaraController;
@@ -16,7 +17,6 @@ use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgressPerkaraController;
 use App\Http\Controllers\PutusanPerkaraController;
-use App\Http\Controllers\SampahController;
 use App\Http\Controllers\SeluruhPerkaraController;
 use App\Http\Controllers\Sp3Controller;
 use App\Http\Controllers\SpdpController;
@@ -76,19 +76,13 @@ Route::middleware('auth')->group(function () {
         Route::delete('/pengaturan/{user}', [UserController::class, 'destroy'])->name('users.destroy');
         Route::post('/pengaturan/{id}/restore', [UserController::class, 'restore'])->name('users.restore');
         Route::view('/pengaturan/umum', 'pages.pengaturan.umum')->name('pengaturan.umum');
+        Route::get('/pengaturan/audit-log', [AuditLogController::class, 'index'])->name('audit-log.index');
     });
 
     // Data Petugas (Penyidik & Administrator)
     Route::get('/data-petugas', [PetugasController::class, 'index'])->name('data-petugas.index');
     Route::post('/data-petugas', [PetugasController::class, 'store'])->name('data-petugas.store');
     Route::post('/pengaturan/sync-sibob', [UserController::class, 'syncSibob'])->name('users.sync-sibob');
-
-    // Halaman Sampah / Pemulihan Data Soft Delete (PRD F-44)
-    Route::get('/recovery-data', [SampahController::class, 'index'])->middleware('can:manage-users')->name('recovery-data.index');
-    Route::get('/sampah', [SampahController::class, 'index'])->middleware('can:manage-users')->name('sampah.index');
-    Route::post('/sampah/perkara/{id}/restore', [SampahController::class, 'restorePerkara'])->middleware('can:manage-users')->name('sampah.perkara.restore');
-    Route::post('/sampah/berkas/{id}/restore', [SampahController::class, 'restoreBerkas'])->middleware('can:manage-users')->name('sampah.berkas.restore');
-    Route::post('/sampah/user/{id}/restore', [SampahController::class, 'restoreUser'])->middleware('can:manage-users')->name('sampah.user.restore');
 
     // Seluruh Perkara & Pencarian Cepat Perkara (PRD F-38, F-39)
     Route::get('/seluruh-perkara', [SeluruhPerkaraController::class, 'index'])->name('seluruh-perkara.index');

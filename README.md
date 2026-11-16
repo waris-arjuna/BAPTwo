@@ -7,7 +7,7 @@ Sistem Informasi Manajemen dan Pemantauan Penanganan Perkara Balai Besar POM di 
 [![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=flat-square&logo=mysql&logoColor=white)](https://www.mysql.com)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-v4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![Alpine.js](https://img.shields.io/badge/Alpine.js-v3-8BC0D0?style=flat-square&logo=alpinedotjs&logoColor=white)](https://alpinejs.dev)
-[![Pest PHP](https://img.shields.io/badge/Pest%20PHP-425%20Tests%20Passing-00D8A2?style=flat-square)](https://pestphp.com)
+[![Pest PHP](https://img.shields.io/badge/Pest%20PHP-424%20Tests%20Passing-00D8A2?style=flat-square)](https://pestphp.com)
 
 ---
 
@@ -46,8 +46,8 @@ Seluruh implementasi BAPTwo mengacu pada spesifikasi domain dan keputusan teknis
 |---|---|
 | [`PRD.md`](PRD.md) | *Product Requirements Document*: Sumber kebenaran domain hukum, batas SLA, hak akses RBAC, dan alur penanganan perkara. |
 | [`ARCHITECTURE.md`](ARCHITECTURE.md) | Arsitektur teknis sistem: Skema 19 tabel domain aktif, lifecycle tahapan, event audit trail, partisi data wilayah offline, dan alur event Alpine.js. |
-| [`TASKS.md`](TASKS.md) | Daftar pekerjaan aktif dan rekam jejak penyelesaian *task* teknis (T-001 s.d. T-121). |
-| [`DECISIONS.md`](DECISIONS.md) | Log keputusan arsitektur dan teknis resmi (*Architecture Decision Records* D-001 s.d. D-097). |
+| [`TASKS.md`](TASKS.md) | Daftar pekerjaan aktif dan rekam jejak penyelesaian *task* teknis (T-001 s.d. T-126). |
+| [`DECISIONS.md`](DECISIONS.md) | Log keputusan arsitektur dan teknis resmi (*Architecture Decision Records* D-001 s.d. D-102). |
 | [`AGENTS.md`](AGENTS.md) | Pedoman kerja otomatisasi, standar koding bebas *AI-slop*, konvensi Blade, dan aturan kontras aksesibilitas. |
 
 ---
@@ -410,9 +410,9 @@ Empat kartu indikator pelimpahan perkara pada halaman Daftar Perkara dihitung me
    ```sql
    status_formal = 'dalam_proses' AND progress_persen = 15 AND is_dpo = false
    ```
-2. **Siap Tahap II**: Berkas perkara berjalan yang telah menyelesaikan Tahap I atau P-21 dan siap penyerahan tersangka/barang bukti:
+2. **Siap Tahap II**: Berkas perkara berjalan yang telah menyelesaikan P-21 final dan siap penyerahan tersangka/barang bukti:
    ```sql
-   status_formal = 'dalam_proses' AND progress_persen IN (55, 85) AND is_dpo = false
+   status_formal = 'dalam_proses' AND progress_persen = 85 AND is_dpo = false
    ```
 3. **Terkendala DPO**: Berkas perkara berjalan di mana tersangka berstatus buron sehingga proses hukum tertahan:
    ```sql
@@ -537,26 +537,28 @@ Data otomatis divalidasi dan dipecah ke dalam `resources/data/wilayah/districts/
 
 ## Akun Pengembangan & Seeder Data
 
-### 1. Akun Dev Bawaan
-Aplikasi menyediakan 3 akun pengujian resmi (password default: `password`, login diamankan dengan verifikasi matematika dinamis):
+### 1. Akun Dev Bawaan & Integrasi SIBOB
+`DatabaseSeeder` menerapkan pemisahan environment (ref: D-099):
+* Di environment **`local`**, seeder hanya membuat **1 akun fallback** `admin@baptwo.test` (**Administrator**, password default: `password`), sedangkan akun pegawai dan penyidik diambil dari sinkronisasi API SIBOB (`php artisan sibob:sync-users`).
+* Di environment **`testing`**, seeder menyediakan **3 akun pengujian resmi** (password default: `password`, login diamankan dengan verifikasi matematika dinamis):
 
 | Peran (*Role*) | Email Login | Hak Akses Utama |
 |---|---|---|
-| **Administrator** | `admin@baptwo.test` | Akses penuh manajemen pengguna, master data, recovery data, dan ekspor LAPJU. |
+| **Administrator** | `admin@baptwo.test` | Akses penuh manajemen pengguna, master data, audit log global, dan ekspor LAPJU. |
 | **Penyidik PPNS** | `penyidik@baptwo.test` | Operasional perkara: input LK, Sprindik, tahapan perkara, DPO, SP3, dan ekspor LAPJU. |
 | **Pimpinan / Umum** | `pimpinan@baptwo.test` | Mode pengawasan eksekutif (*read-only*): Dashboard analitik dan pemantauan Daftar Perkara. |
 
-### 2. Seeder 500 Perkara Realistis (`DummyDataSeeder`)
-Untuk menguji performa dashboard, filter pencarian, dan keandalan ekspor Excel LAPJU multi-sheet, jalankan seeder komprehensif berikut:
+### 2. Seeder 100 Perkara Realistis (`DummyDataSeeder`)
+Untuk menguji performa dashboard, filter pencarian, dan keandalan ekspor Excel LAPJU multi-sheet, jalankan seeder komprehensif berikut (hanya aktif di environment `local` dan `testing`):
 ```powershell
 php artisan db:seed --class=DummyDataSeeder
 ```
 
 Seeder ini bersifat idempoten dan menghasilkan:
-* **500 Perkara Realistis**: Terdistribusi dinamis pada tahun berjalan (350 perkara) dan tahun sebelumnya (150 perkara).
-* **Variasi 18 Pola Perkara**: Meliputi perkara baru, berkas berjalan dengan aneka tahapan, berkas DPO aktif, riwayat DPO tertangkap/tertahan, penerbitan SP3, dan berkas yang telah berkeputusan pengadilan.
-* **Cakupan Wilayah Lengkap**: Tersebar proporsional di seluruh 13 Kabupaten/Kota se-Kalimantan Selatan.
-* **38 Ragam Ketentuan Pasal**: Memuat pelanggaran UU Kesehatan, UU Pangan, UU Perlindungan Konsumen, dan Narkotika.
+* **100 Perkara Realistis**: Terdistribusi pada tahun berjalan 2026 (70 perkara) dan arsip tahun lalu 2025 (30 perkara), dengan aturan murni 1 Perkara = 1 Tersangka = 1 Berkas Perkara.
+* **Variasi 18 Pola Perkara**: Meliputi perkara baru, berkas berjalan dengan aneka tahapan, berkas draft perkara, berkas DPO aktif, riwayat DPO tertangkap/tertahan, penerbitan SP3, dan berkas yang telah berkeputusan pengadilan.
+* **Cakupan Wilayah Lengkap**: Tersebar proporsional di seluruh 13 Kabupaten/Kota se-Kalimantan Selatan dan domisili tersangka di 38 provinsi se-Indonesia.
+* **Master Data & Penyidik**: Memuat 38 Pasal UU (Kesehatan, Pangan, Perlindungan Konsumen, Narkotika, Psikotropika, KUHP), 28 Instansi Hukum (Kejati, 13 Kejari, Pengadilan Tinggi, 13 Pengadilan Negeri se-Kalsel), serta memprioritaskan pegawai asli SIBOB (atau fallback 20 Penyidik PPNS dummy pada database kosong).
 
 ---
 
@@ -626,7 +628,7 @@ php artisan baptwo:restore baptwo-backup-2026-11-16-111530.zip --force
 ## Pengujian Otomatis & Linter
 
 ### 1. Eksekusi Test Suite (Pest PHP)
-Aplikasi memiliki **425 pengujian otomatis** (3.247 assertions) yang mencakup integritas alur tahapan, DPO gate, ekspor multi-sheet, audit trail, keamanan header & CSP, backup & restore sistem, partisi wilayah offline, dan otorisasi RBAC:
+Aplikasi memiliki **424 pengujian otomatis** (3.250 assertions) yang mencakup integritas alur tahapan, DPO gate, ekspor multi-sheet, audit trail & audit log global, keamanan header & CSP, backup & restore sistem, partisi wilayah offline, dan otorisasi RBAC:
 ```powershell
 C:\laragon\bin\php\php-8.4.25-Win32-vs17-x64\php.exe vendor/bin/pest
 ```

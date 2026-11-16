@@ -79,7 +79,7 @@
                 <td class="px-4 py-3">
                     @if ($row->trashed())
                         <span class="rounded-full bg-error-50 px-2.5 py-0.5 text-theme-xs font-medium text-error-600 dark:bg-error-500/10 dark:text-error-400">
-                            {{ __('Terhapus (Soft Delete)') }}
+                            {{ __('Dihapus') }}
                         </span>
                     @elseif ($type === 'pasal' && $row->status === 'nonaktif')
                         <span class="rounded-full bg-warning-50 px-2.5 py-0.5 text-theme-xs font-medium text-warning-700 dark:bg-warning-500/10 dark:text-warning-400">

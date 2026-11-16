@@ -68,21 +68,6 @@ test('administrator dan penyidik dapat mengakses data-petugas dan mengubah role 
     ])->assertSessionHasErrors('user_id');
 });
 
-test('recovery-data dan sampah hanya dapat diakses oleh administrator (403 bagi penyidik, pimpinan, umum)', function () {
-    $admin = User::factory()->create(['role' => UserRole::ADMINISTRATOR, 'is_active' => true]);
-    $penyidik = User::factory()->create(['role' => UserRole::PENYIDIK, 'is_active' => true]);
-    $pimpinan = User::factory()->create(['role' => UserRole::PIMPINAN, 'is_active' => true]);
-
-    $this->actingAs($admin)->get(route('recovery-data.index'))->assertOk();
-    $this->actingAs($admin)->get(route('sampah.index'))->assertOk();
-
-    $this->actingAs($penyidik)->get(route('recovery-data.index'))->assertForbidden();
-    $this->actingAs($penyidik)->get(route('sampah.index'))->assertForbidden();
-
-    $this->actingAs($pimpinan)->get(route('recovery-data.index'))->assertForbidden();
-    $this->actingAs($pimpinan)->get(route('sampah.index'))->assertForbidden();
-});
-
 test('penyidik diblokir mengelola master data jabatan dan bidang, tetapi diizinkan untuk instansi hukum', function () {
     $penyidik = User::factory()->create(['role' => UserRole::PENYIDIK, 'is_active' => true]);
 
@@ -371,25 +356,6 @@ test('menyimpan sub-tahap pada spdp yang sudah final tidak menimpa catatan spdp 
         ->first();
     expect($p16)->not->toBeNull();
     expect($p16->nomor_surat)->toBe('P16/NEW/01');
-});
-
-test('restore perkara dan berkas di sampah memerlukan hak akses manage-users (admin only)', function () {
-    $admin = User::factory()->create(['role' => UserRole::ADMINISTRATOR, 'is_active' => true]);
-    $penyidik = User::factory()->create(['role' => UserRole::PENYIDIK, 'is_active' => true]);
-
-    $perkara = Perkara::create([
-        'nomor_laporan_kejadian' => 'LK/TRASH/01',
-        'tanggal_laporan_kejadian' => '2026-01-01',
-        'created_by' => $admin->id,
-    ]);
-    $perkara->delete();
-
-    // Penyidik ditolak 403
-    $this->actingAs($penyidik)->post(route('sampah.perkara.restore', $perkara->id))->assertForbidden();
-
-    // Admin berhasil
-    $this->actingAs($admin)->post(route('sampah.perkara.restore', $perkara->id))->assertRedirect();
-    expect($perkara->fresh()->trashed())->toBeFalse();
 });
 
 test('tombol tetapkan DPO muncul pada perkara tahap 2 yang belum memiliki keputusan pengadilan final', function () {

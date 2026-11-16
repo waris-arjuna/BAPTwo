@@ -130,13 +130,11 @@ class MenuHelper
                         'name' => 'Umum',
                         'path' => '/pengaturan/umum',
                     ],
+                    [
+                        'name' => 'Audit Log',
+                        'path' => '/pengaturan/audit-log',
+                    ],
                 ],
-            ];
-
-            $items[] = [
-                'icon' => 'recovery-data',
-                'name' => 'Recovery Data',
-                'path' => '/recovery-data',
             ];
         } elseif ($user?->isPenyidik()) {
             $items[] = [
@@ -231,8 +229,6 @@ class MenuHelper
             'master-data' => '<i class="fi fi-rr-database text-lg leading-none" aria-hidden="true"></i>',
             'settings' => '<i class="fi fi-rr-settings text-lg leading-none" aria-hidden="true"></i>',
             'petugas' => '<i class="fi fi-rr-users text-lg leading-none" aria-hidden="true"></i>',
-            'recovery-data' => '<i class="fi fi-rr-recycle text-lg leading-none" aria-hidden="true"></i>',
-            'trash' => '<i class="fi fi-rr-trash text-lg leading-none" aria-hidden="true"></i>',
         ];
 
         return $icons[$iconName] ?? '<i class="fi fi-rr-circle text-lg leading-none" aria-hidden="true"></i>';

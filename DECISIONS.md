@@ -2069,3 +2069,43 @@ Jangan menghapus entri lama. Jika berubah, buat entri baru dan tandai entri lama
   2. `DatabaseSeeder`, `AdminPimpinanSeeder`, dan `DummyDataSeeder` diselaraskan menggunakan nama `Bidang` dan `Jabatan` sesuai SIBOB (`Penindakan`, `Pemeriksaan`, `Pengujian`, `Informasi dan Komunikasi`, `Tata Usaha`, `Balai Besar POM di Banjarbaru`).
   3. Di environment `local`, `DatabaseSeeder` hanya membuat 1 akun fallback `admin@baptwo.test` (akun `pimpinan@baptwo.test` dan `penyidik@baptwo.test` hanya dibuat di environment `testing`), dan `DummyDataSeeder` memprioritaskan pegawai asli SIBOB ber-role `penyidik` jika sudah tersedia di database.
 - Konsekuensi: Halaman `/pengaturan` lebih ringan dengan 10 user per halaman, master data kepegawaian bersih tanpa duplikasi antara seeder dan sinkronisasi SIBOB, dan database lokal siap pakai dengan data pegawai SIBOB.
+
+---
+
+## D-100 : Sinkronisasi Dokumentasi Proyek, Kelengkapan `lang/id.json`, dan Gate Validasi Terjemahan di CI
+
+- Tanggal: 2026-11-16
+- Status: Disepakati & Diimplementasikan (via interview /grill-me, T-124)
+- Konteks: Setelah integrasi SIBOB, penambahan command `baptwo:backup` / `baptwo:restore`, dan `SecurityHeadersMiddleware`, ditemukan tiga celah konsistensi: (1) `README.md` dan `ARCHITECTURE.md` masih memuat angka lama (`T-121`, `D-097`, `375` tests, `500 Perkara` dummy, `3 akun` dev lokal, dan kriteria lama `Siap Tahap II` `IN (55, 85)`) serta belum mendokumentasikan `SecurityHeadersMiddleware`, `baptwo:backup`, dan `baptwo:restore`; (2) sebanyak 46 key `__()` di template Blade (`resources/views/`) belum terdaftar di `lang/id.json`; (3) audit `npm audit --audit-level=high` saat ini melaporkan 12 kerentanan dev/build yang berisiko memblokir CI jika dijadikan gate wajib tanpa pembaruan paket NPM terpisah.
+- Keputusan:
+  1. **Kelengkapan `lang/id.json` & Gate CI Terjemahan**: Menambahkan 46 key `__()` yang belum terdaftar ke `lang/id.json` (total 365 key) dan menambahkan step `Validate lang/id.json & Blade Translation Keys` pada `.github/workflows/laravel.yml` untuk memastikan JSON valid serta seluruh pemanggilan `__()` di `resources/views/` terdaftar di `lang/id.json`.
+  2. **Penundaan Gate `npm audit` di CI**: `npm audit --audit-level=high` belum dijadikan gate pemblokir di `.github/workflows/laravel.yml` sampai dilakukan pembaruan paket dependency NPM secara terpisah atas persetujuan pengguna.
+  3. **Sinkronisasi Faktual `README.md` & `ARCHITECTURE.md`**: Memperbarui rentang dokumentasi (`T-124`, `D-100`), pemisahan akun `DatabaseSeeder` (`local` vs `testing`), jumlah `DummyDataSeeder` (100 perkara, 38 pasal, 28 instansi hukum), kriteria `Siap Tahap II` (`progress_persen = 85`), capaian test suite (`425` tests / `3.247` assertions), `SecurityHeadersMiddleware`, rate limiter login, serta command CLI & jadwal `sibob:sync-users`, `baptwo:backup`, dan `baptwo:restore`.
+- Konsekuensi: Dokumentasi proyek 100% selaras dengan kondisi aktual codebase, integritas `lang/id.json` terjaga otomatis di CI pada setiap push/PR ke `main`, dan pembaruan dependency NPM tetap terisolasi dalam persetujuan terpisah.
+
+---
+
+## D-101 : Halaman Audit Log Global Sistem untuk Administrator (`/pengaturan/audit-log`)
+
+- Tanggal: 2026-11-16
+- Status: Disepakati & Diimplementasikan (via interview /grill-me, T-125)
+- Konteks: Sebelumnya catatan tabel `audit_log` hanya ditampilkan pada konteks perkara/tahapan (`<x-perkara.case-history>`). Aksi keamanan dan operasional tingkat sistem seperti `login_failed`, `login_inactive`, `export_excel`, `sync_sibob_users`, dan `atur_petugas` belum memiliki halaman pemantauan terpusat bagi Administrator.
+- Keputusan:
+  1. **Menu & Otorisasi**: Menambahkan sub-menu `Audit Log` (`/pengaturan/audit-log`, route `audit-log.index`) di bawah dropdown `Pengaturan` pada `MenuHelper` dengan proteksi ketat middleware & Gate `can:manage-users` (khusus Administrator).
+  2. **Kamus Metadata & Pengelompokan Aksi**: Melengkapi `AuditLog::actionMeta()` dan `$attributeLabelMap` untuk `login_failed`, `login_inactive`, `export_excel`, `atur_petugas`, dan `penangkapan_dpo`, serta mendefinisikan `SYSTEM_SECURITY_ACTIONS` dan `NON_CASE_ACTIONS` pada model `AuditLog`.
+  3. **Query & Filter Terpusat di `AuditTrailService`**: Menyediakan `getGlobalLogs()`, `getGlobalSummaryStats()`, dan `getActionOptions()` dengan eager loading `['user', 'perkara', 'berkasPerkara']`, filter kategori (`Semua`, `Keamanan & Sistem`, `Perkara & Tahapan`), filter jenis aksi, pencarian teks, rentang tanggal WITA (`tanggal_dari` & `tanggal_sampai`), dan paginasi 15 baris.
+  4. **Antarmuka & Modal Detail**: Menggunakan `<x-common.table-filter>` (live AJAX `X-Filter-Partial: 1`), datepicker Flatpickr, kolom penomoran `No`, kartu statistik ringkas, serta modal detail (`_modal-detail.blade.php`) yang menyajikan ringkasan terformat, alamat IP, tautan ke detail perkara terkait, dan payload JSON `data_lama` vs `data_baru`.
+- Konsekuensi: Administrator dapat mengaudit seluruh aktivitas keamanan, ekspor, sinkronisasi pegawai SIBOB, dan perubahan perkara dalam satu halaman terpusat yang responsif dan aman dari N+1 query maupun XSS.
+
+---
+
+## D-102 : Penghapusan Menu & Modul Recovery Data serta Penggantian Istilah "Soft Delete" di Antarmuka
+
+- Tanggal: 2026-11-16
+- Status: Disepakati & Diimplementasikan (via interview /grill-me, T-126)
+- Konteks: Sejak D-035 (Kelompok D), penghapusan Perkara/LK/Sprindik telah ditiadakan dan tabel User (`/pengaturan`) serta Master Data (`/master-data/{type}`) telah menyediakan pemulihan (`Pulihkan`) langsung per baris tabel. Oleh karena itu menu terpisah `Recovery Data` (`/recovery-data`, `/sampah`) tidak lagi diperlukan. Selain itu, istilah teknis `Soft Delete` yang muncul di badge status tabel, subjudul `/pengaturan`, dan notifikasi toast dianggap terlalu teknis IT bagi pengguna operasional BPOM.
+- Keputusan:
+  1. **Penghapusan Penuh Modul Recovery Data**: Menghapus item menu `Recovery Data` dari `MenuHelper`, menghapus rute `/recovery-data` dan `/sampah/*`, menghapus `SampahController`, view `resources/views/pages/sampah/`, `SampahTest`, serta method `PerkaraService::restorePerkara()` dan `restoreBerkas()`. Pemulihan data User dan Master Data tetap dilakukan langsung melalui tombol `Pulihkan` pada masing-masing tabel (`UserController::restore` & `MasterDataController::restore`).
+  2. **Penggantian Istilah UI "Soft Delete"**: Mengubah badge status data terhapus menjadi `Dihapus` (terpisah tegas dari `Nonaktif` milik `is_active = false` atau Pasal nonaktif), mengubah opsi filter menjadi `Nonaktif / Dihapus`, menyederhanakan subjudul `/pengaturan` menjadi `"Kelola akun Penyidik, Umum, dan Administrator BAPTwo. Akun yang dihapus dapat dipulihkan kembali."`, memperbarui toast penghapusan di `UserController` & `MasterDataController` menjadi `"Akun pengguna berhasil dihapus."` dan `":item berhasil dihapus."`, serta menambahkan kata kunci pencarian `"hapus"` pada `UserController::index()`.
+  3. **Pelestarian Mekanisme Database**: Penghapusan di database tetap menggunakan `SoftDeletes` (`deleted_at`) tanpa hard delete.
+- Konsekuensi: Navigasi Administrator lebih ringkas, alur pemulihan terpusat langsung di tabel masing-masing, dan seluruh salinan antarmuka bersih dari istilah teknis `Soft Delete`.

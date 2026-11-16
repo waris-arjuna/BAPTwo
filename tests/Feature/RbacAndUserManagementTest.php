@@ -234,3 +234,25 @@ it('paginates users by 10 items per page on /pengaturan', function () {
     $responsePage2->assertOk();
     expect($responsePage2->viewData('users')->count())->toBe(5);
 });
+
+it('displays Dihapus status without Soft Delete text and supports searching deleted users via dihapus', function () {
+    $admin = User::factory()->administrator()->create(['nama' => 'Admin Pengaturan']);
+    $deletedUser = User::factory()->penyidik()->create(['nama' => 'User Dihapus Uji']);
+    $activeUser = User::factory()->penyidik()->create(['nama' => 'User Aktif Uji']);
+
+    $deleteResponse = $this->actingAs($admin)->delete("/pengaturan/{$deletedUser->id}");
+    $deleteResponse->assertRedirect('/pengaturan')
+        ->assertSessionHas('success', fn ($flash) => is_array($flash)
+            && ($flash['message'] ?? '') === 'Akun pengguna berhasil dihapus.');
+
+    $indexResponse = $this->actingAs($admin)->get('/pengaturan');
+    $indexResponse->assertOk()
+        ->assertDontSee('Soft Delete', false)
+        ->assertSee('Dihapus')
+        ->assertSee('Akun yang dihapus dapat dipulihkan kembali.');
+
+    $searchResponse = $this->actingAs($admin)->get('/pengaturan?search=dihapus');
+    $searchResponse->assertOk()
+        ->assertSee('User Dihapus Uji')
+        ->assertDontSee('User Aktif Uji');
+});

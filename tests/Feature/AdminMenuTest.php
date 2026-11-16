@@ -49,9 +49,9 @@ test('role administrator memiliki struktur menu utama, perkara 7 tahapan, dan si
         '/putusan-perkara',
     ]);
 
-    // 4. Sistem: Master Data (5 subitem), Pengaturan (User, Petugas, Umum), Recovery Data
+    // 4. Sistem: Master Data (5 subitem), Pengaturan (User, Petugas, Umum, Audit Log)
     $sistemItems = $groups[2]['items'];
-    expect($sistemItems)->toHaveCount(3);
+    expect($sistemItems)->toHaveCount(2);
 
     // Master Data
     $masterData = $sistemItems[0];
@@ -70,13 +70,8 @@ test('role administrator memiliki struktur menu utama, perkara 7 tahapan, dan si
     expect($pengaturan['name'])->toBe('Pengaturan');
     $pengaturanNames = array_column($pengaturan['subItems'], 'name');
     $pengaturanPaths = array_column($pengaturan['subItems'], 'path');
-    expect($pengaturanNames)->toEqual(['User', 'Petugas', 'Umum'])
-        ->and($pengaturanPaths)->toEqual(['/pengaturan', '/data-petugas', '/pengaturan/umum']);
-
-    // Recovery Data
-    $recoveryData = $sistemItems[2];
-    expect($recoveryData['name'])->toBe('Recovery Data')
-        ->and($recoveryData['path'])->toBe('/recovery-data');
+    expect($pengaturanNames)->toEqual(['User', 'Petugas', 'Umum', 'Audit Log'])
+        ->and($pengaturanPaths)->toEqual(['/pengaturan', '/data-petugas', '/pengaturan/umum', '/pengaturan/audit-log']);
 
     // 5. Verifikasi HTML sidebar render
     $response = $this->get(route('dashboard'));
@@ -92,21 +87,15 @@ test('role administrator memiliki struktur menu utama, perkara 7 tahapan, dan si
         ->assertSee('Putusan Perkara')
         ->assertSee('Master Data')
         ->assertSee('Pengaturan')
-        ->assertSee('Recovery Data');
+        ->assertDontSee('Recovery Data');
 });
 
-test('halaman recovery data dapat diakses via route recovery-data dan alias sampah dengan teks resmi', function () {
+test('route recovery-data dan sampah sudah dihapus dan mengembalikan 404', function () {
     $admin = User::factory()->administrator()->create();
 
-    // 1. Akses via /recovery-data
-    $responseRecovery = $this->actingAs($admin)->get('/recovery-data');
-    $responseRecovery->assertOk()
-        ->assertSee('Recovery Data')
-        ->assertSee('Informasi Pemulihan Data (Soft Delete)')
-        ->assertDontSee('title="Sampah"');
-
-    // 2. Akses via /sampah
-    $responseSampah = $this->actingAs($admin)->get('/sampah');
-    $responseSampah->assertOk()
-        ->assertSee('Recovery Data');
+    $this->actingAs($admin)->get('/recovery-data')->assertNotFound();
+    $this->actingAs($admin)->get('/sampah')->assertNotFound();
+    $this->actingAs($admin)->post('/sampah/perkara/1/restore')->assertNotFound();
+    $this->actingAs($admin)->post('/sampah/berkas/1/restore')->assertNotFound();
+    $this->actingAs($admin)->post('/sampah/user/1/restore')->assertNotFound();
 });

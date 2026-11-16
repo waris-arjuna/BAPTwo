@@ -38,6 +38,35 @@ jobs:
     - name: Check Code Style (Laravel Pint)
       run: php vendor/bin/pint --test
 
+    - name: Validate lang/id.json & Blade Translation Keys
+      run: |
+        php -r '
+        $json = json_decode(file_get_contents("lang/id.json"), true, 512, JSON_THROW_ON_ERROR);
+        $it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator("resources/views"));
+        $missing = [];
+        foreach ($it as $file) {
+            if (! $file->isFile() || ! str_ends_with($file->getFilename(), ".php")) {
+                continue;
+            }
+            $content = file_get_contents($file->getPathname());
+            if (preg_match_all("/__\(\s*[\x27\"]([^\x27\"]+)[\x27\"]/", $content, $matches)) {
+                foreach ($matches[1] as $key) {
+                    if (! array_key_exists($key, $json)) {
+                        $missing[$key] = $file->getPathname();
+                    }
+                }
+            }
+        }
+        if ($missing !== []) {
+            fwrite(STDERR, "Missing translation keys in lang/id.json:\n");
+            foreach ($missing as $key => $path) {
+                fwrite(STDERR, " - [{$key}] ({$path})\n");
+            }
+            exit(1);
+        }
+        echo "lang/id.json valid (" . count($json) . " keys) and all Blade __() keys are registered.\n";
+        '
+
     - name: Audit Composer Dependencies
       run: composer audit --no-interaction
 

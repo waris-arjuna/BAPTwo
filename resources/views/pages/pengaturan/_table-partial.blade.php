@@ -39,7 +39,7 @@
                 <td class="px-4 py-3.5">
                     @if ($item->trashed())
                         <span class="rounded-full bg-error-50 px-2.5 py-0.5 text-theme-xs font-medium text-error-600 dark:bg-error-500/10 dark:text-error-400">
-                            {{ __('Terhapus (Soft Delete)') }}
+                            {{ __('Dihapus') }}
                         </span>
                     @elseif ($item->is_active)
                         <span class="rounded-full bg-success-50 px-2.5 py-0.5 text-theme-xs font-medium text-success-600 dark:bg-success-500/10 dark:text-success-400">

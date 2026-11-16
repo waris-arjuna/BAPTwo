@@ -36,7 +36,7 @@ class UserController extends Controller
             ->when($search !== '', function ($query) use ($search) {
                 $searchLower = strtolower($search);
                 $matchesActive = str_contains($searchLower, 'aktif') && ! str_contains($searchLower, 'non');
-                $matchesInactive = str_contains($searchLower, 'nonaktif') || str_contains($searchLower, 'non') || str_contains($searchLower, 'terhapus');
+                $matchesInactive = str_contains($searchLower, 'nonaktif') || str_contains($searchLower, 'non') || str_contains($searchLower, 'terhapus') || str_contains($searchLower, 'hapus');
 
                 $query->where(function ($q) use ($search, $matchesActive, $matchesInactive) {
                     $q->where('nama', 'like', "%{$search}%")
@@ -105,8 +105,8 @@ class UserController extends Controller
         $this->userService->softDeleteUser($user, $request->user()?->id);
 
         return redirect()->route('users.index')->with('success', [
-            'title' => 'Pengguna Dinonaktifkan',
-            'message' => 'Akun pengguna berhasil dinonaktifkan (soft delete).',
+            'title' => 'Pengguna Dihapus',
+            'message' => 'Akun pengguna berhasil dihapus.',
         ]);
     }
 

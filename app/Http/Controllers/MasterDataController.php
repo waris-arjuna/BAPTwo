@@ -98,8 +98,8 @@ class MasterDataController extends Controller
         return redirect()
             ->route('master-data.index', ['type' => $type])
             ->with('success', [
-                'title' => 'Master Data Dinonaktifkan',
-                'message' => __(':item berhasil dinonaktifkan (soft delete).', ['item' => __($meta['singular'])]),
+                'title' => 'Master Data Dihapus',
+                'message' => __(':item berhasil dihapus.', ['item' => __($meta['singular'])]),
             ]);
     }
 

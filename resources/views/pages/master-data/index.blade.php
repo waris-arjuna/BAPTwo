@@ -116,7 +116,7 @@
                 searchPlaceholder="Cari data..."
                 :statusOptions="[
                     'aktif' => 'Aktif',
-                    'nonaktif' => 'Nonaktif / Terhapus',
+                    'nonaktif' => 'Nonaktif / Dihapus',
                 ]"
                 :showDate="false"
             />

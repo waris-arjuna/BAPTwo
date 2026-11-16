@@ -75,7 +75,7 @@
                     {{ __('Daftar Pengguna Sistem') }}
                 </h2>
                 <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                    {{ __('Kelola akun Penyidik, Umum, dan Administrator BAPTwo (Soft Delete aktif).') }}
+                    {{ __('Kelola akun Penyidik, Umum, dan Administrator BAPTwo. Akun yang dihapus dapat dipulihkan kembali.') }}
                 </p>
             </div>
 
@@ -109,7 +109,7 @@
                 searchPlaceholder="Cari nama, NIP, atau email..."
                 :statusOptions="[
                     'aktif' => 'Aktif',
-                    'nonaktif' => 'Nonaktif / Terhapus',
+                    'nonaktif' => 'Nonaktif / Dihapus',
                 ]"
                 :showDate="false"
                 :hasActiveFilter="$search !== '' || $selectedRole !== '' || ($selectedStatus ?? '') !== ''"

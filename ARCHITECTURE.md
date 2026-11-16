@@ -306,6 +306,8 @@ stateDiagram-v2
 - **Eliminasi "Remember Me"**: Untuk menjamin keamanan data penegakan hukum di fasilitas publik/kantor, fitur checkbox persistensi sesi jangka panjang dinonaktifkan.
 - **Proteksi Akun Nonaktif & Terhapus**: Pengguna dengan status `is_active = false` atau `deleted_at` terisi ditolak masuk sistem dengan notifikasi toast dan banner peringatan inline setelah kata sandi lolos verifikasi (mencegah enumerasi akun).
 - **Force Logout Sesi Dinonaktifkan**: Middleware `EnsureUserIsActive` memeriksa status akun pada setiap HTTP request berautentikasi; jika akun dinonaktifkan atau dihapus saat sedang login, sesi langsung diputus seketika dan diarahkan ke halaman masuk (ref: D-053).
+- **Rate Limiter Login**: Endpoint masuk membatasi percobaan autentikasi maksimal 5 kali per menit per kombinasi email dan alamat IP dengan pesan kegagalan generik serta pencatatan `audit_log` (`login_failed`).
+- **Header Keamanan HTTP (`SecurityHeadersMiddleware`)**: Menyematkan header perlindungan pada setiap respons: `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `X-Frame-Options: SAMEORIGIN`, `Permissions-Policy`, `Content-Security-Policy` (`CSP`), serta `Strict-Transport-Security` (`HSTS`) saat koneksi HTTPS.
 
 ---
 
@@ -321,21 +323,35 @@ stateDiagram-v2
 - **Fungsi**: Memvalidasi, menormalkan, dan mempartisi dataset mentah hasil scraping (provinces, regencies, districts, villages) dari `resources/data/wilayah/raw/` ke dalam file partisi per-kabupaten di `districts/` dan `villages/`. Menghasilkan 514 file JSON kabupaten/kota mandiri dan bebas dari ketergantungan internet.
 
 ### 8.3 Perintah Sinkronisasi Tenggat Waktu SLA
-- **Command**: `php artisan perkara:sync-sla` (`SyncSlaDeadlineCommand`).
+- **Command**: `php artisan perkara:sync-sla` (`SyncSlaDeadlinesCommand`).
 - **Fungsi**: Melakukan audit dan sinkronisasi massal seluruh data berkas perkara aktif untuk menormalkan perhitungan tenggat waktu SLA menggunakan algoritma bebas overflow `addMonthNoOverflow()` dan batas mutlak 31 Desember.
+
+### 8.4 Perintah Sinkronisasi Daftar Pegawai SIBOB
+- **Command**: `php artisan sibob:sync-users` (`SyncSibobUsersCommand`).
+- **Jadwal Eksekusi**: Harian setiap pukul `01:00` WITA (`Asia/Makassar`) dengan proteksi `withoutOverlapping()`.
+- **Fungsi**: Menarik daftar pegawai dari API SIBOB (`GET /api/v1/users`) dan menyinkronkan ke tabel `user`, `jabatan`, `bidang`, dan `panggol` tanpa menimpa role lokal yang sudah ditetapkan.
+
+### 8.5 Backup Terpadu Database & Dokumen Privat
+- **Command**: `php artisan baptwo:backup {--keep-days=30}` (`BackupSystemCommand`).
+- **Jadwal Eksekusi**: Harian setiap pukul `02:00` WITA (`Asia/Makassar`) dengan proteksi `withoutOverlapping()`.
+- **Fungsi**: Mengarsipkan seluruh tabel pada schema database aktif (`database-dump.json`) serta seluruh dokumen PDF privat (`storage/app/private`) ke dalam file ZIP lintas-OS di `storage/app/backups/baptwo-backup-YYYY-MM-DD-His.zip`, serta memangkas arsip yang melewati retensi hari.
+
+### 8.6 Pemulihan Sistem dari Arsip Backup
+- **Command**: `php artisan baptwo:restore {archive?} {--dry-run} {--force} {--skip-safety-backup}` (`RestoreSystemCommand`).
+- **Fungsi**: Memvalidasi arsip ZIP hasil `baptwo:backup`, mendukung mode simulasi `--dry-run` tanpa mengubah data, dan memulihkan isi database serta dokumen privat secara lintas-OS dengan pembuatan *safety backup* otomatis sebelum penimpaan.
 
 ---
 
 ## 9. Testing & Quality Assurance
 
 - Rangkaian pengujian diuji dengan **Pest PHP** (`composer test`) dengan capaian:
-  - **375 Automated Feature & Unit Tests** (3.006 assertions) lulus 100%.
+  - **424 Automated Feature & Unit Tests** (3.250 assertions) lulus 100%.
   - Zero-warning styling via **Laravel Pint** (`php vendor/bin/pint --test`) pada seluruh file PHP.
 - **Seeder Idempoten Komprehensif** (`database/seeders/DummyDataSeeder.php`):
-  - 500 Perkara dummy komprehensif mencakup 17 pola tahapan (Pra-SPDP s.d. Putusan Pengadilan, DPO Aktif, DPO Dicabut, SP3 terminal, dan peringatan SLA) di 13 Kabupaten/Kota Kalimantan Selatan, dengan 5 perkara draft (ref: D-080) dan domisili tersangka tersebar di 38 provinsi se-Indonesia (ref: D-081).
-  - 38 Pasal UU (Kesehatan, Pangan, Perlindungan Konsumen, Narkotika, Psikotropika, KUHP).
-  - 20 Instansi Hukum (Kejati Kalsel, 13 Kejari, Pengadilan Tinggi, 5 Pengadilan Negeri se-Kalsel).
-  - 20 Akun Penyidik PPNS resmi.
+  - **100 Perkara dummy** (70 perkara tahun berjalan 2026 dan 30 perkara tahun 2025) dengan aturan murni 1 Perkara = 1 Tersangka = 1 Berkas Perkara, mencakup 18 archetype perkara, tahapan Pra-SPDP s.d. Putusan Pengadilan, DPO Aktif, DPO Dicabut, SP3 terminal, berkas draft, dan peringatan SLA di 13 Kabupaten/Kota Kalimantan Selatan serta domisili tersangka di 38 provinsi se-Indonesia (ref: D-080, D-081).
+  - **38 Pasal UU** (Kesehatan, Pangan, Perlindungan Konsumen, Narkotika, Psikotropika, KUHP).
+  - **28 Instansi Hukum** (Kejati Kalsel, 13 Kejari, Pengadilan Tinggi, 13 Pengadilan Negeri se-Kalsel).
+  - Memprioritaskan pegawai asli SIBOB ber-role penyidik dengan fallback **20 akun Penyidik PPNS** dummy pada database kosong.
 
 ---
 

@@ -30,6 +30,35 @@ class AuditLog extends Model
     ];
 
     /**
+     * Daftar aksi keamanan, akses, pemeliharaan sistem, dan administrasi global.
+     *
+     * @var list<string>
+     */
+    public const SYSTEM_SECURITY_ACTIONS = [
+        'login_failed',
+        'login_inactive',
+        'export_excel',
+        'sync_sibob_users',
+        'atur_petugas',
+        'restore_perkara',
+        'restore_berkas_perkara',
+        'sistem_tidak_selesai',
+    ];
+
+    /**
+     * Daftar aksi murni non-perkara (akses, ekspor, sinkronisasi, penugasan petugas).
+     *
+     * @var list<string>
+     */
+    public const NON_CASE_ACTIONS = [
+        'login_failed',
+        'login_inactive',
+        'export_excel',
+        'sync_sibob_users',
+        'atur_petugas',
+    ];
+
+    /**
      * Cache in-memory nama user untuk menghindari N+1 query pada riwayat audit.
      *
      * @var array<int, string>
@@ -399,6 +428,20 @@ class AuditLog extends Model
             'status_proses' => 'Status Proses',
             'status_formal' => 'Status Formal',
             'status' => 'Status',
+            'email' => 'Email',
+            'nama' => 'Nama',
+            'role' => 'Peran',
+            'mode' => 'Mode Periode',
+            'tahun' => 'Tahun',
+            'bulan' => 'Bulan',
+            'tanggal_mulai' => 'Tanggal Mulai',
+            'tanggal_selesai' => 'Tanggal Selesai',
+            'filename' => 'Nama Berkas Ekspor',
+            'total_perkara' => 'Total Perkara',
+            'created' => 'Akun Baru',
+            'updated' => 'Akun Diperbarui',
+            'deactivated' => 'Akun Dinonaktifkan',
+            'total' => 'Total Pegawai Diproses',
         ];
 
         foreach ($dataBaru as $key => $val) {
@@ -685,6 +728,36 @@ class AuditLog extends Model
                 'badge' => 'bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-900/20 dark:text-blue-300 dark:border-blue-800',
                 'icon_bg' => 'bg-blue-100 text-blue-600 dark:bg-blue-900/40 dark:text-blue-400',
             ],
+            'login_failed' => [
+                'label' => 'Percobaan Masuk Gagal',
+                'icon' => 'fi-rr-shield-exclamation',
+                'badge' => 'bg-red-50 text-red-700 border-red-200 dark:bg-red-900/20 dark:text-red-300 dark:border-red-800',
+                'icon_bg' => 'bg-red-100 text-red-600 dark:bg-red-900/40 dark:text-red-400',
+            ],
+            'login_inactive' => [
+                'label' => 'Masuk dengan Akun Nonaktif',
+                'icon' => 'fi-rr-lock',
+                'badge' => 'bg-yellow-50 text-yellow-800 border-yellow-200 dark:bg-yellow-900/20 dark:text-yellow-300 dark:border-yellow-800',
+                'icon_bg' => 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-400',
+            ],
+            'export_excel' => [
+                'label' => 'Ekspor Rekap Excel (LAPJU)',
+                'icon' => 'fi-rr-download',
+                'badge' => 'bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-900/20 dark:text-blue-300 dark:border-blue-800',
+                'icon_bg' => 'bg-blue-100 text-blue-600 dark:bg-blue-900/40 dark:text-blue-400',
+            ],
+            'atur_petugas' => [
+                'label' => 'Pengaturan Peran Petugas',
+                'icon' => 'fi-rr-users',
+                'badge' => 'bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-900/20 dark:text-blue-300 dark:border-blue-800',
+                'icon_bg' => 'bg-blue-100 text-blue-600 dark:bg-blue-900/40 dark:text-blue-400',
+            ],
+            'penangkapan_dpo' => [
+                'label' => 'Penangkapan / Penahanan DPO',
+                'icon' => 'fi-rr-user-check',
+                'badge' => 'bg-success-50 text-success-700 border-success-200 dark:bg-success-900/20 dark:text-success-300 dark:border-success-800',
+                'icon_bg' => 'bg-success-100 text-success-600 dark:bg-success-900/40 dark:text-success-400',
+            ],
         ];
 
         return $metaMap[$aksi] ?? [
@@ -693,5 +766,44 @@ class AuditLog extends Model
             'badge' => 'bg-gray-100 text-gray-700 border-gray-200 dark:bg-white/[0.05] dark:text-gray-300 dark:border-gray-800',
             'icon_bg' => 'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400',
         ];
+    }
+
+    /**
+     * Daftar lengkap label aksi yang dikenal untuk opsi filter dropdown.
+     *
+     * @return array<string, string>
+     */
+    public static function actionLabels(): array
+    {
+        $actions = [
+            'login_failed',
+            'login_inactive',
+            'export_excel',
+            'sync_sibob_users',
+            'atur_petugas',
+            'sistem_tidak_selesai',
+            'create_laporan_kejadian',
+            'update_laporan_kejadian',
+            'attach_sprindik',
+            'update_sprindik',
+            'save_draft_perkara_berkas',
+            'finalize_perkara_berkas',
+            'simpan_draft_tahap',
+            'finalisasi_tahap',
+            'simpan_sub_tahap',
+            'aktifkan_dpo',
+            'penangkapan_dpo',
+            'nonaktifkan_dpo',
+            'terbitkan_sp3',
+            'restore_perkara',
+            'restore_berkas_perkara',
+        ];
+
+        $result = [];
+        foreach ($actions as $aksi) {
+            $result[$aksi] = self::actionMeta($aksi)['label'];
+        }
+
+        return $result;
     }
 }
