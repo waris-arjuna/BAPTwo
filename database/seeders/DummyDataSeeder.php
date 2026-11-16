@@ -139,7 +139,7 @@ class DummyDataSeeder extends Seeder
     private int $urutanTersangkaNasional = 0;
 
     /**
-     * Jalankan seeder 500 data perkara dummy yang beragam untuk seluruh alur BAPTwo periode 2025-2026.
+     * Jalankan seeder 100 data perkara dummy yang beragam dan acak untuk seluruh alur BAPTwo periode 2025-2026.
      */
     public function run(): void
     {
@@ -162,11 +162,13 @@ class DummyDataSeeder extends Seeder
         // 3. Siapkan Master Data Lengkap (Jabatan, Bidang, Panggol, 38 Pasal, 45 Jaksa, Instansi)
         $master = $this->seedMasterData();
 
-        // 4. Siapkan Pengguna PPNS (20 Penyidik) serta Administrator & Pimpinan
+        // 4. Gunakan pegawai asli SIBOB jika tersedia, atau siapkan akun dev dummy pada DB kosong
         $users = $this->seedUsers($master);
-        $this->call(AdminPimpinanSeeder::class);
+        if (! User::where('email', 'not like', '%@baptwo.test')->exists()) {
+            $this->call(AdminPimpinanSeeder::class);
+        }
 
-        // 5. Tanam 500 Perkara dengan variasi alur, tahun 2025–2026, tahapan, DPO, SP3, dan murni 1 Tersangka 1 Berkas
+        // 5. Tanam 100 Perkara dengan variasi acak alur, tahun 2025–2026, tahapan, DPO, SP3, dan murni 1 Tersangka 1 Berkas
         $this->seedPerkaraCases($master, $users);
     }
 
@@ -500,7 +502,7 @@ class DummyDataSeeder extends Seeder
     }
 
     /**
-     * Menanam 500 perkara dari pra-SPDP sampai putusan pengadilan periode 2025-2026.
+     * Menanam 100 perkara acak dari pra-SPDP sampai putusan pengadilan periode 2025-2026.
      *
      * @param  array<string, mixed>  $master
      * @param  array<string, User>  $users
@@ -553,7 +555,7 @@ class DummyDataSeeder extends Seeder
 
                 $tersangkaList = [];
                 if ($adaBerkas) {
-                    $pakaiPasalBerlapis = ($urutan % 3 === 0);
+                    $pakaiPasalBerlapis = (random_int(0, 2) === 0);
                     $tersangkaList[] = $this->susunTersangka($master, $lokasi, $archetype, $urutan, $pakaiPasalBerlapis);
                 }
 
@@ -561,13 +563,15 @@ class DummyDataSeeder extends Seeder
                 $dpo = $baris['dpo'] ? $this->susunDpo($baris['dpo'], $tanggalSpdp, $urutan) : null;
                 $sp3 = $bucket === 'sp3' ? $this->susunSp3($tanggalSpdp ? $tanggalSpdp->copy()->addDays(18) : $tanggalLk->copy()->addDays(12), $urutan) : null;
 
-                $ppnsUtama = $penyidik[$urutan % count($penyidik)];
+                $jumlahPenyidik = count($penyidik);
+                $idxUtama = random_int(0, $jumlahPenyidik - 1);
+                $ppnsUtama = $penyidik[$idxUtama];
                 $ppnsAnggota = [];
-                if ($urutan % 4 !== 0) {
-                    $ppnsAnggota[] = $penyidik[($urutan + 1) % count($penyidik)];
-                }
-                if ($urutan % 6 === 0) {
-                    $ppnsAnggota[] = $penyidik[($urutan + 2) % count($penyidik)];
+                if ($jumlahPenyidik > 1 && random_int(0, 3) !== 0) {
+                    $kandidat = array_values(array_filter($penyidik, fn (User $u): bool => $u->id !== $ppnsUtama->id));
+                    shuffle($kandidat);
+                    $jumlahAnggota = ($jumlahPenyidik > 2 && random_int(0, 4) === 0) ? 2 : 1;
+                    $ppnsAnggota = array_slice($kandidat, 0, $jumlahAnggota);
                 }
 
                 $this->createCase(
@@ -587,7 +591,7 @@ class DummyDataSeeder extends Seeder
                         'detail' => $detailTkp,
                         'klasifikasi' => $archetype['klasifikasi'],
                         'legalitas' => $archetype['legalitas'],
-                        'modus' => (($urutan * 37) % 100 < 32) ? 'online' : 'offline',
+                        'modus' => (random_int(0, 99) < 35) ? 'online' : 'offline',
                     ],
                     ppnsUtama: $ppnsUtama,
                     ppnsAnggota: $ppnsAnggota,
@@ -653,49 +657,49 @@ class DummyDataSeeder extends Seeder
     {
         $archetypeKeys = array_keys($this->archetypeCatalog());
 
-        // 1. Tahun 2026 (Tahun Berjalan): 350 perkara
-        // - ~55% Berjalan (192 perkara): 100 Pra-SPDP, 57 SPDP, 25 Tahap I, 10 P-21
-        // - ~40% Selesai (140 perkara): 40 Tahap II, 100 Keputusan Pengadilan
-        // - ~5% SP3 (18 perkara)
+        // 1. Tahun 2026 (Tahun Berjalan): 70 perkara
+        // - ~60% Berjalan (42 perkara): 20 Pra-SPDP, 12 SPDP, 6 Tahap I, 4 P-21
+        // - ~34% Selesai (24 perkara): 8 Tahap II, 16 Keputusan Pengadilan
+        // - ~6% SP3 (4 perkara)
         $distribusi2026 = [
-            // Pra-SPDP (100)
-            'lk_draft' => 15,
-            'lk_final' => 25,
-            'sprindik_draft' => 15,
-            'sprindik_final' => 25,
-            'perkara_draft' => 5,
-            'perkara_only' => 15,
-            // SPDP & Subtahap (57)
-            'spdp_draft' => 12,
-            'spdp' => 20,
-            'spdp_p16' => 15,
-            'spdp_p16_p17p' => 10,
-            // Tahap 1 (25)
-            'tahap1_draft' => 8,
-            'tahap1' => 10,
-            'tahap1_p18p_p19' => 7,
-            // P-21 (10)
-            'p21_draft' => 4,
-            'p21' => 6,
-            // Selesai (140)
-            'tahap2' => 40,
-            'keputusan' => 100,
-            // SP3 (18)
-            'sp3' => 18,
+            // Pra-SPDP (20)
+            'lk_draft' => 3,
+            'lk_final' => 5,
+            'sprindik_draft' => 3,
+            'sprindik_final' => 5,
+            'perkara_draft' => 1,
+            'perkara_only' => 3,
+            // SPDP & Subtahap (12)
+            'spdp_draft' => 2,
+            'spdp' => 4,
+            'spdp_p16' => 3,
+            'spdp_p16_p17p' => 3,
+            // Tahap 1 (6)
+            'tahap1_draft' => 2,
+            'tahap1' => 2,
+            'tahap1_p18p_p19' => 2,
+            // P-21 (4)
+            'p21_draft' => 2,
+            'p21' => 2,
+            // Selesai (24)
+            'tahap2' => 8,
+            'keputusan' => 16,
+            // SP3 (4)
+            'sp3' => 4,
         ];
 
-        // 2. Tahun 2025 (Arsip Tahun Lalu): 150 perkara
+        // 2. Tahun 2025 (Arsip Tahun Lalu): 30 perkara
         // - 0 Perkara Berjalan (sesuai aturan batas tahun mutlak BPOM)
-        // - 115 perkara Selesai (30 Tahap II, 85 Keputusan Pengadilan)
-        // - 10 perkara SP3
-        // - 25 perkara Tidak Selesai (lewat batas tahun 31 Desember 2025: 8 SPDP, 10 Tahap I, 7 P-21)
+        // - 22 perkara Selesai (6 Tahap II, 16 Keputusan Pengadilan)
+        // - 2 perkara SP3
+        // - 6 perkara Tidak Selesai (lewat batas tahun 31 Desember 2025: 2 SPDP, 2 Tahap I, 2 P-21)
         $distribusi2025 = [
-            'tahap2' => 30,
-            'keputusan' => 85,
-            'sp3' => 10,
-            'spdp' => 8,
-            'tahap1' => 10,
-            'p21' => 7,
+            'tahap2' => 6,
+            'keputusan' => 16,
+            'sp3' => 2,
+            'spdp' => 2,
+            'tahap1' => 2,
+            'p21' => 2,
         ];
 
         $rencana2026 = [];
@@ -705,11 +709,11 @@ class DummyDataSeeder extends Seeder
                 $rencana2026[] = [
                     'bucket' => $bucket,
                     'idx_bucket' => $i,
-                    'archetype' => $archetypeKeys[$nomor2026 % count($archetypeKeys)],
-                    'lokasi' => $this->getWeightedLokasiKey($nomor2026),
+                    'archetype' => $archetypeKeys[array_rand($archetypeKeys)],
+                    'lokasi' => $this->getWeightedLokasiKey(random_int(0, 999)),
                     'tahun' => 2026,
                     'idx_tahun' => $nomor2026,
-                    'total_tahun' => 350,
+                    'total_tahun' => 70,
                     'tidak_selesai' => false,
                     'jumlah_tersangka' => 1,
                     'dpo' => null,
@@ -718,9 +722,14 @@ class DummyDataSeeder extends Seeder
                 $nomor2026++;
             }
         }
+        shuffle($rencana2026);
+        foreach ($rencana2026 as $idx => &$item2026) {
+            $item2026['idx_tahun'] = $idx;
+        }
+        unset($item2026);
 
-        // Variasi SLA untuk 92 berkas berjalan dengan SPDP di 2026 (57 SPDP, 25 Tahap 1, 10 P-21):
-        // 45 berkas dalam SLA (> 7 hari), 15 berkas mendekati SLA (<= 7 hari), 32 berkas lewat SLA
+        // Variasi SLA acak untuk 22 berkas berjalan dengan SPDP di 2026 (12 SPDP, 6 Tahap 1, 4 P-21):
+        // 10 berkas dalam SLA (> 7 hari), 5 berkas mendekati SLA (<= 7 hari), 7 berkas lewat SLA
         $runningSpdpIndices2026 = [];
         foreach ($rencana2026 as $pos => $b) {
             if (in_array($b['bucket'], [
@@ -731,22 +740,24 @@ class DummyDataSeeder extends Seeder
                 $runningSpdpIndices2026[] = $pos;
             }
         }
+        shuffle($runningSpdpIndices2026);
 
         foreach ($runningSpdpIndices2026 as $seq => $pos) {
-            if ($seq < 45) {
+            if ($seq < 10) {
                 $rencana2026[$pos]['sla_profile'] = 'dalam';
-            } elseif ($seq < 60) {
+            } elseif ($seq < 15) {
                 $rencana2026[$pos]['sla_profile'] = 'mendekati';
             } else {
                 $rencana2026[$pos]['sla_profile'] = 'lewat';
             }
         }
 
-        // DPO aktif (8) dan DPO cabut (4) pada berkas berjalan tahun 2026
+        // DPO aktif (3) dan DPO cabut (2) secara acak pada berkas berjalan tahun 2026
+        shuffle($runningSpdpIndices2026);
         foreach ($runningSpdpIndices2026 as $seq => $pos) {
-            if ($seq < 8) {
+            if ($seq < 3) {
                 $rencana2026[$pos]['dpo'] = 'aktif';
-            } elseif ($seq >= 8 && $seq < 12) {
+            } elseif ($seq >= 3 && $seq < 5) {
                 $rencana2026[$pos]['dpo'] = 'cabut';
             }
         }
@@ -756,15 +767,14 @@ class DummyDataSeeder extends Seeder
         foreach ($distribusi2025 as $bucket => $jumlah) {
             $isExpiredTidakSelesai = in_array($bucket, ['spdp', 'tahap1', 'p21'], true);
             for ($i = 0; $i < $jumlah; $i++) {
-                $globalIdx = 350 + $nomor2025;
                 $rencana2025[] = [
                     'bucket' => $bucket,
                     'idx_bucket' => $i,
-                    'archetype' => $archetypeKeys[$globalIdx % count($archetypeKeys)],
-                    'lokasi' => $this->getWeightedLokasiKey($globalIdx),
+                    'archetype' => $archetypeKeys[array_rand($archetypeKeys)],
+                    'lokasi' => $this->getWeightedLokasiKey(random_int(0, 999)),
                     'tahun' => 2025,
                     'idx_tahun' => $nomor2025,
-                    'total_tahun' => 150,
+                    'total_tahun' => 30,
                     'tidak_selesai' => $isExpiredTidakSelesai,
                     'jumlah_tersangka' => 1,
                     'dpo' => null,
@@ -773,6 +783,11 @@ class DummyDataSeeder extends Seeder
                 $nomor2025++;
             }
         }
+        shuffle($rencana2025);
+        foreach ($rencana2025 as $idx => &$item2025) {
+            $item2025['idx_tahun'] = $idx;
+        }
+        unset($item2025);
 
         return array_merge($rencana2025, $rencana2026);
     }

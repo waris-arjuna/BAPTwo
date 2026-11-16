@@ -162,6 +162,7 @@ test('tabel daftar perkara menampilkan kolom rekomendasi tindakan dengan badge s
     // Perkara Selesai
     $perkaraSelesai = Perkara::create([
         'nomor_laporan_kejadian' => 'LK/SEL/01',
+        'tanggal_laporan_kejadian' => now()->toDateString(),
         'nomor_surat_perintah' => 'SP/SEL/01',
         'tanggal_surat_perintah' => '2026-10-01',
         'tahap_laporan_status' => 'final',
@@ -192,6 +193,7 @@ test('pil rekomendasi memuat perintah, sisa hari, dan tooltip title', function (
     Carbon::setTestNow('2026-11-05 08:00:00');
     $perkara = Perkara::create([
         'nomor_laporan_kejadian' => 'LK/PIL/01',
+        'tanggal_laporan_kejadian' => '2026-09-25',
         'nomor_surat_perintah' => 'SP/PIL/01',
         'tanggal_surat_perintah' => '2026-10-01',
         'tahap_laporan_status' => 'final',
@@ -222,6 +224,7 @@ test('pil rekomendasi memuat perintah, sisa hari, dan tooltip title', function (
 test('kartu dan filter siap tahap II hanya menghitung berkas P-21 final', function () {
     $perkaraX = Perkara::create([
         'nomor_laporan_kejadian' => 'LK/X/2026',
+        'tanggal_laporan_kejadian' => now()->toDateString(),
         'nomor_surat_perintah' => 'SP/X/2026',
         'tanggal_surat_perintah' => '2026-10-01',
         'tahap_laporan_status' => 'final',
@@ -243,6 +246,7 @@ test('kartu dan filter siap tahap II hanya menghitung berkas P-21 final', functi
 
     $perkaraY = Perkara::create([
         'nomor_laporan_kejadian' => 'LK/Y/2026',
+        'tanggal_laporan_kejadian' => now()->toDateString(),
         'nomor_surat_perintah' => 'SP/Y/2026',
         'tanggal_surat_perintah' => '2026-10-01',
         'tahap_laporan_status' => 'final',
@@ -273,6 +277,7 @@ test('filter kesiapan pelimpahan menyaring data perkara secara akurat', function
     // Perkara A: Siap Tahap I
     $perkaraA = Perkara::create([
         'nomor_laporan_kejadian' => 'LK/FLT/01',
+        'tanggal_laporan_kejadian' => now()->toDateString(),
         'nomor_surat_perintah' => 'SP/FLT/01',
         'tanggal_surat_perintah' => '2026-10-01',
         'tahap_laporan_status' => 'final',
@@ -295,6 +300,7 @@ test('filter kesiapan pelimpahan menyaring data perkara secara akurat', function
     // Perkara B: DPO
     $perkaraB = Perkara::create([
         'nomor_laporan_kejadian' => 'LK/FLT/02',
+        'tanggal_laporan_kejadian' => now()->toDateString(),
         'nomor_surat_perintah' => 'SP/FLT/02',
         'tanggal_surat_perintah' => '2026-10-02',
         'tahap_laporan_status' => 'final',

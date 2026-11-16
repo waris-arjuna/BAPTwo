@@ -109,7 +109,7 @@
                             <div class="mt-5">
                                 <p class="text-center text-sm font-normal text-gray-700 sm:text-start dark:text-gray-400">
                                     {{ __('Belum memiliki akun?') }}
-                                    <a href="{{ route('daftar') }}" class="font-medium text-brand-500 hover:text-brand-600 dark:text-brand-400">{{ __('Hubungi Administrator IT BPOM') }}</a>
+                                    <span class="font-medium text-gray-800 dark:text-white/90">{{ __('Hubungi Administrator IT BPOM.') }}</span>
                                 </p>
                             </div>
                         </div>

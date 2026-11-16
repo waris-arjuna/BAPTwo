@@ -24,9 +24,12 @@
                     onchange="window.location.href = '{{ route('dashboard', [], false) }}?tahun=' + this.value;"
                     class="h-10 rounded-lg border border-gray-300 bg-white px-3 text-sm font-medium text-gray-700 outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300"
                 >
+                    @php
+                        $currentYearWita = (int) \Carbon\Carbon::now(\App\Services\DashboardService::ZONA_WAKTU)->year;
+                    @endphp
                     @foreach ($availableYears ?? [$tahun] as $y)
-                        <option value="{{ $y }}" {{ ($tahun ?? now()->year) == $y ? 'selected' : '' }}>
-                            {{ $y == now()->year ? "Tahun Berjalan ({$y})" : $y }}
+                        <option value="{{ $y }}" {{ ($tahun ?? $currentYearWita) == $y ? 'selected' : '' }}>
+                            {{ (int) $y === $currentYearWita ? "Tahun Berjalan ({$y})" : $y }}
                         </option>
                     @endforeach
                 </select>

@@ -385,20 +385,39 @@ test('kartu statistik selesai dan perkara berjalan sinkron dengan donut chart se
 
     $service = app(DashboardService::class);
 
-    $p = Perkara::create([
-        'nomor_laporan_kejadian' => 'LK/SYNC/2026',
+    $p1 = Perkara::create([
+        'nomor_laporan_kejadian' => 'LK/SYNC/1/2026',
         'tanggal_laporan_kejadian' => '2026-01-10',
+        'tahap_perkara_status' => 'final',
+        'created_by' => $this->penyidik->id,
+    ]);
+    $p2 = Perkara::create([
+        'nomor_laporan_kejadian' => 'LK/SYNC/2/2026',
+        'tanggal_laporan_kejadian' => '2026-01-11',
+        'tahap_perkara_status' => 'final',
+        'created_by' => $this->penyidik->id,
+    ]);
+    $p3 = Perkara::create([
+        'nomor_laporan_kejadian' => 'LK/SYNC/3/2026',
+        'tanggal_laporan_kejadian' => '2026-01-12',
+        'tahap_perkara_status' => 'final',
+        'created_by' => $this->penyidik->id,
+    ]);
+    $p4 = Perkara::create([
+        'nomor_laporan_kejadian' => 'LK/SYNC/4/2026',
+        'tanggal_laporan_kejadian' => '2026-01-13',
+        'tahap_perkara_status' => 'final',
         'created_by' => $this->penyidik->id,
     ]);
 
-    $t1 = Tersangka::create(['perkara_id' => $p->id, 'nama' => 'T1', 'created_by' => $this->penyidik->id]);
-    $t2 = Tersangka::create(['perkara_id' => $p->id, 'nama' => 'T2', 'created_by' => $this->penyidik->id]);
-    $t3 = Tersangka::create(['perkara_id' => $p->id, 'nama' => 'T3', 'created_by' => $this->penyidik->id]);
-    $t4 = Tersangka::create(['perkara_id' => $p->id, 'nama' => 'T4', 'created_by' => $this->penyidik->id]);
+    $t1 = Tersangka::create(['perkara_id' => $p1->id, 'nama' => 'T1', 'created_by' => $this->penyidik->id]);
+    $t2 = Tersangka::create(['perkara_id' => $p2->id, 'nama' => 'T2', 'created_by' => $this->penyidik->id]);
+    $t3 = Tersangka::create(['perkara_id' => $p3->id, 'nama' => 'T3', 'created_by' => $this->penyidik->id]);
+    $t4 = Tersangka::create(['perkara_id' => $p4->id, 'nama' => 'T4', 'created_by' => $this->penyidik->id]);
 
     // 1. Berkas selesai resmi
     BerkasPerkara::create([
-        'perkara_id' => $p->id,
+        'perkara_id' => $p1->id,
         'tersangka_id' => $t1->id,
         'nomor_berkas' => 'BP/SYNC/1',
         'status_formal' => 'selesai',
@@ -408,7 +427,7 @@ test('kartu statistik selesai dan perkara berjalan sinkron dengan donut chart se
 
     // 2. Berkas dalam proses biasa
     BerkasPerkara::create([
-        'perkara_id' => $p->id,
+        'perkara_id' => $p2->id,
         'tersangka_id' => $t2->id,
         'nomor_berkas' => 'BP/SYNC/2',
         'status_formal' => null,
@@ -419,7 +438,7 @@ test('kartu statistik selesai dan perkara berjalan sinkron dengan donut chart se
     // 3. Berkas progress 100% tapi belum berstatus formal 'selesai' (misal draft Tahap II belum difinalkan)
     // Wajib masuk "Dalam Proses", BUKAN "Selesai"
     BerkasPerkara::create([
-        'perkara_id' => $p->id,
+        'perkara_id' => $p3->id,
         'tersangka_id' => $t3->id,
         'nomor_berkas' => 'BP/SYNC/3',
         'status_formal' => null,
@@ -429,7 +448,7 @@ test('kartu statistik selesai dan perkara berjalan sinkron dengan donut chart se
 
     // 4. Berkas tidak selesai (SP3)
     BerkasPerkara::create([
-        'perkara_id' => $p->id,
+        'perkara_id' => $p4->id,
         'tersangka_id' => $t4->id,
         'nomor_berkas' => 'BP/SYNC/4',
         'status_formal' => 'tidak_selesai',
@@ -474,6 +493,7 @@ test('perkara dengan LK 2025 dan sprindik 2026 hanya dihitung pada tahun 2025 me
         'tanggal_laporan_kejadian' => '2025-11-20',
         'nomor_surat_perintah' => 'SP/CROSS/2026',
         'tanggal_surat_perintah' => '2026-01-10',
+        'tahap_perkara_status' => 'final',
         'created_by' => $this->penyidik->id,
     ]);
 
@@ -526,6 +546,7 @@ test('kartu menunggu verifikasi hanya menghitung berkas dalam proses dan mengaba
     $p = Perkara::create([
         'nomor_laporan_kejadian' => 'LK/VERIF/2026',
         'tanggal_laporan_kejadian' => '2026-03-01',
+        'tahap_perkara_status' => 'final',
         'created_by' => $this->penyidik->id,
     ]);
 

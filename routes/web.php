@@ -36,10 +36,6 @@ Route::get('/captcha/refresh', [MathCaptchaController::class, 'refresh'])->name(
 Route::middleware('guest')->group(function () {
     Route::get('/masuk', [AuthController::class, 'showSignin'])->name('masuk');
     Route::post('/masuk', [AuthController::class, 'login'])->name('masuk.attempt');
-
-    Route::get('/daftar', function () {
-        return view('pages.auth.signup', ['title' => __('Daftar')]);
-    })->name('daftar');
 });
 
 // Authenticated application pages

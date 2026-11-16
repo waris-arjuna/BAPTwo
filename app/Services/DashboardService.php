@@ -46,20 +46,23 @@ class DashboardService
         $tahun = $tahun ?: (int) Carbon::now(self::ZONA_WAKTU)->year;
 
         return Cache::remember("dashboard_stats_{$tahun}", 120, function () use ($tahun) {
-            // Total Perkara tahun berjalan (berdasarkan tanggal Laporan Kejadian)
+            // Total Perkara tahun berjalan (sudah masuk Data Perkara, berdasarkan tanggal Laporan Kejadian)
             $totalPerkara = Perkara::query()
+                ->whereNotNull('tahap_perkara_status')
                 ->whereYear('tanggal_laporan_kejadian', $tahun)
                 ->count();
 
-            // Berkas Berjalan (belum berstatus formal selesai maupun tidak selesai)
-            $berkasBerjalan = BerkasPerkara::query()
-                ->tahunLk($tahun)
-                ->dalamProses()
+            // Perkara Berjalan (dalam proses penyidikan aktif, selaras dengan kartu Dalam Proses di Daftar Perkara)
+            $berkasBerjalan = Perkara::query()
+                ->whereNotNull('tahap_perkara_status')
+                ->whereYear('tanggal_laporan_kejadian', $tahun)
+                ->filterStatusFormal('dalam_proses')
                 ->count();
 
             // Menunggu Verifikasi / Tindakan Penyidik (memiliki draft aktif atau baru pada tahap awal <= 15%)
-            // Dibatasi hanya pada berkas dalam proses (tidak menghitung berkas selesai atau SP3)
+            // Dibatasi hanya pada berkas dalam proses pada perkara yang sudah masuk Data Perkara
             $menungguTindakan = BerkasPerkara::query()
+                ->whereHas('perkara', fn ($q) => $q->whereNotNull('tahap_perkara_status'))
                 ->tahunLk($tahun)
                 ->dalamProses()
                 ->where(function ($q) {
@@ -73,10 +76,11 @@ class DashboardService
                 })
                 ->count();
 
-            // Selesai (hanya dari status formal 'selesai')
-            $berkasSelesai = BerkasPerkara::query()
-                ->tahunLk($tahun)
-                ->selesai()
+            // Selesai (selaras dengan kartu Selesai di Daftar Perkara)
+            $berkasSelesai = Perkara::query()
+                ->whereNotNull('tahap_perkara_status')
+                ->whereYear('tanggal_laporan_kejadian', $tahun)
+                ->filterStatusFormal('selesai')
                 ->count();
 
             // Rata-rata waktu penyelesaian dari SPDP s.d. Tahap II

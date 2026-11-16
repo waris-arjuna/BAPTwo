@@ -7,7 +7,7 @@ Sistem Informasi Manajemen dan Pemantauan Penanganan Perkara Balai Besar POM di 
 [![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=flat-square&logo=mysql&logoColor=white)](https://www.mysql.com)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-v4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![Alpine.js](https://img.shields.io/badge/Alpine.js-v3-8BC0D0?style=flat-square&logo=alpinedotjs&logoColor=white)](https://alpinejs.dev)
-[![Pest PHP](https://img.shields.io/badge/Pest%20PHP-375%20Tests%20Passing-00D8A2?style=flat-square)](https://pestphp.com)
+[![Pest PHP](https://img.shields.io/badge/Pest%20PHP-419%20Tests%20Passing-00D8A2?style=flat-square)](https://pestphp.com)
 
 ---
 
@@ -31,9 +31,10 @@ Sistem Informasi Manajemen dan Pemantauan Penanganan Perkara Balai Besar POM di 
 10. [Perintah CLI & Pemeliharaan Sistem](#perintah-cli--pemeliharaan-sistem)
 11. [Pengujian Otomatis & Linter](#pengujian-otomatis--linter)
 12. [Scheduler & Otomasi Batas Tahun](#scheduler--otomasi-batas-tahun)
-13. [Panduan Rilis Produksi & Checklist Deployment](#panduan-rilis-produksi--checklist-deployment)
-14. [Troubleshooting](#troubleshooting)
-15. [Lisensi](#lisensi)
+13. [Backup Otomatis & Uji Pemulihan Data](#backup-otomatis--uji-pemulihan-data)
+14. [Panduan Rilis Produksi & Checklist Deployment](#panduan-rilis-produksi--checklist-deployment)
+15. [Troubleshooting](#troubleshooting)
+16. [Lisensi](#lisensi)
 
 ---
 
@@ -601,12 +602,18 @@ Menarik dan memperbarui daftar seluruh pegawai (PPNS, Penyidik, Pejabat Penandat
 php artisan sibob:sync-users
 ```
 
+### 5. Backup Database & Dokumen PDF Privat
+Mengarsipkan seluruh isi tabel database (`database-dump.json`) dan dokumen PDF privat (`storage/app/private`) ke dalam file ZIP di `storage/app/backups/` serta memangkas arsip lama sesuai retensi hari:
+```powershell
+php artisan baptwo:backup --keep-days=30
+```
+
 ---
 
 ## Pengujian Otomatis & Linter
 
 ### 1. Eksekusi Test Suite (Pest PHP)
-Aplikasi memiliki **375 pengujian otomatis** (3.006 assertions) yang mencakup integritas alur tahapan, DPO gate, ekspor multi-sheet, audit trail, partisi wilayah offline, dan otorisasi RBAC:
+Aplikasi memiliki **419 pengujian otomatis** (3.216 assertions) yang mencakup integritas alur tahapan, DPO gate, ekspor multi-sheet, audit trail, keamanan header & CSP, backup sistem, partisi wilayah offline, dan otorisasi RBAC:
 ```powershell
 C:\laragon\bin\php\php-8.4.25-Win32-vs17-x64\php.exe vendor/bin/pest
 ```
@@ -617,6 +624,8 @@ php artisan test tests/Feature/AlamatCascadingEditDraftTest.php
 php artisan test tests/Feature/PerkaraExportTest.php
 php artisan test tests/Feature/DashboardCaseStatusTest.php
 php artisan test tests/Feature/DpoPenangkapanTest.php
+php artisan test tests/Feature/SecurityHardeningTest.php
+php artisan test tests/Feature/BackupSystemCommandTest.php
 ```
 
 ### 2. Pemeriksaan Standar Kode (Laravel Pint)
@@ -627,6 +636,12 @@ php vendor/bin/pint --test
 Perbaikan format otomatis:
 ```powershell
 php vendor/bin/pint
+```
+
+### 3. Audit Keamanan Dependensi
+Memeriksa advisories kerentanan paket Composer sebelum rilis:
+```powershell
+composer audit --format=plain
 ```
 
 ---
@@ -649,6 +664,28 @@ Pada server produksi berbasis Linux, tambahkan entri Cron berikut:
 ```bash
 * * * * * cd /path-to-baptwo && php artisan schedule:run >> /dev/null 2>&1
 ```
+
+Pada server produksi berbasis Windows Server, buat tugas terjadwal di **Task Scheduler** yang berjalan setiap **1 menit** dengan aksi:
+```powershell
+C:\laragon\bin\php\php-8.4.25-Win32-vs17-x64\php.exe artisan schedule:run
+```
+*(Set `Start in` ke folder root proyek BAPTwo).*
+
+---
+
+## Backup Otomatis & Uji Pemulihan Data
+
+Selain scheduler akhir tahun, aplikasi menyediakan perintah backup terpadu lintas sistem operasi (`php artisan baptwo:backup`) yang otomatis dijadwalkan setiap hari pukul `02:00 WITA` oleh `routes/console.php` untuk mengarsipkan seluruh tabel database dan berkas PDF privat (`storage/app/private`) ke `storage/app/backups/` dengan retensi 30 hari.
+
+Menjalankan backup secara manual:
+```powershell
+php artisan baptwo:backup --keep-days=30
+```
+
+Prosedur verifikasi & uji pemulihan (uji restore berkala):
+1. Pastikan file arsip terbaru `storage/app/backups/baptwo-backup-YYYY-MM-DD-His.zip` terbentuk dan ukurannya wajar.
+2. Ekstrak arsip pada folder staging/uji, periksa `database-dump.json` terbaca utuh (tidak korup) dan berkas PDF di folder `private/` dapat dibuka.
+3. Salin arsip terbaru secara berkala ke media penyimpanan terpisah di luar server aplikasi (NAS / server backup internal BPOM).
 
 ---
 
@@ -702,7 +739,7 @@ php artisan route:cache
 php artisan view:cache
 ```
 
-### 4. Konfigurasi Wajib Lingkungan Produksi (`.env`)
+### 4. Konfigurasi Wajib Lingkungan Produksi (`.env` & `php.ini`)
 
 Pastikan parameter keamanan dan performa berikut disetel dengan tepat pada server produksi:
 
@@ -715,13 +752,29 @@ APP_URL=https://nama-domain-resmi.bpom.go.id
 SESSION_SECURE_COOKIE=true
 SESSION_LIFETIME=120
 
+# Logging Terotasi & Keamanan Integrasi SIBOB
+LOG_CHANNEL=stack
+LOG_STACK=daily
+LOG_DAILY_DAYS=30
+LOG_LEVEL=warning
+SIBOB_VERIFY_SSL=true
+
 # Nonaktifkan simulasi waktu dev
 APP_TEST_NOW=
 ```
 
+Penyesuaian minimum `php.ini` untuk ekspor Excel 44 kolom (`PhpSpreadsheet`) dan unggah PDF 5 MB:
+```ini
+memory_limit = 512M
+max_execution_time = 120
+upload_max_filesize = 10M
+post_max_size = 12M
+extension=zip
+```
+
 ### 5. Konfigurasi Daemon & Scheduler Produksi
 
-Pastikan daemon cron di server Linux aktif untuk menjalankan tugas terjadwal (SLA monitoring dan penutupan perkara akhir tahun 1 Januari):
+Pastikan scheduler berjalan setiap menit di server target (Linux Cron atau Windows Task Scheduler) untuk menjalankan penutupan perkara 1 Januari, sinkronisasi SIBOB harian, dan backup otomatis pukul `02:00 WITA`:
 
 ```bash
 * * * * * cd /path-to-baptwo && php artisan schedule:run >> /dev/null 2>&1
